@@ -369,7 +369,8 @@ class NpmCliAndSdkScanner:
 
         is_diff = bool(added)
         transition = f"{prev_ver} -> {latest_ver}" if is_diff else f"{latest_ver} (Latest Active Identifiers)"
-        title = infer_family_title(display_models) if len(display_models) <= 4 else f"{pkg.split('/')[-1].replace('-', ' ').title()} Model Registry"
+        pkg_short = pkg.split("/")[-1].replace("-", " ").title()
+        title = f"{pkg_short} ({infer_family_title(display_models)})" if len(display_models) == 1 else f"{pkg_short} v{latest_ver} Models"
 
         return [
             {
@@ -457,8 +458,9 @@ class HuggingFaceOpenSourceScanner:
             )
 
         lead_name = repo_id.split("/")[-1].replace("-", " ")
+        models_hash = hashlib.sha256(",".join(m["id"] for m in models_list).encode("utf-8")).hexdigest()[:8]
         return {
-            "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"hf-{org}-{repo_id}"),
+            "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"hf-{org}-{models_hash}"),
             "category": "open-source",
             "scanner": "huggingface",
             "header": f"HUGGING FACE HUB · {label}",
@@ -512,7 +514,7 @@ class GitHubArchitectureRadarScanner:
     def scan(self) -> List[Dict[str, Any]]:
         cards: List[Dict[str, Any]] = []
         keywords = re.compile(
-            r"\b(add|support|model|new|qwen|deepseek|llama|gemini|gemma|mistral|glm|kimi|minimax|nemotron|vl|moe|arch)\b",
+            r"\b(qwen[0-9a-z._-]*|deepseek[a-z0-9._-]*|llama-?[0-9][a-z0-9._-]*|gemini-?[0-9][a-z0-9._-]*|gemma-?[0-9][a-z0-9._-]*|mistral[a-z0-9._-]*|ministral[a-z0-9._-]*|pixtral[a-z0-9._-]*|glm-?[0-9][a-z0-9._-]*|kimi[a-z0-9._-]*|minimax[a-z0-9._-]*|nemotron[a-z0-9._-]*|hunyuan[a-z0-9._-]*|ernie[a-z0-9._-]*|modeling_[a-z0-9_]+)\b",
             re.IGNORECASE,
         )
         entry_re = re.compile(r"<entry>(.*?)</entry>", re.DOTALL)
@@ -559,9 +561,11 @@ class GitHubArchitectureRadarScanner:
                             }
                         )
                 if matched_models:
+                    top5 = matched_models[:5]
+                    shas_sig = hashlib.sha256(",".join(m["id"] for m in top5).encode("utf-8")).hexdigest()[:8]
                     cards.append(
                         {
-                            "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"gh-{repo}-{latest_sha}"),
+                            "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"gh-{repo}-{shas_sig}"),
                             "category": "open-source",
                             "scanner": "github-radar",
                             "header": header,

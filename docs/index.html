@@ -777,7 +777,17 @@
       const q = (document.getElementById("search-box").value || "").trim().toLowerCase();
       const sortMode = (document.getElementById("sort-select")?.value) || "newest";
 
-      let list = (FEED_DATA.cards || []).filter(c => {
+      const uniqueCards = [];
+      const seenKeys = new Set();
+      for (const c of (FEED_DATA.cards || [])) {
+        const key = `${c.id}|${c.header}|${c.title}|${c.build_transition}`;
+        if (seenKeys.has(c.id) || seenKeys.has(key)) continue;
+        seenKeys.add(c.id);
+        seenKeys.add(key);
+        uniqueCards.push(c);
+      }
+
+      let list = uniqueCards.filter(c => {
         if (CURRENT_FILTER === "new-24h") {
           if (getTimeInfo(c.detected_at).hoursAgo > 24) return false;
         } else if (CURRENT_FILTER === "unread") {

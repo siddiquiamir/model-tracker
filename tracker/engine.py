@@ -25,7 +25,7 @@ SEEN_FILE = DATA_DIR / "seen_ids.json"
 
 
 class TrackerEngine:
-    """Runs all model scanners, persists feed state, and triggers notifications."""
+    """Runs all model scanners, deduplicates cards, preserves first-seen timestamps, and triggers notifications."""
 
     def __init__(self, github_user: str = "siddiquiamir") -> None:
         self.github_user = github_user
@@ -47,7 +47,25 @@ class TrackerEngine:
         DATA_DIR.mkdir(parents=True, exist_ok=True)
         SEEN_FILE.write_text(json.dumps(sorted(seen), indent=2), encoding="utf-8")
 
+    def load_previous_timestamps(self) -> Dict[str, str]:
+        """Load existing card timestamps from feed.json so repeat scans never reset a card's timestamp."""
+        if not FEED_FILE.exists():
+            return {}
+        try:
+            data = json.loads(FEED_FILE.read_text(encoding="utf-8"))
+            out: Dict[str, str] = {}
+            for c in data.get("cards", []):
+                cid = c.get("id")
+                ts = c.get("detected_at")
+                if cid and ts:
+                    out[cid] = ts
+            return out
+        except Exception:
+            return {}
+
     def run_all_scans(self, notify_discord: bool = True) -> Dict[str, Any]:
+        prev_timestamps = self.load_previous_timestamps()
+
         print("[ModelPulse] Scanning Antigravity Desktop builds (Stable + Insiders)...")
         ag_cards = self.ag_scanner.scan(max_stable=5)
 
@@ -75,9 +93,26 @@ class TrackerEngine:
 
         ag_cards.sort(key=_ag_sort_key)
 
-        all_cards: List[Dict[str, Any]] = [*ag_cards, *kr_cards, *npm_cards, *hf_cards, *gh_cards]
-        for card in all_cards:
+        raw_cards: List[Dict[str, Any]] = [*ag_cards, *kr_cards, *npm_cards, *hf_cards, *gh_cards]
+
+        # Strict deduplication by card ID and by (scanner, build_transition, model_ids_tuple)
+        all_cards: List[Dict[str, Any]] = []
+        seen_card_keys: Set[str] = set()
+        for card in raw_cards:
+            cid = card["id"]
+            models_sig = ",".join(sorted(m.get("id", "") for m in card.get("models", [])))
+            content_key = f"{card.get('scanner')}|{card.get('header')}|{models_sig}"
+            if cid in seen_card_keys or content_key in seen_card_keys:
+                continue
+            seen_card_keys.add(cid)
+            seen_card_keys.add(content_key)
+
+            # Preserve original detected_at if this exact card ID was already recorded
+            if cid in prev_timestamps:
+                card["detected_at"] = prev_timestamps[cid]
+
             card["x_post_text"] = build_x_post_text(card)
+            all_cards.append(card)
 
         seen_ids = self.load_seen_ids()
         new_cards = [c for c in all_cards if c["id"] not in seen_ids]
@@ -122,8 +157,8 @@ class TrackerEngine:
         DOCS_DATA_DIR.mkdir(parents=True, exist_ok=True)
 
         feed_json = json.dumps(feed_payload, indent=2, ensure_ascii=False)
-        FEED_FILE.write_text(feed_json, encoding="utf-8")
-        DOCS_FEED_FILE.write_text(feed_json, encoding="utf-8")
+        FEED_FILE.write_text(feed_json, encoding="utf-8", newline="\n")
+        DOCS_FEED_FILE.write_text(feed_json, encoding="utf-8", newline="\n")
 
         return feed_payload
 
