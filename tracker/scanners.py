@@ -120,6 +120,41 @@ class AntigravityDesktopScanner:
 
         return builds
 
+    def get_build_timestamp(self, build: Dict[str, str]) -> str:
+        """Fetch and cache the exact Last-Modified publication timestamp of a build on GCS."""
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        ver_slug = re.sub(r"[^0-9A-Za-z._-]", "_", build["version"])
+        ts_file = CACHE_DIR / f"ag_ts_{ver_slug}.txt"
+        if ts_file.exists():
+            return ts_file.read_text(encoding="utf-8").strip()
+
+        # Check if Insiders version encodes YYYYMMDDHHMMSS
+        raw_v = build.get("raw_version", "")
+        m = re.search(r"(202[0-9]{11})", raw_v)
+        if m:
+            d = m.group(1)
+            iso = f"{d[:4]}-{d[4:6]}-{d[6:8]}T{d[8:10]}:{d[10:12]}:{d[12:14]}Z"
+            ts_file.write_text(iso, encoding="utf-8")
+            return iso
+
+        try:
+            from email.utils import parsedate_to_datetime
+            req = urllib.request.Request(
+                build["binary_url"],
+                method="HEAD",
+                headers={"User-Agent": "ModelPulse-Tracker/1.0"},
+            )
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                lm = resp.headers.get("Last-Modified")
+                if lm:
+                    dt = parsedate_to_datetime(lm).astimezone(timezone.utc)
+                    iso = dt.isoformat()
+                    ts_file.write_text(iso, encoding="utf-8")
+                    return iso
+        except Exception:
+            pass
+        return datetime.now(timezone.utc).isoformat()
+
     def get_models_for_build(self, build: Dict[str, str]) -> Set[str]:
         ver_slug = re.sub(r"[^0-9A-Za-z._-]", "_", build["version"])
         rodata = fetch_elf_rodata_slice(
@@ -148,7 +183,7 @@ class AntigravityDesktopScanner:
             ),
         )
 
-        now_iso = datetime.now(timezone.utc).isoformat()
+        pub_iso = self.get_build_timestamp(new_build)
         transition = f"{old_build['version']} -> {new_build['version']}"
 
         for fam_key in priority_order:
@@ -184,7 +219,7 @@ class AntigravityDesktopScanner:
                         {"label": "Public release feed", "url": new_build["feed_url"]},
                         {"label": "Official build", "url": new_build["binary_url"]},
                     ],
-                    "detected_at": now_iso,
+                    "detected_at": pub_iso,
                 }
             )
         return cards
@@ -362,7 +397,7 @@ class NpmCliAndSdkScanner:
                     {"label": "Public npm feed", "url": f"https://www.npmjs.com/package/{pkg}?activeTab=versions"},
                     {"label": "Official tarball", "url": latest_tar},
                 ],
-                "detected_at": datetime.now(timezone.utc).isoformat(),
+                "detected_at": meta.get("time", {}).get(latest_ver, datetime.now(timezone.utc).isoformat()),
             }
         ]
 

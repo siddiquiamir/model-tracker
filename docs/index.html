@@ -424,6 +424,69 @@
       border-radius: 6px;
     }
 
+    /* Newness & Timestamp Badges */
+    .time-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+      letter-spacing: 0.02em;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .time-badge.is-hot {
+      background: rgba(16, 185, 129, 0.18);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.25);
+    }
+
+    .time-badge.is-today {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+    }
+
+    .time-badge.is-older {
+      background: rgba(148, 163, 184, 0.12);
+      color: var(--text-muted);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .unread-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: #f59e0b;
+      color: #111;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .diff-card.card-unread {
+      box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.45), 0 12px 28px -5px rgba(0, 0, 0, 0.6);
+    }
+
+    .latest-banner {
+      background: linear-gradient(90deg, rgba(16, 185, 129, 0.14), rgba(56, 152, 255, 0.1));
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      border-radius: 10px;
+      padding: 13px 18px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
     .toast {
       position: fixed;
       bottom: 24px;
@@ -517,10 +580,15 @@
       </div>
     </section>
 
+    <!-- Latest Breaking Drop Banner -->
+    <section class="latest-banner" id="latest-banner" style="display: none;"></section>
+
     <!-- Category Filters & Search -->
     <section class="filter-bar">
       <div class="filter-pills" id="filter-pills">
         <button class="pill active" data-filter="all" onclick="setFilter('all', this)">All Reports</button>
+        <button class="pill" data-filter="new-24h" onclick="setFilter('new-24h', this)" id="pill-new-24h">🟢 New (&lt;24h)</button>
+        <button class="pill" data-filter="unread" onclick="setFilter('unread', this)" id="pill-unread">✨ Unread</button>
         <button class="pill" data-filter="desktop-diff" onclick="setFilter('desktop-diff', this)">Antigravity Desktop Diffs</button>
         <button class="pill" data-filter="cli-sdk-diff" onclick="setFilter('cli-sdk-diff', this)">CLI & SDK Diffs</button>
         <button class="pill" data-filter="open-source" onclick="setFilter('open-source', this)">Open-Source Hub & Radar</button>
@@ -530,13 +598,20 @@
         <button class="pill" data-filter="qwen" onclick="setFilter('qwen', this)">Qwen</button>
         <button class="pill" data-filter="deepseek" onclick="setFilter('deepseek', this)">DeepSeek</button>
       </div>
-      <input
-        type="text"
-        id="search-box"
-        class="search-input"
-        placeholder="Search model ID (e.g. gemini-4-argon, opus-5-5, qwen)..."
-        oninput="renderCards()"
-      />
+      <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+        <select id="sort-select" onchange="renderCards()">
+          <option value="newest">🕒 Sort: Newest Drops First</option>
+          <option value="featured">🔥 Sort: Featured Build Diffs First</option>
+        </select>
+        <button class="btn btn-sm" onclick="markAllRead()" title="Mark all current cards as seen in your browser">✓ Mark All Read</button>
+        <input
+          type="text"
+          id="search-box"
+          class="search-input"
+          placeholder="Search model ID (e.g. gemini-4-argon, opus-5-5, qwen)..."
+          oninput="renderCards()"
+        />
+      </div>
     </section>
 
     <!-- Cards Container -->
@@ -575,6 +650,53 @@
       setTimeout(() => { t.style.display = "none"; }, 2600);
     }
 
+    const SEEN_STORAGE_KEY = "modelpulse_seen_card_ids_v1";
+
+    function getSeenCardIds() {
+      try {
+        const raw = localStorage.getItem(SEEN_STORAGE_KEY);
+        return raw ? new Set(JSON.parse(raw)) : null;
+      } catch {
+        return null;
+      }
+    }
+
+    function saveSeenCardIds(setObj) {
+      try {
+        localStorage.setItem(SEEN_STORAGE_KEY, JSON.stringify([...setObj]));
+      } catch {}
+    }
+
+    function markAllRead() {
+      const allIds = new Set((FEED_DATA.cards || []).map(c => c.id));
+      saveSeenCardIds(allIds);
+      renderCards();
+      showToast("Marked all current cards as read!");
+    }
+
+    function getTimeInfo(isoStr) {
+      if (!isoStr) return { badgeText: "Recent", cssClass: "is-older", hoursAgo: 999, exactStr: "" };
+      const dt = new Date(isoStr);
+      if (isNaN(dt.getTime())) return { badgeText: isoStr, cssClass: "is-older", hoursAgo: 999, exactStr: isoStr };
+      const diffMs = Math.max(0, Date.now() - dt.getTime());
+      const mins = Math.floor(diffMs / 60000);
+      const hours = diffMs / 3600000;
+      const days = Math.floor(hours / 24);
+      const exactStr = dt.toLocaleString();
+
+      if (mins < 60) {
+        return { badgeText: `🟢 NEW · ${mins <= 1 ? 'Just now' : mins + 'm ago'}`, cssClass: "is-hot", hoursAgo: hours, exactStr };
+      }
+      if (hours < 6) {
+        return { badgeText: `🟢 NEW · ${Math.floor(hours)}h ago`, cssClass: "is-hot", hoursAgo: hours, exactStr };
+      }
+      if (hours < 24) {
+        return { badgeText: `⚡ TODAY · ${Math.floor(hours)}h ago`, cssClass: "is-today", hoursAgo: hours, exactStr };
+      }
+      const shortDate = dt.toLocaleDateString(undefined, { month: "short", day: "numeric" });
+      return { badgeText: `🕒 ${shortDate} (${days}d ago)`, cssClass: "is-older", hoursAgo: hours, exactStr };
+    }
+
     function setFilter(filterKey, btnEl) {
       CURRENT_FILTER = filterKey;
       document.querySelectorAll("#filter-pills .pill").forEach(p => p.classList.remove("active"));
@@ -582,7 +704,7 @@
       renderCards();
     }
 
-    function renderCardHtml(card, idx) {
+    function renderCardHtml(card, idx, seenSet) {
       const logoSvg = PROVIDER_SVGS[card.provider_slug] || PROVIDER_SVGS.google;
       const modelsHtml = (card.models || []).map(m =>
         `<li>• <strong>${escapeHtml(m.name)}</strong> — <span class="code-pill">${escapeHtml(m.id)}</span></li>`
@@ -594,13 +716,21 @@
 
       const primaryUrl = (card.links && card.links[0]) ? card.links[0].url : "#";
       const ghUser = FEED_DATA.github_user || "siddiquiamir";
+      const tInfo = getTimeInfo(card.detected_at);
+      const isUnread = seenSet && !seenSet.has(card.id);
 
       return `
-        <article class="diff-card" style="border-left-color: ${escapeHtml(card.accent_color || '#38bdf8')}">
+        <article class="diff-card ${isUnread ? 'card-unread' : ''}" style="border-left-color: ${escapeHtml(card.accent_color || '#38bdf8')}">
           <div>
             <div class="card-top">
               <div>
-                <div class="card-header-label">${escapeHtml(card.header)}</div>
+                <div class="card-header-label">
+                  ${escapeHtml(card.header)}
+                  <span class="time-badge ${tInfo.cssClass}" title="Published / Detected: ${escapeHtml(tInfo.exactStr)}">
+                    ${escapeHtml(tInfo.badgeText)}
+                  </span>
+                  ${isUnread ? `<span class="unread-badge" title="New since your last visit">✨ UNREAD</span>` : ""}
+                </div>
                 <a class="card-title" href="${escapeHtml(primaryUrl)}" target="_blank" rel="noopener">
                   ${escapeHtml(card.title)}
                 </a>
@@ -621,6 +751,7 @@
             <div class="card-meta-block">
               <div><strong>Evidence:</strong> <span class="code-pill">${escapeHtml(card.evidence)}</span></div>
               <div><strong>Source:</strong> ${escapeHtml(card.source_text)}</div>
+              <div><strong>Timestamp:</strong> <span style="color: var(--text-muted); font-size: 0.86rem;">${escapeHtml(tInfo.exactStr)}</span></div>
             </div>
 
             <p class="card-disclaimer">${escapeHtml(card.disclaimer_1)}</p>
@@ -642,10 +773,16 @@
       `;
     }
 
-    function getFilteredCards() {
+    function getFilteredCards(seenSet) {
       const q = (document.getElementById("search-box").value || "").trim().toLowerCase();
-      return (FEED_DATA.cards || []).filter(c => {
-        if (CURRENT_FILTER !== "all") {
+      const sortMode = (document.getElementById("sort-select")?.value) || "newest";
+
+      let list = (FEED_DATA.cards || []).filter(c => {
+        if (CURRENT_FILTER === "new-24h") {
+          if (getTimeInfo(c.detected_at).hoursAgo > 24) return false;
+        } else if (CURRENT_FILTER === "unread") {
+          if (!seenSet || seenSet.has(c.id)) return false;
+        } else if (CURRENT_FILTER !== "all") {
           if (c.category !== CURRENT_FILTER && c.provider_slug !== CURRENT_FILTER) {
             return false;
           }
@@ -657,17 +794,65 @@
         ].join(" ").toLowerCase();
         return hay.includes(q);
       });
+
+      if (sortMode === "newest") {
+        list = [...list].sort((a, b) => new Date(b.detected_at || 0) - new Date(a.detected_at || 0));
+      }
+      return list;
+    }
+
+    function renderLatestBanner() {
+      const banner = document.getElementById("latest-banner");
+      const all = FEED_DATA.cards || [];
+      if (!all.length || !banner) return;
+      const newest = [...all].sort((a, b) => new Date(b.detected_at || 0) - new Date(a.detected_at || 0))[0];
+      if (!newest) return;
+      const tInfo = getTimeInfo(newest.detected_at);
+      const firstModel = (newest.models && newest.models[0]) ? newest.models[0].id : newest.build_transition;
+      banner.style.display = "flex";
+      banner.innerHTML = `
+        <div style="display:flex; align-items:center; gap: 10px; flex-wrap: wrap;">
+          <span class="time-badge is-hot" style="margin-left:0;">🚨 LATEST DETECTED CHANGE · ${escapeHtml(tInfo.badgeText.replace(/^🟢 NEW · |^⚡ TODAY · |^🕒 /, ''))}</span>
+          <strong style="color:#fff;">${escapeHtml(newest.header)}:</strong>
+          <span style="color:var(--link-blue); font-weight:700;">${escapeHtml(newest.title)}</span>
+          <span class="code-pill">${escapeHtml(firstModel)}</span>
+          <span style="font-size:0.8rem; color:var(--text-muted);">(${escapeHtml(tInfo.exactStr)})</span>
+        </div>
+        <button class="btn btn-sm btn-primary" onclick="navigator.clipboard.writeText(${JSON.stringify(newest.x_post_text || newest.title).replace(/</g, '\\u003c')}); showToast('Copied latest drop for X/Twitter!');">
+          🐦 Copy Latest for X
+        </button>
+      `;
     }
 
     function renderCards() {
       const container = document.getElementById("cards-container");
-      const filtered = getFilteredCards();
+      let seenSet = getSeenCardIds();
+      // First time visitor: initialize seenSet with cards older than 24h so today's drops stand out as UNREAD!
+      if (!seenSet && (FEED_DATA.cards || []).length) {
+        seenSet = new Set(
+          (FEED_DATA.cards || [])
+            .filter(c => getTimeInfo(c.detected_at).hoursAgo > 24)
+            .map(c => c.id)
+        );
+        saveSeenCardIds(seenSet);
+      }
+
+      const new24Count = (FEED_DATA.cards || []).filter(c => getTimeInfo(c.detected_at).hoursAgo <= 24).length;
+      const unreadCount = seenSet ? (FEED_DATA.cards || []).filter(c => !seenSet.has(c.id)).length : 0;
+      const p24 = document.getElementById("pill-new-24h");
+      const pUn = document.getElementById("pill-unread");
+      if (p24) p24.textContent = `🟢 New <24h (${new24Count})`;
+      if (pUn) pUn.textContent = `✨ Unread (${unreadCount})`;
+
+      renderLatestBanner();
+
+      const filtered = getFilteredCards(seenSet);
       window._CURRENT_DISPLAYED_CARDS = filtered;
       if (!filtered.length) {
         container.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 48px; color: var(--text-muted);">No matching model diff cards found.</div>`;
         return;
       }
-      container.innerHTML = filtered.map((c, i) => renderCardHtml(c, i)).join("");
+      container.innerHTML = filtered.map((c, i) => renderCardHtml(c, i, seenSet)).join("");
     }
 
     function copyTweet(idx) {
