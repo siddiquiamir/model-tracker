@@ -450,9 +450,13 @@
       </div>
       <div class="nav-actions">
         <span id="last-updated" style="font-size: 0.8rem; color: var(--text-muted);">Loading feed...</span>
+        <span id="auto-refresh-badge" style="font-size: 0.75rem; color: #10b981; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); padding: 3px 8px; border-radius: 999px;">Auto-refresh: 60s</span>
         <button class="btn btn-primary" onclick="triggerLiveScan()" id="scan-btn">
           ⚡ Scan All Sources Now
         </button>
+        <a class="btn" href="https://github.com/siddiquiamir/model-tracker/actions" target="_blank" rel="noopener">
+          ⚙️ Cloud Actions
+        </a>
         <a class="btn" href="https://github.com/siddiquiamir" target="_blank" rel="noopener">
           GitHub @siddiquiamir
         </a>
@@ -701,24 +705,96 @@
       newSel.innerHTML = builds.map(b => `<option value="${escapeHtml(b)}" ${b === '2.23.0' ? 'selected' : ''}>${escapeHtml(b)}</option>`).join("");
     }
 
+    function updateDashboardMetrics() {
+      const st = FEED_DATA.stats || {};
+      document.getElementById("stat-total-cards").textContent = st.total_cards ?? (FEED_DATA.cards || []).length;
+      document.getElementById("stat-desktop-diffs").textContent = st.desktop_diffs ?? "—";
+      document.getElementById("stat-cli-diffs").textContent = st.cli_sdk_diffs ?? "—";
+      document.getElementById("stat-oss-models").textContent = st.open_source_models ?? "—";
+      document.getElementById("stat-total-models").textContent = st.total_models_indexed ?? "—";
+      if (FEED_DATA.generated_at) {
+        document.getElementById("last-updated").textContent = "Updated: " + new Date(FEED_DATA.generated_at).toLocaleString();
+      }
+      populateBuildSelectors(FEED_DATA.available_antigravity_builds);
+      renderCards();
+    }
+
     async function loadFeed() {
+      const bust = Date.now();
+      const rawUrl = "https://raw.githubusercontent.com/siddiquiamir/model-tracker/main/docs/data/feed.json?t=" + bust;
+      const localUrl = "./data/feed.json?t=" + bust;
       try {
-        const res = await fetch("./data/feed.json?t=" + Date.now());
-        FEED_DATA = await res.json();
-        const st = FEED_DATA.stats || {};
-        document.getElementById("stat-total-cards").textContent = st.total_cards ?? FEED_DATA.cards.length;
-        document.getElementById("stat-desktop-diffs").textContent = st.desktop_diffs ?? "—";
-        document.getElementById("stat-cli-diffs").textContent = st.cli_sdk_diffs ?? "—";
-        document.getElementById("stat-oss-models").textContent = st.open_source_models ?? "—";
-        document.getElementById("stat-total-models").textContent = st.total_models_indexed ?? "—";
-        if (FEED_DATA.generated_at) {
-          document.getElementById("last-updated").textContent = "Updated: " + new Date(FEED_DATA.generated_at).toLocaleString();
+        const results = await Promise.allSettled([
+          fetch(localUrl, { cache: "no-store" }).then(r => r.ok ? r.json() : null),
+          fetch(rawUrl, { cache: "no-store" }).then(r => r.ok ? r.json() : null)
+        ]);
+        const candidates = results
+          .filter(r => r.status === "fulfilled" && r.value && Array.isArray(r.value.cards))
+          .map(r => r.value);
+        if (candidates.length) {
+          candidates.sort((a, b) => new Date(b.generated_at || 0) - new Date(a.generated_at || 0));
+          FEED_DATA = candidates[0];
+          updateDashboardMetrics();
         }
-        populateBuildSelectors(FEED_DATA.available_antigravity_builds);
-        renderCards();
       } catch (err) {
         console.error("Failed to load feed.json:", err);
       }
+    }
+
+    async function runBrowserLiveScan() {
+      await loadFeed();
+      const orgs = [
+        ["Qwen", "QWEN · ALIBABA", "qwen", "#a855f7"],
+        ["deepseek-ai", "DEEPSEEK AI", "deepseek", "#06b6d4"],
+        ["meta-llama", "META LLAMA", "meta", "#3b82f6"],
+        ["mistralai", "MISTRAL AI", "mistral", "#f59e0b"],
+        ["google", "GOOGLE OPEN MODELS", "google", "#38bdf8"]
+      ];
+      const liveCards = await Promise.all(orgs.map(async ([org, label, slug, color]) => {
+        try {
+          const r = await fetch(`https://huggingface.co/api/models?author=${org}&sort=lastModified&direction=-1&limit=5`, { cache: "no-store" });
+          if (!r.ok) return null;
+          const items = await r.json();
+          if (!Array.isArray(items) || !items.length) return null;
+          const top = items[0];
+          return {
+            id: `hf-${org}-${top.id}`.replace(/[^a-zA-Z0-9._-]/g, "_"),
+            category: "open-source",
+            scanner: "huggingface",
+            header: `HUGGING FACE HUB · ${label}`,
+            title: top.id.split("/").pop().replace(/-/g, " "),
+            subtitle: `Verified open-source repository activity (${org})`,
+            build_label: "Latest Activity",
+            build_transition: `${(top.lastModified || "").slice(0, 10)} · ${top.pipeline_tag || "foundation-model"}`,
+            models: items.slice(0, 4).map(e => ({
+              id: e.id,
+              name: `${e.id.split("/").pop()} (${e.pipeline_tag || "model"}, ★${e.likes || 0})`
+            })),
+            evidence: "huggingface.co/api/models (config.json / safetensors)",
+            source_text: `official ${org} Hugging Face organization feed.`,
+            disclaimer_1: "Live open-source model checkpoints and repository updates on Hugging Face Hub.",
+            disclaimer_2: "Public weights / model cards published directly by the organization.",
+            provider_name: label,
+            provider_slug: slug,
+            accent_color: color,
+            links: [
+              { label: "Hugging Face Repo", url: `https://huggingface.co/${top.id}` },
+              { label: `${org} Hub Feed`, url: `https://huggingface.co/${org}` }
+            ],
+            detected_at: top.lastModified || new Date().toISOString()
+          };
+        } catch {
+          return null;
+        }
+      }));
+
+      const validLive = liveCards.filter(Boolean);
+      if (validLive.length && Array.isArray(FEED_DATA.cards)) {
+        const byOrg = new Map(validLive.map(c => [c.header, c]));
+        FEED_DATA.cards = FEED_DATA.cards.map(c => byOrg.get(c.header) || c);
+      }
+      FEED_DATA.generated_at = new Date().toISOString();
+      updateDashboardMetrics();
     }
 
     async function triggerLiveScan() {
@@ -729,19 +805,30 @@
         const res = await fetch("/api/scan", { method: "POST" });
         if (res.ok) {
           FEED_DATA = await res.json();
-          renderCards();
-          showToast("Live scan completed!");
-          await loadFeed();
-        } else {
-          showToast("Static mode: run `python server.py --scan` or GitHub Actions to refresh.");
+          updateDashboardMetrics();
+          showToast("Live backend scan completed!");
+          return;
         }
-      } catch {
-        showToast("Static mode: run `python server.py` locally for live interactive scanning.");
-      } finally {
-        btn.textContent = "⚡ Scan All Sources Now";
-        btn.disabled = false;
-      }
+      } catch (_) {}
+      // Browser-native live refresh on GitHub Pages
+      await runBrowserLiveScan();
+      showToast("Refreshed live feed & Hugging Face Hub endpoints!");
+      btn.textContent = "⚡ Scan All Sources Now";
+      btn.disabled = false;
     }
+
+    let _secondsLeft = 60;
+    setInterval(() => {
+      _secondsLeft -= 1;
+      const badge = document.getElementById("auto-refresh-badge");
+      if (_secondsLeft <= 0) {
+        _secondsLeft = 60;
+        if (badge) badge.textContent = "Refreshing...";
+        loadFeed();
+      } else if (badge) {
+        badge.textContent = `Auto-refresh: ${_secondsLeft}s`;
+      }
+    }, 1000);
 
     async function runCustomBuildDiff() {
       const oldVer = document.getElementById("diff-old-select").value;

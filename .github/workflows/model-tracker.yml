@@ -2,11 +2,14 @@ name: ModelPulse Automated Diff Scanner
 
 on:
   schedule:
-    # Runs every 15 minutes to catch new builds, SDK releases, and open-source drops first
-    - cron: "*/15 * * * *"
+    # Fastest cron interval supported by GitHub Actions (every 5 minutes)
+    - cron: "*/5 * * * *"
   workflow_dispatch:
   push:
     branches: [main]
+    paths-ignore:
+      - "data/**"
+      - "docs/data/**"
 
 permissions:
   contents: write
@@ -39,12 +42,12 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: python server.py --scan
 
-      - name: Commit updated model feed if changed
+      - name: Commit updated model feed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/feed.json docs/data/feed.json data/seen_ids.json
           if ! git diff --cached --quiet; then
-            git commit -m "chore(feed): update detected model diffs [skip ci]"
+            git commit -m "chore(feed): update detected model diffs"
             git push
           fi
