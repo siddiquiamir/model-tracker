@@ -76,7 +76,7 @@ def build_discord_embed(card: Dict[str, Any], github_user: str = "siddiquiamir")
     desc_parts.extend(
         [
             "",
-            f"Tracked by [@{github_user}](https://github.com/{github_user})",
+            f"Developed by [@StatsWire](https://x.com/StatsWire) on X · [@{github_user}](https://github.com/{github_user})",
         ]
     )
 
@@ -123,6 +123,8 @@ def build_x_post_text(card: Dict[str, Any]) -> str:
         "",
         f"Evidence: {evidence}",
         f"Source: {card.get('source_text', 'Official public release feed')}",
+        "",
+        "Tracked by @StatsWire",
     ]
     return "\n".join(lines)
 
