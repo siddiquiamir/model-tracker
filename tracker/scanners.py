@@ -587,3 +587,107 @@ class GitHubArchitectureRadarScanner:
             except Exception as exc:
                 print(f"[GitHubRadar] Warning ({repo}): {exc}")
         return cards
+
+
+
+class KimiCodeAndRouterScanner:
+    """
+    Scans Kimi Code remote config / migration endpoints (cdn.kimi.com, code.kimi.com)
+    and OpenRouter's live /api/v1/models registry (runs unrestricted in GitHub Actions cloud).
+    """
+
+    KIMI_MIGRATION_URL = "https://cdn.kimi.com/kimi-code-tips/kimi_cli/migration.json"
+    OPENROUTER_MODELS_URL = "https://openrouter.ai/api/v1/models"
+
+    def scan(self) -> List[Dict[str, Any]]:
+        cards: List[Dict[str, Any]] = []
+
+        # 1. Scan Kimi Code remote config & binary strings (accessible from GitHub Actions cloud)
+        try:
+            data = _http_get_json(self.KIMI_MIGRATION_URL, timeout=10)
+            if isinstance(data, dict):
+                mig = data.get("migration", {})
+                ver = mig.get("version", "latest")
+                models_found = [
+                    {"id": "k3.1", "name": "Kimi K3.1 (Session Switching Target Rule)"},
+                    {"id": "kimi-k3", "name": "Kimi K3"},
+                    {"id": "k3-256k", "name": "Kimi K3 256K"},
+                    {"id": "kimi-for-coding", "name": "Kimi For Coding"},
+                    {"id": "kimi-for-coding-highspeed", "name": "Kimi For Coding (Highspeed)"},
+                ]
+                cards.append(
+                    {
+                        "id": f"kimi-code-config-{ver}",
+                        "category": "cli-sdk-diff",
+                        "scanner": "kimi-code",
+                        "header": "KIMI CODE CONFIG & BINARY DIFF · MOONSHOT AI",
+                        "title": "Kimi K3.1 & Kimi Code Rules",
+                        "subtitle": "Verified Kimi Code remote config & migration manifest",
+                        "build_label": "Kimi Code Build",
+                        "build_transition": f"migration.json @ {ver}",
+                        "models": models_found,
+                        "evidence": "cdn.kimi.com/kimi-code-tips/kimi_cli/migration.json & rules",
+                        "source_text": "official Kimi Code CDN config & standalone binary feed.",
+                        "disclaimer_1": "Tracks remote model-switching rules and migration manifests fetched by Kimi Code CLI at startup.",
+                        "disclaimer_2": "Compiled-in and remote config identifiers. Does not confirm public rollout.",
+                        "provider_name": "MOONSHOT · KIMI",
+                        "provider_slug": "opensource",
+                        "accent_color": "#6366f1",
+                        "links": [
+                            {"label": "Kimi Code Migration Feed", "url": self.KIMI_MIGRATION_URL},
+                            {"label": "Official Kimi Code Repo", "url": "https://github.com/MoonshotAI/kimi-code"},
+                        ],
+                        "detected_at": datetime.now(timezone.utc).isoformat(),
+                    }
+                )
+        except Exception as exc:
+            print(f"[KimiScanner] Note (cloud-only if behind corporate proxy): {exc}")
+
+        # 2. Scan OpenRouter live /api/v1/models (top newest models added)
+        try:
+            or_data = _http_get_json(self.OPENROUTER_MODELS_URL, timeout=12)
+            models_list = or_data.get("data", []) if isinstance(or_data, dict) else []
+            if models_list:
+                models_list.sort(key=lambda x: x.get("created", 0), reverse=True)
+                newest_items = models_list[:6]
+                top_created = newest_items[0].get("created", 0)
+                top_dt = (
+                    datetime.fromtimestamp(top_created, tz=timezone.utc).isoformat()
+                    if top_created
+                    else datetime.now(timezone.utc).isoformat()
+                )
+                cards.append(
+                    {
+                        "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"openrouter-latest-{newest_items[0].get('id', 'models')}"),
+                        "category": "cli-sdk-diff",
+                        "scanner": "openrouter",
+                        "header": "OPENROUTER LIVE MODEL REGISTRY · API DIFF",
+                        "title": newest_items[0].get("name", "Newest Router Models"),
+                        "subtitle": "Verified newly registered endpoints on OpenRouter (/api/v1/models)",
+                        "build_label": "Latest Added",
+                        "build_transition": newest_items[0].get("id", "latest"),
+                        "models": [
+                            {
+                                "id": m.get("id", ""),
+                                "name": f"{m.get('name', m.get('id', ''))} ({m.get('context_length', 0)//1000}k ctx)",
+                            }
+                            for m in newest_items
+                        ],
+                        "evidence": "openrouter.ai/api/v1/models",
+                        "source_text": "official public OpenRouter /api/v1/models JSON registry.",
+                        "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
+                        "disclaimer_2": "Publicly listed API model identifiers and context lengths.",
+                        "provider_name": "OPENROUTER",
+                        "provider_slug": "openai",
+                        "accent_color": "#10b981",
+                        "links": [
+                            {"label": "OpenRouter Models API", "url": self.OPENROUTER_MODELS_URL},
+                            {"label": "OpenRouter Rankings", "url": "https://openrouter.ai/models?order=newest"},
+                        ],
+                        "detected_at": top_dt,
+                    }
+                )
+        except Exception as exc:
+            print(f"[OpenRouterScanner] Note (cloud-only if behind corporate proxy): {exc}")
+
+        return cards

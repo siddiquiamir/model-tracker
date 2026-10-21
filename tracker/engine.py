@@ -12,6 +12,7 @@ from tracker.scanners import (
     AntigravityDesktopScanner,
     GitHubArchitectureRadarScanner,
     HuggingFaceOpenSourceScanner,
+    KimiCodeAndRouterScanner,
     NpmCliAndSdkScanner,
 )
 
@@ -30,6 +31,7 @@ class TrackerEngine:
         self.github_user = github_user
         self.ag_scanner = AntigravityDesktopScanner()
         self.npm_scanner = NpmCliAndSdkScanner()
+        self.kimi_router_scanner = KimiCodeAndRouterScanner()
         self.hf_scanner = HuggingFaceOpenSourceScanner()
         self.gh_scanner = GitHubArchitectureRadarScanner()
 
@@ -52,14 +54,15 @@ class TrackerEngine:
         print("[ModelPulse] Scanning npm CLI & SDK packages (Claude Code, Codex, Google GenAI)...")
         npm_cards = self.npm_scanner.scan()
 
+        print("[ModelPulse] Scanning Kimi Code CDN configs & OpenRouter live model registry...")
+        kr_cards = self.kimi_router_scanner.scan()
+
         print("[ModelPulse] Scanning Hugging Face Hub frontier open-source orgs...")
         hf_cards = self.hf_scanner.scan()
 
-        print("[ModelPulse] Scanning GitHub architecture radar (Transformers, vLLM)...")
+        print("[ModelPulse] Scanning GitHub architecture radar (Transformers, vLLM, llama.cpp)...")
         gh_cards = self.gh_scanner.scan()
 
-        # Sort desktop diffs so Gemini 4 Argon (2.22.0 -> 2.23.0) and Claude 5.5 (2.24.0 -> 2.25.0)
-        # are right at the top of the Desktop Diffs feed
         def _ag_sort_key(card: Dict[str, Any]) -> tuple:
             title = card.get("title", "").lower()
             if "gemini 4 argon" in title:
@@ -72,7 +75,7 @@ class TrackerEngine:
 
         ag_cards.sort(key=_ag_sort_key)
 
-        all_cards: List[Dict[str, Any]] = [*ag_cards, *npm_cards, *hf_cards, *gh_cards]
+        all_cards: List[Dict[str, Any]] = [*ag_cards, *kr_cards, *npm_cards, *hf_cards, *gh_cards]
         for card in all_cards:
             card["x_post_text"] = build_x_post_text(card)
 
@@ -80,8 +83,10 @@ class TrackerEngine:
         new_cards = [c for c in all_cards if c["id"] not in seen_ids]
 
         if notify_discord:
-            cards_to_send = new_cards if new_cards else (
-                all_cards[:5] if "__discord_initialized__" not in seen_ids else []
+            cards_to_send = (
+                new_cards
+                if new_cards
+                else (all_cards[:5] if "__discord_initialized__" not in seen_ids else [])
             )
             if cards_to_send:
                 try:
@@ -104,7 +109,7 @@ class TrackerEngine:
             "stats": {
                 "total_cards": len(all_cards),
                 "desktop_diffs": len(ag_cards),
-                "cli_sdk_diffs": len(npm_cards),
+                "cli_sdk_diffs": len(npm_cards) + len(kr_cards),
                 "open_source_models": len(hf_cards) + len(gh_cards),
                 "new_in_this_scan": len(new_cards),
                 "total_models_indexed": sum(len(c.get("models", [])) for c in all_cards),
@@ -126,7 +131,6 @@ class TrackerEngine:
         """Diff any two Antigravity builds on demand by version string."""
         builds = self.ag_scanner.list_available_builds(max_stable=12)
         by_ver = {b["version"]: b for b in builds}
-        # Also allow matching without ' (Insiders)' suffix
         for b in builds:
             if b.get("raw_version"):
                 by_ver[b["raw_version"]] = b
