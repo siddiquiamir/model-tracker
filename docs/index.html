@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ModelPulse · First-to-Report AI Model & Build Diff Tracker</title>
+  <style>
+    :root {
+      --bg-page: #0b0d11;
+      --bg-card: #161920;
+      --bg-card-hover: #1b1f28;
+      --bg-code: #1f2430;
+      --border-card: #262b36;
+      --border-code: #323948;
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --link-blue: #3898ff;
+      --accent-google: #38bdf8;
+      --accent-anthropic: #f97316;
+      --accent-openai: #10b981;
+      --accent-qwen: #a855f7;
+      --accent-deepseek: #06b6d4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+
+    /* Top Header */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11, 13, 17, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-card);
+      padding: 14px 24px;
+    }
+
+    .navbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-pulse {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 9px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    .brand-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .brand-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(56, 152, 255, 0.15);
+      color: var(--link-blue);
+      border: 1px solid rgba(56, 152, 255, 0.3);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border-code);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: var(--bg-code);
+      border-color: #475569;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      border-color: #3b82f6;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 28px auto 0;
+      padding: 0 24px;
+    }
+
+    /* Stats Grid */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 10px;
+      padding: 14px 18px;
+    }
+
+    .stat-label {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .stat-value {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #fff;
+      margin-top: 4px;
+    }
+
+    /* Custom Diff Toolbar */
+    .differ-panel {
+      background: linear-gradient(180deg, rgba(30, 41, 59, 0.45), rgba(22, 25, 32, 0.9));
+      border: 1px solid var(--border-code);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .differ-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    select, input[type="text"] {
+      background: var(--bg-page);
+      color: var(--text-primary);
+      border: 1px solid var(--border-code);
+      border-radius: 7px;
+      padding: 8px 12px;
+      font-size: 0.86rem;
+      outline: none;
+    }
+
+    select:focus, input[type="text"]:focus {
+      border-color: var(--link-blue);
+    }
+
+    /* Filter & Search Bar */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 13px;
+      border-radius: 999px;
+      border: 1px solid var(--border-card);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .pill:hover {
+      border-color: var(--border-code);
+      color: #fff;
+    }
+
+    .pill.active {
+      background: var(--link-blue);
+      border-color: var(--link-blue);
+      color: #fff;
+    }
+
+    .search-input {
+      min-width: 280px;
+    }
+
+    /* Diff Cards Feed Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(540px, 1fr));
+      gap: 22px;
+    }
+
+    @media (max-width: 640px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* EXACT LUMINABENCH / DISCORD EMBED CARD STYLING */
+    .diff-card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-left: 5px solid var(--accent-google);
+      border-radius: 8px;
+      padding: 22px 24px 18px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.45);
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .diff-card:hover {
+      background: var(--bg-card-hover);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .card-header-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: 1.32rem;
+      font-weight: 700;
+      color: var(--link-blue);
+      margin-bottom: 10px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .card-title:hover {
+      text-decoration: underline;
+    }
+
+    .card-subtitle {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .provider-logo {
+      width: 64px;
+      height: 64px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-build-row {
+      font-size: 0.96rem;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    .code-pill {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.86rem;
+      background: var(--bg-code);
+      border: 1px solid var(--border-code);
+      color: #e2e8f0;
+      padding: 2px 7px;
+      border-radius: 5px;
+      white-space: nowrap;
+    }
+
+    .model-list {
+      list-style: none;
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .model-list li {
+      font-size: 0.96rem;
+      color: #fff;
+      line-height: 1.55;
+      word-break: break-word;
+    }
+
+    .model-list li strong {
+      font-weight: 700;
+    }
+
+    .card-meta-block {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .card-meta-block strong {
+      color: #fff;
+    }
+
+    .card-disclaimer {
+      font-size: 0.93rem;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+      line-height: 1.48;
+    }
+
+    .card-links {
+      font-size: 0.94rem;
+      margin-top: 4px;
+      margin-bottom: 14px;
+    }
+
+    .card-links a, .card-credit a {
+      color: var(--link-blue);
+      text-decoration: none;
+    }
+
+    .card-links a:hover, .card-credit a:hover {
+      text-decoration: underline;
+    }
+
+    .card-footer-bar {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-card);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .card-credit {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-sm {
+      font-size: 0.76rem;
+      padding: 5px 10px;
+      border-radius: 6px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #10b981;
+      color: #06281e;
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <div class="brand">
+        <span class="brand-pulse"></span>
+        <span class="brand-title">ModelPulse</span>
+        <span class="brand-badge">First-to-Report Diff Engine</span>
+      </div>
+      <div class="nav-actions">
+        <span id="last-updated" style="font-size: 0.8rem; color: var(--text-muted);">Loading feed...</span>
+        <button class="btn btn-primary" onclick="triggerLiveScan()" id="scan-btn">
+          ⚡ Scan All Sources Now
+        </button>
+        <a class="btn" href="https://github.com/siddiquiamir" target="_blank" rel="noopener">
+          GitHub @siddiquiamir
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Top Metrics -->
+    <section class="stats-bar">
+      <div class="stat-card">
+        <div class="stat-label">Verified Diff Reports</div>
+        <div class="stat-value" id="stat-total-cards">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Desktop Build Diffs</div>
+        <div class="stat-value" id="stat-desktop-diffs">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">CLI & SDK Package Diffs</div>
+        <div class="stat-value" id="stat-cli-diffs">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Open-Source Models & Commits</div>
+        <div class="stat-value" id="stat-oss-models">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Identifiers Indexed</div>
+        <div class="stat-value" id="stat-total-models">—</div>
+      </div>
+    </section>
+
+    <!-- Interactive Antigravity Build Differ -->
+    <section class="differ-panel">
+      <div>
+        <div style="font-weight: 700; font-size: 0.95rem; color: #fff;">
+          🔬 Custom Antigravity Binary Build Comparator (ELF64 .rodata Slicer)
+        </div>
+        <div style="font-size: 0.82rem; color: var(--text-muted);">
+          Compare any two official Google Antigravity Linux x64 builds or Nightly Insiders builds in real time.
+        </div>
+      </div>
+      <div class="differ-controls">
+        <label style="font-size: 0.8rem; color: var(--text-muted);">Base Build:</label>
+        <select id="diff-old-select">
+          <option value="2.22.0">2.22.0</option>
+          <option value="2.23.0">2.23.0</option>
+          <option value="2.24.0">2.24.0</option>
+          <option value="2.25.0">2.25.0</option>
+        </select>
+        <span style="color: var(--text-muted); font-weight: 700;">→</span>
+        <label style="font-size: 0.8rem; color: var(--text-muted);">Target Build:</label>
+        <select id="diff-new-select">
+          <option value="2.23.0" selected>2.23.0</option>
+          <option value="2.25.0">2.25.0</option>
+        </select>
+        <button class="btn" onclick="runCustomBuildDiff()">Compare Builds</button>
+      </div>
+    </section>
+
+    <!-- Category Filters & Search -->
+    <section class="filter-bar">
+      <div class="filter-pills" id="filter-pills">
+        <button class="pill active" data-filter="all" onclick="setFilter('all', this)">All Reports</button>
+        <button class="pill" data-filter="desktop-diff" onclick="setFilter('desktop-diff', this)">Antigravity Desktop Diffs</button>
+        <button class="pill" data-filter="cli-sdk-diff" onclick="setFilter('cli-sdk-diff', this)">CLI & SDK Diffs</button>
+        <button class="pill" data-filter="open-source" onclick="setFilter('open-source', this)">Open-Source Hub & Radar</button>
+        <button class="pill" data-filter="google" onclick="setFilter('google', this)">Google</button>
+        <button class="pill" data-filter="anthropic" onclick="setFilter('anthropic', this)">Anthropic</button>
+        <button class="pill" data-filter="openai" onclick="setFilter('openai', this)">OpenAI</button>
+        <button class="pill" data-filter="qwen" onclick="setFilter('qwen', this)">Qwen</button>
+        <button class="pill" data-filter="deepseek" onclick="setFilter('deepseek', this)">DeepSeek</button>
+      </div>
+      <input
+        type="text"
+        id="search-box"
+        class="search-input"
+        placeholder="Search model ID (e.g. gemini-4-argon, opus-5-5, qwen)..."
+        oninput="renderCards()"
+      />
+    </section>
+
+    <!-- Cards Container -->
+    <section class="cards-grid" id="cards-container"></section>
+  </main>
+
+  <div class="toast" id="toast">Copied to clipboard!</div>
+
+  <script>
+    let FEED_DATA = { cards: [], stats: {} };
+    let CURRENT_FILTER = "all";
+
+    const PROVIDER_SVGS = {
+      google: `<svg viewBox="0 0 48 48" width="58" height="58"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>`,
+      anthropic: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#d97757"/><path d="M27.8 13h5.1l8.6 22h-5.3l-1.8-4.8h-8.5l-1.8 4.8H19l8.8-22zm-4.1 13.2h5.9L26.7 18l-3 8.2zM14.2 13h5.2l8.6 22h-5.3l-5.9-15.6L10.9 35H5.6l8.6-22z" fill="#141413"/></svg>`,
+      openai: `<svg viewBox="0 0 48 48" width="54" height="54"><circle cx="24" cy="24" r="22" fill="#10a37f"/><path d="M24 12c6.6 0 12 5.4 12 12s-5.4 12-12 12-12-5.4-12-12 5.4-12 12-12zm0 5a7 7 0 100 14 7 7 0 000-14z" fill="#fff"/></svg>`,
+      qwen: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#7c3aed"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="20" font-weight="800" font-family="sans-serif">QW</text></svg>`,
+      deepseek: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#0284c7"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="20" font-weight="800" font-family="sans-serif">DS</text></svg>`,
+      meta: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#2563eb"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="22" font-weight="800" font-family="sans-serif">∞</text></svg>`,
+      mistral: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#f59e0b"/><text x="24" y="31" text-anchor="middle" fill="#111" font-size="22" font-weight="900" font-family="sans-serif">M</text></svg>`,
+      opensource: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#4f46e5"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="18" font-weight="800" font-family="sans-serif">HF</text></svg>`
+    };
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.style.display = "block";
+      setTimeout(() => { t.style.display = "none"; }, 2600);
+    }
+
+    function setFilter(filterKey, btnEl) {
+      CURRENT_FILTER = filterKey;
+      document.querySelectorAll("#filter-pills .pill").forEach(p => p.classList.remove("active"));
+      btnEl.classList.add("active");
+      renderCards();
+    }
+
+    function renderCardHtml(card, idx) {
+      const logoSvg = PROVIDER_SVGS[card.provider_slug] || PROVIDER_SVGS.google;
+      const modelsHtml = (card.models || []).map(m =>
+        `<li>• <strong>${escapeHtml(m.name)}</strong> — <span class="code-pill">${escapeHtml(m.id)}</span></li>`
+      ).join("");
+
+      const linksHtml = (card.links || []).map(l =>
+        `<a href="${escapeHtml(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>`
+      ).join(" · ");
+
+      const primaryUrl = (card.links && card.links[0]) ? card.links[0].url : "#";
+      const ghUser = FEED_DATA.github_user || "siddiquiamir";
+
+      return `
+        <article class="diff-card" style="border-left-color: ${escapeHtml(card.accent_color || '#38bdf8')}">
+          <div>
+            <div class="card-top">
+              <div>
+                <div class="card-header-label">${escapeHtml(card.header)}</div>
+                <a class="card-title" href="${escapeHtml(primaryUrl)}" target="_blank" rel="noopener">
+                  ${escapeHtml(card.title)}
+                </a>
+                <div class="card-subtitle">${escapeHtml(card.subtitle)}</div>
+              </div>
+              <div class="provider-logo">${logoSvg}</div>
+            </div>
+
+            <div class="card-build-row">
+              <strong>${escapeHtml(card.build_label || "Build")}:</strong>
+              <span class="code-pill">${escapeHtml(card.build_transition)}</span>
+            </div>
+
+            <ul class="model-list">
+              ${modelsHtml}
+            </ul>
+
+            <div class="card-meta-block">
+              <div><strong>Evidence:</strong> <span class="code-pill">${escapeHtml(card.evidence)}</span></div>
+              <div><strong>Source:</strong> ${escapeHtml(card.source_text)}</div>
+            </div>
+
+            <p class="card-disclaimer">${escapeHtml(card.disclaimer_1)}</p>
+            <p class="card-disclaimer">${escapeHtml(card.disclaimer_2)}</p>
+
+            <div class="card-links">${linksHtml}</div>
+          </div>
+
+          <div class="card-footer-bar">
+            <div class="card-credit">
+              Tracked by <a href="https://github.com/${escapeHtml(ghUser)}" target="_blank" rel="noopener">@${escapeHtml(ghUser)}</a>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-sm" onclick="copyTweet(${idx})">🐦 Copy X Post</button>
+              <button class="btn btn-sm" onclick="copyDiscordMd(${idx})">💬 Copy Discord Card</button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function getFilteredCards() {
+      const q = (document.getElementById("search-box").value || "").trim().toLowerCase();
+      return (FEED_DATA.cards || []).filter(c => {
+        if (CURRENT_FILTER !== "all") {
+          if (c.category !== CURRENT_FILTER && c.provider_slug !== CURRENT_FILTER) {
+            return false;
+          }
+        }
+        if (!q) return true;
+        const hay = [
+          c.header, c.title, c.build_transition, c.evidence,
+          ...(c.models || []).map(m => `${m.id} ${m.name}`)
+        ].join(" ").toLowerCase();
+        return hay.includes(q);
+      });
+    }
+
+    function renderCards() {
+      const container = document.getElementById("cards-container");
+      const filtered = getFilteredCards();
+      window._CURRENT_DISPLAYED_CARDS = filtered;
+      if (!filtered.length) {
+        container.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 48px; color: var(--text-muted);">No matching model diff cards found.</div>`;
+        return;
+      }
+      container.innerHTML = filtered.map((c, i) => renderCardHtml(c, i)).join("");
+    }
+
+    function copyTweet(idx) {
+      const card = window._CURRENT_DISPLAYED_CARDS[idx];
+      if (!card) return;
+      navigator.clipboard.writeText(card.x_post_text || card.title);
+      showToast("Copied ready-to-post X / Twitter breaking report!");
+    }
+
+    function copyDiscordMd(idx) {
+      const card = window._CURRENT_DISPLAYED_CARDS[idx];
+      if (!card) return;
+      const bullets = (card.models || []).map(m => `• **${m.name}** — \`${m.id}\``).join("\n");
+      const md = [
+        `**${card.header}**`,
+        `### ${card.title}`,
+        `**${card.subtitle}**`,
+        "",
+        `**${card.build_label || 'Build'}:** \`${card.build_transition}\``,
+        "",
+        bullets,
+        "",
+        `**Evidence:** \`${card.evidence}\``,
+        `**Source:** ${card.source_text}`
+      ].join("\n");
+      navigator.clipboard.writeText(md);
+      showToast("Copied Discord Markdown card!");
+    }
+
+    function populateBuildSelectors(builds) {
+      if (!builds || !builds.length) return;
+      const oldSel = document.getElementById("diff-old-select");
+      const newSel = document.getElementById("diff-new-select");
+      oldSel.innerHTML = builds.map(b => `<option value="${escapeHtml(b)}" ${b === '2.22.0' ? 'selected' : ''}>${escapeHtml(b)}</option>`).join("");
+      newSel.innerHTML = builds.map(b => `<option value="${escapeHtml(b)}" ${b === '2.23.0' ? 'selected' : ''}>${escapeHtml(b)}</option>`).join("");
+    }
+
+    async function loadFeed() {
+      try {
+        const res = await fetch("./data/feed.json?t=" + Date.now());
+        FEED_DATA = await res.json();
+        const st = FEED_DATA.stats || {};
+        document.getElementById("stat-total-cards").textContent = st.total_cards ?? FEED_DATA.cards.length;
+        document.getElementById("stat-desktop-diffs").textContent = st.desktop_diffs ?? "—";
+        document.getElementById("stat-cli-diffs").textContent = st.cli_sdk_diffs ?? "—";
+        document.getElementById("stat-oss-models").textContent = st.open_source_models ?? "—";
+        document.getElementById("stat-total-models").textContent = st.total_models_indexed ?? "—";
+        if (FEED_DATA.generated_at) {
+          document.getElementById("last-updated").textContent = "Updated: " + new Date(FEED_DATA.generated_at).toLocaleString();
+        }
+        populateBuildSelectors(FEED_DATA.available_antigravity_builds);
+        renderCards();
+      } catch (err) {
+        console.error("Failed to load feed.json:", err);
+      }
+    }
+
+    async function triggerLiveScan() {
+      const btn = document.getElementById("scan-btn");
+      btn.textContent = "⏳ Scanning Sources...";
+      btn.disabled = true;
+      try {
+        const res = await fetch("/api/scan", { method: "POST" });
+        if (res.ok) {
+          FEED_DATA = await res.json();
+          renderCards();
+          showToast("Live scan completed!");
+          await loadFeed();
+        } else {
+          showToast("Static mode: run `python server.py --scan` or GitHub Actions to refresh.");
+        }
+      } catch {
+        showToast("Static mode: run `python server.py` locally for live interactive scanning.");
+      } finally {
+        btn.textContent = "⚡ Scan All Sources Now";
+        btn.disabled = false;
+      }
+    }
+
+    async function runCustomBuildDiff() {
+      const oldVer = document.getElementById("diff-old-select").value;
+      const newVer = document.getElementById("diff-new-select").value;
+      try {
+        const res = await fetch(`/api/diff?old=${encodeURIComponent(oldVer)}&new=${encodeURIComponent(newVer)}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.cards && data.cards.length) {
+            FEED_DATA.cards = [...data.cards, ...FEED_DATA.cards];
+            renderCards();
+            showToast(`Found ${data.cards.length} family diff(s) between ${oldVer} and ${newVer}!`);
+          } else {
+            showToast(`No new model identifiers added between ${oldVer} and ${newVer}.`);
+          }
+          return;
+        }
+      } catch (_) {}
+      // Filter existing feed if running on static GitHub Pages
+      document.getElementById("search-box").value = `${oldVer} -> ${newVer}`;
+      renderCards();
+    }
+
+    loadFeed();
+  </script>
+</body>
+</html>
