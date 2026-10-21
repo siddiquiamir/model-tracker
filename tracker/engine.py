@@ -10,6 +10,7 @@ from typing import Any, Dict, List, Optional, Set
 from tracker.notifiers import build_x_post_text, send_discord_webhook
 from tracker.scanners import (
     AntigravityDesktopScanner,
+    DocsAndGlobalRegistryScanner,
     GitHubArchitectureRadarScanner,
     HuggingFaceOpenSourceScanner,
     KimiCodeAndRouterScanner,
@@ -32,6 +33,7 @@ class TrackerEngine:
         self.ag_scanner = AntigravityDesktopScanner()
         self.npm_scanner = NpmCliAndSdkScanner()
         self.kimi_router_scanner = KimiCodeAndRouterScanner()
+        self.docs_scanner = DocsAndGlobalRegistryScanner()
         self.hf_scanner = HuggingFaceOpenSourceScanner()
         self.gh_scanner = GitHubArchitectureRadarScanner()
 
@@ -75,10 +77,13 @@ class TrackerEngine:
         print("[ModelPulse] Scanning Kimi Code CDN configs & OpenRouter live model registry...")
         kr_cards = self.kimi_router_scanner.scan()
 
+        print("[ModelPulse] Scanning Cursor Docs, Anthropic/Gemini API Docs, models.dev & LiteLLM...")
+        docs_cards = self.docs_scanner.scan()
+
         print("[ModelPulse] Scanning Hugging Face Hub frontier open-source orgs...")
         hf_cards = self.hf_scanner.scan()
 
-        print("[ModelPulse] Scanning GitHub architecture radar (Transformers, vLLM, llama.cpp)...")
+        print("[ModelPulse] Scanning GitHub architecture radar (Transformers, vLLM, llama.cpp, LiteLLM)...")
         gh_cards = self.gh_scanner.scan()
 
         def _ag_sort_key(card: Dict[str, Any]) -> tuple:
@@ -93,7 +98,7 @@ class TrackerEngine:
 
         ag_cards.sort(key=_ag_sort_key)
 
-        raw_cards: List[Dict[str, Any]] = [*ag_cards, *kr_cards, *npm_cards, *hf_cards, *gh_cards]
+        raw_cards: List[Dict[str, Any]] = [*ag_cards, *kr_cards, *docs_cards, *npm_cards, *hf_cards, *gh_cards]
 
         # Strict deduplication by card ID and by (scanner, build_transition, model_ids_tuple)
         all_cards: List[Dict[str, Any]] = []
@@ -144,7 +149,7 @@ class TrackerEngine:
             "stats": {
                 "total_cards": len(all_cards),
                 "desktop_diffs": len(ag_cards),
-                "cli_sdk_diffs": len(npm_cards) + len(kr_cards),
+                "cli_sdk_diffs": len(npm_cards) + len(kr_cards) + len(docs_cards),
                 "open_source_models": len(hf_cards) + len(gh_cards),
                 "new_in_this_scan": len(new_cards),
                 "total_models_indexed": sum(len(c.get("models", [])) for c in all_cards),

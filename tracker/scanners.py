@@ -297,6 +297,24 @@ class NpmCliAndSdkScanner:
             "provider_slug": "google",
             "accent_color": "#38bdf8",
         },
+        {
+            "pkg": "openai",
+            "header": "OPENAI OFFICIAL SDK DIFF · OPENAI",
+            "subtitle": "Verified official TypeScript SDK model union comparison",
+            "evidence": "resources/models.d.ts / SDK bundle",
+            "source_text": "official public npm registry tarball (openai).",
+            "provider_slug": "openai",
+            "accent_color": "#10b981",
+        },
+        {
+            "pkg": "@anthropic-ai/sdk",
+            "header": "ANTHROPIC OFFICIAL SDK DIFF · ANTHROPIC",
+            "subtitle": "Verified official TypeScript SDK model union comparison",
+            "evidence": "resources/messages.d.ts / SDK bundle",
+            "source_text": "official public npm registry tarball (@anthropic-ai/sdk).",
+            "provider_slug": "anthropic",
+            "accent_color": "#f97316",
+        },
     ]
 
     def _extract_npm_tarball_models(self, pkg: str, version: str, tarball_url: str) -> Set[str]:
@@ -509,6 +527,7 @@ class GitHubArchitectureRadarScanner:
         ("huggingface/transformers", "main", "TRANSFORMERS ARCHITECTURE RADAR · OPEN SOURCE"),
         ("vllm-project/vllm", "main", "VLLM ENGINE RADAR · OPEN SOURCE"),
         ("ggml-org/llama.cpp", "master", "LLAMA.CPP GGUF RADAR · OPEN SOURCE"),
+        ("BerriAI/litellm", "main", "LITELLM MODEL PRICING & CONTEXT RADAR · ROUTER"),
     ]
 
     def scan(self) -> List[Dict[str, Any]]:
@@ -693,5 +712,261 @@ class KimiCodeAndRouterScanner:
                 )
         except Exception as exc:
             print(f"[OpenRouterScanner] Note (cloud-only if behind corporate proxy): {exc}")
+
+        return cards
+
+
+
+class DocsAndGlobalRegistryScanner:
+    """
+    Scans & diffs official API Documentation (Cursor, Anthropic, Google Gemini),
+    models.dev global registry, and LiteLLM's master model_prices_and_context_window.json
+    against a persisted baseline (data/source_baselines.json) to catch any newly added
+    model identifier or hint anywhere in docs or registries.
+    """
+
+    DOCS_TARGETS = [
+        {
+            "key": "cursor-docs",
+            "url": "https://docs.cursor.com/llms.txt",
+            "header": "CURSOR IDE DOCS & MODEL FEED · CURSOR",
+            "title": "Cursor IDE Documented Models",
+            "evidence": "docs.cursor.com/llms.txt",
+            "source_text": "official Cursor IDE documentation & llms.txt index.",
+            "provider_slug": "openai",
+            "accent_color": "#38bdf8",
+            "link_url": "https://docs.cursor.com/en/models",
+        },
+        {
+            "key": "anthropic-docs",
+            "url": "https://docs.anthropic.com/llms.txt",
+            "header": "ANTHROPIC API DOCS RADAR · ANTHROPIC",
+            "title": "Anthropic API Docs Model Index",
+            "evidence": "docs.anthropic.com/llms.txt",
+            "source_text": "official Anthropic developer documentation feed.",
+            "provider_slug": "anthropic",
+            "accent_color": "#f97316",
+            "link_url": "https://docs.anthropic.com/en/docs/about-claude/models",
+        },
+        {
+            "key": "gemini-docs",
+            "url": "https://ai.google.dev/gemini-api/docs/models",
+            "header": "GEMINI API DOCS RADAR · GOOGLE",
+            "title": "Gemini API Official Models Page",
+            "evidence": "ai.google.dev/gemini-api/docs/models",
+            "source_text": "official Google AI for Developers Gemini API documentation.",
+            "provider_slug": "google",
+            "accent_color": "#38bdf8",
+            "link_url": "https://ai.google.dev/gemini-api/docs/models",
+        },
+    ]
+
+    MODELS_DEV_URL = "https://models.dev/api.json"
+    LITELLM_JSON_URL = "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+
+    def __init__(self, baseline_file: Optional[pathlib.Path] = None) -> None:
+        root = pathlib.Path(__file__).resolve().parent.parent
+        self.baseline_file = baseline_file or (root / "data" / "source_baselines.json")
+
+    def _load_baselines(self) -> Dict[str, List[str]]:
+        if self.baseline_file.exists():
+            try:
+                return json.loads(self.baseline_file.read_text(encoding="utf-8"))
+            except Exception:
+                return {}
+        return {}
+
+    def _save_baselines(self, data: Dict[str, List[str]]) -> None:
+        self.baseline_file.parent.mkdir(parents=True, exist_ok=True)
+        self.baseline_file.write_text(json.dumps(data, indent=2), encoding="utf-8", newline="\n")
+
+    def scan(self) -> List[Dict[str, Any]]:
+        cards: List[Dict[str, Any]] = []
+        baselines = self._load_baselines()
+        baselines_changed = False
+
+        # 1. Scan models.dev global coding & frontier model catalog for newest releases
+        try:
+            mdev = _http_get_json(self.MODELS_DEV_URL, timeout=15)
+            if isinstance(mdev, dict):
+                recent_entries = []
+                all_mdev_keys: Set[str] = set()
+                for prov_id, prov in mdev.items():
+                    if not isinstance(prov, dict) or "models" not in prov:
+                        continue
+                    pname = prov.get("name", prov_id)
+                    for mid, minfo in prov["models"].items():
+                        if not isinstance(minfo, dict):
+                            continue
+                        full_key = f"{prov_id}/{mid}"
+                        all_mdev_keys.add(full_key)
+                        rel_date = minfo.get("release_date", "")
+                        if rel_date >= "2026-10-18":
+                            recent_entries.append((rel_date, pname, mid, minfo.get("name", mid)))
+
+                prev_mdev = set(baselines.get("models_dev", []))
+                newly_added_mdev = sorted(all_mdev_keys - prev_mdev) if prev_mdev else []
+                if all_mdev_keys and len(all_mdev_keys) != len(prev_mdev):
+                    baselines["models_dev"] = sorted(all_mdev_keys)
+                    baselines_changed = True
+
+                recent_entries.sort(reverse=True)
+                if newly_added_mdev:
+                    sig = hashlib.sha256(",".join(newly_added_mdev[:8]).encode("utf-8")).hexdigest()[:8]
+                    cards.append(
+                        {
+                            "id": f"models-dev-diff-{sig}",
+                            "category": "cli-sdk-diff",
+                            "scanner": "models-dev",
+                            "header": "MODELS.DEV GLOBAL REGISTRY DIFF · OPENCODE / SST",
+                            "title": f"{len(newly_added_mdev)} New Model(s) Added to models.dev",
+                            "subtitle": "Verified newly added model definitions in models.dev/api.json",
+                            "build_label": "Registry Diff",
+                            "build_transition": f"+{len(newly_added_mdev)} new identifiers",
+                            "models": [{"id": k, "name": k} for k in newly_added_mdev[:8]],
+                            "evidence": "models.dev/api.json",
+                            "source_text": "official models.dev global AI coding model registry.",
+                            "disclaimer_1": "Tracks newly merged model specifications across 40+ coding & API providers.",
+                            "disclaimer_2": "Public registry specifications (context limits, pricing, tool-call support).",
+                            "provider_name": "MODELS.DEV",
+                            "provider_slug": "openai",
+                            "accent_color": "#10b981",
+                            "links": [
+                                {"label": "models.dev API", "url": self.MODELS_DEV_URL},
+                                {"label": "models.dev Catalog", "url": "https://models.dev"},
+                            ],
+                            "detected_at": datetime.now(timezone.utc).isoformat(),
+                        }
+                    )
+                elif recent_entries:
+                    top_date = recent_entries[0][0]
+                    dedup_recent = []
+                    seen_m = set()
+                    for rdate, pname, mid, mname in recent_entries:
+                        norm = mid.split("/")[-1].lower()
+                        if norm in seen_m:
+                            continue
+                        seen_m.add(norm)
+                        dedup_recent.append({"id": mid, "name": f"{mname} ({pname} · {rdate})"})
+                        if len(dedup_recent) >= 6:
+                            break
+                    sig = hashlib.sha256(",".join(x["id"] for x in dedup_recent).encode("utf-8")).hexdigest()[:8]
+                    cards.append(
+                        {
+                            "id": f"models-dev-recent-{sig}",
+                            "category": "cli-sdk-diff",
+                            "scanner": "models-dev",
+                            "header": "MODELS.DEV GLOBAL REGISTRY · OPENCODE / SST",
+                            "title": dedup_recent[0]["name"].split(" (")[0],
+                            "subtitle": "Newest frontier & coding models indexed on models.dev",
+                            "build_label": "Latest Release Date",
+                            "build_transition": top_date,
+                            "models": dedup_recent,
+                            "evidence": "models.dev/api.json",
+                            "source_text": "official models.dev global AI coding model registry.",
+                            "disclaimer_1": "Tracks newly merged model specifications across 40+ coding & API providers.",
+                            "disclaimer_2": "Public registry specifications (context limits, pricing, tool-call support).",
+                            "provider_name": "MODELS.DEV",
+                            "provider_slug": "openai",
+                            "accent_color": "#10b981",
+                            "links": [
+                                {"label": "models.dev API", "url": self.MODELS_DEV_URL},
+                                {"label": "models.dev Catalog", "url": "https://models.dev"},
+                            ],
+                            "detected_at": f"{top_date}T12:00:00Z",
+                        }
+                    )
+        except Exception as exc:
+            print(f"[DocsScanner] models.dev warning: {exc}")
+
+        # 2. Scan Cursor Docs, Anthropic Docs, and Google Gemini Docs for new model strings
+        for tgt in self.DOCS_TARGETS:
+            try:
+                raw_html = _http_get_text(tgt["url"], timeout=12)
+                found_ids = sorted(extract_models_from_bytes(raw_html.encode("utf-8", "ignore")))
+                if not found_ids:
+                    continue
+                bkey = tgt["key"]
+                prev_ids = set(baselines.get(bkey, []))
+                added_ids = sorted(set(found_ids) - prev_ids) if prev_ids else []
+                if set(found_ids) != prev_ids:
+                    baselines[bkey] = found_ids
+                    baselines_changed = True
+
+                # Only emit a card if brand-new model strings were added to the documentation page
+                # (or emit a baseline summary card for Gemini API Docs)
+                if added_ids:
+                    sig = hashlib.sha256(",".join(added_ids).encode("utf-8")).hexdigest()[:8]
+                    cards.append(
+                        {
+                            "id": f"docs-diff-{bkey}-{sig}",
+                            "category": "cli-sdk-diff",
+                            "scanner": "docs-radar",
+                            "header": tgt["header"],
+                            "title": f"New Model Spotted in {tgt['title']}",
+                            "subtitle": "Verified live API documentation diff",
+                            "build_label": "Docs Diff",
+                            "build_transition": f"+{len(added_ids)} new identifier(s)",
+                            "models": [{"id": mid, "name": humanize_model_id(mid)} for mid in added_ids[:8]],
+                            "evidence": tgt["evidence"],
+                            "source_text": tgt["source_text"],
+                            "disclaimer_1": "Detected new model identifier(s) added to official developer documentation.",
+                            "disclaimer_2": "Documentation mentions often precede or accompany API rollout.",
+                            "provider_name": tgt["header"].split("·")[-1].strip(),
+                            "provider_slug": tgt["provider_slug"],
+                            "accent_color": tgt["accent_color"],
+                            "links": [
+                                {"label": "Official Docs Page", "url": tgt["link_url"]},
+                                {"label": "Raw Docs Feed", "url": tgt["url"]},
+                            ],
+                            "detected_at": datetime.now(timezone.utc).isoformat(),
+                        }
+                    )
+            except Exception as exc:
+                print(f"[DocsScanner] Warning ({tgt['key']}): {exc}")
+
+        # 3. Scan LiteLLM master model_prices_and_context_window.json for newly added keys
+        try:
+            litellm_data = _http_get_json(self.LITELLM_JSON_URL, timeout=15)
+            if isinstance(litellm_data, dict):
+                current_keys = sorted(k for k in litellm_data.keys() if k != "sample_spec")
+                prev_keys = set(baselines.get("litellm_keys", []))
+                added_keys = [k for k in current_keys if k not in prev_keys] if prev_keys else []
+                if len(current_keys) != len(prev_keys):
+                    baselines["litellm_keys"] = current_keys
+                    baselines_changed = True
+
+                if added_keys:
+                    sig = hashlib.sha256(",".join(added_keys[:10]).encode("utf-8")).hexdigest()[:8]
+                    cards.append(
+                        {
+                            "id": f"litellm-diff-{sig}",
+                            "category": "cli-sdk-diff",
+                            "scanner": "litellm",
+                            "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
+                            "title": f"{len(added_keys)} New Model(s) Added to LiteLLM",
+                            "subtitle": "Verified model_prices_and_context_window.json diff",
+                            "build_label": "Registry Diff",
+                            "build_transition": f"+{len(added_keys)} new model keys",
+                            "models": [{"id": k, "name": k} for k in added_keys[:8]],
+                            "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
+                            "source_text": "official LiteLLM master pricing & context window registry.",
+                            "disclaimer_1": "Providers and maintainers register new model IDs and token limits here before or at launch.",
+                            "disclaimer_2": "Public model keys and context window specifications.",
+                            "provider_name": "LITELLM",
+                            "provider_slug": "openai",
+                            "accent_color": "#10b981",
+                            "links": [
+                                {"label": "LiteLLM JSON Registry", "url": self.LITELLM_JSON_URL},
+                                {"label": "LiteLLM Commits", "url": "https://github.com/BerriAI/litellm/commits/main"},
+                            ],
+                            "detected_at": datetime.now(timezone.utc).isoformat(),
+                        }
+                    )
+        except Exception as exc:
+            print(f"[DocsScanner] LiteLLM warning: {exc}")
+
+        if baselines_changed:
+            self._save_baselines(baselines)
 
         return cards
