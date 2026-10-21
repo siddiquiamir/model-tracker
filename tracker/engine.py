@@ -79,13 +79,18 @@ class TrackerEngine:
         seen_ids = self.load_seen_ids()
         new_cards = [c for c in all_cards if c["id"] not in seen_ids]
 
-        if notify_discord and new_cards:
-            try:
-                sent = send_discord_webhook(new_cards[:10], github_user=self.github_user)
-                if sent:
-                    print(f"[ModelPulse] Sent {min(len(new_cards), 10)} new diff card(s) to Discord webhook.")
-            except Exception as exc:
-                print(f"[ModelPulse] Discord notification skipped/failed: {exc}")
+        if notify_discord:
+            cards_to_send = new_cards if new_cards else (
+                all_cards[:5] if "__discord_initialized__" not in seen_ids else []
+            )
+            if cards_to_send:
+                try:
+                    sent = send_discord_webhook(cards_to_send[:10], github_user=self.github_user)
+                    if sent:
+                        seen_ids.add("__discord_initialized__")
+                        print(f"[ModelPulse] Sent {min(len(cards_to_send), 10)} diff card(s) to Discord webhook.")
+                except Exception as exc:
+                    print(f"[ModelPulse] Discord notification skipped/failed: {exc}")
 
         for c in all_cards:
             seen_ids.add(c["id"])
