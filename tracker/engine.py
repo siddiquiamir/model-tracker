@@ -12,7 +12,6 @@ from tracker.scanners import (
     AntigravityDesktopScanner,
     DocsAndGlobalRegistryScanner,
     GitHubArchitectureRadarScanner,
-    GitHubGlobalPRLeakScanner,
     HuggingFaceOpenSourceScanner,
     KimiCodeAndRouterScanner,
     NpmCliAndSdkScanner,
@@ -37,7 +36,6 @@ class TrackerEngine:
         self.docs_scanner = DocsAndGlobalRegistryScanner()
         self.hf_scanner = HuggingFaceOpenSourceScanner()
         self.gh_scanner = GitHubArchitectureRadarScanner()
-        self.pr_leak_scanner = GitHubGlobalPRLeakScanner()
 
     def load_seen_ids(self) -> Set[str]:
         if SEEN_FILE.exists():
@@ -88,9 +86,6 @@ class TrackerEngine:
         print("[ModelPulse] Scanning GitHub architecture radar (Transformers, vLLM, llama.cpp, LiteLLM, Azure, GCP, AWS)...")
         gh_cards = self.gh_scanner.scan()
 
-        print("[ModelPulse] Scanning global GitHub Pull Requests for unannounced model leaks...")
-        pr_leak_cards = self.pr_leak_scanner.scan()
-
         def _ag_sort_key(card: Dict[str, Any]) -> tuple:
             title = card.get("title", "").lower()
             if "gemini 4 argon" in title:
@@ -103,7 +98,7 @@ class TrackerEngine:
 
         ag_cards.sort(key=_ag_sort_key)
 
-        raw_cards: List[Dict[str, Any]] = [*ag_cards, *kr_cards, *docs_cards, *pr_leak_cards, *npm_cards, *hf_cards, *gh_cards]
+        raw_cards: List[Dict[str, Any]] = [*ag_cards, *kr_cards, *docs_cards, *npm_cards, *hf_cards, *gh_cards]
 
         # Strict deduplication by card ID and by (scanner, build_transition, model_ids_tuple)
         all_cards: List[Dict[str, Any]] = []
