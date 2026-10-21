@@ -528,6 +528,8 @@ class GitHubArchitectureRadarScanner:
         ("vllm-project/vllm", "main", "VLLM ENGINE RADAR · OPEN SOURCE"),
         ("ggml-org/llama.cpp", "master", "LLAMA.CPP GGUF RADAR · OPEN SOURCE"),
         ("BerriAI/litellm", "main", "LITELLM MODEL PRICING & CONTEXT RADAR · ROUTER"),
+        ("googleapis/python-aiplatform", "main", "GCP VERTEX AI SDK RADAR · GOOGLE CLOUD"),
+        ("boto/botocore", "develop", "AWS BEDROCK SDK RADAR · AWS"),
     ]
 
     def scan(self) -> List[Dict[str, Any]]:
@@ -759,6 +761,50 @@ class DocsAndGlobalRegistryScanner:
             "accent_color": "#38bdf8",
             "link_url": "https://ai.google.dev/gemini-api/docs/models",
         },
+        {
+            "key": "gcp-vertex-models",
+            "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models",
+            "header": "GCP VERTEX AI MODELS DOCS · GOOGLE CLOUD",
+            "title": "GCP Vertex AI Generative Models",
+            "evidence": "cloud.google.com/vertex-ai/generative-ai/docs/learn/models",
+            "source_text": "official Google Cloud Vertex AI Models documentation (Gemini, Imagen, Veo, Claude, Llama).",
+            "provider_slug": "google",
+            "accent_color": "#38bdf8",
+            "link_url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models",
+        },
+        {
+            "key": "gcp-vertex-versions",
+            "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions",
+            "header": "GCP VERTEX AI MODEL VERSIONS · GOOGLE CLOUD",
+            "title": "GCP Vertex AI Model Versions & Lifecycle",
+            "evidence": "cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions",
+            "source_text": "official Google Cloud Vertex AI model versions & endpoint table.",
+            "provider_slug": "google",
+            "accent_color": "#38bdf8",
+            "link_url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions",
+        },
+        {
+            "key": "aws-bedrock-models",
+            "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html",
+            "header": "AWS BEDROCK SUPPORTED MODELS · AWS CLOUD",
+            "title": "AWS Bedrock Foundation Models",
+            "evidence": "docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html",
+            "source_text": "official AWS Bedrock supported foundation models documentation.",
+            "provider_slug": "anthropic",
+            "accent_color": "#f59e0b",
+            "link_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html",
+        },
+        {
+            "key": "xai-docs",
+            "url": "https://docs.x.ai/llms.txt",
+            "header": "XAI GROK API DOCS RADAR · XAI",
+            "title": "xAI Grok Developer Documentation",
+            "evidence": "docs.x.ai/llms.txt",
+            "source_text": "official xAI developer documentation & llms.txt feed.",
+            "provider_slug": "openai",
+            "accent_color": "#e2e8f0",
+            "link_url": "https://docs.x.ai/docs/models",
+        },
     ]
 
     MODELS_DEV_URL = "https://models.dev/api.json"
@@ -965,6 +1011,45 @@ class DocsAndGlobalRegistryScanner:
                     )
         except Exception as exc:
             print(f"[DocsScanner] LiteLLM warning: {exc}")
+
+        # 4. Scan Official GCP Vertex AI Release Notes XML feed for new model announcements/previews
+        try:
+            vxml = _http_get_text("https://cloud.google.com/feeds/vertex-ai-release-notes.xml", timeout=12)
+            entries = re.findall(r"<entry>(.*?)</entry>", vxml, re.DOTALL)
+            if entries:
+                latest_ent = entries[0]
+                u_m = re.search(r"<updated>(.*?)</updated>", latest_ent)
+                updated_iso = u_m.group(1).strip() if u_m else datetime.now(timezone.utc).isoformat()
+                v_models = sorted(extract_models_from_bytes(latest_ent.encode("utf-8", "ignore")))
+                if v_models:
+                    sig = hashlib.sha256(",".join(v_models).encode("utf-8")).hexdigest()[:8]
+                    cards.append(
+                        {
+                            "id": f"gcp-vertex-relnotes-{sig}",
+                            "category": "cli-sdk-diff",
+                            "scanner": "gcp-vertex",
+                            "header": "GCP VERTEX AI RELEASE NOTES · GOOGLE CLOUD",
+                            "title": f"Vertex AI Release Note ({infer_family_title(v_models)})",
+                            "subtitle": "Verified Google Cloud Vertex AI official release notes feed",
+                            "build_label": "Release Note Date",
+                            "build_transition": updated_iso[:10],
+                            "models": [{"id": mid, "name": humanize_model_id(mid)} for mid in v_models[:8]],
+                            "evidence": "cloud.google.com/feeds/vertex-ai-release-notes.xml",
+                            "source_text": "official Google Cloud Vertex AI XML release notes feed.",
+                            "disclaimer_1": "Extracted from the latest entry in the official GCP Vertex AI release notes feed.",
+                            "disclaimer_2": "Public Google Cloud documentation & release notes.",
+                            "provider_name": "GOOGLE CLOUD",
+                            "provider_slug": "google",
+                            "accent_color": "#38bdf8",
+                            "links": [
+                                {"label": "Vertex AI Release Notes", "url": "https://cloud.google.com/vertex-ai/docs/release-notes"},
+                                {"label": "XML Feed", "url": "https://cloud.google.com/feeds/vertex-ai-release-notes.xml"},
+                            ],
+                            "detected_at": updated_iso,
+                        }
+                    )
+        except Exception as exc:
+            print(f"[DocsScanner] GCP Vertex release notes warning: {exc}")
 
         if baselines_changed:
             self._save_baselines(baselines)
