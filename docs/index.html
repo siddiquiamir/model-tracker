@@ -256,6 +256,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(540px, 1fr));
       gap: 22px;
+      align-items: start;
     }
 
     @media (max-width: 640px) {
@@ -277,7 +278,6 @@
       padding: 22px 24px 18px 24px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.45);
       transition: transform 0.15s ease, border-color 0.15s ease;
     }
@@ -387,8 +387,8 @@
 
     .card-links {
       font-size: 0.94rem;
-      margin-top: 4px;
-      margin-bottom: 14px;
+      margin-top: 2px;
+      margin-bottom: 8px;
     }
 
     .card-links a, .card-credit a {
@@ -401,14 +401,12 @@
     }
 
     .card-footer-bar {
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid var(--border-card);
+      margin-top: 2px;
+      padding-top: 0;
+      border-top: none;
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
-      justify-content: space-between;
-      gap: 10px;
+      justify-content: flex-start;
     }
 
     .card-credit {
@@ -523,8 +521,8 @@
         <a class="btn" href="https://github.com/siddiquiamir/model-tracker/actions" target="_blank" rel="noopener">
           ⚙️ Cloud Actions
         </a>
-        <a class="btn" href="https://github.com/siddiquiamir" target="_blank" rel="noopener">
-          GitHub @siddiquiamir
+        <a class="btn" href="https://x.com/StatsWire" target="_blank" rel="noopener">
+          @StatsWire on X
         </a>
       </div>
     </div>
@@ -767,12 +765,8 @@
           </div>
 
           <div class="card-footer-bar">
-            <div class="card-credit">
-              Developed by <a href="https://x.com/StatsWire" target="_blank" rel="noopener" style="font-weight:700;">@StatsWire</a> on X · <a href="https://github.com/${escapeHtml(ghUser)}" target="_blank" rel="noopener">@${escapeHtml(ghUser)}</a>
-            </div>
-            <div class="card-actions">
-              <button class="btn btn-sm" onclick="copyTweet(${idx})">🐦 Copy X Post</button>
-              <button class="btn btn-sm" onclick="copyDiscordMd(${idx})">💬 Copy Discord Card</button>
+            <div class="card-credit" style="font-size: 0.92rem; color: var(--text-secondary);">
+              Developed by <a href="https://x.com/StatsWire" target="_blank" rel="noopener" style="font-weight:600;">@StatsWire</a> on X
             </div>
           </div>
         </article>

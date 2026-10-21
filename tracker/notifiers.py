@@ -76,7 +76,7 @@ def build_discord_embed(card: Dict[str, Any], github_user: str = "siddiquiamir")
     desc_parts.extend(
         [
             "",
-            f"Developed by [@StatsWire](https://x.com/StatsWire) on X · [@{github_user}](https://github.com/{github_user})",
+            "Developed by [@StatsWire](https://x.com/StatsWire) on X",
         ]
     )
 
