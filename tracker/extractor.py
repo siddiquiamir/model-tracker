@@ -7,7 +7,7 @@ import pathlib
 import re
 import struct
 import urllib.request
-from typing import Dict, List, Optional, Set, Tuple
+from typing import Dict, List, Optional, Set
 
 CACHE_DIR = pathlib.Path(__file__).resolve().parent.parent / ".cache"
 
@@ -24,15 +24,17 @@ VALID_MODEL_TOKENS: Set[str] = {
     "thinking", "reasoning", "fast", "turbo", "instruct", "chat", "vision",
     "audio", "realtime", "tts", "stt", "image", "video", "coder", "code",
     "robotics", "omni", "search", "live", "native", "embed", "embedding",
-    "edit", "inpaint", "transcribe", "guard", "reward", "vl", "moe",
-    # Family code-names & series
-    "argon", "sonnet", "opus", "haiku", "maas", "tiered", "customtools",
-    "windsurf", "debug", "clip", "er", "oss", "banana", "jarvis", "sc",
-    "1p", "thoughts", "nemotron", "pixtral", "codestral", "ministral",
-    "magistral", "devstral", "command", "aya", "solar", "jamba", "hermes",
+    "edit", "inpaint", "transcribe", "guard", "reward", "vl", "moe", "deep", "research",
+    # Family code-names, noble gases & series (including Fable, Argon, Krypton, Xenon, etc.)
+    "argon", "helium", "neon", "krypton", "xenon", "radon",
+    "fable", "opus", "sonnet", "haiku", "mythos", "orion", "strawberry", "behemoth",
+    "solaris", "nebula", "cosmos", "nova", "apex", "zenith", "horizon", "pegasus",
+    "maas", "tiered", "customtools", "windsurf", "debug", "clip", "er", "oss",
+    "banana", "jarvis", "sc", "1p", "thoughts", "nemotron", "pixtral", "codestral",
+    "ministral", "magistral", "devstral", "voxtral", "command", "aya", "solar",
+    "jamba", "hermes", "mercury",
 }
 
-# Known non-model suffixes/phrases that should be excluded even if prefixed by a provider name
 EXCLUDED_EXACT: Set[str] = {
     "gemini-api",
     "gemini-cli",
@@ -50,6 +52,7 @@ EXCLUDED_EXACT: Set[str] = {
     "claude-sonnet",
     "claude-opus",
     "claude-haiku",
+    "claude-fable",
     "gpt-oss",
 }
 
@@ -70,7 +73,7 @@ def fetch_range(url: str, start: int, end: int, timeout: int = 20) -> bytes:
 def fetch_elf_rodata_slice(url: str, cache_key: Optional[str] = None, max_bytes: int = 4_500_000) -> bytes:
     """
     Extract the string table slice of the .rodata section from a remote ELF64 binary
-    using HTTP Range requests (~3-4 MB instead of downloading ~190 MB).
+    using HTTP Range requests (~2.5-4 MB instead of downloading ~190 MB).
     Caches slices locally in .cache/ for instant repeat diffs.
     """
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
@@ -79,7 +82,6 @@ def fetch_elf_rodata_slice(url: str, cache_key: Optional[str] = None, max_bytes:
     if cache_file.exists() and cache_file.stat().st_size > 100_000:
         return cache_file.read_bytes()
 
-    # 1. Read 64-byte ELF64 header
     ehdr = fetch_range(url, 0, 63)
     if len(ehdr) < 64 or ehdr[:4] != b"\x7fELF":
         raise ValueError(f"Not a valid ELF64 binary at {url}")
@@ -87,16 +89,13 @@ def fetch_elf_rodata_slice(url: str, cache_key: Optional[str] = None, max_bytes:
     (e_shoff,) = struct.unpack_from("<Q", ehdr, 40)
     e_shentsize, e_shnum, e_shstrndx = struct.unpack_from("<HHH", ehdr, 58)
 
-    # 2. Read ELF64 section header table
     shdrs_len = e_shentsize * e_shnum
     shdrs = fetch_range(url, e_shoff, e_shoff + shdrs_len - 1)
 
-    # 3. Read section header string table (.shstrtab)
     str_sh_off = e_shstrndx * e_shentsize
     shstr_offset, shstr_size = struct.unpack_from("<QQ", shdrs, str_sh_off + 24)
     shstrtab = fetch_range(url, shstr_offset, shstr_offset + shstr_size - 1)
 
-    # 4. Find .rodata section and fetch its first `max_bytes` (where Go packs length-sorted strings)
     for i in range(e_shnum):
         off = i * e_shentsize
         sh_name, _sh_type, _sh_flags, _sh_addr, sh_offset, sh_size = struct.unpack_from(
@@ -115,8 +114,8 @@ def fetch_elf_rodata_slice(url: str, cache_key: Optional[str] = None, max_bytes:
 
 def clean_go_model_id(raw: str) -> str:
     """
-    Clean a raw model identifier candidate extracted from a Go binary or JS bundle.
-    Strips concatenated neighbor strings from Go's non-null-terminated .rodata table.
+    Clean a raw model identifier candidate extracted from a Go binary or JS/docs bundle.
+    Supports both known tokens and new codenames (e.g. claude-fable-5-5, gemini-4-argon).
     """
     raw = raw.strip(".-_ \t\r\n\"'`")
     parts = raw.split("-")
@@ -126,28 +125,30 @@ def clean_go_model_id(raw: str) -> str:
     prefix = parts[0].lower()
     second = parts[1].lower()
 
-    # Validate second token based on prefix
     if prefix in {"gemini", "grok", "qwen", "llama", "lyria", "veo", "imagen", "gemma"}:
-        # Second token must be a version number (e.g. 2.5, 3, 3.1, 3.8, 4) or known family token
         if not (re.fullmatch(r"[0-9]+(?:\.[0-9]+)?[a-z]?", second) or second in VALID_MODEL_TOKENS):
             return ""
     elif prefix == "claude":
-        if second not in {"opus", "sonnet", "haiku"} and not re.fullmatch(r"[0-9]+(?:\.[0-9]+)?", second):
+        # Allow any codename (opus, sonnet, haiku, fable, etc.) when followed by a version number
+        has_version_after = len(parts) >= 3 and bool(re.fullmatch(r"[0-9]+(?:\.[0-9]+)?", parts[2]))
+        if (
+            second not in VALID_MODEL_TOKENS
+            and not re.fullmatch(r"[0-9]+(?:\.[0-9]+)?", second)
+            and not (has_version_after and re.fullmatch(r"[a-z]{3,12}", second))
+        ):
             return ""
     elif prefix == "gpt":
         if not (re.fullmatch(r"[0-9]+(?:\.[0-9]+)?[a-z]?", second) or second in {"oss", "image", "audio", "realtime"}):
             return ""
 
     out = [prefix, second]
-    for tok in parts[2:]:
+    for idx, tok in enumerate(parts[2:], start=2):
         tok_l = tok.lower()
-        # Pure version/date/parameter token: e.g., 5, 4.5, 120b, 20b, 20261021, 0514, 1m, 840k
         if re.fullmatch(r"[0-9]+(?:\.[0-9]+)?(?:[bkm]|_[0-9]+[bkm])?", tok_l):
             out.append(tok_l)
         elif tok_l in VALID_MODEL_TOKENS:
             out.append(tok_l)
         else:
-            # Check if tok_l starts with a valid token followed by concatenated Go string garbage
             matched_prefix = None
             for vt in sorted(VALID_MODEL_TOKENS, key=len, reverse=True):
                 if tok_l.startswith(vt) and len(tok_l) > len(vt):
@@ -160,7 +161,6 @@ def clean_go_model_id(raw: str) -> str:
     candidate = "-".join(out).rstrip(".-_")
     if candidate in EXCLUDED_EXACT or len(candidate) < 7:
         return ""
-    # Reject bare prefix + single digit without family/subversion (e.g., gemini-2, claude-opus-4)
     if len(out) == 2 and re.fullmatch(r"[0-9]", out[1]):
         return ""
     return candidate
@@ -168,17 +168,16 @@ def clean_go_model_id(raw: str) -> str:
 
 def extract_models_from_bytes(data: bytes) -> Set[str]:
     """
-    Extract all compiled-in model identifiers from binary bytes (Go ELF/PE or JS bundle).
+    Extract all compiled-in or documented model identifiers from binary/text bytes.
     """
     text = data.decode("ascii", "ignore")
 
-    # Split adjacent concatenated model identifiers in Go's .rodata string table
-    split_Lookahead = (
+    split_lookahead = (
         r"(?=(?:"
         r"gemini-[0-9a-z]|"
-        r"claude-(?:opus|sonnet|haiku)-[0-9]|"
+        r"claude-(?:opus|sonnet|haiku|fable|[a-z]{3,10}-[0-9])|"
         r"gpt-(?:[0-9]|oss|image|audio|realtime)|"
-        r"o[134]-(?:mini|preview|pro|high|low|medium)|"
+        r"o[1345]-(?:mini|preview|pro|high|low|medium)|"
         r"grok-[0-9]|"
         r"deepseek-(?:r[0-9]|v[0-9]|chat|coder|reasoner)|"
         r"qwen[0-9]?-(?:[0-9]|max|plus|turbo|vl|coder)|"
@@ -188,14 +187,14 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
         r"imagen-[0-9]"
         r"))"
     )
-    segmented = re.sub(split_Lookahead, "\n", text)
+    segmented = re.sub(split_lookahead, "\n", text)
 
     raw_pattern = re.compile(
         r"((?:"
         r"gemini-[0-9a-z][a-z0-9._-]{1,42}|"
-        r"claude-(?:opus|sonnet|haiku)-[0-9][a-z0-9._-]{0,38}|"
+        r"claude-(?:opus|sonnet|haiku|fable|[a-z]{3,10})-[0-9][a-z0-9._-]{0,38}|"
         r"gpt-(?:[0-9]|oss|image)[a-z0-9._-]{1,35}|"
-        r"o[134]-(?:mini|preview|pro)[a-z0-9._-]{0,25}|"
+        r"o[1345]-(?:mini|preview|pro)[a-z0-9._-]{0,25}|"
         r"grok-[0-9][a-z0-9._-]{1,30}|"
         r"deepseek-(?:r[0-9]|v[0-9]|chat|coder|reasoner)[a-z0-9._-]{0,30}|"
         r"lyria-[0-9][a-z0-9._-]{1,30}|"
@@ -215,23 +214,22 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
 
 def humanize_model_id(model_id: str) -> str:
     """
-    Convert a model identifier like 'gemini-4-argon-high' or 'claude-opus-5-5-max'
-    into a clean human-readable display name like 'Gemini 4 Argon (High)' or 'Claude Opus 5.5 (Max)'.
+    Convert a model identifier like 'gemini-4-argon-high' or 'claude-fable-5-5'
+    into a clean human-readable display name like 'Gemini 4 Argon (High)' or 'Claude Fable 5.5'.
     """
     parts = model_id.split("-")
     if not parts:
         return model_id
 
-    tier_Parentheticals = {"high", "medium", "low", "max"}
+    tier_parentheticals = {"high", "medium", "low", "max"}
     extra_tier = None
     if len(parts) >= 3 and parts[-2] == "extra" and parts[-1] == "low":
         extra_tier = "Extra Low"
         parts = parts[:-2]
-    elif len(parts) >= 3 and parts[-1] in tier_Parentheticals:
+    elif len(parts) >= 3 and parts[-1] in tier_parentheticals:
         extra_tier = parts[-1].capitalize()
         parts = parts[:-1]
 
-    # Reconstruct version pairs for Claude (e.g., claude-opus-5-5 -> Claude Opus 5.5)
     if parts[0] == "claude" and len(parts) >= 4 and parts[2].isdigit() and parts[3].isdigit():
         parts = [parts[0], parts[1], f"{parts[2]}.{parts[3]}"] + parts[4:]
 
@@ -248,9 +246,11 @@ def humanize_model_id(model_id: str) -> str:
         "v2": "v2",
         "v3": "v3",
         "r1": "R1",
+        "r2": "R2",
         "o1": "o1",
         "o3": "o3",
         "o4": "o4",
+        "o5": "o5",
     }
 
     words = []
@@ -269,28 +269,24 @@ def humanize_model_id(model_id: str) -> str:
 
 
 def infer_family_title(model_ids: List[str]) -> str:
-    """
-    Given a list of newly added model IDs (e.g. ['gemini-4-argon', 'gemini-4-argon-high', ...]),
-    infer the headline family name (e.g. 'Gemini 4 Argon').
-    """
+    """Infer the headline family name from a list of model IDs."""
     if not model_ids:
         return "New Model Update"
 
     sorted_ids = sorted(model_ids, key=len)
     shortest = sorted_ids[0]
-    # Strip trailing tier suffixes if all models share a common stem
     stem = re.sub(r"-(?:extra-low|high|medium|low|max|preview|latest|tiered)$", "", shortest)
     return humanize_model_id(stem)
 
 
 def infer_provider(model_id: str) -> Dict[str, str]:
-    """Return provider metadata (name, slug, accent color, icon type) for a model ID."""
+    """Return provider metadata (name, slug, accent color) for a model ID."""
     mid = model_id.lower()
     if mid.startswith(("gemini", "lyria", "veo", "imagen", "gemma", "google/")):
         return {"name": "GOOGLE", "slug": "google", "color": "#38bdf8"}
     if mid.startswith(("claude", "anthropic/")):
         return {"name": "ANTHROPIC", "slug": "anthropic", "color": "#f97316"}
-    if mid.startswith(("gpt", "o1", "o3", "o4", "codex", "openai/")):
+    if mid.startswith(("gpt", "o1", "o3", "o4", "o5", "codex", "openai/")):
         return {"name": "OPENAI", "slug": "openai", "color": "#10b981"}
     if mid.startswith(("qwen", "alibaba/")):
         return {"name": "QWEN · ALIBABA", "slug": "qwen", "color": "#a855f7"}
@@ -298,7 +294,7 @@ def infer_provider(model_id: str) -> Dict[str, str]:
         return {"name": "DEEPSEEK", "slug": "deepseek", "color": "#06b6d4"}
     if mid.startswith(("llama", "meta-llama", "meta/")):
         return {"name": "META LLAMA", "slug": "meta", "color": "#3b82f6"}
-    if mid.startswith(("mistral", "ministral", "codestral", "pixtral", "magistral")):
+    if mid.startswith(("mistral", "ministral", "codestral", "pixtral", "magistral", "voxtral")):
         return {"name": "MISTRAL AI", "slug": "mistral", "color": "#f59e0b"}
     if mid.startswith(("grok", "x-ai/", "xai/")):
         return {"name": "XAI", "slug": "xai", "color": "#e2e8f0"}

@@ -39,6 +39,7 @@ jobs:
       - name: Run ModelPulse multi-source diff scan
         env:
           GITHUB_USER: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: python server.py --scan
 
