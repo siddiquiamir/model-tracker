@@ -529,6 +529,7 @@ class GitHubArchitectureRadarScanner:
         ("sgl-project/sglang", "main", "SGLANG ENGINE RADAR · OPEN SOURCE"),
         ("ggml-org/llama.cpp", "master", "LLAMA.CPP GGUF RADAR · OPEN SOURCE"),
         ("BerriAI/litellm", "main", "LITELLM MODEL PRICING & CONTEXT RADAR · ROUTER"),
+        ("router-for-me/CLIProxyAPI", "main", "CLIPROXYAPI MODEL REGISTRY RADAR · MULTI-PROVIDER"),
         ("vercel/ai", "main", "VERCEL AI SDK RADAR · MULTI-PROVIDER"),
         ("sst/models.dev", "dev", "MODELS.DEV PR & COMMIT RADAR · REGISTRY"),
         ("Azure/azure-rest-api-specs", "main", "AZURE AI FOUNDRY SPECS RADAR · MICROSOFT AZURE"),
@@ -1065,29 +1066,31 @@ class DocsAndGlobalRegistryScanner:
 class GitHubGlobalPRLeakScanner:
     """
     Searches global GitHub Pull Requests (/search/issues?q=type:pr+...) for unannounced
-    frontier model codenames & identifiers (e.g., claude-fable-5-5, gemini-4-argon,
-    gpt-5.5, gpt-6, deepseek-r2, deepseek-v4, grok-4.5, qwen4, kimi-k3.1).
-    Uses GITHUB_TOKEN in GitHub Actions for authenticated search rate limits.
+    frontier model codenames & identifiers, then strictly verifies every PR's title + body
+    with exact model-ID regexes to eliminate false positives (like bot review comments).
     """
 
     LEAK_QUERIES = [
         (
             "Anthropic Next-Gen PR Leaks (Fable / 5.5)",
-            '"claude-fable" OR "claude-opus-5-5" OR "claude-sonnet-5-5" OR "claude-haiku-5"',
+            '"claude-fable-5" OR "claude-opus-5-5" OR "claude-sonnet-5-5" OR "claude-haiku-5-5"',
+            re.compile(r"\b(claude-(?:fable|opus|sonnet|haiku)-5[-.][0-9a-z._-]*)\b", re.IGNORECASE),
             "ANTHROPIC PR LEAK RADAR · GITHUB",
             "anthropic",
             "#f97316",
         ),
         (
-            "Google Gemini 4 / Next-Gen PR Leaks",
-            '"gemini-4-argon" OR "gemini-4-" OR "gemini-3.8-flash" OR "gemini-3.9"',
+            "Google Gemini 4 / 3.8 PR Leaks",
+            '"gemini-4-argon" OR "gemini-3.8-flash" OR "gemini-4-krypton" OR "gemini-3.9"',
+            re.compile(r"\b(gemini-(?:4-[a-z0-9._-]+|3\.[89]-[a-z0-9._-]+))\b", re.IGNORECASE),
             "GOOGLE GEMINI PR LEAK RADAR · GITHUB",
             "google",
             "#38bdf8",
         ),
         (
             "OpenAI / Frontier Next-Gen PR Leaks",
-            '"gpt-5.5" OR "gpt-6" OR "o4-pro" OR "o5-mini" OR "deepseek-r2" OR "deepseek-v4" OR "kimi-k3.1"',
+            '"gpt-5.5" OR "gpt-6" OR "o4-pro" OR "deepseek-r2" OR "deepseek-v4" OR "kimi-k3.1"',
+            re.compile(r"\b(gpt-(?:5\.[5-9]|6)[a-z0-9._-]*|o[45]-pro[a-z0-9._-]*|deepseek-(?:r2|v4)[a-z0-9._-]*|kimi-k3\.1[a-z0-9._-]*)\b", re.IGNORECASE),
             "FRONTIER MODEL PR LEAK RADAR · GITHUB",
             "openai",
             "#10b981",
@@ -1107,11 +1110,11 @@ class GitHubGlobalPRLeakScanner:
         if gh_token:
             headers["Authorization"] = f"Bearer {gh_token}"
 
-        for title_label, raw_q, header, slug, color in self.LEAK_QUERIES:
+        for title_label, raw_q, verify_re, header, slug, color in self.LEAK_QUERIES:
             try:
                 full_q = f"type:pr {raw_q}"
                 encoded_q = urllib.parse.quote(full_q)
-                url = f"https://api.github.com/search/issues?q={encoded_q}&sort=updated&order=desc&per_page=6"
+                url = f"https://api.github.com/search/issues?q={encoded_q}&sort=updated&order=desc&per_page=15"
                 req = urllib.request.Request(url, headers=headers)
                 with urllib.request.urlopen(req, timeout=12) as resp:
                     data = json.loads(resp.read().decode("utf-8", "ignore"))
@@ -1120,19 +1123,39 @@ class GitHubGlobalPRLeakScanner:
                     continue
 
                 pr_models = []
-                latest_updated = items[0].get("updated_at", datetime.now(timezone.utc).isoformat())
-                top_html_url = items[0].get("html_url", "https://github.com/search")
-                for pr in items[:5]:
+                latest_updated = ""
+                top_html_url = "https://github.com/search"
+
+                for pr in items:
+                    pr_title = (pr.get("title") or "").strip()
+                    pr_body = (pr.get("body") or "").strip()
+                    combined = f"{pr_title}\n{pr_body}"
+
+                    # Strictly verify that the exact hyphenated model ID appears in the PR text
+                    matches = sorted(set(m.lower().rstrip(".,;:)\"'") for m in verify_re.findall(combined)))
+                    if not matches:
+                        continue
+
                     repo_url = pr.get("repository_url", "")
                     repo_name = "/".join(repo_url.split("/")[-2:]) if repo_url else "github"
                     pr_num = pr.get("number", "")
-                    pr_title = (pr.get("title") or "").strip()
+                    if not latest_updated:
+                        latest_updated = pr.get("updated_at", datetime.now(timezone.utc).isoformat())
+                        top_html_url = pr.get("html_url", top_html_url)
+
+                    matched_tag = ", ".join(matches[:2])
+                    clean_title = pr_title[:62] + ("…" if len(pr_title) > 62 else "")
                     pr_models.append(
                         {
                             "id": f"{repo_name}#{pr_num}",
-                            "name": pr_title[:78] + ("…" if len(pr_title) > 78 else ""),
+                            "name": f"[{matched_tag}] {clean_title}",
                         }
                     )
+                    if len(pr_models) >= 5:
+                        break
+
+                if not pr_models:
+                    continue
 
                 sig = hashlib.sha256(",".join(m["id"] for m in pr_models).encode("utf-8")).hexdigest()[:8]
                 cards.append(
@@ -1143,18 +1166,18 @@ class GitHubGlobalPRLeakScanner:
                         "header": header,
                         "title": title_label,
                         "subtitle": "Verified public GitHub Pull Request leak & mention tracker",
-                        "build_label": "Latest PR",
+                        "build_label": "Latest Verified PR",
                         "build_transition": pr_models[0]["id"],
                         "models": pr_models,
-                        "evidence": "api.github.com/search/issues (type:pr)",
-                        "source_text": "public GitHub Pull Requests matching unreleased model identifiers.",
-                        "disclaimer_1": "Tracks newly opened or merged PRs across GitHub that reference unannounced model strings.",
+                        "evidence": "api.github.com/search/issues (regex-verified PR body)",
+                        "source_text": "public GitHub Pull Requests containing exact unreleased model identifiers.",
+                        "disclaimer_1": "Strictly verified that each listed PR body/title contains the exact hyphenated model string.",
                         "disclaimer_2": "Public PR mentions in community or partner repos do not confirm official vendor rollout.",
                         "provider_name": header.split("·")[0].strip(),
                         "provider_slug": slug,
                         "accent_color": color,
                         "links": [
-                            {"label": "Latest Matched PR", "url": top_html_url},
+                            {"label": "Latest Verified PR", "url": top_html_url},
                             {"label": "GitHub PR Search", "url": f"https://github.com/search?q={encoded_q}&type=pullrequests&s=updated&o=desc"},
                         ],
                         "detected_at": latest_updated,
