@@ -837,11 +837,22 @@ class DocsAndGlobalRegistryScanner:
         baselines_changed = False
 
         # 1. Scan models.dev global coding & frontier model catalog for newest releases
+        #    Filter out third-party reseller re-listings of already-known canonical_model_id / older release_date models.
+        primary_mdev_providers = {
+            "openai", "anthropic", "google", "google-vertex", "google-vertex-anthropic",
+            "xai", "deepseek", "moonshotai", "moonshotai-cn", "alibaba", "alibaba-cn",
+            "zai", "zhipuai", "minimax", "minimax-cn", "mistral", "meta", "nvidia",
+            "cohere", "amazon-bedrock", "azure", "github-copilot", "opencode", "perplexity",
+        }
         try:
             mdev = _http_get_json(self.MODELS_DEV_URL, timeout=15)
             if isinstance(mdev, dict):
                 recent_entries = []
                 all_mdev_keys: Set[str] = set()
+                all_canonical_ids: Set[str] = set()
+                key_meta: Dict[str, Dict[str, str]] = {}
+                today_prefix = datetime.now(timezone.utc).strftime("%Y-%m")
+
                 for prov_id, prov in mdev.items():
                     if not isinstance(prov, dict) or "models" not in prov:
                         continue
@@ -851,19 +862,53 @@ class DocsAndGlobalRegistryScanner:
                             continue
                         full_key = f"{prov_id}/{mid}"
                         all_mdev_keys.add(full_key)
-                        rel_date = minfo.get("release_date", "")
+                        canon = (minfo.get("canonical_model_id") or mid.split("/")[-1]).strip().lower()
+                        all_canonical_ids.add(canon)
+                        rel_date = (minfo.get("release_date") or "").strip()
+                        key_meta[full_key] = {
+                            "prov_id": prov_id,
+                            "pname": pname,
+                            "mid": mid,
+                            "name": minfo.get("name", mid),
+                            "canonical": canon,
+                            "release_date": rel_date,
+                        }
                         if rel_date >= "2026-10-18":
                             recent_entries.append((rel_date, pname, mid, minfo.get("name", mid)))
 
                 prev_mdev = set(baselines.get("models_dev", []))
-                newly_added_mdev = sorted(all_mdev_keys - prev_mdev) if prev_mdev else []
-                if all_mdev_keys and len(all_mdev_keys) != len(prev_mdev):
+                prev_canon = set(baselines.get("models_dev_canonical", []))
+                if not prev_canon and prev_mdev:
+                    for pk in prev_mdev:
+                        if pk in key_meta:
+                            prev_canon.add(key_meta[pk]["canonical"])
+                        else:
+                            prev_canon.add(pk.split("/")[-1].lower())
+
+                raw_new_mdev = sorted(all_mdev_keys - prev_mdev) if prev_mdev else []
+                newly_added_mdev: List[Dict[str, str]] = []
+                for fk in raw_new_mdev:
+                    meta = key_meta.get(fk, {})
+                    canon = meta.get("canonical", fk.split("/")[-1].lower())
+                    rdate = meta.get("release_date", "")
+                    prov_id = meta.get("prov_id", "")
+                    if rdate and rdate < f"{today_prefix}-01":
+                        continue
+                    if canon not in prev_canon or (prov_id in primary_mdev_providers and (not rdate or rdate >= "2026-10-18")):
+                        label_date = f" · release: {rdate}" if rdate else " · unannounced"
+                        newly_added_mdev.append({
+                            "id": fk,
+                            "name": f"{meta.get('name', fk)} ({meta.get('pname', prov_id)}{label_date})",
+                        })
+
+                if all_mdev_keys and (len(all_mdev_keys) != len(prev_mdev) or len(all_canonical_ids) != len(prev_canon)):
                     baselines["models_dev"] = sorted(all_mdev_keys)
+                    baselines["models_dev_canonical"] = sorted(all_canonical_ids)
                     baselines_changed = True
 
                 recent_entries.sort(reverse=True)
                 if newly_added_mdev:
-                    sig = hashlib.sha256(",".join(newly_added_mdev[:8]).encode("utf-8")).hexdigest()[:8]
+                    sig = hashlib.sha256(",".join(m["id"] for m in newly_added_mdev[:8]).encode("utf-8")).hexdigest()[:8]
                     cards.append(
                         {
                             "id": f"models-dev-diff-{sig}",
@@ -871,13 +916,13 @@ class DocsAndGlobalRegistryScanner:
                             "scanner": "models-dev",
                             "header": "MODELS.DEV GLOBAL REGISTRY DIFF · OPENCODE / SST",
                             "title": f"{len(newly_added_mdev)} New Model(s) Added to models.dev",
-                            "subtitle": "Verified newly added model definitions in models.dev/api.json",
+                            "subtitle": "Verified newly added canonical model definitions in models.dev/api.json",
                             "build_label": "Registry Diff",
-                            "build_transition": f"+{len(newly_added_mdev)} new identifiers",
-                            "models": [{"id": k, "name": k} for k in newly_added_mdev[:8]],
+                            "build_transition": f"+{len(newly_added_mdev)} new canonical model(s)",
+                            "models": newly_added_mdev[:8],
                             "evidence": "models.dev/api.json",
                             "source_text": "official models.dev global AI coding model registry.",
-                            "disclaimer_1": "Tracks newly merged model specifications across 40+ coding & API providers.",
+                            "disclaimer_1": "Filtered by canonical_model_id and release_date to exclude 3rd-party reseller re-listings of older models.",
                             "disclaimer_2": "Public registry specifications (context limits, pricing, tool-call support).",
                             "provider_name": "MODELS.DEV",
                             "provider_slug": "openai",
@@ -982,7 +1027,13 @@ class DocsAndGlobalRegistryScanner:
             if isinstance(litellm_data, dict):
                 current_keys = sorted(k for k in litellm_data.keys() if k != "sample_spec")
                 prev_keys = set(baselines.get("litellm_keys", []))
-                added_keys = [k for k in current_keys if k not in prev_keys] if prev_keys else []
+                prev_base_slugs = {pk.split("/")[-1].lower() for pk in prev_keys}
+                raw_added_keys = [k for k in current_keys if k not in prev_keys] if prev_keys else []
+                added_keys = [
+                    k for k in raw_added_keys
+                    if k.split("/")[-1].lower() not in prev_base_slugs
+                    or k.split("/")[0].lower() in {"openai", "anthropic", "gemini", "vertex_ai", "bedrock", "azure", "xai", "deepseek", "moonshot", "dashscope", "zai", "minimax", "mistral"}
+                ]
                 if len(current_keys) != len(prev_keys):
                     baselines["litellm_keys"] = current_keys
                     baselines_changed = True
