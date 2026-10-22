@@ -25,8 +25,9 @@ VALID_MODEL_TOKENS: Set[str] = {
     "audio", "realtime", "tts", "stt", "image", "video", "coder", "code",
     "robotics", "omni", "search", "live", "native", "embed", "embedding",
     "edit", "inpaint", "transcribe", "guard", "reward", "vl", "moe", "deep", "research",
-    # Family code-names, noble gases & series (including Fable, Argon, Krypton, Xenon, etc.)
+    # Family code-names, noble gases, periodic table elements & series (Argon, Carbon, Fable, etc.)
     "argon", "helium", "neon", "krypton", "xenon", "radon",
+    "carbon", "lithium", "beryllium", "boron", "nitrogen", "oxygen", "silicon", "cobalt", "titanium",
     "fable", "opus", "sonnet", "haiku", "mythos", "orion", "strawberry", "behemoth",
     "solaris", "nebula", "cosmos", "nova", "apex", "zenith", "horizon", "pegasus",
     "maas", "tiered", "customtools", "windsurf", "debug", "clip", "er", "oss",
