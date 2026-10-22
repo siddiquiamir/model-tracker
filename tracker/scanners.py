@@ -569,50 +569,54 @@ class KimiCodeAndRouterScanner:
         except Exception as exc:
             print(f"[KimiScanner] Note (cloud-only if behind corporate proxy): {exc}")
 
-        # 2. Scan OpenRouter live /api/v1/models (top newest models added)
+        # 2. Scan OpenRouter live /api/v1/models — emit a dedicated card for each of the newest models
+        #    so major drops (e.g. minimax/minimax-m3.1-flash) never get buried inside another model's card!
         try:
             or_data = _http_get_json(self.OPENROUTER_MODELS_URL, timeout=12)
             models_list = or_data.get("data", []) if isinstance(or_data, dict) else []
             if models_list:
                 models_list.sort(key=lambda x: x.get("created", 0), reverse=True)
-                newest_items = models_list[:6]
-                top_created = newest_items[0].get("created", 0)
-                top_dt = (
-                    datetime.fromtimestamp(top_created, tz=timezone.utc).isoformat()
-                    if top_created
-                    else datetime.now(timezone.utc).isoformat()
-                )
-                cards.append(
-                    {
-                        "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"openrouter-latest-{newest_items[0].get('id', 'models')}"),
-                        "category": "cli-sdk-diff",
-                        "scanner": "openrouter",
-                        "header": "OPENROUTER LIVE MODEL REGISTRY · API DIFF",
-                        "title": newest_items[0].get("name", "Newest Router Models"),
-                        "subtitle": "Verified newly registered endpoints on OpenRouter (/api/v1/models)",
-                        "build_label": "Latest Added",
-                        "build_transition": newest_items[0].get("id", "latest"),
-                        "models": [
-                            {
-                                "id": m.get("id", ""),
-                                "name": f"{m.get('name', m.get('id', ''))} ({m.get('context_length', 0)//1000}k ctx)",
-                            }
-                            for m in newest_items
-                        ],
-                        "evidence": "openrouter.ai/api/v1/models",
-                        "source_text": "official public OpenRouter /api/v1/models JSON registry.",
-                        "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
-                        "disclaimer_2": "Publicly listed API model identifiers and context lengths.",
-                        "provider_name": "OPENROUTER",
-                        "provider_slug": "openai",
-                        "accent_color": "#10b981",
-                        "links": [
-                            {"label": "OpenRouter Models API", "url": self.OPENROUTER_MODELS_URL},
-                            {"label": "OpenRouter Rankings", "url": "https://openrouter.ai/models?order=newest"},
-                        ],
-                        "detected_at": top_dt,
-                    }
-                )
+                for m in models_list[:6]:
+                    mid = m.get("id", "")
+                    mname = m.get("name", mid)
+                    created_ts = m.get("created", 0)
+                    created_dt = (
+                        datetime.fromtimestamp(created_ts, tz=timezone.utc).isoformat()
+                        if created_ts
+                        else datetime.now(timezone.utc).isoformat()
+                    )
+                    ctx_k = (m.get("context_length", 0) or 0) // 1000
+                    prov_prefix = mid.split("/")[0].upper() if "/" in mid else "OPENROUTER"
+                    cards.append(
+                        {
+                            "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"openrouter-model-{mid}"),
+                            "category": "cli-sdk-diff",
+                            "scanner": "openrouter",
+                            "header": f"OPENROUTER LIVE REGISTRY · {prov_prefix}",
+                            "title": mname,
+                            "subtitle": "Verified newly registered model endpoint on OpenRouter (/api/v1/models)",
+                            "build_label": "Endpoint ID",
+                            "build_transition": mid,
+                            "models": [
+                                {
+                                    "id": mid,
+                                    "name": f"{mname} ({ctx_k}k context window)",
+                                }
+                            ],
+                            "evidence": "openrouter.ai/api/v1/models",
+                            "source_text": "official public OpenRouter /api/v1/models JSON registry.",
+                            "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
+                            "disclaimer_2": "Publicly listed API model identifier and context length specification.",
+                            "provider_name": prov_prefix,
+                            "provider_slug": "openai",
+                            "accent_color": "#10b981",
+                            "links": [
+                                {"label": "OpenRouter Model Page", "url": f"https://openrouter.ai/{mid}"},
+                                {"label": "OpenRouter Models API", "url": self.OPENROUTER_MODELS_URL},
+                            ],
+                            "detected_at": created_dt,
+                        }
+                    )
         except Exception as exc:
             print(f"[OpenRouterScanner] Note (cloud-only if behind corporate proxy): {exc}")
 
