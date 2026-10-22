@@ -11,7 +11,6 @@ from tracker.notifiers import build_x_post_text, send_discord_webhook
 from tracker.scanners import (
     AntigravityDesktopScanner,
     DocsAndGlobalRegistryScanner,
-    GitHubArchitectureRadarScanner,
     HuggingFaceOpenSourceScanner,
     KimiCodeAndRouterScanner,
     NpmCliAndSdkScanner,
@@ -35,7 +34,6 @@ class TrackerEngine:
         self.kimi_router_scanner = KimiCodeAndRouterScanner()
         self.docs_scanner = DocsAndGlobalRegistryScanner()
         self.hf_scanner = HuggingFaceOpenSourceScanner()
-        self.gh_scanner = GitHubArchitectureRadarScanner()
 
     def load_seen_ids(self) -> Set[str]:
         if SEEN_FILE.exists():
@@ -83,9 +81,6 @@ class TrackerEngine:
         print("[ModelPulse] Scanning Hugging Face Hub frontier open-source orgs...")
         hf_cards = self.hf_scanner.scan()
 
-        print("[ModelPulse] Scanning GitHub architecture radar (Transformers, vLLM, llama.cpp, LiteLLM, Azure, GCP, AWS)...")
-        gh_cards = self.gh_scanner.scan()
-
         def _ag_sort_key(card: Dict[str, Any]) -> tuple:
             title = card.get("title", "").lower()
             if "gemini 4 argon" in title:
@@ -98,7 +93,7 @@ class TrackerEngine:
 
         ag_cards.sort(key=_ag_sort_key)
 
-        raw_cards: List[Dict[str, Any]] = [*ag_cards, *kr_cards, *docs_cards, *npm_cards, *hf_cards, *gh_cards]
+        raw_cards: List[Dict[str, Any]] = [*ag_cards, *kr_cards, *docs_cards, *npm_cards, *hf_cards]
 
         # Strict deduplication by card ID and by (scanner, build_transition, model_ids_tuple)
         all_cards: List[Dict[str, Any]] = []

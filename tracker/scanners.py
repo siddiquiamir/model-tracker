@@ -452,14 +452,14 @@ class HuggingFaceOpenSourceScanner:
     ]
 
     def _scan_org(self, org: str, label: str, slug: str, color: str) -> Optional[Dict[str, Any]]:
-        url = f"https://huggingface.co/api/models?author={org}&sort=lastModified&direction=-1&limit=5"
+        url = f"https://huggingface.co/api/models?author={org}&sort=createdAt&direction=-1&limit=5"
         items = _http_get_json(url, timeout=12)
         if not items or not isinstance(items, list):
             return None
 
         top = items[0]
         repo_id = top.get("id", "")
-        last_mod = top.get("lastModified", datetime.now(timezone.utc).isoformat())
+        last_mod = top.get("createdAt") or top.get("lastModified") or datetime.now(timezone.utc).isoformat()
         pipeline = top.get("pipeline_tag") or "foundation-model"
 
         models_list = []
@@ -514,110 +514,6 @@ class HuggingFaceOpenSourceScanner:
                     print(f"[HFScanner] Warning: {exc}")
         cards.sort(key=lambda c: c.get("detected_at", ""), reverse=True)
         return cards
-
-
-class GitHubArchitectureRadarScanner:
-    """
-    Scans recent commits in huggingface/transformers, vllm-project/vllm, and ggml-org/llama.cpp
-    for new model architectures — often the earliest public leak of upcoming open-source models.
-    Uses public GitHub .atom feeds to avoid unauthenticated api.github.com 403 rate limits.
-    """
-
-    REPOS = [
-        ("huggingface/transformers", "main", "TRANSFORMERS ARCHITECTURE RADAR · OPEN SOURCE"),
-        ("vllm-project/vllm", "main", "VLLM ENGINE RADAR · OPEN SOURCE"),
-        ("sgl-project/sglang", "main", "SGLANG ENGINE RADAR · OPEN SOURCE"),
-        ("ggml-org/llama.cpp", "master", "LLAMA.CPP GGUF RADAR · OPEN SOURCE"),
-        ("BerriAI/litellm", "main", "LITELLM MODEL PRICING & CONTEXT RADAR · ROUTER"),
-        ("router-for-me/CLIProxyAPI", "main", "CLIPROXYAPI MODEL REGISTRY RADAR · MULTI-PROVIDER"),
-        ("vercel/ai", "main", "VERCEL AI SDK RADAR · MULTI-PROVIDER"),
-        ("sst/models.dev", "dev", "MODELS.DEV PR & COMMIT RADAR · REGISTRY"),
-        ("Azure/azure-rest-api-specs", "main", "AZURE AI FOUNDRY SPECS RADAR · MICROSOFT AZURE"),
-        ("googleapis/python-aiplatform", "main", "GCP VERTEX AI SDK RADAR · GOOGLE CLOUD"),
-        ("boto/botocore", "develop", "AWS BEDROCK SDK RADAR · AWS"),
-    ]
-
-    def scan(self) -> List[Dict[str, Any]]:
-        cards: List[Dict[str, Any]] = []
-        keywords = re.compile(
-            r"\b(qwen[0-9a-z._-]*|deepseek[a-z0-9._-]*|llama-?[0-9][a-z0-9._-]*|gemini-?[0-9][a-z0-9._-]*|gemma-?[0-9][a-z0-9._-]*|mistral[a-z0-9._-]*|ministral[a-z0-9._-]*|pixtral[a-z0-9._-]*|glm-?[0-9][a-z0-9._-]*|kimi[a-z0-9._-]*|minimax[a-z0-9._-]*|nemotron[a-z0-9._-]*|hunyuan[a-z0-9._-]*|ernie[a-z0-9._-]*|modeling_[a-z0-9_]+)\b",
-            re.IGNORECASE,
-        )
-        entry_re = re.compile(r"<entry>(.*?)</entry>", re.DOTALL)
-        title_re = re.compile(r"<title>(.*?)</title>", re.DOTALL)
-        id_re = re.compile(r"<id>.*?Commit/([0-9a-f]{7,40})</id>")
-        updated_re = re.compile(r"<updated>(.*?)</updated>")
-
-        for repo, branch, header in self.REPOS:
-            try:
-                url = f"https://github.com/{repo}/commits/{branch}.atom"
-                xml_text = _http_get_text(url, timeout=12)
-                entries = entry_re.findall(xml_text)
-                if not entries:
-                    continue
-
-                matched_models = []
-                latest_sha = ""
-                latest_date = datetime.now(timezone.utc).isoformat()
-                for ent in entries[:20]:
-                    t_m = title_re.search(ent)
-                    id_m = id_re.search(ent)
-                    u_m = updated_re.search(ent)
-                    if not t_m or not id_m:
-                        continue
-                    msg = (
-                        t_m.group(1)
-                        .strip()
-                        .replace("&amp;", "&")
-                        .replace("&lt;", "<")
-                        .replace("&gt;", ">")
-                        .replace("&#39;", "'")
-                        .replace("&quot;", '"')
-                    )
-                    sha = id_m.group(1)[:7]
-                    cdate = u_m.group(1).strip() if u_m else latest_date
-                    if keywords.search(msg):
-                        if not latest_sha:
-                            latest_sha = sha
-                            latest_date = cdate
-                        matched_models.append(
-                            {
-                                "id": sha,
-                                "name": msg[:80] + ("…" if len(msg) > 80 else ""),
-                            }
-                        )
-                if matched_models:
-                    top5 = matched_models[:5]
-                    shas_sig = hashlib.sha256(",".join(m["id"] for m in top5).encode("utf-8")).hexdigest()[:8]
-                    cards.append(
-                        {
-                            "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"gh-{repo}-{shas_sig}"),
-                            "category": "open-source",
-                            "scanner": "github-radar",
-                            "header": header,
-                            "title": f"{repo.split('/')[-1]} Architecture Commits",
-                            "subtitle": f"Early-warning architecture & model PR radar ({repo})",
-                            "build_label": "HEAD Commit",
-                            "build_transition": f"{branch} @ {latest_sha}",
-                            "models": matched_models[:5],
-                            "evidence": f"github.com/{repo}/commits/{branch}",
-                            "source_text": f"official public GitHub commit stream for {repo}.",
-                            "disclaimer_1": "Tracks upstream inference engine and architecture commits that frequently precede model releases.",
-                            "disclaimer_2": "Commit titles and short SHAs from the default branch.",
-                            "provider_name": "OPEN SOURCE",
-                            "provider_slug": "opensource",
-                            "accent_color": "#8b5cf6",
-                            "links": [
-                                {"label": "Commit feed", "url": f"https://github.com/{repo}/commits/{branch}"},
-                                {"label": "Pull requests", "url": f"https://github.com/{repo}/pulls"},
-                            ],
-                            "detected_at": latest_date,
-                        }
-                    )
-            except Exception as exc:
-                print(f"[GitHubRadar] Warning ({repo}): {exc}")
-        return cards
-
 
 
 class KimiCodeAndRouterScanner:
