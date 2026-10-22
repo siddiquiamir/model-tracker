@@ -145,7 +145,7 @@ class TrackerEngine:
                 "total_cards": len(all_cards),
                 "desktop_diffs": len(ag_cards),
                 "cli_sdk_diffs": len(npm_cards) + len(kr_cards) + len(docs_cards),
-                "open_source_models": len(hf_cards) + len(gh_cards),
+                "open_source_models": len(hf_cards),
                 "new_in_this_scan": len(new_cards),
                 "total_models_indexed": sum(len(c.get("models", [])) for c in all_cards),
             },
