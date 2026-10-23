@@ -484,7 +484,10 @@ class HuggingFaceOpenSourceScanner:
                 continue
             created = entry.get("createdAt") or ""
             last_mod = entry.get("lastModified") or created
-            # Skip repos with no activity since August 2026 (except moonshotai flagship Kimi-K3)
+            # Skip repos created before Aug 2026 (blocks old 2024/2025 repos that get minor README edits),
+            # except moonshotai's flagship Kimi-K3 series
+            if created < "2026-08-01" and org != "moonshotai":
+                continue
             if last_mod < "2026-08-20" and created < "2026-08-20" and org != "moonshotai":
                 continue
             clean_items.append(entry)
@@ -492,16 +495,19 @@ class HuggingFaceOpenSourceScanner:
         if not clean_items:
             return None
 
-        # Sort by createdAt descending so the newest created model repo leads the card
-        clean_items.sort(key=lambda x: (x.get("createdAt") or "", x.get("lastModified") or ""), reverse=True)
+        if org == "moonshotai":
+            clean_items.sort(key=lambda x: (x.get("createdAt") or "", x.get("lastModified") or ""), reverse=True)
+        else:
+            # Sort recent 2026 models by lastModified descending so today's weight/config drops surface immediately
+            clean_items.sort(key=lambda x: (x.get("lastModified") or "", x.get("createdAt") or ""), reverse=True)
+
         top = clean_items[0]
         repo_id = top.get("id", "")
         created_iso = top.get("createdAt") or top.get("lastModified") or datetime.now(timezone.utc).isoformat()
         updated_iso = top.get("lastModified") or created_iso
-        # Use the more recent of createdAt or lastModified if it was updated within 7 days of creation (e.g. private->public flip)
         created_date = created_iso[:10]
         updated_date = updated_iso[:10]
-        effective_iso = updated_iso if updated_date >= "2026-10-17" and created_date >= "2026-10-10" else created_iso
+        effective_iso = created_iso if org == "moonshotai" and updated_date < "2026-10-01" else updated_iso
         pipeline = top.get("pipeline_tag") or "foundation-model"
 
         models_list = []
@@ -510,11 +516,11 @@ class HuggingFaceOpenSourceScanner:
             short_name = rid.split("/")[-1]
             ptag = entry.get("pipeline_tag") or "model"
             likes = entry.get("likes", 0)
-            c_dt = (entry.get("createdAt") or "")[:10]
+            m_dt = (entry.get("lastModified") or entry.get("createdAt") or "")[:10]
             models_list.append(
                 {
                     "id": rid,
-                    "name": f"{short_name} ({ptag}, ★{likes} · {c_dt})",
+                    "name": f"{short_name} ({ptag}, ★{likes} · {m_dt})",
                 }
             )
 

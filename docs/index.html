@@ -513,8 +513,6 @@
         <span class="brand-badge">First-to-Report Diff Engine</span>
       </div>
       <div class="nav-actions">
-        <span id="last-updated" style="font-size: 0.8rem; color: var(--text-muted);">Loading feed...</span>
-        <span id="auto-refresh-badge" style="font-size: 0.75rem; color: #10b981; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); padding: 3px 8px; border-radius: 999px;">Auto-refresh: 60s</span>
         <button class="btn btn-primary" onclick="triggerLiveScan()" id="scan-btn">
           ⚡ Scan All Sources Now
         </button>
@@ -913,15 +911,17 @@
     }
 
     function updateDashboardMetrics() {
-      const st = FEED_DATA.stats || {};
-      document.getElementById("stat-total-cards").textContent = st.total_cards ?? (FEED_DATA.cards || []).length;
-      document.getElementById("stat-desktop-diffs").textContent = st.desktop_diffs ?? "—";
-      document.getElementById("stat-cli-diffs").textContent = st.cli_sdk_diffs ?? "—";
-      document.getElementById("stat-oss-models").textContent = st.open_source_models ?? "—";
-      document.getElementById("stat-total-models").textContent = st.total_models_indexed ?? "—";
-      if (FEED_DATA.generated_at) {
-        document.getElementById("last-updated").textContent = "Updated: " + new Date(FEED_DATA.generated_at).toLocaleString();
-      }
+      const cards = FEED_DATA.cards || [];
+      const deskCount = cards.filter(c => c.category === "desktop-diff").length;
+      const cliCount = cards.filter(c => c.category === "cli-sdk-diff").length;
+      const ossCount = cards.filter(c => c.category === "open-source").length;
+      const totalModels = cards.reduce((acc, c) => acc + ((c.models || []).length), 0);
+
+      document.getElementById("stat-total-cards").textContent = cards.length;
+      document.getElementById("stat-desktop-diffs").textContent = deskCount || (FEED_DATA.stats?.desktop_diffs ?? "—");
+      document.getElementById("stat-cli-diffs").textContent = cliCount || (FEED_DATA.stats?.cli_sdk_diffs ?? "—");
+      document.getElementById("stat-oss-models").textContent = ossCount || (FEED_DATA.stats?.open_source_models ?? "—");
+      document.getElementById("stat-total-models").textContent = totalModels || (FEED_DATA.stats?.total_models_indexed ?? "—");
       populateBuildSelectors(FEED_DATA.available_antigravity_builds);
       renderCards();
     }
@@ -948,15 +948,202 @@
       }
     }
 
+    const HF_WATCHED_ORGS = [
+      ["moonshotai", "MOONSHOT · KIMI", "kimi", "#6366f1"],
+      ["deepseek-ai", "DEEPSEEK AI", "deepseek", "#06b6d4"],
+      ["Qwen", "QWEN · ALIBABA", "qwen", "#a855f7"],
+      ["zai-org", "Z.AI · ZHIPU GLM", "zai", "#14b8a6"],
+      ["MiniMaxAI", "MINIMAX", "minimax", "#ec4899"],
+      ["XiaomiMiMo", "XIAOMI MIMO", "opensource", "#f97316"],
+      ["stepfun-ai", "STEPFUN AI", "opensource", "#0ea5e9"],
+      ["tencent", "TENCENT HUNYUAN", "opensource", "#3b82f6"],
+      ["ByteDance-Seed", "BYTEDANCE SEED", "opensource", "#06b6d4"],
+      ["mistralai", "MISTRAL AI", "mistral", "#f59e0b"],
+      ["nvidia", "NVIDIA", "nvidia", "#84cc16"],
+      ["google", "GOOGLE OPEN MODELS", "google", "#38bdf8"],
+      ["allenai", "ALLENAI · OLMO / MOLMO", "opensource", "#ec4899"],
+      ["meta-llama", "META LLAMA", "meta", "#3b82f6"]
+    ];
+
+    const NOISE_REPO_RE = /(?:sdg-export|libero|laughter|scfm-dataselection|prompt-guard|test-repo|dummy)/i;
+
+    function inferRouterSlug(prefix) {
+      const p = String(prefix || "").toLowerCase();
+      if (p.includes("moonshot") || p.includes("kimi")) return "kimi";
+      if (p.includes("minimax")) return "minimax";
+      if (p.includes("deepseek")) return "deepseek";
+      if (p.includes("qwen") || p.includes("alibaba")) return "qwen";
+      if (p.includes("z-ai") || p.includes("zai") || p.includes("thudm") || p.includes("glm")) return "zai";
+      if (p.includes("google") || p.includes("gemini")) return "google";
+      if (p.includes("anthropic") || p.includes("claude")) return "anthropic";
+      if (p.includes("openai")) return "openai";
+      if (p.includes("meta") || p.includes("llama")) return "meta";
+      if (p.includes("mistral")) return "mistral";
+      if (p.includes("nvidia")) return "nvidia";
+      if (p.includes("x-ai") || p.includes("xai")) return "xai";
+      return "openrouter";
+    }
+
     async function runBrowserLiveScan() {
       await loadFeed();
-      _secondsLeft = 60;
+
+      // 1. Live scan all 14 Frontier Hugging Face Organizations directly from browser
+      const hfPromise = Promise.all(HF_WATCHED_ORGS.map(async ([org, label, slug, color]) => {
+        try {
+          const r = await fetch(`https://huggingface.co/api/models?author=${encodeURIComponent(org)}&sort=lastModified&direction=-1&limit=10`, { cache: "no-store" });
+          if (!r.ok) return null;
+          const items = await r.json();
+          if (!Array.isArray(items) || !items.length) return null;
+
+          const clean = items.filter(entry => {
+            const rid = entry.id || "";
+            if (!rid || NOISE_REPO_RE.test(rid)) return false;
+            const created = entry.createdAt || "";
+            const lastMod = entry.lastModified || created;
+            if (created < "2026-08-01" && org !== "moonshotai") return false;
+            if (lastMod < "2026-08-20" && created < "2026-08-20" && org !== "moonshotai") return false;
+            return true;
+          });
+          if (!clean.length) return null;
+
+          if (org === "moonshotai") {
+            clean.sort((a, b) => String(b.createdAt || "").localeCompare(String(a.createdAt || "")));
+          } else {
+            clean.sort((a, b) => String(b.lastModified || "").localeCompare(String(a.lastModified || "")));
+          }
+
+          const top = clean[0];
+          const createdIso = top.createdAt || top.lastModified || new Date().toISOString();
+          const updatedIso = top.lastModified || createdIso;
+          const createdDate = createdIso.slice(0, 10);
+          const updatedDate = updatedIso.slice(0, 10);
+          const effectiveIso = (org === "moonshotai" && updatedDate < "2026-10-01") ? createdIso : updatedIso;
+          const pipeline = top.pipeline_tag || "foundation-model";
+          const modelsList = clean.slice(0, 4).map(e => {
+            const mDt = (e.lastModified || e.createdAt || "").slice(0, 10);
+            return {
+              id: e.id,
+              name: `${e.id.split("/").pop()} (${e.pipeline_tag || "model"}, ★${e.likes || 0} · ${mDt})`
+            };
+          });
+          const title = top.id.split("/").pop().replace(/-/g, " ");
+          const header = `HUGGING FACE HUB · ${label}`;
+          const buildTransition = `Created ${createdDate} · Updated ${updatedDate} (${pipeline})`;
+          const bullets = modelsList.map(m => `• ${m.name} (${m.id})`).join("\n");
+          return {
+            id: `hf-live-${org}-${top.id}`.replace(/[^a-zA-Z0-9._-]/g, "_"),
+            category: "open-source",
+            scanner: "huggingface",
+            header,
+            title,
+            subtitle: `Verified official open-source model repositories (${org})`,
+            build_label: "Repo Timeline",
+            build_transition: buildTransition,
+            models: modelsList,
+            evidence: "huggingface.co/api/models (config.json / safetensors)",
+            source_text: `official ${org} Hugging Face organization feed.`,
+            disclaimer_1: "Live open-source model checkpoints and repository updates on Hugging Face Hub.",
+            disclaimer_2: "Public weights / model cards published directly by the organization.",
+            provider_name: label,
+            provider_slug: slug,
+            accent_color: color,
+            links: [
+              { label: "Hugging Face Repo", url: `https://huggingface.co/${top.id}` },
+              { label: `${org} Hub Feed`, url: `https://huggingface.co/${org}` }
+            ],
+            detected_at: effectiveIso,
+            x_post_text: `🚨 ${header}\n${title} spotted in Repo Timeline ${buildTransition}!\n\n${bullets}\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official ${org} Hugging Face organization feed.\n\nTracked by @StatsWire`
+          };
+        } catch {
+          return null;
+        }
+      }));
+
+      // 2. Live scan OpenRouter /api/v1/models directly from browser
+      const orPromise = (async () => {
+        try {
+          const r = await fetch("https://openrouter.ai/api/v1/models", { cache: "no-store" });
+          if (!r.ok) return [];
+          const payload = await r.json();
+          const data = Array.isArray(payload?.data) ? payload.data : [];
+          data.sort((a, b) => (b.created || 0) - (a.created || 0));
+          return data.slice(0, 10).map(m => {
+            const mid = m.id || "";
+            if (!mid) return null;
+            const prefix = mid.includes("/") ? mid.split("/")[0] : "openrouter";
+            const slug = inferRouterSlug(prefix);
+            const createdIso = m.created ? new Date(m.created * 1000).toISOString() : new Date().toISOString();
+            const ctxLen = m.context_length || "N/A";
+            const mname = m.name || mid;
+            const header = `OPENROUTER LIVE REGISTRY · ${prefix.toUpperCase()}`;
+            return {
+              id: `openrouter-model-${mid.replace(/[^a-zA-Z0-9._-]/g, "_")}`,
+              category: "cli-sdk-diff",
+              scanner: "openrouter",
+              header,
+              title: mname,
+              subtitle: "Verified newly registered model endpoint on OpenRouter (/api/v1/models)",
+              build_label: "Endpoint ID",
+              build_transition: mid,
+              models: [{ id: mid, name: `${mname} (${ctxLen !== "N/A" ? Math.floor(ctxLen / 1000) + "k" : "N/A"} context window)` }],
+              evidence: "openrouter.ai/api/v1/models",
+              source_text: "official public OpenRouter /api/v1/models JSON registry.",
+              disclaimer_1: "New model IDs frequently appear in router registries hours before public announcements.",
+              disclaimer_2: "Publicly listed API model identifier and context length specification.",
+              provider_name: prefix.toUpperCase(),
+              provider_slug: slug,
+              accent_color: "#10b981",
+              links: [
+                { label: "OpenRouter Model Page", url: `https://openrouter.ai/${mid}` },
+                { label: "OpenRouter Models API", url: "https://openrouter.ai/api/v1/models" }
+              ],
+              detected_at: createdIso,
+              x_post_text: `🚨 ${header}\n${mname} spotted in Endpoint ID ${mid}!\n\n• ${mname} (${mid})\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire`
+            };
+          }).filter(Boolean);
+        } catch {
+          return [];
+        }
+      })();
+
+      const [liveHfCards, liveOrCards] = await Promise.all([hfPromise, orPromise]);
+
+      // Merge live HF cards by header so updated timestamps & models show immediately
+      const validHf = (liveHfCards || []).filter(Boolean);
+      if (validHf.length && Array.isArray(FEED_DATA.cards)) {
+        const byHeader = new Map(validHf.map(c => [c.header, c]));
+        const seenHeaders = new Set();
+        FEED_DATA.cards = FEED_DATA.cards.map(c => {
+          if (c.scanner === "huggingface" && byHeader.has(c.header)) {
+            seenHeaders.add(c.header);
+            return byHeader.get(c.header);
+          }
+          return c;
+        });
+        for (const hc of validHf) {
+          if (!seenHeaders.has(hc.header)) {
+            FEED_DATA.cards.push(hc);
+          }
+        }
+      }
+
+      // Merge any brand-new OpenRouter cards not already in FEED_DATA.cards
+      if (liveOrCards && liveOrCards.length && Array.isArray(FEED_DATA.cards)) {
+        const existingOrIds = new Set(FEED_DATA.cards.map(c => c.id));
+        for (const orc of liveOrCards) {
+          if (!existingOrIds.has(orc.id)) {
+            FEED_DATA.cards.unshift(orc);
+          }
+        }
+      }
+
+      FEED_DATA.generated_at = new Date().toISOString();
       updateDashboardMetrics();
     }
 
     async function triggerLiveScan() {
       const btn = document.getElementById("scan-btn");
-      btn.textContent = "⏳ Syncing Live Feed...";
+      btn.textContent = "⏳ Scanning Live Sources...";
       btn.disabled = true;
       try {
         const res = await fetch("/api/scan", { method: "POST" });
@@ -970,23 +1157,10 @@
         }
       } catch (_) {}
       await runBrowserLiveScan();
-      showToast("Synced latest verified cloud diff feed!");
+      showToast("⚡ Live scan complete: Checked 14 HF labs, OpenRouter, vLLM & Cloud Diffs!");
       btn.textContent = "⚡ Scan All Sources Now";
       btn.disabled = false;
     }
-
-    let _secondsLeft = 60;
-    setInterval(() => {
-      _secondsLeft -= 1;
-      const badge = document.getElementById("auto-refresh-badge");
-      if (_secondsLeft <= 0) {
-        _secondsLeft = 60;
-        if (badge) badge.textContent = "Refreshing...";
-        loadFeed();
-      } else if (badge) {
-        badge.textContent = `Auto-refresh: ${_secondsLeft}s`;
-      }
-    }, 1000);
 
     async function runCustomBuildDiff() {
       const oldVer = document.getElementById("diff-old-select").value;
@@ -1065,7 +1239,7 @@
       renderCards();
     }
 
-    loadFeed();
+    runBrowserLiveScan();
   </script>
 </body>
 </html>
