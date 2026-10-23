@@ -33,7 +33,7 @@ VALID_MODEL_TOKENS: Set[str] = {
     "maas", "tiered", "customtools", "windsurf", "debug", "clip", "er", "oss",
     "banana", "jarvis", "sc", "1p", "thoughts", "nemotron", "pixtral", "codestral",
     "ministral", "magistral", "devstral", "voxtral", "command", "aya", "solar",
-    "jamba", "hermes", "mercury",
+    "jamba", "hermes", "mercury", "kimi", "k3", "glm", "minimax", "mimo", "step",
 }
 
 EXCLUDED_EXACT: Set[str] = {
@@ -58,13 +58,27 @@ EXCLUDED_EXACT: Set[str] = {
 }
 
 
+def is_legacy_model_id(model_id: str) -> bool:
+    """Return True if a model ID belongs to a 2024/2025 legacy generation and should not trigger 2026 leak cards."""
+    m = model_id.lower()
+    if re.search(r"(?:2023|2024|2025)", m):
+        return True
+    if m.startswith((
+        "gemini-1.", "gemini-1-", "gemini-2.0", "gemini-2-0", "gemini-2.5", "gemini-2-5",
+        "claude-2", "claude-3", "claude-sonnet-4", "claude-opus-4", "claude-haiku-4",
+        "gpt-3", "gpt-4", "o1", "o3", "o4-mini",
+    )):
+        return True
+    return False
+
+
 def fetch_range(url: str, start: int, end: int, timeout: int = 20) -> bytes:
     """Fetch an inclusive byte range [start, end] from an HTTP server supporting Range requests."""
     req = urllib.request.Request(
         url,
         headers={
             "Range": f"bytes={start}-{end}",
-            "User-Agent": "ModelPulse-Tracker/1.0",
+            "User-Agent": "ModelPulse-Tracker/2.0",
         },
     )
     with urllib.request.urlopen(req, timeout=timeout) as resp:
@@ -97,26 +111,32 @@ def fetch_elf_rodata_slice(url: str, cache_key: Optional[str] = None, max_bytes:
     shstr_offset, shstr_size = struct.unpack_from("<QQ", shdrs, str_sh_off + 24)
     shstrtab = fetch_range(url, shstr_offset, shstr_offset + shstr_size - 1)
 
+    rodata_offset = 0
+    rodata_size = 0
     for i in range(e_shnum):
         off = i * e_shentsize
-        sh_name, _sh_type, _sh_flags, _sh_addr, sh_offset, sh_size = struct.unpack_from(
-            "<IIQQQQ", shdrs, off
-        )
-        end_null = shstrtab.find(b"\x00", sh_name)
-        sec_name = shstrtab[sh_name:end_null].decode("ascii", "ignore")
+        (sh_name,) = struct.unpack_from("<I", shdrs, off)
+        sh_offset, sh_size = struct.unpack_from("<QQ", shdrs, off + 24)
+        end_idx = shstrtab.find(b"\x00", sh_name)
+        sec_name = shstrtab[sh_name:end_idx].decode("ascii", "ignore")
         if sec_name == ".rodata":
-            slice_len = min(sh_size, max_bytes)
-            rodata = fetch_range(url, sh_offset, sh_offset + slice_len - 1, timeout=30)
-            cache_file.write_bytes(rodata)
-            return rodata
+            rodata_offset = sh_offset
+            rodata_size = sh_size
+            break
 
-    raise RuntimeError(f"Could not find .rodata section in ELF binary: {url}")
+    if not rodata_offset:
+        raise ValueError(f"No .rodata section found in {url}")
+
+    slice_len = min(rodata_size, max_bytes)
+    data = fetch_range(url, rodata_offset, rodata_offset + slice_len - 1, timeout=30)
+    cache_file.write_bytes(data)
+    return data
 
 
 def clean_go_model_id(raw: str) -> str:
     """
-    Clean a raw model identifier candidate extracted from a Go binary or JS/docs bundle.
-    Supports both known tokens and new codenames (e.g. claude-fable-5-5, gemini-4-argon).
+    Clean a raw model identifier extracted from Go's un-delimited .rodata string table
+    or minified JS bundles, stripping adjacent neighbor tokens and legacy 2024/2025 IDs.
     """
     raw = raw.strip(".-_ \t\r\n\"'`")
     parts = raw.split("-")
@@ -126,11 +146,10 @@ def clean_go_model_id(raw: str) -> str:
     prefix = parts[0].lower()
     second = parts[1].lower()
 
-    if prefix in {"gemini", "grok", "qwen", "llama", "lyria", "veo", "imagen", "gemma"}:
-        if not (re.fullmatch(r"[0-9]+(?:\.[0-9]+)?[a-z]?", second) or second in VALID_MODEL_TOKENS):
+    if prefix in {"gemini", "grok", "qwen", "llama", "lyria", "veo", "imagen", "gemma", "kimi", "glm", "minimax"}:
+        if not (re.fullmatch(r"[0-9a-z]+(?:\.[0-9a-z]+)?", second) or second in VALID_MODEL_TOKENS):
             return ""
     elif prefix == "claude":
-        # Allow any codename (opus, sonnet, haiku, fable, etc.) when followed by a version number
         has_version_after = len(parts) >= 3 and bool(re.fullmatch(r"[0-9]+(?:\.[0-9]+)?", parts[2]))
         if (
             second not in VALID_MODEL_TOKENS
@@ -143,7 +162,7 @@ def clean_go_model_id(raw: str) -> str:
             return ""
 
     out = [prefix, second]
-    for idx, tok in enumerate(parts[2:], start=2):
+    for tok in parts[2:]:
         tok_l = tok.lower()
         if re.fullmatch(r"[0-9]+(?:\.[0-9]+)?(?:[bkm]|_[0-9]+[bkm])?", tok_l):
             out.append(tok_l)
@@ -160,16 +179,18 @@ def clean_go_model_id(raw: str) -> str:
             break
 
     candidate = "-".join(out).rstrip(".-_")
-    if candidate in EXCLUDED_EXACT or len(candidate) < 7:
+    if candidate in EXCLUDED_EXACT or len(candidate) < 6:
         return ""
     if len(out) == 2 and re.fullmatch(r"[0-9]", out[1]):
+        return ""
+    if is_legacy_model_id(candidate):
         return ""
     return candidate
 
 
 def extract_models_from_bytes(data: bytes) -> Set[str]:
     """
-    Extract all compiled-in or documented model identifiers from binary/text bytes.
+    Extract all compiled-in or documented frontier model identifiers from binary/text bytes.
     """
     text = data.decode("ascii", "ignore")
 
@@ -177,15 +198,18 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
         r"(?=(?:"
         r"gemini-[0-9a-z]|"
         r"claude-(?:opus|sonnet|haiku|fable|[a-z]{3,10}-[0-9])|"
-        r"gpt-(?:[0-9]|oss|image|audio|realtime)|"
-        r"o[1345]-(?:mini|preview|pro|high|low|medium)|"
-        r"grok-[0-9]|"
-        r"deepseek-(?:r[0-9]|v[0-9]|chat|coder|reasoner)|"
-        r"qwen[0-9]?-(?:[0-9]|max|plus|turbo|vl|coder)|"
-        r"llama-[0-9]|"
-        r"lyria-[0-9]|"
-        r"veo-[0-9]|"
-        r"imagen-[0-9]"
+        r"gpt-(?:[56789]|oss|image|audio|realtime)|"
+        r"o[56789]-(?:mini|preview|pro|high|low|medium)|"
+        r"grok-[3456789]|"
+        r"deepseek-(?:r[2345]|v[4567]|chat|coder|reasoner)|"
+        r"qwen[345]?-(?:[0-9]|max|plus|turbo|vl|coder|omni)|"
+        r"kimi-(?:k[234]|for-coding)|"
+        r"glm-[567]|"
+        r"minimax-m[345]|"
+        r"llama-[456]|"
+        r"lyria-[2345]|"
+        r"veo-[2345]|"
+        r"imagen-[345]"
         r"))"
     )
     segmented = re.sub(split_lookahead, "\n", text)
@@ -194,13 +218,16 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
         r"((?:"
         r"gemini-[0-9a-z][a-z0-9._-]{1,42}|"
         r"claude-(?:opus|sonnet|haiku|fable|[a-z]{3,10})-[0-9][a-z0-9._-]{0,38}|"
-        r"gpt-(?:[0-9]|oss|image)[a-z0-9._-]{1,35}|"
-        r"o[1345]-(?:mini|preview|pro)[a-z0-9._-]{0,25}|"
-        r"grok-[0-9][a-z0-9._-]{1,30}|"
-        r"deepseek-(?:r[0-9]|v[0-9]|chat|coder|reasoner)[a-z0-9._-]{0,30}|"
-        r"lyria-[0-9][a-z0-9._-]{1,30}|"
-        r"veo-[0-9][a-z0-9._-]{1,30}|"
-        r"imagen-[0-9][a-z0-9._-]{1,30}"
+        r"gpt-(?:[56789]|oss|image)[a-z0-9._-]{1,35}|"
+        r"o[56789]-(?:mini|preview|pro)[a-z0-9._-]{0,25}|"
+        r"grok-[3456789][a-z0-9._-]{1,30}|"
+        r"deepseek-(?:r[2345]|v[4567]|chat|coder|reasoner)[a-z0-9._-]{0,30}|"
+        r"kimi-(?:k[234]|for-coding)[a-z0-9._-]{0,30}|"
+        r"glm-[567][a-z0-9._-]{0,30}|"
+        r"minimax-m[345][a-z0-9._-]{0,30}|"
+        r"lyria-[2345][a-z0-9._-]{1,30}|"
+        r"veo-[2345][a-z0-9._-]{1,30}|"
+        r"imagen-[345][a-z0-9._-]{1,30}"
         r"))"
     )
 
@@ -246,12 +273,13 @@ def humanize_model_id(model_id: str) -> str:
         "v1": "v1",
         "v2": "v2",
         "v3": "v3",
+        "v4": "V4",
         "r1": "R1",
         "r2": "R2",
-        "o1": "o1",
-        "o3": "o3",
-        "o4": "o4",
         "o5": "o5",
+        "k3": "K3",
+        "k3.1": "K3.1",
+        "glm": "GLM",
     }
 
     words = []
@@ -293,10 +321,18 @@ def infer_provider(model_id: str) -> Dict[str, str]:
         return {"name": "QWEN · ALIBABA", "slug": "qwen", "color": "#a855f7"}
     if mid.startswith(("deepseek",)):
         return {"name": "DEEPSEEK", "slug": "deepseek", "color": "#06b6d4"}
+    if mid.startswith(("kimi", "k3", "moonshot")):
+        return {"name": "MOONSHOT · KIMI", "slug": "kimi", "color": "#6366f1"}
+    if mid.startswith(("minimax",)):
+        return {"name": "MINIMAX", "slug": "minimax", "color": "#ec4899"}
+    if mid.startswith(("glm", "zai", "zhipu", "thudm")):
+        return {"name": "Z.AI · ZHIPU GLM", "slug": "zai", "color": "#14b8a6"}
+    if mid.startswith(("nvidia/", "nemotron", "cosmos")):
+        return {"name": "NVIDIA", "slug": "nvidia", "color": "#84cc16"}
     if mid.startswith(("llama", "meta-llama", "meta/")):
         return {"name": "META LLAMA", "slug": "meta", "color": "#3b82f6"}
-    if mid.startswith(("mistral", "ministral", "codestral", "pixtral", "magistral", "voxtral")):
+    if mid.startswith(("mistral", "ministral", "codestral", "pixtral", "magistral", "voxtral", "timestral")):
         return {"name": "MISTRAL AI", "slug": "mistral", "color": "#f59e0b"}
     if mid.startswith(("grok", "x-ai/", "xai/")):
         return {"name": "XAI", "slug": "xai", "color": "#e2e8f0"}
-    return {"name": "OPEN SOURCE / FRONTIER", "slug": "opensource", "color": "#8b5cf6"}
+    return {"name": "OPENROUTER", "slug": "openrouter", "color": "#10b981"}

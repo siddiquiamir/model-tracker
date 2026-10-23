@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 import json
 import pathlib
-from typing import Any, Dict, List, Optional, Set
+from typing import Any, Dict, List, Set
 
 from tracker.notifiers import build_x_post_text, send_discord_webhook
 from tracker.scanners import (
@@ -67,23 +67,23 @@ class TrackerEngine:
         prev_timestamps = self.load_previous_timestamps()
 
         print("[ModelPulse] Scanning Antigravity Desktop builds (Stable + Insiders)...")
-        ag_cards = self.ag_scanner.scan(max_stable=5)
+        ag_cards = self.ag_scanner.scan(max_stable=8)
 
-        print("[ModelPulse] Scanning npm CLI & SDK packages (Claude Code, Codex, Google GenAI)...")
+        print("[ModelPulse] Scanning npm CLI & SDK packages (Claude Code, Codex, Google GenAI, OpenAI, Anthropic)...")
         npm_cards = self.npm_scanner.scan()
 
-        print("[ModelPulse] Scanning Kimi Code CDN configs & OpenRouter live model registry...")
+        print("[ModelPulse] Scanning Kimi Code CDN configs, vLLM registry.py & OpenRouter live model registry...")
         kr_cards = self.kimi_router_scanner.scan()
 
-        print("[ModelPulse] Scanning Cursor Docs, Anthropic/Gemini API Docs, models.dev & LiteLLM...")
+        print("[ModelPulse] Scanning Cursor Docs, Anthropic/Gemini/Vertex/Bedrock Docs, models.dev & LiteLLM...")
         docs_cards = self.docs_scanner.scan()
 
-        print("[ModelPulse] Scanning Hugging Face Hub frontier open-source orgs...")
+        print("[ModelPulse] Scanning Hugging Face Hub 14 frontier open-source orgs...")
         hf_cards = self.hf_scanner.scan()
 
         def _ag_sort_key(card: Dict[str, Any]) -> tuple:
             title = card.get("title", "").lower()
-            if "gemini 4 argon" in title:
+            if "gemini 4 argon" in title or "gemini 4 carbon" in title:
                 return (0, card.get("id", ""))
             if "claude opus 5.5" in title or "claude sonnet 5.5" in title:
                 return (1, card.get("id", ""))
@@ -95,7 +95,7 @@ class TrackerEngine:
 
         raw_cards: List[Dict[str, Any]] = [*ag_cards, *kr_cards, *docs_cards, *npm_cards, *hf_cards]
 
-        # Strict deduplication by card ID and by (scanner, build_transition, model_ids_tuple)
+        # Strict deduplication by card ID and by (scanner, header, model_ids_tuple)
         all_cards: List[Dict[str, Any]] = []
         seen_card_keys: Set[str] = set()
         for card in raw_cards:
@@ -107,8 +107,7 @@ class TrackerEngine:
             seen_card_keys.add(cid)
             seen_card_keys.add(content_key)
 
-            # Preserve original detected_at if this exact card ID was already recorded
-            if cid in prev_timestamps:
+            if cid in prev_timestamps and card.get("scanner") not in {"huggingface", "openrouter", "antigravity"}:
                 card["detected_at"] = prev_timestamps[cid]
 
             card["x_post_text"] = build_x_post_text(card)
@@ -137,19 +136,25 @@ class TrackerEngine:
         self.save_seen_ids(seen_ids)
 
         available_builds = self.ag_scanner.list_available_builds(max_stable=8)
+        build_models_map = self.ag_scanner.get_build_models_map(max_stable=8)
+
+        oss_count = sum(1 for c in all_cards if c.get("category") == "open-source")
+        cli_count = sum(1 for c in all_cards if c.get("category") == "cli-sdk-diff")
+        desk_count = sum(1 for c in all_cards if c.get("category") == "desktop-diff")
 
         feed_payload: Dict[str, Any] = {
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "github_user": self.github_user,
             "stats": {
                 "total_cards": len(all_cards),
-                "desktop_diffs": len(ag_cards),
-                "cli_sdk_diffs": len(npm_cards) + len(kr_cards) + len(docs_cards),
-                "open_source_models": len(hf_cards),
+                "desktop_diffs": desk_count,
+                "cli_sdk_diffs": cli_count,
+                "open_source_models": oss_count,
                 "new_in_this_scan": len(new_cards),
                 "total_models_indexed": sum(len(c.get("models", [])) for c in all_cards),
             },
             "available_antigravity_builds": [b["version"] for b in available_builds],
+            "build_models_map": build_models_map,
             "cards": all_cards,
         }
 

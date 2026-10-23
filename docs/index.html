@@ -596,8 +596,11 @@
         <button class="pill" data-filter="google" onclick="setFilter('google', this)">Google</button>
         <button class="pill" data-filter="anthropic" onclick="setFilter('anthropic', this)">Anthropic</button>
         <button class="pill" data-filter="openai" onclick="setFilter('openai', this)">OpenAI</button>
-        <button class="pill" data-filter="qwen" onclick="setFilter('qwen', this)">Qwen</button>
+        <button class="pill" data-filter="kimi" onclick="setFilter('kimi', this)">Kimi</button>
         <button class="pill" data-filter="deepseek" onclick="setFilter('deepseek', this)">DeepSeek</button>
+        <button class="pill" data-filter="qwen" onclick="setFilter('qwen', this)">Qwen</button>
+        <button class="pill" data-filter="minimax" onclick="setFilter('minimax', this)">MiniMax</button>
+        <button class="pill" data-filter="zai" onclick="setFilter('zai', this)">Z.ai GLM</button>
       </div>
       <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
         <select id="sort-select" onchange="renderCards()">
@@ -609,7 +612,7 @@
           type="text"
           id="search-box"
           class="search-input"
-          placeholder="Search model ID (e.g. gemini-4-argon, opus-5-5, qwen)..."
+          placeholder="Search model ID (e.g. gemini-4-argon, kimi-k3, glm-5, minimax-m3)..."
           oninput="renderCards()"
         />
       </div>
@@ -629,6 +632,13 @@
       google: `<svg viewBox="0 0 48 48" width="58" height="58"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>`,
       anthropic: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#d97757"/><path d="M27.8 13h5.1l8.6 22h-5.3l-1.8-4.8h-8.5l-1.8 4.8H19l8.8-22zm-4.1 13.2h5.9L26.7 18l-3 8.2zM14.2 13h5.2l8.6 22h-5.3l-5.9-15.6L10.9 35H5.6l8.6-22z" fill="#141413"/></svg>`,
       openai: `<svg viewBox="0 0 48 48" width="54" height="54"><circle cx="24" cy="24" r="22" fill="#10a37f"/><path d="M24 12c6.6 0 12 5.4 12 12s-5.4 12-12 12-12-5.4-12-12 5.4-12 12-12zm0 5a7 7 0 100 14 7 7 0 000-14z" fill="#fff"/></svg>`,
+      kimi: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#06b6d4"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="22" font-weight="900" font-family="sans-serif">K</text></svg>`,
+      minimax: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#ec4899"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="18" font-weight="900" font-family="sans-serif">MM</text></svg>`,
+      zai: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#6366f1"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="17" font-weight="900" font-family="sans-serif">GLM</text></svg>`,
+      nvidia: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#84cc16"/><text x="24" y="31" text-anchor="middle" fill="#111" font-size="19" font-weight="900" font-family="sans-serif">NV</text></svg>`,
+      openrouter: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#8b5cf6"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="19" font-weight="900" font-family="sans-serif">OR</text></svg>`,
+      modelsdev: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#14b8a6"/><text x="24" y="31" text-anchor="middle" fill="#111" font-size="18" font-weight="900" font-family="sans-serif">MD</text></svg>`,
+      xai: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#18181b" stroke="#52525b" stroke-width="2"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="22" font-weight="900" font-family="sans-serif">𝕏</text></svg>`,
       qwen: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#7c3aed"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="20" font-weight="800" font-family="sans-serif">QW</text></svg>`,
       deepseek: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#0284c7"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="20" font-weight="800" font-family="sans-serif">DS</text></svg>`,
       meta: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#2563eb"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="22" font-weight="800" font-family="sans-serif">∞</text></svg>`,
@@ -940,63 +950,13 @@
 
     async function runBrowserLiveScan() {
       await loadFeed();
-      const orgs = [
-        ["Qwen", "QWEN · ALIBABA", "qwen", "#a855f7"],
-        ["deepseek-ai", "DEEPSEEK AI", "deepseek", "#06b6d4"],
-        ["meta-llama", "META LLAMA", "meta", "#3b82f6"],
-        ["mistralai", "MISTRAL AI", "mistral", "#f59e0b"],
-        ["google", "GOOGLE OPEN MODELS", "google", "#38bdf8"]
-      ];
-      const liveCards = await Promise.all(orgs.map(async ([org, label, slug, color]) => {
-        try {
-          const r = await fetch(`https://huggingface.co/api/models?author=${org}&sort=lastModified&direction=-1&limit=5`, { cache: "no-store" });
-          if (!r.ok) return null;
-          const items = await r.json();
-          if (!Array.isArray(items) || !items.length) return null;
-          const top = items[0];
-          return {
-            id: `hf-${org}-${top.id}`.replace(/[^a-zA-Z0-9._-]/g, "_"),
-            category: "open-source",
-            scanner: "huggingface",
-            header: `HUGGING FACE HUB · ${label}`,
-            title: top.id.split("/").pop().replace(/-/g, " "),
-            subtitle: `Verified open-source repository activity (${org})`,
-            build_label: "Latest Activity",
-            build_transition: `${(top.lastModified || "").slice(0, 10)} · ${top.pipeline_tag || "foundation-model"}`,
-            models: items.slice(0, 4).map(e => ({
-              id: e.id,
-              name: `${e.id.split("/").pop()} (${e.pipeline_tag || "model"}, ★${e.likes || 0})`
-            })),
-            evidence: "huggingface.co/api/models (config.json / safetensors)",
-            source_text: `official ${org} Hugging Face organization feed.`,
-            disclaimer_1: "Live open-source model checkpoints and repository updates on Hugging Face Hub.",
-            disclaimer_2: "Public weights / model cards published directly by the organization.",
-            provider_name: label,
-            provider_slug: slug,
-            accent_color: color,
-            links: [
-              { label: "Hugging Face Repo", url: `https://huggingface.co/${top.id}` },
-              { label: `${org} Hub Feed`, url: `https://huggingface.co/${org}` }
-            ],
-            detected_at: top.lastModified || new Date().toISOString()
-          };
-        } catch {
-          return null;
-        }
-      }));
-
-      const validLive = liveCards.filter(Boolean);
-      if (validLive.length && Array.isArray(FEED_DATA.cards)) {
-        const byOrg = new Map(validLive.map(c => [c.header, c]));
-        FEED_DATA.cards = FEED_DATA.cards.map(c => byOrg.get(c.header) || c);
-      }
-      FEED_DATA.generated_at = new Date().toISOString();
+      _secondsLeft = 60;
       updateDashboardMetrics();
     }
 
     async function triggerLiveScan() {
       const btn = document.getElementById("scan-btn");
-      btn.textContent = "⏳ Scanning Sources...";
+      btn.textContent = "⏳ Syncing Live Feed...";
       btn.disabled = true;
       try {
         const res = await fetch("/api/scan", { method: "POST" });
@@ -1004,12 +964,13 @@
           FEED_DATA = await res.json();
           updateDashboardMetrics();
           showToast("Live backend scan completed!");
+          btn.textContent = "⚡ Scan All Sources Now";
+          btn.disabled = false;
           return;
         }
       } catch (_) {}
-      // Browser-native live refresh on GitHub Pages
       await runBrowserLiveScan();
-      showToast("Refreshed live feed & Hugging Face Hub endpoints!");
+      showToast("Synced latest verified cloud diff feed!");
       btn.textContent = "⚡ Scan All Sources Now";
       btn.disabled = false;
     }
@@ -1030,6 +991,10 @@
     async function runCustomBuildDiff() {
       const oldVer = document.getElementById("diff-old-select").value;
       const newVer = document.getElementById("diff-new-select").value;
+      if (oldVer === newVer) {
+        showToast("Select two different Antigravity builds to compare.");
+        return;
+      }
       try {
         const res = await fetch(`/api/diff?old=${encodeURIComponent(oldVer)}&new=${encodeURIComponent(newVer)}`);
         if (res.ok) {
@@ -1044,8 +1009,59 @@
           return;
         }
       } catch (_) {}
-      // Filter existing feed if running on static GitHub Pages
-      document.getElementById("search-box").value = `${oldVer} -> ${newVer}`;
+
+      // Static GitHub Pages client-side ELF64 .rodata diff using embedded build_models_map
+      const transition = `${oldVer} -> ${newVer}`;
+      const existing = (FEED_DATA.cards || []).filter(c => c.build_transition === transition);
+      if (existing.length) {
+        document.getElementById("search-box").value = transition;
+        renderCards();
+        showToast(`Showing ${existing.length} verified diff card(s) for ${transition}!`);
+        return;
+      }
+
+      const bmap = FEED_DATA.build_models_map || {};
+      const oldList = bmap[oldVer];
+      const newList = bmap[newVer];
+      if (Array.isArray(oldList) && Array.isArray(newList)) {
+        const oldSet = new Set(oldList);
+        const added = newList.filter(m => !oldSet.has(m));
+        if (!added.length) {
+          document.getElementById("search-box").value = "";
+          renderCards();
+          showToast(`ELF64 .rodata verified: 0 new model IDs between ${oldVer} (${oldList.length} IDs) and ${newVer} (${newList.length} IDs).`);
+          return;
+        }
+        const customCard = {
+          id: `custom-ag-diff-${oldVer}-${newVer}`,
+          category: "desktop-diff",
+          scanner: "antigravity-desktop",
+          header: "GOOGLE ANTIGRAVITY (CUSTOM BUILD DIFF)",
+          title: `Antigravity ${transition} (+${added.length} Model ID${added.length > 1 ? 's' : ''})`,
+          subtitle: "Custom ELF64 .rodata binary diff between selected Google Antigravity Linux x64 builds",
+          build_label: "Build",
+          build_transition: transition,
+          models: added.map(id => ({ id, name: id.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase()) })),
+          evidence: "resources/app/extensions/antigravity/bin/language_server_linux_x64 (.rodata)",
+          source_text: "official Google Antigravity apt repository comparison.",
+          disclaimer_1: "Extracted directly from ELF64 .rodata section of language_server_linux_x64.",
+          disclaimer_2: "Not an official announcement. Shared for research and transparency.",
+          provider_name: "GOOGLE",
+          provider_slug: "google",
+          accent_color: "#38bdf8",
+          links: [
+            { label: "Packages Index", url: "https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/dists/antigravity-debian/main/binary-amd64/Packages" }
+          ],
+          detected_at: new Date().toISOString()
+        };
+        FEED_DATA.cards = [customCard, ...(FEED_DATA.cards || [])];
+        document.getElementById("search-box").value = transition;
+        renderCards();
+        showToast(`Found ${added.length} new model identifier(s) between ${oldVer} and ${newVer}!`);
+        return;
+      }
+
+      document.getElementById("search-box").value = transition;
       renderCards();
     }
 

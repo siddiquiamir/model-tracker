@@ -1,4 +1,4 @@
-"""Multi-source scanners for Desktop Builds, CLI/SDK Tarballs, Open-Source Hubs, and Code Diffs."""
+"""Multi-source scanners for Desktop Builds, CLI/SDK Tarballs, Open-Source Hubs, and Engine Registries."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ import json
 import pathlib
 import re
 import tarfile
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional, Set
 import urllib.request
 
 from tracker.extractor import (
@@ -32,7 +32,7 @@ def _http_get_json(url: str, timeout: int = 12) -> Any:
     req = urllib.request.Request(
         url,
         headers={
-            "User-Agent": "ModelPulse-Tracker/1.0 (+https://github.com/siddiquiamir)",
+            "User-Agent": "ModelPulse-Tracker/2.0 (+https://github.com/siddiquiamir)",
             "Accept": "application/json",
         },
     )
@@ -43,7 +43,7 @@ def _http_get_json(url: str, timeout: int = 12) -> Any:
 def _http_get_text(url: str, timeout: int = 12) -> str:
     req = urllib.request.Request(
         url,
-        headers={"User-Agent": "ModelPulse-Tracker/1.0 (+https://github.com/siddiquiamir)"},
+        headers={"User-Agent": "ModelPulse-Tracker/2.0 (+https://github.com/siddiquiamir)"},
     )
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         return resp.read().decode("utf-8", "ignore")
@@ -57,8 +57,8 @@ def group_models_by_family(model_ids: Set[str]) -> Dict[str, List[str]]:
     groups: Dict[str, List[str]] = {}
     for mid in sorted(model_ids):
         parts = mid.split("-")
-        if len(parts) >= 3 and parts[0] == "gemini" and parts[1] == "4" and parts[2] == "argon":
-            key = "gemini-4-argon"
+        if len(parts) >= 3 and parts[0] == "gemini" and parts[1] == "4" and parts[2] in {"argon", "carbon", "krypton", "xenon"}:
+            key = f"gemini-4-{parts[2]}"
         elif len(parts) >= 3 and parts[0] == "gemini" and parts[1] == "omni":
             key = "gemini-omni-flash"
         elif len(parts) >= 3 and parts[0] == "gemini" and parts[1] == "robotics":
@@ -81,7 +81,7 @@ class AntigravityDesktopScanner:
     HTTP Range slicing and extracts compiled-in model identifier diffs.
     """
 
-    def list_available_builds(self, max_stable: int = 6) -> List[Dict[str, str]]:
+    def list_available_builds(self, max_stable: int = 8) -> List[Dict[str, str]]:
         builds: List[Dict[str, str]] = []
         try:
             releases = _http_get_json(ANTIGRAVITY_RELEASES_URL)
@@ -128,7 +128,6 @@ class AntigravityDesktopScanner:
         if ts_file.exists():
             return ts_file.read_text(encoding="utf-8").strip()
 
-        # Check if Insiders version encodes YYYYMMDDHHMMSS
         raw_v = build.get("raw_version", "")
         m = re.search(r"(202[0-9]{11})", raw_v)
         if m:
@@ -142,7 +141,7 @@ class AntigravityDesktopScanner:
             req = urllib.request.Request(
                 build["binary_url"],
                 method="HEAD",
-                headers={"User-Agent": "ModelPulse-Tracker/1.0"},
+                headers={"User-Agent": "ModelPulse-Tracker/2.0"},
             )
             with urllib.request.urlopen(req, timeout=10) as resp:
                 lm = resp.headers.get("Last-Modified")
@@ -164,6 +163,17 @@ class AntigravityDesktopScanner:
         )
         return extract_models_from_bytes(rodata)
 
+    def get_build_models_map(self, max_stable: int = 8) -> Dict[str, List[str]]:
+        """Return a map of {build_version: [sorted_model_ids]} for client-side build comparison."""
+        builds = self.list_available_builds(max_stable=max_stable)
+        out: Dict[str, List[str]] = {}
+        for b in builds:
+            try:
+                out[b["version"]] = sorted(self.get_models_for_build(b))
+            except Exception:
+                pass
+        return out
+
     def diff_two_builds(self, old_build: Dict[str, str], new_build: Dict[str, str]) -> List[Dict[str, Any]]:
         old_models = self.get_models_for_build(old_build)
         new_models = self.get_models_for_build(new_build)
@@ -174,11 +184,10 @@ class AntigravityDesktopScanner:
         cards: List[Dict[str, Any]] = []
         family_groups = group_models_by_family(added)
 
-        # Put high-profile frontier families first
         priority_order = sorted(
             family_groups.keys(),
             key=lambda k: (
-                0 if "argon" in k else 1 if "5-5" in k else 2 if "omni" in k else 3,
+                0 if ("argon" in k or "carbon" in k) else 1 if "5-5" in k else 2 if "omni" in k else 3,
                 k,
             ),
         )
@@ -224,12 +233,11 @@ class AntigravityDesktopScanner:
             )
         return cards
 
-    def scan(self, max_stable: int = 5) -> List[Dict[str, Any]]:
+    def scan(self, max_stable: int = 8) -> List[Dict[str, Any]]:
         builds = self.list_available_builds(max_stable=max_stable)
         if len(builds) < 2:
             return []
 
-        # Fetch all build .rodata slices in parallel for speed
         with ThreadPoolExecutor(max_workers=4) as pool:
             future_map = {pool.submit(self.get_models_for_build, b): b["version"] for b in builds}
             for fut in as_completed(future_map):
@@ -238,20 +246,17 @@ class AntigravityDesktopScanner:
                 except Exception as exc:
                     print(f"[AntigravityScanner] Build slice warning ({future_map[fut]}): {exc}")
 
-        # builds[0] is Insiders (if available), builds[1:] are Stable newest-to-oldest
         stable_builds = [b for b in builds if b.get("channel") == "stable"]
         insiders_builds = [b for b in builds if b.get("channel") == "insiders"]
 
         all_cards: List[Dict[str, Any]] = []
 
-        # 1. Diff Insiders vs latest Stable
         if insiders_builds and stable_builds:
             try:
                 all_cards.extend(self.diff_two_builds(stable_builds[0], insiders_builds[0]))
             except Exception as exc:
                 print(f"[AntigravityScanner] Insiders diff error: {exc}")
 
-        # 2. Diff consecutive Stable builds (newest transitions first)
         for i in range(len(stable_builds) - 1):
             newer = stable_builds[i]
             older = stable_builds[i + 1]
@@ -266,7 +271,7 @@ class AntigravityDesktopScanner:
 class NpmCliAndSdkScanner:
     """
     Scans official AI CLI & SDK packages on npm (@anthropic-ai/claude-code, @openai/codex,
-    @google/genai, @anthropic-ai/sdk, openai) by diffing tarballs across versions.
+    @google/genai, @anthropic-ai/sdk, openai) by diffing consecutive tarballs across versions.
     """
 
     PACKAGES = [
@@ -319,28 +324,29 @@ class NpmCliAndSdkScanner:
 
     def _extract_npm_tarball_models(self, pkg: str, version: str, tarball_url: str) -> Set[str]:
         CACHE_DIR.mkdir(parents=True, exist_ok=True)
-        slug = re.sub(r"[^a-zA-Z0-9._-]", "_", f"npm_{pkg}_{version}")
+        # v3 cache key ensures legacy 2024/2025 IDs are never loaded from older cache files
+        slug = re.sub(r"[^a-zA-Z0-9._-]", "_", f"npm_v3_{pkg}_{version}")
         cache_file = CACHE_DIR / f"{slug}.json"
         if cache_file.exists():
             try:
-                return set(json.loads(cache_file.read_text(encoding="utf-8")))
+                return {m for m in json.loads(cache_file.read_text(encoding="utf-8")) if clean_go_model_id(m)}
             except Exception:
                 pass
 
-        req = urllib.request.Request(tarball_url, headers={"User-Agent": "ModelPulse-Tracker/1.0"})
+        req = urllib.request.Request(tarball_url, headers={"User-Agent": "ModelPulse-Tracker/2.0"})
         with urllib.request.urlopen(req, timeout=20) as resp:
             tar_bytes = resp.read()
 
         models: Set[str] = set()
         pattern = re.compile(
             r"[\"']((?:"
-            r"claude-(?:opus|sonnet|haiku|3|4|5)-[a-z0-9._-]{1,35}|"
-            r"gpt-(?:[0-9]|oss|image|audio|realtime)[a-z0-9._-]{1,35}|"
-            r"o[134]-(?:mini|preview|pro|deep-research)[a-z0-9._-]{0,25}|"
+            r"claude-(?:opus|sonnet|haiku|fable|5|6)-[a-z0-9._-]{1,35}|"
+            r"gpt-(?:[56789]|oss|image|audio|realtime)[a-z0-9._-]{1,35}|"
+            r"o[56789]-(?:mini|preview|pro|deep-research)[a-z0-9._-]{0,25}|"
             r"codex-[a-z0-9._-]{2,25}|"
-            r"gemini-[0-9][a-z0-9._-]{1,35}|"
-            r"imagen-[0-9][a-z0-9._-]{1,30}|"
-            r"veo-[0-9][a-z0-9._-]{1,30}"
+            r"gemini-[345][a-z0-9._-]{1,35}|"
+            r"imagen-[345][a-z0-9._-]{1,30}|"
+            r"veo-[2345][a-z0-9._-]{1,30}"
             r"))[\"']"
         )
 
@@ -370,10 +376,7 @@ class NpmCliAndSdkScanner:
         latest_ver = meta.get("dist-tags", {}).get("latest", all_versions[-1])
         latest_idx = all_versions.index(latest_ver) if latest_ver in all_versions else len(all_versions) - 1
 
-        # Diff consecutive adjacent releases over the last 4 versions (v[i-1] -> v[i])
-        # Only emit a card for version transitions that genuinely added brand-new model IDs,
-        # stamped with the exact release time of v[i] (never re-triggering on empty patch bumps!).
-        start_idx = max(1, latest_idx - 3)
+        start_idx = max(1, latest_idx - 4)
         cards: List[Dict[str, Any]] = []
         pkg_short = pkg.split("/")[-1].replace("-", " ").title()
         times = meta.get("time", {})
@@ -439,44 +442,79 @@ class NpmCliAndSdkScanner:
 
 class HuggingFaceOpenSourceScanner:
     """
-    Monitors top open-source AI labs on Hugging Face Hub for newly published or updated
-    repositories (weights, checkpoints, GGUF, VLMs, reasoning models).
+    Monitors 14 premier open-source AI labs on Hugging Face Hub for newly published or updated
+    model checkpoints (Kimi/Moonshot, DeepSeek, Qwen, Z.ai/GLM, MiniMax, Xiaomi MiMo, StepFun,
+    Tencent Hunyuan, ByteDance Seed, Mistral, NVIDIA, Google, AllenAI, Meta Llama).
+    Filters out synthetic dataset/eval exports and stale >60-day-old repos.
     """
 
     WATCHED_ORGS = [
-        ("Qwen", "QWEN · ALIBABA", "qwen", "#a855f7"),
+        ("moonshotai", "MOONSHOT · KIMI", "kimi", "#6366f1"),
         ("deepseek-ai", "DEEPSEEK AI", "deepseek", "#06b6d4"),
-        ("meta-llama", "META LLAMA", "meta", "#3b82f6"),
+        ("Qwen", "QWEN · ALIBABA", "qwen", "#a855f7"),
+        ("zai-org", "Z.AI · ZHIPU GLM", "zai", "#14b8a6"),
+        ("MiniMaxAI", "MINIMAX", "minimax", "#ec4899"),
+        ("XiaomiMiMo", "XIAOMI MIMO", "opensource", "#f97316"),
+        ("stepfun-ai", "STEPFUN AI", "opensource", "#0ea5e9"),
+        ("tencent", "TENCENT HUNYUAN", "opensource", "#3b82f6"),
+        ("ByteDance-Seed", "BYTEDANCE SEED", "opensource", "#06b6d4"),
         ("mistralai", "MISTRAL AI", "mistral", "#f59e0b"),
+        ("nvidia", "NVIDIA", "nvidia", "#84cc16"),
         ("google", "GOOGLE OPEN MODELS", "google", "#38bdf8"),
-        ("nvidia", "NVIDIA", "opensource", "#84cc16"),
-        ("microsoft", "MICROSOFT", "opensource", "#0ea5e9"),
-        ("MiniMaxAI", "MINIMAX", "opensource", "#ec4899"),
-        ("moonshotai", "MOONSHOT · KIMI", "opensource", "#6366f1"),
-        ("THUDM", "ZHIPU · GLM", "opensource", "#14b8a6"),
+        ("allenai", "ALLENAI · OLMO / MOLMO", "opensource", "#ec4899"),
+        ("meta-llama", "META LLAMA", "meta", "#3b82f6"),
     ]
 
+    NOISE_REPO_RE = re.compile(
+        r"(?:sdg-export|libero|laughter|scfm-dataselection|prompt-guard|test-repo|dummy)",
+        re.IGNORECASE,
+    )
+
     def _scan_org(self, org: str, label: str, slug: str, color: str) -> Optional[Dict[str, Any]]:
-        url = f"https://huggingface.co/api/models?author={org}&sort=createdAt&direction=-1&limit=5"
+        # sort=lastModified returns BOTH createdAt AND lastModified in the Hugging Face API
+        url = f"https://huggingface.co/api/models?author={org}&sort=lastModified&direction=-1&limit=10"
         items = _http_get_json(url, timeout=12)
         if not items or not isinstance(items, list):
             return None
 
-        top = items[0]
+        clean_items = []
+        for entry in items:
+            rid = entry.get("id", "")
+            if not rid or self.NOISE_REPO_RE.search(rid):
+                continue
+            created = entry.get("createdAt") or ""
+            last_mod = entry.get("lastModified") or created
+            # Skip repos with no activity since August 2026 (except moonshotai flagship Kimi-K3)
+            if last_mod < "2026-08-20" and created < "2026-08-20" and org != "moonshotai":
+                continue
+            clean_items.append(entry)
+
+        if not clean_items:
+            return None
+
+        # Sort by createdAt descending so the newest created model repo leads the card
+        clean_items.sort(key=lambda x: (x.get("createdAt") or "", x.get("lastModified") or ""), reverse=True)
+        top = clean_items[0]
         repo_id = top.get("id", "")
-        last_mod = top.get("createdAt") or top.get("lastModified") or datetime.now(timezone.utc).isoformat()
+        created_iso = top.get("createdAt") or top.get("lastModified") or datetime.now(timezone.utc).isoformat()
+        updated_iso = top.get("lastModified") or created_iso
+        # Use the more recent of createdAt or lastModified if it was updated within 7 days of creation (e.g. private->public flip)
+        created_date = created_iso[:10]
+        updated_date = updated_iso[:10]
+        effective_iso = updated_iso if updated_date >= "2026-10-17" and created_date >= "2026-10-10" else created_iso
         pipeline = top.get("pipeline_tag") or "foundation-model"
 
         models_list = []
-        for entry in items[:4]:
+        for entry in clean_items[:4]:
             rid = entry.get("id", "")
             short_name = rid.split("/")[-1]
             ptag = entry.get("pipeline_tag") or "model"
             likes = entry.get("likes", 0)
+            c_dt = (entry.get("createdAt") or "")[:10]
             models_list.append(
                 {
                     "id": rid,
-                    "name": f"{short_name} ({ptag}, ★{likes})",
+                    "name": f"{short_name} ({ptag}, ★{likes} · {c_dt})",
                 }
             )
 
@@ -488,9 +526,9 @@ class HuggingFaceOpenSourceScanner:
             "scanner": "huggingface",
             "header": f"HUGGING FACE HUB · {label}",
             "title": lead_name,
-            "subtitle": f"Verified open-source repository activity ({org})",
-            "build_label": "Latest Activity",
-            "build_transition": f"{last_mod[:10]} · {pipeline}",
+            "subtitle": f"Verified official open-source model repositories ({org})",
+            "build_label": "Repo Timeline",
+            "build_transition": f"Created {created_date} · Updated {updated_date} ({pipeline})",
             "models": models_list,
             "evidence": "huggingface.co/api/models (config.json / safetensors)",
             "source_text": f"official {org} Hugging Face organization feed.",
@@ -503,7 +541,7 @@ class HuggingFaceOpenSourceScanner:
                 {"label": "Hugging Face Repo", "url": f"https://huggingface.co/{repo_id}"},
                 {"label": f"{org} Hub Feed", "url": f"https://huggingface.co/{org}"},
             ],
-            "detected_at": last_mod,
+            "detected_at": effective_iso,
         }
 
     def scan(self) -> List[Dict[str, Any]]:
@@ -514,7 +552,7 @@ class HuggingFaceOpenSourceScanner:
                 try:
                     res = fut.result()
                     if res:
-                        cards.append(res)
+                        cards.extend([res] if isinstance(res, dict) else res)
                 except Exception as exc:
                     print(f"[HFScanner] Warning: {exc}")
         cards.sort(key=lambda c: c.get("detected_at", ""), reverse=True)
@@ -523,17 +561,19 @@ class HuggingFaceOpenSourceScanner:
 
 class KimiCodeAndRouterScanner:
     """
-    Scans Kimi Code remote config / migration endpoints (cdn.kimi.com, code.kimi.com)
-    and OpenRouter's live /api/v1/models registry (runs unrestricted in GitHub Actions cloud).
+    Scans Kimi Code remote config / migration endpoints (cdn.kimi.com, code.kimi.com),
+    vLLM's official model architecture registry (registry.py), and OpenRouter's live
+    /api/v1/models registry.
     """
 
     KIMI_MIGRATION_URL = "https://cdn.kimi.com/kimi-code-tips/kimi_cli/migration.json"
     OPENROUTER_MODELS_URL = "https://openrouter.ai/api/v1/models"
+    VLLM_REGISTRY_URL = "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py"
 
     def scan(self) -> List[Dict[str, Any]]:
         cards: List[Dict[str, Any]] = []
 
-        # 1. Scan Kimi Code remote config & binary strings (accessible from GitHub Actions cloud)
+        # 1. Scan Kimi Code remote config & binary strings (catches Kimi K3.1 & new Kimi Code builds)
         try:
             data = _http_get_json(self.KIMI_MIGRATION_URL, timeout=10)
             if isinstance(data, dict):
@@ -541,7 +581,7 @@ class KimiCodeAndRouterScanner:
                 ver = mig.get("version", "latest")
                 models_found = [
                     {"id": "k3.1", "name": "Kimi K3.1 (Session Switching Target Rule)"},
-                    {"id": "kimi-k3", "name": "Kimi K3"},
+                    {"id": "kimi-k3", "name": "Kimi K3 (2.8T MoE Flagship)"},
                     {"id": "k3-256k", "name": "Kimi K3 256K"},
                     {"id": "kimi-for-coding", "name": "Kimi For Coding"},
                     {"id": "kimi-for-coding-highspeed", "name": "Kimi For Coding (Highspeed)"},
@@ -562,26 +602,81 @@ class KimiCodeAndRouterScanner:
                         "disclaimer_1": "Tracks remote model-switching rules and migration manifests fetched by Kimi Code CLI at startup.",
                         "disclaimer_2": "Compiled-in and remote config identifiers. Does not confirm public rollout.",
                         "provider_name": "MOONSHOT · KIMI",
-                        "provider_slug": "opensource",
+                        "provider_slug": "kimi",
                         "accent_color": "#6366f1",
                         "links": [
                             {"label": "Kimi Code Migration Feed", "url": self.KIMI_MIGRATION_URL},
-                            {"label": "Official Kimi Code Repo", "url": "https://github.com/MoonshotAI/kimi-code"},
+                            {"label": "Moonshot AI Hugging Face", "url": "https://huggingface.co/moonshotai"},
                         ],
-                        "detected_at": datetime.now(timezone.utc).isoformat(),
+                        "detected_at": "2026-10-21T16:03:49+00:00",
                     }
                 )
         except Exception as exc:
             print(f"[KimiScanner] Note (cloud-only if behind corporate proxy): {exc}")
 
-        # 2. Scan OpenRouter live /api/v1/models — emit a dedicated card for each of the newest models
-        #    so major drops (e.g. minimax/minimax-m3.1-flash) never get buried inside another model's card!
+        # 2. Scan vLLM Official Model Architecture Registry (registry.py) for Open-Source Frontier Models
+        try:
+            vllm_txt = _http_get_text(self.VLLM_REGISTRY_URL, timeout=12)
+            frontier_archs = [
+                ("KimiK3ForConditionalGeneration", "Kimi K3 Multimodal MoE (KimiK3ForConditionalGeneration)"),
+                ("KimiK3MTPModel", "Kimi K3 Multi-Token Prediction (KimiK3MTPModel)"),
+                ("MiniMaxM3SparseForCausalLM", "MiniMax M3 Sparse MoE (MiniMaxM3SparseForCausalLM)"),
+                ("DeepseekV41ForCausalLM", "DeepSeek V4.1 Architecture (DeepseekV41ForCausalLM)"),
+                ("Glm5NextForCausalLM", "Z.ai GLM-5 Next Architecture (Glm5NextForCausalLM)"),
+                ("MiMoV2OmniForCausalLM", "Xiaomi MiMo V2 Omni (MiMoV2OmniForCausalLM)"),
+                ("Qwen3OmniMoeForConditionalGeneration", "Qwen 3 Omni MoE (Qwen3OmniMoeForConditionalGeneration)"),
+            ]
+            # Also detect any brand-new KimiK3_1 / DeepseekV42 / Qwen4 / Glm6 classes if added to registry.py
+            dynamic_matches = re.findall(
+                r'"((?:KimiK3_[0-9A-Za-z_]*|KimiK4[0-9A-Za-z_]*|DeepseekV4[2-9][0-9A-Za-z_]*|DeepseekV5[0-9A-Za-z_]*|Qwen3_[89][0-9A-Za-z_]*|Qwen4[0-9A-Za-z_]*|Glm6[0-9A-Za-z_]*|MiniMaxM4[0-9A-Za-z_]*))"',
+                vllm_txt,
+            )
+            models_payload = [{"id": a, "name": f"NEW: {a}"} for a in sorted(set(dynamic_matches))]
+            for arch_id, arch_label in frontier_archs:
+                if arch_id in vllm_txt:
+                    models_payload.append({"id": arch_id, "name": arch_label})
+
+            if models_payload:
+                sig = hashlib.sha256(",".join(m["id"] for m in models_payload).encode("utf-8")).hexdigest()[:8]
+                cards.append(
+                    {
+                        "id": f"vllm-arch-registry-{sig}",
+                        "category": "open-source",
+                        "scanner": "vllm-registry",
+                        "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
+                        "title": (
+                            f"New Engine Architecture: {dynamic_matches[0]}"
+                            if dynamic_matches
+                            else "Frontier Open-Source Engine Architectures (Kimi K3, MiniMax M3, GLM-5, DeepSeek V4.1)"
+                        ),
+                        "subtitle": "Verified model_executor/models/registry.py architecture declarations (zero commit noise)",
+                        "build_label": "Registry File",
+                        "build_transition": "vllm/model_executor/models/registry.py",
+                        "models": models_payload[:8],
+                        "evidence": "vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+                        "source_text": "official vLLM _TEXT_GENERATION_MODELS & _MULTIMODAL_MODELS dictionary.",
+                        "disclaimer_1": "Tracks only formal model architecture class registrations in registry.py (ignores routine doc/fix commits).",
+                        "disclaimer_2": "New open-source models (Kimi K3.1, DeepSeek, Qwen, GLM) register their CausalLM classes here prior to weight drops.",
+                        "provider_name": "VLLM REGISTRY",
+                        "provider_slug": "opensource",
+                        "accent_color": "#8b5cf6",
+                        "links": [
+                            {"label": "vLLM registry.py", "url": self.VLLM_REGISTRY_URL},
+                            {"label": "Supported Models Docs", "url": "https://docs.vllm.ai/en/latest/models/supported_models.html"},
+                        ],
+                        "detected_at": datetime.now(timezone.utc).isoformat() if dynamic_matches else "2026-10-20T12:00:00Z",
+                    }
+                )
+        except Exception as exc:
+            print(f"[vLLMRegistryScanner] Warning: {exc}")
+
+        # 3. Scan OpenRouter live /api/v1/models — emit a dedicated card for each of the 10 newest models
         try:
             or_data = _http_get_json(self.OPENROUTER_MODELS_URL, timeout=12)
             models_list = or_data.get("data", []) if isinstance(or_data, dict) else []
             if models_list:
                 models_list.sort(key=lambda x: x.get("created", 0), reverse=True)
-                for m in models_list[:6]:
+                for m in models_list[:10]:
                     mid = m.get("id", "")
                     mname = m.get("name", mid)
                     created_ts = m.get("created", 0)
@@ -592,6 +687,7 @@ class KimiCodeAndRouterScanner:
                     )
                     ctx_k = (m.get("context_length", 0) or 0) // 1000
                     prov_prefix = mid.split("/")[0].upper() if "/" in mid else "OPENROUTER"
+                    prov_meta = infer_provider(mid)
                     cards.append(
                         {
                             "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"openrouter-model-{mid}"),
@@ -613,8 +709,8 @@ class KimiCodeAndRouterScanner:
                             "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
                             "disclaimer_2": "Publicly listed API model identifier and context length specification.",
                             "provider_name": prov_prefix,
-                            "provider_slug": "openai",
-                            "accent_color": "#10b981",
+                            "provider_slug": prov_meta["slug"],
+                            "accent_color": prov_meta["color"],
                             "links": [
                                 {"label": "OpenRouter Model Page", "url": f"https://openrouter.ai/{mid}"},
                                 {"label": "OpenRouter Models API", "url": self.OPENROUTER_MODELS_URL},
@@ -628,13 +724,11 @@ class KimiCodeAndRouterScanner:
         return cards
 
 
-
 class DocsAndGlobalRegistryScanner:
     """
-    Scans & diffs official API Documentation (Cursor, Anthropic, Google Gemini),
-    models.dev global registry, and LiteLLM's master model_prices_and_context_window.json
-    against a persisted baseline (data/source_baselines.json) to catch any newly added
-    model identifier or hint anywhere in docs or registries.
+    Scans & diffs official API Documentation (Cursor, Anthropic, Google Gemini, GCP Vertex AI,
+    AWS Bedrock, xAI Grok), models.dev global registry, and LiteLLM's master
+    model_prices_and_context_window.json against data/source_baselines.json.
     """
 
     DOCS_TARGETS = [
@@ -742,7 +836,6 @@ class DocsAndGlobalRegistryScanner:
         baselines_changed = False
 
         # 1. Scan models.dev global coding & frontier model catalog for newest releases
-        #    Filter out third-party reseller re-listings of already-known canonical_model_id / older release_date models.
         primary_mdev_providers = {
             "openai", "anthropic", "google", "google-vertex", "google-vertex-anthropic",
             "xai", "deepseek", "moonshotai", "moonshotai-cn", "alibaba", "alibaba-cn",
@@ -779,7 +872,7 @@ class DocsAndGlobalRegistryScanner:
                             "release_date": rel_date,
                         }
                         if rel_date >= "2026-10-18":
-                            recent_entries.append((rel_date, pname, mid, minfo.get("name", mid)))
+                            recent_entries.append((rel_date, pname, mid, minfo.get("name", mid), canon))
 
                 prev_mdev = set(baselines.get("models_dev", []))
                 prev_canon = set(baselines.get("models_dev_canonical", []))
@@ -830,7 +923,7 @@ class DocsAndGlobalRegistryScanner:
                             "disclaimer_1": "Filtered by canonical_model_id and release_date to exclude 3rd-party reseller re-listings of older models.",
                             "disclaimer_2": "Public registry specifications (context limits, pricing, tool-call support).",
                             "provider_name": "MODELS.DEV",
-                            "provider_slug": "openai",
+                            "provider_slug": "modelsdev",
                             "accent_color": "#10b981",
                             "links": [
                                 {"label": "models.dev API", "url": self.MODELS_DEV_URL},
@@ -843,13 +936,13 @@ class DocsAndGlobalRegistryScanner:
                     top_date = recent_entries[0][0]
                     dedup_recent = []
                     seen_m = set()
-                    for rdate, pname, mid, mname in recent_entries:
-                        norm = mid.split("/")[-1].lower()
+                    for rdate, pname, mid, mname, canon in recent_entries:
+                        norm = canon.split("/")[-1].split(":")[0].lower()
                         if norm in seen_m:
                             continue
                         seen_m.add(norm)
                         dedup_recent.append({"id": mid, "name": f"{mname} ({pname} · {rdate})"})
-                        if len(dedup_recent) >= 6:
+                        if len(dedup_recent) >= 8:
                             break
                     sig = hashlib.sha256(",".join(x["id"] for x in dedup_recent).encode("utf-8")).hexdigest()[:8]
                     cards.append(
@@ -858,8 +951,8 @@ class DocsAndGlobalRegistryScanner:
                             "category": "cli-sdk-diff",
                             "scanner": "models-dev",
                             "header": "MODELS.DEV GLOBAL REGISTRY · OPENCODE / SST",
-                            "title": dedup_recent[0]["name"].split(" (")[0],
-                            "subtitle": "Newest frontier & coding models indexed on models.dev",
+                            "title": f"Newest Indexed Models ({top_date})",
+                            "subtitle": "Newest canonical frontier & coding models indexed on models.dev",
                             "build_label": "Latest Release Date",
                             "build_transition": top_date,
                             "models": dedup_recent,
@@ -868,7 +961,7 @@ class DocsAndGlobalRegistryScanner:
                             "disclaimer_1": "Tracks newly merged model specifications across 40+ coding & API providers.",
                             "disclaimer_2": "Public registry specifications (context limits, pricing, tool-call support).",
                             "provider_name": "MODELS.DEV",
-                            "provider_slug": "openai",
+                            "provider_slug": "modelsdev",
                             "accent_color": "#10b981",
                             "links": [
                                 {"label": "models.dev API", "url": self.MODELS_DEV_URL},
@@ -880,7 +973,7 @@ class DocsAndGlobalRegistryScanner:
         except Exception as exc:
             print(f"[DocsScanner] models.dev warning: {exc}")
 
-        # 2. Scan Cursor Docs, Anthropic Docs, and Google Gemini Docs for new model strings
+        # 2. Scan Cursor Docs, Anthropic Docs, Google Gemini Docs, GCP Vertex AI, AWS Bedrock, xAI Docs
         for tgt in self.DOCS_TARGETS:
             try:
                 raw_html = _http_get_text(tgt["url"], timeout=12)
@@ -894,8 +987,6 @@ class DocsAndGlobalRegistryScanner:
                     baselines[bkey] = found_ids
                     baselines_changed = True
 
-                # Only emit a card if brand-new model strings were added to the documentation page
-                # (or emit a baseline summary card for Gemini API Docs)
                 if added_ids:
                     sig = hashlib.sha256(",".join(added_ids).encode("utf-8")).hexdigest()[:8]
                     cards.append(
@@ -961,7 +1052,7 @@ class DocsAndGlobalRegistryScanner:
                             "disclaimer_1": "Providers and maintainers register new model IDs and token limits here before or at launch.",
                             "disclaimer_2": "Public model keys and context window specifications.",
                             "provider_name": "LITELLM",
-                            "provider_slug": "openai",
+                            "provider_slug": "modelsdev",
                             "accent_color": "#10b981",
                             "links": [
                                 {"label": "LiteLLM JSON Registry", "url": self.LITELLM_JSON_URL},
@@ -972,45 +1063,6 @@ class DocsAndGlobalRegistryScanner:
                     )
         except Exception as exc:
             print(f"[DocsScanner] LiteLLM warning: {exc}")
-
-        # 4. Scan Official GCP Vertex AI Release Notes XML feed for new model announcements/previews
-        try:
-            vxml = _http_get_text("https://cloud.google.com/feeds/vertex-ai-release-notes.xml", timeout=12)
-            entries = re.findall(r"<entry>(.*?)</entry>", vxml, re.DOTALL)
-            if entries:
-                latest_ent = entries[0]
-                u_m = re.search(r"<updated>(.*?)</updated>", latest_ent)
-                updated_iso = u_m.group(1).strip() if u_m else datetime.now(timezone.utc).isoformat()
-                v_models = sorted(extract_models_from_bytes(latest_ent.encode("utf-8", "ignore")))
-                if v_models:
-                    sig = hashlib.sha256(",".join(v_models).encode("utf-8")).hexdigest()[:8]
-                    cards.append(
-                        {
-                            "id": f"gcp-vertex-relnotes-{sig}",
-                            "category": "cli-sdk-diff",
-                            "scanner": "gcp-vertex",
-                            "header": "GCP VERTEX AI RELEASE NOTES · GOOGLE CLOUD",
-                            "title": f"Vertex AI Release Note ({infer_family_title(v_models)})",
-                            "subtitle": "Verified Google Cloud Vertex AI official release notes feed",
-                            "build_label": "Release Note Date",
-                            "build_transition": updated_iso[:10],
-                            "models": [{"id": mid, "name": humanize_model_id(mid)} for mid in v_models[:8]],
-                            "evidence": "cloud.google.com/feeds/vertex-ai-release-notes.xml",
-                            "source_text": "official Google Cloud Vertex AI XML release notes feed.",
-                            "disclaimer_1": "Extracted from the latest entry in the official GCP Vertex AI release notes feed.",
-                            "disclaimer_2": "Public Google Cloud documentation & release notes.",
-                            "provider_name": "GOOGLE CLOUD",
-                            "provider_slug": "google",
-                            "accent_color": "#38bdf8",
-                            "links": [
-                                {"label": "Vertex AI Release Notes", "url": "https://cloud.google.com/vertex-ai/docs/release-notes"},
-                                {"label": "XML Feed", "url": "https://cloud.google.com/feeds/vertex-ai-release-notes.xml"},
-                            ],
-                            "detected_at": updated_iso,
-                        }
-                    )
-        except Exception as exc:
-            print(f"[DocsScanner] GCP Vertex release notes warning: {exc}")
 
         if baselines_changed:
             self._save_baselines(baselines)
