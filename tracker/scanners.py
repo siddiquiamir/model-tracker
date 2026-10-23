@@ -363,62 +363,67 @@ class NpmCliAndSdkScanner:
         pkg = cfg["pkg"]
         meta = _http_get_json(f"https://registry.npmjs.org/{pkg}", timeout=15)
         versions_dict = meta.get("versions", {})
-        all_versions = list(versions_dict.keys())
-        if not all_versions:
+        all_versions = [v for v in versions_dict.keys() if "-" not in v] or list(versions_dict.keys())
+        if len(all_versions) < 2:
             return []
 
         latest_ver = meta.get("dist-tags", {}).get("latest", all_versions[-1])
         latest_idx = all_versions.index(latest_ver) if latest_ver in all_versions else len(all_versions) - 1
 
-        # Compare against a recent prior version (up to 5 releases back to catch recent diffs)
-        prev_idx = max(0, latest_idx - 5)
-        prev_ver = all_versions[prev_idx]
+        # Diff consecutive adjacent releases over the last 4 versions (v[i-1] -> v[i])
+        # Only emit a card for version transitions that genuinely added brand-new model IDs,
+        # stamped with the exact release time of v[i] (never re-triggering on empty patch bumps!).
+        start_idx = max(1, latest_idx - 3)
+        cards: List[Dict[str, Any]] = []
+        pkg_short = pkg.split("/")[-1].replace("-", " ").title()
+        times = meta.get("time", {})
 
-        latest_tar = versions_dict[latest_ver]["dist"]["tarball"]
+        prev_ver = all_versions[start_idx - 1]
         prev_tar = versions_dict[prev_ver]["dist"]["tarball"]
-
-        latest_models = self._extract_npm_tarball_models(pkg, latest_ver, latest_tar)
         prev_models = self._extract_npm_tarball_models(pkg, prev_ver, prev_tar)
 
-        added = latest_models - prev_models
-        display_models = sorted(added) if added else sorted(latest_models)[-6:]
-        if not display_models:
-            return []
+        for idx in range(start_idx, latest_idx + 1):
+            curr_ver = all_versions[idx]
+            curr_tar = versions_dict[curr_ver]["dist"]["tarball"]
+            curr_models = self._extract_npm_tarball_models(pkg, curr_ver, curr_tar)
+            added = sorted(curr_models - prev_models)
+            if added:
+                title = (
+                    f"{pkg_short} ({infer_family_title(added)})"
+                    if len(added) == 1
+                    else f"{pkg_short} v{curr_ver} (+{len(added)} Models)"
+                )
+                cards.append(
+                    {
+                        "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"npm-{pkg}-{prev_ver}-{curr_ver}"),
+                        "category": "cli-sdk-diff",
+                        "scanner": "npm",
+                        "header": cfg["header"],
+                        "title": title,
+                        "subtitle": cfg["subtitle"],
+                        "build_label": "Package Diff",
+                        "build_transition": f"{prev_ver} -> {curr_ver}",
+                        "old_version": prev_ver,
+                        "new_version": curr_ver,
+                        "models": [{"id": mid, "name": humanize_model_id(mid)} for mid in added[:10]],
+                        "evidence": cfg["evidence"],
+                        "source_text": cfg["source_text"],
+                        "disclaimer_1": "Verified differences between consecutive published npm package builds.",
+                        "disclaimer_2": "Compiled-in names and identifiers. This does not confirm model rollout or account access.",
+                        "provider_name": cfg["header"].split("·")[-1].strip(),
+                        "provider_slug": cfg["provider_slug"],
+                        "accent_color": cfg["accent_color"],
+                        "links": [
+                            {"label": "Public npm feed", "url": f"https://www.npmjs.com/package/{pkg}?activeTab=versions"},
+                            {"label": "Official tarball", "url": curr_tar},
+                        ],
+                        "detected_at": times.get(curr_ver, datetime.now(timezone.utc).isoformat()),
+                    }
+                )
+            prev_ver = curr_ver
+            prev_models = curr_models
 
-        is_diff = bool(added)
-        transition = f"{prev_ver} -> {latest_ver}" if is_diff else f"{latest_ver} (Latest Active Identifiers)"
-        pkg_short = pkg.split("/")[-1].replace("-", " ").title()
-        title = f"{pkg_short} ({infer_family_title(display_models)})" if len(display_models) == 1 else f"{pkg_short} v{latest_ver} Models"
-
-        return [
-            {
-                "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"npm-{pkg}-{latest_ver}"),
-                "category": "cli-sdk-diff",
-                "scanner": "npm",
-                "header": cfg["header"],
-                "title": title,
-                "subtitle": cfg["subtitle"] if is_diff else "Verified compiled-in CLI/SDK model identifiers",
-                "build_label": "Package",
-                "build_transition": transition,
-                "old_version": prev_ver,
-                "new_version": latest_ver,
-                "models": [{"id": mid, "name": humanize_model_id(mid)} for mid in display_models[:10]],
-                "evidence": cfg["evidence"],
-                "source_text": cfg["source_text"],
-                "disclaimer_1": "Verified differences between published npm package builds."
-                if is_diff
-                else "Verified model identifiers bundled in the latest official npm release.",
-                "disclaimer_2": "Compiled-in names and identifiers. This does not confirm model rollout or account access.",
-                "provider_name": cfg["header"].split("·")[-1].strip(),
-                "provider_slug": cfg["provider_slug"],
-                "accent_color": cfg["accent_color"],
-                "links": [
-                    {"label": "Public npm feed", "url": f"https://www.npmjs.com/package/{pkg}?activeTab=versions"},
-                    {"label": "Official tarball", "url": latest_tar},
-                ],
-                "detected_at": meta.get("time", {}).get(latest_ver, datetime.now(timezone.utc).isoformat()),
-            }
-        ]
+        return cards
 
     def scan(self) -> List[Dict[str, Any]]:
         cards: List[Dict[str, Any]] = []
