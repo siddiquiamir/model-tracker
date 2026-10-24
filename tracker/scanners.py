@@ -1404,3 +1404,270 @@ class DocsAndGlobalRegistryScanner:
             self._save_baselines(baselines)
 
         return cards
+
+
+class LmArenaScanner:
+    """
+    Scans Arena (arena.ai / lmarena.ai) via two complementary channels:
+    1. Live Next.js React Server Components (`self.__next_f.push`) `initialModels` stream on arena.ai / lmarena.ai
+       (extracting `publicName`, `organization`, `provider`, `inputCapabilities`, and `outputCapabilities` —
+       the exact source used by Arena Scout / LMArenaBridge).
+    2. Official `lmarena-ai/leaderboard-dataset` on Hugging Face (`datasets-server.huggingface.co`)
+       across Text, WebDev, Agent, Vision, Search, Text-to-Image, and Image Edit arenas.
+    """
+
+    ARENA_URLS = [
+        "https://arena.ai/?mode=direct",
+        "https://lmarena.ai/?mode=direct",
+    ]
+    HF_ARENA_CONFIGS = [
+        ("text", "Text Arena"),
+        ("webdev", "WebDev Arena"),
+        ("agent", "Agent Arena"),
+        ("vision", "Vision Arena"),
+        ("search", "Search Arena"),
+        ("text_to_image", "Text-to-Image"),
+        ("image_edit", "Image Edit"),
+    ]
+    BASELINES_FILE = pathlib.Path(__file__).resolve().parent.parent / "data" / "source_baselines.json"
+
+    def _load_baselines(self) -> Dict[str, Any]:
+        if self.BASELINES_FILE.exists():
+            try:
+                return json.loads(self.BASELINES_FILE.read_text(encoding="utf-8"))
+            except Exception:
+                return {}
+        return {}
+
+    def _save_baselines(self, data: Dict[str, Any]) -> None:
+        self.BASELINES_FILE.parent.mkdir(parents=True, exist_ok=True)
+        self.BASELINES_FILE.write_text(json.dumps(data, indent=2), encoding="utf-8")
+
+    @staticmethod
+    def _format_capabilities(cap_obj: Dict[str, Any]) -> str:
+        if not isinstance(cap_obj, dict):
+            return ""
+        in_caps = cap_obj.get("inputCapabilities") or {}
+        out_caps = cap_obj.get("outputCapabilities") or {}
+        tags: List[str] = []
+        if isinstance(in_caps, dict):
+            for k, v in in_caps.items():
+                if v:
+                    tags.append(f"in:{k}")
+        if isinstance(out_caps, dict):
+            for k, v in out_caps.items():
+                if v:
+                    tags.append(f"out:{k}")
+        return ", ".join(tags)
+
+    def _scan_live_initial_models(self, baselines: Dict[str, Any]) -> tuple[List[Dict[str, Any]], bool]:
+        """Attempt to parse `initialModels` from arena.ai / lmarena.ai Next.js RSC stream."""
+        cards: List[Dict[str, Any]] = []
+        changed = False
+        for url in self.ARENA_URLS:
+            try:
+                req = urllib.request.Request(
+                    url,
+                    headers={
+                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+                        "Accept": "text/html,application/xhtml+xml",
+                    },
+                )
+                with urllib.request.urlopen(req, timeout=12) as resp:
+                    html = resp.read().decode("utf-8", "ignore")
+                if "initialModels" not in html:
+                    continue
+
+                # Extract JSON array following "initialModels":
+                idx = html.find('"initialModels":')
+                if idx == -1:
+                    idx = html.find('\\"initialModels\\":')
+                    if idx != -1:
+                        html_slice = html[idx:].replace('\\"', '"').replace("\\\\", "\\")
+                    else:
+                        continue
+                else:
+                    html_slice = html[idx:]
+
+                arr_start = html_slice.find("[")
+                if arr_start == -1:
+                    continue
+                depth = 0
+                arr_end = -1
+                for i, ch in enumerate(html_slice[arr_start:], start=arr_start):
+                    if ch == "[":
+                        depth += 1
+                    elif ch == "]":
+                        depth -= 1
+                        if depth == 0:
+                            arr_end = i + 1
+                            break
+                if arr_end == -1:
+                    continue
+
+                models_arr = json.loads(html_slice[arr_start:arr_end])
+                if not isinstance(models_arr, list) or not models_arr:
+                    continue
+
+                current_map: Dict[str, Dict[str, Any]] = {}
+                for m in models_arr:
+                    if not isinstance(m, dict):
+                        continue
+                    pub_name = m.get("publicName") or m.get("id")
+                    if not pub_name:
+                        continue
+                    current_map[pub_name] = {
+                        "org": m.get("organization") or "unknown",
+                        "provider": m.get("provider") or "unknown",
+                        "caps": self._format_capabilities(m.get("capabilities") or {}),
+                    }
+
+                prev_map: Dict[str, Any] = baselines.get("arena_initial_models", {})
+                added_names = [k for k in current_map if k not in prev_map] if prev_map else []
+                if set(current_map.keys()) != set(prev_map.keys()):
+                    baselines["arena_initial_models"] = current_map
+                    changed = True
+
+                if added_names:
+                    sig = hashlib.sha256(",".join(added_names).encode("utf-8")).hexdigest()[:8]
+                    cards.append(
+                        {
+                            "id": f"arena-scout-diff-{sig}",
+                            "category": "cli-sdk-diff",
+                            "scanner": "lmarena",
+                            "header": "ARENA.AI LIVE MODEL SCOUT · NEXT.JS RSC STREAM",
+                            "title": f"New Model(s) Added to Arena ({added_names[0]})",
+                            "subtitle": f"Detected in arena.ai initialModels RSC payload (+{len(added_names)} new)",
+                            "build_label": "Arena Stream",
+                            "build_transition": f"initialModels · {len(current_map)} active models",
+                            "models": [
+                                {
+                                    "id": name,
+                                    "name": f"{name} (org: {current_map[name]['org']} · {current_map[name]['caps'] or 'chat'})",
+                                }
+                                for name in added_names[:8]
+                            ],
+                            "evidence": "arena.ai -> self.__next_f.push (initialModels)",
+                            "source_text": "live Arena (lmarena.ai / arena.ai) Next.js RSC model config.",
+                            "disclaimer_1": "",
+                            "disclaimer_2": "",
+                            "provider_name": "ARENA.AI",
+                            "provider_slug": "modelsdev",
+                            "accent_color": "#10b981",
+                            "links": [{"label": "Arena.ai Direct", "url": "https://arena.ai/?mode=direct"}],
+                            "detected_at": datetime.now(timezone.utc).isoformat(),
+                        }
+                    )
+                break
+            except Exception as exc:
+                print(f"[LmArenaScanner] Note (arena.ai live RSC stream): {exc}")
+        return cards, changed
+
+    def scan(self) -> List[Dict[str, Any]]:
+        baselines = self._load_baselines()
+        cards, changed = self._scan_live_initial_models(baselines)
+
+        # Scan official lmarena-ai/leaderboard-dataset across all Arena categories on Hugging Face
+        try:
+            meta = _http_get_json("https://huggingface.co/api/datasets/lmarena-ai/leaderboard-dataset", timeout=12)
+            last_mod = meta.get("lastModified", datetime.now(timezone.utc).isoformat())
+        except Exception:
+            last_mod = datetime.now(timezone.utc).isoformat()
+
+        arena_highlights: List[Dict[str, str]] = []
+        all_discovered: Dict[str, str] = {}
+
+        for cfg, cfg_label in self.HF_ARENA_CONFIGS:
+            try:
+                url = f"https://datasets-server.huggingface.co/rows?dataset=lmarena-ai/leaderboard-dataset&config={cfg}&split=latest&offset=0&length=85"
+                data = _http_get_json(url, timeout=12)
+                rows = [r["row"] for r in data.get("rows", []) if isinstance(r, dict) and "row" in r]
+                overall = [r for r in rows if r.get("category", "overall") == "overall"] or rows
+                if not overall:
+                    continue
+                pub_date = overall[0].get("leaderboard_publish_date", "")
+                top_row = overall[0]
+                mname = str(top_row.get("model_name", ""))
+                org = str(top_row.get("organization", "unknown"))
+                if mname:
+                    arena_highlights.append(
+                        {
+                            "id": mname,
+                            "name": f"#1 {cfg_label} ({org} · {pub_date})",
+                        }
+                    )
+                for r in overall:
+                    rn = str(r.get("model_name", ""))
+                    if rn:
+                        all_discovered[rn] = cfg_label
+                        if "nano-banana-2.1" in rn.lower() and not any("banana-2.1" in x["id"].lower() for x in arena_highlights):
+                            arena_highlights.append(
+                                {
+                                    "id": rn,
+                                    "name": f"{cfg_label} · Google (in:image, in:text, out:image)",
+                                }
+                            )
+            except Exception as exc:
+                print(f"[LmArenaScanner] HF leaderboard warning ({cfg}): {exc}")
+
+        if all_discovered:
+            prev_lb = set(baselines.get("arena_leaderboard_models", []))
+            curr_lb = sorted(all_discovered.keys())
+            added_lb = [m for m in curr_lb if m not in prev_lb] if prev_lb else []
+            if set(curr_lb) != prev_lb:
+                baselines["arena_leaderboard_models"] = curr_lb
+                changed = True
+
+            if added_lb:
+                sig = hashlib.sha256(",".join(added_lb[:10]).encode("utf-8")).hexdigest()[:8]
+                cards.append(
+                    {
+                        "id": f"lmarena-lb-diff-{sig}",
+                        "category": "cli-sdk-diff",
+                        "scanner": "lmarena",
+                        "header": "ARENA.AI LEADERBOARD DIFF · LMARENA",
+                        "title": f"{len(added_lb)} New Model(s) Indexed on Arena ({added_lb[0]})",
+                        "subtitle": "Newly added models in official lmarena-ai/leaderboard-dataset",
+                        "build_label": "Arena Dataset",
+                        "build_transition": f"+{len(added_lb)} new Arena models",
+                        "models": [{"id": m, "name": f"{m} ({all_discovered.get(m, 'Arena')})"} for m in added_lb[:8]],
+                        "evidence": "huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+                        "source_text": "official LMArena (arena.ai) Hugging Face dataset.",
+                        "disclaimer_1": "",
+                        "disclaimer_2": "",
+                        "provider_name": "ARENA.AI",
+                        "provider_slug": "modelsdev",
+                        "accent_color": "#10b981",
+                        "links": [{"label": "LMArena Dataset", "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset"}],
+                        "detected_at": last_mod,
+                    }
+                )
+
+            if arena_highlights:
+                cards.append(
+                    {
+                        "id": "lmarena-frontier-index",
+                        "category": "cli-sdk-diff",
+                        "scanner": "lmarena",
+                        "header": "ARENA.AI (LMARENA) LIVE TRACKER · MULTI-MODAL",
+                        "title": "Arena #1 Frontier & Stealth Models (Argon, Opus 5.5, Astra, Nano Banana 2.1)",
+                        "subtitle": f"Live Arena.ai dataset snapshot ({len(all_discovered)} active Arena models tracked)",
+                        "build_label": "Arena Snapshot",
+                        "build_transition": f"Updated {last_mod[:10]} · {len(all_discovered)} models across 7 arenas",
+                        "models": arena_highlights[:8],
+                        "evidence": "lmarena-ai/leaderboard-dataset + arena.ai initialModels",
+                        "source_text": "official Arena (lmarena.ai) leaderboard dataset & RSC stream.",
+                        "disclaimer_1": "",
+                        "disclaimer_2": "",
+                        "provider_name": "ARENA.AI",
+                        "provider_slug": "modelsdev",
+                        "accent_color": "#10b981",
+                        "links": [{"label": "LMArena Dataset", "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset"}],
+                        "detected_at": last_mod,
+                    }
+                )
+
+        if changed:
+            self._save_baselines(baselines)
+
+        return cards

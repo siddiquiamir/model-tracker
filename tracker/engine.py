@@ -14,6 +14,7 @@ from tracker.scanners import (
     DocsAndGlobalRegistryScanner,
     HuggingFaceOpenSourceScanner,
     KimiCodeAndRouterScanner,
+    LmArenaScanner,
     NpmCliAndSdkScanner,
 )
 
@@ -35,6 +36,7 @@ class TrackerEngine:
         self.npm_scanner = NpmCliAndSdkScanner()
         self.kimi_router_scanner = KimiCodeAndRouterScanner()
         self.docs_scanner = DocsAndGlobalRegistryScanner()
+        self.arena_scanner = LmArenaScanner()
         self.hf_scanner = HuggingFaceOpenSourceScanner()
 
     def load_seen_ids(self) -> Set[str]:
@@ -97,6 +99,9 @@ class TrackerEngine:
         print("[ModelPulse] Scanning Cursor Docs, Anthropic/Gemini/Vertex/Bedrock Docs, models.dev & LiteLLM...")
         docs_cards = self.docs_scanner.scan()
 
+        print("[ModelPulse] Scanning Arena.ai (LMArena) live RSC initialModels & Hugging Face leaderboard dataset...")
+        arena_cards = self.arena_scanner.scan()
+
         print("[ModelPulse] Scanning Hugging Face Hub 14 frontier open-source orgs...")
         hf_cards = self.hf_scanner.scan()
 
@@ -112,7 +117,7 @@ class TrackerEngine:
 
         ag_cards.sort(key=_ag_sort_key)
 
-        raw_cards: List[Dict[str, Any]] = [*acp_cards, *ag_cards, *kr_cards, *docs_cards, *npm_cards, *hf_cards]
+        raw_cards: List[Dict[str, Any]] = [*acp_cards, *ag_cards, *arena_cards, *kr_cards, *docs_cards, *npm_cards, *hf_cards]
 
         # Strict deduplication by card ID and by (scanner, header, model_ids_tuple)
         all_cards: List[Dict[str, Any]] = []

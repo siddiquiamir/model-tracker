@@ -173,6 +173,10 @@ def clean_go_model_id(raw: str) -> str:
         elif tok_l in VALID_MODEL_TOKENS:
             out.append(tok_l)
         else:
+            num_m = re.match(r"^([0-9]+(?:\.[0-9]+)?)[a-z_]", tok_l)
+            if num_m:
+                out.append(num_m.group(1))
+                break
             matched_prefix = None
             for vt in sorted(VALID_MODEL_TOKENS, key=len, reverse=True):
                 if tok_l.startswith(vt) and len(tok_l) > len(vt):
