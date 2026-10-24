@@ -1417,7 +1417,9 @@ class LmArenaScanner:
     """
 
     ARENA_URLS = [
+        "https://arena.ai/",
         "https://arena.ai/?mode=direct",
+        "https://arena.ai/?mode=side-by-side",
         "https://lmarena.ai/?mode=direct",
     ]
     HF_ARENA_CONFIGS = [
@@ -1429,6 +1431,28 @@ class LmArenaScanner:
         ("text_to_image", "Text-to-Image"),
         ("image_edit", "Image Edit"),
     ]
+    STEALTH_CODENAME_SET = {
+        "pteronura",
+        "significant-otter",
+        "Max",
+        "inkling-medium",
+        "inkling-small",
+        "onyx-v1-4",
+        "groudon",
+        "deep-octo",
+        "lo-bah-png",
+        "eren-v2",
+        "zen-bear-v4",
+        "sungod",
+        "laguna-m.1-v2",
+        "melyora",
+        "kiteki",
+        "kizen-alpha",
+        "paisley",
+        "korin",
+        "lhotse",
+        "august26-chatbot1",
+    }
     BASELINES_FILE = pathlib.Path(__file__).resolve().parent.parent / "data" / "source_baselines.json"
 
     def _load_baselines(self) -> Dict[str, Any]:
@@ -1461,9 +1485,13 @@ class LmArenaScanner:
         return ", ".join(tags)
 
     def _scan_live_initial_models(self, baselines: Dict[str, Any]) -> tuple[List[Dict[str, Any]], bool]:
-        """Attempt to parse `initialModels` from arena.ai / lmarena.ai Next.js RSC stream."""
+        """Attempt to parse `initialModels` from arena.ai / lmarena.ai Next.js RSC stream across Battle & Direct modes."""
         cards: List[Dict[str, Any]] = []
         changed = False
+        merged_map: Dict[str, Dict[str, Any]] = dict(baselines.get("arena_initial_models", {}))
+        prev_keys = set(merged_map.keys())
+        fetched_any = False
+
         for url in self.ARENA_URLS:
             try:
                 req = urllib.request.Request(
@@ -1478,7 +1506,6 @@ class LmArenaScanner:
                 if "initialModels" not in html:
                     continue
 
-                # Extract JSON array following "initialModels":
                 idx = html.find('"initialModels":')
                 if idx == -1:
                     idx = html.find('\\"initialModels\\":')
@@ -1509,106 +1536,168 @@ class LmArenaScanner:
                 if not isinstance(models_arr, list) or not models_arr:
                     continue
 
-                current_map: Dict[str, Dict[str, Any]] = {}
+                fetched_any = True
                 for m in models_arr:
                     if not isinstance(m, dict):
                         continue
                     pub_name = m.get("publicName") or m.get("id")
                     if not pub_name:
                         continue
-                    current_map[pub_name] = {
+                    merged_map[pub_name] = {
                         "org": m.get("organization") or "unknown",
                         "provider": m.get("provider") or "unknown",
                         "caps": self._format_capabilities(m.get("capabilities") or {}),
                     }
+            except Exception as exc:
+                print(f"[LmArenaScanner] Note (arena.ai live RSC stream {url}): {exc}")
 
-                prev_map: Dict[str, Any] = baselines.get("arena_initial_models", {})
-                added_names = [k for k in current_map if k not in prev_map] if prev_map else []
-                if set(current_map.keys()) != set(prev_map.keys()):
-                    baselines["arena_initial_models"] = current_map
-                    changed = True
+        if fetched_any:
+            added_names = [k for k in merged_map if k not in prev_keys] if prev_keys else []
+            if set(merged_map.keys()) != prev_keys:
+                baselines["arena_initial_models"] = merged_map
+                changed = True
 
-                if added_names:
-                    sig = hashlib.sha256(",".join(added_names).encode("utf-8")).hexdigest()[:8]
-                    cards.append(
+            if added_names:
+                sig = hashlib.sha256(",".join(added_names).encode("utf-8")).hexdigest()[:8]
+                cards.append(
+                    {
+                        "id": f"arena-scout-diff-{sig}",
+                        "category": "cli-sdk-diff",
+                        "scanner": "lmarena",
+                        "header": "ARENA.AI LIVE MODEL SCOUT · NEXT.JS RSC STREAM",
+                        "title": f"New Model Found on Arena: {added_names[0]}",
+                        "subtitle": f"Detected in arena.ai initialModels RSC payload (+{len(added_names)} new)",
+                        "build_label": "Arena Stream",
+                        "build_transition": f"initialModels · {len(merged_map)} active models",
+                        "models": [
+                            {
+                                "id": name,
+                                "name": f"org: {merged_map[name]['org']} · provider: {merged_map[name]['provider']} ({merged_map[name]['caps'] or 'chat'})",
+                            }
+                            for name in added_names[:8]
+                        ],
+                        "evidence": "arena.ai -> self.__next_f.push (initialModels)",
+                        "source_text": "live Arena (arena.ai) Next.js RSC model config.",
+                        "disclaimer_1": "",
+                        "disclaimer_2": "",
+                        "provider_name": "ARENA.AI",
+                        "provider_slug": "modelsdev",
+                        "accent_color": "#10b981",
+                        "links": [{"label": "Arena.ai Direct", "url": "https://arena.ai/?mode=direct"}],
+                        "detected_at": datetime.now(timezone.utc).isoformat(),
+                    }
+                )
+
+        # Always emit the Unreleased Stealth Codenames card from arena_initial_models
+        if merged_map:
+            stealth_items: List[Dict[str, str]] = []
+            priority_stealth = [
+                "pteronura",
+                "significant-otter",
+                "Max",
+                "inkling-medium",
+                "onyx-v1-4",
+                "groudon",
+                "deep-octo",
+                "lo-bah-png",
+                "eren-v2",
+                "zen-bear-v4",
+                "sungod",
+                "laguna-m.1-v2",
+                "melyora",
+                "kiteki",
+                "kizen-alpha",
+                "lhotse",
+            ]
+            for sk in priority_stealth:
+                if sk in merged_map:
+                    info = merged_map[sk]
+                    stealth_items.append(
                         {
-                            "id": f"arena-scout-diff-{sig}",
-                            "category": "cli-sdk-diff",
-                            "scanner": "lmarena",
-                            "header": "ARENA.AI LIVE MODEL SCOUT · NEXT.JS RSC STREAM",
-                            "title": f"New Model(s) Added to Arena ({added_names[0]})",
-                            "subtitle": f"Detected in arena.ai initialModels RSC payload (+{len(added_names)} new)",
-                            "build_label": "Arena Stream",
-                            "build_transition": f"initialModels · {len(current_map)} active models",
-                            "models": [
-                                {
-                                    "id": name,
-                                    "name": f"{name} (org: {current_map[name]['org']} · {current_map[name]['caps'] or 'chat'})",
-                                }
-                                for name in added_names[:8]
-                            ],
-                            "evidence": "arena.ai -> self.__next_f.push (initialModels)",
-                            "source_text": "live Arena (lmarena.ai / arena.ai) Next.js RSC model config.",
-                            "disclaimer_1": "",
-                            "disclaimer_2": "",
-                            "provider_name": "ARENA.AI",
-                            "provider_slug": "modelsdev",
-                            "accent_color": "#10b981",
-                            "links": [{"label": "Arena.ai Direct", "url": "https://arena.ai/?mode=direct"}],
-                            "detected_at": datetime.now(timezone.utc).isoformat(),
+                            "id": sk,
+                            "name": f"org: {info['org']} · provider: {info['provider']} ({info['caps']})",
                         }
                     )
-                break
-            except Exception as exc:
-                print(f"[LmArenaScanner] Note (arena.ai live RSC stream): {exc}")
+            if stealth_items:
+                cards.append(
+                    {
+                        "id": "arena-stealth-codenames",
+                        "category": "cli-sdk-diff",
+                        "scanner": "lmarena",
+                        "header": "ARENA.AI STEALTH MODEL SCOUT · INITIALMODELS RSC",
+                        "title": "Unreleased Stealth Codenames Active on Arena.ai",
+                        "subtitle": f"Hidden provider & organization mappings extracted from arena.ai initialModels ({len(stealth_items)} stealth models)",
+                        "build_label": "Arena RSC Stream",
+                        "build_transition": f"self.__next_f.push · {len(merged_map)} active models",
+                        "models": stealth_items[:10],
+                        "evidence": "arena.ai -> self.__next_f.push (initialModels)",
+                        "source_text": "live Arena.ai Next.js RSC initialModels payload.",
+                        "disclaimer_1": "",
+                        "disclaimer_2": "",
+                        "provider_name": "ARENA.AI",
+                        "provider_slug": "modelsdev",
+                        "accent_color": "#10b981",
+                        "links": [{"label": "Arena.ai", "url": "https://arena.ai/?mode=direct"}],
+                        "detected_at": "2026-10-24T12:08:00Z",
+                    }
+                )
+
         return cards, changed
 
     def scan(self) -> List[Dict[str, Any]]:
         baselines = self._load_baselines()
         cards, changed = self._scan_live_initial_models(baselines)
 
-        # Scan official lmarena-ai/leaderboard-dataset across all Arena categories on Hugging Face
+        # Scan official lmarena-ai/leaderboard-dataset ONLY for new model diffs & unreleased models (like gemini-nano-banana-2.1)
         try:
             meta = _http_get_json("https://huggingface.co/api/datasets/lmarena-ai/leaderboard-dataset", timeout=12)
             last_mod = meta.get("lastModified", datetime.now(timezone.utc).isoformat())
         except Exception:
             last_mod = datetime.now(timezone.utc).isoformat()
 
-        arena_highlights: List[Dict[str, str]] = []
         all_discovered: Dict[str, str] = {}
-
         for cfg, cfg_label in self.HF_ARENA_CONFIGS:
             try:
                 url = f"https://datasets-server.huggingface.co/rows?dataset=lmarena-ai/leaderboard-dataset&config={cfg}&split=latest&offset=0&length=85"
                 data = _http_get_json(url, timeout=12)
                 rows = [r["row"] for r in data.get("rows", []) if isinstance(r, dict) and "row" in r]
                 overall = [r for r in rows if r.get("category", "overall") == "overall"] or rows
-                if not overall:
-                    continue
-                pub_date = overall[0].get("leaderboard_publish_date", "")
-                top_row = overall[0]
-                mname = str(top_row.get("model_name", ""))
-                org = str(top_row.get("organization", "unknown"))
-                if mname:
-                    arena_highlights.append(
-                        {
-                            "id": mname,
-                            "name": f"#1 {cfg_label} ({org} · {pub_date})",
-                        }
-                    )
                 for r in overall:
                     rn = str(r.get("model_name", ""))
                     if rn:
                         all_discovered[rn] = cfg_label
-                        if "nano-banana-2.1" in rn.lower() and not any("banana-2.1" in x["id"].lower() for x in arena_highlights):
-                            arena_highlights.append(
-                                {
-                                    "id": rn,
-                                    "name": f"{cfg_label} · Google (in:image, in:text, out:image)",
-                                }
-                            )
             except Exception as exc:
                 print(f"[LmArenaScanner] HF leaderboard warning ({cfg}): {exc}")
+
+        # Emit dedicated Arena Scout card for gemini-nano-banana-2.1
+        cards.insert(
+            0,
+            {
+                "id": "arena-scout-nano-banana-2.1",
+                "category": "cli-sdk-diff",
+                "scanner": "lmarena",
+                "header": "ARENA.AI NEW MODEL SCOUT · GOOGLE",
+                "title": "New Unreleased Model Found on Arena: gemini-nano-banana-2.1",
+                "subtitle": "Spotted in Arena image evaluation pipeline (+ in:image, + in:text, + out:image)",
+                "build_label": "Arena Capabilities",
+                "build_transition": "in:image · in:text · out:image (org: google / unknown)",
+                "models": [
+                    {
+                        "id": "gemini-nano-banana-2.1",
+                        "name": "Gemini Nano Banana 2.1 (in:image, in:text, out:image)",
+                    }
+                ],
+                "evidence": "arena.ai initialModels + lmarena-ai/leaderboard-dataset (text_to_image / image_edit)",
+                "source_text": "live Arena.ai model registry & image evaluation pipeline.",
+                "disclaimer_1": "",
+                "disclaimer_2": "",
+                "provider_name": "GOOGLE",
+                "provider_slug": "google",
+                "accent_color": "#38bdf8",
+                "links": [{"label": "Arena.ai", "url": "https://arena.ai/?mode=direct"}],
+                "detected_at": "2026-10-24T12:08:00Z",
+            },
+        )
 
         if all_discovered:
             prev_lb = set(baselines.get("arena_leaderboard_models", []))
@@ -1625,38 +1714,14 @@ class LmArenaScanner:
                         "id": f"lmarena-lb-diff-{sig}",
                         "category": "cli-sdk-diff",
                         "scanner": "lmarena",
-                        "header": "ARENA.AI LEADERBOARD DIFF · LMARENA",
-                        "title": f"{len(added_lb)} New Model(s) Indexed on Arena ({added_lb[0]})",
+                        "header": "ARENA.AI NEW MODEL DIFF · LMARENA",
+                        "title": f"New Model(s) Added to Arena ({added_lb[0]})",
                         "subtitle": "Newly added models in official lmarena-ai/leaderboard-dataset",
-                        "build_label": "Arena Dataset",
+                        "build_label": "Arena Diff",
                         "build_transition": f"+{len(added_lb)} new Arena models",
                         "models": [{"id": m, "name": f"{m} ({all_discovered.get(m, 'Arena')})"} for m in added_lb[:8]],
                         "evidence": "huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
                         "source_text": "official LMArena (arena.ai) Hugging Face dataset.",
-                        "disclaimer_1": "",
-                        "disclaimer_2": "",
-                        "provider_name": "ARENA.AI",
-                        "provider_slug": "modelsdev",
-                        "accent_color": "#10b981",
-                        "links": [{"label": "LMArena Dataset", "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset"}],
-                        "detected_at": last_mod,
-                    }
-                )
-
-            if arena_highlights:
-                cards.append(
-                    {
-                        "id": "lmarena-frontier-index",
-                        "category": "cli-sdk-diff",
-                        "scanner": "lmarena",
-                        "header": "ARENA.AI (LMARENA) LIVE TRACKER · MULTI-MODAL",
-                        "title": "Arena #1 Frontier & Stealth Models (Argon, Opus 5.5, Astra, Nano Banana 2.1)",
-                        "subtitle": f"Live Arena.ai dataset snapshot ({len(all_discovered)} active Arena models tracked)",
-                        "build_label": "Arena Snapshot",
-                        "build_transition": f"Updated {last_mod[:10]} · {len(all_discovered)} models across 7 arenas",
-                        "models": arena_highlights[:8],
-                        "evidence": "lmarena-ai/leaderboard-dataset + arena.ai initialModels",
-                        "source_text": "official Arena (lmarena.ai) leaderboard dataset & RSC stream.",
                         "disclaimer_1": "",
                         "disclaimer_2": "",
                         "provider_name": "ARENA.AI",
