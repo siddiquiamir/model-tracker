@@ -290,24 +290,16 @@
     .card-top {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       gap: 16px;
-    }
-
-    .card-header-label {
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      color: #fff;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
     }
 
     .card-title {
       font-size: 1.32rem;
       font-weight: 700;
       color: var(--link-blue);
-      margin-bottom: 10px;
+      margin-bottom: 0;
       text-decoration: none;
       display: inline-block;
     }
@@ -728,17 +720,9 @@
           <div>
             <div class="card-top">
               <div>
-                <div class="card-header-label">
-                  ${escapeHtml(card.header)}
-                  <span class="time-badge ${tInfo.cssClass}" title="Published / Detected: ${escapeHtml(tInfo.exactStr)}">
-                    ${escapeHtml(tInfo.badgeText)}
-                  </span>
-                  ${isUnread ? `<span class="unread-badge" data-html2canvas-ignore="true" title="New since your last visit">✨ UNREAD</span>` : ""}
-                </div>
                 <a class="card-title" href="${escapeHtml(primaryUrl)}" target="_blank" rel="noopener">
                   ${escapeHtml(card.title)}
                 </a>
-                <div class="card-subtitle">${escapeHtml(card.subtitle)}</div>
               </div>
               <div class="provider-logo">${logoSvg}</div>
             </div>
@@ -755,11 +739,7 @@
               ${modelsHtml}
             </ul>
 
-            <div class="card-meta-block">
-              <div><strong>Evidence:</strong> <span class="code-pill">${escapeHtml(card.evidence)}</span></div>
-              <div><strong>Source:</strong> ${escapeHtml(card.source_text)}</div>
-              <div><strong>Timestamp:</strong> <span style="color: var(--text-muted); font-size: 0.86rem;">${escapeHtml(tInfo.exactStr)}</span></div>
-            </div>
+            ${card.source_text ? `<div class="card-meta-block"><div><strong>Source:</strong> ${escapeHtml(card.source_text)}</div></div>` : ""}
           </div>
 
           <div class="card-footer-bar">
