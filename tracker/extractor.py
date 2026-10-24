@@ -29,6 +29,8 @@ VALID_MODEL_TOKENS: Set[str] = {
     "argon", "helium", "neon", "krypton", "xenon", "radon",
     "carbon", "lithium", "beryllium", "boron", "nitrogen", "oxygen", "silicon", "cobalt", "titanium",
     "fable", "opus", "sonnet", "haiku", "mythos", "orion", "strawberry", "behemoth",
+    "astra", "sol", "luna", "terra", "sunburst", "flare", "daybreak", "blue", "red", "translate",
+    "aurora", "vega", "stella", "eclipse", "sirius", "hyperion", "titan", "atlas",
     "solaris", "nebula", "cosmos", "nova", "apex", "zenith", "horizon", "pegasus",
     "maas", "tiered", "customtools", "windsurf", "debug", "clip", "er", "oss",
     "banana", "jarvis", "sc", "1p", "thoughts", "nemotron", "pixtral", "codestral",
@@ -58,7 +60,12 @@ EXCLUDED_EXACT: Set[str] = {
     "claude-opus",
     "claude-haiku",
     "claude-fable",
+    "claude-mythos",
+    "claude-tag",
     "gpt-oss",
+    "gpt-image",
+    "gpt-live",
+    "gpt-realtime",
 }
 
 
@@ -162,7 +169,7 @@ def clean_go_model_id(raw: str) -> str:
         ):
             return ""
     elif prefix == "gpt":
-        if not (re.fullmatch(r"[0-9]+(?:\.[0-9]+)?[a-z]?", second) or second in {"oss", "image", "audio", "realtime"}):
+        if not (re.fullmatch(r"[0-9]+(?:\.[0-9]+)?[a-z]?", second) or second in {"oss", "image", "audio", "realtime", "live", "daybreak"}):
             return ""
 
     out = [prefix, second]
@@ -205,8 +212,8 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
     split_lookahead = (
         r"(?=(?:"
         r"gemini-[0-9a-z]|"
-        r"claude-(?:opus|sonnet|haiku|fable|[a-z]{3,10}-[0-9])|"
-        r"gpt-(?:[56789]|oss|image|audio|realtime)|"
+        r"claude-(?:opus|sonnet|haiku|fable|mythos|[a-z]{3,10}-[0-9])|"
+        r"gpt-(?:[56789]|oss|image|audio|realtime|live|daybreak)|"
         r"o[56789]-(?:mini|preview|pro|high|low|medium)|"
         r"grok-[3456789]|"
         r"deepseek-(?:r[2345]|v[4567]|chat|coder|reasoner)|"
@@ -225,8 +232,8 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
     raw_pattern = re.compile(
         r"((?:"
         r"gemini-[0-9a-z][a-z0-9._-]{1,42}|"
-        r"claude-(?:opus|sonnet|haiku|fable|[a-z]{3,10})-[0-9][a-z0-9._-]{0,38}|"
-        r"gpt-(?:[56789]|oss|image)[a-z0-9._-]{1,35}|"
+        r"claude-(?:opus|sonnet|haiku|fable|mythos|[a-z]{3,10})-[0-9a-z][a-z0-9._-]{0,38}|"
+        r"gpt-(?:[56789]|oss|image|audio|realtime|live|daybreak)[a-z0-9._-]{1,35}|"
         r"o[56789]-(?:mini|preview|pro)[a-z0-9._-]{0,25}|"
         r"grok-[3456789][a-z0-9._-]{1,30}|"
         r"deepseek-(?:r[2345]|v[4567]|chat|coder|reasoner)[a-z0-9._-]{0,30}|"

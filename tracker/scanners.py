@@ -23,6 +23,7 @@ from tracker.extractor import (
     humanize_model_id,
     infer_family_title,
     infer_provider,
+    is_legacy_model_id,
 )
 
 ANTIGRAVITY_RELEASES_URL = "https://antigravity-hub-auto-updater-974169037036.us-central1.run.app/releases"
@@ -539,31 +540,37 @@ class AntigravityAcpScanner:
 
 class NpmCliAndSdkScanner:
     """
-    Scans official AI CLI & SDK packages on npm (@anthropic-ai/claude-code, @openai/codex,
-    @google/genai, @anthropic-ai/sdk, openai) by diffing consecutive tarballs across versions.
+    Scans official AI CLI & SDK packages on npm — including compiled native binaries
+    (@anthropic-ai/claude-code-linux-x64 on latest/next, @openai/codex on linux-x64 & alpha-linux-x64)
+    as well as JS/TS SDK tarballs (@google/genai, @anthropic-ai/sdk, openai).
+    Persists extracted binary model catalogs in data/source_baselines.json for instant repeat scans
+    and cross-checks against LiteLLM to prevent already-released models from firing false alerts.
     """
 
     PACKAGES = [
         {
-            "pkg": "@anthropic-ai/claude-code",
-            "header": "CLAUDE CODE CLI DIFF · ANTHROPIC",
-            "subtitle": "Verified npm CLI package comparison",
-            "evidence": "cli.js / package bundle",
-            "source_text": "official public npm registry tarball (@anthropic-ai/claude-code).",
+            "pkg": "@anthropic-ai/claude-code-linux-x64",
+            "mode": "claude_binary",
+            "header": "CLAUDE CODE NATIVE BINARY DIFF · ANTHROPIC",
+            "subtitle": "Verified Bun binary embedded model table comparison (latest + next)",
+            "evidence": "@anthropic-ai/claude-code-linux-x64 binary model registry",
+            "source_text": "official Anthropic Claude Code Linux x64 native binary tarball.",
             "provider_slug": "anthropic",
             "accent_color": "#f97316",
         },
         {
             "pkg": "@openai/codex",
-            "header": "OPENAI CODEX CLI DIFF · OPENAI",
-            "subtitle": "Verified npm CLI package comparison",
-            "evidence": "dist/cli.js / package bundle",
-            "source_text": "official public npm registry tarball (@openai/codex).",
+            "mode": "codex_binary",
+            "header": "OPENAI CODEX NATIVE BINARY DIFF · OPENAI",
+            "subtitle": "Verified Rust binary embedded models JSON comparison (stable + alpha)",
+            "evidence": "@openai/codex (-linux-x64 / alpha-linux-x64) embedded catalog",
+            "source_text": "official OpenAI Codex Linux x64 native Rust binary tarball.",
             "provider_slug": "openai",
             "accent_color": "#10b981",
         },
         {
             "pkg": "@google/genai",
+            "mode": "js_sdk",
             "header": "GOOGLE GENAI SDK DIFF · GOOGLE",
             "subtitle": "Verified official SDK package comparison",
             "evidence": "dist/index.d.ts / SDK bundle",
@@ -573,15 +580,17 @@ class NpmCliAndSdkScanner:
         },
         {
             "pkg": "openai",
+            "mode": "js_sdk",
             "header": "OPENAI OFFICIAL SDK DIFF · OPENAI",
             "subtitle": "Verified official TypeScript SDK model union comparison",
-            "evidence": "resources/models.d.ts / SDK bundle",
+            "evidence": "resources/shared.d.ts / SDK bundle",
             "source_text": "official public npm registry tarball (openai).",
             "provider_slug": "openai",
             "accent_color": "#10b981",
         },
         {
             "pkg": "@anthropic-ai/sdk",
+            "mode": "js_sdk",
             "header": "ANTHROPIC OFFICIAL SDK DIFF · ANTHROPIC",
             "subtitle": "Verified official TypeScript SDK model union comparison",
             "evidence": "resources/messages.d.ts / SDK bundle",
@@ -591,97 +600,193 @@ class NpmCliAndSdkScanner:
         },
     ]
 
-    def _extract_npm_tarball_models(self, pkg: str, version: str, tarball_url: str) -> Set[str]:
+    def __init__(self, baseline_file: Optional[pathlib.Path] = None) -> None:
+        root = pathlib.Path(__file__).resolve().parent.parent
+        self.baseline_file = baseline_file or (root / "data" / "source_baselines.json")
+
+    def _load_baselines(self) -> Dict[str, Any]:
+        if self.baseline_file.exists():
+            try:
+                return json.loads(self.baseline_file.read_text(encoding="utf-8"))
+            except Exception:
+                return {}
+        return {}
+
+    def _save_baselines(self, data: Dict[str, Any]) -> None:
+        self.baseline_file.parent.mkdir(parents=True, exist_ok=True)
+        self.baseline_file.write_text(json.dumps(data, indent=2), encoding="utf-8", newline="\n")
+
+    def _extract_npm_tarball_models(self, pkg: str, version: str, tarball_url: str, mode: str, bin_cache: Dict[str, List[str]]) -> Set[str]:
+        cache_id = f"{pkg}@{version}"
+        if cache_id in bin_cache:
+            return {m for m in bin_cache[cache_id] if not is_legacy_model_id(m)}
+
         CACHE_DIR.mkdir(parents=True, exist_ok=True)
-        # v3 cache key ensures legacy 2024/2025 IDs are never loaded from older cache files
-        slug = re.sub(r"[^a-zA-Z0-9._-]", "_", f"npm_v3_{pkg}_{version}")
+        slug = re.sub(r"[^a-zA-Z0-9._-]", "_", f"npm_v5_{pkg}_{version}")
         cache_file = CACHE_DIR / f"{slug}.json"
         if cache_file.exists():
             try:
-                return {m for m in json.loads(cache_file.read_text(encoding="utf-8")) if clean_go_model_id(m)}
+                cached = {m for m in json.loads(cache_file.read_text(encoding="utf-8")) if not is_legacy_model_id(m)}
+                if mode in {"claude_binary", "codex_binary"}:
+                    bin_cache[cache_id] = sorted(cached)
+                return cached
             except Exception:
                 pass
 
+        timeout_s = 60 if mode in {"claude_binary", "codex_binary"} else 20
         req = urllib.request.Request(tarball_url, headers={"User-Agent": "ModelPulse-Tracker/2.0"})
-        with urllib.request.urlopen(req, timeout=20) as resp:
+        with urllib.request.urlopen(req, timeout=timeout_s) as resp:
             tar_bytes = resp.read()
 
         models: Set[str] = set()
-        pattern = re.compile(
-            r"[\"']((?:"
-            r"claude-(?:opus|sonnet|haiku|fable|5|6)-[a-z0-9._-]{1,35}|"
-            r"gpt-(?:[56789]|oss|image|audio|realtime)[a-z0-9._-]{1,35}|"
-            r"o[56789]-(?:mini|preview|pro|deep-research)[a-z0-9._-]{0,25}|"
-            r"codex-[a-z0-9._-]{2,25}|"
-            r"gemini-[345][a-z0-9._-]{1,35}|"
-            r"imagen-[345][a-z0-9._-]{1,30}|"
-            r"veo-[2345][a-z0-9._-]{1,30}"
-            r"))[\"']"
-        )
 
-        with tarfile.open(fileobj=io.BytesIO(tar_bytes), mode="r:gz") as tf:
-            for member in tf.getmembers():
-                if member.isfile() and member.name.endswith((".js", ".mjs", ".cjs", ".d.ts")):
-                    fobj = tf.extractfile(member)
-                    if not fobj:
-                        continue
-                    text = fobj.read().decode("utf-8", "ignore")
-                    for m in pattern.finditer(text):
-                        cleaned = clean_go_model_id(m.group(1))
-                        if cleaned:
-                            models.add(cleaned)
+        if mode == "claude_binary":
+            with tarfile.open(fileobj=io.BytesIO(tar_bytes), mode="r:gz") as tf:
+                for member in tf.getmembers():
+                    if member.isfile() and member.size > 1_000_000:
+                        fobj = tf.extractfile(member)
+                        if not fobj:
+                            continue
+                        data = fobj.read()
+                        for m in re.finditer(rb'\{id:"(claude-[a-z0-9._-]+)",family:"[a-z0-9._-]+"', data):
+                            mid = m.group(1).decode("utf-8", "ignore")
+                            if not is_legacy_model_id(mid):
+                                models.add(mid)
+                        for m in re.finditer(rb'(?:us|global)\.anthropic\.(claude-[a-z0-9._-]+)', data):
+                            mid = m.group(1).decode("utf-8", "ignore").split(":")[0]
+                            if not is_legacy_model_id(mid):
+                                models.add(mid)
+            bin_cache[cache_id] = sorted(models)
+        elif mode == "codex_binary":
+            with tarfile.open(fileobj=io.BytesIO(tar_bytes), mode="r:gz") as tf:
+                for member in tf.getmembers():
+                    if member.isfile() and member.size > 1_000_000:
+                        fobj = tf.extractfile(member)
+                        if not fobj:
+                            continue
+                        data = fobj.read()
+                        for m in re.finditer(rb'\{\s*"slug":\s*"([a-z0-9._-]+)"', data):
+                            mid = m.group(1).decode("utf-8", "ignore")
+                            if not is_legacy_model_id(mid) and mid != "codex-auto-review":
+                                models.add(mid)
+            bin_cache[cache_id] = sorted(models)
+        else:
+            pattern = re.compile(
+                r"[\"']((?:"
+                r"claude-(?:opus|sonnet|haiku|fable|mythos|5|6)-[a-z0-9._-]{1,35}|"
+                r"gpt-(?:[56789]|oss|image|audio|realtime|live|daybreak)[a-z0-9._-]{1,35}|"
+                r"o[56789]-(?:mini|preview|pro|deep-research)[a-z0-9._-]{0,25}|"
+                r"codex-[a-z0-9._-]{2,25}|"
+                r"gemini-[345][a-z0-9._-]{1,35}|"
+                r"imagen-[345][a-z0-9._-]{1,30}|"
+                r"veo-[2345][a-z0-9._-]{1,30}"
+                r"))[\"']"
+            )
+            with tarfile.open(fileobj=io.BytesIO(tar_bytes), mode="r:gz") as tf:
+                for member in tf.getmembers():
+                    if member.isfile() and member.name.endswith((".js", ".mjs", ".cjs", ".d.ts")):
+                        fobj = tf.extractfile(member)
+                        if not fobj:
+                            continue
+                        text = fobj.read().decode("utf-8", "ignore")
+                        for m in pattern.finditer(text):
+                            cleaned = clean_go_model_id(m.group(1))
+                            if cleaned:
+                                models.add(cleaned)
 
         cache_file.write_text(json.dumps(sorted(models)), encoding="utf-8")
         return models
 
-    def scan_package(self, cfg: Dict[str, str]) -> List[Dict[str, Any]]:
-        pkg = cfg["pkg"]
-        meta = _http_get_json(f"https://registry.npmjs.org/{pkg}", timeout=15)
+    def _select_versions_to_diff(self, cfg: Dict[str, str], meta: Dict[str, Any]) -> List[str]:
+        mode = cfg.get("mode", "js_sdk")
         versions_dict = meta.get("versions", {})
+        dist_tags = meta.get("dist-tags", {})
+        times = meta.get("time", {})
+
+        if mode == "claude_binary":
+            stable_vers = [v for v in versions_dict.keys() if "-" not in v]
+            candidates = stable_vers[-2:] if len(stable_vers) >= 2 else stable_vers
+            for tag in ("stable", "latest", "next"):
+                tv = dist_tags.get(tag)
+                if tv and tv in versions_dict and tv not in candidates:
+                    candidates.append(tv)
+            candidates.sort(key=lambda v: times.get(v, ""))
+            return candidates[-3:]
+
+        if mode == "codex_binary":
+            linux_stable = [
+                v for v in versions_dict.keys()
+                if v.endswith("-linux-x64") and "-alpha" not in v and "-beta" not in v
+            ]
+            linux_stable.sort(key=lambda v: times.get(v, ""))
+            candidates = linux_stable[-2:] if len(linux_stable) >= 2 else linux_stable
+            for tag in ("linux-x64", "alpha-linux-x64"):
+                tv = dist_tags.get(tag)
+                if tv and tv in versions_dict and tv not in candidates:
+                    candidates.append(tv)
+            candidates.sort(key=lambda v: times.get(v, ""))
+            return candidates[-3:]
+
         all_versions = [v for v in versions_dict.keys() if "-" not in v] or list(versions_dict.keys())
         if len(all_versions) < 2:
             return []
-
-        latest_ver = meta.get("dist-tags", {}).get("latest", all_versions[-1])
+        latest_ver = dist_tags.get("latest", all_versions[-1])
         latest_idx = all_versions.index(latest_ver) if latest_ver in all_versions else len(all_versions) - 1
-
         start_idx = max(1, latest_idx - 4)
+        return all_versions[start_idx - 1 : latest_idx + 1]
+
+    def scan_package(self, cfg: Dict[str, str], bin_cache: Dict[str, List[str]], known_litellm: Set[str]) -> List[Dict[str, Any]]:
+        pkg = cfg["pkg"]
+        mode = cfg.get("mode", "js_sdk")
+        meta = _http_get_json(f"https://registry.npmjs.org/{pkg}", timeout=15)
+        versions_dict = meta.get("versions", {})
+        selected = self._select_versions_to_diff(cfg, meta)
+        if len(selected) < 2:
+            return []
+
         cards: List[Dict[str, Any]] = []
-        pkg_short = pkg.split("/")[-1].replace("-", " ").title()
+        pkg_short = pkg.split("/")[-1].replace("-linux-x64", "").replace("-", " ").title()
         times = meta.get("time", {})
 
-        prev_ver = all_versions[start_idx - 1]
+        prev_ver = selected[0]
         prev_tar = versions_dict[prev_ver]["dist"]["tarball"]
-        prev_models = self._extract_npm_tarball_models(pkg, prev_ver, prev_tar)
+        prev_models = self._extract_npm_tarball_models(pkg, prev_ver, prev_tar, mode, bin_cache)
 
-        for idx in range(start_idx, latest_idx + 1):
-            curr_ver = all_versions[idx]
+        for curr_ver in selected[1:]:
             curr_tar = versions_dict[curr_ver]["dist"]["tarball"]
-            curr_models = self._extract_npm_tarball_models(pkg, curr_ver, curr_tar)
-            added = sorted(curr_models - prev_models)
+            curr_models = self._extract_npm_tarball_models(pkg, curr_ver, curr_tar, mode, bin_cache)
+            raw_added = sorted(curr_models - prev_models)
+            # For native binaries, cross-check against LiteLLM so previously released models never fire false alerts
+            if mode in {"claude_binary", "codex_binary"} and known_litellm:
+                added = [m for m in raw_added if re.sub(r"[-._]", "", m.lower()) not in known_litellm]
+            else:
+                added = raw_added
+
             if added:
+                clean_prev = prev_ver.replace("-linux-x64", "")
+                clean_curr = curr_ver.replace("-linux-x64", "")
                 title = (
                     f"{pkg_short} ({infer_family_title(added)})"
                     if len(added) == 1
-                    else f"{pkg_short} v{curr_ver} (+{len(added)} Models)"
+                    else f"{pkg_short} v{clean_curr} (+{len(added)} Models)"
                 )
                 cards.append(
                     {
-                        "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"npm-{pkg}-{prev_ver}-{curr_ver}"),
+                        "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"npm-{pkg}-{clean_prev}-{clean_curr}"),
                         "category": "cli-sdk-diff",
                         "scanner": "npm",
                         "header": cfg["header"],
                         "title": title,
                         "subtitle": cfg["subtitle"],
                         "build_label": "Package Diff",
-                        "build_transition": f"{prev_ver} -> {curr_ver}",
-                        "old_version": prev_ver,
-                        "new_version": curr_ver,
+                        "build_transition": f"{clean_prev} -> {clean_curr}",
+                        "old_version": clean_prev,
+                        "new_version": clean_curr,
                         "models": [{"id": mid, "name": humanize_model_id(mid)} for mid in added[:10]],
                         "evidence": cfg["evidence"],
                         "source_text": cfg["source_text"],
-                        "disclaimer_1": "Verified differences between consecutive published npm package builds.",
-                        "disclaimer_2": "Compiled-in names and identifiers. This does not confirm model rollout or account access.",
+                        "disclaimer_1": "",
+                        "disclaimer_2": "",
                         "provider_name": cfg["header"].split("·")[-1].strip(),
                         "provider_slug": cfg["provider_slug"],
                         "accent_color": cfg["accent_color"],
@@ -698,14 +803,31 @@ class NpmCliAndSdkScanner:
         return cards
 
     def scan(self) -> List[Dict[str, Any]]:
+        baselines = self._load_baselines()
+        bin_cache: Dict[str, List[str]] = dict(baselines.get("npm_binary_models", {}))
+        orig_cache_keys = set(bin_cache.keys())
+        known_litellm = {re.sub(r"[-._]", "", k.split("/")[-1].lower()) for k in baselines.get("litellm_keys", [])}
+
         cards: List[Dict[str, Any]] = []
-        with ThreadPoolExecutor(max_workers=3) as pool:
-            futures = [pool.submit(self.scan_package, cfg) for cfg in self.PACKAGES]
-            for fut in as_completed(futures):
-                try:
-                    cards.extend(fut.result())
-                except Exception as exc:
-                    print(f"[NpmScanner] Warning: {exc}")
+        for cfg in self.PACKAGES:
+            try:
+                cards.extend(self.scan_package(cfg, bin_cache, known_litellm))
+            except Exception as exc:
+                print(f"[NpmScanner] Warning ({cfg['pkg']}): {exc}")
+
+        # Keep only the latest 6 cached binary versions per package so source_baselines.json stays tiny
+        if set(bin_cache.keys()) != orig_cache_keys:
+            trimmed: Dict[str, List[str]] = {}
+            by_pkg: Dict[str, List[str]] = {}
+            for k in sorted(bin_cache.keys()):
+                p = k.rsplit("@", 1)[0]
+                by_pkg.setdefault(p, []).append(k)
+            for p, keys in by_pkg.items():
+                for k in keys[-6:]:
+                    trimmed[k] = bin_cache[k]
+            baselines["npm_binary_models"] = trimmed
+            self._save_baselines(baselines)
+
         return cards
 
 
@@ -1024,15 +1146,26 @@ class DocsAndGlobalRegistryScanner:
             "link_url": "https://docs.cursor.com/en/models",
         },
         {
-            "key": "anthropic-docs",
-            "url": "https://docs.anthropic.com/llms.txt",
-            "header": "ANTHROPIC API DOCS RADAR · ANTHROPIC",
-            "title": "Anthropic API Docs Model Index",
-            "evidence": "docs.anthropic.com/llms.txt",
-            "source_text": "official Anthropic developer documentation feed.",
+            "key": "anthropic-platform-docs",
+            "url": "https://platform.claude.com/docs/en/models/overview.md",
+            "header": "ANTHROPIC PLATFORM MODELS DOCS · ANTHROPIC",
+            "title": "Anthropic Platform Models Overview",
+            "evidence": "platform.claude.com/docs/en/models/overview.md",
+            "source_text": "official Anthropic Platform Markdown models overview.",
             "provider_slug": "anthropic",
             "accent_color": "#f97316",
-            "link_url": "https://docs.anthropic.com/en/docs/about-claude/models",
+            "link_url": "https://platform.claude.com/docs/en/models/overview",
+        },
+        {
+            "key": "openai-models-all-md",
+            "url": "https://developers.openai.com/api/docs/models/all.md",
+            "header": "OPENAI DEVELOPER MODELS CATALOG · OPENAI",
+            "title": "OpenAI Official Models Markdown Index",
+            "evidence": "developers.openai.com/api/docs/models/all.md",
+            "source_text": "official OpenAI API Markdown model catalog.",
+            "provider_slug": "openai",
+            "accent_color": "#10b981",
+            "link_url": "https://developers.openai.com/api/docs/models/all",
         },
         {
             "key": "gemini-docs",
@@ -1309,7 +1442,11 @@ class DocsAndGlobalRegistryScanner:
         except Exception as exc:
             print(f"[DocsScanner] models.dev warning: {exc}")
 
-        # 2. Scan Cursor Docs, Anthropic Docs, Google Gemini Docs, GCP Vertex AI, AWS Bedrock, xAI Docs
+        previously_released_litellm = {
+            re.sub(r"[-._]", "", pk.split("/")[-1].lower()) for pk in baselines.get("litellm_keys", [])
+        }
+
+        # 2. Scan Cursor Docs, Anthropic Docs, OpenAI Docs, Google Gemini Docs, GCP Vertex AI, AWS Bedrock, xAI Docs
         for tgt in self.DOCS_TARGETS:
             try:
                 raw_html = _http_get_text(tgt["url"], timeout=12)
@@ -1318,7 +1455,11 @@ class DocsAndGlobalRegistryScanner:
                     continue
                 bkey = tgt["key"]
                 prev_ids = set(baselines.get(bkey, []))
-                added_ids = sorted(set(found_ids) - prev_ids) if prev_ids else []
+                raw_added = sorted(set(found_ids) - prev_ids) if prev_ids else []
+                added_ids = [
+                    m for m in raw_added
+                    if re.sub(r"[-._]", "", m.lower()) not in previously_released_litellm and not is_legacy_model_id(m)
+                ]
                 if set(found_ids) != prev_ids:
                     baselines[bkey] = found_ids
                     baselines_changed = True
@@ -1338,8 +1479,8 @@ class DocsAndGlobalRegistryScanner:
                             "models": [{"id": mid, "name": humanize_model_id(mid)} for mid in added_ids[:8]],
                             "evidence": tgt["evidence"],
                             "source_text": tgt["source_text"],
-                            "disclaimer_1": "Detected new model identifier(s) added to official developer documentation.",
-                            "disclaimer_2": "Documentation mentions often precede or accompany API rollout.",
+                            "disclaimer_1": "",
+                            "disclaimer_2": "",
                             "provider_name": tgt["header"].split("·")[-1].strip(),
                             "provider_slug": tgt["provider_slug"],
                             "accent_color": tgt["accent_color"],
@@ -1353,7 +1494,143 @@ class DocsAndGlobalRegistryScanner:
             except Exception as exc:
                 print(f"[DocsScanner] Warning ({tgt['key']}): {exc}")
 
-        # 3. Scan LiteLLM master model_prices_and_context_window.json for newly added keys
+        # 3. Structured Pre-Release Radar: GitHub SDK main/master TypeScript Unions, llms.txt Model Routes & Botocore Bedrock
+        structured_probes = [
+            {
+                "key": "gh_openai_sdk_union",
+                "url": "https://raw.githubusercontent.com/openai/openai-node/master/src/resources/shared.ts",
+                "kind": "ts_union_openai",
+                "header": "OPENAI SDK GITHUB MASTER DIFF · OPENAI",
+                "title_prefix": "New OpenAI Model Merged to SDK Master",
+                "evidence": "openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel)",
+                "link_url": "https://github.com/openai/openai-node/commits/master/src/resources/shared.ts",
+                "provider_slug": "openai",
+                "accent_color": "#10b981",
+            },
+            {
+                "key": "gh_anthropic_sdk_union",
+                "url": "https://raw.githubusercontent.com/anthropics/anthropic-sdk-typescript/main/src/resources/messages/messages.ts",
+                "kind": "ts_union_anthropic",
+                "header": "ANTHROPIC SDK GITHUB MAIN DIFF · ANTHROPIC",
+                "title_prefix": "New Claude Model Merged to SDK Main",
+                "evidence": "anthropics/anthropic-sdk-typescript (src/resources/messages/messages.ts Model)",
+                "link_url": "https://github.com/anthropics/anthropic-sdk-typescript/commits/main/src/resources/messages/messages.ts",
+                "provider_slug": "anthropic",
+                "accent_color": "#f97316",
+            },
+            {
+                "key": "openai_llms_model_routes",
+                "url": "https://developers.openai.com/api/docs/models/all.md",
+                "kind": "openai_doc_routes",
+                "header": "OPENAI DOCS ROUTE SCOUT · OPENAI",
+                "title_prefix": "New Model Doc Page Staged on OpenAI",
+                "evidence": "developers.openai.com/api/docs/models/*.md",
+                "link_url": "https://developers.openai.com/api/docs/models/all",
+                "provider_slug": "openai",
+                "accent_color": "#10b981",
+            },
+            {
+                "key": "anthropic_llms_model_routes",
+                "url": "https://platform.claude.com/llms.txt",
+                "kind": "anthropic_doc_routes",
+                "header": "ANTHROPIC LLMS.TXT ROUTE SCOUT · ANTHROPIC",
+                "title_prefix": "New Claude Model Doc Page Staged on Anthropic",
+                "evidence": "platform.claude.com/llms.txt (/docs/en/models/*/overview.md)",
+                "link_url": "https://platform.claude.com/docs/en/models/overview",
+                "provider_slug": "anthropic",
+                "accent_color": "#f97316",
+            },
+            {
+                "key": "botocore_bedrock_models",
+                "url": "https://raw.githubusercontent.com/boto/botocore/develop/botocore/data/bedrock/2023-04-20/service-2.json",
+                "kind": "botocore_bedrock",
+                "header": "AWS BOTOCORE BEDROCK STAGING · AWS / MULTI-LAB",
+                "title_prefix": "New Bedrock Model ID in AWS Botocore",
+                "evidence": "boto/botocore (botocore/data/bedrock/2023-04-20/service-2.json)",
+                "link_url": "https://github.com/boto/botocore/commits/develop/botocore/data/bedrock",
+                "provider_slug": "anthropic",
+                "accent_color": "#f59e0b",
+            },
+        ]
+
+        for probe in structured_probes:
+            try:
+                txt = _http_get_text(probe["url"], timeout=14)
+                extracted: Set[str] = set()
+                kind = probe["kind"]
+
+                if kind == "ts_union_openai":
+                    for block in re.findall(r"export type (?:ChatModel|ResponsesModel|ImageModel|AudioModel)\s*=([\s\S]*?);", txt):
+                        for lit in re.findall(r"'([a-z0-9._-]+)'", block):
+                            if not is_legacy_model_id(lit):
+                                extracted.add(lit)
+                elif kind == "ts_union_anthropic":
+                    for block in re.findall(r"export type Model\s*=([\s\S]*?);", txt):
+                        for lit in re.findall(r"'([a-z0-9._-]+)'", block):
+                            if not is_legacy_model_id(lit):
+                                extracted.add(lit)
+                elif kind == "openai_doc_routes":
+                    llms_extra = ""
+                    try:
+                        llms_extra = _http_get_text("https://developers.openai.com/api/docs/llms.txt", timeout=12)
+                    except Exception:
+                        pass
+                    for slug in re.findall(r"/api/docs/models/([a-z0-9._-]+)\.md", txt + "\n" + llms_extra):
+                        if slug not in {"all", "compare", "overview", "deprecations"} and not is_legacy_model_id(slug):
+                            extracted.add(slug)
+                elif kind == "anthropic_doc_routes":
+                    for slug in re.findall(r"/docs/en/models/([a-z0-9._-]+)/overview\.md", txt):
+                        mid = slug if slug.startswith("claude-") else f"claude-{slug}"
+                        if not is_legacy_model_id(mid):
+                            extracted.add(mid)
+                elif kind == "botocore_bedrock":
+                    for mid in re.findall(r"(?:anthropic|openai)\.(claude-[a-z0-9._-]+|gpt-[a-z0-9._-]+)", txt):
+                        clean_m = mid.split(":")[0]
+                        if not is_legacy_model_id(clean_m):
+                            extracted.add(clean_m)
+
+                if not extracted:
+                    continue
+                curr_list = sorted(extracted)
+                bkey = probe["key"]
+                prev_set = set(baselines.get(bkey, []))
+                raw_new = [m for m in curr_list if m not in prev_set] if prev_set else []
+                truly_new = [
+                    m for m in raw_new
+                    if re.sub(r"[-._]", "", m.lower()) not in previously_released_litellm
+                ]
+                if set(curr_list) != prev_set:
+                    baselines[bkey] = curr_list
+                    baselines_changed = True
+
+                if truly_new:
+                    sig = hashlib.sha256(",".join(truly_new[:8]).encode("utf-8")).hexdigest()[:8]
+                    cards.append(
+                        {
+                            "id": f"pre-release-{bkey}-{sig}",
+                            "category": "cli-sdk-diff",
+                            "scanner": "docs-radar",
+                            "header": probe["header"],
+                            "title": f"{probe['title_prefix']}: {truly_new[0]}",
+                            "subtitle": f"Detected in {probe['evidence']} (+{len(truly_new)} new)",
+                            "build_label": "Pre-Release Scout",
+                            "build_transition": f"+{len(truly_new)} unannounced identifier(s)",
+                            "models": [{"id": m, "name": humanize_model_id(m)} for m in truly_new[:8]],
+                            "evidence": probe["evidence"],
+                            "source_text": probe["evidence"],
+                            "disclaimer_1": "",
+                            "disclaimer_2": "",
+                            "provider_name": probe["header"].split("·")[-1].strip(),
+                            "provider_slug": probe["provider_slug"],
+                            "accent_color": probe["accent_color"],
+                            "links": [{"label": "Source Feed", "url": probe["link_url"]}],
+                            "detected_at": datetime.now(timezone.utc).isoformat(),
+                        }
+                    )
+            except Exception as exc:
+                print(f"[DocsScanner] Structured probe warning ({probe['key']}): {exc}")
+
+        # 4. Scan LiteLLM master model_prices_and_context_window.json for newly added keys
         try:
             litellm_data = _http_get_json(self.LITELLM_JSON_URL, timeout=15)
             if isinstance(litellm_data, dict):
@@ -1385,8 +1662,8 @@ class DocsAndGlobalRegistryScanner:
                             "models": [{"id": k, "name": k} for k in added_keys[:8]],
                             "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
                             "source_text": "official LiteLLM master pricing & context window registry.",
-                            "disclaimer_1": "Providers and maintainers register new model IDs and token limits here before or at launch.",
-                            "disclaimer_2": "Public model keys and context window specifications.",
+                            "disclaimer_1": "",
+                            "disclaimer_2": "",
                             "provider_name": "LITELLM",
                             "provider_slug": "modelsdev",
                             "accent_color": "#10b981",
