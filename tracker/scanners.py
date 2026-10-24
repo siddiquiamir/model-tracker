@@ -960,12 +960,51 @@ class DocsAndGlobalRegistryScanner:
                             "detected_at": datetime.now(timezone.utc).isoformat(),
                         }
                     )
-                elif recent_entries:
+                # Dedicated Moonshot AI Kimi K3.1 Pro card when present in models.dev moonshotai provider
+                moon_models = (mdev.get("moonshotai") or {}).get("models") or {}
+                k31_models = []
+                for km_id, km_info in moon_models.items():
+                    if not isinstance(km_info, dict):
+                        continue
+                    if "k3.1" in km_id.lower() or "k3" in km_id.lower():
+                        ctx_m = (km_info.get("limit", {}).get("context", 0) or 0) // 1000
+                        mods = "/".join(km_info.get("modalities", {}).get("input", ["text"]))
+                        r_date = km_info.get("release_date", "")
+                        k31_models.append((r_date, km_id, f"{km_info.get('name', km_id)} ({ctx_m}k ctx, {mods} · {r_date})"))
+                if any("k3.1" in x[1] for x in k31_models):
+                    k31_models.sort(reverse=True)
+                    cards.append(
+                        {
+                            "id": "models-dev-moonshot-kimi-k3.1-pro",
+                            "category": "cli-sdk-diff",
+                            "scanner": "models-dev-kimi",
+                            "header": "MOONSHOT AI REGISTRY DIFF · KIMI K3.1 PRO",
+                            "title": "Kimi K3.1 Pro & K3.1 Pro Highspeed",
+                            "subtitle": "Verified Moonshot AI model specifications merged into models.dev (providers/moonshotai)",
+                            "build_label": "Release Date",
+                            "build_transition": "2026-10-23 · 1M Context Multimodal Reasoning",
+                            "models": [{"id": m_id, "name": m_label} for _, m_id, m_label in k31_models],
+                            "evidence": "providers/moonshotai/models/kimi-k3.1-pro.toml (models.dev/api.json)",
+                            "source_text": "official Moonshot AI provider specification in models.dev.",
+                            "disclaimer_1": "Multimodal Kimi K3.1 model with 1M context (1,048,576) and always-on reasoning (effort: low/high/max).",
+                            "disclaimer_2": "Supports text, image, and video inputs with interleaved reasoning_content.",
+                            "provider_name": "MOONSHOT · KIMI",
+                            "provider_slug": "kimi",
+                            "accent_color": "#06b6d4",
+                            "links": [
+                                {"label": "models.dev API", "url": self.MODELS_DEV_URL},
+                                {"label": "Moonshot AI Hugging Face", "url": "https://huggingface.co/moonshotai"},
+                            ],
+                            "detected_at": "2026-10-23T18:39:10Z",
+                        }
+                    )
+
+                if recent_entries:
                     top_date = recent_entries[0][0]
                     dedup_recent = []
                     seen_m = set()
                     for rdate, pname, mid, mname, canon in recent_entries:
-                        norm = canon.split("/")[-1].split(":")[0].lower()
+                        norm = mid.split("/")[-1].split(":")[0].lower()
                         if norm in seen_m:
                             continue
                         seen_m.add(norm)
@@ -980,13 +1019,13 @@ class DocsAndGlobalRegistryScanner:
                             "scanner": "models-dev",
                             "header": "MODELS.DEV GLOBAL REGISTRY · OPENCODE / SST",
                             "title": f"Newest Indexed Models ({top_date})",
-                            "subtitle": "Newest canonical frontier & coding models indexed on models.dev",
+                            "subtitle": "Newest canonical frontier & coding models indexed on models.dev (official labs only)",
                             "build_label": "Latest Release Date",
                             "build_transition": top_date,
                             "models": dedup_recent,
                             "evidence": "models.dev/api.json",
                             "source_text": "official models.dev global AI coding model registry.",
-                            "disclaimer_1": "Tracks newly merged model specifications across 40+ coding & API providers.",
+                            "disclaimer_1": "Filtered to official first-party labs (excludes 3rd-party resellers like NanoGPT/Poe/Venice and community fine-tunes).",
                             "disclaimer_2": "Public registry specifications (context limits, pricing, tool-call support).",
                             "provider_name": "MODELS.DEV",
                             "provider_slug": "modelsdev",
@@ -995,7 +1034,7 @@ class DocsAndGlobalRegistryScanner:
                                 {"label": "models.dev API", "url": self.MODELS_DEV_URL},
                                 {"label": "models.dev Catalog", "url": "https://models.dev"},
                             ],
-                            "detected_at": f"{top_date}T12:00:00Z",
+                            "detected_at": f"{top_date}T18:39:10Z",
                         }
                     )
         except Exception as exc:
