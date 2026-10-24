@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ModelPulse · First-to-Report AI Model & Build Diff Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
   <style>
     :root {
       --bg-page: #0b0d11;
@@ -368,27 +369,19 @@
     }
 
     .card-meta-block {
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       color: var(--text-secondary);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       line-height: 1.6;
+    }
+
+    .card-meta-block .code-pill {
+      white-space: normal;
+      word-break: break-all;
     }
 
     .card-meta-block strong {
       color: #fff;
-    }
-
-    .card-disclaimer {
-      font-size: 0.93rem;
-      color: var(--text-secondary);
-      margin-bottom: 14px;
-      line-height: 1.48;
-    }
-
-    .card-links {
-      font-size: 0.94rem;
-      margin-top: 2px;
-      margin-bottom: 8px;
     }
 
     .card-links a, .card-credit a {
@@ -401,12 +394,14 @@
     }
 
     .card-footer-bar {
-      margin-top: 2px;
-      padding-top: 0;
-      border-top: none;
+      margin-top: 6px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .card-credit {
@@ -738,7 +733,7 @@
                   <span class="time-badge ${tInfo.cssClass}" title="Published / Detected: ${escapeHtml(tInfo.exactStr)}">
                     ${escapeHtml(tInfo.badgeText)}
                   </span>
-                  ${isUnread ? `<span class="unread-badge" title="New since your last visit">✨ UNREAD</span>` : ""}
+                  ${isUnread ? `<span class="unread-badge" data-html2canvas-ignore="true" title="New since your last visit">✨ UNREAD</span>` : ""}
                 </div>
                 <a class="card-title" href="${escapeHtml(primaryUrl)}" target="_blank" rel="noopener">
                   ${escapeHtml(card.title)}
@@ -765,16 +760,22 @@
               <div><strong>Source:</strong> ${escapeHtml(card.source_text)}</div>
               <div><strong>Timestamp:</strong> <span style="color: var(--text-muted); font-size: 0.86rem;">${escapeHtml(tInfo.exactStr)}</span></div>
             </div>
-
-            <p class="card-disclaimer">${escapeHtml(card.disclaimer_1)}</p>
-            <p class="card-disclaimer">${escapeHtml(card.disclaimer_2)}</p>
-
-            <div class="card-links">${linksHtml}</div>
           </div>
 
           <div class="card-footer-bar">
             <div class="card-credit" style="font-size: 0.92rem; color: var(--text-secondary);">
               Developed by <a href="https://x.com/StatsWire" target="_blank" rel="noopener" style="font-weight:600;">@StatsWire</a> on X
+            </div>
+            <div class="card-actions" data-html2canvas-ignore="true">
+              <button class="btn btn-sm btn-primary" onclick="saveCardPng(${idx}, this)" title="Download clean 2x PNG of this card">
+                📸 Save PNG
+              </button>
+              <button class="btn btn-sm" onclick="copyCardImage(${idx}, this)" title="Copy card image directly to clipboard (Ctrl+V into X)">
+                📋 Copy Image
+              </button>
+              <button class="btn btn-sm" onclick="copyTweet(${idx})" title="Copy ready-to-post X / Twitter text">
+                🐦 Copy X Text
+              </button>
             </div>
           </div>
         </article>
@@ -871,6 +872,62 @@
         return;
       }
       container.innerHTML = filtered.map((c, i) => renderCardHtml(c, i, seenSet)).join("");
+    }
+
+    async function renderCardCanvas(btnEl) {
+      if (typeof html2canvas === "undefined") {
+        showToast("Image renderer still loading — try again in 1s");
+        return null;
+      }
+      const cardEl = btnEl.closest(".diff-card");
+      if (!cardEl) return null;
+      return await html2canvas(cardEl, {
+        backgroundColor: "#161920",
+        scale: 2,
+        useCORS: true,
+        logging: false
+      });
+    }
+
+    async function saveCardPng(idx, btnEl) {
+      const card = window._CURRENT_DISPLAYED_CARDS[idx];
+      if (!card) return;
+      const origText = btnEl.textContent;
+      btnEl.textContent = "⏳ Saving...";
+      try {
+        const canvas = await renderCardCanvas(btnEl);
+        if (!canvas) return;
+        const link = document.createElement("a");
+        const slug = String(card.id || "card").replace(/[^a-zA-Z0-9._-]/g, "-");
+        link.download = `StatsWire-${slug}.png`;
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+        showToast("Saved high-res PNG card!");
+      } catch (e) {
+        console.error(e);
+        showToast("Failed to save PNG");
+      } finally {
+        btnEl.textContent = origText;
+      }
+    }
+
+    async function copyCardImage(idx, btnEl) {
+      const card = window._CURRENT_DISPLAYED_CARDS[idx];
+      if (!card) return;
+      const origText = btnEl.textContent;
+      btnEl.textContent = "⏳ Copying...";
+      try {
+        const canvas = await renderCardCanvas(btnEl);
+        if (!canvas) return;
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+        await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+        showToast("Copied card PNG to clipboard! Press Ctrl+V in X/Twitter.");
+      } catch (e) {
+        console.error(e);
+        showToast("Clipboard image copy unsupported here — use Save PNG!");
+      } finally {
+        btnEl.textContent = origText;
+      }
     }
 
     function copyTweet(idx) {
