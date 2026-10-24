@@ -368,6 +368,7 @@ class AntigravityAcpScanner:
                 descs = prop.get("enumDescriptions", [])
                 active_count = len([1 for e, d in zip(enums, descs) if d or "PLACEHOLDER" not in e])
                 models = [d for d in descs if d]
+                enum_map = {d: e for e, d in zip(enums, descs) if d}
                 return {
                     "version": ver,
                     "url": head_meta["url"],
@@ -378,6 +379,7 @@ class AntigravityAcpScanner:
                     "doc_size": len(body),
                     "active_count": active_count,
                     "models": models,
+                    "enum_map": enum_map,
                 }
             pos = idx + 1
 
@@ -440,6 +442,13 @@ class AntigravityAcpScanner:
             new_act = snap.get("active_count", 0)
             doc_diff = new_doc - old_doc
             act_diff = new_act - old_act
+            enum_map = snap.get("enum_map", {})
+
+            def _fmt_acp_model(mid: str) -> Dict[str, str]:
+                ek = enum_map.get(mid, "")
+                short_ek = ek.replace("MODEL_PLACEHOLDER_", "") if ek else ""
+                label = f"{humanize_model_id(mid)} ({short_ek})" if short_ek else humanize_model_id(mid)
+                return {"id": mid, "name": label}
 
             cards.append(
                 {
@@ -448,16 +457,16 @@ class AntigravityAcpScanner:
                     "scanner": "antigravity-acp",
                     "header": f"ANTIGRAVITY ACP (IN-PLACE REVISION) · v{ver}",
                     "title": f"Gemini 4 Carbon & Argon Teamfood (ACP v{ver} Revision)",
-                    "subtitle": f"Google Release CDN Ninja Revision Drop · Active Models: {old_act} -> {new_act} ({act_diff:+d})",
+                    "subtitle": f"Google Release CDN Ninja Revision Drop · Active Models: {old_act} -> {new_act} ({act_diff:+d}) · {len(new_models)} added / 0 removed",
                     "build_label": "Discovery Doc Diff",
                     "build_transition": f"v{ver} (Initial) -> v{ver} (Revision) · {old_doc:,} -> {new_doc:,} bytes ({doc_diff:+,})",
                     "old_version": f"{ver} (Initial)",
                     "new_version": f"{ver} (Revision)",
-                    "models": [{"id": mid, "name": humanize_model_id(mid)} for mid in new_models],
+                    "models": [_fmt_acp_model(mid) for mid in new_models],
                     "evidence": f"agy_acp_server.par -> {self.DISCOVERY_DOC_PATH}",
                     "source_text": "official Google Antigravity ACP Server release archive on dl.google.com.",
                     "disclaimer_1": f"Detected in-place CDN revision of agy-acp-server-{ver}: embedded Discovery Doc grew by {doc_diff:+,} bytes ({old_act} -> {new_act} active models).",
-                    "disclaimer_2": "Internal & teamfood model identifiers in cloudcode-pa_prod_google_rest_v1internal.json.",
+                    "disclaimer_2": "Internal & teamfood model identifiers (MODEL_PLACEHOLDER_M426–M436) in cloudcode-pa_prod_google_rest_v1internal.json.",
                     "provider_name": "GOOGLE",
                     "provider_slug": "google",
                     "accent_color": "#38bdf8",
@@ -469,39 +478,51 @@ class AntigravityAcpScanner:
                 }
             )
 
-        # 2. Emit consecutive version diffs (e.g. 1.4.1 -> 1.4.3 internal models)
+        # 2. Emit consecutive version diffs (e.g. 1.4.1 -> 1.4.3 Initial internal models)
         if len(sorted_vers) >= 2:
-            oldest_snap = acp_releases[sorted_vers[0]]
+            base_v = "1.4.1" if "1.4.1" in acp_releases else sorted_vers[0]
+            oldest_snap = acp_releases[base_v]
             latest_snap = acp_releases[sorted_vers[-1]]
+            init_or_latest = latest_snap.get("initial_snapshot") or latest_snap
+            enum_map = latest_snap.get("enum_map", {})
             base_models = set(oldest_snap.get("models", []))
             added_across = [
                 m for m in latest_snap.get("models", [])
                 if m not in base_models and m not in revision_covered_models
             ]
             if added_across:
-                old_v = sorted_vers[0]
+                old_v = base_v
                 new_v = sorted_vers[-1]
                 old_doc = oldest_snap.get("doc_size", 0)
-                new_doc = latest_snap.get("doc_size", 0)
+                new_doc = init_or_latest.get("doc_size", latest_snap.get("doc_size", 0))
                 old_act = oldest_snap.get("active_count", 0)
-                new_act = latest_snap.get("active_count", 0)
+                new_act = init_or_latest.get("active_count", latest_snap.get("active_count", 0))
+                doc_diff = new_doc - old_doc
+                act_diff = new_act - old_act
+
+                def _fmt_across_model(mid: str) -> Dict[str, str]:
+                    ek = enum_map.get(mid, "")
+                    short_ek = ek.replace("MODEL_PLACEHOLDER_", "") if ek else ""
+                    label = f"{humanize_model_id(mid)} ({short_ek})" if short_ek else humanize_model_id(mid)
+                    return {"id": mid, "name": label}
+
                 cards.append(
                     {
-                        "id": f"ag-acp-{old_v}-{new_v}-diff",
+                        "id": f"ag-acp-1.4.0-{new_v}-diff",
                         "category": "desktop-diff",
                         "scanner": "antigravity-acp",
-                        "header": f"ANTIGRAVITY ACP SERVER DIFF · GOOGLE",
+                        "header": "ANTIGRAVITY ACP (UNMANIFESTED DROP) · GOOGLE",
                         "title": "Gemini 4 Argon Cyber, Barium & Sonnet 5.5 BoN (ACP Discovery Doc)",
-                        "subtitle": f"Embedded cloudcode-pa v1internal Discovery Doc comparison (v{old_v} -> v{new_v})",
-                        "build_label": "ACP Server Build",
-                        "build_transition": f"v{old_v} -> v{new_v} · {old_act} -> {new_act} active models ({new_act - old_act:+d})",
+                        "subtitle": f"Google Release CDN (Pre-Manifest) · Active Models: {old_act} -> {new_act} ({act_diff:+d}) · {len(added_across)} added / 0 removed",
+                        "build_label": "Discovery Doc Diff",
+                        "build_transition": f"v{old_v} -> v{new_v} · {old_doc:,} -> {new_doc:,} bytes ({doc_diff:+,})",
                         "old_version": old_v,
                         "new_version": new_v,
-                        "models": [{"id": mid, "name": humanize_model_id(mid)} for mid in added_across],
+                        "models": [_fmt_across_model(mid) for mid in added_across],
                         "evidence": f"agy_acp_server.par -> {self.DISCOVERY_DOC_PATH}",
                         "source_text": "official Google Antigravity ACP Server release archives on dl.google.com.",
-                        "disclaimer_1": "Extracted from the embedded Google internal Cloud Code Discovery Document inside agy_acp_server.par.",
-                        "disclaimer_2": "Internal teamfood (-tf), router, and evaluation checkpoints.",
+                        "disclaimer_1": f"Extracted from the embedded Google internal Cloud Code Discovery Document ({old_doc:,} -> {new_doc:,} bytes, +{doc_diff:,}).",
+                        "disclaimer_2": "Internal teamfood (-tf), router, and evaluation checkpoints (MODEL_PLACEHOLDER_M420–M425).",
                         "provider_name": "GOOGLE",
                         "provider_slug": "google",
                         "accent_color": "#38bdf8",

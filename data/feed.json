@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-24T14:15:24.696270+00:00",
+  "generated_at": "2026-10-24T14:12:24.193231+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "total_cards": 42,
-    "desktop_diffs": 13,
+    "total_cards": 45,
+    "desktop_diffs": 16,
     "cli_sdk_diffs": 16,
     "open_source_models": 13,
     "new_in_this_scan": 0,
-    "total_models_indexed": 112
+    "total_models_indexed": 115
   },
   "available_antigravity_builds": [
     "1.0.20261024110042 (Insiders)",
@@ -208,7 +208,10 @@
       "gemini-4-argon-high",
       "gemini-4-argon-low",
       "gemini-4-argon-medium",
+      "gemini-edit-image",
       "gemini-embedding-001",
+      "gemini-enterprise-a",
+      "gemini-extension.json",
       "gemini-flash-latest",
       "gemini-flash-lite-latest",
       "gemini-for-g",
@@ -393,7 +396,9 @@
       "gemini-4-argon-high",
       "gemini-4-argon-low",
       "gemini-4-argon-medium",
+      "gemini-edit-image",
       "gemini-embedding-001",
+      "gemini-enterprise-a",
       "gemini-flash-latest",
       "gemini-flash-lite-latest",
       "gemini-for-g",
@@ -442,7 +447,9 @@
       "gemini-3.8-flash-low",
       "gemini-3.8-flash-medium",
       "gemini-3.8-flash-tts",
+      "gemini-edit-image",
       "gemini-embedding-001",
+      "gemini-enterprise-a",
       "gemini-flash-latest",
       "gemini-flash-lite-latest",
       "gemini-for-g",
@@ -559,39 +566,39 @@
       "id": "ag-acp-1.4.3-revision-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
-      "header": "ANTIGRAVITY ACP (IN-PLACE REVISION) · v1.4.3",
+      "header": "ANTIGRAVITY ACP (IN-PLACE REVISION) \u00b7 v1.4.3",
       "title": "Gemini 4 Carbon & Argon Teamfood (ACP v1.4.3 Revision)",
-      "subtitle": "Google Release CDN Ninja Revision Drop · Active Models: 459 -> 464 (+5)",
+      "subtitle": "Google Release CDN Ninja Revision Drop \u00b7 Active Models: 459 -> 464 (+5) \u00b7 5 added / 0 removed",
       "build_label": "Discovery Doc Diff",
-      "build_transition": "v1.4.3 (Initial) -> v1.4.3 (Revision) · 1,482,296 -> 1,496,021 bytes (+13,725)",
+      "build_transition": "v1.4.3 (Initial) -> v1.4.3 (Revision) \u00b7 1,482,296 -> 1,496,021 bytes (+13,725)",
       "old_version": "1.4.3 (Initial)",
       "new_version": "1.4.3 (Revision)",
       "models": [
         {
           "id": "gemini-4-argon-teamfood",
-          "name": "Gemini 4 Argon Teamfood"
+          "name": "Gemini 4 Argon Teamfood (M426)"
         },
         {
           "id": "gemini-4-carbon",
-          "name": "Gemini 4 Carbon"
+          "name": "Gemini 4 Carbon (M427)"
         },
         {
           "id": "gemini-4-carbon-teamfood",
-          "name": "Gemini 4 Carbon Teamfood"
+          "name": "Gemini 4 Carbon Teamfood (M428)"
         },
         {
           "id": "carbon-g-medium-tf",
-          "name": "Carbon G Medium TF"
+          "name": "Carbon G Medium TF (M435)"
         },
         {
           "id": "gemini-4-argon-max-mode-tf",
-          "name": "Gemini 4 Argon Max Mode TF"
+          "name": "Gemini 4 Argon Max Mode TF (M436)"
         }
       ],
       "evidence": "agy_acp_server.par -> google3/google/internal/cloud/code/cloudcode-pa_prod_google_rest_v1internal.json",
       "source_text": "official Google Antigravity ACP Server release archive on dl.google.com.",
       "disclaimer_1": "Detected in-place CDN revision of agy-acp-server-1.4.3: embedded Discovery Doc grew by +13,725 bytes (459 -> 464 active models).",
-      "disclaimer_2": "Internal & teamfood model identifiers in cloudcode-pa_prod_google_rest_v1internal.json.",
+      "disclaimer_2": "Internal & teamfood model identifiers (MODEL_PLACEHOLDER_M426\u2013M436) in cloudcode-pa_prod_google_rest_v1internal.json.",
       "provider_name": "GOOGLE",
       "provider_slug": "google",
       "accent_color": "#38bdf8",
@@ -606,49 +613,49 @@
         }
       ],
       "detected_at": "2026-10-23T19:51:16+00:00",
-      "x_post_text": "🚨 ANTIGRAVITY ACP (IN-PLACE REVISION) · v1.4.3\nGemini 4 Carbon & Argon Teamfood (ACP v1.4.3 Revision) spotted in Discovery Doc Diff v1.4.3 (Initial) -> v1.4.3 (Revision) · 1,482,296 -> 1,496,021 bytes (+13,725)!\n\n• Gemini 4 Argon Teamfood (gemini-4-argon-teamfood)\n• Gemini 4 Carbon (gemini-4-carbon)\n• Gemini 4 Carbon Teamfood (gemini-4-carbon-teamfood)\n• Carbon G Medium TF (carbon-g-medium-tf)\n• Gemini 4 Argon Max Mode TF (gemini-4-argon-max-mode-tf)\n\nEvidence: agy_acp_server.par -> google3/google/internal/cloud/code/cloudcode-pa_prod_google_rest_v1internal.json\nSource: official Google Antigravity ACP Server release archive on dl.google.com.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 Gemini 4 Carbon (gemini-4-carbon) has officially entered Google internal teamfooding.\n\nGoogle quietly overwrote the Antigravity ACP v1.4.3 archive in-place on dl.google.com without bumping the version number \u2014 growing the internal Discovery Doc by +13,725 bytes (459 \u2192 464 active models).\n\nNew identifiers added in the drop:\n\u2022 gemini-4-carbon (M427)\n\u2022 gemini-4-carbon-teamfood (M428)\n\u2022 carbon-g-medium-tf (M435)\n\u2022 gemini-4-argon-teamfood (M426)\n\u2022 gemini-4-argon-max-mode-tf (M436)\n\nCarbon + Argon Max Mode are both live internally \ud83d\udc40"
     },
     {
       "id": "ag-acp-1.4.0-1.4.3-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
-      "header": "ANTIGRAVITY ACP SERVER DIFF · GOOGLE",
+      "header": "ANTIGRAVITY ACP (UNMANIFESTED DROP) \u00b7 GOOGLE",
       "title": "Gemini 4 Argon Cyber, Barium & Sonnet 5.5 BoN (ACP Discovery Doc)",
-      "subtitle": "Embedded cloudcode-pa v1internal Discovery Doc comparison (v1.4.0 -> v1.4.3)",
-      "build_label": "ACP Server Build",
-      "build_transition": "v1.4.0 -> v1.4.3 · 453 -> 464 active models (+11)",
-      "old_version": "1.4.0",
+      "subtitle": "Google Release CDN (Pre-Manifest) \u00b7 Active Models: 453 -> 459 (+6) \u00b7 6 added / 0 removed",
+      "build_label": "Discovery Doc Diff",
+      "build_transition": "v1.4.1 -> v1.4.3 \u00b7 1,478,577 -> 1,482,296 bytes (+3,719)",
+      "old_version": "1.4.1",
       "new_version": "1.4.3",
       "models": [
         {
           "id": "sonnet-5.5-high-bon-le",
-          "name": "Sonnet 5.5 High BoN LE"
+          "name": "Sonnet 5.5 High BoN LE (M420)"
         },
         {
           "id": "gemini-4-argon-disabled",
-          "name": "Gemini 4 Argon Disabled"
+          "name": "Gemini 4 Argon Disabled (M421)"
         },
         {
           "id": "gemini-3.8-flash-router",
-          "name": "Gemini 3.8 Flash Router"
+          "name": "Gemini 3.8 Flash Router (M422)"
         },
         {
           "id": "barium-b-concise-final-response-di-tf",
-          "name": "Barium B Concise Final Response DI TF"
+          "name": "Barium B Concise Final Response DI TF (M423)"
         },
         {
           "id": "barium-b-final-visibles-v7-tf",
-          "name": "Barium B Final Visibles v7 TF"
+          "name": "Barium B Final Visibles v7 TF (M424)"
         },
         {
           "id": "gemini-4-argon-cyber-permissive",
-          "name": "Gemini 4 Argon Cyber Permissive"
+          "name": "Gemini 4 Argon Cyber Permissive (M425)"
         }
       ],
       "evidence": "agy_acp_server.par -> google3/google/internal/cloud/code/cloudcode-pa_prod_google_rest_v1internal.json",
       "source_text": "official Google Antigravity ACP Server release archives on dl.google.com.",
-      "disclaimer_1": "Extracted from the embedded Google internal Cloud Code Discovery Document inside agy_acp_server.par.",
-      "disclaimer_2": "Internal teamfood (-tf), router, and evaluation checkpoints.",
+      "disclaimer_1": "Extracted from the embedded Google internal Cloud Code Discovery Document (1,478,577 -> 1,482,296 bytes, +3,719).",
+      "disclaimer_2": "Internal teamfood (-tf), router, and evaluation checkpoints (MODEL_PLACEHOLDER_M420\u2013M425).",
       "provider_name": "GOOGLE",
       "provider_slug": "google",
       "accent_color": "#38bdf8",
@@ -658,18 +665,18 @@
           "url": "https://dl.google.com/agy-extensions/releases/macos/agy-acp-server-1.4.3-darwin-arm64.zip"
         },
         {
-          "label": "ACP v1.4.0 CDN Archive",
-          "url": "https://dl.google.com/agy-extensions/releases/macos/agy-acp-server-1.4.0-darwin-arm64.zip"
+          "label": "ACP v1.4.1 CDN Archive",
+          "url": "https://dl.google.com/agy-extensions/releases/macos/agy-acp-server-1.4.1-darwin-arm64.zip"
         }
       ],
       "detected_at": "2026-10-23T19:51:16+00:00",
-      "x_post_text": "🚨 ANTIGRAVITY ACP SERVER DIFF · GOOGLE\nGemini 4 Argon Cyber, Barium & Sonnet 5.5 BoN (ACP Discovery Doc) spotted in ACP Server Build v1.4.0 -> v1.4.3 · 453 -> 464 active models (+11)!\n\n• Sonnet 5.5 High BoN LE (sonnet-5.5-high-bon-le)\n• Gemini 4 Argon Disabled (gemini-4-argon-disabled)\n• Gemini 3.8 Flash Router (gemini-3.8-flash-router)\n• Barium B Concise Final Response DI TF (barium-b-concise-final-response-di-tf)\n• Barium B Final Visibles v7 TF (barium-b-final-visibles-v7-tf)\n• Gemini 4 Argon Cyber Permissive (gemini-4-argon-cyber-permissive)\n\nEvidence: agy_acp_server.par -> google3/google/internal/cloud/code/cloudcode-pa_prod_google_rest_v1internal.json\nSource: official Google Antigravity ACP Server release archives on dl.google.com.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 Google is internally testing an unlocked cybersecurity variant of Gemini 4 Argon (gemini-4-argon-cyber-permissive) alongside a new Barium model family.\n\nSpotted inside the embedded cloudcode-pa v1internal Discovery Doc in Antigravity ACP Server (v1.4.1 \u2192 v1.4.3):\n\n\u2022 gemini-4-argon-cyber-permissive (M425)\n\u2022 barium-b-concise-final-response-di-tf (M423)\n\u2022 barium-b-final-visibles-v7-tf (M424)\n\u2022 gemini-3.8-flash-router (M422)\n\u2022 sonnet-5.5-high-bon-le (M420)\n\u2022 gemini-4-argon-disabled (M421)"
     },
     {
       "id": "ag-2.22.0-2.23.0-gemini-4-argon",
       "category": "desktop-diff",
       "scanner": "antigravity",
-      "header": "ANTIGRAVITY DESKTOP DIFF · GOOGLE",
+      "header": "ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE",
       "title": "Gemini 4 Argon",
       "subtitle": "Verified desktop build comparison",
       "build_label": "Build",
@@ -712,13 +719,13 @@
         }
       ],
       "detected_at": "2026-10-12T19:28:01+00:00",
-      "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini 4 Argon spotted in Build 2.22.0 -> 2.23.0!\n\n• Gemini 4 Argon (gemini-4-argon)\n• Gemini 4 Argon (High) (gemini-4-argon-high)\n• Gemini 4 Argon (Low) (gemini-4-argon-low)\n• Gemini 4 Argon (Medium) (gemini-4-argon-medium)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE\nGemini 4 Argon spotted in Build 2.22.0 -> 2.23.0!\n\n\u2022 Gemini 4 Argon (gemini-4-argon)\n\u2022 Gemini 4 Argon (High) (gemini-4-argon-high)\n\u2022 Gemini 4 Argon (Low) (gemini-4-argon-low)\n\u2022 Gemini 4 Argon (Medium) (gemini-4-argon-medium)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
     {
       "id": "ag-2.23.1-2.24.0-claude-opus-5-5",
       "category": "desktop-diff",
       "scanner": "antigravity",
-      "header": "ANTIGRAVITY DESKTOP DIFF · ANTHROPIC",
+      "header": "ANTIGRAVITY DESKTOP DIFF \u00b7 ANTHROPIC",
       "title": "Claude Opus 5.5",
       "subtitle": "Verified desktop build comparison",
       "build_label": "Build",
@@ -761,13 +768,13 @@
         }
       ],
       "detected_at": "2026-10-15T21:08:20+00:00",
-      "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · ANTHROPIC\nClaude Opus 5.5 spotted in Build 2.23.1 -> 2.24.0!\n\n• Claude Opus 5.5 (High) (claude-opus-5-5-high)\n• Claude Opus 5.5 (Low) (claude-opus-5-5-low)\n• Claude Opus 5.5 (Max) (claude-opus-5-5-max)\n• Claude Opus 5.5 (Medium) (claude-opus-5-5-medium)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 ANTIGRAVITY DESKTOP DIFF \u00b7 ANTHROPIC\nClaude Opus 5.5 spotted in Build 2.23.1 -> 2.24.0!\n\n\u2022 Claude Opus 5.5 (High) (claude-opus-5-5-high)\n\u2022 Claude Opus 5.5 (Low) (claude-opus-5-5-low)\n\u2022 Claude Opus 5.5 (Max) (claude-opus-5-5-max)\n\u2022 Claude Opus 5.5 (Medium) (claude-opus-5-5-medium)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
     {
       "id": "ag-2.23.1-2.24.0-claude-sonnet-5-5",
       "category": "desktop-diff",
       "scanner": "antigravity",
-      "header": "ANTIGRAVITY DESKTOP DIFF · ANTHROPIC",
+      "header": "ANTIGRAVITY DESKTOP DIFF \u00b7 ANTHROPIC",
       "title": "Claude Sonnet 5.5",
       "subtitle": "Verified desktop build comparison",
       "build_label": "Build",
@@ -814,13 +821,13 @@
         }
       ],
       "detected_at": "2026-10-15T21:08:20+00:00",
-      "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · ANTHROPIC\nClaude Sonnet 5.5 spotted in Build 2.23.1 -> 2.24.0!\n\n• Claude Sonnet 5.5 (claude-sonnet-5-5)\n• Claude Sonnet 5.5 (High) (claude-sonnet-5-5-high)\n• Claude Sonnet 5.5 (Low) (claude-sonnet-5-5-low)\n• Claude Sonnet 5.5 (Max) (claude-sonnet-5-5-max)\n• Claude Sonnet 5.5 (Medium) (claude-sonnet-5-5-medium)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 ANTIGRAVITY DESKTOP DIFF \u00b7 ANTHROPIC\nClaude Sonnet 5.5 spotted in Build 2.23.1 -> 2.24.0!\n\n\u2022 Claude Sonnet 5.5 (claude-sonnet-5-5)\n\u2022 Claude Sonnet 5.5 (High) (claude-sonnet-5-5-high)\n\u2022 Claude Sonnet 5.5 (Low) (claude-sonnet-5-5-low)\n\u2022 Claude Sonnet 5.5 (Max) (claude-sonnet-5-5-max)\n\u2022 Claude Sonnet 5.5 (Medium) (claude-sonnet-5-5-medium)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
     {
       "id": "ag-2.22.0-2.23.0-gemini-omni-flash",
       "category": "desktop-diff",
       "scanner": "antigravity",
-      "header": "ANTIGRAVITY DESKTOP DIFF · GOOGLE",
+      "header": "ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE",
       "title": "Gemini Omni 1.1 Flash",
       "subtitle": "Verified desktop build comparison",
       "build_label": "Build",
@@ -855,13 +862,13 @@
         }
       ],
       "detected_at": "2026-10-12T19:28:01+00:00",
-      "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini Omni 1.1 Flash spotted in Build 2.22.0 -> 2.23.0!\n\n• Gemini Omni 1.1 Flash (gemini-omni-1.1-flash)\n• Gemini Omni Flash Preview (gemini-omni-flash-preview)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE\nGemini Omni 1.1 Flash spotted in Build 2.22.0 -> 2.23.0!\n\n\u2022 Gemini Omni 1.1 Flash (gemini-omni-1.1-flash)\n\u2022 Gemini Omni Flash Preview (gemini-omni-flash-preview)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
     {
       "id": "ag-2.23.1-2.24.0-gemini-robotics-er",
       "category": "desktop-diff",
       "scanner": "antigravity",
-      "header": "ANTIGRAVITY DESKTOP DIFF · GOOGLE",
+      "header": "ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE",
       "title": "Gemini Robotics ER 1.6",
       "subtitle": "Verified desktop build comparison",
       "build_label": "Build",
@@ -892,13 +899,87 @@
         }
       ],
       "detected_at": "2026-10-15T21:08:20+00:00",
-      "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini Robotics ER 1.6 spotted in Build 2.23.1 -> 2.24.0!\n\n• Gemini Robotics ER 1.6 Preview (gemini-robotics-er-1.6-preview)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE\nGemini Robotics ER 1.6 spotted in Build 2.23.1 -> 2.24.0!\n\n\u2022 Gemini Robotics ER 1.6 Preview (gemini-robotics-er-1.6-preview)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "ag-2.21.1-2.22.0-gemini-edit-image",
+      "category": "desktop-diff",
+      "scanner": "antigravity",
+      "header": "ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE",
+      "title": "Gemini Edit Image",
+      "subtitle": "Verified desktop build comparison",
+      "build_label": "Build",
+      "build_transition": "2.21.1 -> 2.22.0",
+      "old_version": "2.21.1",
+      "new_version": "2.22.0",
+      "models": [
+        {
+          "id": "gemini-edit-image",
+          "name": "Gemini Edit Image"
+        }
+      ],
+      "evidence": "resources/bin/language_server",
+      "source_text": "official public Linux x64 release archives.",
+      "disclaimer_1": "Verified differences between existing builds; this is not a newly published release announcement.",
+      "disclaimer_2": "Compiled-in names and identifiers. This does not confirm model rollout or account access.",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Public release feed",
+          "url": "https://antigravity-hub-auto-updater-974169037036.us-central1.run.app/releases"
+        },
+        {
+          "label": "Official build",
+          "url": "https://storage.googleapis.com/antigravity-public/antigravity-hub/2.22.0-5446056071266304/unsigned/language_server-linux-x64"
+        }
+      ],
+      "detected_at": "2026-10-08T11:30:28+00:00",
+      "x_post_text": "\ud83d\udea8 ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE\nGemini Edit Image spotted in Build 2.21.1 -> 2.22.0!\n\n\u2022 Gemini Edit Image (gemini-edit-image)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "ag-2.21.1-2.22.0-gemini-enterprise-a",
+      "category": "desktop-diff",
+      "scanner": "antigravity",
+      "header": "ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE",
+      "title": "Gemini Enterprise A",
+      "subtitle": "Verified desktop build comparison",
+      "build_label": "Build",
+      "build_transition": "2.21.1 -> 2.22.0",
+      "old_version": "2.21.1",
+      "new_version": "2.22.0",
+      "models": [
+        {
+          "id": "gemini-enterprise-a",
+          "name": "Gemini Enterprise A"
+        }
+      ],
+      "evidence": "resources/bin/language_server",
+      "source_text": "official public Linux x64 release archives.",
+      "disclaimer_1": "Verified differences between existing builds; this is not a newly published release announcement.",
+      "disclaimer_2": "Compiled-in names and identifiers. This does not confirm model rollout or account access.",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Public release feed",
+          "url": "https://antigravity-hub-auto-updater-974169037036.us-central1.run.app/releases"
+        },
+        {
+          "label": "Official build",
+          "url": "https://storage.googleapis.com/antigravity-public/antigravity-hub/2.22.0-5446056071266304/unsigned/language_server-linux-x64"
+        }
+      ],
+      "detected_at": "2026-10-08T11:30:28+00:00",
+      "x_post_text": "\ud83d\udea8 ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE\nGemini Enterprise A spotted in Build 2.21.1 -> 2.22.0!\n\n\u2022 Gemini Enterprise A (gemini-enterprise-a)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
     {
       "id": "ag-2.22.0-2.23.0-gemini-3-flash",
       "category": "desktop-diff",
       "scanner": "antigravity",
-      "header": "ANTIGRAVITY DESKTOP DIFF · GOOGLE",
+      "header": "ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE",
       "title": "Gemini 3 Flash",
       "subtitle": "Verified desktop build comparison",
       "build_label": "Build",
@@ -929,13 +1010,13 @@
         }
       ],
       "detected_at": "2026-10-12T19:28:01+00:00",
-      "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini 3 Flash spotted in Build 2.22.0 -> 2.23.0!\n\n• Gemini 3 Flash (gemini-3-flash)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE\nGemini 3 Flash spotted in Build 2.22.0 -> 2.23.0!\n\n\u2022 Gemini 3 Flash (gemini-3-flash)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
     {
       "id": "ag-2.22.0-2.23.0-gemini-3.1-flash",
       "category": "desktop-diff",
       "scanner": "antigravity",
-      "header": "ANTIGRAVITY DESKTOP DIFF · GOOGLE",
+      "header": "ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE",
       "title": "Gemini 3.1 Flash Lite Image",
       "subtitle": "Verified desktop build comparison",
       "build_label": "Build",
@@ -966,13 +1047,13 @@
         }
       ],
       "detected_at": "2026-10-12T19:28:01+00:00",
-      "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini 3.1 Flash Lite Image spotted in Build 2.22.0 -> 2.23.0!\n\n• Gemini 3.1 Flash Lite Image (gemini-3.1-flash-lite-image)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE\nGemini 3.1 Flash Lite Image spotted in Build 2.22.0 -> 2.23.0!\n\n\u2022 Gemini 3.1 Flash Lite Image (gemini-3.1-flash-lite-image)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
     {
       "id": "ag-2.22.0-2.23.0-gemini-3.1-ultra",
       "category": "desktop-diff",
       "scanner": "antigravity",
-      "header": "ANTIGRAVITY DESKTOP DIFF · GOOGLE",
+      "header": "ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE",
       "title": "Gemini 3.1 Ultra",
       "subtitle": "Verified desktop build comparison",
       "build_label": "Build",
@@ -1003,13 +1084,13 @@
         }
       ],
       "detected_at": "2026-10-12T19:28:01+00:00",
-      "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini 3.1 Ultra spotted in Build 2.22.0 -> 2.23.0!\n\n• Gemini 3.1 Ultra (gemini-3.1-ultra)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE\nGemini 3.1 Ultra spotted in Build 2.22.0 -> 2.23.0!\n\n\u2022 Gemini 3.1 Ultra (gemini-3.1-ultra)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
     {
       "id": "ag-2.22.0-2.23.0-gemini-3.5-flash",
       "category": "desktop-diff",
       "scanner": "antigravity",
-      "header": "ANTIGRAVITY DESKTOP DIFF · GOOGLE",
+      "header": "ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE",
       "title": "Gemini 3.5 Flash Lite",
       "subtitle": "Verified desktop build comparison",
       "build_label": "Build",
@@ -1040,13 +1121,13 @@
         }
       ],
       "detected_at": "2026-10-12T19:28:01+00:00",
-      "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini 3.5 Flash Lite spotted in Build 2.22.0 -> 2.23.0!\n\n• Gemini 3.5 Flash Lite (gemini-3.5-flash-lite)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE\nGemini 3.5 Flash Lite spotted in Build 2.22.0 -> 2.23.0!\n\n\u2022 Gemini 3.5 Flash Lite (gemini-3.5-flash-lite)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
     {
       "id": "ag-2.22.0-2.23.0-gemini-3.7-flash",
       "category": "desktop-diff",
       "scanner": "antigravity",
-      "header": "ANTIGRAVITY DESKTOP DIFF · GOOGLE",
+      "header": "ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE",
       "title": "Gemini 3.7 Flash",
       "subtitle": "Verified desktop build comparison",
       "build_label": "Build",
@@ -1077,13 +1158,13 @@
         }
       ],
       "detected_at": "2026-10-12T19:28:01+00:00",
-      "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini 3.7 Flash spotted in Build 2.22.0 -> 2.23.0!\n\n• Gemini 3.7 Flash Tiered (gemini-3.7-flash-tiered)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE\nGemini 3.7 Flash spotted in Build 2.22.0 -> 2.23.0!\n\n\u2022 Gemini 3.7 Flash Tiered (gemini-3.7-flash-tiered)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
     {
       "id": "ag-2.22.0-2.23.0-gemini-nano-banana",
       "category": "desktop-diff",
       "scanner": "antigravity",
-      "header": "ANTIGRAVITY DESKTOP DIFF · GOOGLE",
+      "header": "ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE",
       "title": "Gemini Nano Banana",
       "subtitle": "Verified desktop build comparison",
       "build_label": "Build",
@@ -1114,64 +1195,50 @@
         }
       ],
       "detected_at": "2026-10-12T19:28:01+00:00",
-      "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini Nano Banana spotted in Build 2.22.0 -> 2.23.0!\n\n• Gemini Nano Banana (gemini-nano-banana)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE\nGemini Nano Banana spotted in Build 2.22.0 -> 2.23.0!\n\n\u2022 Gemini Nano Banana (gemini-nano-banana)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
     {
-      "id": "kimi-code-config-2.0.1",
-      "category": "cli-sdk-diff",
-      "scanner": "kimi-code",
-      "header": "KIMI CODE CONFIG & BINARY DIFF · MOONSHOT AI",
-      "title": "Kimi K3.1 & Kimi Code Rules",
-      "subtitle": "Verified Kimi Code remote config & migration manifest",
-      "build_label": "Kimi Code Build",
-      "build_transition": "migration.json @ 2.0.1",
+      "id": "ag-2.24.0-2.25.0-gemini-extension.json",
+      "category": "desktop-diff",
+      "scanner": "antigravity",
+      "header": "ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE",
+      "title": "Gemini Extension.json",
+      "subtitle": "Verified desktop build comparison",
+      "build_label": "Build",
+      "build_transition": "2.24.0 -> 2.25.0",
+      "old_version": "2.24.0",
+      "new_version": "2.25.0",
       "models": [
         {
-          "id": "k3.1",
-          "name": "Kimi K3.1 (Session Switching Target Rule)"
-        },
-        {
-          "id": "kimi-k3",
-          "name": "Kimi K3 (2.8T MoE Flagship)"
-        },
-        {
-          "id": "k3-256k",
-          "name": "Kimi K3 256K"
-        },
-        {
-          "id": "kimi-for-coding",
-          "name": "Kimi For Coding"
-        },
-        {
-          "id": "kimi-for-coding-highspeed",
-          "name": "Kimi For Coding (Highspeed)"
+          "id": "gemini-extension.json",
+          "name": "Gemini Extension.json"
         }
       ],
-      "evidence": "cdn.kimi.com/kimi-code-tips/kimi_cli/migration.json & rules",
-      "source_text": "official Kimi Code CDN config & standalone binary feed.",
-      "disclaimer_1": "Tracks remote model-switching rules and migration manifests fetched by Kimi Code CLI at startup.",
-      "disclaimer_2": "Compiled-in and remote config identifiers. Does not confirm public rollout.",
-      "provider_name": "MOONSHOT · KIMI",
-      "provider_slug": "kimi",
-      "accent_color": "#6366f1",
+      "evidence": "resources/bin/language_server",
+      "source_text": "official public Linux x64 release archives.",
+      "disclaimer_1": "Verified differences between existing builds; this is not a newly published release announcement.",
+      "disclaimer_2": "Compiled-in names and identifiers. This does not confirm model rollout or account access.",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
       "links": [
         {
-          "label": "Kimi Code Migration Feed",
-          "url": "https://cdn.kimi.com/kimi-code-tips/kimi_cli/migration.json"
+          "label": "Public release feed",
+          "url": "https://antigravity-hub-auto-updater-974169037036.us-central1.run.app/releases"
         },
         {
-          "label": "Moonshot AI Hugging Face",
-          "url": "https://huggingface.co/moonshotai"
+          "label": "Official build",
+          "url": "https://storage.googleapis.com/antigravity-public/antigravity-hub/2.25.0-6535192714805248/unsigned/language_server-linux-x64"
         }
       ],
-      "detected_at": "2026-10-21T16:03:49.806456+00:00",
-      "x_post_text": "🚨 KIMI CODE CONFIG & BINARY DIFF · MOONSHOT AI\nKimi K3.1 & Kimi Code Rules spotted in Kimi Code Build migration.json @ 2.0.1!\n\n• Kimi K3.1 (Session Switching Target Rule) (k3.1)\n• Kimi K3 (2.8T MoE Flagship) (kimi-k3)\n• Kimi K3 256K (k3-256k)\n• Kimi For Coding (kimi-for-coding)\n• Kimi For Coding (Highspeed) (kimi-for-coding-highspeed)\n\nEvidence: cdn.kimi.com/kimi-code-tips/kimi_cli/migration.json & rules\nSource: official Kimi Code CDN config & standalone binary feed.\n\nTracked by @StatsWire"
+      "detected_at": "2026-10-21T00:22:10+00:00",
+      "x_post_text": "\ud83d\udea8 ANTIGRAVITY DESKTOP DIFF \u00b7 GOOGLE\nGemini Extension.json spotted in Build 2.24.0 -> 2.25.0!\n\n\u2022 Gemini Extension.json (gemini-extension.json)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
     {
       "id": "vllm-arch-registry-0b1d1e3f",
       "category": "open-source",
       "scanner": "vllm-registry",
-      "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
+      "header": "VLLM OFFICIAL MODEL REGISTRY \u00b7 ARCHITECTURE DIFF",
       "title": "New Engine Architecture: Qwen4ExpForCausalLM",
       "subtitle": "Verified model_executor/models/registry.py architecture declarations (zero commit noise)",
       "build_label": "Registry File",
@@ -1228,13 +1295,64 @@
         }
       ],
       "detected_at": "2026-10-23T04:10:33.678574+00:00",
-      "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: Qwen4ExpForCausalLM spotted in Registry File vllm/model_executor/models/registry.py!\n\n• NEW: Qwen4ExpForCausalLM (Qwen4ExpForCausalLM)\n• NEW: Qwen4ExpForConditionalGeneration (Qwen4ExpForConditionalGeneration)\n• NEW: Qwen4ExpMTP (Qwen4ExpMTP)\n• Kimi K3 Multimodal MoE (KimiK3ForConditionalGeneration) (KimiK3ForConditionalGeneration)\n• Kimi K3 Multi-Token Prediction (KimiK3MTPModel) (KimiK3MTPModel)\n• MiniMax M3 Sparse MoE (MiniMaxM3SparseForCausalLM) (MiniMaxM3SparseForCausalLM)\n• +2 more variants\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM _TEXT_GENERATION_MODELS & _MULTIMODAL_MODELS dictionary.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 VLLM OFFICIAL MODEL REGISTRY \u00b7 ARCHITECTURE DIFF\nNew Engine Architecture: Qwen4ExpForCausalLM spotted in Registry File vllm/model_executor/models/registry.py!\n\n\u2022 NEW: Qwen4ExpForCausalLM (Qwen4ExpForCausalLM)\n\u2022 NEW: Qwen4ExpForConditionalGeneration (Qwen4ExpForConditionalGeneration)\n\u2022 NEW: Qwen4ExpMTP (Qwen4ExpMTP)\n\u2022 Kimi K3 Multimodal MoE (KimiK3ForConditionalGeneration) (KimiK3ForConditionalGeneration)\n\u2022 Kimi K3 Multi-Token Prediction (KimiK3MTPModel) (KimiK3MTPModel)\n\u2022 MiniMax M3 Sparse MoE (MiniMaxM3SparseForCausalLM) (MiniMaxM3SparseForCausalLM)\n\u2022 +2 more variants\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM _TEXT_GENERATION_MODELS & _MULTIMODAL_MODELS dictionary.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "kimi-code-config-2.0.1",
+      "category": "cli-sdk-diff",
+      "scanner": "kimi-code",
+      "header": "KIMI CODE CONFIG & BINARY DIFF \u00b7 MOONSHOT AI",
+      "title": "Kimi K3.1 & Kimi Code Rules",
+      "subtitle": "Verified Kimi Code remote config & migration manifest",
+      "build_label": "Kimi Code Build",
+      "build_transition": "migration.json @ 2.0.1",
+      "models": [
+        {
+          "id": "k3.1",
+          "name": "Kimi K3.1 (Session Switching Target Rule)"
+        },
+        {
+          "id": "kimi-k3",
+          "name": "Kimi K3 (2.8T MoE Flagship)"
+        },
+        {
+          "id": "k3-256k",
+          "name": "Kimi K3 256K"
+        },
+        {
+          "id": "kimi-for-coding",
+          "name": "Kimi For Coding"
+        },
+        {
+          "id": "kimi-for-coding-highspeed",
+          "name": "Kimi For Coding (Highspeed)"
+        }
+      ],
+      "evidence": "cdn.kimi.com/kimi-code-tips/kimi_cli/migration.json & rules",
+      "source_text": "official Kimi Code CDN config & standalone binary feed.",
+      "disclaimer_1": "Tracks remote model-switching rules and migration manifests fetched by Kimi Code CLI at startup.",
+      "disclaimer_2": "Compiled-in and remote config identifiers. Does not confirm public rollout.",
+      "provider_name": "MOONSHOT \u00b7 KIMI",
+      "provider_slug": "kimi",
+      "accent_color": "#6366f1",
+      "links": [
+        {
+          "label": "Kimi Code Migration Feed",
+          "url": "https://cdn.kimi.com/kimi-code-tips/kimi_cli/migration.json"
+        },
+        {
+          "label": "Moonshot AI Hugging Face",
+          "url": "https://huggingface.co/moonshotai"
+        }
+      ],
+      "detected_at": "2026-10-21T16:03:49.806456+00:00",
+      "x_post_text": "\ud83d\udea8 KIMI CODE CONFIG & BINARY DIFF \u00b7 MOONSHOT AI\nKimi K3.1 & Kimi Code Rules spotted in Kimi Code Build migration.json @ 2.0.1!\n\n\u2022 Kimi K3.1 (Session Switching Target Rule) (k3.1)\n\u2022 Kimi K3 (2.8T MoE Flagship) (kimi-k3)\n\u2022 Kimi K3 256K (k3-256k)\n\u2022 Kimi For Coding (kimi-for-coding)\n\u2022 Kimi For Coding (Highspeed) (kimi-for-coding-highspeed)\n\nEvidence: cdn.kimi.com/kimi-code-tips/kimi_cli/migration.json & rules\nSource: official Kimi Code CDN config & standalone binary feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "openrouter-model-moonshotai_kimi-k3.1-pro",
       "category": "cli-sdk-diff",
       "scanner": "openrouter",
-      "header": "OPENROUTER LIVE REGISTRY · MOONSHOTAI",
+      "header": "OPENROUTER LIVE REGISTRY \u00b7 MOONSHOTAI",
       "title": "MoonshotAI: Kimi K3.1 Pro",
       "subtitle": "Verified newly registered model endpoint on OpenRouter (/api/v1/models)",
       "build_label": "Endpoint ID",
@@ -1263,13 +1381,13 @@
         }
       ],
       "detected_at": "2026-10-23T17:56:28+00:00",
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · MOONSHOTAI\nMoonshotAI: Kimi K3.1 Pro spotted in Endpoint ID moonshotai/kimi-k3.1-pro!\n\n• MoonshotAI: Kimi K3.1 Pro (1048k context window) (moonshotai/kimi-k3.1-pro)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 OPENROUTER LIVE REGISTRY \u00b7 MOONSHOTAI\nMoonshotAI: Kimi K3.1 Pro spotted in Endpoint ID moonshotai/kimi-k3.1-pro!\n\n\u2022 MoonshotAI: Kimi K3.1 Pro (1048k context window) (moonshotai/kimi-k3.1-pro)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
     },
     {
       "id": "openrouter-model-recursive_flint-v1.0_free",
       "category": "cli-sdk-diff",
       "scanner": "openrouter",
-      "header": "OPENROUTER LIVE REGISTRY · RECURSIVE",
+      "header": "OPENROUTER LIVE REGISTRY \u00b7 RECURSIVE",
       "title": "Recursive: Flint (free)",
       "subtitle": "Verified newly registered model endpoint on OpenRouter (/api/v1/models)",
       "build_label": "Endpoint ID",
@@ -1298,13 +1416,13 @@
         }
       ],
       "detected_at": "2026-10-21T22:46:05+00:00",
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · RECURSIVE\nRecursive: Flint (free) spotted in Endpoint ID recursive/flint-v1.0:free!\n\n• Recursive: Flint (free) (262k context window) (recursive/flint-v1.0:free)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 OPENROUTER LIVE REGISTRY \u00b7 RECURSIVE\nRecursive: Flint (free) spotted in Endpoint ID recursive/flint-v1.0:free!\n\n\u2022 Recursive: Flint (free) (262k context window) (recursive/flint-v1.0:free)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
     },
     {
       "id": "openrouter-model-minimax_minimax-m3.1-flash",
       "category": "cli-sdk-diff",
       "scanner": "openrouter",
-      "header": "OPENROUTER LIVE REGISTRY · MINIMAX",
+      "header": "OPENROUTER LIVE REGISTRY \u00b7 MINIMAX",
       "title": "MiniMax: MiniMax M3.1 Flash",
       "subtitle": "Verified newly registered model endpoint on OpenRouter (/api/v1/models)",
       "build_label": "Endpoint ID",
@@ -1333,13 +1451,13 @@
         }
       ],
       "detected_at": "2026-10-19T03:12:49+00:00",
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · MINIMAX\nMiniMax: MiniMax M3.1 Flash spotted in Endpoint ID minimax/minimax-m3.1-flash!\n\n• MiniMax: MiniMax M3.1 Flash (1048k context window) (minimax/minimax-m3.1-flash)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 OPENROUTER LIVE REGISTRY \u00b7 MINIMAX\nMiniMax: MiniMax M3.1 Flash spotted in Endpoint ID minimax/minimax-m3.1-flash!\n\n\u2022 MiniMax: MiniMax M3.1 Flash (1048k context window) (minimax/minimax-m3.1-flash)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
     },
     {
       "id": "openrouter-model-deepseek_deepseek-v4.1-flash-1017",
       "category": "cli-sdk-diff",
       "scanner": "openrouter",
-      "header": "OPENROUTER LIVE REGISTRY · DEEPSEEK",
+      "header": "OPENROUTER LIVE REGISTRY \u00b7 DEEPSEEK",
       "title": "DeepSeek: DeepSeek V4.1 Flash 1017",
       "subtitle": "Verified newly registered model endpoint on OpenRouter (/api/v1/models)",
       "build_label": "Endpoint ID",
@@ -1368,13 +1486,13 @@
         }
       ],
       "detected_at": "2026-10-17T08:27:04+00:00",
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · DEEPSEEK\nDeepSeek: DeepSeek V4.1 Flash 1017 spotted in Endpoint ID deepseek/deepseek-v4.1-flash-1017!\n\n• DeepSeek: DeepSeek V4.1 Flash 1017 (1048k context window) (deepseek/deepseek-v4.1-flash-1017)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 OPENROUTER LIVE REGISTRY \u00b7 DEEPSEEK\nDeepSeek: DeepSeek V4.1 Flash 1017 spotted in Endpoint ID deepseek/deepseek-v4.1-flash-1017!\n\n\u2022 DeepSeek: DeepSeek V4.1 Flash 1017 (1048k context window) (deepseek/deepseek-v4.1-flash-1017)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
     },
     {
       "id": "openrouter-model-elorian_glimpse",
       "category": "cli-sdk-diff",
       "scanner": "openrouter",
-      "header": "OPENROUTER LIVE REGISTRY · ELORIAN",
+      "header": "OPENROUTER LIVE REGISTRY \u00b7 ELORIAN",
       "title": "Elorian: Glimpse",
       "subtitle": "Verified newly registered model endpoint on OpenRouter (/api/v1/models)",
       "build_label": "Endpoint ID",
@@ -1403,13 +1521,13 @@
         }
       ],
       "detected_at": "2026-10-17T03:10:29+00:00",
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · ELORIAN\nElorian: Glimpse spotted in Endpoint ID elorian/glimpse!\n\n• Elorian: Glimpse (262k context window) (elorian/glimpse)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 OPENROUTER LIVE REGISTRY \u00b7 ELORIAN\nElorian: Glimpse spotted in Endpoint ID elorian/glimpse!\n\n\u2022 Elorian: Glimpse (262k context window) (elorian/glimpse)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
     },
     {
       "id": "openrouter-model-xingchen-agi_xing4.0-29b-a4b_free",
       "category": "cli-sdk-diff",
       "scanner": "openrouter",
-      "header": "OPENROUTER LIVE REGISTRY · XINGCHEN-AGI",
+      "header": "OPENROUTER LIVE REGISTRY \u00b7 XINGCHEN-AGI",
       "title": "XingChen: Xing4.0 29B A4B (free)",
       "subtitle": "Verified newly registered model endpoint on OpenRouter (/api/v1/models)",
       "build_label": "Endpoint ID",
@@ -1438,13 +1556,13 @@
         }
       ],
       "detected_at": "2026-10-16T19:04:56+00:00",
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · XINGCHEN-AGI\nXingChen: Xing4.0 29B A4B (free) spotted in Endpoint ID xingchen-agi/xing4.0-29b-a4b:free!\n\n• XingChen: Xing4.0 29B A4B (free) (262k context window) (xingchen-agi/xing4.0-29b-a4b:free)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 OPENROUTER LIVE REGISTRY \u00b7 XINGCHEN-AGI\nXingChen: Xing4.0 29B A4B (free) spotted in Endpoint ID xingchen-agi/xing4.0-29b-a4b:free!\n\n\u2022 XingChen: Xing4.0 29B A4B (free) (262k context window) (xingchen-agi/xing4.0-29b-a4b:free)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
     },
     {
       "id": "openrouter-model-reflection_beam-1.0-501b-a23b",
       "category": "cli-sdk-diff",
       "scanner": "openrouter",
-      "header": "OPENROUTER LIVE REGISTRY · REFLECTION",
+      "header": "OPENROUTER LIVE REGISTRY \u00b7 REFLECTION",
       "title": "Reflection: Beam 1.0 501B A23B",
       "subtitle": "Verified newly registered model endpoint on OpenRouter (/api/v1/models)",
       "build_label": "Endpoint ID",
@@ -1473,13 +1591,13 @@
         }
       ],
       "detected_at": "2026-10-16T14:21:39+00:00",
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · REFLECTION\nReflection: Beam 1.0 501B A23B spotted in Endpoint ID reflection/beam-1.0-501b-a23b!\n\n• Reflection: Beam 1.0 501B A23B (1048k context window) (reflection/beam-1.0-501b-a23b)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 OPENROUTER LIVE REGISTRY \u00b7 REFLECTION\nReflection: Beam 1.0 501B A23B spotted in Endpoint ID reflection/beam-1.0-501b-a23b!\n\n\u2022 Reflection: Beam 1.0 501B A23B (1048k context window) (reflection/beam-1.0-501b-a23b)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
     },
     {
       "id": "openrouter-model-inception_mercury-3",
       "category": "cli-sdk-diff",
       "scanner": "openrouter",
-      "header": "OPENROUTER LIVE REGISTRY · INCEPTION",
+      "header": "OPENROUTER LIVE REGISTRY \u00b7 INCEPTION",
       "title": "Inception: Mercury 3",
       "subtitle": "Verified newly registered model endpoint on OpenRouter (/api/v1/models)",
       "build_label": "Endpoint ID",
@@ -1508,13 +1626,13 @@
         }
       ],
       "detected_at": "2026-10-16T13:45:37+00:00",
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · INCEPTION\nInception: Mercury 3 spotted in Endpoint ID inception/mercury-3!\n\n• Inception: Mercury 3 (1000k context window) (inception/mercury-3)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 OPENROUTER LIVE REGISTRY \u00b7 INCEPTION\nInception: Mercury 3 spotted in Endpoint ID inception/mercury-3!\n\n\u2022 Inception: Mercury 3 (1000k context window) (inception/mercury-3)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
     },
     {
       "id": "openrouter-model-moondream_moondream3-preview",
       "category": "cli-sdk-diff",
       "scanner": "openrouter",
-      "header": "OPENROUTER LIVE REGISTRY · MOONDREAM",
+      "header": "OPENROUTER LIVE REGISTRY \u00b7 MOONDREAM",
       "title": "Moondream: Moondream 3 Preview",
       "subtitle": "Verified newly registered model endpoint on OpenRouter (/api/v1/models)",
       "build_label": "Endpoint ID",
@@ -1543,13 +1661,13 @@
         }
       ],
       "detected_at": "2026-10-15T22:13:05+00:00",
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · MOONDREAM\nMoondream: Moondream 3 Preview spotted in Endpoint ID moondream/moondream3-preview!\n\n• Moondream: Moondream 3 Preview (32k context window) (moondream/moondream3-preview)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 OPENROUTER LIVE REGISTRY \u00b7 MOONDREAM\nMoondream: Moondream 3 Preview spotted in Endpoint ID moondream/moondream3-preview!\n\n\u2022 Moondream: Moondream 3 Preview (32k context window) (moondream/moondream3-preview)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
     },
     {
       "id": "openrouter-model-moondream_moondream3.1-9b-a2b",
       "category": "cli-sdk-diff",
       "scanner": "openrouter",
-      "header": "OPENROUTER LIVE REGISTRY · MOONDREAM",
+      "header": "OPENROUTER LIVE REGISTRY \u00b7 MOONDREAM",
       "title": "Moondream: Moondream 3.1",
       "subtitle": "Verified newly registered model endpoint on OpenRouter (/api/v1/models)",
       "build_label": "Endpoint ID",
@@ -1578,36 +1696,36 @@
         }
       ],
       "detected_at": "2026-10-15T22:12:53+00:00",
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · MOONDREAM\nMoondream: Moondream 3.1 spotted in Endpoint ID moondream/moondream3.1-9b-a2b!\n\n• Moondream: Moondream 3.1 (32k context window) (moondream/moondream3.1-9b-a2b)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 OPENROUTER LIVE REGISTRY \u00b7 MOONDREAM\nMoondream: Moondream 3.1 spotted in Endpoint ID moondream/moondream3.1-9b-a2b!\n\n\u2022 Moondream: Moondream 3.1 (32k context window) (moondream/moondream3.1-9b-a2b)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
     },
     {
       "id": "models-dev-moonshot-kimi-k3.1-pro",
       "category": "cli-sdk-diff",
       "scanner": "models-dev-kimi",
-      "header": "MOONSHOT AI REGISTRY DIFF · KIMI K3.1 PRO",
+      "header": "MOONSHOT AI REGISTRY DIFF \u00b7 KIMI K3.1 PRO",
       "title": "Kimi K3.1 Pro & K3.1 Pro Highspeed",
       "subtitle": "Verified Moonshot AI model specifications merged into models.dev (providers/moonshotai)",
       "build_label": "Release Date",
-      "build_transition": "2026-10-23 · 1M Context Multimodal Reasoning",
+      "build_transition": "2026-10-23 \u00b7 1M Context Multimodal Reasoning",
       "models": [
         {
           "id": "kimi-k3.1-pro-highspeed",
-          "name": "Kimi K3.1 Pro Highspeed (1048k ctx, text/image/video · 2026-10-23)"
+          "name": "Kimi K3.1 Pro Highspeed (1048k ctx, text/image/video \u00b7 2026-10-23)"
         },
         {
           "id": "kimi-k3.1-pro",
-          "name": "Kimi K3.1 Pro (1048k ctx, text/image/video · 2026-10-23)"
+          "name": "Kimi K3.1 Pro (1048k ctx, text/image/video \u00b7 2026-10-23)"
         },
         {
           "id": "kimi-k3",
-          "name": "Kimi K3 (1048k ctx, text/image/video · 2026-07-16)"
+          "name": "Kimi K3 (1048k ctx, text/image/video \u00b7 2026-07-16)"
         }
       ],
       "evidence": "providers/moonshotai/models/kimi-k3.1-pro.toml (models.dev/api.json)",
       "source_text": "official Moonshot AI provider specification in models.dev.",
       "disclaimer_1": "Multimodal Kimi K3.1 model with 1M context (1,048,576) and always-on reasoning (effort: low/high/max).",
       "disclaimer_2": "Supports text, image, and video inputs with interleaved reasoning_content.",
-      "provider_name": "MOONSHOT · KIMI",
+      "provider_name": "MOONSHOT \u00b7 KIMI",
       "provider_slug": "kimi",
       "accent_color": "#06b6d4",
       "links": [
@@ -1621,13 +1739,13 @@
         }
       ],
       "detected_at": "2026-10-23T18:39:10Z",
-      "x_post_text": "🚨 MOONSHOT AI REGISTRY DIFF · KIMI K3.1 PRO\nKimi K3.1 Pro & K3.1 Pro Highspeed spotted in Release Date 2026-10-23 · 1M Context Multimodal Reasoning!\n\n• Kimi K3.1 Pro Highspeed (1048k ctx, text/image/video · 2026-10-23) (kimi-k3.1-pro-highspeed)\n• Kimi K3.1 Pro (1048k ctx, text/image/video · 2026-10-23) (kimi-k3.1-pro)\n• Kimi K3 (1048k ctx, text/image/video · 2026-07-16) (kimi-k3)\n\nEvidence: providers/moonshotai/models/kimi-k3.1-pro.toml (models.dev/api.json)\nSource: official Moonshot AI provider specification in models.dev.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 MOONSHOT AI REGISTRY DIFF \u00b7 KIMI K3.1 PRO\nKimi K3.1 Pro & K3.1 Pro Highspeed spotted in Release Date 2026-10-23 \u00b7 1M Context Multimodal Reasoning!\n\n\u2022 Kimi K3.1 Pro Highspeed (1048k ctx, text/image/video \u00b7 2026-10-23) (kimi-k3.1-pro-highspeed)\n\u2022 Kimi K3.1 Pro (1048k ctx, text/image/video \u00b7 2026-10-23) (kimi-k3.1-pro)\n\u2022 Kimi K3 (1048k ctx, text/image/video \u00b7 2026-07-16) (kimi-k3)\n\nEvidence: providers/moonshotai/models/kimi-k3.1-pro.toml (models.dev/api.json)\nSource: official Moonshot AI provider specification in models.dev.\n\nTracked by @StatsWire"
     },
     {
       "id": "models-dev-recent-51a11ceb",
       "category": "cli-sdk-diff",
       "scanner": "models-dev",
-      "header": "MODELS.DEV GLOBAL REGISTRY · OPENCODE / SST",
+      "header": "MODELS.DEV GLOBAL REGISTRY \u00b7 OPENCODE / SST",
       "title": "Newest Indexed Models (2026-10-23)",
       "subtitle": "Newest canonical frontier & coding models indexed on models.dev (official labs only)",
       "build_label": "Latest Release Date",
@@ -1635,35 +1753,35 @@
       "models": [
         {
           "id": "kimi-k3.1-pro-highspeed",
-          "name": "Kimi K3.1 Pro Highspeed (Moonshot AI (China) · 2026-10-23)"
+          "name": "Kimi K3.1 Pro Highspeed (Moonshot AI (China) \u00b7 2026-10-23)"
         },
         {
           "id": "kimi-k3.1-pro",
-          "name": "Kimi K3.1 Pro (Moonshot AI (China) · 2026-10-23)"
+          "name": "Kimi K3.1 Pro (Moonshot AI (China) \u00b7 2026-10-23)"
         },
         {
           "id": "flint-40b-free",
-          "name": "Flint 40B Free (OpenCode · 2026-10-21)"
+          "name": "Flint 40B Free (OpenCode \u00b7 2026-10-21)"
         },
         {
           "id": "minimax-m3.1-flash-free",
-          "name": "MiniMax M3.1 Flash Free (OpenCode · 2026-10-19)"
+          "name": "MiniMax M3.1 Flash Free (OpenCode \u00b7 2026-10-19)"
         },
         {
           "id": "minimaxai/minimax-m3.1-flash",
-          "name": "MiniMax-M3.1-Flash (Nvidia · 2026-10-19)"
+          "name": "MiniMax-M3.1-Flash (Nvidia \u00b7 2026-10-19)"
         },
         {
           "id": "deepseek-v4-flash-vision-exp",
-          "name": "DeepSeek V4 Flash Vision Exp (DeepSeek · 2026-10-17)"
+          "name": "DeepSeek V4 Flash Vision Exp (DeepSeek \u00b7 2026-10-17)"
         },
         {
           "id": "deepseek-v4-flash",
-          "name": "DeepSeek V4 Flash (DeepSeek · 2026-10-17)"
+          "name": "DeepSeek V4 Flash (DeepSeek \u00b7 2026-10-17)"
         },
         {
           "id": "deepseek-flash",
-          "name": "DeepSeek V4.1 Flash 1017 (DeepSeek · 2026-10-17)"
+          "name": "DeepSeek V4.1 Flash 1017 (DeepSeek \u00b7 2026-10-17)"
         }
       ],
       "evidence": "models.dev/api.json",
@@ -1684,13 +1802,13 @@
         }
       ],
       "detected_at": "2026-10-23T18:39:10Z",
-      "x_post_text": "🚨 MODELS.DEV GLOBAL REGISTRY · OPENCODE / SST\nNewest Indexed Models (2026-10-23) spotted in Latest Release Date 2026-10-23!\n\n• Kimi K3.1 Pro Highspeed (Moonshot AI (China) · 2026-10-23) (kimi-k3.1-pro-highspeed)\n• Kimi K3.1 Pro (Moonshot AI (China) · 2026-10-23) (kimi-k3.1-pro)\n• Flint 40B Free (OpenCode · 2026-10-21) (flint-40b-free)\n• MiniMax M3.1 Flash Free (OpenCode · 2026-10-19) (minimax-m3.1-flash-free)\n• MiniMax-M3.1-Flash (Nvidia · 2026-10-19) (minimaxai/minimax-m3.1-flash)\n• DeepSeek V4 Flash Vision Exp (DeepSeek · 2026-10-17) (deepseek-v4-flash-vision-exp)\n• +2 more variants\n\nEvidence: models.dev/api.json\nSource: official models.dev global AI coding model registry.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 MODELS.DEV GLOBAL REGISTRY \u00b7 OPENCODE / SST\nNewest Indexed Models (2026-10-23) spotted in Latest Release Date 2026-10-23!\n\n\u2022 Kimi K3.1 Pro Highspeed (Moonshot AI (China) \u00b7 2026-10-23) (kimi-k3.1-pro-highspeed)\n\u2022 Kimi K3.1 Pro (Moonshot AI (China) \u00b7 2026-10-23) (kimi-k3.1-pro)\n\u2022 Flint 40B Free (OpenCode \u00b7 2026-10-21) (flint-40b-free)\n\u2022 MiniMax M3.1 Flash Free (OpenCode \u00b7 2026-10-19) (minimax-m3.1-flash-free)\n\u2022 MiniMax-M3.1-Flash (Nvidia \u00b7 2026-10-19) (minimaxai/minimax-m3.1-flash)\n\u2022 DeepSeek V4 Flash Vision Exp (DeepSeek \u00b7 2026-10-17) (deepseek-v4-flash-vision-exp)\n\u2022 +2 more variants\n\nEvidence: models.dev/api.json\nSource: official models.dev global AI coding model registry.\n\nTracked by @StatsWire"
     },
     {
       "id": "npm-_google_genai-2.27.0-2.28.0",
       "category": "cli-sdk-diff",
       "scanner": "npm",
-      "header": "GOOGLE GENAI SDK DIFF · GOOGLE",
+      "header": "GOOGLE GENAI SDK DIFF \u00b7 GOOGLE",
       "title": "Genai (Gemini 3.1 Flash Lite Image)",
       "subtitle": "Verified official SDK package comparison",
       "build_label": "Package Diff",
@@ -1721,13 +1839,13 @@
         }
       ],
       "detected_at": "2026-10-07T22:06:19.843Z",
-      "x_post_text": "🚨 GOOGLE GENAI SDK DIFF · GOOGLE\nGenai (Gemini 3.1 Flash Lite Image) spotted in Package Diff 2.27.0 -> 2.28.0!\n\n• Gemini 3.1 Flash Lite Image (gemini-3.1-flash-lite-image)\n\nEvidence: dist/index.d.ts / SDK bundle\nSource: official public npm registry tarball (@google/genai).\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 GOOGLE GENAI SDK DIFF \u00b7 GOOGLE\nGenai (Gemini 3.1 Flash Lite Image) spotted in Package Diff 2.27.0 -> 2.28.0!\n\n\u2022 Gemini 3.1 Flash Lite Image (gemini-3.1-flash-lite-image)\n\nEvidence: dist/index.d.ts / SDK bundle\nSource: official public npm registry tarball (@google/genai).\n\nTracked by @StatsWire"
     },
     {
       "id": "npm-_google_genai-2.28.0-2.29.0",
       "category": "cli-sdk-diff",
       "scanner": "npm",
-      "header": "GOOGLE GENAI SDK DIFF · GOOGLE",
+      "header": "GOOGLE GENAI SDK DIFF \u00b7 GOOGLE",
       "title": "Genai (Gemini 3.5 Flash Lite)",
       "subtitle": "Verified official SDK package comparison",
       "build_label": "Package Diff",
@@ -1758,13 +1876,13 @@
         }
       ],
       "detected_at": "2026-10-13T05:11:13.088Z",
-      "x_post_text": "🚨 GOOGLE GENAI SDK DIFF · GOOGLE\nGenai (Gemini 3.5 Flash Lite) spotted in Package Diff 2.28.0 -> 2.29.0!\n\n• Gemini 3.5 Flash Lite (gemini-3.5-flash-lite)\n\nEvidence: dist/index.d.ts / SDK bundle\nSource: official public npm registry tarball (@google/genai).\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 GOOGLE GENAI SDK DIFF \u00b7 GOOGLE\nGenai (Gemini 3.5 Flash Lite) spotted in Package Diff 2.28.0 -> 2.29.0!\n\n\u2022 Gemini 3.5 Flash Lite (gemini-3.5-flash-lite)\n\nEvidence: dist/index.d.ts / SDK bundle\nSource: official public npm registry tarball (@google/genai).\n\nTracked by @StatsWire"
     },
     {
       "id": "npm-_google_genai-2.29.1-2.30.0",
       "category": "cli-sdk-diff",
       "scanner": "npm",
-      "header": "GOOGLE GENAI SDK DIFF · GOOGLE",
+      "header": "GOOGLE GENAI SDK DIFF \u00b7 GOOGLE",
       "title": "Genai (Gemini 4 Argon)",
       "subtitle": "Verified official SDK package comparison",
       "build_label": "Package Diff",
@@ -1795,33 +1913,33 @@
         }
       ],
       "detected_at": "2026-10-15T00:06:41.128Z",
-      "x_post_text": "🚨 GOOGLE GENAI SDK DIFF · GOOGLE\nGenai (Gemini 4 Argon) spotted in Package Diff 2.29.1 -> 2.30.0!\n\n• Gemini 4 Argon (gemini-4-argon)\n\nEvidence: dist/index.d.ts / SDK bundle\nSource: official public npm registry tarball (@google/genai).\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 GOOGLE GENAI SDK DIFF \u00b7 GOOGLE\nGenai (Gemini 4 Argon) spotted in Package Diff 2.29.1 -> 2.30.0!\n\n\u2022 Gemini 4 Argon (gemini-4-argon)\n\nEvidence: dist/index.d.ts / SDK bundle\nSource: official public npm registry tarball (@google/genai).\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-tencent-5039772b",
       "category": "open-source",
       "scanner": "huggingface",
-      "header": "HUGGING FACE HUB · TENCENT HUNYUAN",
+      "header": "HUGGING FACE HUB \u00b7 TENCENT HUNYUAN",
       "title": "Hy Nomas Diffusers",
       "subtitle": "Verified official open-source model repositories (tencent)",
       "build_label": "Repo Timeline",
-      "build_transition": "Created 2026-10-24 · Updated 2026-10-24 (foundation-model)",
+      "build_transition": "Created 2026-10-24 \u00b7 Updated 2026-10-24 (foundation-model)",
       "models": [
         {
           "id": "tencent/Hy-Nomas-Diffusers",
-          "name": "Hy-Nomas-Diffusers (model, ★4 · 2026-10-24)"
+          "name": "Hy-Nomas-Diffusers (model, \u26054 \u00b7 2026-10-24)"
         },
         {
           "id": "tencent/Hy-Nomas",
-          "name": "Hy-Nomas (model, ★51 · 2026-10-23)"
+          "name": "Hy-Nomas (model, \u260551 \u00b7 2026-10-23)"
         },
         {
           "id": "tencent/WeVisOne-VL-2B",
-          "name": "WeVisOne-VL-2B (image-text-to-text, ★24 · 2026-10-23)"
+          "name": "WeVisOne-VL-2B (image-text-to-text, \u260524 \u00b7 2026-10-23)"
         },
         {
           "id": "tencent/WeVisOne-VL-4B",
-          "name": "WeVisOne-VL-4B (image-text-to-text, ★21 · 2026-10-23)"
+          "name": "WeVisOne-VL-4B (image-text-to-text, \u260521 \u00b7 2026-10-23)"
         }
       ],
       "evidence": "huggingface.co/api/models (config.json / safetensors)",
@@ -1842,33 +1960,33 @@
         }
       ],
       "detected_at": "2026-10-24T05:46:48.000Z",
-      "x_post_text": "🚨 HUGGING FACE HUB · TENCENT HUNYUAN\nHy Nomas Diffusers spotted in Repo Timeline Created 2026-10-24 · Updated 2026-10-24 (foundation-model)!\n\n• Hy-Nomas-Diffusers (model, ★4 · 2026-10-24) (tencent/Hy-Nomas-Diffusers)\n• Hy-Nomas (model, ★51 · 2026-10-23) (tencent/Hy-Nomas)\n• WeVisOne-VL-2B (image-text-to-text, ★24 · 2026-10-23) (tencent/WeVisOne-VL-2B)\n• WeVisOne-VL-4B (image-text-to-text, ★21 · 2026-10-23) (tencent/WeVisOne-VL-4B)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official tencent Hugging Face organization feed.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 HUGGING FACE HUB \u00b7 TENCENT HUNYUAN\nHy Nomas Diffusers spotted in Repo Timeline Created 2026-10-24 \u00b7 Updated 2026-10-24 (foundation-model)!\n\n\u2022 Hy-Nomas-Diffusers (model, \u26054 \u00b7 2026-10-24) (tencent/Hy-Nomas-Diffusers)\n\u2022 Hy-Nomas (model, \u260551 \u00b7 2026-10-23) (tencent/Hy-Nomas)\n\u2022 WeVisOne-VL-2B (image-text-to-text, \u260524 \u00b7 2026-10-23) (tencent/WeVisOne-VL-2B)\n\u2022 WeVisOne-VL-4B (image-text-to-text, \u260521 \u00b7 2026-10-23) (tencent/WeVisOne-VL-4B)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official tencent Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-nvidia-720bcc93",
       "category": "open-source",
       "scanner": "huggingface",
-      "header": "HUGGING FACE HUB · NVIDIA",
+      "header": "HUGGING FACE HUB \u00b7 NVIDIA",
       "title": "NVIDIA Nemotron 3.5 Super VL 120B A12B NVFP4",
       "subtitle": "Verified official open-source model repositories (nvidia)",
       "build_label": "Repo Timeline",
-      "build_transition": "Created 2026-10-12 · Updated 2026-10-23 (image-text-to-text)",
+      "build_transition": "Created 2026-10-12 \u00b7 Updated 2026-10-23 (image-text-to-text)",
       "models": [
         {
           "id": "nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4",
-          "name": "NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4 (image-text-to-text, ★223 · 2026-10-23)"
+          "name": "NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4 (image-text-to-text, \u2605223 \u00b7 2026-10-23)"
         },
         {
           "id": "nvidia/alpajudge",
-          "name": "alpajudge (text-classification, ★5 · 2026-10-23)"
+          "name": "alpajudge (text-classification, \u26055 \u00b7 2026-10-23)"
         },
         {
           "id": "nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB",
-          "name": "NVIDIA-Nemotron-3.5-Bolt-E4B-4GB (text-generation, ★83 · 2026-10-23)"
+          "name": "NVIDIA-Nemotron-3.5-Bolt-E4B-4GB (text-generation, \u260583 \u00b7 2026-10-23)"
         },
         {
           "id": "nvidia/InternVideo2-CLIP-anomaly-detection",
-          "name": "InternVideo2-CLIP-anomaly-detection (model, ★4 · 2026-10-23)"
+          "name": "InternVideo2-CLIP-anomaly-detection (model, \u26054 \u00b7 2026-10-23)"
         }
       ],
       "evidence": "huggingface.co/api/models (config.json / safetensors)",
@@ -1889,21 +2007,21 @@
         }
       ],
       "detected_at": "2026-10-23T21:46:53.000Z",
-      "x_post_text": "🚨 HUGGING FACE HUB · NVIDIA\nNVIDIA Nemotron 3.5 Super VL 120B A12B NVFP4 spotted in Repo Timeline Created 2026-10-12 · Updated 2026-10-23 (image-text-to-text)!\n\n• NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4 (image-text-to-text, ★223 · 2026-10-23) (nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4)\n• alpajudge (text-classification, ★5 · 2026-10-23) (nvidia/alpajudge)\n• NVIDIA-Nemotron-3.5-Bolt-E4B-4GB (text-generation, ★83 · 2026-10-23) (nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB)\n• InternVideo2-CLIP-anomaly-detection (model, ★4 · 2026-10-23) (nvidia/InternVideo2-CLIP-anomaly-detection)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official nvidia Hugging Face organization feed.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 HUGGING FACE HUB \u00b7 NVIDIA\nNVIDIA Nemotron 3.5 Super VL 120B A12B NVFP4 spotted in Repo Timeline Created 2026-10-12 \u00b7 Updated 2026-10-23 (image-text-to-text)!\n\n\u2022 NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4 (image-text-to-text, \u2605223 \u00b7 2026-10-23) (nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4)\n\u2022 alpajudge (text-classification, \u26055 \u00b7 2026-10-23) (nvidia/alpajudge)\n\u2022 NVIDIA-Nemotron-3.5-Bolt-E4B-4GB (text-generation, \u260583 \u00b7 2026-10-23) (nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB)\n\u2022 InternVideo2-CLIP-anomaly-detection (model, \u26054 \u00b7 2026-10-23) (nvidia/InternVideo2-CLIP-anomaly-detection)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official nvidia Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-MiniMaxAI-886f182a",
       "category": "open-source",
       "scanner": "huggingface",
-      "header": "HUGGING FACE HUB · MINIMAX",
+      "header": "HUGGING FACE HUB \u00b7 MINIMAX",
       "title": "MiniMax M3.1 Flash",
       "subtitle": "Verified official open-source model repositories (MiniMaxAI)",
       "build_label": "Repo Timeline",
-      "build_transition": "Created 2026-10-17 · Updated 2026-10-23 (image-text-to-text)",
+      "build_transition": "Created 2026-10-17 \u00b7 Updated 2026-10-23 (image-text-to-text)",
       "models": [
         {
           "id": "MiniMaxAI/MiniMax-M3.1-Flash",
-          "name": "MiniMax-M3.1-Flash (image-text-to-text, ★286 · 2026-10-23)"
+          "name": "MiniMax-M3.1-Flash (image-text-to-text, \u2605285 \u00b7 2026-10-23)"
         }
       ],
       "evidence": "huggingface.co/api/models (config.json / safetensors)",
@@ -1924,33 +2042,33 @@
         }
       ],
       "detected_at": "2026-10-23T03:37:20.000Z",
-      "x_post_text": "🚨 HUGGING FACE HUB · MINIMAX\nMiniMax M3.1 Flash spotted in Repo Timeline Created 2026-10-17 · Updated 2026-10-23 (image-text-to-text)!\n\n• MiniMax-M3.1-Flash (image-text-to-text, ★286 · 2026-10-23) (MiniMaxAI/MiniMax-M3.1-Flash)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official MiniMaxAI Hugging Face organization feed.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 HUGGING FACE HUB \u00b7 MINIMAX\nMiniMax M3.1 Flash spotted in Repo Timeline Created 2026-10-17 \u00b7 Updated 2026-10-23 (image-text-to-text)!\n\n\u2022 MiniMax-M3.1-Flash (image-text-to-text, \u2605285 \u00b7 2026-10-23) (MiniMaxAI/MiniMax-M3.1-Flash)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official MiniMaxAI Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-mistralai-cf16b3d3",
       "category": "open-source",
       "scanner": "huggingface",
-      "header": "HUGGING FACE HUB · MISTRAL AI",
+      "header": "HUGGING FACE HUB \u00b7 MISTRAL AI",
       "title": "Timestral 28M",
       "subtitle": "Verified official open-source model repositories (mistralai)",
       "build_label": "Repo Timeline",
-      "build_transition": "Created 2026-10-14 · Updated 2026-10-19 (time-series-forecasting)",
+      "build_transition": "Created 2026-10-14 \u00b7 Updated 2026-10-19 (time-series-forecasting)",
       "models": [
         {
           "id": "mistralai/Timestral-28M",
-          "name": "Timestral-28M (time-series-forecasting, ★38 · 2026-10-19)"
+          "name": "Timestral-28M (time-series-forecasting, \u260538 \u00b7 2026-10-19)"
         },
         {
           "id": "mistralai/Timestral-5M",
-          "name": "Timestral-5M (time-series-forecasting, ★72 · 2026-10-15)"
+          "name": "Timestral-5M (time-series-forecasting, \u260572 \u00b7 2026-10-15)"
         },
         {
           "id": "mistralai/Timestral-123M",
-          "name": "Timestral-123M (time-series-forecasting, ★41 · 2026-10-15)"
+          "name": "Timestral-123M (time-series-forecasting, \u260541 \u00b7 2026-10-15)"
         },
         {
           "id": "mistralai/Timestral-209M",
-          "name": "Timestral-209M (time-series-forecasting, ★326 · 2026-10-15)"
+          "name": "Timestral-209M (time-series-forecasting, \u2605326 \u00b7 2026-10-15)"
         }
       ],
       "evidence": "huggingface.co/api/models (config.json / safetensors)",
@@ -1971,29 +2089,29 @@
         }
       ],
       "detected_at": "2026-10-19T19:19:07.000Z",
-      "x_post_text": "🚨 HUGGING FACE HUB · MISTRAL AI\nTimestral 28M spotted in Repo Timeline Created 2026-10-14 · Updated 2026-10-19 (time-series-forecasting)!\n\n• Timestral-28M (time-series-forecasting, ★38 · 2026-10-19) (mistralai/Timestral-28M)\n• Timestral-5M (time-series-forecasting, ★72 · 2026-10-15) (mistralai/Timestral-5M)\n• Timestral-123M (time-series-forecasting, ★41 · 2026-10-15) (mistralai/Timestral-123M)\n• Timestral-209M (time-series-forecasting, ★326 · 2026-10-15) (mistralai/Timestral-209M)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official mistralai Hugging Face organization feed.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 HUGGING FACE HUB \u00b7 MISTRAL AI\nTimestral 28M spotted in Repo Timeline Created 2026-10-14 \u00b7 Updated 2026-10-19 (time-series-forecasting)!\n\n\u2022 Timestral-28M (time-series-forecasting, \u260538 \u00b7 2026-10-19) (mistralai/Timestral-28M)\n\u2022 Timestral-5M (time-series-forecasting, \u260572 \u00b7 2026-10-15) (mistralai/Timestral-5M)\n\u2022 Timestral-123M (time-series-forecasting, \u260541 \u00b7 2026-10-15) (mistralai/Timestral-123M)\n\u2022 Timestral-209M (time-series-forecasting, \u2605326 \u00b7 2026-10-15) (mistralai/Timestral-209M)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official mistralai Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-deepseek-ai-31e14931",
       "category": "open-source",
       "scanner": "huggingface",
-      "header": "HUGGING FACE HUB · DEEPSEEK AI",
+      "header": "HUGGING FACE HUB \u00b7 DEEPSEEK AI",
       "title": "DeepSeek V4.1 Flash 1017",
       "subtitle": "Verified official open-source model repositories (deepseek-ai)",
       "build_label": "Repo Timeline",
-      "build_transition": "Created 2026-10-17 · Updated 2026-10-17 (image-text-to-text)",
+      "build_transition": "Created 2026-10-17 \u00b7 Updated 2026-10-17 (image-text-to-text)",
       "models": [
         {
           "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
-          "name": "DeepSeek-V4.1-Flash-1017 (image-text-to-text, ★2695 · 2026-10-17)"
+          "name": "DeepSeek-V4.1-Flash-1017 (image-text-to-text, \u26052695 \u00b7 2026-10-17)"
         },
         {
           "id": "deepseek-ai/DeepSeek-V4.1-Flash",
-          "name": "DeepSeek-V4.1-Flash (image-text-to-text, ★4721 · 2026-10-16)"
+          "name": "DeepSeek-V4.1-Flash (image-text-to-text, \u26054721 \u00b7 2026-10-16)"
         },
         {
           "id": "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp",
-          "name": "DeepSeek-V4-Flash-Vision-Exp (image-text-to-text, ★958 · 2026-09-01)"
+          "name": "DeepSeek-V4-Flash-Vision-Exp (image-text-to-text, \u2605958 \u00b7 2026-09-01)"
         }
       ],
       "evidence": "huggingface.co/api/models (config.json / safetensors)",
@@ -2014,40 +2132,40 @@
         }
       ],
       "detected_at": "2026-10-17T05:46:55.000Z",
-      "x_post_text": "🚨 HUGGING FACE HUB · DEEPSEEK AI\nDeepSeek V4.1 Flash 1017 spotted in Repo Timeline Created 2026-10-17 · Updated 2026-10-17 (image-text-to-text)!\n\n• DeepSeek-V4.1-Flash-1017 (image-text-to-text, ★2695 · 2026-10-17) (deepseek-ai/DeepSeek-V4.1-Flash-1017)\n• DeepSeek-V4.1-Flash (image-text-to-text, ★4721 · 2026-10-16) (deepseek-ai/DeepSeek-V4.1-Flash)\n• DeepSeek-V4-Flash-Vision-Exp (image-text-to-text, ★958 · 2026-09-01) (deepseek-ai/DeepSeek-V4-Flash-Vision-Exp)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official deepseek-ai Hugging Face organization feed.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 HUGGING FACE HUB \u00b7 DEEPSEEK AI\nDeepSeek V4.1 Flash 1017 spotted in Repo Timeline Created 2026-10-17 \u00b7 Updated 2026-10-17 (image-text-to-text)!\n\n\u2022 DeepSeek-V4.1-Flash-1017 (image-text-to-text, \u26052695 \u00b7 2026-10-17) (deepseek-ai/DeepSeek-V4.1-Flash-1017)\n\u2022 DeepSeek-V4.1-Flash (image-text-to-text, \u26054721 \u00b7 2026-10-16) (deepseek-ai/DeepSeek-V4.1-Flash)\n\u2022 DeepSeek-V4-Flash-Vision-Exp (image-text-to-text, \u2605958 \u00b7 2026-09-01) (deepseek-ai/DeepSeek-V4-Flash-Vision-Exp)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official deepseek-ai Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-zai-org-3ccfdb28",
       "category": "open-source",
       "scanner": "huggingface",
-      "header": "HUGGING FACE HUB · Z.AI · ZHIPU GLM",
+      "header": "HUGGING FACE HUB \u00b7 Z.AI \u00b7 ZHIPU GLM",
       "title": "GLM 5.3 Flash BF16",
       "subtitle": "Verified official open-source model repositories (zai-org)",
       "build_label": "Repo Timeline",
-      "build_transition": "Created 2026-08-25 · Updated 2026-10-15 (image-text-to-text)",
+      "build_transition": "Created 2026-08-25 \u00b7 Updated 2026-10-15 (image-text-to-text)",
       "models": [
         {
           "id": "zai-org/GLM-5.3-Flash-BF16",
-          "name": "GLM-5.3-Flash-BF16 (image-text-to-text, ★76 · 2026-10-15)"
+          "name": "GLM-5.3-Flash-BF16 (image-text-to-text, \u260576 \u00b7 2026-10-15)"
         },
         {
           "id": "zai-org/GLM-5.3-BF16",
-          "name": "GLM-5.3-BF16 (text-generation, ★55 · 2026-10-15)"
+          "name": "GLM-5.3-BF16 (text-generation, \u260555 \u00b7 2026-10-15)"
         },
         {
           "id": "zai-org/GLM-5.3-Flash",
-          "name": "GLM-5.3-Flash (image-text-to-text, ★2933 · 2026-10-15)"
+          "name": "GLM-5.3-Flash (image-text-to-text, \u26052933 \u00b7 2026-10-15)"
         },
         {
           "id": "zai-org/GLM-5.3",
-          "name": "GLM-5.3 (text-generation, ★2304 · 2026-10-14)"
+          "name": "GLM-5.3 (text-generation, \u26052304 \u00b7 2026-10-14)"
         }
       ],
       "evidence": "huggingface.co/api/models (config.json / safetensors)",
       "source_text": "official zai-org Hugging Face organization feed.",
       "disclaimer_1": "Live open-source model checkpoints and repository updates on Hugging Face Hub.",
       "disclaimer_2": "Public weights / model cards published directly by the organization.",
-      "provider_name": "Z.AI · ZHIPU GLM",
+      "provider_name": "Z.AI \u00b7 ZHIPU GLM",
       "provider_slug": "zai",
       "accent_color": "#14b8a6",
       "links": [
@@ -2061,29 +2179,29 @@
         }
       ],
       "detected_at": "2026-10-15T06:53:11.000Z",
-      "x_post_text": "🚨 HUGGING FACE HUB · Z.AI · ZHIPU GLM\nGLM 5.3 Flash BF16 spotted in Repo Timeline Created 2026-08-25 · Updated 2026-10-15 (image-text-to-text)!\n\n• GLM-5.3-Flash-BF16 (image-text-to-text, ★76 · 2026-10-15) (zai-org/GLM-5.3-Flash-BF16)\n• GLM-5.3-BF16 (text-generation, ★55 · 2026-10-15) (zai-org/GLM-5.3-BF16)\n• GLM-5.3-Flash (image-text-to-text, ★2933 · 2026-10-15) (zai-org/GLM-5.3-Flash)\n• GLM-5.3 (text-generation, ★2304 · 2026-10-14) (zai-org/GLM-5.3)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official zai-org Hugging Face organization feed.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 HUGGING FACE HUB \u00b7 Z.AI \u00b7 ZHIPU GLM\nGLM 5.3 Flash BF16 spotted in Repo Timeline Created 2026-08-25 \u00b7 Updated 2026-10-15 (image-text-to-text)!\n\n\u2022 GLM-5.3-Flash-BF16 (image-text-to-text, \u260576 \u00b7 2026-10-15) (zai-org/GLM-5.3-Flash-BF16)\n\u2022 GLM-5.3-BF16 (text-generation, \u260555 \u00b7 2026-10-15) (zai-org/GLM-5.3-BF16)\n\u2022 GLM-5.3-Flash (image-text-to-text, \u26052933 \u00b7 2026-10-15) (zai-org/GLM-5.3-Flash)\n\u2022 GLM-5.3 (text-generation, \u26052304 \u00b7 2026-10-14) (zai-org/GLM-5.3)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official zai-org Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-stepfun-ai-5e5cac26",
       "category": "open-source",
       "scanner": "huggingface",
-      "header": "HUGGING FACE HUB · STEPFUN AI",
+      "header": "HUGGING FACE HUB \u00b7 STEPFUN AI",
       "title": "Step 5 Preview BF16",
       "subtitle": "Verified official open-source model repositories (stepfun-ai)",
       "build_label": "Repo Timeline",
-      "build_transition": "Created 2026-09-20 · Updated 2026-10-15 (foundation-model)",
+      "build_transition": "Created 2026-09-20 \u00b7 Updated 2026-10-15 (foundation-model)",
       "models": [
         {
           "id": "stepfun-ai/Step-5-Preview-BF16",
-          "name": "Step-5-Preview-BF16 (model, ★55 · 2026-10-15)"
+          "name": "Step-5-Preview-BF16 (model, \u260555 \u00b7 2026-10-15)"
         },
         {
           "id": "stepfun-ai/Step-5-Preview",
-          "name": "Step-5-Preview (model, ★129 · 2026-10-15)"
+          "name": "Step-5-Preview (model, \u2605129 \u00b7 2026-10-15)"
         },
         {
           "id": "stepfun-ai/Step-5-Preview-NVFP4",
-          "name": "Step-5-Preview-NVFP4 (model, ★16 · 2026-10-15)"
+          "name": "Step-5-Preview-NVFP4 (model, \u260516 \u00b7 2026-10-15)"
         }
       ],
       "evidence": "huggingface.co/api/models (config.json / safetensors)",
@@ -2104,40 +2222,40 @@
         }
       ],
       "detected_at": "2026-10-15T01:31:42.000Z",
-      "x_post_text": "🚨 HUGGING FACE HUB · STEPFUN AI\nStep 5 Preview BF16 spotted in Repo Timeline Created 2026-09-20 · Updated 2026-10-15 (foundation-model)!\n\n• Step-5-Preview-BF16 (model, ★55 · 2026-10-15) (stepfun-ai/Step-5-Preview-BF16)\n• Step-5-Preview (model, ★129 · 2026-10-15) (stepfun-ai/Step-5-Preview)\n• Step-5-Preview-NVFP4 (model, ★16 · 2026-10-15) (stepfun-ai/Step-5-Preview-NVFP4)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official stepfun-ai Hugging Face organization feed.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 HUGGING FACE HUB \u00b7 STEPFUN AI\nStep 5 Preview BF16 spotted in Repo Timeline Created 2026-09-20 \u00b7 Updated 2026-10-15 (foundation-model)!\n\n\u2022 Step-5-Preview-BF16 (model, \u260555 \u00b7 2026-10-15) (stepfun-ai/Step-5-Preview-BF16)\n\u2022 Step-5-Preview (model, \u2605129 \u00b7 2026-10-15) (stepfun-ai/Step-5-Preview)\n\u2022 Step-5-Preview-NVFP4 (model, \u260516 \u00b7 2026-10-15) (stepfun-ai/Step-5-Preview-NVFP4)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official stepfun-ai Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-allenai-68f50c57",
       "category": "open-source",
       "scanner": "huggingface",
-      "header": "HUGGING FACE HUB · ALLENAI · OLMO / MOLMO",
+      "header": "HUGGING FACE HUB \u00b7 ALLENAI \u00b7 OLMO / MOLMO",
       "title": "HiRO ACEv2",
       "subtitle": "Verified official open-source model repositories (allenai)",
       "build_label": "Repo Timeline",
-      "build_transition": "Created 2026-10-12 · Updated 2026-10-14 (foundation-model)",
+      "build_transition": "Created 2026-10-12 \u00b7 Updated 2026-10-14 (foundation-model)",
       "models": [
         {
           "id": "allenai/HiRO-ACEv2",
-          "name": "HiRO-ACEv2 (model, ★5 · 2026-10-14)"
+          "name": "HiRO-ACEv2 (model, \u26055 \u00b7 2026-10-14)"
         },
         {
           "id": "allenai/OlmoEarth-v1_3-Base",
-          "name": "OlmoEarth-v1_3-Base (image-feature-extraction, ★13 · 2026-10-13)"
+          "name": "OlmoEarth-v1_3-Base (image-feature-extraction, \u260513 \u00b7 2026-10-13)"
         },
         {
           "id": "allenai/AstaBrief_8B_SFT",
-          "name": "AstaBrief_8B_SFT (text-generation, ★2 · 2026-10-02)"
+          "name": "AstaBrief_8B_SFT (text-generation, \u26052 \u00b7 2026-10-02)"
         },
         {
           "id": "allenai/SamudrACE-E3SMv3",
-          "name": "SamudrACE-E3SMv3 (model, ★4 · 2026-09-24)"
+          "name": "SamudrACE-E3SMv3 (model, \u26054 \u00b7 2026-09-24)"
         }
       ],
       "evidence": "huggingface.co/api/models (config.json / safetensors)",
       "source_text": "official allenai Hugging Face organization feed.",
       "disclaimer_1": "Live open-source model checkpoints and repository updates on Hugging Face Hub.",
       "disclaimer_2": "Public weights / model cards published directly by the organization.",
-      "provider_name": "ALLENAI · OLMO / MOLMO",
+      "provider_name": "ALLENAI \u00b7 OLMO / MOLMO",
       "provider_slug": "opensource",
       "accent_color": "#ec4899",
       "links": [
@@ -2151,40 +2269,40 @@
         }
       ],
       "detected_at": "2026-10-14T13:15:49.000Z",
-      "x_post_text": "🚨 HUGGING FACE HUB · ALLENAI · OLMO / MOLMO\nHiRO ACEv2 spotted in Repo Timeline Created 2026-10-12 · Updated 2026-10-14 (foundation-model)!\n\n• HiRO-ACEv2 (model, ★5 · 2026-10-14) (allenai/HiRO-ACEv2)\n• OlmoEarth-v1_3-Base (image-feature-extraction, ★13 · 2026-10-13) (allenai/OlmoEarth-v1_3-Base)\n• AstaBrief_8B_SFT (text-generation, ★2 · 2026-10-02) (allenai/AstaBrief_8B_SFT)\n• SamudrACE-E3SMv3 (model, ★4 · 2026-09-24) (allenai/SamudrACE-E3SMv3)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official allenai Hugging Face organization feed.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 HUGGING FACE HUB \u00b7 ALLENAI \u00b7 OLMO / MOLMO\nHiRO ACEv2 spotted in Repo Timeline Created 2026-10-12 \u00b7 Updated 2026-10-14 (foundation-model)!\n\n\u2022 HiRO-ACEv2 (model, \u26055 \u00b7 2026-10-14) (allenai/HiRO-ACEv2)\n\u2022 OlmoEarth-v1_3-Base (image-feature-extraction, \u260513 \u00b7 2026-10-13) (allenai/OlmoEarth-v1_3-Base)\n\u2022 AstaBrief_8B_SFT (text-generation, \u26052 \u00b7 2026-10-02) (allenai/AstaBrief_8B_SFT)\n\u2022 SamudrACE-E3SMv3 (model, \u26054 \u00b7 2026-09-24) (allenai/SamudrACE-E3SMv3)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official allenai Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-Qwen-cbf7ad0c",
       "category": "open-source",
       "scanner": "huggingface",
-      "header": "HUGGING FACE HUB · QWEN · ALIBABA",
+      "header": "HUGGING FACE HUB \u00b7 QWEN \u00b7 ALIBABA",
       "title": "Qwen Image 2.1 Turbo",
       "subtitle": "Verified official open-source model repositories (Qwen)",
       "build_label": "Repo Timeline",
-      "build_transition": "Created 2026-10-09 · Updated 2026-10-12 (text-to-image)",
+      "build_transition": "Created 2026-10-09 \u00b7 Updated 2026-10-12 (text-to-image)",
       "models": [
         {
           "id": "Qwen/Qwen-Image-2.1-Turbo",
-          "name": "Qwen-Image-2.1-Turbo (text-to-image, ★1043 · 2026-10-12)"
+          "name": "Qwen-Image-2.1-Turbo (text-to-image, \u26051043 \u00b7 2026-10-12)"
         },
         {
           "id": "Qwen/Qwen-Image-2.1",
-          "name": "Qwen-Image-2.1 (text-to-image, ★3440 · 2026-09-30)"
+          "name": "Qwen-Image-2.1 (text-to-image, \u26053440 \u00b7 2026-09-30)"
         },
         {
           "id": "Qwen/Qwen-Image-2.1-PE-I2I",
-          "name": "Qwen-Image-2.1-PE-I2I (model, ★68 · 2026-09-20)"
+          "name": "Qwen-Image-2.1-PE-I2I (model, \u260568 \u00b7 2026-09-20)"
         },
         {
           "id": "Qwen/Qwen-Image-2.1-PE-T2I",
-          "name": "Qwen-Image-2.1-PE-T2I (text-to-image, ★73 · 2026-09-20)"
+          "name": "Qwen-Image-2.1-PE-T2I (text-to-image, \u260573 \u00b7 2026-09-20)"
         }
       ],
       "evidence": "huggingface.co/api/models (config.json / safetensors)",
       "source_text": "official Qwen Hugging Face organization feed.",
       "disclaimer_1": "Live open-source model checkpoints and repository updates on Hugging Face Hub.",
       "disclaimer_2": "Public weights / model cards published directly by the organization.",
-      "provider_name": "QWEN · ALIBABA",
+      "provider_name": "QWEN \u00b7 ALIBABA",
       "provider_slug": "qwen",
       "accent_color": "#a855f7",
       "links": [
@@ -2198,33 +2316,33 @@
         }
       ],
       "detected_at": "2026-10-12T09:45:49.000Z",
-      "x_post_text": "🚨 HUGGING FACE HUB · QWEN · ALIBABA\nQwen Image 2.1 Turbo spotted in Repo Timeline Created 2026-10-09 · Updated 2026-10-12 (text-to-image)!\n\n• Qwen-Image-2.1-Turbo (text-to-image, ★1043 · 2026-10-12) (Qwen/Qwen-Image-2.1-Turbo)\n• Qwen-Image-2.1 (text-to-image, ★3440 · 2026-09-30) (Qwen/Qwen-Image-2.1)\n• Qwen-Image-2.1-PE-I2I (model, ★68 · 2026-09-20) (Qwen/Qwen-Image-2.1-PE-I2I)\n• Qwen-Image-2.1-PE-T2I (text-to-image, ★73 · 2026-09-20) (Qwen/Qwen-Image-2.1-PE-T2I)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official Qwen Hugging Face organization feed.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 HUGGING FACE HUB \u00b7 QWEN \u00b7 ALIBABA\nQwen Image 2.1 Turbo spotted in Repo Timeline Created 2026-10-09 \u00b7 Updated 2026-10-12 (text-to-image)!\n\n\u2022 Qwen-Image-2.1-Turbo (text-to-image, \u26051043 \u00b7 2026-10-12) (Qwen/Qwen-Image-2.1-Turbo)\n\u2022 Qwen-Image-2.1 (text-to-image, \u26053440 \u00b7 2026-09-30) (Qwen/Qwen-Image-2.1)\n\u2022 Qwen-Image-2.1-PE-I2I (model, \u260568 \u00b7 2026-09-20) (Qwen/Qwen-Image-2.1-PE-I2I)\n\u2022 Qwen-Image-2.1-PE-T2I (text-to-image, \u260573 \u00b7 2026-09-20) (Qwen/Qwen-Image-2.1-PE-T2I)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official Qwen Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-XiaomiMiMo-9c0a8a5b",
       "category": "open-source",
       "scanner": "huggingface",
-      "header": "HUGGING FACE HUB · XIAOMI MIMO",
+      "header": "HUGGING FACE HUB \u00b7 XIAOMI MIMO",
       "title": "MiMo V2.6 Flash MOPD",
       "subtitle": "Verified official open-source model repositories (XiaomiMiMo)",
       "build_label": "Repo Timeline",
-      "build_transition": "Created 2026-09-27 · Updated 2026-10-09 (text-generation)",
+      "build_transition": "Created 2026-09-27 \u00b7 Updated 2026-10-09 (text-generation)",
       "models": [
         {
           "id": "XiaomiMiMo/MiMo-V2.6-Flash-MOPD",
-          "name": "MiMo-V2.6-Flash-MOPD (text-generation, ★68 · 2026-10-09)"
+          "name": "MiMo-V2.6-Flash-MOPD (text-generation, \u260568 \u00b7 2026-10-09)"
         },
         {
           "id": "XiaomiMiMo/MiMo-V2.6-Pro-MOPD",
-          "name": "MiMo-V2.6-Pro-MOPD (text-generation, ★44 · 2026-10-09)"
+          "name": "MiMo-V2.6-Pro-MOPD (text-generation, \u260544 \u00b7 2026-10-09)"
         },
         {
           "id": "XiaomiMiMo/MiMo-V2.6-Flash-RL",
-          "name": "MiMo-V2.6-Flash-RL (text-generation, ★581 · 2026-10-09)"
+          "name": "MiMo-V2.6-Flash-RL (text-generation, \u2605581 \u00b7 2026-10-09)"
         },
         {
           "id": "XiaomiMiMo/MiMo-V2.6-Pro-RL",
-          "name": "MiMo-V2.6-Pro-RL (text-generation, ★774 · 2026-10-09)"
+          "name": "MiMo-V2.6-Pro-RL (text-generation, \u2605774 \u00b7 2026-10-09)"
         }
       ],
       "evidence": "huggingface.co/api/models (config.json / safetensors)",
@@ -2245,29 +2363,29 @@
         }
       ],
       "detected_at": "2026-10-09T06:30:44.000Z",
-      "x_post_text": "🚨 HUGGING FACE HUB · XIAOMI MIMO\nMiMo V2.6 Flash MOPD spotted in Repo Timeline Created 2026-09-27 · Updated 2026-10-09 (text-generation)!\n\n• MiMo-V2.6-Flash-MOPD (text-generation, ★68 · 2026-10-09) (XiaomiMiMo/MiMo-V2.6-Flash-MOPD)\n• MiMo-V2.6-Pro-MOPD (text-generation, ★44 · 2026-10-09) (XiaomiMiMo/MiMo-V2.6-Pro-MOPD)\n• MiMo-V2.6-Flash-RL (text-generation, ★581 · 2026-10-09) (XiaomiMiMo/MiMo-V2.6-Flash-RL)\n• MiMo-V2.6-Pro-RL (text-generation, ★774 · 2026-10-09) (XiaomiMiMo/MiMo-V2.6-Pro-RL)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official XiaomiMiMo Hugging Face organization feed.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 HUGGING FACE HUB \u00b7 XIAOMI MIMO\nMiMo V2.6 Flash MOPD spotted in Repo Timeline Created 2026-09-27 \u00b7 Updated 2026-10-09 (text-generation)!\n\n\u2022 MiMo-V2.6-Flash-MOPD (text-generation, \u260568 \u00b7 2026-10-09) (XiaomiMiMo/MiMo-V2.6-Flash-MOPD)\n\u2022 MiMo-V2.6-Pro-MOPD (text-generation, \u260544 \u00b7 2026-10-09) (XiaomiMiMo/MiMo-V2.6-Pro-MOPD)\n\u2022 MiMo-V2.6-Flash-RL (text-generation, \u2605581 \u00b7 2026-10-09) (XiaomiMiMo/MiMo-V2.6-Flash-RL)\n\u2022 MiMo-V2.6-Pro-RL (text-generation, \u2605774 \u00b7 2026-10-09) (XiaomiMiMo/MiMo-V2.6-Pro-RL)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official XiaomiMiMo Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-google-12f58e57",
       "category": "open-source",
       "scanner": "huggingface",
-      "header": "HUGGING FACE HUB · GOOGLE OPEN MODELS",
+      "header": "HUGGING FACE HUB \u00b7 GOOGLE OPEN MODELS",
       "title": "embeddinggemma 2",
       "subtitle": "Verified official open-source model repositories (google)",
       "build_label": "Repo Timeline",
-      "build_transition": "Created 2026-09-14 · Updated 2026-10-06 (feature-extraction)",
+      "build_transition": "Created 2026-09-14 \u00b7 Updated 2026-10-06 (feature-extraction)",
       "models": [
         {
           "id": "google/embeddinggemma-2",
-          "name": "embeddinggemma-2 (feature-extraction, ★2885 · 2026-10-06)"
+          "name": "embeddinggemma-2 (feature-extraction, \u26052884 \u00b7 2026-10-06)"
         },
         {
           "id": "google/timesfm-3.0-pytorch",
-          "name": "timesfm-3.0-pytorch (time-series-forecasting, ★986 · 2026-09-02)"
+          "name": "timesfm-3.0-pytorch (time-series-forecasting, \u2605986 \u00b7 2026-09-02)"
         },
         {
           "id": "google/gnm-v3",
-          "name": "gnm-v3 (model, ★29 · 2026-09-02)"
+          "name": "gnm-v3 (model, \u260529 \u00b7 2026-09-02)"
         }
       ],
       "evidence": "huggingface.co/api/models (config.json / safetensors)",
@@ -2288,40 +2406,40 @@
         }
       ],
       "detected_at": "2026-10-06T15:29:23.000Z",
-      "x_post_text": "🚨 HUGGING FACE HUB · GOOGLE OPEN MODELS\nembeddinggemma 2 spotted in Repo Timeline Created 2026-09-14 · Updated 2026-10-06 (feature-extraction)!\n\n• embeddinggemma-2 (feature-extraction, ★2885 · 2026-10-06) (google/embeddinggemma-2)\n• timesfm-3.0-pytorch (time-series-forecasting, ★986 · 2026-09-02) (google/timesfm-3.0-pytorch)\n• gnm-v3 (model, ★29 · 2026-09-02) (google/gnm-v3)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official google Hugging Face organization feed.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 HUGGING FACE HUB \u00b7 GOOGLE OPEN MODELS\nembeddinggemma 2 spotted in Repo Timeline Created 2026-09-14 \u00b7 Updated 2026-10-06 (feature-extraction)!\n\n\u2022 embeddinggemma-2 (feature-extraction, \u26052884 \u00b7 2026-10-06) (google/embeddinggemma-2)\n\u2022 timesfm-3.0-pytorch (time-series-forecasting, \u2605986 \u00b7 2026-09-02) (google/timesfm-3.0-pytorch)\n\u2022 gnm-v3 (model, \u260529 \u00b7 2026-09-02) (google/gnm-v3)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official google Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-moonshotai-65f313b9",
       "category": "open-source",
       "scanner": "huggingface",
-      "header": "HUGGING FACE HUB · MOONSHOT · KIMI",
+      "header": "HUGGING FACE HUB \u00b7 MOONSHOT \u00b7 KIMI",
       "title": "Kimi K3",
       "subtitle": "Verified official open-source model repositories (moonshotai)",
       "build_label": "Repo Timeline",
-      "build_transition": "Created 2026-06-13 · Updated 2026-09-02 (image-text-to-text)",
+      "build_transition": "Created 2026-06-13 \u00b7 Updated 2026-09-02 (image-text-to-text)",
       "models": [
         {
           "id": "moonshotai/Kimi-K3",
-          "name": "Kimi-K3 (image-text-to-text, ★11818 · 2026-09-02)"
+          "name": "Kimi-K3 (image-text-to-text, \u260511818 \u00b7 2026-09-02)"
         },
         {
           "id": "moonshotai/Kimi-K2.7-Code",
-          "name": "Kimi-K2.7-Code (image-text-to-text, ★1424 · 2026-06-15)"
+          "name": "Kimi-K2.7-Code (image-text-to-text, \u26051424 \u00b7 2026-06-15)"
         },
         {
           "id": "moonshotai/Kimi-K2.6",
-          "name": "Kimi-K2.6 (image-text-to-text, ★1636 · 2026-05-19)"
+          "name": "Kimi-K2.6 (image-text-to-text, \u26051636 \u00b7 2026-05-19)"
         },
         {
           "id": "moonshotai/Kimi-K2.5",
-          "name": "Kimi-K2.5 (image-text-to-text, ★2893 · 2026-04-30)"
+          "name": "Kimi-K2.5 (image-text-to-text, \u26052893 \u00b7 2026-04-30)"
         }
       ],
       "evidence": "huggingface.co/api/models (config.json / safetensors)",
       "source_text": "official moonshotai Hugging Face organization feed.",
       "disclaimer_1": "Live open-source model checkpoints and repository updates on Hugging Face Hub.",
       "disclaimer_2": "Public weights / model cards published directly by the organization.",
-      "provider_name": "MOONSHOT · KIMI",
+      "provider_name": "MOONSHOT \u00b7 KIMI",
       "provider_slug": "kimi",
       "accent_color": "#6366f1",
       "links": [
@@ -2335,7 +2453,7 @@
         }
       ],
       "detected_at": "2026-06-13T06:42:57.000Z",
-      "x_post_text": "🚨 HUGGING FACE HUB · MOONSHOT · KIMI\nKimi K3 spotted in Repo Timeline Created 2026-06-13 · Updated 2026-09-02 (image-text-to-text)!\n\n• Kimi-K3 (image-text-to-text, ★11818 · 2026-09-02) (moonshotai/Kimi-K3)\n• Kimi-K2.7-Code (image-text-to-text, ★1424 · 2026-06-15) (moonshotai/Kimi-K2.7-Code)\n• Kimi-K2.6 (image-text-to-text, ★1636 · 2026-05-19) (moonshotai/Kimi-K2.6)\n• Kimi-K2.5 (image-text-to-text, ★2893 · 2026-04-30) (moonshotai/Kimi-K2.5)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official moonshotai Hugging Face organization feed.\n\nTracked by @StatsWire"
+      "x_post_text": "\ud83d\udea8 HUGGING FACE HUB \u00b7 MOONSHOT \u00b7 KIMI\nKimi K3 spotted in Repo Timeline Created 2026-06-13 \u00b7 Updated 2026-09-02 (image-text-to-text)!\n\n\u2022 Kimi-K3 (image-text-to-text, \u260511818 \u00b7 2026-09-02) (moonshotai/Kimi-K3)\n\u2022 Kimi-K2.7-Code (image-text-to-text, \u26051424 \u00b7 2026-06-15) (moonshotai/Kimi-K2.7-Code)\n\u2022 Kimi-K2.6 (image-text-to-text, \u26051636 \u00b7 2026-05-19) (moonshotai/Kimi-K2.6)\n\u2022 Kimi-K2.5 (image-text-to-text, \u26052893 \u00b7 2026-04-30) (moonshotai/Kimi-K2.5)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official moonshotai Hugging Face organization feed.\n\nTracked by @StatsWire"
     }
   ]
 }
