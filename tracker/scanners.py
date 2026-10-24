@@ -1552,7 +1552,15 @@ class LmArenaScanner:
                 print(f"[LmArenaScanner] Note (arena.ai live RSC stream {url}): {exc}")
 
         if fetched_any:
-            added_names = [k for k in merged_map if k not in prev_keys] if prev_keys else []
+            already_known_lower = {
+                x.lower() for x in baselines.get("arena_leaderboard_models", [])
+            } | {
+                x.split("/")[-1].lower() for x in baselines.get("litellm_keys", [])
+            }
+            added_names = [
+                k for k in merged_map
+                if k not in prev_keys and k.lower() not in already_known_lower
+            ] if prev_keys else []
             if set(merged_map.keys()) != prev_keys:
                 baselines["arena_initial_models"] = merged_map
                 changed = True
@@ -1668,36 +1676,6 @@ class LmArenaScanner:
                         all_discovered[rn] = cfg_label
             except Exception as exc:
                 print(f"[LmArenaScanner] HF leaderboard warning ({cfg}): {exc}")
-
-        # Emit dedicated Arena Scout card for gemini-nano-banana-2.1
-        cards.insert(
-            0,
-            {
-                "id": "arena-scout-nano-banana-2.1",
-                "category": "cli-sdk-diff",
-                "scanner": "lmarena",
-                "header": "ARENA.AI NEW MODEL SCOUT · GOOGLE",
-                "title": "New Unreleased Model Found on Arena: gemini-nano-banana-2.1",
-                "subtitle": "Spotted in Arena image evaluation pipeline (+ in:image, + in:text, + out:image)",
-                "build_label": "Arena Capabilities",
-                "build_transition": "in:image · in:text · out:image (org: google / unknown)",
-                "models": [
-                    {
-                        "id": "gemini-nano-banana-2.1",
-                        "name": "Gemini Nano Banana 2.1 (in:image, in:text, out:image)",
-                    }
-                ],
-                "evidence": "arena.ai initialModels + lmarena-ai/leaderboard-dataset (text_to_image / image_edit)",
-                "source_text": "live Arena.ai model registry & image evaluation pipeline.",
-                "disclaimer_1": "",
-                "disclaimer_2": "",
-                "provider_name": "GOOGLE",
-                "provider_slug": "google",
-                "accent_color": "#38bdf8",
-                "links": [{"label": "Arena.ai", "url": "https://arena.ai/?mode=direct"}],
-                "detected_at": "2026-10-24T12:08:00Z",
-            },
-        )
 
         if all_discovered:
             prev_lb = set(baselines.get("arena_leaderboard_models", []))
