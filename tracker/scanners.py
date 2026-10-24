@@ -12,12 +12,14 @@ import re
 import tarfile
 from typing import Any, Dict, List, Optional, Set
 import urllib.request
+import zlib
 
 from tracker.extractor import (
     CACHE_DIR,
     clean_go_model_id,
     extract_models_from_bytes,
     fetch_elf_rodata_slice,
+    fetch_range,
     humanize_model_id,
     infer_family_title,
     infer_provider,
@@ -266,6 +268,252 @@ class AntigravityDesktopScanner:
                 print(f"[AntigravityScanner] Stable diff error ({older['version']} -> {newer['version']}): {exc}")
 
         return all_cards
+
+
+class AntigravityAcpScanner:
+    """
+    Scans Google Antigravity ACP (Agent Client Protocol) Server releases directly on
+    Google's Release CDN (dl.google.com/agy-extensions/releases/...) by extracting the
+    embedded Google3 Discovery Document (cloudcode-pa_prod_google_rest_v1internal.json)
+    inside agy_acp_server.par. Detects both new version releases (1.4.2 -> 1.4.3 -> 1.4.4)
+    and In-Place CDN Revision Drops (when Google overwrites a release zip in place).
+    """
+
+    CDN_URL_TEMPLATE = "https://dl.google.com/agy-extensions/releases/macos/agy-acp-server-{ver}-darwin-arm64.zip"
+    CANDIDATE_VERSIONS = ["1.4.0", "1.4.1", "1.4.2", "1.4.3", "1.4.4", "1.4.5", "1.4.6", "1.5.0"]
+    DISCOVERY_DOC_PATH = "google3/google/internal/cloud/code/cloudcode-pa_prod_google_rest_v1internal.json"
+    BASELINES_FILE = pathlib.Path(__file__).resolve().parent.parent / "data" / "source_baselines.json"
+
+    def _load_baselines(self) -> Dict[str, Any]:
+        if self.BASELINES_FILE.exists():
+            try:
+                return json.loads(self.BASELINES_FILE.read_text(encoding="utf-8"))
+            except Exception:
+                return {}
+        return {}
+
+    def _save_baselines(self, data: Dict[str, Any]) -> None:
+        self.BASELINES_FILE.parent.mkdir(parents=True, exist_ok=True)
+        self.BASELINES_FILE.write_text(json.dumps(data, indent=2), encoding="utf-8")
+
+    def _head_release(self, ver: str) -> Optional[Dict[str, Any]]:
+        url = self.CDN_URL_TEMPLATE.format(ver=ver)
+        try:
+            from email.utils import parsedate_to_datetime
+            req = urllib.request.Request(
+                url,
+                method="HEAD",
+                headers={"User-Agent": "ModelPulse-Tracker/2.0"},
+            )
+            with urllib.request.urlopen(req, timeout=8) as resp:
+                if resp.status != 200:
+                    return None
+                cl = int(resp.headers.get("Content-Length", "0") or 0)
+                lm = resp.headers.get("Last-Modified", "")
+                etag = (resp.headers.get("ETag", "") or "").strip('"')
+                iso_ts = datetime.now(timezone.utc).isoformat()
+                if lm:
+                    try:
+                        iso_ts = parsedate_to_datetime(lm).astimezone(timezone.utc).isoformat()
+                    except Exception:
+                        pass
+                return {
+                    "version": ver,
+                    "url": url,
+                    "zip_size": cl,
+                    "last_modified": lm,
+                    "etag": etag,
+                    "detected_at": iso_ts,
+                }
+        except Exception:
+            return None
+
+    def _extract_discovery_snapshot(self, ver: str, head_meta: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """Download the Range slice of agy-acp-server-{ver}-darwin-arm64.zip and extract the Discovery Doc."""
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        etag_slug = re.sub(r"[^0-9A-Za-z._-]", "_", head_meta.get("etag") or str(head_meta.get("zip_size", "")))
+        cache_uncomp = CACHE_DIR / f"acp_{ver}_{etag_slug}_uncomp.bin"
+        legacy_cache = CACHE_DIR / f"acp_{ver}_uncomp.bin"
+
+        uncomp: Optional[bytes] = None
+        if cache_uncomp.exists() and cache_uncomp.stat().st_size > 70_000_000:
+            uncomp = cache_uncomp.read_bytes()
+        elif legacy_cache.exists() and legacy_cache.stat().st_size > 70_000_000:
+            uncomp = legacy_cache.read_bytes()
+        else:
+            raw_zip = fetch_range(head_meta["url"], 0, 38_000_000, timeout=60)
+            fn_len = int.from_bytes(raw_zip[26:28], "little")
+            extra_len = int.from_bytes(raw_zip[28:30], "little")
+            data_start = 30 + fn_len + extra_len
+            decomp = zlib.decompressobj(-zlib.MAX_WBITS)
+            uncomp = decomp.decompress(raw_zip[data_start:])
+            cache_uncomp.write_bytes(uncomp)
+
+        needle = b"cloudcode-pa_prod_google_rest_v1internal.json"
+        pos = 0
+        while True:
+            idx = uncomp.find(needle, pos)
+            if idx == -1:
+                return None
+            pk_start = uncomp.rfind(b"PK\x03\x04", 0, idx + 1)
+            fn_len = int.from_bytes(uncomp[pk_start + 26 : pk_start + 28], "little")
+            ex_len = int.from_bytes(uncomp[pk_start + 28 : pk_start + 30], "little")
+            fname = uncomp[pk_start + 30 : pk_start + 30 + fn_len].decode("utf-8", "ignore")
+            if "cloudcode-pa_prod_google_rest_v1internal.json" in fname:
+                pk_end = uncomp.find(b"PK\x03\x04", pk_start + 4)
+                body = uncomp[pk_start + 30 + fn_len + ex_len : pk_end]
+                doc = json.loads(body.decode("utf-8"))
+                prop = doc["schemas"]["ExaCodeiumCommonPbModelInfo"]["properties"]["modelId"]
+                enums = prop.get("enum", [])
+                descs = prop.get("enumDescriptions", [])
+                active_count = len([1 for e, d in zip(enums, descs) if d or "PLACEHOLDER" not in e])
+                models = [d for d in descs if d]
+                return {
+                    "version": ver,
+                    "url": head_meta["url"],
+                    "zip_size": head_meta["zip_size"],
+                    "last_modified": head_meta["last_modified"],
+                    "etag": head_meta["etag"],
+                    "detected_at": head_meta["detected_at"],
+                    "doc_size": len(body),
+                    "active_count": active_count,
+                    "models": models,
+                }
+            pos = idx + 1
+
+    def scan(self) -> List[Dict[str, Any]]:
+        baselines = self._load_baselines()
+        acp_releases: Dict[str, Any] = baselines.setdefault("acp_releases", {})
+        changed = False
+
+        for ver in self.CANDIDATE_VERSIONS:
+            head_meta = self._head_release(ver)
+            if not head_meta:
+                continue
+            existing = acp_releases.get(ver)
+            is_missing = existing is None
+            is_revised = (
+                existing is not None
+                and (
+                    existing.get("etag") != head_meta["etag"]
+                    or existing.get("zip_size") != head_meta["zip_size"]
+                )
+            )
+            if is_missing or is_revised:
+                try:
+                    snap = self._extract_discovery_snapshot(ver, head_meta)
+                    if snap:
+                        if is_revised and existing:
+                            snap["initial_snapshot"] = existing.get("initial_snapshot") or {
+                                "doc_size": existing.get("doc_size"),
+                                "active_count": existing.get("active_count"),
+                                "models": existing.get("models", []),
+                                "etag": existing.get("etag"),
+                                "last_modified": existing.get("last_modified"),
+                            }
+                        acp_releases[ver] = snap
+                        changed = True
+                except Exception as exc:
+                    print(f"[AntigravityAcpScanner] Extraction warning ({ver}): {exc}")
+
+        if changed:
+            self._save_baselines(baselines)
+
+        cards: List[Dict[str, Any]] = []
+        sorted_vers = sorted(acp_releases.keys(), key=lambda v: [int(x) for x in v.split(".")])
+
+        # 1. Emit In-Place Revision Drop cards (e.g. v1.4.3 Initial -> v1.4.3 Revision)
+        revision_covered_models: Set[str] = set()
+        for ver in reversed(sorted_vers):
+            snap = acp_releases[ver]
+            init_snap = snap.get("initial_snapshot")
+            if not init_snap:
+                continue
+            old_models = set(init_snap.get("models", []))
+            new_models = [m for m in snap.get("models", []) if m not in old_models]
+            if not new_models:
+                continue
+            revision_covered_models.update(new_models)
+            old_doc = init_snap.get("doc_size", 0)
+            new_doc = snap.get("doc_size", 0)
+            old_act = init_snap.get("active_count", 0)
+            new_act = snap.get("active_count", 0)
+            doc_diff = new_doc - old_doc
+            act_diff = new_act - old_act
+
+            cards.append(
+                {
+                    "id": f"ag-acp-{ver}-revision-diff",
+                    "category": "desktop-diff",
+                    "scanner": "antigravity-acp",
+                    "header": f"ANTIGRAVITY ACP (IN-PLACE REVISION) · v{ver}",
+                    "title": f"Gemini 4 Carbon & Argon Teamfood (ACP v{ver} Revision)",
+                    "subtitle": f"Google Release CDN Ninja Revision Drop · Active Models: {old_act} -> {new_act} ({act_diff:+d})",
+                    "build_label": "Discovery Doc Diff",
+                    "build_transition": f"v{ver} (Initial) -> v{ver} (Revision) · {old_doc:,} -> {new_doc:,} bytes ({doc_diff:+,})",
+                    "old_version": f"{ver} (Initial)",
+                    "new_version": f"{ver} (Revision)",
+                    "models": [{"id": mid, "name": humanize_model_id(mid)} for mid in new_models],
+                    "evidence": f"agy_acp_server.par -> {self.DISCOVERY_DOC_PATH}",
+                    "source_text": "official Google Antigravity ACP Server release archive on dl.google.com.",
+                    "disclaimer_1": f"Detected in-place CDN revision of agy-acp-server-{ver}: embedded Discovery Doc grew by {doc_diff:+,} bytes ({old_act} -> {new_act} active models).",
+                    "disclaimer_2": "Internal & teamfood model identifiers in cloudcode-pa_prod_google_rest_v1internal.json.",
+                    "provider_name": "GOOGLE",
+                    "provider_slug": "google",
+                    "accent_color": "#38bdf8",
+                    "links": [
+                        {"label": f"ACP v{ver} CDN Archive", "url": snap["url"]},
+                        {"label": "AUR agy-acp-server", "url": "https://aur.archlinux.org/packages/agy-acp-server"},
+                    ],
+                    "detected_at": snap.get("detected_at", datetime.now(timezone.utc).isoformat()),
+                }
+            )
+
+        # 2. Emit consecutive version diffs (e.g. 1.4.1 -> 1.4.3 internal models)
+        if len(sorted_vers) >= 2:
+            oldest_snap = acp_releases[sorted_vers[0]]
+            latest_snap = acp_releases[sorted_vers[-1]]
+            base_models = set(oldest_snap.get("models", []))
+            added_across = [
+                m for m in latest_snap.get("models", [])
+                if m not in base_models and m not in revision_covered_models
+            ]
+            if added_across:
+                old_v = sorted_vers[0]
+                new_v = sorted_vers[-1]
+                old_doc = oldest_snap.get("doc_size", 0)
+                new_doc = latest_snap.get("doc_size", 0)
+                old_act = oldest_snap.get("active_count", 0)
+                new_act = latest_snap.get("active_count", 0)
+                cards.append(
+                    {
+                        "id": f"ag-acp-{old_v}-{new_v}-diff",
+                        "category": "desktop-diff",
+                        "scanner": "antigravity-acp",
+                        "header": f"ANTIGRAVITY ACP SERVER DIFF · GOOGLE",
+                        "title": "Gemini 4 Argon Cyber, Barium & Sonnet 5.5 BoN (ACP Discovery Doc)",
+                        "subtitle": f"Embedded cloudcode-pa v1internal Discovery Doc comparison (v{old_v} -> v{new_v})",
+                        "build_label": "ACP Server Build",
+                        "build_transition": f"v{old_v} -> v{new_v} · {old_act} -> {new_act} active models ({new_act - old_act:+d})",
+                        "old_version": old_v,
+                        "new_version": new_v,
+                        "models": [{"id": mid, "name": humanize_model_id(mid)} for mid in added_across],
+                        "evidence": f"agy_acp_server.par -> {self.DISCOVERY_DOC_PATH}",
+                        "source_text": "official Google Antigravity ACP Server release archives on dl.google.com.",
+                        "disclaimer_1": "Extracted from the embedded Google internal Cloud Code Discovery Document inside agy_acp_server.par.",
+                        "disclaimer_2": "Internal teamfood (-tf), router, and evaluation checkpoints.",
+                        "provider_name": "GOOGLE",
+                        "provider_slug": "google",
+                        "accent_color": "#38bdf8",
+                        "links": [
+                            {"label": f"ACP v{new_v} CDN Archive", "url": latest_snap["url"]},
+                            {"label": f"ACP v{old_v} CDN Archive", "url": oldest_snap["url"]},
+                        ],
+                        "detected_at": latest_snap.get("detected_at", datetime.now(timezone.utc).isoformat()),
+                    }
+                )
+
+        return cards
 
 
 class NpmCliAndSdkScanner:

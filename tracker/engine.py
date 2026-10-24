@@ -9,6 +9,7 @@ from typing import Any, Dict, List, Set
 
 from tracker.notifiers import build_x_post_text, send_discord_webhook
 from tracker.scanners import (
+    AntigravityAcpScanner,
     AntigravityDesktopScanner,
     DocsAndGlobalRegistryScanner,
     HuggingFaceOpenSourceScanner,
@@ -30,6 +31,7 @@ class TrackerEngine:
     def __init__(self, github_user: str = "siddiquiamir") -> None:
         self.github_user = github_user
         self.ag_scanner = AntigravityDesktopScanner()
+        self.ag_acp_scanner = AntigravityAcpScanner()
         self.npm_scanner = NpmCliAndSdkScanner()
         self.kimi_router_scanner = KimiCodeAndRouterScanner()
         self.docs_scanner = DocsAndGlobalRegistryScanner()
@@ -63,17 +65,34 @@ class TrackerEngine:
         except Exception:
             return {}
 
+    def load_previous_cards(self) -> List[Dict[str, Any]]:
+        if not FEED_FILE.exists():
+            return []
+        try:
+            data = json.loads(FEED_FILE.read_text(encoding="utf-8"))
+            return data.get("cards", [])
+        except Exception:
+            return []
+
     def run_all_scans(self, notify_discord: bool = True) -> Dict[str, Any]:
         prev_timestamps = self.load_previous_timestamps()
+        prev_cards = self.load_previous_cards()
 
         print("[ModelPulse] Scanning Antigravity Desktop builds (Stable + Insiders)...")
         ag_cards = self.ag_scanner.scan(max_stable=8)
+
+        print("[ModelPulse] Scanning Antigravity ACP Server builds & Discovery Docs on dl.google.com...")
+        acp_cards = self.ag_acp_scanner.scan()
 
         print("[ModelPulse] Scanning npm CLI & SDK packages (Claude Code, Codex, Google GenAI, OpenAI, Anthropic)...")
         npm_cards = self.npm_scanner.scan()
 
         print("[ModelPulse] Scanning Kimi Code CDN configs, vLLM registry.py & OpenRouter live model registry...")
         kr_cards = self.kimi_router_scanner.scan()
+        present_scanners = {c.get("scanner") for c in kr_cards}
+        for pc in prev_cards:
+            if pc.get("scanner") in {"openrouter", "kimi-code"} and pc.get("scanner") not in present_scanners:
+                kr_cards.append(pc)
 
         print("[ModelPulse] Scanning Cursor Docs, Anthropic/Gemini/Vertex/Bedrock Docs, models.dev & LiteLLM...")
         docs_cards = self.docs_scanner.scan()
@@ -93,7 +112,7 @@ class TrackerEngine:
 
         ag_cards.sort(key=_ag_sort_key)
 
-        raw_cards: List[Dict[str, Any]] = [*ag_cards, *kr_cards, *docs_cards, *npm_cards, *hf_cards]
+        raw_cards: List[Dict[str, Any]] = [*acp_cards, *ag_cards, *kr_cards, *docs_cards, *npm_cards, *hf_cards]
 
         # Strict deduplication by card ID and by (scanner, header, model_ids_tuple)
         all_cards: List[Dict[str, Any]] = []
@@ -107,7 +126,7 @@ class TrackerEngine:
             seen_card_keys.add(cid)
             seen_card_keys.add(content_key)
 
-            if cid in prev_timestamps and card.get("scanner") not in {"huggingface", "openrouter", "antigravity"}:
+            if cid in prev_timestamps and card.get("scanner") not in {"huggingface", "openrouter", "antigravity", "antigravity-acp"}:
                 card["detected_at"] = prev_timestamps[cid]
 
             card["x_post_text"] = build_x_post_text(card)

@@ -34,6 +34,10 @@ VALID_MODEL_TOKENS: Set[str] = {
     "banana", "jarvis", "sc", "1p", "thoughts", "nemotron", "pixtral", "codestral",
     "ministral", "magistral", "devstral", "voxtral", "command", "aya", "solar",
     "jamba", "hermes", "mercury", "kimi", "k3", "glm", "minimax", "mimo", "step",
+    # Internal Google ACP / Teamfood / Discovery Doc tokens
+    "teamfood", "tf", "barium", "discovery", "math", "cyber", "permissive",
+    "router", "latency", "benchmark", "disabled", "bon", "le", "concise",
+    "visibles", "final", "response", "di", "v7", "mode", "a", "b", "c", "g",
 }
 
 EXCLUDED_EXACT: Set[str] = {
@@ -280,6 +284,12 @@ def humanize_model_id(model_id: str) -> str:
         "k3": "K3",
         "k3.1": "K3.1",
         "glm": "GLM",
+        "tf": "TF",
+        "bon": "BoN",
+        "le": "LE",
+        "di": "DI",
+        "v7": "v7",
+        "acp": "ACP",
     }
 
     words = []
@@ -311,9 +321,9 @@ def infer_family_title(model_ids: List[str]) -> str:
 def infer_provider(model_id: str) -> Dict[str, str]:
     """Return provider metadata (name, slug, accent color) for a model ID."""
     mid = model_id.lower()
-    if mid.startswith(("gemini", "lyria", "veo", "imagen", "gemma", "google/")):
+    if mid.startswith(("gemini", "lyria", "veo", "imagen", "gemma", "google/", "carbon-", "barium-", "argon-")):
         return {"name": "GOOGLE", "slug": "google", "color": "#38bdf8"}
-    if mid.startswith(("claude", "anthropic/")):
+    if mid.startswith(("claude", "anthropic/", "sonnet-", "opus-", "haiku-")):
         return {"name": "ANTHROPIC", "slug": "anthropic", "color": "#f97316"}
     if mid.startswith(("gpt", "o1", "o3", "o4", "o5", "codex", "openai/")):
         return {"name": "OPENAI", "slug": "openai", "color": "#10b981"}
