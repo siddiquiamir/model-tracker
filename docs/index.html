@@ -965,7 +965,7 @@
       ["meta-llama", "META LLAMA", "meta", "#3b82f6"]
     ];
 
-    const NOISE_REPO_RE = /(?:sdg-export|libero|laughter|scfm-dataselection|prompt-guard|test-repo|dummy)/i;
+    const NOISE_REPO_RE = /(?:sdg-export|libero|laughter|scfm-dataselection|prompt-guard|test-repo|dummy|uncensored|abliterat|heretic|roleplay|nsfw|venice-edition)/i;
 
     function inferRouterSlug(prefix) {
       const p = String(prefix || "").toLowerCase();
@@ -1065,7 +1065,7 @@
           const r = await fetch("https://openrouter.ai/api/v1/models", { cache: "no-store" });
           if (!r.ok) return [];
           const payload = await r.json();
-          const data = Array.isArray(payload?.data) ? payload.data : [];
+          const data = (Array.isArray(payload?.data) ? payload.data : []).filter(m => !NOISE_REPO_RE.test(`${m.id || ""} ${m.name || ""}`));
           data.sort((a, b) => (b.created || 0) - (a.created || 0));
           return data.slice(0, 10).map(m => {
             const mid = m.id || "";

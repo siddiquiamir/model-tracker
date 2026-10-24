@@ -682,7 +682,12 @@ class KimiCodeAndRouterScanner:
             models_list = or_data.get("data", []) if isinstance(or_data, dict) else []
             if models_list:
                 models_list.sort(key=lambda x: x.get("created", 0), reverse=True)
-                for m in models_list[:10]:
+                community_re = re.compile(r"(?:uncensored|abliterat|heretic|roleplay|nsfw|venice-edition)", re.IGNORECASE)
+                clean_or = [
+                    m for m in models_list
+                    if not community_re.search(f"{m.get('id', '')} {m.get('name', '')}")
+                ]
+                for m in clean_or[:10]:
                     mid = m.get("id", "")
                     mname = m.get("name", mid)
                     created_ts = m.get("created", 0)
@@ -847,7 +852,12 @@ class DocsAndGlobalRegistryScanner:
             "xai", "deepseek", "moonshotai", "moonshotai-cn", "alibaba", "alibaba-cn",
             "zai", "zhipuai", "minimax", "minimax-cn", "mistral", "meta", "nvidia",
             "cohere", "amazon-bedrock", "azure", "github-copilot", "opencode", "perplexity",
+            "stepfun", "xiaomi", "tencent", "bytedance",
         }
+        community_tune_re = re.compile(
+            r"(?:uncensored|abliterat|heretic|roleplay|nsfw|venice-edition)",
+            re.IGNORECASE,
+        )
         try:
             mdev = _http_get_json(self.MODELS_DEV_URL, timeout=15)
             if isinstance(mdev, dict):
@@ -869,16 +879,22 @@ class DocsAndGlobalRegistryScanner:
                         canon = (minfo.get("canonical_model_id") or mid.split("/")[-1]).strip().lower()
                         all_canonical_ids.add(canon)
                         rel_date = (minfo.get("release_date") or "").strip()
+                        mname = minfo.get("name", mid)
                         key_meta[full_key] = {
                             "prov_id": prov_id,
                             "pname": pname,
                             "mid": mid,
-                            "name": minfo.get("name", mid),
+                            "name": mname,
                             "canonical": canon,
                             "release_date": rel_date,
                         }
-                        if rel_date >= "2026-10-18":
-                            recent_entries.append((rel_date, pname, mid, minfo.get("name", mid), canon))
+                        # Only surface official primary providers in recent_entries and block community tunes
+                        if (
+                            prov_id in primary_mdev_providers
+                            and rel_date >= "2026-10-01"
+                            and not community_tune_re.search(f"{mid} {mname}")
+                        ):
+                            recent_entries.append((rel_date, pname, mid, mname, canon))
 
                 prev_mdev = set(baselines.get("models_dev", []))
                 prev_canon = set(baselines.get("models_dev_canonical", []))
@@ -896,13 +912,19 @@ class DocsAndGlobalRegistryScanner:
                     canon = meta.get("canonical", fk.split("/")[-1].lower())
                     rdate = meta.get("release_date", "")
                     prov_id = meta.get("prov_id", "")
+                    mname = meta.get("name", fk)
+                    # Strictly require official primary providers (ignores nano-gpt, poe, venice, etc.)
+                    if prov_id not in primary_mdev_providers:
+                        continue
+                    if community_tune_re.search(f"{fk} {mname}"):
+                        continue
                     if rdate and rdate < f"{today_prefix}-01":
                         continue
-                    if canon not in prev_canon or (prov_id in primary_mdev_providers and (not rdate or rdate >= "2026-10-18")):
+                    if canon not in prev_canon or (not rdate or rdate >= "2026-10-18"):
                         label_date = f" · release: {rdate}" if rdate else " · unannounced"
                         newly_added_mdev.append({
                             "id": fk,
-                            "name": f"{meta.get('name', fk)} ({meta.get('pname', prov_id)}{label_date})",
+                            "name": f"{mname} ({meta.get('pname', prov_id)}{label_date})",
                         })
 
                 if all_mdev_keys and (len(all_mdev_keys) != len(prev_mdev) or len(all_canonical_ids) != len(prev_canon)):
