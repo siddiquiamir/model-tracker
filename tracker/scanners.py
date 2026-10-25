@@ -42,6 +42,8 @@ def _canonical_model_slug(raw_key: str) -> str:
     """Normalize a model ID or provider/model key into a vendor-neutral, punctuation-free slug."""
     tail = raw_key.strip().lower().split("/")[-1].split(":")[0]
     tail = _VENDOR_PREFIX_RE.sub("", tail)
+    if re.match(r"^(?:opus|sonnet|haiku|fable|mythos)-[0-9]", tail):
+        tail = f"claude-{tail}"
     return re.sub(r"[-._]", "", tail)
 
 

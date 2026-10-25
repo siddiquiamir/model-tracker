@@ -15,6 +15,11 @@ RETIRED_CARD_IDS: Set[str] = {
     "docs-diff-gcp-vertex-models-bd26de54",
     "docs-diff-gcp-vertex-versions-bd26de54",
     "npm-_xai-official_grok-linux-x64-0.1.220-1.0.69",
+    "docs-diff-anthropic-platform-docs-d86bce0d",
+    "docs-diff-azure-foundry-partners-c27df2eb",
+    "docs-diff-cursor-docs-ad78a907",
+    "docs-diff-gcp-vertex-models-d86bce0d",
+    "docs-diff-gcp-vertex-versions-d86bce0d",
 }
 
 from tracker.notifiers import build_x_post_text, send_discord_webhook

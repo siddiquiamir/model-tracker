@@ -192,9 +192,12 @@ def clean_go_model_id(raw: str) -> str:
         if not re.fullmatch(r"[567](?:\.[0-9]+)?", second):
             return ""
 
+    anthropic_tiers = {"opus", "sonnet", "haiku", "fable", "mythos"}
     out = [prefix, second]
     for tok in parts[2:]:
         tok_l = tok.lower()
+        if tok_l in anthropic_tiers and (prefix in anthropic_tiers or (prefix == "claude" and second in anthropic_tiers)):
+            break
         if re.fullmatch(r"[0-9]+(?:\.[0-9]+)?(?:[bkm]|_[0-9]+[bkm])?", tok_l):
             out.append(tok_l)
         elif tok_l in VALID_MODEL_TOKENS:
