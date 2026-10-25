@@ -127,7 +127,7 @@ class TrackerEngine:
         print("[ModelPulse] Scanning Certificate Transparency (CT) & Passive DNS across 21 AI lab domains...")
         ct_cards = self.ct_scanner.scan()
 
-        print("[ModelPulse] Scanning High-Alpha Leak Channels (Gateways, Cursor/Devin Builds, Copilot CLI, Engine PRs, Live APIs)...")
+        print("[ModelPulse] Scanning High-Alpha Leak Channels (Gateways, Cursor/Devin Builds, Copilot CLI, Engine PRs, Live APIs, AI Studio/Gemini Bundles)...")
         leak_cards = self.high_alpha_scanner.scan()
 
         def _ag_sort_key(card: Dict[str, Any]) -> tuple:
@@ -161,6 +161,7 @@ class TrackerEngine:
                 "ide-build-diff",
                 "engine-pr-leak",
                 "live-api-diff",
+                "web-bundle-diff",
             } or pc_id.startswith("models-dev-diff-"):
                 if not pc_ts or pc_ts >= cutoff_iso:
                     retained_event_cards.append(pc)

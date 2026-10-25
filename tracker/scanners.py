@@ -2705,12 +2705,13 @@ class CertTransparencySubdomainScanner:
 
 class HighAlphaLeakChannelsScanner:
     """
-    Covers the 5 high-alpha pre-release leak channels verified from RAGtrack & aitracker.bot:
+    Covers the 6 high-alpha pre-release leak channels verified from RAGtrack, aitracker.bot & TestingCatalog:
       1. Zero-key stealth & multi-lab gateways (`opencode.ai/zen/v1/models`, `ai-gateway.vercel.sh/v1/models`)
       2. Desktop IDE build string differs (Cursor Linux REH archive & Devin/Windsurf Stable + Next builds)
       3. GitHub Copilot CLI release & prerelease notes (`github/copilot-cli/releases`)
       4. Inference engine open + closed PR leak watcher (`vllm`, `sglang`, `TensorRT-LLM`, `transformers` with `state=all`)
       5. Direct official provider `/v1/models` & Gemini `v1alpha/models` + `v1beta/models` API pollers
+      6. Google AI Studio (`boq-makersuite`) & Gemini Web (`boq-gemini-web-uiserver`) JS bundle route & Mendel flag differ
     """
 
     OPENCODE_ZEN_URL = "https://opencode.ai/zen/v1/models"
@@ -3377,6 +3378,259 @@ class HighAlphaLeakChannelsScanner:
 
         return cards, changed
 
+    @staticmethod
+    def _short_boq_hash(build_key: str) -> str:
+        # e.g. "boq-makersuite.MakerSuite.en_US.AdEI_nf8080.2018.O" -> "AdEI_nf8080"
+        parts = (build_key or "").split(".")
+        if len(parts) >= 4:
+            return parts[3]
+        return build_key[:24] if build_key else "latest"
+
+    @classmethod
+    def _extract_aistudio_bundle_signals(cls, js_blobs: List[str]) -> Tuple[Dict[str, str], List[str]]:
+        """Extract models/*, Mendel experiment model flags, and hidden UI routes from AI Studio Boq JS."""
+        generic_buckets = {
+            "gemini", "google", "imagen", "veo", "lyria", "transcribe",
+            "gemini-2.0", "gemini-3", "id", ":id",
+        }
+        ignore_routes = {"", "**", "403", "404", "500", "520", "docs/404"}
+
+        model_labels: Dict[str, str] = {}
+        routes_set: Set[str] = set()
+
+        for js in js_blobs:
+            # 1. Mendel experiment flags pointing to models/*: new _.Ps("45863024","models/gemini-3.8-flash")
+            for flag_id, mslug in re.findall(
+                r'new _\.[A-Za-z0-9_$]+\("(\d{6,10})","models/([a-zA-Z0-9][a-zA-Z0-9._-]{2,55})"\)',
+                js,
+            ):
+                clean = mslug.strip().lower()
+                if clean not in generic_buckets:
+                    model_labels[clean] = f"{humanize_model_id(clean)} (Mendel #{flag_id})"
+
+            # 2. Explicit models/<slug> references inside MakerSuite
+            for mslug in re.findall(r'\bmodels/([a-zA-Z0-9][a-zA-Z0-9._-]{2,55})\b', js):
+                clean = mslug.strip().lower()
+                if clean in generic_buckets:
+                    continue
+                model_labels.setdefault(clean, humanize_model_id(clean))
+
+            # 3. Direct frontier Gemini 3.x / 4.x / 5.x model slugs in JS strings
+            for m_bytes in cls.IDE_BUNDLE_MODEL_RE.findall(js.encode("utf-8", errors="ignore")):
+                raw_m = m_bytes.decode("utf-8", errors="ignore").lower().strip("._-")
+                if raw_m.startswith("gemini-") and raw_m not in cls.IDE_EXCLUDED_TOKENS and raw_m not in generic_buckets:
+                    model_labels.setdefault(raw_m, humanize_model_id(raw_m))
+
+            # 4. Closure-compiled Angular route table object containing anchor routes ("prompts/new_chat" & "welcome")
+            for obj_match in re.finditer(
+                r'\{([A-Za-z0-9_$]+:"[^"\r\n]{0,90}"(?:,\s*[A-Za-z0-9_$]+:"[^"\r\n]{0,90}"){15,250})\}',
+                js,
+            ):
+                block = obj_match.group(1)
+                if '"prompts/new_chat"' in block and '"welcome"' in block:
+                    for val in re.findall(r'[A-Za-z0-9_$]+:"([^"]*)"', block):
+                        v = val.strip().strip("/")
+                        if v and v not in ignore_routes:
+                            routes_set.add(v)
+
+        return model_labels, sorted(routes_set)
+
+    def _scan_google_web_bundles(
+        self, baselines: Dict[str, Any]
+    ) -> Tuple[List[Dict[str, Any]], bool]:
+        """
+        Diffs Google AI Studio (aistudio.google.com `boq-makersuite` JS bundles) for hidden UI routes
+        (e.g. `agent-dashboard/*`), Mendel experiment model flags, and `models/*` identifiers, plus
+        Gemini Web (`gemini.google.com/app` `WIZ_global_data` + `boq-gemini-web-uiserver` build).
+        Uses build-key caching so unchanged 5-minute runs only fetch lightweight landing HTML.
+        """
+        cards: List[Dict[str, Any]] = []
+        changed = False
+        wb_state: Dict[str, Any] = dict(baselines.get("web_bundles", {}))
+        browser_hdrs = {
+            "User-Agent": (
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                "(KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36"
+            ),
+            "Accept-Language": "en-US,en;q=0.9",
+        }
+
+        # 6a. Google AI Studio (`aistudio.google.com/welcome` -> `gstatic.com/_/mss/boq-makersuite/...`)
+        try:
+            req = urllib.request.Request("https://aistudio.google.com/welcome", headers=browser_hdrs)
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                ais_html = resp.read().decode("utf-8", errors="replace")
+
+            unesc_ais = ais_html.replace("\\/", "/")
+            boq_urls: List[str] = []
+            for u in re.findall(r'https://www\.gstatic\.com/_/mss/boq-makersuite/_/js/[A-Za-z0-9_./=-]+', unesc_ais):
+                if u not in boq_urls:
+                    boq_urls.append(u)
+
+            if boq_urls:
+                m_key = re.search(r"k=(boq-makersuite\.[^/]+)", boq_urls[0])
+                build_key = m_key.group(1) if m_key else boq_urls[0][-48:]
+                prev_build_key = wb_state.get("aistudio_build_key", "")
+                prev_models = set(wb_state.get("aistudio_models", []))
+                prev_routes = set(wb_state.get("aistudio_routes", []))
+
+                if build_key != prev_build_key or not prev_models or not prev_routes:
+                    js_blobs: List[str] = []
+                    for js_url in boq_urls[:4]:
+                        jreq = urllib.request.Request(js_url, headers=browser_hdrs)
+                        with urllib.request.urlopen(jreq, timeout=20) as jresp:
+                            js_blobs.append(jresp.read().decode("utf-8", errors="replace"))
+
+                    model_labels, curr_routes = self._extract_aistudio_bundle_signals(js_blobs)
+                    curr_models = sorted(model_labels.keys())
+
+                    old_hash = self._short_boq_hash(prev_build_key) if prev_build_key else "baseline"
+                    new_hash = self._short_boq_hash(build_key)
+
+                    if prev_models and curr_models:
+                        added_models = [
+                            m for m in curr_models
+                            if m not in prev_models and not is_legacy_model_id(m)
+                        ]
+                        if added_models:
+                            sig = hashlib.sha256(f"{build_key}:m:{','.join(added_models[:8])}".encode("utf-8")).hexdigest()[:8]
+                            cards.append(
+                                {
+                                    "id": f"web-bundle-aistudio-models-{sig}",
+                                    "category": "cli-sdk-diff",
+                                    "scanner": "web-bundle-diff",
+                                    "header": "GOOGLE AI STUDIO JS BUNDLE DIFF · GOOGLE",
+                                    "title": f"AI Studio Bundle Model: {added_models[0]}",
+                                    "subtitle": f"New model / Mendel flag in boq-makersuite ({old_hash} -> {new_hash})",
+                                    "build_label": "MakerSuite Build",
+                                    "build_transition": f"{old_hash} -> {new_hash} (+{len(added_models)} model)",
+                                    "models": [{"id": m, "name": model_labels.get(m, humanize_model_id(m))} for m in added_models[:10]],
+                                    "evidence": f"gstatic.com/_/mss/boq-makersuite ({new_hash})",
+                                    "source_text": "public Google AI Studio (aistudio.google.com) Boq JavaScript bundle.",
+                                    "disclaimer_1": "Extracted from client-side MakerSuite JS bundle & Mendel experiment flags.",
+                                    "disclaimer_2": "Presence in frontend bundle does not guarantee public backend rollout.",
+                                    "provider_name": "GOOGLE",
+                                    "provider_slug": "google",
+                                    "accent_color": "#38bdf8",
+                                    "links": [
+                                        {"label": "Google AI Studio", "url": "https://aistudio.google.com/welcome"},
+                                        {"label": "MakerSuite JS Bundle", "url": boq_urls[0]},
+                                    ],
+                                    "detected_at": datetime.now(timezone.utc).isoformat(),
+                                }
+                            )
+
+                    if prev_routes and curr_routes:
+                        added_routes = [r for r in curr_routes if r not in prev_routes]
+                        if added_routes:
+                            sig = hashlib.sha256(f"{build_key}:r:{','.join(added_routes[:8])}".encode("utf-8")).hexdigest()[:8]
+                            route_items = []
+                            for r in added_routes[:10]:
+                                pretty = r.replace("/", " / ").replace("-", " ").replace(":", "").title()
+                                route_items.append({"id": f"aistudio.google.com/{r}", "name": f"UI Route: {pretty}"})
+                            cards.append(
+                                {
+                                    "id": f"web-bundle-aistudio-routes-{sig}",
+                                    "category": "desktop-diff",
+                                    "scanner": "web-bundle-diff",
+                                    "header": "GOOGLE AI STUDIO UI ROUTE DIFF · GOOGLE",
+                                    "title": f"New AI Studio Hidden Route: /{added_routes[0]}",
+                                    "subtitle": f"Newly compiled Angular route(s) in boq-makersuite ({old_hash} -> {new_hash})",
+                                    "build_label": "MakerSuite Build",
+                                    "build_transition": f"{old_hash} -> {new_hash} (+{len(added_routes)} route)",
+                                    "models": route_items,
+                                    "evidence": f"gstatic.com/_/mss/boq-makersuite ({new_hash})",
+                                    "source_text": "public Google AI Studio (aistudio.google.com) compiled Angular route table.",
+                                    "disclaimer_1": "Client-side UI route added to Google AI Studio frontend bundle (often gated by Mendel flags).",
+                                    "disclaimer_2": "Backend RPCs may still return 403 Permission Denied until public launch.",
+                                    "provider_name": "GOOGLE",
+                                    "provider_slug": "google",
+                                    "accent_color": "#38bdf8",
+                                    "links": [
+                                        {"label": f"Try /{added_routes[0]}", "url": f"https://aistudio.google.com/{added_routes[0].split('/:')[0]}"},
+                                        {"label": "MakerSuite JS Bundle", "url": boq_urls[0]},
+                                    ],
+                                    "detected_at": datetime.now(timezone.utc).isoformat(),
+                                }
+                            )
+
+                    if curr_models:
+                        wb_state["aistudio_models"] = curr_models
+                    if curr_routes:
+                        wb_state["aistudio_routes"] = curr_routes
+                    wb_state["aistudio_build_key"] = build_key
+                    changed = True
+        except Exception as exc:
+            print(f"[HighAlphaScanner] AI Studio bundle scan warning: {exc}")
+
+        # 6b. Google Gemini Web (`gemini.google.com/app` WIZ config + `boq-gemini-web-uiserver` build)
+        try:
+            greq = urllib.request.Request("https://gemini.google.com/app", headers=browser_hdrs)
+            with urllib.request.urlopen(greq, timeout=15) as gresp:
+                gem_html = gresp.read().decode("utf-8", errors="replace")
+
+            m_bard = re.search(r"k=(boq-gemini-web-uiserver\.[^/?&\"']+)", gem_html)
+            bard_key = m_bard.group(1) if m_bard else ""
+            prev_bard_key = wb_state.get("gemini_web_build_key", "")
+            prev_gem_models = set(wb_state.get("gemini_web_models", []))
+
+            gem_found = set(
+                m.lower()
+                for m in re.findall(
+                    r"\b(gemini-[2345][a-z0-9._-]{1,35}|imagen-[34][a-z0-9._-]{0,25}|veo-[234][a-z0-9._-]{0,25}|lyria-[234][a-z0-9._-]{0,25})\b",
+                    gem_html,
+                    re.IGNORECASE,
+                )
+            )
+            gem_found -= self.IDE_EXCLUDED_TOKENS
+            curr_gem_models = sorted(gem_found)
+
+            if curr_gem_models:
+                if prev_gem_models:
+                    added_gem = [
+                        m for m in curr_gem_models
+                        if m not in prev_gem_models and not is_legacy_model_id(m)
+                    ]
+                    if added_gem:
+                        old_bh = self._short_boq_hash(prev_bard_key) if prev_bard_key else "prev"
+                        new_bh = self._short_boq_hash(bard_key) if bard_key else "latest"
+                        sig = hashlib.sha256(",".join(added_gem[:8]).encode("utf-8")).hexdigest()[:8]
+                        cards.append(
+                            {
+                                "id": f"web-bundle-gemini-web-{sig}",
+                                "category": "cli-sdk-diff",
+                                "scanner": "web-bundle-diff",
+                                "header": "GEMINI WEB APP CONFIG DIFF · GOOGLE",
+                                "title": f"New Gemini Web Model: {added_gem[0]}",
+                                "subtitle": f"Newly embedded model identifier in gemini.google.com/app ({old_bh} -> {new_bh})",
+                                "build_label": "BardChatUi Build",
+                                "build_transition": f"{old_bh} -> {new_bh} (+{len(added_gem)} model)",
+                                "models": [{"id": m, "name": humanize_model_id(m)} for m in added_gem[:10]],
+                                "evidence": f"gemini.google.com/app WIZ_global_data ({new_bh})",
+                                "source_text": "public Google Gemini web app (gemini.google.com/app) embedded model configuration.",
+                                "disclaimer_1": "",
+                                "disclaimer_2": "",
+                                "provider_name": "GOOGLE",
+                                "provider_slug": "google",
+                                "accent_color": "#38bdf8",
+                                "links": [{"label": "Gemini Web App", "url": "https://gemini.google.com/app"}],
+                                "detected_at": datetime.now(timezone.utc).isoformat(),
+                            }
+                        )
+
+                if set(curr_gem_models) != prev_gem_models or (bard_key and bard_key != prev_bard_key):
+                    wb_state["gemini_web_models"] = curr_gem_models
+                    if bard_key:
+                        wb_state["gemini_web_build_key"] = bard_key
+                    changed = True
+        except Exception as exc:
+            print(f"[HighAlphaScanner] Gemini Web scan warning: {exc}")
+
+        if changed:
+            baselines["web_bundles"] = wb_state
+
+        return cards, changed
+
     def scan(self) -> List[Dict[str, Any]]:
         baselines = self._load_baselines()
         known_canon = (
@@ -3393,6 +3647,7 @@ class HighAlphaLeakChannelsScanner:
             lambda: self._scan_copilot_cli_releases(baselines, known_canon),
             lambda: self._scan_inference_engine_prs(baselines, known_canon),
             lambda: self._scan_live_provider_apis(baselines),
+            lambda: self._scan_google_web_bundles(baselines),
         ):
             c_list, ch = fn()
             all_cards.extend(c_list)
