@@ -2,10 +2,20 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import json
 import pathlib
 from typing import Any, Dict, List, Set
+
+RETIRED_CARD_IDS: Set[str] = {
+    "litellm-diff-25799099",
+    "arena-stealth-codenames",
+    "arena-scout-nano-banana-2.1",
+    "docs-diff-cursor-docs-8c4ad9e1",
+    "docs-diff-gcp-vertex-models-bd26de54",
+    "docs-diff-gcp-vertex-versions-bd26de54",
+    "npm-_xai-official_grok-linux-x64-0.1.220-1.0.69",
+}
 
 from tracker.notifiers import build_x_post_text, send_discord_webhook
 from tracker.scanners import (
@@ -117,13 +127,31 @@ class TrackerEngine:
 
         ag_cards.sort(key=_ag_sort_key)
 
-        raw_cards: List[Dict[str, Any]] = [*acp_cards, *ag_cards, *arena_cards, *kr_cards, *docs_cards, *npm_cards, *hf_cards]
+        # Preserve genuine event-diff cards (docs-radar, litellm, lmarena, models-dev-diff-*) for 14 days
+        # so overnight pre-release catches remain on the dashboard after source_baselines.json updates.
+        cutoff_iso = (datetime.now(timezone.utc) - timedelta(days=14)).isoformat()
+        retained_event_cards: List[Dict[str, Any]] = []
+        for pc in prev_cards:
+            pc_id = pc.get("id", "")
+            pc_scanner = pc.get("scanner", "")
+            pc_ts = pc.get("detected_at", "")
+            if pc_id in RETIRED_CARD_IDS:
+                continue
+            if pc_scanner in {"docs-radar", "litellm", "lmarena"} or pc_id.startswith("models-dev-diff-"):
+                if not pc_ts or pc_ts >= cutoff_iso:
+                    retained_event_cards.append(pc)
+
+        raw_cards: List[Dict[str, Any]] = [
+            *acp_cards, *ag_cards, *arena_cards, *kr_cards, *docs_cards, *npm_cards, *retained_event_cards, *hf_cards
+        ]
 
         # Strict deduplication by card ID and by (scanner, header, model_ids_tuple)
         all_cards: List[Dict[str, Any]] = []
         seen_card_keys: Set[str] = set()
         for card in raw_cards:
             cid = card["id"]
+            if cid in RETIRED_CARD_IDS:
+                continue
             models_sig = ",".join(sorted(m.get("id", "") for m in card.get("models", [])))
             content_key = f"{card.get('scanner')}|{card.get('header')}|{models_sig}"
             if cid in seen_card_keys or content_key in seen_card_keys:

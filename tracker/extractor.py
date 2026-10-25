@@ -15,15 +15,15 @@ CACHE_DIR = pathlib.Path(__file__).resolve().parent.parent / ".cache"
 # Used to strip trailing neighbor strings from Go's length-sorted .rodata string table.
 VALID_MODEL_TOKENS: Set[str] = {
     # Tiers & sizes
-    "pro", "flash", "ultra", "lite", "mini", "nano", "max", "high", "medium", "low",
+    "pro", "flash", "ultra", "lite", "mini", "nano", "max", "high", "xhigh", "medium", "low",
     "extra", "plus", "base", "small", "large", "huge", "tiny", "micro", "super",
     # Lifecycle & channels
     "preview", "exp", "experimental", "latest", "beta", "alpha", "rc", "nightly",
     "stable", "001", "002", "003", "v1", "v2", "v3", "v4", "r1", "r2",
     # Capabilities & modalities
-    "thinking", "reasoning", "fast", "turbo", "instruct", "chat", "vision",
-    "audio", "realtime", "tts", "stt", "image", "video", "coder", "code",
-    "robotics", "omni", "search", "live", "native", "embed", "embedding",
+    "thinking", "reasoning", "non", "fast", "turbo", "instruct", "chat", "vision",
+    "audio", "realtime", "tts", "stt", "image", "video", "voice", "imagine", "coder", "code",
+    "robotics", "omni", "search", "live", "native", "embed", "embedding", "multi", "agent", "build", "composer",
     "edit", "inpaint", "transcribe", "guard", "reward", "vl", "moe", "deep", "research",
     # Family code-names, noble gases, periodic table elements & series (Argon, Carbon, Fable, etc.)
     "argon", "helium", "neon", "krypton", "xenon", "radon",
@@ -48,6 +48,7 @@ EXCLUDED_EXACT: Set[str] = {
     "gemini-plugin",
     "gemini-extension",
     "gemini-edit-images",
+    "gemini-enterprise-agent",
     "gemini-enterprise-agent-platform",
     "gemini-robotics",
     "gemini-2",
@@ -66,6 +67,10 @@ EXCLUDED_EXACT: Set[str] = {
     "gpt-image",
     "gpt-live",
     "gpt-realtime",
+    "gpt-4",
+    "gpt-5",
+    "grok-3",
+    "grok-4",
 }
 
 
@@ -78,6 +83,7 @@ def is_legacy_model_id(model_id: str) -> bool:
         "gemini-1.", "gemini-1-", "gemini-2.0", "gemini-2-0", "gemini-2.5", "gemini-2-5",
         "claude-2", "claude-3", "claude-sonnet-4", "claude-opus-4", "claude-haiku-4",
         "gpt-3", "gpt-4", "o1", "o3", "o4-mini",
+        "grok-1", "grok-2", "grok-3", "llama-2", "llama-3", "llama3",
     )):
         return True
     return False
@@ -194,10 +200,11 @@ def clean_go_model_id(raw: str) -> str:
             break
 
     candidate = "-".join(out).rstrip(".-_")
-    if candidate in EXCLUDED_EXACT or len(candidate) < 6:
+    if candidate in EXCLUDED_EXACT or len(candidate) < 5:
         return ""
     if len(out) == 2 and re.fullmatch(r"[0-9]", out[1]):
-        return ""
+        if not ((prefix == "grok" and int(out[1]) >= 5) or (prefix == "gpt" and int(out[1]) >= 6)):
+            return ""
     if is_legacy_model_id(candidate):
         return ""
     return candidate
@@ -215,7 +222,7 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
         r"claude-(?:opus|sonnet|haiku|fable|mythos|[a-z]{3,10}-[0-9])|"
         r"gpt-(?:[56789]|oss|image|audio|realtime|live|daybreak)|"
         r"o[56789]-(?:mini|preview|pro|high|low|medium)|"
-        r"grok-[3456789]|"
+        r"grok-(?:[3456789]|imagine|voice|build)|"
         r"deepseek-(?:r[2345]|v[4567]|chat|coder|reasoner)|"
         r"qwen[345]?-(?:[0-9]|max|plus|turbo|vl|coder|omni)|"
         r"kimi-(?:k[234]|for-coding)|"
@@ -233,9 +240,9 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
         r"((?:"
         r"gemini-[0-9a-z][a-z0-9._-]{1,42}|"
         r"claude-(?:opus|sonnet|haiku|fable|mythos|[a-z]{3,10})-[0-9a-z][a-z0-9._-]{0,38}|"
-        r"gpt-(?:[56789]|oss|image|audio|realtime|live|daybreak)[a-z0-9._-]{1,35}|"
+        r"gpt-(?:[56789]|oss|image|audio|realtime|live|daybreak)[a-z0-9._-]{0,35}|"
         r"o[56789]-(?:mini|preview|pro)[a-z0-9._-]{0,25}|"
-        r"grok-[3456789][a-z0-9._-]{1,30}|"
+        r"grok-(?:[3456789]|imagine|voice|build)[a-z0-9._-]{0,30}|"
         r"deepseek-(?:r[2345]|v[4567]|chat|coder|reasoner)[a-z0-9._-]{0,30}|"
         r"kimi-(?:k[234]|for-coding)[a-z0-9._-]{0,30}|"
         r"glm-[567][a-z0-9._-]{0,30}|"
@@ -275,10 +282,13 @@ def humanize_model_id(model_id: str) -> str:
 
     if parts[0] == "claude" and len(parts) >= 4 and parts[2].isdigit() and parts[3].isdigit():
         parts = [parts[0], parts[1], f"{parts[2]}.{parts[3]}"] + parts[4:]
+    elif parts[0] in {"grok", "gpt"} and len(parts) >= 3 and parts[1].isdigit() and parts[2].isdigit():
+        parts = [parts[0], f"{parts[1]}.{parts[2]}"] + parts[3:]
 
     special_caps = {
         "gpt": "GPT",
         "oss": "OSS",
+        "xhigh": "XHigh",
         "maas": "MaaS",
         "tts": "TTS",
         "stt": "STT",

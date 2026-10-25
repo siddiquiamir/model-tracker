@@ -9,6 +9,7 @@ import io
 import json
 import pathlib
 import re
+import subprocess
 import tarfile
 from typing import Any, Dict, List, Optional, Set
 import urllib.request
@@ -29,6 +30,34 @@ from tracker.extractor import (
 ANTIGRAVITY_RELEASES_URL = "https://antigravity-hub-auto-updater-974169037036.us-central1.run.app/releases"
 ANTIGRAVITY_GCS_BASE = "https://storage.googleapis.com/antigravity-public"
 ANTIGRAVITY_INSIDERS_YML = f"{ANTIGRAVITY_GCS_BASE}/insiders/latest-x64-linux.yml"
+
+_VENDOR_PREFIX_RE = re.compile(
+    r"^(?:(?:us|eu|global|apac)\.)?(?:anthropic\.|meta\.|mistral\.|amazon\.|cohere\.|ai21\.|xai\.|zai-|zhipu-|thudm-|moonshot-|minimax-|qwen-|deepseek-)"
+)
+
+
+def _canonical_model_slug(raw_key: str) -> str:
+    """Normalize a model ID or provider/model key into a vendor-neutral, punctuation-free slug."""
+    tail = raw_key.strip().lower().split("/")[-1].split(":")[0]
+    tail = _VENDOR_PREFIX_RE.sub("", tail)
+    return re.sub(r"[-._]", "", tail)
+
+
+def _decompress_brotli(comp_bytes: bytes) -> bytes:
+    """Decompress Brotli (.br) binary payloads using Python brotli or built-in Node.js zlib."""
+    try:
+        import brotli  # type: ignore
+
+        return brotli.decompress(comp_bytes)
+    except Exception:
+        proc = subprocess.run(
+            ["node", "-e", "process.stdout.write(require('zlib').brotliDecompressSync(require('fs').readFileSync(0)))"],
+            input=comp_bytes,
+            capture_output=True,
+            timeout=30,
+            check=True,
+        )
+        return proc.stdout
 
 
 def _http_get_json(url: str, timeout: int = 12) -> Any:
@@ -569,6 +598,16 @@ class NpmCliAndSdkScanner:
             "accent_color": "#10b981",
         },
         {
+            "pkg": "@xai-official/grok-linux-x64",
+            "mode": "grok_binary",
+            "header": "XAI GROK BUILD NATIVE BINARY DIFF · XAI",
+            "subtitle": "Verified Grok CLI Brotli Rust binary comparison (latest + alpha)",
+            "evidence": "@xai-official/grok-linux-x64 (package/bin/grok.br)",
+            "source_text": "official xAI Grok Build Linux x64 native CLI binary tarball.",
+            "provider_slug": "xai",
+            "accent_color": "#e2e8f0",
+        },
+        {
             "pkg": "@google/genai",
             "mode": "js_sdk",
             "header": "GOOGLE GENAI SDK DIFF · GOOGLE",
@@ -597,6 +636,16 @@ class NpmCliAndSdkScanner:
             "source_text": "official public npm registry tarball (@anthropic-ai/sdk).",
             "provider_slug": "anthropic",
             "accent_color": "#f97316",
+        },
+        {
+            "pkg": "@xai-official/sdk",
+            "mode": "js_sdk",
+            "header": "XAI OFFICIAL SDK DIFF · XAI",
+            "subtitle": "Verified official SpaceXAI / xAI TypeScript SDK model union comparison",
+            "evidence": "dist/models.d.ts / SDK bundle",
+            "source_text": "official public npm registry tarball (@xai-official/sdk).",
+            "provider_slug": "xai",
+            "accent_color": "#e2e8f0",
         },
     ]
 
@@ -627,13 +676,13 @@ class NpmCliAndSdkScanner:
         if cache_file.exists():
             try:
                 cached = {m for m in json.loads(cache_file.read_text(encoding="utf-8")) if not is_legacy_model_id(m)}
-                if mode in {"claude_binary", "codex_binary"}:
+                if mode in {"claude_binary", "codex_binary", "grok_binary"}:
                     bin_cache[cache_id] = sorted(cached)
                 return cached
             except Exception:
                 pass
 
-        timeout_s = 60 if mode in {"claude_binary", "codex_binary"} else 20
+        timeout_s = 60 if mode in {"claude_binary", "codex_binary", "grok_binary"} else 20
         req = urllib.request.Request(tarball_url, headers={"User-Agent": "ModelPulse-Tracker/2.0"})
         with urllib.request.urlopen(req, timeout=timeout_s) as resp:
             tar_bytes = resp.read()
@@ -670,13 +719,31 @@ class NpmCliAndSdkScanner:
                             if not is_legacy_model_id(mid) and mid != "codex-auto-review":
                                 models.add(mid)
             bin_cache[cache_id] = sorted(models)
+        elif mode == "grok_binary":
+            with tarfile.open(fileobj=io.BytesIO(tar_bytes), mode="r:gz") as tf:
+                for member in tf.getmembers():
+                    if member.isfile() and member.name.endswith(".br") and member.size > 500_000:
+                        fobj = tf.extractfile(member)
+                        if not fobj:
+                            continue
+                        data = _decompress_brotli(fobj.read())
+                        for m in re.finditer(
+                            rb'[\"\'`\s](grok-(?:[456789]|imagine|voice)[a-z0-9._-]{0,30}|composer-[2345][a-z0-9._-]{0,20})(?=[\"\'`\s\[])',
+                            data,
+                        ):
+                            raw_mid = m.group(1).decode("utf-8", "ignore").rstrip("._-")
+                            cleaned = clean_go_model_id(raw_mid)
+                            if cleaned and not is_legacy_model_id(cleaned):
+                                models.add(cleaned)
+            bin_cache[cache_id] = sorted(models)
         else:
             pattern = re.compile(
                 r"[\"']((?:"
                 r"claude-(?:opus|sonnet|haiku|fable|mythos|5|6)-[a-z0-9._-]{1,35}|"
-                r"gpt-(?:[56789]|oss|image|audio|realtime|live|daybreak)[a-z0-9._-]{1,35}|"
+                r"gpt-(?:[56789]|oss|image|audio|realtime|live|daybreak)[a-z0-9._-]{0,35}|"
                 r"o[56789]-(?:mini|preview|pro|deep-research)[a-z0-9._-]{0,25}|"
                 r"codex-[a-z0-9._-]{2,25}|"
+                r"grok-(?:[456789]|imagine|voice|build)[a-z0-9._-]{0,30}|"
                 r"gemini-[345][a-z0-9._-]{1,35}|"
                 r"imagen-[345][a-z0-9._-]{1,30}|"
                 r"veo-[2345][a-z0-9._-]{1,30}"
@@ -703,10 +770,11 @@ class NpmCliAndSdkScanner:
         dist_tags = meta.get("dist-tags", {})
         times = meta.get("time", {})
 
-        if mode == "claude_binary":
+        if mode in {"claude_binary", "grok_binary"}:
             stable_vers = [v for v in versions_dict.keys() if "-" not in v]
+            stable_vers.sort(key=lambda v: times.get(v, ""))
             candidates = stable_vers[-2:] if len(stable_vers) >= 2 else stable_vers
-            for tag in ("stable", "latest", "next"):
+            for tag in ("stable", "latest", "next", "alpha"):
                 tv = dist_tags.get(tag)
                 if tv and tv in versions_dict and tv not in candidates:
                     candidates.append(tv)
@@ -756,9 +824,13 @@ class NpmCliAndSdkScanner:
             curr_tar = versions_dict[curr_ver]["dist"]["tarball"]
             curr_models = self._extract_npm_tarball_models(pkg, curr_ver, curr_tar, mode, bin_cache)
             raw_added = sorted(curr_models - prev_models)
-            # For native binaries, cross-check against LiteLLM so previously released models never fire false alerts
-            if mode in {"claude_binary", "codex_binary"} and known_litellm:
-                added = [m for m in raw_added if re.sub(r"[-._]", "", m.lower()) not in known_litellm]
+            # Cross-check binaries & xAI/OpenAI/Anthropic SDKs against LiteLLM so previously released models (or CLI effort flags like grok-4.7-high-fast) never fire false alerts
+            if (mode in {"claude_binary", "codex_binary", "grok_binary"} or pkg == "@xai-official/sdk") and known_litellm:
+                added = [
+                    m for m in raw_added
+                    if _canonical_model_slug(m) not in known_litellm
+                    and _canonical_model_slug(re.sub(r"(?:-(?:xhigh|high|medium|low|fast|non-reasoning|reasoning))+$", "", m)) not in known_litellm
+                ]
             else:
                 added = raw_added
 
@@ -806,7 +878,7 @@ class NpmCliAndSdkScanner:
         baselines = self._load_baselines()
         bin_cache: Dict[str, List[str]] = dict(baselines.get("npm_binary_models", {}))
         orig_cache_keys = set(bin_cache.keys())
-        known_litellm = {re.sub(r"[-._]", "", k.split("/")[-1].lower()) for k in baselines.get("litellm_keys", [])}
+        known_litellm = {_canonical_model_slug(k) for k in baselines.get("litellm_keys", [])}
 
         cards: List[Dict[str, Any]] = []
         for cfg in self.PACKAGES:
@@ -1136,14 +1208,14 @@ class DocsAndGlobalRegistryScanner:
     DOCS_TARGETS = [
         {
             "key": "cursor-docs",
-            "url": "https://docs.cursor.com/llms.txt",
-            "header": "CURSOR IDE DOCS & MODEL FEED · CURSOR",
-            "title": "Cursor IDE Documented Models",
-            "evidence": "docs.cursor.com/llms.txt",
-            "source_text": "official Cursor IDE documentation & llms.txt index.",
-            "provider_slug": "openai",
-            "accent_color": "#38bdf8",
-            "link_url": "https://docs.cursor.com/en/models",
+            "url": "https://cursor.com/docs/models-and-pricing.md",
+            "header": "CURSOR IDE DOCS & MODEL FEED · CURSOR / XAI",
+            "title": "Cursor IDE Models & Pricing Catalog",
+            "evidence": "cursor.com/docs/models-and-pricing.md",
+            "source_text": "official Cursor IDE Markdown models & pricing catalog.",
+            "provider_slug": "xai",
+            "accent_color": "#e2e8f0",
+            "link_url": "https://cursor.com/docs/models-and-pricing",
         },
         {
             "key": "anthropic-platform-docs",
@@ -1213,14 +1285,14 @@ class DocsAndGlobalRegistryScanner:
         },
         {
             "key": "xai-docs",
-            "url": "https://docs.x.ai/llms.txt",
+            "url": "https://docs.x.ai/developers/models.md",
             "header": "XAI GROK API DOCS RADAR · XAI",
-            "title": "xAI Grok Developer Documentation",
-            "evidence": "docs.x.ai/llms.txt",
-            "source_text": "official xAI developer documentation & llms.txt feed.",
-            "provider_slug": "openai",
+            "title": "xAI Grok Official Models Catalog",
+            "evidence": "docs.x.ai/developers/models.md",
+            "source_text": "official xAI developer Markdown models & pricing catalog.",
+            "provider_slug": "xai",
             "accent_color": "#e2e8f0",
-            "link_url": "https://docs.x.ai/docs/models",
+            "link_url": "https://docs.x.ai/developers/models",
         },
     ]
 
@@ -1443,7 +1515,7 @@ class DocsAndGlobalRegistryScanner:
             print(f"[DocsScanner] models.dev warning: {exc}")
 
         previously_released_litellm = {
-            re.sub(r"[-._]", "", pk.split("/")[-1].lower()) for pk in baselines.get("litellm_keys", [])
+            _canonical_model_slug(pk) for pk in baselines.get("litellm_keys", [])
         }
 
         # 2. Scan Cursor Docs, Anthropic Docs, OpenAI Docs, Google Gemini Docs, GCP Vertex AI, AWS Bedrock, xAI Docs
@@ -1458,7 +1530,7 @@ class DocsAndGlobalRegistryScanner:
                 raw_added = sorted(set(found_ids) - prev_ids) if prev_ids else []
                 added_ids = [
                     m for m in raw_added
-                    if re.sub(r"[-._]", "", m.lower()) not in previously_released_litellm and not is_legacy_model_id(m)
+                    if _canonical_model_slug(m) not in previously_released_litellm and not is_legacy_model_id(m)
                 ]
                 if set(found_ids) != prev_ids:
                     baselines[bkey] = found_ids
@@ -1519,6 +1591,28 @@ class DocsAndGlobalRegistryScanner:
                 "accent_color": "#f97316",
             },
             {
+                "key": "gh_xai_sdk_union",
+                "url": "https://raw.githubusercontent.com/xai-org/xai-sdk-ts/main/src/models.ts",
+                "kind": "ts_union_xai",
+                "header": "XAI SDK GITHUB MAIN DIFF · XAI",
+                "title_prefix": "New Grok Model Merged to xAI SDK Main",
+                "evidence": "xai-org/xai-sdk-ts (src/models.ts KnownModelId)",
+                "link_url": "https://github.com/xai-org/xai-sdk-ts/commits/main/src/models.ts",
+                "provider_slug": "xai",
+                "accent_color": "#e2e8f0",
+            },
+            {
+                "key": "cursor_llms_model_routes",
+                "url": "https://cursor.com/llms.txt",
+                "kind": "cursor_doc_routes",
+                "header": "CURSOR MODEL ROUTE SCOUT · CURSOR / XAI",
+                "title_prefix": "New Model Route Staged on Cursor",
+                "evidence": "cursor.com/llms.txt (/docs/models/*.md)",
+                "link_url": "https://cursor.com/docs/models-and-pricing",
+                "provider_slug": "xai",
+                "accent_color": "#e2e8f0",
+            },
+            {
                 "key": "openai_llms_model_routes",
                 "url": "https://developers.openai.com/api/docs/models/all.md",
                 "kind": "openai_doc_routes",
@@ -1569,6 +1663,18 @@ class DocsAndGlobalRegistryScanner:
                         for lit in re.findall(r"'([a-z0-9._-]+)'", block):
                             if not is_legacy_model_id(lit):
                                 extracted.add(lit)
+                elif kind == "ts_union_xai":
+                    for block in re.findall(r"export type Known(?:Image|Video)?ModelId\s*=([\s\S]*?);", txt):
+                        for lit in re.findall(r'["\']([a-z0-9._-]+)["\']', block):
+                            if not is_legacy_model_id(lit):
+                                extracted.add(lit)
+                elif kind == "cursor_doc_routes":
+                    for slug in re.findall(r"/docs/models/([a-z0-9._-]+)\.md", txt):
+                        if slug not in {"overview", "index", "models-and-pricing"} and not is_legacy_model_id(slug):
+                            extracted.add(slug)
+                    for slug in re.findall(r"/help/models-and-usage/(grok-[a-z0-9._-]+|composer-[a-z0-9._-]+|sonic[a-z0-9._-]*)\.md", txt):
+                        if not is_legacy_model_id(slug):
+                            extracted.add(slug)
                 elif kind == "openai_doc_routes":
                     llms_extra = ""
                     try:
@@ -1584,7 +1690,7 @@ class DocsAndGlobalRegistryScanner:
                         if not is_legacy_model_id(mid):
                             extracted.add(mid)
                 elif kind == "botocore_bedrock":
-                    for mid in re.findall(r"(?:anthropic|openai)\.(claude-[a-z0-9._-]+|gpt-[a-z0-9._-]+)", txt):
+                    for mid in re.findall(r"(?:anthropic|openai|xai)\.(claude-[a-z0-9._-]+|gpt-[a-z0-9._-]+|grok-[a-z0-9._-]+)", txt):
                         clean_m = mid.split(":")[0]
                         if not is_legacy_model_id(clean_m):
                             extracted.add(clean_m)
@@ -1597,7 +1703,7 @@ class DocsAndGlobalRegistryScanner:
                 raw_new = [m for m in curr_list if m not in prev_set] if prev_set else []
                 truly_new = [
                     m for m in raw_new
-                    if re.sub(r"[-._]", "", m.lower()) not in previously_released_litellm
+                    if _canonical_model_slug(m) not in previously_released_litellm
                 ]
                 if set(curr_list) != prev_set:
                     baselines[bkey] = curr_list
@@ -1630,20 +1736,35 @@ class DocsAndGlobalRegistryScanner:
             except Exception as exc:
                 print(f"[DocsScanner] Structured probe warning ({probe['key']}): {exc}")
 
-        # 4. Scan LiteLLM master model_prices_and_context_window.json for newly added keys
+        # 4. Scan LiteLLM master model_prices_and_context_window.json for genuinely new frontier models
+        # (excludes 3rd-party cloud re-hosting of already-released models like mistral/zai-glm-5-3-flash or cerebras/llama-3.1-70b)
+        primary_litellm_prefixes = {
+            "openai", "anthropic", "gemini", "vertex_ai", "bedrock", "azure", "xai",
+            "deepseek", "moonshot", "dashscope", "zai", "minimax", "mistral", "openrouter",
+        }
         try:
             litellm_data = _http_get_json(self.LITELLM_JSON_URL, timeout=15)
             if isinstance(litellm_data, dict):
                 current_keys = sorted(k for k in litellm_data.keys() if k != "sample_spec")
                 prev_keys = set(baselines.get("litellm_keys", []))
-                prev_base_slugs = {pk.split("/")[-1].lower() for pk in prev_keys}
+                prev_canonical_slugs = {_canonical_model_slug(pk) for pk in prev_keys}
                 raw_added_keys = [k for k in current_keys if k not in prev_keys] if prev_keys else []
-                added_keys = [
-                    k for k in raw_added_keys
-                    if k.split("/")[-1].lower() not in prev_base_slugs
-                    or k.split("/")[0].lower() in {"openai", "anthropic", "gemini", "vertex_ai", "bedrock", "azure", "xai", "deepseek", "moonshot", "dashscope", "zai", "minimax", "mistral"}
-                ]
-                if len(current_keys) != len(prev_keys):
+                added_keys: List[str] = []
+                seen_new_canon: Set[str] = set()
+                for k in raw_added_keys:
+                    canon = _canonical_model_slug(k)
+                    tail = k.split("/")[-1].split(":")[0]
+                    prefix = k.split("/")[0].lower() if "/" in k else "openai"
+                    if not canon or canon in prev_canonical_slugs or canon in seen_new_canon:
+                        continue
+                    if is_legacy_model_id(tail):
+                        continue
+                    if prefix not in primary_litellm_prefixes:
+                        continue
+                    seen_new_canon.add(canon)
+                    added_keys.append(k)
+
+                if set(current_keys) != prev_keys:
                     baselines["litellm_keys"] = current_keys
                     baselines_changed = True
 
@@ -1708,28 +1829,6 @@ class LmArenaScanner:
         ("text_to_image", "Text-to-Image"),
         ("image_edit", "Image Edit"),
     ]
-    STEALTH_CODENAME_SET = {
-        "pteronura",
-        "significant-otter",
-        "Max",
-        "inkling-medium",
-        "inkling-small",
-        "onyx-v1-4",
-        "groudon",
-        "deep-octo",
-        "lo-bah-png",
-        "eren-v2",
-        "zen-bear-v4",
-        "sungod",
-        "laguna-m.1-v2",
-        "melyora",
-        "kiteki",
-        "kizen-alpha",
-        "paisley",
-        "korin",
-        "lhotse",
-        "august26-chatbot1",
-    }
     BASELINES_FILE = pathlib.Path(__file__).resolve().parent.parent / "data" / "source_baselines.json"
 
     def _load_baselines(self) -> Dict[str, Any]:
@@ -1829,14 +1928,16 @@ class LmArenaScanner:
                 print(f"[LmArenaScanner] Note (arena.ai live RSC stream {url}): {exc}")
 
         if fetched_any:
-            already_known_lower = {
-                x.lower() for x in baselines.get("arena_leaderboard_models", [])
+            already_known_canon = {
+                _canonical_model_slug(x) for x in baselines.get("arena_leaderboard_models", [])
             } | {
-                x.split("/")[-1].lower() for x in baselines.get("litellm_keys", [])
+                _canonical_model_slug(x) for x in baselines.get("litellm_keys", [])
             }
             added_names = [
                 k for k in merged_map
-                if k not in prev_keys and k.lower() not in already_known_lower
+                if k not in prev_keys
+                and _canonical_model_slug(k) not in already_known_canon
+                and not is_legacy_model_id(k)
             ] if prev_keys else []
             if set(merged_map.keys()) != prev_keys:
                 baselines["arena_initial_models"] = merged_map
@@ -1856,8 +1957,8 @@ class LmArenaScanner:
                         "build_transition": f"initialModels · {len(merged_map)} active models",
                         "models": [
                             {
-                                "id": name,
-                                "name": f"org: {merged_map[name]['org']} · provider: {merged_map[name]['provider']} ({merged_map[name]['caps'] or 'chat'})",
+                                "id": f"org:{merged_map[name]['org']} · {merged_map[name]['provider']}",
+                                "name": f"{name} ({merged_map[name]['caps'] or 'chat'})",
                             }
                             for name in added_names[:8]
                         ],
@@ -1870,60 +1971,6 @@ class LmArenaScanner:
                         "accent_color": "#10b981",
                         "links": [{"label": "Arena.ai Direct", "url": "https://arena.ai/?mode=direct"}],
                         "detected_at": datetime.now(timezone.utc).isoformat(),
-                    }
-                )
-
-        # Always emit the Unreleased Stealth Codenames card from arena_initial_models
-        if merged_map:
-            stealth_items: List[Dict[str, str]] = []
-            priority_stealth = [
-                "pteronura",
-                "significant-otter",
-                "Max",
-                "inkling-medium",
-                "onyx-v1-4",
-                "groudon",
-                "deep-octo",
-                "lo-bah-png",
-                "eren-v2",
-                "zen-bear-v4",
-                "sungod",
-                "laguna-m.1-v2",
-                "melyora",
-                "kiteki",
-                "kizen-alpha",
-                "lhotse",
-            ]
-            for sk in priority_stealth:
-                if sk in merged_map:
-                    info = merged_map[sk]
-                    stealth_items.append(
-                        {
-                            "id": sk,
-                            "name": f"org: {info['org']} · provider: {info['provider']} ({info['caps']})",
-                        }
-                    )
-            if stealth_items:
-                cards.append(
-                    {
-                        "id": "arena-stealth-codenames",
-                        "category": "cli-sdk-diff",
-                        "scanner": "lmarena",
-                        "header": "ARENA.AI STEALTH MODEL SCOUT · INITIALMODELS RSC",
-                        "title": "Unreleased Stealth Codenames Active on Arena.ai",
-                        "subtitle": f"Hidden provider & organization mappings extracted from arena.ai initialModels ({len(stealth_items)} stealth models)",
-                        "build_label": "Arena RSC Stream",
-                        "build_transition": f"self.__next_f.push · {len(merged_map)} active models",
-                        "models": stealth_items[:10],
-                        "evidence": "arena.ai -> self.__next_f.push (initialModels)",
-                        "source_text": "live Arena.ai Next.js RSC initialModels payload.",
-                        "disclaimer_1": "",
-                        "disclaimer_2": "",
-                        "provider_name": "ARENA.AI",
-                        "provider_slug": "modelsdev",
-                        "accent_color": "#10b981",
-                        "links": [{"label": "Arena.ai", "url": "https://arena.ai/?mode=direct"}],
-                        "detected_at": "2026-10-24T12:08:00Z",
                     }
                 )
 
