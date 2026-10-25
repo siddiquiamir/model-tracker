@@ -1294,6 +1294,28 @@ class DocsAndGlobalRegistryScanner:
             "accent_color": "#e2e8f0",
             "link_url": "https://docs.x.ai/developers/models",
         },
+        {
+            "key": "azure-foundry-direct",
+            "url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+            "header": "AZURE AI FOUNDRY DIRECT MODELS · MICROSOFT / OPENAI",
+            "title": "Azure AI Foundry Direct Models Catalog",
+            "evidence": "learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+            "source_text": "official Microsoft Azure AI Foundry direct models & deployment catalog.",
+            "provider_slug": "openai",
+            "accent_color": "#10b981",
+            "link_url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+        },
+        {
+            "key": "azure-foundry-partners",
+            "url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-from-partners",
+            "header": "AZURE AI FOUNDRY PARTNER MODELS · MICROSOFT / ANTHROPIC",
+            "title": "Azure AI Foundry Partner Models Catalog",
+            "evidence": "learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-from-partners",
+            "source_text": "official Microsoft Azure AI Foundry partner models catalog (Anthropic Claude, xAI, Mistral).",
+            "provider_slug": "anthropic",
+            "accent_color": "#f97316",
+            "link_url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-from-partners",
+        },
     ]
 
     MODELS_DEV_URL = "https://models.dev/api.json"
@@ -1645,6 +1667,39 @@ class DocsAndGlobalRegistryScanner:
                 "provider_slug": "anthropic",
                 "accent_color": "#f59e0b",
             },
+            {
+                "key": "gh_openai_codex_models_json",
+                "url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/models-manager/models.json",
+                "kind": "codex_models_json",
+                "header": "OPENAI CODEX GITHUB MAIN DIFF · OPENAI",
+                "title_prefix": "New Model Slug Merged to OpenAI Codex Main",
+                "evidence": "openai/codex (codex-rs/models-manager/models.json)",
+                "link_url": "https://github.com/openai/codex/commits/main/codex-rs/models-manager/models.json",
+                "provider_slug": "openai",
+                "accent_color": "#10b981",
+            },
+            {
+                "key": "anthropic_sitemap_routes",
+                "url": "https://www.anthropic.com/sitemap.xml",
+                "kind": "anthropic_sitemap",
+                "header": "ANTHROPIC CMS SITEMAP SCOUT · ANTHROPIC",
+                "title_prefix": "New Claude Model Route Indexed in Sitemap",
+                "evidence": "anthropic.com/sitemap.xml (root /claude-*, /claude/*, /news/*, /research/*)",
+                "link_url": "https://www.anthropic.com/sitemap.xml",
+                "provider_slug": "anthropic",
+                "accent_color": "#f97316",
+            },
+            {
+                "key": "openai_sitemap_routes",
+                "url": "https://openai.com/sitemap.xml/release/",
+                "kind": "openai_sitemap",
+                "header": "OPENAI RELEASE SITEMAP SCOUT · OPENAI",
+                "title_prefix": "New OpenAI Release Route Indexed in Sitemap",
+                "evidence": "openai.com/sitemap.xml/release/ & /publication/",
+                "link_url": "https://openai.com/sitemap.xml/release/",
+                "provider_slug": "openai",
+                "accent_color": "#10b981",
+            },
         ]
 
         for probe in structured_probes:
@@ -1694,6 +1749,33 @@ class DocsAndGlobalRegistryScanner:
                         clean_m = mid.split(":")[0]
                         if not is_legacy_model_id(clean_m):
                             extracted.add(clean_m)
+                elif kind == "codex_models_json":
+                    codex_doc = json.loads(txt)
+                    for entry in codex_doc.get("models", []):
+                        slug = (entry.get("slug") or "").strip().lower()
+                        if slug and slug not in {"codex-auto-review"} and not is_legacy_model_id(slug):
+                            extracted.add(slug)
+                elif kind == "anthropic_sitemap":
+                    for slug in re.findall(r"https://www\.anthropic\.com/(claude-(?:opus|sonnet|haiku|fable|mythos|[a-z]+-[56789])[a-z0-9._-]*)</loc>", txt):
+                        if not is_legacy_model_id(slug):
+                            extracted.add(slug)
+                    for slug in re.findall(r"https://www\.anthropic\.com/(claude/[a-z0-9._-]+)</loc>", txt):
+                        extracted.add(slug.replace("/", "-"))
+                    for slug in re.findall(r"https://www\.anthropic\.com/(?:news|research)/((?:claude-[a-z]+-[56789]|(?:fable|mythos)-)[a-z0-9._-]*)</loc>", txt):
+                        if not is_legacy_model_id(slug):
+                            extracted.add(slug)
+                elif kind == "openai_sitemap":
+                    pub_extra = ""
+                    try:
+                        pub_extra = _http_get_text("https://openai.com/sitemap.xml/publication/", timeout=12)
+                    except Exception:
+                        pass
+                    for slug in re.findall(
+                        r"https://openai\.com/index/((?:introducing-gpt-[56789a-z]|introducing-o[56789]|previewing-gpt-[56789a-z]|gpt-[56789]|o[56789]-|unlocking-[a-z0-9-]*gpt-)[a-z0-9._-]*)/?</loc>",
+                        txt + "\n" + pub_extra,
+                    ):
+                        if not is_legacy_model_id(slug):
+                            extracted.add(slug)
 
                 if not extracted:
                     continue
@@ -1739,7 +1821,8 @@ class DocsAndGlobalRegistryScanner:
         # 4. Scan LiteLLM master model_prices_and_context_window.json for genuinely new frontier models
         # (excludes 3rd-party cloud re-hosting of already-released models like mistral/zai-glm-5-3-flash or cerebras/llama-3.1-70b)
         primary_litellm_prefixes = {
-            "openai", "anthropic", "gemini", "vertex_ai", "bedrock", "azure", "xai",
+            "openai", "anthropic", "gemini", "vertex_ai", "bedrock", "bedrock_converse", "bedrock_mantle",
+            "azure", "azure_ai", "github_copilot", "chatgpt", "vercel_ai_gateway", "xai",
             "deepseek", "moonshot", "dashscope", "zai", "minimax", "mistral", "openrouter",
         }
         try:
