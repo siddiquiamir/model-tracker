@@ -7,11 +7,13 @@ from datetime import datetime, timezone
 import hashlib
 import io
 import json
+import os
 import pathlib
 import re
 import subprocess
 import tarfile
 from typing import Any, Dict, List, Optional, Set
+import urllib.parse
 import urllib.request
 import zlib
 
@@ -647,6 +649,16 @@ class NpmCliAndSdkScanner:
             "provider_slug": "xai",
             "accent_color": "#e2e8f0",
         },
+        {
+            "pkg": "@github/copilot-sdk",
+            "mode": "js_sdk",
+            "header": "GITHUB COPILOT SDK DIFF · MICROSOFT / GITHUB",
+            "subtitle": "Verified GitHub Copilot SDK generated RPC & model definitions",
+            "evidence": "@github/copilot-sdk (dist/generated/rpc.d.ts)",
+            "source_text": "official public npm registry tarball (@github/copilot-sdk).",
+            "provider_slug": "openai",
+            "accent_color": "#10b981",
+        },
     ]
 
     def __init__(self, baseline_file: Optional[pathlib.Path] = None) -> None:
@@ -824,8 +836,8 @@ class NpmCliAndSdkScanner:
             curr_tar = versions_dict[curr_ver]["dist"]["tarball"]
             curr_models = self._extract_npm_tarball_models(pkg, curr_ver, curr_tar, mode, bin_cache)
             raw_added = sorted(curr_models - prev_models)
-            # Cross-check binaries & xAI/OpenAI/Anthropic SDKs against LiteLLM so previously released models (or CLI effort flags like grok-4.7-high-fast) never fire false alerts
-            if (mode in {"claude_binary", "codex_binary", "grok_binary"} or pkg == "@xai-official/sdk") and known_litellm:
+            # Cross-check binaries & xAI/Copilot/OpenAI/Anthropic SDKs against LiteLLM so previously released models (or CLI effort flags like grok-4.7-high-fast) never fire false alerts
+            if (mode in {"claude_binary", "codex_binary", "grok_binary"} or pkg in {"@xai-official/sdk", "@github/copilot-sdk"}) and known_litellm:
                 added = [
                     m for m in raw_added
                     if _canonical_model_slug(m) not in known_litellm
@@ -1700,6 +1712,17 @@ class DocsAndGlobalRegistryScanner:
                 "provider_slug": "openai",
                 "accent_color": "#10b981",
             },
+            {
+                "key": "ms_copilot_waza_evals",
+                "url": "https://raw.githubusercontent.com/dotnet/efcore/main/eng/harness-evaluation/skills/tooling/eval.yaml",
+                "kind": "ms_copilot_waza_evals",
+                "header": "MICROSOFT WAZA / COPILOT SDK EVAL HARNESS · MICROSOFT",
+                "title_prefix": "New Model in Microsoft Copilot SDK Eval Harness",
+                "evidence": "microsoft / dotnet / Azure / github eval.yaml (executor: copilot-sdk)",
+                "link_url": "https://github.com/dotnet/efcore/tree/main/eng/harness-evaluation",
+                "provider_slug": "openai",
+                "accent_color": "#10b981",
+            },
         ]
 
         for probe in structured_probes:
@@ -1776,6 +1799,58 @@ class DocsAndGlobalRegistryScanner:
                     ):
                         if not is_legacy_model_id(slug):
                             extracted.add(slug)
+                elif kind == "ms_copilot_waza_evals":
+                    seed_eval_urls = [
+                        "https://raw.githubusercontent.com/dotnet/efcore/main/eng/harness-evaluation/instructions/copilot-instructions/eval.yaml",
+                        "https://raw.githubusercontent.com/dotnet/runtime/main/.github/workflows/evals/ci-failure-fix.eval.yaml",
+                        "https://raw.githubusercontent.com/dotnet/runtime/main/.github/workflows/evals/ci-failure-scan.eval.yaml",
+                        "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/main/.github/skills/azsdk-common-apiview-feedback-resolution/evals/eval.yaml",
+                        "https://raw.githubusercontent.com/Azure/azure-sdk-for-net/main/.github/skills/azsdk-common-apiview-feedback-resolution/evals/eval.yaml",
+                        "https://raw.githubusercontent.com/Azure/azure-sdk-for-js/main/.github/skills/azsdk-common-apiview-feedback-resolution/evals/eval.yaml",
+                        "https://raw.githubusercontent.com/microsoft/skills/main/tests/scenarios/agent-framework-azure-ai-py/vally/eval.yaml",
+                    ]
+                    gh_token = os.environ.get("GITHUB_TOKEN", "").strip()
+                    if gh_token:
+                        for cq in (
+                            "org:microsoft org:dotnet org:Azure org:github filename:eval.yaml judge_model",
+                            'org:microsoft org:dotnet org:Azure org:github filename:eval.yaml "copilot-sdk"',
+                        ):
+                            try:
+                                cs_url = f"https://api.github.com/search/code?q={urllib.parse.quote(cq)}&per_page=25"
+                                req = urllib.request.Request(
+                                    cs_url,
+                                    headers={
+                                        "Authorization": f"Bearer {gh_token}",
+                                        "Accept": "application/vnd.github+json",
+                                        "User-Agent": "ModelPulse-Tracker/2.0",
+                                    },
+                                )
+                                with urllib.request.urlopen(req, timeout=12) as resp:
+                                    cs_doc = json.loads(resp.read().decode("utf-8", "ignore"))
+                                for item in cs_doc.get("items", []):
+                                    h_url = item.get("html_url", "")
+                                    if "/blob/" in h_url:
+                                        raw_u = h_url.replace("https://github.com/", "https://raw.githubusercontent.com/").replace("/blob/", "/", 1)
+                                        if raw_u not in seed_eval_urls:
+                                            seed_eval_urls.append(raw_u)
+                            except Exception:
+                                pass
+
+                    combined_evals = [txt]
+                    for eu in seed_eval_urls[:40]:
+                        try:
+                            combined_evals.append(_http_get_text(eu, timeout=8))
+                        except Exception:
+                            pass
+                    eval_lines = "\n".join(
+                        line
+                        for doc in combined_evals
+                        for line in doc.splitlines()
+                        if "model" in line.lower()
+                    )
+                    for mid in extract_models_from_bytes(eval_lines.encode("utf-8", "ignore")):
+                        if not is_legacy_model_id(mid):
+                            extracted.add(mid)
 
                 if not extracted:
                     continue
@@ -1793,6 +1868,9 @@ class DocsAndGlobalRegistryScanner:
 
                 if truly_new:
                     sig = hashlib.sha256(",".join(truly_new[:8]).encode("utf-8")).hexdigest()[:8]
+                    inferred = infer_provider(truly_new[0])
+                    p_slug = inferred["slug"] if kind in {"botocore_bedrock", "cursor_doc_routes", "ms_copilot_waza_evals"} and inferred["slug"] != "other" else probe["provider_slug"]
+                    p_color = inferred["color"] if kind in {"botocore_bedrock", "cursor_doc_routes", "ms_copilot_waza_evals"} and inferred["slug"] != "other" else probe["accent_color"]
                     cards.append(
                         {
                             "id": f"pre-release-{bkey}-{sig}",
@@ -1809,8 +1887,8 @@ class DocsAndGlobalRegistryScanner:
                             "disclaimer_1": "",
                             "disclaimer_2": "",
                             "provider_name": probe["header"].split("·")[-1].strip(),
-                            "provider_slug": probe["provider_slug"],
-                            "accent_color": probe["accent_color"],
+                            "provider_slug": p_slug,
+                            "accent_color": p_color,
                             "links": [{"label": "Source Feed", "url": probe["link_url"]}],
                             "detected_at": datetime.now(timezone.utc).isoformat(),
                         }
