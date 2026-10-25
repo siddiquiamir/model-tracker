@@ -758,7 +758,13 @@ class NpmCliAndSdkScanner:
                 r"grok-(?:[456789]|imagine|voice|build)[a-z0-9._-]{0,30}|"
                 r"gemini-[345][a-z0-9._-]{1,35}|"
                 r"imagen-[345][a-z0-9._-]{1,30}|"
-                r"veo-[2345][a-z0-9._-]{1,30}"
+                r"veo-[2345][a-z0-9._-]{1,30}|"
+                r"mai-(?:code|[234])[a-z0-9._-]{0,25}|"
+                r"astra-cyber[a-z0-9._-]{0,25}|"
+                r"fable-[567][a-z0-9._-]{0,20}|"
+                r"composer-[2345][a-z0-9._-]{0,20}|"
+                r"muse-(?:spark|wonder)[a-z0-9._-]{0,20}|"
+                r"swe-[23][a-z0-9._-]{1,25}"
                 r"))[\"']"
             )
             with tarfile.open(fileobj=io.BytesIO(tar_bytes), mode="r:gz") as tf:
@@ -813,7 +819,14 @@ class NpmCliAndSdkScanner:
         latest_ver = dist_tags.get("latest", all_versions[-1])
         latest_idx = all_versions.index(latest_ver) if latest_ver in all_versions else len(all_versions) - 1
         start_idx = max(1, latest_idx - 4)
-        return all_versions[start_idx - 1 : latest_idx + 1]
+        selected = list(all_versions[start_idx - 1 : latest_idx + 1])
+        latest_ts = times.get(latest_ver, "")
+        for pre_tag in ("prerelease", "next", "beta", "alpha", "unstable"):
+            pv = dist_tags.get(pre_tag)
+            if pv and pv in versions_dict and pv not in selected:
+                if not latest_ts or times.get(pv, "") >= latest_ts:
+                    selected.append(pv)
+        return selected
 
     def scan_package(self, cfg: Dict[str, str], bin_cache: Dict[str, List[str]], known_litellm: Set[str]) -> List[Dict[str, Any]]:
         pkg = cfg["pkg"]
@@ -2686,3 +2699,705 @@ class CertTransparencySubdomainScanner:
             self._save_baselines(baselines)
 
         return [*diff_cards, *snapshot_cards]
+
+
+class HighAlphaLeakChannelsScanner:
+    """
+    Covers the 5 high-alpha pre-release leak channels verified from RAGtrack & aitracker.bot:
+      1. Zero-key stealth & multi-lab gateways (`opencode.ai/zen/v1/models`, `ai-gateway.vercel.sh/v1/models`)
+      2. Desktop IDE build string differs (Cursor Linux REH archive & Devin/Windsurf Stable + Next builds)
+      3. GitHub Copilot CLI release & prerelease notes (`github/copilot-cli/releases`)
+      4. Inference engine open + closed PR leak watcher (`vllm`, `sglang`, `TensorRT-LLM`, `transformers` with `state=all`)
+      5. Direct official provider `/v1/models` & Gemini `v1alpha/models` + `v1beta/models` API pollers
+    """
+
+    OPENCODE_ZEN_URL = "https://opencode.ai/zen/v1/models"
+    VERCEL_GATEWAY_URL = "https://ai-gateway.vercel.sh/v1/models"
+
+    CURSOR_TRACKS = [
+        ("stable", "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=stable"),
+        ("dev", "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=dev"),
+    ]
+    WINDSURF_TRACKS = [
+        ("stable", "https://windsurf-stable.codeium.com/api/update/linux-x64/stable/latest"),
+        ("next", "https://windsurf-stable.codeium.com/api/update/linux-x64/next/latest"),
+    ]
+
+    ENGINE_PR_REPOS = [
+        ("vllm-project/vllm", "vLLM PR"),
+        ("sgl-project/sglang", "SGLang PR"),
+        ("NVIDIA/TensorRT-LLM", "TensorRT-LLM PR"),
+        ("huggingface/transformers", "HF Transformers PR"),
+    ]
+
+    IDE_BUNDLE_MODEL_RE = re.compile(
+        rb"\b("
+        rb"claude-(?:opus|sonnet|haiku|fable|mythos)-[0-9a-z][a-z0-9._-]{0,30}|"
+        rb"fable-[567](?:[.-][0-9]+)?(?:-[a-z0-9._-]+)?|"
+        rb"composer-[2345](?:[.-][0-9]+)?(?:-(?:fast|mini|pro|max|thinking|high))?|"
+        rb"gpt-(?:[56789]|daybreak|rosalind|aurora)[a-z0-9._-]{0,28}|"
+        rb"astra-cyber[a-z0-9._-]{0,22}|"
+        rb"gemini-[345][a-z0-9._-]{1,32}|"
+        rb"grok-[456][a-z0-9._-]{0,25}|"
+        rb"kimi-k[234][a-z0-9._-]{0,25}|"
+        rb"deepseek-(?:v[456]|r[234])[a-z0-9._-]{0,25}|"
+        rb"glm-[567][a-z0-9._-]{0,22}|"
+        rb"minimax-m[345][a-z0-9._-]{0,22}|"
+        rb"mai-(?:code|[234])[a-z0-9._-]{0,22}|"
+        rb"swe-[23]-(?:lightning|mini|medium|high|max|pro)[a-z0-9._-]{0,20}"
+        rb")\b"
+    )
+
+    IDE_EXCLUDED_TOKENS = {
+        "composer-backed", "composer-peek", "composer-chat-script", "composer-input",
+        "composer-bar", "composer-mode", "composer-panel", "gemini-3", "gemini-4",
+        "gpt-5", "grok-4", "claude-opus-4", "claude-sonnet-4", "claude-haiku-4",
+    }
+
+    PR_ONBOARD_TITLE_RE = re.compile(
+        r"(?:\[(?:New\s+)?Models?\]|\badd(?:s|ed|ing)?\s+(?:day-0\s+)?support\s+for\b|\bday-0\s+support\b|\bonboard(?:ing)?\b|\bsupport\s+[A-Za-z0-9._-]+/[A-Za-z0-9._-]+)",
+        re.IGNORECASE,
+    )
+    PR_HF_SLUG_RE = re.compile(
+        r"\b((?:moonshotai|deepseek-ai|Qwen|zai-org|THUDM|MiniMaxAI|openbmb|nvidia|google|meta-llama|mistralai|XiaomiMiMo|stepfun-ai|inclusionAI|CohereLabs)/[A-Za-z0-9][A-Za-z0-9._-]{2,48})\b"
+    )
+    PR_UNRELEASED_ID_RE = re.compile(
+        r"\b("
+        r"nemotron-?4[a-z0-9._-]{1,28}|"
+        r"kimi-k3\.[1-9][a-z0-9._-]{0,22}|kimi-k4[a-z0-9._-]{0,22}|"
+        r"deepseek-v4\.[2-9][a-z0-9._-]{0,22}|deepseek-v5[a-z0-9._-]{0,22}|deepseek-r[23][a-z0-9._-]{0,22}|"
+        r"qwen3\.[89][a-z0-9._-]{0,22}|qwen4[a-z0-9._-]{0,22}|"
+        r"glm-5\.[4-9][a-z0-9._-]{0,22}|glm-6[a-z0-9._-]{0,22}|"
+        r"gemma-?4[a-z0-9._-]{0,22}|diffusiongemma[a-z0-9._-]{0,18}|embeddinggemma[23][a-z0-9._-]{0,18}|"
+        r"minimax-m3\.[1-9][a-z0-9._-]{0,22}|minimax-m4[a-z0-9._-]{0,22}|"
+        r"mimo-v2\.[7-9][a-z0-9._-]{0,22}|mimo-v3[a-z0-9._-]{0,22}|"
+        r"minicpm-(?:ocr|v|o)-?[0-9][a-z0-9._-]{0,20}"
+        r")\b",
+        re.IGNORECASE,
+    )
+
+    BASELINES_FILE = pathlib.Path(__file__).resolve().parent.parent / "data" / "source_baselines.json"
+
+    def _load_baselines(self) -> Dict[str, Any]:
+        if self.BASELINES_FILE.exists():
+            try:
+                return json.loads(self.BASELINES_FILE.read_text(encoding="utf-8"))
+            except Exception:
+                return {}
+        return {}
+
+    def _save_baselines(self, data: Dict[str, Any]) -> None:
+        self.BASELINES_FILE.parent.mkdir(parents=True, exist_ok=True)
+        self.BASELINES_FILE.write_text(json.dumps(data, indent=2), encoding="utf-8", newline="\n")
+
+    @staticmethod
+    def _gh_headers() -> Dict[str, str]:
+        hdrs = {
+            "Accept": "application/vnd.github+json",
+            "User-Agent": "ModelPulse-Tracker/2.0",
+        }
+        tok = (os.environ.get("GITHUB_TOKEN") or "").strip()
+        if tok:
+            hdrs["Authorization"] = f"Bearer {tok}"
+        return hdrs
+
+    def _scan_public_gateways(
+        self,
+        baselines: Dict[str, Any],
+        known_canon: Set[str],
+    ) -> tuple[List[Dict[str, Any]], bool]:
+        cards: List[Dict[str, Any]] = []
+        changed = False
+
+        # 1a. OpenCode Zen Gateway (frequently hosts stealth anonymous codenames + day-0 frontier models)
+        try:
+            oz_doc = _http_get_json(self.OPENCODE_ZEN_URL, timeout=12, extra_headers={"User-Agent": "Mozilla/5.0"})
+            oz_rows = oz_doc.get("data", []) if isinstance(oz_doc, dict) else []
+            if oz_rows:
+                curr_oz = sorted(
+                    {
+                        str(r.get("id", "")).strip()
+                        for r in oz_rows
+                        if isinstance(r, dict) and str(r.get("id", "")).strip() and str(r.get("id", "")).strip() != "test"
+                    }
+                )
+                prev_oz = set(baselines.get("opencode_zen_models", []))
+                added_oz = [
+                    m for m in curr_oz
+                    if m not in prev_oz and not is_legacy_model_id(m)
+                ] if prev_oz else []
+                if set(curr_oz) != prev_oz:
+                    baselines["opencode_zen_models"] = curr_oz
+                    changed = True
+                if added_oz:
+                    sig = hashlib.sha256(",".join(added_oz[:8]).encode("utf-8")).hexdigest()[:8]
+                    inferred = infer_provider(added_oz[0])
+                    cards.append(
+                        {
+                            "id": f"opencode-zen-diff-{sig}",
+                            "category": "cli-sdk-diff",
+                            "scanner": "gateway-radar",
+                            "header": "OPENCODE ZEN STEALTH & MODEL GATEWAY · LIVE DIFF",
+                            "title": f"New Model on OpenCode Zen: {added_oz[0]}",
+                            "subtitle": f"Newly exposed model / stealth codename in opencode.ai/zen/v1/models (+{len(added_oz)} new)",
+                            "build_label": "Gateway Diff",
+                            "build_transition": f"+{len(added_oz)} model(s) ({len(curr_oz)} active)",
+                            "models": [{"id": m, "name": humanize_model_id(m)} for m in added_oz[:8]],
+                            "evidence": "opencode.ai/zen/v1/models",
+                            "source_text": "public OpenCode Zen /v1/models catalog.",
+                            "disclaimer_1": "",
+                            "disclaimer_2": "",
+                            "provider_name": inferred["name"] if inferred["slug"] != "openrouter" else "OPENCODE ZEN",
+                            "provider_slug": inferred["slug"],
+                            "accent_color": inferred["color"],
+                            "links": [{"label": "OpenCode Zen Models JSON", "url": self.OPENCODE_ZEN_URL}],
+                            "detected_at": datetime.now(timezone.utc).isoformat(),
+                        }
+                    )
+        except Exception as exc:
+            print(f"[HighAlphaScanner] OpenCode Zen warning: {exc}")
+
+        # 1b. Vercel AI Gateway (/v1/models)
+        try:
+            vg_doc = _http_get_json(self.VERCEL_GATEWAY_URL, timeout=15, extra_headers={"User-Agent": "Mozilla/5.0"})
+            vg_rows = vg_doc.get("data", []) if isinstance(vg_doc, dict) else []
+            if vg_rows:
+                vg_meta: Dict[str, str] = {}
+                for r in vg_rows:
+                    if isinstance(r, dict) and r.get("id"):
+                        mid = str(r["id"]).strip()
+                        vg_meta[mid] = str(r.get("name") or mid).strip()
+                curr_vg = sorted(vg_meta.keys())
+                prev_vg = set(baselines.get("vercel_gateway_models", []))
+                prev_vg_canon = {_canonical_model_slug(x) for x in prev_vg}
+                added_vg = [
+                    m for m in curr_vg
+                    if m not in prev_vg
+                    and _canonical_model_slug(m) not in prev_vg_canon
+                    and _canonical_model_slug(m) not in known_canon
+                    and not is_legacy_model_id(m.split("/")[-1])
+                ] if prev_vg else []
+                if set(curr_vg) != prev_vg:
+                    baselines["vercel_gateway_models"] = curr_vg
+                    changed = True
+                if added_vg:
+                    sig = hashlib.sha256(",".join(added_vg[:8]).encode("utf-8")).hexdigest()[:8]
+                    inferred = infer_provider(added_vg[0])
+                    cards.append(
+                        {
+                            "id": f"vercel-gateway-diff-{sig}",
+                            "category": "cli-sdk-diff",
+                            "scanner": "gateway-radar",
+                            "header": "VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS",
+                            "title": f"New Model on Vercel AI Gateway: {vg_meta.get(added_vg[0], added_vg[0])}",
+                            "subtitle": f"Detected in ai-gateway.vercel.sh/v1/models (+{len(added_vg)} new)",
+                            "build_label": "Gateway Diff",
+                            "build_transition": f"+{len(added_vg)} new model(s)",
+                            "models": [{"id": m, "name": vg_meta.get(m, m)} for m in added_vg[:8]],
+                            "evidence": "ai-gateway.vercel.sh/v1/models",
+                            "source_text": "public Vercel AI Gateway /v1/models catalog.",
+                            "disclaimer_1": "",
+                            "disclaimer_2": "",
+                            "provider_name": inferred["name"],
+                            "provider_slug": inferred["slug"],
+                            "accent_color": inferred["color"],
+                            "links": [{"label": "Vercel AI Gateway Models", "url": self.VERCEL_GATEWAY_URL}],
+                            "detected_at": datetime.now(timezone.utc).isoformat(),
+                        }
+                    )
+        except Exception as exc:
+            print(f"[HighAlphaScanner] Vercel AI Gateway warning: {exc}")
+
+        return cards, changed
+
+    def _extract_tar_gz_ide_models(self, archive_url: str, timeout: int = 55) -> Set[str]:
+        req = urllib.request.Request(
+            archive_url,
+            headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"},
+        )
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            raw_bytes = resp.read()
+        found: Set[str] = set()
+        with tarfile.open(fileobj=io.BytesIO(raw_bytes), mode="r:gz") as tf:
+            for member in tf.getmembers():
+                if not member.isfile() or member.size > 25_000_000:
+                    continue
+                if not member.name.endswith((".js", ".mjs", ".cjs", ".json")):
+                    continue
+                fobj = tf.extractfile(member)
+                if not fobj:
+                    continue
+                blob = fobj.read()
+                for m in self.IDE_BUNDLE_MODEL_RE.findall(blob):
+                    mid = m.decode("utf-8", "ignore").rstrip("._-")
+                    if mid in self.IDE_EXCLUDED_TOKENS or is_legacy_model_id(mid):
+                        continue
+                    found.add(mid)
+        return found
+
+    def _scan_ide_desktop_builds(
+        self,
+        baselines: Dict[str, Any],
+        known_canon: Set[str],
+    ) -> tuple[List[Dict[str, Any]], bool]:
+        cards: List[Dict[str, Any]] = []
+        changed = False
+        ide_cache: Dict[str, List[str]] = dict(baselines.get("ide_build_models", {}))
+        ide_latest: Dict[str, str] = dict(baselines.get("ide_latest_versions", {}))
+
+        # 2a. Cursor Official Linux REH Build
+        seen_cursor_vers: Set[str] = set()
+        for track, meta_url in self.CURSOR_TRACKS:
+            try:
+                meta = _http_get_json(meta_url, timeout=10, extra_headers={"User-Agent": "Mozilla/5.0"})
+                if not isinstance(meta, dict):
+                    continue
+                ver = str(meta.get("version") or "").strip()
+                reh_url = str(meta.get("rehUrl") or "").strip()
+                if not ver or not reh_url or ver in seen_cursor_vers:
+                    continue
+                seen_cursor_vers.add(ver)
+                ckey = f"cursor@{ver}"
+                if ckey in ide_cache:
+                    curr_models = set(ide_cache[ckey])
+                else:
+                    curr_models = self._extract_tar_gz_ide_models(reh_url, timeout=60)
+                    if not curr_models:
+                        continue
+                    ide_cache[ckey] = sorted(curr_models)
+                    changed = True
+
+                track_key = f"cursor-{track}"
+                prev_ver = ide_latest.get(track_key)
+                if prev_ver and prev_ver != ver and f"cursor@{prev_ver}" in ide_cache:
+                    prev_models = set(ide_cache[f"cursor@{prev_ver}"])
+                    raw_added = sorted(curr_models - prev_models)
+                    added = [
+                        m for m in raw_added
+                        if _canonical_model_slug(m) not in known_canon
+                    ]
+                    if added:
+                        inferred = infer_provider(added[0])
+                        cards.append(
+                            {
+                                "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"cursor-build-{prev_ver}-{ver}"),
+                                "category": "desktop-diff",
+                                "scanner": "ide-build-diff",
+                                "header": f"CURSOR IDE OFFICIAL BUILD DIFF · {inferred['name']}",
+                                "title": f"Cursor {ver}: {infer_family_title(added)}",
+                                "subtitle": f"Verified Cursor official build model table diff ({track} track)",
+                                "build_label": "Cursor Build",
+                                "build_transition": f"{prev_ver} -> {ver}",
+                                "models": [{"id": m, "name": humanize_model_id(m)} for m in added[:8]],
+                                "evidence": f"Cursor {ver} (vscode-reh-linux-x64.tar.gz)",
+                                "source_text": "official Cursor Linux x64 release bundle.",
+                                "disclaimer_1": "",
+                                "disclaimer_2": "",
+                                "provider_name": inferred["name"],
+                                "provider_slug": inferred["slug"],
+                                "accent_color": inferred["color"],
+                                "links": [
+                                    {"label": "Cursor Release API", "url": meta_url},
+                                    {"label": "Cursor Changelog", "url": "https://cursor.com/changelog"},
+                                ],
+                                "detected_at": datetime.now(timezone.utc).isoformat(),
+                            }
+                        )
+                if ide_latest.get(track_key) != ver:
+                    ide_latest[track_key] = ver
+                    changed = True
+            except Exception as exc:
+                print(f"[HighAlphaScanner] Cursor {track} build note: {exc}")
+
+        # 2b. Devin Desktop / Windsurf Stable & Next Linux Builds
+        for track, ws_url in self.WINDSURF_TRACKS:
+            try:
+                meta = _http_get_json(ws_url, timeout=10, extra_headers={"User-Agent": "Mozilla/5.0"})
+                if not isinstance(meta, dict):
+                    continue
+                ver = str(meta.get("windsurfVersion") or meta.get("version") or "").strip()
+                dl_url = str(meta.get("url") or "").strip()
+                if not ver or not dl_url or not dl_url.endswith((".tar.gz", ".tgz")):
+                    continue
+                ckey = f"windsurf-{track}@{ver}"
+                if ckey in ide_cache:
+                    curr_models = set(ide_cache[ckey])
+                else:
+                    curr_models = self._extract_tar_gz_ide_models(dl_url, timeout=60)
+                    if not curr_models:
+                        continue
+                    ide_cache[ckey] = sorted(curr_models)
+                    changed = True
+
+                track_key = f"windsurf-{track}"
+                prev_ver = ide_latest.get(track_key)
+                if prev_ver and prev_ver != ver and f"windsurf-{track}@{prev_ver}" in ide_cache:
+                    prev_models = set(ide_cache[f"windsurf-{track}@{prev_ver}"])
+                    raw_added = sorted(curr_models - prev_models)
+                    added = [
+                        m for m in raw_added
+                        if _canonical_model_slug(m) not in known_canon
+                    ]
+                    if added:
+                        inferred = infer_provider(added[0])
+                        cards.append(
+                            {
+                                "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"windsurf-{track}-{prev_ver}-{ver}"),
+                                "category": "desktop-diff",
+                                "scanner": "ide-build-diff",
+                                "header": f"DEVIN DESKTOP (WINDSURF {track.upper()}) BUILD DIFF · {inferred['name']}",
+                                "title": f"Devin Desktop {ver}: {infer_family_title(added)}",
+                                "subtitle": f"Verified Devin / Windsurf {track.title()} official build comparison",
+                                "build_label": f"Devin {track.title()}",
+                                "build_transition": f"{prev_ver} -> {ver}",
+                                "models": [{"id": m, "name": humanize_model_id(m)} for m in added[:8]],
+                                "evidence": f"Devin Desktop / Windsurf {track} ({ver})",
+                                "source_text": f"official Devin Desktop (Windsurf {track}) Linux x64 release archive.",
+                                "disclaimer_1": "",
+                                "disclaimer_2": "",
+                                "provider_name": inferred["name"],
+                                "provider_slug": inferred["slug"],
+                                "accent_color": inferred["color"],
+                                "links": [{"label": "Update Feed JSON", "url": ws_url}],
+                                "detected_at": datetime.now(timezone.utc).isoformat(),
+                            }
+                        )
+                if ide_latest.get(track_key) != ver:
+                    ide_latest[track_key] = ver
+                    changed = True
+            except Exception as exc:
+                print(f"[HighAlphaScanner] Devin/Windsurf {track} note (cloud-only if behind proxy): {exc}")
+
+        if changed:
+            # Trim ide_cache to last 8 entries total so source_baselines.json remains compact
+            trimmed_ide: Dict[str, List[str]] = {}
+            by_prefix: Dict[str, List[str]] = {}
+            for k in sorted(ide_cache.keys()):
+                pfx = k.split("@", 1)[0]
+                by_prefix.setdefault(pfx, []).append(k)
+            for pfx, keys in by_prefix.items():
+                for k in keys[-3:]:
+                    trimmed_ide[k] = ide_cache[k]
+            baselines["ide_build_models"] = trimmed_ide
+            baselines["ide_latest_versions"] = ide_latest
+
+        return cards, changed
+
+    def _scan_copilot_cli_releases(
+        self,
+        baselines: Dict[str, Any],
+        known_canon: Set[str],
+    ) -> tuple[List[Dict[str, Any]], bool]:
+        cards: List[Dict[str, Any]] = []
+        changed = False
+        try:
+            rels = _http_get_json(
+                "https://api.github.com/repos/github/copilot-cli/releases?per_page=12",
+                timeout=12,
+                extra_headers=self._gh_headers(),
+            )
+            if not isinstance(rels, list) or not rels:
+                return cards, changed
+            seen_tags = set(baselines.get("copilot_cli_seen_tags", []))
+            had_seed = len(seen_tags) > 0
+            known_models = set(baselines.get("copilot_cli_release_models", []))
+
+            for rel in reversed(rels):
+                if not isinstance(rel, dict):
+                    continue
+                tag = str(rel.get("tag_name") or "").strip()
+                if not tag or tag in seen_tags:
+                    continue
+                seen_tags.add(tag)
+                changed = True
+                blob = f"{rel.get('name') or ''}\n{rel.get('body') or ''}".encode("utf-8", "ignore")
+                extracted = {m for m in extract_models_from_bytes(blob) if not is_legacy_model_id(m)}
+                new_mids = sorted(
+                    m for m in (extracted - known_models)
+                    if _canonical_model_slug(m) not in known_canon
+                )
+                known_models.update(extracted)
+                if had_seed and new_mids:
+                    inferred = infer_provider(new_mids[0])
+                    cards.append(
+                        {
+                            "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"copilot-cli-rel-{tag}"),
+                            "category": "cli-sdk-diff",
+                            "scanner": "docs-radar",
+                            "header": f"GITHUB COPILOT CLI RELEASE DIFF · {inferred['name']}",
+                            "title": f"GitHub Copilot CLI {tag}: {infer_family_title(new_mids)}",
+                            "subtitle": "Newly referenced model identifier in github/copilot-cli release notes",
+                            "build_label": "Copilot CLI",
+                            "build_transition": tag,
+                            "models": [{"id": m, "name": humanize_model_id(m)} for m in new_mids[:8]],
+                            "evidence": f"github/copilot-cli releases ({tag})",
+                            "source_text": "official GitHub Copilot CLI release feed.",
+                            "disclaimer_1": "",
+                            "disclaimer_2": "",
+                            "provider_name": inferred["name"],
+                            "provider_slug": inferred["slug"],
+                            "accent_color": inferred["color"],
+                            "links": [{"label": f"Release {tag}", "url": rel.get("html_url") or "https://github.com/github/copilot-cli/releases"}],
+                            "detected_at": rel.get("published_at") or datetime.now(timezone.utc).isoformat(),
+                        }
+                    )
+            if changed:
+                baselines["copilot_cli_seen_tags"] = sorted(seen_tags)[-40:]
+                baselines["copilot_cli_release_models"] = sorted(known_models)
+        except Exception as exc:
+            print(f"[HighAlphaScanner] Copilot CLI releases note: {exc}")
+        return cards, changed
+
+    def _scan_inference_engine_prs(
+        self,
+        baselines: Dict[str, Any],
+        known_canon: Set[str],
+    ) -> tuple[List[Dict[str, Any]], bool]:
+        cards: List[Dict[str, Any]] = []
+        changed = False
+        seen_prs: Dict[str, List[int]] = {
+            k: list(v) for k, v in (baselines.get("engine_seen_prs") or {}).items()
+        }
+        seen_slugs: Set[str] = set(baselines.get("engine_seen_model_slugs", []))
+
+        for repo, repo_label in self.ENGINE_PR_REPOS:
+            try:
+                url = f"https://api.github.com/repos/{repo}/pulls?state=all&sort=created&direction=desc&per_page=40"
+                prs = _http_get_json(url, timeout=12, extra_headers=self._gh_headers())
+                if not isinstance(prs, list) or not prs:
+                    continue
+                repo_seen = set(seen_prs.get(repo, []))
+                had_repo_seed = len(repo_seen) > 0
+
+                for pr in reversed(prs):
+                    if not isinstance(pr, dict):
+                        continue
+                    num = int(pr.get("number") or 0)
+                    if not num or num in repo_seen:
+                        continue
+                    repo_seen.add(num)
+                    changed = True
+
+                    title = str(pr.get("title") or "").strip()
+                    body_head = str(pr.get("body") or "")[:1200]
+                    combined = f"{title}\n{body_head}"
+
+                    candidates: List[str] = []
+                    for m in self.PR_HF_SLUG_RE.findall(combined):
+                        tail = m.split("/")[-1]
+                        if not is_legacy_model_id(tail) and not tail.lower().endswith(("-tokenizer", "-processor", "-config")):
+                            candidates.append(m)
+                    for m in self.PR_UNRELEASED_ID_RE.findall(title):
+                        if not is_legacy_model_id(m):
+                            candidates.append(m)
+
+                    if not candidates:
+                        continue
+                    # Require either an explicit model-onboarding PR title OR an explicit PR_UNRELEASED_ID_RE match in the title
+                    if not (self.PR_ONBOARD_TITLE_RE.search(title) or self.PR_UNRELEASED_ID_RE.search(title)):
+                        continue
+
+                    fresh_hits: List[str] = []
+                    for c in candidates:
+                        c_slug = _canonical_model_slug(c)
+                        if not c_slug or c_slug in known_canon or c_slug in seen_slugs:
+                            continue
+                        seen_slugs.add(c_slug)
+                        fresh_hits.append(c)
+
+                    if had_repo_seed and fresh_hits:
+                        inferred = infer_provider(fresh_hits[0].split("/")[-1])
+                        pr_state = str(pr.get("state") or "open").upper()
+                        cards.append(
+                            {
+                                "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"engine-pr-{repo}-{num}"),
+                                "category": "open-source",
+                                "scanner": "engine-pr-leak",
+                                "header": f"{repo_label.upper()} DAY-0 MODEL ONBOARDING ({pr_state})",
+                                "title": f"{fresh_hits[0]} ({repo_label} #{num})",
+                                "subtitle": title[:140],
+                                "build_label": repo_label,
+                                "build_transition": f"PR #{num} ({pr_state.lower()})",
+                                "models": [{"id": h, "name": f"Referenced in {repo}#{num}"} for h in fresh_hits[:6]],
+                                "evidence": f"{repo}/pull/{num}",
+                                "source_text": f"public GitHub pull request #{num} on {repo}.",
+                                "disclaimer_1": "",
+                                "disclaimer_2": "",
+                                "provider_name": inferred["name"] if inferred["slug"] != "openrouter" else repo_label.upper(),
+                                "provider_slug": inferred["slug"] if inferred["slug"] != "openrouter" else "opensource",
+                                "accent_color": inferred["color"],
+                                "links": [{"label": f"{repo} PR #{num}", "url": pr.get("html_url") or f"https://github.com/{repo}/pull/{num}"}],
+                                "detected_at": pr.get("created_at") or datetime.now(timezone.utc).isoformat(),
+                            }
+                        )
+
+                seen_prs[repo] = sorted(repo_seen)[-200:]
+            except Exception as exc:
+                print(f"[HighAlphaScanner] Engine PR scan note ({repo}): {exc}")
+
+        if changed:
+            baselines["engine_seen_prs"] = seen_prs
+            baselines["engine_seen_model_slugs"] = sorted(seen_slugs)[-400:]
+
+        return cards, changed
+
+    def _scan_live_provider_apis(
+        self,
+        baselines: Dict[str, Any],
+    ) -> tuple[List[Dict[str, Any]], bool]:
+        """
+        RAGtrack-style direct polling of official provider /models endpoints for every
+        API key configured in environment variables / GitHub Actions Secrets.
+        """
+        cards: List[Dict[str, Any]] = []
+        changed = False
+        api_baselines: Dict[str, List[str]] = {
+            k: list(v) for k, v in (baselines.get("live_provider_api_models") or {}).items()
+        }
+
+        # 5a. Google Gemini AI Studio: poll BOTH v1alpha/models AND v1beta/models
+        gem_key = (os.environ.get("GEMINI_API_KEY") or "").strip()
+        if gem_key:
+            gem_models: Dict[str, str] = {}
+            for ver in ("v1alpha", "v1beta"):
+                try:
+                    g_url = f"https://generativelanguage.googleapis.com/{ver}/models?pageSize=200&key={urllib.parse.quote(gem_key)}"
+                    g_doc = _http_get_json(g_url, timeout=12)
+                    for m in (g_doc.get("models") or []) if isinstance(g_doc, dict) else []:
+                        if isinstance(m, dict) and m.get("name"):
+                            mid = str(m["name"]).replace("models/", "").strip()
+                            disp = str(m.get("displayName") or mid).strip()
+                            gem_models[mid] = f"{disp} ({ver})"
+                except Exception as exc:
+                    print(f"[HighAlphaScanner] Gemini {ver}/models warning: {exc}")
+            if gem_models:
+                curr_g = sorted(gem_models.keys())
+                prev_g = set(api_baselines.get("gemini", []))
+                added_g = [m for m in curr_g if m not in prev_g and not is_legacy_model_id(m)] if prev_g else []
+                if set(curr_g) != prev_g:
+                    api_baselines["gemini"] = curr_g
+                    changed = True
+                if added_g:
+                    sig = hashlib.sha256(",".join(added_g[:8]).encode("utf-8")).hexdigest()[:8]
+                    cards.append(
+                        {
+                            "id": f"live-api-gemini-{sig}",
+                            "category": "cli-sdk-diff",
+                            "scanner": "live-api-diff",
+                            "header": "GEMINI LIVE API CATALOG DIFF · GOOGLE (v1alpha / v1beta)",
+                            "title": f"New Gemini API Model: {added_g[0]}",
+                            "subtitle": "Newly exposed model on generativelanguage.googleapis.com/{v1alpha,v1beta}/models",
+                            "build_label": "Gemini Live API",
+                            "build_transition": f"+{len(added_g)} new model(s)",
+                            "models": [{"id": m, "name": gem_models.get(m, m)} for m in added_g[:8]],
+                            "evidence": "generativelanguage.googleapis.com/v1alpha/models",
+                            "source_text": "official Google Gemini API live models endpoint.",
+                            "disclaimer_1": "",
+                            "disclaimer_2": "",
+                            "provider_name": "GOOGLE",
+                            "provider_slug": "google",
+                            "accent_color": "#38bdf8",
+                            "links": [{"label": "Gemini Models Docs", "url": "https://ai.google.dev/gemini-api/docs/models"}],
+                            "detected_at": datetime.now(timezone.utc).isoformat(),
+                        }
+                    )
+
+        # 5b. OpenAI-compatible & Anthropic /v1/models endpoints
+        bearer_providers = [
+            ("openai", "OPENAI_API_KEY", "https://api.openai.com/v1/models", "OPENAI", "openai", "#10b981", "https://platform.openai.com/docs/models", "bearer"),
+            ("anthropic", "ANTHROPIC_API_KEY", "https://api.anthropic.com/v1/models?limit=100", "ANTHROPIC", "anthropic", "#f97316", "https://docs.anthropic.com/en/docs/about-claude/models", "anthropic"),
+            ("deepseek", "DEEPSEEK_API_KEY", "https://api.deepseek.com/models", "DEEPSEEK", "deepseek", "#06b6d4", "https://api-docs.deepseek.com/", "bearer"),
+            ("mistral", "MISTRAL_API_KEY", "https://api.mistral.ai/v1/models", "MISTRAL AI", "mistral", "#f59e0b", "https://docs.mistral.ai/getting-started/models/", "bearer"),
+            ("xai", "XAI_API_KEY", "https://api.x.ai/v1/models", "XAI", "xai", "#e2e8f0", "https://docs.x.ai/docs/models", "bearer"),
+            ("moonshot", "MOONSHOT_API_KEY", "https://api.moonshot.ai/v1/models", "MOONSHOT · KIMI", "kimi", "#06b6d4", "https://platform.moonshot.ai/docs", "bearer"),
+            ("minimax", "MINIMAX_API_KEY", "https://api.minimax.io/v1/models", "MINIMAX", "minimax", "#ec4899", "https://platform.minimax.io/", "bearer"),
+            ("together", "TOGETHER_API_KEY", "https://api.together.xyz/v1/models", "TOGETHER AI", "opensource", "#8b5cf6", "https://docs.together.ai/docs/serverless-models", "bearer"),
+            ("groq", "GROQ_API_KEY", "https://api.groq.com/openai/v1/models", "GROQ", "opensource", "#f97316", "https://console.groq.com/docs/models", "bearer"),
+        ]
+
+        for pkey, env_name, url, p_upper, p_slug, p_color, docs_url, auth_kind in bearer_providers:
+            api_key = (os.environ.get(env_name) or "").strip()
+            if not api_key:
+                continue
+            try:
+                hdrs = {"User-Agent": "ModelPulse-Tracker/2.0"}
+                if auth_kind == "anthropic":
+                    hdrs["x-api-key"] = api_key
+                    hdrs["anthropic-version"] = "2023-06-01"
+                else:
+                    hdrs["Authorization"] = f"Bearer {api_key}"
+                doc = _http_get_json(url, timeout=12, extra_headers=hdrs)
+                rows = doc.get("data", []) if isinstance(doc, dict) else (doc if isinstance(doc, list) else [])
+                if not rows:
+                    continue
+                id_map: Dict[str, str] = {}
+                for r in rows:
+                    if isinstance(r, dict) and r.get("id"):
+                        mid = str(r["id"]).strip()
+                        id_map[mid] = str(r.get("display_name") or r.get("name") or humanize_model_id(mid)).strip()
+                if not id_map:
+                    continue
+                curr_ids = sorted(id_map.keys())
+                prev_ids = set(api_baselines.get(pkey, []))
+                added_ids = [m for m in curr_ids if m not in prev_ids and not is_legacy_model_id(m)] if prev_ids else []
+                if set(curr_ids) != prev_ids:
+                    api_baselines[pkey] = curr_ids
+                    changed = True
+                if added_ids:
+                    sig = hashlib.sha256(",".join(added_ids[:8]).encode("utf-8")).hexdigest()[:8]
+                    cards.append(
+                        {
+                            "id": f"live-api-{pkey}-{sig}",
+                            "category": "cli-sdk-diff",
+                            "scanner": "live-api-diff",
+                            "header": f"LIVE OFFICIAL API CATALOG DIFF · {p_upper}",
+                            "title": f"New {p_upper} API Model: {added_ids[0]}",
+                            "subtitle": f"Newly exposed model in live {url.split('?')[0]} response",
+                            "build_label": "Live API Diff",
+                            "build_transition": f"+{len(added_ids)} new model(s)",
+                            "models": [{"id": m, "name": id_map.get(m, m)} for m in added_ids[:8]],
+                            "evidence": url.replace("https://", "").split("?")[0],
+                            "source_text": f"official {p_upper} live /models API endpoint.",
+                            "disclaimer_1": "",
+                            "disclaimer_2": "",
+                            "provider_name": p_upper,
+                            "provider_slug": p_slug,
+                            "accent_color": p_color,
+                            "links": [{"label": f"{p_upper} Models Docs", "url": docs_url}],
+                            "detected_at": datetime.now(timezone.utc).isoformat(),
+                        }
+                    )
+            except Exception as exc:
+                print(f"[HighAlphaScanner] Live API poll warning ({pkey}): {exc}")
+
+        if changed:
+            baselines["live_provider_api_models"] = api_baselines
+
+        return cards, changed
+
+    def scan(self) -> List[Dict[str, Any]]:
+        baselines = self._load_baselines()
+        known_canon = (
+            {_canonical_model_slug(k) for k in baselines.get("litellm_keys", [])}
+            | {_canonical_model_slug(k) for k in baselines.get("models_dev_keys", [])}
+        )
+
+        all_cards: List[Dict[str, Any]] = []
+        any_changed = False
+
+        for fn in (
+            lambda: self._scan_public_gateways(baselines, known_canon),
+            lambda: self._scan_ide_desktop_builds(baselines, known_canon),
+            lambda: self._scan_copilot_cli_releases(baselines, known_canon),
+            lambda: self._scan_inference_engine_prs(baselines, known_canon),
+            lambda: self._scan_live_provider_apis(baselines),
+        ):
+            c_list, ch = fn()
+            all_cards.extend(c_list)
+            if ch:
+                any_changed = True
+
+        if any_changed:
+            self._save_baselines(baselines)
+
+        return all_cards

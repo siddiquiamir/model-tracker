@@ -23,6 +23,7 @@ from tracker.scanners import (
     AntigravityDesktopScanner,
     CertTransparencySubdomainScanner,
     DocsAndGlobalRegistryScanner,
+    HighAlphaLeakChannelsScanner,
     HuggingFaceOpenSourceScanner,
     KimiCodeAndRouterScanner,
     LmArenaScanner,
@@ -50,6 +51,7 @@ class TrackerEngine:
         self.arena_scanner = LmArenaScanner()
         self.hf_scanner = HuggingFaceOpenSourceScanner()
         self.ct_scanner = CertTransparencySubdomainScanner()
+        self.high_alpha_scanner = HighAlphaLeakChannelsScanner()
 
     def load_seen_ids(self) -> Set[str]:
         if SEEN_FILE.exists():
@@ -120,6 +122,9 @@ class TrackerEngine:
         print("[ModelPulse] Scanning Certificate Transparency (CT) & Passive DNS across 21 AI lab domains...")
         ct_cards = self.ct_scanner.scan()
 
+        print("[ModelPulse] Scanning High-Alpha Leak Channels (Gateways, Cursor/Devin Builds, Copilot CLI, Engine PRs, Live APIs)...")
+        leak_cards = self.high_alpha_scanner.scan()
+
         def _ag_sort_key(card: Dict[str, Any]) -> tuple:
             title = card.get("title", "").lower()
             if "gemini 4 argon" in title or "gemini 4 carbon" in title:
@@ -142,12 +147,21 @@ class TrackerEngine:
             pc_ts = pc.get("detected_at", "")
             if pc_id in RETIRED_CARD_IDS:
                 continue
-            if pc_scanner in {"docs-radar", "litellm", "lmarena", "cert-transparency"} or pc_id.startswith("models-dev-diff-"):
+            if pc_scanner in {
+                "docs-radar",
+                "litellm",
+                "lmarena",
+                "cert-transparency",
+                "gateway-radar",
+                "ide-build-diff",
+                "engine-pr-leak",
+                "live-api-diff",
+            } or pc_id.startswith("models-dev-diff-"):
                 if not pc_ts or pc_ts >= cutoff_iso:
                     retained_event_cards.append(pc)
 
         raw_cards: List[Dict[str, Any]] = [
-            *acp_cards, *ag_cards, *arena_cards, *kr_cards, *docs_cards, *npm_cards, *retained_event_cards, *hf_cards, *ct_cards
+            *acp_cards, *ag_cards, *leak_cards, *arena_cards, *kr_cards, *docs_cards, *npm_cards, *retained_event_cards, *hf_cards, *ct_cards
         ]
 
         # Strict deduplication by card ID and by (scanner, header, model_ids_tuple)

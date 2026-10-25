@@ -37,6 +37,7 @@ VALID_MODEL_TOKENS: Set[str] = {
     "banana", "jarvis", "sc", "1p", "thoughts", "nemotron", "pixtral", "codestral",
     "ministral", "magistral", "devstral", "voxtral", "command", "aya", "solar",
     "jamba", "hermes", "mercury", "kimi", "k3", "glm", "minimax", "mimo", "step",
+    "mai", "muse", "wonder", "lightning", "swe", "obsidian", "theia", "slate",
     # Internal Google ACP / Teamfood / Discovery Doc tokens
     "teamfood", "tf", "barium", "discovery", "math", "cyber", "permissive",
     "router", "latency", "benchmark", "disabled", "bon", "le", "concise",
@@ -181,6 +182,15 @@ def clean_go_model_id(raw: str) -> str:
             or second in {"oss", "image", "audio", "realtime", "live", "daybreak", "rosalind", "aurora", "astra", "sol", "luna", "terra"}
         ):
             return ""
+    elif prefix == "mai":
+        if second not in {"code", "voice", "vision", "omni", "1", "2", "3", "4"}:
+            return ""
+    elif prefix == "composer":
+        if not re.fullmatch(r"[2345](?:\.[0-9]+)?", second):
+            return ""
+    elif prefix == "fable":
+        if not re.fullmatch(r"[567](?:\.[0-9]+)?", second):
+            return ""
 
     out = [prefix, second]
     for tok in parts[2:]:
@@ -235,7 +245,13 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
         r"llama-[456]|"
         r"lyria-[2345]|"
         r"veo-[2345]|"
-        r"imagen-[345]"
+        r"imagen-[345]|"
+        r"mai-(?:code|[234])|"
+        r"astra-cyber|"
+        r"fable-[567]|"
+        r"composer-[2345]|"
+        r"muse-(?:spark|wonder)|"
+        r"swe-[23]"
         r"))"
     )
     segmented = re.sub(split_lookahead, "\n", text)
@@ -253,7 +269,13 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
         r"minimax-m[345][a-z0-9._-]{0,30}|"
         r"lyria-[2345][a-z0-9._-]{1,30}|"
         r"veo-[2345][a-z0-9._-]{1,30}|"
-        r"imagen-[345][a-z0-9._-]{1,30}"
+        r"imagen-[345][a-z0-9._-]{1,30}|"
+        r"mai-(?:code|[234])[a-z0-9._-]{0,25}|"
+        r"astra-cyber[a-z0-9._-]{0,25}|"
+        r"fable-[567][a-z0-9._-]{0,20}|"
+        r"composer-[2345][a-z0-9._-]{0,20}|"
+        r"muse-(?:spark|wonder)[a-z0-9._-]{0,20}|"
+        r"swe-[23][a-z0-9._-]{1,25}"
         r"))"
     )
 
@@ -315,6 +337,8 @@ def humanize_model_id(model_id: str) -> str:
         "di": "DI",
         "v7": "v7",
         "acp": "ACP",
+        "mai": "MAI",
+        "swe": "SWE",
     }
 
     words = []
@@ -348,10 +372,14 @@ def infer_provider(model_id: str) -> Dict[str, str]:
     mid = model_id.lower()
     if mid.startswith(("gemini", "lyria", "veo", "imagen", "gemma", "google/", "carbon-", "barium-", "argon-")):
         return {"name": "GOOGLE", "slug": "google", "color": "#38bdf8"}
-    if mid.startswith(("claude", "anthropic/", "sonnet-", "opus-", "haiku-")):
+    if mid.startswith(("claude", "anthropic/", "sonnet-", "opus-", "haiku-", "fable-")):
         return {"name": "ANTHROPIC", "slug": "anthropic", "color": "#f97316"}
-    if mid.startswith(("gpt", "o1", "o3", "o4", "o5", "codex", "openai/")):
+    if mid.startswith(("gpt", "o1", "o3", "o4", "o5", "codex", "openai/", "astra-cyber")):
         return {"name": "OPENAI", "slug": "openai", "color": "#10b981"}
+    if mid.startswith(("mai-", "microsoft/")):
+        return {"name": "MICROSOFT AI", "slug": "openai", "color": "#38bdf8"}
+    if mid.startswith(("composer-",)):
+        return {"name": "CURSOR", "slug": "cursor", "color": "#94a3b8"}
     if mid.startswith(("qwen", "alibaba/")):
         return {"name": "QWEN · ALIBABA", "slug": "qwen", "color": "#a855f7"}
     if mid.startswith(("deepseek",)):
@@ -364,8 +392,8 @@ def infer_provider(model_id: str) -> Dict[str, str]:
         return {"name": "Z.AI · ZHIPU GLM", "slug": "zai", "color": "#14b8a6"}
     if mid.startswith(("nvidia/", "nemotron", "cosmos")):
         return {"name": "NVIDIA", "slug": "nvidia", "color": "#84cc16"}
-    if mid.startswith(("llama", "meta-llama", "meta/")):
-        return {"name": "META LLAMA", "slug": "meta", "color": "#3b82f6"}
+    if mid.startswith(("llama", "meta-llama", "meta/", "muse-")):
+        return {"name": "META", "slug": "meta", "color": "#3b82f6"}
     if mid.startswith(("mistral", "ministral", "codestral", "pixtral", "magistral", "voxtral", "timestral")):
         return {"name": "MISTRAL AI", "slug": "mistral", "color": "#f59e0b"}
     if mid.startswith(("grok", "x-ai/", "xai/")):
