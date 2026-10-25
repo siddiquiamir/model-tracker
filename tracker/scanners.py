@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import hashlib
 import io
 import json
@@ -62,14 +62,14 @@ def _decompress_brotli(comp_bytes: bytes) -> bytes:
         return proc.stdout
 
 
-def _http_get_json(url: str, timeout: int = 12) -> Any:
-    req = urllib.request.Request(
-        url,
-        headers={
-            "User-Agent": "ModelPulse-Tracker/2.0 (+https://github.com/siddiquiamir)",
-            "Accept": "application/json",
-        },
-    )
+def _http_get_json(url: str, timeout: int = 12, extra_headers: Optional[Dict[str, str]] = None) -> Any:
+    hdrs = {
+        "User-Agent": "ModelPulse-Tracker/2.0 (+https://github.com/siddiquiamir)",
+        "Accept": "application/json",
+    }
+    if extra_headers:
+        hdrs.update(extra_headers)
+    req = urllib.request.Request(url, headers=hdrs)
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         return json.loads(resp.read().decode("utf-8", "ignore"))
 
@@ -2199,3 +2199,408 @@ class LmArenaScanner:
             self._save_baselines(baselines)
 
         return cards
+
+
+class CertTransparencySubdomainScanner:
+    """
+    Monitors Certificate Transparency (CT) SSL issuances (SSLMate CertSpotter API with incremental
+    `after=` cursors) and Passive DNS host records across 21 frontier AI lab domains.
+    Emits:
+      - `cert-transparency` breaking diff cards whenever a brand-new subdomain appears, and
+      - `cert-transparency-snapshot` per-domain radar cards for the Subdomains (CT) dashboard tab.
+    """
+
+    WATCHED_DOMAINS = [
+        ("openai.com", "OpenAI", "OPENAI", "openai", "#10b981"),
+        ("chatgpt.com", "ChatGPT · OpenAI", "OPENAI", "openai", "#10b981"),
+        ("sora.com", "Sora · OpenAI", "OPENAI", "openai", "#10b981"),
+        ("anthropic.com", "Anthropic", "ANTHROPIC", "anthropic", "#f97316"),
+        ("claude.ai", "Claude.ai · Anthropic", "ANTHROPIC", "anthropic", "#f97316"),
+        ("claude.com", "Claude.com · Anthropic", "ANTHROPIC", "anthropic", "#f97316"),
+        ("gemini.google.com", "Google Gemini", "GOOGLE", "google", "#38bdf8"),
+        ("ai.google.dev", "Google AI Dev", "GOOGLE", "google", "#38bdf8"),
+        ("deepmind.google", "Google DeepMind", "GOOGLE", "google", "#38bdf8"),
+        ("x.ai", "xAI", "XAI", "xai", "#e2e8f0"),
+        ("grok.com", "Grok · xAI", "XAI", "xai", "#e2e8f0"),
+        ("cursor.com", "Cursor IDE", "CURSOR", "cursor", "#94a3b8"),
+        ("deepseek.com", "DeepSeek AI", "DEEPSEEK", "deepseek", "#06b6d4"),
+        ("kimi.com", "Moonshot Kimi", "MOONSHOT · KIMI", "kimi", "#06b6d4"),
+        ("moonshot.cn", "Moonshot AI", "MOONSHOT · KIMI", "kimi", "#06b6d4"),
+        ("qwen.ai", "Qwen · Alibaba", "QWEN · ALIBABA", "qwen", "#a855f7"),
+        ("z.ai", "Z.ai · GLM", "Z.AI · GLM", "zai", "#14b8a6"),
+        ("minimax.io", "MiniMax AI", "MINIMAX", "minimax", "#ec4899"),
+        ("mistral.ai", "Mistral AI", "MISTRAL AI", "mistral", "#f59e0b"),
+        ("perplexity.ai", "Perplexity AI", "PERPLEXITY", "perplexity", "#0ea5e9"),
+        ("thinkingmachines.ai", "Thinking Machines Lab", "THINKING MACHINES", "thinkingmachines", "#8b5cf6"),
+    ]
+
+    ALLOWED_ALNUM_TOKENS = {
+        "a100", "h100", "h200", "b200", "gb200", "v1", "v2", "v3", "v4", "v5",
+        "s3", "k8s", "oauth2", "web3", "i18n", "l10n", "2025", "2026", "2027",
+        "gpt4", "gpt5", "gpt6", "gpt7", "k2", "k3", "m2", "m3", "r1", "r2",
+        "o1", "o3", "o4", "3d", "4k", "2fa", "mfa", "b2b", "p2p", "e2e", "a2a",
+    }
+
+    BORING_LABELS = {
+        "www", "mail", "smtp", "imap", "pop", "autodiscover", "mg", "sendgrid",
+        "amazonses", "mandrill", "email", "bounce", "links", "ilinks", "click",
+    }
+
+    BASELINES_FILE = pathlib.Path(__file__).resolve().parent.parent / "data" / "source_baselines.json"
+
+    def _load_baselines(self) -> Dict[str, Any]:
+        if self.BASELINES_FILE.exists():
+            try:
+                return json.loads(self.BASELINES_FILE.read_text(encoding="utf-8"))
+            except Exception:
+                return {}
+        return {}
+
+    def _save_baselines(self, data: Dict[str, Any]) -> None:
+        self.BASELINES_FILE.parent.mkdir(parents=True, exist_ok=True)
+        self.BASELINES_FILE.write_text(json.dumps(data, indent=2), encoding="utf-8", newline="\n")
+
+    @classmethod
+    def is_clean_subdomain(cls, sub: str, root_dom: str) -> bool:
+        s = sub.strip().lower().rstrip(".")
+        if not s.endswith("." + root_dom):
+            return False
+        if s.startswith("*.") or s.startswith("_") or s.startswith("-"):
+            return False
+        if s.endswith(".space.minimax.io"):
+            return False
+
+        prefix = s[: -(len(root_dom) + 1)]
+        if not prefix or prefix == "www":
+            return False
+
+        labels = prefix.split(".")
+        for lbl in labels:
+            if not lbl or lbl.startswith("_") or lbl in cls.BORING_LABELS:
+                return False
+            for tok in lbl.split("-"):
+                if not tok:
+                    continue
+                if re.fullmatch(r"[0-9a-f]{8,}", tok):
+                    return False
+                has_alpha = any(c.isalpha() for c in tok)
+                has_digit = any(c.isdigit() for c in tok)
+                if has_alpha and has_digit and tok not in cls.ALLOWED_ALNUM_TOKENS:
+                    if tok[0].isdigit():
+                        return False
+                    if len(tok) >= 7 or sum(c.isdigit() for c in tok) >= 3:
+                        return False
+        return True
+
+    @staticmethod
+    def classify_subdomain(sub: str, cert_date: str = "") -> tuple[int, str]:
+        s = sub.lower()
+        if any(k in s for k in ("staging", "autopush", "preprod", "pre-", "pre2-", ".pre.", "noprd")):
+            score, role = 100, "Staging / Pre-Prod"
+        elif any(k in s for k in ("preview", "beta", "alpha", "canary", "nightly", "exp")):
+            score, role = 95, "Preview / Canary"
+        elif any(k in s for k in ("-dev.", "dev.", "-test.", "test-", "test.", "sandbox", "eval", "bench")):
+            score, role = 92, "Internal Test / Eval"
+        elif any(k in s for k in ("voice", "sip.", "stt", "tts", "audio", "realtime", "livekit")):
+            score, role = 90, "Voice / Realtime Audio"
+        elif any(k in s for k in ("agent", "operator", "mcp", "hooks", "skills", "coder", "code.", "zcode", "autoclaw", "deployer", "studio", "tinker", "notilo", "autoglm", "tidewater", "agi")):
+            score, role = 88, "Product / Agent Endpoint"
+        elif any(k in s for k in ("omni", "image", "video", "ocr", "search", "ads.")):
+            score, role = 85, "Modality / Product API"
+        elif any(k in s for k in ("fde.", "fedramp", "enterprise", "saltlake", "titanium")):
+            score, role = 82, "Enterprise / Compute Cluster"
+        elif any(k in s for k in ("api", "gateway", "inference", "raw")):
+            score, role = 75, "API / Inference Endpoint"
+        else:
+            score, role = 60, "Active Subdomain"
+
+        if cert_date:
+            return score, f"{role} · SSL {cert_date[:10]}"
+        return score, role
+
+    def _poll_certspotter_domain(
+        self,
+        dom: str,
+        cursor: Optional[str],
+        max_pages: int = 2,
+    ) -> tuple[Dict[str, str], Optional[str], bool, bool]:
+        """Return ({clean_subdomain: not_before_iso}, new_cursor_id, ok, reached_tip)."""
+        discovered: Dict[str, str] = {}
+        curr_after = cursor
+        pages = 0
+        reached_tip = False
+        extra_headers: Dict[str, str] = {}
+        api_tok = (os.environ.get("CERTSPOTTER_API_TOKEN") or "").strip()
+        if api_tok:
+            extra_headers["Authorization"] = f"Bearer {api_tok}"
+        while pages < max_pages:
+            pages += 1
+            url = f"https://api.certspotter.com/v1/issuances?domain={urllib.parse.quote(dom)}&include_subdomains=true&expand=dns_names"
+            if curr_after:
+                url += f"&after={urllib.parse.quote(str(curr_after))}"
+            data = _http_get_json(url, timeout=10, extra_headers=extra_headers or None)
+            if not isinstance(data, list):
+                return discovered, curr_after, False, False
+            if not data:
+                return discovered, curr_after, True, True
+            for cert in data:
+                if not isinstance(cert, dict):
+                    continue
+                cid = cert.get("id")
+                if cid:
+                    curr_after = str(cid)
+                nb = (cert.get("not_before") or "").strip()
+                for dn in cert.get("dns_names") or []:
+                    dn_l = str(dn).strip().lower()
+                    if self.is_clean_subdomain(dn_l, dom):
+                        if nb > discovered.get(dn_l, ""):
+                            discovered[dn_l] = nb
+            if len(data) < 100:
+                reached_tip = True
+                break
+        return discovered, curr_after, True, reached_tip
+
+    def _poll_hackertarget_domain(self, dom: str) -> tuple[Set[str], bool]:
+        url = f"https://api.hackertarget.com/hostsearch/?q={urllib.parse.quote(dom)}"
+        txt = _http_get_text(url, timeout=10)
+        if not txt or "API count exceeded" in txt:
+            return set(), False
+        if "error check" in txt.lower():
+            return set(), True
+        out: Set[str] = set()
+        for line in txt.splitlines():
+            if "," not in line:
+                continue
+            host = line.split(",", 1)[0].strip().lower()
+            if self.is_clean_subdomain(host, dom):
+                out.add(host)
+        return out, True
+
+    def _poll_urlscan_domain(self, dom: str) -> tuple[Dict[str, str], bool]:
+        """Return ({clean_subdomain: last_seen_iso}, ok) for live DNS-resolved hosts on URLScan."""
+        url = f"https://urlscan.io/api/v1/search/?q=domain:{urllib.parse.quote(dom)}&size=100"
+        data = _http_get_json(url, timeout=10)
+        if not isinstance(data, dict) or "results" not in data:
+            return {}, False
+        out: Dict[str, str] = {}
+        for res in data.get("results") or []:
+            if not isinstance(res, dict):
+                continue
+            page = res.get("page") or {}
+            if not page.get("ip"):
+                continue
+            host = str(page.get("domain") or "").strip().lower()
+            if self.is_clean_subdomain(host, dom):
+                ts = str((res.get("task") or {}).get("time") or "").strip()
+                if ts > out.get(host, ""):
+                    out[host] = ts
+        return out, True
+
+    def scan(self, batch_size: int = 3) -> List[Dict[str, Any]]:
+        baselines = self._load_baselines()
+        known_map: Dict[str, List[str]] = dict(baselines.get("ct_known_subdomains", {}))
+        dates_map: Dict[str, str] = dict(baselines.get("ct_subdomain_dates", {}))
+        cursors_map: Dict[str, str] = dict(baselines.get("ct_cursors", {}))
+        seeded_sources_map: Dict[str, List[str]] = {
+            k: list(v) for k, v in (baselines.get("ct_seeded_sources") or {}).items()
+        }
+        offset = int(baselines.get("ct_batch_offset", 0) or 0)
+        changed = False
+
+        total_doms = len(self.WATCHED_DOMAINS)
+        unseeded = [i for i, (d, *_) in enumerate(self.WATCHED_DOMAINS) if d not in known_map or not known_map.get(d)]
+        if unseeded and offset == 0 and len(unseeded) == total_doms:
+            selected_indices = unseeded[:batch_size]
+        else:
+            selected_indices = [(offset + k) % total_doms for k in range(min(batch_size, total_doms))]
+            baselines["ct_batch_offset"] = (offset + batch_size) % total_doms
+            changed = True
+
+        recent_cutoff_iso = (datetime.now(timezone.utc) - timedelta(hours=48)).isoformat()
+        diff_cards: List[Dict[str, Any]] = []
+
+        for idx in selected_indices:
+            dom, title_label, prov_upper, prov_slug, color = self.WATCHED_DOMAINS[idx]
+            prev_subs = set(known_map.get(dom, []))
+            found_subs: Set[str] = set(prev_subs)
+            seeded_srcs = set(seeded_sources_map.get(dom, []))
+            newly_alertable: Set[str] = set()
+
+            # 1. Poll SSLMate CertSpotter CT Log API
+            try:
+                had_ct = "ct" in seeded_srcs
+                prev_cursor = cursors_map.get(dom)
+                ct_subs, new_cursor, ct_ok, reached_tip = self._poll_certspotter_domain(
+                    dom,
+                    cursor=prev_cursor,
+                    max_pages=2 if had_ct else 4,
+                )
+                if ct_ok:
+                    for s, nb in ct_subs.items():
+                        if s not in prev_subs and had_ct:
+                            newly_alertable.add(s)
+                        found_subs.add(s)
+                        if nb and nb > dates_map.get(s, ""):
+                            dates_map[s] = nb
+                            changed = True
+                    if new_cursor and new_cursor != prev_cursor:
+                        cursors_map[dom] = new_cursor
+                        changed = True
+                    if reached_tip and not had_ct:
+                        seeded_srcs.add("ct")
+                        changed = True
+            except Exception as exc:
+                print(f"[CTScanner] CertSpotter note ({dom}): {exc}")
+
+            # 2. Poll HackerTarget Passive DNS HostSearch
+            try:
+                ht_subs, ht_ok = self._poll_hackertarget_domain(dom)
+                if ht_ok:
+                    had_ht = "ht" in seeded_srcs
+                    for s in ht_subs:
+                        if s not in prev_subs and had_ht:
+                            newly_alertable.add(s)
+                        found_subs.add(s)
+                    if not had_ht:
+                        seeded_srcs.add("ht")
+                        changed = True
+            except Exception as exc:
+                print(f"[CTScanner] HostSearch note ({dom}): {exc}")
+
+            # 3. Poll URLScan Live Resolved Subdomains
+            try:
+                us_subs, us_ok = self._poll_urlscan_domain(dom)
+                if us_ok:
+                    had_us = "us" in seeded_srcs
+                    for s, ts in us_subs.items():
+                        if s not in prev_subs and had_us:
+                            newly_alertable.add(s)
+                        found_subs.add(s)
+                        if ts and not dates_map.get(s):
+                            dates_map[s] = ts
+                            changed = True
+                    if not had_us:
+                        seeded_srcs.add("us")
+                        changed = True
+            except Exception as exc:
+                print(f"[CTScanner] URLScan note ({dom}): {exc}")
+
+            # Prune any legacy noisy entries if rules tightened
+            found_subs = {s for s in found_subs if self.is_clean_subdomain(s, dom)}
+            newly_alertable = {s for s in newly_alertable if s in found_subs}
+
+            if seeded_srcs != set(seeded_sources_map.get(dom, [])):
+                seeded_sources_map[dom] = sorted(seeded_srcs)
+                changed = True
+
+            if found_subs != prev_subs or dom not in known_map:
+                known_map[dom] = sorted(found_subs)
+                changed = True
+
+            added_subs = sorted(newly_alertable)
+            if added_subs:
+                sig = hashlib.sha256(",".join(added_subs[:10]).encode("utf-8")).hexdigest()[:8]
+                ranked_added = sorted(
+                    added_subs,
+                    key=lambda s: (self.classify_subdomain(s, dates_map.get(s, ""))[0], dates_map.get(s, ""), s),
+                    reverse=True,
+                )
+                diff_cards.append(
+                    {
+                        "id": f"ct-diff-{dom.replace('.', '-')}-{sig}",
+                        "category": "subdomain-ct",
+                        "scanner": "cert-transparency",
+                        "header": f"SSL CERTIFICATE TRANSPARENCY DIFF · {prov_upper}",
+                        "title": f"New {title_label} Subdomain: {ranked_added[0]}",
+                        "subtitle": f"Newly issued TLS certificate / DNS host under *.{dom}",
+                        "build_label": "Root Domain",
+                        "build_transition": f"*.{dom} (+{len(added_subs)} new)",
+                        "models": [
+                            {
+                                "id": s,
+                                "name": self.classify_subdomain(s, dates_map.get(s, ""))[1],
+                            }
+                            for s in ranked_added[:8]
+                        ],
+                        "evidence": f"Certificate Transparency (CT) Logs · *.{dom}",
+                        "source_text": f"public Certificate Transparency (CT) & DNS records for {dom}.",
+                        "disclaimer_1": "",
+                        "disclaimer_2": "",
+                        "provider_name": prov_upper,
+                        "provider_slug": prov_slug,
+                        "accent_color": color,
+                        "links": [
+                            {"label": "CertSpotter CT Log", "url": f"https://sslmate.com/ct_search_results?q={dom}"},
+                            {"label": "crt.sh Lookup", "url": f"https://crt.sh/?q=%25.{dom}"},
+                        ],
+                        "detected_at": datetime.now(timezone.utc).isoformat(),
+                    }
+                )
+
+        # Build compact per-domain Subdomain Radar snapshot cards from all seeded domains
+        snapshot_cards: List[Dict[str, Any]] = []
+        for dom, title_label, prov_upper, prov_slug, color in self.WATCHED_DOMAINS:
+            subs = [s for s in known_map.get(dom, []) if self.is_clean_subdomain(s, dom)]
+            if not subs:
+                continue
+            ranked = sorted(
+                subs,
+                key=lambda s: (dates_map.get(s, "")[:10], self.classify_subdomain(s, dates_map.get(s, ""))[0], s),
+                reverse=True,
+            )
+            # Also ensure highest-signal staging/preview/voice/agent subdomains appear in the top 8
+            by_signal = sorted(
+                subs,
+                key=lambda s: (self.classify_subdomain(s, dates_map.get(s, ""))[0], dates_map.get(s, "")[:10], s),
+                reverse=True,
+            )
+            top_subs: List[str] = []
+            for candidate in [*by_signal[:6], *ranked]:
+                if candidate not in top_subs:
+                    top_subs.append(candidate)
+                if len(top_subs) >= 8:
+                    break
+
+            newest_cert_iso = max((dates_map.get(s, "") for s in subs), default="")
+            snap_ts = newest_cert_iso if newest_cert_iso else "2026-10-15T00:00:00Z"
+
+            snapshot_cards.append(
+                {
+                    "id": f"ct-radar-{dom.replace('.', '-')}",
+                    "category": "subdomain-ct",
+                    "scanner": "cert-transparency-snapshot",
+                    "header": f"SUBDOMAIN & CT LOG RADAR · {prov_upper}",
+                    "title": f"{title_label} Subdomains (*.{dom})",
+                    "subtitle": f"Verified TLS Certificate Transparency & DNS endpoints ({len(subs)} active)",
+                    "build_label": "Domain",
+                    "build_transition": f"*.{dom} · {len(subs)} tracked",
+                    "models": [
+                        {
+                            "id": s,
+                            "name": self.classify_subdomain(s, dates_map.get(s, ""))[1],
+                        }
+                        for s in top_subs
+                    ],
+                    "evidence": f"Certificate Transparency & Passive DNS · *.{dom}",
+                    "source_text": f"verified public Certificate Transparency (CT) & DNS records for {dom}.",
+                    "disclaimer_1": "",
+                    "disclaimer_2": "",
+                    "provider_name": prov_upper,
+                    "provider_slug": prov_slug,
+                    "accent_color": color,
+                    "links": [
+                        {"label": "CertSpotter CT Log", "url": f"https://sslmate.com/ct_search_results?q={dom}"},
+                        {"label": "crt.sh Lookup", "url": f"https://crt.sh/?q=%25.{dom}"},
+                    ],
+                    "detected_at": snap_ts,
+                }
+            )
+
+        if changed:
+            baselines["ct_known_subdomains"] = known_map
+            baselines["ct_subdomain_dates"] = dates_map
+            baselines["ct_cursors"] = cursors_map
+            baselines["ct_seeded_sources"] = seeded_sources_map
+            self._save_baselines(baselines)
+
+        return [*diff_cards, *snapshot_cards]

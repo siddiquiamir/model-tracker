@@ -21,6 +21,7 @@ from tracker.notifiers import build_x_post_text, send_discord_webhook
 from tracker.scanners import (
     AntigravityAcpScanner,
     AntigravityDesktopScanner,
+    CertTransparencySubdomainScanner,
     DocsAndGlobalRegistryScanner,
     HuggingFaceOpenSourceScanner,
     KimiCodeAndRouterScanner,
@@ -48,6 +49,7 @@ class TrackerEngine:
         self.docs_scanner = DocsAndGlobalRegistryScanner()
         self.arena_scanner = LmArenaScanner()
         self.hf_scanner = HuggingFaceOpenSourceScanner()
+        self.ct_scanner = CertTransparencySubdomainScanner()
 
     def load_seen_ids(self) -> Set[str]:
         if SEEN_FILE.exists():
@@ -115,6 +117,9 @@ class TrackerEngine:
         print("[ModelPulse] Scanning Hugging Face Hub 14 frontier open-source orgs...")
         hf_cards = self.hf_scanner.scan()
 
+        print("[ModelPulse] Scanning Certificate Transparency (CT) & Passive DNS across 21 AI lab domains...")
+        ct_cards = self.ct_scanner.scan()
+
         def _ag_sort_key(card: Dict[str, Any]) -> tuple:
             title = card.get("title", "").lower()
             if "gemini 4 argon" in title or "gemini 4 carbon" in title:
@@ -127,7 +132,7 @@ class TrackerEngine:
 
         ag_cards.sort(key=_ag_sort_key)
 
-        # Preserve genuine event-diff cards (docs-radar, litellm, lmarena, models-dev-diff-*) for 14 days
+        # Preserve genuine event-diff cards (docs-radar, litellm, lmarena, cert-transparency, models-dev-diff-*) for 14 days
         # so overnight pre-release catches remain on the dashboard after source_baselines.json updates.
         cutoff_iso = (datetime.now(timezone.utc) - timedelta(days=14)).isoformat()
         retained_event_cards: List[Dict[str, Any]] = []
@@ -137,12 +142,12 @@ class TrackerEngine:
             pc_ts = pc.get("detected_at", "")
             if pc_id in RETIRED_CARD_IDS:
                 continue
-            if pc_scanner in {"docs-radar", "litellm", "lmarena"} or pc_id.startswith("models-dev-diff-"):
+            if pc_scanner in {"docs-radar", "litellm", "lmarena", "cert-transparency"} or pc_id.startswith("models-dev-diff-"):
                 if not pc_ts or pc_ts >= cutoff_iso:
                     retained_event_cards.append(pc)
 
         raw_cards: List[Dict[str, Any]] = [
-            *acp_cards, *ag_cards, *arena_cards, *kr_cards, *docs_cards, *npm_cards, *retained_event_cards, *hf_cards
+            *acp_cards, *ag_cards, *arena_cards, *kr_cards, *docs_cards, *npm_cards, *retained_event_cards, *hf_cards, *ct_cards
         ]
 
         # Strict deduplication by card ID and by (scanner, header, model_ids_tuple)
@@ -159,14 +164,17 @@ class TrackerEngine:
             seen_card_keys.add(cid)
             seen_card_keys.add(content_key)
 
-            if cid in prev_timestamps and card.get("scanner") not in {"huggingface", "openrouter", "antigravity", "antigravity-acp"}:
+            if cid in prev_timestamps and card.get("scanner") not in {"huggingface", "openrouter", "antigravity", "antigravity-acp", "cert-transparency-snapshot"}:
                 card["detected_at"] = prev_timestamps[cid]
 
             card["x_post_text"] = build_x_post_text(card)
             all_cards.append(card)
 
         seen_ids = self.load_seen_ids()
-        new_cards = [c for c in all_cards if c["id"] not in seen_ids]
+        new_cards = [
+            c for c in all_cards
+            if c["id"] not in seen_ids and c.get("scanner") != "cert-transparency-snapshot"
+        ]
 
         if notify_discord:
             cards_to_send = (
@@ -193,6 +201,7 @@ class TrackerEngine:
         oss_count = sum(1 for c in all_cards if c.get("category") == "open-source")
         cli_count = sum(1 for c in all_cards if c.get("category") == "cli-sdk-diff")
         desk_count = sum(1 for c in all_cards if c.get("category") == "desktop-diff")
+        ct_count = sum(1 for c in all_cards if c.get("category") == "subdomain-ct")
 
         feed_payload: Dict[str, Any] = {
             "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -202,6 +211,7 @@ class TrackerEngine:
                 "desktop_diffs": desk_count,
                 "cli_sdk_diffs": cli_count,
                 "open_source_models": oss_count,
+                "subdomain_ct_cards": ct_count,
                 "new_in_this_scan": len(new_cards),
                 "total_models_indexed": sum(len(c.get("models", [])) for c in all_cards),
             },

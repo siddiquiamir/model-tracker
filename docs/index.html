@@ -533,6 +533,10 @@
         <div class="stat-value" id="stat-oss-models">—</div>
       </div>
       <div class="stat-card">
+        <div class="stat-label">AI Lab Subdomains (CT)</div>
+        <div class="stat-value" id="stat-ct-subdomains">—</div>
+      </div>
+      <div class="stat-card">
         <div class="stat-label">Total Identifiers Indexed</div>
         <div class="stat-value" id="stat-total-models">—</div>
       </div>
@@ -578,6 +582,7 @@
         <button class="pill" data-filter="desktop-diff" onclick="setFilter('desktop-diff', this)">Antigravity Desktop Diffs</button>
         <button class="pill" data-filter="cli-sdk-diff" onclick="setFilter('cli-sdk-diff', this)">CLI & SDK Diffs</button>
         <button class="pill" data-filter="open-source" onclick="setFilter('open-source', this)">Open-Source Hub & Radar</button>
+        <button class="pill" data-filter="subdomain-ct" onclick="setFilter('subdomain-ct', this)" id="pill-subdomain-ct">🌐 Subdomains (CT)</button>
         <button class="pill" data-filter="google" onclick="setFilter('google', this)">Google</button>
         <button class="pill" data-filter="anthropic" onclick="setFilter('anthropic', this)">Anthropic</button>
         <button class="pill" data-filter="openai" onclick="setFilter('openai', this)">OpenAI</button>
@@ -598,7 +603,7 @@
           type="text"
           id="search-box"
           class="search-input"
-          placeholder="Search model ID (e.g. gemini-4-argon, kimi-k3, glm-5, minimax-m3)..."
+          placeholder="Search model ID or subdomain (e.g. gpt-6.1, gemini-4, tidewater.claude.ai, grok.com)..."
           oninput="renderCards()"
         />
       </div>
@@ -629,6 +634,9 @@
       deepseek: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#0284c7"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="20" font-weight="800" font-family="sans-serif">DS</text></svg>`,
       meta: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#2563eb"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="22" font-weight="800" font-family="sans-serif">∞</text></svg>`,
       mistral: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#f59e0b"/><text x="24" y="31" text-anchor="middle" fill="#111" font-size="22" font-weight="900" font-family="sans-serif">M</text></svg>`,
+      cursor: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#1e293b" stroke="#64748b" stroke-width="2"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="18" font-weight="900" font-family="sans-serif">CU</text></svg>`,
+      perplexity: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#0ea5e9"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="15" font-weight="900" font-family="sans-serif">PPLX</text></svg>`,
+      thinkingmachines: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#8b5cf6"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="16" font-weight="900" font-family="sans-serif">TML</text></svg>`,
       opensource: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#4f46e5"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="18" font-weight="800" font-family="sans-serif">HF</text></svg>`
     };
 
@@ -779,10 +787,14 @@
 
       let list = uniqueCards.filter(c => {
         if (CURRENT_FILTER === "new-24h") {
+          if (c.scanner === "cert-transparency-snapshot") return false;
           if (getTimeInfo(c.detected_at).hoursAgo > 24) return false;
         } else if (CURRENT_FILTER === "unread") {
+          if (c.scanner === "cert-transparency-snapshot") return false;
           if (!seenSet || seenSet.has(c.id)) return false;
-        } else if (CURRENT_FILTER !== "all") {
+        } else if (CURRENT_FILTER === "all") {
+          if (!q && c.scanner === "cert-transparency-snapshot") return false;
+        } else {
           if (c.category !== CURRENT_FILTER && c.provider_slug !== CURRENT_FILTER) {
             return false;
           }
@@ -803,7 +815,7 @@
 
     function renderLatestBanner() {
       const banner = document.getElementById("latest-banner");
-      const all = FEED_DATA.cards || [];
+      const all = (FEED_DATA.cards || []).filter(c => c.scanner !== "cert-transparency-snapshot");
       if (!all.length || !banner) return;
       const newest = [...all].sort((a, b) => new Date(b.detected_at || 0) - new Date(a.detected_at || 0))[0];
       if (!newest) return;
@@ -827,22 +839,25 @@
     function renderCards() {
       const container = document.getElementById("cards-container");
       let seenSet = getSeenCardIds();
-      // First time visitor: initialize seenSet with cards older than 24h so today's drops stand out as UNREAD!
+      // First time visitor: initialize seenSet with cards older than 24h (plus static CT snapshots) so today's drops stand out as UNREAD!
       if (!seenSet && (FEED_DATA.cards || []).length) {
         seenSet = new Set(
           (FEED_DATA.cards || [])
-            .filter(c => getTimeInfo(c.detected_at).hoursAgo > 24)
+            .filter(c => c.scanner === "cert-transparency-snapshot" || getTimeInfo(c.detected_at).hoursAgo > 24)
             .map(c => c.id)
         );
         saveSeenCardIds(seenSet);
       }
 
-      const new24Count = (FEED_DATA.cards || []).filter(c => getTimeInfo(c.detected_at).hoursAgo <= 24).length;
-      const unreadCount = seenSet ? (FEED_DATA.cards || []).filter(c => !seenSet.has(c.id)).length : 0;
+      const new24Count = (FEED_DATA.cards || []).filter(c => c.scanner !== "cert-transparency-snapshot" && getTimeInfo(c.detected_at).hoursAgo <= 24).length;
+      const unreadCount = seenSet ? (FEED_DATA.cards || []).filter(c => c.scanner !== "cert-transparency-snapshot" && !seenSet.has(c.id)).length : 0;
+      const ctCount = (FEED_DATA.cards || []).filter(c => c.category === "subdomain-ct").length;
       const p24 = document.getElementById("pill-new-24h");
       const pUn = document.getElementById("pill-unread");
+      const pCt = document.getElementById("pill-subdomain-ct");
       if (p24) p24.textContent = `🟢 New <24h (${new24Count})`;
       if (pUn) pUn.textContent = `✨ Unread (${unreadCount})`;
+      if (pCt) pCt.textContent = ctCount ? `🌐 Subdomains (CT) (${ctCount})` : `🌐 Subdomains (CT)`;
 
       renderLatestBanner();
 
@@ -953,12 +968,19 @@
       const deskCount = cards.filter(c => c.category === "desktop-diff").length;
       const cliCount = cards.filter(c => c.category === "cli-sdk-diff").length;
       const ossCount = cards.filter(c => c.category === "open-source").length;
+      const ctCards = cards.filter(c => c.category === "subdomain-ct");
+      const ctSubsSum = ctCards.reduce((acc, c) => {
+        const m = String(c.build_transition || "").match(/(\d+)\s+tracked/);
+        return acc + (m ? parseInt(m[1], 10) : (c.models || []).length);
+      }, 0);
       const totalModels = cards.reduce((acc, c) => acc + ((c.models || []).length), 0);
 
       document.getElementById("stat-total-cards").textContent = cards.length;
       document.getElementById("stat-desktop-diffs").textContent = deskCount || (FEED_DATA.stats?.desktop_diffs ?? "—");
       document.getElementById("stat-cli-diffs").textContent = cliCount || (FEED_DATA.stats?.cli_sdk_diffs ?? "—");
       document.getElementById("stat-oss-models").textContent = ossCount || (FEED_DATA.stats?.open_source_models ?? "—");
+      const ctEl = document.getElementById("stat-ct-subdomains");
+      if (ctEl) ctEl.textContent = ctSubsSum || ctCards.length || (FEED_DATA.stats?.subdomain_ct_cards ?? "—");
       document.getElementById("stat-total-models").textContent = totalModels || (FEED_DATA.stats?.total_models_indexed ?? "—");
       populateBuildSelectors(FEED_DATA.available_antigravity_builds);
       renderCards();
