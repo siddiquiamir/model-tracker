@@ -2246,6 +2246,31 @@ class CertTransparencySubdomainScanner:
         "amazonses", "mandrill", "email", "bounce", "links", "ilinks", "click",
     }
 
+    COMMODITY_FIRST_LABELS = {
+        "www", "api", "a-api", "api-staging", "chat", "docs", "api-docs", "help",
+        "support", "support-monitoring", "status", "cdn", "a-cdn", "content-cdn",
+        "content-cdn-staging", "assets", "assets-staging", "assets-proxy",
+        "lifecycle-assets", "static", "media", "ogimg", "download", "downloads",
+        "auth", "auth-admin", "sso", "login", "accounts", "account", "admin",
+        "console", "platform", "dashboard", "portal", "partnerhub", "communityportal",
+        "discuss", "forum", "community", "blog", "news", "press", "brand", "careers",
+        "jobs", "legal", "privacy", "privacy-pass-issuer", "terms", "trust",
+        "security", "compliance", "billing", "pay", "payments", "pricing", "store",
+        "shop", "academy", "eap-academy", "learn", "website", "websitemain", "config",
+        "ab", "m", "a", "ws", "staging", "preview", "beta", "internal", "private",
+        "gov", "gov-demo", "fedramp", "alignment", "ads", "adstransparency",
+        "releases", "l10n-review", "programs-staging", "gtm-innovation",
+        "it-agent-ingress", "connectors", "transceiver", "ci-webhooks",
+        "observability-webhook", "develocity", "wildcard", "mtls", "mtls-eu",
+        "sip", "search", "realtime", "code", "sora", "operator", "enterprise",
+        "batchapi", "responsesapi-cert-publisher", "sandbox", "lti",
+        "atlantis", "atlantis-sandbox", "sevbot", "argocd", "argo", "grafana",
+        "prometheus", "sentry", "backstage", "teleport", "vault", "keycloak",
+        "harbor", "jenkins", "buildkite", "sonarqube", "netbox", "airflow",
+        "ae", "au", "aw", "br", "ca", "de", "eu", "fr", "gb", "hk", "in", "it",
+        "jp", "kr", "nl", "pl", "se", "sg", "tw", "uk", "us", "ap", "apac", "emea", "global",
+    }
+
     BASELINES_FILE = pathlib.Path(__file__).resolve().parent.parent / "data" / "source_baselines.json"
 
     def _load_baselines(self) -> Dict[str, Any]:
@@ -2292,27 +2317,74 @@ class CertTransparencySubdomainScanner:
                         return False
         return True
 
+    @classmethod
+    def is_high_signal_subdomain(cls, sub: str, root_dom: str) -> bool:
+        """
+        Return True ONLY for stealth codenames, unannounced products/agents/IDEs,
+        internal sandboxes, and non-commodity staging clusters — hiding generic IT
+        subdomains (docs, chat, api, cdn, auth, billing, regional PoPs, webps shards).
+        """
+        if not cls.is_clean_subdomain(sub, root_dom):
+            return False
+        s = sub.strip().lower().rstrip(".")
+        prefix = s[: -(len(root_dom) + 1)]
+        labels = prefix.split(".")
+        first = labels[0]
+
+        if first in cls.COMMODITY_FIRST_LABELS:
+            # Exception: keep named staging clusters behind api/v2 (e.g. api.maia-staging.dc.mistral.ai)
+            if first == "api" and any(
+                lbl.endswith("-staging") and lbl not in {"api-staging", "assets-staging", "content-cdn-staging", "programs-staging"}
+                for lbl in labels[1:]
+            ):
+                return True
+            return False
+
+        if first.startswith(("chatgpt-async-webps-", "sandbox-chs", "hif-")):
+            return False
+
+        if prefix in {"v2.auth", "gmail.mcp", "gcal.mcp", "slack-channel.mcp"}:
+            return False
+
+        return True
+
+    @staticmethod
+    def subdomain_family_key(sub: str, root_dom: str) -> str:
+        """Collapse numbered cluster shards (e.g. stt-nova3-s0..s8, unified-0..1) into one representative."""
+        prefix = sub[: -(len(root_dom) + 1)].lower()
+        norm = re.sub(r"-(?:s?\d+|chs\d+)\b", "", prefix)
+        norm = re.sub(r"\.unified-\d+\b", ".unified", norm)
+        norm = norm.replace(".titanium-staging.", ".titanium.")
+        if norm.startswith("stt-flux"):
+            norm = "stt-flux.titanium.api"
+        elif norm == "stt.titanium.api":
+            norm = "stt-nova3.titanium.api"
+        if norm.startswith("ide-api."):
+            norm = norm.replace("ide-api.", "api-ide.", 1)
+        if norm.endswith("-webhooks.api"):
+            norm = norm.replace("-webhooks.api", ".api")
+        return norm
+
     @staticmethod
     def classify_subdomain(sub: str, cert_date: str = "") -> tuple[int, str]:
         s = sub.lower()
-        if any(k in s for k in ("staging", "autopush", "preprod", "pre-", "pre2-", ".pre.", "noprd")):
-            score, role = 100, "Staging / Pre-Prod"
-        elif any(k in s for k in ("preview", "beta", "alpha", "canary", "nightly", "exp")):
-            score, role = 95, "Preview / Canary"
-        elif any(k in s for k in ("-dev.", "dev.", "-test.", "test-", "test.", "sandbox", "eval", "bench")):
-            score, role = 92, "Internal Test / Eval"
-        elif any(k in s for k in ("voice", "sip.", "stt", "tts", "audio", "realtime", "livekit")):
-            score, role = 90, "Voice / Realtime Audio"
-        elif any(k in s for k in ("agent", "operator", "mcp", "hooks", "skills", "coder", "code.", "zcode", "autoclaw", "deployer", "studio", "tinker", "notilo", "autoglm", "tidewater", "agi")):
-            score, role = 88, "Product / Agent Endpoint"
-        elif any(k in s for k in ("omni", "image", "video", "ocr", "search", "ads.")):
-            score, role = 85, "Modality / Product API"
-        elif any(k in s for k in ("fde.", "fedramp", "enterprise", "saltlake", "titanium")):
-            score, role = 82, "Enterprise / Compute Cluster"
-        elif any(k in s for k in ("api", "gateway", "inference", "raw")):
-            score, role = 75, "API / Inference Endpoint"
+        if ".mcp." in s or s.startswith("mcp."):
+            score, role = 88, "First-Party MCP Server"
+        elif any(k in s for k in ("codex", "zcode", "coder", "api-ide", "ide-api", "studio")):
+            score, role = 97, "Coding / IDE Endpoint"
+        elif any(k in s for k in ("autoclaw", "autoglm", "agent", "hooks", "skills", "tinker", "notilo", "deployer", "wf-scheduler", "sevbot")):
+            score, role = 96, "Agent / Product Endpoint"
+        elif any(k in s for k in ("sonata", "voice", "stt", "tts", "audio", "livekit")):
+            score, role = 93, "Voice / Audio Cluster"
+        elif any(k in s for k in ("release-candidate", "autopush", "maia-staging", "amb-staging", "enterprise-staging")):
+            score, role = 94, "Pre-Release / Staging"
+        elif any(k in s for k in ("sandbox", "eval", "bench", "-dev.", "dev.")):
+            score, role = 95, "Internal Sandbox / Eval"
+        elif any(k in s for k in ("preview", "canary", "alpha", "nightly")):
+            score, role = 92, "Preview / Canary"
         else:
-            score, role = 60, "Active Subdomain"
+            # Novel product/project names that passed is_high_signal_subdomain (e.g. tidewater, habanero, nori, openhouse, pivot)
+            score, role = 99, "Stealth / Codename Endpoint"
 
         if cert_date:
             return score, f"{role} · SSL {cert_date[:10]}"
@@ -2376,24 +2448,22 @@ class CertTransparencySubdomainScanner:
                 out.add(host)
         return out, True
 
-    def _poll_urlscan_domain(self, dom: str) -> tuple[Dict[str, str], bool]:
-        """Return ({clean_subdomain: last_seen_iso}, ok) for live DNS-resolved hosts on URLScan."""
+    def _poll_urlscan_domain(self, dom: str) -> tuple[Set[str], bool]:
+        """Return (clean_subdomains, ok) for TLS-verified live hosts on URLScan (never using crawl time as SSL date)."""
         url = f"https://urlscan.io/api/v1/search/?q=domain:{urllib.parse.quote(dom)}&size=100"
         data = _http_get_json(url, timeout=10)
         if not isinstance(data, dict) or "results" not in data:
-            return {}, False
-        out: Dict[str, str] = {}
+            return set(), False
+        out: Set[str] = set()
         for res in data.get("results") or []:
             if not isinstance(res, dict):
                 continue
             page = res.get("page") or {}
-            if not page.get("ip"):
+            if not page.get("ip") or not page.get("tlsIssuer"):
                 continue
             host = str(page.get("domain") or "").strip().lower()
             if self.is_clean_subdomain(host, dom):
-                ts = str((res.get("task") or {}).get("time") or "").strip()
-                if ts > out.get(host, ""):
-                    out[host] = ts
+                out.add(host)
         return out, True
 
     def scan(self, batch_size: int = 3) -> List[Dict[str, Any]]:
@@ -2467,18 +2537,15 @@ class CertTransparencySubdomainScanner:
             except Exception as exc:
                 print(f"[CTScanner] HostSearch note ({dom}): {exc}")
 
-            # 3. Poll URLScan Live Resolved Subdomains
+            # 3. Poll URLScan Live TLS-Verified Subdomains
             try:
                 us_subs, us_ok = self._poll_urlscan_domain(dom)
                 if us_ok:
                     had_us = "us" in seeded_srcs
-                    for s, ts in us_subs.items():
+                    for s in us_subs:
                         if s not in prev_subs and had_us:
                             newly_alertable.add(s)
                         found_subs.add(s)
-                        if ts and not dates_map.get(s):
-                            dates_map[s] = ts
-                            changed = True
                     if not had_us:
                         seeded_srcs.add("us")
                         changed = True
@@ -2487,7 +2554,7 @@ class CertTransparencySubdomainScanner:
 
             # Prune any legacy noisy entries if rules tightened
             found_subs = {s for s in found_subs if self.is_clean_subdomain(s, dom)}
-            newly_alertable = {s for s in newly_alertable if s in found_subs}
+            newly_alertable = {s for s in newly_alertable if self.is_high_signal_subdomain(s, dom)}
 
             if seeded_srcs != set(seeded_sources_map.get(dom, [])):
                 seeded_sources_map[dom] = sorted(seeded_srcs)
@@ -2500,11 +2567,18 @@ class CertTransparencySubdomainScanner:
             added_subs = sorted(newly_alertable)
             if added_subs:
                 sig = hashlib.sha256(",".join(added_subs[:10]).encode("utf-8")).hexdigest()[:8]
-                ranked_added = sorted(
+                ranked_added_raw = sorted(
                     added_subs,
                     key=lambda s: (self.classify_subdomain(s, dates_map.get(s, ""))[0], dates_map.get(s, ""), s),
                     reverse=True,
                 )
+                ranked_added: List[str] = []
+                seen_fams_diff: Set[str] = set()
+                for s in ranked_added_raw:
+                    fk = self.subdomain_family_key(s, dom)
+                    if fk not in seen_fams_diff:
+                        seen_fams_diff.add(fk)
+                        ranked_added.append(s)
                 diff_cards.append(
                     {
                         "id": f"ct-diff-{dom.replace('.', '-')}-{sig}",
@@ -2512,9 +2586,9 @@ class CertTransparencySubdomainScanner:
                         "scanner": "cert-transparency",
                         "header": f"SSL CERTIFICATE TRANSPARENCY DIFF · {prov_upper}",
                         "title": f"New {title_label} Subdomain: {ranked_added[0]}",
-                        "subtitle": f"Newly issued TLS certificate / DNS host under *.{dom}",
+                        "subtitle": f"Newly discovered stealth / staging endpoint under *.{dom}",
                         "build_label": "Root Domain",
-                        "build_transition": f"*.{dom} (+{len(added_subs)} new)",
+                        "build_transition": f"*.{dom} (+{len(ranked_added)} new)",
                         "models": [
                             {
                                 "id": s,
@@ -2537,31 +2611,39 @@ class CertTransparencySubdomainScanner:
                     }
                 )
 
-        # Build compact per-domain Subdomain Radar snapshot cards from all seeded domains
+        # Build compact per-domain Subdomain Radar cards ONLY for high-signal codename/product/staging endpoints
         snapshot_cards: List[Dict[str, Any]] = []
         for dom, title_label, prov_upper, prov_slug, color in self.WATCHED_DOMAINS:
-            subs = [s for s in known_map.get(dom, []) if self.is_clean_subdomain(s, dom)]
-            if not subs:
+            all_dom_subs = [s for s in known_map.get(dom, []) if self.is_clean_subdomain(s, dom)]
+            signal_subs = [s for s in all_dom_subs if self.is_high_signal_subdomain(s, dom)]
+            if not signal_subs:
                 continue
-            ranked = sorted(
-                subs,
-                key=lambda s: (dates_map.get(s, "")[:10], self.classify_subdomain(s, dates_map.get(s, ""))[0], s),
-                reverse=True,
-            )
-            # Also ensure highest-signal staging/preview/voice/agent subdomains appear in the top 8
+
             by_signal = sorted(
-                subs,
+                signal_subs,
                 key=lambda s: (self.classify_subdomain(s, dates_map.get(s, ""))[0], dates_map.get(s, "")[:10], s),
                 reverse=True,
             )
             top_subs: List[str] = []
-            for candidate in [*by_signal[:6], *ranked]:
-                if candidate not in top_subs:
-                    top_subs.append(candidate)
+            seen_fams: Set[str] = set()
+            mcp_count = 0
+            for candidate in by_signal:
+                fk = self.subdomain_family_key(candidate, dom)
+                if fk in seen_fams:
+                    continue
+                if ".mcp." in candidate:
+                    if mcp_count >= 4:
+                        continue
+                    mcp_count += 1
+                seen_fams.add(fk)
+                top_subs.append(candidate)
                 if len(top_subs) >= 8:
                     break
 
-            newest_cert_iso = max((dates_map.get(s, "") for s in subs), default="")
+            if not top_subs:
+                continue
+
+            newest_cert_iso = max((dates_map.get(s, "") for s in signal_subs), default="")
             snap_ts = newest_cert_iso if newest_cert_iso else "2026-10-15T00:00:00Z"
 
             snapshot_cards.append(
@@ -2569,11 +2651,11 @@ class CertTransparencySubdomainScanner:
                     "id": f"ct-radar-{dom.replace('.', '-')}",
                     "category": "subdomain-ct",
                     "scanner": "cert-transparency-snapshot",
-                    "header": f"SUBDOMAIN & CT LOG RADAR · {prov_upper}",
-                    "title": f"{title_label} Subdomains (*.{dom})",
-                    "subtitle": f"Verified TLS Certificate Transparency & DNS endpoints ({len(subs)} active)",
+                    "header": f"STEALTH SUBDOMAIN & CT RADAR · {prov_upper}",
+                    "title": f"{title_label} Codenames & Staging (*.{dom})",
+                    "subtitle": f"Filtered codename, agent & pre-release endpoints ({len(seen_fams)} notable / {len(all_dom_subs)} baselined)",
                     "build_label": "Domain",
-                    "build_transition": f"*.{dom} · {len(subs)} tracked",
+                    "build_transition": f"*.{dom} · {len(top_subs)} notable ({len(all_dom_subs)} baselined)",
                     "models": [
                         {
                             "id": s,
@@ -2582,7 +2664,7 @@ class CertTransparencySubdomainScanner:
                         for s in top_subs
                     ],
                     "evidence": f"Certificate Transparency & Passive DNS · *.{dom}",
-                    "source_text": f"verified public Certificate Transparency (CT) & DNS records for {dom}.",
+                    "source_text": f"filtered Certificate Transparency (CT) & DNS records for {dom} (generic docs/chat/api hosts hidden).",
                     "disclaimer_1": "",
                     "disclaimer_2": "",
                     "provider_name": prov_upper,

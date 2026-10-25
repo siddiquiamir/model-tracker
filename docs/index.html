@@ -970,7 +970,7 @@
       const ossCount = cards.filter(c => c.category === "open-source").length;
       const ctCards = cards.filter(c => c.category === "subdomain-ct");
       const ctSubsSum = ctCards.reduce((acc, c) => {
-        const m = String(c.build_transition || "").match(/(\d+)\s+tracked/);
+        const m = String(c.build_transition || "").match(/(\d+)\s+(?:notable|tracked)/);
         return acc + (m ? parseInt(m[1], 10) : (c.models || []).length);
       }, 0);
       const totalModels = cards.reduce((acc, c) => acc + ((c.models || []).length), 0);
