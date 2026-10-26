@@ -20,6 +20,8 @@ RETIRED_CARD_IDS: Set[str] = {
     "docs-diff-cursor-docs-ad78a907",
     "docs-diff-gcp-vertex-models-d86bce0d",
     "docs-diff-gcp-vertex-versions-d86bce0d",
+    "engine-pr-sgl-project_sglang-46514",
+    "engine-pr-sgl-project_sglang-46546",
 }
 
 from tracker.notifiers import build_x_post_text, send_discord_webhook

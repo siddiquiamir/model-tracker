@@ -3188,10 +3188,17 @@ class HighAlphaLeakChannelsScanner:
                     candidates: List[str] = []
                     for m in self.PR_HF_SLUG_RE.findall(combined):
                         tail = m.split("/")[-1]
-                        if not is_legacy_model_id(tail) and not tail.lower().endswith(("-tokenizer", "-processor", "-config")):
+                        if (
+                            not is_legacy_model_id(tail)
+                            and "_" not in tail
+                            and not tail.lower().endswith((
+                                "-tokenizer", "-processor", "-config",
+                                ".py", ".js", ".jsx", ".ts", ".tsx", ".md", ".json", ".yaml", ".yml", ".cu", ".h",
+                            ))
+                        ):
                             candidates.append(m)
                     for m in self.PR_UNRELEASED_ID_RE.findall(title):
-                        if not is_legacy_model_id(m):
+                        if not is_legacy_model_id(m) and "_" not in m:
                             candidates.append(m)
 
                     if not candidates:
