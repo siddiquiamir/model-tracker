@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-10-26T18:05:54.359596+00:00",
+  "generated_at": "2026-10-26T18:48:39.106033+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "total_cards": 66,
+    "total_cards": 71,
     "desktop_diffs": 13,
-    "cli_sdk_diffs": 21,
+    "cli_sdk_diffs": 26,
     "open_source_models": 14,
     "subdomain_ct_cards": 18,
-    "new_in_this_scan": 5,
-    "total_models_indexed": 251
+    "new_in_this_scan": 8,
+    "total_models_indexed": 256
   },
   "available_antigravity_builds": [
     "1.0.20261026010122 (Insiders)",
@@ -1118,6 +1118,37 @@
       "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini Nano Banana 2.1 spotted in Build 2.22.0 -> 2.23.0!\n\n• Gemini Nano Banana 2.1 (gemini-nano-banana-2.1)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
     {
+      "id": "vercel-gateway-diff-f795ac94",
+      "category": "cli-sdk-diff",
+      "scanner": "gateway-radar",
+      "header": "VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS",
+      "title": "New Model on Vercel AI Gateway: GPT-6.1 Terra (Fast)",
+      "subtitle": "Detected in ai-gateway.vercel.sh/v1/models (+1 new)",
+      "build_label": "Gateway Diff",
+      "build_transition": "+1 new model(s)",
+      "models": [
+        {
+          "id": "openai/gpt-6.1-terra-fast",
+          "name": "GPT-6.1 Terra (Fast)"
+        }
+      ],
+      "evidence": "ai-gateway.vercel.sh/v1/models",
+      "source_text": "public Vercel AI Gateway /v1/models catalog.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "Vercel AI Gateway Models",
+          "url": "https://ai-gateway.vercel.sh/v1/models"
+        }
+      ],
+      "detected_at": "2026-10-26T18:48:28.592532+00:00",
+      "x_post_text": "🚨 VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS\nNew Model on Vercel AI Gateway: GPT-6.1 Terra (Fast) spotted in Gateway Diff +1 new model(s)!\n\n• GPT-6.1 Terra (Fast) (openai/gpt-6.1-terra-fast)\n\nEvidence: ai-gateway.vercel.sh/v1/models\nSource: public Vercel AI Gateway /v1/models catalog.\n\nTracked by @StatsWire"
+    },
+    {
       "id": "kimi-code-config-2.0.1",
       "category": "cli-sdk-diff",
       "scanner": "kimi-code",
@@ -1230,6 +1261,76 @@
       ],
       "detected_at": "2026-10-23T04:10:33.678574+00:00",
       "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: Qwen4ExpForCausalLM spotted in Registry File vllm/model_executor/models/registry.py!\n\n• NEW: Qwen4ExpForCausalLM (Qwen4ExpForCausalLM)\n• NEW: Qwen4ExpForConditionalGeneration (Qwen4ExpForConditionalGeneration)\n• NEW: Qwen4ExpMTP (Qwen4ExpMTP)\n• Kimi K3 Multimodal MoE (KimiK3ForConditionalGeneration) (KimiK3ForConditionalGeneration)\n• Kimi K3 Multi-Token Prediction (KimiK3MTPModel) (KimiK3MTPModel)\n• MiniMax M3 Sparse MoE (MiniMaxM3SparseForCausalLM) (MiniMaxM3SparseForCausalLM)\n• +2 more variants\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM _TEXT_GENERATION_MODELS & _MULTIMODAL_MODELS dictionary.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "openrouter-model-openai_gpt-6.1-terra",
+      "category": "cli-sdk-diff",
+      "scanner": "openrouter",
+      "header": "OPENROUTER LIVE REGISTRY · OPENAI",
+      "title": "OpenAI: GPT-6.1 Terra",
+      "subtitle": "Verified newly registered model endpoint on OpenRouter (/api/v1/models)",
+      "build_label": "Endpoint ID",
+      "build_transition": "openai/gpt-6.1-terra",
+      "models": [
+        {
+          "id": "openai/gpt-6.1-terra",
+          "name": "OpenAI: GPT-6.1 Terra (1050k context window)"
+        }
+      ],
+      "evidence": "openrouter.ai/api/v1/models",
+      "source_text": "official public OpenRouter /api/v1/models JSON registry.",
+      "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
+      "disclaimer_2": "Publicly listed API model identifier and context length specification.",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "OpenRouter Model Page",
+          "url": "https://openrouter.ai/openai/gpt-6.1-terra"
+        },
+        {
+          "label": "OpenRouter Models API",
+          "url": "https://openrouter.ai/api/v1/models"
+        }
+      ],
+      "detected_at": "2026-10-26T18:13:29+00:00",
+      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · OPENAI\nOpenAI: GPT-6.1 Terra spotted in Endpoint ID openai/gpt-6.1-terra!\n\n• OpenAI: GPT-6.1 Terra (1050k context window) (openai/gpt-6.1-terra)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "openrouter-model-openai_gpt-6.1-terra_batch",
+      "category": "cli-sdk-diff",
+      "scanner": "openrouter",
+      "header": "OPENROUTER LIVE REGISTRY · OPENAI",
+      "title": "OpenAI: GPT-6.1 Terra (batch)",
+      "subtitle": "Verified newly registered model endpoint on OpenRouter (/api/v1/models)",
+      "build_label": "Endpoint ID",
+      "build_transition": "openai/gpt-6.1-terra:batch",
+      "models": [
+        {
+          "id": "openai/gpt-6.1-terra:batch",
+          "name": "OpenAI: GPT-6.1 Terra (batch) (1050k context window)"
+        }
+      ],
+      "evidence": "openrouter.ai/api/v1/models",
+      "source_text": "official public OpenRouter /api/v1/models JSON registry.",
+      "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
+      "disclaimer_2": "Publicly listed API model identifier and context length specification.",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "OpenRouter Model Page",
+          "url": "https://openrouter.ai/openai/gpt-6.1-terra:batch"
+        },
+        {
+          "label": "OpenRouter Models API",
+          "url": "https://openrouter.ai/api/v1/models"
+        }
+      ],
+      "detected_at": "2026-10-26T18:13:29+00:00",
+      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · OPENAI\nOpenAI: GPT-6.1 Terra (batch) spotted in Endpoint ID openai/gpt-6.1-terra:batch!\n\n• OpenAI: GPT-6.1 Terra (batch) (1050k context window) (openai/gpt-6.1-terra:batch)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
     },
     {
       "id": "openrouter-model-moonshotai_kimi-k3.1-pro",
@@ -1512,74 +1613,39 @@
       "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · INCEPTION\nInception: Mercury 3 spotted in Endpoint ID inception/mercury-3!\n\n• Inception: Mercury 3 (1000k context window) (inception/mercury-3)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
     },
     {
-      "id": "openrouter-model-moondream_moondream3-preview",
+      "id": "models-dev-diff-1dcd13c2",
       "category": "cli-sdk-diff",
-      "scanner": "openrouter",
-      "header": "OPENROUTER LIVE REGISTRY · MOONDREAM",
-      "title": "Moondream: Moondream 3 Preview",
-      "subtitle": "Verified newly registered model endpoint on OpenRouter (/api/v1/models)",
-      "build_label": "Endpoint ID",
-      "build_transition": "moondream/moondream3-preview",
+      "scanner": "models-dev",
+      "header": "MODELS.DEV GLOBAL REGISTRY DIFF · OPENCODE / SST",
+      "title": "1 New Model(s) Added to models.dev",
+      "subtitle": "Verified newly added canonical model definitions in models.dev/api.json",
+      "build_label": "Registry Diff",
+      "build_transition": "+1 new canonical model(s)",
       "models": [
         {
-          "id": "moondream/moondream3-preview",
-          "name": "Moondream: Moondream 3 Preview (32k context window)"
+          "id": "openai/gpt-6.1-terra",
+          "name": "GPT-6.1 Terra (OpenAI · release: 2026-10-26)"
         }
       ],
-      "evidence": "openrouter.ai/api/v1/models",
-      "source_text": "official public OpenRouter /api/v1/models JSON registry.",
-      "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
-      "disclaimer_2": "Publicly listed API model identifier and context length specification.",
-      "provider_name": "MOONDREAM",
-      "provider_slug": "openrouter",
+      "evidence": "models.dev/api.json",
+      "source_text": "official models.dev global AI coding model registry.",
+      "disclaimer_1": "Filtered by canonical_model_id and release_date to exclude 3rd-party reseller re-listings of older models.",
+      "disclaimer_2": "Public registry specifications (context limits, pricing, tool-call support).",
+      "provider_name": "MODELS.DEV",
+      "provider_slug": "modelsdev",
       "accent_color": "#10b981",
       "links": [
         {
-          "label": "OpenRouter Model Page",
-          "url": "https://openrouter.ai/moondream/moondream3-preview"
+          "label": "models.dev API",
+          "url": "https://models.dev/api.json"
         },
         {
-          "label": "OpenRouter Models API",
-          "url": "https://openrouter.ai/api/v1/models"
+          "label": "models.dev Catalog",
+          "url": "https://models.dev"
         }
       ],
-      "detected_at": "2026-10-15T22:13:05+00:00",
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · MOONDREAM\nMoondream: Moondream 3 Preview spotted in Endpoint ID moondream/moondream3-preview!\n\n• Moondream: Moondream 3 Preview (32k context window) (moondream/moondream3-preview)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "openrouter-model-moondream_moondream3.1-9b-a2b",
-      "category": "cli-sdk-diff",
-      "scanner": "openrouter",
-      "header": "OPENROUTER LIVE REGISTRY · MOONDREAM",
-      "title": "Moondream: Moondream 3.1",
-      "subtitle": "Verified newly registered model endpoint on OpenRouter (/api/v1/models)",
-      "build_label": "Endpoint ID",
-      "build_transition": "moondream/moondream3.1-9b-a2b",
-      "models": [
-        {
-          "id": "moondream/moondream3.1-9b-a2b",
-          "name": "Moondream: Moondream 3.1 (32k context window)"
-        }
-      ],
-      "evidence": "openrouter.ai/api/v1/models",
-      "source_text": "official public OpenRouter /api/v1/models JSON registry.",
-      "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
-      "disclaimer_2": "Publicly listed API model identifier and context length specification.",
-      "provider_name": "MOONDREAM",
-      "provider_slug": "openrouter",
-      "accent_color": "#10b981",
-      "links": [
-        {
-          "label": "OpenRouter Model Page",
-          "url": "https://openrouter.ai/moondream/moondream3.1-9b-a2b"
-        },
-        {
-          "label": "OpenRouter Models API",
-          "url": "https://openrouter.ai/api/v1/models"
-        }
-      ],
-      "detected_at": "2026-10-15T22:12:53+00:00",
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · MOONDREAM\nMoondream: Moondream 3.1 spotted in Endpoint ID moondream/moondream3.1-9b-a2b!\n\n• Moondream: Moondream 3.1 (32k context window) (moondream/moondream3.1-9b-a2b)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+      "detected_at": "2026-10-26T18:48:05.210810+00:00",
+      "x_post_text": "🚨 MODELS.DEV GLOBAL REGISTRY DIFF · OPENCODE / SST\n1 New Model(s) Added to models.dev spotted in Registry Diff +1 new canonical model(s)!\n\n• GPT-6.1 Terra (OpenAI · release: 2026-10-26) (openai/gpt-6.1-terra)\n\nEvidence: models.dev/api.json\nSource: official models.dev global AI coding model registry.\n\nTracked by @StatsWire"
     },
     {
       "id": "models-dev-moonshot-kimi-k3.1-pro",
@@ -1625,15 +1691,19 @@
       "x_post_text": "🚨 MOONSHOT AI REGISTRY DIFF · KIMI K3.1 PRO\nKimi K3.1 Pro & K3.1 Pro Highspeed spotted in Release Date 2026-10-23 · 1M Context Multimodal Reasoning!\n\n• Kimi K3.1 Pro Highspeed (1048k ctx, text/image/video · 2026-10-23) (kimi-k3.1-pro-highspeed)\n• Kimi K3.1 Pro (1048k ctx, text/image/video · 2026-10-23) (kimi-k3.1-pro)\n• Kimi K3 (1048k ctx, text/image/video · 2026-07-16) (kimi-k3)\n\nEvidence: providers/moonshotai/models/kimi-k3.1-pro.toml (models.dev/api.json)\nSource: official Moonshot AI provider specification in models.dev.\n\nTracked by @StatsWire"
     },
     {
-      "id": "models-dev-recent-51a11ceb",
+      "id": "models-dev-recent-3932d290",
       "category": "cli-sdk-diff",
       "scanner": "models-dev",
       "header": "MODELS.DEV GLOBAL REGISTRY · OPENCODE / SST",
-      "title": "Newest Indexed Models (2026-10-23)",
+      "title": "Newest Indexed Models (2026-10-26)",
       "subtitle": "Newest canonical frontier & coding models indexed on models.dev (official labs only)",
       "build_label": "Latest Release Date",
-      "build_transition": "2026-10-23",
+      "build_transition": "2026-10-26",
       "models": [
+        {
+          "id": "gpt-6.1-terra",
+          "name": "GPT-6.1 Terra (OpenAI · 2026-10-26)"
+        },
         {
           "id": "kimi-k3.1-pro-highspeed",
           "name": "Kimi K3.1 Pro Highspeed (Moonshot AI (China) · 2026-10-23)"
@@ -1661,10 +1731,6 @@
         {
           "id": "deepseek-v4-flash",
           "name": "DeepSeek V4 Flash (DeepSeek · 2026-10-17)"
-        },
-        {
-          "id": "deepseek-flash",
-          "name": "DeepSeek V4.1 Flash 1017 (DeepSeek · 2026-10-17)"
         }
       ],
       "evidence": "models.dev/api.json",
@@ -1684,15 +1750,15 @@
           "url": "https://models.dev"
         }
       ],
-      "detected_at": "2026-10-23T18:39:10Z",
-      "x_post_text": "🚨 MODELS.DEV GLOBAL REGISTRY · OPENCODE / SST\nNewest Indexed Models (2026-10-23) spotted in Latest Release Date 2026-10-23!\n\n• Kimi K3.1 Pro Highspeed (Moonshot AI (China) · 2026-10-23) (kimi-k3.1-pro-highspeed)\n• Kimi K3.1 Pro (Moonshot AI (China) · 2026-10-23) (kimi-k3.1-pro)\n• Flint 40B Free (OpenCode · 2026-10-21) (flint-40b-free)\n• MiniMax M3.1 Flash Free (OpenCode · 2026-10-19) (minimax-m3.1-flash-free)\n• MiniMax-M3.1-Flash (Nvidia · 2026-10-19) (minimaxai/minimax-m3.1-flash)\n• DeepSeek V4 Flash Vision Exp (DeepSeek · 2026-10-17) (deepseek-v4-flash-vision-exp)\n• +2 more variants\n\nEvidence: models.dev/api.json\nSource: official models.dev global AI coding model registry.\n\nTracked by @StatsWire"
+      "detected_at": "2026-10-26T18:39:10Z",
+      "x_post_text": "🚨 MODELS.DEV GLOBAL REGISTRY · OPENCODE / SST\nNewest Indexed Models (2026-10-26) spotted in Latest Release Date 2026-10-26!\n\n• GPT-6.1 Terra (OpenAI · 2026-10-26) (gpt-6.1-terra)\n• Kimi K3.1 Pro Highspeed (Moonshot AI (China) · 2026-10-23) (kimi-k3.1-pro-highspeed)\n• Kimi K3.1 Pro (Moonshot AI (China) · 2026-10-23) (kimi-k3.1-pro)\n• Flint 40B Free (OpenCode · 2026-10-21) (flint-40b-free)\n• MiniMax M3.1 Flash Free (OpenCode · 2026-10-19) (minimax-m3.1-flash-free)\n• MiniMax-M3.1-Flash (Nvidia · 2026-10-19) (minimaxai/minimax-m3.1-flash)\n• +2 more variants\n\nEvidence: models.dev/api.json\nSource: official models.dev global AI coding model registry.\n\nTracked by @StatsWire"
     },
     {
-      "id": "docs-diff-openai-models-all-md-901b6769",
+      "id": "docs-diff-azure-foundry-direct-901b6769",
       "category": "cli-sdk-diff",
       "scanner": "docs-radar",
-      "header": "OPENAI DEVELOPER MODELS CATALOG · OPENAI",
-      "title": "New Model Spotted in OpenAI Official Models Markdown Index",
+      "header": "AZURE AI FOUNDRY DIRECT MODELS · MICROSOFT / OPENAI",
+      "title": "New Model Spotted in Azure AI Foundry Direct Models Catalog",
       "subtitle": "Verified live API documentation diff",
       "build_label": "Docs Diff",
       "build_transition": "+1 new identifier(s)",
@@ -1702,33 +1768,33 @@
           "name": "GPT 6.1 Terra"
         }
       ],
-      "evidence": "developers.openai.com/api/docs/models/all.md",
-      "source_text": "official OpenAI API Markdown model catalog.",
+      "evidence": "learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+      "source_text": "official Microsoft Azure AI Foundry direct models & deployment catalog.",
       "disclaimer_1": "",
       "disclaimer_2": "",
-      "provider_name": "OPENAI",
+      "provider_name": "MICROSOFT / OPENAI",
       "provider_slug": "openai",
       "accent_color": "#10b981",
       "links": [
         {
           "label": "Official Docs Page",
-          "url": "https://developers.openai.com/api/docs/models/all"
+          "url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure"
         },
         {
           "label": "Raw Docs Feed",
-          "url": "https://developers.openai.com/api/docs/models/all.md"
+          "url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure"
         }
       ],
-      "detected_at": "2026-10-26T18:05:16.744411+00:00",
-      "x_post_text": "🚨 OPENAI DEVELOPER MODELS CATALOG · OPENAI\nNew Model Spotted in OpenAI Official Models Markdown Index spotted in Docs Diff +1 new identifier(s)!\n\n• GPT 6.1 Terra (gpt-6.1-terra)\n\nEvidence: developers.openai.com/api/docs/models/all.md\nSource: official OpenAI API Markdown model catalog.\n\nTracked by @StatsWire"
+      "detected_at": "2026-10-26T18:48:09.153133+00:00",
+      "x_post_text": "🚨 AZURE AI FOUNDRY DIRECT MODELS · MICROSOFT / OPENAI\nNew Model Spotted in Azure AI Foundry Direct Models Catalog spotted in Docs Diff +1 new identifier(s)!\n\n• GPT 6.1 Terra (gpt-6.1-terra)\n\nEvidence: learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure\nSource: official Microsoft Azure AI Foundry direct models & deployment catalog.\n\nTracked by @StatsWire"
     },
     {
-      "id": "pre-release-openai_llms_model_routes-901b6769",
+      "id": "pre-release-gh_openai_sdk_union-901b6769",
       "category": "cli-sdk-diff",
       "scanner": "docs-radar",
-      "header": "OPENAI DOCS ROUTE SCOUT · OPENAI",
-      "title": "New Model Doc Page Staged on OpenAI: gpt-6.1-terra",
-      "subtitle": "Detected in developers.openai.com/api/docs/models/*.md (+1 new)",
+      "header": "OPENAI SDK GITHUB MASTER DIFF · OPENAI",
+      "title": "New OpenAI Model Merged to SDK Master: gpt-6.1-terra",
+      "subtitle": "Detected in openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel) (+1 new)",
       "build_label": "Pre-Release Scout",
       "build_transition": "+1 unannounced identifier(s)",
       "models": [
@@ -1737,8 +1803,8 @@
           "name": "GPT 6.1 Terra"
         }
       ],
-      "evidence": "developers.openai.com/api/docs/models/*.md",
-      "source_text": "developers.openai.com/api/docs/models/*.md",
+      "evidence": "openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel)",
+      "source_text": "openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel)",
       "disclaimer_1": "",
       "disclaimer_2": "",
       "provider_name": "OPENAI",
@@ -1747,42 +1813,46 @@
       "links": [
         {
           "label": "Source Feed",
-          "url": "https://developers.openai.com/api/docs/models/all"
+          "url": "https://github.com/openai/openai-node/commits/master/src/resources/shared.ts"
         }
       ],
-      "detected_at": "2026-10-26T18:05:20.916889+00:00",
-      "x_post_text": "🚨 OPENAI DOCS ROUTE SCOUT · OPENAI\nNew Model Doc Page Staged on OpenAI: gpt-6.1-terra spotted in Pre-Release Scout +1 unannounced identifier(s)!\n\n• GPT 6.1 Terra (gpt-6.1-terra)\n\nEvidence: developers.openai.com/api/docs/models/*.md\nSource: developers.openai.com/api/docs/models/*.md\n\nTracked by @StatsWire"
+      "detected_at": "2026-10-26T18:48:09.520392+00:00",
+      "x_post_text": "🚨 OPENAI SDK GITHUB MASTER DIFF · OPENAI\nNew OpenAI Model Merged to SDK Master: gpt-6.1-terra spotted in Pre-Release Scout +1 unannounced identifier(s)!\n\n• GPT 6.1 Terra (gpt-6.1-terra)\n\nEvidence: openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel)\nSource: openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel)\n\nTracked by @StatsWire"
     },
     {
-      "id": "pre-release-openai_sitemap_routes-7b85db01",
+      "id": "litellm-diff-a2fc150f",
       "category": "cli-sdk-diff",
-      "scanner": "docs-radar",
-      "header": "OPENAI RELEASE SITEMAP SCOUT · OPENAI",
-      "title": "New OpenAI Release Route Indexed in Sitemap: introducing-gpt-6-1-terra",
-      "subtitle": "Detected in openai.com/sitemap.xml/release/ & /publication/ (+1 new)",
-      "build_label": "Pre-Release Scout",
-      "build_transition": "+1 unannounced identifier(s)",
+      "scanner": "litellm",
+      "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
+      "title": "1 New Model(s) Added to LiteLLM",
+      "subtitle": "Verified model_prices_and_context_window.json diff",
+      "build_label": "Registry Diff",
+      "build_transition": "+1 new model keys",
       "models": [
         {
-          "id": "introducing-gpt-6-1-terra",
-          "name": "Introducing GPT 6 1 Terra"
+          "id": "chatgpt/gpt-6.1-terra",
+          "name": "chatgpt/gpt-6.1-terra"
         }
       ],
-      "evidence": "openai.com/sitemap.xml/release/ & /publication/",
-      "source_text": "openai.com/sitemap.xml/release/ & /publication/",
+      "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
+      "source_text": "official LiteLLM master pricing & context window registry.",
       "disclaimer_1": "",
       "disclaimer_2": "",
-      "provider_name": "OPENAI",
-      "provider_slug": "openai",
+      "provider_name": "LITELLM",
+      "provider_slug": "modelsdev",
       "accent_color": "#10b981",
       "links": [
         {
-          "label": "Source Feed",
-          "url": "https://openai.com/sitemap.xml/release/"
+          "label": "LiteLLM JSON Registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        },
+        {
+          "label": "LiteLLM Commits",
+          "url": "https://github.com/BerriAI/litellm/commits/main"
         }
       ],
-      "detected_at": "2026-10-26T18:05:22.120345+00:00",
-      "x_post_text": "🚨 OPENAI RELEASE SITEMAP SCOUT · OPENAI\nNew OpenAI Release Route Indexed in Sitemap: introducing-gpt-6-1-terra spotted in Pre-Release Scout +1 unannounced identifier(s)!\n\n• Introducing GPT 6 1 Terra (introducing-gpt-6-1-terra)\n\nEvidence: openai.com/sitemap.xml/release/ & /publication/\nSource: openai.com/sitemap.xml/release/ & /publication/\n\nTracked by @StatsWire"
+      "detected_at": "2026-10-26T18:48:13.246373+00:00",
+      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 new model keys!\n\n• chatgpt/gpt-6.1-terra (chatgpt/gpt-6.1-terra)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
     },
     {
       "id": "npm-_google_genai-2.27.0-2.28.0",
@@ -1894,6 +1964,103 @@
       ],
       "detected_at": "2026-10-15T00:06:41.128Z",
       "x_post_text": "🚨 GOOGLE GENAI SDK DIFF · GOOGLE\nGenai (Gemini 4 Argon) spotted in Package Diff 2.29.1 -> 2.30.0!\n\n• Gemini 4 Argon (gemini-4-argon)\n\nEvidence: dist/index.d.ts / SDK bundle\nSource: official public npm registry tarball (@google/genai).\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "docs-diff-openai-models-all-md-901b6769",
+      "category": "cli-sdk-diff",
+      "scanner": "docs-radar",
+      "header": "OPENAI DEVELOPER MODELS CATALOG · OPENAI",
+      "title": "New Model Spotted in OpenAI Official Models Markdown Index",
+      "subtitle": "Verified live API documentation diff",
+      "build_label": "Docs Diff",
+      "build_transition": "+1 new identifier(s)",
+      "models": [
+        {
+          "id": "gpt-6.1-terra",
+          "name": "GPT 6.1 Terra"
+        }
+      ],
+      "evidence": "developers.openai.com/api/docs/models/all.md",
+      "source_text": "official OpenAI API Markdown model catalog.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "Official Docs Page",
+          "url": "https://developers.openai.com/api/docs/models/all"
+        },
+        {
+          "label": "Raw Docs Feed",
+          "url": "https://developers.openai.com/api/docs/models/all.md"
+        }
+      ],
+      "detected_at": "2026-10-26T18:05:16.744411+00:00",
+      "x_post_text": "🚨 OPENAI DEVELOPER MODELS CATALOG · OPENAI\nNew Model Spotted in OpenAI Official Models Markdown Index spotted in Docs Diff +1 new identifier(s)!\n\n• GPT 6.1 Terra (gpt-6.1-terra)\n\nEvidence: developers.openai.com/api/docs/models/all.md\nSource: official OpenAI API Markdown model catalog.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "pre-release-openai_llms_model_routes-901b6769",
+      "category": "cli-sdk-diff",
+      "scanner": "docs-radar",
+      "header": "OPENAI DOCS ROUTE SCOUT · OPENAI",
+      "title": "New Model Doc Page Staged on OpenAI: gpt-6.1-terra",
+      "subtitle": "Detected in developers.openai.com/api/docs/models/*.md (+1 new)",
+      "build_label": "Pre-Release Scout",
+      "build_transition": "+1 unannounced identifier(s)",
+      "models": [
+        {
+          "id": "gpt-6.1-terra",
+          "name": "GPT 6.1 Terra"
+        }
+      ],
+      "evidence": "developers.openai.com/api/docs/models/*.md",
+      "source_text": "developers.openai.com/api/docs/models/*.md",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "Source Feed",
+          "url": "https://developers.openai.com/api/docs/models/all"
+        }
+      ],
+      "detected_at": "2026-10-26T18:05:20.916889+00:00",
+      "x_post_text": "🚨 OPENAI DOCS ROUTE SCOUT · OPENAI\nNew Model Doc Page Staged on OpenAI: gpt-6.1-terra spotted in Pre-Release Scout +1 unannounced identifier(s)!\n\n• GPT 6.1 Terra (gpt-6.1-terra)\n\nEvidence: developers.openai.com/api/docs/models/*.md\nSource: developers.openai.com/api/docs/models/*.md\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "pre-release-openai_sitemap_routes-7b85db01",
+      "category": "cli-sdk-diff",
+      "scanner": "docs-radar",
+      "header": "OPENAI RELEASE SITEMAP SCOUT · OPENAI",
+      "title": "New OpenAI Release Route Indexed in Sitemap: introducing-gpt-6-1-terra",
+      "subtitle": "Detected in openai.com/sitemap.xml/release/ & /publication/ (+1 new)",
+      "build_label": "Pre-Release Scout",
+      "build_transition": "+1 unannounced identifier(s)",
+      "models": [
+        {
+          "id": "introducing-gpt-6-1-terra",
+          "name": "Introducing GPT 6 1 Terra"
+        }
+      ],
+      "evidence": "openai.com/sitemap.xml/release/ & /publication/",
+      "source_text": "openai.com/sitemap.xml/release/ & /publication/",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "Source Feed",
+          "url": "https://openai.com/sitemap.xml/release/"
+        }
+      ],
+      "detected_at": "2026-10-26T18:05:22.120345+00:00",
+      "x_post_text": "🚨 OPENAI RELEASE SITEMAP SCOUT · OPENAI\nNew OpenAI Release Route Indexed in Sitemap: introducing-gpt-6-1-terra spotted in Pre-Release Scout +1 unannounced identifier(s)!\n\n• Introducing GPT 6 1 Terra (introducing-gpt-6-1-terra)\n\nEvidence: openai.com/sitemap.xml/release/ & /publication/\nSource: openai.com/sitemap.xml/release/ & /publication/\n\nTracked by @StatsWire"
     },
     {
       "id": "engine-pr-vllm-project_vllm-63585",
@@ -2107,7 +2274,7 @@
         },
         {
           "id": "tencent/Hy-SimulMT-30B-A3B-Interleave-GGUF",
-          "name": "Hy-SimulMT-30B-A3B-Interleave-GGUF (model, ★5 · 2026-10-26)"
+          "name": "Hy-SimulMT-30B-A3B-Interleave-GGUF (model, ★6 · 2026-10-26)"
         },
         {
           "id": "tencent/Hy-SimulMT-30B-A3B-Interleave-FP8",
@@ -2136,7 +2303,7 @@
         }
       ],
       "detected_at": "2026-10-26T16:12:43.000Z",
-      "x_post_text": "🚨 HUGGING FACE HUB · TENCENT HUNYUAN\nHy SimulMT 30B A3B GGUF spotted in Repo Timeline Created 2026-10-22 · Updated 2026-10-26 (foundation-model)!\n\n• Hy-SimulMT-30B-A3B-GGUF (model, ★4 · 2026-10-26) (tencent/Hy-SimulMT-30B-A3B-GGUF)\n• Hy-SimulMT-30B-A3B-Interleave-GGUF (model, ★5 · 2026-10-26) (tencent/Hy-SimulMT-30B-A3B-Interleave-GGUF)\n• Hy-SimulMT-30B-A3B-Interleave-FP8 (translation, ★3 · 2026-10-26) (tencent/Hy-SimulMT-30B-A3B-Interleave-FP8)\n• Hy-SimulMT-30B-A3B-Interleave (translation, ★5 · 2026-10-26) (tencent/Hy-SimulMT-30B-A3B-Interleave)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official tencent Hugging Face organization feed.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 HUGGING FACE HUB · TENCENT HUNYUAN\nHy SimulMT 30B A3B GGUF spotted in Repo Timeline Created 2026-10-22 · Updated 2026-10-26 (foundation-model)!\n\n• Hy-SimulMT-30B-A3B-GGUF (model, ★4 · 2026-10-26) (tencent/Hy-SimulMT-30B-A3B-GGUF)\n• Hy-SimulMT-30B-A3B-Interleave-GGUF (model, ★6 · 2026-10-26) (tencent/Hy-SimulMT-30B-A3B-Interleave-GGUF)\n• Hy-SimulMT-30B-A3B-Interleave-FP8 (translation, ★3 · 2026-10-26) (tencent/Hy-SimulMT-30B-A3B-Interleave-FP8)\n• Hy-SimulMT-30B-A3B-Interleave (translation, ★5 · 2026-10-26) (tencent/Hy-SimulMT-30B-A3B-Interleave)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official tencent Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-MiniMaxAI-cce730d0",
@@ -2236,11 +2403,11 @@
       "models": [
         {
           "id": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
-          "name": "DeepSeek-V4.1-Flash-1017 (image-text-to-text, ★3148 · 2026-10-17)"
+          "name": "DeepSeek-V4.1-Flash-1017 (image-text-to-text, ★3155 · 2026-10-17)"
         },
         {
           "id": "deepseek-ai/DeepSeek-V4.1-Flash",
-          "name": "DeepSeek-V4.1-Flash (image-text-to-text, ★4747 · 2026-10-16)"
+          "name": "DeepSeek-V4.1-Flash (image-text-to-text, ★4748 · 2026-10-16)"
         },
         {
           "id": "deepseek-ai/DeepSeek-V4-Flash-Vision-Exp",
@@ -2265,7 +2432,7 @@
         }
       ],
       "detected_at": "2026-10-17T05:46:55.000Z",
-      "x_post_text": "🚨 HUGGING FACE HUB · DEEPSEEK AI\nDeepSeek V4.1 Flash 1017 spotted in Repo Timeline Created 2026-10-17 · Updated 2026-10-17 (image-text-to-text)!\n\n• DeepSeek-V4.1-Flash-1017 (image-text-to-text, ★3148 · 2026-10-17) (deepseek-ai/DeepSeek-V4.1-Flash-1017)\n• DeepSeek-V4.1-Flash (image-text-to-text, ★4747 · 2026-10-16) (deepseek-ai/DeepSeek-V4.1-Flash)\n• DeepSeek-V4-Flash-Vision-Exp (image-text-to-text, ★957 · 2026-09-01) (deepseek-ai/DeepSeek-V4-Flash-Vision-Exp)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official deepseek-ai Hugging Face organization feed.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 HUGGING FACE HUB · DEEPSEEK AI\nDeepSeek V4.1 Flash 1017 spotted in Repo Timeline Created 2026-10-17 · Updated 2026-10-17 (image-text-to-text)!\n\n• DeepSeek-V4.1-Flash-1017 (image-text-to-text, ★3155 · 2026-10-17) (deepseek-ai/DeepSeek-V4.1-Flash-1017)\n• DeepSeek-V4.1-Flash (image-text-to-text, ★4748 · 2026-10-16) (deepseek-ai/DeepSeek-V4.1-Flash)\n• DeepSeek-V4-Flash-Vision-Exp (image-text-to-text, ★957 · 2026-09-01) (deepseek-ai/DeepSeek-V4-Flash-Vision-Exp)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official deepseek-ai Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-zai-org-3ccfdb28",
@@ -2420,7 +2587,7 @@
         },
         {
           "id": "Qwen/Qwen-Image-2.1",
-          "name": "Qwen-Image-2.1 (text-to-image, ★3465 · 2026-09-30)"
+          "name": "Qwen-Image-2.1 (text-to-image, ★3466 · 2026-09-30)"
         },
         {
           "id": "Qwen/Qwen-Image-2.1-PE-I2I",
@@ -2449,7 +2616,7 @@
         }
       ],
       "detected_at": "2026-10-12T09:45:49.000Z",
-      "x_post_text": "🚨 HUGGING FACE HUB · QWEN · ALIBABA\nQwen Image 2.1 Turbo spotted in Repo Timeline Created 2026-10-09 · Updated 2026-10-12 (text-to-image)!\n\n• Qwen-Image-2.1-Turbo (text-to-image, ★1058 · 2026-10-12) (Qwen/Qwen-Image-2.1-Turbo)\n• Qwen-Image-2.1 (text-to-image, ★3465 · 2026-09-30) (Qwen/Qwen-Image-2.1)\n• Qwen-Image-2.1-PE-I2I (model, ★68 · 2026-09-20) (Qwen/Qwen-Image-2.1-PE-I2I)\n• Qwen-Image-2.1-PE-T2I (text-to-image, ★73 · 2026-09-20) (Qwen/Qwen-Image-2.1-PE-T2I)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official Qwen Hugging Face organization feed.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 HUGGING FACE HUB · QWEN · ALIBABA\nQwen Image 2.1 Turbo spotted in Repo Timeline Created 2026-10-09 · Updated 2026-10-12 (text-to-image)!\n\n• Qwen-Image-2.1-Turbo (text-to-image, ★1058 · 2026-10-12) (Qwen/Qwen-Image-2.1-Turbo)\n• Qwen-Image-2.1 (text-to-image, ★3466 · 2026-09-30) (Qwen/Qwen-Image-2.1)\n• Qwen-Image-2.1-PE-I2I (model, ★68 · 2026-09-20) (Qwen/Qwen-Image-2.1-PE-I2I)\n• Qwen-Image-2.1-PE-T2I (text-to-image, ★73 · 2026-09-20) (Qwen/Qwen-Image-2.1-PE-T2I)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official Qwen Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-XiaomiMiMo-9c0a8a5b",
@@ -2553,7 +2720,7 @@
       "models": [
         {
           "id": "moonshotai/Kimi-K3",
-          "name": "Kimi-K3 (image-text-to-text, ★11833 · 2026-09-02)"
+          "name": "Kimi-K3 (image-text-to-text, ★11834 · 2026-09-02)"
         },
         {
           "id": "moonshotai/Kimi-K2.7-Code",
@@ -2586,7 +2753,7 @@
         }
       ],
       "detected_at": "2026-06-13T06:42:57.000Z",
-      "x_post_text": "🚨 HUGGING FACE HUB · MOONSHOT · KIMI\nKimi K3 spotted in Repo Timeline Created 2026-06-13 · Updated 2026-09-02 (image-text-to-text)!\n\n• Kimi-K3 (image-text-to-text, ★11833 · 2026-09-02) (moonshotai/Kimi-K3)\n• Kimi-K2.7-Code (image-text-to-text, ★1424 · 2026-06-15) (moonshotai/Kimi-K2.7-Code)\n• Kimi-K2.6 (image-text-to-text, ★1636 · 2026-05-19) (moonshotai/Kimi-K2.6)\n• Kimi-K2.5 (image-text-to-text, ★2893 · 2026-04-30) (moonshotai/Kimi-K2.5)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official moonshotai Hugging Face organization feed.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 HUGGING FACE HUB · MOONSHOT · KIMI\nKimi K3 spotted in Repo Timeline Created 2026-06-13 · Updated 2026-09-02 (image-text-to-text)!\n\n• Kimi-K3 (image-text-to-text, ★11834 · 2026-09-02) (moonshotai/Kimi-K3)\n• Kimi-K2.7-Code (image-text-to-text, ★1424 · 2026-06-15) (moonshotai/Kimi-K2.7-Code)\n• Kimi-K2.6 (image-text-to-text, ★1636 · 2026-05-19) (moonshotai/Kimi-K2.6)\n• Kimi-K2.5 (image-text-to-text, ★2893 · 2026-04-30) (moonshotai/Kimi-K2.5)\n\nEvidence: huggingface.co/api/models (config.json / safetensors)\nSource: official moonshotai Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "ct-radar-openai-com",
@@ -2594,41 +2761,41 @@
       "scanner": "cert-transparency-snapshot",
       "header": "STEALTH SUBDOMAIN & CT RADAR · OPENAI",
       "title": "OpenAI Codenames & Staging (*.openai.com)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (8 notable / 140 baselined)",
+      "subtitle": "Filtered codename, agent & pre-release endpoints (8 notable / 172 baselined)",
       "build_label": "Domain",
-      "build_transition": "*.openai.com · 8 notable (140 baselined)",
+      "build_transition": "*.openai.com · 8 notable (172 baselined)",
       "models": [
         {
-          "id": "spaincentral.privatelink.api.openai.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-02"
+          "id": "files.openai.com",
+          "name": "Stealth / Codename Endpoint · SSL 2026-09-20"
         },
         {
-          "id": "student-forum.forum.openai.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-01"
+          "id": "checkpoints-sg.files.openai.com",
+          "name": "Stealth / Codename Endpoint · SSL 2026-09-20"
         },
         {
-          "id": "democratic-inputs.forum.openai.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-08-31"
+          "id": "checkpoints-kr.files.openai.com",
+          "name": "Stealth / Codename Endpoint · SSL 2026-09-20"
         },
         {
-          "id": "context.openai.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-08-31"
+          "id": "checkpoints-jp.files.openai.com",
+          "name": "Stealth / Codename Endpoint · SSL 2026-09-20"
         },
         {
-          "id": "adncntxt.fde.openai.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-08-31"
+          "id": "checkpoints-in.files.openai.com",
+          "name": "Stealth / Codename Endpoint · SSL 2026-09-20"
         },
         {
-          "id": "future-scholars.forum.openai.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-08-30"
+          "id": "checkpoints-gb.files.openai.com",
+          "name": "Stealth / Codename Endpoint · SSL 2026-09-20"
         },
         {
-          "id": "bzr.openai.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-08-30"
+          "id": "checkpoints-au.files.openai.com",
+          "name": "Stealth / Codename Endpoint · SSL 2026-09-20"
         },
         {
-          "id": "art-design.forum.openai.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-08-30"
+          "id": "spinningup.openai.com",
+          "name": "Stealth / Codename Endpoint · SSL 2026-09-19"
         }
       ],
       "evidence": "Certificate Transparency & Passive DNS · *.openai.com",
@@ -2648,8 +2815,8 @@
           "url": "https://crt.sh/?q=%25.openai.com"
         }
       ],
-      "detected_at": "2026-09-02T03:42:06Z",
-      "x_post_text": "🌐 OpenAI Codenames & Staging (*.openai.com) — *.openai.com · 8 notable (140 baselined)\n\n• spaincentral.privatelink.api.openai.com (Stealth / Codename Endpoint · SSL 2026-09-02)\n• student-forum.forum.openai.com (Stealth / Codename Endpoint · SSL 2026-09-01)\n• democratic-inputs.forum.openai.com (Stealth / Codename Endpoint · SSL 2026-08-31)\n• context.openai.com (Stealth / Codename Endpoint · SSL 2026-08-31)\n• adncntxt.fde.openai.com (Stealth / Codename Endpoint · SSL 2026-08-31)\n• future-scholars.forum.openai.com (Stealth / Codename Endpoint · SSL 2026-08-30)\n• +2 more endpoints\n\nEvidence: Certificate Transparency & Passive DNS · *.openai.com\n\nTracked by @StatsWire"
+      "detected_at": "2026-09-20T02:28:24Z",
+      "x_post_text": "🌐 OpenAI Codenames & Staging (*.openai.com) — *.openai.com · 8 notable (172 baselined)\n\n• files.openai.com (Stealth / Codename Endpoint · SSL 2026-09-20)\n• checkpoints-sg.files.openai.com (Stealth / Codename Endpoint · SSL 2026-09-20)\n• checkpoints-kr.files.openai.com (Stealth / Codename Endpoint · SSL 2026-09-20)\n• checkpoints-jp.files.openai.com (Stealth / Codename Endpoint · SSL 2026-09-20)\n• checkpoints-in.files.openai.com (Stealth / Codename Endpoint · SSL 2026-09-20)\n• checkpoints-gb.files.openai.com (Stealth / Codename Endpoint · SSL 2026-09-20)\n• +2 more endpoints\n\nEvidence: Certificate Transparency & Passive DNS · *.openai.com\n\nTracked by @StatsWire"
     },
     {
       "id": "ct-radar-chatgpt-com",
