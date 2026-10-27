@@ -1,9 +1,11 @@
 name: ModelPulse Automated Diff Scanner
 
+# GitHub throttles "*/5" cron to one run every few hours on busy runners, which is why cards arrived late.
+# Instead, each run loops a scan every ~2 minutes for ~5.6 hours, then re-dispatches itself.
+# The hourly cron is only a watchdog that restarts the loop if the chain ever breaks.
 on:
   schedule:
-    # Fastest cron interval supported by GitHub Actions (every 5 minutes)
-    - cron: "*/5 * * * *"
+    - cron: "17 * * * *"
   workflow_dispatch:
   push:
     branches: [main]
@@ -11,14 +13,20 @@ on:
       - "data/**"
       - "docs/data/**"
 
+concurrency:
+  group: model-tracker
+  cancel-in-progress: false
+
 permissions:
   contents: write
   pages: write
   id-token: write
+  actions: write
 
 jobs:
   scan-and-publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 355
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -36,8 +44,10 @@ jobs:
           restore-keys: |
             modelpulse-cache-
 
-      - name: Run ModelPulse multi-source diff scan
+      - name: Continuous scan loop
         env:
+          LOOP_MINUTES: "335"
+          SCAN_INTERVAL_SECONDS: "120"
           GITHUB_USER: ${{ github.repository_owner }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
@@ -51,14 +61,48 @@ jobs:
           MOONSHOT_API_KEY: ${{ secrets.MOONSHOT_API_KEY }}
           TOGETHER_API_KEY: ${{ secrets.TOGETHER_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        run: python server.py --scan
-
-      - name: Commit updated model feed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/ docs/data/feed.json
-          if ! git diff --cached --quiet; then
-            git commit -m "chore(feed): update detected model diffs"
-            git push
-          fi
+          START_SHA=$(git rev-parse HEAD)
+          END=$(( $(date +%s) + LOOP_MINUTES * 60 ))
+          LAST_PUSH=$(date +%s)
+          PENDING=0
+
+          publish() {
+            git add data/ docs/data/feed.json
+            if git diff --cached --quiet; then return 0; fi
+            git commit -q -m "chore(feed): update detected model diffs"
+            for attempt in 1 2 3; do
+              if git pull -q --rebase -X theirs origin main && git push -q origin HEAD:main; then
+                LAST_PUSH=$(date +%s); PENDING=0; return 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep 5
+            done
+            echo "::warning::Feed push failed after 3 attempts; will retry next cycle."
+          }
+
+          while [ "$(date +%s)" -lt "$END" ]; do
+            ITER_START=$(date +%s)
+            timeout 900 python server.py --scan || echo "::warning::Scan exited with status $?"
+            NEW=$(python -c "import json; print(json.load(open('data/feed.json'))['stats']['new_in_this_scan'])" 2>/dev/null || echo 0)
+            if [ "$NEW" != "0" ]; then PENDING=1; fi
+            SINCE=$(( $(date +%s) - LAST_PUSH ))
+            if { [ "$PENDING" = "1" ] && [ "$SINCE" -ge 240 ]; } || [ "$SINCE" -ge 1800 ]; then
+              publish
+              if ! git diff --quiet "$START_SHA" HEAD -- tracker/ server.py .github/; then
+                echo "Tracker code changed upstream; ending loop so the next run uses the new code."
+                break
+              fi
+            fi
+            SLEEP=$(( SCAN_INTERVAL_SECONDS - ($(date +%s) - ITER_START) ))
+            if [ "$SLEEP" -gt 0 ]; then sleep "$SLEEP"; fi
+          done
+          publish
+
+      - name: Re-dispatch next scan loop
+        if: success() || failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run model-tracker.yml --ref main --repo "${{ github.repository }}"

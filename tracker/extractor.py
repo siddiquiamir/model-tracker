@@ -44,6 +44,8 @@ VALID_MODEL_TOKENS: Set[str] = {
     "visibles", "final", "response", "di", "v7", "mode", "a", "b", "c", "g",
 }
 
+_TOKENS_BY_LEN: List[str] = sorted(VALID_MODEL_TOKENS, key=len, reverse=True)
+
 EXCLUDED_EXACT: Set[str] = {
     "gemini-api",
     "gemini-cli",
@@ -85,7 +87,7 @@ def is_legacy_model_id(model_id: str) -> bool:
         "gemini-1.", "gemini-1-", "gemini-2.0", "gemini-2-0", "gemini-2.5", "gemini-2-5",
         "claude-2", "claude-3", "claude-sonnet-4", "claude-opus-4", "claude-haiku-4",
         "gpt-3", "gpt-4", "o1", "o3", "o4-mini",
-        "grok-1", "grok-2", "grok-3", "llama-2", "llama-3", "llama3",
+        "grok-1", "grok-2", "grok-3", "llama-2", "llama-3", "llama3", "dall-e", "dalle",
     )):
         return True
     return False
@@ -152,10 +154,12 @@ def fetch_elf_rodata_slice(url: str, cache_key: Optional[str] = None, max_bytes:
     return data
 
 
-def clean_go_model_id(raw: str) -> str:
+def clean_go_model_id(raw: str, allow_unknown_tail: bool = False) -> str:
     """
     Clean a raw model identifier extracted from Go's un-delimited .rodata string table
     or minified JS bundles, stripping adjacent neighbor tokens and legacy 2024/2025 IDs.
+    allow_unknown_tail keeps an unseen trailing codename (e.g. gemini-4-zirconium) when the
+    raw span ended on a real string boundary and the ID already carries a version number.
     """
     raw = raw.strip(".-_ \t\r\n\"'`")
     parts = raw.split("-")
@@ -194,7 +198,7 @@ def clean_go_model_id(raw: str) -> str:
 
     anthropic_tiers = {"opus", "sonnet", "haiku", "fable", "mythos"}
     out = [prefix, second]
-    for tok in parts[2:]:
+    for tok_idx, tok in enumerate(parts[2:], start=2):
         tok_l = tok.lower()
         if tok_l in anthropic_tiers and (prefix in anthropic_tiers or (prefix == "claude" and second in anthropic_tiers)):
             break
@@ -208,12 +212,19 @@ def clean_go_model_id(raw: str) -> str:
                 out.append(num_m.group(1))
                 break
             matched_prefix = None
-            for vt in sorted(VALID_MODEL_TOKENS, key=len, reverse=True):
-                if tok_l.startswith(vt) and len(tok_l) > len(vt):
+            for vt in _TOKENS_BY_LEN:
+                if len(vt) >= 3 and tok_l.startswith(vt) and len(tok_l) > len(vt):
                     matched_prefix = vt
                     break
             if matched_prefix:
                 out.append(matched_prefix)
+            elif (
+                allow_unknown_tail
+                and tok_idx == len(parts) - 1
+                and re.fullmatch(r"[a-z]{3,16}", tok_l)
+                and any(ch.isdigit() for ch in "".join(out[1:]))
+            ):
+                out.append(tok_l)
             break
 
     candidate = "-".join(out).rstrip(".-_")
@@ -284,10 +295,40 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
 
     models: Set[str] = set()
     for m in raw_pattern.finditer(segmented):
-        cleaned = clean_go_model_id(m.group(1))
+        nxt = segmented[m.end()] if m.end() < len(segmented) else "\n"
+        natural_end = not re.match(r"[a-z0-9._-]", nxt)
+        cleaned = clean_go_model_id(m.group(1), allow_unknown_tail=natural_end)
         if cleaned:
             models.add(cleaned)
 
+    return models
+
+
+# Families whose IDs we track in delimited text (docs, SDK sources, release notes, JS bundles).
+_TEXT_FAMILY_PREFIX = (
+    r"gemini|gemma|claude|gpt|o[3-9]|grok|deepseek|qwen[0-9.]*|kimi|glm|minimax|llama|"
+    r"mistral|magistral|devstral|codestral|ministral|pixtral|voxtral|lyria|veo|imagen|sora|"
+    r"codex|composer|mai|nemotron|phi|seed|hunyuan|ernie|mimo|step|fable|mythos|astra|muse|swe"
+)
+_TEXT_MODEL_RE = re.compile(
+    rf"(?<![A-Za-z0-9_-])((?:{_TEXT_FAMILY_PREFIX})-[a-z0-9][a-z0-9._-]{{1,48}})(?![A-Za-z0-9_-])"
+)
+_TEXT_FILE_SUFFIX_RE = re.compile(r"\.(?:js|mjs|cjs|ts|tsx|jsx|md|mdx|json|ya?ml|png|jpe?g|svg|webp|gif|html?|css|py|txt|zip|gz)$")
+
+
+def extract_models_from_text(text: str) -> Set[str]:
+    """
+    Extract model IDs from delimited text without a token whitelist, so brand-new
+    codenames (e.g. gemini-4-zirconium, claude-opus-6) are caught on first sight.
+    """
+    models: Set[str] = set()
+    for m in _TEXT_MODEL_RE.finditer(text):
+        mid = m.group(1).rstrip(".-_")
+        if _TEXT_FILE_SUFFIX_RE.search(mid) or not any(ch.isdigit() for ch in mid):
+            continue
+        if mid in EXCLUDED_EXACT or len(mid) < 5 or is_legacy_model_id(mid):
+            continue
+        models.add(mid)
     return models
 
 

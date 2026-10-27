@@ -24,7 +24,7 @@
 
 ## ⚡ Overview
 
-**ModelPulse** is an automated, zero-dependency AI model & binary build diff tracker created by **Amir Siddiqui ([@StatsWire](https://x.com/StatsWire))**. It continuously scans compiled desktop binaries, CLI/SDK tarballs, cloud provider documentation, and canonical model registries every 5 minutes to detect unannounced and newly deployed frontier AI models before official announcements.
+**ModelPulse** is an automated, zero-dependency AI model & binary build diff tracker created by **Amir Siddiqui ([@StatsWire](https://x.com/StatsWire))**. It continuously scans compiled desktop binaries, CLI/SDK tarballs, cloud provider documentation, and canonical model registries every ~2 minutes to detect unannounced and newly deployed frontier AI models before official announcements.
 
 ---
 
@@ -34,9 +34,17 @@
 | :--- | :--- | :--- |
 | **`AntigravityDesktopScanner`** | Official Google Antigravity Linux x64 **Stable** (`/releases`) & **Nightly Insiders** (`insiders/latest-x64-linux.yml`) | Uses **ELF64 `.rodata` HTTP Range Slicing** (`Range: bytes=start-end`) on `language_server-linux-x64` to extract newly compiled model strings (e.g. `gemini-4-argon`, `claude-opus-5-5`, `claude-sonnet-5-5`) without downloading full 190 MB archives. |
 | **`NpmCliAndSdkScanner`** | `@anthropic-ai/claude-code`, `@openai/codex`, `@google/genai`, `openai`, `@anthropic-ai/sdk` | Diffs official npm tarballs, JS bundles, and TypeScript `.d.ts` union definitions across releases. |
-| **`KimiCodeAndRouterScanner`** | Official Kimi Code CDN (`migration.json`) & OpenRouter Live Registry (`/api/v1/models`) | Detects remote session-switching rules (e.g. `k3.1`) and newly registered router endpoints. |
-| **`DocsAndGlobalRegistryScanner`** | Cursor Docs, Anthropic Docs, Gemini API Docs, **GCP Vertex AI**, **AWS Bedrock**, xAI Grok Docs, `models.dev`, and `LiteLLM` | Diffs live cloud documentation and canonical model registries while filtering out 3rd-party reseller re-listings. |
-| **`HuggingFaceOpenSourceScanner`** | Official orgs: `deepseek-ai`, `Qwen`, `meta-llama`, `mistralai`, `google`, `nvidia`, `microsoft`, `MiniMaxAI`, `moonshotai`, `THUDM` | Tracks brand-new open-weight model repositories (`sort=createdAt`) published directly by frontier labs. |
+| **`AntigravityAcpScanner`** | Antigravity ACP npm package versions (probed ahead of publication) | Diffs the embedded discovery doc between every consecutive ACP version. |
+| **`KimiCodeAndRouterScanner`** | Kimi Code CDN (`migration.json`), vLLM model registry (`main`), OpenRouter (`/api/v1/models`) | Diff-based: only IDs/architectures not seen before become cards (first sight seeds silently). |
+| **`DocsAndGlobalRegistryScanner`** | Cursor, Anthropic, Gemini API, **Vertex AI**, **Bedrock**, xAI docs, `models.dev`, `LiteLLM`, `gemini-cli` `models.ts`, Claude Code `CHANGELOG.md` | Whitelist-free text extraction so unknown codenames are caught, diffed against a per-source baseline. |
+| **`HuggingFaceOpenSourceScanner`** | Official lab orgs (`deepseek-ai`, `Qwen`, `meta-llama`, `mistralai`, `google`, `nvidia`, `microsoft`, `MiniMaxAI`, `moonshotai`, `THUDM`, ...) | New repos (`sort=createdAt` + `lastModified`), including ones created private and flipped public later. |
+| **`LmArenaScanner`** / **`CertTransparencySubdomainScanner`** | LMArena leaderboard, crt.sh | New arena entries and newly issued lab subdomains. |
+
+## ⏱️ How it runs
+
+GitHub throttles `*/5` cron schedules to one run every few hours, so the workflow does not rely on cron. Each run loops `python server.py --scan` every ~2 minutes for ~5.6 hours, sends Discord alerts immediately, publishes the feed when there are new cards (or every 30 minutes), then re-dispatches itself. An hourly cron acts only as a watchdog. A `concurrency` group guarantees a single loop, and a push that changes `tracker/`, `server.py` or `.github/` ends the current loop so the next one runs the new code.
+
+Each scanner is isolated: a failure in one source is logged and its previous cards are kept. Baselines live in `data/source_baselines.json` (atomic writes); Discord alerts are only sent for cards detected within the last 48 h and are retried if the webhook fails.
 
 ---
 
