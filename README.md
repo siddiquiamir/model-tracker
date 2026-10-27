@@ -46,6 +46,13 @@ GitHub throttles `*/5` cron schedules to one run every few hours, so the workflo
 
 Each scanner is isolated: a failure in one source is logged and its previous cards are kept. Baselines live in `data/source_baselines.json` (atomic writes); Discord alerts are only sent for cards detected within the last 48 h and are retried if the webhook fails.
 
+## 🧹 Novelty filter & codename hints (`tracker/novelty.py`)
+
+Every card passes a central filter before it is published or alerted:
+
+- **Already-released models are removed.** The reference is the [models.dev](https://models.dev) catalog (~9k models with release dates). A model is dropped when it was public more than 7 days before the card was detected, matched by normalized name (`GPT-5.4 mini (High)` = `gpt-5-4-mini`), by family prefix (`ERNIE-5.0-Preview` after `ernie-5.0-thinking-preview`), or by being two major generations behind the family frontier. Engine-PR references to Hugging Face repos created over 30 days earlier are dropped too. Cards left with no models disappear.
+- **Codename hints are flagged.** Any token that appears in no public catalog (models.dev, LiteLLM, Arena, OpenRouter, gateways), such as `carbon` in `gemini-4-carbon` or `barium` in `barium-b-final-visibles-v7-tf`, gets a yellow `CODENAME` badge in the UI and a `[CODENAME: …]` prefix in Discord. Words listed in `data/hints.json` (fable, mythos, …) are flagged as long as they are unreleased. Flags are sticky, so they stay after the model ships.
+
 ---
 
 ## 🚀 Quick Start (Zero Dependencies)

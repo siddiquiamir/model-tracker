@@ -9,8 +9,10 @@ import pathlib
 import time
 from typing import Any, Dict, List, Set
 
+from tracker import novelty
 from tracker.notifiers import build_x_post_text, send_discord_webhook
 from tracker.scanners import (
+    BASELINES_FILE,
     AntigravityAcpScanner,
     AntigravityDesktopScanner,
     CertTransparencySubdomainScanner,
@@ -60,6 +62,8 @@ def _is_retired_card(card: Dict[str, Any]) -> bool:
         or (scanner == "huggingface" and card.get("header", "").startswith("HUGGING FACE HUB"))
         or (scanner == "kimi-code" and card.get("title") == "Kimi K3.1 & Kimi Code Rules")
         or (scanner == "openrouter" and card.get("subtitle", "").startswith("Verified newly registered"))
+        # Arena top-85-window diffs from before the full-table baseline: re-entries of long-released models
+        or (cid.startswith("lmarena-lb-diff-") and (card.get("detected_at") or "") < "2026-10-27T12:00")
     )
 
 
@@ -82,6 +86,22 @@ FEED_FILE = DATA_DIR / "feed.json"
 DOCS_FEED_FILE = DOCS_DATA_DIR / "feed.json"
 SEEN_FILE = DATA_DIR / "seen_ids.json"
 SCANNER_RUNS_FILE = ROOT_DIR / ".cache" / "scanner_runs.json"
+# Baseline lists of model names that are already public (used as codename vocabulary, snapshotted BEFORE scanning
+# so a codename that first shows up in this very scan is still flagged)
+PUBLIC_NAME_BASELINES = (
+    "litellm_keys", "models_dev", "arena_leaderboard_models", "arena_leaderboard_models_v2", "openrouter_models_v2",
+    "vercel_gateway_models", "opencode_zen_models",
+)
+
+
+def _public_names_snapshot() -> List[str]:
+    base = _load_json(BASELINES_FILE, {})
+    names: List[str] = []
+    for key in PUBLIC_NAME_BASELINES:
+        val = base.get(key)
+        if isinstance(val, list):
+            names.extend(str(v) for v in val)
+    return names
 
 
 class TrackerEngine:
@@ -139,7 +159,9 @@ class TrackerEngine:
     def run_all_scans(self, notify_discord: bool = True) -> Dict[str, Any]:
         prev_timestamps = self.load_previous_timestamps()
         prev_cards = [c for c in self.load_previous_cards() if not _is_retired_card(c)]
+        prev_codenames = {c["id"]: c["codenames"] for c in prev_cards if c.get("codenames")}
         scanner_runs = _load_json(SCANNER_RUNS_FILE, {})
+        public_names = _public_names_snapshot()
         now = datetime.now(timezone.utc)
 
         # (name, callable, min seconds between runs, scanner tags it owns)
@@ -203,9 +225,17 @@ class TrackerEngine:
 
             if cid in prev_timestamps and card.get("scanner") not in REFRESH_TIMESTAMP_SCANNERS:
                 card["detected_at"] = prev_timestamps[cid]
+            if cid in prev_codenames:
+                card["codenames"] = sorted(set(card.get("codenames") or []) | set(prev_codenames[cid]))
 
-            card["x_post_text"] = build_x_post_text(card)
             all_cards.append(card)
+
+        # Drop models that were already public when the card was detected; flag unknown codename tokens
+        n_before = len(all_cards)
+        all_cards = novelty.apply(all_cards, novelty.get_catalog(public_names))
+        print(f"[ModelPulse] novelty filter: {n_before} -> {len(all_cards)} card(s)")
+        for card in all_cards:
+            card["x_post_text"] = build_x_post_text(card)
 
         all_cards.sort(key=lambda c: c.get("detected_at", ""), reverse=True)
 

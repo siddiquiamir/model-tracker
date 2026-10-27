@@ -87,7 +87,11 @@ def build_discord_embed(card: Dict[str, Any], github_user: str = "siddiquiamir")
         "author": {
             "name": card.get("header", "DESKTOP DIFF · GOOGLE"),
         },
-        "title": card.get("title", "New Model Detected"),
+        "title": (
+            f"[CODENAME: {', '.join(card['codenames'])}] {card.get('title', 'New Model Detected')}"
+            if card.get("codenames")
+            else card.get("title", "New Model Detected")
+        )[:256],
         "description": "\n".join(desc_parts),
         "color": hex_to_discord_color(card.get("accent_color", "#38bdf8")),
         "thumbnail": {"url": thumb_url},

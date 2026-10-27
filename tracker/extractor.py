@@ -52,6 +52,7 @@ EXCLUDED_EXACT: Set[str] = {
     "gemini-plugin",
     "gemini-extension",
     "gemini-edit-images",
+    "gemini-edit-image",
     "gemini-enterprise-agent",
     "gemini-enterprise-agent-platform",
     "gemini-robotics",
@@ -228,7 +229,7 @@ def clean_go_model_id(raw: str, allow_unknown_tail: bool = False) -> str:
             break
 
     candidate = "-".join(out).rstrip(".-_")
-    if candidate in EXCLUDED_EXACT or len(candidate) < 5:
+    if candidate in EXCLUDED_EXACT or len(candidate) < 5 or _TEXT_FILE_SUFFIX_RE.search(candidate):
         return ""
     if len(out) == 2 and re.fullmatch(r"[0-9]", out[1]):
         if not ((prefix == "grok" and int(out[1]) >= 5) or (prefix == "gpt" and int(out[1]) >= 6)):

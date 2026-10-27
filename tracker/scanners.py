@@ -1998,7 +1998,7 @@ class LmArenaScanner:
 
         if fetched_any:
             already_known_canon = {
-                _canonical_model_slug(x) for x in baselines.get("arena_leaderboard_models", [])
+                _canonical_model_slug(x) for x in baselines.get("arena_leaderboard_models_v2", [])
             } | {
                 _canonical_model_slug(x) for x in baselines.get("litellm_keys", [])
             }
@@ -2056,24 +2056,33 @@ class LmArenaScanner:
         except Exception:
             last_mod = datetime.now(timezone.utc).isoformat()
 
+        # Top-200 window of every arena's "overall" table. The baseline only ever grows, so a released model drifting
+        # back into the window is never re-reported; the engine's novelty filter drops anything already public.
         all_discovered: Dict[str, str] = {}
         for cfg, cfg_label in self.HF_ARENA_CONFIGS:
             try:
-                url = f"https://datasets-server.huggingface.co/rows?dataset=lmarena-ai/leaderboard-dataset&config={cfg}&split=latest&offset=0&length=85"
-                data = _http_get_json(url, timeout=12)
-                rows = [r["row"] for r in data.get("rows", []) if isinstance(r, dict) and "row" in r]
-                overall = [r for r in rows if r.get("category", "overall") == "overall"] or rows
-                for r in overall:
-                    rn = str(r.get("model_name", ""))
-                    if rn:
-                        all_discovered[rn] = cfg_label
+                for offset in (0, 100):
+                    url = (
+                        "https://datasets-server.huggingface.co/rows?dataset=lmarena-ai/leaderboard-dataset"
+                        f"&config={cfg}&split=latest&offset={offset}&length=100"
+                    )
+                    data = _http_get_json(url, timeout=15)
+                    rows = [r["row"] for r in data.get("rows", []) if isinstance(r, dict) and "row" in r]
+                    for r in rows:
+                        rn = str(r.get("model_name", ""))
+                        if rn and r.get("category", "overall") == "overall":
+                            all_discovered.setdefault(rn, cfg_label)
+                    if len(rows) < 100 or any(r.get("category", "overall") != "overall" for r in rows):
+                        break
             except Exception as exc:
                 print(f"[LmArenaScanner] HF leaderboard warning ({cfg}): {exc}")
 
         if all_discovered:
-            prev_lb = set(baselines.get("arena_leaderboard_models", []))
-            curr_lb = sorted(all_discovered.keys())
-            added_lb = [m for m in curr_lb if m not in prev_lb] if prev_lb else []
+            # v2 = never-forget union over the top-200 window (v1 was a top-85 snapshot); first sight seeds silently
+            baselines.pop("arena_leaderboard_models", None)
+            prev_lb = set(baselines.get("arena_leaderboard_models_v2", []))
+            curr_lb = sorted(prev_lb | set(all_discovered))
+            added_lb = [m for m in sorted(all_discovered) if m not in prev_lb] if prev_lb else []
             released_canon = {_canonical_model_slug(x) for x in baselines.get("litellm_keys", [])}
             added_lb = [
                 m for m in added_lb
@@ -2082,7 +2091,7 @@ class LmArenaScanner:
                 and _canonical_model_slug(m) not in released_canon
             ]
             if set(curr_lb) != prev_lb:
-                baselines["arena_leaderboard_models"] = curr_lb
+                baselines["arena_leaderboard_models_v2"] = curr_lb
                 changed = True
 
             if added_lb:
@@ -3023,6 +3032,19 @@ class HighAlphaLeakChannelsScanner:
             print(f"[HighAlphaScanner] Copilot CLI releases note: {exc}")
         return cards, changed
 
+    @staticmethod
+    def _hf_repo_public_since(repo_id: str, days: int) -> bool:
+        """True when the HF repo is public and was created more than `days` ago (a 404 = unreleased/private = keep)."""
+        try:
+            meta = _http_get_json(f"https://huggingface.co/api/models/{urllib.parse.quote(repo_id, safe='/')}", timeout=8)
+            created = str(meta.get("createdAt") or "")
+            if not created:
+                return False
+            age = datetime.now(timezone.utc) - datetime.fromisoformat(created.replace("Z", "+00:00"))
+            return age > timedelta(days=days)
+        except Exception:
+            return False
+
     def _scan_inference_engine_prs(
         self,
         baselines: Dict[str, Any],
@@ -3085,6 +3107,8 @@ class HighAlphaLeakChannelsScanner:
                         if not c_slug or c_slug in known_canon or c_slug in seen_slugs:
                             continue
                         seen_slugs.add(c_slug)
+                        if "/" in c and self._hf_repo_public_since(c, days=30):
+                            continue
                         fresh_hits.append(c)
 
                     if had_repo_seed and fresh_hits:
