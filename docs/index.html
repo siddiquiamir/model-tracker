@@ -283,7 +283,12 @@
       });
     }
     function modelRows(models) {
-      return models.map(model => `<li><strong>${escapeHtml(model.name || model.id)}</strong><code class="chip mono">${escapeHtml(model.id)}</code></li>`).join("");
+      return models.map(model => {
+        const name = /^Referenced in /.test(model.name || "") ? "" : (model.name || "");
+        const id = String(model.id || "");
+        if (!name || name === id || name === id.split("/").pop()) return `<li><code class="chip mono">${escapeHtml(id)}</code></li>`;
+        return `<li><strong>${escapeHtml(name)}</strong><code class="chip mono">${escapeHtml(id)}</code></li>`;
+      }).join("");
     }
     function evidenceHtml(s) {
       const cards = evidenceFor(s);

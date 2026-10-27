@@ -3250,7 +3250,7 @@ class HighAlphaLeakChannelsScanner:
                                 "subtitle": title[:140],
                                 "build_label": repo_label,
                                 "build_transition": f"PR #{num} ({pr_state.lower()})",
-                                "models": [{"id": h, "name": f"Referenced in {repo}#{num}"} for h in fresh_hits[:6]],
+                                "models": [{"id": h, "name": h.split("/")[-1]} for h in fresh_hits[:6]],
                                 "evidence": f"{repo}/pull/{num}",
                                 "source_text": f"public GitHub pull request #{num} on {repo}.",
                                 "disclaimer_1": "",

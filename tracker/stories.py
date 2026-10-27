@@ -22,6 +22,13 @@ PROVIDER_NAMES: Dict[str, str] = {
     "minimax": "MiniMax", "nvidia": "NVIDIA", "microsoft": "Microsoft", "amazon": "Amazon",
     "cohere": "Cohere", "perplexity": "Perplexity", "cursor": "Cursor", "thinkingmachines": "Thinking Machines",
 }
+ORG_NAMES: Dict[str, str] = {
+    "liquidai": "Liquid AI", "inclusionai": "Ant Group", "ibm-granite": "IBM", "ai21labs": "AI21 Labs",
+    "allenai": "Ai2", "internlm": "InternLM", "baidu": "Baidu", "tencent": "Tencent", "apple": "Apple",
+    "bytedance-seed": "ByteDance Seed", "meituan-longcat": "Meituan LongCat", "wan-ai": "Alibaba Wan",
+    "rednote-hilab": "RedNote", "xiaomimimo": "Xiaomi MiMo", "stepfun-ai": "StepFun", "openbmb": "OpenBMB",
+    "black-forest-labs": "Black Forest Labs", "stabilityai": "Stability AI",
+}
 
 SCANNER_LABELS: Dict[str, str] = {
     "openrouter": "OpenRouter",
@@ -137,7 +144,12 @@ def _card_keys(card: Dict[str, Any]) -> List[Tuple[str, Dict[str, Any]]]:
     if card.get("scanner") == "cert-transparency":
         return [(f"ct-{card['id']}", m) for m in card.get("models") or [{}]]
     out: List[Tuple[str, Dict[str, Any]]] = []
-    for m in card.get("models") or []:
+    models = card.get("models") or []
+    if card.get("scanner") == "engine-pr-leak":
+        # Bare architecture IDs ("LiquidAI/lfm3") add nothing next to "LiquidAI/LFM3-1.7B"
+        ids = [str(m.get("id", "")).lower() for m in models]
+        models = [m for m in models if not any(o.startswith(str(m.get("id", "")).lower() + "-") for o in ids)]
+    for m in models:
         k = story_key(_model_label(m))
         if k:
             out.append((k, m))
@@ -212,7 +224,7 @@ def _make_story(
         if slug:
             provider_slug, provider_name = slug, PROVIDER_NAMES.get(slug, org)
         elif org and not key.startswith("ct-"):
-            provider_name = org
+            provider_name = ORG_NAMES.get(org, org)
 
     # Display name: the most-used clean catalog name that maps back to this story
     names: Counter = Counter()
@@ -247,7 +259,10 @@ def _make_story(
         if not vid:
             continue
         if vk not in by_norm:
-            by_norm[vk] = {"id": vid, "name": _clean_name(str(m.get("name") or vid)) or vid}
+            raw_name = str(m.get("name") or "")
+            if raw_name.startswith("Referenced in "):
+                raw_name = vid
+            by_norm[vk] = {"id": vid, "name": _clean_name(raw_name or vid) or vid}
             variants.append(by_norm[vk])
         elif len(vid) < len(by_norm[vk]["id"]):
             by_norm[vk]["id"] = vid
