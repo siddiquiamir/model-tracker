@@ -298,7 +298,7 @@
           ${ids || moreIds ? `<div class="ids">${ids}${moreIds}</div>` : ""}
           ${srcHtml}
           <div class="foot">
-            <span class="count">${srcs.length} source${srcs.length === 1 ? "" : "s"}${s.updated_at && s.updated_at !== s.detected_at ? " · updated " + escapeHtml(ago(s.updated_at)) : ""}<br><span class="credit">Developed by <a href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a></span></span>
+            <span class="count">${srcs.length} source${srcs.length === 1 ? "" : "s"}${s.updated_at && s.updated_at !== s.detected_at ? " · updated " + escapeHtml(ago(s.updated_at)) : ""}<br><span class="credit">Developed by <a href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a> on X</span></span>
             <div class="actions">
               <button class="btn btn-sm" onclick="copyText(STORIES_VIEW[${idx}])">Copy X text</button>
               <button class="btn btn-sm btn-primary" onclick="openShare(${idx})">Share image</button>
@@ -519,11 +519,15 @@
       ctx.textBaseline = "middle";
       ctx.fillStyle = "#8b95a7"; ctx.font = `500 28px ${SANS}`;
       ctx.fillText(`ModelPulse · ${SITE}`, PAD, H - 56);
-      ctx.font = `800 38px ${SANS}`; ctx.textAlign = "right";
-      const handleW = ctx.measureText("@StatsWire").width;
-      ctx.fillStyle = "#ffffff"; ctx.fillText("@StatsWire", W - PAD, H - 56);
+      ctx.textAlign = "right";
       ctx.fillStyle = "#8b95a7"; ctx.font = `500 28px ${SANS}`;
-      ctx.fillText("Developed by ", W - PAD - handleW, H - 56); ctx.textAlign = "left";
+      ctx.fillText(" on X", W - PAD, H - 56);
+      const onXW = ctx.measureText(" on X").width;
+      ctx.font = `800 38px ${SANS}`;
+      const handleW = ctx.measureText("@StatsWire").width;
+      ctx.fillStyle = "#ffffff"; ctx.fillText("@StatsWire", W - PAD - onXW, H - 56);
+      ctx.fillStyle = "#8b95a7"; ctx.font = `500 28px ${SANS}`;
+      ctx.fillText("Developed by ", W - PAD - onXW - handleW, H - 56); ctx.textAlign = "left";
 
       // Watermark over everything, so a crop or edit can't remove it
       ctx.save();
