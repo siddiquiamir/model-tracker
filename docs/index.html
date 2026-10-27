@@ -1172,7 +1172,8 @@
       const [liveHfCards, liveOrCards] = await Promise.all([hfPromise, orPromise]);
 
       // Merge live HF cards by header so updated timestamps & models show immediately
-      const validHf = (liveHfCards || []).filter(Boolean);
+      const knownRepoIds = new Set((FEED_DATA.cards || []).flatMap(c => (c.models || []).map(m => m.id)));
+      const validHf = (liveHfCards || []).filter(c => c && !knownRepoIds.has(c.models?.[0]?.id));
       if (validHf.length && Array.isArray(FEED_DATA.cards)) {
         const byHeader = new Map(validHf.map(c => [c.header, c]));
         const seenHeaders = new Set();
