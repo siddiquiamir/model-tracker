@@ -1,16 +1,59 @@
 {
-  "generated_at": "2026-10-27T16:19:04.971912+00:00",
+  "generated_at": "2026-10-27T16:23:04.345952+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 48,
-    "leaks": 7,
+    "stories": 49,
+    "leaks": 8,
     "releases": 41,
-    "stories_24h": 8,
+    "stories_24h": 9,
     "sources_ok": 10,
-    "total_cards": 82,
+    "total_cards": 83,
     "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-lfm-3-audio",
+      "group": "lfm-3-audio",
+      "kind": "leak",
+      "open_weights": true,
+      "title": "LFM3 Audio",
+      "provider_slug": "opensource",
+      "provider_name": "Liquid AI",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-27T16:23:02Z",
+      "updated_at": "2026-10-27T16:23:02Z",
+      "first_source": "llama.cpp pull request",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "LFM3-Omni-2B",
+          "name": "LFM3-Omni-2B"
+        },
+        {
+          "id": "LFM3-Audio-2B",
+          "name": "LFM3-Audio-2B"
+        }
+      ],
+      "sources": [
+        {
+          "label": "llama.cpp pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-10-27T16:23:02Z",
+          "title": "LiquidAI/LFM3-Audio-2B (llama.cpp PR #31257)",
+          "url": "https://github.com/ggml-org/llama.cpp/pull/31257",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · LIQUID AI",
+      "card_ids": [
+        "engine-pr-ggml-org_llama.cpp-31257"
+      ],
+      "x_post_text": "🟠 LEAK: LFM3 Audio by Liquid AI\n\nFirst spotted 27 Oct 16:23 UTC in llama.cpp pull request\nIDs: LFM3-Omni-2B, LFM3-Audio-2B\n\nvia @StatsWire"
+    },
     {
       "id": "story-minicpm-ocr-1-dspark",
       "group": "minicpm-ocr-1-dspark",
@@ -2141,6 +2184,41 @@
     }
   ],
   "cards": [
+    {
+      "id": "engine-pr-ggml-org_llama.cpp-31257",
+      "category": "open-source",
+      "scanner": "engine-pr-leak",
+      "header": "LLAMA.CPP PR DAY-0 MODEL ONBOARDING (OPEN)",
+      "title": "LiquidAI/LFM3-Audio-2B (llama.cpp PR #31257)",
+      "subtitle": "model : add LiquidAI/LFM3-Audio-2B and LiquidAI/LFM3-Omni-2B",
+      "build_label": "llama.cpp PR",
+      "build_transition": "PR #31257 (open)",
+      "models": [
+        {
+          "id": "LiquidAI/LFM3-Audio-2B",
+          "name": "LFM3-Audio-2B"
+        },
+        {
+          "id": "LiquidAI/LFM3-Omni-2B",
+          "name": "LFM3-Omni-2B"
+        }
+      ],
+      "evidence": "ggml-org/llama.cpp/pull/31257",
+      "source_text": "public GitHub pull request #31257 on ggml-org/llama.cpp.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "LLAMA.CPP PR",
+      "provider_slug": "opensource",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "ggml-org/llama.cpp PR #31257",
+          "url": "https://github.com/ggml-org/llama.cpp/pull/31257"
+        }
+      ],
+      "detected_at": "2026-10-27T16:23:02Z",
+      "x_post_text": "🚨 LLAMA.CPP PR DAY-0 MODEL ONBOARDING (OPEN)\nLiquidAI/LFM3-Audio-2B (llama.cpp PR #31257) spotted in llama.cpp PR PR #31257 (open)!\n\n• LFM3-Audio-2B (LiquidAI/LFM3-Audio-2B)\n• LFM3-Omni-2B (LiquidAI/LFM3-Omni-2B)\n\nEvidence: ggml-org/llama.cpp/pull/31257\nSource: public GitHub pull request #31257 on ggml-org/llama.cpp.\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-openbmb_MiniCPM-OCR-1.0-GPTQ",
       "category": "open-source",
