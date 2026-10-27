@@ -27,7 +27,13 @@ ORG_NAMES: Dict[str, str] = {
     "allenai": "Ai2", "internlm": "InternLM", "baidu": "Baidu", "tencent": "Tencent", "apple": "Apple",
     "bytedance-seed": "ByteDance Seed", "meituan-longcat": "Meituan LongCat", "wan-ai": "Alibaba Wan",
     "rednote-hilab": "RedNote", "xiaomimimo": "Xiaomi MiMo", "stepfun-ai": "StepFun", "openbmb": "OpenBMB",
-    "black-forest-labs": "Black Forest Labs", "stabilityai": "Stability AI",
+    "black-forest-labs": "Black Forest Labs", "stabilityai": "Stability AI", "microsoft-ai": "Microsoft AI",
+}
+ARENA_ORGS: Dict[str, str] = {
+    "google": "google", "openai": "openai", "anthropic": "anthropic", "xai": "xai", "meta": "meta",
+    "microsoft-ai": "microsoft", "microsoft": "microsoft", "deepseek": "deepseek", "alibaba": "qwen",
+    "moonshot": "kimi", "zhipu": "zai", "mistral": "mistral", "amazon": "amazon", "minimax": "minimax",
+    "nvidia": "nvidia", "cohere": "cohere",
 }
 
 SCANNER_LABELS: Dict[str, str] = {
@@ -209,11 +215,19 @@ def _make_story(
     # Provider: most specific lab seen across sources
     lab = next((c for c in cards if c.get("provider_slug") not in GENERIC_PROVIDERS), first)
     provider_name = PROVIDER_NAMES.get(lab.get("provider_slug", ""), "")
+    provider_slug = lab.get("provider_slug", "")
+    # Arena's model config names the lab: {"id": "org:microsoft-ai · microsoftFalcon"}
+    arena_org = next((str(m["id"])[4:].split(" · ")[0].lower() for c in cards for m in c.get("models") or []
+                      if str(m.get("id", "")).startswith("org:")), "")
+    if not provider_name and arena_org:
+        slug = ARENA_ORGS.get(arena_org, "")
+        provider_slug = slug or provider_slug
+        provider_name = (ORG_NAMES.get(arena_org) or PROVIDER_NAMES.get(slug)
+                         or " ".join(_WORD_FIX.get(w.capitalize(), w.capitalize()) for w in arena_org.split("-")))
     if not provider_name and " · " in str(lab.get("header", "")):
         org = str(lab["header"]).split(" · ")[-1]
-        if org.upper() not in ("LIVE MODELS", "MULTI-PROVIDER") and not org.startswith("v"):
+        if org.upper() not in ("LIVE MODELS", "MULTI-PROVIDER", "NEXT.JS RSC STREAM") and not org.startswith("v"):
             provider_name = " ".join(_WORD_FIX.get(w.capitalize(), w.capitalize()) for w in org.split())
-    provider_slug = lab.get("provider_slug", "")
     if not provider_name:
         org_ids = [str(m.get("id", "")).split("/")[0].lower() for m in models if "/" in str(m.get("id", ""))]
         org = org_ids[0] if org_ids else ""
