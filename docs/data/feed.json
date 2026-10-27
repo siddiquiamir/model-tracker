@@ -1,39 +1,101 @@
 {
-  "generated_at": "2026-10-27T16:23:04.345952+00:00",
+  "generated_at": "2026-10-27T16:55:04.170528+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 49,
-    "leaks": 8,
-    "releases": 41,
-    "stories_24h": 9,
+    "stories": 52,
+    "leaks": 6,
+    "releases": 46,
+    "stories_24h": 12,
     "sources_ok": 10,
-    "total_cards": 83,
-    "new_in_this_scan": 1
+    "total_cards": 88,
+    "new_in_this_scan": 5
   },
   "stories": [
     {
+      "id": "story-eleven-realtime-1",
+      "group": "eleven-realtime-1",
+      "kind": "release",
+      "open_weights": false,
+      "title": "Eleven Realtime v1 Max",
+      "provider_slug": "openrouter",
+      "provider_name": "elevenlabs",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-27T16:55:20.043025+00:00",
+      "updated_at": "2026-10-27T16:55:20.043025+00:00",
+      "first_source": "Vercel AI Gateway Catalog",
+      "lead": "",
+      "released_on": "",
+      "codenames": [
+        "effects",
+        "sound"
+      ],
+      "models": [
+        {
+          "id": "music-v2",
+          "name": "Eleven Music v2"
+        },
+        {
+          "id": "music-v2.5",
+          "name": "Eleven Music v2.5"
+        },
+        {
+          "id": "sound-effects-v2",
+          "name": "Eleven Sound Effects v2"
+        },
+        {
+          "id": "scribe-v2-realtime",
+          "name": "Scribe v2 Realtime"
+        },
+        {
+          "id": "eleven-realtime-v1-max",
+          "name": "Eleven Realtime v1 Max"
+        },
+        {
+          "id": "eleven-realtime-v1-mini",
+          "name": "Eleven Realtime v1 Mini"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vercel AI Gateway Catalog",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-10-27T16:55:20.043025+00:00",
+          "title": "New Model on Vercel AI Gateway: Eleven Realtime v1 Max",
+          "url": "https://ai-gateway.vercel.sh/v1/models",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "RELEASE · ELEVENLABS",
+      "card_ids": [
+        "vercel-gateway-diff-38c02b61"
+      ],
+      "x_post_text": "🟢 NEW: Eleven Realtime v1 Max by elevenlabs\n\nFirst spotted 27 Oct 16:55 UTC in Vercel AI Gateway Catalog\nCodename: effects, sound\nIDs: music-v2, music-v2.5, sound-effects-v2 +3\n\nvia @StatsWire"
+    },
+    {
       "id": "story-lfm-3-audio",
       "group": "lfm-3-audio",
-      "kind": "leak",
+      "kind": "release",
       "open_weights": true,
       "title": "LFM3 Audio",
       "provider_slug": "opensource",
       "provider_name": "Liquid AI",
       "accent_color": "#10b981",
       "detected_at": "2026-10-27T16:23:02Z",
-      "updated_at": "2026-10-27T16:23:02Z",
+      "updated_at": "2026-10-27T16:55:19.830819+00:00",
       "first_source": "llama.cpp pull request",
-      "lead": "",
+      "lead": "32 min before it went live on Hugging Face",
       "released_on": "",
       "codenames": [],
       "models": [
         {
-          "id": "LFM3-Omni-2B",
-          "name": "LFM3-Omni-2B"
-        },
-        {
           "id": "LFM3-Audio-2B",
           "name": "LFM3-Audio-2B"
+        },
+        {
+          "id": "LFM3-Audio-2B-GGUF",
+          "name": "LFM3-Audio-2B-GGUF"
         }
       ],
       "sources": [
@@ -44,15 +106,76 @@
           "title": "LiquidAI/LFM3-Audio-2B (llama.cpp PR #31257)",
           "url": "https://github.com/ggml-org/llama.cpp/pull/31257",
           "backfill": false
+        },
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-10-27T16:55:19.830819+00:00",
+          "title": "LFM3 Audio 2B GGUF",
+          "url": "https://huggingface.co/LiquidAI/LFM3-Audio-2B-GGUF",
+          "backfill": false
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
-      "header": "LEAK · LIQUID AI",
+      "header": "OPEN WEIGHTS · LIQUID AI",
       "card_ids": [
-        "engine-pr-ggml-org_llama.cpp-31257"
+        "engine-pr-ggml-org_llama.cpp-31257",
+        "hf-LiquidAI_LFM3-Audio-2B-GGUF"
       ],
-      "x_post_text": "🟠 LEAK: LFM3 Audio by Liquid AI\n\nFirst spotted 27 Oct 16:23 UTC in llama.cpp pull request\nIDs: LFM3-Omni-2B, LFM3-Audio-2B\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW: LFM3 Audio by Liquid AI\n\nFirst spotted 27 Oct 16:23 UTC in llama.cpp pull request\n⏱ 32 min before it went live on Hugging Face\nConfirmed by Hugging Face\nIDs: LFM3-Audio-2B, LFM3-Audio-2B-GGUF\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-lfm-3-omni",
+      "group": "lfm-3-omni",
+      "kind": "release",
+      "open_weights": true,
+      "title": "LFM3 Omni",
+      "provider_slug": "opensource",
+      "provider_name": "Liquid AI",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-27T16:23:02Z",
+      "updated_at": "2026-10-27T16:55:19.830819+00:00",
+      "first_source": "llama.cpp pull request",
+      "lead": "32 min before it went live on Hugging Face",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "LFM3-Omni-2B",
+          "name": "LFM3-Omni-2B"
+        },
+        {
+          "id": "LFM3-Omni-2B-GGUF",
+          "name": "LFM3-Omni-2B-GGUF"
+        }
+      ],
+      "sources": [
+        {
+          "label": "llama.cpp pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-10-27T16:23:02Z",
+          "title": "LiquidAI/LFM3-Audio-2B (llama.cpp PR #31257)",
+          "url": "https://github.com/ggml-org/llama.cpp/pull/31257",
+          "backfill": false
+        },
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-10-27T16:55:19.830819+00:00",
+          "title": "LFM3 Omni 2B GGUF",
+          "url": "https://huggingface.co/LiquidAI/LFM3-Omni-2B-GGUF",
+          "backfill": false
+        }
+      ],
+      "source_count": 2,
+      "backfill": false,
+      "header": "OPEN WEIGHTS · LIQUID AI",
+      "card_ids": [
+        "engine-pr-ggml-org_llama.cpp-31257",
+        "hf-LiquidAI_LFM3-Omni-2B-GGUF"
+      ],
+      "x_post_text": "🟢 NEW: LFM3 Omni by Liquid AI\n\nFirst spotted 27 Oct 16:23 UTC in llama.cpp pull request\n⏱ 32 min before it went live on Hugging Face\nConfirmed by Hugging Face\nIDs: LFM3-Omni-2B, LFM3-Omni-2B-GGUF\n\nvia @StatsWire"
     },
     {
       "id": "story-minicpm-ocr-1-dspark",
@@ -251,16 +374,16 @@
     {
       "id": "story-lfm-3-1",
       "group": "lfm-3-1",
-      "kind": "leak",
+      "kind": "release",
       "open_weights": true,
       "title": "LFM3",
       "provider_slug": "opensource",
       "provider_name": "Liquid AI",
       "accent_color": "#10b981",
       "detected_at": "2026-10-27T15:05:40Z",
-      "updated_at": "2026-10-27T15:05:40Z",
+      "updated_at": "2026-10-27T16:55:19.830819+00:00",
       "first_source": "llama.cpp pull request",
-      "lead": "",
+      "lead": "1 h before it went live on Hugging Face",
       "released_on": "",
       "codenames": [],
       "models": [
@@ -269,8 +392,8 @@
           "name": "LFM3-1.7B"
         },
         {
-          "id": "LFM3-VL-2B",
-          "name": "LFM3-VL-2B"
+          "id": "LFM3-1.7B-GGUF",
+          "name": "LFM3-1.7B-GGUF"
         }
       ],
       "sources": [
@@ -281,15 +404,76 @@
           "title": "LiquidAI/LFM3-1.7B (llama.cpp PR #31252)",
           "url": "https://github.com/ggml-org/llama.cpp/pull/31252",
           "backfill": false
+        },
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-10-27T16:55:19.830819+00:00",
+          "title": "LFM3 1.7B GGUF",
+          "url": "https://huggingface.co/LiquidAI/LFM3-1.7B-GGUF",
+          "backfill": false
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
-      "header": "LEAK · LIQUID AI",
+      "header": "OPEN WEIGHTS · LIQUID AI",
       "card_ids": [
-        "engine-pr-ggml-org_llama.cpp-31252"
+        "engine-pr-ggml-org_llama.cpp-31252",
+        "hf-LiquidAI_LFM3-1.7B-GGUF"
       ],
-      "x_post_text": "🟠 LEAK: LFM3 by Liquid AI\n\nFirst spotted 27 Oct 15:05 UTC in llama.cpp pull request\nIDs: LFM3-1.7B, LFM3-VL-2B\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW: LFM3 by Liquid AI\n\nFirst spotted 27 Oct 15:05 UTC in llama.cpp pull request\n⏱ 1 h before it went live on Hugging Face\nConfirmed by Hugging Face\nIDs: LFM3-1.7B, LFM3-1.7B-GGUF\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-lfm-3-vl",
+      "group": "lfm-3-vl",
+      "kind": "release",
+      "open_weights": true,
+      "title": "LFM3 VL",
+      "provider_slug": "opensource",
+      "provider_name": "Liquid AI",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-27T15:05:40Z",
+      "updated_at": "2026-10-27T16:55:19.830819+00:00",
+      "first_source": "llama.cpp pull request",
+      "lead": "1 h before it went live on Hugging Face",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "LFM3-VL-2B",
+          "name": "LFM3-VL-2B"
+        },
+        {
+          "id": "LFM3-VL-2B-GGUF",
+          "name": "LFM3-VL-2B-GGUF"
+        }
+      ],
+      "sources": [
+        {
+          "label": "llama.cpp pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-10-27T15:05:40Z",
+          "title": "LiquidAI/LFM3-1.7B (llama.cpp PR #31252)",
+          "url": "https://github.com/ggml-org/llama.cpp/pull/31252",
+          "backfill": false
+        },
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-10-27T16:55:19.830819+00:00",
+          "title": "LFM3 VL 2B GGUF",
+          "url": "https://huggingface.co/LiquidAI/LFM3-VL-2B-GGUF",
+          "backfill": false
+        }
+      ],
+      "source_count": 2,
+      "backfill": false,
+      "header": "OPEN WEIGHTS · LIQUID AI",
+      "card_ids": [
+        "engine-pr-ggml-org_llama.cpp-31252",
+        "hf-LiquidAI_LFM3-VL-2B-GGUF"
+      ],
+      "x_post_text": "🟢 NEW: LFM3 VL by Liquid AI\n\nFirst spotted 27 Oct 15:05 UTC in llama.cpp pull request\n⏱ 1 h before it went live on Hugging Face\nConfirmed by Hugging Face\nIDs: LFM3-VL-2B, LFM3-VL-2B-GGUF\n\nvia @StatsWire"
     },
     {
       "id": "story-nemotron-labs-unified-asr-0",
@@ -2184,6 +2368,201 @@
     }
   ],
   "cards": [
+    {
+      "id": "vercel-gateway-diff-38c02b61",
+      "category": "cli-sdk-diff",
+      "scanner": "gateway-radar",
+      "header": "VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS",
+      "title": "New Model on Vercel AI Gateway: Eleven Realtime v1 Max",
+      "subtitle": "Detected in ai-gateway.vercel.sh/v1/models (+6 new)",
+      "build_label": "Gateway Diff",
+      "build_transition": "+6 new model(s)",
+      "models": [
+        {
+          "id": "elevenlabs/eleven-realtime-v1-max",
+          "name": "Eleven Realtime v1 Max"
+        },
+        {
+          "id": "elevenlabs/eleven-realtime-v1-mini",
+          "name": "Eleven Realtime v1 Mini"
+        },
+        {
+          "id": "elevenlabs/music-v2",
+          "name": "Eleven Music v2"
+        },
+        {
+          "id": "elevenlabs/music-v2.5",
+          "name": "Eleven Music v2.5"
+        },
+        {
+          "id": "elevenlabs/scribe-v2-realtime",
+          "name": "Scribe v2 Realtime"
+        },
+        {
+          "id": "elevenlabs/sound-effects-v2",
+          "name": "Eleven Sound Effects v2"
+        }
+      ],
+      "evidence": "ai-gateway.vercel.sh/v1/models",
+      "source_text": "public Vercel AI Gateway /v1/models catalog.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENROUTER",
+      "provider_slug": "openrouter",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "Vercel AI Gateway Models",
+          "url": "https://ai-gateway.vercel.sh/v1/models"
+        }
+      ],
+      "detected_at": "2026-10-27T16:55:20.043025+00:00",
+      "codenames": [
+        "effects",
+        "sound"
+      ],
+      "x_post_text": "🚨 VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS\nNew Model on Vercel AI Gateway: Eleven Realtime v1 Max spotted in Gateway Diff +6 new model(s)!\n\n• Eleven Realtime v1 Max (elevenlabs/eleven-realtime-v1-max)\n• Eleven Realtime v1 Mini (elevenlabs/eleven-realtime-v1-mini)\n• Eleven Music v2 (elevenlabs/music-v2)\n• Eleven Music v2.5 (elevenlabs/music-v2.5)\n• Scribe v2 Realtime (elevenlabs/scribe-v2-realtime)\n• Eleven Sound Effects v2 (elevenlabs/sound-effects-v2)\n\nEvidence: ai-gateway.vercel.sh/v1/models\nSource: public Vercel AI Gateway /v1/models catalog.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "hf-LiquidAI_LFM3-Audio-2B-GGUF",
+      "category": "open-source",
+      "scanner": "huggingface",
+      "header": "HUGGING FACE NEW REPO · LIQUID AI",
+      "title": "LFM3 Audio 2B GGUF",
+      "subtitle": "Newly published public model repository (LiquidAI)",
+      "build_label": "Repo",
+      "build_transition": "Created 2026-10-27 (any-to-any)",
+      "models": [
+        {
+          "id": "LiquidAI/LFM3-Audio-2B-GGUF",
+          "name": "LFM3-Audio-2B-GGUF (any-to-any)"
+        }
+      ],
+      "evidence": "huggingface.co/api/models",
+      "source_text": "official LiquidAI Hugging Face organization feed.",
+      "disclaimer_1": "Repository became publicly visible since the previous scan.",
+      "disclaimer_2": "Public weights / model cards published directly by the organization.",
+      "provider_name": "LIQUID AI",
+      "provider_slug": "opensource",
+      "accent_color": "#22d3ee",
+      "links": [
+        {
+          "label": "Hugging Face Repo",
+          "url": "https://huggingface.co/LiquidAI/LFM3-Audio-2B-GGUF"
+        },
+        {
+          "label": "LiquidAI Hub Feed",
+          "url": "https://huggingface.co/LiquidAI"
+        }
+      ],
+      "detected_at": "2026-10-27T16:55:19.830819+00:00",
+      "x_post_text": "🚨 HUGGING FACE NEW REPO · LIQUID AI\nLFM3 Audio 2B GGUF spotted in Repo Created 2026-10-27 (any-to-any)!\n\n• LFM3-Audio-2B-GGUF (any-to-any) (LiquidAI/LFM3-Audio-2B-GGUF)\n\nEvidence: huggingface.co/api/models\nSource: official LiquidAI Hugging Face organization feed.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "hf-LiquidAI_LFM3-Omni-2B-GGUF",
+      "category": "open-source",
+      "scanner": "huggingface",
+      "header": "HUGGING FACE NEW REPO · LIQUID AI",
+      "title": "LFM3 Omni 2B GGUF",
+      "subtitle": "Newly published public model repository (LiquidAI)",
+      "build_label": "Repo",
+      "build_transition": "Created 2026-10-27 (any-to-any)",
+      "models": [
+        {
+          "id": "LiquidAI/LFM3-Omni-2B-GGUF",
+          "name": "LFM3-Omni-2B-GGUF (any-to-any)"
+        }
+      ],
+      "evidence": "huggingface.co/api/models",
+      "source_text": "official LiquidAI Hugging Face organization feed.",
+      "disclaimer_1": "Repository became publicly visible since the previous scan.",
+      "disclaimer_2": "Public weights / model cards published directly by the organization.",
+      "provider_name": "LIQUID AI",
+      "provider_slug": "opensource",
+      "accent_color": "#22d3ee",
+      "links": [
+        {
+          "label": "Hugging Face Repo",
+          "url": "https://huggingface.co/LiquidAI/LFM3-Omni-2B-GGUF"
+        },
+        {
+          "label": "LiquidAI Hub Feed",
+          "url": "https://huggingface.co/LiquidAI"
+        }
+      ],
+      "detected_at": "2026-10-27T16:55:19.830819+00:00",
+      "x_post_text": "🚨 HUGGING FACE NEW REPO · LIQUID AI\nLFM3 Omni 2B GGUF spotted in Repo Created 2026-10-27 (any-to-any)!\n\n• LFM3-Omni-2B-GGUF (any-to-any) (LiquidAI/LFM3-Omni-2B-GGUF)\n\nEvidence: huggingface.co/api/models\nSource: official LiquidAI Hugging Face organization feed.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "hf-LiquidAI_LFM3-1.7B-GGUF",
+      "category": "open-source",
+      "scanner": "huggingface",
+      "header": "HUGGING FACE NEW REPO · LIQUID AI",
+      "title": "LFM3 1.7B GGUF",
+      "subtitle": "Newly published public model repository (LiquidAI)",
+      "build_label": "Repo",
+      "build_transition": "Created 2026-10-24 (text-generation)",
+      "models": [
+        {
+          "id": "LiquidAI/LFM3-1.7B-GGUF",
+          "name": "LFM3-1.7B-GGUF (text-generation)"
+        }
+      ],
+      "evidence": "huggingface.co/api/models",
+      "source_text": "official LiquidAI Hugging Face organization feed.",
+      "disclaimer_1": "Repository became publicly visible since the previous scan.",
+      "disclaimer_2": "Public weights / model cards published directly by the organization.",
+      "provider_name": "LIQUID AI",
+      "provider_slug": "opensource",
+      "accent_color": "#22d3ee",
+      "links": [
+        {
+          "label": "Hugging Face Repo",
+          "url": "https://huggingface.co/LiquidAI/LFM3-1.7B-GGUF"
+        },
+        {
+          "label": "LiquidAI Hub Feed",
+          "url": "https://huggingface.co/LiquidAI"
+        }
+      ],
+      "detected_at": "2026-10-27T16:55:19.830819+00:00",
+      "x_post_text": "🚨 HUGGING FACE NEW REPO · LIQUID AI\nLFM3 1.7B GGUF spotted in Repo Created 2026-10-24 (text-generation)!\n\n• LFM3-1.7B-GGUF (text-generation) (LiquidAI/LFM3-1.7B-GGUF)\n\nEvidence: huggingface.co/api/models\nSource: official LiquidAI Hugging Face organization feed.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "hf-LiquidAI_LFM3-VL-2B-GGUF",
+      "category": "open-source",
+      "scanner": "huggingface",
+      "header": "HUGGING FACE NEW REPO · LIQUID AI",
+      "title": "LFM3 VL 2B GGUF",
+      "subtitle": "Newly published public model repository (LiquidAI)",
+      "build_label": "Repo",
+      "build_transition": "Created 2026-10-19 (image-text-to-text)",
+      "models": [
+        {
+          "id": "LiquidAI/LFM3-VL-2B-GGUF",
+          "name": "LFM3-VL-2B-GGUF (image-text-to-text)"
+        }
+      ],
+      "evidence": "huggingface.co/api/models",
+      "source_text": "official LiquidAI Hugging Face organization feed.",
+      "disclaimer_1": "Repository became publicly visible since the previous scan.",
+      "disclaimer_2": "Public weights / model cards published directly by the organization.",
+      "provider_name": "LIQUID AI",
+      "provider_slug": "opensource",
+      "accent_color": "#22d3ee",
+      "links": [
+        {
+          "label": "Hugging Face Repo",
+          "url": "https://huggingface.co/LiquidAI/LFM3-VL-2B-GGUF"
+        },
+        {
+          "label": "LiquidAI Hub Feed",
+          "url": "https://huggingface.co/LiquidAI"
+        }
+      ],
+      "detected_at": "2026-10-27T16:55:19.830819+00:00",
+      "x_post_text": "🚨 HUGGING FACE NEW REPO · LIQUID AI\nLFM3 VL 2B GGUF spotted in Repo Created 2026-10-19 (image-text-to-text)!\n\n• LFM3-VL-2B-GGUF (image-text-to-text) (LiquidAI/LFM3-VL-2B-GGUF)\n\nEvidence: huggingface.co/api/models\nSource: official LiquidAI Hugging Face organization feed.\n\nTracked by @StatsWire"
+    },
     {
       "id": "engine-pr-ggml-org_llama.cpp-31257",
       "category": "open-source",
