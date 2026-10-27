@@ -498,6 +498,7 @@
         <span class="brand-pulse"></span>
         <span class="brand-title">ModelPulse</span>
         <span class="brand-badge">First-to-Report Diff Engine</span>
+        <span class="brand-badge" id="last-cloud-scan" title="Time of the last cloud scan that produced this feed">Cloud scan: —</span>
       </div>
       <div class="nav-actions">
         <button class="btn btn-primary" onclick="triggerLiveScan()" id="scan-btn">
@@ -1001,6 +1002,8 @@
         if (candidates.length) {
           candidates.sort((a, b) => new Date(b.generated_at || 0) - new Date(a.generated_at || 0));
           FEED_DATA = candidates[0];
+          CLOUD_SCAN_AT = FEED_DATA.generated_at || null;
+          renderCloudScanAge();
           updateDashboardMetrics();
         }
       } catch (err) {
@@ -1298,6 +1301,16 @@
       document.getElementById("search-box").value = transition;
       renderCards();
     }
+
+    let CLOUD_SCAN_AT = null;
+    function renderCloudScanAge() {
+      const el = document.getElementById("last-cloud-scan");
+      if (!el || !CLOUD_SCAN_AT) return;
+      const mins = Math.max(0, Math.round((Date.now() - new Date(CLOUD_SCAN_AT).getTime()) / 60000));
+      el.textContent = `Cloud scan: ${mins < 1 ? "just now" : mins < 120 ? mins + " min ago" : Math.round(mins / 60) + " h ago"}`;
+    }
+    setInterval(renderCloudScanAge, 30000);
+    setInterval(runBrowserLiveScan, 300000);
 
     runBrowserLiveScan();
   </script>

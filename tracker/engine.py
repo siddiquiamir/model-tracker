@@ -213,7 +213,7 @@ class TrackerEngine:
         first_run = not seen_ids
         new_cards = [
             c for c in all_cards
-            if c["id"] not in seen_ids and c.get("scanner") not in SNAPSHOT_SCANNERS
+            if c["id"] not in seen_ids and c.get("scanner") not in SNAPSHOT_SCANNERS and not c.get("backfill")
         ]
         notify_cutoff = (now - NOTIFY_MAX_AGE).isoformat()
         notify_cards = [c for c in new_cards if (c.get("detected_at") or "") >= notify_cutoff]

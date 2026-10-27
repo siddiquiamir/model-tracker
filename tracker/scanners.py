@@ -12,6 +12,7 @@ import pathlib
 import re
 import subprocess
 import tarfile
+import time
 from typing import Any, Dict, List, Optional, Set, Tuple
 import urllib.parse
 import urllib.request
@@ -955,6 +956,7 @@ class HuggingFaceOpenSourceScanner:
     )
 
     MAX_AGE_DAYS = 90
+    BACKFILL_DAYS = 14
     MAX_CARDS_PER_ORG = 5
     MAX_SEEN_PER_ORG = 400
 
@@ -1010,10 +1012,12 @@ class HuggingFaceOpenSourceScanner:
                     print(f"[HFScanner] Warning ({fut_map[fut]}): {exc}")
 
         baselines = _load_baselines()
-        seen_all: Dict[str, List[str]] = baselines.setdefault("hf_seen_repos", {})
+        baselines.pop("hf_seen_repos", None)
+        seen_all: Dict[str, List[str]] = baselines.setdefault("hf_seen_repos_v2", {})
         now = datetime.now(timezone.utc)
         now_iso = now.isoformat()
         cutoff = (now - timedelta(days=self.MAX_AGE_DAYS)).isoformat()
+        backfill_cutoff = (now - timedelta(days=self.BACKFILL_DAYS)).isoformat()
         cards: List[Dict[str, Any]] = []
 
         for org, label, slug, color in self.WATCHED_ORGS:
@@ -1029,9 +1033,15 @@ class HuggingFaceOpenSourceScanner:
                 and not self.NOISE_REPO_RE.search(rid)
                 and (e.get("createdAt") or "") >= cutoff
             ]
+            fresh.sort(key=lambda e: e.get("createdAt") or "", reverse=True)
             if not first_run:
-                fresh.sort(key=lambda e: e.get("createdAt") or "", reverse=True)
                 cards.extend(self._repo_card(org, label, slug, color, e, now_iso) for e in fresh[: self.MAX_CARDS_PER_ORG])
+            else:
+                # First sight: show the last 14 days of repos with their real creation time, without alerting
+                for e in [e for e in fresh if (e.get("createdAt") or "") >= backfill_cutoff][: self.MAX_CARDS_PER_ORG]:
+                    card = self._repo_card(org, label, slug, color, e, e["createdAt"])
+                    card["backfill"] = True
+                    cards.append(card)
             seen.extend(rid for rid in repos if rid not in seen_set)
             seen_all[org] = seen[-self.MAX_SEEN_PER_ORG:]
 
@@ -1150,8 +1160,14 @@ class KimiCodeAndRouterScanner:
                 m.get("id", ""): m for m in models_list
                 if m.get("id") and not self.COMMUNITY_RE.search(f"{m.get('id', '')} {m.get('name', '')}")
             }
-            added = self._new_ids(baselines, "openrouter_models", set(by_id))
-            for mid in (added or [])[:15]:
+            baselines.pop("openrouter_models", None)
+            added = self._new_ids(baselines, "openrouter_models_v2", set(by_id))
+            backfill = added is None
+            if backfill:
+                # First sight: show the last 14 days of endpoints with their real registration time, without alerting
+                week_ago = time.time() - 14 * 86400
+                added = sorted((mid for mid, m in by_id.items() if (m.get("created") or 0) >= week_ago), key=lambda k: -(by_id[k].get("created") or 0))
+            for mid in added[:15]:
                 m = by_id[mid]
                 mname = m.get("name", mid)
                 ctx_k = (m.get("context_length", 0) or 0) // 1000
@@ -1179,7 +1195,8 @@ class KimiCodeAndRouterScanner:
                             {"label": "OpenRouter Model Page", "url": f"https://openrouter.ai/{mid}"},
                             {"label": "OpenRouter Models API", "url": self.OPENROUTER_MODELS_URL},
                         ],
-                        "detected_at": now_iso,
+                        "detected_at": datetime.fromtimestamp(m["created"], timezone.utc).isoformat() if backfill else now_iso,
+                        **({"backfill": True} if backfill else {}),
                     }
                 )
         except Exception as exc:
