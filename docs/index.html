@@ -1,1153 +1,540 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ModelPulse · First-to-Report AI Model & Build Diff Tracker</title>
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
+  <title>ModelPulse · AI model leaks & launches, first</title>
   <style>
     :root {
-      --bg-page: #0b0d11;
-      --bg-card: #161920;
-      --bg-card-hover: #1b1f28;
-      --bg-code: #1f2430;
-      --border-card: #262b36;
-      --border-code: #323948;
-      --text-primary: #f1f5f9;
-      --text-secondary: #cbd5e1;
-      --text-muted: #94a3b8;
-      --link-blue: #3898ff;
-      --accent-google: #38bdf8;
-      --accent-anthropic: #f97316;
-      --accent-openai: #10b981;
-      --accent-qwen: #a855f7;
-      --accent-deepseek: #06b6d4;
+      --bg: #0b0d11;
+      --card: #14171e;
+      --card-2: #1a1e27;
+      --line: #252a35;
+      --line-2: #323948;
+      --text: #f1f5f9;
+      --text-2: #cbd5e1;
+      --muted: #8b95a7;
+      --blue: #3898ff;
+      --leak: #f59e0b;
+      --release: #22c55e;
+      --open: #a78bfa;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background-color: var(--bg-page);
-      color: var(--text-primary);
+      background: var(--bg);
+      color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       line-height: 1.5;
       min-height: 100vh;
       padding-bottom: 60px;
     }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
 
-    /* Top Header */
     .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(11, 13, 17, 0.88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-card);
-      padding: 14px 24px;
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(11, 13, 17, 0.9); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line); padding: 12px 24px;
     }
-
-    .navbar-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+    .nav-inner, .container { max-width: 1180px; margin: 0 auto; }
+    .nav-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .brand-title { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em; }
+    .brand-tag { font-size: 0.85rem; color: var(--muted); }
+    .status {
+      display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text-2);
+      border: 1px solid var(--line-2); border-radius: 999px; padding: 4px 11px;
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand-pulse {
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-      background: #10b981;
-      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-      70% { box-shadow: 0 0 0 9px rgba(16, 185, 129, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-    }
-
-    .brand-title {
-      font-size: 1.2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: #fff;
-    }
-
-    .brand-badge {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: rgba(56, 152, 255, 0.15);
-      color: var(--link-blue);
-      border: 1px solid rgba(56, 152, 255, 0.3);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--release); box-shadow: 0 0 8px var(--release); }
+    .dot.stale { background: var(--leak); box-shadow: 0 0 8px var(--leak); }
+    .nav-actions { display: flex; gap: 8px; align-items: center; }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 0.84rem;
-      font-weight: 600;
-      padding: 8px 14px;
-      border-radius: 8px;
-      border: 1px solid var(--border-code);
-      background: var(--bg-card);
-      color: var(--text-primary);
-      cursor: pointer;
-      transition: all 0.15s ease;
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 600;
+      padding: 7px 13px; border-radius: 8px; border: 1px solid var(--line-2);
+      background: var(--card); color: var(--text); cursor: pointer; text-decoration: none;
     }
+    .btn:hover { background: var(--card-2); text-decoration: none; }
+    .btn-primary { background: #2563eb; border-color: #3b82f6; color: #fff; }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-sm { font-size: 0.76rem; padding: 5px 10px; border-radius: 6px; }
 
-    .btn:hover {
-      background: var(--bg-code);
-      border-color: #475569;
-    }
+    .container { margin-top: 22px; padding: 0 24px; }
+    .summary { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; }
+    .summary b { color: var(--text); }
 
-    .btn-primary {
-      background: #2563eb;
-      border-color: #3b82f6;
-      color: #fff;
+    .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tab {
+      font-size: 0.84rem; font-weight: 600; padding: 6px 13px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--card); color: var(--text-2); cursor: pointer;
     }
+    .tab:hover { color: #fff; border-color: var(--line-2); }
+    .tab.active { background: var(--text); color: #0b0d11; border-color: var(--text); }
+    .tools { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    select, input[type="search"] {
+      background: var(--bg); color: var(--text); border: 1px solid var(--line-2);
+      border-radius: 8px; padding: 7px 11px; font-size: 0.85rem; outline: none;
+    }
+    input[type="search"] { min-width: 240px; }
+    select:focus, input:focus { border-color: var(--blue); }
 
-    .btn-primary:hover {
-      background: #1d4ed8;
-    }
+    .feed { display: grid; grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); gap: 16px; align-items: start; }
+    @media (max-width: 620px) { .feed { grid-template-columns: 1fr; } input[type="search"] { min-width: 0; width: 100%; } }
 
-    .container {
-      max-width: 1280px;
-      margin: 28px auto 0;
-      padding: 0 24px;
+    .story {
+      position: relative; background: var(--card); border: 1px solid var(--line);
+      border-top: 3px solid var(--release); border-radius: 10px; padding: 18px 20px 14px;
+      display: flex; flex-direction: column; gap: 12px;
     }
+    .story.leak { border-top-color: var(--leak); }
+    .story.open { border-top-color: var(--open); }
+    .story.unread { box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.35); }
+    .head { display: flex; gap: 14px; align-items: flex-start; }
+    .logo { width: 46px; height: 46px; flex-shrink: 0; }
+    .logo svg { width: 46px; height: 46px; }
+    .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--muted); }
+    .stage { font-weight: 800; letter-spacing: 0.06em; font-size: 0.7rem; padding: 2px 8px; border-radius: 999px; }
+    .stage.leak { background: rgba(245, 158, 11, 0.16); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+    .stage.release { background: rgba(34, 197, 94, 0.14); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.4); }
+    .stage.open { background: rgba(167, 139, 250, 0.14); color: #c4b5fd; border: 1px solid rgba(167, 139, 250, 0.4); }
+    .new-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--leak); }
+    .title { font-size: 1.3rem; font-weight: 750; line-height: 1.25; margin-top: 3px; word-break: break-word; }
+    .first { font-size: 0.86rem; color: var(--text-2); margin-top: 3px; }
+    .lead { display: inline-block; font-size: 0.8rem; font-weight: 700; color: #4ade80; margin-top: 4px; }
+    .codenames { display: flex; gap: 6px; flex-wrap: wrap; }
+    .codename { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em; padding: 2px 8px; border-radius: 999px; color: #1a1205; background: #fbbf24; text-transform: uppercase; }
+    .ids { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip { font-size: 0.78rem; background: #1f2430; border: 1px solid var(--line-2); color: #e2e8f0; padding: 2px 7px; border-radius: 5px; }
+    .chip.more { color: var(--muted); }
+    .sources { list-style: none; border-left: 2px solid var(--line-2); margin-left: 4px; padding-left: 12px; display: flex; flex-direction: column; gap: 3px; }
+    .sources li { font-size: 0.82rem; color: var(--text-2); }
+    .sources .t { color: var(--muted); font-size: 0.76rem; margin-right: 6px; }
+    details summary { cursor: pointer; font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+    .foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; border-top: 1px solid var(--line); padding-top: 10px; }
+    .foot .count { font-size: 0.78rem; color: var(--muted); }
+    .actions { display: flex; gap: 6px; }
+    .empty { grid-column: 1/-1; text-align: center; padding: 48px; color: var(--muted); }
 
-    /* Stats Grid */
-    .stats-bar {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 14px;
-      margin-bottom: 24px;
-    }
-
-    .stat-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-card);
-      border-radius: 10px;
-      padding: 14px 18px;
-    }
-
-    .stat-label {
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    .stat-value {
-      font-size: 1.55rem;
-      font-weight: 800;
-      color: #fff;
-      margin-top: 4px;
-    }
-
-    /* Custom Diff Toolbar */
-    .differ-panel {
-      background: linear-gradient(180deg, rgba(30, 41, 59, 0.45), rgba(22, 25, 32, 0.9));
-      border: 1px solid var(--border-code);
-      border-radius: 10px;
-      padding: 16px 20px;
-      margin-bottom: 22px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .differ-controls {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    select, input[type="text"] {
-      background: var(--bg-page);
-      color: var(--text-primary);
-      border: 1px solid var(--border-code);
-      border-radius: 7px;
-      padding: 8px 12px;
-      font-size: 0.86rem;
-      outline: none;
-    }
-
-    select:focus, input[type="text"]:focus {
-      border-color: var(--link-blue);
-    }
-
-    /* Filter & Search Bar */
-    .filter-bar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 24px;
-    }
-
-    .filter-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .pill {
-      font-size: 0.82rem;
-      font-weight: 600;
-      padding: 6px 13px;
-      border-radius: 999px;
-      border: 1px solid var(--border-card);
-      background: var(--bg-card);
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-
-    .pill:hover {
-      border-color: var(--border-code);
-      color: #fff;
-    }
-
-    .pill.active {
-      background: var(--link-blue);
-      border-color: var(--link-blue);
-      color: #fff;
-    }
-
-    .search-input {
-      min-width: 280px;
-    }
-
-    /* Diff Cards Feed Grid */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(540px, 1fr));
-      gap: 22px;
-      align-items: start;
-    }
-
-    @media (max-width: 640px) {
-      .cards-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* EXACT LUMINABENCH / DISCORD EMBED CARD STYLING + @StatsWire DIAGONAL WATERMARK */
-    .diff-card {
-      position: relative;
-      overflow: hidden;
-      background-color: var(--bg-card);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='210' height='120' viewBox='0 0 210 120'%3E%3Ctext x='15' y='72' transform='rotate(-22 105 60)' fill='%23ffffff' fill-opacity='0.06' font-family='-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif' font-size='15' font-weight='800' letter-spacing='1.2'%3E%40StatsWire%3C/text%3E%3C/svg%3E");
-      background-repeat: repeat;
-      border: 1px solid var(--border-card);
-      border-left: 5px solid var(--accent-google);
-      border-radius: 8px;
-      padding: 22px 24px 18px 24px;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.45);
-      transition: transform 0.15s ease, border-color 0.15s ease;
-    }
-
-    .diff-card:hover {
-      background-color: var(--bg-card-hover);
-    }
-
-    .card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 14px;
-    }
-
-    .card-title {
-      font-size: 1.32rem;
-      font-weight: 700;
-      color: var(--link-blue);
-      margin-bottom: 0;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .card-title:hover {
-      text-decoration: underline;
-    }
-
-    .card-subtitle {
-      font-size: 0.98rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 16px;
-    }
-
-    .provider-logo {
-      width: 64px;
-      height: 64px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .card-build-row {
-      font-size: 0.96rem;
-      margin-bottom: 16px;
-      color: #fff;
-    }
-
-    .codename-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin: 6px 0 2px;
-    }
-
-    .codename-badge {
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      padding: 2px 8px;
-      border-radius: 999px;
-      color: #1a1205;
-      background: #fbbf24;
-      text-transform: uppercase;
-    }
-
-    .code-pill {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 0.86rem;
-      background: var(--bg-code);
-      border: 1px solid var(--border-code);
-      color: #e2e8f0;
-      padding: 2px 7px;
-      border-radius: 5px;
-      white-space: nowrap;
-    }
-
-    .model-list {
-      list-style: none;
-      margin-bottom: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .model-list li {
-      font-size: 0.96rem;
-      color: #fff;
-      line-height: 1.55;
-      word-break: break-word;
-    }
-
-    .model-list li strong {
-      font-weight: 700;
-    }
-
-    .card-meta-block {
-      font-size: 0.94rem;
-      color: var(--text-secondary);
-      margin-bottom: 12px;
-      line-height: 1.6;
-    }
-
-    .card-meta-block .code-pill {
-      white-space: normal;
-      word-break: break-all;
-    }
-
-    .card-meta-block strong {
-      color: #fff;
-    }
-
-    .card-links a, .card-credit a {
-      color: var(--link-blue);
-      text-decoration: none;
-    }
-
-    .card-links a:hover, .card-credit a:hover {
-      text-decoration: underline;
-    }
-
-    .card-footer-bar {
-      margin-top: 6px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .card-credit {
-      font-size: 0.84rem;
-      color: var(--text-muted);
-    }
-
-    .card-actions {
-      display: flex;
-      gap: 8px;
-    }
-
-    .btn-sm {
-      font-size: 0.76rem;
-      padding: 5px 10px;
-      border-radius: 6px;
-    }
-
-    /* Newness & Timestamp Badges */
-    .time-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.74rem;
-      font-weight: 700;
-      padding: 3px 9px;
-      border-radius: 999px;
-      letter-spacing: 0.02em;
-      margin-left: 8px;
-      vertical-align: middle;
-    }
-
-    .time-badge.is-hot {
-      background: rgba(16, 185, 129, 0.18);
-      color: #34d399;
-      border: 1px solid rgba(16, 185, 129, 0.45);
-      box-shadow: 0 0 12px rgba(16, 185, 129, 0.25);
-    }
-
-    .time-badge.is-today {
-      background: rgba(56, 189, 248, 0.15);
-      color: #38bdf8;
-      border: 1px solid rgba(56, 189, 248, 0.35);
-    }
-
-    .time-badge.is-older {
-      background: rgba(148, 163, 184, 0.12);
-      color: var(--text-muted);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-    }
-
-    .unread-badge {
-      display: inline-flex;
-      align-items: center;
-      font-size: 0.7rem;
-      font-weight: 800;
-      padding: 2px 7px;
-      border-radius: 999px;
-      background: #f59e0b;
-      color: #111;
-      margin-left: 6px;
-      vertical-align: middle;
-    }
-
-    .diff-card.card-unread {
-      box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.45), 0 12px 28px -5px rgba(0, 0, 0, 0.6);
-    }
-
-    .latest-banner {
-      background: linear-gradient(90deg, rgba(16, 185, 129, 0.14), rgba(56, 152, 255, 0.1));
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      border-radius: 10px;
-      padding: 13px 18px;
-      margin-bottom: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
+    .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.72); display: none; align-items: center; justify-content: center; z-index: 90; padding: 20px; }
+    .modal.open { display: flex; }
+    .modal-box { background: var(--card); border: 1px solid var(--line-2); border-radius: 12px; padding: 16px; max-width: 980px; width: 100%; }
+    .modal-box canvas { width: 100%; height: auto; border-radius: 8px; display: block; }
+    .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px; flex-wrap: wrap; }
 
     .toast {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: #10b981;
-      color: #06281e;
-      font-weight: 700;
-      padding: 12px 20px;
-      border-radius: 8px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      display: none;
-      z-index: 100;
+      position: fixed; bottom: 24px; right: 24px; background: #22c55e; color: #052e16; font-weight: 700;
+      padding: 11px 18px; border-radius: 8px; display: none; z-index: 100;
     }
   </style>
 </head>
 <body>
-
   <nav class="navbar">
-    <div class="navbar-inner">
+    <div class="nav-inner">
       <div class="brand">
-        <span class="brand-pulse"></span>
         <span class="brand-title">ModelPulse</span>
-        <span class="brand-badge">First-to-Report Diff Engine</span>
-        <span class="brand-badge" id="last-cloud-scan" title="Time of the last cloud scan that produced this feed">Cloud scan: —</span>
+        <span class="brand-tag">AI model leaks &amp; launches, first</span>
+        <span class="status" id="status"><span class="dot" id="status-dot"></span><span id="status-text">Loading…</span></span>
       </div>
       <div class="nav-actions">
-        <button class="btn btn-primary" onclick="triggerLiveScan()" id="scan-btn">
-          ⚡ Scan All Sources Now
-        </button>
-        <a class="btn" href="https://github.com/siddiquiamir/model-tracker/actions" target="_blank" rel="noopener">
-          ⚙️ Cloud Actions
-        </a>
-        <a class="btn" href="https://x.com/StatsWire" target="_blank" rel="noopener">
-          @StatsWire on X
-        </a>
+        <button class="btn" onclick="refreshFeed()" id="refresh-btn">↻ Refresh</button>
+        <a class="btn" href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a>
       </div>
     </div>
   </nav>
 
   <main class="container">
-    <!-- Top Metrics -->
-    <section class="stats-bar">
-      <div class="stat-card">
-        <div class="stat-label">Verified Diff Reports</div>
-        <div class="stat-value" id="stat-total-cards">—</div>
+    <div class="summary" id="summary"></div>
+    <section class="toolbar">
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-tab="all">All</button>
+        <button class="tab" data-tab="leak">🟠 Leaks</button>
+        <button class="tab" data-tab="release">🟢 Releases</button>
+        <button class="tab" data-tab="open">Open weights</button>
+        <button class="tab" data-tab="unread" id="tab-unread">Unread</button>
       </div>
-      <div class="stat-card">
-        <div class="stat-label">Desktop Build Diffs</div>
-        <div class="stat-value" id="stat-desktop-diffs">—</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">CLI & SDK Package Diffs</div>
-        <div class="stat-value" id="stat-cli-diffs">—</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Open-Source Models & Commits</div>
-        <div class="stat-value" id="stat-oss-models">—</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">AI Lab Subdomains (CT)</div>
-        <div class="stat-value" id="stat-ct-subdomains">—</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Total Identifiers Indexed</div>
-        <div class="stat-value" id="stat-total-models">—</div>
+      <div class="tools">
+        <select id="provider" aria-label="Provider"></select>
+        <input type="search" id="search" placeholder="Search model, ID or codename…" />
+        <button class="btn btn-sm" onclick="markAllRead()">✓ Mark read</button>
       </div>
     </section>
-
-    <!-- Interactive Antigravity Build Differ -->
-    <section class="differ-panel">
-      <div>
-        <div style="font-weight: 700; font-size: 0.95rem; color: #fff;">
-          🔬 Custom Antigravity Binary Build Comparator (ELF64 .rodata Slicer)
-        </div>
-        <div style="font-size: 0.82rem; color: var(--text-muted);">
-          Compare any two official Google Antigravity Linux x64 builds or Nightly Insiders builds in real time.
-        </div>
-      </div>
-      <div class="differ-controls">
-        <label style="font-size: 0.8rem; color: var(--text-muted);">Base Build:</label>
-        <select id="diff-old-select">
-          <option value="2.22.0">2.22.0</option>
-          <option value="2.23.0">2.23.0</option>
-          <option value="2.24.0">2.24.0</option>
-          <option value="2.25.0">2.25.0</option>
-        </select>
-        <span style="color: var(--text-muted); font-weight: 700;">→</span>
-        <label style="font-size: 0.8rem; color: var(--text-muted);">Target Build:</label>
-        <select id="diff-new-select">
-          <option value="2.23.0" selected>2.23.0</option>
-          <option value="2.25.0">2.25.0</option>
-        </select>
-        <button class="btn" onclick="runCustomBuildDiff()">Compare Builds</button>
-      </div>
-    </section>
-
-    <!-- Latest Breaking Drop Banner -->
-    <section class="latest-banner" id="latest-banner" style="display: none;"></section>
-
-    <!-- Category Filters & Search -->
-    <section class="filter-bar">
-      <div class="filter-pills" id="filter-pills">
-        <button class="pill active" data-filter="all" onclick="setFilter('all', this)">All Reports</button>
-        <button class="pill" data-filter="new-24h" onclick="setFilter('new-24h', this)" id="pill-new-24h">🟢 New (&lt;24h)</button>
-        <button class="pill" data-filter="unread" onclick="setFilter('unread', this)" id="pill-unread">✨ Unread</button>
-        <button class="pill" data-filter="desktop-diff" onclick="setFilter('desktop-diff', this)">Antigravity Desktop Diffs</button>
-        <button class="pill" data-filter="cli-sdk-diff" onclick="setFilter('cli-sdk-diff', this)">CLI & SDK Diffs</button>
-        <button class="pill" data-filter="open-source" onclick="setFilter('open-source', this)">Open-Source Hub & Radar</button>
-        <button class="pill" data-filter="subdomain-ct" onclick="setFilter('subdomain-ct', this)" id="pill-subdomain-ct">🌐 Subdomains (CT)</button>
-        <button class="pill" data-filter="google" onclick="setFilter('google', this)">Google</button>
-        <button class="pill" data-filter="anthropic" onclick="setFilter('anthropic', this)">Anthropic</button>
-        <button class="pill" data-filter="openai" onclick="setFilter('openai', this)">OpenAI</button>
-        <button class="pill" data-filter="xai" onclick="setFilter('xai', this)">xAI · Grok</button>
-        <button class="pill" data-filter="kimi" onclick="setFilter('kimi', this)">Kimi</button>
-        <button class="pill" data-filter="deepseek" onclick="setFilter('deepseek', this)">DeepSeek</button>
-        <button class="pill" data-filter="qwen" onclick="setFilter('qwen', this)">Qwen</button>
-        <button class="pill" data-filter="minimax" onclick="setFilter('minimax', this)">MiniMax</button>
-        <button class="pill" data-filter="zai" onclick="setFilter('zai', this)">Z.ai GLM</button>
-      </div>
-      <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-        <select id="sort-select" onchange="renderCards()">
-          <option value="newest">🕒 Sort: Newest Drops First</option>
-          <option value="featured">🔥 Sort: Featured Build Diffs First</option>
-        </select>
-        <button class="btn btn-sm" onclick="markAllRead()" title="Mark all current cards as seen in your browser">✓ Mark All Read</button>
-        <input
-          type="text"
-          id="search-box"
-          class="search-input"
-          placeholder="Search model ID or subdomain (e.g. gpt-6.1, gemini-4, tidewater.claude.ai, grok.com)..."
-          oninput="renderCards()"
-        />
-      </div>
-    </section>
-
-    <!-- Cards Container -->
-    <section class="cards-grid" id="cards-container"></section>
+    <section class="feed" id="feed"></section>
   </main>
 
-  <div class="toast" id="toast">Copied to clipboard!</div>
+  <div class="modal" id="modal" onclick="if (event.target === this) closeShare()">
+    <div class="modal-box">
+      <canvas id="share-canvas" width="1600" height="900"></canvas>
+      <div class="modal-actions">
+        <button class="btn" onclick="closeShare()">Close</button>
+        <button class="btn" onclick="copyText(SHARE_STORY)">Copy X text</button>
+        <button class="btn" onclick="downloadShare()">Download PNG</button>
+        <button class="btn btn-primary" onclick="copyShareImage()">Copy image</button>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
 
   <script>
-    let FEED_DATA = { cards: [], stats: {} };
-    let CURRENT_FILTER = "all";
+    let FEED = { stories: [], cards: [] };
+    let STORIES = [];
+    let TAB = "all";
+    let SHARE_STORY = null;
+    const SEEN_KEY = "modelpulse_seen_story_ids_v1";
+    const SITE = "siddiquiamir.github.io/model-tracker";
 
-    const PROVIDER_SVGS = {
-      google: `<svg viewBox="0 0 48 48" width="58" height="58"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>`,
-      anthropic: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#d97757"/><path d="M27.8 13h5.1l8.6 22h-5.3l-1.8-4.8h-8.5l-1.8 4.8H19l8.8-22zm-4.1 13.2h5.9L26.7 18l-3 8.2zM14.2 13h5.2l8.6 22h-5.3l-5.9-15.6L10.9 35H5.6l8.6-22z" fill="#141413"/></svg>`,
-      openai: `<svg viewBox="0 0 48 48" width="54" height="54"><circle cx="24" cy="24" r="22" fill="#10a37f"/><path d="M24 12c6.6 0 12 5.4 12 12s-5.4 12-12 12-12-5.4-12-12 5.4-12 12-12zm0 5a7 7 0 100 14 7 7 0 000-14z" fill="#fff"/></svg>`,
-      kimi: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#06b6d4"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="22" font-weight="900" font-family="sans-serif">K</text></svg>`,
-      minimax: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#ec4899"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="18" font-weight="900" font-family="sans-serif">MM</text></svg>`,
-      zai: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#6366f1"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="17" font-weight="900" font-family="sans-serif">GLM</text></svg>`,
-      nvidia: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#84cc16"/><text x="24" y="31" text-anchor="middle" fill="#111" font-size="19" font-weight="900" font-family="sans-serif">NV</text></svg>`,
-      openrouter: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#8b5cf6"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="19" font-weight="900" font-family="sans-serif">OR</text></svg>`,
-      modelsdev: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#14b8a6"/><text x="24" y="31" text-anchor="middle" fill="#111" font-size="18" font-weight="900" font-family="sans-serif">MD</text></svg>`,
-      xai: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#18181b" stroke="#52525b" stroke-width="2"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="22" font-weight="900" font-family="sans-serif">𝕏</text></svg>`,
-      qwen: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#7c3aed"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="20" font-weight="800" font-family="sans-serif">QW</text></svg>`,
-      deepseek: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#0284c7"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="20" font-weight="800" font-family="sans-serif">DS</text></svg>`,
-      meta: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#2563eb"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="22" font-weight="800" font-family="sans-serif">∞</text></svg>`,
-      mistral: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#f59e0b"/><text x="24" y="31" text-anchor="middle" fill="#111" font-size="22" font-weight="900" font-family="sans-serif">M</text></svg>`,
-      cursor: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#1e293b" stroke="#64748b" stroke-width="2"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="18" font-weight="900" font-family="sans-serif">CU</text></svg>`,
-      perplexity: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#0ea5e9"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="15" font-weight="900" font-family="sans-serif">PPLX</text></svg>`,
-      thinkingmachines: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#8b5cf6"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="16" font-weight="900" font-family="sans-serif">TML</text></svg>`,
-      opensource: `<svg viewBox="0 0 48 48" width="54" height="54"><rect width="48" height="48" rx="12" fill="#4f46e5"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="18" font-weight="800" font-family="sans-serif">HF</text></svg>`
+    const LOGOS = {
+      google: `<svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>`,
+      anthropic: `<svg viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#d97757"/><path d="M27.8 13h5.1l8.6 22h-5.3l-1.8-4.8h-8.5l-1.8 4.8H19l8.8-22zm-4.1 13.2h5.9L26.7 18l-3 8.2zM14.2 13h5.2l8.6 22h-5.3l-5.9-15.6L10.9 35H5.6l8.6-22z" fill="#141413"/></svg>`,
+      openai: `<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#10a37f"/><path d="M24 12c6.6 0 12 5.4 12 12s-5.4 12-12 12-12-5.4-12-12 5.4-12 12-12zm0 5a7 7 0 100 14 7 7 0 000-14z" fill="#fff"/></svg>`,
     };
-
-    function escapeHtml(str) {
-      return String(str || "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
+    const BADGES = {
+      kimi: ["#06b6d4", "K"], minimax: ["#ec4899", "MM"], zai: ["#6366f1", "GLM"], nvidia: ["#76b900", "NV"],
+      xai: ["#18181b", "xAI"], qwen: ["#7c3aed", "QW"], deepseek: ["#0284c7", "DS"], meta: ["#2563eb", "∞"],
+      mistral: ["#f59e0b", "M"], cursor: ["#1e293b", "CU"], perplexity: ["#0ea5e9", "PX"],
+      thinkingmachines: ["#8b5cf6", "TML"], microsoft: ["#0078d4", "MS"],
+    };
+    function logoSvg(slug, name) {
+      if (LOGOS[slug]) return LOGOS[slug];
+      const [bg, txt] = BADGES[slug] || ["#334155", (name || "AI").replace(/[^A-Za-z0-9]/g, "").slice(0, 2).toUpperCase() || "AI"];
+      const fs = txt.length > 2 ? 15 : 19;
+      return `<svg viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="${bg}"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="${fs}" font-weight="800" font-family="Segoe UI, Arial, sans-serif">${escapeHtml(txt)}</text></svg>`;
     }
 
-    function showToast(msg) {
+    function escapeHtml(s) {
+      return String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+    }
+    function safeUrl(u) { return /^https?:\/\//i.test(u || "") ? u : ""; }
+    function toast(msg) {
       const t = document.getElementById("toast");
-      t.textContent = msg;
-      t.style.display = "block";
-      setTimeout(() => { t.style.display = "none"; }, 2600);
+      t.textContent = msg; t.style.display = "block";
+      clearTimeout(toast._t); toast._t = setTimeout(() => { t.style.display = "none"; }, 2600);
+    }
+    const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    function fmtUTC(iso, withYear) {
+      const d = new Date(iso);
+      if (isNaN(d)) return "";
+      const p = n => String(n).padStart(2, "0");
+      return `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}${withYear ? " " + d.getUTCFullYear() : ""} · ${p(d.getUTCHours())}:${p(d.getUTCMinutes())} UTC`;
+    }
+    function ago(iso) {
+      const m = Math.max(0, Math.round((Date.now() - new Date(iso)) / 60000));
+      if (m < 60) return m <= 1 ? "just now" : `${m} min ago`;
+      if (m < 48 * 60) return `${Math.round(m / 60)} h ago`;
+      return `${Math.round(m / 1440)} d ago`;
+    }
+    const hoursAgo = iso => (Date.now() - new Date(iso)) / 3600000;
+    const stageOf = s => s.kind === "leak" ? "leak" : (s.open_weights ? "open" : "release");
+    const STAGE_LABEL = { leak: "LEAK", release: "RELEASED", open: "OPEN WEIGHTS" };
+
+    // Older feeds (before story grouping) only have cards: show one story per card
+    function storiesFromFeed(feed) {
+      if (Array.isArray(feed.stories)) return feed.stories;
+      return (feed.cards || []).filter(c => c.scanner !== "cert-transparency-snapshot").map(c => ({
+        id: "story-" + c.id, kind: "leak", open_weights: c.category === "open-source", title: c.title,
+        provider_slug: c.provider_slug, provider_name: "", detected_at: c.detected_at, updated_at: c.detected_at,
+        first_source: (c.header || "").split(" · ")[0], lead: "", codenames: c.codenames || [],
+        models: (c.models || []).map(m => ({ id: m.id, name: m.name })), source_count: 1,
+        sources: [{ label: (c.header || "").split(" · ")[0], detected_at: c.detected_at, url: (c.links || [])[0]?.url || "" }],
+        x_post_text: c.x_post_text || c.title,
+      }));
     }
 
-    const SEEN_STORAGE_KEY = "modelpulse_seen_card_ids_v1";
-
-    function getSeenCardIds() {
-      try {
-        const raw = localStorage.getItem(SEEN_STORAGE_KEY);
-        return raw ? new Set(JSON.parse(raw)) : null;
-      } catch {
-        return null;
-      }
+    function getSeen() {
+      try { const raw = localStorage.getItem(SEEN_KEY); return raw ? new Set(JSON.parse(raw)) : null; } catch { return null; }
     }
+    function saveSeen(set) { try { localStorage.setItem(SEEN_KEY, JSON.stringify([...set])); } catch {} }
+    function markAllRead() { saveSeen(new Set(STORIES.map(s => s.id))); render(); toast("All stories marked as read"); }
 
-    function saveSeenCardIds(setObj) {
-      try {
-        localStorage.setItem(SEEN_STORAGE_KEY, JSON.stringify([...setObj]));
-      } catch {}
-    }
-
-    function markAllRead() {
-      const allIds = new Set((FEED_DATA.cards || []).map(c => c.id));
-      saveSeenCardIds(allIds);
-      renderCards();
-      showToast("Marked all current cards as read!");
-    }
-
-    function getTimeInfo(isoStr) {
-      if (!isoStr) return { badgeText: "Recent", cssClass: "is-older", hoursAgo: 999, exactStr: "" };
-      const dt = new Date(isoStr);
-      if (isNaN(dt.getTime())) return { badgeText: isoStr, cssClass: "is-older", hoursAgo: 999, exactStr: isoStr };
-      const diffMs = Math.max(0, Date.now() - dt.getTime());
-      const mins = Math.floor(diffMs / 60000);
-      const hours = diffMs / 3600000;
-      const days = Math.floor(hours / 24);
-      const exactStr = dt.toLocaleString();
-
-      if (mins < 60) {
-        return { badgeText: `🟢 NEW · ${mins <= 1 ? 'Just now' : mins + 'm ago'}`, cssClass: "is-hot", hoursAgo: hours, exactStr };
-      }
-      if (hours < 6) {
-        return { badgeText: `🟢 NEW · ${Math.floor(hours)}h ago`, cssClass: "is-hot", hoursAgo: hours, exactStr };
-      }
-      if (hours < 24) {
-        return { badgeText: `⚡ TODAY · ${Math.floor(hours)}h ago`, cssClass: "is-today", hoursAgo: hours, exactStr };
-      }
-      const shortDate = dt.toLocaleDateString(undefined, { month: "short", day: "numeric" });
-      return { badgeText: `🕒 ${shortDate} (${days}d ago)`, cssClass: "is-older", hoursAgo: hours, exactStr };
-    }
-
-    function setFilter(filterKey, btnEl) {
-      CURRENT_FILTER = filterKey;
-      document.querySelectorAll("#filter-pills .pill").forEach(p => p.classList.remove("active"));
-      btnEl.classList.add("active");
-      renderCards();
-    }
-
-    function renderCardHtml(card, idx, seenSet) {
-      const logoSvg = PROVIDER_SVGS[card.provider_slug] || PROVIDER_SVGS.google;
-      const modelsHtml = (card.models || []).map(m =>
-        `<li>• <strong>${escapeHtml(m.name)}</strong> — <span class="code-pill">${escapeHtml(m.id)}</span></li>`
-      ).join("");
-
-      const linksHtml = (card.links || []).map(l =>
-        `<a href="${escapeHtml(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>`
-      ).join(" · ");
-
-      const primaryUrl = (card.links && card.links[0]) ? card.links[0].url : "#";
-      const ghUser = FEED_DATA.github_user || "siddiquiamir";
-      const tInfo = getTimeInfo(card.detected_at);
-      const isUnread = seenSet && !seenSet.has(card.id);
-      const codenameHtml = (card.codenames || []).length
-        ? `<div class="codename-row">${card.codenames.map(c => `<span class="codename-badge" title="Token not found in any public model catalog">CODENAME: ${escapeHtml(c)}</span>`).join("")}</div>`
+    function storyHtml(s, idx, seen) {
+      const stage = stageOf(s);
+      const unread = seen && !seen.has(s.id);
+      const ids = (s.models || []).slice(0, 8).map(m => `<span class="chip mono">${escapeHtml(m.id)}</span>`).join("");
+      const moreIds = (s.models || []).length > 8 ? `<span class="chip more">+${s.models.length - 8}</span>` : "";
+      const srcRow = src => {
+        const url = safeUrl(src.url);
+        const label = url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(src.label)}</a>` : escapeHtml(src.label);
+        return `<li><span class="t">${escapeHtml(fmtUTC(src.detected_at))}</span>${label}</li>`;
+      };
+      const srcs = s.sources || [];
+      const srcHtml = srcs.length > 1
+        ? `<ol class="sources">${srcs.slice(0, 4).map(srcRow).join("")}</ol>` +
+          (srcs.length > 4 ? `<details><summary>+${srcs.length - 4} more sources</summary><ol class="sources">${srcs.slice(4).map(srcRow).join("")}</ol></details>` : "")
         : "";
-
+      const codenames = (s.codenames || []).length
+        ? `<div class="codenames">${s.codenames.map(c => `<span class="codename" title="Token not found in any public model catalog">codename: ${escapeHtml(c)}</span>`).join("")}</div>` : "";
       return `
-        <article class="diff-card ${isUnread ? 'card-unread' : ''}" style="border-left-color: ${escapeHtml(card.accent_color || '#38bdf8')}">
-          <div>
-            <div class="card-top">
-              <div>
-                <a class="card-title" href="${escapeHtml(primaryUrl)}" target="_blank" rel="noopener">
-                  ${escapeHtml(card.title)}
-                </a>
+        <article class="story ${stage} ${unread ? "unread" : ""}">
+          <div class="head">
+            <div class="logo">${logoSvg(s.provider_slug, s.provider_name)}</div>
+            <div style="min-width:0">
+              <div class="meta">
+                <span class="stage ${stage}">${STAGE_LABEL[stage]}</span>
+                ${s.provider_name ? `<span>${escapeHtml(s.provider_name)}</span>·` : ""}
+                <span title="${escapeHtml(fmtUTC(s.detected_at, true))}">${escapeHtml(ago(s.detected_at))}</span>
+                ${unread ? `<span class="new-dot" title="Unread"></span>` : ""}
               </div>
-              <div class="provider-logo">${logoSvg}</div>
-            </div>
-            ${codenameHtml}
-
-            <div class="card-build-row" style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
-              <div>
-                <strong>${escapeHtml(card.build_label || "Build")}:</strong>
-                <span class="code-pill">${escapeHtml(card.build_transition)}</span>
-              </div>
-              <span style="font-size:0.75rem; font-weight:800; color:rgba(255,255,255,0.34); letter-spacing:0.04em; user-select:none;">@StatsWire</span>
-            </div>
-
-            <ul class="model-list">
-              ${modelsHtml}
-            </ul>
-
-            ${card.source_text ? `<div class="card-meta-block"><div><strong>Source:</strong> ${escapeHtml(card.source_text)}</div></div>` : ""}
-          </div>
-
-          <div class="card-footer-bar">
-            <div class="card-credit" style="font-size: 0.92rem; color: var(--text-secondary);">
-              Developed by <a href="https://x.com/StatsWire" target="_blank" rel="noopener" style="font-weight:600;">@StatsWire</a> on X
-            </div>
-            <div class="card-actions" data-html2canvas-ignore="true">
-              <button class="btn btn-sm btn-primary" onclick="saveCardPng(${idx}, this)" title="Download clean 2x PNG of this card">
-                📸 Save PNG
-              </button>
-              <button class="btn btn-sm" onclick="copyCardImage(${idx}, this)" title="Copy card image directly to clipboard (Ctrl+V into X)">
-                📋 Copy Image
-              </button>
-              <button class="btn btn-sm" onclick="copyTweet(${idx})" title="Copy ready-to-post X / Twitter text">
-                🐦 Copy X Text
-              </button>
+              <div class="title">${escapeHtml(s.title)}</div>
+              <div class="first">First spotted ${escapeHtml(fmtUTC(s.detected_at))} in <b>${escapeHtml(s.first_source)}</b></div>
+              ${s.lead ? `<span class="lead">⏱ ${escapeHtml(s.lead)}</span>` : ""}
             </div>
           </div>
-        </article>
-      `;
+          ${codenames}
+          ${ids || moreIds ? `<div class="ids">${ids}${moreIds}</div>` : ""}
+          ${srcHtml}
+          <div class="foot">
+            <span class="count">${srcs.length} source${srcs.length === 1 ? "" : "s"}${s.updated_at && s.updated_at !== s.detected_at ? " · updated " + escapeHtml(ago(s.updated_at)) : ""}</span>
+            <div class="actions">
+              <button class="btn btn-sm" onclick="copyText(STORIES_VIEW[${idx}])">Copy X text</button>
+              <button class="btn btn-sm btn-primary" onclick="openShare(${idx})">Share image</button>
+            </div>
+          </div>
+        </article>`;
     }
 
-    function getFilteredCards(seenSet) {
-      const q = (document.getElementById("search-box").value || "").trim().toLowerCase();
-      const sortMode = (document.getElementById("sort-select")?.value) || "newest";
-
-      const uniqueCards = [];
-      const seenKeys = new Set();
-      for (const c of (FEED_DATA.cards || [])) {
-        const key = `${c.id}|${c.header}|${c.title}|${c.build_transition}`;
-        if (seenKeys.has(c.id) || seenKeys.has(key)) continue;
-        seenKeys.add(c.id);
-        seenKeys.add(key);
-        uniqueCards.push(c);
+    let STORIES_VIEW = [];
+    function render() {
+      let seen = getSeen();
+      if (!seen && STORIES.length) {  // first visit: only the last 24h counts as unread
+        seen = new Set(STORIES.filter(s => hoursAgo(s.updated_at || s.detected_at) > 24).map(s => s.id));
+        saveSeen(seen);
       }
-
-      let list = uniqueCards.filter(c => {
-        if (CURRENT_FILTER === "new-24h") {
-          if (c.scanner === "cert-transparency-snapshot") return false;
-          if (getTimeInfo(c.detected_at).hoursAgo > 24) return false;
-        } else if (CURRENT_FILTER === "unread") {
-          if (c.scanner === "cert-transparency-snapshot") return false;
-          if (!seenSet || seenSet.has(c.id)) return false;
-        } else if (CURRENT_FILTER === "all") {
-          if (!q && c.scanner === "cert-transparency-snapshot") return false;
-        } else {
-          if (c.category !== CURRENT_FILTER && c.provider_slug !== CURRENT_FILTER) {
-            return false;
-          }
-        }
+      const prov = document.getElementById("provider").value;
+      const q = document.getElementById("search").value.trim().toLowerCase();
+      STORIES_VIEW = STORIES.filter(s => {
+        if (TAB === "leak" && s.kind !== "leak") return false;
+        if (TAB === "release" && s.kind !== "release") return false;
+        if (TAB === "open" && !s.open_weights) return false;
+        if (TAB === "unread" && (!seen || seen.has(s.id))) return false;
+        if (prov && (s.provider_name || "Other") !== prov) return false;
         if (!q) return true;
-        const hay = [
-          c.header, c.title, c.build_transition, c.evidence,
-          ...(c.models || []).map(m => `${m.id} ${m.name}`)
-        ].join(" ").toLowerCase();
+        const hay = [s.title, s.provider_name, s.first_source, ...(s.codenames || []), ...(s.models || []).map(m => m.id), ...(s.sources || []).map(x => x.label)].join(" ").toLowerCase();
         return hay.includes(q);
       });
-
-      if (sortMode === "newest") {
-        list = [...list].sort((a, b) => new Date(b.detected_at || 0) - new Date(a.detected_at || 0));
-      }
-      return list;
+      const unread = seen ? STORIES.filter(s => !seen.has(s.id)).length : 0;
+      document.getElementById("tab-unread").textContent = `Unread (${unread})`;
+      const feedEl = document.getElementById("feed");
+      feedEl.innerHTML = STORIES_VIEW.length
+        ? STORIES_VIEW.map((s, i) => storyHtml(s, i, seen)).join("")
+        : `<div class="empty">Nothing here yet.</div>`;
     }
 
-    function renderLatestBanner() {
-      const banner = document.getElementById("latest-banner");
-      const all = (FEED_DATA.cards || []).filter(c => c.scanner !== "cert-transparency-snapshot");
-      if (!all.length || !banner) return;
-      const newest = [...all].sort((a, b) => new Date(b.detected_at || 0) - new Date(a.detected_at || 0))[0];
-      if (!newest) return;
-      const tInfo = getTimeInfo(newest.detected_at);
-      const firstModel = (newest.models && newest.models[0]) ? newest.models[0].id : newest.build_transition;
-      banner.style.display = "flex";
-      banner.innerHTML = `
-        <div style="display:flex; align-items:center; gap: 10px; flex-wrap: wrap;">
-          <span class="time-badge is-hot" style="margin-left:0;">🚨 LATEST DETECTED CHANGE · ${escapeHtml(tInfo.badgeText.replace(/^🟢 NEW · |^⚡ TODAY · |^🕒 /, ''))}</span>
-          <strong style="color:#fff;">${escapeHtml(newest.header)}:</strong>
-          <span style="color:var(--link-blue); font-weight:700;">${escapeHtml(newest.title)}</span>
-          <span class="code-pill">${escapeHtml(firstModel)}</span>
-          <span style="font-size:0.8rem; color:var(--text-muted);">(${escapeHtml(tInfo.exactStr)})</span>
-        </div>
-        <button class="btn btn-sm btn-primary" onclick="navigator.clipboard.writeText(${JSON.stringify(newest.x_post_text || newest.title).replace(/</g, '\\u003c')}); showToast('Copied latest drop for X/Twitter!');">
-          🐦 Copy Latest for X
-        </button>
-      `;
+    function renderChrome() {
+      const leaks = STORIES.filter(s => s.kind === "leak").length;
+      const day = STORIES.filter(s => hoursAgo(s.updated_at || s.detected_at) <= 24).length;
+      const srcCount = STORIES.reduce((n, s) => n + (s.sources || []).length, 0);
+      document.getElementById("summary").innerHTML =
+        `<b>${STORIES.length}</b> models tracked (last 21 days) · <b>${leaks}</b> leaks · <b>${STORIES.length - leaks}</b> releases · <b>${day}</b> active in 24h · ${srcCount} source sightings merged`;
+      const counts = {};
+      STORIES.forEach(s => { const p = s.provider_name || "Other"; counts[p] = (counts[p] || 0) + 1; });
+      const sel = document.getElementById("provider");
+      const cur = sel.value;
+      sel.innerHTML = `<option value="">All providers</option>` + Object.entries(counts).sort((a, b) => b[1] - a[1])
+        .map(([p, n]) => `<option value="${escapeHtml(p)}">${escapeHtml(p)} (${n})</option>`).join("");
+      sel.value = counts[cur] ? cur : "";
+      renderStatus();
     }
 
-    function renderCards() {
-      const container = document.getElementById("cards-container");
-      let seenSet = getSeenCardIds();
-      // First time visitor: initialize seenSet with cards older than 24h (plus static CT snapshots) so today's drops stand out as UNREAD!
-      if (!seenSet && (FEED_DATA.cards || []).length) {
-        seenSet = new Set(
-          (FEED_DATA.cards || [])
-            .filter(c => c.scanner === "cert-transparency-snapshot" || getTimeInfo(c.detected_at).hoursAgo > 24)
-            .map(c => c.id)
-        );
-        saveSeenCardIds(seenSet);
-      }
-
-      const new24Count = (FEED_DATA.cards || []).filter(c => c.scanner !== "cert-transparency-snapshot" && getTimeInfo(c.detected_at).hoursAgo <= 24).length;
-      const unreadCount = seenSet ? (FEED_DATA.cards || []).filter(c => c.scanner !== "cert-transparency-snapshot" && !seenSet.has(c.id)).length : 0;
-      const ctCount = (FEED_DATA.cards || []).filter(c => c.category === "subdomain-ct").length;
-      const p24 = document.getElementById("pill-new-24h");
-      const pUn = document.getElementById("pill-unread");
-      const pCt = document.getElementById("pill-subdomain-ct");
-      if (p24) p24.textContent = `🟢 New <24h (${new24Count})`;
-      if (pUn) pUn.textContent = `✨ Unread (${unreadCount})`;
-      if (pCt) pCt.textContent = ctCount ? `🌐 Subdomains (CT) (${ctCount})` : `🌐 Subdomains (CT)`;
-
-      renderLatestBanner();
-
-      const filtered = getFilteredCards(seenSet);
-      window._CURRENT_DISPLAYED_CARDS = filtered;
-      if (!filtered.length) {
-        container.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 48px; color: var(--text-muted);">No matching model diff cards found.</div>`;
-        return;
-      }
-      container.innerHTML = filtered.map((c, i) => renderCardHtml(c, i, seenSet)).join("");
-    }
-
-    async function renderCardCanvas(btnEl) {
-      if (typeof html2canvas === "undefined") {
-        showToast("Image renderer still loading — try again in 1s");
-        return null;
-      }
-      const cardEl = btnEl.closest(".diff-card");
-      if (!cardEl) return null;
-      return await html2canvas(cardEl, {
-        backgroundColor: "#161920",
-        scale: 2,
-        useCORS: true,
-        logging: false
-      });
-    }
-
-    async function saveCardPng(idx, btnEl) {
-      const card = window._CURRENT_DISPLAYED_CARDS[idx];
-      if (!card) return;
-      const origText = btnEl.textContent;
-      btnEl.textContent = "⏳ Saving...";
-      try {
-        const canvas = await renderCardCanvas(btnEl);
-        if (!canvas) return;
-        const link = document.createElement("a");
-        const slug = String(card.id || "card").replace(/[^a-zA-Z0-9._-]/g, "-");
-        link.download = `StatsWire-${slug}.png`;
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-        showToast("Saved high-res PNG card!");
-      } catch (e) {
-        console.error(e);
-        showToast("Failed to save PNG");
-      } finally {
-        btnEl.textContent = origText;
-      }
-    }
-
-    async function copyCardImage(idx, btnEl) {
-      const card = window._CURRENT_DISPLAYED_CARDS[idx];
-      if (!card) return;
-      const origText = btnEl.textContent;
-      btnEl.textContent = "⏳ Copying...";
-      try {
-        const canvas = await renderCardCanvas(btnEl);
-        if (!canvas) return;
-        const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
-        await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
-        showToast("Copied card PNG to clipboard! Press Ctrl+V in X/Twitter.");
-      } catch (e) {
-        console.error(e);
-        showToast("Clipboard image copy unsupported here — use Save PNG!");
-      } finally {
-        btnEl.textContent = origText;
-      }
-    }
-
-    function copyTweet(idx) {
-      const card = window._CURRENT_DISPLAYED_CARDS[idx];
-      if (!card) return;
-      const rawTxt = card.x_post_text || card.title; navigator.clipboard.writeText(rawTxt.includes("@StatsWire") ? rawTxt : rawTxt + "\n\nTracked by @StatsWire");
-      showToast("Copied ready-to-post X / Twitter breaking report!");
-    }
-
-    function copyDiscordMd(idx) {
-      const card = window._CURRENT_DISPLAYED_CARDS[idx];
-      if (!card) return;
-      const bullets = (card.models || []).map(m => `• **${m.name}** — \`${m.id}\``).join("\n");
-      const md = [
-        `**${card.header}**`,
-        `### ${card.title}`,
-        `**${card.subtitle}**`,
-        "",
-        `**${card.build_label || 'Build'}:** \`${card.build_transition}\``,
-        "",
-        bullets,
-        "",
-        `**Evidence:** \`${card.evidence}\``,
-        `**Source:** ${card.source_text}`,
-        "",
-        `Developed by **@StatsWire** on X`
-      ].join("\n");
-      navigator.clipboard.writeText(md);
-      showToast("Copied Discord Markdown card!");
-    }
-
-    function populateBuildSelectors(builds) {
-      if (!builds || !builds.length) return;
-      const oldSel = document.getElementById("diff-old-select");
-      const newSel = document.getElementById("diff-new-select");
-      oldSel.innerHTML = builds.map(b => `<option value="${escapeHtml(b)}" ${b === '2.22.0' ? 'selected' : ''}>${escapeHtml(b)}</option>`).join("");
-      newSel.innerHTML = builds.map(b => `<option value="${escapeHtml(b)}" ${b === '2.23.0' ? 'selected' : ''}>${escapeHtml(b)}</option>`).join("");
-    }
-
-    function updateDashboardMetrics() {
-      const cards = FEED_DATA.cards || [];
-      const deskCount = cards.filter(c => c.category === "desktop-diff").length;
-      const cliCount = cards.filter(c => c.category === "cli-sdk-diff").length;
-      const ossCount = cards.filter(c => c.category === "open-source").length;
-      const ctCards = cards.filter(c => c.category === "subdomain-ct");
-      const ctSubsSum = ctCards.reduce((acc, c) => {
-        const m = String(c.build_transition || "").match(/(\d+)\s+(?:notable|tracked)/);
-        return acc + (m ? parseInt(m[1], 10) : (c.models || []).length);
-      }, 0);
-      const totalModels = cards.reduce((acc, c) => acc + ((c.models || []).length), 0);
-
-      document.getElementById("stat-total-cards").textContent = cards.length;
-      document.getElementById("stat-desktop-diffs").textContent = deskCount || (FEED_DATA.stats?.desktop_diffs ?? "—");
-      document.getElementById("stat-cli-diffs").textContent = cliCount || (FEED_DATA.stats?.cli_sdk_diffs ?? "—");
-      document.getElementById("stat-oss-models").textContent = ossCount || (FEED_DATA.stats?.open_source_models ?? "—");
-      const ctEl = document.getElementById("stat-ct-subdomains");
-      if (ctEl) ctEl.textContent = ctSubsSum || ctCards.length || (FEED_DATA.stats?.subdomain_ct_cards ?? "—");
-      document.getElementById("stat-total-models").textContent = totalModels || (FEED_DATA.stats?.total_models_indexed ?? "—");
-      populateBuildSelectors(FEED_DATA.available_antigravity_builds);
-      renderCards();
+    function renderStatus() {
+      if (!FEED.generated_at) return;
+      const mins = (Date.now() - new Date(FEED.generated_at)) / 60000;
+      document.getElementById("status-dot").className = "dot" + (mins > 45 ? " stale" : "");
+      const n = FEED.stats?.sources_ok;
+      document.getElementById("status-text").textContent = `Last sweep ${ago(FEED.generated_at)}${n ? ` · ${n} sources ok` : ""}`;
     }
 
     async function loadFeed() {
       const bust = Date.now();
-      const rawUrl = "https://raw.githubusercontent.com/siddiquiamir/model-tracker/main/docs/data/feed.json?t=" + bust;
-      const localUrl = "./data/feed.json?t=" + bust;
-      try {
-        const results = await Promise.allSettled([
-          fetch(localUrl, { cache: "no-store" }).then(r => r.ok ? r.json() : null),
-          fetch(rawUrl, { cache: "no-store" }).then(r => r.ok ? r.json() : null)
-        ]);
-        const candidates = results
-          .filter(r => r.status === "fulfilled" && r.value && Array.isArray(r.value.cards))
-          .map(r => r.value);
-        if (candidates.length) {
-          candidates.sort((a, b) => new Date(b.generated_at || 0) - new Date(a.generated_at || 0));
-          FEED_DATA = candidates[0];
-          CLOUD_SCAN_AT = FEED_DATA.generated_at || null;
-          renderCloudScanAge();
-          updateDashboardMetrics();
-        }
-      } catch (err) {
-        console.error("Failed to load feed.json:", err);
-      }
+      const urls = ["./data/feed.json?t=" + bust, "https://raw.githubusercontent.com/siddiquiamir/model-tracker/main/docs/data/feed.json?t=" + bust];
+      const results = await Promise.allSettled(urls.map(u => fetch(u, { cache: "no-store" }).then(r => r.ok ? r.json() : null)));
+      const feeds = results.filter(r => r.status === "fulfilled" && r.value && (r.value.stories || r.value.cards)).map(r => r.value);
+      if (!feeds.length) return;
+      // Prefer a story-format feed, then the freshest one
+      feeds.sort((a, b) => (!!b.stories - !!a.stories) || (new Date(b.generated_at || 0) - new Date(a.generated_at || 0)));
+      FEED = feeds[0];
+      STORIES = storiesFromFeed(FEED).sort((a, b) => new Date(b.detected_at) - new Date(a.detected_at));
+      renderChrome();
+      render();
     }
-
-    // The cloud scanner (Hugging Face, OpenRouter, ... with novelty filtering) is the single source of truth;
-    // the browser only re-pulls its published feed.
-    async function runBrowserLiveScan() {
-      await loadFeed();
-    }
-
-    async function triggerLiveScan() {
-      const btn = document.getElementById("scan-btn");
-      btn.textContent = "⏳ Scanning Live Sources...";
+    async function refreshFeed() {
+      const btn = document.getElementById("refresh-btn");
       btn.disabled = true;
-      try {
-        const res = await fetch("/api/scan", { method: "POST" });
-        if (res.ok) {
-          FEED_DATA = await res.json();
-          updateDashboardMetrics();
-          showToast("Live backend scan completed!");
-          btn.textContent = "⚡ Scan All Sources Now";
-          btn.disabled = false;
-          return;
-        }
-      } catch (_) {}
-      await runBrowserLiveScan();
-      showToast("Reloaded the latest cloud scan feed.");
-      btn.textContent = "⚡ Scan All Sources Now";
+      await loadFeed();
       btn.disabled = false;
+      toast("Feed refreshed");
     }
 
-    async function runCustomBuildDiff() {
-      const oldVer = document.getElementById("diff-old-select").value;
-      const newVer = document.getElementById("diff-new-select").value;
-      if (oldVer === newVer) {
-        showToast("Select two different Antigravity builds to compare.");
-        return;
+    function copyText(s) {
+      if (!s) return;
+      navigator.clipboard.writeText(s.x_post_text || s.title).then(() => toast("X post text copied"), () => toast("Clipboard blocked"));
+    }
+
+    /* ---------- 1600x900 share image (X / Twitter 16:9) ---------- */
+    function loadSvgImage(svg) {
+      return new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = () => resolve(null);
+        const withNs = svg.replace("<svg ", '<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" ');
+        img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(withNs);
+      });
+    }
+    function roundRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+    }
+    function fitFont(ctx, text, weight, maxSize, minSize, maxWidth, family) {
+      let size = maxSize;
+      while (size > minSize) {
+        ctx.font = `${weight} ${size}px ${family}`;
+        if (ctx.measureText(text).width <= maxWidth) break;
+        size -= 4;
       }
+      return size;
+    }
+    function ellipsize(ctx, text, maxWidth) {
+      if (ctx.measureText(text).width <= maxWidth) return text;
+      while (text.length > 1 && ctx.measureText(text + "…").width > maxWidth) text = text.slice(0, -1);
+      return text + "…";
+    }
+
+    async function drawShare(s) {
+      const W = 1600, H = 900, PAD = 96;
+      const SANS = '"Segoe UI", Inter, -apple-system, Roboto, Arial, sans-serif';
+      const MONO = 'ui-monospace, "Cascadia Mono", Consolas, Menlo, monospace';
+      const stage = stageOf(s);
+      const color = { leak: "#f59e0b", release: "#22c55e", open: "#a78bfa" }[stage];
+      const canvas = document.getElementById("share-canvas");
+      const ctx = canvas.getContext("2d");
+
+      ctx.fillStyle = "#0b0d11"; ctx.fillRect(0, 0, W, H);
+      const glow = ctx.createRadialGradient(W - 200, 120, 40, W - 200, 120, 900);
+      glow.addColorStop(0, color + "33"); glow.addColorStop(1, "#0b0d1100");
+      ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = color; ctx.fillRect(0, 0, 14, H);
+
+      // Header: logo + provider, stage pill
+      const logo = await loadSvgImage(logoSvg(s.provider_slug, s.provider_name));
+      if (logo) ctx.drawImage(logo, PAD, 78, 88, 88);
+      ctx.fillStyle = "#cbd5e1"; ctx.font = `600 40px ${SANS}`; ctx.textBaseline = "middle";
+      ctx.fillText(s.provider_name || "New model", PAD + (logo ? 112 : 0), 122);
+      const pill = STAGE_LABEL[stage];
+      ctx.font = `800 34px ${SANS}`;
+      const pw = ctx.measureText(pill).width + 64;
+      roundRect(ctx, W - PAD - pw, 92, pw, 62, 31);
+      ctx.fillStyle = color + "26"; ctx.fill(); ctx.strokeStyle = color; ctx.lineWidth = 3; ctx.stroke();
+      ctx.fillStyle = color; ctx.textAlign = "center"; ctx.fillText(pill, W - PAD - pw / 2, 124); ctx.textAlign = "left";
+
+      // Title
+      const size = fitFont(ctx, s.title, 800, 132, 64, W - PAD * 2, SANS);
+      ctx.font = `800 ${size}px ${SANS}`; ctx.fillStyle = "#ffffff"; ctx.textBaseline = "alphabetic";
+      ctx.fillText(ellipsize(ctx, s.title, W - PAD * 2), PAD, 200 + size);
+      let y = 200 + size + 34;
+
+      // Codename badges
+      if ((s.codenames || []).length) {
+        let x = PAD;
+        ctx.font = `800 28px ${SANS}`; ctx.textBaseline = "middle";
+        for (const c of s.codenames.slice(0, 3)) {
+          const t = "CODENAME: " + c.toUpperCase();
+          const w = ctx.measureText(t).width + 40;
+          roundRect(ctx, x, y, w, 50, 25); ctx.fillStyle = "#fbbf24"; ctx.fill();
+          ctx.fillStyle = "#1a1205"; ctx.fillText(t, x + 20, y + 26);
+          x += w + 14;
+        }
+        y += 74;
+      } else {
+        y += 14;
+      }
+
+      // Stat columns
+      const leadMatch = (s.lead || "").match(/^(.+?) (before .+)$/);
+      const cols = [
+        ["FIRST SPOTTED", fmtUTC(s.detected_at, false), "in " + (s.first_source || "")],
+        ["CONFIRMED BY", `${(s.sources || []).length} source${(s.sources || []).length === 1 ? "" : "s"}`,
+          (s.sources || []).slice(1, 3).map(x => x.label).join(", ") || "single source"],
+      ];
+      if (leadMatch) cols.push(["AHEAD BY", leadMatch[1], leadMatch[2]]);
+      const colW = (W - PAD * 2) / cols.length;
+      ctx.textBaseline = "alphabetic";
+      cols.forEach(([label, value, sub], i) => {
+        const x = PAD + i * colW;
+        ctx.fillStyle = "#8b95a7"; ctx.font = `700 30px ${SANS}`; ctx.fillText(label, x, y + 30);
+        ctx.fillStyle = i === 2 ? "#4ade80" : "#f1f5f9"; ctx.font = `700 56px ${SANS}`;
+        ctx.fillText(ellipsize(ctx, value, colW - 30), x, y + 98);
+        ctx.fillStyle = "#a3adbd"; ctx.font = `500 32px ${SANS}`;
+        ctx.fillText(ellipsize(ctx, sub, colW - 30), x, y + 146);
+      });
+      y += 200;
+
+      // Identifier chips
+      ctx.font = `500 32px ${MONO}`; ctx.textBaseline = "middle";
+      let x = PAD;
+      const ids = (s.models || []).map(m => m.id);
+      for (let i = 0; i < ids.length && y < H - 160; i++) {
+        const t = ids[i].length > 40 ? ids[i].slice(0, 39) + "…" : ids[i];
+        const w = ctx.measureText(t).width + 36;
+        if (x + w > W - PAD) {
+          const rest = `+${ids.length - i}`;
+          roundRect(ctx, x, y, ctx.measureText(rest).width + 36, 58, 10); ctx.fillStyle = "#1f2430"; ctx.fill();
+          ctx.fillStyle = "#8b95a7"; ctx.fillText(rest, x + 18, y + 30);
+          break;
+        }
+        roundRect(ctx, x, y, w, 58, 10); ctx.fillStyle = "#1f2430"; ctx.fill();
+        ctx.strokeStyle = "#323948"; ctx.lineWidth = 2; ctx.stroke();
+        ctx.fillStyle = "#e2e8f0"; ctx.fillText(t, x + 18, y + 30);
+        x += w + 14;
+      }
+
+      // Footer
+      ctx.fillStyle = "#252a35"; ctx.fillRect(PAD, H - 108, W - PAD * 2, 2);
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = "#8b95a7"; ctx.font = `500 28px ${SANS}`;
+      ctx.fillText(`ModelPulse · ${SITE}`, PAD, H - 56);
+      ctx.fillStyle = "#ffffff"; ctx.font = `800 36px ${SANS}`; ctx.textAlign = "right";
+      ctx.fillText("@StatsWire", W - PAD, H - 56); ctx.textAlign = "left";
+      return canvas;
+    }
+
+    async function openShare(idx) {
+      SHARE_STORY = STORIES_VIEW[idx];
+      if (!SHARE_STORY) return;
+      await drawShare(SHARE_STORY);
+      document.getElementById("modal").classList.add("open");
+    }
+    function closeShare() { document.getElementById("modal").classList.remove("open"); }
+    function shareFileName() { return `ModelPulse-${String(SHARE_STORY?.title || "model").replace(/[^a-zA-Z0-9._-]+/g, "-")}.png`; }
+    function downloadShare() {
+      const a = document.createElement("a");
+      a.download = shareFileName();
+      a.href = document.getElementById("share-canvas").toDataURL("image/png");
+      a.click();
+    }
+    async function copyShareImage() {
       try {
-        const res = await fetch(`/api/diff?old=${encodeURIComponent(oldVer)}&new=${encodeURIComponent(newVer)}`);
-        if (res.ok) {
-          const data = await res.json();
-          if (data.cards && data.cards.length) {
-            FEED_DATA.cards = [...data.cards, ...FEED_DATA.cards];
-            renderCards();
-            showToast(`Found ${data.cards.length} family diff(s) between ${oldVer} and ${newVer}!`);
-          } else {
-            showToast(`No new model identifiers added between ${oldVer} and ${newVer}.`);
-          }
-          return;
-        }
-      } catch (_) {}
-
-      // Static GitHub Pages client-side ELF64 .rodata diff using embedded build_models_map
-      const transition = `${oldVer} -> ${newVer}`;
-      const existing = (FEED_DATA.cards || []).filter(c => c.build_transition === transition);
-      if (existing.length) {
-        document.getElementById("search-box").value = transition;
-        renderCards();
-        showToast(`Showing ${existing.length} verified diff card(s) for ${transition}!`);
-        return;
+        const blob = await new Promise(r => document.getElementById("share-canvas").toBlob(r, "image/png"));
+        await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+        toast("Image copied: paste it into X");
+      } catch (e) {
+        toast("Clipboard image not supported here: use Download PNG");
       }
-
-      const bmap = FEED_DATA.build_models_map || {};
-      const oldList = bmap[oldVer];
-      const newList = bmap[newVer];
-      if (Array.isArray(oldList) && Array.isArray(newList)) {
-        const oldSet = new Set(oldList);
-        const added = newList.filter(m => !oldSet.has(m));
-        if (!added.length) {
-          document.getElementById("search-box").value = "";
-          renderCards();
-          showToast(`ELF64 .rodata verified: 0 new model IDs between ${oldVer} (${oldList.length} IDs) and ${newVer} (${newList.length} IDs).`);
-          return;
-        }
-        const customCard = {
-          id: `custom-ag-diff-${oldVer}-${newVer}`,
-          category: "desktop-diff",
-          scanner: "antigravity-desktop",
-          header: "GOOGLE ANTIGRAVITY (CUSTOM BUILD DIFF)",
-          title: `Antigravity ${transition} (+${added.length} Model ID${added.length > 1 ? 's' : ''})`,
-          subtitle: "Custom ELF64 .rodata binary diff between selected Google Antigravity Linux x64 builds",
-          build_label: "Build",
-          build_transition: transition,
-          models: added.map(id => ({ id, name: id.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase()) })),
-          evidence: "resources/app/extensions/antigravity/bin/language_server_linux_x64 (.rodata)",
-          source_text: "official Google Antigravity apt repository comparison.",
-          disclaimer_1: "Extracted directly from ELF64 .rodata section of language_server_linux_x64.",
-          disclaimer_2: "Not an official announcement. Shared for research and transparency.",
-          provider_name: "GOOGLE",
-          provider_slug: "google",
-          accent_color: "#38bdf8",
-          links: [
-            { label: "Packages Index", url: "https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/dists/antigravity-debian/main/binary-amd64/Packages" }
-          ],
-          detected_at: new Date().toISOString()
-        };
-        FEED_DATA.cards = [customCard, ...(FEED_DATA.cards || [])];
-        document.getElementById("search-box").value = transition;
-        renderCards();
-        showToast(`Found ${added.length} new model identifier(s) between ${oldVer} and ${newVer}!`);
-        return;
-      }
-
-      document.getElementById("search-box").value = transition;
-      renderCards();
     }
 
-    let CLOUD_SCAN_AT = null;
-    function renderCloudScanAge() {
-      const el = document.getElementById("last-cloud-scan");
-      if (!el || !CLOUD_SCAN_AT) return;
-      const mins = Math.max(0, Math.round((Date.now() - new Date(CLOUD_SCAN_AT).getTime()) / 60000));
-      el.textContent = `Cloud scan: ${mins < 1 ? "just now" : mins < 120 ? mins + " min ago" : Math.round(mins / 60) + " h ago"}`;
-    }
-    setInterval(renderCloudScanAge, 30000);
-    setInterval(runBrowserLiveScan, 300000);
-
-    runBrowserLiveScan();
+    document.getElementById("tabs").addEventListener("click", e => {
+      const btn = e.target.closest(".tab");
+      if (!btn) return;
+      TAB = btn.dataset.tab;
+      document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t === btn));
+      render();
+    });
+    document.getElementById("provider").addEventListener("change", render);
+    document.getElementById("search").addEventListener("input", render);
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeShare(); });
+    setInterval(renderStatus, 30000);
+    setInterval(loadFeed, 300000);
+    loadFeed();
   </script>
 </body>
 </html>

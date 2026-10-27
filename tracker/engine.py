@@ -9,8 +9,8 @@ import pathlib
 import time
 from typing import Any, Dict, List, Set
 
-from tracker import novelty
-from tracker.notifiers import build_x_post_text, send_discord_webhook
+from tracker import novelty, stories as story_mod
+from tracker.notifiers import build_story_embed, build_x_post_text, send_discord_webhook
 from tracker.scanners import (
     BASELINES_FILE,
     AntigravityAcpScanner,
@@ -57,6 +57,8 @@ def _is_retired_card(card: Dict[str, Any]) -> bool:
     scanner = card.get("scanner", "")
     return (
         cid in RETIRED_CARD_IDS
+        # Subdomain inventory snapshots: lists of known hosts (helpdesk., talent.) are not model signals
+        or scanner == "cert-transparency-snapshot"
         or scanner == "models-dev-kimi"
         or cid.startswith(("models-dev-recent-", "vllm-arch-registry-"))
         or (scanner == "huggingface" and card.get("header", "").startswith("HUGGING FACE HUB"))
@@ -214,7 +216,7 @@ class TrackerEngine:
         seen_card_keys: Set[str] = set()
         for card in [*fresh_cards, *carried]:
             cid = card["id"]
-            if cid in RETIRED_CARD_IDS:
+            if cid in RETIRED_CARD_IDS or _is_retired_card(card):
                 continue
             models_sig = ",".join(sorted(m.get("id", "") for m in card.get("models", [])))
             content_key = f"{card.get('scanner')}|{card.get('header')}|{models_sig}"
@@ -239,51 +241,64 @@ class TrackerEngine:
 
         all_cards.sort(key=lambda c: c.get("detected_at", ""), reverse=True)
 
+        # One story per model across all sources; notify once per story (and once more when a leak ships)
+        catalog = novelty.get_catalog(public_names)
+        stories = story_mod.build_stories(all_cards, catalog, now=now)
+        for s in stories:
+            s["x_post_text"] = story_mod.story_x_text(s)
+
         seen_ids = self.load_seen_ids()
         first_run = not seen_ids
+        story_migration = not any(i.startswith("story-") for i in seen_ids)
+        notify_cutoff = (now - NOTIFY_MAX_AGE).isoformat()
+        notify_stories: List[Dict[str, Any]] = []
+        story_seen_ids: Set[str] = set()
+        for s in stories:
+            marks = {s["id"]} | ({s["id"] + "#release"} if s["kind"] == "release" else set())
+            story_seen_ids |= marks
+            if marks <= seen_ids or s["backfill"]:
+                continue
+            if (s.get("updated_at") or "") >= notify_cutoff:
+                notify_stories.append(s)
         new_cards = [
             c for c in all_cards
             if c["id"] not in seen_ids and c.get("scanner") not in SNAPSHOT_SCANNERS and not c.get("backfill")
         ]
-        notify_cutoff = (now - NOTIFY_MAX_AGE).isoformat()
-        notify_cards = [c for c in new_cards if (c.get("detected_at") or "") >= notify_cutoff]
 
         notified_ok = True
-        if notify_discord and notify_cards and not first_run:
+        if notify_discord and notify_stories and not first_run and not story_migration:
             try:
-                notified_ok = send_discord_webhook(notify_cards[:30], github_user=self.github_user)
-                print(f"[ModelPulse] Discord: {'sent' if notified_ok else 'not sent'} {min(len(notify_cards), 30)} new card(s).")
+                notified_ok = send_discord_webhook(
+                    notify_stories[:20], github_user=self.github_user, embed_builder=build_story_embed
+                )
+                print(f"[ModelPulse] Discord: {'sent' if notified_ok else 'not sent'} {min(len(notify_stories), 20)} story alert(s).")
             except Exception as exc:
                 notified_ok = False
                 print(f"[ModelPulse] Discord notification failed: {exc}")
 
-        # Cards whose Discord alert failed stay unseen so the next scan retries them
-        retry_ids = {c["id"] for c in notify_cards} if not notified_ok and os.environ.get("DISCORD_WEBHOOK_URL") else set()
-        seen_ids.update(c["id"] for c in all_cards if c["id"] not in retry_ids)
+        # Stories whose Discord alert failed stay unseen so the next scan retries them
+        retry_ids: Set[str] = set()
+        if not notified_ok and os.environ.get("DISCORD_WEBHOOK_URL"):
+            for s in notify_stories:
+                retry_ids |= {s["id"], s["id"] + "#release"}
+        seen_ids.update(c["id"] for c in all_cards)
+        seen_ids.update(story_seen_ids - retry_ids)
         self.save_seen_ids(seen_ids)
 
-        available_builds = self.ag_scanner.list_available_builds(max_stable=8)
-        build_models_map = self.ag_scanner.get_build_models_map(max_stable=8)
-
-        oss_count = sum(1 for c in all_cards if c.get("category") == "open-source")
-        cli_count = sum(1 for c in all_cards if c.get("category") == "cli-sdk-diff")
-        desk_count = sum(1 for c in all_cards if c.get("category") == "desktop-diff")
-        ct_count = sum(1 for c in all_cards if c.get("category") == "subdomain-ct")
-
+        day_ago = (now - timedelta(hours=24)).isoformat()
         feed_payload: Dict[str, Any] = {
             "generated_at": now.isoformat(),
             "github_user": self.github_user,
             "stats": {
+                "stories": len(stories),
+                "leaks": sum(1 for s in stories if s["kind"] == "leak"),
+                "releases": sum(1 for s in stories if s["kind"] == "release"),
+                "stories_24h": sum(1 for s in stories if (s.get("updated_at") or "") >= day_ago),
+                "sources_ok": len(ran_ok_tags),
                 "total_cards": len(all_cards),
-                "desktop_diffs": desk_count,
-                "cli_sdk_diffs": cli_count,
-                "open_source_models": oss_count,
-                "subdomain_ct_cards": ct_count,
                 "new_in_this_scan": len(new_cards),
-                "total_models_indexed": sum(len(c.get("models", [])) for c in all_cards),
             },
-            "available_antigravity_builds": [b["version"] for b in available_builds],
-            "build_models_map": build_models_map,
+            "stories": stories,
             "cards": all_cards,
         }
 

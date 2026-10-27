@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
+from datetime import datetime, timezone
 import json
 import os
 import urllib.request
-from typing import Any, Dict, List, Optional
+from typing import Any, Callable, Dict, List, Optional
 
 
 PROVIDER_LOGOS: Dict[str, str] = {
@@ -154,10 +155,50 @@ def build_x_post_text(card: Dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def build_story_embed(story: Dict[str, Any], github_user: str = "siddiquiamir") -> Dict[str, Any]:
+    """One Discord embed per model story: amber for leaks, green for releases."""
+    lines = [f"**First spotted:** <t:{_epoch(story['detected_at'])}:f> in {story.get('first_source', '')}"]
+    if story.get("lead"):
+        lines.append(f"**Lead time:** {story['lead']}")
+    if story.get("codenames"):
+        lines.append(f"**Codename:** {', '.join(story['codenames'])}")
+    ids = [f"`{v['id']}`" for v in story.get("models", [])[:10]]
+    if ids:
+        lines.append(f"**Identifiers:** {' '.join(ids)}")
+    srcs = []
+    for s in story.get("sources", [])[:8]:
+        label = f"[{s['label']}]({s['url']})" if s.get("url") else s["label"]
+        srcs.append(f"• <t:{_epoch(s['detected_at'])}:t> {label}")
+    if srcs:
+        lines += ["", "**Sources**", *srcs]
+    lines += ["", f"[Live tracker](https://{github_user}.github.io/model-tracker/) · [@StatsWire](https://x.com/StatsWire)"]
+    embed: Dict[str, Any] = {
+        "author": {"name": story.get("header", "")},
+        "title": story.get("title", "New model")[:256],
+        "description": "\n".join(lines)[:4000],
+        "color": 0xF59E0B if story.get("kind") == "leak" else 0x22C55E,
+        "thumbnail": {"url": PROVIDER_LOGOS.get(story.get("provider_slug", ""), PROVIDER_LOGOS["opensource"])},
+        "timestamp": story.get("detected_at"),
+    }
+    first_url = next((s["url"] for s in story.get("sources", []) if s.get("url")), "")
+    if first_url:
+        embed["url"] = first_url
+    return embed
+
+
+def _epoch(iso: str) -> int:
+    try:
+        dt = datetime.fromisoformat((iso or "").replace("Z", "+00:00"))
+        return int((dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)).timestamp())
+    except Exception:
+        return 0
+
+
 def send_discord_webhook(
     cards: List[Dict[str, Any]],
     webhook_url: Optional[str] = None,
     github_user: str = "siddiquiamir",
+    embed_builder: Callable[..., Dict[str, Any]] = build_discord_embed,
 ) -> bool:
     """
     Send 1 or more diff cards to a Discord Webhook URL.
@@ -173,7 +214,7 @@ def send_discord_webhook(
         batch = cards[i : i + 10]
         payload = {
             "username": "ModelPulse Tracker",
-            "embeds": [build_discord_embed(c, github_user=github_user) for c in batch],
+            "embeds": [embed_builder(c, github_user=github_user) for c in batch],
         }
         data = json.dumps(payload).encode("utf-8")
         req = urllib.request.Request(

@@ -1,687 +1,1216 @@
 {
-  "generated_at": "2026-10-27T12:11:01.766812+00:00",
+  "generated_at": "2026-10-27T12:12:55.123272+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "total_cards": 65,
-    "desktop_diffs": 5,
-    "cli_sdk_diffs": 25,
-    "open_source_models": 17,
-    "subdomain_ct_cards": 18,
-    "new_in_this_scan": 0,
-    "total_models_indexed": 179
+    "stories": 26,
+    "leaks": 5,
+    "releases": 21,
+    "stories_24h": 2,
+    "sources_ok": 13,
+    "total_cards": 47,
+    "new_in_this_scan": 0
   },
-  "available_antigravity_builds": [
-    "1.0.20261027053332 (Insiders)",
-    "2.26.0",
-    "2.25.0",
-    "2.24.0",
-    "2.23.1",
-    "2.23.0",
-    "2.22.0",
-    "2.21.1",
-    "2.21.0"
+  "stories": [
+    {
+      "id": "story-nvidia-nemotron-3-5-bolt",
+      "group": "nvidia-nemotron-3-5-bolt",
+      "kind": "leak",
+      "open_weights": true,
+      "title": "NVIDIA Nemotron 3.5 Bolt E4B",
+      "provider_slug": "nvidia",
+      "provider_name": "NVIDIA",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-26T21:04:56Z",
+      "updated_at": "2026-10-26T21:04:56Z",
+      "first_source": "SGLang pull request",
+      "lead": "",
+      "released_on": "",
+      "codenames": [
+        "bolt"
+      ],
+      "models": [
+        {
+          "id": "NVIDIA-Nemotron-3.5-Bolt-E4B-BF16",
+          "name": "Referenced in sgl-project/sglang#46663"
+        }
+      ],
+      "sources": [
+        {
+          "label": "SGLang pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-10-26T21:04:56Z",
+          "title": "nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-BF16 (SGLang PR #46663)",
+          "url": "https://github.com/sgl-project/sglang/pull/46663",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · NVIDIA",
+      "card_ids": [
+        "engine-pr-sgl-project_sglang-46663"
+      ],
+      "x_post_text": "🟠 LEAK: NVIDIA Nemotron 3.5 Bolt E4B by NVIDIA\n\nFirst spotted 26 Oct 21:04 UTC in SGLang pull request\nCodename: bolt\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-gpt-6-1-terra",
+      "group": "gpt-6-1-terra",
+      "kind": "release",
+      "open_weights": false,
+      "title": "GPT-6.1 Terra",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-26T18:05:16.744411+00:00",
+      "updated_at": "2026-10-26T22:54:22.825676+00:00",
+      "first_source": "OpenAI Developer Models Catalog",
+      "lead": "8 min before it went live on OpenRouter",
+      "released_on": "2026-10-26",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gpt-6.1-terra",
+          "name": "global.openai.gpt-6.1-terra"
+        },
+        {
+          "id": "gpt-6.1-terra-pro",
+          "name": "GPT-6.1 Terra Pro"
+        },
+        {
+          "id": "gpt-6.1-terra-fast",
+          "name": "GPT-6.1 Terra"
+        }
+      ],
+      "sources": [
+        {
+          "label": "OpenAI Developer Models Catalog",
+          "scanner": "docs-radar",
+          "detected_at": "2026-10-26T18:05:16.744411+00:00",
+          "title": "New Model Spotted in OpenAI Official Models Markdown Index",
+          "url": "https://developers.openai.com/api/docs/models/all",
+          "backfill": false
+        },
+        {
+          "label": "OpenAI Docs Route",
+          "scanner": "docs-radar",
+          "detected_at": "2026-10-26T18:05:20.916889+00:00",
+          "title": "New Model Doc Page Staged on OpenAI: gpt-6.1-terra",
+          "url": "https://developers.openai.com/api/docs/models/all",
+          "backfill": false
+        },
+        {
+          "label": "OpenAI Release Sitemap",
+          "scanner": "docs-radar",
+          "detected_at": "2026-10-26T18:05:22.120345+00:00",
+          "title": "New OpenAI Release Route Indexed in Sitemap: introducing-gpt-6-1-terra",
+          "url": "https://openai.com/sitemap.xml/release/",
+          "backfill": false
+        },
+        {
+          "label": "OpenRouter",
+          "scanner": "openrouter",
+          "detected_at": "2026-10-26T18:13:29+00:00",
+          "title": "OpenAI: GPT-6.1 Terra",
+          "url": "https://openrouter.ai/openai/gpt-6.1-terra",
+          "backfill": true
+        },
+        {
+          "label": "models.dev",
+          "scanner": "models-dev",
+          "detected_at": "2026-10-26T18:48:05.210810+00:00",
+          "title": "1 New Model(s) Added to models.dev",
+          "url": "https://models.dev/api.json",
+          "backfill": false
+        },
+        {
+          "label": "Azure AI Foundry Direct Models",
+          "scanner": "docs-radar",
+          "detected_at": "2026-10-26T18:48:09.153133+00:00",
+          "title": "New Model Spotted in Azure AI Foundry Direct Models Catalog",
+          "url": "https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
+          "backfill": false
+        },
+        {
+          "label": "OpenAI SDK GitHub Master",
+          "scanner": "docs-radar",
+          "detected_at": "2026-10-26T18:48:09.520392+00:00",
+          "title": "New OpenAI Model Merged to SDK Master: gpt-6.1-terra",
+          "url": "https://github.com/openai/openai-node/commits/master/src/resources/shared.ts",
+          "backfill": false
+        },
+        {
+          "label": "LiteLLM registry",
+          "scanner": "litellm",
+          "detected_at": "2026-10-26T18:48:13.246373+00:00",
+          "title": "1 New Model(s) Added to LiteLLM",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+          "backfill": false
+        },
+        {
+          "label": "Vercel AI Gateway Catalog",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-10-26T18:48:28.592532+00:00",
+          "title": "New Model on Vercel AI Gateway: GPT-6.1 Terra (Fast)",
+          "url": "https://ai-gateway.vercel.sh/v1/models",
+          "backfill": false
+        },
+        {
+          "label": "npm SDK release",
+          "scanner": "npm",
+          "detected_at": "2026-10-26T19:27:19.231Z",
+          "title": "Openai (GPT 6.1 Terra)",
+          "url": "https://www.npmjs.com/package/openai?activeTab=versions",
+          "backfill": false
+        }
+      ],
+      "source_count": 10,
+      "backfill": false,
+      "header": "RELEASE · OPENAI",
+      "card_ids": [
+        "docs-diff-openai-models-all-md-901b6769",
+        "pre-release-openai_llms_model_routes-901b6769",
+        "pre-release-openai_sitemap_routes-7b85db01",
+        "openrouter-model-openai_gpt-6.1-terra",
+        "openrouter-model-openai_gpt-6.1-terra_batch",
+        "openrouter-model-openai_gpt-6.1-terra-pro",
+        "openrouter-model-openai_gpt-6.1-terra-pro_batch",
+        "models-dev-diff-1dcd13c2",
+        "docs-diff-azure-foundry-direct-901b6769",
+        "pre-release-gh_openai_sdk_union-901b6769",
+        "litellm-diff-a2fc150f",
+        "vercel-gateway-diff-f795ac94",
+        "npm-openai-7.44.0-7.45.0",
+        "models-dev-diff-6f65cea9",
+        "litellm-diff-5d522636"
+      ],
+      "x_post_text": "🟢 NEW: GPT-6.1 Terra by OpenAI\n\nFirst spotted 26 Oct 18:05 UTC in OpenAI Developer Models Catalog\n⏱ 8 min before it went live on OpenRouter\nConfirmed by OpenAI Docs Route, OpenAI Release Sitemap, OpenRouter +6\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-ming-3-asr-tiny",
+      "group": "ming-3-asr-tiny",
+      "kind": "leak",
+      "open_weights": true,
+      "title": "Ming 3.0 asr tiny",
+      "provider_slug": "opensource",
+      "provider_name": "inclusionai",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-25T15:14:03Z",
+      "updated_at": "2026-10-25T15:14:03Z",
+      "first_source": "vLLM pull request",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Ming-3.0-asr-tiny",
+          "name": "Referenced in vllm-project/vllm#63585"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-10-25T15:14:03Z",
+          "title": "inclusionAI/Ming-3.0-asr-tiny (vLLM PR #63585)",
+          "url": "https://github.com/vllm-project/vllm/pull/63585",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · INCLUSIONAI",
+      "card_ids": [
+        "engine-pr-vllm-project_vllm-63585"
+      ],
+      "x_post_text": "🟠 LEAK: Ming 3.0 asr tiny by inclusionai\n\nFirst spotted 25 Oct 15:14 UTC in vLLM pull request\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-hy-nomas-diffusers",
+      "group": "hy-nomas-diffusers",
+      "kind": "release",
+      "open_weights": true,
+      "title": "Hy Nomas",
+      "provider_slug": "opensource",
+      "provider_name": "Tencent Hunyuan",
+      "accent_color": "#3b82f6",
+      "detected_at": "2026-10-24T05:45:20.000Z",
+      "updated_at": "2026-10-24T05:45:20.000Z",
+      "first_source": "Hugging Face",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Hy-Nomas-Diffusers",
+          "name": "Hy-Nomas-Diffusers"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-10-24T05:45:20.000Z",
+          "title": "Hy Nomas Diffusers",
+          "url": "https://huggingface.co/tencent/Hy-Nomas-Diffusers",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "OPEN WEIGHTS · TENCENT HUNYUAN",
+      "card_ids": [
+        "hf-tencent_Hy-Nomas-Diffusers"
+      ],
+      "x_post_text": "🟢 NEW: Hy Nomas by Tencent Hunyuan\n\nFirst spotted 24 Oct 05:45 UTC in Hugging Face\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-gemini-4-carbon",
+      "group": "gemini-4-carbon",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Gemini 4 Carbon",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "accent_color": "#38bdf8",
+      "detected_at": "2026-10-23T19:51:16+00:00",
+      "updated_at": "2026-10-23T19:51:16+00:00",
+      "first_source": "Antigravity ACP config",
+      "lead": "",
+      "released_on": "",
+      "codenames": [
+        "carbon"
+      ],
+      "models": [
+        {
+          "id": "gemini-4-carbon",
+          "name": "Gemini 4 Carbon"
+        },
+        {
+          "id": "carbon-g-medium-tf",
+          "name": "Carbon G Medium TF"
+        },
+        {
+          "id": "gemini-4-carbon-teamfood",
+          "name": "Gemini 4 Carbon Teamfood"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Antigravity ACP config",
+          "scanner": "antigravity-acp",
+          "detected_at": "2026-10-23T19:51:16+00:00",
+          "title": "Gemini 4 Carbon (ACP v1.4.3 Revision)",
+          "url": "https://dl.google.com/agy-extensions/releases/macos/agy-acp-server-1.4.3-darwin-arm64.zip",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · GOOGLE",
+      "card_ids": [
+        "ag-acp-1.4.3-revision-diff"
+      ],
+      "x_post_text": "🟠 LEAK: Gemini 4 Carbon by Google\n\nFirst spotted 23 Oct 19:51 UTC in Antigravity ACP config\nCodename: carbon\nIDs: gemini-4-carbon, carbon-g-medium-tf, gemini-4-carbon-teamfood\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-motionbricks",
+      "group": "motionbricks",
+      "kind": "release",
+      "open_weights": true,
+      "title": "MotionBricks",
+      "provider_slug": "nvidia",
+      "provider_name": "NVIDIA",
+      "accent_color": "#84cc16",
+      "detected_at": "2026-10-23T18:49:27.000Z",
+      "updated_at": "2026-10-23T18:49:27.000Z",
+      "first_source": "Hugging Face",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "MotionBricks",
+          "name": "MotionBricks"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-10-23T18:49:27.000Z",
+          "title": "MotionBricks",
+          "url": "https://huggingface.co/nvidia/MotionBricks",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "OPEN WEIGHTS · NVIDIA",
+      "card_ids": [
+        "hf-nvidia_MotionBricks"
+      ],
+      "x_post_text": "🟢 NEW: MotionBricks by NVIDIA\n\nFirst spotted 23 Oct 18:49 UTC in Hugging Face\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-kimi-k-3-1",
+      "group": "kimi-k-3-1",
+      "kind": "release",
+      "open_weights": false,
+      "title": "Kimi K3.1 Pro",
+      "provider_slug": "kimi",
+      "provider_name": "Moonshot",
+      "accent_color": "#6366f1",
+      "detected_at": "2026-10-23T17:56:28+00:00",
+      "updated_at": "2026-10-23T17:56:28+00:00",
+      "first_source": "OpenRouter",
+      "lead": "",
+      "released_on": "2026-10-23",
+      "codenames": [],
+      "models": [
+        {
+          "id": "kimi-k3.1-pro",
+          "name": "Kimi K3.1 Pro"
+        }
+      ],
+      "sources": [
+        {
+          "label": "OpenRouter",
+          "scanner": "openrouter",
+          "detected_at": "2026-10-23T17:56:28+00:00",
+          "title": "MoonshotAI: Kimi K3.1 Pro",
+          "url": "https://openrouter.ai/moonshotai/kimi-k3.1-pro",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "RELEASE · MOONSHOT",
+      "card_ids": [
+        "openrouter-model-moonshotai_kimi-k3.1-pro"
+      ],
+      "x_post_text": "🟢 NEW: Kimi K3.1 Pro by Moonshot\n\nFirst spotted 23 Oct 17:56 UTC in OpenRouter\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-sonnet-5-5-high-bon-le",
+      "group": "sonnet-5-5-high-bon-le",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Sonnet 5.5 High BoN LE",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "accent_color": "#38bdf8",
+      "detected_at": "2026-10-23T15:42:10+00:00",
+      "updated_at": "2026-10-23T15:42:10+00:00",
+      "first_source": "Antigravity ACP config",
+      "lead": "",
+      "released_on": "",
+      "codenames": [
+        "barium"
+      ],
+      "models": [
+        {
+          "id": "sonnet-5.5-high-bon-le",
+          "name": "Sonnet 5.5 High BoN LE"
+        },
+        {
+          "id": "barium-b-final-visibles-v7-tf",
+          "name": "Barium B Final Visibles v7 TF"
+        },
+        {
+          "id": "barium-b-concise-final-response-di-tf",
+          "name": "Barium B Concise Final Response DI TF"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Antigravity ACP config",
+          "scanner": "antigravity-acp",
+          "detected_at": "2026-10-23T15:42:10+00:00",
+          "title": "Sonnet 5.5 High BoN LE (ACP v1.4.2 Discovery Doc)",
+          "url": "https://dl.google.com/agy-extensions/releases/macos/agy-acp-server-1.4.2-darwin-arm64.zip",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · GOOGLE",
+      "card_ids": [
+        "ag-acp-1.4.1-1.4.2-diff"
+      ],
+      "x_post_text": "🟠 LEAK: Sonnet 5.5 High BoN LE by Google\n\nFirst spotted 23 Oct 15:42 UTC in Antigravity ACP config\nCodename: barium\nIDs: sonnet-5.5-high-bon-le, barium-b-final-visibles-v7-tf, barium-b-concise-final-response-di-tf\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-internvideo-2-clip-anomaly-detection",
+      "group": "internvideo-2-clip-anomaly-detection",
+      "kind": "release",
+      "open_weights": true,
+      "title": "InternVideo2 CLIP anomaly detection",
+      "provider_slug": "nvidia",
+      "provider_name": "NVIDIA",
+      "accent_color": "#84cc16",
+      "detected_at": "2026-10-22T18:23:57.000Z",
+      "updated_at": "2026-10-22T18:23:57.000Z",
+      "first_source": "Hugging Face",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "InternVideo2-CLIP-anomaly-detection",
+          "name": "InternVideo2-CLIP-anomaly-detection"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-10-22T18:23:57.000Z",
+          "title": "InternVideo2 CLIP anomaly detection",
+          "url": "https://huggingface.co/nvidia/InternVideo2-CLIP-anomaly-detection",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "OPEN WEIGHTS · NVIDIA",
+      "card_ids": [
+        "hf-nvidia_InternVideo2-CLIP-anomaly-detection"
+      ],
+      "x_post_text": "🟢 NEW: InternVideo2 CLIP anomaly detection by NVIDIA\n\nFirst spotted 22 Oct 18:23 UTC in Hugging Face\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-wevisone-vl",
+      "group": "wevisone-vl",
+      "kind": "release",
+      "open_weights": true,
+      "title": "WeVisOne VL",
+      "provider_slug": "opensource",
+      "provider_name": "Tencent Hunyuan",
+      "accent_color": "#3b82f6",
+      "detected_at": "2026-10-22T09:47:50.000Z",
+      "updated_at": "2026-10-22T09:48:14.000Z",
+      "first_source": "Hugging Face",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "WeVisOne-VL-2B",
+          "name": "WeVisOne-VL-2B"
+        },
+        {
+          "id": "WeVisOne-VL-4B",
+          "name": "WeVisOne-VL-4B"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-10-22T09:47:50.000Z",
+          "title": "WeVisOne VL 2B",
+          "url": "https://huggingface.co/tencent/WeVisOne-VL-2B",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "OPEN WEIGHTS · TENCENT HUNYUAN",
+      "card_ids": [
+        "hf-tencent_WeVisOne-VL-2B",
+        "hf-tencent_WeVisOne-VL-4B"
+      ],
+      "x_post_text": "🟢 NEW: WeVisOne VL by Tencent Hunyuan\n\nFirst spotted 22 Oct 09:47 UTC in Hugging Face\nIDs: WeVisOne-VL-2B, WeVisOne-VL-4B\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-hy-simulmt",
+      "group": "hy-simulmt",
+      "kind": "release",
+      "open_weights": true,
+      "title": "Hy SimulMT Interleave",
+      "provider_slug": "opensource",
+      "provider_name": "Tencent Hunyuan",
+      "accent_color": "#3b82f6",
+      "detected_at": "2026-10-22T07:44:47.000Z",
+      "updated_at": "2026-10-22T07:44:57.000Z",
+      "first_source": "Hugging Face",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Hy-SimulMT-30B-A3B-Interleave-FP8",
+          "name": "Hy-SimulMT-30B-A3B-Interleave-FP8"
+        },
+        {
+          "id": "Hy-SimulMT-30B-A3B-Interleave-GGUF",
+          "name": "Hy-SimulMT-30B-A3B-Interleave-GGUF"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-10-22T07:44:47.000Z",
+          "title": "Hy SimulMT 30B A3B Interleave FP8",
+          "url": "https://huggingface.co/tencent/Hy-SimulMT-30B-A3B-Interleave-FP8",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "OPEN WEIGHTS · TENCENT HUNYUAN",
+      "card_ids": [
+        "hf-tencent_Hy-SimulMT-30B-A3B-Interleave-FP8",
+        "hf-tencent_Hy-SimulMT-30B-A3B-Interleave-GGUF"
+      ],
+      "x_post_text": "🟢 NEW: Hy SimulMT Interleave by Tencent Hunyuan\n\nFirst spotted 22 Oct 07:44 UTC in Hugging Face\nIDs: Hy-SimulMT-30B-A3B-Interleave-FP8, Hy-SimulMT-30B-A3B-Interleave-GGUF\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-flint-1",
+      "group": "flint-1",
+      "kind": "release",
+      "open_weights": false,
+      "title": "Flint",
+      "provider_slug": "openrouter",
+      "provider_name": "Recursive",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-21T22:46:05+00:00",
+      "updated_at": "2026-10-21T22:46:05+00:00",
+      "first_source": "OpenRouter",
+      "lead": "",
+      "released_on": "2026-10-21",
+      "codenames": [],
+      "models": [
+        {
+          "id": "flint-v1.0:free",
+          "name": "Flint"
+        }
+      ],
+      "sources": [
+        {
+          "label": "OpenRouter",
+          "scanner": "openrouter",
+          "detected_at": "2026-10-21T22:46:05+00:00",
+          "title": "Recursive: Flint (free)",
+          "url": "https://openrouter.ai/recursive/flint-v1.0:free",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "RELEASE · RECURSIVE",
+      "card_ids": [
+        "openrouter-model-recursive_flint-v1.0_free"
+      ],
+      "x_post_text": "🟢 NEW: Flint by Recursive\n\nFirst spotted 21 Oct 22:46 UTC in OpenRouter\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-cosmos-3-h-embodied-nano",
+      "group": "cosmos-3-h-embodied-nano",
+      "kind": "release",
+      "open_weights": true,
+      "title": "Cosmos3 H Embodied Nano",
+      "provider_slug": "nvidia",
+      "provider_name": "NVIDIA",
+      "accent_color": "#84cc16",
+      "detected_at": "2026-10-19T12:45:34.000Z",
+      "updated_at": "2026-10-19T12:45:34.000Z",
+      "first_source": "Hugging Face",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Cosmos3-H-Embodied-Nano",
+          "name": "Cosmos3-H-Embodied-Nano"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-10-19T12:45:34.000Z",
+          "title": "Cosmos3 H Embodied Nano",
+          "url": "https://huggingface.co/nvidia/Cosmos3-H-Embodied-Nano",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "OPEN WEIGHTS · NVIDIA",
+      "card_ids": [
+        "hf-nvidia_Cosmos3-H-Embodied-Nano"
+      ],
+      "x_post_text": "🟢 NEW: Cosmos3 H Embodied Nano by NVIDIA\n\nFirst spotted 19 Oct 12:45 UTC in Hugging Face\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-cosmos-3-h-dreams",
+      "group": "cosmos-3-h-dreams",
+      "kind": "release",
+      "open_weights": true,
+      "title": "Cosmos3 H Dreams",
+      "provider_slug": "nvidia",
+      "provider_name": "NVIDIA",
+      "accent_color": "#84cc16",
+      "detected_at": "2026-10-19T12:35:12.000Z",
+      "updated_at": "2026-10-19T12:35:12.000Z",
+      "first_source": "Hugging Face",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Cosmos3-H-Dreams",
+          "name": "Cosmos3-H-Dreams"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-10-19T12:35:12.000Z",
+          "title": "Cosmos3 H Dreams",
+          "url": "https://huggingface.co/nvidia/Cosmos3-H-Dreams",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "OPEN WEIGHTS · NVIDIA",
+      "card_ids": [
+        "hf-nvidia_Cosmos3-H-Dreams"
+      ],
+      "x_post_text": "🟢 NEW: Cosmos3 H Dreams by NVIDIA\n\nFirst spotted 19 Oct 12:35 UTC in Hugging Face\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-glimpse",
+      "group": "glimpse",
+      "kind": "release",
+      "open_weights": false,
+      "title": "Glimpse",
+      "provider_slug": "openrouter",
+      "provider_name": "Elorian",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-17T03:10:29+00:00",
+      "updated_at": "2026-10-17T03:10:29+00:00",
+      "first_source": "OpenRouter",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "glimpse",
+          "name": "Glimpse"
+        }
+      ],
+      "sources": [
+        {
+          "label": "OpenRouter",
+          "scanner": "openrouter",
+          "detected_at": "2026-10-17T03:10:29+00:00",
+          "title": "Elorian: Glimpse",
+          "url": "https://openrouter.ai/elorian/glimpse",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "RELEASE · ELORIAN",
+      "card_ids": [
+        "openrouter-model-elorian_glimpse"
+      ],
+      "x_post_text": "🟢 NEW: Glimpse by Elorian\n\nFirst spotted 17 Oct 03:10 UTC in OpenRouter\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-xing-4",
+      "group": "xing-4",
+      "kind": "release",
+      "open_weights": false,
+      "title": "Xing4.0 29B A4B",
+      "provider_slug": "openrouter",
+      "provider_name": "Xingchen-agi",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-16T19:04:56+00:00",
+      "updated_at": "2026-10-16T19:04:56+00:00",
+      "first_source": "OpenRouter",
+      "lead": "",
+      "released_on": "2026-10-16",
+      "codenames": [],
+      "models": [
+        {
+          "id": "xing4.0-29b-a4b:free",
+          "name": "Xing4.0 29B A4B"
+        }
+      ],
+      "sources": [
+        {
+          "label": "OpenRouter",
+          "scanner": "openrouter",
+          "detected_at": "2026-10-16T19:04:56+00:00",
+          "title": "XingChen: Xing4.0 29B A4B (free)",
+          "url": "https://openrouter.ai/xingchen-agi/xing4.0-29b-a4b:free",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "RELEASE · XINGCHEN-AGI",
+      "card_ids": [
+        "openrouter-model-xingchen-agi_xing4.0-29b-a4b_free"
+      ],
+      "x_post_text": "🟢 NEW: Xing4.0 29B A4B by Xingchen-agi\n\nFirst spotted 16 Oct 19:04 UTC in OpenRouter\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-nvidia-nemotron-labs-dory-1",
+      "group": "nvidia-nemotron-labs-dory-1",
+      "kind": "release",
+      "open_weights": true,
+      "title": "NVIDIA Nemotron Labs Dory1.0 4B",
+      "provider_slug": "nvidia",
+      "provider_name": "NVIDIA",
+      "accent_color": "#84cc16",
+      "detected_at": "2026-10-16T18:30:41.000Z",
+      "updated_at": "2026-10-16T18:30:41.000Z",
+      "first_source": "Hugging Face",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "NVIDIA-Nemotron-Labs-Dory1.0-4B-NVFP4",
+          "name": "NVIDIA-Nemotron-Labs-Dory1.0-4B-NVFP4"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-10-16T18:30:41.000Z",
+          "title": "NVIDIA Nemotron Labs Dory1.0 4B NVFP4",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-NVFP4",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "OPEN WEIGHTS · NVIDIA",
+      "card_ids": [
+        "hf-nvidia_NVIDIA-Nemotron-Labs-Dory1.0-4B-NVFP4"
+      ],
+      "x_post_text": "🟢 NEW: NVIDIA Nemotron Labs Dory1.0 4B by NVIDIA\n\nFirst spotted 16 Oct 18:30 UTC in Hugging Face\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-mercury-3",
+      "group": "mercury-3",
+      "kind": "release",
+      "open_weights": false,
+      "title": "Mercury 3",
+      "provider_slug": "openrouter",
+      "provider_name": "Inception",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-16T13:45:37+00:00",
+      "updated_at": "2026-10-16T13:45:37+00:00",
+      "first_source": "OpenRouter",
+      "lead": "",
+      "released_on": "2026-10-16",
+      "codenames": [],
+      "models": [
+        {
+          "id": "mercury-3",
+          "name": "Mercury 3"
+        }
+      ],
+      "sources": [
+        {
+          "label": "OpenRouter",
+          "scanner": "openrouter",
+          "detected_at": "2026-10-16T13:45:37+00:00",
+          "title": "Inception: Mercury 3",
+          "url": "https://openrouter.ai/inception/mercury-3",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "RELEASE · INCEPTION",
+      "card_ids": [
+        "openrouter-model-inception_mercury-3"
+      ],
+      "x_post_text": "🟢 NEW: Mercury 3 by Inception\n\nFirst spotted 16 Oct 13:45 UTC in OpenRouter\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-moondream-3",
+      "group": "moondream-3",
+      "kind": "release",
+      "open_weights": false,
+      "title": "Moondream 3 Preview",
+      "provider_slug": "openrouter",
+      "provider_name": "Moondream",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-15T22:13:05+00:00",
+      "updated_at": "2026-10-15T22:13:05+00:00",
+      "first_source": "OpenRouter",
+      "lead": "",
+      "released_on": "2026-10-15",
+      "codenames": [],
+      "models": [
+        {
+          "id": "moondream3-preview",
+          "name": "Moondream 3 Preview"
+        }
+      ],
+      "sources": [
+        {
+          "label": "OpenRouter",
+          "scanner": "openrouter",
+          "detected_at": "2026-10-15T22:13:05+00:00",
+          "title": "Moondream: Moondream 3 Preview",
+          "url": "https://openrouter.ai/moondream/moondream3-preview",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "RELEASE · MOONDREAM",
+      "card_ids": [
+        "openrouter-model-moondream_moondream3-preview"
+      ],
+      "x_post_text": "🟢 NEW: Moondream 3 Preview by Moondream\n\nFirst spotted 15 Oct 22:13 UTC in OpenRouter\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-moondream-3-1",
+      "group": "moondream-3-1",
+      "kind": "release",
+      "open_weights": false,
+      "title": "Moondream 3.1",
+      "provider_slug": "openrouter",
+      "provider_name": "Moondream",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-15T22:12:53+00:00",
+      "updated_at": "2026-10-15T22:12:53+00:00",
+      "first_source": "OpenRouter",
+      "lead": "",
+      "released_on": "2026-10-15",
+      "codenames": [],
+      "models": [
+        {
+          "id": "moondream3.1-9b-a2b",
+          "name": "Moondream 3.1"
+        }
+      ],
+      "sources": [
+        {
+          "label": "OpenRouter",
+          "scanner": "openrouter",
+          "detected_at": "2026-10-15T22:12:53+00:00",
+          "title": "Moondream: Moondream 3.1",
+          "url": "https://openrouter.ai/moondream/moondream3.1-9b-a2b",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "RELEASE · MOONDREAM",
+      "card_ids": [
+        "openrouter-model-moondream_moondream3.1-9b-a2b"
+      ],
+      "x_post_text": "🟢 NEW: Moondream 3.1 by Moondream\n\nFirst spotted 15 Oct 22:12 UTC in OpenRouter\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-muse-spark-open",
+      "group": "muse-spark-open",
+      "kind": "release",
+      "open_weights": false,
+      "title": "Muse Spark Open",
+      "provider_slug": "meta",
+      "provider_name": "Meta",
+      "accent_color": "#3b82f6",
+      "detected_at": "2026-10-15T17:57:49+00:00",
+      "updated_at": "2026-10-15T17:57:49+00:00",
+      "first_source": "OpenRouter",
+      "lead": "",
+      "released_on": "2026-10-15",
+      "codenames": [],
+      "models": [
+        {
+          "id": "muse-spark-open",
+          "name": "Muse Spark Open"
+        }
+      ],
+      "sources": [
+        {
+          "label": "OpenRouter",
+          "scanner": "openrouter",
+          "detected_at": "2026-10-15T17:57:49+00:00",
+          "title": "Meta: Muse Spark Open",
+          "url": "https://openrouter.ai/meta/muse-spark-open",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "RELEASE · META",
+      "card_ids": [
+        "openrouter-model-meta_muse-spark-open"
+      ],
+      "x_post_text": "🟢 NEW: Muse Spark Open by Meta\n\nFirst spotted 15 Oct 17:57 UTC in OpenRouter\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-timestral",
+      "group": "timestral",
+      "kind": "release",
+      "open_weights": true,
+      "title": "Timestral",
+      "provider_slug": "mistral",
+      "provider_name": "Mistral",
+      "accent_color": "#f59e0b",
+      "detected_at": "2026-10-14T08:52:36.000Z",
+      "updated_at": "2026-10-14T17:51:04.000Z",
+      "first_source": "Hugging Face",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Timestral-5M",
+          "name": "Timestral-5M"
+        },
+        {
+          "id": "Timestral-28M",
+          "name": "Timestral-28M"
+        },
+        {
+          "id": "Timestral-123M",
+          "name": "Timestral-123M"
+        },
+        {
+          "id": "Timestral-209M",
+          "name": "Timestral-209M"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-10-14T08:52:36.000Z",
+          "title": "Timestral 209M",
+          "url": "https://huggingface.co/mistralai/Timestral-209M",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "OPEN WEIGHTS · MISTRAL",
+      "card_ids": [
+        "hf-mistralai_Timestral-209M",
+        "hf-mistralai_Timestral-5M",
+        "hf-mistralai_Timestral-28M",
+        "hf-mistralai_Timestral-123M"
+      ],
+      "x_post_text": "🟢 NEW: Timestral by Mistral\n\nFirst spotted 14 Oct 08:52 UTC in Hugging Face\nIDs: Timestral-5M, Timestral-28M, Timestral-123M +1\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-step-5",
+      "group": "step-5",
+      "kind": "release",
+      "open_weights": true,
+      "title": "Step 5 Preview",
+      "provider_slug": "opensource",
+      "provider_name": "Stepfun AI",
+      "accent_color": "#0ea5e9",
+      "detected_at": "2026-10-14T02:59:00.000Z",
+      "updated_at": "2026-10-14T02:59:00.000Z",
+      "first_source": "Hugging Face",
+      "lead": "",
+      "released_on": "2026-09-16",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Step-5-Preview-NVFP4",
+          "name": "Step-5-Preview-NVFP4"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-10-14T02:59:00.000Z",
+          "title": "Step 5 Preview NVFP4",
+          "url": "https://huggingface.co/stepfun-ai/Step-5-Preview-NVFP4",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "OPEN WEIGHTS · STEPFUN AI",
+      "card_ids": [
+        "hf-stepfun-ai_Step-5-Preview-NVFP4"
+      ],
+      "x_post_text": "🟢 NEW: Step 5 Preview by Stepfun AI\n\nFirst spotted 14 Oct 02:59 UTC in Hugging Face\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-gemini-4-argon",
+      "group": "gemini-4-argon",
+      "kind": "release",
+      "open_weights": false,
+      "title": "Gemini 4 Argon",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "accent_color": "#38bdf8",
+      "detected_at": "2026-10-12T19:28:01+00:00",
+      "updated_at": "2026-10-23T19:51:16+00:00",
+      "first_source": "Antigravity desktop build",
+      "lead": "1 day before public release",
+      "released_on": "2026-10-13",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gemini-4-argon",
+          "name": "Gemini 4 Argon"
+        },
+        {
+          "id": "gemini-4-argon-low",
+          "name": "Gemini 4 Argon"
+        },
+        {
+          "id": "gemini-4-argon-high",
+          "name": "Gemini 4 Argon"
+        },
+        {
+          "id": "gemini-4-argon-medium",
+          "name": "Gemini 4 Argon"
+        },
+        {
+          "id": "gemini-4-argon-disabled",
+          "name": "Gemini 4 Argon Disabled"
+        },
+        {
+          "id": "gemini-4-argon-max-mode-tf",
+          "name": "Gemini 4 Argon Max Mode TF"
+        },
+        {
+          "id": "gemini-4-argon-cyber-permissive",
+          "name": "Gemini 4 Argon Cyber Permissive"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Antigravity desktop build",
+          "scanner": "antigravity",
+          "detected_at": "2026-10-12T19:28:01+00:00",
+          "title": "Gemini 4 Argon",
+          "url": "https://antigravity-hub-auto-updater-974169037036.us-central1.run.app/releases",
+          "backfill": false
+        },
+        {
+          "label": "npm SDK release",
+          "scanner": "npm",
+          "detected_at": "2026-10-15T00:06:41.128Z",
+          "title": "Genai (Gemini 4 Argon)",
+          "url": "https://www.npmjs.com/package/@google/genai?activeTab=versions",
+          "backfill": false
+        },
+        {
+          "label": "Antigravity ACP config",
+          "scanner": "antigravity-acp",
+          "detected_at": "2026-10-23T15:42:10+00:00",
+          "title": "Sonnet 5.5 High BoN LE (ACP v1.4.2 Discovery Doc)",
+          "url": "https://dl.google.com/agy-extensions/releases/macos/agy-acp-server-1.4.2-darwin-arm64.zip",
+          "backfill": false
+        }
+      ],
+      "source_count": 3,
+      "backfill": false,
+      "header": "RELEASE · GOOGLE",
+      "card_ids": [
+        "ag-2.22.0-2.23.0-gemini-4-argon",
+        "npm-_google_genai-2.29.1-2.30.0",
+        "ag-acp-1.4.1-1.4.2-diff",
+        "ag-acp-1.4.3-revision-diff"
+      ],
+      "x_post_text": "🟢 NEW: Gemini 4 Argon by Google\n\nFirst spotted 12 Oct 19:28 UTC in Antigravity desktop build\n⏱ 1 day before public release\nConfirmed by npm SDK release, Antigravity ACP config\nIDs: gemini-4-argon, gemini-4-argon-low, gemini-4-argon-high +4\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-gemini-3-1-ultra",
+      "group": "gemini-3-1-ultra",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Gemini 3.1 Ultra",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "accent_color": "#38bdf8",
+      "detected_at": "2026-10-12T19:28:01+00:00",
+      "updated_at": "2026-10-12T19:28:01+00:00",
+      "first_source": "Antigravity desktop build",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gemini-3.1-ultra",
+          "name": "Gemini 3.1 Ultra"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Antigravity desktop build",
+          "scanner": "antigravity",
+          "detected_at": "2026-10-12T19:28:01+00:00",
+          "title": "Gemini 3.1 Ultra",
+          "url": "https://antigravity-hub-auto-updater-974169037036.us-central1.run.app/releases",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · GOOGLE",
+      "card_ids": [
+        "ag-2.22.0-2.23.0-gemini-3.1-ultra"
+      ],
+      "x_post_text": "🟠 LEAK: Gemini 3.1 Ultra by Google\n\nFirst spotted 12 Oct 19:28 UTC in Antigravity desktop build\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-gemini-nano-banana-2-1",
+      "group": "gemini-nano-banana-2-1",
+      "kind": "release",
+      "open_weights": false,
+      "title": "Gemini Nano Banana 2.1",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "accent_color": "#38bdf8",
+      "detected_at": "2026-10-12T19:28:01+00:00",
+      "updated_at": "2026-10-12T19:28:01+00:00",
+      "first_source": "Antigravity desktop build",
+      "lead": "",
+      "released_on": "2026-10-06",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gemini-nano-banana-2.1",
+          "name": "Gemini Nano Banana 2.1"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Antigravity desktop build",
+          "scanner": "antigravity",
+          "detected_at": "2026-10-12T19:28:01+00:00",
+          "title": "Gemini Nano Banana 2.1",
+          "url": "https://antigravity-hub-auto-updater-974169037036.us-central1.run.app/releases",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "RELEASE · GOOGLE",
+      "card_ids": [
+        "ag-2.22.0-2.23.0-gemini-nano-banana"
+      ],
+      "x_post_text": "🟢 NEW: Gemini Nano Banana 2.1 by Google\n\nFirst spotted 12 Oct 19:28 UTC in Antigravity desktop build\n\nvia @StatsWire"
+    }
   ],
-  "build_models_map": {
-    "1.0.20261027053332 (Insiders)": [
-      "claude-opus-5-5",
-      "claude-opus-5-5-high",
-      "claude-opus-5-5-low",
-      "claude-opus-5-5-max",
-      "claude-opus-5-5-medium",
-      "claude-sonnet-5-5",
-      "claude-sonnet-5-5-high",
-      "claude-sonnet-5-5-low",
-      "claude-sonnet-5-5-max",
-      "claude-sonnet-5-5-medium",
-      "gemini-3-flash",
-      "gemini-3-flash-preview",
-      "gemini-3-pro-image",
-      "gemini-3-pro-preview",
-      "gemini-3.1-flash-image",
-      "gemini-3.1-flash-image-preview",
-      "gemini-3.1-flash-lite",
-      "gemini-3.1-flash-lite-image",
-      "gemini-3.1-flash-lite-preview",
-      "gemini-3.1-flash-tts-preview",
-      "gemini-3.1-pro",
-      "gemini-3.1-pro-high",
-      "gemini-3.1-pro-low",
-      "gemini-3.1-pro-low-thinking",
-      "gemini-3.1-pro-preview",
-      "gemini-3.1-pro-preview-customtools",
-      "gemini-3.1-ultra",
-      "gemini-3.5-flash",
-      "gemini-3.5-flash-extra-low",
-      "gemini-3.5-flash-lite",
-      "gemini-3.5-flash-low",
-      "gemini-3.6-flash",
-      "gemini-3.6-flash-high",
-      "gemini-3.6-flash-low",
-      "gemini-3.6-flash-medium",
-      "gemini-3.7-flash",
-      "gemini-3.7-flash-high",
-      "gemini-3.7-flash-low",
-      "gemini-3.7-flash-medium",
-      "gemini-3.7-flash-tiered",
-      "gemini-3.8-flash",
-      "gemini-3.8-flash-high",
-      "gemini-3.8-flash-lite-tts",
-      "gemini-3.8-flash-low",
-      "gemini-3.8-flash-medium",
-      "gemini-3.8-flash-tts",
-      "gemini-4-argon",
-      "gemini-4-argon-high",
-      "gemini-4-argon-low",
-      "gemini-4-argon-medium",
-      "gemini-embedding-001",
-      "gemini-flash-latest",
-      "gemini-flash-lite-latest",
-      "gemini-for",
-      "gemini-nano-banana-2.1",
-      "gemini-omni-1.1-flash",
-      "gemini-omni-flash-preview",
-      "gemini-pro-latest",
-      "gemini-robotics-er-1.6-preview",
-      "gemini-robotics-er-2-preview",
-      "gemini-v4s-jarvis-scsummary",
-      "glm-5.2",
-      "gpt-oss-120b-maas",
-      "gpt-oss-20b-maas",
-      "lyria-3-clip-preview",
-      "lyria-3-pro-preview"
-    ],
-    "2.26.0": [
-      "claude-opus-5-5",
-      "claude-opus-5-5-high",
-      "claude-opus-5-5-low",
-      "claude-opus-5-5-max",
-      "claude-opus-5-5-medium",
-      "claude-sonnet-5-5",
-      "claude-sonnet-5-5-high",
-      "claude-sonnet-5-5-low",
-      "claude-sonnet-5-5-max",
-      "claude-sonnet-5-5-medium",
-      "gemini-3-flash",
-      "gemini-3-flash-preview",
-      "gemini-3-pro-image",
-      "gemini-3-pro-preview",
-      "gemini-3.1-flash-image",
-      "gemini-3.1-flash-image-preview",
-      "gemini-3.1-flash-lite",
-      "gemini-3.1-flash-lite-image",
-      "gemini-3.1-flash-lite-preview",
-      "gemini-3.1-flash-tts-preview",
-      "gemini-3.1-pro",
-      "gemini-3.1-pro-high",
-      "gemini-3.1-pro-low",
-      "gemini-3.1-pro-low-thinking",
-      "gemini-3.1-pro-preview",
-      "gemini-3.1-pro-preview-customtools",
-      "gemini-3.1-ultra",
-      "gemini-3.5-flash",
-      "gemini-3.5-flash-extra-low",
-      "gemini-3.5-flash-lite",
-      "gemini-3.5-flash-low",
-      "gemini-3.6-flash",
-      "gemini-3.6-flash-high",
-      "gemini-3.6-flash-low",
-      "gemini-3.6-flash-medium",
-      "gemini-3.7-flash",
-      "gemini-3.7-flash-high",
-      "gemini-3.7-flash-low",
-      "gemini-3.7-flash-medium",
-      "gemini-3.7-flash-tiered",
-      "gemini-3.8-flash",
-      "gemini-3.8-flash-high",
-      "gemini-3.8-flash-lite-tts",
-      "gemini-3.8-flash-low",
-      "gemini-3.8-flash-medium",
-      "gemini-3.8-flash-tts",
-      "gemini-4-argon",
-      "gemini-4-argon-high",
-      "gemini-4-argon-low",
-      "gemini-4-argon-medium",
-      "gemini-embedding-001",
-      "gemini-flash-latest",
-      "gemini-flash-lite-latest",
-      "gemini-for",
-      "gemini-nano-banana-2.1",
-      "gemini-omni-1.1-flash",
-      "gemini-omni-flash-preview",
-      "gemini-pro-latest",
-      "gemini-robotics-er-1.6-preview",
-      "gemini-robotics-er-2-preview",
-      "gemini-v4s-jarvis-scsummary",
-      "glm-5.2",
-      "gpt-oss-120b-maas",
-      "gpt-oss-20b-maas",
-      "lyria-3-clip-preview",
-      "lyria-3-pro-preview"
-    ],
-    "2.25.0": [
-      "claude-opus-5-5",
-      "claude-opus-5-5-high",
-      "claude-opus-5-5-low",
-      "claude-opus-5-5-max",
-      "claude-opus-5-5-medium",
-      "claude-sonnet-5-5",
-      "claude-sonnet-5-5-high",
-      "claude-sonnet-5-5-low",
-      "claude-sonnet-5-5-max",
-      "claude-sonnet-5-5-medium",
-      "gemini-3-flash",
-      "gemini-3-flash-preview",
-      "gemini-3-pro-image",
-      "gemini-3-pro-preview",
-      "gemini-3.1-flash-image",
-      "gemini-3.1-flash-image-preview",
-      "gemini-3.1-flash-lite",
-      "gemini-3.1-flash-lite-image",
-      "gemini-3.1-flash-lite-preview",
-      "gemini-3.1-flash-tts-preview",
-      "gemini-3.1-pro",
-      "gemini-3.1-pro-high",
-      "gemini-3.1-pro-low",
-      "gemini-3.1-pro-low-thinking",
-      "gemini-3.1-pro-preview",
-      "gemini-3.1-pro-preview-customtools",
-      "gemini-3.1-ultra",
-      "gemini-3.5-flash",
-      "gemini-3.5-flash-extra-low",
-      "gemini-3.5-flash-lite",
-      "gemini-3.5-flash-low",
-      "gemini-3.6-flash",
-      "gemini-3.6-flash-high",
-      "gemini-3.6-flash-low",
-      "gemini-3.6-flash-medium",
-      "gemini-3.7-flash",
-      "gemini-3.7-flash-high",
-      "gemini-3.7-flash-low",
-      "gemini-3.7-flash-medium",
-      "gemini-3.7-flash-tiered",
-      "gemini-3.8-flash",
-      "gemini-3.8-flash-high",
-      "gemini-3.8-flash-lite-tts",
-      "gemini-3.8-flash-low",
-      "gemini-3.8-flash-medium",
-      "gemini-3.8-flash-tts",
-      "gemini-4-argon",
-      "gemini-4-argon-high",
-      "gemini-4-argon-low",
-      "gemini-4-argon-medium",
-      "gemini-embedding-001",
-      "gemini-flash-latest",
-      "gemini-flash-lite-latest",
-      "gemini-for",
-      "gemini-nano-banana-2.1",
-      "gemini-omni-1.1-flash",
-      "gemini-omni-flash-preview",
-      "gemini-pro-latest",
-      "gemini-robotics-er-1.6-preview",
-      "gemini-robotics-er-2-preview",
-      "gemini-v4s-jarvis-scsummary",
-      "glm-5.2",
-      "gpt-oss-120b-maas",
-      "gpt-oss-20b-maas",
-      "lyria-3-clip-preview",
-      "lyria-3-pro-preview"
-    ],
-    "2.24.0": [
-      "claude-opus-5-5",
-      "claude-opus-5-5-high",
-      "claude-opus-5-5-low",
-      "claude-opus-5-5-max",
-      "claude-opus-5-5-medium",
-      "claude-sonnet-5-5",
-      "claude-sonnet-5-5-high",
-      "claude-sonnet-5-5-low",
-      "claude-sonnet-5-5-max",
-      "claude-sonnet-5-5-medium",
-      "gemini-3-flash",
-      "gemini-3-flash-preview",
-      "gemini-3-pro-image",
-      "gemini-3-pro-preview",
-      "gemini-3.1-flash-image",
-      "gemini-3.1-flash-image-preview",
-      "gemini-3.1-flash-lite",
-      "gemini-3.1-flash-lite-image",
-      "gemini-3.1-flash-lite-preview",
-      "gemini-3.1-flash-tts-preview",
-      "gemini-3.1-pro",
-      "gemini-3.1-pro-high",
-      "gemini-3.1-pro-low",
-      "gemini-3.1-pro-low-thinking",
-      "gemini-3.1-pro-preview",
-      "gemini-3.1-pro-preview-customtools",
-      "gemini-3.1-ultra",
-      "gemini-3.5-flash",
-      "gemini-3.5-flash-extra-low",
-      "gemini-3.5-flash-lite",
-      "gemini-3.5-flash-low",
-      "gemini-3.6-flash",
-      "gemini-3.6-flash-high",
-      "gemini-3.6-flash-low",
-      "gemini-3.6-flash-medium",
-      "gemini-3.7-flash",
-      "gemini-3.7-flash-high",
-      "gemini-3.7-flash-low",
-      "gemini-3.7-flash-medium",
-      "gemini-3.7-flash-tiered",
-      "gemini-3.8-flash",
-      "gemini-3.8-flash-high",
-      "gemini-3.8-flash-lite-tts",
-      "gemini-3.8-flash-low",
-      "gemini-3.8-flash-medium",
-      "gemini-3.8-flash-tts",
-      "gemini-4-argon",
-      "gemini-4-argon-high",
-      "gemini-4-argon-low",
-      "gemini-4-argon-medium",
-      "gemini-embedding-001",
-      "gemini-flash-latest",
-      "gemini-flash-lite-latest",
-      "gemini-for",
-      "gemini-nano-banana-2.1",
-      "gemini-omni-1.1-flash",
-      "gemini-omni-flash-preview",
-      "gemini-pro-latest",
-      "gemini-robotics-er-1.6-preview",
-      "gemini-robotics-er-2-preview",
-      "gemini-v4s-jarvis-scsummary",
-      "glm-5.2",
-      "gpt-oss-120b-maas",
-      "gpt-oss-20b-maas",
-      "lyria-3-clip-preview",
-      "lyria-3-pro-preview"
-    ],
-    "2.23.1": [
-      "claude-opus-5-5",
-      "gemini-3-flash",
-      "gemini-3-flash-preview",
-      "gemini-3-pro-image",
-      "gemini-3-pro-preview",
-      "gemini-3.1-flash-image",
-      "gemini-3.1-flash-image-preview",
-      "gemini-3.1-flash-lite",
-      "gemini-3.1-flash-lite-image",
-      "gemini-3.1-flash-lite-preview",
-      "gemini-3.1-flash-tts-preview",
-      "gemini-3.1-pro",
-      "gemini-3.1-pro-high",
-      "gemini-3.1-pro-low",
-      "gemini-3.1-pro-low-thinking",
-      "gemini-3.1-pro-preview",
-      "gemini-3.1-pro-preview-customtools",
-      "gemini-3.1-ultra",
-      "gemini-3.5-flash",
-      "gemini-3.5-flash-extra-low",
-      "gemini-3.5-flash-lite",
-      "gemini-3.5-flash-low",
-      "gemini-3.6-flash",
-      "gemini-3.6-flash-high",
-      "gemini-3.6-flash-low",
-      "gemini-3.6-flash-medium",
-      "gemini-3.7-flash",
-      "gemini-3.7-flash-high",
-      "gemini-3.7-flash-low",
-      "gemini-3.7-flash-medium",
-      "gemini-3.7-flash-tiered",
-      "gemini-3.8-flash",
-      "gemini-3.8-flash-high",
-      "gemini-3.8-flash-lite-tts",
-      "gemini-3.8-flash-low",
-      "gemini-3.8-flash-medium",
-      "gemini-3.8-flash-tts",
-      "gemini-4-argon",
-      "gemini-4-argon-high",
-      "gemini-4-argon-low",
-      "gemini-4-argon-medium",
-      "gemini-embedding-001",
-      "gemini-flash-latest",
-      "gemini-flash-lite-latest",
-      "gemini-for",
-      "gemini-nano-banana-2.1",
-      "gemini-omni-1.1-flash",
-      "gemini-omni-flash-preview",
-      "gemini-pro-latest",
-      "gemini-robotics-er-2-preview",
-      "gemini-v4s-jarvis-scsummary",
-      "glm-5.2",
-      "gpt-oss-120b-maas",
-      "gpt-oss-20b-maas",
-      "lyria-3-clip-preview",
-      "lyria-3-pro-preview"
-    ],
-    "2.23.0": [
-      "claude-opus-5-5",
-      "gemini-3-flash",
-      "gemini-3-flash-preview",
-      "gemini-3-pro-image",
-      "gemini-3-pro-preview",
-      "gemini-3.1-flash-image",
-      "gemini-3.1-flash-image-preview",
-      "gemini-3.1-flash-lite",
-      "gemini-3.1-flash-lite-image",
-      "gemini-3.1-flash-lite-preview",
-      "gemini-3.1-flash-tts-preview",
-      "gemini-3.1-pro",
-      "gemini-3.1-pro-high",
-      "gemini-3.1-pro-low",
-      "gemini-3.1-pro-low-thinking",
-      "gemini-3.1-pro-preview",
-      "gemini-3.1-pro-preview-customtools",
-      "gemini-3.1-ultra",
-      "gemini-3.5-flash",
-      "gemini-3.5-flash-extra-low",
-      "gemini-3.5-flash-lite",
-      "gemini-3.5-flash-low",
-      "gemini-3.6-flash",
-      "gemini-3.6-flash-high",
-      "gemini-3.6-flash-low",
-      "gemini-3.6-flash-medium",
-      "gemini-3.7-flash",
-      "gemini-3.7-flash-high",
-      "gemini-3.7-flash-low",
-      "gemini-3.7-flash-medium",
-      "gemini-3.7-flash-tiered",
-      "gemini-3.8-flash",
-      "gemini-3.8-flash-high",
-      "gemini-3.8-flash-lite-tts",
-      "gemini-3.8-flash-low",
-      "gemini-3.8-flash-medium",
-      "gemini-3.8-flash-tts",
-      "gemini-4-argon",
-      "gemini-4-argon-high",
-      "gemini-4-argon-low",
-      "gemini-4-argon-medium",
-      "gemini-embedding-001",
-      "gemini-flash-latest",
-      "gemini-flash-lite-latest",
-      "gemini-for",
-      "gemini-nano-banana-2.1",
-      "gemini-omni-1.1-flash",
-      "gemini-omni-flash-preview",
-      "gemini-pro-latest",
-      "gemini-robotics-er-2-preview",
-      "gemini-v4s-jarvis-scsummary",
-      "glm-5.2",
-      "gpt-oss-120b-maas",
-      "gpt-oss-20b-maas",
-      "lyria-3-clip-preview",
-      "lyria-3-pro-preview"
-    ],
-    "2.22.0": [
-      "claude-opus-5-5",
-      "gemini-3-flash-preview",
-      "gemini-3-pro-image",
-      "gemini-3-pro-preview",
-      "gemini-3.1-flash-image",
-      "gemini-3.1-flash-image-preview",
-      "gemini-3.1-flash-lite",
-      "gemini-3.1-flash-lite-preview",
-      "gemini-3.1-flash-tts-preview",
-      "gemini-3.1-pro",
-      "gemini-3.1-pro-high",
-      "gemini-3.1-pro-low",
-      "gemini-3.1-pro-low-thinking",
-      "gemini-3.1-pro-preview",
-      "gemini-3.1-pro-preview-customtools",
-      "gemini-3.5-flash",
-      "gemini-3.5-flash-extra-low",
-      "gemini-3.5-flash-low",
-      "gemini-3.6-flash",
-      "gemini-3.6-flash-high",
-      "gemini-3.6-flash-low",
-      "gemini-3.6-flash-medium",
-      "gemini-3.7-flash",
-      "gemini-3.7-flash-high",
-      "gemini-3.7-flash-low",
-      "gemini-3.7-flash-medium",
-      "gemini-3.8-flash",
-      "gemini-3.8-flash-high",
-      "gemini-3.8-flash-lite-tts",
-      "gemini-3.8-flash-low",
-      "gemini-3.8-flash-medium",
-      "gemini-3.8-flash-tts",
-      "gemini-embedding-001",
-      "gemini-flash-latest",
-      "gemini-flash-lite-latest",
-      "gemini-for",
-      "gemini-pro-latest",
-      "gemini-robotics-er-1.6-preview",
-      "gemini-robotics-er-2-preview",
-      "gemini-v4s-jarvis-scsummary",
-      "glm-5.2",
-      "gpt-image-1",
-      "gpt-oss-120b-maas",
-      "gpt-oss-20b-maas",
-      "lyria-3-clip-preview",
-      "lyria-3-pro-preview"
-    ],
-    "2.21.1": [
-      "claude-opus-5-5",
-      "gemini-3-flash-preview",
-      "gemini-3-pro-image",
-      "gemini-3-pro-preview",
-      "gemini-3.1-flash-image",
-      "gemini-3.1-flash-image-preview",
-      "gemini-3.1-flash-lite",
-      "gemini-3.1-flash-lite-preview",
-      "gemini-3.1-flash-tts-preview",
-      "gemini-3.1-pro",
-      "gemini-3.1-pro-high",
-      "gemini-3.1-pro-low",
-      "gemini-3.1-pro-low-thinking",
-      "gemini-3.1-pro-preview",
-      "gemini-3.1-pro-preview-customtools",
-      "gemini-3.5-flash",
-      "gemini-3.5-flash-extra-low",
-      "gemini-3.5-flash-low",
-      "gemini-3.6-flash",
-      "gemini-3.6-flash-high",
-      "gemini-3.6-flash-low",
-      "gemini-3.6-flash-medium",
-      "gemini-3.7-flash",
-      "gemini-3.7-flash-high",
-      "gemini-3.7-flash-low",
-      "gemini-3.7-flash-medium",
-      "gemini-3.8-flash",
-      "gemini-3.8-flash-high",
-      "gemini-3.8-flash-lite-tts",
-      "gemini-3.8-flash-low",
-      "gemini-3.8-flash-medium",
-      "gemini-3.8-flash-tts",
-      "gemini-embedding-001",
-      "gemini-flash-latest",
-      "gemini-flash-lite-latest",
-      "gemini-for",
-      "gemini-pro-latest",
-      "gemini-robotics-er-1.6-preview",
-      "gemini-robotics-er-2-preview",
-      "gemini-v4s-jarvis-scsummary",
-      "glm-5.2",
-      "gpt-image-1",
-      "gpt-oss-120b-maas",
-      "gpt-oss-20b-maas",
-      "lyria-3-clip-preview",
-      "lyria-3-pro-preview"
-    ],
-    "2.21.0": [
-      "claude-opus-5-5",
-      "gemini-3-flash-preview",
-      "gemini-3-pro-image",
-      "gemini-3-pro-preview",
-      "gemini-3.1-flash-image",
-      "gemini-3.1-flash-image-preview",
-      "gemini-3.1-flash-lite",
-      "gemini-3.1-flash-lite-preview",
-      "gemini-3.1-flash-tts-preview",
-      "gemini-3.1-pro",
-      "gemini-3.1-pro-high",
-      "gemini-3.1-pro-low",
-      "gemini-3.1-pro-low-thinking",
-      "gemini-3.1-pro-preview",
-      "gemini-3.1-pro-preview-customtools",
-      "gemini-3.5-flash",
-      "gemini-3.5-flash-extra-low",
-      "gemini-3.5-flash-low",
-      "gemini-3.6-flash",
-      "gemini-3.6-flash-high",
-      "gemini-3.6-flash-low",
-      "gemini-3.6-flash-medium",
-      "gemini-3.7-flash",
-      "gemini-3.7-flash-high",
-      "gemini-3.7-flash-low",
-      "gemini-3.7-flash-medium",
-      "gemini-3.8-flash",
-      "gemini-3.8-flash-high",
-      "gemini-3.8-flash-lite-tts",
-      "gemini-3.8-flash-low",
-      "gemini-3.8-flash-medium",
-      "gemini-3.8-flash-tts",
-      "gemini-embedding-001",
-      "gemini-flash-latest",
-      "gemini-flash-lite-latest",
-      "gemini-for",
-      "gemini-pro-latest",
-      "gemini-robotics-er-1.6-preview",
-      "gemini-robotics-er-2-preview",
-      "gemini-v4s-jarvis-scsummary",
-      "glm-5.2",
-      "gpt-image-1",
-      "gpt-oss-120b-maas",
-      "gpt-oss-20b-maas",
-      "lyria-3-clip-preview",
-      "lyria-3-pro-preview"
-    ]
-  },
   "cards": [
-    {
-      "id": "ct-radar-x-ai",
-      "category": "subdomain-ct",
-      "scanner": "cert-transparency-snapshot",
-      "header": "STEALTH SUBDOMAIN & CT RADAR · XAI",
-      "title": "xAI Codenames & Staging (*.x.ai)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (8 notable / 64 baselined)",
-      "build_label": "Domain",
-      "build_transition": "*.x.ai · 8 notable (64 baselined)",
-      "models": [
-        {
-          "id": "us-west-1.api.x.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-27"
-        },
-        {
-          "id": "us-saltlake-2-raw.api.x.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-27"
-        },
-        {
-          "id": "cloud9-cm.api.x.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-27"
-        },
-        {
-          "id": "us-south-1-pltr.api.x.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-26"
-        },
-        {
-          "id": "us-east-1-raw.api.x.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-26"
-        },
-        {
-          "id": "api-raw.x.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-26"
-        },
-        {
-          "id": "max-raw.api.x.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-25"
-        },
-        {
-          "id": "us-west-1-raw.api.x.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-20"
-        }
-      ],
-      "evidence": "Certificate Transparency & Passive DNS · *.x.ai",
-      "source_text": "filtered Certificate Transparency (CT) & DNS records for x.ai (generic docs/chat/api hosts hidden).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "XAI",
-      "provider_slug": "xai",
-      "accent_color": "#e2e8f0",
-      "links": [
-        {
-          "label": "CertSpotter CT Log",
-          "url": "https://sslmate.com/ct_search_results?q=x.ai"
-        },
-        {
-          "label": "crt.sh Lookup",
-          "url": "https://crt.sh/?q=%25.x.ai"
-        }
-      ],
-      "detected_at": "2026-10-27T05:34:45Z",
-      "x_post_text": "🌐 xAI Codenames & Staging (*.x.ai) — *.x.ai · 8 notable (64 baselined)\n\n• us-west-1.api.x.ai (Stealth / Codename Endpoint · SSL 2026-10-27)\n• us-saltlake-2-raw.api.x.ai (Stealth / Codename Endpoint · SSL 2026-10-27)\n• cloud9-cm.api.x.ai (Stealth / Codename Endpoint · SSL 2026-10-27)\n• us-south-1-pltr.api.x.ai (Stealth / Codename Endpoint · SSL 2026-10-26)\n• us-east-1-raw.api.x.ai (Stealth / Codename Endpoint · SSL 2026-10-26)\n• api-raw.x.ai (Stealth / Codename Endpoint · SSL 2026-10-26)\n• +2 more endpoints\n\nEvidence: Certificate Transparency & Passive DNS · *.x.ai\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "ct-radar-cursor-com",
-      "category": "subdomain-ct",
-      "scanner": "cert-transparency-snapshot",
-      "header": "STEALTH SUBDOMAIN & CT RADAR · CURSOR",
-      "title": "Cursor IDE Codenames & Staging (*.cursor.com)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (8 notable / 65 baselined)",
-      "build_label": "Domain",
-      "build_transition": "*.cursor.com · 8 notable (65 baselined)",
-      "models": [
-        {
-          "id": "changelog.cursor.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-26"
-        },
-        {
-          "id": "ctpm.internal.cursor.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-23"
-        },
-        {
-          "id": "runner-egress-proxy.internal.cursor.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-21"
-        },
-        {
-          "id": "tailnet-egress.cursor.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-20"
-        },
-        {
-          "id": "warpstream-private.internal.cursor.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-05"
-        },
-        {
-          "id": "scm-api.internal.cursor.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-30"
-        },
-        {
-          "id": "review.cursor.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-27"
-        },
-        {
-          "id": "cluster-controller.internal.cursor.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-23"
-        }
-      ],
-      "evidence": "Certificate Transparency & Passive DNS · *.cursor.com",
-      "source_text": "filtered Certificate Transparency (CT) & DNS records for cursor.com (generic docs/chat/api hosts hidden).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "CURSOR",
-      "provider_slug": "cursor",
-      "accent_color": "#94a3b8",
-      "links": [
-        {
-          "label": "CertSpotter CT Log",
-          "url": "https://sslmate.com/ct_search_results?q=cursor.com"
-        },
-        {
-          "label": "crt.sh Lookup",
-          "url": "https://crt.sh/?q=%25.cursor.com"
-        }
-      ],
-      "detected_at": "2026-10-26T23:01:57Z",
-      "x_post_text": "🌐 Cursor IDE Codenames & Staging (*.cursor.com) — *.cursor.com · 8 notable (65 baselined)\n\n• changelog.cursor.com (Stealth / Codename Endpoint · SSL 2026-10-26)\n• ctpm.internal.cursor.com (Stealth / Codename Endpoint · SSL 2026-10-23)\n• runner-egress-proxy.internal.cursor.com (Stealth / Codename Endpoint · SSL 2026-10-21)\n• tailnet-egress.cursor.com (Stealth / Codename Endpoint · SSL 2026-10-20)\n• warpstream-private.internal.cursor.com (Stealth / Codename Endpoint · SSL 2026-10-05)\n• scm-api.internal.cursor.com (Stealth / Codename Endpoint · SSL 2026-09-30)\n• +2 more endpoints\n\nEvidence: Certificate Transparency & Passive DNS · *.cursor.com\n\nTracked by @StatsWire"
-    },
     {
       "id": "litellm-diff-5d522636",
       "category": "cli-sdk-diff",
@@ -1240,218 +1769,6 @@
       "x_post_text": "🚨 OPENAI DEVELOPER MODELS CATALOG · OPENAI\nNew Model Spotted in OpenAI Official Models Markdown Index spotted in Docs Diff +1 new identifier(s)!\n\n• GPT 6.1 Terra (gpt-6.1-terra)\n\nEvidence: developers.openai.com/api/docs/models/all.md\nSource: official OpenAI API Markdown model catalog.\n\nTracked by @StatsWire"
     },
     {
-      "id": "ct-radar-perplexity-ai",
-      "category": "subdomain-ct",
-      "scanner": "cert-transparency-snapshot",
-      "header": "STEALTH SUBDOMAIN & CT RADAR · PERPLEXITY",
-      "title": "Perplexity AI Codenames & Staging (*.perplexity.ai)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (8 notable / 140 baselined)",
-      "build_label": "Domain",
-      "build_transition": "*.perplexity.ai · 8 notable (140 baselined)",
-      "models": [
-        {
-          "id": "console-cdn.perplexity.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-26"
-        },
-        {
-          "id": "pplx-marketing-static.perplexity.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-24"
-        },
-        {
-          "id": "finance-search.docs.perplexity.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-24"
-        },
-        {
-          "id": "fellowship.perplexity.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-24"
-        },
-        {
-          "id": "buildbarn.testing.p.perplexity.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-24"
-        },
-        {
-          "id": "buildbarn.p.perplexity.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-24"
-        },
-        {
-          "id": "atlantis-int.testing.p.perplexity.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-23"
-        },
-        {
-          "id": "desktop-download.perplexity.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-22"
-        }
-      ],
-      "evidence": "Certificate Transparency & Passive DNS · *.perplexity.ai",
-      "source_text": "filtered Certificate Transparency (CT) & DNS records for perplexity.ai (generic docs/chat/api hosts hidden).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "PERPLEXITY",
-      "provider_slug": "perplexity",
-      "accent_color": "#0ea5e9",
-      "links": [
-        {
-          "label": "CertSpotter CT Log",
-          "url": "https://sslmate.com/ct_search_results?q=perplexity.ai"
-        },
-        {
-          "label": "crt.sh Lookup",
-          "url": "https://crt.sh/?q=%25.perplexity.ai"
-        }
-      ],
-      "detected_at": "2026-10-26T16:37:02Z",
-      "x_post_text": "🌐 Perplexity AI Codenames & Staging (*.perplexity.ai) — *.perplexity.ai · 8 notable (140 baselined)\n\n• console-cdn.perplexity.ai (Stealth / Codename Endpoint · SSL 2026-10-26)\n• pplx-marketing-static.perplexity.ai (Stealth / Codename Endpoint · SSL 2026-10-24)\n• finance-search.docs.perplexity.ai (Stealth / Codename Endpoint · SSL 2026-10-24)\n• fellowship.perplexity.ai (Stealth / Codename Endpoint · SSL 2026-10-24)\n• buildbarn.testing.p.perplexity.ai (Stealth / Codename Endpoint · SSL 2026-10-24)\n• buildbarn.p.perplexity.ai (Stealth / Codename Endpoint · SSL 2026-10-24)\n• +2 more endpoints\n\nEvidence: Certificate Transparency & Passive DNS · *.perplexity.ai\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "ct-radar-anthropic-com",
-      "category": "subdomain-ct",
-      "scanner": "cert-transparency-snapshot",
-      "header": "STEALTH SUBDOMAIN & CT RADAR · ANTHROPIC",
-      "title": "Anthropic Codenames & Staging (*.anthropic.com)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (8 notable / 99 baselined)",
-      "build_label": "Domain",
-      "build_transition": "*.anthropic.com · 8 notable (99 baselined)",
-      "models": [
-        {
-          "id": "tunnel.anthropic.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-26"
-        },
-        {
-          "id": "events.anthropic.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-26"
-        },
-        {
-          "id": "partnerportal.anthropic.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-21"
-        },
-        {
-          "id": "identity.anthropic.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-20"
-        },
-        {
-          "id": "slackbot.anthropic.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-17"
-        },
-        {
-          "id": "metrics.anthropic.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-17"
-        },
-        {
-          "id": "www-cdn.anthropic.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-15"
-        },
-        {
-          "id": "license-usage.anthropic.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-15"
-        }
-      ],
-      "evidence": "Certificate Transparency & Passive DNS · *.anthropic.com",
-      "source_text": "filtered Certificate Transparency (CT) & DNS records for anthropic.com (generic docs/chat/api hosts hidden).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "ANTHROPIC",
-      "provider_slug": "anthropic",
-      "accent_color": "#f97316",
-      "links": [
-        {
-          "label": "CertSpotter CT Log",
-          "url": "https://sslmate.com/ct_search_results?q=anthropic.com"
-        },
-        {
-          "label": "crt.sh Lookup",
-          "url": "https://crt.sh/?q=%25.anthropic.com"
-        }
-      ],
-      "detected_at": "2026-10-26T12:49:48Z",
-      "x_post_text": "🌐 Anthropic Codenames & Staging (*.anthropic.com) — *.anthropic.com · 8 notable (99 baselined)\n\n• tunnel.anthropic.com (Stealth / Codename Endpoint · SSL 2026-10-26)\n• events.anthropic.com (Stealth / Codename Endpoint · SSL 2026-10-26)\n• partnerportal.anthropic.com (Stealth / Codename Endpoint · SSL 2026-10-21)\n• identity.anthropic.com (Stealth / Codename Endpoint · SSL 2026-10-20)\n• slackbot.anthropic.com (Stealth / Codename Endpoint · SSL 2026-10-17)\n• metrics.anthropic.com (Stealth / Codename Endpoint · SSL 2026-10-17)\n• +2 more endpoints\n\nEvidence: Certificate Transparency & Passive DNS · *.anthropic.com\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "ct-radar-gemini-google-com",
-      "category": "subdomain-ct",
-      "scanner": "cert-transparency-snapshot",
-      "header": "STEALTH SUBDOMAIN & CT RADAR · GOOGLE",
-      "title": "Google Gemini Codenames & Staging (*.gemini.google.com)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (2 notable / 4 baselined)",
-      "build_label": "Domain",
-      "build_transition": "*.gemini.google.com · 2 notable (4 baselined)",
-      "models": [
-        {
-          "id": "enterprise-staging.gemini.google.com",
-          "name": "Pre-Release / Staging · SSL 2026-10-26"
-        },
-        {
-          "id": "enterprise-autopush.gemini.google.com",
-          "name": "Pre-Release / Staging · SSL 2026-10-26"
-        }
-      ],
-      "evidence": "Certificate Transparency & Passive DNS · *.gemini.google.com",
-      "source_text": "filtered Certificate Transparency (CT) & DNS records for gemini.google.com (generic docs/chat/api hosts hidden).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "GOOGLE",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "CertSpotter CT Log",
-          "url": "https://sslmate.com/ct_search_results?q=gemini.google.com"
-        },
-        {
-          "label": "crt.sh Lookup",
-          "url": "https://crt.sh/?q=%25.gemini.google.com"
-        }
-      ],
-      "detected_at": "2026-10-26T08:39:33Z",
-      "x_post_text": "🌐 Google Gemini Codenames & Staging (*.gemini.google.com) — *.gemini.google.com · 2 notable (4 baselined)\n\n• enterprise-staging.gemini.google.com (Pre-Release / Staging · SSL 2026-10-26)\n• enterprise-autopush.gemini.google.com (Pre-Release / Staging · SSL 2026-10-26)\n\nEvidence: Certificate Transparency & Passive DNS · *.gemini.google.com\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "ct-radar-claude-ai",
-      "category": "subdomain-ct",
-      "scanner": "cert-transparency-snapshot",
-      "header": "STEALTH SUBDOMAIN & CT RADAR · ANTHROPIC",
-      "title": "Claude.ai · Anthropic Codenames & Staging (*.claude.ai)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (4 notable / 14 baselined)",
-      "build_label": "Domain",
-      "build_transition": "*.claude.ai · 4 notable (14 baselined)",
-      "models": [
-        {
-          "id": "pivot.claude.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-25"
-        },
-        {
-          "id": "tidewater.claude.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-03"
-        },
-        {
-          "id": "cadence.claude.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-01"
-        },
-        {
-          "id": "tidewater.preview.claude.ai",
-          "name": "Preview / Canary · SSL 2026-10-03"
-        }
-      ],
-      "evidence": "Certificate Transparency & Passive DNS · *.claude.ai",
-      "source_text": "filtered Certificate Transparency (CT) & DNS records for claude.ai (generic docs/chat/api hosts hidden).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "ANTHROPIC",
-      "provider_slug": "anthropic",
-      "accent_color": "#f97316",
-      "links": [
-        {
-          "label": "CertSpotter CT Log",
-          "url": "https://sslmate.com/ct_search_results?q=claude.ai"
-        },
-        {
-          "label": "crt.sh Lookup",
-          "url": "https://crt.sh/?q=%25.claude.ai"
-        }
-      ],
-      "detected_at": "2026-10-25T20:15:22Z",
-      "x_post_text": "🌐 Claude.ai · Anthropic Codenames & Staging (*.claude.ai) — *.claude.ai · 4 notable (14 baselined)\n\n• pivot.claude.ai (Stealth / Codename Endpoint · SSL 2026-10-25)\n• tidewater.claude.ai (Stealth / Codename Endpoint · SSL 2026-10-03)\n• cadence.claude.ai (Stealth / Codename Endpoint · SSL 2026-09-01)\n• tidewater.preview.claude.ai (Preview / Canary · SSL 2026-10-03)\n\nEvidence: Certificate Transparency & Passive DNS · *.claude.ai\n\nTracked by @StatsWire"
-    },
-    {
       "id": "engine-pr-vllm-project_vllm-63585",
       "category": "open-source",
       "scanner": "engine-pr-leak",
@@ -1482,191 +1799,6 @@
       "detected_at": "2026-10-25T15:14:03Z",
       "x_post_text": "🚨 VLLM PR DAY-0 MODEL ONBOARDING (OPEN)\ninclusionAI/Ming-3.0-asr-tiny (vLLM PR #63585) spotted in vLLM PR PR #63585 (open)!\n\n• Referenced in vllm-project/vllm#63585 (inclusionAI/Ming-3.0-asr-tiny)\n\nEvidence: vllm-project/vllm/pull/63585\nSource: public GitHub pull request #63585 on vllm-project/vllm.\n\nTracked by @StatsWire",
       "filtered_released": 1
-    },
-    {
-      "id": "ct-radar-minimax-io",
-      "category": "subdomain-ct",
-      "scanner": "cert-transparency-snapshot",
-      "header": "STEALTH SUBDOMAIN & CT RADAR · MINIMAX",
-      "title": "MiniMax AI Codenames & Staging (*.minimax.io)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (8 notable / 19 baselined)",
-      "build_label": "Domain",
-      "build_transition": "*.minimax.io · 8 notable (19 baselined)",
-      "models": [
-        {
-          "id": "space.minimax.io",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-25"
-        },
-        {
-          "id": "cdn-static-file.minimax.io",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-08"
-        },
-        {
-          "id": "firebase.minimax.io",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-05"
-        },
-        {
-          "id": "talkie.cdn.minimax.io",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-03"
-        },
-        {
-          "id": "video-product.cdn.minimax.io",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-01"
-        },
-        {
-          "id": "library-cdn.minimax.io",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-01"
-        },
-        {
-          "id": "file.cdn.minimax.io",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-01"
-        },
-        {
-          "id": "ir.minimax.io",
-          "name": "Stealth / Codename Endpoint"
-        }
-      ],
-      "evidence": "Certificate Transparency & Passive DNS · *.minimax.io",
-      "source_text": "filtered Certificate Transparency (CT) & DNS records for minimax.io (generic docs/chat/api hosts hidden).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "MINIMAX",
-      "provider_slug": "minimax",
-      "accent_color": "#ec4899",
-      "links": [
-        {
-          "label": "CertSpotter CT Log",
-          "url": "https://sslmate.com/ct_search_results?q=minimax.io"
-        },
-        {
-          "label": "crt.sh Lookup",
-          "url": "https://crt.sh/?q=%25.minimax.io"
-        }
-      ],
-      "detected_at": "2026-10-25T12:18:16Z",
-      "x_post_text": "🌐 MiniMax AI Codenames & Staging (*.minimax.io) — *.minimax.io · 8 notable (19 baselined)\n\n• space.minimax.io (Stealth / Codename Endpoint · SSL 2026-10-25)\n• cdn-static-file.minimax.io (Stealth / Codename Endpoint · SSL 2026-10-08)\n• firebase.minimax.io (Stealth / Codename Endpoint · SSL 2026-10-05)\n• talkie.cdn.minimax.io (Stealth / Codename Endpoint · SSL 2026-09-03)\n• video-product.cdn.minimax.io (Stealth / Codename Endpoint · SSL 2026-09-01)\n• library-cdn.minimax.io (Stealth / Codename Endpoint · SSL 2026-09-01)\n• +2 more endpoints\n\nEvidence: Certificate Transparency & Passive DNS · *.minimax.io\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "ct-radar-grok-com",
-      "category": "subdomain-ct",
-      "scanner": "cert-transparency-snapshot",
-      "header": "STEALTH SUBDOMAIN & CT RADAR · XAI",
-      "title": "Grok · xAI Codenames & Staging (*.grok.com)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (7 notable / 11 baselined)",
-      "build_label": "Domain",
-      "build_transition": "*.grok.com · 7 notable (11 baselined)",
-      "models": [
-        {
-          "id": "try.grok.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-24"
-        },
-        {
-          "id": "typeahead.grok.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-14"
-        },
-        {
-          "id": "ssff.grok.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-01"
-        },
-        {
-          "id": "app-builder-deployer.grok.com",
-          "name": "Agent / Product Endpoint"
-        },
-        {
-          "id": "asia-south1-livekit.grok.com",
-          "name": "Voice / Audio Cluster · SSL 2026-09-18"
-        },
-        {
-          "id": "livekit.grok.com",
-          "name": "Voice / Audio Cluster · SSL 2026-09-13"
-        },
-        {
-          "id": "livekit-enterprise.grok.com",
-          "name": "Voice / Audio Cluster · SSL 2026-09-05"
-        }
-      ],
-      "evidence": "Certificate Transparency & Passive DNS · *.grok.com",
-      "source_text": "filtered Certificate Transparency (CT) & DNS records for grok.com (generic docs/chat/api hosts hidden).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "XAI",
-      "provider_slug": "xai",
-      "accent_color": "#e2e8f0",
-      "links": [
-        {
-          "label": "CertSpotter CT Log",
-          "url": "https://sslmate.com/ct_search_results?q=grok.com"
-        },
-        {
-          "label": "crt.sh Lookup",
-          "url": "https://crt.sh/?q=%25.grok.com"
-        }
-      ],
-      "detected_at": "2026-10-24T21:23:00Z",
-      "x_post_text": "🌐 Grok · xAI Codenames & Staging (*.grok.com) — *.grok.com · 7 notable (11 baselined)\n\n• try.grok.com (Stealth / Codename Endpoint · SSL 2026-10-24)\n• typeahead.grok.com (Stealth / Codename Endpoint · SSL 2026-09-14)\n• ssff.grok.com (Stealth / Codename Endpoint · SSL 2026-09-01)\n• app-builder-deployer.grok.com (Agent / Product Endpoint)\n• asia-south1-livekit.grok.com (Voice / Audio Cluster · SSL 2026-09-18)\n• livekit.grok.com (Voice / Audio Cluster · SSL 2026-09-13)\n• +1 more endpoints\n\nEvidence: Certificate Transparency & Passive DNS · *.grok.com\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "ct-radar-mistral-ai",
-      "category": "subdomain-ct",
-      "scanner": "cert-transparency-snapshot",
-      "header": "STEALTH SUBDOMAIN & CT RADAR · MISTRAL AI",
-      "title": "Mistral AI Codenames & Staging (*.mistral.ai)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (8 notable / 118 baselined)",
-      "build_label": "Domain",
-      "build_transition": "*.mistral.ai · 8 notable (118 baselined)",
-      "models": [
-        {
-          "id": "helpdesk.mistral.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-08"
-        },
-        {
-          "id": "callback.internalmain.dc.mistral.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-08"
-        },
-        {
-          "id": "worldwide-hackathon.mistral.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-07"
-        },
-        {
-          "id": "blue.console.mistral.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-05"
-        },
-        {
-          "id": "europe.mistral.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-04"
-        },
-        {
-          "id": "meow.mistral.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-03"
-        },
-        {
-          "id": "gcp-thanks.mistral.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-02"
-        },
-        {
-          "id": "cms.legal.mistral.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-02"
-        }
-      ],
-      "evidence": "Certificate Transparency & Passive DNS · *.mistral.ai",
-      "source_text": "filtered Certificate Transparency (CT) & DNS records for mistral.ai (generic docs/chat/api hosts hidden).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "MISTRAL AI",
-      "provider_slug": "mistral",
-      "accent_color": "#f59e0b",
-      "links": [
-        {
-          "label": "CertSpotter CT Log",
-          "url": "https://sslmate.com/ct_search_results?q=mistral.ai"
-        },
-        {
-          "label": "crt.sh Lookup",
-          "url": "https://crt.sh/?q=%25.mistral.ai"
-        }
-      ],
-      "detected_at": "2026-10-24T14:08:53.830Z",
-      "x_post_text": "🌐 Mistral AI Codenames & Staging (*.mistral.ai) — *.mistral.ai · 8 notable (118 baselined)\n\n• helpdesk.mistral.ai (Stealth / Codename Endpoint · SSL 2026-10-08)\n• callback.internalmain.dc.mistral.ai (Stealth / Codename Endpoint · SSL 2026-10-08)\n• worldwide-hackathon.mistral.ai (Stealth / Codename Endpoint · SSL 2026-10-07)\n• blue.console.mistral.ai (Stealth / Codename Endpoint · SSL 2026-10-05)\n• europe.mistral.ai (Stealth / Codename Endpoint · SSL 2026-10-04)\n• meow.mistral.ai (Stealth / Codename Endpoint · SSL 2026-10-03)\n• +2 more endpoints\n\nEvidence: Certificate Transparency & Passive DNS · *.mistral.ai\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-tencent_Hy-Nomas-Diffusers",
@@ -1887,49 +2019,6 @@
       "x_post_text": "🚨 ANTIGRAVITY ACP (UNMANIFESTED DROP) · GOOGLE\nSonnet 5.5 High BoN LE (ACP v1.4.2 Discovery Doc) spotted in Discovery Doc Diff v1.4.1 -> v1.4.2 · 1,478,577 -> 1,489,047 bytes (+10,470)!\n\n• Sonnet 5.5 High BoN LE (sonnet-5.5-high-bon-le)\n• Gemini 4 Argon Disabled (gemini-4-argon-disabled)\n• Barium B Concise Final Response DI TF (barium-b-concise-final-response-di-tf)\n• Barium B Final Visibles v7 TF (barium-b-final-visibles-v7-tf)\n• Gemini 4 Argon Cyber Permissive (gemini-4-argon-cyber-permissive)\n\nEvidence: agy_acp_server.par -> google3/google/internal/cloud/code/cloudcode-pa_prod_google_rest_v1internal.json\nSource: official Google Antigravity ACP Server release archives on dl.google.com.\n\nTracked by @StatsWire"
     },
     {
-      "id": "ct-radar-chatgpt-com",
-      "category": "subdomain-ct",
-      "scanner": "cert-transparency-snapshot",
-      "header": "STEALTH SUBDOMAIN & CT RADAR · OPENAI",
-      "title": "ChatGPT · OpenAI Codenames & Staging (*.chatgpt.com)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (3 notable / 43 baselined)",
-      "build_label": "Domain",
-      "build_transition": "*.chatgpt.com · 3 notable (43 baselined)",
-      "models": [
-        {
-          "id": "codex-cloud-environments.chatgpt.com",
-          "name": "Coding / IDE Endpoint · SSL 2026-10-23"
-        },
-        {
-          "id": "hooks-staging.chatgpt.com",
-          "name": "Agent / Product Endpoint · SSL 2026-10-23"
-        },
-        {
-          "id": "amb-staging.chatgpt.com",
-          "name": "Pre-Release / Staging · SSL 2026-09-20"
-        }
-      ],
-      "evidence": "Certificate Transparency & Passive DNS · *.chatgpt.com",
-      "source_text": "filtered Certificate Transparency (CT) & DNS records for chatgpt.com (generic docs/chat/api hosts hidden).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "OPENAI",
-      "provider_slug": "openai",
-      "accent_color": "#10b981",
-      "links": [
-        {
-          "label": "CertSpotter CT Log",
-          "url": "https://sslmate.com/ct_search_results?q=chatgpt.com"
-        },
-        {
-          "label": "crt.sh Lookup",
-          "url": "https://crt.sh/?q=%25.chatgpt.com"
-        }
-      ],
-      "detected_at": "2026-10-23T03:12:13Z",
-      "x_post_text": "🌐 ChatGPT · OpenAI Codenames & Staging (*.chatgpt.com) — *.chatgpt.com · 3 notable (43 baselined)\n\n• codex-cloud-environments.chatgpt.com (Coding / IDE Endpoint · SSL 2026-10-23)\n• hooks-staging.chatgpt.com (Agent / Product Endpoint · SSL 2026-10-23)\n• amb-staging.chatgpt.com (Pre-Release / Staging · SSL 2026-09-20)\n\nEvidence: Certificate Transparency & Passive DNS · *.chatgpt.com\n\nTracked by @StatsWire"
-    },
-    {
       "id": "hf-nvidia_InternVideo2-CLIP-anomaly-detection",
       "category": "open-source",
       "scanner": "huggingface",
@@ -2110,69 +2199,6 @@
       "x_post_text": "🚨 HUGGING FACE NEW REPO · TENCENT HUNYUAN\nHy SimulMT 30B A3B Interleave FP8 spotted in Repo Created 2026-10-22 (translation)!\n\n• Hy-SimulMT-30B-A3B-Interleave-FP8 (translation) (tencent/Hy-SimulMT-30B-A3B-Interleave-FP8)\n\nEvidence: huggingface.co/api/models\nSource: official tencent Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
-      "id": "ct-radar-openai-com",
-      "category": "subdomain-ct",
-      "scanner": "cert-transparency-snapshot",
-      "header": "STEALTH SUBDOMAIN & CT RADAR · OPENAI",
-      "title": "OpenAI Codenames & Staging (*.openai.com)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (8 notable / 291 baselined)",
-      "build_label": "Domain",
-      "build_transition": "*.openai.com · 8 notable (291 baselined)",
-      "models": [
-        {
-          "id": "guava.fde.openai.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-22"
-        },
-        {
-          "id": "pilot-accelerators.openai.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-21"
-        },
-        {
-          "id": "cookbook.openai.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-21"
-        },
-        {
-          "id": "expert-ai-trainers.forum.openai.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-20"
-        },
-        {
-          "id": "events.openai.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-19"
-        },
-        {
-          "id": "enterpriseservices.openai.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-19"
-        },
-        {
-          "id": "devday.openai.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-19"
-        },
-        {
-          "id": "feather.openai.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-18"
-        }
-      ],
-      "evidence": "Certificate Transparency & Passive DNS · *.openai.com",
-      "source_text": "filtered Certificate Transparency (CT) & DNS records for openai.com (generic docs/chat/api hosts hidden).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "OPENAI",
-      "provider_slug": "openai",
-      "accent_color": "#10b981",
-      "links": [
-        {
-          "label": "CertSpotter CT Log",
-          "url": "https://sslmate.com/ct_search_results?q=openai.com"
-        },
-        {
-          "label": "crt.sh Lookup",
-          "url": "https://crt.sh/?q=%25.openai.com"
-        }
-      ],
-      "detected_at": "2026-10-22T05:02:24Z",
-      "x_post_text": "🌐 OpenAI Codenames & Staging (*.openai.com) — *.openai.com · 8 notable (291 baselined)\n\n• guava.fde.openai.com (Stealth / Codename Endpoint · SSL 2026-10-22)\n• pilot-accelerators.openai.com (Stealth / Codename Endpoint · SSL 2026-10-21)\n• cookbook.openai.com (Stealth / Codename Endpoint · SSL 2026-10-21)\n• expert-ai-trainers.forum.openai.com (Stealth / Codename Endpoint · SSL 2026-10-20)\n• events.openai.com (Stealth / Codename Endpoint · SSL 2026-10-19)\n• enterpriseservices.openai.com (Stealth / Codename Endpoint · SSL 2026-10-19)\n• +2 more endpoints\n\nEvidence: Certificate Transparency & Passive DNS · *.openai.com\n\nTracked by @StatsWire"
-    },
-    {
       "id": "openrouter-model-recursive_flint-v1.0_free",
       "category": "cli-sdk-diff",
       "scanner": "openrouter",
@@ -2207,57 +2233,6 @@
       "detected_at": "2026-10-21T22:46:05+00:00",
       "backfill": true,
       "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · RECURSIVE\nRecursive: Flint (free) spotted in Endpoint ID recursive/flint-v1.0:free!\n\n• Recursive: Flint (free) (262k context window) (recursive/flint-v1.0:free)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "ct-radar-claude-com",
-      "category": "subdomain-ct",
-      "scanner": "cert-transparency-snapshot",
-      "header": "STEALTH SUBDOMAIN & CT RADAR · ANTHROPIC",
-      "title": "Claude.com · Anthropic Codenames & Staging (*.claude.com)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (5 notable / 46 baselined)",
-      "build_label": "Domain",
-      "build_transition": "*.claude.com · 5 notable (46 baselined)",
-      "models": [
-        {
-          "id": "habanero.claude.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-07"
-        },
-        {
-          "id": "shop-pay.mcp.claude.com",
-          "name": "First-Party MCP Server · SSL 2026-10-19"
-        },
-        {
-          "id": "plaid.mcp.claude.com",
-          "name": "First-Party MCP Server · SSL 2026-10-19"
-        },
-        {
-          "id": "milfam.mcp.claude.com",
-          "name": "First-Party MCP Server · SSL 2026-10-15"
-        },
-        {
-          "id": "ehr.mcp.claude.com",
-          "name": "First-Party MCP Server · SSL 2026-10-08"
-        }
-      ],
-      "evidence": "Certificate Transparency & Passive DNS · *.claude.com",
-      "source_text": "filtered Certificate Transparency (CT) & DNS records for claude.com (generic docs/chat/api hosts hidden).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "ANTHROPIC",
-      "provider_slug": "anthropic",
-      "accent_color": "#f97316",
-      "links": [
-        {
-          "label": "CertSpotter CT Log",
-          "url": "https://sslmate.com/ct_search_results?q=claude.com"
-        },
-        {
-          "label": "crt.sh Lookup",
-          "url": "https://crt.sh/?q=%25.claude.com"
-        }
-      ],
-      "detected_at": "2026-10-19T17:00:16Z",
-      "x_post_text": "🌐 Claude.com · Anthropic Codenames & Staging (*.claude.com) — *.claude.com · 5 notable (46 baselined)\n\n• habanero.claude.com (Stealth / Codename Endpoint · SSL 2026-10-07)\n• shop-pay.mcp.claude.com (First-Party MCP Server · SSL 2026-10-19)\n• plaid.mcp.claude.com (First-Party MCP Server · SSL 2026-10-19)\n• milfam.mcp.claude.com (First-Party MCP Server · SSL 2026-10-15)\n• ehr.mcp.claude.com (First-Party MCP Server · SSL 2026-10-08)\n\nEvidence: Certificate Transparency & Passive DNS · *.claude.com\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-nvidia_Cosmos3-H-Embodied-Nano",
@@ -2476,69 +2451,6 @@
       "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · INCEPTION\nInception: Mercury 3 spotted in Endpoint ID inception/mercury-3!\n\n• Inception: Mercury 3 (1000k context window) (inception/mercury-3)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
     },
     {
-      "id": "ct-radar-z-ai",
-      "category": "subdomain-ct",
-      "scanner": "cert-transparency-snapshot",
-      "header": "STEALTH SUBDOMAIN & CT RADAR · Z.AI · GLM",
-      "title": "Z.ai · GLM Codenames & Staging (*.z.ai)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (8 notable / 15 baselined)",
-      "build_label": "Domain",
-      "build_transition": "*.z.ai · 8 notable (15 baselined)",
-      "models": [
-        {
-          "id": "biz.z.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-16"
-        },
-        {
-          "id": "zwork.z.ai",
-          "name": "Stealth / Codename Endpoint"
-        },
-        {
-          "id": "startup.z.ai",
-          "name": "Stealth / Codename Endpoint"
-        },
-        {
-          "id": "showcase.z.ai",
-          "name": "Stealth / Codename Endpoint"
-        },
-        {
-          "id": "ocr.z.ai",
-          "name": "Stealth / Codename Endpoint"
-        },
-        {
-          "id": "mfile.z.ai",
-          "name": "Stealth / Codename Endpoint"
-        },
-        {
-          "id": "image.z.ai",
-          "name": "Stealth / Codename Endpoint"
-        },
-        {
-          "id": "zcode.z.ai",
-          "name": "Coding / IDE Endpoint · SSL 2026-10-10"
-        }
-      ],
-      "evidence": "Certificate Transparency & Passive DNS · *.z.ai",
-      "source_text": "filtered Certificate Transparency (CT) & DNS records for z.ai (generic docs/chat/api hosts hidden).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "Z.AI · GLM",
-      "provider_slug": "zai",
-      "accent_color": "#14b8a6",
-      "links": [
-        {
-          "label": "CertSpotter CT Log",
-          "url": "https://sslmate.com/ct_search_results?q=z.ai"
-        },
-        {
-          "label": "crt.sh Lookup",
-          "url": "https://crt.sh/?q=%25.z.ai"
-        }
-      ],
-      "detected_at": "2026-10-16T04:33:52Z",
-      "x_post_text": "🌐 Z.ai · GLM Codenames & Staging (*.z.ai) — *.z.ai · 8 notable (15 baselined)\n\n• biz.z.ai (Stealth / Codename Endpoint · SSL 2026-10-16)\n• zwork.z.ai (Stealth / Codename Endpoint)\n• startup.z.ai (Stealth / Codename Endpoint)\n• showcase.z.ai (Stealth / Codename Endpoint)\n• ocr.z.ai (Stealth / Codename Endpoint)\n• mfile.z.ai (Stealth / Codename Endpoint)\n• +2 more endpoints\n\nEvidence: Certificate Transparency & Passive DNS · *.z.ai\n\nTracked by @StatsWire"
-    },
-    {
       "id": "openrouter-model-moondream_moondream3-preview",
       "category": "cli-sdk-diff",
       "scanner": "openrouter",
@@ -2682,128 +2594,6 @@
       ],
       "detected_at": "2026-10-15T00:06:41.128Z",
       "x_post_text": "🚨 GOOGLE GENAI SDK DIFF · GOOGLE\nGenai (Gemini 4 Argon) spotted in Package Diff 2.29.1 -> 2.30.0!\n\n• Gemini 4 Argon (gemini-4-argon)\n\nEvidence: dist/index.d.ts / SDK bundle\nSource: official public npm registry tarball (@google/genai).\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "ct-radar-qwen-ai",
-      "category": "subdomain-ct",
-      "scanner": "cert-transparency-snapshot",
-      "header": "STEALTH SUBDOMAIN & CT RADAR · QWEN · ALIBABA",
-      "title": "Qwen · Alibaba Codenames & Staging (*.qwen.ai)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (7 notable / 11 baselined)",
-      "build_label": "Domain",
-      "build_transition": "*.qwen.ai · 7 notable (11 baselined)",
-      "models": [
-        {
-          "id": "ss.qwen.ai",
-          "name": "Stealth / Codename Endpoint"
-        },
-        {
-          "id": "pre2-chat.qwen.ai",
-          "name": "Stealth / Codename Endpoint"
-        },
-        {
-          "id": "pre.qwen.ai",
-          "name": "Stealth / Codename Endpoint"
-        },
-        {
-          "id": "pre-chat.qwen.ai",
-          "name": "Stealth / Codename Endpoint"
-        },
-        {
-          "id": "omni.qwen.ai",
-          "name": "Stealth / Codename Endpoint"
-        },
-        {
-          "id": "aplus.qwen.ai",
-          "name": "Stealth / Codename Endpoint"
-        },
-        {
-          "id": "coder.qwen.ai",
-          "name": "Coding / IDE Endpoint"
-        }
-      ],
-      "evidence": "Certificate Transparency & Passive DNS · *.qwen.ai",
-      "source_text": "filtered Certificate Transparency (CT) & DNS records for qwen.ai (generic docs/chat/api hosts hidden).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "QWEN · ALIBABA",
-      "provider_slug": "qwen",
-      "accent_color": "#a855f7",
-      "links": [
-        {
-          "label": "CertSpotter CT Log",
-          "url": "https://sslmate.com/ct_search_results?q=qwen.ai"
-        },
-        {
-          "label": "crt.sh Lookup",
-          "url": "https://crt.sh/?q=%25.qwen.ai"
-        }
-      ],
-      "detected_at": "2026-10-15T00:00:00Z",
-      "x_post_text": "🌐 Qwen · Alibaba Codenames & Staging (*.qwen.ai) — *.qwen.ai · 7 notable (11 baselined)\n\n• ss.qwen.ai (Stealth / Codename Endpoint)\n• pre2-chat.qwen.ai (Stealth / Codename Endpoint)\n• pre.qwen.ai (Stealth / Codename Endpoint)\n• pre-chat.qwen.ai (Stealth / Codename Endpoint)\n• omni.qwen.ai (Stealth / Codename Endpoint)\n• aplus.qwen.ai (Stealth / Codename Endpoint)\n• +1 more endpoints\n\nEvidence: Certificate Transparency & Passive DNS · *.qwen.ai\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "ct-radar-moonshot-cn",
-      "category": "subdomain-ct",
-      "scanner": "cert-transparency-snapshot",
-      "header": "STEALTH SUBDOMAIN & CT RADAR · MOONSHOT · KIMI",
-      "title": "Moonshot AI Codenames & Staging (*.moonshot.cn)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (8 notable / 14 baselined)",
-      "build_label": "Domain",
-      "build_transition": "*.moonshot.cn · 8 notable (14 baselined)",
-      "models": [
-        {
-          "id": "blobproxy-test.moonshot.cn",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-14"
-        },
-        {
-          "id": "saas.moonshot.cn",
-          "name": "Stealth / Codename Endpoint · SSL 2026-10-12"
-        },
-        {
-          "id": "blobproxy.moonshot.cn",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-25"
-        },
-        {
-          "id": "test-kimi-img.moonshot.cn",
-          "name": "Stealth / Codename Endpoint"
-        },
-        {
-          "id": "statics.moonshot.cn",
-          "name": "Stealth / Codename Endpoint"
-        },
-        {
-          "id": "pic.moonshot.cn",
-          "name": "Stealth / Codename Endpoint"
-        },
-        {
-          "id": "kimi.moonshot.cn",
-          "name": "Stealth / Codename Endpoint"
-        },
-        {
-          "id": "kimi-img.moonshot.cn",
-          "name": "Stealth / Codename Endpoint"
-        }
-      ],
-      "evidence": "Certificate Transparency & Passive DNS · *.moonshot.cn",
-      "source_text": "filtered Certificate Transparency (CT) & DNS records for moonshot.cn (generic docs/chat/api hosts hidden).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "MOONSHOT · KIMI",
-      "provider_slug": "kimi",
-      "accent_color": "#06b6d4",
-      "links": [
-        {
-          "label": "CertSpotter CT Log",
-          "url": "https://sslmate.com/ct_search_results?q=moonshot.cn"
-        },
-        {
-          "label": "crt.sh Lookup",
-          "url": "https://crt.sh/?q=%25.moonshot.cn"
-        }
-      ],
-      "detected_at": "2026-10-14T19:39:29Z",
-      "x_post_text": "🌐 Moonshot AI Codenames & Staging (*.moonshot.cn) — *.moonshot.cn · 8 notable (14 baselined)\n\n• blobproxy-test.moonshot.cn (Stealth / Codename Endpoint · SSL 2026-10-14)\n• saas.moonshot.cn (Stealth / Codename Endpoint · SSL 2026-10-12)\n• blobproxy.moonshot.cn (Stealth / Codename Endpoint · SSL 2026-09-25)\n• test-kimi-img.moonshot.cn (Stealth / Codename Endpoint)\n• statics.moonshot.cn (Stealth / Codename Endpoint)\n• pic.moonshot.cn (Stealth / Codename Endpoint)\n• +2 more endpoints\n\nEvidence: Certificate Transparency & Passive DNS · *.moonshot.cn\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-mistralai_Timestral-123M",
@@ -3107,171 +2897,6 @@
       ],
       "detected_at": "2026-10-12T19:28:01+00:00",
       "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini Nano Banana 2.1 spotted in Build 2.22.0 -> 2.23.0!\n\n• Gemini Nano Banana 2.1 (gemini-nano-banana-2.1)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "ct-radar-deepseek-com",
-      "category": "subdomain-ct",
-      "scanner": "cert-transparency-snapshot",
-      "header": "STEALTH SUBDOMAIN & CT RADAR · DEEPSEEK",
-      "title": "DeepSeek AI Codenames & Staging (*.deepseek.com)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (8 notable / 28 baselined)",
-      "build_label": "Domain",
-      "build_transition": "*.deepseek.com · 8 notable (28 baselined)",
-      "models": [
-        {
-          "id": "ops.yinghuo.deepseek.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-29"
-        },
-        {
-          "id": "talent.deepseek.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-16"
-        },
-        {
-          "id": "talent-test.deepseek.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-16"
-        },
-        {
-          "id": "chat-test.deepseek.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-03"
-        },
-        {
-          "id": "api-test.deepseek.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-03"
-        },
-        {
-          "id": "download-test.deepseek.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-08-31"
-        },
-        {
-          "id": "applink.deepseek.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-08-21"
-        },
-        {
-          "id": "www-test.deepseek.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-08-17"
-        }
-      ],
-      "evidence": "Certificate Transparency & Passive DNS · *.deepseek.com",
-      "source_text": "filtered Certificate Transparency (CT) & DNS records for deepseek.com (generic docs/chat/api hosts hidden).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "DEEPSEEK",
-      "provider_slug": "deepseek",
-      "accent_color": "#06b6d4",
-      "links": [
-        {
-          "label": "CertSpotter CT Log",
-          "url": "https://sslmate.com/ct_search_results?q=deepseek.com"
-        },
-        {
-          "label": "crt.sh Lookup",
-          "url": "https://crt.sh/?q=%25.deepseek.com"
-        }
-      ],
-      "detected_at": "2026-09-29T00:00:00Z",
-      "x_post_text": "🌐 DeepSeek AI Codenames & Staging (*.deepseek.com) — *.deepseek.com · 8 notable (28 baselined)\n\n• ops.yinghuo.deepseek.com (Stealth / Codename Endpoint · SSL 2026-09-29)\n• talent.deepseek.com (Stealth / Codename Endpoint · SSL 2026-09-16)\n• talent-test.deepseek.com (Stealth / Codename Endpoint · SSL 2026-09-16)\n• chat-test.deepseek.com (Stealth / Codename Endpoint · SSL 2026-09-03)\n• api-test.deepseek.com (Stealth / Codename Endpoint · SSL 2026-09-03)\n• download-test.deepseek.com (Stealth / Codename Endpoint · SSL 2026-08-31)\n• +2 more endpoints\n\nEvidence: Certificate Transparency & Passive DNS · *.deepseek.com\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "ct-radar-kimi-com",
-      "category": "subdomain-ct",
-      "scanner": "cert-transparency-snapshot",
-      "header": "STEALTH SUBDOMAIN & CT RADAR · MOONSHOT · KIMI",
-      "title": "Moonshot Kimi Codenames & Staging (*.kimi.com)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (5 notable / 10 baselined)",
-      "build_label": "Domain",
-      "build_transition": "*.kimi.com · 5 notable (10 baselined)",
-      "models": [
-        {
-          "id": "test-vapay.kimi.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-26"
-        },
-        {
-          "id": "app.kimi.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-02"
-        },
-        {
-          "id": "vapay.kimi.com",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-01"
-        },
-        {
-          "id": "wh.kimi.com",
-          "name": "Stealth / Codename Endpoint"
-        },
-        {
-          "id": "notilo.kimi.com",
-          "name": "Agent / Product Endpoint"
-        }
-      ],
-      "evidence": "Certificate Transparency & Passive DNS · *.kimi.com",
-      "source_text": "filtered Certificate Transparency (CT) & DNS records for kimi.com (generic docs/chat/api hosts hidden).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "MOONSHOT · KIMI",
-      "provider_slug": "kimi",
-      "accent_color": "#06b6d4",
-      "links": [
-        {
-          "label": "CertSpotter CT Log",
-          "url": "https://sslmate.com/ct_search_results?q=kimi.com"
-        },
-        {
-          "label": "crt.sh Lookup",
-          "url": "https://crt.sh/?q=%25.kimi.com"
-        }
-      ],
-      "detected_at": "2026-09-26T15:16:06Z",
-      "x_post_text": "🌐 Moonshot Kimi Codenames & Staging (*.kimi.com) — *.kimi.com · 5 notable (10 baselined)\n\n• test-vapay.kimi.com (Stealth / Codename Endpoint · SSL 2026-09-26)\n• app.kimi.com (Stealth / Codename Endpoint · SSL 2026-09-02)\n• vapay.kimi.com (Stealth / Codename Endpoint · SSL 2026-09-01)\n• wh.kimi.com (Stealth / Codename Endpoint)\n• notilo.kimi.com (Agent / Product Endpoint)\n\nEvidence: Certificate Transparency & Passive DNS · *.kimi.com\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "ct-radar-thinkingmachines-ai",
-      "category": "subdomain-ct",
-      "scanner": "cert-transparency-snapshot",
-      "header": "STEALTH SUBDOMAIN & CT RADAR · THINKING MACHINES",
-      "title": "Thinking Machines Lab Codenames & Staging (*.thinkingmachines.ai)",
-      "subtitle": "Filtered codename, agent & pre-release endpoints (5 notable / 8 baselined)",
-      "build_label": "Domain",
-      "build_transition": "*.thinkingmachines.ai · 5 notable (8 baselined)",
-      "models": [
-        {
-          "id": "ai.thinkingmachines.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-24"
-        },
-        {
-          "id": "oauth.thinkingmachines.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-21"
-        },
-        {
-          "id": "workos.thinkingmachines.ai",
-          "name": "Stealth / Codename Endpoint · SSL 2026-09-20"
-        },
-        {
-          "id": "tinker-docs.thinkingmachines.ai",
-          "name": "Agent / Product Endpoint · SSL 2026-09-26"
-        },
-        {
-          "id": "tinker-console.thinkingmachines.ai",
-          "name": "Agent / Product Endpoint"
-        }
-      ],
-      "evidence": "Certificate Transparency & Passive DNS · *.thinkingmachines.ai",
-      "source_text": "filtered Certificate Transparency (CT) & DNS records for thinkingmachines.ai (generic docs/chat/api hosts hidden).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "THINKING MACHINES",
-      "provider_slug": "thinkingmachines",
-      "accent_color": "#8b5cf6",
-      "links": [
-        {
-          "label": "CertSpotter CT Log",
-          "url": "https://sslmate.com/ct_search_results?q=thinkingmachines.ai"
-        },
-        {
-          "label": "crt.sh Lookup",
-          "url": "https://crt.sh/?q=%25.thinkingmachines.ai"
-        }
-      ],
-      "detected_at": "2026-09-26T03:53:32Z",
-      "x_post_text": "🌐 Thinking Machines Lab Codenames & Staging (*.thinkingmachines.ai) — *.thinkingmachines.ai · 5 notable (8 baselined)\n\n• ai.thinkingmachines.ai (Stealth / Codename Endpoint · SSL 2026-09-24)\n• oauth.thinkingmachines.ai (Stealth / Codename Endpoint · SSL 2026-09-21)\n• workos.thinkingmachines.ai (Stealth / Codename Endpoint · SSL 2026-09-20)\n• tinker-docs.thinkingmachines.ai (Agent / Product Endpoint · SSL 2026-09-26)\n• tinker-console.thinkingmachines.ai (Agent / Product Endpoint)\n\nEvidence: Certificate Transparency & Passive DNS · *.thinkingmachines.ai\n\nTracked by @StatsWire"
     },
     {
       "id": "gh-python-genai-gemini-4-flash-scrubbed",
