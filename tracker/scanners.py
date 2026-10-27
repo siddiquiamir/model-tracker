@@ -964,10 +964,28 @@ class HuggingFaceOpenSourceScanner:
         ("google", "GOOGLE OPEN MODELS", "google", "#38bdf8"),
         ("allenai", "ALLENAI · OLMO / MOLMO", "opensource", "#ec4899"),
         ("meta-llama", "META LLAMA", "meta", "#3b82f6"),
+        ("openai", "OPENAI", "openai", "#10a37f"),
+        ("xai-org", "XAI", "xai", "#e2e8f0"),
+        ("microsoft", "MICROSOFT", "microsoft", "#0078d4"),
+        ("CohereLabs", "COHERE", "cohere", "#39594d"),
+        ("perplexity-ai", "PERPLEXITY", "perplexity", "#0ea5e9"),
+        ("inclusionAI", "ANT GROUP", "opensource", "#1677ff"),
+        ("meituan-longcat", "MEITUAN LONGCAT", "opensource", "#facc15"),
+        ("baidu", "BAIDU", "opensource", "#2932e1"),
+        ("ibm-granite", "IBM GRANITE", "opensource", "#0f62fe"),
+        ("apple", "APPLE", "opensource", "#a3a3a3"),
+        ("black-forest-labs", "BLACK FOREST LABS", "opensource", "#e5e7eb"),
+        ("stabilityai", "STABILITY AI", "opensource", "#8b5cf6"),
+        ("LiquidAI", "LIQUID AI", "opensource", "#22d3ee"),
+        ("ai21labs", "AI21 LABS", "opensource", "#f472b6"),
+        ("internlm", "INTERNLM", "opensource", "#2563eb"),
+        ("openbmb", "OPENBMB · MINICPM", "opensource", "#f97316"),
+        ("Wan-AI", "ALIBABA WAN", "opensource", "#7c3aed"),
+        ("rednote-hilab", "REDNOTE", "opensource", "#ef4444"),
     ]
 
     NOISE_REPO_RE = re.compile(
-        r"(?:sdg-export|libero|laughter|scfm-dataselection|prompt-guard|test-repo|dummy)",
+        r"(?:sdg-export|libero|laughter|scfm-dataselection|prompt-guard|test-repo|dummy|probe)",
         re.IGNORECASE,
     )
 
@@ -1050,15 +1068,18 @@ class HuggingFaceOpenSourceScanner:
                 and (e.get("createdAt") or "") >= cutoff
             ]
             fresh.sort(key=lambda e: e.get("createdAt") or "", reverse=True)
+            deferred: Set[str] = set()
             if not first_run:
                 cards.extend(self._repo_card(org, label, slug, color, e, now_iso) for e in fresh[: self.MAX_CARDS_PER_ORG])
+                # Over the cap: leave unseen so the next scan shows them instead of dropping them
+                deferred = {e["id"] for e in fresh[self.MAX_CARDS_PER_ORG:]}
             else:
                 # First sight: show the last 14 days of repos with their real creation time, without alerting
                 for e in [e for e in fresh if (e.get("createdAt") or "") >= backfill_cutoff][: self.MAX_CARDS_PER_ORG]:
                     card = self._repo_card(org, label, slug, color, e, e["createdAt"])
                     card["backfill"] = True
                     cards.append(card)
-            seen.extend(rid for rid in repos if rid not in seen_set)
+            seen.extend(rid for rid in repos if rid not in seen_set and rid not in deferred)
             seen_all[org] = seen[-self.MAX_SEEN_PER_ORG:]
 
         _save_baselines(baselines)
@@ -1592,6 +1613,17 @@ class DocsAndGlobalRegistryScanner:
                 "accent_color": "#f59e0b",
             },
             {
+                "key": "aws_bedrock_model_cards",
+                "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html",
+                "kind": "bedrock_model_cards",
+                "header": "AWS BEDROCK MODEL CARDS · AWS / MULTI-LAB",
+                "title_prefix": "New Model Card on AWS Bedrock",
+                "evidence": "docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html",
+                "link_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html",
+                "provider_slug": "amazon",
+                "accent_color": "#f59e0b",
+            },
+            {
                 "key": "gh_openai_codex_models_json",
                 "url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/models-manager/models.json",
                 "kind": "codex_models_json",
@@ -1717,6 +1749,11 @@ class DocsAndGlobalRegistryScanner:
                         clean_m = mid.split(":")[0]
                         if not is_legacy_model_id(clean_m):
                             extracted.add(clean_m)
+                elif kind == "bedrock_model_cards":
+                    for slug in re.findall(r'href="(?:\./)?model-card-([a-z0-9-]+)\.html"', txt):
+                        mid = re.sub(r"^(?:ai21-labs|stability-ai|mistral-ai|moonshot-ai|luma-ai|[a-z0-9]+)-", "", slug)
+                        if mid and not is_legacy_model_id(mid):
+                            extracted.add(mid)
                 elif kind == "codex_models_json":
                     codex_doc = json.loads(txt)
                     for entry in codex_doc.get("models", []):
@@ -1816,8 +1853,9 @@ class DocsAndGlobalRegistryScanner:
                 if truly_new:
                     sig = hashlib.sha256(",".join(truly_new[:8]).encode("utf-8")).hexdigest()[:8]
                     inferred = infer_provider(truly_new[0])
-                    p_slug = inferred["slug"] if kind in {"botocore_bedrock", "cursor_doc_routes", "ms_copilot_waza_evals"} and inferred["slug"] != "other" else probe["provider_slug"]
-                    p_color = inferred["color"] if kind in {"botocore_bedrock", "cursor_doc_routes", "ms_copilot_waza_evals"} and inferred["slug"] != "other" else probe["accent_color"]
+                    infer_kinds = {"botocore_bedrock", "bedrock_model_cards", "cursor_doc_routes", "ms_copilot_waza_evals"}
+                    p_slug = inferred["slug"] if kind in infer_kinds and inferred["slug"] != "other" else probe["provider_slug"]
+                    p_color = inferred["color"] if kind in infer_kinds and inferred["slug"] != "other" else probe["accent_color"]
                     cards.append(
                         {
                             "id": f"pre-release-{bkey}-{sig}",
@@ -2710,6 +2748,8 @@ class HighAlphaLeakChannelsScanner:
         ("sgl-project/sglang", "SGLang PR"),
         ("NVIDIA/TensorRT-LLM", "TensorRT-LLM PR"),
         ("huggingface/transformers", "HF Transformers PR"),
+        ("ggml-org/llama.cpp", "llama.cpp PR"),
+        ("ollama/ollama", "Ollama PR"),
     ]
 
     IDE_BUNDLE_MODEL_RE = re.compile(
@@ -2737,11 +2777,13 @@ class HighAlphaLeakChannelsScanner:
     }
 
     PR_ONBOARD_TITLE_RE = re.compile(
-        r"(?:\[(?:New\s+)?Models?\]|\badd(?:s|ed|ing)?\s+(?:day-0\s+)?support\s+for\b|\bday-0\s+support\b|\bonboard(?:ing)?\b|\bsupport\s+[A-Za-z0-9._-]+/[A-Za-z0-9._-]+)",
+        r"(?:\[(?:New\s+)?Models?\]|\badd(?:s|ed|ing)?\s+(?:day-0\s+)?support\s+for\b|\bday-0\s+support\b|\bonboard(?:ing)?\b|\bsupport\s+[A-Za-z0-9._-]+/[A-Za-z0-9._-]+|\bmodels?\s*:\s*add\b|\badd\s+[A-Za-z0-9._-]+\s+(?:model\s+|arch(?:itecture)?\s+)?support\b)",
         re.IGNORECASE,
     )
     PR_HF_SLUG_RE = re.compile(
-        r"\b((?:moonshotai|deepseek-ai|Qwen|zai-org|THUDM|MiniMaxAI|openbmb|nvidia|google|meta-llama|mistralai|XiaomiMiMo|stepfun-ai|inclusionAI|CohereLabs)/[A-Za-z0-9][A-Za-z0-9._-]{2,48})\b"
+        r"\b((?:moonshotai|deepseek-ai|Qwen|zai-org|THUDM|MiniMaxAI|openbmb|nvidia|google|meta-llama|mistralai|XiaomiMiMo|stepfun-ai|inclusionAI|CohereLabs"
+        r"|openai|xai-org|microsoft|ibm-granite|meituan-longcat|baidu|tencent|ByteDance-Seed|LiquidAI|ai21labs|internlm|allenai|apple|Wan-AI|rednote-hilab)"
+        r"/[A-Za-z0-9][A-Za-z0-9._-]{2,48})\b"
     )
     PR_UNRELEASED_ID_RE = re.compile(
         r"\b("

@@ -41,6 +41,8 @@ _WORD_FIX = {
     "Openai": "OpenAI", "Ai": "AI", "Sdk": "SDK", "Github": "GitHub", "Vllm": "vLLM", "Sglang": "SGLang",
     "Pr": "PR", "Api": "API", "Ct": "CT", "Npm": "npm", "Xai": "xAI", "Llm": "LLM", "Gcp": "GCP",
     "Aws": "AWS", "Deepseek": "DeepSeek", "Minimax": "MiniMax", "Z.ai": "Z.ai", "Day-0": "Day-0",
+    "Ibm": "IBM", "Ai21": "AI21", "Internlm": "InternLM", "Minicpm": "MiniCPM", "Longcat": "LongCat",
+    "Rednote": "RedNote", "Llama.cpp": "llama.cpp",
 }
 _SIZE = re.compile(r"^\d+(?:\.\d+)?[mbkt]$")
 _PRECISION = {"fp", "bf", "int", "nvfp", "mxfp", "w"}
@@ -205,7 +207,8 @@ def _make_story(
         org = org_ids[0] if org_ids else ""
         slug = {"mistralai": "mistral", "moonshotai": "kimi", "deepseek-ai": "deepseek", "meta-llama": "meta",
                 "zai-org": "zai", "minimaxai": "minimax", "qwen": "qwen", "google": "google", "openai": "openai",
-                "nvidia": "nvidia", "microsoft": "microsoft", "xai-org": "xai"}.get(org, "")
+                "nvidia": "nvidia", "microsoft": "microsoft", "xai-org": "xai", "coherelabs": "cohere",
+                "perplexity-ai": "perplexity"}.get(org, "")
         if slug:
             provider_slug, provider_name = slug, PROVIDER_NAMES.get(slug, org)
         elif org and not key.startswith("ct-"):

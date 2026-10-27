@@ -88,6 +88,16 @@
       border-top: 3px solid var(--release); border-radius: 10px; padding: 18px 20px 14px;
       display: flex; flex-direction: column; gap: 12px;
     }
+    /* Tiled credit so screenshots of a card always carry it */
+    .story::before {
+      content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='120'><text x='10' y='70' transform='rotate(-22 110 60)' font-family='Segoe UI,Arial,sans-serif' font-size='17' font-weight='700' fill='%23ffffff' fill-opacity='0.07'>@StatsWire</text></svg>");
+    }
+    .story > * { position: relative; }
+    .credit { font-size: 0.78rem; color: var(--muted); }
+    .credit a { color: var(--text-2); font-weight: 700; text-decoration: none; }
+    .site-foot { max-width: 1180px; margin: 36px auto 28px; padding: 18px 24px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 0.86rem; color: var(--muted); }
+    .site-foot a { color: var(--text); font-weight: 700; text-decoration: none; }
     .story.leak { border-top-color: var(--leak); }
     .story.open { border-top-color: var(--open); }
     .story.unread { box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.35); }
@@ -162,6 +172,10 @@
     </section>
     <section class="feed" id="feed"></section>
   </main>
+  <footer class="site-foot">
+    <span>Developed by <a href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a> on X</span>
+    <span>Sharing a card? Please credit <a href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a></span>
+  </footer>
 
   <div class="modal" id="modal" onclick="if (event.target === this) closeShare()">
     <div class="modal-box">
@@ -284,7 +298,7 @@
           ${ids || moreIds ? `<div class="ids">${ids}${moreIds}</div>` : ""}
           ${srcHtml}
           <div class="foot">
-            <span class="count">${srcs.length} source${srcs.length === 1 ? "" : "s"}${s.updated_at && s.updated_at !== s.detected_at ? " · updated " + escapeHtml(ago(s.updated_at)) : ""}</span>
+            <span class="count">${srcs.length} source${srcs.length === 1 ? "" : "s"}${s.updated_at && s.updated_at !== s.detected_at ? " · updated " + escapeHtml(ago(s.updated_at)) : ""}<br><span class="credit">Developed by <a href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a></span></span>
             <div class="actions">
               <button class="btn btn-sm" onclick="copyText(STORIES_VIEW[${idx}])">Copy X text</button>
               <button class="btn btn-sm btn-primary" onclick="openShare(${idx})">Share image</button>
@@ -462,7 +476,8 @@
       cols.forEach(([label, value, sub], i) => {
         const x = PAD + i * colW;
         ctx.fillStyle = "#8b95a7"; ctx.font = `700 30px ${SANS}`; ctx.fillText(label, x, y + 30);
-        ctx.fillStyle = i === 2 ? "#4ade80" : "#f1f5f9"; ctx.font = `700 56px ${SANS}`;
+        ctx.fillStyle = i === 2 ? "#4ade80" : "#f1f5f9";
+        ctx.font = `700 ${fitFont(ctx, value, 700, 56, 40, colW - 30, SANS)}px ${SANS}`;
         ctx.fillText(ellipsize(ctx, value, colW - 30), x, y + 98);
         ctx.fillStyle = "#a3adbd"; ctx.font = `500 32px ${SANS}`;
         ctx.fillText(ellipsize(ctx, sub, colW - 30), x, y + 146);
@@ -493,8 +508,23 @@
       ctx.textBaseline = "middle";
       ctx.fillStyle = "#8b95a7"; ctx.font = `500 28px ${SANS}`;
       ctx.fillText(`ModelPulse · ${SITE}`, PAD, H - 56);
-      ctx.fillStyle = "#ffffff"; ctx.font = `800 36px ${SANS}`; ctx.textAlign = "right";
-      ctx.fillText("@StatsWire", W - PAD, H - 56); ctx.textAlign = "left";
+      ctx.font = `800 38px ${SANS}`; ctx.textAlign = "right";
+      const handleW = ctx.measureText("@StatsWire").width;
+      ctx.fillStyle = "#ffffff"; ctx.fillText("@StatsWire", W - PAD, H - 56);
+      ctx.fillStyle = "#8b95a7"; ctx.font = `500 28px ${SANS}`;
+      ctx.fillText("Developed by ", W - PAD - handleW, H - 56); ctx.textAlign = "left";
+
+      // Watermark over everything, so a crop or edit can't remove it
+      ctx.save();
+      ctx.globalAlpha = 0.06; ctx.fillStyle = "#ffffff"; ctx.font = `800 44px ${SANS}`;
+      ctx.textAlign = "center"; ctx.textBaseline = "middle";
+      ctx.translate(W / 2, H / 2); ctx.rotate(-Math.PI / 9);
+      for (let row = -6; row <= 6; row++) {
+        for (let col = -4; col <= 4; col++) {
+          ctx.fillText("@StatsWire", col * 420 + (row % 2 ? 210 : 0), row * 140);
+        }
+      }
+      ctx.restore();
       return canvas;
     }
 

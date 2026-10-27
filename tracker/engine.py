@@ -276,10 +276,11 @@ class TrackerEngine:
                 notified_ok = False
                 print(f"[ModelPulse] Discord notification failed: {exc}")
 
-        # Stories whose Discord alert failed stay unseen so the next scan retries them
+        # Stories whose Discord alert failed, or didn't fit in this batch, stay unseen so the next scan sends them
         retry_ids: Set[str] = set()
-        if not notified_ok and os.environ.get("DISCORD_WEBHOOK_URL"):
-            for s in notify_stories:
+        unsent = notify_stories if (not notified_ok and os.environ.get("DISCORD_WEBHOOK_URL")) else notify_stories[20:]
+        if not first_run and not story_migration:
+            for s in unsent:
                 retry_ids |= {s["id"], s["id"] + "#release"}
         seen_ids.update(c["id"] for c in all_cards)
         seen_ids.update(story_seen_ids - retry_ids)
