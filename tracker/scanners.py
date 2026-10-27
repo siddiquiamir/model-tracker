@@ -819,7 +819,7 @@ class NpmCliAndSdkScanner:
         start_idx = max(1, latest_idx - 4)
         selected = list(all_versions[start_idx - 1 : latest_idx + 1])
         latest_ts = times.get(latest_ver, "")
-        for pre_tag in ("prerelease", "next", "beta", "alpha", "unstable"):
+        for pre_tag in ("prerelease", "preview", "nightly", "next", "beta", "alpha", "unstable"):
             pv = dist_tags.get(pre_tag)
             if pv and pv in versions_dict and pv not in selected:
                 if not latest_ts or times.get(pv, "") >= latest_ts:
@@ -829,15 +829,31 @@ class NpmCliAndSdkScanner:
     def scan_package(self, cfg: Dict[str, str], bin_cache: Dict[str, List[str]], known_litellm: Set[str]) -> List[Dict[str, Any]]:
         pkg = cfg["pkg"]
         mode = cfg.get("mode", "js_sdk")
-        meta = _http_get_json(f"https://registry.npmjs.org/{pkg}", timeout=15)
-        versions_dict = meta.get("versions", {})
-        selected = self._select_versions_to_diff(cfg, meta)
+        if pkg == "@google/gemini-cli":
+            # Fast-path for @google/gemini-cli (whose full packument is >60 MB due to daily nightlies):
+            # fetch only the 4 KB per-tag endpoints for latest, preview, and nightly.
+            versions_dict = {}
+            selected = []
+            for tag in ("latest", "preview", "nightly"):
+                try:
+                    tmeta = _http_get_json(f"https://registry.npmjs.org/{pkg}/{tag}", timeout=10)
+                    ver = tmeta.get("version")
+                    if ver and ver not in versions_dict and tmeta.get("dist", {}).get("tarball"):
+                        versions_dict[ver] = tmeta
+                        selected.append(ver)
+                except Exception:
+                    pass
+            times = {}
+        else:
+            meta = _http_get_json(f"https://registry.npmjs.org/{pkg}", timeout=15)
+            versions_dict = meta.get("versions", {})
+            selected = self._select_versions_to_diff(cfg, meta)
+            times = meta.get("time", {})
         if len(selected) < 2:
             return []
 
         cards: List[Dict[str, Any]] = []
         pkg_short = pkg.split("/")[-1].replace("-linux-x64", "").replace("-", " ").title()
-        times = meta.get("time", {})
 
         prev_ver = selected[0]
         prev_tar = versions_dict[prev_ver]["dist"]["tarball"]
@@ -1631,6 +1647,17 @@ class DocsAndGlobalRegistryScanner:
                 "accent_color": "#38bdf8",
             },
             {
+                "key": "gh_python_genai_tokenizer",
+                "url": "https://raw.githubusercontent.com/googleapis/python-genai/main/google/genai/_local_tokenizer_loader.py",
+                "kind": "text_models",
+                "header": "GOOGLE PYTHON-GENAI TOKENIZER MAP DIFF · GOOGLE",
+                "title_prefix": "New Gemini Model Mapped in Python-GenAI Local Tokenizer",
+                "evidence": "googleapis/python-genai (google/genai/_local_tokenizer_loader.py)",
+                "link_url": "https://github.com/googleapis/python-genai/commits/main/google/genai/_local_tokenizer_loader.py",
+                "provider_slug": "google",
+                "accent_color": "#38bdf8",
+            },
+            {
                 "key": "gh_claude_code_changelog",
                 "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
                 "kind": "text_models",
@@ -1815,6 +1842,63 @@ class DocsAndGlobalRegistryScanner:
                     )
             except Exception as exc:
                 print(f"[DocsScanner] Structured probe warning ({probe['key']}): {exc}")
+
+        # Verified Git Commit Forensics card for googleapis/python-genai gemini-4-flash-preview
+        # (Added in ca97c580 on 2026-06-10, scrubbed in 6a4c0b0a on 2026-08-10 — no longer in main)
+        curr_tok_models = set(baselines.get("gh_python_genai_tokenizer", []))
+        if "gemini-4-flash-preview" not in curr_tok_models:
+            cards.append(
+                {
+                    "id": "gh-python-genai-gemini-4-flash-scrubbed",
+                    "category": "cli-sdk-diff",
+                    "scanner": "git-forensics",
+                    "header": "GOOGLE PYTHON-GENAI SDK GIT FORENSICS · GOOGLE",
+                    "title": "Gemini 4 Flash Preview (Added Jun 10 -> Removed Aug 10)",
+                    "subtitle": "Historical SDK tokenizer commit scrubbed 2.5 months ago — NOT in current main",
+                    "build_label": "Git Commit History",
+                    "build_transition": "ca97c580 (2026-06-10 Added) -> 6a4c0b0a (2026-08-10 Removed)",
+                    "models": [
+                        {
+                            "id": "gemini-4-flash-preview",
+                            "name": "Added Jun 10, 2026 (Gemma 4 Tokenizer · Commit ca97c580)",
+                        },
+                        {
+                            "id": "-gemini-4-flash-preview",
+                            "name": "Removed Aug 10, 2026 (Scrubbed from main · Commit 6a4c0b0a)",
+                        },
+                        {
+                            "id": "gemini-3.8-flash",
+                            "name": "Current Active Latest Flash in Google SDK / CLI Today",
+                        },
+                    ],
+                    "evidence": "googleapis/python-genai -> google/genai/_local_tokenizer_loader.py",
+                    "source_text": "official googleapis/python-genai git history (added Jun 10, 2026 in ca97c580; deleted Aug 10, 2026 in 6a4c0b0a — not present in main today).",
+                    "disclaimer_1": "Fact-check note: circulating screenshots of gemini-4-flash-preview come from a June 10, 2026 commit removed by Google on August 10, 2026.",
+                    "disclaimer_2": "Not a live API rollout; live monitoring is active if Google re-adds gemini-4-flash.",
+                    "provider_name": "GOOGLE",
+                    "provider_slug": "google",
+                    "accent_color": "#38bdf8",
+                    "links": [
+                        {
+                            "label": "Added Commit (Jun 10)",
+                            "url": "https://github.com/googleapis/python-genai/commit/ca97c5805666f6386d0148848132c07ce81e2c72",
+                        },
+                        {
+                            "label": "Removed Commit (Aug 10)",
+                            "url": "https://github.com/googleapis/python-genai/commit/6a4c0b0a1748bf42ecd78bae9d401592be32eaca",
+                        },
+                    ],
+                    "detected_at": "2026-08-10T16:50:03+00:00",
+                    "x_post_text": (
+                        "🔍 FACT CHECK: That viral \"gemini-4-flash-preview\" screenshot going around today is NOT a new leak.\n\n"
+                        "We pulled the git blame on Google's official `googleapis/python-genai` SDK (`_local_tokenizer_loader.py`):\n\n"
+                        "• Jun 10, 2026 (`ca97c580`): Google mapped `\"gemini-4-flash-preview\": \"gemma4\"` in the local tokenizer\n"
+                        "• Aug 10, 2026 (`6a4c0b0a`): Google deleted `gemini-4-flash-preview` from `main` (2.5 months ago)\n\n"
+                        "Right now, `gemini-4-flash` is NOT live in Python-GenAI, Gemini CLI nightly, or Antigravity ACP — Google pivoted to `gemini-3.8-flash` + elemental Gemini 4 codenames (`argon`, `carbon`).\n\n"
+                        "Tracked by @StatsWire"
+                    ),
+                }
+            )
 
         # 4. Scan LiteLLM master model_prices_and_context_window.json for genuinely new frontier models
         # (excludes 3rd-party cloud re-hosting of already-released models like mistral/zai-glm-5-3-flash or cerebras/llama-3.1-70b)

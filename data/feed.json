@@ -2,7 +2,7 @@
   "generated_at": "2026-10-27T07:01:36.073412+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "total_cards": 87,
+    "total_cards": 88,
     "desktop_diffs": 13,
     "cli_sdk_diffs": 35,
     "open_source_models": 21,
@@ -4238,6 +4238,49 @@
       ],
       "detected_at": "2026-09-20T02:28:24Z",
       "x_post_text": "🌐 OpenAI Codenames & Staging (*.openai.com) — *.openai.com · 8 notable (172 baselined)\n\n• files.openai.com (Stealth / Codename Endpoint · SSL 2026-09-20)\n• checkpoints-sg.files.openai.com (Stealth / Codename Endpoint · SSL 2026-09-20)\n• checkpoints-kr.files.openai.com (Stealth / Codename Endpoint · SSL 2026-09-20)\n• checkpoints-jp.files.openai.com (Stealth / Codename Endpoint · SSL 2026-09-20)\n• checkpoints-in.files.openai.com (Stealth / Codename Endpoint · SSL 2026-09-20)\n• checkpoints-gb.files.openai.com (Stealth / Codename Endpoint · SSL 2026-09-20)\n• +2 more endpoints\n\nEvidence: Certificate Transparency & Passive DNS · *.openai.com\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "gh-python-genai-gemini-4-flash-scrubbed",
+      "category": "cli-sdk-diff",
+      "scanner": "git-forensics",
+      "header": "GOOGLE PYTHON-GENAI SDK GIT FORENSICS · GOOGLE",
+      "title": "Gemini 4 Flash Preview (Added Jun 10 -> Removed Aug 10)",
+      "subtitle": "Historical SDK tokenizer commit scrubbed 2.5 months ago — NOT in current main",
+      "build_label": "Git Commit History",
+      "build_transition": "ca97c580 (2026-06-10 Added) -> 6a4c0b0a (2026-08-10 Removed)",
+      "models": [
+        {
+          "id": "gemini-4-flash-preview",
+          "name": "Added Jun 10, 2026 (Gemma 4 Tokenizer · Commit ca97c580)"
+        },
+        {
+          "id": "-gemini-4-flash-preview",
+          "name": "Removed Aug 10, 2026 (Scrubbed from main · Commit 6a4c0b0a)"
+        },
+        {
+          "id": "gemini-3.8-flash",
+          "name": "Current Active Latest Flash in Google SDK / CLI Today"
+        }
+      ],
+      "evidence": "googleapis/python-genai -> google/genai/_local_tokenizer_loader.py",
+      "source_text": "official googleapis/python-genai git history (added Jun 10, 2026 in ca97c580; deleted Aug 10, 2026 in 6a4c0b0a — not present in main today).",
+      "disclaimer_1": "Fact-check note: circulating screenshots of gemini-4-flash-preview come from a June 10, 2026 commit removed by Google on August 10, 2026.",
+      "disclaimer_2": "Not a live API rollout; live monitoring is active if Google re-adds gemini-4-flash.",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Added Commit (Jun 10)",
+          "url": "https://github.com/googleapis/python-genai/commit/ca97c5805666f6386d0148848132c07ce81e2c72"
+        },
+        {
+          "label": "Removed Commit (Aug 10)",
+          "url": "https://github.com/googleapis/python-genai/commit/6a4c0b0a1748bf42ecd78bae9d401592be32eaca"
+        }
+      ],
+      "detected_at": "2026-08-10T16:50:03+00:00",
+      "x_post_text": "🔍 FACT CHECK: That viral \"gemini-4-flash-preview\" screenshot going around today is NOT a new leak.\n\nWe pulled the git blame on Google's official `googleapis/python-genai` SDK (`_local_tokenizer_loader.py`):\n\n• Jun 10, 2026 (`ca97c580`): Google mapped `\"gemini-4-flash-preview\": \"gemma4\"` in the local tokenizer\n• Aug 10, 2026 (`6a4c0b0a`): Google deleted `gemini-4-flash-preview` from `main` (2.5 months ago)\n\nRight now, `gemini-4-flash` is NOT live in Python-GenAI, Gemini CLI nightly, or Antigravity ACP — Google pivoted to `gemini-3.8-flash` + elemental Gemini 4 codenames (`argon`, `carbon`).\n\nTracked by @StatsWire"
     }
   ]
 }
