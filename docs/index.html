@@ -118,6 +118,15 @@
     .ids { display: flex; flex-wrap: wrap; gap: 6px; }
     .chip { font-size: 0.78rem; background: #1f2430; border: 1px solid var(--line-2); color: #e2e8f0; padding: 2px 7px; border-radius: 5px; }
     .chip.more { color: var(--muted); }
+    .model-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+    .model-list li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; }
+    .model-list strong { font-size: 0.9rem; }
+    .model-list .chip, .evidence code { overflow-wrap: anywhere; white-space: normal; }
+    .evidence { min-width: 0; font-size: 0.85rem; display: grid; gap: 6px; }
+    .evidence code { display: block; color: var(--text-2); line-height: 1.5; }
+    .evidence p { margin: 0; overflow-wrap: anywhere; }
+    .story { min-width: 0; }
+    .foot { flex-wrap: wrap; }
     .sources { list-style: none; border-left: 2px solid var(--line-2); margin-left: 4px; padding-left: 12px; display: flex; flex-direction: column; gap: 3px; }
     .sources li { font-size: 0.82rem; color: var(--text-2); }
     .sources .t { color: var(--muted); font-size: 0.76rem; margin-right: 6px; }
@@ -129,7 +138,7 @@
 
     .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.72); display: none; align-items: center; justify-content: center; z-index: 90; padding: 20px; }
     .modal.open { display: flex; }
-    .modal-box { background: var(--card); border: 1px solid var(--line-2); border-radius: 12px; padding: 16px; max-width: 980px; width: 100%; }
+    .modal-box { background: var(--card); border: 1px solid var(--line-2); border-radius: 12px; padding: 16px; max-width: 980px; width: 100%; max-height: calc(100dvh - 40px); overflow-y: auto; }
     .modal-box canvas { width: 100%; height: auto; border-radius: 8px; display: block; }
     .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px; flex-wrap: wrap; }
 
@@ -190,6 +199,7 @@
   </div>
   <div class="toast" id="toast"></div>
 
+  <script src="./html-to-image.js"></script>
   <script>
     let FEED = { stories: [], cards: [] };
     let STORIES = [];
@@ -261,18 +271,51 @@
     function saveSeen(set) { try { localStorage.setItem(SEEN_KEY, JSON.stringify([...set])); } catch {} }
     function markAllRead() { saveSeen(new Set(STORIES.map(s => s.id))); render(); toast("All stories marked as read"); }
 
+    function evidenceFor(s) {
+      const cardIds = new Set(s.card_ids || [s.id.replace(/^story-/, "")]);
+      return (FEED.cards || []).filter(card => cardIds.has(card.id));
+    }
+    function modelsFor(s) {
+      const originals = evidenceFor(s).flatMap(card => card.models || []);
+      return (s.models || []).map(model => {
+        const labeled = originals.find(original => original.id === model.id && /\(M\d+\)/.test(original.name || ""));
+        return labeled || model;
+      });
+    }
+    function modelRows(models) {
+      return models.map(model => `<li><strong>${escapeHtml(model.name || model.id)}</strong><code class="chip mono">${escapeHtml(model.id)}</code></li>`).join("");
+    }
+    function evidenceHtml(s) {
+      const cards = evidenceFor(s);
+      const primary = cards.find(card => card.old_version && card.new_version) || cards[0];
+      const ordered = primary ? [primary, ...cards.filter(card => card !== primary)] : [];
+      const rows = ordered.map(card => {
+        const ownIds = new Set((s.models || []).map(model => model.id));
+        const related = (card.models || []).filter(model => !ownIds.has(model.id));
+        return `<div class="evidence">
+          ${card.build_transition ? `<strong>${escapeHtml(card.build_label || "Build diff")}</strong><code class="mono">${escapeHtml(card.build_transition)}</code>` : ""}
+          <details><summary>Source details${related.length ? ` · ${related.length} related model${related.length === 1 ? "" : "s"}` : ""}</summary>
+            ${card.evidence ? `<code class="mono">${escapeHtml(card.evidence)}</code>` : ""}
+            ${[card.source_text, card.disclaimer_1, card.disclaimer_2].filter(Boolean).map(text => `<p>${escapeHtml(text)}</p>`).join("")}
+            ${related.length ? `<strong>Also in this source</strong><ul class="model-list">${modelRows(related)}</ul>` : ""}
+          </details></div>`;
+      });
+      return (rows[0] || "") + (rows.length > 1 ? `<details><summary>${rows.length - 1} more evidence records</summary>${rows.slice(1).join("")}</details>` : "");
+    }
+
     function storyHtml(s, idx, seen) {
       const stage = stageOf(s);
       const unread = seen && !seen.has(s.id);
-      const ids = (s.models || []).slice(0, 8).map(m => `<span class="chip mono">${escapeHtml(m.id)}</span>`).join("");
-      const moreIds = (s.models || []).length > 8 ? `<span class="chip more">+${s.models.length - 8}</span>` : "";
+      const models = modelsFor(s);
+      const ids = `<ul class="model-list">${modelRows(models.slice(0, 8))}</ul>`;
+      const moreIds = models.length > 8 ? `<details><summary>${models.length - 8} more identifiers</summary><ul class="model-list">${modelRows(models.slice(8))}</ul></details>` : "";
       const srcRow = src => {
         const url = safeUrl(src.url);
         const label = url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(src.label)}</a>` : escapeHtml(src.label);
         return `<li><span class="t">${escapeHtml(fmtUTC(src.detected_at))}</span>${label}</li>`;
       };
       const srcs = s.sources || [];
-      const srcHtml = srcs.length > 1
+      const srcHtml = srcs.length
         ? `<ol class="sources">${srcs.slice(0, 4).map(srcRow).join("")}</ol>` +
           (srcs.length > 4 ? `<details><summary>+${srcs.length - 4} more sources</summary><ol class="sources">${srcs.slice(4).map(srcRow).join("")}</ol></details>` : "")
         : "";
@@ -291,11 +334,11 @@
               </div>
               <div class="title">${escapeHtml(s.title)}</div>
               <div class="first">First spotted ${escapeHtml(fmtUTC(s.detected_at))} in <b>${escapeHtml(s.first_source)}</b></div>
-              ${s.lead ? `<span class="lead">⏱ ${escapeHtml(s.lead)}</span>` : ""}
             </div>
           </div>
           ${codenames}
-          ${ids || moreIds ? `<div class="ids">${ids}${moreIds}</div>` : ""}
+          ${evidenceHtml(s)}
+          ${ids}${moreIds}
           ${srcHtml}
           <div class="foot">
             <span class="count">${srcs.length} source${srcs.length === 1 ? "" : "s"}${s.updated_at && s.updated_at !== s.detected_at ? " · updated " + escapeHtml(ago(s.updated_at)) : ""}<br><span class="credit">Developed by <a href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a> on X</span></span>
@@ -323,7 +366,7 @@
         if (TAB === "unread" && (!seen || seen.has(s.id))) return false;
         if (prov && (s.provider_name || "Other") !== prov) return false;
         if (!q) return true;
-        const hay = [s.title, s.provider_name, s.first_source, ...(s.codenames || []), ...(s.models || []).map(m => m.id), ...(s.sources || []).map(x => x.label)].join(" ").toLowerCase();
+        const hay = [s.title, s.provider_name, s.first_source, ...(s.codenames || []), ...modelsFor(s).flatMap(model => [model.id, model.name]), ...evidenceFor(s).map(card => card.build_transition), ...(s.sources || []).map(x => x.label)].join(" ").toLowerCase();
         return hay.includes(q);
       });
       const unread = seen ? STORIES.filter(s => !seen.has(s.id)).length : 0;
@@ -350,14 +393,23 @@
       renderStatus();
     }
 
-    // The feed is only republished on new finds (or every 30 min); the scanner pushes a heartbeat after every 2-min scan
     let HEARTBEAT = null;
     async function loadHeartbeat() {
       try {
         const r = await fetch("https://raw.githubusercontent.com/siddiquiamir/model-tracker/status/status.json?t=" + Date.now(), { cache: "no-store" });
-        if (r.ok) HEARTBEAT = await r.json();
-      } catch (e) { /* keep the feed timestamp */ }
-      renderStatus();
+        if (!r.ok) return false;
+        const heartbeat = await r.json();
+        if (!Number.isFinite(Date.parse(heartbeat.last_scan))) return false;
+        if (!HEARTBEAT || Date.parse(heartbeat.last_scan) >= Date.parse(HEARTBEAT.last_scan)) HEARTBEAT = heartbeat;
+        return true;
+      } catch {
+        return false;
+      } finally {
+        renderStatus();
+      }
+    }
+    function latestScanTime() {
+      return Math.max(Date.parse(HEARTBEAT?.last_scan) || 0, Date.parse(FEED.generated_at) || 0);
     }
     function renderStatus() {
       const hb = HEARTBEAT && HEARTBEAT.last_scan && new Date(HEARTBEAT.last_scan) > new Date(FEED.generated_at || 0) ? HEARTBEAT : null;
@@ -367,187 +419,86 @@
       document.getElementById("status-dot").className = "dot" + (mins > 15 ? " stale" : "");
       const n = hb ? hb.sources_ok : FEED.stats?.sources_ok;
       document.getElementById("status-text").textContent = `Last scan ${ago(last)}${n ? ` · ${n} sources ok` : ""}`;
+      document.getElementById("status-text").title = `Recorded scan time: ${fmtUTC(last, true)}. Refresh checks for updates; it does not start a scan.`;
     }
 
     async function loadFeed() {
       const bust = Date.now();
       const urls = ["./data/feed.json?t=" + bust, "https://raw.githubusercontent.com/siddiquiamir/model-tracker/main/docs/data/feed.json?t=" + bust];
       const results = await Promise.allSettled(urls.map(u => fetch(u, { cache: "no-store" }).then(r => r.ok ? r.json() : null)));
-      const feeds = results.filter(r => r.status === "fulfilled" && r.value && (r.value.stories || r.value.cards)).map(r => r.value);
-      if (!feeds.length) return;
+      const feeds = results.filter(r => r.status === "fulfilled" && r.value && (Array.isArray(r.value.stories) || Array.isArray(r.value.cards))).map(r => r.value);
+      if (!feeds.length) return false;
       // Prefer a story-format feed, then the freshest one
       feeds.sort((a, b) => (!!b.stories - !!a.stories) || (new Date(b.generated_at || 0) - new Date(a.generated_at || 0)));
       FEED = feeds[0];
       STORIES = storiesFromFeed(FEED).sort((a, b) => new Date(b.detected_at) - new Date(a.detected_at));
       renderChrome();
       render();
+      return true;
     }
     async function refreshFeed() {
       const btn = document.getElementById("refresh-btn");
+      const previousScan = latestScanTime();
       btn.disabled = true;
-      await Promise.all([loadFeed(), loadHeartbeat()]);
-      btn.disabled = false;
-      toast("Feed refreshed");
+      try {
+        const [loaded, heartbeatLoaded] = await Promise.all([loadFeed(), loadHeartbeat()]);
+        if (!loaded) toast("Refresh failed; showing the previous feed");
+        else if (!heartbeatLoaded) toast("Feed refreshed; scan status unavailable");
+        else toast(latestScanTime() > previousScan ? "Feed refreshed; newer scan found" : "Latest data checked; no newer scan yet");
+      } catch {
+        toast("Refresh failed; showing the previous feed");
+      } finally {
+        btn.disabled = false;
+      }
     }
 
+    function shareText(s) {
+      const weight = text => Array.from(text).reduce((total, char) => total + (char.codePointAt(0) > 127 ? 2 : 1), 0);
+      let headline = `${s.kind === "leak" ? "LEAK" : "NEW"}: ${s.title}${s.provider_name ? " by " + s.provider_name : ""}`;
+      if (weight(headline) > 130) {
+        const chars = Array.from(headline);
+        while (weight(chars.join("")) > 127) chars.pop();
+        headline = chars.join("") + "...";
+      }
+      const lines = [headline, `First spotted ${fmtUTC(s.detected_at)}`];
+      const credit = "Developed by @StatsWire on X";
+      const sourceCount = (s.sources || []).length;
+      const extras = [s.first_source ? "Source: " + s.first_source : "", (s.codenames || []).length ? "Codename: " + s.codenames.join(", ") : "", `${sourceCount} source sighting${sourceCount === 1 ? "" : "s"}`, (s.models || []).length ? "IDs: " + s.models.map(model => model.id).join(", ") : ""];
+      for (const extra of extras.filter(Boolean)) {
+        if (weight([...lines, extra, credit].join("\n")) <= 280) lines.push(extra);
+      }
+      return [...lines, credit].join("\n");
+    }
     function copyText(s) {
       if (!s) return;
-      navigator.clipboard.writeText(s.x_post_text || s.title).then(() => toast("X post text copied"), () => toast("Clipboard blocked"));
+      navigator.clipboard.writeText(shareText(s)).then(() => toast("X post text copied"), () => toast("Clipboard blocked"));
     }
 
-    /* ---------- 1600x900 share image (X / Twitter 16:9) ---------- */
-    function loadSvgImage(svg) {
-      return new Promise(resolve => {
-        const img = new Image();
-        img.onload = () => resolve(img);
-        img.onerror = () => resolve(null);
-        const withNs = svg.replace("<svg ", '<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" ');
-        img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(withNs);
-      });
-    }
-    function roundRect(ctx, x, y, w, h, r) {
-      ctx.beginPath();
-      ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
-      ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
-    }
-    function fitFont(ctx, text, weight, maxSize, minSize, maxWidth, family) {
-      let size = maxSize;
-      while (size > minSize) {
-        ctx.font = `${weight} ${size}px ${family}`;
-        if (ctx.measureText(text).width <= maxWidth) break;
-        size -= 4;
-      }
-      return size;
-    }
-    function ellipsize(ctx, text, maxWidth) {
-      if (ctx.measureText(text).width <= maxWidth) return text;
-      while (text.length > 1 && ctx.measureText(text + "…").width > maxWidth) text = text.slice(0, -1);
-      return text + "…";
-    }
-
-    async function drawShare(s) {
-      const W = 1600, H = 900, PAD = 96;
-      const SANS = '"Segoe UI", Inter, -apple-system, Roboto, Arial, sans-serif';
-      const MONO = 'ui-monospace, "Cascadia Mono", Consolas, Menlo, monospace';
-      const stage = stageOf(s);
-      const color = { leak: "#f59e0b", release: "#22c55e", open: "#a78bfa" }[stage];
-      const canvas = document.getElementById("share-canvas");
-      const ctx = canvas.getContext("2d");
-
-      ctx.fillStyle = "#0b0d11"; ctx.fillRect(0, 0, W, H);
-      const glow = ctx.createRadialGradient(W - 200, 120, 40, W - 200, 120, 900);
-      glow.addColorStop(0, color + "33"); glow.addColorStop(1, "#0b0d1100");
-      ctx.fillStyle = glow; ctx.fillRect(0, 0, W, H);
-      ctx.fillStyle = color; ctx.fillRect(0, 0, 14, H);
-
-      // Header: logo + provider, stage pill
-      const logo = await loadSvgImage(logoSvg(s.provider_slug, s.provider_name));
-      if (logo) ctx.drawImage(logo, PAD, 78, 88, 88);
-      ctx.fillStyle = "#cbd5e1"; ctx.font = `600 40px ${SANS}`; ctx.textBaseline = "middle";
-      ctx.fillText(s.provider_name || "New model", PAD + (logo ? 112 : 0), 122);
-      const pill = STAGE_LABEL[stage];
-      ctx.font = `800 34px ${SANS}`;
-      const pw = ctx.measureText(pill).width + 64;
-      roundRect(ctx, W - PAD - pw, 92, pw, 62, 31);
-      ctx.fillStyle = color + "26"; ctx.fill(); ctx.strokeStyle = color; ctx.lineWidth = 3; ctx.stroke();
-      ctx.fillStyle = color; ctx.textAlign = "center"; ctx.fillText(pill, W - PAD - pw / 2, 124); ctx.textAlign = "left";
-
-      // Title
-      const size = fitFont(ctx, s.title, 800, 132, 64, W - PAD * 2, SANS);
-      ctx.font = `800 ${size}px ${SANS}`; ctx.fillStyle = "#ffffff"; ctx.textBaseline = "alphabetic";
-      ctx.fillText(ellipsize(ctx, s.title, W - PAD * 2), PAD, 200 + size);
-      let y = 200 + size + 34;
-
-      // Codename badges
-      if ((s.codenames || []).length) {
-        let x = PAD;
-        ctx.font = `800 28px ${SANS}`; ctx.textBaseline = "middle";
-        for (const c of s.codenames.slice(0, 3)) {
-          const t = "CODENAME: " + c.toUpperCase();
-          const w = ctx.measureText(t).width + 40;
-          roundRect(ctx, x, y, w, 50, 25); ctx.fillStyle = "#fbbf24"; ctx.fill();
-          ctx.fillStyle = "#1a1205"; ctx.fillText(t, x + 20, y + 26);
-          x += w + 14;
-        }
-        y += 74;
-      } else {
-        y += 14;
-      }
-
-      // Stat columns
-      const leadMatch = (s.lead || "").match(/^(.+?) (before .+)$/);
-      const cols = [
-        ["FIRST SPOTTED", fmtUTC(s.detected_at, false), "in " + (s.first_source || "")],
-        ["CONFIRMED BY", `${(s.sources || []).length} source${(s.sources || []).length === 1 ? "" : "s"}`,
-          (s.sources || []).slice(1, 3).map(x => x.label).join(", ") || "single source"],
-      ];
-      if (leadMatch) cols.push(["AHEAD BY", leadMatch[1], leadMatch[2]]);
-      const colW = (W - PAD * 2) / cols.length;
-      ctx.textBaseline = "alphabetic";
-      cols.forEach(([label, value, sub], i) => {
-        const x = PAD + i * colW;
-        ctx.fillStyle = "#8b95a7"; ctx.font = `700 30px ${SANS}`; ctx.fillText(label, x, y + 30);
-        ctx.fillStyle = i === 2 ? "#4ade80" : "#f1f5f9";
-        ctx.font = `700 ${fitFont(ctx, value, 700, 56, 40, colW - 30, SANS)}px ${SANS}`;
-        ctx.fillText(ellipsize(ctx, value, colW - 30), x, y + 98);
-        ctx.fillStyle = "#a3adbd"; ctx.font = `500 32px ${SANS}`;
-        ctx.fillText(ellipsize(ctx, sub, colW - 30), x, y + 146);
-      });
-      y += 200;
-
-      // Identifier chips
-      ctx.font = `500 32px ${MONO}`; ctx.textBaseline = "middle";
-      let x = PAD;
-      const ids = (s.models || []).map(m => m.id);
-      for (let i = 0; i < ids.length && y < H - 160; i++) {
-        const t = ids[i].length > 40 ? ids[i].slice(0, 39) + "…" : ids[i];
-        const w = ctx.measureText(t).width + 36;
-        if (x + w > W - PAD) {
-          const rest = `+${ids.length - i}`;
-          roundRect(ctx, x, y, ctx.measureText(rest).width + 36, 58, 10); ctx.fillStyle = "#1f2430"; ctx.fill();
-          ctx.fillStyle = "#8b95a7"; ctx.fillText(rest, x + 18, y + 30);
-          break;
-        }
-        roundRect(ctx, x, y, w, 58, 10); ctx.fillStyle = "#1f2430"; ctx.fill();
-        ctx.strokeStyle = "#323948"; ctx.lineWidth = 2; ctx.stroke();
-        ctx.fillStyle = "#e2e8f0"; ctx.fillText(t, x + 18, y + 30);
-        x += w + 14;
-      }
-
-      // Footer
-      ctx.fillStyle = "#252a35"; ctx.fillRect(PAD, H - 108, W - PAD * 2, 2);
-      ctx.textBaseline = "middle";
-      ctx.fillStyle = "#8b95a7"; ctx.font = `500 28px ${SANS}`;
-      ctx.fillText(`ModelPulse · ${SITE}`, PAD, H - 56);
-      ctx.textAlign = "right";
-      ctx.fillStyle = "#8b95a7"; ctx.font = `500 28px ${SANS}`;
-      ctx.fillText(" on X", W - PAD, H - 56);
-      const onXW = ctx.measureText(" on X").width;
-      ctx.font = `800 38px ${SANS}`;
-      const handleW = ctx.measureText("@StatsWire").width;
-      ctx.fillStyle = "#ffffff"; ctx.fillText("@StatsWire", W - PAD - onXW, H - 56);
-      ctx.fillStyle = "#8b95a7"; ctx.font = `500 28px ${SANS}`;
-      ctx.fillText("Developed by ", W - PAD - onXW - handleW, H - 56); ctx.textAlign = "left";
-
-      // Watermark over everything, so a crop or edit can't remove it
-      ctx.save();
-      ctx.globalAlpha = 0.06; ctx.fillStyle = "#ffffff"; ctx.font = `800 44px ${SANS}`;
-      ctx.textAlign = "center"; ctx.textBaseline = "middle";
-      ctx.translate(W / 2, H / 2); ctx.rotate(-Math.PI / 9);
-      for (let row = -6; row <= 6; row++) {
-        for (let col = -4; col <= 4; col++) {
-          ctx.fillText("@StatsWire", col * 420 + (row % 2 ? 210 : 0), row * 140);
-        }
-      }
-      ctx.restore();
-      return canvas;
-    }
-
+    let sharePending = false;
     async function openShare(idx) {
-      SHARE_STORY = STORIES_VIEW[idx];
-      if (!SHARE_STORY) return;
-      await drawShare(SHARE_STORY);
-      document.getElementById("modal").classList.add("open");
+      if (sharePending) return;
+      const story = STORIES_VIEW[idx];
+      const card = document.querySelectorAll(".story")[idx];
+      if (!story || !card) return;
+      sharePending = true;
+      try {
+        await document.fonts.ready;
+        const snapshot = await htmlToImage.toCanvas(card, {
+          pixelRatio: 2,
+          skipFonts: true,
+        });
+        const canvas = document.getElementById("share-canvas");
+        canvas.width = snapshot.width; canvas.height = snapshot.height;
+        canvas.getContext("2d").drawImage(snapshot, 0, 0);
+        canvas.style.maxWidth = snapshot.width / 2 + "px";
+        canvas.style.margin = "0 auto";
+        SHARE_STORY = story;
+        document.getElementById("modal").classList.add("open");
+      } catch {
+        toast("Could not capture this card. Please try again.");
+      } finally {
+        sharePending = false;
+      }
     }
     function closeShare() { document.getElementById("modal").classList.remove("open"); }
     function shareFileName() { return `ModelPulse-${String(SHARE_STORY?.title || "model").replace(/[^a-zA-Z0-9._-]+/g, "-")}.png`; }
