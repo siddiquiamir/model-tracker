@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-27T19:23:44.889698+00:00",
+  "generated_at": "2026-10-27T19:39:44.491165+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 79,
@@ -7,7 +7,7 @@
     "releases": 73,
     "stories_24h": 39,
     "sources_ok": 10,
-    "total_cards": 131,
+    "total_cards": 132,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -1703,7 +1703,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-10-26T18:05:16.744411+00:00",
-      "updated_at": "2026-10-26T22:54:22.825676+00:00",
+      "updated_at": "2026-10-27T19:39:58.104873+00:00",
       "first_source": "OpenAI Developer Models Catalog",
       "lead": "8 min before it went live on OpenRouter",
       "released_on": "2026-10-26",
@@ -1711,7 +1711,7 @@
       "models": [
         {
           "id": "gpt-6.1-terra",
-          "name": "global.openai.gpt-6.1-terra"
+          "name": "bedrock_mantle/openai.gpt-6.1-terra"
         },
         {
           "id": "gpt-6.1-terra-pro",
@@ -1822,7 +1822,8 @@
         "vercel-gateway-diff-f795ac94",
         "npm-openai-7.44.0-7.45.0",
         "models-dev-diff-6f65cea9",
-        "litellm-diff-5d522636"
+        "litellm-diff-5d522636",
+        "litellm-diff-4eaee542"
       ],
       "x_post_text": "🟢 NEW: GPT-6.1 Terra by OpenAI\n\nFirst spotted 26 Oct 18:05 UTC in OpenAI Developer Models Catalog\n⏱ 8 min before it went live on OpenRouter\nConfirmed by OpenAI Docs Route, OpenAI Release Sitemap, OpenRouter +6\n\nvia @StatsWire"
     },
@@ -3506,6 +3507,41 @@
     }
   ],
   "cards": [
+    {
+      "id": "litellm-diff-4eaee542",
+      "category": "cli-sdk-diff",
+      "scanner": "litellm",
+      "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
+      "title": "1 New Model(s) Added to LiteLLM",
+      "subtitle": "Verified model_prices_and_context_window.json diff",
+      "build_label": "Registry Diff",
+      "build_transition": "+1 new model keys",
+      "models": [
+        {
+          "id": "bedrock_mantle/openai.gpt-6.1-terra",
+          "name": "bedrock_mantle/openai.gpt-6.1-terra"
+        }
+      ],
+      "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
+      "source_text": "official LiteLLM master pricing & context window registry.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "LITELLM",
+      "provider_slug": "modelsdev",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "LiteLLM JSON Registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        },
+        {
+          "label": "LiteLLM Commits",
+          "url": "https://github.com/BerriAI/litellm/commits/main"
+        }
+      ],
+      "detected_at": "2026-10-27T19:39:58.104873+00:00",
+      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 new model keys!\n\n• bedrock_mantle/openai.gpt-6.1-terra (bedrock_mantle/openai.gpt-6.1-terra)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "openrouter-model-prism-ml_ternary-bonsai-2-9b",
       "category": "cli-sdk-diff",
