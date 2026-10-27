@@ -83,9 +83,19 @@ jobs:
             echo "::warning::Feed push failed after 3 attempts; will retry next cycle."
           }
 
+          # Single-commit orphan branch, force-pushed after every scan: no Pages build, no history growth
+          heartbeat() {
+            STATUS=$(python -c "import json; f=json.load(open('data/feed.json', encoding='utf-8')); s=f.get('stats', {}); print(json.dumps({'last_scan': f.get('generated_at'), 'sources_ok': s.get('sources_ok'), 'stories': s.get('stories')}))" 2>/dev/null) || return 0
+            BLOB=$(printf '%s' "$STATUS" | git hash-object -w --stdin)
+            TREE=$(printf '100644 blob %s\tstatus.json\n' "$BLOB" | git mktree)
+            COMMIT=$(git commit-tree "$TREE" -m "scanner heartbeat")
+            git push -q -f origin "$COMMIT:refs/heads/status" || echo "::warning::Heartbeat push failed."
+          }
+
           while [ "$(date +%s)" -lt "$END" ]; do
             ITER_START=$(date +%s)
             timeout 900 python server.py --scan || echo "::warning::Scan exited with status $?"
+            heartbeat
             NEW=$(python -c "import json; print(json.load(open('data/feed.json'))['stats']['new_in_this_scan'])" 2>/dev/null || echo 0)
             if [ "$NEW" != "0" ]; then PENDING=1; fi
             SINCE=$(( $(date +%s) - LAST_PUSH ))

@@ -149,7 +149,7 @@
       </div>
       <div class="nav-actions">
         <button class="btn" onclick="refreshFeed()" id="refresh-btn">↻ Refresh</button>
-        <a class="btn" href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a>
+        <a class="btn" href="https://x.com/StatsWire" target="_blank" rel="noopener">Developed by @StatsWire on X</a>
       </div>
     </div>
   </nav>
@@ -350,12 +350,23 @@
       renderStatus();
     }
 
+    // The feed is only republished on new finds (or every 30 min); the scanner pushes a heartbeat after every 2-min scan
+    let HEARTBEAT = null;
+    async function loadHeartbeat() {
+      try {
+        const r = await fetch("https://raw.githubusercontent.com/siddiquiamir/model-tracker/status/status.json?t=" + Date.now(), { cache: "no-store" });
+        if (r.ok) HEARTBEAT = await r.json();
+      } catch (e) { /* keep the feed timestamp */ }
+      renderStatus();
+    }
     function renderStatus() {
-      if (!FEED.generated_at) return;
-      const mins = (Date.now() - new Date(FEED.generated_at)) / 60000;
-      document.getElementById("status-dot").className = "dot" + (mins > 45 ? " stale" : "");
-      const n = FEED.stats?.sources_ok;
-      document.getElementById("status-text").textContent = `Last sweep ${ago(FEED.generated_at)}${n ? ` · ${n} sources ok` : ""}`;
+      const hb = HEARTBEAT && HEARTBEAT.last_scan && new Date(HEARTBEAT.last_scan) > new Date(FEED.generated_at || 0) ? HEARTBEAT : null;
+      const last = hb ? hb.last_scan : FEED.generated_at;
+      if (!last) return;
+      const mins = (Date.now() - new Date(last)) / 60000;
+      document.getElementById("status-dot").className = "dot" + (mins > 15 ? " stale" : "");
+      const n = hb ? hb.sources_ok : FEED.stats?.sources_ok;
+      document.getElementById("status-text").textContent = `Last scan ${ago(last)}${n ? ` · ${n} sources ok` : ""}`;
     }
 
     async function loadFeed() {
@@ -374,7 +385,7 @@
     async function refreshFeed() {
       const btn = document.getElementById("refresh-btn");
       btn.disabled = true;
-      await loadFeed();
+      await Promise.all([loadFeed(), loadHeartbeat()]);
       btn.disabled = false;
       toast("Feed refreshed");
     }
@@ -563,8 +574,9 @@
     document.getElementById("search").addEventListener("input", render);
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeShare(); });
     setInterval(renderStatus, 30000);
+    setInterval(loadHeartbeat, 60000);
     setInterval(loadFeed, 300000);
-    loadFeed();
+    loadFeed().then(loadHeartbeat);
   </script>
 </body>
 </html>
