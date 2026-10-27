@@ -1,16 +1,63 @@
 {
-  "generated_at": "2026-10-27T14:44:16.398756+00:00",
+  "generated_at": "2026-10-27T15:06:16.266909+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 43,
-    "leaks": 5,
+    "stories": 44,
+    "leaks": 6,
     "releases": 38,
-    "stories_24h": 3,
+    "stories_24h": 4,
     "sources_ok": 11,
-    "total_cards": 70,
-    "new_in_this_scan": 0
+    "total_cards": 71,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-lfm-3-1",
+      "group": "lfm-3-1",
+      "kind": "leak",
+      "open_weights": true,
+      "title": "LFM3",
+      "provider_slug": "opensource",
+      "provider_name": "liquidai",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-27T15:05:40Z",
+      "updated_at": "2026-10-27T15:05:40Z",
+      "first_source": "llama.cpp pull request",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "lfm3",
+          "name": "Referenced in ggml-org/llama.cpp#31252"
+        },
+        {
+          "id": "LFM3-1.7B",
+          "name": "Referenced in ggml-org/llama.cpp#31252"
+        },
+        {
+          "id": "LFM3-VL-2B",
+          "name": "Referenced in ggml-org/llama.cpp#31252"
+        }
+      ],
+      "sources": [
+        {
+          "label": "llama.cpp pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-10-27T15:05:40Z",
+          "title": "LiquidAI/LFM3-1.7B (llama.cpp PR #31252)",
+          "url": "https://github.com/ggml-org/llama.cpp/pull/31252",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · LIQUIDAI",
+      "card_ids": [
+        "engine-pr-ggml-org_llama.cpp-31252"
+      ],
+      "x_post_text": "🟠 LEAK: LFM3 by liquidai\n\nFirst spotted 27 Oct 15:05 UTC in llama.cpp pull request\nIDs: lfm3, LFM3-1.7B, LFM3-VL-2B\n\nvia @StatsWire"
+    },
     {
       "id": "story-nemotron-labs-unified-asr-0",
       "group": "nemotron-labs-unified-asr-0",
@@ -1904,6 +1951,45 @@
     }
   ],
   "cards": [
+    {
+      "id": "engine-pr-ggml-org_llama.cpp-31252",
+      "category": "open-source",
+      "scanner": "engine-pr-leak",
+      "header": "LLAMA.CPP PR DAY-0 MODEL ONBOARDING (OPEN)",
+      "title": "LiquidAI/LFM3-1.7B (llama.cpp PR #31252)",
+      "subtitle": "model : add LiquidAI/LFM3-1.7B and LiquidAI/LFM3-VL-2B",
+      "build_label": "llama.cpp PR",
+      "build_transition": "PR #31252 (open)",
+      "models": [
+        {
+          "id": "LiquidAI/LFM3-1.7B",
+          "name": "Referenced in ggml-org/llama.cpp#31252"
+        },
+        {
+          "id": "LiquidAI/LFM3-VL-2B",
+          "name": "Referenced in ggml-org/llama.cpp#31252"
+        },
+        {
+          "id": "LiquidAI/lfm3",
+          "name": "Referenced in ggml-org/llama.cpp#31252"
+        }
+      ],
+      "evidence": "ggml-org/llama.cpp/pull/31252",
+      "source_text": "public GitHub pull request #31252 on ggml-org/llama.cpp.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "LLAMA.CPP PR",
+      "provider_slug": "opensource",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "ggml-org/llama.cpp PR #31252",
+          "url": "https://github.com/ggml-org/llama.cpp/pull/31252"
+        }
+      ],
+      "detected_at": "2026-10-27T15:05:40Z",
+      "x_post_text": "🚨 LLAMA.CPP PR DAY-0 MODEL ONBOARDING (OPEN)\nLiquidAI/LFM3-1.7B (llama.cpp PR #31252) spotted in llama.cpp PR PR #31252 (open)!\n\n• Referenced in ggml-org/llama.cpp#31252 (LiquidAI/LFM3-1.7B)\n• Referenced in ggml-org/llama.cpp#31252 (LiquidAI/LFM3-VL-2B)\n• Referenced in ggml-org/llama.cpp#31252 (LiquidAI/lfm3)\n\nEvidence: ggml-org/llama.cpp/pull/31252\nSource: public GitHub pull request #31252 on ggml-org/llama.cpp.\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-nvidia_nemotron-labs-unified-asr-0.6b",
       "category": "open-source",
