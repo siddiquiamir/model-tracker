@@ -1,16 +1,55 @@
 {
-  "generated_at": "2026-10-28T08:45:29.933908+00:00",
+  "generated_at": "2026-10-28T09:07:29.901989+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 87,
-    "leaks": 6,
+    "stories": 88,
+    "leaks": 7,
     "releases": 81,
-    "stories_24h": 47,
-    "sources_ok": 10,
+    "stories_24h": 48,
+    "sources_ok": 12,
     "total_cards": 143,
-    "new_in_this_scan": 0
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-ct-ct-diff-chatgpt-com-66ef5a16",
+      "group": "ct-ct-diff-chatgpt-com-66ef5a16",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "New ChatGPT · OpenAI Subdomain: codex-cloud-backend.chatgpt.com",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-28T09:07:56.264270+00:00",
+      "updated_at": "2026-10-28T09:07:56.264270+00:00",
+      "first_source": "TLS certificate log",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "codex-cloud-backend.chatgpt.com",
+          "name": "Coding / IDE Endpoint"
+        }
+      ],
+      "sources": [
+        {
+          "label": "TLS certificate log",
+          "scanner": "cert-transparency",
+          "detected_at": "2026-10-28T09:07:56.264270+00:00",
+          "title": "New ChatGPT · OpenAI Subdomain: codex-cloud-backend.chatgpt.com",
+          "url": "https://sslmate.com/ct_search_results?q=chatgpt.com",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · OPENAI",
+      "card_ids": [
+        "ct-diff-chatgpt-com-66ef5a16"
+      ],
+      "x_post_text": "🟠 LEAK: New ChatGPT · OpenAI Subdomain: codex-cloud-backend.chatgpt.com by OpenAI\n\nFirst spotted 28 Oct 09:07 UTC in TLS certificate log\n\nvia @StatsWire"
+    },
     {
       "id": "story-nemotron-3-5-parse",
       "group": "nemotron-3-5-parse",
@@ -3580,6 +3619,55 @@
       "x_post_text": "🟢 NEW: MiniCPM V 4.7 DSpark by MiniCPM\n\nFirst spotted 14 Oct 16:53 UTC in Hugging Face\nIDs: MiniCPM-V-4.7-1B-DSpark-gguf, MiniCPM-V-4.7-35B-A3B-DSpark-gguf\n\nvia @StatsWire"
     },
     {
+      "id": "story-timestral",
+      "group": "timestral",
+      "kind": "release",
+      "open_weights": true,
+      "title": "Timestral",
+      "provider_slug": "mistral",
+      "provider_name": "Mistral",
+      "accent_color": "#f59e0b",
+      "detected_at": "2026-10-14T13:41:13.000Z",
+      "updated_at": "2026-10-14T17:51:04.000Z",
+      "first_source": "Hugging Face",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Timestral-5M",
+          "name": "Timestral-5M"
+        },
+        {
+          "id": "Timestral-28M",
+          "name": "Timestral-28M"
+        },
+        {
+          "id": "Timestral-123M",
+          "name": "Timestral-123M"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-10-14T13:41:13.000Z",
+          "title": "Timestral 5M",
+          "url": "https://huggingface.co/mistralai/Timestral-5M",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "OPEN WEIGHTS · MISTRAL",
+      "card_ids": [
+        "hf-mistralai_Timestral-5M",
+        "hf-mistralai_Timestral-28M",
+        "hf-mistralai_Timestral-123M"
+      ],
+      "x_post_text": "🟢 NEW: Timestral by Mistral\n\nFirst spotted 14 Oct 13:41 UTC in Hugging Face\nIDs: Timestral-5M, Timestral-28M, Timestral-123M\n\nvia @StatsWire"
+    },
+    {
       "id": "story-flux-3-image-klein-comfy",
       "group": "flux-3-image-klein-comfy",
       "kind": "release",
@@ -3617,60 +3705,6 @@
         "hf-black-forest-labs_flux-3-image-klein-comfy"
       ],
       "x_post_text": "🟢 NEW: flux 3 image klein comfy by Black Forest Labs\n\nFirst spotted 14 Oct 12:00 UTC in Hugging Face\n\nvia @StatsWire"
-    },
-    {
-      "id": "story-timestral",
-      "group": "timestral",
-      "kind": "release",
-      "open_weights": true,
-      "title": "Timestral",
-      "provider_slug": "mistral",
-      "provider_name": "Mistral",
-      "accent_color": "#f59e0b",
-      "detected_at": "2026-10-14T08:52:36.000Z",
-      "updated_at": "2026-10-14T17:51:04.000Z",
-      "first_source": "Hugging Face",
-      "lead": "",
-      "released_on": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "Timestral-5M",
-          "name": "Timestral-5M"
-        },
-        {
-          "id": "Timestral-28M",
-          "name": "Timestral-28M"
-        },
-        {
-          "id": "Timestral-123M",
-          "name": "Timestral-123M"
-        },
-        {
-          "id": "Timestral-209M",
-          "name": "Timestral-209M"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Hugging Face",
-          "scanner": "huggingface",
-          "detected_at": "2026-10-14T08:52:36.000Z",
-          "title": "Timestral 209M",
-          "url": "https://huggingface.co/mistralai/Timestral-209M",
-          "backfill": true
-        }
-      ],
-      "source_count": 1,
-      "backfill": true,
-      "header": "OPEN WEIGHTS · MISTRAL",
-      "card_ids": [
-        "hf-mistralai_Timestral-209M",
-        "hf-mistralai_Timestral-5M",
-        "hf-mistralai_Timestral-28M",
-        "hf-mistralai_Timestral-123M"
-      ],
-      "x_post_text": "🟢 NEW: Timestral by Mistral\n\nFirst spotted 14 Oct 08:52 UTC in Hugging Face\nIDs: Timestral-5M, Timestral-28M, Timestral-123M +1\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-argon",
@@ -3834,6 +3868,41 @@
     }
   ],
   "cards": [
+    {
+      "id": "ct-diff-chatgpt-com-66ef5a16",
+      "category": "subdomain-ct",
+      "scanner": "cert-transparency",
+      "header": "SSL CERTIFICATE TRANSPARENCY DIFF · OPENAI",
+      "title": "New ChatGPT · OpenAI Subdomain: codex-cloud-backend.chatgpt.com",
+      "subtitle": "Newly discovered stealth / staging endpoint under *.chatgpt.com",
+      "build_label": "Root Domain",
+      "build_transition": "*.chatgpt.com (+1 new)",
+      "models": [
+        {
+          "id": "codex-cloud-backend.chatgpt.com",
+          "name": "Coding / IDE Endpoint"
+        }
+      ],
+      "evidence": "Certificate Transparency (CT) Logs · *.chatgpt.com",
+      "source_text": "public Certificate Transparency (CT) & DNS records for chatgpt.com.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "CertSpotter CT Log",
+          "url": "https://sslmate.com/ct_search_results?q=chatgpt.com"
+        },
+        {
+          "label": "crt.sh Lookup",
+          "url": "https://crt.sh/?q=%25.chatgpt.com"
+        }
+      ],
+      "detected_at": "2026-10-28T09:07:56.264270+00:00",
+      "x_post_text": "🚨 New ChatGPT · OpenAI Subdomain: codex-cloud-backend.chatgpt.com\n\n• codex-cloud-backend.chatgpt.com (Coding / IDE Endpoint)\n\nEvidence: Certificate Transparency (CT) Logs · *.chatgpt.com\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-nvidia_Nemotron-3.5-Parse",
       "category": "open-source",
@@ -8774,42 +8843,6 @@
       "detected_at": "2026-10-14T12:00:13.000Z",
       "backfill": true,
       "x_post_text": "🚨 HUGGING FACE NEW REPO · BLACK FOREST LABS\nflux 3 image klein comfy spotted in Repo Created 2026-10-14 (image-to-image)!\n\n• flux-3-image-klein-comfy (image-to-image) (black-forest-labs/flux-3-image-klein-comfy)\n\nEvidence: huggingface.co/api/models\nSource: official black-forest-labs Hugging Face organization feed.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "hf-mistralai_Timestral-209M",
-      "category": "open-source",
-      "scanner": "huggingface",
-      "header": "HUGGING FACE NEW REPO · MISTRAL AI",
-      "title": "Timestral 209M",
-      "subtitle": "Newly published public model repository (mistralai)",
-      "build_label": "Repo",
-      "build_transition": "Created 2026-10-14 (time-series-forecasting)",
-      "models": [
-        {
-          "id": "mistralai/Timestral-209M",
-          "name": "Timestral-209M (time-series-forecasting)"
-        }
-      ],
-      "evidence": "huggingface.co/api/models",
-      "source_text": "official mistralai Hugging Face organization feed.",
-      "disclaimer_1": "Repository became publicly visible since the previous scan.",
-      "disclaimer_2": "Public weights / model cards published directly by the organization.",
-      "provider_name": "MISTRAL AI",
-      "provider_slug": "mistral",
-      "accent_color": "#f59e0b",
-      "links": [
-        {
-          "label": "Hugging Face Repo",
-          "url": "https://huggingface.co/mistralai/Timestral-209M"
-        },
-        {
-          "label": "mistralai Hub Feed",
-          "url": "https://huggingface.co/mistralai"
-        }
-      ],
-      "detected_at": "2026-10-14T08:52:36.000Z",
-      "backfill": true,
-      "x_post_text": "🚨 HUGGING FACE NEW REPO · MISTRAL AI\nTimestral 209M spotted in Repo Created 2026-10-14 (time-series-forecasting)!\n\n• Timestral-209M (time-series-forecasting) (mistralai/Timestral-209M)\n\nEvidence: huggingface.co/api/models\nSource: official mistralai Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "ag-2.22.0-2.23.0-gemini-4-argon",
