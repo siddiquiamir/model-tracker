@@ -1,16 +1,55 @@
 {
-  "generated_at": "2026-10-28T10:40:20.636014+00:00",
+  "generated_at": "2026-10-28T11:12:21.077511+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 87,
-    "leaks": 6,
+    "stories": 88,
+    "leaks": 7,
     "releases": 81,
-    "stories_24h": 47,
+    "stories_24h": 48,
     "sources_ok": 12,
-    "total_cards": 143,
-    "new_in_this_scan": 0
+    "total_cards": 144,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-ct-ct-diff-kimi-com-cf473763",
+      "group": "ct-ct-diff-kimi-com-cf473763",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "New Moonshot Kimi Subdomain: office-plugin.kimi.com",
+      "provider_slug": "kimi",
+      "provider_name": "Moonshot",
+      "accent_color": "#06b6d4",
+      "detected_at": "2026-10-28T11:12:39.773760+00:00",
+      "updated_at": "2026-10-28T11:12:39.773760+00:00",
+      "first_source": "TLS certificate log",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "office-plugin.kimi.com",
+          "name": "Stealth / Codename Endpoint · SSL 2026-10-28"
+        }
+      ],
+      "sources": [
+        {
+          "label": "TLS certificate log",
+          "scanner": "cert-transparency",
+          "detected_at": "2026-10-28T11:12:39.773760+00:00",
+          "title": "New Moonshot Kimi Subdomain: office-plugin.kimi.com",
+          "url": "https://sslmate.com/ct_search_results?q=kimi.com",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · MOONSHOT",
+      "card_ids": [
+        "ct-diff-kimi-com-cf473763"
+      ],
+      "x_post_text": "🟠 LEAK: New Moonshot Kimi Subdomain: office-plugin.kimi.com by Moonshot\n\nFirst spotted 28 Oct 11:12 UTC in TLS certificate log\n\nvia @StatsWire"
+    },
     {
       "id": "story-nemotron-3-5-parse",
       "group": "nemotron-3-5-parse",
@@ -3829,6 +3868,41 @@
     }
   ],
   "cards": [
+    {
+      "id": "ct-diff-kimi-com-cf473763",
+      "category": "subdomain-ct",
+      "scanner": "cert-transparency",
+      "header": "SSL CERTIFICATE TRANSPARENCY DIFF · MOONSHOT · KIMI",
+      "title": "New Moonshot Kimi Subdomain: office-plugin.kimi.com",
+      "subtitle": "Newly discovered stealth / staging endpoint under *.kimi.com",
+      "build_label": "Root Domain",
+      "build_transition": "*.kimi.com (+1 new)",
+      "models": [
+        {
+          "id": "office-plugin.kimi.com",
+          "name": "Stealth / Codename Endpoint · SSL 2026-10-28"
+        }
+      ],
+      "evidence": "Certificate Transparency (CT) Logs · *.kimi.com",
+      "source_text": "public Certificate Transparency (CT) & DNS records for kimi.com.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "MOONSHOT · KIMI",
+      "provider_slug": "kimi",
+      "accent_color": "#06b6d4",
+      "links": [
+        {
+          "label": "CertSpotter CT Log",
+          "url": "https://sslmate.com/ct_search_results?q=kimi.com"
+        },
+        {
+          "label": "crt.sh Lookup",
+          "url": "https://crt.sh/?q=%25.kimi.com"
+        }
+      ],
+      "detected_at": "2026-10-28T11:12:39.773760+00:00",
+      "x_post_text": "🚨 New Moonshot Kimi Subdomain: office-plugin.kimi.com\n\n• office-plugin.kimi.com (Stealth / Codename Endpoint · SSL 2026-10-28)\n\nEvidence: Certificate Transparency (CT) Logs · *.kimi.com\n\nTracked by @StatsWire"
+    },
     {
       "id": "ct-diff-chatgpt-com-66ef5a16",
       "category": "subdomain-ct",
