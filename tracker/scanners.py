@@ -3438,6 +3438,14 @@ class HighAlphaLeakChannelsScanner:
             return parts[3]
         return build_key[:24] if build_key else "latest"
 
+    CRUD_ROUTE_SEGMENTS = {"edit", "create", "new", "view", "details", "delete", "settings", "duplicate", "clone"}
+
+    @classmethod
+    def is_crud_subroute(cls, route: str) -> bool:
+        """'agent-dashboard/triggers/:triggerId/edit' only adds a page to an existing feature."""
+        segs = [s for s in route.strip("/").split("/") if s]
+        return len(segs) >= 2 and (segs[-1].startswith(":") or segs[-1].lower() in cls.CRUD_ROUTE_SEGMENTS)
+
     @classmethod
     def _extract_aistudio_bundle_signals(cls, js_blobs: List[str]) -> Tuple[Dict[str, str], List[str]]:
         """Extract models/*, Mendel experiment model flags, and hidden UI routes from AI Studio Boq JS."""
@@ -3573,7 +3581,7 @@ class HighAlphaLeakChannelsScanner:
                             )
 
                     if prev_routes and curr_routes:
-                        added_routes = [r for r in curr_routes if r not in prev_routes]
+                        added_routes = [r for r in curr_routes if r not in prev_routes and not self.is_crud_subroute(r)]
                         if added_routes:
                             sig = hashlib.sha256(f"{build_key}:r:{','.join(added_routes[:8])}".encode("utf-8")).hexdigest()[:8]
                             route_items = []
