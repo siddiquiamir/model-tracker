@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-10-28T14:41:02.382161+00:00",
+  "generated_at": "2026-10-28T14:59:02.604155+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 88,
-    "leaks": 8,
-    "releases": 80,
+    "leaks": 7,
+    "releases": 81,
     "stories_24h": 48,
-    "sources_ok": 11,
-    "total_cards": 144,
-    "new_in_this_scan": 0
+    "sources_ok": 10,
+    "total_cards": 145,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
       "id": "story-nvidia-nemotron-3-5-transcribe",
       "group": "nvidia-nemotron-3-5-transcribe",
-      "kind": "leak",
+      "kind": "release",
       "open_weights": true,
       "title": "NVIDIA Nemotron 3.5 Transcribe 30B A4B",
       "provider_slug": "nvidia",
       "provider_name": "NVIDIA",
-      "accent_color": "#10b981",
+      "accent_color": "#84cc16",
       "detected_at": "2026-10-28T13:38:28Z",
-      "updated_at": "2026-10-28T13:38:28Z",
+      "updated_at": "2026-10-28T14:59:25.459052+00:00",
       "first_source": "vLLM pull request",
-      "lead": "",
+      "lead": "1 h before it went live on Hugging Face",
       "released_on": "",
       "codenames": [],
       "models": [
@@ -40,15 +40,24 @@
           "title": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B (vLLM PR #64282)",
           "url": "https://github.com/vllm-project/vllm/pull/64282",
           "backfill": false
+        },
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-10-28T14:59:25.459052+00:00",
+          "title": "NVIDIA Nemotron 3.5 Transcribe 30B A4B",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
+          "backfill": false
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
-      "header": "LEAK · NVIDIA",
+      "header": "OPEN WEIGHTS · NVIDIA",
       "card_ids": [
-        "engine-pr-vllm-project_vllm-64282"
+        "engine-pr-vllm-project_vllm-64282",
+        "hf-nvidia_NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
       ],
-      "x_post_text": "🟠 LEAK: NVIDIA Nemotron 3.5 Transcribe 30B A4B by NVIDIA\n\nFirst spotted 28 Oct 13:38 UTC in vLLM pull request\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW: NVIDIA Nemotron 3.5 Transcribe 30B A4B by NVIDIA\n\nFirst spotted 28 Oct 13:38 UTC in vLLM pull request\n⏱ 1 h before it went live on Hugging Face\nConfirmed by Hugging Face\n\nvia @StatsWire"
     },
     {
       "id": "story-ct-ct-diff-kimi-com-cf473763",
@@ -3863,6 +3872,41 @@
     }
   ],
   "cards": [
+    {
+      "id": "hf-nvidia_NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
+      "category": "open-source",
+      "scanner": "huggingface",
+      "header": "HUGGING FACE NEW REPO · NVIDIA",
+      "title": "NVIDIA Nemotron 3.5 Transcribe 30B A4B",
+      "subtitle": "Newly published public model repository (nvidia)",
+      "build_label": "Repo",
+      "build_transition": "Created 2026-10-07 (automatic-speech-recognition)",
+      "models": [
+        {
+          "id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
+          "name": "NVIDIA-Nemotron-3.5-Transcribe-30B-A4B (automatic-speech-recognition)"
+        }
+      ],
+      "evidence": "huggingface.co/api/models",
+      "source_text": "official nvidia Hugging Face organization feed.",
+      "disclaimer_1": "Repository became publicly visible since the previous scan.",
+      "disclaimer_2": "Public weights / model cards published directly by the organization.",
+      "provider_name": "NVIDIA",
+      "provider_slug": "nvidia",
+      "accent_color": "#84cc16",
+      "links": [
+        {
+          "label": "Hugging Face Repo",
+          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B"
+        },
+        {
+          "label": "nvidia Hub Feed",
+          "url": "https://huggingface.co/nvidia"
+        }
+      ],
+      "detected_at": "2026-10-28T14:59:25.459052+00:00",
+      "x_post_text": "🚨 HUGGING FACE NEW REPO · NVIDIA\nNVIDIA Nemotron 3.5 Transcribe 30B A4B spotted in Repo Created 2026-10-07 (automatic-speech-recognition)!\n\n• NVIDIA-Nemotron-3.5-Transcribe-30B-A4B (automatic-speech-recognition) (nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B)\n\nEvidence: huggingface.co/api/models\nSource: official nvidia Hugging Face organization feed.\n\nTracked by @StatsWire"
+    },
     {
       "id": "engine-pr-vllm-project_vllm-64282",
       "category": "open-source",
