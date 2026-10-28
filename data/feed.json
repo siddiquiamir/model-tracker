@@ -1,16 +1,55 @@
 {
-  "generated_at": "2026-10-28T12:46:20.961397+00:00",
+  "generated_at": "2026-10-28T13:16:20.867882+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 87,
-    "leaks": 7,
+    "stories": 88,
+    "leaks": 8,
     "releases": 80,
-    "stories_24h": 48,
+    "stories_24h": 49,
     "sources_ok": 10,
-    "total_cards": 143,
-    "new_in_this_scan": 0
+    "total_cards": 144,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-com-agent-dashboard-triggers",
+      "group": "com-agent-dashboard-triggers",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Agent Dashboard / Triggers / Triggerid / Edit",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "accent_color": "#38bdf8",
+      "detected_at": "2026-10-28T13:16:45.769038+00:00",
+      "updated_at": "2026-10-28T13:16:45.769038+00:00",
+      "first_source": "Google AI Studio Ui Route",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": ":triggerId/edit",
+          "name": "Agent Dashboard / Triggers / Triggerid / Edit"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Google AI Studio Ui Route",
+          "scanner": "web-bundle-diff",
+          "detected_at": "2026-10-28T13:16:45.769038+00:00",
+          "title": "New AI Studio Hidden Route: /agent-dashboard/triggers/:triggerId/edit",
+          "url": "https://aistudio.google.com/agent-dashboard/triggers",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · GOOGLE",
+      "card_ids": [
+        "web-bundle-aistudio-routes-0eed9f54"
+      ],
+      "x_post_text": "🟠 LEAK: Agent Dashboard / Triggers / Triggerid / Edit by Google\n\nFirst spotted 28 Oct 13:16 UTC in Google AI Studio Ui Route\n\nvia @StatsWire"
+    },
     {
       "id": "story-ct-ct-diff-kimi-com-cf473763",
       "group": "ct-ct-diff-kimi-com-cf473763",
@@ -3829,6 +3868,45 @@
     }
   ],
   "cards": [
+    {
+      "id": "web-bundle-aistudio-routes-0eed9f54",
+      "category": "desktop-diff",
+      "scanner": "web-bundle-diff",
+      "header": "GOOGLE AI STUDIO UI ROUTE DIFF · GOOGLE",
+      "title": "New AI Studio Hidden Route: /agent-dashboard/triggers/:triggerId/edit",
+      "subtitle": "Newly compiled Angular route(s) in boq-makersuite (GArkGzYM5-A -> WzQmSiAaMZU)",
+      "build_label": "MakerSuite Build",
+      "build_transition": "GArkGzYM5-A -> WzQmSiAaMZU (+1 route)",
+      "models": [
+        {
+          "id": "aistudio.google.com/agent-dashboard/triggers/:triggerId/edit",
+          "name": "UI Route: Agent Dashboard / Triggers / Triggerid / Edit"
+        }
+      ],
+      "evidence": "gstatic.com/_/mss/boq-makersuite (WzQmSiAaMZU)",
+      "source_text": "public Google AI Studio (aistudio.google.com) compiled Angular route table.",
+      "disclaimer_1": "Client-side UI route added to Google AI Studio frontend bundle (often gated by Mendel flags).",
+      "disclaimer_2": "Backend RPCs may still return 403 Permission Denied until public launch.",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Try /agent-dashboard/triggers/:triggerId/edit",
+          "url": "https://aistudio.google.com/agent-dashboard/triggers"
+        },
+        {
+          "label": "MakerSuite JS Bundle",
+          "url": "https://www.gstatic.com/_/mss/boq-makersuite/_/js/k=boq-makersuite.MakerSuite.en_US.WzQmSiAaMZU.2018.O/am=gSgABHM/d=1/excm=_b/ed=1/dg=0/wt=2/ujg=1/rs=AMOXD28LfvMjn20CPNYJHn-WHSg7_1xDpA/dti=1/m=_b"
+        }
+      ],
+      "detected_at": "2026-10-28T13:16:45.769038+00:00",
+      "codenames": [
+        "dashboard",
+        "triggers"
+      ],
+      "x_post_text": "🚨 GOOGLE AI STUDIO UI ROUTE DIFF · GOOGLE\nNew AI Studio Hidden Route: /agent-dashboard/triggers/:triggerId/edit spotted in MakerSuite Build GArkGzYM5-A -> WzQmSiAaMZU (+1 route)!\n\n• UI Route: Agent Dashboard / Triggers / Triggerid / Edit (aistudio.google.com/agent-dashboard/triggers/:triggerId/edit)\n\nEvidence: gstatic.com/_/mss/boq-makersuite (WzQmSiAaMZU)\nSource: public Google AI Studio (aistudio.google.com) compiled Angular route table.\n\nTracked by @StatsWire"
+    },
     {
       "id": "ct-diff-kimi-com-cf473763",
       "category": "subdomain-ct",
