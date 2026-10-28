@@ -1,16 +1,62 @@
 {
-  "generated_at": "2026-10-28T22:15:19.514057+00:00",
+  "generated_at": "2026-10-28T22:45:19.347794+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 91,
-    "leaks": 8,
+    "stories": 92,
+    "leaks": 9,
     "releases": 83,
-    "stories_24h": 22,
-    "sources_ok": 11,
-    "total_cards": 144,
+    "stories_24h": 23,
+    "sources_ok": 10,
+    "total_cards": 145,
     "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-transformersformtp",
+      "group": "transformersformtp",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "TransformersForMTP",
+      "provider_slug": "opensource",
+      "provider_name": "Architecture Diff",
+      "accent_color": "#8b5cf6",
+      "detected_at": "2026-10-28T22:45:25.689398+00:00",
+      "updated_at": "2026-10-28T22:45:25.689398+00:00",
+      "first_source": "vLLM registry",
+      "lead": "",
+      "released_on": "",
+      "codenames": [
+        "transformersformtp",
+        "transformersmoeformtp"
+      ],
+      "models": [
+        {
+          "id": "TransformersForMTP",
+          "name": "TransformersForMTP"
+        },
+        {
+          "id": "TransformersMoEForMTP",
+          "name": "TransformersMoEForMTP"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM registry",
+          "scanner": "vllm-registry",
+          "detected_at": "2026-10-28T22:45:25.689398+00:00",
+          "title": "New Engine Architecture: TransformersForMTP (+1 more)",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · ARCHITECTURE DIFF",
+      "card_ids": [
+        "vllm-arch-8d15c535c9"
+      ],
+      "x_post_text": "🟠 LEAK: TransformersForMTP by Architecture Diff\n\nFirst spotted 28 Oct 22:45 UTC in vLLM registry\nCodename: transformersformtp, transformersmoeformtp\nIDs: TransformersForMTP, TransformersMoEForMTP\n\nvia @StatsWire"
+    },
     {
       "id": "story-olmoearth-1-2-ft-lfmc",
       "group": "olmoearth-1-2-ft-lfmc",
@@ -3961,6 +4007,49 @@
     }
   ],
   "cards": [
+    {
+      "id": "vllm-arch-8d15c535c9",
+      "category": "open-source",
+      "scanner": "vllm-registry",
+      "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
+      "title": "New Engine Architecture: TransformersForMTP (+1 more)",
+      "subtitle": "New model_executor/models/registry.py architecture declarations",
+      "build_label": "Registry File",
+      "build_transition": "vllm/model_executor/models/registry.py",
+      "models": [
+        {
+          "id": "TransformersForMTP",
+          "name": "TransformersForMTP"
+        },
+        {
+          "id": "TransformersMoEForMTP",
+          "name": "TransformersMoEForMTP"
+        }
+      ],
+      "evidence": "vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+      "source_text": "official vLLM model architecture registry.",
+      "disclaimer_1": "Tracks only model architecture class registrations in registry.py.",
+      "disclaimer_2": "Open-source labs register their architecture classes here prior to weight drops.",
+      "provider_name": "VLLM REGISTRY",
+      "provider_slug": "opensource",
+      "accent_color": "#8b5cf6",
+      "links": [
+        {
+          "label": "vLLM registry.py",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py"
+        },
+        {
+          "label": "Supported Models Docs",
+          "url": "https://docs.vllm.ai/en/latest/models/supported_models.html"
+        }
+      ],
+      "detected_at": "2026-10-28T22:45:25.689398+00:00",
+      "codenames": [
+        "transformersformtp",
+        "transformersmoeformtp"
+      ],
+      "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: TransformersForMTP (+1 more) spotted in Registry File vllm/model_executor/models/registry.py!\n\n• TransformersForMTP (TransformersForMTP)\n• TransformersMoEForMTP (TransformersMoEForMTP)\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM model architecture registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-allenai_OlmoEarth-v1_2-FT-LFMC-Base",
       "category": "open-source",
