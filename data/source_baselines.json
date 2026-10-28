@@ -3911,6 +3911,11 @@
     "llmgateway-providers/cerebras/glm-4.7",
     "llmgateway-providers/cerebras/gpt-oss-120b",
     "llmgateway-providers/cerebras/llama-3.3-70b-instruct",
+    "llmgateway-providers/cloudflare/deepseek-v4-flash",
+    "llmgateway-providers/cloudflare/deepseek-v4-pro",
+    "llmgateway-providers/cloudflare/deepseek-v4.1-flash-1017",
+    "llmgateway-providers/cloudflare/glm-5.3",
+    "llmgateway-providers/cloudflare/glm-5.3-flash",
     "llmgateway-providers/consensusprotocol/Qwen3.8-27B",
     "llmgateway-providers/consensusprotocol/deepseek-v4-flash",
     "llmgateway-providers/consensusprotocol/deepseek-v4.1-flash",
@@ -3947,7 +3952,6 @@
     "llmgateway-providers/fireworks/glm-5.3-flash",
     "llmgateway-providers/fireworks/kimi-k3",
     "llmgateway-providers/fireworks/kimi-k3-fast",
-    "llmgateway-providers/gonka24/minimax-m2.7",
     "llmgateway-providers/google-ai-studio/gemini-3-flash-preview",
     "llmgateway-providers/google-ai-studio/gemini-3.1-flash-lite",
     "llmgateway-providers/google-ai-studio/gemini-3.1-pro-preview",
@@ -8971,6 +8975,19 @@
     "ai21.jamba-1-5-large-v1:0",
     "ai21.jamba-1-5-mini-v1:0",
     "ai21.jamba-instruct-v1:0",
+    "aiand/deepseek-ai/deepseek-v4-flash",
+    "aiand/deepseek-ai/deepseek-v4-pro",
+    "aiand/deepseek-ai/deepseek-v4.1-flash",
+    "aiand/google/gemma-4-31b-it",
+    "aiand/moonshotai/kimi-k2.7-code",
+    "aiand/moonshotai/kimi-k3",
+    "aiand/motif-technologies/motif-3",
+    "aiand/openai/gpt-oss-120b",
+    "aiand/qwen/qwen3.6-27b",
+    "aiand/qwen/qwen3.8-27b",
+    "aiand/zai-org/glm-5.2",
+    "aiand/zai-org/glm-5.3",
+    "aiand/zai-org/glm-5.3-flash",
     "aihubmix/agnes-2.5-flash",
     "aihubmix/agnes-2.5-pro",
     "aihubmix/cc-glm-5.1",
@@ -20322,7 +20339,7 @@
     "deferred-chat.x.ai": "2026-10-13T14:19:57Z",
     "cloud9-cm.api.x.ai": "2026-10-27T03:41:28Z",
     "us-west-1-raw.api.x.ai": "2026-10-20T16:29:27Z",
-    "us-west-1.api.x.ai": "2026-10-27T00:34:09Z",
+    "us-west-1.api.x.ai": "2026-10-28T08:34:13Z",
     "status.x.ai": "2026-10-05T16:39:12Z",
     "sso-auth.x.ai": "2026-10-18T16:41:07Z",
     "sso.x.ai": "2026-10-19T12:15:53Z",
@@ -20344,7 +20361,7 @@
     "try.grok.com": "2026-10-24T21:23:00Z",
     "ssff.grok.com": "2026-09-01T02:57:31Z",
     "cdn.grok.com": "2026-09-01T11:32:44Z",
-    "livekit-enterprise.grok.com": "2026-09-05T15:48:22Z",
+    "livekit-enterprise.grok.com": "2026-10-28T09:06:40Z",
     "livekit.grok.com": "2026-09-13T12:48:15Z",
     "typeahead.grok.com": "2026-09-14T23:27:21Z",
     "asia-south1-livekit.grok.com": "2026-09-18T18:49:34Z",
@@ -20979,8 +20996,8 @@
     "gemini.google.com": "17992179753",
     "ai.google.dev": "17992176073",
     "deepmind.google": "18004589239",
-    "x.ai": "18017665142",
-    "grok.com": "17966776565",
+    "x.ai": "18030387977",
+    "grok.com": "18030872781",
     "cursor.com": "18012729058",
     "deepseek.com": "17992016754",
     "kimi.com": "17861714891",
@@ -20995,7 +21012,7 @@
     "chatgpt.com": "18010631065",
     "sora.com": "17162221581"
   },
-  "ct_batch_offset": 9,
+  "ct_batch_offset": 12,
   "ct_seeded_sources": {
     "openai.com": [
       "ct",
@@ -22073,8 +22090,6 @@
   "copilot_cli_release_models": [],
   "engine_seen_prs": {
     "vllm-project/vllm": [
-      64042,
-      64043,
       64044,
       64045,
       64047,
@@ -22272,10 +22287,11 @@
       64258,
       64259,
       64260,
-      64261
+      64261,
+      64263,
+      64264
     ],
     "sgl-project/sglang": [
-      46848,
       46849,
       46850,
       46851,
@@ -22474,10 +22490,10 @@
       47055,
       47056,
       47057,
-      47058
+      47058,
+      47059
     ],
     "NVIDIA/TensorRT-LLM": [
-      20978,
       20979,
       20980,
       20981,
@@ -22676,7 +22692,8 @@
       21185,
       21186,
       21187,
-      21188
+      21188,
+      21189
     ],
     "huggingface/transformers": [
       49917,
@@ -22800,7 +22817,8 @@
       50068,
       50070,
       50071,
-      50073
+      50073,
+      50074
     ],
     "ggml-org/llama.cpp": [
       31198,
@@ -22885,7 +22903,10 @@
       31300,
       31303,
       31304,
-      31305
+      31305,
+      31306,
+      31307,
+      31308
     ],
     "ollama/ollama": [
       19269,
@@ -23094,7 +23115,7 @@
       "imagen-4.0-generate-001",
       "veo-2.0-generate-001"
     ],
-    "gemini_web_build_key": "boq-gemini-web-uiserver.BardChatUi.en_US.lCuaXcyVb2g.2018.O"
+    "gemini_web_build_key": "boq-gemini-web-uiserver.BardChatUi.en_US.17aCJV8u4-Y.2018.O"
   },
   "kimi_migration_ids": [
     "kimi-cli",
