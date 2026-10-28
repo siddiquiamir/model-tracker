@@ -1,16 +1,55 @@
 {
-  "generated_at": "2026-10-28T21:21:19.147110+00:00",
+  "generated_at": "2026-10-28T21:37:19.515660+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 90,
-    "leaks": 8,
+    "stories": 91,
+    "leaks": 9,
     "releases": 82,
-    "stories_24h": 20,
-    "sources_ok": 10,
+    "stories_24h": 21,
+    "sources_ok": 12,
     "total_cards": 146,
-    "new_in_this_scan": 0
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-ct-ct-diff-x-ai-0e18f1e4",
+      "group": "ct-ct-diff-x-ai-0e18f1e4",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "New xAI Subdomain: vault-token-check-prod-atla-prod-mc01.x.ai",
+      "provider_slug": "xai",
+      "provider_name": "xAI",
+      "accent_color": "#e2e8f0",
+      "detected_at": "2026-10-28T21:37:36.483560+00:00",
+      "updated_at": "2026-10-28T21:37:36.483560+00:00",
+      "first_source": "TLS certificate log",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "vault-token-check-prod-atla-prod-mc01.x.ai",
+          "name": "Stealth / Codename Endpoint · SSL 2026-10-28"
+        }
+      ],
+      "sources": [
+        {
+          "label": "TLS certificate log",
+          "scanner": "cert-transparency",
+          "detected_at": "2026-10-28T21:37:36.483560+00:00",
+          "title": "New xAI Subdomain: vault-token-check-prod-atla-prod-mc01.x.ai",
+          "url": "https://sslmate.com/ct_search_results?q=x.ai",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · XAI",
+      "card_ids": [
+        "ct-diff-x-ai-0e18f1e4"
+      ],
+      "x_post_text": "🟠 LEAK: New xAI Subdomain: vault-token-check-prod-atla-prod-mc01.x.ai by xAI\n\nFirst spotted 28 Oct 21:37 UTC in TLS certificate log\n\nvia @StatsWire"
+    },
     {
       "id": "story-particle-1",
       "group": "particle-1",
@@ -3746,7 +3785,7 @@
       "provider_slug": "opensource",
       "provider_name": "IBM Granite",
       "accent_color": "#0f62fe",
-      "detected_at": "2026-10-14T21:23:12.000Z",
+      "detected_at": "2026-10-14T21:38:09.000Z",
       "updated_at": "2026-10-22T22:00:51.000Z",
       "first_source": "Hugging Face",
       "lead": "",
@@ -3756,10 +3795,6 @@
         {
           "id": "granite-switch-4.1-8b",
           "name": "granite-switch-4.1-8b"
-        },
-        {
-          "id": "granite-switch-4.1-30b",
-          "name": "granite-switch-4.1-30b"
         },
         {
           "id": "granite-switch-4.1-8b-GGUF",
@@ -3774,9 +3809,9 @@
         {
           "label": "Hugging Face",
           "scanner": "huggingface",
-          "detected_at": "2026-10-14T21:23:12.000Z",
-          "title": "granite switch 4.1 30b",
-          "url": "https://huggingface.co/ibm-granite/granite-switch-4.1-30b",
+          "detected_at": "2026-10-14T21:38:09.000Z",
+          "title": "granite switch 4.1 8b",
+          "url": "https://huggingface.co/ibm-granite/granite-switch-4.1-8b",
           "backfill": true
         }
       ],
@@ -3784,12 +3819,11 @@
       "backfill": true,
       "header": "OPEN WEIGHTS · IBM GRANITE",
       "card_ids": [
-        "hf-ibm-granite_granite-switch-4.1-30b",
         "hf-ibm-granite_granite-switch-4.1-8b",
         "hf-ibm-granite_granite-switch-4.1-8b-GGUF",
         "hf-ibm-granite_granite-switch-4.1-30b-GGUF"
       ],
-      "x_post_text": "🟢 NEW: granite switch 4.1 by IBM Granite\n\nFirst spotted 14 Oct 21:23 UTC in Hugging Face\nIDs: granite-switch-4.1-8b, granite-switch-4.1-30b, granite-switch-4.1-8b-GGUF +1\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW: granite switch 4.1 by IBM Granite\n\nFirst spotted 14 Oct 21:38 UTC in Hugging Face\nIDs: granite-switch-4.1-8b, granite-switch-4.1-8b-GGUF, granite-switch-4.1-30b-GGUF\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-argon",
@@ -3953,6 +3987,41 @@
     }
   ],
   "cards": [
+    {
+      "id": "ct-diff-x-ai-0e18f1e4",
+      "category": "subdomain-ct",
+      "scanner": "cert-transparency",
+      "header": "SSL CERTIFICATE TRANSPARENCY DIFF · XAI",
+      "title": "New xAI Subdomain: vault-token-check-prod-atla-prod-mc01.x.ai",
+      "subtitle": "Newly discovered stealth / staging endpoint under *.x.ai",
+      "build_label": "Root Domain",
+      "build_transition": "*.x.ai (+1 new)",
+      "models": [
+        {
+          "id": "vault-token-check-prod-atla-prod-mc01.x.ai",
+          "name": "Stealth / Codename Endpoint · SSL 2026-10-28"
+        }
+      ],
+      "evidence": "Certificate Transparency (CT) Logs · *.x.ai",
+      "source_text": "public Certificate Transparency (CT) & DNS records for x.ai.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "XAI",
+      "provider_slug": "xai",
+      "accent_color": "#e2e8f0",
+      "links": [
+        {
+          "label": "CertSpotter CT Log",
+          "url": "https://sslmate.com/ct_search_results?q=x.ai"
+        },
+        {
+          "label": "crt.sh Lookup",
+          "url": "https://crt.sh/?q=%25.x.ai"
+        }
+      ],
+      "detected_at": "2026-10-28T21:37:36.483560+00:00",
+      "x_post_text": "🚨 New xAI Subdomain: vault-token-check-prod-atla-prod-mc01.x.ai\n\n• vault-token-check-prod-atla-prod-mc01.x.ai (Stealth / Codename Endpoint · SSL 2026-10-28)\n\nEvidence: Certificate Transparency (CT) Logs · *.x.ai\n\nTracked by @StatsWire"
+    },
     {
       "id": "vercel-gateway-diff-01ba054d",
       "category": "cli-sdk-diff",
@@ -8988,42 +9057,6 @@
       "detected_at": "2026-10-14T21:38:09.000Z",
       "backfill": true,
       "x_post_text": "🚨 HUGGING FACE NEW REPO · IBM GRANITE\ngranite switch 4.1 8b spotted in Repo Created 2026-10-14 (text-generation)!\n\n• granite-switch-4.1-8b (text-generation) (ibm-granite/granite-switch-4.1-8b)\n\nEvidence: huggingface.co/api/models\nSource: official ibm-granite Hugging Face organization feed.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "hf-ibm-granite_granite-switch-4.1-30b",
-      "category": "open-source",
-      "scanner": "huggingface",
-      "header": "HUGGING FACE NEW REPO · IBM GRANITE",
-      "title": "granite switch 4.1 30b",
-      "subtitle": "Newly published public model repository (ibm-granite)",
-      "build_label": "Repo",
-      "build_transition": "Created 2026-10-14 (text-generation)",
-      "models": [
-        {
-          "id": "ibm-granite/granite-switch-4.1-30b",
-          "name": "granite-switch-4.1-30b (text-generation)"
-        }
-      ],
-      "evidence": "huggingface.co/api/models",
-      "source_text": "official ibm-granite Hugging Face organization feed.",
-      "disclaimer_1": "Repository became publicly visible since the previous scan.",
-      "disclaimer_2": "Public weights / model cards published directly by the organization.",
-      "provider_name": "IBM GRANITE",
-      "provider_slug": "opensource",
-      "accent_color": "#0f62fe",
-      "links": [
-        {
-          "label": "Hugging Face Repo",
-          "url": "https://huggingface.co/ibm-granite/granite-switch-4.1-30b"
-        },
-        {
-          "label": "ibm-granite Hub Feed",
-          "url": "https://huggingface.co/ibm-granite"
-        }
-      ],
-      "detected_at": "2026-10-14T21:23:12.000Z",
-      "backfill": true,
-      "x_post_text": "🚨 HUGGING FACE NEW REPO · IBM GRANITE\ngranite switch 4.1 30b spotted in Repo Created 2026-10-14 (text-generation)!\n\n• granite-switch-4.1-30b (text-generation) (ibm-granite/granite-switch-4.1-30b)\n\nEvidence: huggingface.co/api/models\nSource: official ibm-granite Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "ag-2.22.0-2.23.0-gemini-4-argon",
