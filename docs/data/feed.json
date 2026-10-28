@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-10-28T13:38:20.473922+00:00",
+  "generated_at": "2026-10-28T14:09:02.590484+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 89,
-    "leaks": 9,
+    "stories": 88,
+    "leaks": 8,
     "releases": 80,
-    "stories_24h": 50,
+    "stories_24h": 49,
     "sources_ok": 10,
-    "total_cards": 145,
-    "new_in_this_scan": 1
+    "total_cards": 144,
+    "new_in_this_scan": 0
   },
   "stories": [
     {
@@ -49,45 +49,6 @@
         "engine-pr-vllm-project_vllm-64282"
       ],
       "x_post_text": "🟠 LEAK: NVIDIA Nemotron 3.5 Transcribe 30B A4B by NVIDIA\n\nFirst spotted 28 Oct 13:38 UTC in vLLM pull request\n\nvia @StatsWire"
-    },
-    {
-      "id": "story-com-agent-dashboard-triggers",
-      "group": "com-agent-dashboard-triggers",
-      "kind": "leak",
-      "open_weights": false,
-      "title": "Agent Dashboard / Triggers / Triggerid / Edit",
-      "provider_slug": "google",
-      "provider_name": "Google",
-      "accent_color": "#38bdf8",
-      "detected_at": "2026-10-28T13:16:45.769038+00:00",
-      "updated_at": "2026-10-28T13:16:45.769038+00:00",
-      "first_source": "Google AI Studio Ui Route",
-      "lead": "",
-      "released_on": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": ":triggerId/edit",
-          "name": "Agent Dashboard / Triggers / Triggerid / Edit"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Google AI Studio Ui Route",
-          "scanner": "web-bundle-diff",
-          "detected_at": "2026-10-28T13:16:45.769038+00:00",
-          "title": "New AI Studio Hidden Route: /agent-dashboard/triggers/:triggerId/edit",
-          "url": "https://aistudio.google.com/agent-dashboard/triggers",
-          "backfill": false
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "LEAK · GOOGLE",
-      "card_ids": [
-        "web-bundle-aistudio-routes-0eed9f54"
-      ],
-      "x_post_text": "🟠 LEAK: Agent Dashboard / Triggers / Triggerid / Edit by Google\n\nFirst spotted 28 Oct 13:16 UTC in Google AI Studio Ui Route\n\nvia @StatsWire"
     },
     {
       "id": "story-ct-ct-diff-kimi-com-cf473763",
@@ -3653,6 +3614,50 @@
       "x_post_text": "🟢 NEW: UserRepGen 4B by Microsoft\n\nFirst spotted 14 Oct 20:30 UTC in Hugging Face\n\nvia @StatsWire"
     },
     {
+      "id": "story-timestral",
+      "group": "timestral",
+      "kind": "release",
+      "open_weights": true,
+      "title": "Timestral",
+      "provider_slug": "mistral",
+      "provider_name": "Mistral",
+      "accent_color": "#f59e0b",
+      "detected_at": "2026-10-14T17:50:53.000Z",
+      "updated_at": "2026-10-14T17:51:04.000Z",
+      "first_source": "Hugging Face",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Timestral-28M",
+          "name": "Timestral-28M"
+        },
+        {
+          "id": "Timestral-123M",
+          "name": "Timestral-123M"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-10-14T17:50:53.000Z",
+          "title": "Timestral 28M",
+          "url": "https://huggingface.co/mistralai/Timestral-28M",
+          "backfill": true
+        }
+      ],
+      "source_count": 1,
+      "backfill": true,
+      "header": "OPEN WEIGHTS · MISTRAL",
+      "card_ids": [
+        "hf-mistralai_Timestral-28M",
+        "hf-mistralai_Timestral-123M"
+      ],
+      "x_post_text": "🟢 NEW: Timestral by Mistral\n\nFirst spotted 14 Oct 17:50 UTC in Hugging Face\nIDs: Timestral-28M, Timestral-123M\n\nvia @StatsWire"
+    },
+    {
       "id": "story-minicpm-4-7-dspark",
       "group": "minicpm-4-7-dspark",
       "kind": "release",
@@ -3695,55 +3700,6 @@
         "hf-openbmb_MiniCPM-V-4.7-35B-A3B-DSpark-gguf"
       ],
       "x_post_text": "🟢 NEW: MiniCPM V 4.7 DSpark by MiniCPM\n\nFirst spotted 14 Oct 16:53 UTC in Hugging Face\nIDs: MiniCPM-V-4.7-1B-DSpark-gguf, MiniCPM-V-4.7-35B-A3B-DSpark-gguf\n\nvia @StatsWire"
-    },
-    {
-      "id": "story-timestral",
-      "group": "timestral",
-      "kind": "release",
-      "open_weights": true,
-      "title": "Timestral",
-      "provider_slug": "mistral",
-      "provider_name": "Mistral",
-      "accent_color": "#f59e0b",
-      "detected_at": "2026-10-14T13:41:13.000Z",
-      "updated_at": "2026-10-14T17:51:04.000Z",
-      "first_source": "Hugging Face",
-      "lead": "",
-      "released_on": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "Timestral-5M",
-          "name": "Timestral-5M"
-        },
-        {
-          "id": "Timestral-28M",
-          "name": "Timestral-28M"
-        },
-        {
-          "id": "Timestral-123M",
-          "name": "Timestral-123M"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Hugging Face",
-          "scanner": "huggingface",
-          "detected_at": "2026-10-14T13:41:13.000Z",
-          "title": "Timestral 5M",
-          "url": "https://huggingface.co/mistralai/Timestral-5M",
-          "backfill": true
-        }
-      ],
-      "source_count": 1,
-      "backfill": true,
-      "header": "OPEN WEIGHTS · MISTRAL",
-      "card_ids": [
-        "hf-mistralai_Timestral-5M",
-        "hf-mistralai_Timestral-28M",
-        "hf-mistralai_Timestral-123M"
-      ],
-      "x_post_text": "🟢 NEW: Timestral by Mistral\n\nFirst spotted 14 Oct 13:41 UTC in Hugging Face\nIDs: Timestral-5M, Timestral-28M, Timestral-123M\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-argon",
@@ -8915,42 +8871,6 @@
       "detected_at": "2026-10-14T16:53:55.000Z",
       "backfill": true,
       "x_post_text": "🚨 HUGGING FACE NEW REPO · OPENBMB · MINICPM\nMiniCPM V 4.7 1B DSpark gguf spotted in Repo Created 2026-10-14 (text-generation)!\n\n• MiniCPM-V-4.7-1B-DSpark-gguf (text-generation) (openbmb/MiniCPM-V-4.7-1B-DSpark-gguf)\n\nEvidence: huggingface.co/api/models\nSource: official openbmb Hugging Face organization feed.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "hf-mistralai_Timestral-5M",
-      "category": "open-source",
-      "scanner": "huggingface",
-      "header": "HUGGING FACE NEW REPO · MISTRAL AI",
-      "title": "Timestral 5M",
-      "subtitle": "Newly published public model repository (mistralai)",
-      "build_label": "Repo",
-      "build_transition": "Created 2026-10-14 (time-series-forecasting)",
-      "models": [
-        {
-          "id": "mistralai/Timestral-5M",
-          "name": "Timestral-5M (time-series-forecasting)"
-        }
-      ],
-      "evidence": "huggingface.co/api/models",
-      "source_text": "official mistralai Hugging Face organization feed.",
-      "disclaimer_1": "Repository became publicly visible since the previous scan.",
-      "disclaimer_2": "Public weights / model cards published directly by the organization.",
-      "provider_name": "MISTRAL AI",
-      "provider_slug": "mistral",
-      "accent_color": "#f59e0b",
-      "links": [
-        {
-          "label": "Hugging Face Repo",
-          "url": "https://huggingface.co/mistralai/Timestral-5M"
-        },
-        {
-          "label": "mistralai Hub Feed",
-          "url": "https://huggingface.co/mistralai"
-        }
-      ],
-      "detected_at": "2026-10-14T13:41:13.000Z",
-      "backfill": true,
-      "x_post_text": "🚨 HUGGING FACE NEW REPO · MISTRAL AI\nTimestral 5M spotted in Repo Created 2026-10-14 (time-series-forecasting)!\n\n• Timestral-5M (time-series-forecasting) (mistralai/Timestral-5M)\n\nEvidence: huggingface.co/api/models\nSource: official mistralai Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "ag-2.22.0-2.23.0-gemini-4-argon",
