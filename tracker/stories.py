@@ -8,6 +8,7 @@ import re
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 
 from tracker.novelty import ReleasedCatalog, normalize, strip_variants
+from tracker.scanners import CertTransparencySubdomainScanner
 
 # Scanners whose sighting means the model is publicly usable (a release, not a leak)
 RELEASE_SCANNERS: Set[str] = {"openrouter", "huggingface", "gateway-radar"}
@@ -171,7 +172,8 @@ def build_stories(
     now: Optional[datetime] = None,
 ) -> List[Dict[str, Any]]:
     now = now or datetime.now(timezone.utc)
-    usable = [c for c in cards if c.get("scanner") not in EXCLUDED_SCANNERS]
+    usable = [c for c in cards if c.get("scanner") not in EXCLUDED_SCANNERS
+              and not CertTransparencySubdomainScanner.is_noise_card(c)]
     keyed = [(c, _card_keys(c)) for c in usable]
     primaries = {kms[0][0] for _, kms in keyed}
 

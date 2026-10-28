@@ -2317,6 +2317,14 @@ class CertTransparencySubdomainScanner:
         "jp", "kr", "nl", "pl", "se", "sg", "tw", "uk", "us", "ap", "apac", "emea", "global",
     }
 
+    PRODUCT_INFRA_TOKENS = {
+        "codex", "chatgpt", "sora", "claude", "gemini", "grok", "kimi", "qwen", "cursor", "deepseek",
+        "cloud", "backend", "frontend", "api", "proxy", "gateway", "prod", "production", "service", "svc",
+        "worker", "workers", "edge", "origin", "web", "app", "server", "public", "external", "files",
+        "uploads", "storage", "data", "ingress", "egress", "lb", "router", "relay", "stream", "streaming",
+        "socket", "websocket", "sync", "events", "logs", "metrics", "telemetry", "cdn", "static", "assets",
+    }
+
     @classmethod
     def is_clean_subdomain(cls, sub: str, root_dom: str) -> bool:
         s = sub.strip().lower().rstrip(".")
@@ -2378,7 +2386,22 @@ class CertTransparencySubdomainScanner:
         if prefix in {"v2.auth", "gmail.mcp", "gcal.mcp", "slack-channel.mcp"}:
             return False
 
+        # Shipped product + plumbing words only (codex-cloud-backend) reveal nothing new
+        if all(tok in cls.PRODUCT_INFRA_TOKENS for tok in re.split(r"[-.]", prefix) if tok):
+            return False
+
         return True
+
+    @classmethod
+    def is_noise_card(cls, card: Dict[str, Any]) -> bool:
+        if card.get("scanner") != "cert-transparency":
+            return False
+        subs = [str(m.get("id", "")).lower() for m in card.get("models") or []]
+        for sub in subs:
+            root = next((d for d, *_ in cls.WATCHED_DOMAINS if sub.endswith("." + d)), "")
+            if not root or cls.is_high_signal_subdomain(sub, root):
+                return False
+        return bool(subs)
 
     @staticmethod
     def subdomain_family_key(sub: str, root_dom: str) -> str:
