@@ -1,16 +1,94 @@
 {
-  "generated_at": "2026-10-29T20:48:25.633335+00:00",
+  "generated_at": "2026-10-29T20:54:25.302840+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 98,
-    "leaks": 15,
+    "stories": 100,
+    "leaks": 17,
     "releases": 83,
-    "stories_24h": 16,
-    "sources_ok": 11,
-    "total_cards": 158,
-    "new_in_this_scan": 0
+    "stories_24h": 18,
+    "sources_ok": 13,
+    "total_cards": 160,
+    "new_in_this_scan": 2
   },
   "stories": [
+    {
+      "id": "story-ct-ct-diff-perplexity-ai-b7421b04",
+      "group": "ct-ct-diff-perplexity-ai-b7421b04",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "New Perplexity AI Subdomain: experimentation-cdn.perplexity.ai",
+      "provider_slug": "perplexity",
+      "provider_name": "Perplexity",
+      "accent_color": "#0ea5e9",
+      "detected_at": "2026-10-29T20:54:52.981547+00:00",
+      "updated_at": "2026-10-29T20:54:52.981547+00:00",
+      "first_source": "TLS certificate log",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "experimentation-cdn.perplexity.ai",
+          "name": "Stealth / Codename Endpoint · SSL 2026-10-29"
+        }
+      ],
+      "sources": [
+        {
+          "label": "TLS certificate log",
+          "scanner": "cert-transparency",
+          "detected_at": "2026-10-29T20:54:52.981547+00:00",
+          "title": "New Perplexity AI Subdomain: experimentation-cdn.perplexity.ai",
+          "url": "https://sslmate.com/ct_search_results?q=perplexity.ai",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · PERPLEXITY",
+      "card_ids": [
+        "ct-diff-perplexity-ai-b7421b04"
+      ],
+      "x_post_text": "🟠 LEAK: New Perplexity AI Subdomain: experimentation-cdn.perplexity.ai by Perplexity\n\nFirst spotted 29 Oct 20:54 UTC in TLS certificate log\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-ct-ct-diff-mistral-ai-8e128a84",
+      "group": "ct-ct-diff-mistral-ai-8e128a84",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "New Mistral AI Subdomain: move.chat.mistral.ai",
+      "provider_slug": "mistral",
+      "provider_name": "Mistral",
+      "accent_color": "#f59e0b",
+      "detected_at": "2026-10-29T20:54:51.366111+00:00",
+      "updated_at": "2026-10-29T20:54:51.366111+00:00",
+      "first_source": "TLS certificate log",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "move.chat.mistral.ai",
+          "name": "Stealth / Codename Endpoint · SSL 2026-10-29"
+        }
+      ],
+      "sources": [
+        {
+          "label": "TLS certificate log",
+          "scanner": "cert-transparency",
+          "detected_at": "2026-10-29T20:54:51.366111+00:00",
+          "title": "New Mistral AI Subdomain: move.chat.mistral.ai",
+          "url": "https://sslmate.com/ct_search_results?q=mistral.ai",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · MISTRAL",
+      "card_ids": [
+        "ct-diff-mistral-ai-8e128a84"
+      ],
+      "x_post_text": "🟠 LEAK: New Mistral AI Subdomain: move.chat.mistral.ai by Mistral\n\nFirst spotted 29 Oct 20:54 UTC in TLS certificate log\n\nvia @StatsWire"
+    },
     {
       "id": "story-joey-1",
       "group": "joey-1",
@@ -4293,6 +4371,76 @@
     }
   ],
   "cards": [
+    {
+      "id": "ct-diff-perplexity-ai-b7421b04",
+      "category": "subdomain-ct",
+      "scanner": "cert-transparency",
+      "header": "SSL CERTIFICATE TRANSPARENCY DIFF · PERPLEXITY",
+      "title": "New Perplexity AI Subdomain: experimentation-cdn.perplexity.ai",
+      "subtitle": "Newly discovered stealth / staging endpoint under *.perplexity.ai",
+      "build_label": "Root Domain",
+      "build_transition": "*.perplexity.ai (+1 new)",
+      "models": [
+        {
+          "id": "experimentation-cdn.perplexity.ai",
+          "name": "Stealth / Codename Endpoint · SSL 2026-10-29"
+        }
+      ],
+      "evidence": "Certificate Transparency (CT) Logs · *.perplexity.ai",
+      "source_text": "public Certificate Transparency (CT) & DNS records for perplexity.ai.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "PERPLEXITY",
+      "provider_slug": "perplexity",
+      "accent_color": "#0ea5e9",
+      "links": [
+        {
+          "label": "CertSpotter CT Log",
+          "url": "https://sslmate.com/ct_search_results?q=perplexity.ai"
+        },
+        {
+          "label": "crt.sh Lookup",
+          "url": "https://crt.sh/?q=%25.perplexity.ai"
+        }
+      ],
+      "detected_at": "2026-10-29T20:54:52.981547+00:00",
+      "x_post_text": "🚨 New Perplexity AI Subdomain: experimentation-cdn.perplexity.ai\n\n• experimentation-cdn.perplexity.ai (Stealth / Codename Endpoint · SSL 2026-10-29)\n\nEvidence: Certificate Transparency (CT) Logs · *.perplexity.ai\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "ct-diff-mistral-ai-8e128a84",
+      "category": "subdomain-ct",
+      "scanner": "cert-transparency",
+      "header": "SSL CERTIFICATE TRANSPARENCY DIFF · MISTRAL AI",
+      "title": "New Mistral AI Subdomain: move.chat.mistral.ai",
+      "subtitle": "Newly discovered stealth / staging endpoint under *.mistral.ai",
+      "build_label": "Root Domain",
+      "build_transition": "*.mistral.ai (+1 new)",
+      "models": [
+        {
+          "id": "move.chat.mistral.ai",
+          "name": "Stealth / Codename Endpoint · SSL 2026-10-29"
+        }
+      ],
+      "evidence": "Certificate Transparency (CT) Logs · *.mistral.ai",
+      "source_text": "public Certificate Transparency (CT) & DNS records for mistral.ai.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "MISTRAL AI",
+      "provider_slug": "mistral",
+      "accent_color": "#f59e0b",
+      "links": [
+        {
+          "label": "CertSpotter CT Log",
+          "url": "https://sslmate.com/ct_search_results?q=mistral.ai"
+        },
+        {
+          "label": "crt.sh Lookup",
+          "url": "https://crt.sh/?q=%25.mistral.ai"
+        }
+      ],
+      "detected_at": "2026-10-29T20:54:51.366111+00:00",
+      "x_post_text": "🚨 New Mistral AI Subdomain: move.chat.mistral.ai\n\n• move.chat.mistral.ai (Stealth / Codename Endpoint · SSL 2026-10-29)\n\nEvidence: Certificate Transparency (CT) Logs · *.mistral.ai\n\nTracked by @StatsWire"
+    },
     {
       "id": "vercel-gateway-diff-7dfee511",
       "category": "cli-sdk-diff",
