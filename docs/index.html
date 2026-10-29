@@ -491,6 +491,7 @@
         const snapshot = await htmlToImage.toCanvas(card, {
           pixelRatio: 2,
           skipFonts: true,
+          filter: node => !(node.classList && node.classList.contains("actions")),
         });
         const canvas = document.getElementById("share-canvas");
         canvas.width = snapshot.width; canvas.height = snapshot.height;
