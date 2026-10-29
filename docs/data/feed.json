@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-10-29T03:21:35.396881+00:00",
+  "generated_at": "2026-10-29T03:27:35.143378+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 94,
     "leaks": 11,
     "releases": 83,
-    "stories_24h": 17,
-    "sources_ok": 12,
-    "total_cards": 147,
-    "new_in_this_scan": 1
+    "stories_24h": 18,
+    "sources_ok": 10,
+    "total_cards": 148,
+    "new_in_this_scan": 0
   },
   "stories": [
     {
@@ -3014,7 +3014,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-10-23T19:51:16+00:00",
-      "updated_at": "2026-10-23T19:51:16+00:00",
+      "updated_at": "2026-10-29T03:05:31.000Z",
       "first_source": "Antigravity ACP config",
       "lead": "",
       "released_on": "",
@@ -3043,15 +3043,24 @@
           "title": "Gemini 4 Carbon (ACP v1.4.3 Revision)",
           "url": "https://dl.google.com/agy-extensions/releases/macos/agy-acp-server-1.4.3-darwin-arm64.zip",
           "backfill": false
+        },
+        {
+          "label": "LMArena",
+          "scanner": "lmarena",
+          "detected_at": "2026-10-29T03:05:31.000Z",
+          "title": "New Model(s) Added to Arena (Gemini 4 Carbon (High))",
+          "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+          "backfill": false
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
       "header": "LEAK · GOOGLE",
       "card_ids": [
-        "ag-acp-1.4.3-revision-diff"
+        "ag-acp-1.4.3-revision-diff",
+        "lmarena-lb-diff-54e458eb"
       ],
-      "x_post_text": "🟠 LEAK: Gemini 4 Carbon by Google\n\nFirst spotted 23 Oct 19:51 UTC in Antigravity ACP config\nCodename: carbon\nIDs: gemini-4-carbon, carbon-g-medium-tf, gemini-4-carbon-teamfood\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: Gemini 4 Carbon by Google\n\nFirst spotted 23 Oct 19:51 UTC in Antigravity ACP config\nConfirmed by LMArena\nCodename: carbon\nIDs: gemini-4-carbon, carbon-g-medium-tf, gemini-4-carbon-teamfood\n\nvia @StatsWire"
     },
     {
       "id": "story-motionbricks",
@@ -4121,6 +4130,40 @@
       ],
       "detected_at": "2026-10-29T03:21:59.434178+00:00",
       "x_post_text": "🚨 New OpenAI Subdomain: codex-portals.gateway.unified-101.api.openai.com\n\n• codex-portals.gateway.unified-101.api.openai.com (Coding / IDE Endpoint · SSL 2026-10-29)\n\nEvidence: Certificate Transparency (CT) Logs · *.openai.com\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "lmarena-lb-diff-54e458eb",
+      "category": "cli-sdk-diff",
+      "scanner": "lmarena",
+      "header": "ARENA.AI NEW MODEL DIFF · LMARENA",
+      "title": "New Model(s) Added to Arena (Gemini 4 Carbon (High))",
+      "subtitle": "Newly added models in official lmarena-ai/leaderboard-dataset",
+      "build_label": "Arena Diff",
+      "build_transition": "+1 new Arena models",
+      "models": [
+        {
+          "id": "Gemini 4 Carbon (High)",
+          "name": "Gemini 4 Carbon (High) (Text Arena)"
+        }
+      ],
+      "evidence": "huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+      "source_text": "official LMArena (arena.ai) Hugging Face dataset.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "ARENA.AI",
+      "provider_slug": "modelsdev",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "LMArena Dataset",
+          "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset"
+        }
+      ],
+      "detected_at": "2026-10-29T03:05:31.000Z",
+      "codenames": [
+        "carbon"
+      ],
+      "x_post_text": "🚨 ARENA.AI NEW MODEL DIFF · LMARENA\nNew Model(s) Added to Arena (Gemini 4 Carbon (High)) spotted in Arena Diff +1 new Arena models!\n\n• Gemini 4 Carbon (High) (Text Arena) (Gemini 4 Carbon (High))\n\nEvidence: huggingface.co/datasets/lmarena-ai/leaderboard-dataset\nSource: official LMArena (arena.ai) Hugging Face dataset.\n\nTracked by @StatsWire"
     },
     {
       "id": "engine-pr-huggingface_transformers-50099",
