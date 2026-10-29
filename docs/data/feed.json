@@ -1,16 +1,55 @@
 {
-  "generated_at": "2026-10-29T10:01:23.220647+00:00",
+  "generated_at": "2026-10-29T10:05:23.683111+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 94,
-    "leaks": 12,
+    "stories": 95,
+    "leaks": 13,
     "releases": 82,
-    "stories_24h": 18,
-    "sources_ok": 12,
-    "total_cards": 150,
-    "new_in_this_scan": 0
+    "stories_24h": 19,
+    "sources_ok": 13,
+    "total_cards": 151,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-ct-ct-diff-mistral-ai-bca9eb31",
+      "group": "ct-ct-diff-mistral-ai-bca9eb31",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "New Mistral AI Subdomain: move.canvas-chat.mistral.ai",
+      "provider_slug": "mistral",
+      "provider_name": "Mistral",
+      "accent_color": "#f59e0b",
+      "detected_at": "2026-10-29T10:05:48.921295+00:00",
+      "updated_at": "2026-10-29T10:05:48.921295+00:00",
+      "first_source": "TLS certificate log",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "move.canvas-chat.mistral.ai",
+          "name": "Stealth / Codename Endpoint · SSL 2026-10-29"
+        }
+      ],
+      "sources": [
+        {
+          "label": "TLS certificate log",
+          "scanner": "cert-transparency",
+          "detected_at": "2026-10-29T10:05:48.921295+00:00",
+          "title": "New Mistral AI Subdomain: move.canvas-chat.mistral.ai",
+          "url": "https://sslmate.com/ct_search_results?q=mistral.ai",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · MISTRAL",
+      "card_ids": [
+        "ct-diff-mistral-ai-bca9eb31"
+      ],
+      "x_post_text": "🟠 LEAK: New Mistral AI Subdomain: move.canvas-chat.mistral.ai by Mistral\n\nFirst spotted 29 Oct 10:05 UTC in TLS certificate log\n\nvia @StatsWire"
+    },
     {
       "id": "story-gpt-image-2-6",
       "group": "gpt-image-2-6",
@@ -4109,6 +4148,41 @@
     }
   ],
   "cards": [
+    {
+      "id": "ct-diff-mistral-ai-bca9eb31",
+      "category": "subdomain-ct",
+      "scanner": "cert-transparency",
+      "header": "SSL CERTIFICATE TRANSPARENCY DIFF · MISTRAL AI",
+      "title": "New Mistral AI Subdomain: move.canvas-chat.mistral.ai",
+      "subtitle": "Newly discovered stealth / staging endpoint under *.mistral.ai",
+      "build_label": "Root Domain",
+      "build_transition": "*.mistral.ai (+1 new)",
+      "models": [
+        {
+          "id": "move.canvas-chat.mistral.ai",
+          "name": "Stealth / Codename Endpoint · SSL 2026-10-29"
+        }
+      ],
+      "evidence": "Certificate Transparency (CT) Logs · *.mistral.ai",
+      "source_text": "public Certificate Transparency (CT) & DNS records for mistral.ai.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "MISTRAL AI",
+      "provider_slug": "mistral",
+      "accent_color": "#f59e0b",
+      "links": [
+        {
+          "label": "CertSpotter CT Log",
+          "url": "https://sslmate.com/ct_search_results?q=mistral.ai"
+        },
+        {
+          "label": "crt.sh Lookup",
+          "url": "https://crt.sh/?q=%25.mistral.ai"
+        }
+      ],
+      "detected_at": "2026-10-29T10:05:48.921295+00:00",
+      "x_post_text": "🚨 New Mistral AI Subdomain: move.canvas-chat.mistral.ai\n\n• move.canvas-chat.mistral.ai (Stealth / Codename Endpoint · SSL 2026-10-29)\n\nEvidence: Certificate Transparency (CT) Logs · *.mistral.ai\n\nTracked by @StatsWire"
+    },
     {
       "id": "openai-spec-prose-gpt-image-2.6",
       "category": "cli-sdk-diff",
