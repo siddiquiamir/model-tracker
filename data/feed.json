@@ -1,16 +1,55 @@
 {
-  "generated_at": "2026-10-29T08:22:39.285942+00:00",
+  "generated_at": "2026-10-29T08:27:23.592718+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 93,
-    "leaks": 11,
+    "stories": 94,
+    "leaks": 12,
     "releases": 82,
-    "stories_24h": 17,
+    "stories_24h": 18,
     "sources_ok": 11,
-    "total_cards": 149,
+    "total_cards": 150,
     "new_in_this_scan": 0
   },
   "stories": [
+    {
+      "id": "story-gpt-image-2-6",
+      "group": "gpt-image-2-6",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "GPT Image 2.6",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "accent_color": "#10a37f",
+      "detected_at": "2026-10-29T08:23:52.302158+00:00",
+      "updated_at": "2026-10-29T08:23:52.302158+00:00",
+      "first_source": "OpenAI API spec",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gpt-image-2.6",
+          "name": "GPT Image 2.6"
+        }
+      ],
+      "sources": [
+        {
+          "label": "OpenAI API spec",
+          "scanner": "openai-spec",
+          "detected_at": "2026-10-29T08:23:52.302158+00:00",
+          "title": "GPT Image 2.6 named in OpenAI's API spec",
+          "url": "https://github.com/openai/openai-openapi/blob/main/openapi.yaml",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · OPENAI",
+      "card_ids": [
+        "openai-spec-prose-gpt-image-2.6"
+      ],
+      "x_post_text": "🟠 LEAK: GPT Image 2.6 by OpenAI\n\nFirst spotted 29 Oct 08:23 UTC in OpenAI API spec\n\nvia @StatsWire"
+    },
     {
       "id": "story-dsparkminimaxdraftmodel",
       "group": "dsparkminimaxdraftmodel",
@@ -4070,6 +4109,37 @@
     }
   ],
   "cards": [
+    {
+      "id": "openai-spec-prose-gpt-image-2.6",
+      "category": "cli-sdk-diff",
+      "scanner": "openai-spec",
+      "header": "OPENAI API SPEC · OPENAI",
+      "title": "GPT Image 2.6 named in OpenAI's API spec",
+      "subtitle": "Mentioned in API reference text before it exists as a model ID",
+      "build_label": "OpenAI API spec",
+      "build_transition": "openai/openai-openapi · main",
+      "models": [
+        {
+          "id": "gpt-image-2.6",
+          "name": "GPT Image 2.6"
+        }
+      ],
+      "evidence": "github.com/openai/openai-openapi/blob/main/openapi.yaml",
+      "source_text": "A transparent PNG overlaid on the first image, referenced by file ID, HTTPS URL, or base64 data URL. Must match that image's dimensions after orientation and contain transparent pixels. Supports GPT Image 2.5 and 2.6.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10a37f",
+      "links": [
+        {
+          "label": "openai-openapi spec",
+          "url": "https://github.com/openai/openai-openapi/blob/main/openapi.yaml"
+        }
+      ],
+      "detected_at": "2026-10-29T08:23:52.302158+00:00",
+      "x_post_text": "🚨 OPENAI API SPEC · OPENAI\nGPT Image 2.6 named in OpenAI's API spec spotted in OpenAI API spec openai/openai-openapi · main!\n\n• GPT Image 2.6 (gpt-image-2.6)\n\nEvidence: github.com/openai/openai-openapi/blob/main/openapi.yaml\nSource: A transparent PNG overlaid on the first image, referenced by file ID, HTTPS URL, or base64 data URL. Must match that image's dimensions after orientation and contain transparent pixels. Supports GPT Image 2.5 and 2.6.\n\nTracked by @StatsWire"
+    },
     {
       "id": "vllm-arch-9e7e335db0",
       "category": "open-source",
