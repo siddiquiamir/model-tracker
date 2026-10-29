@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-29T14:45:39.177765+00:00",
+  "generated_at": "2026-10-29T15:01:39.138397+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 98,
     "leaks": 14,
     "releases": 84,
-    "stories_24h": 21,
+    "stories_24h": 20,
     "sources_ok": 11,
-    "total_cards": 157,
+    "total_cards": 158,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -60,7 +60,7 @@
       "provider_name": "Mistral",
       "accent_color": "#f59e0b",
       "detected_at": "2026-10-29T14:11:59.039912+00:00",
-      "updated_at": "2026-10-29T14:13:54.531759+00:00",
+      "updated_at": "2026-10-29T15:01:08Z",
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "2026-10-06",
@@ -83,16 +83,25 @@
           "title": "Mistral Large 4 1T A52B NVFP4",
           "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B-NVFP4",
           "backfill": false
+        },
+        {
+          "label": "vLLM pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-10-29T15:01:08Z",
+          "title": "mistralai/Mistral-Large-4-1T-A52B (vLLM PR #64534)",
+          "url": "https://github.com/vllm-project/vllm/pull/64534",
+          "backfill": false
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
       "header": "OPEN WEIGHTS · MISTRAL",
       "card_ids": [
         "hf-mistralai_Mistral-Large-4-1T-A52B-NVFP4",
-        "hf-mistralai_Mistral-Large-4-1T-A52B"
+        "hf-mistralai_Mistral-Large-4-1T-A52B",
+        "engine-pr-vllm-project_vllm-64534"
       ],
-      "x_post_text": "🟢 NEW: Mistral Large 4 1T by Mistral\n\nFirst spotted 29 Oct 14:11 UTC in Hugging Face\nIDs: Mistral-Large-4-1T-A52B, Mistral-Large-4-1T-A52B-NVFP4\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW: Mistral Large 4 1T by Mistral\n\nFirst spotted 29 Oct 14:11 UTC in Hugging Face\nConfirmed by vLLM pull request\nIDs: Mistral-Large-4-1T-A52B, Mistral-Large-4-1T-A52B-NVFP4\n\nvia @StatsWire"
     },
     {
       "id": "story-mingv-3asrforconditionalgeneration",
@@ -4282,6 +4291,37 @@
     }
   ],
   "cards": [
+    {
+      "id": "engine-pr-vllm-project_vllm-64534",
+      "category": "open-source",
+      "scanner": "engine-pr-leak",
+      "header": "VLLM PR DAY-0 MODEL ONBOARDING (OPEN)",
+      "title": "mistralai/Mistral-Large-4-1T-A52B (vLLM PR #64534)",
+      "subtitle": "[Model] Add Mistral Large 4",
+      "build_label": "vLLM PR",
+      "build_transition": "PR #64534 (open)",
+      "models": [
+        {
+          "id": "mistralai/Mistral-Large-4-1T-A52B",
+          "name": "Mistral-Large-4-1T-A52B"
+        }
+      ],
+      "evidence": "vllm-project/vllm/pull/64534",
+      "source_text": "public GitHub pull request #64534 on vllm-project/vllm.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "MISTRAL AI",
+      "provider_slug": "mistral",
+      "accent_color": "#f59e0b",
+      "links": [
+        {
+          "label": "vllm-project/vllm PR #64534",
+          "url": "https://github.com/vllm-project/vllm/pull/64534"
+        }
+      ],
+      "detected_at": "2026-10-29T15:01:08Z",
+      "x_post_text": "🚨 VLLM PR DAY-0 MODEL ONBOARDING (OPEN)\nmistralai/Mistral-Large-4-1T-A52B (vLLM PR #64534) spotted in vLLM PR PR #64534 (open)!\n\n• Mistral-Large-4-1T-A52B (mistralai/Mistral-Large-4-1T-A52B)\n\nEvidence: vllm-project/vllm/pull/64534\nSource: public GitHub pull request #64534 on vllm-project/vllm.\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-inclusionAI_Ling-3.0-flash-Sante-fp8",
       "category": "open-source",
