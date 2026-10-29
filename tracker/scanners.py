@@ -2023,6 +2023,10 @@ class LmArenaScanner:
         "https://arena.ai/?mode=direct",
         "https://arena.ai/?mode=side-by-side",
         "https://lmarena.ai/?mode=direct",
+        "https://arena.ai/?chat-modality=webdev",
+        "https://arena.ai/?chat-modality=image",
+        "https://arena.ai/?chat-modality=video",
+        "https://arena.ai/?chat-modality=search",
     ]
     HF_ARENA_CONFIGS = [
         ("text", "Text Arena"),
@@ -2392,6 +2396,13 @@ class CertTransparencySubdomainScanner:
 
         return True
 
+    SHARD_RE = re.compile(r"(?<=unified-)\d+(?=\.)")
+
+    @classmethod
+    def shard_key(cls, sub: str) -> str:
+        """codex-portals.gateway.unified-101.api.openai.com -> ...unified-N... (one family, 200+ numbered hosts)."""
+        return cls.SHARD_RE.sub("N", sub.lower())
+
     @classmethod
     def is_noise_card(cls, card: Dict[str, Any]) -> bool:
         if card.get("scanner") != "cert-transparency":
@@ -2399,7 +2410,7 @@ class CertTransparencySubdomainScanner:
         subs = [str(m.get("id", "")).lower() for m in card.get("models") or []]
         for sub in subs:
             root = next((d for d, *_ in cls.WATCHED_DOMAINS if sub.endswith("." + d)), "")
-            if not root or cls.is_high_signal_subdomain(sub, root):
+            if not root or (cls.is_high_signal_subdomain(sub, root) and cls.shard_key(sub) == sub):
                 return False
         return bool(subs)
 
@@ -2610,6 +2621,8 @@ class CertTransparencySubdomainScanner:
             # Prune any legacy noisy entries if rules tightened
             found_subs = {s for s in found_subs if self.is_clean_subdomain(s, dom)}
             newly_alertable = {s for s in newly_alertable if self.is_high_signal_subdomain(s, dom)}
+            prev_shards = {self.shard_key(s) for s in prev_subs}
+            newly_alertable = {s for s in newly_alertable if self.shard_key(s) not in prev_shards}
 
             if seeded_srcs != set(seeded_sources_map.get(dom, [])):
                 seeded_sources_map[dom] = sorted(seeded_srcs)
