@@ -1,16 +1,57 @@
 {
-  "generated_at": "2026-10-29T05:12:38.649333+00:00",
+  "generated_at": "2026-10-29T05:44:38.684271+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 93,
-    "leaks": 10,
+    "stories": 94,
+    "leaks": 11,
     "releases": 83,
-    "stories_24h": 16,
+    "stories_24h": 17,
     "sources_ok": 10,
-    "total_cards": 149,
-    "new_in_this_scan": 0
+    "total_cards": 150,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-dsparkminimaxdraftmodel",
+      "group": "dsparkminimaxdraftmodel",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "DSparkMiniMaxDraftModel",
+      "provider_slug": "opensource",
+      "provider_name": "Architecture Diff",
+      "accent_color": "#8b5cf6",
+      "detected_at": "2026-10-29T05:44:44.948828+00:00",
+      "updated_at": "2026-10-29T05:44:44.948828+00:00",
+      "first_source": "vLLM registry",
+      "lead": "",
+      "released_on": "",
+      "codenames": [
+        "dsparkminimaxdraftmodel"
+      ],
+      "models": [
+        {
+          "id": "DSparkMiniMaxDraftModel",
+          "name": "DSparkMiniMaxDraftModel"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM registry",
+          "scanner": "vllm-registry",
+          "detected_at": "2026-10-29T05:44:44.948828+00:00",
+          "title": "New Engine Architecture: DSparkMiniMaxDraftModel",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · ARCHITECTURE DIFF",
+      "card_ids": [
+        "vllm-arch-9e7e335db0"
+      ],
+      "x_post_text": "🟠 LEAK: DSparkMiniMaxDraftModel by Architecture Diff\n\nFirst spotted 29 Oct 05:44 UTC in vLLM registry\nCodename: dsparkminimaxdraftmodel\n\nvia @StatsWire"
+    },
     {
       "id": "story-nemotron-labs-dory",
       "group": "nemotron-labs-dory",
@@ -4068,6 +4109,44 @@
     }
   ],
   "cards": [
+    {
+      "id": "vllm-arch-9e7e335db0",
+      "category": "open-source",
+      "scanner": "vllm-registry",
+      "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
+      "title": "New Engine Architecture: DSparkMiniMaxDraftModel",
+      "subtitle": "New model_executor/models/registry.py architecture declarations",
+      "build_label": "Registry File",
+      "build_transition": "vllm/model_executor/models/registry.py",
+      "models": [
+        {
+          "id": "DSparkMiniMaxDraftModel",
+          "name": "DSparkMiniMaxDraftModel"
+        }
+      ],
+      "evidence": "vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+      "source_text": "official vLLM model architecture registry.",
+      "disclaimer_1": "Tracks only model architecture class registrations in registry.py.",
+      "disclaimer_2": "Open-source labs register their architecture classes here prior to weight drops.",
+      "provider_name": "VLLM REGISTRY",
+      "provider_slug": "opensource",
+      "accent_color": "#8b5cf6",
+      "links": [
+        {
+          "label": "vLLM registry.py",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py"
+        },
+        {
+          "label": "Supported Models Docs",
+          "url": "https://docs.vllm.ai/en/latest/models/supported_models.html"
+        }
+      ],
+      "detected_at": "2026-10-29T05:44:44.948828+00:00",
+      "codenames": [
+        "dsparkminimaxdraftmodel"
+      ],
+      "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: DSparkMiniMaxDraftModel spotted in Registry File vllm/model_executor/models/registry.py!\n\n• DSparkMiniMaxDraftModel (DSparkMiniMaxDraftModel)\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM model architecture registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "engine-pr-sgl-project_sglang-47196",
       "category": "open-source",
