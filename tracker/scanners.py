@@ -2251,6 +2251,111 @@ class LmArenaScanner:
         return cards
 
 
+class OpenAiApiSpecScanner:
+    """
+    OpenAI's published OpenAPI spec (github.com/openai/openai-openapi). Flags new model IDs, and models that the
+    prose already names before they exist as IDs ("Supports GPT Image 2.5 and 2.6" while only 2.5 is an ID).
+    """
+
+    SPEC_URL = "https://raw.githubusercontent.com/openai/openai-openapi/main/openapi.yaml"
+    PAGE_URL = "https://github.com/openai/openai-openapi/blob/main/openapi.yaml"
+    ID_RE = re.compile(r"(?<![\w.-])(?:gpt|chatgpt|sora|codex|computer-use|o[1-9])(?:-[a-z0-9.]+)*(?![\w-])")
+    PROSE_RE = re.compile(
+        r"\b(GPT[- ]Image|GPT|Sora)[- ](\d+(?:\.\d+)?)((?:\s*(?:,|and|or|/)\s*\d+(?:\.\d+)?)*)"
+        r"(?:[- ](mini|nano|pro|codex)\b)?"
+    )
+
+    @classmethod
+    def extract(cls, spec: str) -> Tuple[Set[str], Dict[str, Tuple[str, str]]]:
+        """Return (model IDs, {slug: (display name, context sentence)} for models named in prose)."""
+        ids = {m.group(0) for m in cls.ID_RE.finditer(spec) if not m.group(0).endswith(".")}
+        prose: Dict[str, Tuple[str, str]] = {}
+        for m in cls.PROSE_RE.finditer(spec):
+            family, first, rest, tier = m.group(1), m.group(2), m.group(3) or "", m.group(4)
+            fam_display = "GPT Image" if family.lower().replace("-", " ") == "gpt image" else family
+            for ver in [first, *re.findall(r"\d+(?:\.\d+)?", rest)]:
+                display = f"{fam_display} {ver}" if fam_display != "GPT" else f"GPT-{ver}"
+                if tier:
+                    display += f" {tier}"
+                slug = display.lower().replace(" ", "-")
+                if slug not in prose:
+                    start = spec.rfind("description:", 0, m.start())
+                    start = start + len("description:") if 0 <= m.start() - start < 800 else max(m.start() - 200, 0)
+                    end = spec.find(".", m.end())
+                    end = end + 1 if 0 <= end - m.end() < 200 else m.end()
+                    prose[slug] = (display, " ".join(spec[start:end].split())[:400])
+        return ids, prose
+
+    def scan(self) -> List[Dict[str, Any]]:
+        baselines = _load_baselines()
+        state = baselines.get("openai_api_spec", {})
+        hdrs = {"User-Agent": "ModelPulse-Tracker/2.0 (+https://github.com/siddiquiamir)"}
+        if state.get("etag"):
+            hdrs["If-None-Match"] = state["etag"]
+        try:
+            with urllib.request.urlopen(urllib.request.Request(self.SPEC_URL, headers=hdrs), timeout=30) as resp:
+                spec = resp.read().decode("utf-8", "ignore")
+                etag = resp.headers.get("ETag", "")
+        except urllib.error.HTTPError as exc:
+            if exc.code == 304:
+                return []
+            raise
+
+        ids, prose = self.extract(spec)
+        seeded = bool(state.get("ids"))
+        prev_ids = set(state.get("ids", []))
+        reported = set(state.get("prose_reported", []))
+        new_ids = sorted(ids - prev_ids) if seeded else []
+        # Named in prose but not (yet) an ID or the prefix of one: announced ahead of the API
+        prose_only = sorted(
+            s for s in prose
+            if s not in reported and not any(i == s or i.startswith(s + "-") for i in ids)
+        )
+
+        cards: List[Dict[str, Any]] = []
+        now_iso = datetime.now(timezone.utc).isoformat()
+        for slug in prose_only:
+            display, ctx = prose[slug]
+            cards.append(self._card(f"openai-spec-prose-{slug}", f"{display} named in OpenAI's API spec",
+                                    "Mentioned in API reference text before it exists as a model ID",
+                                    [{"id": slug, "name": display}], ctx, now_iso))
+        if new_ids:
+            sig = hashlib.sha256(",".join(new_ids).encode("utf-8")).hexdigest()[:8]
+            cards.append(self._card(f"openai-spec-ids-{sig}", f"New model ID in OpenAI's API spec: {new_ids[0]}",
+                                    f"+{len(new_ids)} model ID(s) in openapi.yaml",
+                                    [{"id": i, "name": humanize_model_id(i)} for i in new_ids[:10]], "", now_iso))
+
+        baselines["openai_api_spec"] = {
+            "etag": etag,
+            "ids": sorted(ids | prev_ids),
+            "prose_reported": sorted(reported | set(prose_only)),
+        }
+        _save_baselines(baselines)
+        return cards
+
+    def _card(self, cid: str, title: str, subtitle: str, models: List[Dict[str, str]], ctx: str, now_iso: str) -> Dict[str, Any]:
+        return {
+            "id": cid,
+            "category": "cli-sdk-diff",
+            "scanner": "openai-spec",
+            "header": "OPENAI API SPEC · OPENAI",
+            "title": title,
+            "subtitle": subtitle,
+            "build_label": "OpenAI API spec",
+            "build_transition": "openai/openai-openapi · main",
+            "models": models,
+            "evidence": "github.com/openai/openai-openapi/blob/main/openapi.yaml",
+            "source_text": ctx or "OpenAI's published OpenAPI specification.",
+            "disclaimer_1": "",
+            "disclaimer_2": "",
+            "provider_name": "OPENAI",
+            "provider_slug": "openai",
+            "accent_color": "#10a37f",
+            "links": [{"label": "openai-openapi spec", "url": self.PAGE_URL}],
+            "detected_at": now_iso,
+        }
+
+
 class CertTransparencySubdomainScanner:
     """
     Monitors Certificate Transparency (CT) SSL issuances (SSLMate CertSpotter API with incremental

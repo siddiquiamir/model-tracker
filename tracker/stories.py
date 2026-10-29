@@ -50,6 +50,7 @@ SCANNER_LABELS: Dict[str, str] = {
     "cert-transparency": "TLS certificate log",
     "kimi-code": "Kimi Code",
     "vllm-registry": "vLLM registry",
+    "openai-spec": "OpenAI API spec",
 }
 _WORD_FIX = {
     "Openai": "OpenAI", "Ai": "AI", "Sdk": "SDK", "Github": "GitHub", "Vllm": "vLLM", "Sglang": "SGLang",

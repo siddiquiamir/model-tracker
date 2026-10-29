@@ -22,6 +22,7 @@ from tracker.scanners import (
     KimiCodeAndRouterScanner,
     LmArenaScanner,
     NpmCliAndSdkScanner,
+    OpenAiApiSpecScanner,
 )
 
 RETIRED_CARD_IDS: Set[str] = {
@@ -120,6 +121,7 @@ class TrackerEngine:
         self.hf_scanner = HuggingFaceOpenSourceScanner()
         self.ct_scanner = CertTransparencySubdomainScanner()
         self.high_alpha_scanner = HighAlphaLeakChannelsScanner()
+        self.openai_spec_scanner = OpenAiApiSpecScanner()
 
     def load_seen_ids(self) -> Set[str]:
         if SEEN_FILE.exists():
@@ -177,6 +179,7 @@ class TrackerEngine:
             ("huggingface", self.hf_scanner.scan, 0, {"huggingface"}),
             ("cert-transparency", self.ct_scanner.scan, 1800, {"cert-transparency", "cert-transparency-snapshot"}),
             ("high-alpha", self.high_alpha_scanner.scan, 0, set()),
+            ("openai-spec", self.openai_spec_scanner.scan, 0, {"openai-spec"}),
         ]
 
         fresh_cards: List[Dict[str, Any]] = []
