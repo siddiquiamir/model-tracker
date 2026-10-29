@@ -1,16 +1,57 @@
 {
-  "generated_at": "2026-10-29T18:08:24.314930+00:00",
+  "generated_at": "2026-10-29T18:14:24.222137+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 96,
-    "leaks": 14,
+    "stories": 97,
+    "leaks": 15,
     "releases": 82,
-    "stories_24h": 15,
-    "sources_ok": 11,
-    "total_cards": 156,
+    "stories_24h": 16,
+    "sources_ok": 12,
+    "total_cards": 157,
     "new_in_this_scan": 0
   },
   "stories": [
+    {
+      "id": "story-nvidia-nemotron-3-5-bolt-24gb",
+      "group": "nvidia-nemotron-3-5-bolt-24gb",
+      "kind": "leak",
+      "open_weights": true,
+      "title": "NVIDIA Nemotron 3.5 Bolt 74B A9B 24GB",
+      "provider_slug": "nvidia",
+      "provider_name": "NVIDIA",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-29T18:09:27Z",
+      "updated_at": "2026-10-29T18:09:27Z",
+      "first_source": "vLLM pull request",
+      "lead": "",
+      "released_on": "",
+      "codenames": [
+        "bolt"
+      ],
+      "models": [
+        {
+          "id": "NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+          "name": "NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-10-29T18:09:27Z",
+          "title": "nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB (vLLM PR #64556)",
+          "url": "https://github.com/vllm-project/vllm/pull/64556",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · NVIDIA",
+      "card_ids": [
+        "engine-pr-vllm-project_vllm-64556"
+      ],
+      "x_post_text": "🟠 LEAK: NVIDIA Nemotron 3.5 Bolt 74B A9B 24GB by NVIDIA\n\nFirst spotted 29 Oct 18:09 UTC in vLLM pull request\nCodename: bolt\n\nvia @StatsWire"
+    },
     {
       "id": "story-ling-3-flash-sante",
       "group": "ling-3-flash-sante",
@@ -4213,6 +4254,40 @@
     }
   ],
   "cards": [
+    {
+      "id": "engine-pr-vllm-project_vllm-64556",
+      "category": "open-source",
+      "scanner": "engine-pr-leak",
+      "header": "VLLM PR DAY-0 MODEL ONBOARDING (OPEN)",
+      "title": "nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB (vLLM PR #64556)",
+      "subtitle": "[Model] Nemotron-H: skip layers and override MoE top-k via hf_overrides",
+      "build_label": "vLLM PR",
+      "build_transition": "PR #64556 (open)",
+      "models": [
+        {
+          "id": "nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB",
+          "name": "NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB"
+        }
+      ],
+      "evidence": "vllm-project/vllm/pull/64556",
+      "source_text": "public GitHub pull request #64556 on vllm-project/vllm.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "VLLM PR",
+      "provider_slug": "opensource",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "vllm-project/vllm PR #64556",
+          "url": "https://github.com/vllm-project/vllm/pull/64556"
+        }
+      ],
+      "detected_at": "2026-10-29T18:09:27Z",
+      "codenames": [
+        "bolt"
+      ],
+      "x_post_text": "🚨 VLLM PR DAY-0 MODEL ONBOARDING (OPEN)\nnvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB (vLLM PR #64556) spotted in vLLM PR PR #64556 (open)!\n\n• NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB (nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB)\n\nEvidence: vllm-project/vllm/pull/64556\nSource: public GitHub pull request #64556 on vllm-project/vllm.\n\nTracked by @StatsWire"
+    },
     {
       "id": "engine-pr-vllm-project_vllm-64534",
       "category": "open-source",
