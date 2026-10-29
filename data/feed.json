@@ -1,16 +1,55 @@
 {
-  "generated_at": "2026-10-29T02:55:35.819022+00:00",
+  "generated_at": "2026-10-29T03:21:35.396881+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 93,
-    "leaks": 10,
+    "stories": 94,
+    "leaks": 11,
     "releases": 83,
-    "stories_24h": 16,
-    "sources_ok": 10,
-    "total_cards": 146,
-    "new_in_this_scan": 0
+    "stories_24h": 17,
+    "sources_ok": 12,
+    "total_cards": 147,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-ct-ct-diff-openai-com-0d70d86a",
+      "group": "ct-ct-diff-openai-com-0d70d86a",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "New OpenAI Subdomain: codex-portals.gateway.unified-101.api.openai.com",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-29T03:21:59.434178+00:00",
+      "updated_at": "2026-10-29T03:21:59.434178+00:00",
+      "first_source": "TLS certificate log",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "codex-portals.gateway.unified-101.api.openai.com",
+          "name": "Coding / IDE Endpoint · SSL 2026-10-29"
+        }
+      ],
+      "sources": [
+        {
+          "label": "TLS certificate log",
+          "scanner": "cert-transparency",
+          "detected_at": "2026-10-29T03:21:59.434178+00:00",
+          "title": "New OpenAI Subdomain: codex-portals.gateway.unified-101.api.openai.com",
+          "url": "https://sslmate.com/ct_search_results?q=openai.com",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · OPENAI",
+      "card_ids": [
+        "ct-diff-openai-com-0d70d86a"
+      ],
+      "x_post_text": "🟠 LEAK: New OpenAI Subdomain: codex-portals.gateway.unified-101.api.openai.com by OpenAI\n\nFirst spotted 29 Oct 03:21 UTC in TLS certificate log\n\nvia @StatsWire"
+    },
     {
       "id": "story-nemotron-labs-dory",
       "group": "nemotron-labs-dory",
@@ -4048,6 +4087,41 @@
     }
   ],
   "cards": [
+    {
+      "id": "ct-diff-openai-com-0d70d86a",
+      "category": "subdomain-ct",
+      "scanner": "cert-transparency",
+      "header": "SSL CERTIFICATE TRANSPARENCY DIFF · OPENAI",
+      "title": "New OpenAI Subdomain: codex-portals.gateway.unified-101.api.openai.com",
+      "subtitle": "Newly discovered stealth / staging endpoint under *.openai.com",
+      "build_label": "Root Domain",
+      "build_transition": "*.openai.com (+1 new)",
+      "models": [
+        {
+          "id": "codex-portals.gateway.unified-101.api.openai.com",
+          "name": "Coding / IDE Endpoint · SSL 2026-10-29"
+        }
+      ],
+      "evidence": "Certificate Transparency (CT) Logs · *.openai.com",
+      "source_text": "public Certificate Transparency (CT) & DNS records for openai.com.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "CertSpotter CT Log",
+          "url": "https://sslmate.com/ct_search_results?q=openai.com"
+        },
+        {
+          "label": "crt.sh Lookup",
+          "url": "https://crt.sh/?q=%25.openai.com"
+        }
+      ],
+      "detected_at": "2026-10-29T03:21:59.434178+00:00",
+      "x_post_text": "🚨 New OpenAI Subdomain: codex-portals.gateway.unified-101.api.openai.com\n\n• codex-portals.gateway.unified-101.api.openai.com (Coding / IDE Endpoint · SSL 2026-10-29)\n\nEvidence: Certificate Transparency (CT) Logs · *.openai.com\n\nTracked by @StatsWire"
+    },
     {
       "id": "engine-pr-huggingface_transformers-50099",
       "category": "open-source",
