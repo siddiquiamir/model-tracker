@@ -2022,6 +2022,10 @@ class LmArenaScanner:
         "https://arena.ai/",
         "https://arena.ai/?mode=direct",
         "https://arena.ai/?mode=side-by-side",
+        "https://arena.ai/code",
+        "https://arena.ai/code?mode=direct",
+        "https://arena.ai/code?mode=side-by-side",
+        "https://web.arena.ai/",
         "https://lmarena.ai/?mode=direct",
         "https://arena.ai/?chat-modality=webdev",
         "https://arena.ai/?chat-modality=image",
@@ -2037,6 +2041,9 @@ class LmArenaScanner:
         ("text_to_image", "Text-to-Image"),
         ("image_edit", "Image Edit"),
     ]
+
+    _NEXT_F_CHUNK_RE = re.compile(r'self\.__next_f\.push\(\[\s*\d+\s*,\s*("(?:[^"\\]|\\.)*")\s*\]\)')
+    _NEXT_DATA_RE = re.compile(r'<script[^>]+id="__NEXT_DATA__"[^>]*>([\s\S]*?)</script>')
 
     @staticmethod
     def _format_capabilities(cap_obj: Dict[str, Any]) -> str:
@@ -2055,8 +2062,117 @@ class LmArenaScanner:
                     tags.append(f"out:{k}")
         return ", ".join(tags)
 
+    @staticmethod
+    def _decode_uuidv7_iso(mid: str) -> str:
+        """Extract the 48-bit Unix ms creation timestamp from an Arena RFC 9562 UUIDv7 model ID."""
+        m = re.match(
+            r"^([0-9a-f]{8})-([0-9a-f]{4})-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+            (mid or "").strip().lower(),
+        )
+        if not m:
+            return ""
+        ms = int(m.group(1) + m.group(2), 16)
+        if 1_700_000_000_000 <= ms <= 2_100_000_000_000:
+            return datetime.fromtimestamp(ms / 1000.0, tz=timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+        return ""
+
+    @staticmethod
+    def _fetch_arena_html(url: str) -> str:
+        """Fetch Arena HTML using Chrome BoringSSL TLS impersonation (curl_cffi) when available."""
+        hdrs = {
+            "User-Agent": (
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+            ),
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9",
+        }
+        try:
+            from curl_cffi import requests as cffi_requests  # type: ignore
+
+            resp = cffi_requests.get(url, headers=hdrs, impersonate="chrome", timeout=15, allow_redirects=True)
+            if resp.status_code == 200 and resp.text:
+                return resp.text
+        except ImportError:
+            pass
+        except Exception:
+            pass
+
+        req = urllib.request.Request(url, headers=hdrs)
+        with urllib.request.urlopen(req, timeout=12) as resp:
+            return resp.read().decode("utf-8", "ignore")
+
+    @classmethod
+    def _extract_models_from_html(cls, html: str) -> List[Dict[str, Any]]:
+        """Reassemble multi-chunk Next.js RSC Flight streams (`self.__next_f.push`) and extract Arena model objects."""
+        found: List[Dict[str, Any]] = []
+        decoder = json.JSONDecoder()
+
+        # 1. __NEXT_DATA__ script payload if present
+        m_nd = cls._NEXT_DATA_RE.search(html)
+        if m_nd:
+            try:
+                nd = json.loads(m_nd.group(1))
+                init = ((nd.get("props") or {}).get("pageProps") or {}).get("initialModels")
+                if isinstance(init, list):
+                    found.extend(x for x in init if isinstance(x, dict))
+            except Exception:
+                pass
+
+        # 2. Reassemble all `self.__next_f.push([1, "..."])` chunks in document order so arrays split across
+        #    multiple <script> tags (250+ models) decode cleanly without HTML boundary corruption.
+        chunks: List[str] = []
+        for m_ch in cls._NEXT_F_CHUNK_RE.finditer(html):
+            try:
+                decoded = json.loads(m_ch.group(1))
+                if isinstance(decoded, str):
+                    chunks.append(decoded)
+            except Exception:
+                continue
+        rsc_stream = "".join(chunks)
+
+        for stream in (rsc_stream, html):
+            if not stream:
+                continue
+            for key_marker in ('"initialModels":[', '"availableModels":[', '"battleModels":['):
+                search_pos = 0
+                while True:
+                    idx = stream.find(key_marker, search_pos)
+                    if idx == -1:
+                        break
+                    arr_start = idx + len(key_marker) - 1
+                    search_pos = arr_start + 1
+                    try:
+                        arr, _ = decoder.raw_decode(stream, arr_start)
+                        if isinstance(arr, list):
+                            found.extend(x for x in arr if isinstance(x, dict))
+                    except Exception:
+                        continue
+            if found:
+                break
+
+        # 3. Object-level fallback if Arena renames the outer array key in RSC stream
+        if not found and rsc_stream and '"publicName":' in rsc_stream:
+            pos = 0
+            while True:
+                p_idx = rsc_stream.find('"publicName":', pos)
+                if p_idx == -1:
+                    break
+                pos = p_idx + 13
+                brace_start = rsc_stream.rfind("{", max(0, p_idx - 320), p_idx)
+                if brace_start == -1:
+                    continue
+                try:
+                    obj, _ = decoder.raw_decode(rsc_stream, brace_start)
+                    if isinstance(obj, dict) and obj.get("publicName"):
+                        found.append(obj)
+                except Exception:
+                    continue
+
+        return found
+
     def _scan_live_initial_models(self, baselines: Dict[str, Any]) -> tuple[List[Dict[str, Any]], bool]:
-        """Attempt to parse `initialModels` from arena.ai / lmarena.ai Next.js RSC stream across Battle & Direct modes."""
+        """Parse `initialModels` across Arena Chat, Direct, Side-by-Side, and Code/Frontend (`/code`) routes."""
         cards: List[Dict[str, Any]] = []
         changed = False
         merged_map: Dict[str, Dict[str, Any]] = dict(baselines.get("arena_initial_models", {}))
@@ -2065,59 +2181,24 @@ class LmArenaScanner:
 
         for url in self.ARENA_URLS:
             try:
-                req = urllib.request.Request(
-                    url,
-                    headers={
-                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
-                        "Accept": "text/html,application/xhtml+xml",
-                    },
-                )
-                with urllib.request.urlopen(req, timeout=12) as resp:
-                    html = resp.read().decode("utf-8", "ignore")
-                if "initialModels" not in html:
-                    continue
-
-                idx = html.find('"initialModels":')
-                if idx == -1:
-                    idx = html.find('\\"initialModels\\":')
-                    if idx != -1:
-                        html_slice = html[idx:].replace('\\"', '"').replace("\\\\", "\\")
-                    else:
-                        continue
-                else:
-                    html_slice = html[idx:]
-
-                arr_start = html_slice.find("[")
-                if arr_start == -1:
-                    continue
-                depth = 0
-                arr_end = -1
-                for i, ch in enumerate(html_slice[arr_start:], start=arr_start):
-                    if ch == "[":
-                        depth += 1
-                    elif ch == "]":
-                        depth -= 1
-                        if depth == 0:
-                            arr_end = i + 1
-                            break
-                if arr_end == -1:
-                    continue
-
-                models_arr = json.loads(html_slice[arr_start:arr_end])
-                if not isinstance(models_arr, list) or not models_arr:
+                html = self._fetch_arena_html(url)
+                models_arr = self._extract_models_from_html(html)
+                if not models_arr:
                     continue
 
                 fetched_any = True
+                is_code_route = "/code" in url or "web.arena.ai" in url or "modality=webdev" in url
                 for m in models_arr:
-                    if not isinstance(m, dict):
-                        continue
-                    pub_name = m.get("publicName") or m.get("id")
+                    pub_name = str(m.get("publicName") or m.get("id") or "").strip()
                     if not pub_name:
                         continue
+                    prev_entry = merged_map.get(pub_name) or {}
                     merged_map[pub_name] = {
-                        "org": m.get("organization") or "unknown",
-                        "provider": m.get("provider") or "unknown",
-                        "caps": self._format_capabilities(m.get("capabilities") or {}),
+                        "org": m.get("organization") or prev_entry.get("org") or "unknown",
+                        "provider": m.get("provider") or prev_entry.get("provider") or "unknown",
+                        "caps": self._format_capabilities(m.get("capabilities") or {}) or prev_entry.get("caps", ""),
+                        "model_id": str(m.get("id") or prev_entry.get("model_id") or ""),
+                        "route": "code" if (is_code_route or pub_name.startswith("fe-")) else prev_entry.get("route", "chat"),
                     }
             except Exception as exc:
                 print(f"[LmArenaScanner] Note (arena.ai live RSC stream {url}): {exc}")
@@ -2138,34 +2219,53 @@ class LmArenaScanner:
                 baselines["arena_initial_models"] = merged_map
                 changed = True
 
-            if added_names:
-                sig = hashlib.sha256(",".join(added_names).encode("utf-8")).hexdigest()[:8]
+            now_iso = datetime.now(timezone.utc).isoformat()
+            for name in added_names:
+                meta = merged_map[name]
+                org = meta.get("org") or "unknown"
+                prov = meta.get("provider") or "unknown"
+                mid = meta.get("model_id") or ""
+                caps = meta.get("caps") or "chat"
+                is_code = meta.get("route") == "code" or name.startswith("fe-")
+                uuid_ts = self._decode_uuidv7_iso(mid)
+                q_name = urllib.parse.quote(name, safe="")
+                deep_url = (
+                    f"https://arena.ai/code?mode=direct&model={q_name}"
+                    if is_code
+                    else f"https://arena.ai/?mode=direct&model={q_name}"
+                )
+                meta_parts = [f"Org: {org}", f"Provider: {prov}"]
+                if mid:
+                    meta_parts.append(f"ID: {mid}")
+                if uuid_ts:
+                    meta_parts.append(f"DB minted {uuid_ts}")
+
+                sig = hashlib.sha256(name.encode("utf-8")).hexdigest()[:8]
                 cards.append(
                     {
                         "id": f"arena-scout-diff-{sig}",
                         "category": "cli-sdk-diff",
                         "scanner": "lmarena",
                         "header": "ARENA.AI LIVE MODEL SCOUT · NEXT.JS RSC STREAM",
-                        "title": f"New Model Found on Arena: {added_names[0]}",
-                        "subtitle": f"Detected in arena.ai initialModels RSC payload (+{len(added_names)} new)",
-                        "build_label": "Arena Stream",
-                        "build_transition": f"initialModels · {len(merged_map)} active models",
+                        "title": f"New Model Found on Arena: {name}",
+                        "subtitle": f"Detected in {'Arena Code (/code)' if is_code else 'arena.ai'} initialModels RSC stream ({caps})",
+                        "build_label": "Arena Metadata",
+                        "build_transition": " · ".join(meta_parts),
                         "models": [
                             {
-                                "id": f"org:{merged_map[name]['org']} · {merged_map[name]['provider']}",
-                                "name": f"{name} ({merged_map[name]['caps'] or 'chat'})",
+                                "id": f"org:{org} · {prov}",
+                                "name": name,
                             }
-                            for name in added_names[:8]
                         ],
-                        "evidence": "arena.ai -> self.__next_f.push (initialModels)",
+                        "evidence": f"{'arena.ai/code' if is_code else 'arena.ai'} -> self.__next_f.push (initialModels)",
                         "source_text": "live Arena (arena.ai) Next.js RSC model config.",
                         "disclaimer_1": "",
                         "disclaimer_2": "",
                         "provider_name": "ARENA.AI",
                         "provider_slug": "modelsdev",
                         "accent_color": "#10b981",
-                        "links": [{"label": "Arena.ai Direct", "url": "https://arena.ai/?mode=direct"}],
-                        "detected_at": datetime.now(timezone.utc).isoformat(),
+                        "links": [{"label": "Open on Arena.ai", "url": deep_url}],
+                        "detected_at": now_iso,
                     }
                 )
 

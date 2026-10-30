@@ -226,7 +226,7 @@ def _make_story(
     # Arena's model config names the lab: {"id": "org:microsoft-ai · microsoftFalcon"}
     arena_org = next((str(m["id"])[4:].split(" · ")[0].lower() for c in cards for m in c.get("models") or []
                       if str(m.get("id", "")).startswith("org:")), "")
-    if not provider_name and arena_org:
+    if not provider_name and arena_org and arena_org not in ("unknown", "none", "null"):
         slug = ARENA_ORGS.get(arena_org, "")
         provider_slug = slug or provider_slug
         provider_name = (ORG_NAMES.get(arena_org) or PROVIDER_NAMES.get(slug)
@@ -271,6 +271,7 @@ def _make_story(
         label = _model_label(m)
         vid = re.sub(r"^(?:[\w.-]+/)+", "", label)
         vid = re.sub(r"^(?:global|us|eu|apac|jp|au)\.(?:[a-z]+\.)?", "", vid)
+        vid = re.sub(r"\s*\((?:in|out):[^)]*\)$", "", vid).strip()
         vk = re.sub(r"^introducing-", "", normalize(vid))
         if not vid:
             continue
