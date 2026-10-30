@@ -15,7 +15,6 @@ from tracker.scanners import (
     BASELINES_FILE,
     AntigravityAcpScanner,
     AntigravityDesktopScanner,
-    CertTransparencySubdomainScanner,
     DocsAndGlobalRegistryScanner,
     HighAlphaLeakChannelsScanner,
     HuggingFaceOpenSourceScanner,
@@ -43,11 +42,11 @@ RETIRED_CARD_IDS: Set[str] = {
 }
 
 # Scanners that re-emit their complete card set on every successful run (previous cards are replaced, not retained)
-AUTHORITATIVE_SCANNERS: Set[str] = {"antigravity", "antigravity-acp", "cert-transparency-snapshot"}
+AUTHORITATIVE_SCANNERS: Set[str] = {"antigravity", "antigravity-acp"}
 # Status/radar cards that are never "new events" and never notify
-SNAPSHOT_SCANNERS: Set[str] = {"cert-transparency-snapshot"}
+SNAPSHOT_SCANNERS: Set[str] = set()
 # Cards whose detected_at is the source's own publish timestamp (not first-seen time)
-REFRESH_TIMESTAMP_SCANNERS: Set[str] = {"antigravity", "antigravity-acp", "cert-transparency-snapshot"}
+REFRESH_TIMESTAMP_SCANNERS: Set[str] = {"antigravity", "antigravity-acp"}
 CARD_RETENTION = timedelta(days=14)
 NOTIFY_MAX_AGE = timedelta(hours=48)
 
@@ -58,8 +57,9 @@ def _is_retired_card(card: Dict[str, Any]) -> bool:
     scanner = card.get("scanner", "")
     return (
         cid in RETIRED_CARD_IDS
-        # Subdomain inventory snapshots: lists of known hosts (helpdesk., talent.) are not model signals
-        or scanner == "cert-transparency-snapshot"
+        # Subdomain (CT) cards removed completely
+        or scanner in ("cert-transparency", "cert-transparency-snapshot")
+        or card.get("category") == "subdomain-ct"
         or scanner == "models-dev-kimi"
         or cid.startswith(("models-dev-recent-", "vllm-arch-registry-"))
         or (scanner == "huggingface" and card.get("header", "").startswith("HUGGING FACE HUB"))
@@ -119,7 +119,6 @@ class TrackerEngine:
         self.docs_scanner = DocsAndGlobalRegistryScanner()
         self.arena_scanner = LmArenaScanner()
         self.hf_scanner = HuggingFaceOpenSourceScanner()
-        self.ct_scanner = CertTransparencySubdomainScanner()
         self.high_alpha_scanner = HighAlphaLeakChannelsScanner()
         self.openai_spec_scanner = OpenAiApiSpecScanner()
 
@@ -177,7 +176,6 @@ class TrackerEngine:
             ("docs-registries", self.docs_scanner.scan, 0, {"docs-radar", "models-dev", "litellm"}),
             ("arena", self.arena_scanner.scan, 600, {"lmarena"}),
             ("huggingface", self.hf_scanner.scan, 0, {"huggingface"}),
-            ("cert-transparency", self.ct_scanner.scan, 1800, {"cert-transparency", "cert-transparency-snapshot"}),
             ("high-alpha", self.high_alpha_scanner.scan, 0, set()),
             ("openai-spec", self.openai_spec_scanner.scan, 0, {"openai-spec"}),
         ]

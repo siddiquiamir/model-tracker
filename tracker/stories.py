@@ -8,12 +8,12 @@ import re
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 
 from tracker.novelty import ReleasedCatalog, normalize, strip_variants
-from tracker.scanners import CertTransparencySubdomainScanner, HighAlphaLeakChannelsScanner
+from tracker.scanners import HighAlphaLeakChannelsScanner
 
 # Scanners whose sighting means the model is publicly usable (a release, not a leak)
 RELEASE_SCANNERS: Set[str] = {"openrouter", "huggingface", "gateway-radar"}
 OPEN_WEIGHT_SCANNERS: Set[str] = {"huggingface", "engine-pr-leak"}
-EXCLUDED_SCANNERS: Set[str] = {"cert-transparency-snapshot"}
+EXCLUDED_SCANNERS: Set[str] = {"cert-transparency", "cert-transparency-snapshot"}
 GENERIC_PROVIDERS: Set[str] = {"modelsdev", "openrouter", "opensource", ""}
 STORY_WINDOW = timedelta(days=21)
 
@@ -47,7 +47,6 @@ SCANNER_LABELS: Dict[str, str] = {
     "antigravity-acp": "Antigravity ACP config",
     "lmarena": "LMArena",
     "git-forensics": "SDK git history",
-    "cert-transparency": "TLS certificate log",
     "kimi-code": "Kimi Code",
     "vllm-registry": "vLLM registry",
     "openai-spec": "OpenAI API spec",
@@ -149,8 +148,6 @@ def _fmt_delta(seconds: float) -> str:
 
 
 def _card_keys(card: Dict[str, Any]) -> List[Tuple[str, Dict[str, Any]]]:
-    if card.get("scanner") == "cert-transparency":
-        return [(f"ct-{card['id']}", m) for m in card.get("models") or [{}]]
     out: List[Tuple[str, Dict[str, Any]]] = []
     models = card.get("models") or []
     if card.get("scanner") == "engine-pr-leak":
@@ -181,7 +178,7 @@ def build_stories(
 ) -> List[Dict[str, Any]]:
     now = now or datetime.now(timezone.utc)
     usable = [c for c in cards if c.get("scanner") not in EXCLUDED_SCANNERS
-              and not CertTransparencySubdomainScanner.is_noise_card(c) and not _is_crud_route_card(c)]
+              and c.get("category") != "subdomain-ct" and not _is_crud_route_card(c)]
     keyed = [(c, _card_keys(c)) for c in usable]
     primaries = {kms[0][0] for _, kms in keyed}
 
@@ -247,7 +244,7 @@ def _make_story(
                 "perplexity-ai": "perplexity"}.get(org, "")
         if slug:
             provider_slug, provider_name = slug, PROVIDER_NAMES.get(slug, org)
-        elif org and not key.startswith("ct-"):
+        elif org:
             provider_name = ORG_NAMES.get(org, org)
 
     # Display name: the most-used clean catalog name that maps back to this story
@@ -263,9 +260,7 @@ def _make_story(
             if n and key in (story_key(n), story_key(label)):
                 names[n] += bonus
     pretty = [n for n in names if " " in n or any(ch.isupper() for ch in n)]
-    if key.startswith("ct-"):
-        title = first.get("title", key)
-    elif pretty:
+    if pretty:
         title = sorted(pretty, key=lambda n: (-names[n], len(n)))[0]
     else:
         title = _humanize(key)
@@ -274,12 +269,9 @@ def _make_story(
     by_norm: Dict[str, Dict[str, str]] = {}
     for m in models:
         label = _model_label(m)
-        if key.startswith("ct-"):
-            vid, vk = label, label
-        else:
-            vid = re.sub(r"^(?:[\w.-]+/)+", "", label)
-            vid = re.sub(r"^(?:global|us|eu|apac|jp|au)\.(?:[a-z]+\.)?", "", vid)
-            vk = re.sub(r"^introducing-", "", normalize(vid))
+        vid = re.sub(r"^(?:[\w.-]+/)+", "", label)
+        vid = re.sub(r"^(?:global|us|eu|apac|jp|au)\.(?:[a-z]+\.)?", "", vid)
+        vk = re.sub(r"^introducing-", "", normalize(vid))
         if not vid:
             continue
         if vk not in by_norm:
@@ -312,7 +304,7 @@ def _make_story(
             "backfill": bool(c.get("backfill")),
         })
 
-    released = catalog.released_on(key) if catalog is not None and not key.startswith("ct-") else None
+    released = catalog.released_on(key) if catalog is not None else None
     release_srcs = [c for c in cards if c.get("scanner") in RELEASE_SCANNERS]
     kind = "release" if (released or release_srcs) else "leak"
 

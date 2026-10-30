@@ -34,7 +34,7 @@ HF_PUBLIC_GRACE = timedelta(days=30)
 HF_REPO_SCANNERS: Set[str] = {"engine-pr-leak"}
 
 # Scanners whose card "models" are not model identifiers
-NON_MODEL_SCANNERS: Set[str] = {"cert-transparency-snapshot", "cert-transparency"}
+NON_MODEL_SCANNERS: Set[str] = set()
 # Public repo releases: every new product name is "unknown", so codename tagging would only add noise
 NO_CODENAME_SCANNERS: Set[str] = {"huggingface"}
 

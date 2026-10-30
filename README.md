@@ -38,7 +38,7 @@
 | **`KimiCodeAndRouterScanner`** | Kimi Code CDN (`migration.json`), vLLM model registry (`main`), OpenRouter (`/api/v1/models`) | Diff-based: only IDs/architectures not seen before become cards (first sight seeds silently). |
 | **`DocsAndGlobalRegistryScanner`** | Cursor, Anthropic, Gemini API, **Vertex AI**, **Bedrock**, xAI docs, `models.dev`, `LiteLLM`, `gemini-cli` `models.ts`, Claude Code `CHANGELOG.md` | Whitelist-free text extraction so unknown codenames are caught, diffed against a per-source baseline. |
 | **`HuggingFaceOpenSourceScanner`** | Official lab orgs (`deepseek-ai`, `Qwen`, `meta-llama`, `mistralai`, `google`, `nvidia`, `microsoft`, `MiniMaxAI`, `moonshotai`, `THUDM`, ...) | New repos (`sort=createdAt` + `lastModified`), including ones created private and flipped public later. |
-| **`LmArenaScanner`** / **`CertTransparencySubdomainScanner`** | LMArena leaderboard, crt.sh | New arena entries and newly issued lab subdomains. |
+| **`LmArenaScanner`** | LMArena leaderboard | New arena entries and stealth codenames. |
 
 ## ⏱️ How it runs
 

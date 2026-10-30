@@ -114,27 +114,6 @@ def build_x_post_text(card: Dict[str, Any]) -> str:
     evidence = card.get("evidence", "")
     models = card.get("models", [])
 
-    if card.get("category") == "subdomain-ct":
-        bullets = [f"• {m['id']} ({m.get('name', 'Subdomain')})" for m in models[:6]]
-        if len(models) > 6:
-            bullets.append(f"• +{len(models) - 6} more endpoints")
-        headline = (
-            f"🚨 {title}"
-            if card.get("scanner") == "cert-transparency"
-            else f"🌐 {title} — {transition}"
-        )
-        return "\n".join(
-            [
-                headline,
-                "",
-                *bullets,
-                "",
-                f"Evidence: {evidence}",
-                "",
-                "Tracked by @StatsWire",
-            ]
-        )
-
     bullets = []
     for m in models[:6]:
         bullets.append(f"• {m.get('name', m['id'])} ({m['id']})")

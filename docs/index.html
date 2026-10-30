@@ -254,8 +254,8 @@
 
     // Older feeds (before story grouping) only have cards: show one story per card
     function storiesFromFeed(feed) {
-      if (Array.isArray(feed.stories)) return feed.stories;
-      return (feed.cards || []).filter(c => c.scanner !== "cert-transparency-snapshot").map(c => ({
+      if (Array.isArray(feed.stories)) return feed.stories.filter(s => !String(s.id || "").startsWith("story-ct-"));
+      return (feed.cards || []).filter(c => c.scanner !== "cert-transparency" && c.scanner !== "cert-transparency-snapshot" && c.category !== "subdomain-ct").map(c => ({
         id: "story-" + c.id, kind: "leak", open_weights: c.category === "open-source", title: c.title,
         provider_slug: c.provider_slug, provider_name: "", detected_at: c.detected_at, updated_at: c.detected_at,
         first_source: (c.header || "").split(" · ")[0], lead: "", codenames: c.codenames || [],
