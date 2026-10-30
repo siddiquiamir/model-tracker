@@ -1,16 +1,55 @@
 {
-  "generated_at": "2026-10-30T04:00:41.973145+00:00",
+  "generated_at": "2026-10-30T04:06:41.271419+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 104,
-    "leaks": 20,
+    "stories": 105,
+    "leaks": 21,
     "releases": 84,
-    "stories_24h": 18,
-    "sources_ok": 12,
-    "total_cards": 164,
-    "new_in_this_scan": 0
+    "stories_24h": 19,
+    "sources_ok": 13,
+    "total_cards": 165,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-ct-ct-diff-perplexity-ai-6c0bfa1e",
+      "group": "ct-ct-diff-perplexity-ai-6c0bfa1e",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "New Perplexity AI Subdomain: space-experimental.i.perplexity.ai",
+      "provider_slug": "perplexity",
+      "provider_name": "Perplexity",
+      "accent_color": "#0ea5e9",
+      "detected_at": "2026-10-30T04:07:07.111821+00:00",
+      "updated_at": "2026-10-30T04:07:07.111821+00:00",
+      "first_source": "TLS certificate log",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "space-experimental.i.perplexity.ai",
+          "name": "Stealth / Codename Endpoint · SSL 2026-10-30"
+        }
+      ],
+      "sources": [
+        {
+          "label": "TLS certificate log",
+          "scanner": "cert-transparency",
+          "detected_at": "2026-10-30T04:07:07.111821+00:00",
+          "title": "New Perplexity AI Subdomain: space-experimental.i.perplexity.ai",
+          "url": "https://sslmate.com/ct_search_results?q=perplexity.ai",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · PERPLEXITY",
+      "card_ids": [
+        "ct-diff-perplexity-ai-6c0bfa1e"
+      ],
+      "x_post_text": "🟠 LEAK: New Perplexity AI Subdomain: space-experimental.i.perplexity.ai by Perplexity\n\nFirst spotted 30 Oct 04:07 UTC in TLS certificate log\n\nvia @StatsWire"
+    },
     {
       "id": "story-weviscut",
       "group": "weviscut",
@@ -4559,6 +4598,41 @@
     }
   ],
   "cards": [
+    {
+      "id": "ct-diff-perplexity-ai-6c0bfa1e",
+      "category": "subdomain-ct",
+      "scanner": "cert-transparency",
+      "header": "SSL CERTIFICATE TRANSPARENCY DIFF · PERPLEXITY",
+      "title": "New Perplexity AI Subdomain: space-experimental.i.perplexity.ai",
+      "subtitle": "Newly discovered stealth / staging endpoint under *.perplexity.ai",
+      "build_label": "Root Domain",
+      "build_transition": "*.perplexity.ai (+1 new)",
+      "models": [
+        {
+          "id": "space-experimental.i.perplexity.ai",
+          "name": "Stealth / Codename Endpoint · SSL 2026-10-30"
+        }
+      ],
+      "evidence": "Certificate Transparency (CT) Logs · *.perplexity.ai",
+      "source_text": "public Certificate Transparency (CT) & DNS records for perplexity.ai.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "PERPLEXITY",
+      "provider_slug": "perplexity",
+      "accent_color": "#0ea5e9",
+      "links": [
+        {
+          "label": "CertSpotter CT Log",
+          "url": "https://sslmate.com/ct_search_results?q=perplexity.ai"
+        },
+        {
+          "label": "crt.sh Lookup",
+          "url": "https://crt.sh/?q=%25.perplexity.ai"
+        }
+      ],
+      "detected_at": "2026-10-30T04:07:07.111821+00:00",
+      "x_post_text": "🚨 New Perplexity AI Subdomain: space-experimental.i.perplexity.ai\n\n• space-experimental.i.perplexity.ai (Stealth / Codename Endpoint · SSL 2026-10-30)\n\nEvidence: Certificate Transparency (CT) Logs · *.perplexity.ai\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-tencent_WeVisCut",
       "category": "open-source",
