@@ -1,16 +1,55 @@
 {
-  "generated_at": "2026-10-30T21:38:16.663273+00:00",
+  "generated_at": "2026-10-30T22:00:16.430929+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 101,
-    "leaks": 15,
+    "stories": 102,
+    "leaks": 16,
     "releases": 86,
-    "stories_24h": 11,
+    "stories_24h": 12,
     "sources_ok": 11,
-    "total_cards": 160,
-    "new_in_this_scan": 0
+    "total_cards": 161,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-ops",
+      "group": "ops",
+      "kind": "leak",
+      "open_weights": true,
+      "title": "Ops",
+      "provider_slug": "nvidia",
+      "provider_name": "NVIDIA",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-30T21:59:22Z",
+      "updated_at": "2026-10-30T21:59:22Z",
+      "first_source": "vLLM pull request",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "ops",
+          "name": "ops"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-10-30T21:59:22Z",
+          "title": "nvidia/ops (vLLM PR #64820)",
+          "url": "https://github.com/vllm-project/vllm/pull/64820",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · NVIDIA",
+      "card_ids": [
+        "engine-pr-vllm-project_vllm-64820"
+      ],
+      "x_post_text": "🟠 LEAK: Ops by NVIDIA\n\nFirst spotted 30 Oct 21:59 UTC in vLLM pull request\n\nvia @StatsWire"
+    },
     {
       "id": "story-userlm-2",
       "group": "userlm-2",
@@ -4434,6 +4473,37 @@
     }
   ],
   "cards": [
+    {
+      "id": "engine-pr-vllm-project_vllm-64820",
+      "category": "open-source",
+      "scanner": "engine-pr-leak",
+      "header": "VLLM PR DAY-0 MODEL ONBOARDING (OPEN)",
+      "title": "nvidia/ops (vLLM PR #64820)",
+      "subtitle": "[Kernel] Qwen4Exp: compute HyperConnection and PLE gate row offsets in int64",
+      "build_label": "vLLM PR",
+      "build_transition": "PR #64820 (open)",
+      "models": [
+        {
+          "id": "nvidia/ops",
+          "name": "ops"
+        }
+      ],
+      "evidence": "vllm-project/vllm/pull/64820",
+      "source_text": "public GitHub pull request #64820 on vllm-project/vllm.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "VLLM PR",
+      "provider_slug": "opensource",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "vllm-project/vllm PR #64820",
+          "url": "https://github.com/vllm-project/vllm/pull/64820"
+        }
+      ],
+      "detected_at": "2026-10-30T21:59:22Z",
+      "x_post_text": "🚨 VLLM PR DAY-0 MODEL ONBOARDING (OPEN)\nnvidia/ops (vLLM PR #64820) spotted in vLLM PR PR #64820 (open)!\n\n• ops (nvidia/ops)\n\nEvidence: vllm-project/vllm/pull/64820\nSource: public GitHub pull request #64820 on vllm-project/vllm.\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-microsoft_UserLM-2.0",
       "category": "open-source",
