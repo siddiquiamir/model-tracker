@@ -57,9 +57,10 @@ def _is_retired_card(card: Dict[str, Any]) -> bool:
     scanner = card.get("scanner", "")
     return (
         cid in RETIRED_CARD_IDS
-        # Subdomain (CT) cards removed completely
+        # Subdomain (CT) and AI Studio Angular UI route cards removed completely
         or scanner in ("cert-transparency", "cert-transparency-snapshot")
         or card.get("category") == "subdomain-ct"
+        or cid.startswith("web-bundle-aistudio-routes-")
         or scanner == "models-dev-kimi"
         or cid.startswith(("models-dev-recent-", "vllm-arch-registry-"))
         or (scanner == "huggingface" and card.get("header", "").startswith("HUGGING FACE HUB"))

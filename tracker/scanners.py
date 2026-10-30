@@ -3151,25 +3151,15 @@ class HighAlphaLeakChannelsScanner:
             return parts[3]
         return build_key[:24] if build_key else "latest"
 
-    CRUD_ROUTE_SEGMENTS = {"edit", "create", "new", "view", "details", "delete", "settings", "duplicate", "clone"}
-
     @classmethod
-    def is_crud_subroute(cls, route: str) -> bool:
-        """'agent-dashboard/triggers/:triggerId/edit' only adds a page to an existing feature."""
-        segs = [s for s in route.strip("/").split("/") if s]
-        return len(segs) >= 2 and (segs[-1].startswith(":") or segs[-1].lower() in cls.CRUD_ROUTE_SEGMENTS)
-
-    @classmethod
-    def _extract_aistudio_bundle_signals(cls, js_blobs: List[str]) -> Tuple[Dict[str, str], List[str]]:
-        """Extract models/*, Mendel experiment model flags, and hidden UI routes from AI Studio Boq JS."""
+    def _extract_aistudio_bundle_signals(cls, js_blobs: List[str]) -> Dict[str, str]:
+        """Extract models/* and Mendel experiment model flags from AI Studio Boq JS (UI routes excluded)."""
         generic_buckets = {
             "gemini", "google", "imagen", "veo", "lyria", "transcribe",
             "gemini-2.0", "gemini-3", "id", ":id",
         }
-        ignore_routes = {"", "**", "403", "404", "500", "520", "docs/404"}
 
         model_labels: Dict[str, str] = {}
-        routes_set: Set[str] = set()
 
         for js in js_blobs:
             # 1. Mendel experiment flags pointing to models/*: new _.Ps("45863024","models/gemini-3.8-flash")
@@ -3194,32 +3184,22 @@ class HighAlphaLeakChannelsScanner:
                 if raw_m.startswith("gemini-") and raw_m not in cls.IDE_EXCLUDED_TOKENS and raw_m not in generic_buckets:
                     model_labels.setdefault(raw_m, humanize_model_id(raw_m))
 
-            # 4. Closure-compiled Angular route table object containing anchor routes ("prompts/new_chat" & "welcome")
-            for obj_match in re.finditer(
-                r'\{([A-Za-z0-9_$]+:"[^"\r\n]{0,90}"(?:,\s*[A-Za-z0-9_$]+:"[^"\r\n]{0,90}"){15,250})\}',
-                js,
-            ):
-                block = obj_match.group(1)
-                if '"prompts/new_chat"' in block and '"welcome"' in block:
-                    for val in re.findall(r'[A-Za-z0-9_$]+:"([^"]*)"', block):
-                        v = val.strip().strip("/")
-                        if v and v not in ignore_routes:
-                            routes_set.add(v)
-
-        return model_labels, sorted(routes_set)
+        return model_labels
 
     def _scan_google_web_bundles(
         self, baselines: Dict[str, Any]
     ) -> Tuple[List[Dict[str, Any]], bool]:
         """
-        Diffs Google AI Studio (aistudio.google.com `boq-makersuite` JS bundles) for hidden UI routes
-        (e.g. `agent-dashboard/*`), Mendel experiment model flags, and `models/*` identifiers, plus
-        Gemini Web (`gemini.google.com/app` `WIZ_global_data` + `boq-gemini-web-uiserver` build).
-        Uses build-key caching so unchanged 5-minute runs only fetch lightweight landing HTML.
+        Diffs Google AI Studio (aistudio.google.com `boq-makersuite` JS bundles) for Mendel experiment
+        model flags and `models/*` identifiers, plus Gemini Web (`gemini.google.com/app` `WIZ_global_data`
+        + `boq-gemini-web-uiserver` build). Uses never-forget model unions so CDN A/B build swaps never re-fire.
         """
         cards: List[Dict[str, Any]] = []
         changed = False
         wb_state: Dict[str, Any] = dict(baselines.get("web_bundles", {}))
+        if "aistudio_routes" in wb_state:
+            wb_state.pop("aistudio_routes", None)
+            changed = True
         browser_hdrs = {
             "User-Agent": (
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -3245,16 +3225,15 @@ class HighAlphaLeakChannelsScanner:
                 build_key = m_key.group(1) if m_key else boq_urls[0][-48:]
                 prev_build_key = wb_state.get("aistudio_build_key", "")
                 prev_models = set(wb_state.get("aistudio_models", []))
-                prev_routes = set(wb_state.get("aistudio_routes", []))
 
-                if build_key != prev_build_key or not prev_models or not prev_routes:
+                if build_key != prev_build_key or not prev_models:
                     js_blobs: List[str] = []
                     for js_url in boq_urls[:4]:
                         jreq = urllib.request.Request(js_url, headers=browser_hdrs)
                         with urllib.request.urlopen(jreq, timeout=20) as jresp:
                             js_blobs.append(jresp.read().decode("utf-8", errors="replace"))
 
-                    model_labels, curr_routes = self._extract_aistudio_bundle_signals(js_blobs)
+                    model_labels = self._extract_aistudio_bundle_signals(js_blobs)
                     curr_models = sorted(model_labels.keys())
 
                     old_hash = self._short_boq_hash(prev_build_key) if prev_build_key else "baseline"
@@ -3293,44 +3272,8 @@ class HighAlphaLeakChannelsScanner:
                                 }
                             )
 
-                    if prev_routes and curr_routes:
-                        added_routes = [r for r in curr_routes if r not in prev_routes and not self.is_crud_subroute(r)]
-                        if added_routes:
-                            sig = hashlib.sha256(f"{build_key}:r:{','.join(added_routes[:8])}".encode("utf-8")).hexdigest()[:8]
-                            route_items = []
-                            for r in added_routes[:10]:
-                                pretty = r.replace("/", " / ").replace("-", " ").replace(":", "").title()
-                                route_items.append({"id": f"aistudio.google.com/{r}", "name": f"UI Route: {pretty}"})
-                            cards.append(
-                                {
-                                    "id": f"web-bundle-aistudio-routes-{sig}",
-                                    "category": "desktop-diff",
-                                    "scanner": "web-bundle-diff",
-                                    "header": "GOOGLE AI STUDIO UI ROUTE DIFF · GOOGLE",
-                                    "title": f"New AI Studio Hidden Route: /{added_routes[0]}",
-                                    "subtitle": f"Newly compiled Angular route(s) in boq-makersuite ({old_hash} -> {new_hash})",
-                                    "build_label": "MakerSuite Build",
-                                    "build_transition": f"{old_hash} -> {new_hash} (+{len(added_routes)} route)",
-                                    "models": route_items,
-                                    "evidence": f"gstatic.com/_/mss/boq-makersuite ({new_hash})",
-                                    "source_text": "public Google AI Studio (aistudio.google.com) compiled Angular route table.",
-                                    "disclaimer_1": "Client-side UI route added to Google AI Studio frontend bundle (often gated by Mendel flags).",
-                                    "disclaimer_2": "Backend RPCs may still return 403 Permission Denied until public launch.",
-                                    "provider_name": "GOOGLE",
-                                    "provider_slug": "google",
-                                    "accent_color": "#38bdf8",
-                                    "links": [
-                                        {"label": f"Try /{added_routes[0]}", "url": f"https://aistudio.google.com/{added_routes[0].split('/:')[0]}"},
-                                        {"label": "MakerSuite JS Bundle", "url": boq_urls[0]},
-                                    ],
-                                    "detected_at": datetime.now(timezone.utc).isoformat(),
-                                }
-                            )
-
                     if curr_models:
-                        wb_state["aistudio_models"] = curr_models
-                    if curr_routes:
-                        wb_state["aistudio_routes"] = curr_routes
+                        wb_state["aistudio_models"] = sorted(prev_models | set(curr_models))
                     wb_state["aistudio_build_key"] = build_key
                     changed = True
         except Exception as exc:
@@ -3391,8 +3334,9 @@ class HighAlphaLeakChannelsScanner:
                             }
                         )
 
-                if set(curr_gem_models) != prev_gem_models or (bard_key and bard_key != prev_bard_key):
-                    wb_state["gemini_web_models"] = curr_gem_models
+                merged_gem_models = sorted(prev_gem_models | set(curr_gem_models))
+                if set(merged_gem_models) != prev_gem_models or (bard_key and bard_key != prev_bard_key):
+                    wb_state["gemini_web_models"] = merged_gem_models
                     if bard_key:
                         wb_state["gemini_web_build_key"] = bard_key
                     changed = True

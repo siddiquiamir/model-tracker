@@ -8,7 +8,6 @@ import re
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 
 from tracker.novelty import ReleasedCatalog, normalize, strip_variants
-from tracker.scanners import HighAlphaLeakChannelsScanner
 
 # Scanners whose sighting means the model is publicly usable (a release, not a leak)
 RELEASE_SCANNERS: Set[str] = {"openrouter", "huggingface", "gateway-radar"}
@@ -164,21 +163,18 @@ def _card_keys(card: Dict[str, Any]) -> List[Tuple[str, Dict[str, Any]]]:
     return out
 
 
-def _is_crud_route_card(card: Dict[str, Any]) -> bool:
-    if not str(card.get("id", "")).startswith("web-bundle-aistudio-routes-"):
-        return False
-    routes = [str(m.get("id", "")).split("/", 1)[-1] for m in card.get("models") or []]
-    return bool(routes) and all(HighAlphaLeakChannelsScanner.is_crud_subroute(r) for r in routes)
-
-
 def build_stories(
     cards: Iterable[Dict[str, Any]],
     catalog: Optional[ReleasedCatalog] = None,
     now: Optional[datetime] = None,
 ) -> List[Dict[str, Any]]:
     now = now or datetime.now(timezone.utc)
-    usable = [c for c in cards if c.get("scanner") not in EXCLUDED_SCANNERS
-              and c.get("category") != "subdomain-ct" and not _is_crud_route_card(c)]
+    usable = [
+        c for c in cards
+        if c.get("scanner") not in EXCLUDED_SCANNERS
+        and c.get("category") != "subdomain-ct"
+        and not str(c.get("id", "")).startswith("web-bundle-aistudio-routes-")
+    ]
     keyed = [(c, _card_keys(c)) for c in usable]
     primaries = {kms[0][0] for _, kms in keyed}
 
