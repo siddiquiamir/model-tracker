@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-10-30T13:19:17.673981+00:00",
+  "generated_at": "2026-10-30T13:27:17.768930+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 102,
     "leaks": 16,
     "releases": 86,
-    "stories_24h": 14,
-    "sources_ok": 12,
-    "total_cards": 162,
-    "new_in_this_scan": 0
+    "stories_24h": 13,
+    "sources_ok": 11,
+    "total_cards": 163,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -240,11 +240,12 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-10-29T23:00:53.819637+00:00",
-      "updated_at": "2026-10-29T23:00:53.819637+00:00",
+      "updated_at": "2026-10-30T13:27:41.441632+00:00",
       "first_source": "Google AI Studio Ui Route",
       "lead": "",
       "released_on": "",
       "codenames": [
+        "credentials",
         "dashboard",
         "environments",
         "runs",
@@ -258,6 +259,10 @@
         {
           "id": "triggers",
           "name": "Agent Dashboard / Triggers"
+        },
+        {
+          "id": "credentials",
+          "name": "Agent Dashboard / Credentials"
         },
         {
           "id": "environments",
@@ -282,9 +287,10 @@
       "backfill": false,
       "header": "LEAK · GOOGLE",
       "card_ids": [
-        "web-bundle-aistudio-routes-dc97f1f1"
+        "web-bundle-aistudio-routes-dc97f1f1",
+        "web-bundle-aistudio-routes-186f6c5c"
       ],
-      "x_post_text": "🟠 LEAK: Agent Dashboard by Google\n\nFirst spotted 29 Oct 23:00 UTC in Google AI Studio Ui Route\nCodename: dashboard, environments, runs\nIDs: runs, triggers, environments +1\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: Agent Dashboard by Google\n\nFirst spotted 29 Oct 23:00 UTC in Google AI Studio Ui Route\nCodename: credentials, dashboard, environments\nIDs: runs, triggers, credentials +2\n\nvia @StatsWire"
     },
     {
       "id": "story-com-verify-account",
@@ -4493,6 +4499,64 @@
     }
   ],
   "cards": [
+    {
+      "id": "web-bundle-aistudio-routes-186f6c5c",
+      "category": "desktop-diff",
+      "scanner": "web-bundle-diff",
+      "header": "GOOGLE AI STUDIO UI ROUTE DIFF · GOOGLE",
+      "title": "New AI Studio Hidden Route: /agent-dashboard",
+      "subtitle": "Newly compiled Angular route(s) in boq-makersuite (pzI_U2GfgiA -> US2s1JvMStI)",
+      "build_label": "MakerSuite Build",
+      "build_transition": "pzI_U2GfgiA -> US2s1JvMStI (+5 route)",
+      "models": [
+        {
+          "id": "aistudio.google.com/agent-dashboard",
+          "name": "UI Route: Agent Dashboard"
+        },
+        {
+          "id": "aistudio.google.com/agent-dashboard/credentials",
+          "name": "UI Route: Agent Dashboard / Credentials"
+        },
+        {
+          "id": "aistudio.google.com/agent-dashboard/environments",
+          "name": "UI Route: Agent Dashboard / Environments"
+        },
+        {
+          "id": "aistudio.google.com/agent-dashboard/runs",
+          "name": "UI Route: Agent Dashboard / Runs"
+        },
+        {
+          "id": "aistudio.google.com/agent-dashboard/triggers",
+          "name": "UI Route: Agent Dashboard / Triggers"
+        }
+      ],
+      "evidence": "gstatic.com/_/mss/boq-makersuite (US2s1JvMStI)",
+      "source_text": "public Google AI Studio (aistudio.google.com) compiled Angular route table.",
+      "disclaimer_1": "Client-side UI route added to Google AI Studio frontend bundle (often gated by Mendel flags).",
+      "disclaimer_2": "Backend RPCs may still return 403 Permission Denied until public launch.",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Try /agent-dashboard",
+          "url": "https://aistudio.google.com/agent-dashboard"
+        },
+        {
+          "label": "MakerSuite JS Bundle",
+          "url": "https://www.gstatic.com/_/mss/boq-makersuite/_/js/k=boq-makersuite.MakerSuite.en_US.US2s1JvMStI.2018.O/am=kSgABHM/d=1/excm=_b/ed=1/dg=0/wt=2/ujg=1/rs=AMOXD28FrjujapLDIYQGqJ1sZ82kJskyNg/dti=1/m=_b"
+        }
+      ],
+      "detected_at": "2026-10-30T13:27:41.441632+00:00",
+      "codenames": [
+        "credentials",
+        "dashboard",
+        "environments",
+        "runs",
+        "triggers"
+      ],
+      "x_post_text": "🚨 GOOGLE AI STUDIO UI ROUTE DIFF · GOOGLE\nNew AI Studio Hidden Route: /agent-dashboard spotted in MakerSuite Build pzI_U2GfgiA -> US2s1JvMStI (+5 route)!\n\n• UI Route: Agent Dashboard (aistudio.google.com/agent-dashboard)\n• UI Route: Agent Dashboard / Credentials (aistudio.google.com/agent-dashboard/credentials)\n• UI Route: Agent Dashboard / Environments (aistudio.google.com/agent-dashboard/environments)\n• UI Route: Agent Dashboard / Runs (aistudio.google.com/agent-dashboard/runs)\n• UI Route: Agent Dashboard / Triggers (aistudio.google.com/agent-dashboard/triggers)\n\nEvidence: gstatic.com/_/mss/boq-makersuite (US2s1JvMStI)\nSource: public Google AI Studio (aistudio.google.com) compiled Angular route table.\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-microsoft_Mage-VL-Cowork",
       "category": "open-source",
