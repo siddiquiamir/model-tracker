@@ -1,16 +1,55 @@
 {
-  "generated_at": "2026-10-30T18:05:42.704407+00:00",
+  "generated_at": "2026-10-30T18:37:42.093297+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 99,
-    "leaks": 14,
-    "releases": 85,
+    "leaks": 15,
+    "releases": 84,
     "stories_24h": 9,
-    "sources_ok": 12,
+    "sources_ok": 11,
     "total_cards": 158,
-    "new_in_this_scan": 0
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-gpt-6-rosalind",
+      "group": "gpt-6-rosalind",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "GPT 6 Rosalind",
+      "provider_slug": "modelsdev",
+      "provider_name": "chatgpt",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-30T18:38:01.166171+00:00",
+      "updated_at": "2026-10-30T18:38:01.166171+00:00",
+      "first_source": "LiteLLM registry",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gpt-6-rosalind",
+          "name": "chatgpt/gpt-6-rosalind"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM registry",
+          "scanner": "litellm",
+          "detected_at": "2026-10-30T18:38:01.166171+00:00",
+          "title": "1 New Model(s) Added to LiteLLM",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · CHATGPT",
+      "card_ids": [
+        "litellm-diff-85f02e7f"
+      ],
+      "x_post_text": "🟠 LEAK: GPT 6 Rosalind by chatgpt\n\nFirst spotted 30 Oct 18:38 UTC in LiteLLM registry\n\nvia @StatsWire"
+    },
     {
       "id": "story-mage-vl-cowork",
       "group": "mage-vl-cowork",
@@ -4255,45 +4294,6 @@
       "x_post_text": "🟢 NEW: Xing4.0 29B A4B by Xingchen-agi\n\nFirst spotted 16 Oct 19:04 UTC in OpenRouter\n\nvia @StatsWire"
     },
     {
-      "id": "story-nvidia-nemotron-labs-dory-1",
-      "group": "nvidia-nemotron-labs-dory-1",
-      "kind": "release",
-      "open_weights": true,
-      "title": "NVIDIA Nemotron Labs Dory1.0 4B",
-      "provider_slug": "nvidia",
-      "provider_name": "NVIDIA",
-      "accent_color": "#84cc16",
-      "detected_at": "2026-10-16T18:30:41.000Z",
-      "updated_at": "2026-10-16T18:30:41.000Z",
-      "first_source": "Hugging Face",
-      "lead": "",
-      "released_on": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "NVIDIA-Nemotron-Labs-Dory1.0-4B-NVFP4",
-          "name": "NVIDIA-Nemotron-Labs-Dory1.0-4B-NVFP4"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Hugging Face",
-          "scanner": "huggingface",
-          "detected_at": "2026-10-16T18:30:41.000Z",
-          "title": "NVIDIA Nemotron Labs Dory1.0 4B NVFP4",
-          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-NVFP4",
-          "backfill": true
-        }
-      ],
-      "source_count": 1,
-      "backfill": true,
-      "header": "OPEN WEIGHTS · NVIDIA",
-      "card_ids": [
-        "hf-nvidia_NVIDIA-Nemotron-Labs-Dory1.0-4B-NVFP4"
-      ],
-      "x_post_text": "🟢 NEW: NVIDIA Nemotron Labs Dory1.0 4B by NVIDIA\n\nFirst spotted 16 Oct 18:30 UTC in Hugging Face\n\nvia @StatsWire"
-    },
-    {
       "id": "story-gemini-4-argon",
       "group": "gemini-4-argon",
       "kind": "release",
@@ -4356,6 +4356,41 @@
     }
   ],
   "cards": [
+    {
+      "id": "litellm-diff-85f02e7f",
+      "category": "cli-sdk-diff",
+      "scanner": "litellm",
+      "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
+      "title": "1 New Model(s) Added to LiteLLM",
+      "subtitle": "Verified model_prices_and_context_window.json diff",
+      "build_label": "Registry Diff",
+      "build_transition": "+1 new model keys",
+      "models": [
+        {
+          "id": "chatgpt/gpt-6-rosalind",
+          "name": "chatgpt/gpt-6-rosalind"
+        }
+      ],
+      "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
+      "source_text": "official LiteLLM master pricing & context window registry.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "LITELLM",
+      "provider_slug": "modelsdev",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "LiteLLM JSON Registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        },
+        {
+          "label": "LiteLLM Commits",
+          "url": "https://github.com/BerriAI/litellm/commits/main"
+        }
+      ],
+      "detected_at": "2026-10-30T18:38:01.166171+00:00",
+      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 new model keys!\n\n• chatgpt/gpt-6-rosalind (chatgpt/gpt-6-rosalind)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-microsoft_Mage-VL-Cowork",
       "category": "open-source",
@@ -9877,42 +9912,6 @@
       "detected_at": "2026-10-16T19:04:56+00:00",
       "backfill": true,
       "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · XINGCHEN-AGI\nXingChen: Xing4.0 29B A4B (free) spotted in Endpoint ID xingchen-agi/xing4.0-29b-a4b:free!\n\n• XingChen: Xing4.0 29B A4B (free) (262k context window) (xingchen-agi/xing4.0-29b-a4b:free)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "hf-nvidia_NVIDIA-Nemotron-Labs-Dory1.0-4B-NVFP4",
-      "category": "open-source",
-      "scanner": "huggingface",
-      "header": "HUGGING FACE NEW REPO · NVIDIA",
-      "title": "NVIDIA Nemotron Labs Dory1.0 4B NVFP4",
-      "subtitle": "Newly published public model repository (nvidia)",
-      "build_label": "Repo",
-      "build_transition": "Created 2026-10-16 (text-generation)",
-      "models": [
-        {
-          "id": "nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-NVFP4",
-          "name": "NVIDIA-Nemotron-Labs-Dory1.0-4B-NVFP4 (text-generation)"
-        }
-      ],
-      "evidence": "huggingface.co/api/models",
-      "source_text": "official nvidia Hugging Face organization feed.",
-      "disclaimer_1": "Repository became publicly visible since the previous scan.",
-      "disclaimer_2": "Public weights / model cards published directly by the organization.",
-      "provider_name": "NVIDIA",
-      "provider_slug": "nvidia",
-      "accent_color": "#84cc16",
-      "links": [
-        {
-          "label": "Hugging Face Repo",
-          "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-NVFP4"
-        },
-        {
-          "label": "nvidia Hub Feed",
-          "url": "https://huggingface.co/nvidia"
-        }
-      ],
-      "detected_at": "2026-10-16T18:30:41.000Z",
-      "backfill": true,
-      "x_post_text": "🚨 HUGGING FACE NEW REPO · NVIDIA\nNVIDIA Nemotron Labs Dory1.0 4B NVFP4 spotted in Repo Created 2026-10-16 (text-generation)!\n\n• NVIDIA-Nemotron-Labs-Dory1.0-4B-NVFP4 (text-generation) (nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-NVFP4)\n\nEvidence: huggingface.co/api/models\nSource: official nvidia Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
       "id": "npm-_google_genai-2.29.1-2.30.0",
