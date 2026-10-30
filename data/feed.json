@@ -1,16 +1,67 @@
 {
-  "generated_at": "2026-10-30T00:34:25.738904+00:00",
+  "generated_at": "2026-10-30T00:52:26.061229+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 102,
-    "leaks": 19,
+    "stories": 103,
+    "leaks": 20,
     "releases": 83,
-    "stories_24h": 17,
+    "stories_24h": 18,
     "sources_ok": 11,
-    "total_cards": 162,
-    "new_in_this_scan": 0
+    "total_cards": 163,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-qwen-audio-3-tts-flash",
+      "group": "qwen-audio-3-tts-flash",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Qwen Audio 3 Tts Flash",
+      "provider_slug": "modelsdev",
+      "provider_name": "dashscope",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-30T00:52:49.176584+00:00",
+      "updated_at": "2026-10-30T00:52:49.176584+00:00",
+      "first_source": "LiteLLM registry",
+      "lead": "",
+      "released_on": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "qwen-audio-3.0-tts-plus",
+          "name": "dashscope/qwen-audio-3.0-tts-plus"
+        },
+        {
+          "id": "qwen-audio-3.1-tts-plus",
+          "name": "dashscope/qwen-audio-3.1-tts-plus"
+        },
+        {
+          "id": "qwen-audio-3.0-tts-flash",
+          "name": "dashscope/qwen-audio-3.0-tts-flash"
+        },
+        {
+          "id": "qwen-audio-3.1-tts-flash",
+          "name": "dashscope/qwen-audio-3.1-tts-flash"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM registry",
+          "scanner": "litellm",
+          "detected_at": "2026-10-30T00:52:49.176584+00:00",
+          "title": "5 New Model(s) Added to LiteLLM",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · DASHSCOPE",
+      "card_ids": [
+        "litellm-diff-f64e7fb0"
+      ],
+      "x_post_text": "🟠 LEAK: Qwen Audio 3 Tts Flash by dashscope\n\nFirst spotted 30 Oct 00:52 UTC in LiteLLM registry\nIDs: qwen-audio-3.0-tts-plus, qwen-audio-3.1-tts-plus, qwen-audio-3.0-tts-flash +1\n\nvia @StatsWire"
+    },
     {
       "id": "story-com-agent-dashboard",
       "group": "com-agent-dashboard",
@@ -4469,6 +4520,54 @@
     }
   ],
   "cards": [
+    {
+      "id": "litellm-diff-f64e7fb0",
+      "category": "cli-sdk-diff",
+      "scanner": "litellm",
+      "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
+      "title": "5 New Model(s) Added to LiteLLM",
+      "subtitle": "Verified model_prices_and_context_window.json diff",
+      "build_label": "Registry Diff",
+      "build_transition": "+5 new model keys",
+      "models": [
+        {
+          "id": "dashscope/qwen-audio-3.0-tts-flash",
+          "name": "dashscope/qwen-audio-3.0-tts-flash"
+        },
+        {
+          "id": "dashscope/qwen-audio-3.0-tts-plus",
+          "name": "dashscope/qwen-audio-3.0-tts-plus"
+        },
+        {
+          "id": "dashscope/qwen-audio-3.1-tts-flash",
+          "name": "dashscope/qwen-audio-3.1-tts-flash"
+        },
+        {
+          "id": "dashscope/qwen-audio-3.1-tts-plus",
+          "name": "dashscope/qwen-audio-3.1-tts-plus"
+        }
+      ],
+      "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
+      "source_text": "official LiteLLM master pricing & context window registry.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "LITELLM",
+      "provider_slug": "modelsdev",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "LiteLLM JSON Registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        },
+        {
+          "label": "LiteLLM Commits",
+          "url": "https://github.com/BerriAI/litellm/commits/main"
+        }
+      ],
+      "detected_at": "2026-10-30T00:52:49.176584+00:00",
+      "filtered_released": 1,
+      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n5 New Model(s) Added to LiteLLM spotted in Registry Diff +5 new model keys!\n\n• dashscope/qwen-audio-3.0-tts-flash (dashscope/qwen-audio-3.0-tts-flash)\n• dashscope/qwen-audio-3.0-tts-plus (dashscope/qwen-audio-3.0-tts-plus)\n• dashscope/qwen-audio-3.1-tts-flash (dashscope/qwen-audio-3.1-tts-flash)\n• dashscope/qwen-audio-3.1-tts-plus (dashscope/qwen-audio-3.1-tts-plus)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "web-bundle-aistudio-routes-dc97f1f1",
       "category": "desktop-diff",
