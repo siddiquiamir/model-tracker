@@ -1,16 +1,58 @@
 {
-  "generated_at": "2026-10-30T13:27:17.768930+00:00",
+  "generated_at": "2026-10-30T13:31:17.123706+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 102,
     "leaks": 16,
     "releases": 86,
     "stories_24h": 13,
-    "sources_ok": 11,
+    "sources_ok": 12,
     "total_cards": 163,
     "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-com-verify-account",
+      "group": "com-verify-account",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Verify Account",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "accent_color": "#38bdf8",
+      "detected_at": "2026-10-30T13:31:53.219587+00:00",
+      "updated_at": "2026-10-30T13:31:53.219587+00:00",
+      "first_source": "Google AI Studio Ui Route",
+      "lead": "",
+      "released_on": "",
+      "codenames": [
+        "account",
+        "verify"
+      ],
+      "models": [
+        {
+          "id": "verify-account",
+          "name": "Verify Account"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Google AI Studio Ui Route",
+          "scanner": "web-bundle-diff",
+          "detected_at": "2026-10-30T13:31:53.219587+00:00",
+          "title": "New AI Studio Hidden Route: /verify-account",
+          "url": "https://aistudio.google.com/verify-account",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · GOOGLE",
+      "card_ids": [
+        "web-bundle-aistudio-routes-a22cd2a7"
+      ],
+      "x_post_text": "🟠 LEAK: Verify Account by Google\n\nFirst spotted 30 Oct 13:31 UTC in Google AI Studio Ui Route\nCodename: account, verify\n\nvia @StatsWire"
+    },
     {
       "id": "story-mage-vl-cowork",
       "group": "mage-vl-cowork",
@@ -291,48 +333,6 @@
         "web-bundle-aistudio-routes-186f6c5c"
       ],
       "x_post_text": "🟠 LEAK: Agent Dashboard by Google\n\nFirst spotted 29 Oct 23:00 UTC in Google AI Studio Ui Route\nCodename: credentials, dashboard, environments\nIDs: runs, triggers, credentials +2\n\nvia @StatsWire"
-    },
-    {
-      "id": "story-com-verify-account",
-      "group": "com-verify-account",
-      "kind": "leak",
-      "open_weights": false,
-      "title": "Verify Account",
-      "provider_slug": "google",
-      "provider_name": "Google",
-      "accent_color": "#38bdf8",
-      "detected_at": "2026-10-29T22:57:01.160618+00:00",
-      "updated_at": "2026-10-29T22:57:01.160618+00:00",
-      "first_source": "Google AI Studio Ui Route",
-      "lead": "",
-      "released_on": "",
-      "codenames": [
-        "account",
-        "verify"
-      ],
-      "models": [
-        {
-          "id": "verify-account",
-          "name": "Verify Account"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Google AI Studio Ui Route",
-          "scanner": "web-bundle-diff",
-          "detected_at": "2026-10-29T22:57:01.160618+00:00",
-          "title": "New AI Studio Hidden Route: /verify-account",
-          "url": "https://aistudio.google.com/verify-account",
-          "backfill": false
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "LEAK · GOOGLE",
-      "card_ids": [
-        "web-bundle-aistudio-routes-0904236f"
-      ],
-      "x_post_text": "🟠 LEAK: Verify Account by Google\n\nFirst spotted 29 Oct 22:57 UTC in Google AI Studio Ui Route\nCodename: account, verify\n\nvia @StatsWire"
     },
     {
       "id": "story-pplx-embed-2-context",
@@ -4500,6 +4500,45 @@
   ],
   "cards": [
     {
+      "id": "web-bundle-aistudio-routes-a22cd2a7",
+      "category": "desktop-diff",
+      "scanner": "web-bundle-diff",
+      "header": "GOOGLE AI STUDIO UI ROUTE DIFF · GOOGLE",
+      "title": "New AI Studio Hidden Route: /verify-account",
+      "subtitle": "Newly compiled Angular route(s) in boq-makersuite (US2s1JvMStI -> pzI_U2GfgiA)",
+      "build_label": "MakerSuite Build",
+      "build_transition": "US2s1JvMStI -> pzI_U2GfgiA (+1 route)",
+      "models": [
+        {
+          "id": "aistudio.google.com/verify-account",
+          "name": "UI Route: Verify Account"
+        }
+      ],
+      "evidence": "gstatic.com/_/mss/boq-makersuite (pzI_U2GfgiA)",
+      "source_text": "public Google AI Studio (aistudio.google.com) compiled Angular route table.",
+      "disclaimer_1": "Client-side UI route added to Google AI Studio frontend bundle (often gated by Mendel flags).",
+      "disclaimer_2": "Backend RPCs may still return 403 Permission Denied until public launch.",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Try /verify-account",
+          "url": "https://aistudio.google.com/verify-account"
+        },
+        {
+          "label": "MakerSuite JS Bundle",
+          "url": "https://www.gstatic.com/_/mss/boq-makersuite/_/js/k=boq-makersuite.MakerSuite.en_US.pzI_U2GfgiA.2018.O/am=IVEACMYB/d=1/excm=_b/ed=1/dg=0/wt=2/ujg=1/rs=AMOXD29LJzFBJre6hyTM1exAL_uEn0Ds0w/dti=1/m=_b"
+        }
+      ],
+      "detected_at": "2026-10-30T13:31:53.219587+00:00",
+      "codenames": [
+        "account",
+        "verify"
+      ],
+      "x_post_text": "🚨 GOOGLE AI STUDIO UI ROUTE DIFF · GOOGLE\nNew AI Studio Hidden Route: /verify-account spotted in MakerSuite Build US2s1JvMStI -> pzI_U2GfgiA (+1 route)!\n\n• UI Route: Verify Account (aistudio.google.com/verify-account)\n\nEvidence: gstatic.com/_/mss/boq-makersuite (pzI_U2GfgiA)\nSource: public Google AI Studio (aistudio.google.com) compiled Angular route table.\n\nTracked by @StatsWire"
+    },
+    {
       "id": "web-bundle-aistudio-routes-186f6c5c",
       "category": "desktop-diff",
       "scanner": "web-bundle-diff",
@@ -4866,45 +4905,6 @@
         "triggers"
       ],
       "x_post_text": "🚨 GOOGLE AI STUDIO UI ROUTE DIFF · GOOGLE\nNew AI Studio Hidden Route: /agent-dashboard spotted in MakerSuite Build c-Kpo3tEu7A -> WzQmSiAaMZU (+4 route)!\n\n• UI Route: Agent Dashboard (aistudio.google.com/agent-dashboard)\n• UI Route: Agent Dashboard / Environments (aistudio.google.com/agent-dashboard/environments)\n• UI Route: Agent Dashboard / Runs (aistudio.google.com/agent-dashboard/runs)\n• UI Route: Agent Dashboard / Triggers (aistudio.google.com/agent-dashboard/triggers)\n\nEvidence: gstatic.com/_/mss/boq-makersuite (WzQmSiAaMZU)\nSource: public Google AI Studio (aistudio.google.com) compiled Angular route table.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "web-bundle-aistudio-routes-0904236f",
-      "category": "desktop-diff",
-      "scanner": "web-bundle-diff",
-      "header": "GOOGLE AI STUDIO UI ROUTE DIFF · GOOGLE",
-      "title": "New AI Studio Hidden Route: /verify-account",
-      "subtitle": "Newly compiled Angular route(s) in boq-makersuite (WzQmSiAaMZU -> c-Kpo3tEu7A)",
-      "build_label": "MakerSuite Build",
-      "build_transition": "WzQmSiAaMZU -> c-Kpo3tEu7A (+1 route)",
-      "models": [
-        {
-          "id": "aistudio.google.com/verify-account",
-          "name": "UI Route: Verify Account"
-        }
-      ],
-      "evidence": "gstatic.com/_/mss/boq-makersuite (c-Kpo3tEu7A)",
-      "source_text": "public Google AI Studio (aistudio.google.com) compiled Angular route table.",
-      "disclaimer_1": "Client-side UI route added to Google AI Studio frontend bundle (often gated by Mendel flags).",
-      "disclaimer_2": "Backend RPCs may still return 403 Permission Denied until public launch.",
-      "provider_name": "GOOGLE",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "Try /verify-account",
-          "url": "https://aistudio.google.com/verify-account"
-        },
-        {
-          "label": "MakerSuite JS Bundle",
-          "url": "https://www.gstatic.com/_/mss/boq-makersuite/_/js/k=boq-makersuite.MakerSuite.en_US.c-Kpo3tEu7A.2018.O/am=IVEACMYB/d=1/excm=_b/ed=1/dg=0/wt=2/ujg=1/rs=AMOXD287cA5H_GEhJENxEZzG-LBx_rOvmg/dti=1/m=_b"
-        }
-      ],
-      "detected_at": "2026-10-29T22:57:01.160618+00:00",
-      "codenames": [
-        "account",
-        "verify"
-      ],
-      "x_post_text": "🚨 GOOGLE AI STUDIO UI ROUTE DIFF · GOOGLE\nNew AI Studio Hidden Route: /verify-account spotted in MakerSuite Build WzQmSiAaMZU -> c-Kpo3tEu7A (+1 route)!\n\n• UI Route: Verify Account (aistudio.google.com/verify-account)\n\nEvidence: gstatic.com/_/mss/boq-makersuite (c-Kpo3tEu7A)\nSource: public Google AI Studio (aistudio.google.com) compiled Angular route table.\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-perplexity-ai_pplx-embed-v2-context-9b",
