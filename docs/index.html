@@ -115,6 +115,8 @@
     .lead { display: inline-block; font-size: 0.8rem; font-weight: 700; color: #4ade80; margin-top: 4px; }
     .codenames { display: flex; gap: 6px; flex-wrap: wrap; }
     .codename { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em; padding: 2px 8px; border-radius: 999px; color: #1a1205; background: #fbbf24; text-transform: uppercase; }
+    .pricing-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 0.76rem; font-weight: 700; padding: 3px 9px; border-radius: 6px; background: rgba(16, 185, 129, 0.14); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.35); width: fit-content; }
+    .chip.price { background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.32); color: #6ee7b7; font-size: 0.73rem; }
     .ids { display: flex; flex-wrap: wrap; gap: 6px; }
     .chip { font-size: 0.78rem; background: #1f2430; border: 1px solid var(--line-2); color: #e2e8f0; padding: 2px 7px; border-radius: 5px; }
     .chip.more { color: var(--muted); }
@@ -282,12 +284,13 @@
         return labeled || model;
       });
     }
-    function modelRows(models) {
+    function modelRows(models, storyPricing) {
       return models.map(model => {
         const name = /^Referenced in /.test(model.name || "") ? "" : (model.name || "");
         const id = String(model.id || "");
-        if (!name || name === id || name === id.split("/").pop()) return `<li><code class="chip mono">${escapeHtml(id)}</code></li>`;
-        return `<li><strong>${escapeHtml(name)}</strong><code class="chip mono">${escapeHtml(id)}</code></li>`;
+        const pr = model.pricing && model.pricing !== storyPricing ? `<code class="chip price mono">${escapeHtml(model.pricing)}</code>` : "";
+        if (!name || name === id || name === id.split("/").pop()) return `<li><code class="chip mono">${escapeHtml(id)}</code>${pr}</li>`;
+        return `<li><strong>${escapeHtml(name)}</strong><code class="chip mono">${escapeHtml(id)}</code>${pr}</li>`;
       }).join("");
     }
     function evidenceHtml(s) {
@@ -302,7 +305,7 @@
           <details><summary>Source details${related.length ? ` · ${related.length} related model${related.length === 1 ? "" : "s"}` : ""}</summary>
             ${card.evidence ? `<code class="mono">${escapeHtml(card.evidence)}</code>` : ""}
             ${[card.source_text, card.disclaimer_1, card.disclaimer_2].filter(Boolean).map(text => `<p>${escapeHtml(text)}</p>`).join("")}
-            ${related.length ? `<strong>Also in this source</strong><ul class="model-list">${modelRows(related)}</ul>` : ""}
+            ${related.length ? `<strong>Also in this source</strong><ul class="model-list">${modelRows(related, s.pricing)}</ul>` : ""}
           </details></div>`;
       });
       return (rows[0] || "") + (rows.length > 1 ? `<details><summary>${rows.length - 1} more evidence records</summary>${rows.slice(1).join("")}</details>` : "");
@@ -312,8 +315,8 @@
       const stage = stageOf(s);
       const unread = seen && !seen.has(s.id);
       const models = modelsFor(s);
-      const ids = `<ul class="model-list">${modelRows(models.slice(0, 8))}</ul>`;
-      const moreIds = models.length > 8 ? `<details><summary>${models.length - 8} more identifiers</summary><ul class="model-list">${modelRows(models.slice(8))}</ul></details>` : "";
+      const ids = `<ul class="model-list">${modelRows(models.slice(0, 8), s.pricing)}</ul>`;
+      const moreIds = models.length > 8 ? `<details><summary>${models.length - 8} more identifiers</summary><ul class="model-list">${modelRows(models.slice(8), s.pricing)}</ul></details>` : "";
       const srcRow = src => {
         const url = safeUrl(src.url);
         const label = url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(src.label)}</a>` : escapeHtml(src.label);
@@ -326,6 +329,8 @@
         : "";
       const codenames = (s.codenames || []).length
         ? `<div class="codenames">${s.codenames.map(c => `<span class="codename" title="Token not found in any public model catalog">codename: ${escapeHtml(c)}</span>`).join("")}</div>` : "";
+      const pricingHtml = s.pricing
+        ? `<div class="pricing-badge mono" title="Verified token pricing">💰 ${escapeHtml(s.pricing)}</div>` : "";
       return `
         <article class="story ${stage} ${unread ? "unread" : ""}">
           <div class="head">
@@ -341,6 +346,7 @@
               <div class="first">First spotted ${escapeHtml(fmtUTC(s.detected_at))} in <b>${escapeHtml(s.first_source)}</b></div>
             </div>
           </div>
+          ${pricingHtml}
           ${codenames}
           ${evidenceHtml(s)}
           ${ids}${moreIds}
@@ -371,7 +377,7 @@
         if (TAB === "unread" && (!seen || seen.has(s.id))) return false;
         if (prov && (s.provider_name || "Other") !== prov) return false;
         if (!q) return true;
-        const hay = [s.title, s.provider_name, s.first_source, ...(s.codenames || []), ...modelsFor(s).flatMap(model => [model.id, model.name]), ...evidenceFor(s).map(card => card.build_transition), ...(s.sources || []).map(x => x.label)].join(" ").toLowerCase();
+        const hay = [s.title, s.provider_name, s.first_source, s.pricing, ...(s.codenames || []), ...modelsFor(s).flatMap(model => [model.id, model.name, model.pricing]), ...evidenceFor(s).map(card => card.build_transition), ...(s.sources || []).map(x => x.label)].join(" ").toLowerCase();
         return hay.includes(q);
       });
       const unread = seen ? STORIES.filter(s => !seen.has(s.id)).length : 0;
@@ -468,7 +474,7 @@
       const lines = [headline, `First spotted ${fmtUTC(s.detected_at)}`];
       const credit = "Developed by @StatsWire on X";
       const sourceCount = (s.sources || []).length;
-      const extras = [s.first_source ? "Source: " + s.first_source : "", (s.codenames || []).length ? "Codename: " + s.codenames.join(", ") : "", `${sourceCount} source sighting${sourceCount === 1 ? "" : "s"}`, (s.models || []).length ? "IDs: " + s.models.map(model => model.id).join(", ") : ""];
+      const extras = [s.pricing ? "Pricing: " + s.pricing : "", s.first_source ? "Source: " + s.first_source : "", (s.codenames || []).length ? "Codename: " + s.codenames.join(", ") : "", `${sourceCount} source sighting${sourceCount === 1 ? "" : "s"}`, (s.models || []).length ? "IDs: " + s.models.map(model => model.id).join(", ") : ""];
       for (const extra of extras.filter(Boolean)) {
         if (weight([...lines, extra, credit].join("\n")) <= 280) lines.push(extra);
       }

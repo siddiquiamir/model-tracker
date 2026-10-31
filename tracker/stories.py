@@ -8,6 +8,7 @@ import re
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 
 from tracker.novelty import ReleasedCatalog, normalize, strip_variants
+from tracker.pricing import PricingCatalog, get_pricing_catalog
 
 # Scanners whose sighting means the model is publicly usable (a release, not a leak)
 RELEASE_SCANNERS: Set[str] = {"openrouter", "huggingface", "gateway-radar"}
@@ -49,6 +50,7 @@ SCANNER_LABELS: Dict[str, str] = {
     "kimi-code": "Kimi Code",
     "vllm-registry": "vLLM registry",
     "openai-spec": "OpenAI API spec",
+    "pricing-radar": "Official pricing page",
 }
 _WORD_FIX = {
     "Openai": "OpenAI", "Ai": "AI", "Sdk": "SDK", "Github": "GitHub", "Vllm": "vLLM", "Sglang": "SGLang",
@@ -167,8 +169,10 @@ def build_stories(
     cards: Iterable[Dict[str, Any]],
     catalog: Optional[ReleasedCatalog] = None,
     now: Optional[datetime] = None,
+    pricing_catalog: Optional[PricingCatalog] = None,
 ) -> List[Dict[str, Any]]:
     now = now or datetime.now(timezone.utc)
+    pricing_catalog = pricing_catalog or get_pricing_catalog()
     usable = [
         c for c in cards
         if c.get("scanner") not in EXCLUDED_SCANNERS
@@ -201,7 +205,7 @@ def build_stories(
 
     stories: List[Dict[str, Any]] = []
     for key, g in groups.items():
-        story = _make_story(key, g["cards"], g["models"], catalog)
+        story = _make_story(key, g["cards"], g["models"], catalog, pricing_catalog=pricing_catalog)
         if _parse(story["updated_at"]) >= now - STORY_WINDOW:
             stories.append(story)
     stories.sort(key=lambda s: s["detected_at"], reverse=True)
@@ -209,7 +213,11 @@ def build_stories(
 
 
 def _make_story(
-    key: str, cards: List[Dict[str, Any]], models: List[Dict[str, Any]], catalog: Optional[ReleasedCatalog]
+    key: str,
+    cards: List[Dict[str, Any]],
+    models: List[Dict[str, Any]],
+    catalog: Optional[ReleasedCatalog],
+    pricing_catalog: Optional[PricingCatalog] = None,
 ) -> Dict[str, Any]:
     cards = sorted(cards, key=lambda c: c.get("detected_at") or "")
     first = cards[0]
@@ -263,6 +271,7 @@ def _make_story(
 
     variants: List[Dict[str, str]] = []
     by_norm: Dict[str, Dict[str, str]] = {}
+    story_prices: List[str] = []
     for m in models:
         label = _model_label(m)
         vid = re.sub(r"^(?:[\w.-]+/)+", "", label)
@@ -271,18 +280,32 @@ def _make_story(
         vk = re.sub(r"^introducing-", "", normalize(vid))
         if not vid:
             continue
+        price = str(m.get("pricing") or (pricing_catalog.lookup(label) if pricing_catalog else "") or (pricing_catalog.lookup(vid) if pricing_catalog else "")).strip()
+        if price and price not in story_prices:
+            story_prices.append(price)
         if vk not in by_norm:
             raw_name = str(m.get("name") or "")
             if raw_name.startswith("Referenced in "):
                 raw_name = vid
-            by_norm[vk] = {"id": vid, "name": _clean_name(raw_name or vid) or vid}
+            clean_n = _clean_name(raw_name or vid) or vid
+            # Strip trailing pricing suffix from clean_n if pricing_radar put it in name
+            clean_n = re.sub(r"\s+—\s+\$[0-9].*$", "", clean_n).strip()
+            entry: Dict[str, str] = {"id": vid, "name": clean_n}
+            if price:
+                entry["pricing"] = price
+            by_norm[vk] = entry
             variants.append(by_norm[vk])
-        elif len(vid) < len(by_norm[vk]["id"]):
-            by_norm[vk]["id"] = vid
+        else:
+            if len(vid) < len(by_norm[vk]["id"]):
+                by_norm[vk]["id"] = vid
+            if price and not by_norm[vk].get("pricing"):
+                by_norm[vk]["pricing"] = price
     variants.sort(key=lambda v: (len(v["id"]), v["id"]))
     if len(variants) > 1:
         title = _DISPLAY_SIZE.sub("", title)
+    title = re.sub(r"\s+—\s+\$[0-9].*$", "", title)
     title = _DISPLAY_NOISE.sub("", title).strip(" -_") or title
+    story_pricing = story_prices[0] if story_prices else (pricing_catalog.lookup(key) if pricing_catalog else "")
 
     sources: List[Dict[str, Any]] = []
     seen_src: Set[str] = set()
@@ -336,6 +359,7 @@ def _make_story(
         "first_source": sources[0]["label"] if sources else "",
         "lead": lead,
         "released_on": released[0] if released else "",
+        "pricing": story_pricing,
         "codenames": codenames,
         "models": variants[:40],
         "sources": sources,
@@ -353,16 +377,18 @@ def story_x_text(story: Dict[str, Any]) -> str:
     head = f"{tag}: {story['title']}" + (f" by {story['provider_name']}" if story.get("provider_name") else "")
     others = [s["label"] for s in story["sources"][1:]]
     optional: List[Tuple[int, str]] = []  # (drop priority, line); highest priority dropped first
+    if story.get("pricing"):
+        optional.append((1, f"💰 Pricing: {story['pricing']}"))
     if story.get("lead"):
-        optional.append((1, f"⏱ {story['lead']}"))
+        optional.append((2, f"⏱ {story['lead']}"))
     if others:
         extra = f" +{len(others) - 3}" if len(others) > 3 else ""
-        optional.append((2, f"Confirmed by {', '.join(others[:3])}{extra}"))
+        optional.append((3, f"Confirmed by {', '.join(others[:3])}{extra}"))
     if story.get("codenames"):
-        optional.append((3, f"Codename: {', '.join(story['codenames'][:3])}"))
+        optional.append((4, f"Codename: {', '.join(story['codenames'][:3])}"))
     ids = [v["id"] for v in story["models"][:3]]
     if len(story["models"]) > 1:
-        optional.append((4, f"IDs: {', '.join(ids)}" + (f" +{len(story['models']) - 3}" if len(story["models"]) > 3 else "")))
+        optional.append((5, f"IDs: {', '.join(ids)}" + (f" +{len(story['models']) - 3}" if len(story["models"]) > 3 else "")))
     while True:
         lines = [head, "", f"First spotted {when} in {story['first_source']}"]
         lines += [line for _, line in sorted(optional)]

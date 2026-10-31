@@ -137,6 +137,8 @@ def build_x_post_text(card: Dict[str, Any]) -> str:
 def build_story_embed(story: Dict[str, Any], github_user: str = "siddiquiamir") -> Dict[str, Any]:
     """One Discord embed per model story: amber for leaks, green for releases."""
     lines = [f"**First spotted:** <t:{_epoch(story['detected_at'])}:f> in {story.get('first_source', '')}"]
+    if story.get("pricing"):
+        lines.append(f"**Pricing:** `{story['pricing']}`")
     if story.get("lead"):
         lines.append(f"**Lead time:** {story['lead']}")
     if story.get("codenames"):

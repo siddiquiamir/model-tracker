@@ -9,7 +9,7 @@ import pathlib
 import time
 from typing import Any, Dict, List, Set
 
-from tracker import novelty, stories as story_mod
+from tracker import novelty, pricing as pricing_mod, stories as story_mod
 from tracker.notifiers import build_story_embed, build_x_post_text, send_discord_webhook
 from tracker.scanners import (
     BASELINES_FILE,
@@ -238,6 +238,11 @@ class TrackerEngine:
         n_before = len(all_cards)
         all_cards = novelty.apply(all_cards, novelty.get_catalog(public_names))
         print(f"[ModelPulse] novelty filter: {n_before} -> {len(all_cards)} card(s)")
+
+        # Attach live pricing from Official Docs, LiteLLM, models.dev & OpenRouter to every card and model
+        pricing_catalog = pricing_mod.get_pricing_catalog()
+        pricing_mod.enrich_cards_with_pricing(all_cards, pricing_catalog)
+
         for card in all_cards:
             card["x_post_text"] = build_x_post_text(card)
 
@@ -245,7 +250,7 @@ class TrackerEngine:
 
         # One story per model across all sources; notify once per story (and once more when a leak ships)
         catalog = novelty.get_catalog(public_names)
-        stories = story_mod.build_stories(all_cards, catalog, now=now)
+        stories = story_mod.build_stories(all_cards, catalog, now=now, pricing_catalog=pricing_catalog)
         for s in stories:
             s["x_post_text"] = story_mod.story_x_text(s)
 

@@ -2001,6 +2001,17 @@ class DocsAndGlobalRegistryScanner:
         except Exception as exc:
             print(f"[DocsScanner] LiteLLM warning: {exc}")
 
+        # 5. Scan official first-party pricing pages (OpenAI, Anthropic, xAI) so pricing drops surface immediately
+        try:
+            from tracker.pricing import scan_official_pricing_pages
+            pricing_cards, pricing_changed = scan_official_pricing_pages(baselines)
+            if pricing_cards:
+                cards.extend(pricing_cards)
+            if pricing_changed:
+                baselines_changed = True
+        except Exception as exc:
+            print(f"[DocsScanner] Official pricing radar warning: {exc}")
+
         baselines.pop("ms_copilot_waza_evals", None)
         if baselines_changed:
             _save_baselines(baselines)

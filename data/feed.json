@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31T17:09:25.072011+00:00",
+  "generated_at": "2026-10-31T17:17:10.442636+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 102,
@@ -11,45 +11,6 @@
     "new_in_this_scan": 0
   },
   "stories": [
-    {
-      "id": "story-gpt-6-astra-law",
-      "group": "gpt-6-astra-law",
-      "kind": "leak",
-      "open_weights": false,
-      "title": "GPT 6 Astra Law",
-      "provider_slug": "modelsdev",
-      "provider_name": "chatgpt",
-      "accent_color": "#10b981",
-      "detected_at": "2026-10-31T16:01:42.266249+00:00",
-      "updated_at": "2026-10-31T16:01:42.266249+00:00",
-      "first_source": "LiteLLM registry",
-      "lead": "",
-      "released_on": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "gpt-6-astra-law",
-          "name": "chatgpt/gpt-6-astra-law"
-        }
-      ],
-      "sources": [
-        {
-          "label": "LiteLLM registry",
-          "scanner": "litellm",
-          "detected_at": "2026-10-31T16:01:42.266249+00:00",
-          "title": "1 New Model(s) Added to LiteLLM",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
-          "backfill": false
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "LEAK · CHATGPT",
-      "card_ids": [
-        "litellm-diff-86e92bbf"
-      ],
-      "x_post_text": "🟠 LEAK: GPT 6 Astra Law by chatgpt\n\nFirst spotted 31 Oct 16:01 UTC in LiteLLM registry\n\nvia @StatsWire"
-    },
     {
       "id": "story-canaryforconditionalgeneration",
       "group": "canaryforconditionalgeneration",
@@ -64,6 +25,7 @@
       "first_source": "vLLM registry",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [
         "canaryforconditionalgeneration"
       ],
@@ -105,6 +67,7 @@
       "first_source": "vLLM pull request",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -144,6 +107,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -183,6 +147,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "2026-09-10",
+      "pricing": "$0.30 / $1.20 per 1M tokens ($0.006 cached)",
       "codenames": [],
       "models": [
         {
@@ -206,7 +171,7 @@
       "card_ids": [
         "hf-nvidia_DeepSeek-V4.1-Flash-1017-NVFP4"
       ],
-      "x_post_text": "🟢 NEW: DeepSeek V4.1 Flash 1017 by NVIDIA\n\nFirst spotted 30 Oct 20:08 UTC in Hugging Face\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW: DeepSeek V4.1 Flash 1017 by NVIDIA\n\nFirst spotted 30 Oct 20:08 UTC in Hugging Face\n💰 Pricing: $0.30 / $1.20 per 1M tokens ($0.006 cached)\n\nvia @StatsWire"
     },
     {
       "id": "story-rfd-4-proteina",
@@ -222,6 +187,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -248,27 +214,97 @@
       "x_post_text": "🟢 NEW: RFD4 Proteina by NVIDIA\n\nFirst spotted 30 Oct 19:48 UTC in Hugging Face\n\nvia @StatsWire"
     },
     {
+      "id": "story-gpt-6-astra-law",
+      "group": "gpt-6-astra-law",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "GPT 6 Astra Law",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-30T18:35:00+00:00",
+      "updated_at": "2026-10-31T16:01:42.266249+00:00",
+      "first_source": "Official pricing page",
+      "lead": "",
+      "released_on": "",
+      "pricing": "$10 / $50 per 1M tokens ($1 cached)",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gpt-6-astra-law",
+          "name": "chatgpt/gpt-6-astra-law",
+          "pricing": "$10 / $50 per 1M tokens ($1 cached)"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Official pricing page",
+          "scanner": "pricing-radar",
+          "detected_at": "2026-10-30T18:35:00+00:00",
+          "title": "New Model Pricing Published on OpenAI: gpt-6-rosalind ($15 / $75 per 1M tokens ($1.50 cached))",
+          "url": "https://developers.openai.com/api/docs/pricing",
+          "backfill": false
+        },
+        {
+          "label": "LiteLLM registry",
+          "scanner": "litellm",
+          "detected_at": "2026-10-31T16:01:42.266249+00:00",
+          "title": "1 New Model(s) Added to LiteLLM",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+          "backfill": false
+        }
+      ],
+      "source_count": 2,
+      "backfill": false,
+      "header": "LEAK · OPENAI",
+      "card_ids": [
+        "pricing-radar-openai_pricing_md-40786a23",
+        "litellm-diff-86e92bbf"
+      ],
+      "x_post_text": "🟠 LEAK: GPT 6 Astra Law by OpenAI\n\nFirst spotted 30 Oct 18:35 UTC in Official pricing page\n💰 Pricing: $10 / $50 per 1M tokens ($1 cached)\nConfirmed by LiteLLM registry\n\nvia @StatsWire"
+    },
+    {
       "id": "story-gpt-6-rosalind",
       "group": "gpt-6-rosalind",
       "kind": "leak",
       "open_weights": false,
       "title": "GPT 6 Rosalind",
-      "provider_slug": "modelsdev",
-      "provider_name": "chatgpt",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
       "accent_color": "#10b981",
-      "detected_at": "2026-10-30T18:38:01.166171+00:00",
+      "detected_at": "2026-10-30T18:35:00+00:00",
       "updated_at": "2026-10-30T18:38:01.166171+00:00",
-      "first_source": "LiteLLM registry",
+      "first_source": "Official pricing page",
       "lead": "",
       "released_on": "",
+      "pricing": "$15 / $75 per 1M tokens ($1.50 cached)",
       "codenames": [],
       "models": [
         {
           "id": "gpt-6-rosalind",
-          "name": "chatgpt/gpt-6-rosalind"
+          "name": "chatgpt/gpt-6-rosalind",
+          "pricing": "$15 / $75 per 1M tokens ($1.50 cached)"
+        },
+        {
+          "id": "gpt-rosalind-research",
+          "name": "GPT Rosalind Research",
+          "pricing": "$5 / $25 per 1M tokens ($0.50 cached)"
+        },
+        {
+          "id": "gpt-rosalind-discovery",
+          "name": "GPT Rosalind Discovery",
+          "pricing": "$5 / $25 per 1M tokens ($0.50 cached)"
         }
       ],
       "sources": [
+        {
+          "label": "Official pricing page",
+          "scanner": "pricing-radar",
+          "detected_at": "2026-10-30T18:35:00+00:00",
+          "title": "New Model Pricing Published on OpenAI: gpt-6-rosalind ($15 / $75 per 1M tokens ($1.50 cached))",
+          "url": "https://developers.openai.com/api/docs/pricing",
+          "backfill": false
+        },
         {
           "label": "LiteLLM registry",
           "scanner": "litellm",
@@ -278,13 +314,14 @@
           "backfill": false
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
-      "header": "LEAK · CHATGPT",
+      "header": "LEAK · OPENAI",
       "card_ids": [
+        "pricing-radar-openai_pricing_md-40786a23",
         "litellm-diff-85f02e7f"
       ],
-      "x_post_text": "🟠 LEAK: GPT 6 Rosalind by chatgpt\n\nFirst spotted 30 Oct 18:38 UTC in LiteLLM registry\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: GPT 6 Rosalind by OpenAI\n\nFirst spotted 30 Oct 18:35 UTC in Official pricing page\n💰 Pricing: $15 / $75 per 1M tokens ($1.50 cached)\nConfirmed by LiteLLM registry\nIDs: gpt-6-rosalind, gpt-rosalind-research, gpt-rosalind-discovery\n\nvia @StatsWire"
     },
     {
       "id": "story-mage-vl-cowork",
@@ -300,6 +337,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -339,6 +377,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -388,6 +427,7 @@
       "first_source": "SGLang pull request",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [
         "unified"
       ],
@@ -429,6 +469,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -468,6 +509,7 @@
       "first_source": "LiteLLM registry",
       "lead": "",
       "released_on": "",
+      "pricing": "$0.23 / $1.87 per 1M tokens",
       "codenames": [],
       "models": [
         {
@@ -484,7 +526,8 @@
         },
         {
           "id": "qwen-audio-3.1-tts-flash",
-          "name": "dashscope/qwen-audio-3.1-tts-flash"
+          "name": "dashscope/qwen-audio-3.1-tts-flash",
+          "pricing": "$0.23 / $1.87 per 1M tokens"
         }
       ],
       "sources": [
@@ -503,7 +546,7 @@
       "card_ids": [
         "litellm-diff-f64e7fb0"
       ],
-      "x_post_text": "🟠 LEAK: Qwen Audio 3 Tts Flash by dashscope\n\nFirst spotted 30 Oct 00:52 UTC in LiteLLM registry\nIDs: qwen-audio-3.0-tts-plus, qwen-audio-3.1-tts-plus, qwen-audio-3.0-tts-flash +1\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: Qwen Audio 3 Tts Flash by dashscope\n\nFirst spotted 30 Oct 00:52 UTC in LiteLLM registry\n💰 Pricing: $0.23 / $1.87 per 1M tokens\nIDs: qwen-audio-3.0-tts-plus, qwen-audio-3.1-tts-plus, qwen-audio-3.0-tts-flash +1\n\nvia @StatsWire"
     },
     {
       "id": "story-pplx-embed-2-context",
@@ -519,6 +562,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -558,6 +602,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -597,6 +642,7 @@
       "first_source": "Vercel AI Gateway Catalog",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -636,6 +682,7 @@
       "first_source": "vLLM pull request",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [
         "bolt"
       ],
@@ -677,6 +724,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "2026-09-04",
+      "pricing": "$0.075 / $0.22 per 1M tokens ($0.015 cached)",
       "codenames": [],
       "models": [
         {
@@ -700,7 +748,7 @@
       "card_ids": [
         "hf-inclusionAI_Ling-3.0-flash-Sante-fp8"
       ],
-      "x_post_text": "🟢 NEW: Ling 3.0 flash Sante by Ant Group\n\nFirst spotted 29 Oct 14:45 UTC in Hugging Face\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW: Ling 3.0 flash Sante by Ant Group\n\nFirst spotted 29 Oct 14:45 UTC in Hugging Face\n💰 Pricing: $0.075 / $0.22 per 1M tokens ($0.015 cached)\n\nvia @StatsWire"
     },
     {
       "id": "story-mistral-large-4",
@@ -716,6 +764,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "2026-10-06",
+      "pricing": "$0.68 / $2.09 per 1M tokens ($0.07 cached)",
       "codenames": [],
       "models": [
         {
@@ -753,7 +802,7 @@
         "hf-mistralai_Mistral-Large-4-1T-A52B",
         "engine-pr-vllm-project_vllm-64534"
       ],
-      "x_post_text": "🟢 NEW: Mistral Large 4 1T by Mistral\n\nFirst spotted 29 Oct 14:11 UTC in Hugging Face\nConfirmed by vLLM pull request\nIDs: Mistral-Large-4-1T-A52B, Mistral-Large-4-1T-A52B-NVFP4\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW: Mistral Large 4 1T by Mistral\n\nFirst spotted 29 Oct 14:11 UTC in Hugging Face\n💰 Pricing: $0.68 / $2.09 per 1M tokens ($0.07 cached)\nConfirmed by vLLM pull request\nIDs: Mistral-Large-4-1T-A52B, Mistral-Large-4-1T-A52B-NVFP4\n\nvia @StatsWire"
     },
     {
       "id": "story-mingv-3asrforconditionalgeneration",
@@ -769,6 +818,7 @@
       "first_source": "vLLM registry",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [
         "mingv"
       ],
@@ -810,6 +860,7 @@
       "first_source": "OpenAI API spec",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -849,6 +900,7 @@
       "first_source": "vLLM registry",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [
         "dsparkminimaxdraftmodel"
       ],
@@ -890,6 +942,7 @@
       "first_source": "Hf pull request",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [
         "dory"
       ],
@@ -931,6 +984,7 @@
       "first_source": "vLLM registry",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [
         "transformersformtp",
         "transformersmoeformtp"
@@ -977,6 +1031,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1016,6 +1071,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1055,11 +1111,13 @@
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-10-28",
+      "pricing": "$0.125 / $0.50 per 1M tokens ($0.015 cached)",
       "codenames": [],
       "models": [
         {
           "id": "particle-1",
-          "name": "Particle-1"
+          "name": "Particle-1",
+          "pricing": "$0.125 / $0.50 per 1M tokens ($0.015 cached)"
         }
       ],
       "sources": [
@@ -1087,7 +1145,7 @@
         "openrouter-model-particle-ai_particle-1",
         "vercel-gateway-diff-01ba054d"
       ],
-      "x_post_text": "🟢 NEW: Particle-1 by Particle-ai\n\nFirst spotted 28 Oct 19:27 UTC in OpenRouter\nConfirmed by Vercel AI Gateway Catalog\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW: Particle-1 by Particle-ai\n\nFirst spotted 28 Oct 19:27 UTC in OpenRouter\n💰 Pricing: $0.125 / $0.50 per 1M tokens ($0.015 cached)\nConfirmed by Vercel AI Gateway Catalog\n\nvia @StatsWire"
     },
     {
       "id": "story-lidarverse",
@@ -1103,6 +1161,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1142,6 +1201,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1181,6 +1241,7 @@
       "first_source": "vLLM registry",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1224,6 +1285,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1263,6 +1325,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1302,6 +1365,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1341,6 +1405,7 @@
       "first_source": "vLLM pull request",
       "lead": "1 h before it went live on Hugging Face",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1399,6 +1464,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1438,6 +1504,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1477,6 +1544,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1516,6 +1584,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1555,6 +1624,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1594,6 +1664,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1633,6 +1704,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1672,6 +1744,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1711,6 +1784,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1750,6 +1824,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1789,6 +1864,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1828,6 +1904,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1867,6 +1944,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1906,6 +1984,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1945,6 +2024,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -1984,6 +2064,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2023,6 +2104,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2062,6 +2144,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2101,6 +2184,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2140,6 +2224,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2179,6 +2264,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2218,6 +2304,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2257,6 +2344,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2296,6 +2384,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2354,6 +2443,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2393,6 +2483,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2432,6 +2523,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2471,6 +2563,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2529,6 +2622,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2568,6 +2662,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2607,6 +2702,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2646,6 +2742,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2685,6 +2782,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2724,6 +2822,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2763,6 +2862,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2802,6 +2902,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2841,6 +2942,7 @@
       "first_source": "Vercel AI Gateway Catalog",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [
         "effects",
         "sound"
@@ -2890,6 +2992,56 @@
       "x_post_text": "🟢 NEW: Eleven Realtime v1 Max by elevenlabs\n\nFirst spotted 27 Oct 16:55 UTC in Vercel AI Gateway Catalog\nCodename: effects, sound\nIDs: music-v2, music-v2.5, sound-effects-v2 +3\n\nvia @StatsWire"
     },
     {
+      "id": "story-lfm-3-audio",
+      "group": "lfm-3-audio",
+      "kind": "release",
+      "open_weights": true,
+      "title": "LFM3 Audio",
+      "provider_slug": "opensource",
+      "provider_name": "Liquid AI",
+      "accent_color": "#22d3ee",
+      "detected_at": "2026-10-27T16:55:19.830819+00:00",
+      "updated_at": "2026-10-27T17:09:21.592988+00:00",
+      "first_source": "Hugging Face",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "LFM3-Audio-2B",
+          "name": "LFM3-Audio-2B"
+        },
+        {
+          "id": "LFM3-Audio-2B-GGUF",
+          "name": "LFM3-Audio-2B-GGUF"
+        },
+        {
+          "id": "LFM3-Audio-2B-MLX-bf16",
+          "name": "LFM3-Audio-2B-MLX-bf16"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-10-27T16:55:19.830819+00:00",
+          "title": "LFM3 Audio 2B GGUF",
+          "url": "https://huggingface.co/LiquidAI/LFM3-Audio-2B-GGUF",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "OPEN WEIGHTS · LIQUID AI",
+      "card_ids": [
+        "hf-LiquidAI_LFM3-Audio-2B-GGUF",
+        "hf-LiquidAI_LFM3-Audio-2B-MLX-bf16",
+        "hf-LiquidAI_LFM3-Audio-2B"
+      ],
+      "x_post_text": "🟢 NEW: LFM3 Audio by Liquid AI\n\nFirst spotted 27 Oct 16:55 UTC in Hugging Face\nIDs: LFM3-Audio-2B, LFM3-Audio-2B-GGUF, LFM3-Audio-2B-MLX-bf16\n\nvia @StatsWire"
+    },
+    {
       "id": "story-lfm-3-omni",
       "group": "lfm-3-omni",
       "kind": "release",
@@ -2903,6 +3055,7 @@
       "first_source": "llama.cpp pull request",
       "lead": "32 min before it went live on Hugging Face",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -2923,7 +3076,7 @@
           "label": "llama.cpp pull request",
           "scanner": "engine-pr-leak",
           "detected_at": "2026-10-27T16:23:02Z",
-          "title": "LiquidAI/LFM3-Audio-2B (llama.cpp PR #31257)",
+          "title": "LiquidAI/LFM3-Omni-2B (llama.cpp PR #31257)",
           "url": "https://github.com/ggml-org/llama.cpp/pull/31257",
           "backfill": false
         },
@@ -2948,64 +3101,6 @@
       "x_post_text": "🟢 NEW: LFM3 Omni by Liquid AI\n\nFirst spotted 27 Oct 16:23 UTC in llama.cpp pull request\n⏱ 32 min before it went live on Hugging Face\nConfirmed by Hugging Face\nIDs: LFM3-Omni-2B, LFM3-Omni-2B-GGUF, LFM3-Omni-2B-MLX-bf16\n\nvia @StatsWire"
     },
     {
-      "id": "story-lfm-3-audio",
-      "group": "lfm-3-audio",
-      "kind": "release",
-      "open_weights": true,
-      "title": "LFM3 Audio",
-      "provider_slug": "opensource",
-      "provider_name": "Liquid AI",
-      "accent_color": "#10b981",
-      "detected_at": "2026-10-27T16:23:02Z",
-      "updated_at": "2026-10-27T17:09:21.592988+00:00",
-      "first_source": "llama.cpp pull request",
-      "lead": "32 min before it went live on Hugging Face",
-      "released_on": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "LFM3-Audio-2B",
-          "name": "LFM3-Audio-2B"
-        },
-        {
-          "id": "LFM3-Audio-2B-GGUF",
-          "name": "LFM3-Audio-2B-GGUF"
-        },
-        {
-          "id": "LFM3-Audio-2B-MLX-bf16",
-          "name": "LFM3-Audio-2B-MLX-bf16"
-        }
-      ],
-      "sources": [
-        {
-          "label": "llama.cpp pull request",
-          "scanner": "engine-pr-leak",
-          "detected_at": "2026-10-27T16:23:02Z",
-          "title": "LiquidAI/LFM3-Audio-2B (llama.cpp PR #31257)",
-          "url": "https://github.com/ggml-org/llama.cpp/pull/31257",
-          "backfill": false
-        },
-        {
-          "label": "Hugging Face",
-          "scanner": "huggingface",
-          "detected_at": "2026-10-27T16:55:19.830819+00:00",
-          "title": "LFM3 Audio 2B GGUF",
-          "url": "https://huggingface.co/LiquidAI/LFM3-Audio-2B-GGUF",
-          "backfill": false
-        }
-      ],
-      "source_count": 2,
-      "backfill": false,
-      "header": "OPEN WEIGHTS · LIQUID AI",
-      "card_ids": [
-        "engine-pr-ggml-org_llama.cpp-31257",
-        "hf-LiquidAI_LFM3-Audio-2B-GGUF",
-        "hf-LiquidAI_LFM3-Audio-2B-MLX-bf16",
-        "hf-LiquidAI_LFM3-Audio-2B"
-      ],
-      "x_post_text": "🟢 NEW: LFM3 Audio by Liquid AI\n\nFirst spotted 27 Oct 16:23 UTC in llama.cpp pull request\n⏱ 32 min before it went live on Hugging Face\nConfirmed by Hugging Face\nIDs: LFM3-Audio-2B, LFM3-Audio-2B-GGUF, LFM3-Audio-2B-MLX-bf16\n\nvia @StatsWire"
-    },
-    {
       "id": "story-minicpm-ocr-1-dspark",
       "group": "minicpm-ocr-1-dspark",
       "kind": "release",
@@ -3019,6 +3114,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -3063,6 +3159,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -3117,6 +3214,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -3171,6 +3269,7 @@
       "first_source": "LMArena",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [
         "goku",
         "pink"
@@ -3213,6 +3312,7 @@
       "first_source": "llama.cpp pull request",
       "lead": "1 h before it went live on Hugging Face",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -3281,6 +3381,7 @@
       "first_source": "llama.cpp pull request",
       "lead": "1 h before it went live on Hugging Face",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -3354,6 +3455,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -3393,6 +3495,7 @@
       "first_source": "SGLang pull request",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [
         "bolt"
       ],
@@ -3434,19 +3537,23 @@
       "first_source": "OpenAI Developer Models Catalog",
       "lead": "8 min before it went live on OpenRouter",
       "released_on": "2026-10-26",
+      "pricing": "$1 / $5 per 1M tokens ($0.05 cached)",
       "codenames": [],
       "models": [
         {
           "id": "gpt-6.1-terra",
-          "name": "GPT-6.1 Terra"
+          "name": "GPT-6.1 Terra",
+          "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
         },
         {
           "id": "gpt-6.1-terra-pro",
-          "name": "GPT-6.1 Terra Pro"
+          "name": "GPT-6.1 Terra Pro",
+          "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
         },
         {
           "id": "gpt-6.1-terra-fast",
-          "name": "GPT-6.1 Terra"
+          "name": "GPT-6.1 Terra",
+          "pricing": "$2 / $10 per 1M tokens ($0.10 cached)"
         },
         {
           "id": "MAI-Image-2.7-Preview",
@@ -3565,7 +3672,7 @@
         "litellm-diff-4eaee542",
         "lmarena-lb-diff-2aa670cb"
       ],
-      "x_post_text": "🟢 NEW: GPT-6.1 Terra by OpenAI\n\nFirst spotted 26 Oct 18:05 UTC in OpenAI Developer Models Catalog\n⏱ 8 min before it went live on OpenRouter\nConfirmed by OpenAI Docs Route, OpenAI Release Sitemap, OpenRouter +7\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW: GPT-6.1 Terra by OpenAI\n\nFirst spotted 26 Oct 18:05 UTC in OpenAI Developer Models Catalog\n💰 Pricing: $1 / $5 per 1M tokens ($0.05 cached)\n⏱ 8 min before it went live on OpenRouter\nConfirmed by OpenAI Docs Route, OpenAI Release Sitemap, OpenRouter +7\n\nvia @StatsWire"
     },
     {
       "id": "story-lbs",
@@ -3581,6 +3688,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -3620,6 +3728,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [
         "unlimited"
       ],
@@ -3670,6 +3779,7 @@
       "first_source": "vLLM pull request",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -3709,6 +3819,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -3748,6 +3859,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -3787,6 +3899,7 @@
       "first_source": "Antigravity ACP config",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [
         "carbon"
       ],
@@ -3845,6 +3958,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -3884,11 +3998,13 @@
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-10-23",
+      "pricing": "$2 / $10 per 1M tokens ($0.20 cached)",
       "codenames": [],
       "models": [
         {
           "id": "kimi-k3.1-pro",
-          "name": "Kimi K3.1 Pro"
+          "name": "Kimi K3.1 Pro",
+          "pricing": "$2 / $10 per 1M tokens ($0.20 cached)"
         }
       ],
       "sources": [
@@ -3907,7 +4023,7 @@
       "card_ids": [
         "openrouter-model-moonshotai_kimi-k3.1-pro"
       ],
-      "x_post_text": "🟢 NEW: Kimi K3.1 Pro by Moonshot\n\nFirst spotted 23 Oct 17:56 UTC in OpenRouter\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW: Kimi K3.1 Pro by Moonshot\n\nFirst spotted 23 Oct 17:56 UTC in OpenRouter\n💰 Pricing: $2 / $10 per 1M tokens ($0.20 cached)\n\nvia @StatsWire"
     },
     {
       "id": "story-sonnet-5-5-high-bon-le",
@@ -3923,6 +4039,7 @@
       "first_source": "Antigravity ACP config",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [
         "barium"
       ],
@@ -3972,6 +4089,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -4016,6 +4134,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -4060,6 +4179,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -4099,6 +4219,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -4143,6 +4264,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -4187,6 +4309,7 @@
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-10-21",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -4226,6 +4349,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -4265,6 +4389,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -4309,6 +4434,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -4348,6 +4474,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -4387,6 +4514,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
+      "pricing": "",
       "codenames": [],
       "models": [
         {
@@ -4426,11 +4554,13 @@
       "first_source": "npm SDK release",
       "lead": "",
       "released_on": "2026-10-13",
+      "pricing": "$4 / $20 per 1M tokens ($0.20 cached)",
       "codenames": [],
       "models": [
         {
           "id": "gemini-4-argon",
-          "name": "Gemini 4 Argon"
+          "name": "Gemini 4 Argon",
+          "pricing": "$2 / $10 per 1M tokens ($0.10 cached)"
         },
         {
           "id": "gemini-4-argon-disabled",
@@ -4442,7 +4572,8 @@
         },
         {
           "id": "gemini-4-argon-cyber-permissive",
-          "name": "Gemini 4 Argon Cyber Permissive"
+          "name": "Gemini 4 Argon Cyber Permissive",
+          "pricing": "$4 / $20 per 1M tokens ($0.20 cached)"
         }
       ],
       "sources": [
@@ -4471,7 +4602,7 @@
         "ag-acp-1.4.1-1.4.2-diff",
         "ag-acp-1.4.3-revision-diff"
       ],
-      "x_post_text": "🟢 NEW: Gemini 4 Argon by Google\n\nFirst spotted 15 Oct 00:06 UTC in npm SDK release\nConfirmed by Antigravity ACP config\nIDs: gemini-4-argon, gemini-4-argon-disabled, gemini-4-argon-max-mode-tf +1\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW: Gemini 4 Argon by Google\n\nFirst spotted 15 Oct 00:06 UTC in npm SDK release\n💰 Pricing: $4 / $20 per 1M tokens ($0.20 cached)\nConfirmed by Antigravity ACP config\nIDs: gemini-4-argon, gemini-4-argon-disabled, gemini-4-argon-max-mode-tf +1\n\nvia @StatsWire"
     }
   ],
   "cards": [
@@ -4487,7 +4618,8 @@
       "models": [
         {
           "id": "chatgpt/gpt-6-astra-law",
-          "name": "chatgpt/gpt-6-astra-law"
+          "name": "chatgpt/gpt-6-astra-law",
+          "pricing": "$10 / $50 per 1M tokens ($1 cached)"
         }
       ],
       "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
@@ -4508,7 +4640,8 @@
         }
       ],
       "detected_at": "2026-10-31T16:01:42.266249+00:00",
-      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 new model keys!\n\n• chatgpt/gpt-6-astra-law (chatgpt/gpt-6-astra-law)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 new model keys!\n\n• chatgpt/gpt-6-astra-law (chatgpt/gpt-6-astra-law)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire",
+      "pricing": "$10 / $50 per 1M tokens ($1 cached)"
     },
     {
       "id": "vllm-arch-8334beceeb",
@@ -4696,7 +4829,8 @@
       "models": [
         {
           "id": "chatgpt/gpt-6-rosalind",
-          "name": "chatgpt/gpt-6-rosalind"
+          "name": "chatgpt/gpt-6-rosalind",
+          "pricing": "$15 / $75 per 1M tokens ($1.50 cached)"
         }
       ],
       "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
@@ -4717,7 +4851,60 @@
         }
       ],
       "detected_at": "2026-10-30T18:38:01.166171+00:00",
-      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 new model keys!\n\n• chatgpt/gpt-6-rosalind (chatgpt/gpt-6-rosalind)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 new model keys!\n\n• chatgpt/gpt-6-rosalind (chatgpt/gpt-6-rosalind)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire",
+      "pricing": "$15 / $75 per 1M tokens ($1.50 cached)"
+    },
+    {
+      "id": "pricing-radar-openai_pricing_md-40786a23",
+      "category": "cli-sdk-diff",
+      "scanner": "pricing-radar",
+      "header": "OPENAI OFFICIAL PRICING RADAR · OPENAI",
+      "title": "New Model Pricing Published on OpenAI: gpt-6-rosalind ($15 / $75 per 1M tokens ($1.50 cached))",
+      "subtitle": "Verified official token pricing in developers.openai.com/api/docs/pricing.md",
+      "build_label": "Official Pricing",
+      "build_transition": "gpt-6-rosalind: $15 / $75 per 1M tokens ($1.50 cached)",
+      "pricing": "$15 / $75 per 1M tokens ($1.50 cached)",
+      "models": [
+        {
+          "id": "gpt-6-rosalind",
+          "name": "GPT 6 Rosalind — $15 / $75 per 1M tokens ($1.50 cached)",
+          "pricing": "$15 / $75 per 1M tokens ($1.50 cached)"
+        },
+        {
+          "id": "gpt-6-astra-law",
+          "name": "GPT 6 Astra Law — $10 / $50 per 1M tokens ($1 cached)",
+          "pricing": "$10 / $50 per 1M tokens ($1 cached)"
+        },
+        {
+          "id": "gpt-rosalind-research",
+          "name": "GPT Rosalind Research — $5 / $25 per 1M tokens ($0.50 cached)",
+          "pricing": "$5 / $25 per 1M tokens ($0.50 cached)"
+        },
+        {
+          "id": "gpt-rosalind-discovery",
+          "name": "GPT Rosalind Discovery — $5 / $25 per 1M tokens ($0.50 cached)",
+          "pricing": "$5 / $25 per 1M tokens ($0.50 cached)"
+        }
+      ],
+      "evidence": "developers.openai.com/api/docs/pricing.md",
+      "source_text": "official OpenAI API pricing page (developers.openai.com/api/docs/pricing.md).",
+      "disclaimer_1": "Extracted directly from official first-party API pricing tables.",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "Official Pricing Page",
+          "url": "https://developers.openai.com/api/docs/pricing"
+        },
+        {
+          "label": "Raw Pricing Markdown",
+          "url": "https://developers.openai.com/api/docs/pricing.md"
+        }
+      ],
+      "detected_at": "2026-10-30T18:35:00+00:00",
+      "x_post_text": "🚨 OPENAI OFFICIAL PRICING RADAR · OPENAI\nNew Model Pricing Published on OpenAI: gpt-6-rosalind ($15 / $75 per 1M tokens ($1.50 cached)) spotted in Official Pricing gpt-6-rosalind: $15 / $75 per 1M tokens ($1.50 cached)!\n\n• GPT 6 Rosalind — $15 / $75 per 1M tokens ($1.50 cached) (gpt-6-rosalind)\n• GPT 6 Astra Law — $10 / $50 per 1M tokens ($1 cached) (gpt-6-astra-law)\n• GPT Rosalind Research — $5 / $25 per 1M tokens ($0.50 cached) (gpt-rosalind-research)\n• GPT Rosalind Discovery — $5 / $25 per 1M tokens ($0.50 cached) (gpt-rosalind-discovery)\n\nEvidence: developers.openai.com/api/docs/pricing.md\nSource: official OpenAI API pricing page (developers.openai.com/api/docs/pricing.md).\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-microsoft_Mage-VL-Cowork",
@@ -4948,7 +5135,8 @@
         },
         {
           "id": "dashscope/qwen-audio-3.1-tts-flash",
-          "name": "dashscope/qwen-audio-3.1-tts-flash"
+          "name": "dashscope/qwen-audio-3.1-tts-flash",
+          "pricing": "$0.23 / $1.87 per 1M tokens"
         },
         {
           "id": "dashscope/qwen-audio-3.1-tts-plus",
@@ -4974,7 +5162,8 @@
       ],
       "detected_at": "2026-10-30T00:52:49.176584+00:00",
       "filtered_released": 1,
-      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n5 New Model(s) Added to LiteLLM spotted in Registry Diff +5 new model keys!\n\n• dashscope/qwen-audio-3.0-tts-flash (dashscope/qwen-audio-3.0-tts-flash)\n• dashscope/qwen-audio-3.0-tts-plus (dashscope/qwen-audio-3.0-tts-plus)\n• dashscope/qwen-audio-3.1-tts-flash (dashscope/qwen-audio-3.1-tts-flash)\n• dashscope/qwen-audio-3.1-tts-plus (dashscope/qwen-audio-3.1-tts-plus)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n5 New Model(s) Added to LiteLLM spotted in Registry Diff +5 new model keys!\n\n• dashscope/qwen-audio-3.0-tts-flash (dashscope/qwen-audio-3.0-tts-flash)\n• dashscope/qwen-audio-3.0-tts-plus (dashscope/qwen-audio-3.0-tts-plus)\n• dashscope/qwen-audio-3.1-tts-flash (dashscope/qwen-audio-3.1-tts-flash)\n• dashscope/qwen-audio-3.1-tts-plus (dashscope/qwen-audio-3.1-tts-plus)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire",
+      "pricing": "$0.23 / $1.87 per 1M tokens"
     },
     {
       "id": "hf-perplexity-ai_pplx-embed-v2-context-9b",
@@ -5651,7 +5840,8 @@
       "models": [
         {
           "id": "particle/particle-1",
-          "name": "Particle-1"
+          "name": "Particle-1",
+          "pricing": "$0.125 / $0.50 per 1M tokens ($0.015 cached)"
         }
       ],
       "evidence": "ai-gateway.vercel.sh/v1/models",
@@ -5668,7 +5858,8 @@
         }
       ],
       "detected_at": "2026-10-28T19:49:36.514119+00:00",
-      "x_post_text": "🚨 VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS\nNew Model on Vercel AI Gateway: Particle-1 spotted in Gateway Diff +1 new model(s)!\n\n• Particle-1 (particle/particle-1)\n\nEvidence: ai-gateway.vercel.sh/v1/models\nSource: public Vercel AI Gateway /v1/models catalog.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS\nNew Model on Vercel AI Gateway: Particle-1 spotted in Gateway Diff +1 new model(s)!\n\n• Particle-1 (particle/particle-1)\n\nEvidence: ai-gateway.vercel.sh/v1/models\nSource: public Vercel AI Gateway /v1/models catalog.\n\nTracked by @StatsWire",
+      "pricing": "$0.125 / $0.50 per 1M tokens ($0.015 cached)"
     },
     {
       "id": "openrouter-model-particle-ai_particle-1",
@@ -5682,7 +5873,8 @@
       "models": [
         {
           "id": "particle-ai/particle-1",
-          "name": "Particle AI: Particle-1 (1048k context window)"
+          "name": "Particle AI: Particle-1 (1048k context window)",
+          "pricing": "$0.05 / $0.50 per 1M tokens ($0.003 cached)"
         }
       ],
       "evidence": "openrouter.ai/api/v1/models",
@@ -5703,7 +5895,8 @@
         }
       ],
       "detected_at": "2026-10-28T19:27:26.054290+00:00",
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · PARTICLE-AI\nParticle AI: Particle-1 spotted in Endpoint ID particle-ai/particle-1!\n\n• Particle AI: Particle-1 (1048k context window) (particle-ai/particle-1)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · PARTICLE-AI\nParticle AI: Particle-1 spotted in Endpoint ID particle-ai/particle-1!\n\n• Particle AI: Particle-1 (1048k context window) (particle-ai/particle-1)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire",
+      "pricing": "$0.05 / $0.50 per 1M tokens ($0.003 cached)"
     },
     {
       "id": "hf-nvidia_lidarverse",
@@ -6032,7 +6225,8 @@
       "models": [
         {
           "id": "GPT-6.1 Terra (Max)",
-          "name": "GPT-6.1 Terra (Max) (WebDev Arena)"
+          "name": "GPT-6.1 Terra (Max) (WebDev Arena)",
+          "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
         },
         {
           "id": "MAI-Image-2.7-Preview",
@@ -6053,7 +6247,8 @@
         }
       ],
       "detected_at": "2026-10-28T03:41:24.000Z",
-      "x_post_text": "🚨 ARENA.AI NEW MODEL DIFF · LMARENA\nNew Model(s) Added to Arena (GPT-6.1 Terra (Max)) spotted in Arena Diff +2 new Arena models!\n\n• GPT-6.1 Terra (Max) (WebDev Arena) (GPT-6.1 Terra (Max))\n• MAI-Image-2.7-Preview (Image Edit) (MAI-Image-2.7-Preview)\n\nEvidence: huggingface.co/datasets/lmarena-ai/leaderboard-dataset\nSource: official LMArena (arena.ai) Hugging Face dataset.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 ARENA.AI NEW MODEL DIFF · LMARENA\nNew Model(s) Added to Arena (GPT-6.1 Terra (Max)) spotted in Arena Diff +2 new Arena models!\n\n• GPT-6.1 Terra (Max) (WebDev Arena) (GPT-6.1 Terra (Max))\n• MAI-Image-2.7-Preview (Image Edit) (MAI-Image-2.7-Preview)\n\nEvidence: huggingface.co/datasets/lmarena-ai/leaderboard-dataset\nSource: official LMArena (arena.ai) Hugging Face dataset.\n\nTracked by @StatsWire",
+      "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
     },
     {
       "id": "hf-nvidia_NVIDIA-NemotronLabs-AI-for-Media-Sports-Tennis",
@@ -6452,7 +6647,8 @@
       "models": [
         {
           "id": "bedrock_mantle/openai.gpt-6.1-terra",
-          "name": "bedrock_mantle/openai.gpt-6.1-terra"
+          "name": "bedrock_mantle/openai.gpt-6.1-terra",
+          "pricing": "$1.10 / $5.50 per 1M tokens ($0.055 cached)"
         }
       ],
       "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
@@ -6473,7 +6669,8 @@
         }
       ],
       "detected_at": "2026-10-27T19:39:58.104873+00:00",
-      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 new model keys!\n\n• bedrock_mantle/openai.gpt-6.1-terra (bedrock_mantle/openai.gpt-6.1-terra)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 new model keys!\n\n• bedrock_mantle/openai.gpt-6.1-terra (bedrock_mantle/openai.gpt-6.1-terra)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire",
+      "pricing": "$1.10 / $5.50 per 1M tokens ($0.055 cached)"
     },
     {
       "id": "engine-pr-ggml-org_llama.cpp-31275",
@@ -8153,15 +8350,11 @@
       "category": "open-source",
       "scanner": "engine-pr-leak",
       "header": "LLAMA.CPP PR DAY-0 MODEL ONBOARDING (OPEN)",
-      "title": "LiquidAI/LFM3-Audio-2B (llama.cpp PR #31257)",
+      "title": "LiquidAI/LFM3-Omni-2B (llama.cpp PR #31257)",
       "subtitle": "model : add LiquidAI/LFM3-Audio-2B and LiquidAI/LFM3-Omni-2B",
       "build_label": "llama.cpp PR",
       "build_transition": "PR #31257 (open)",
       "models": [
-        {
-          "id": "LiquidAI/LFM3-Audio-2B",
-          "name": "LFM3-Audio-2B"
-        },
         {
           "id": "LiquidAI/LFM3-Omni-2B",
           "name": "LFM3-Omni-2B"
@@ -8181,7 +8374,8 @@
         }
       ],
       "detected_at": "2026-10-27T16:23:02Z",
-      "x_post_text": "🚨 LLAMA.CPP PR DAY-0 MODEL ONBOARDING (OPEN)\nLiquidAI/LFM3-Audio-2B (llama.cpp PR #31257) spotted in llama.cpp PR PR #31257 (open)!\n\n• LFM3-Audio-2B (LiquidAI/LFM3-Audio-2B)\n• LFM3-Omni-2B (LiquidAI/LFM3-Omni-2B)\n\nEvidence: ggml-org/llama.cpp/pull/31257\nSource: public GitHub pull request #31257 on ggml-org/llama.cpp.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 LLAMA.CPP PR DAY-0 MODEL ONBOARDING (OPEN)\nLiquidAI/LFM3-Omni-2B (llama.cpp PR #31257) spotted in llama.cpp PR PR #31257 (open)!\n\n• LFM3-Omni-2B (LiquidAI/LFM3-Omni-2B)\n\nEvidence: ggml-org/llama.cpp/pull/31257\nSource: public GitHub pull request #31257 on ggml-org/llama.cpp.\n\nTracked by @StatsWire",
+      "filtered_released": 1
     },
     {
       "id": "hf-openbmb_MiniCPM-OCR-1.0-GPTQ",
@@ -8654,11 +8848,13 @@
       "models": [
         {
           "id": "global.openai.gpt-6.1-terra",
-          "name": "global.openai.gpt-6.1-terra"
+          "name": "global.openai.gpt-6.1-terra",
+          "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
         },
         {
           "id": "us.openai.gpt-6.1-terra",
-          "name": "us.openai.gpt-6.1-terra"
+          "name": "us.openai.gpt-6.1-terra",
+          "pricing": "$1.10 / $5.50 per 1M tokens ($0.055 cached)"
         }
       ],
       "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
@@ -8679,7 +8875,8 @@
         }
       ],
       "detected_at": "2026-10-26T22:54:22.825676+00:00",
-      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n2 New Model(s) Added to LiteLLM spotted in Registry Diff +2 new model keys!\n\n• global.openai.gpt-6.1-terra (global.openai.gpt-6.1-terra)\n• us.openai.gpt-6.1-terra (us.openai.gpt-6.1-terra)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n2 New Model(s) Added to LiteLLM spotted in Registry Diff +2 new model keys!\n\n• global.openai.gpt-6.1-terra (global.openai.gpt-6.1-terra)\n• us.openai.gpt-6.1-terra (us.openai.gpt-6.1-terra)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire",
+      "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
     },
     {
       "id": "models-dev-diff-6f65cea9",
@@ -8693,11 +8890,13 @@
       "models": [
         {
           "id": "azure/gpt-6.1-terra",
-          "name": "GPT-6.1 Terra (Azure · release: 2026-10-26)"
+          "name": "GPT-6.1 Terra (Azure · release: 2026-10-26)",
+          "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
         },
         {
           "id": "github-copilot/gpt-6.1-terra",
-          "name": "GPT-6.1 Terra (GitHub Copilot · release: 2026-10-26)"
+          "name": "GPT-6.1 Terra (GitHub Copilot · release: 2026-10-26)",
+          "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
         }
       ],
       "evidence": "models.dev/api.json",
@@ -8718,7 +8917,8 @@
         }
       ],
       "detected_at": "2026-10-26T22:54:16.063648+00:00",
-      "x_post_text": "🚨 MODELS.DEV GLOBAL REGISTRY DIFF · OPENCODE / SST\n2 New Model(s) Added to models.dev spotted in Registry Diff +2 new canonical model(s)!\n\n• GPT-6.1 Terra (Azure · release: 2026-10-26) (azure/gpt-6.1-terra)\n• GPT-6.1 Terra (GitHub Copilot · release: 2026-10-26) (github-copilot/gpt-6.1-terra)\n\nEvidence: models.dev/api.json\nSource: official models.dev global AI coding model registry.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 MODELS.DEV GLOBAL REGISTRY DIFF · OPENCODE / SST\n2 New Model(s) Added to models.dev spotted in Registry Diff +2 new canonical model(s)!\n\n• GPT-6.1 Terra (Azure · release: 2026-10-26) (azure/gpt-6.1-terra)\n• GPT-6.1 Terra (GitHub Copilot · release: 2026-10-26) (github-copilot/gpt-6.1-terra)\n\nEvidence: models.dev/api.json\nSource: official models.dev global AI coding model registry.\n\nTracked by @StatsWire",
+      "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
     },
     {
       "id": "engine-pr-sgl-project_sglang-46663",
@@ -8768,7 +8968,8 @@
       "models": [
         {
           "id": "gpt-6.1-terra",
-          "name": "GPT 6.1 Terra"
+          "name": "GPT 6.1 Terra",
+          "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
         }
       ],
       "evidence": "resources/shared.d.ts / SDK bundle",
@@ -8789,7 +8990,8 @@
         }
       ],
       "detected_at": "2026-10-26T19:27:19.231Z",
-      "x_post_text": "🚨 OPENAI OFFICIAL SDK DIFF · OPENAI\nOpenai (GPT 6.1 Terra) spotted in Package Diff 7.44.0 -> 7.45.0!\n\n• GPT 6.1 Terra (gpt-6.1-terra)\n\nEvidence: resources/shared.d.ts / SDK bundle\nSource: official public npm registry tarball (openai).\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 OPENAI OFFICIAL SDK DIFF · OPENAI\nOpenai (GPT 6.1 Terra) spotted in Package Diff 7.44.0 -> 7.45.0!\n\n• GPT 6.1 Terra (gpt-6.1-terra)\n\nEvidence: resources/shared.d.ts / SDK bundle\nSource: official public npm registry tarball (openai).\n\nTracked by @StatsWire",
+      "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
     },
     {
       "id": "vercel-gateway-diff-f795ac94",
@@ -8803,7 +9005,8 @@
       "models": [
         {
           "id": "openai/gpt-6.1-terra-fast",
-          "name": "GPT-6.1 Terra (Fast)"
+          "name": "GPT-6.1 Terra (Fast)",
+          "pricing": "$2 / $10 per 1M tokens ($0.10 cached)"
         }
       ],
       "evidence": "ai-gateway.vercel.sh/v1/models",
@@ -8820,7 +9023,8 @@
         }
       ],
       "detected_at": "2026-10-26T18:48:28.592532+00:00",
-      "x_post_text": "🚨 VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS\nNew Model on Vercel AI Gateway: GPT-6.1 Terra (Fast) spotted in Gateway Diff +1 new model(s)!\n\n• GPT-6.1 Terra (Fast) (openai/gpt-6.1-terra-fast)\n\nEvidence: ai-gateway.vercel.sh/v1/models\nSource: public Vercel AI Gateway /v1/models catalog.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS\nNew Model on Vercel AI Gateway: GPT-6.1 Terra (Fast) spotted in Gateway Diff +1 new model(s)!\n\n• GPT-6.1 Terra (Fast) (openai/gpt-6.1-terra-fast)\n\nEvidence: ai-gateway.vercel.sh/v1/models\nSource: public Vercel AI Gateway /v1/models catalog.\n\nTracked by @StatsWire",
+      "pricing": "$2 / $10 per 1M tokens ($0.10 cached)"
     },
     {
       "id": "litellm-diff-a2fc150f",
@@ -8834,7 +9038,8 @@
       "models": [
         {
           "id": "chatgpt/gpt-6.1-terra",
-          "name": "chatgpt/gpt-6.1-terra"
+          "name": "chatgpt/gpt-6.1-terra",
+          "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
         }
       ],
       "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
@@ -8855,7 +9060,8 @@
         }
       ],
       "detected_at": "2026-10-26T18:48:13.246373+00:00",
-      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 new model keys!\n\n• chatgpt/gpt-6.1-terra (chatgpt/gpt-6.1-terra)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 new model keys!\n\n• chatgpt/gpt-6.1-terra (chatgpt/gpt-6.1-terra)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire",
+      "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
     },
     {
       "id": "pre-release-gh_openai_sdk_union-901b6769",
@@ -8869,7 +9075,8 @@
       "models": [
         {
           "id": "gpt-6.1-terra",
-          "name": "GPT 6.1 Terra"
+          "name": "GPT 6.1 Terra",
+          "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
         }
       ],
       "evidence": "openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel)",
@@ -8886,7 +9093,8 @@
         }
       ],
       "detected_at": "2026-10-26T18:48:09.520392+00:00",
-      "x_post_text": "🚨 OPENAI SDK GITHUB MASTER DIFF · OPENAI\nNew OpenAI Model Merged to SDK Master: gpt-6.1-terra spotted in Pre-Release Scout +1 unannounced identifier(s)!\n\n• GPT 6.1 Terra (gpt-6.1-terra)\n\nEvidence: openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel)\nSource: openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel)\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 OPENAI SDK GITHUB MASTER DIFF · OPENAI\nNew OpenAI Model Merged to SDK Master: gpt-6.1-terra spotted in Pre-Release Scout +1 unannounced identifier(s)!\n\n• GPT 6.1 Terra (gpt-6.1-terra)\n\nEvidence: openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel)\nSource: openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel)\n\nTracked by @StatsWire",
+      "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
     },
     {
       "id": "docs-diff-azure-foundry-direct-901b6769",
@@ -8900,7 +9108,8 @@
       "models": [
         {
           "id": "gpt-6.1-terra",
-          "name": "GPT 6.1 Terra"
+          "name": "GPT 6.1 Terra",
+          "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
         }
       ],
       "evidence": "learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure",
@@ -8921,7 +9130,8 @@
         }
       ],
       "detected_at": "2026-10-26T18:48:09.153133+00:00",
-      "x_post_text": "🚨 AZURE AI FOUNDRY DIRECT MODELS · MICROSOFT / OPENAI\nNew Model Spotted in Azure AI Foundry Direct Models Catalog spotted in Docs Diff +1 new identifier(s)!\n\n• GPT 6.1 Terra (gpt-6.1-terra)\n\nEvidence: learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure\nSource: official Microsoft Azure AI Foundry direct models & deployment catalog.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 AZURE AI FOUNDRY DIRECT MODELS · MICROSOFT / OPENAI\nNew Model Spotted in Azure AI Foundry Direct Models Catalog spotted in Docs Diff +1 new identifier(s)!\n\n• GPT 6.1 Terra (gpt-6.1-terra)\n\nEvidence: learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure\nSource: official Microsoft Azure AI Foundry direct models & deployment catalog.\n\nTracked by @StatsWire",
+      "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
     },
     {
       "id": "models-dev-diff-1dcd13c2",
@@ -8935,7 +9145,8 @@
       "models": [
         {
           "id": "openai/gpt-6.1-terra",
-          "name": "GPT-6.1 Terra (OpenAI · release: 2026-10-26)"
+          "name": "GPT-6.1 Terra (OpenAI · release: 2026-10-26)",
+          "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
         }
       ],
       "evidence": "models.dev/api.json",
@@ -8956,7 +9167,8 @@
         }
       ],
       "detected_at": "2026-10-26T18:48:05.210810+00:00",
-      "x_post_text": "🚨 MODELS.DEV GLOBAL REGISTRY DIFF · OPENCODE / SST\n1 New Model(s) Added to models.dev spotted in Registry Diff +1 new canonical model(s)!\n\n• GPT-6.1 Terra (OpenAI · release: 2026-10-26) (openai/gpt-6.1-terra)\n\nEvidence: models.dev/api.json\nSource: official models.dev global AI coding model registry.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 MODELS.DEV GLOBAL REGISTRY DIFF · OPENCODE / SST\n1 New Model(s) Added to models.dev spotted in Registry Diff +1 new canonical model(s)!\n\n• GPT-6.1 Terra (OpenAI · release: 2026-10-26) (openai/gpt-6.1-terra)\n\nEvidence: models.dev/api.json\nSource: official models.dev global AI coding model registry.\n\nTracked by @StatsWire",
+      "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
     },
     {
       "id": "openrouter-model-openai_gpt-6.1-terra-pro",
@@ -8970,7 +9182,8 @@
       "models": [
         {
           "id": "openai/gpt-6.1-terra-pro",
-          "name": "OpenAI: GPT-6.1 Terra Pro (1050k context window)"
+          "name": "OpenAI: GPT-6.1 Terra Pro (1050k context window)",
+          "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
         }
       ],
       "evidence": "openrouter.ai/api/v1/models",
@@ -8992,7 +9205,8 @@
       ],
       "detected_at": "2026-10-26T18:15:56+00:00",
       "backfill": true,
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · OPENAI\nOpenAI: GPT-6.1 Terra Pro spotted in Endpoint ID openai/gpt-6.1-terra-pro!\n\n• OpenAI: GPT-6.1 Terra Pro (1050k context window) (openai/gpt-6.1-terra-pro)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · OPENAI\nOpenAI: GPT-6.1 Terra Pro spotted in Endpoint ID openai/gpt-6.1-terra-pro!\n\n• OpenAI: GPT-6.1 Terra Pro (1050k context window) (openai/gpt-6.1-terra-pro)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire",
+      "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
     },
     {
       "id": "openrouter-model-openai_gpt-6.1-terra-pro_batch",
@@ -9006,7 +9220,8 @@
       "models": [
         {
           "id": "openai/gpt-6.1-terra-pro:batch",
-          "name": "OpenAI: GPT-6.1 Terra Pro (batch) (1050k context window)"
+          "name": "OpenAI: GPT-6.1 Terra Pro (batch) (1050k context window)",
+          "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
         }
       ],
       "evidence": "openrouter.ai/api/v1/models",
@@ -9028,7 +9243,8 @@
       ],
       "detected_at": "2026-10-26T18:15:56+00:00",
       "backfill": true,
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · OPENAI\nOpenAI: GPT-6.1 Terra Pro (batch) spotted in Endpoint ID openai/gpt-6.1-terra-pro:batch!\n\n• OpenAI: GPT-6.1 Terra Pro (batch) (1050k context window) (openai/gpt-6.1-terra-pro:batch)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · OPENAI\nOpenAI: GPT-6.1 Terra Pro (batch) spotted in Endpoint ID openai/gpt-6.1-terra-pro:batch!\n\n• OpenAI: GPT-6.1 Terra Pro (batch) (1050k context window) (openai/gpt-6.1-terra-pro:batch)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire",
+      "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
     },
     {
       "id": "openrouter-model-openai_gpt-6.1-terra",
@@ -9042,7 +9258,8 @@
       "models": [
         {
           "id": "openai/gpt-6.1-terra",
-          "name": "OpenAI: GPT-6.1 Terra (1050k context window)"
+          "name": "OpenAI: GPT-6.1 Terra (1050k context window)",
+          "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
         }
       ],
       "evidence": "openrouter.ai/api/v1/models",
@@ -9064,7 +9281,8 @@
       ],
       "detected_at": "2026-10-26T18:13:29+00:00",
       "backfill": true,
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · OPENAI\nOpenAI: GPT-6.1 Terra spotted in Endpoint ID openai/gpt-6.1-terra!\n\n• OpenAI: GPT-6.1 Terra (1050k context window) (openai/gpt-6.1-terra)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · OPENAI\nOpenAI: GPT-6.1 Terra spotted in Endpoint ID openai/gpt-6.1-terra!\n\n• OpenAI: GPT-6.1 Terra (1050k context window) (openai/gpt-6.1-terra)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire",
+      "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
     },
     {
       "id": "openrouter-model-openai_gpt-6.1-terra_batch",
@@ -9078,7 +9296,8 @@
       "models": [
         {
           "id": "openai/gpt-6.1-terra:batch",
-          "name": "OpenAI: GPT-6.1 Terra (batch) (1050k context window)"
+          "name": "OpenAI: GPT-6.1 Terra (batch) (1050k context window)",
+          "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
         }
       ],
       "evidence": "openrouter.ai/api/v1/models",
@@ -9100,7 +9319,8 @@
       ],
       "detected_at": "2026-10-26T18:13:29+00:00",
       "backfill": true,
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · OPENAI\nOpenAI: GPT-6.1 Terra (batch) spotted in Endpoint ID openai/gpt-6.1-terra:batch!\n\n• OpenAI: GPT-6.1 Terra (batch) (1050k context window) (openai/gpt-6.1-terra:batch)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · OPENAI\nOpenAI: GPT-6.1 Terra (batch) spotted in Endpoint ID openai/gpt-6.1-terra:batch!\n\n• OpenAI: GPT-6.1 Terra (batch) (1050k context window) (openai/gpt-6.1-terra:batch)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire",
+      "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
     },
     {
       "id": "pre-release-openai_sitemap_routes-7b85db01",
@@ -9145,7 +9365,8 @@
       "models": [
         {
           "id": "gpt-6.1-terra",
-          "name": "GPT 6.1 Terra"
+          "name": "GPT 6.1 Terra",
+          "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
         }
       ],
       "evidence": "developers.openai.com/api/docs/models/*.md",
@@ -9162,7 +9383,8 @@
         }
       ],
       "detected_at": "2026-10-26T18:05:20.916889+00:00",
-      "x_post_text": "🚨 OPENAI DOCS ROUTE SCOUT · OPENAI\nNew Model Doc Page Staged on OpenAI: gpt-6.1-terra spotted in Pre-Release Scout +1 unannounced identifier(s)!\n\n• GPT 6.1 Terra (gpt-6.1-terra)\n\nEvidence: developers.openai.com/api/docs/models/*.md\nSource: developers.openai.com/api/docs/models/*.md\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 OPENAI DOCS ROUTE SCOUT · OPENAI\nNew Model Doc Page Staged on OpenAI: gpt-6.1-terra spotted in Pre-Release Scout +1 unannounced identifier(s)!\n\n• GPT 6.1 Terra (gpt-6.1-terra)\n\nEvidence: developers.openai.com/api/docs/models/*.md\nSource: developers.openai.com/api/docs/models/*.md\n\nTracked by @StatsWire",
+      "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
     },
     {
       "id": "docs-diff-openai-models-all-md-901b6769",
@@ -9176,7 +9398,8 @@
       "models": [
         {
           "id": "gpt-6.1-terra",
-          "name": "GPT 6.1 Terra"
+          "name": "GPT 6.1 Terra",
+          "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
         }
       ],
       "evidence": "developers.openai.com/api/docs/models/all.md",
@@ -9197,7 +9420,8 @@
         }
       ],
       "detected_at": "2026-10-26T18:05:16.744411+00:00",
-      "x_post_text": "🚨 OPENAI DEVELOPER MODELS CATALOG · OPENAI\nNew Model Spotted in OpenAI Official Models Markdown Index spotted in Docs Diff +1 new identifier(s)!\n\n• GPT 6.1 Terra (gpt-6.1-terra)\n\nEvidence: developers.openai.com/api/docs/models/all.md\nSource: official OpenAI API Markdown model catalog.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 OPENAI DEVELOPER MODELS CATALOG · OPENAI\nNew Model Spotted in OpenAI Official Models Markdown Index spotted in Docs Diff +1 new identifier(s)!\n\n• GPT 6.1 Terra (gpt-6.1-terra)\n\nEvidence: developers.openai.com/api/docs/models/all.md\nSource: official OpenAI API Markdown model catalog.\n\nTracked by @StatsWire",
+      "pricing": "$1 / $5 per 1M tokens ($0.05 cached)"
     },
     {
       "id": "hf-inclusionAI_LBS-27B",
@@ -9476,7 +9700,8 @@
       "models": [
         {
           "id": "moonshotai/kimi-k3.1-pro",
-          "name": "MoonshotAI: Kimi K3.1 Pro (1048k context window)"
+          "name": "MoonshotAI: Kimi K3.1 Pro (1048k context window)",
+          "pricing": "$2 / $10 per 1M tokens ($0.20 cached)"
         }
       ],
       "evidence": "openrouter.ai/api/v1/models",
@@ -9498,7 +9723,8 @@
       ],
       "detected_at": "2026-10-23T17:56:28+00:00",
       "backfill": true,
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · MOONSHOTAI\nMoonshotAI: Kimi K3.1 Pro spotted in Endpoint ID moonshotai/kimi-k3.1-pro!\n\n• MoonshotAI: Kimi K3.1 Pro (1048k context window) (moonshotai/kimi-k3.1-pro)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · MOONSHOTAI\nMoonshotAI: Kimi K3.1 Pro spotted in Endpoint ID moonshotai/kimi-k3.1-pro!\n\n• MoonshotAI: Kimi K3.1 Pro (1048k context window) (moonshotai/kimi-k3.1-pro)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire",
+      "pricing": "$2 / $10 per 1M tokens ($0.20 cached)"
     },
     {
       "id": "ag-acp-1.4.1-1.4.2-diff",
@@ -9530,7 +9756,8 @@
         },
         {
           "id": "gemini-4-argon-cyber-permissive",
-          "name": "Gemini 4 Argon Cyber Permissive"
+          "name": "Gemini 4 Argon Cyber Permissive",
+          "pricing": "$4 / $20 per 1M tokens ($0.20 cached)"
         }
       ],
       "evidence": "agy_acp_server.par -> google3/google/internal/cloud/code/cloudcode-pa_prod_google_rest_v1internal.json",
@@ -9555,7 +9782,8 @@
         "barium"
       ],
       "filtered_released": 1,
-      "x_post_text": "🚨 ANTIGRAVITY ACP (UNMANIFESTED DROP) · GOOGLE\nSonnet 5.5 High BoN LE (ACP v1.4.2 Discovery Doc) spotted in Discovery Doc Diff v1.4.1 -> v1.4.2 · 1,478,577 -> 1,489,047 bytes (+10,470)!\n\n• Sonnet 5.5 High BoN LE (sonnet-5.5-high-bon-le)\n• Gemini 4 Argon Disabled (gemini-4-argon-disabled)\n• Barium B Concise Final Response DI TF (barium-b-concise-final-response-di-tf)\n• Barium B Final Visibles v7 TF (barium-b-final-visibles-v7-tf)\n• Gemini 4 Argon Cyber Permissive (gemini-4-argon-cyber-permissive)\n\nEvidence: agy_acp_server.par -> google3/google/internal/cloud/code/cloudcode-pa_prod_google_rest_v1internal.json\nSource: official Google Antigravity ACP Server release archives on dl.google.com.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 ANTIGRAVITY ACP (UNMANIFESTED DROP) · GOOGLE\nSonnet 5.5 High BoN LE (ACP v1.4.2 Discovery Doc) spotted in Discovery Doc Diff v1.4.1 -> v1.4.2 · 1,478,577 -> 1,489,047 bytes (+10,470)!\n\n• Sonnet 5.5 High BoN LE (sonnet-5.5-high-bon-le)\n• Gemini 4 Argon Disabled (gemini-4-argon-disabled)\n• Barium B Concise Final Response DI TF (barium-b-concise-final-response-di-tf)\n• Barium B Final Visibles v7 TF (barium-b-final-visibles-v7-tf)\n• Gemini 4 Argon Cyber Permissive (gemini-4-argon-cyber-permissive)\n\nEvidence: agy_acp_server.par -> google3/google/internal/cloud/code/cloudcode-pa_prod_google_rest_v1internal.json\nSource: official Google Antigravity ACP Server release archives on dl.google.com.\n\nTracked by @StatsWire",
+      "pricing": "$4 / $20 per 1M tokens ($0.20 cached)"
     },
     {
       "id": "hf-internlm_Atria-Dawn",
@@ -10147,7 +10375,8 @@
       "models": [
         {
           "id": "gemini-4-argon",
-          "name": "Gemini 4 Argon"
+          "name": "Gemini 4 Argon",
+          "pricing": "$2 / $10 per 1M tokens ($0.10 cached)"
         }
       ],
       "evidence": "dist/index.d.ts / SDK bundle",
@@ -10168,7 +10397,8 @@
         }
       ],
       "detected_at": "2026-10-15T00:06:41.128Z",
-      "x_post_text": "🚨 GOOGLE GENAI SDK DIFF · GOOGLE\nGenai (Gemini 4 Argon) spotted in Package Diff 2.29.1 -> 2.30.0!\n\n• Gemini 4 Argon (gemini-4-argon)\n\nEvidence: dist/index.d.ts / SDK bundle\nSource: official public npm registry tarball (@google/genai).\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 GOOGLE GENAI SDK DIFF · GOOGLE\nGenai (Gemini 4 Argon) spotted in Package Diff 2.29.1 -> 2.30.0!\n\n• Gemini 4 Argon (gemini-4-argon)\n\nEvidence: dist/index.d.ts / SDK bundle\nSource: official public npm registry tarball (@google/genai).\n\nTracked by @StatsWire",
+      "pricing": "$2 / $10 per 1M tokens ($0.10 cached)"
     },
     {
       "id": "gh-python-genai-gemini-4-flash-scrubbed",
@@ -10190,7 +10420,8 @@
         },
         {
           "id": "gemini-3.8-flash",
-          "name": "Current Active Latest Flash in Google SDK / CLI Today"
+          "name": "Current Active Latest Flash in Google SDK / CLI Today",
+          "pricing": "$0.75 / $3.75 per 1M tokens ($0.075 cached)"
         }
       ],
       "evidence": "googleapis/python-genai -> google/genai/_local_tokenizer_loader.py",
@@ -10211,7 +10442,8 @@
         }
       ],
       "detected_at": "2026-08-10T16:50:03+00:00",
-      "x_post_text": "🚨 GOOGLE PYTHON-GENAI SDK GIT FORENSICS · GOOGLE\nGemini 4 Flash Preview (Added Jun 10 -> Removed Aug 10) spotted in Git Commit History ca97c580 (2026-06-10 Added) -> 6a4c0b0a (2026-08-10 Removed)!\n\n• Added Jun 10, 2026 (Gemma 4 Tokenizer · Commit ca97c580) (gemini-4-flash-preview)\n• Removed Aug 10, 2026 (Scrubbed from main · Commit 6a4c0b0a) (-gemini-4-flash-preview)\n• Current Active Latest Flash in Google SDK / CLI Today (gemini-3.8-flash)\n\nEvidence: googleapis/python-genai -> google/genai/_local_tokenizer_loader.py\nSource: official googleapis/python-genai git history (added Jun 10, 2026 in ca97c580; deleted Aug 10, 2026 in 6a4c0b0a — not present in main today).\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 GOOGLE PYTHON-GENAI SDK GIT FORENSICS · GOOGLE\nGemini 4 Flash Preview (Added Jun 10 -> Removed Aug 10) spotted in Git Commit History ca97c580 (2026-06-10 Added) -> 6a4c0b0a (2026-08-10 Removed)!\n\n• Added Jun 10, 2026 (Gemma 4 Tokenizer · Commit ca97c580) (gemini-4-flash-preview)\n• Removed Aug 10, 2026 (Scrubbed from main · Commit 6a4c0b0a) (-gemini-4-flash-preview)\n• Current Active Latest Flash in Google SDK / CLI Today (gemini-3.8-flash)\n\nEvidence: googleapis/python-genai -> google/genai/_local_tokenizer_loader.py\nSource: official googleapis/python-genai git history (added Jun 10, 2026 in ca97c580; deleted Aug 10, 2026 in 6a4c0b0a — not present in main today).\n\nTracked by @StatsWire",
+      "pricing": "$0.75 / $3.75 per 1M tokens ($0.075 cached)"
     }
   ]
 }
