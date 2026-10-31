@@ -86,11 +86,13 @@ jobs:
             echo "::warning::Feed push failed after 3 attempts; will retry next cycle."
           }
 
-          # Single-commit orphan branch, force-pushed after every scan: no Pages build, no history growth
+          # Single-commit orphan branch, force-pushed after every scan: no Pages build, no history growth.
+          # Also includes full feed.json so the live site reads new cards at the exact second Discord notifies.
           heartbeat() {
             STATUS=$(python -c "import json; f=json.load(open('data/feed.json', encoding='utf-8')); s=f.get('stats', {}); print(json.dumps({'last_scan': f.get('generated_at'), 'sources_ok': s.get('sources_ok'), 'stories': s.get('stories')}))" 2>/dev/null) || return 0
-            BLOB=$(printf '%s' "$STATUS" | git hash-object -w --stdin)
-            TREE=$(printf '100644 blob %s\tstatus.json\n' "$BLOB" | git mktree)
+            BLOB_STATUS=$(printf '%s' "$STATUS" | git hash-object -w --stdin)
+            BLOB_FEED=$(git hash-object -w data/feed.json)
+            TREE=$(printf '100644 blob %s\tstatus.json\n100644 blob %s\tfeed.json\n' "$BLOB_STATUS" "$BLOB_FEED" | git mktree)
             COMMIT=$(git commit-tree "$TREE" -m "scanner heartbeat")
             git push -q -f origin "$COMMIT:refs/heads/status" || echo "::warning::Heartbeat push failed."
           }
@@ -102,7 +104,7 @@ jobs:
             NEW=$(python -c "import json; print(json.load(open('data/feed.json'))['stats']['new_in_this_scan'])" 2>/dev/null || echo 0)
             if [ "$NEW" != "0" ]; then PENDING=1; fi
             SINCE=$(( $(date +%s) - LAST_PUSH ))
-            if { [ "$PENDING" = "1" ] && [ "$SINCE" -ge 240 ]; } || [ "$SINCE" -ge 1800 ]; then
+            if [ "$PENDING" = "1" ] || [ "$SINCE" -ge 1800 ]; then
               publish
               if ! git diff --quiet "$START_SHA" HEAD -- tracker/ server.py .github/; then
                 echo "Tracker code changed upstream; ending loop so the next run uses the new code."
