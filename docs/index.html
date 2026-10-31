@@ -88,12 +88,12 @@
       background: #1d243b;
       border: 1px solid #34415e;
       border-top: 3px solid var(--release);
-      border-radius: 18px;
-      padding: 22px 24px 18px;
+      border-radius: 14px;
+      padding: 18px 20px 14px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      box-shadow: 0 12px 32px -8px rgba(7, 10, 22, 0.65);
+      gap: 11px;
+      box-shadow: 0 10px 26px -8px rgba(7, 10, 22, 0.6);
     }
     /* Tiled credit so screenshots of a card always carry it */
     .story::before {
@@ -113,43 +113,43 @@
       border-top-color: var(--open);
       background: #1d243b;
     }
-    .story.unread { box-shadow: 0 0 0 1px rgba(252, 224, 129, 0.55), 0 12px 32px -8px rgba(7, 10, 22, 0.65); }
+    .story.unread { box-shadow: 0 0 0 1px rgba(252, 224, 129, 0.5), 0 10px 26px -8px rgba(7, 10, 22, 0.6); }
     .head { display: flex; gap: 14px; align-items: flex-start; }
-    .logo { width: 48px; height: 48px; flex-shrink: 0; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); }
-    .logo svg { width: 48px; height: 48px; display: block; }
-    .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 600; color: #93a6c8; letter-spacing: 0.01em; }
-    .stage { font-weight: 800; letter-spacing: 0.06em; font-size: 0.74rem; padding: 4px 12px; border-radius: 999px; }
+    .logo { width: 46px; height: 46px; flex-shrink: 0; border-radius: 12px; }
+    .logo svg { width: 46px; height: 46px; display: block; }
+    .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 0.79rem; font-weight: 600; color: #93a6c8; }
+    .stage { font-weight: 800; letter-spacing: 0.06em; font-size: 0.71rem; padding: 2.5px 9px; border-radius: 999px; }
     .stage.leak { background: #fce081; color: #543809; border: none; }
     .stage.release { background: #d5fadf; color: #056839; border: none; }
     .stage.open { background: #e9d5ff; color: #4c1d95; border: none; }
     .new-dot { width: 7px; height: 7px; border-radius: 50%; background: #fce081; }
-    .title { font-size: 1.42rem; font-weight: 800; letter-spacing: -0.015em; color: #ffffff; line-height: 1.25; margin-top: 4px; word-break: break-word; }
-    .first { font-size: 0.87rem; color: #b4c3dc; margin-top: 3px; }
+    .title { font-size: 1.44rem; font-weight: 800; letter-spacing: -0.015em; color: #ffffff; line-height: 1.22; margin-top: 3px; word-break: break-word; }
+    .first { font-size: 0.85rem; color: #b4c3dc; margin-top: 3px; }
     .first b { color: #ffffff; }
-    .lead { display: inline-block; font-size: 0.82rem; font-weight: 700; color: #86efac; margin-top: 4px; }
-    .codenames { display: flex; gap: 6px; flex-wrap: wrap; }
-    .codename { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.05em; padding: 3.5px 11px; border-radius: 999px; color: #543809; background: #fce081; text-transform: uppercase; }
-    .pricing-badge { display: flex; align-items: center; gap: 8px; font-size: 1.02rem; font-weight: 700; padding: 12px 16px; border-radius: 11px; background: #d5fadf; color: #056839; border: 1px solid #a7f3d0; width: 100%; }
-    .chip.price { background: #d5fadf; border-color: #a7f3d0; color: #056839; font-weight: 700; font-size: 0.75rem; }
+    .lead { display: inline-block; font-size: 0.8rem; font-weight: 700; color: #86efac; margin-top: 4px; }
+    .badges-row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+    .codename { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em; padding: 2px 8px; border-radius: 999px; color: #543809; background: #fce081; text-transform: uppercase; }
+    .pricing-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 0.76rem; font-weight: 700; padding: 2.5px 9px; border-radius: 6px; background: #d5fadf; color: #056839; border: none; width: fit-content; }
+    .chip.price { background: #d5fadf; border-color: #a7f3d0; color: #056839; font-weight: 700; font-size: 0.75rem; padding: 2px 7px; }
     .ids { display: flex; flex-wrap: wrap; gap: 6px; }
-    .chip { font-size: 0.81rem; background: #2f3b56; border: 1px solid #445375; color: #ffffff; padding: 4px 10px; border-radius: 7px; }
-    .chip.more { color: var(--muted); }
-    .model-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-    .model-list li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 7px; }
-    .model-list strong { font-size: 0.93rem; color: #ffffff; }
+    .chip { font-size: 0.96rem; font-weight: 600; background: #2f3b56; border: 1px solid #48597d; color: #ffffff; padding: 5px 11px; border-radius: 7px; }
+    .chip.more { color: var(--muted); font-size: 0.8rem; }
+    .model-list { list-style: none; margin: 2px 0; padding: 0; display: grid; gap: 9px; }
+    .model-list li { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .model-list strong { font-size: 1.04rem; font-weight: 750; color: #ffffff; }
     .model-list .chip, .evidence code { overflow-wrap: anywhere; white-space: normal; }
-    .evidence { min-width: 0; font-size: 0.88rem; display: grid; gap: 5px; background: #2f3b56; border: 1px solid #445375; border-radius: 11px; padding: 12px 15px; }
-    .evidence strong { color: #ffffff; font-size: 0.92rem; }
-    .evidence code { display: block; color: #b4c3dc; line-height: 1.5; }
-    .evidence p { margin: 0; overflow-wrap: anywhere; color: #cbd5e1; }
+    .evidence { min-width: 0; font-size: 0.82rem; display: grid; gap: 3px; color: #b4c3dc; }
+    .evidence strong { color: #cbd5e1; font-size: 0.82rem; }
+    .evidence code { display: block; color: #93a6c8; line-height: 1.45; }
+    .evidence p { margin: 0; overflow-wrap: anywhere; color: #93a6c8; }
     .story { min-width: 0; }
     .foot { flex-wrap: wrap; }
-    .sources { list-style: none; border-left: 2px solid #445375; margin-left: 4px; padding-left: 12px; display: flex; flex-direction: column; gap: 4px; }
-    .sources li { font-size: 0.84rem; color: #e2e8f0; }
-    .sources .t { color: #93a6c8; font-size: 0.78rem; margin-right: 6px; }
-    details summary { cursor: pointer; font-size: 0.81rem; color: #93a6c8; margin-top: 2px; }
-    .foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; border-top: 1px solid #34415e; padding-top: 12px; }
-    .foot .count { font-size: 0.8rem; color: #93a6c8; }
+    .sources { list-style: none; border-left: 2px solid #445375; margin-left: 4px; padding-left: 12px; display: flex; flex-direction: column; gap: 3px; }
+    .sources li { font-size: 0.82rem; color: #e2e8f0; }
+    .sources .t { color: #93a6c8; font-size: 0.76rem; margin-right: 6px; }
+    details summary { cursor: pointer; font-size: 0.79rem; color: #93a6c8; margin-top: 2px; }
+    .foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; border-top: 1px solid #34415e; padding-top: 10px; }
+    .foot .count { font-size: 0.78rem; color: #93a6c8; }
     .actions { display: flex; gap: 6px; }
     .empty { grid-column: 1/-1; text-align: center; padding: 48px; color: var(--muted); }
 
@@ -342,10 +342,11 @@
         ? `<ol class="sources">${srcs.slice(0, 4).map(srcRow).join("")}</ol>` +
           (srcs.length > 4 ? `<details><summary>+${srcs.length - 4} more sources</summary><ol class="sources">${srcs.slice(4).map(srcRow).join("")}</ol></details>` : "")
         : "";
-      const codenames = (s.codenames || []).length
-        ? `<div class="codenames">${s.codenames.map(c => `<span class="codename" title="Token not found in any public model catalog">codename: ${escapeHtml(c)}</span>`).join("")}</div>` : "";
-      const pricingHtml = s.pricing
-        ? `<div class="pricing-badge" title="Verified token pricing">${escapeHtml(s.pricing)}</div>` : "";
+      const badges = [
+        ...(s.codenames || []).map(c => `<span class="codename" title="Token not found in any public model catalog">codename: ${escapeHtml(c)}</span>`),
+        ...(s.pricing ? [`<span class="pricing-badge mono" title="Verified token pricing">${escapeHtml(s.pricing)}</span>`] : []),
+      ];
+      const badgesHtml = badges.length ? `<div class="badges-row">${badges.join("")}</div>` : "";
       return `
         <article class="story ${stage} ${unread ? "unread" : ""}">
           <div class="head">
@@ -361,10 +362,9 @@
               <div class="first">First spotted ${escapeHtml(fmtUTC(s.detected_at))} in <b>${escapeHtml(s.first_source)}</b></div>
             </div>
           </div>
-          ${pricingHtml}
-          ${codenames}
-          ${evidenceHtml(s)}
+          ${badgesHtml}
           ${ids}${moreIds}
+          ${evidenceHtml(s)}
           ${srcHtml}
           <div class="foot">
             <span class="count">${srcs.length} source${srcs.length === 1 ? "" : "s"}${s.updated_at && s.updated_at !== s.detected_at ? " · updated " + escapeHtml(ago(s.updated_at)) : ""}<br><span class="credit">Developed by <a href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a> on X</span></span>
