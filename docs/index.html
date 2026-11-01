@@ -85,71 +85,64 @@
 
     .story {
       position: relative;
-      background: #1d243b;
-      border: 1px solid #34415e;
-      border-top: 3px solid var(--release);
-      border-radius: 14px;
-      padding: 18px 20px 14px;
+      background: linear-gradient(155deg, #212a46 0%, #182036 100%);
+      border: 1px solid #354468;
+      border-left: 5px solid #38bdf8;
+      border-radius: 12px;
+      padding: 22px 24px 16px;
       display: flex;
       flex-direction: column;
-      gap: 11px;
-      box-shadow: 0 10px 26px -8px rgba(7, 10, 22, 0.6);
+      gap: 13px;
+      box-shadow: 0 14px 32px -6px rgba(5, 8, 20, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .story:hover {
+      background: linear-gradient(155deg, #253050 0%, #1b243d 100%);
     }
     /* Tiled credit so screenshots of a card always carry it */
     .story::before {
       content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='120'><text x='10' y='70' transform='rotate(-22 110 60)' font-family='Segoe UI,Arial,sans-serif' font-size='17' font-weight='700' fill='%23ffffff' fill-opacity='0.075'>@StatsWire</text></svg>");
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='210' height='120'><text x='14' y='70' transform='rotate(-22 105 60)' font-family='Segoe UI,Arial,sans-serif' font-size='15' font-weight='800' letter-spacing='1' fill='%23ffffff' fill-opacity='0.065'>@StatsWire</text></svg>");
     }
     .story > * { position: relative; }
-    .credit { font-size: 0.78rem; color: var(--muted); }
-    .credit a { color: var(--text-2); font-weight: 700; text-decoration: none; }
+    .credit { font-size: 0.85rem; color: #9fb2d4; }
+    .credit a { color: #58a6ff; font-weight: 700; text-decoration: none; }
+    .credit a:hover { text-decoration: underline; }
     .site-foot { max-width: 1180px; margin: 36px auto 28px; padding: 18px 24px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 0.86rem; color: var(--muted); }
     .site-foot a { color: var(--text); font-weight: 700; text-decoration: none; }
-    .story.leak {
-      border-top-color: #fce081;
-      background: #1d243b;
-    }
-    .story.open {
-      border-top-color: var(--open);
-      background: #1d243b;
-    }
-    .story.unread { box-shadow: 0 0 0 1px rgba(252, 224, 129, 0.5), 0 10px 26px -8px rgba(7, 10, 22, 0.6); }
-    .head { display: flex; gap: 14px; align-items: flex-start; }
-    .logo { width: 46px; height: 46px; flex-shrink: 0; border-radius: 12px; }
-    .logo svg { width: 46px; height: 46px; display: block; }
-    .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 0.79rem; font-weight: 600; color: #93a6c8; }
-    .stage { font-weight: 800; letter-spacing: 0.06em; font-size: 0.71rem; padding: 2.5px 9px; border-radius: 999px; }
-    .stage.leak { background: #fce081; color: #543809; border: none; }
+    .head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+    .logo { width: 56px; height: 56px; flex-shrink: 0; border-radius: 12px; display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35)); }
+    .logo svg { width: 56px; height: 56px; display: block; }
+    .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 0.84rem; font-weight: 700; color: #b4c6e4; }
+    .stage { font-weight: 800; letter-spacing: 0.06em; font-size: 0.72rem; padding: 3px 10px; border-radius: 999px; }
+    .stage.leak { background: #fce081; color: #4a3006; border: none; }
     .stage.release { background: #d5fadf; color: #056839; border: none; }
     .stage.open { background: #e9d5ff; color: #4c1d95; border: none; }
-    .new-dot { width: 7px; height: 7px; border-radius: 50%; background: #fce081; }
-    .title { font-size: 1.44rem; font-weight: 800; letter-spacing: -0.015em; color: #ffffff; line-height: 1.22; margin-top: 3px; word-break: break-word; }
-    .first { font-size: 0.85rem; color: #b4c3dc; margin-top: 3px; }
-    .first b { color: #ffffff; }
-    .lead { display: inline-block; font-size: 0.8rem; font-weight: 700; color: #86efac; margin-top: 4px; }
-    .badges-row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
-    .codename { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.05em; padding: 2px 8px; border-radius: 999px; color: #543809; background: #fce081; text-transform: uppercase; }
-    .pricing-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 0.76rem; font-weight: 700; padding: 2.5px 9px; border-radius: 6px; background: #d5fadf; color: #056839; border: none; width: fit-content; }
-    .chip.price { background: #d5fadf; border-color: #a7f3d0; color: #056839; font-weight: 700; font-size: 0.75rem; padding: 2px 7px; }
-    .ids { display: flex; flex-wrap: wrap; gap: 6px; }
-    .chip { font-size: 0.96rem; font-weight: 600; background: #2f3b56; border: 1px solid #48597d; color: #ffffff; padding: 5px 11px; border-radius: 7px; }
-    .chip.more { color: var(--muted); font-size: 0.8rem; }
-    .model-list { list-style: none; margin: 2px 0; padding: 0; display: grid; gap: 9px; }
-    .model-list li { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-    .model-list strong { font-size: 1.04rem; font-weight: 750; color: #ffffff; }
-    .model-list .chip, .evidence code { overflow-wrap: anywhere; white-space: normal; }
-    .evidence { min-width: 0; font-size: 0.82rem; display: grid; gap: 3px; color: #b4c3dc; }
-    .evidence strong { color: #cbd5e1; font-size: 0.82rem; }
-    .evidence code { display: block; color: #93a6c8; line-height: 1.45; }
-    .evidence p { margin: 0; overflow-wrap: anywhere; color: #93a6c8; }
+    .title { font-size: 1.38rem; font-weight: 800; letter-spacing: -0.015em; color: #58a6ff; line-height: 1.25; margin-top: 6px; word-break: break-word; display: inline-block; text-decoration: none; }
+    a.title:hover { text-decoration: underline; color: #79b8ff; }
+    .first { font-size: 0.92rem; font-weight: 600; color: #e2e8f0; margin-top: 4px; }
+    .first b { color: #ffffff; font-weight: 800; }
+    .badges-row { display: flex; gap: 7px; flex-wrap: wrap; align-items: center; }
+    .codename { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.05em; padding: 2.5px 9px; border-radius: 999px; color: #4a3006; background: #fce081; text-transform: uppercase; }
+    .pricing-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 0.8rem; font-weight: 700; padding: 3px 10px; border-radius: 6px; background: #d5fadf; color: #056839; border: none; width: fit-content; }
+    .chip.price { background: #d5fadf; border-color: #a7f3d0; color: #056839; font-weight: 700; font-size: 0.76rem; padding: 2px 8px; }
+    .build-row { font-size: 0.92rem; color: #ffffff; display: flex; flex-direction: column; gap: 5px; }
+    .build-row strong { font-weight: 700; color: #ffffff; }
+    .code-pill { font-size: 0.84rem; background: #141a2e; border: 1px solid #354569; color: #dbeafe; padding: 5px 10px; border-radius: 6px; overflow-wrap: anywhere; line-height: 1.45; }
+    .chip { font-size: 0.88rem; font-weight: 600; background: #141a2e; border: 1px solid #38496e; color: #e2e8f0; padding: 3px 9px; border-radius: 6px; }
+    .model-list { list-style: none; margin: 2px 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+    .model-list li { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; font-size: 0.96rem; color: #ffffff; line-height: 1.5; }
+    .model-list .bullet { color: #ffffff; font-weight: 800; }
+    .model-list .dash { color: #93a6c8; font-weight: 600; }
+    .model-list strong { font-size: 0.98rem; font-weight: 700; color: #ffffff; }
+    .model-list .chip { overflow-wrap: anywhere; white-space: normal; }
+    .card-links { font-size: 0.9rem; font-weight: 600; margin-top: 2px; }
+    .card-links a { color: #58a6ff; text-decoration: none; }
+    .card-links a:hover { text-decoration: underline; }
     .story { min-width: 0; }
     .foot { flex-wrap: wrap; }
-    .sources { list-style: none; border-left: 2px solid #445375; margin-left: 4px; padding-left: 12px; display: flex; flex-direction: column; gap: 3px; }
-    .sources li { font-size: 0.82rem; color: #e2e8f0; }
-    .sources .t { color: #93a6c8; font-size: 0.76rem; margin-right: 6px; }
-    details summary { cursor: pointer; font-size: 0.79rem; color: #93a6c8; margin-top: 2px; }
-    .foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; border-top: 1px solid #34415e; padding-top: 10px; }
-    .foot .count { font-size: 0.78rem; color: #93a6c8; }
+    details summary { cursor: pointer; font-size: 0.8rem; color: #9fb2d4; margin-top: 2px; }
+    .foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; border-top: 1px solid rgba(72, 89, 125, 0.45); padding-top: 10px; margin-top: 2px; }
     .actions { display: flex; gap: 6px; }
     .empty { grid-column: 1/-1; text-align: center; padding: 48px; color: var(--muted); }
 
@@ -299,75 +292,92 @@
         return labeled || model;
       });
     }
+    const ACCENTS = {
+      google: "#38bdf8", openai: "#10b981", anthropic: "#f97316", zai: "#6366f1", minimax: "#ec4899",
+      kimi: "#06b6d4", deepseek: "#0284c7", qwen: "#a855f7", meta: "#3b82f6", mistral: "#f59e0b",
+      nvidia: "#76b900", xai: "#38bdf8", microsoft: "#0078d4", perplexity: "#0ea5e9",
+    };
+    function humanizeId(id) {
+      const slug = String(id || "").split("/").pop().replace(/[:@].*$/, "");
+      const fix = { gpt: "GPT", glm: "GLM", vl: "VL", tf: "TF", ai: "AI", oss: "OSS", fp8: "FP8", bf16: "BF16", nvfp4: "NVFP4", mxfp4: "MXFP4" };
+      return slug.split(/[-_]+/).filter(Boolean).map(w => fix[w.toLowerCase()] || (w.charAt(0).toUpperCase() + w.slice(1))).join(" ");
+    }
     function modelRows(models, storyPricing) {
       return models.map(model => {
-        const name = /^Referenced in /.test(model.name || "") ? "" : (model.name || "");
+        const rawName = /^Referenced in /.test(model.name || "") ? "" : (model.name || "");
         const id = String(model.id || "");
+        const baseId = id.split("/").pop();
+        const display = (!rawName || rawName === id || rawName === baseId) ? humanizeId(id) : rawName;
         const pr = model.pricing && model.pricing !== storyPricing ? `<code class="chip price mono">${escapeHtml(model.pricing)}</code>` : "";
-        if (!name || name === id || name === id.split("/").pop()) return `<li><code class="chip mono">${escapeHtml(id)}</code>${pr}</li>`;
-        return `<li><strong>${escapeHtml(name)}</strong><code class="chip mono">${escapeHtml(id)}</code>${pr}</li>`;
+        return `<li><span class="bullet">•</span><strong>${escapeHtml(display)}</strong><span class="dash">—</span><code class="chip mono">${escapeHtml(id)}</code>${pr}</li>`;
       }).join("");
     }
-    function evidenceHtml(s) {
+    function buildRowHtml(s) {
       const cards = evidenceFor(s);
-      const primary = cards.find(card => card.old_version && card.new_version) || cards[0];
-      const ordered = primary ? [primary, ...cards.filter(card => card !== primary)] : [];
-      const rows = ordered.map(card => {
-        const ownIds = new Set((s.models || []).map(model => model.id));
-        const related = (card.models || []).filter(model => !ownIds.has(model.id));
-        return `<div class="evidence">
-          ${card.build_transition ? `<strong>${escapeHtml(card.build_label || "Build diff")}</strong><code class="mono">${escapeHtml(card.build_transition)}</code>` : ""}
-          <details><summary>Source details${related.length ? ` · ${related.length} related model${related.length === 1 ? "" : "s"}` : ""}</summary>
-            ${card.evidence ? `<code class="mono">${escapeHtml(card.evidence)}</code>` : ""}
-            ${[card.source_text, card.disclaimer_1, card.disclaimer_2].filter(Boolean).map(text => `<p>${escapeHtml(text)}</p>`).join("")}
-            ${related.length ? `<strong>Also in this source</strong><ul class="model-list">${modelRows(related, s.pricing)}</ul>` : ""}
-          </details></div>`;
-      });
-      return (rows[0] || "") + (rows.length > 1 ? `<details><summary>${rows.length - 1} more evidence records</summary>${rows.slice(1).join("")}</details>` : "");
+      const primary = cards.find(card => card.old_version && card.new_version) || cards.find(card => card.build_transition) || cards[0];
+      if (!primary || !primary.build_transition) return "";
+      return `<div class="build-row"><strong>${escapeHtml(primary.build_label || "Discovery Diff")}:</strong><code class="code-pill mono">${escapeHtml(primary.build_transition)}</code></div>`;
+    }
+    function linksHtml(s) {
+      const seenUrls = new Set();
+      const items = [];
+      for (const card of evidenceFor(s)) {
+        for (const l of (card.links || [])) {
+          const u = safeUrl(l.url);
+          if (u && !seenUrls.has(u)) {
+            seenUrls.add(u);
+            items.push(`<a href="${escapeHtml(u)}" target="_blank" rel="noopener">${escapeHtml(l.label || s.first_source || "Source")}</a>`);
+          }
+        }
+      }
+      if (!items.length) {
+        for (const src of (s.sources || [])) {
+          const u = safeUrl(src.url);
+          if (u && !seenUrls.has(u)) {
+            seenUrls.add(u);
+            items.push(`<a href="${escapeHtml(u)}" target="_blank" rel="noopener">${escapeHtml(src.label || "Source")}</a>`);
+          }
+        }
+      }
+      return items.length ? `<div class="card-links">${items.slice(0, 3).join(" · ")}</div>` : "";
     }
 
     function storyHtml(s, idx, seen) {
       const stage = stageOf(s);
-      const unread = seen && !seen.has(s.id);
       const models = modelsFor(s);
       const ids = `<ul class="model-list">${modelRows(models.slice(0, 8), s.pricing)}</ul>`;
       const moreIds = models.length > 8 ? `<details><summary>${models.length - 8} more identifiers</summary><ul class="model-list">${modelRows(models.slice(8), s.pricing)}</ul></details>` : "";
-      const srcRow = src => {
-        const url = safeUrl(src.url);
-        const label = url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(src.label)}</a>` : escapeHtml(src.label);
-        return `<li><span class="t">${escapeHtml(fmtUTC(src.detected_at))}</span>${label}</li>`;
-      };
       const srcs = s.sources || [];
-      const srcHtml = srcs.length
-        ? `<ol class="sources">${srcs.slice(0, 4).map(srcRow).join("")}</ol>` +
-          (srcs.length > 4 ? `<details><summary>+${srcs.length - 4} more sources</summary><ol class="sources">${srcs.slice(4).map(srcRow).join("")}</ol></details>` : "")
-        : "";
+      const primaryUrl = safeUrl((srcs[0] && srcs[0].url) || ((evidenceFor(s)[0]?.links || [])[0]?.url) || "");
+      const titleEl = primaryUrl
+        ? `<a class="title" href="${escapeHtml(primaryUrl)}" target="_blank" rel="noopener">${escapeHtml(s.title)}</a>`
+        : `<div class="title">${escapeHtml(s.title)}</div>`;
       const badges = [
         ...(s.codenames || []).map(c => `<span class="codename" title="Token not found in any public model catalog">codename: ${escapeHtml(c)}</span>`),
         ...(s.pricing ? [`<span class="pricing-badge mono" title="Verified token pricing">${escapeHtml(s.pricing)}</span>`] : []),
       ];
       const badgesHtml = badges.length ? `<div class="badges-row">${badges.join("")}</div>` : "";
+      const accent = ACCENTS[s.provider_slug] || (stage === "leak" ? "#38bdf8" : "#22c55e");
       return `
-        <article class="story ${stage} ${unread ? "unread" : ""}">
+        <article class="story ${stage}" style="border-left-color: ${accent}">
           <div class="head">
-            <div class="logo">${logoSvg(s.provider_slug, s.provider_name)}</div>
             <div style="min-width:0">
               <div class="meta">
                 <span class="stage ${stage}">${STAGE_LABEL[stage]}</span>
                 ${s.provider_name ? `<span>${escapeHtml(s.provider_name)}</span>·` : ""}
                 <span title="${escapeHtml(fmtUTC(s.detected_at, true))}">${escapeHtml(ago(s.detected_at))}</span>
-                ${unread ? `<span class="new-dot" title="Unread"></span>` : ""}
               </div>
-              <div class="title">${escapeHtml(s.title)}</div>
+              ${titleEl}
               <div class="first">First spotted ${escapeHtml(fmtUTC(s.detected_at))} in <b>${escapeHtml(s.first_source)}</b></div>
             </div>
+            <div class="logo">${logoSvg(s.provider_slug, s.provider_name)}</div>
           </div>
           ${badgesHtml}
+          ${buildRowHtml(s)}
           ${ids}${moreIds}
-          ${evidenceHtml(s)}
-          ${srcHtml}
+          ${linksHtml(s)}
           <div class="foot">
-            <span class="count">${srcs.length} source${srcs.length === 1 ? "" : "s"}${s.updated_at && s.updated_at !== s.detected_at ? " · updated " + escapeHtml(ago(s.updated_at)) : ""}<br><span class="credit">Developed by <a href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a> on X</span></span>
+            <span class="credit">Developed by <a href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a> on X</span>
             <div class="actions">
               <button class="btn btn-sm" onclick="copyText(STORIES_VIEW[${idx}])">Copy X text</button>
               <button class="btn btn-sm btn-primary" onclick="openShare(${idx})">Share image</button>
