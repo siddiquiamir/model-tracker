@@ -58,6 +58,7 @@ GENERIC_TOKENS: Set[str] = VARIANT_TOKENS | {
     "robotics", "er", "gemma", "llama", "qwen", "mistral", "claude", "gemini", "gpt", "grok", "kimi",
     "glm", "deepseek", "minimax", "ernie", "hunyuan", "doubao", "seed", "nemotron", "nvidia", "phi",
     "command", "sonnet", "opus", "haiku", "sora", "veo", "imagen", "lyria", "chirp", "flux", "banana",
+    "anonymous",
 }
 
 _DATE_TOKEN = re.compile(r"^(?:\d{4,8}|20\d{2}-\d{2}(?:-\d{2})?)$")
@@ -74,7 +75,10 @@ def normalize(raw: str) -> str:
     s = _DOTTED_VENDOR.sub("", s)
     s = re.sub(r"(?<=[a-z])(?=\d)", "-", s)
     s = re.sub(r"[^a-z0-9]+", "-", s).strip("-")
-    toks = [t for t in s.split("-") if t and not _DATE_TOKEN.match(t)]
+    raw_toks = [t for t in s.split("-") if t]
+    toks = [t for t in raw_toks if not _DATE_TOKEN.match(t)]
+    if not toks or toks == ["anonymous"]:
+        toks = raw_toks
     out: List[str] = []
     for i, t in enumerate(toks):
         nxt = toks[i + 1] if i + 1 < len(toks) else ""

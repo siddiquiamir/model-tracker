@@ -33,8 +33,8 @@ ORG_NAMES: Dict[str, str] = {
 ARENA_ORGS: Dict[str, str] = {
     "google": "google", "openai": "openai", "anthropic": "anthropic", "xai": "xai", "meta": "meta",
     "microsoft-ai": "microsoft", "microsoft": "microsoft", "deepseek": "deepseek", "alibaba": "qwen",
-    "moonshot": "kimi", "zhipu": "zai", "mistral": "mistral", "amazon": "amazon", "minimax": "minimax",
-    "nvidia": "nvidia", "cohere": "cohere",
+    "moonshot": "kimi", "zhipu": "zai", "zai": "zai", "mistral": "mistral", "amazon": "amazon",
+    "minimax": "minimax", "nvidia": "nvidia", "cohere": "cohere",
 }
 
 SCANNER_LABELS: Dict[str, str] = {
