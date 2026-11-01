@@ -2230,7 +2230,8 @@ class LmArenaScanner:
                 baselines["arena_initial_models"] = merged_map
                 changed = True
 
-            now_iso = datetime.now(timezone.utc).isoformat()
+            now_dt = datetime.now(timezone.utc)
+            now_iso = now_dt.isoformat()
             for name in added_names:
                 meta = merged_map[name]
                 org = meta.get("org") or "unknown"
@@ -2239,6 +2240,14 @@ class LmArenaScanner:
                 caps = meta.get("caps") or "chat"
                 is_code = meta.get("route") == "code" or name.startswith("fe-")
                 uuid_ts = self._decode_uuidv7_iso(mid)
+                if uuid_ts:
+                    try:
+                        minted_dt = datetime.strptime(uuid_ts, "%Y-%m-%d %H:%M UTC").replace(tzinfo=timezone.utc)
+                        if (now_dt - minted_dt).days > 14:
+                            print(f"[LmArenaScanner] Skipping old re-exposed Arena model {name} (DB minted {uuid_ts})")
+                            continue
+                    except ValueError:
+                        pass
                 q_name = urllib.parse.quote(name, safe="")
                 deep_url = (
                     f"https://arena.ai/code?mode=direct&model={q_name}"
