@@ -51,6 +51,7 @@ SCANNER_LABELS: Dict[str, str] = {
     "vllm-registry": "vLLM registry",
     "openai-spec": "OpenAI API spec",
     "pricing-radar": "Official pricing page",
+    "github-code-leak": "GitHub benchmark & config",
 }
 _WORD_FIX = {
     "Openai": "OpenAI", "Ai": "AI", "Sdk": "SDK", "Github": "GitHub", "Vllm": "vLLM", "Sglang": "SGLang",
@@ -134,7 +135,7 @@ def _humanize(key: str) -> str:
         elif t.isdigit() or len(t) <= 3 and not t.isalpha():
             out.append(t.upper())
         else:
-            out.append(t.upper() if t in ("gpt", "glm", "vl", "oss") else t.capitalize())
+            out.append("DeepSeek" if t == "deepseek" else (t.upper() if t in ("gpt", "glm", "vl", "oss") else t.capitalize()))
     return " ".join(out)
 
 

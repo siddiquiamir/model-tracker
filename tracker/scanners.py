@@ -2545,7 +2545,11 @@ class HighAlphaLeakChannelsScanner:
         r"\b("
         r"nemotron-?4[a-z0-9._-]{1,28}|"
         r"kimi-k3\.[1-9][a-z0-9._-]{0,22}|kimi-k4[a-z0-9._-]{0,22}|"
-        r"deepseek-v4\.[2-9][a-z0-9._-]{0,22}|deepseek-v5[a-z0-9._-]{0,22}|deepseek-r[23][a-z0-9._-]{0,22}|"
+        r"deepseek-v4(?:\.[1-9])?-pro[a-z0-9._-]{0,16}|deepseek-v4\.[2-9][a-z0-9._-]{0,22}|deepseek-v5[a-z0-9._-]{0,22}|"
+        r"gpt-6(?:\.[1-9])?-[a-z0-9._-]{2,22}|"
+        r"claude-(?:fable|opus|sonnet)-[56][a-z0-9._-]{0,22}|"
+        r"gemini-4-[a-z0-9._-]{2,22}|"
+        r"grok-(?:4\.[89]|5)[a-z0-9._-]{0,22}|"
         r"qwen3\.[89][a-z0-9._-]{0,22}|qwen4[a-z0-9._-]{0,22}|"
         r"glm-5\.[4-9][a-z0-9._-]{0,22}|glm-6[a-z0-9._-]{0,22}|"
         r"gemma-?4[a-z0-9._-]{0,22}|diffusiongemma[a-z0-9._-]{0,18}|embeddinggemma[23][a-z0-9._-]{0,18}|"
@@ -3368,6 +3372,164 @@ class HighAlphaLeakChannelsScanner:
 
         return cards, changed
 
+    GITHUB_LEAK_QUERIES = [
+        '"deepseek-v4.1-pro" OR "deepseek-v4-pro" OR "deepseek-v4.1-flash" OR "deepseek-r3"',
+        '"gpt-6.1" OR "gpt-6.2" OR "gpt-6-astra" OR "gpt-6-rosalind"',
+        '"claude-fable-5" OR "claude-opus-5" OR "claude-sonnet-5"',
+        '"gemini-4-pro" OR "gemini-4-flash" OR "gemini-4-ultra" OR "grok-4.8" OR "grok-5"',
+    ]
+    GITHUB_EXCLUDED_REPOS = {
+        "siddiquiamir/model-tracker",
+    }
+
+    def _scan_github_global_code_leaks(
+        self,
+        baselines: Dict[str, Any],
+        known_canon: Set[str],
+    ) -> Tuple[List[Dict[str, Any]], bool]:
+        """
+        Searches public GitHub code & commits across all repositories (plus high-signal
+        benchmark repos like RUC-NLPIR/FlashRSI) for unreleased frontier model identifiers.
+        """
+        cards: List[Dict[str, Any]] = []
+        changed = False
+        seen_hits: Set[str] = set(baselines.get("github_global_code_leaks", []))
+        hdrs = self._gh_headers()
+
+        # 1. Direct check of verified benchmark / agent harness repos (works even without GITHUB_TOKEN)
+        watched_files = [
+            (
+                "RUC-NLPIR/FlashRSI",
+                "README.md",
+                "examples/searchqa_deepseek/miniagent.yaml",
+                "2026-10-31T01:24:10Z",
+                "https://github.com/RUC-NLPIR/FlashRSI/blob/main/examples/searchqa_deepseek/miniagent.yaml",
+            ),
+        ]
+        for repo, f1, f2, commit_ts, link_url in watched_files:
+            hit_key = f"{repo}:{f2}"
+            if hit_key in seen_hits:
+                continue
+            try:
+                t1 = _http_get_text(f"https://raw.githubusercontent.com/{repo}/main/{f1}", timeout=10)
+                t2 = _http_get_text(f"https://raw.githubusercontent.com/{repo}/main/{f2}", timeout=10)
+                blob = f"{t1}\n{t2}"
+                found = sorted(
+                    {
+                        m.lower()
+                        for m in self.PR_UNRELEASED_ID_RE.findall(blob)
+                        if not is_legacy_model_id(m) and _canonical_model_slug(m) not in known_canon
+                    },
+                    reverse=True,
+                )
+                if found:
+                    seen_hits.add(hit_key)
+                    changed = True
+                    inferred = infer_provider(found[0])
+                    sig = hashlib.sha256(hit_key.encode("utf-8")).hexdigest()[:8]
+                    cards.append(
+                        {
+                            "id": f"gh-code-leak-{sig}",
+                            "category": "cli-sdk-diff",
+                            "scanner": "github-code-leak",
+                            "header": f"GITHUB BENCHMARK & HARNESS CONFIG LEAK · {inferred['name']}",
+                            "title": f"{found[0]} in {repo}",
+                            "subtitle": f"Detected in {repo} ({f2} & {f1}) — reasoning_effort: high, max_tokens: 32768",
+                            "build_label": "GitHub Repo",
+                            "build_transition": f"{repo} · commit d2cd8f2 / miniagent.yaml",
+                            "models": [{"id": m, "name": humanize_model_id(m).replace("Deepseek", "DeepSeek")} for m in found[:8]],
+                            "evidence": f"{repo}/{f2}",
+                            "source_text": f"public GitHub repository {repo} benchmark configuration.",
+                            "disclaimer_1": "",
+                            "disclaimer_2": "",
+                            "provider_name": inferred["name"],
+                            "provider_slug": inferred["slug"],
+                            "accent_color": inferred["color"],
+                            "links": [
+                                {"label": f"{repo} ({f2})", "url": link_url},
+                                {"label": "Scrubbed Commit d2cd8f2", "url": f"https://github.com/{repo}/commit/d2cd8f2"},
+                            ],
+                            "detected_at": commit_ts,
+                        }
+                    )
+            except Exception as exc:
+                print(f"[HighAlphaScanner] Watched repo {repo} note: {exc}")
+
+        # 2. Global GitHub Code Search (uses GITHUB_TOKEN in CI for 30 req/min code search)
+        has_token = "Authorization" in hdrs
+        if has_token:
+            for q in self.GITHUB_LEAK_QUERIES:
+                url = f"https://api.github.com/search/code?q={urllib.parse.quote(q)}&per_page=10"
+                try:
+                    doc = _http_get_json(url, timeout=12, extra_headers=hdrs)
+                    items = doc.get("items") or [] if isinstance(doc, dict) else []
+                    for item in items[:8]:
+                        if not isinstance(item, dict):
+                            continue
+                        repo_info = item.get("repository") or {}
+                        repo_name = str(repo_info.get("full_name") or "").strip()
+                        if not repo_name or repo_name.lower() in self.GITHUB_EXCLUDED_REPOS:
+                            continue
+                        html_url = str(item.get("html_url") or "")
+                        path_or_msg = str(item.get("path") or "")
+                        blob_text = ""
+                        if path_or_msg and html_url:
+                            raw_url = html_url.replace("https://github.com/", "https://raw.githubusercontent.com/").replace("/blob/", "/")
+                            try:
+                                blob_text = _http_get_text(raw_url, timeout=8)[:20000]
+                            except Exception:
+                                pass
+                        # Require config/CLI/benchmark context to avoid blog/rumor markdowns
+                        if not re.search(r"(--model\b|model_name\s*:|\"model\"\s*:|reasoning_effort|max_tokens|api_key)", blob_text, re.I):
+                            continue
+                        found = sorted(
+                            {
+                                m.lower()
+                                for m in self.PR_UNRELEASED_ID_RE.findall(blob_text)
+                                if not is_legacy_model_id(m) and _canonical_model_slug(m) not in known_canon
+                            },
+                            reverse=True,
+                        )
+                        if not found:
+                            continue
+                        hit_key = f"{repo_name}:{','.join(found[:4])}"
+                        if hit_key in seen_hits:
+                            continue
+                        seen_hits.add(hit_key)
+                        changed = True
+                        inferred = infer_provider(found[0])
+                        sig = hashlib.sha256(hit_key.encode("utf-8")).hexdigest()[:8]
+                        cards.append(
+                            {
+                                "id": f"gh-code-leak-{sig}",
+                                "category": "cli-sdk-diff",
+                                "scanner": "github-code-leak",
+                                "header": f"GITHUB CODE & CONFIG LEAK · {inferred['name']}",
+                                "title": f"{found[0]} in {repo_name}",
+                                "subtitle": f"Spotted in public GitHub repository {repo_name} ({path_or_msg})",
+                                "build_label": "GitHub Repo",
+                                "build_transition": repo_name,
+                                "models": [{"id": m, "name": humanize_model_id(m)} for m in found[:6]],
+                                "evidence": f"{repo_name} ({path_or_msg[:80]})",
+                                "source_text": f"public GitHub repository {repo_name}.",
+                                "disclaimer_1": "",
+                                "disclaimer_2": "",
+                                "provider_name": inferred["name"],
+                                "provider_slug": inferred["slug"],
+                                "accent_color": inferred["color"],
+                                "links": [{"label": f"{repo_name} ({path_or_msg})", "url": html_url or f"https://github.com/{repo_name}"}],
+                                "detected_at": datetime.now(timezone.utc).isoformat(),
+                            }
+                        )
+                except Exception as exc:
+                    print(f"[HighAlphaScanner] GitHub global code search note: {exc}")
+                    break
+
+        if changed:
+            baselines["github_global_code_leaks"] = sorted(seen_hits)[-300:]
+
+        return cards, changed
+
     def scan(self) -> List[Dict[str, Any]]:
         baselines = _load_baselines()
         known_canon = (
@@ -3383,6 +3545,7 @@ class HighAlphaLeakChannelsScanner:
             ("ide-builds", lambda: self._scan_ide_desktop_builds(baselines, known_canon)),
             ("copilot-cli", lambda: self._scan_copilot_cli_releases(baselines, known_canon)),
             ("engine-prs", lambda: self._scan_inference_engine_prs(baselines, known_canon)),
+            ("github-code-leaks", lambda: self._scan_github_global_code_leaks(baselines, known_canon)),
             ("provider-apis", lambda: self._scan_live_provider_apis(baselines)),
             ("web-bundles", lambda: self._scan_google_web_bundles(baselines)),
         ):
