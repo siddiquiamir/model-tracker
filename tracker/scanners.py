@@ -3373,14 +3373,22 @@ class HighAlphaLeakChannelsScanner:
         return cards, changed
 
     GITHUB_LEAK_QUERIES = [
-        '"deepseek-v4.1-pro" OR "deepseek-v4-pro" OR "deepseek-v4.1-flash" OR "deepseek-r3"',
-        '"gpt-6.1" OR "gpt-6.2" OR "gpt-6-astra" OR "gpt-6-rosalind"',
-        '"claude-fable-5" OR "claude-opus-5" OR "claude-sonnet-5"',
+        '"deepseek-v4.1-pro" OR "deepseek-v4.2" OR "deepseek-v5"',
+        '"gpt-6.2-astra" OR "gpt-6.2-betelgeuse" OR "gpt-6-rosalind"',
+        '"claude-fable-5.2" OR "claude-opus-5.6" OR "claude-sonnet-5.6"',
         '"gemini-4-pro" OR "gemini-4-flash" OR "gemini-4-ultra" OR "grok-4.8" OR "grok-5"',
     ]
     GITHUB_EXCLUDED_REPOS = {
         "siddiquiamir/model-tracker",
+        "simonw/llm-anthropic",
+        "we-promise/sure",
+        "librechat-ai/librechat",
     }
+    GITHUB_CONFIG_LINE_RE = re.compile(
+        r"(?:--(?:worker-|target-|evolution-)?model\s+|model(?:_name|_id)?\s*[:=]\s*[\"']?)"
+        r"([a-z0-9][a-z0-9._-]{4,36})",
+        re.IGNORECASE,
+    )
 
     def _scan_github_global_code_leaks(
         self,
@@ -3472,6 +3480,8 @@ class HighAlphaLeakChannelsScanner:
                             continue
                         html_url = str(item.get("html_url") or "")
                         path_or_msg = str(item.get("path") or "")
+                        if re.search(r"(?:^|/)(?:tests?|specs?|fixtures?|mocks?)(?:/|$)|(?:\.spec\.|_test\.|test_)", path_or_msg, re.I):
+                            continue
                         blob_text = ""
                         if path_or_msg and html_url:
                             raw_url = html_url.replace("https://github.com/", "https://raw.githubusercontent.com/").replace("/blob/", "/")
@@ -3479,13 +3489,13 @@ class HighAlphaLeakChannelsScanner:
                                 blob_text = _http_get_text(raw_url, timeout=8)[:20000]
                             except Exception:
                                 pass
-                        # Require config/CLI/benchmark context to avoid blog/rumor markdowns
-                        if not re.search(r"(--model\b|model_name\s*:|\"model\"\s*:|reasoning_effort|max_tokens|api_key)", blob_text, re.I):
-                            continue
+                        # Require explicit CLI flag or YAML/JSON model_name/model assignment on the exact line
+                        assigned_candidates = self.GITHUB_CONFIG_LINE_RE.findall(blob_text)
                         found = sorted(
                             {
                                 m.lower()
-                                for m in self.PR_UNRELEASED_ID_RE.findall(blob_text)
+                                for cand in assigned_candidates
+                                for m in self.PR_UNRELEASED_ID_RE.findall(cand)
                                 if not is_legacy_model_id(m) and _canonical_model_slug(m) not in known_canon
                             },
                             reverse=True,
