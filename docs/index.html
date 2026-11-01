@@ -333,9 +333,10 @@
     function formatPricingText(raw) {
       let s = String(raw || "").trim();
       if (!s) return "";
+      s = s.replace(/^price:\s*/i, "");
       s = s.replace(/\bper\s+1M\b(?!\s+tokens)/i, "per 1M tokens");
       s = s.replace(/\(\s*cache\s+(\$[0-9.]+)\s*\)/i, "($1 cached)");
-      return s;
+      return `price: ${s}`;
     }
     function modelChips(models, storyPricing) {
       const sp = formatPricingText(storyPricing);
