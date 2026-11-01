@@ -31,6 +31,16 @@
       min-height: 100vh;
       padding-bottom: 60px;
     }
+    /* Full-screen tiled @StatsWire watermark overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 40;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='125'><text x='14' y='72' transform='rotate(-22 110 62)' font-family='Inter,Segoe UI,Arial,sans-serif' font-size='15' font-weight='700' fill='%23ffffff' fill-opacity='0.055'>@StatsWire</text></svg>");
+      background-repeat: repeat;
+    }
     a { color: var(--blue); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .mono { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
@@ -103,7 +113,7 @@
     /* Tiled credit so screenshots of a card always carry it */
     .story::before {
       content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='125'><text x='14' y='72' transform='rotate(-22 110 62)' font-family='Inter,Segoe UI,Arial,sans-serif' font-size='14' font-weight='600' fill='%23ffffff' fill-opacity='0.045'>@StatsWire</text></svg>");
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='210' height='118'><text x='14' y='68' transform='rotate(-22 105 59)' font-family='Inter,Segoe UI,Arial,sans-serif' font-size='15' font-weight='700' fill='%23ffffff' fill-opacity='0.065'>@StatsWire</text></svg>");
     }
     .story > * { position: relative; }
     .site-foot { max-width: 1180px; margin: 36px auto 28px; padding: 18px 24px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 0.86rem; color: var(--muted); }
@@ -159,6 +169,10 @@
     .evidence-summary {
       font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 12px; font-weight: 400; color: #A4ADB9; margin-top: 4px; line-height: 1.4;
+    }
+    .credit-line {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 13px; font-weight: 400; color: #A4ADB9; margin-top: 8px;
     }
     .foot-right { display: flex; align-items: center; gap: 10px; margin-left: auto; }
     .watermark-link {
@@ -412,13 +426,13 @@
             <div style="min-width:0">
               <div class="field-label">EVIDENCE</div>
               <div class="evidence-summary">${escapeHtml(evidenceSummaryText(s))}</div>
+              <div class="credit-line">Developed by <a class="watermark-link" href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a> on X</div>
             </div>
             <div class="foot-right">
               <div class="actions">
                 <button class="btn btn-sm" onclick="copyText(STORIES_VIEW[${idx}])">Copy X text</button>
                 <button class="btn btn-sm btn-primary" onclick="openShare(${idx})">Share image</button>
               </div>
-              <a class="watermark-link" href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a>
             </div>
           </div>
         </article>`;
