@@ -98,81 +98,97 @@
 
     .story {
       position: relative;
-      background: #181B20;
-      border: 1.25px solid rgba(255, 255, 255, 0.38);
-      border-radius: 18px;
-      padding: 24px 28px 20px;
+      background: #23252b;
+      border: 1px solid #3a3e48;
+      border-left: 5px solid #ffffff;
+      border-radius: 14px;
+      padding: 20px 22px 16px;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 16px 36px -10px rgba(0, 0, 0, 0.68);
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      gap: 14px;
+      box-shadow: 0 14px 32px -8px rgba(0, 0, 0, 0.65);
+      transition: border-color 0.15s ease, transform 0.15s ease;
     }
     .story:hover {
-      border-color: rgba(255, 255, 255, 0.62);
+      border-color: #525866;
+      border-left-color: #ffffff;
     }
     /* Tiled credit so screenshots of a card always carry it */
     .story::before {
       content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='210' height='118'><text x='14' y='68' transform='rotate(-22 105 59)' font-family='Inter,Segoe UI,Arial,sans-serif' font-size='15' font-weight='700' fill='%23ffffff' fill-opacity='0.065'>@StatsWire</text></svg>");
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='210' height='118'><text x='14' y='68' transform='rotate(-22 105 59)' font-family='Inter,Segoe UI,Arial,sans-serif' font-size='15' font-weight='700' fill='%23ffffff' fill-opacity='0.06'>@StatsWire</text></svg>");
     }
     .story > * { position: relative; }
     .site-foot { max-width: 1180px; margin: 36px auto 28px; padding: 18px 24px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 0.86rem; color: var(--muted); }
     .site-foot a { color: var(--text); font-weight: 700; text-decoration: none; }
-    .head { display: flex; gap: 14px; align-items: center; }
-    .logo {
-      width: 46px; height: 46px; flex-shrink: 0; border-radius: 12px;
-      background: #292D34; overflow: hidden;
+    .embed-body {
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 18px;
+    }
+    .embed-main {
+      flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 11px;
+    }
+    .embed-author {
+      display: flex; align-items: center; gap: 9px;
+      font-size: 18px; font-weight: 600; color: #FFFFFF; line-height: 1.3;
+    }
+    .embed-author a { color: #FFFFFF; text-decoration: none; }
+    .embed-author a:hover { color: #B9D5F5; text-decoration: underline; }
+    .author-icon {
+      width: 24px; height: 24px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .author-icon svg { width: 24px; height: 24px; display: block; }
+    .embed-thumb {
+      width: 74px; height: 74px; border-radius: 16px; overflow: hidden; flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
     }
-    .logo svg { width: 46px; height: 46px; display: block; }
-    .title {
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 22px; font-weight: 600; letter-spacing: -0.015em; color: #FFFFFF;
-      line-height: 1.25; word-break: break-word; display: inline-block; text-decoration: none;
+    .embed-thumb svg { width: 74px; height: 74px; display: block; }
+    .embed-counts {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+      font-size: 15px; font-weight: 600; color: #FFFFFF;
     }
-    a.title:hover { color: #B9D5F5; text-decoration: none; }
-    .subtitle {
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 12px; font-weight: 400; color: #A4ADB9; margin-top: 3px;
+    .new-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: #5865f2; color: #ffffff; font-size: 10px; font-weight: 800;
+      padding: 2px 6px; border-radius: 4px; letter-spacing: 0.04em;
     }
-    .divider { height: 1px; background: #414750; border: 0; margin: 18px 0; width: 100%; }
-    .field-label {
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 11px; font-weight: 500; letter-spacing: 0.05em;
-      text-transform: uppercase; color: #A4ADB9;
+    .stage-pill {
+      font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 5px;
+      background: rgba(252, 224, 129, 0.16); color: #fce081; border: 1px solid rgba(252, 224, 129, 0.35);
     }
-    .ids-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; align-items: center; }
+    .stage-pill.release {
+      background: rgba(34, 197, 94, 0.16); color: #86efac; border-color: rgba(34, 197, 94, 0.35);
+    }
+    .section-head {
+      font-size: 15px; font-weight: 700; color: #FFFFFF; margin-top: 2px;
+    }
+    .embed-list {
+      list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;
+    }
+    .embed-list li {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 7px;
+      font-size: 14px; color: #dbdee1; line-height: 1.5;
+    }
+    .embed-list .dot-bullet {
+      color: #FFFFFF; font-weight: 800; margin-right: 2px;
+    }
     .chip, .chip.price {
       font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 14px; font-weight: 500; background: #181B20;
-      border: 1px solid #414750; color: #F4F6FA;
-      padding: 7px 14px; border-radius: 8px;
+      font-size: 14px; font-weight: 500; background: #181a1f;
+      border: 1px solid #3c404b; color: #F4F6FA;
+      padding: 4px 10px; border-radius: 6px;
       overflow-wrap: anywhere; white-space: normal;
     }
-    .meta-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      row-gap: 18px; column-gap: 28px; margin-top: 20px;
-    }
-    .field-value {
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 13px; font-weight: 400; color: #FFFFFF; margin-top: 4px;
-      line-height: 1.4;
-    }
-    .field-value a { color: #FFFFFF; text-decoration: none; }
-    .field-value a:hover { color: #B9D5F5; text-decoration: underline; }
     .story { min-width: 0; }
-    details summary { cursor: pointer; font-size: 12px; color: #A4ADB9; margin-top: 8px; }
+    details summary { cursor: pointer; font-size: 12px; color: #A4ADB9; margin-top: 4px; }
     .foot {
-      display: flex; justify-content: space-between; align-items: flex-end;
-      gap: 12px; flex-wrap: wrap;
-    }
-    .evidence-summary {
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 12px; font-weight: 400; color: #A4ADB9; margin-top: 4px; line-height: 1.4;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px; flex-wrap: wrap; padding-top: 4px;
     }
     .credit-line {
       font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 13px; font-weight: 400; color: #A4ADB9; margin-top: 8px;
+      font-size: 13px; font-weight: 600; color: #FFFFFF;
     }
     .foot-right { display: flex; align-items: center; gap: 10px; margin-left: auto; }
     .watermark-link {
@@ -338,97 +354,68 @@
       s = s.replace(/\(\s*cache\s+(\$[0-9.]+)\s*\)/i, "($1 cached)");
       return `price: ${s}`;
     }
-    function modelChips(models, storyPricing) {
-      const sp = formatPricingText(storyPricing);
-      return models.map(model => {
+    function fmtIsoShort(iso) {
+      const d = new Date(iso);
+      if (isNaN(d)) return "";
+      return d.toISOString().replace(/\.\d+Z$/, "Z");
+    }
+    function extractMintedTs(s) {
+      for (const c of evidenceFor(s)) {
+        const m = String(c.build_transition || "").match(/DB minted\s+([0-9-]+ [0-9:]+ UTC)/i);
+        if (m) return m[1];
+      }
+      return "";
+    }
+    function modelBulletRows(models, story) {
+      const sp = formatPricingText(story.pricing);
+      const minted = extractMintedTs(story);
+      const tsLabel = minted ? "minted" : "spotted";
+      const tsVal = minted || fmtIsoShort(story.detected_at);
+      return models.map((model, i) => {
         const rawId = String(model.id || "");
         const id = (rawId.startsWith("org:") || rawId.includes(" · ")) ? String(model.name || rawId) : rawId.replace(/^(?:chatgpt|openai|anthropic|google|vertex_ai|bedrock)\//i, "");
         const mp = formatPricingText(model.pricing);
-        const pr = mp && mp !== sp ? `<code class="chip price mono">${escapeHtml(mp)}</code>` : "";
-        return `<code class="chip mono">${escapeHtml(id)}</code>${pr}`;
+        const pr = mp && mp !== sp ? ` · <code class="chip price mono">${escapeHtml(mp)}</code>` : "";
+        const tsChip = i === 0 && tsVal ? ` · ${tsLabel} <code class="chip mono">${escapeHtml(tsVal)}</code>` : "";
+        return `<li><span class="dot-bullet">•</span><code class="chip mono">${escapeHtml(id)}</code>${tsChip}${pr}</li>`;
       }).join("");
-    }
-    function subtitleKind(s) {
-      const src = (s.first_source || "").toLowerCase();
-      if (src.includes("pricing")) return "Official pricing sighting";
-      if (src.includes("arena")) return "Arena model config sighting";
-      if (src.includes("antigravity")) return "Desktop & ACP build sighting";
-      if (src.includes("npm") || src.includes("sdk") || src.includes("git")) return "SDK & CLI build sighting";
-      if (s.open_weights || src.includes("hugging")) return "Open-weight repository sighting";
-      return s.kind === "leak" ? "Model registry sighting" : "Public model release";
-    }
-    function availabilityText(s) {
-      if (s.kind === "leak") return "Not announced";
-      if (s.open_weights) return "Open weights";
-      return "Publicly available";
-    }
-    function evidenceSummaryText(s) {
-      const cards = evidenceFor(s);
-      const primary = cards.find(card => card.build_transition) || cards[0];
-      const src = s.first_source || "Registry";
-      if (primary && primary.build_transition && !primary.build_transition.startsWith("+")) {
-        return `${src} · ${primary.build_transition}`;
-      }
-      return `${src} · Model identifier sighting`;
     }
 
     function storyHtml(s, idx, seen) {
       const stage = stageOf(s);
       const models = modelsFor(s);
       const formattedPrice = formatPricingText(s.pricing);
-      const priceChip = formattedPrice ? `<code class="chip price mono">${escapeHtml(formattedPrice)}</code>` : "";
-      const ids = `<div class="ids-wrap">${modelChips(models.slice(0, 6), s.pricing)}${priceChip}</div>`;
-      const moreIds = models.length > 6 ? `<details><summary>+${models.length - 6} more identifiers</summary><div class="ids-wrap">${modelChips(models.slice(6), s.pricing)}</div></details>` : "";
+      const priceRow = formattedPrice ? `<li><span class="dot-bullet">•</span><code class="chip price mono">${escapeHtml(formattedPrice)}</code></li>` : "";
+      const ids = `<ul class="embed-list">${modelBulletRows(models.slice(0, 6), s)}${priceRow}</ul>`;
+      const moreIds = models.length > 6 ? `<details><summary>+${models.length - 6} more models</summary><ul class="embed-list">${modelBulletRows(models.slice(6), s)}</ul></details>` : "";
       const srcs = s.sources || [];
       const primaryUrl = safeUrl((srcs[0] && srcs[0].url) || ((evidenceFor(s)[0]?.links || [])[0]?.url) || "");
-      const titleEl = primaryUrl
-        ? `<a class="title" href="${escapeHtml(primaryUrl)}" target="_blank" rel="noopener">${escapeHtml(s.title)}</a>`
-        : `<div class="title">${escapeHtml(s.title)}</div>`;
-      const sourceVal = primaryUrl
-        ? `<a href="${escapeHtml(primaryUrl)}" target="_blank" rel="noopener">${escapeHtml(s.first_source || "Registry")}</a>`
-        : escapeHtml(s.first_source || "Registry");
-      const sightingNoun = s.kind === "leak" ? "registry sighting" : "source sighting";
-      const countText = `${srcs.length || 1} ${sightingNoun}${(srcs.length || 1) === 1 ? "" : "s"}`;
-      const subParts = [s.provider_name, subtitleKind(s)].filter(Boolean).join(" · ");
+      const headerLabel = [s.provider_name ? `${s.provider_name} models` : s.title, s.first_source].filter(Boolean).join(" · ");
+      const headerEl = primaryUrl
+        ? `<a href="${escapeHtml(primaryUrl)}" target="_blank" rel="noopener">${escapeHtml(headerLabel)}</a>`
+        : `<span>${escapeHtml(headerLabel)}</span>`;
+      const logo = logoSvg(s.provider_slug, s.provider_name);
       return `
         <article class="story ${stage}">
-          <div class="head">
-            <div class="logo">${logoSvg(s.provider_slug, s.provider_name)}</div>
-            <div style="min-width:0">
-              ${titleEl}
-              <div class="subtitle">${escapeHtml(subParts)}</div>
+          <div class="embed-body">
+            <div class="embed-main">
+              <div class="embed-author">
+                <span class="author-icon">${logo}</span>
+                ${headerEl}
+              </div>
+              <div class="embed-counts">
+                <span class="new-badge">NEW</span>
+                <span>${models.length || 1} new</span>
+                <span>·</span>
+                <span class="stage-pill ${stage === "leak" ? "leak" : "release"}">${STAGE_LABEL[stage]}</span>
+              </div>
+              <div class="section-head">New models</div>
+              ${ids}${moreIds}
             </div>
+            <div class="embed-thumb">${logo}</div>
           </div>
-          <hr class="divider" />
-          <div>
-            <div class="field-label">${models.length > 1 ? "MODEL IDS" : "MODEL ID"}</div>
-            ${ids}${moreIds}
-          </div>
-          <div class="meta-grid">
-            <div>
-              <div class="field-label">SOURCE</div>
-              <div class="field-value">${sourceVal}</div>
-            </div>
-            <div>
-              <div class="field-label">FIRST DETECTED</div>
-              <div class="field-value">${escapeHtml(fmtUTC(s.detected_at))}</div>
-            </div>
-            <div>
-              <div class="field-label">SOURCE COUNT</div>
-              <div class="field-value">${escapeHtml(countText)}</div>
-            </div>
-            <div>
-              <div class="field-label">AVAILABILITY</div>
-              <div class="field-value">${escapeHtml(availabilityText(s))}</div>
-            </div>
-          </div>
-          <hr class="divider" />
           <div class="foot">
-            <div style="min-width:0">
-              <div class="field-label">EVIDENCE</div>
-              <div class="evidence-summary">${escapeHtml(evidenceSummaryText(s))}</div>
-              <div class="credit-line">Developed by <a class="watermark-link" href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a> on X</div>
-            </div>
+            <div class="credit-line">ModelPulse · Developed by <a class="watermark-link" href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a> on X</div>
             <div class="foot-right">
               <div class="actions">
                 <button class="btn btn-sm" onclick="copyText(STORIES_VIEW[${idx}])">Copy X text</button>
