@@ -80,69 +80,80 @@
     input[type="search"] { min-width: 240px; }
     select:focus, input:focus { border-color: var(--blue); }
 
-    .feed { display: grid; grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); gap: 16px; align-items: start; }
+    .feed { display: grid; grid-template-columns: repeat(auto-fill, minmax(540px, 1fr)); gap: 20px; align-items: start; }
     @media (max-width: 620px) { .feed { grid-template-columns: 1fr; } input[type="search"] { min-width: 0; width: 100%; } }
 
     .story {
       position: relative;
-      background: linear-gradient(155deg, #212a46 0%, #182036 100%);
-      border: 1px solid #354468;
-      border-left: 5px solid #38bdf8;
-      border-radius: 12px;
-      padding: 22px 24px 16px;
+      background: #161926;
+      border: 1px solid #262d42;
+      border-radius: 20px;
+      padding: 28px 32px 24px;
       display: flex;
       flex-direction: column;
-      gap: 13px;
-      box-shadow: 0 14px 32px -6px rgba(5, 8, 20, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.07);
-      transition: transform 0.15s ease, border-color 0.15s ease;
+      box-shadow: 0 18px 38px -10px rgba(4, 6, 16, 0.72);
+      transition: border-color 0.15s ease;
     }
     .story:hover {
-      background: linear-gradient(155deg, #253050 0%, #1b243d 100%);
+      border-color: #343e5c;
     }
     /* Tiled credit so screenshots of a card always carry it */
     .story::before {
       content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='210' height='120'><text x='14' y='70' transform='rotate(-22 105 60)' font-family='Segoe UI,Arial,sans-serif' font-size='15' font-weight='800' letter-spacing='1' fill='%23ffffff' fill-opacity='0.065'>@StatsWire</text></svg>");
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='125'><text x='14' y='72' transform='rotate(-22 110 62)' font-family='Segoe UI,Arial,sans-serif' font-size='15' font-weight='700' fill='%23ffffff' fill-opacity='0.045'>@StatsWire</text></svg>");
     }
     .story > * { position: relative; }
-    .credit { font-size: 0.85rem; color: #9fb2d4; }
-    .credit a { color: #58a6ff; font-weight: 700; text-decoration: none; }
-    .credit a:hover { text-decoration: underline; }
     .site-foot { max-width: 1180px; margin: 36px auto 28px; padding: 18px 24px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 0.86rem; color: var(--muted); }
     .site-foot a { color: var(--text); font-weight: 700; text-decoration: none; }
-    .head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
-    .logo { width: 56px; height: 56px; flex-shrink: 0; border-radius: 12px; display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35)); }
-    .logo svg { width: 56px; height: 56px; display: block; }
-    .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 0.84rem; font-weight: 700; color: #b4c6e4; }
-    .stage { font-weight: 800; letter-spacing: 0.06em; font-size: 0.72rem; padding: 3px 10px; border-radius: 999px; }
-    .stage.leak { background: #fce081; color: #4a3006; border: none; }
-    .stage.release { background: #d5fadf; color: #056839; border: none; }
-    .stage.open { background: #e9d5ff; color: #4c1d95; border: none; }
-    .title { font-size: 1.38rem; font-weight: 800; letter-spacing: -0.015em; color: #58a6ff; line-height: 1.25; margin-top: 6px; word-break: break-word; display: inline-block; text-decoration: none; }
-    a.title:hover { text-decoration: underline; color: #79b8ff; }
-    .first { font-size: 0.92rem; font-weight: 600; color: #e2e8f0; margin-top: 4px; }
-    .first b { color: #ffffff; font-weight: 800; }
-    .badges-row { display: flex; gap: 7px; flex-wrap: wrap; align-items: center; }
-    .codename { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.05em; padding: 2.5px 9px; border-radius: 999px; color: #4a3006; background: #fce081; text-transform: uppercase; }
-    .pricing-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 0.8rem; font-weight: 700; padding: 3px 10px; border-radius: 6px; background: #d5fadf; color: #056839; border: none; width: fit-content; }
-    .chip.price { background: #d5fadf; border-color: #a7f3d0; color: #056839; font-weight: 700; font-size: 0.76rem; padding: 2px 8px; }
-    .build-row { font-size: 0.92rem; color: #ffffff; display: flex; flex-direction: column; gap: 5px; }
-    .build-row strong { font-weight: 700; color: #ffffff; }
-    .code-pill { font-size: 0.84rem; background: #141a2e; border: 1px solid #354569; color: #dbeafe; padding: 5px 10px; border-radius: 6px; overflow-wrap: anywhere; line-height: 1.45; }
-    .chip { font-size: 0.88rem; font-weight: 600; background: #141a2e; border: 1px solid #38496e; color: #e2e8f0; padding: 3px 9px; border-radius: 6px; }
-    .model-list { list-style: none; margin: 2px 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-    .model-list li { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; font-size: 0.96rem; color: #ffffff; line-height: 1.5; }
-    .model-list .bullet { color: #ffffff; font-weight: 800; }
-    .model-list .dash { color: #93a6c8; font-weight: 600; }
-    .model-list strong { font-size: 0.98rem; font-weight: 700; color: #ffffff; }
-    .model-list .chip { overflow-wrap: anywhere; white-space: normal; }
-    .card-links { font-size: 0.9rem; font-weight: 600; margin-top: 2px; }
-    .card-links a { color: #58a6ff; text-decoration: none; }
-    .card-links a:hover { text-decoration: underline; }
+    .head { display: flex; gap: 16px; align-items: center; }
+    .logo {
+      width: 52px; height: 52px; flex-shrink: 0; border-radius: 13px;
+      background: #272d42; border: 1px solid #343c57;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo svg { width: 28px; height: 28px; display: block; }
+    .title {
+      font-size: 1.52rem; font-weight: 700; letter-spacing: -0.02em; color: #ffffff;
+      line-height: 1.2; word-break: break-word; display: inline-block; text-decoration: none;
+    }
+    a.title:hover { color: #93c5fd; text-decoration: none; }
+    .subtitle { font-size: 0.92rem; font-weight: 500; color: #8c9bb5; margin-top: 4px; }
+    .divider { height: 1px; background: #262d42; border: 0; margin: 20px 0; width: 100%; }
+    .field-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: #7d8da8;
+    }
+    .ids-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 9px; align-items: center; }
+    .chip {
+      font-size: 1.02rem; font-weight: 600; background: #1d2233;
+      border: 1px solid #3c4663; color: #ffffff;
+      padding: 8px 16px; border-radius: 10px;
+      overflow-wrap: anywhere; white-space: normal;
+    }
+    .chip.price {
+      background: rgba(16, 185, 129, 0.14); border-color: rgba(52, 211, 153, 0.4);
+      color: #6ee7b7; font-size: 0.9rem; font-weight: 700; padding: 7px 13px;
+    }
+    .meta-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      row-gap: 20px; column-gap: 28px; margin-top: 22px;
+    }
+    .field-value {
+      font-size: 1.04rem; font-weight: 700; color: #ffffff; margin-top: 4px;
+      line-height: 1.35;
+    }
+    .field-value a { color: #ffffff; text-decoration: none; }
+    .field-value a:hover { color: #60a5fa; text-decoration: underline; }
     .story { min-width: 0; }
-    .foot { flex-wrap: wrap; }
-    details summary { cursor: pointer; font-size: 0.8rem; color: #9fb2d4; margin-top: 2px; }
-    .foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; border-top: 1px solid rgba(72, 89, 125, 0.45); padding-top: 10px; margin-top: 2px; }
+    details summary { cursor: pointer; font-size: 0.8rem; color: #8c9bb5; margin-top: 8px; }
+    .foot {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      gap: 12px; flex-wrap: wrap;
+    }
+    .evidence-summary { font-size: 0.9rem; color: #9ba9c2; margin-top: 4px; line-height: 1.4; }
+    .foot-right { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+    .watermark-link { font-size: 0.94rem; font-weight: 700; color: #60a5fa; text-decoration: none; }
+    .watermark-link:hover { text-decoration: underline; }
     .actions { display: flex; gap: 6px; }
     .empty { grid-column: 1/-1; text-align: center; padding: 48px; color: var(--muted); }
 
@@ -220,20 +231,20 @@
 
     const LOGOS = {
       google: `<svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>`,
-      anthropic: `<svg viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#d97757"/><path d="M27.8 13h5.1l8.6 22h-5.3l-1.8-4.8h-8.5l-1.8 4.8H19l8.8-22zm-4.1 13.2h5.9L26.7 18l-3 8.2zM14.2 13h5.2l8.6 22h-5.3l-5.9-15.6L10.9 35H5.6l8.6-22z" fill="#141413"/></svg>`,
-      openai: `<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#10a37f"/><path d="M24 12c6.6 0 12 5.4 12 12s-5.4 12-12 12-12-5.4-12-12 5.4-12 12-12zm0 5a7 7 0 100 14 7 7 0 000-14z" fill="#fff"/></svg>`,
+      anthropic: `<svg viewBox="0 0 48 48"><path d="M27.8 11h5.4l9.2 26h-5.6l-1.9-5.4h-9.1l-1.9 5.4H18.4l9.4-26zm-4.4 15.6h6.3L26.6 17l-3.2 9.6zM13.6 11h5.5l9.2 26h-5.6l-6.3-18.2L10.1 37H4.5l9.1-26z" fill="#f1f5f9"/></svg>`,
+      openai: `<svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-2.2 0-4 1.5-4.4 3.6C5.6 7.2 4.2 9 4.2 11.2c0 1.4.6 2.7 1.6 3.5-.2 2.1 1.1 4.1 3.2 4.7 1.3.4 2.7.1 3.7-.7 1.9 1.1 4.3.6 5.6-1.2.8-1.1 1-2.5.6-3.8 1.4-1.5 1.5-3.9.2-5.5-.9-1.1-2.3-1.7-3.7-1.6C14.7 4.4 13.5 3 12 3z"/><polygon points="12 8 15.5 10 15.5 14 12 16 8.5 14 8.5 10 12 8"/></svg>`,
     };
     const BADGES = {
       kimi: ["#06b6d4", "K"], minimax: ["#ec4899", "MM"], zai: ["#6366f1", "GLM"], nvidia: ["#76b900", "NV"],
-      xai: ["#18181b", "xAI"], qwen: ["#7c3aed", "QW"], deepseek: ["#0284c7", "DS"], meta: ["#2563eb", "∞"],
-      mistral: ["#f59e0b", "M"], cursor: ["#1e293b", "CU"], perplexity: ["#0ea5e9", "PX"],
+      xai: ["#272d42", "xAI"], qwen: ["#7c3aed", "QW"], deepseek: ["#0284c7", "DS"], meta: ["#2563eb", "∞"],
+      mistral: ["#f59e0b", "M"], cursor: ["#272d42", "CU"], perplexity: ["#0ea5e9", "PX"],
       thinkingmachines: ["#8b5cf6", "TML"], microsoft: ["#0078d4", "MS"],
     };
     function logoSvg(slug, name) {
       if (LOGOS[slug]) return LOGOS[slug];
-      const [bg, txt] = BADGES[slug] || ["#334155", (name || "AI").replace(/[^A-Za-z0-9]/g, "").slice(0, 2).toUpperCase() || "AI"];
+      const [, txt] = BADGES[slug] || ["#272d42", (name || "AI").replace(/[^A-Za-z0-9]/g, "").slice(0, 2).toUpperCase() || "AI"];
       const fs = txt.length > 2 ? 15 : 19;
-      return `<svg viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="${bg}"/><text x="24" y="31" text-anchor="middle" fill="#fff" font-size="${fs}" font-weight="800" font-family="Segoe UI, Arial, sans-serif">${escapeHtml(txt)}</text></svg>`;
+      return `<svg viewBox="0 0 48 48"><text x="24" y="31" text-anchor="middle" fill="#ffffff" font-size="${fs}" font-weight="800" font-family="Segoe UI, Arial, sans-serif">${escapeHtml(txt)}</text></svg>`;
     }
 
     function escapeHtml(s) {
@@ -292,95 +303,99 @@
         return labeled || model;
       });
     }
-    const ACCENTS = {
-      google: "#38bdf8", openai: "#10b981", anthropic: "#f97316", zai: "#6366f1", minimax: "#ec4899",
-      kimi: "#06b6d4", deepseek: "#0284c7", qwen: "#a855f7", meta: "#3b82f6", mistral: "#f59e0b",
-      nvidia: "#76b900", xai: "#38bdf8", microsoft: "#0078d4", perplexity: "#0ea5e9",
-    };
-    function humanizeId(id) {
-      const slug = String(id || "").split("/").pop().replace(/[:@].*$/, "");
-      const fix = { gpt: "GPT", glm: "GLM", vl: "VL", tf: "TF", ai: "AI", oss: "OSS", fp8: "FP8", bf16: "BF16", nvfp4: "NVFP4", mxfp4: "MXFP4" };
-      return slug.split(/[-_]+/).filter(Boolean).map(w => fix[w.toLowerCase()] || (w.charAt(0).toUpperCase() + w.slice(1))).join(" ");
-    }
-    function modelRows(models, storyPricing) {
+    function modelChips(models, storyPricing) {
       return models.map(model => {
-        const rawName = /^Referenced in /.test(model.name || "") ? "" : (model.name || "");
-        const id = String(model.id || "");
-        const baseId = id.split("/").pop();
-        const display = (!rawName || rawName === id || rawName === baseId) ? humanizeId(id) : rawName;
+        const rawId = String(model.id || "");
+        const id = (rawId.startsWith("org:") || rawId.includes(" · ")) ? String(model.name || rawId) : rawId.replace(/^(?:chatgpt|openai|anthropic|google|vertex_ai|bedrock)\//i, "");
         const pr = model.pricing && model.pricing !== storyPricing ? `<code class="chip price mono">${escapeHtml(model.pricing)}</code>` : "";
-        return `<li><span class="bullet">•</span><strong>${escapeHtml(display)}</strong><span class="dash">—</span><code class="chip mono">${escapeHtml(id)}</code>${pr}</li>`;
+        return `<code class="chip mono">${escapeHtml(id)}</code>${pr}`;
       }).join("");
     }
-    function buildRowHtml(s) {
-      const cards = evidenceFor(s);
-      const primary = cards.find(card => card.old_version && card.new_version) || cards.find(card => card.build_transition) || cards[0];
-      if (!primary || !primary.build_transition) return "";
-      return `<div class="build-row"><strong>${escapeHtml(primary.build_label || "Discovery Diff")}:</strong><code class="code-pill mono">${escapeHtml(primary.build_transition)}</code></div>`;
+    function subtitleKind(s) {
+      const src = (s.first_source || "").toLowerCase();
+      if (src.includes("pricing")) return "Official pricing sighting";
+      if (src.includes("arena")) return "Arena model config sighting";
+      if (src.includes("antigravity")) return "Desktop & ACP build sighting";
+      if (src.includes("npm") || src.includes("sdk") || src.includes("git")) return "SDK & CLI build sighting";
+      if (s.open_weights || src.includes("hugging")) return "Open-weight repository sighting";
+      return s.kind === "leak" ? "Model registry sighting" : "Public model release";
     }
-    function linksHtml(s) {
-      const seenUrls = new Set();
-      const items = [];
-      for (const card of evidenceFor(s)) {
-        for (const l of (card.links || [])) {
-          const u = safeUrl(l.url);
-          if (u && !seenUrls.has(u)) {
-            seenUrls.add(u);
-            items.push(`<a href="${escapeHtml(u)}" target="_blank" rel="noopener">${escapeHtml(l.label || s.first_source || "Source")}</a>`);
-          }
-        }
+    function availabilityText(s) {
+      if (s.kind === "leak") return "Not announced";
+      if (s.open_weights) return "Open weights";
+      return "Publicly available";
+    }
+    function evidenceSummaryText(s) {
+      const cards = evidenceFor(s);
+      const primary = cards.find(card => card.build_transition) || cards[0];
+      const src = s.first_source || "Registry";
+      if (primary && primary.build_transition && !primary.build_transition.startsWith("+")) {
+        return `${src} · ${primary.build_transition}`;
       }
-      if (!items.length) {
-        for (const src of (s.sources || [])) {
-          const u = safeUrl(src.url);
-          if (u && !seenUrls.has(u)) {
-            seenUrls.add(u);
-            items.push(`<a href="${escapeHtml(u)}" target="_blank" rel="noopener">${escapeHtml(src.label || "Source")}</a>`);
-          }
-        }
-      }
-      return items.length ? `<div class="card-links">${items.slice(0, 3).join(" · ")}</div>` : "";
+      return `${src} · Model identifier sighting`;
     }
 
     function storyHtml(s, idx, seen) {
       const stage = stageOf(s);
       const models = modelsFor(s);
-      const ids = `<ul class="model-list">${modelRows(models.slice(0, 8), s.pricing)}</ul>`;
-      const moreIds = models.length > 8 ? `<details><summary>${models.length - 8} more identifiers</summary><ul class="model-list">${modelRows(models.slice(8), s.pricing)}</ul></details>` : "";
+      const priceChip = s.pricing ? `<code class="chip price mono">${escapeHtml(s.pricing)}</code>` : "";
+      const ids = `<div class="ids-wrap">${modelChips(models.slice(0, 6), s.pricing)}${priceChip}</div>`;
+      const moreIds = models.length > 6 ? `<details><summary>+${models.length - 6} more identifiers</summary><div class="ids-wrap">${modelChips(models.slice(6), s.pricing)}</div></details>` : "";
       const srcs = s.sources || [];
       const primaryUrl = safeUrl((srcs[0] && srcs[0].url) || ((evidenceFor(s)[0]?.links || [])[0]?.url) || "");
       const titleEl = primaryUrl
         ? `<a class="title" href="${escapeHtml(primaryUrl)}" target="_blank" rel="noopener">${escapeHtml(s.title)}</a>`
         : `<div class="title">${escapeHtml(s.title)}</div>`;
-      const badges = [
-        ...(s.codenames || []).map(c => `<span class="codename" title="Token not found in any public model catalog">codename: ${escapeHtml(c)}</span>`),
-        ...(s.pricing ? [`<span class="pricing-badge mono" title="Verified token pricing">${escapeHtml(s.pricing)}</span>`] : []),
-      ];
-      const badgesHtml = badges.length ? `<div class="badges-row">${badges.join("")}</div>` : "";
-      const accent = ACCENTS[s.provider_slug] || (stage === "leak" ? "#38bdf8" : "#22c55e");
+      const sourceVal = primaryUrl
+        ? `<a href="${escapeHtml(primaryUrl)}" target="_blank" rel="noopener">${escapeHtml(s.first_source || "Registry")}</a>`
+        : escapeHtml(s.first_source || "Registry");
+      const sightingNoun = s.kind === "leak" ? "registry sighting" : "source sighting";
+      const countText = `${srcs.length || 1} ${sightingNoun}${(srcs.length || 1) === 1 ? "" : "s"}`;
+      const subParts = [s.provider_name, subtitleKind(s)].filter(Boolean).join(" · ");
       return `
-        <article class="story ${stage}" style="border-left-color: ${accent}">
+        <article class="story ${stage}">
           <div class="head">
-            <div style="min-width:0">
-              <div class="meta">
-                <span class="stage ${stage}">${STAGE_LABEL[stage]}</span>
-                ${s.provider_name ? `<span>${escapeHtml(s.provider_name)}</span>·` : ""}
-                <span title="${escapeHtml(fmtUTC(s.detected_at, true))}">${escapeHtml(ago(s.detected_at))}</span>
-              </div>
-              ${titleEl}
-              <div class="first">First spotted ${escapeHtml(fmtUTC(s.detected_at))} in <b>${escapeHtml(s.first_source)}</b></div>
-            </div>
             <div class="logo">${logoSvg(s.provider_slug, s.provider_name)}</div>
+            <div style="min-width:0">
+              ${titleEl}
+              <div class="subtitle">${escapeHtml(subParts)}</div>
+            </div>
           </div>
-          ${badgesHtml}
-          ${buildRowHtml(s)}
-          ${ids}${moreIds}
-          ${linksHtml(s)}
+          <hr class="divider" />
+          <div>
+            <div class="field-label">${models.length > 1 ? "MODEL IDS" : "MODEL ID"}</div>
+            ${ids}${moreIds}
+          </div>
+          <div class="meta-grid">
+            <div>
+              <div class="field-label">SOURCE</div>
+              <div class="field-value">${sourceVal}</div>
+            </div>
+            <div>
+              <div class="field-label">FIRST DETECTED</div>
+              <div class="field-value">${escapeHtml(fmtUTC(s.detected_at))}</div>
+            </div>
+            <div>
+              <div class="field-label">SOURCE COUNT</div>
+              <div class="field-value">${escapeHtml(countText)}</div>
+            </div>
+            <div>
+              <div class="field-label">AVAILABILITY</div>
+              <div class="field-value">${escapeHtml(availabilityText(s))}</div>
+            </div>
+          </div>
+          <hr class="divider" />
           <div class="foot">
-            <span class="credit">Developed by <a href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a> on X</span>
-            <div class="actions">
-              <button class="btn btn-sm" onclick="copyText(STORIES_VIEW[${idx}])">Copy X text</button>
-              <button class="btn btn-sm btn-primary" onclick="openShare(${idx})">Share image</button>
+            <div style="min-width:0">
+              <div class="field-label">EVIDENCE</div>
+              <div class="evidence-summary">${escapeHtml(evidenceSummaryText(s))}</div>
+            </div>
+            <div class="foot-right">
+              <div class="actions">
+                <button class="btn btn-sm" onclick="copyText(STORIES_VIEW[${idx}])">Copy X text</button>
+                <button class="btn btn-sm btn-primary" onclick="openShare(${idx})">Share image</button>
+              </div>
+              <a class="watermark-link" href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a>
             </div>
           </div>
         </article>`;
