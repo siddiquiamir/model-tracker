@@ -167,18 +167,25 @@
       list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;
     }
     .embed-list li {
-      display: flex; flex-wrap: wrap; align-items: center; gap: 7px;
-      font-size: 14px; color: #dbdee1; line-height: 1.5;
+      display: flex; flex-wrap: nowrap; align-items: center; gap: 6px;
+      font-size: 13px; color: #dbdee1; line-height: 1.5; white-space: nowrap;
     }
     .embed-list .dot-bullet {
-      color: #FFFFFF; font-weight: 800; margin-right: 2px;
+      color: #FFFFFF; font-weight: 800; margin-right: 1px;
     }
     .chip, .chip.price {
       font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 14px; font-weight: 500; background: #181a1f;
+      font-size: 13.5px; font-weight: 500; background: #181a1f;
       border: 1px solid #3c404b; color: #F4F6FA;
-      padding: 4px 10px; border-radius: 6px;
-      overflow-wrap: anywhere; white-space: normal;
+      padding: 3px 9px; border-radius: 6px;
+      white-space: nowrap;
+    }
+    .ts-inline {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11.5px; color: #A4ADB9; white-space: nowrap;
+    }
+    .chip.ts {
+      font-size: 11.5px; padding: 2px 7px; color: #cfd6e0;
     }
     .story { min-width: 0; }
     details summary { cursor: pointer; font-size: 12px; color: #A4ADB9; margin-top: 4px; }
@@ -376,7 +383,7 @@
         const id = (rawId.startsWith("org:") || rawId.includes(" · ")) ? String(model.name || rawId) : rawId.replace(/^(?:chatgpt|openai|anthropic|google|vertex_ai|bedrock)\//i, "");
         const mp = formatPricingText(model.pricing);
         const pr = mp && mp !== sp ? ` · <code class="chip price mono">${escapeHtml(mp)}</code>` : "";
-        const tsChip = i === 0 && tsVal ? ` · ${tsLabel} <code class="chip mono">${escapeHtml(tsVal)}</code>` : "";
+        const tsChip = i === 0 && tsVal ? `<span class="ts-inline">· ${tsLabel} <code class="chip ts mono">${escapeHtml(tsVal)}</code></span>` : "";
         return `<li><span class="dot-bullet">•</span><code class="chip mono">${escapeHtml(id)}</code>${tsChip}${pr}</li>`;
       }).join("");
     }
@@ -415,7 +422,7 @@
             <div class="embed-thumb">${logo}</div>
           </div>
           <div class="foot">
-            <div class="credit-line">ModelPulse · Developed by <a class="watermark-link" href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a> on X</div>
+            <div class="credit-line">Developed by <a class="watermark-link" href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a> on X</div>
             <div class="foot-right">
               <div class="actions">
                 <button class="btn btn-sm" onclick="copyText(STORIES_VIEW[${idx}])">Copy X text</button>
