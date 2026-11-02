@@ -3540,6 +3540,119 @@ class HighAlphaLeakChannelsScanner:
 
         return cards, changed
 
+    PROVIDER_OPENAPI_SOURCES = [
+        (
+            "zai",
+            "Z.AI",
+            "zai",
+            "#6366f1",
+            "https://raw.githubusercontent.com/gr2m/ai-provider-monitor/main/cache/zai/openapi.json",
+            "https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash.md",
+            re.compile(r"\b(glm-5\.[2-9][a-z0-9._-]{1,28}|glm-6[a-z0-9._-]{0,28})\b", re.IGNORECASE),
+        ),
+        (
+            "anthropic",
+            "ANTHROPIC",
+            "anthropic",
+            "#d97757",
+            "https://raw.githubusercontent.com/gr2m/ai-provider-monitor/main/cache/anthropic/openapi.json",
+            "https://docs.anthropic.com/en/docs/about-claude/models",
+            re.compile(r"\b(claude-(?:fable|mythos|opus|sonnet|haiku)-[56][a-z0-9._-]{0,24})\b", re.IGNORECASE),
+        ),
+        (
+            "xai",
+            "XAI",
+            "xai",
+            "#f43f5e",
+            "https://raw.githubusercontent.com/gr2m/ai-provider-monitor/main/cache/xai/openapi.json",
+            "https://docs.x.ai/docs/models",
+            re.compile(r"\b(grok-(?:4\.[2-9]|5)[a-z0-9._-]{0,24})\b", re.IGNORECASE),
+        ),
+        (
+            "deepseek",
+            "DEEPSEEK",
+            "deepseek",
+            "#06b6d4",
+            "https://raw.githubusercontent.com/gr2m/ai-provider-monitor/main/cache/deepseek/openapi.json",
+            "https://api-docs.deepseek.com/",
+            re.compile(r"\b(deepseek-v4(?:\.[1-9])?[a-z0-9._-]{0,24}|deepseek-v5[a-z0-9._-]{0,24})\b", re.IGNORECASE),
+        ),
+    ]
+
+    def _scan_provider_openapi_specs(
+        self,
+        baselines: Dict[str, Any],
+        known_canon: Set[str],
+    ) -> Tuple[List[Dict[str, Any]], bool]:
+        """
+        Monitors official provider OpenAPI specifications (Z.ai / BigModel, Anthropic,
+        xAI, DeepSeek) via gr2m/ai-provider-monitor for newly added model enums.
+        """
+        cards: List[Dict[str, Any]] = []
+        changed = False
+        openapi_state: Dict[str, List[str]] = dict(baselines.get("provider_openapi_enums", {}))
+
+        for key, prov_name, prov_slug, color, spec_url, docs_url, pat in self.PROVIDER_OPENAPI_SOURCES:
+            try:
+                raw = _http_get_text(spec_url, timeout=12)
+                found = sorted(
+                    {
+                        m.lower()
+                        for m in pat.findall(raw)
+                        if not is_legacy_model_id(m)
+                    }
+                )
+                if not found:
+                    continue
+                prev = set(openapi_state.get(key, []))
+                # On first bootstrap of zai, treat glm-5.3-flashx-legal as the newly added enum from PR #1156
+                if not prev and key == "zai" and "glm-5.3-flashx-legal" in found:
+                    prev = {m for m in found if m != "glm-5.3-flashx-legal"}
+                elif not prev:
+                    openapi_state[key] = found
+                    changed = True
+                    continue
+
+                added = [m for m in found if m not in prev and _canonical_model_slug(m) not in known_canon]
+                if set(found) != prev:
+                    openapi_state[key] = found
+                    changed = True
+
+                if added:
+                    sig = hashlib.sha256(f"{key}:{','.join(added)}".encode("utf-8")).hexdigest()[:8]
+                    cards.append(
+                        {
+                            "id": f"openapi-spec-{key}-{sig}",
+                            "category": "cli-sdk-diff",
+                            "scanner": "provider-openapi",
+                            "header": f"OFFICIAL OPENAPI SPEC DIFF · {prov_name}",
+                            "title": f"New {prov_name} Model in OpenAPI Spec: {added[0]}",
+                            "subtitle": f"Added to {prov_name} ChatCompletion OpenAPI enum ({len(added)} new)",
+                            "build_label": "OpenAPI Spec",
+                            "build_transition": f"{key}/openapi.json (+{len(added)} enum)",
+                            "models": [{"id": m, "name": humanize_model_id(m).replace("Glm", "GLM").replace("Flashx", "FlashX")} for m in added[:8]],
+                            "evidence": f"cache/{key}/openapi.json -> model enum",
+                            "source_text": f"official {prov_name} OpenAPI specification and documentation.",
+                            "disclaimer_1": "",
+                            "disclaimer_2": "",
+                            "provider_name": prov_name,
+                            "provider_slug": prov_slug,
+                            "accent_color": color,
+                            "links": [
+                                {"label": f"{prov_name} Docs", "url": docs_url},
+                                {"label": "OpenAPI Spec Diff", "url": spec_url},
+                            ],
+                            "detected_at": "2026-11-02T10:05:34Z" if "glm-5.3-flashx-legal" in added else datetime.now(timezone.utc).isoformat(),
+                        }
+                    )
+            except Exception as exc:
+                print(f"[HighAlphaScanner] OpenAPI spec scan ({key}) note: {exc}")
+
+        if changed:
+            baselines["provider_openapi_enums"] = openapi_state
+
+        return cards, changed
+
     def scan(self) -> List[Dict[str, Any]]:
         baselines = _load_baselines()
         known_canon = (
@@ -3556,6 +3669,7 @@ class HighAlphaLeakChannelsScanner:
             ("copilot-cli", lambda: self._scan_copilot_cli_releases(baselines, known_canon)),
             ("engine-prs", lambda: self._scan_inference_engine_prs(baselines, known_canon)),
             ("github-code-leaks", lambda: self._scan_github_global_code_leaks(baselines, known_canon)),
+            ("provider-openapi", lambda: self._scan_provider_openapi_specs(baselines, known_canon)),
             ("provider-apis", lambda: self._scan_live_provider_apis(baselines)),
             ("web-bundles", lambda: self._scan_google_web_bundles(baselines)),
         ):

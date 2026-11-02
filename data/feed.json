@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-02T13:18:27.043833+00:00",
+  "generated_at": "2026-11-02T13:22:49.562218+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 104,
@@ -11,6 +11,45 @@
     "new_in_this_scan": 0
   },
   "stories": [
+    {
+      "id": "story-glm-5-3-flashx-legal",
+      "group": "glm-5-3-flashx-legal",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "GLM 5.3 FlashX Legal",
+      "provider_slug": "zai",
+      "provider_name": "Z.ai",
+      "accent_color": "#6366f1",
+      "detected_at": "2026-11-02T10:05:34Z",
+      "updated_at": "2026-11-02T10:05:34Z",
+      "first_source": "Official OpenAPI spec",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "glm-5.3-flashx-legal",
+          "name": "GLM 5.3 FlashX Legal"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Official OpenAPI spec",
+          "scanner": "provider-openapi",
+          "detected_at": "2026-11-02T10:05:34Z",
+          "title": "New Z.AI Model in OpenAPI Spec: glm-5.3-flashx-legal",
+          "url": "https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash.md",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK \u00b7 Z.AI",
+      "card_ids": [
+        "openapi-spec-zai-d8bbde17"
+      ]
+    },
     {
       "id": "story-laya",
       "group": "laya",
@@ -4691,6 +4730,40 @@
     }
   ],
   "cards": [
+    {
+      "id": "openapi-spec-zai-d8bbde17",
+      "category": "cli-sdk-diff",
+      "scanner": "provider-openapi",
+      "header": "OFFICIAL OPENAPI SPEC DIFF \u00b7 Z.AI",
+      "title": "New Z.AI Model in OpenAPI Spec: glm-5.3-flashx-legal",
+      "subtitle": "Added to Z.AI ChatCompletion OpenAPI enum (1 new)",
+      "build_label": "OpenAPI Spec",
+      "build_transition": "zai/openapi.json (+1 enum)",
+      "models": [
+        {
+          "id": "glm-5.3-flashx-legal",
+          "name": "GLM 5.3 FlashX Legal"
+        }
+      ],
+      "evidence": "cache/zai/openapi.json -> model enum",
+      "source_text": "official Z.AI OpenAPI specification and documentation.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "Z.AI",
+      "provider_slug": "zai",
+      "accent_color": "#6366f1",
+      "links": [
+        {
+          "label": "Z.AI Docs",
+          "url": "https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash.md"
+        },
+        {
+          "label": "OpenAPI Spec Diff",
+          "url": "https://raw.githubusercontent.com/gr2m/ai-provider-monitor/main/cache/zai/openapi.json"
+        }
+      ],
+      "detected_at": "2026-11-02T10:05:34Z"
+    },
     {
       "id": "vercel-gateway-diff-8defc766",
       "category": "cli-sdk-diff",
