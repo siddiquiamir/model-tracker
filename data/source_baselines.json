@@ -10289,6 +10289,7 @@
     "deepgram/streaming/diarize",
     "deepgram/streaming/keyterm",
     "deepgram/streaming/nova-3",
+    "deepgram/streaming/nova-3-medical",
     "deepgram/streaming/nova-3-multilingual",
     "deepgram/streaming/redact",
     "deepgram/whisper",
@@ -19765,8 +19766,8 @@
     "seedance-v1-pro": {
       "org": "bytedance",
       "provider": "fal",
-      "caps": "in:text, out:video",
-      "model_id": "e705b65f-82cd-40cb-9630-d9e6ca92d06f",
+      "caps": "in:text, in:image, out:video",
+      "model_id": "4ddc4e52-2867-49b6-a603-5aab24a566ca",
       "route": "code"
     },
     "hailuo-02-standard": {
@@ -19814,15 +19815,15 @@
     "wan-v2.2-a14b": {
       "org": "wan",
       "provider": "fal",
-      "caps": "in:text, in:image, out:video",
-      "model_id": "3a91bb37-39fb-471c-8aa2-a89b98d280d0",
+      "caps": "in:text, out:video",
+      "model_id": "264e6e2f-b66a-4e27-a859-8145ff32d6f6",
       "route": "code"
     },
     "seedance-v1-lite": {
       "org": "bytedance",
       "provider": "fal",
-      "caps": "in:text, out:video",
-      "model_id": "13ce11ba-def2-4c80-a70b-b0b2c14d293e",
+      "caps": "in:text, in:image, out:video",
+      "model_id": "4c8dde6e-1b2c-45b9-91c3-413b2ceafffb",
       "route": "code"
     },
     "kandinsky-5.0-t2v-lite": {
@@ -19940,8 +19941,8 @@
     "minimax-h3-max": {
       "org": "minimax",
       "provider": "fal",
-      "caps": "in:text, out:video",
-      "model_id": "01a04421-8705-7ac3-b814-0b4750bf2ea3",
+      "caps": "in:text, in:image, out:video",
+      "model_id": "01a04423-3cd2-767a-9f26-0593ff09d518",
       "route": "code"
     },
     "kandinsky-5.0-i2v-pro": {
@@ -20145,6 +20146,13 @@
       "provider": "googleVertexGlobalWithThoughtSignatures",
       "caps": "in:text, in:image, in:file, out:text, out:web",
       "model_id": "01a141d8-c8f9-710a-bdf4-983605ae330c",
+      "route": "code"
+    },
+    "kimi-k3.1-pro-max": {
+      "org": "moonshot",
+      "provider": "moonshot",
+      "caps": "in:text, in:image, out:web",
+      "model_id": "01a19e62-4114-7c97-b75e-9b7752d210c3",
       "route": "code"
     }
   },
@@ -21651,10 +21659,6 @@
   "copilot_cli_release_models": [],
   "engine_seen_prs": {
     "vllm-project/vllm": [
-      65000,
-      65001,
-      65002,
-      65003,
       65004,
       65005,
       65006,
@@ -21850,10 +21854,13 @@
       65241,
       65243,
       65244,
-      65245
+      65245,
+      65246,
+      65247,
+      65248,
+      65249
     ],
     "sgl-project/sglang": [
-      47775,
       47776,
       47777,
       47778,
@@ -22052,11 +22059,10 @@
       47983,
       47984,
       47985,
-      47986
+      47986,
+      47987
     ],
     "NVIDIA/TensorRT-LLM": [
-      21265,
-      21266,
       21267,
       21268,
       21269,
@@ -22254,10 +22260,11 @@
       21474,
       21475,
       21476,
-      21477
+      21477,
+      21478,
+      21479
     ],
     "huggingface/transformers": [
-      50009,
       50010,
       50012,
       50013,
@@ -22456,7 +22463,8 @@
       50276,
       50277,
       50278,
-      50279
+      50279,
+      50281
     ],
     "ggml-org/llama.cpp": [
       31276,
