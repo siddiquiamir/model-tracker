@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-11-02T13:25:29.406663+00:00",
+  "generated_at": "2026-11-02T13:45:29.189835+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 105,
-    "leaks": 22,
-    "releases": 83,
+    "leaks": 21,
+    "releases": 84,
     "stories_24h": 1,
-    "sources_ok": 12,
-    "total_cards": 165,
+    "sources_ok": 11,
+    "total_cards": 166,
     "new_in_this_scan": 1
   },
   "stories": [
     {
       "id": "story-glm-5-3-flashx-legal",
       "group": "glm-5-3-flashx-legal",
-      "kind": "leak",
+      "kind": "release",
       "open_weights": false,
       "title": "GLM 5.3 FlashX Legal",
       "provider_slug": "zai",
       "provider_name": "Z.ai",
       "accent_color": "#6366f1",
       "detected_at": "2026-11-02T10:05:34Z",
-      "updated_at": "2026-11-02T10:05:34Z",
+      "updated_at": "2026-11-02T13:45:36.443485+00:00",
       "first_source": "Official OpenAPI spec",
-      "lead": "",
+      "lead": "3 h before it went live on OpenRouter",
       "released_on": "",
       "pricing": "",
       "codenames": [
@@ -43,15 +43,24 @@
           "title": "New Z.AI Model in OpenAPI Spec: glm-5.3-flashx-legal",
           "url": "https://docs.bigmodel.cn/cn/guide/models/vlm/glm-5.3-flash.md",
           "backfill": false
+        },
+        {
+          "label": "OpenRouter",
+          "scanner": "openrouter",
+          "detected_at": "2026-11-02T13:45:36.443485+00:00",
+          "title": "Z.ai: GLM 5.3 FlashX Legal",
+          "url": "https://openrouter.ai/z-ai/glm-5.3-flashx-legal",
+          "backfill": false
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
-      "header": "LEAK · Z.AI",
+      "header": "RELEASE · Z.AI",
       "card_ids": [
-        "openapi-spec-zai-d8bbde17"
+        "openapi-spec-zai-d8bbde17",
+        "openrouter-model-z-ai_glm-5.3-flashx-legal"
       ],
-      "x_post_text": "🟠 LEAK: GLM 5.3 FlashX Legal by Z.ai\n\nFirst spotted 02 Nov 10:05 UTC in Official OpenAPI spec\nCodename: legal\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW: GLM 5.3 FlashX Legal by Z.ai\n\nFirst spotted 02 Nov 10:05 UTC in Official OpenAPI spec\n⏱ 3 h before it went live on OpenRouter\nConfirmed by OpenRouter\nCodename: legal\n\nvia @StatsWire"
     },
     {
       "id": "story-laya",
@@ -4733,6 +4742,44 @@
     }
   ],
   "cards": [
+    {
+      "id": "openrouter-model-z-ai_glm-5.3-flashx-legal",
+      "category": "cli-sdk-diff",
+      "scanner": "openrouter",
+      "header": "OPENROUTER LIVE REGISTRY · Z-AI",
+      "title": "Z.ai: GLM 5.3 FlashX Legal",
+      "subtitle": "Newly registered model endpoint on OpenRouter (/api/v1/models)",
+      "build_label": "Endpoint ID",
+      "build_transition": "z-ai/glm-5.3-flashx-legal",
+      "models": [
+        {
+          "id": "z-ai/glm-5.3-flashx-legal",
+          "name": "Z.ai: GLM 5.3 FlashX Legal (1048k context window)"
+        }
+      ],
+      "evidence": "openrouter.ai/api/v1/models",
+      "source_text": "official public OpenRouter /api/v1/models JSON registry.",
+      "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
+      "disclaimer_2": "Publicly listed API model identifier and context length specification.",
+      "provider_name": "Z-AI",
+      "provider_slug": "openrouter",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "OpenRouter Model Page",
+          "url": "https://openrouter.ai/z-ai/glm-5.3-flashx-legal"
+        },
+        {
+          "label": "OpenRouter Models API",
+          "url": "https://openrouter.ai/api/v1/models"
+        }
+      ],
+      "detected_at": "2026-11-02T13:45:36.443485+00:00",
+      "codenames": [
+        "legal"
+      ],
+      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · Z-AI\nZ.ai: GLM 5.3 FlashX Legal spotted in Endpoint ID z-ai/glm-5.3-flashx-legal!\n\n• Z.ai: GLM 5.3 FlashX Legal (1048k context window) (z-ai/glm-5.3-flashx-legal)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "openapi-spec-zai-d8bbde17",
       "category": "cli-sdk-diff",
