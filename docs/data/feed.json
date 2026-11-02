@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-11-02T22:08:20.862639+00:00",
+  "generated_at": "2026-11-02T22:12:20.684946+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 107,
-    "leaks": 22,
-    "releases": 85,
+    "leaks": 21,
+    "releases": 86,
     "stories_24h": 3,
-    "sources_ok": 11,
-    "total_cards": 168,
+    "sources_ok": 12,
+    "total_cards": 169,
     "new_in_this_scan": 1
   },
   "stories": [
     {
       "id": "story-pulse",
       "group": "pulse",
-      "kind": "leak",
+      "kind": "release",
       "open_weights": false,
-      "title": "Pulse",
+      "title": "Pulse Alpha Free",
       "provider_slug": "modelsdev",
       "provider_name": "Opencode / Sst",
       "accent_color": "#10b981",
       "detected_at": "2026-11-02T22:08:32.691654+00:00",
-      "updated_at": "2026-11-02T22:08:32.691654+00:00",
+      "updated_at": "2026-11-02T22:12:51.288441+00:00",
       "first_source": "models.dev",
-      "lead": "",
+      "lead": "4 min before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "",
       "pricing": "",
       "codenames": [
@@ -32,7 +32,7 @@
       "models": [
         {
           "id": "pulse-alpha-free",
-          "name": "2026-11-02)"
+          "name": "Pulse Alpha Free"
         }
       ],
       "sources": [
@@ -43,15 +43,24 @@
           "title": "1 New Model(s) Added to models.dev",
           "url": "https://models.dev/api.json",
           "backfill": false
+        },
+        {
+          "label": "Opencode Zen Stealth & Model Gateway",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-11-02T22:12:51.288441+00:00",
+          "title": "New Model on OpenCode Zen: pulse-alpha-free",
+          "url": "https://opencode.ai/zen/v1/models",
+          "backfill": false
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
-      "header": "LEAK · OPENCODE / SST",
+      "header": "RELEASE · OPENCODE / SST",
       "card_ids": [
-        "models-dev-diff-5e32851e"
+        "models-dev-diff-5e32851e",
+        "opencode-zen-diff-3c0a07e5"
       ],
-      "x_post_text": "🟠 LEAK: Pulse by Opencode / Sst\n\nFirst spotted 02 Nov 22:08 UTC in models.dev\nCodename: pulse\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW: Pulse Alpha Free by Opencode / Sst\n\nFirst spotted 02 Nov 22:08 UTC in models.dev\n⏱ 4 min before it went live on Opencode Zen Stealth & Model Gateway\nConfirmed by Opencode Zen Stealth & Model Gateway\nCodename: pulse\n\nvia @StatsWire"
     },
     {
       "id": "story-strata",
@@ -4825,6 +4834,37 @@
     }
   ],
   "cards": [
+    {
+      "id": "opencode-zen-diff-3c0a07e5",
+      "category": "cli-sdk-diff",
+      "scanner": "gateway-radar",
+      "header": "OPENCODE ZEN STEALTH & MODEL GATEWAY · LIVE DIFF",
+      "title": "New Model on OpenCode Zen: pulse-alpha-free",
+      "subtitle": "Newly exposed model / stealth codename in opencode.ai/zen/v1/models (+1 new)",
+      "build_label": "Gateway Diff",
+      "build_transition": "+1 model(s) (79 active)",
+      "models": [
+        {
+          "id": "pulse-alpha-free",
+          "name": "Pulse Alpha Free"
+        }
+      ],
+      "evidence": "opencode.ai/zen/v1/models",
+      "source_text": "public OpenCode Zen /v1/models catalog.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENCODE ZEN",
+      "provider_slug": "openrouter",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "OpenCode Zen Models JSON",
+          "url": "https://opencode.ai/zen/v1/models"
+        }
+      ],
+      "detected_at": "2026-11-02T22:12:51.288441+00:00",
+      "x_post_text": "🚨 OPENCODE ZEN STEALTH & MODEL GATEWAY · LIVE DIFF\nNew Model on OpenCode Zen: pulse-alpha-free spotted in Gateway Diff +1 model(s) (79 active)!\n\n• Pulse Alpha Free (pulse-alpha-free)\n\nEvidence: opencode.ai/zen/v1/models\nSource: public OpenCode Zen /v1/models catalog.\n\nTracked by @StatsWire"
+    },
     {
       "id": "models-dev-diff-5e32851e",
       "category": "cli-sdk-diff",
