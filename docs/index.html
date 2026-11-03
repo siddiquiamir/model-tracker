@@ -153,12 +153,20 @@
       background: #5865f2; color: #ffffff; font-size: 10px; font-weight: 800;
       padding: 2px 6px; border-radius: 4px; letter-spacing: 0.04em;
     }
+    .new-badge.registry { background: #0284c7; }
+    .new-badge.unverified { background: #64748b; }
     .stage-pill {
       font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 5px;
       background: rgba(252, 224, 129, 0.16); color: #fce081; border: 1px solid rgba(252, 224, 129, 0.35);
     }
     .stage-pill.release {
       background: rgba(34, 197, 94, 0.16); color: #86efac; border-color: rgba(34, 197, 94, 0.35);
+    }
+    .stage-pill.registry {
+      background: rgba(56, 189, 248, 0.16); color: #7dd3fc; border-color: rgba(56, 189, 248, 0.35);
+    }
+    .stage-pill.unverified {
+      background: rgba(148, 163, 184, 0.18); color: #cbd5e1; border-color: rgba(148, 163, 184, 0.38);
     }
     .section-head {
       font-size: 15px; font-weight: 700; color: #FFFFFF; margin-top: 2px;
@@ -239,7 +247,9 @@
       <div class="tabs" id="tabs">
         <button class="tab active" data-tab="all">All</button>
         <button class="tab" data-tab="leak">🟠 Leaks</button>
-        <button class="tab" data-tab="release">🟢 Releases</button>
+        <button class="tab" data-tab="release">🟢 New Models</button>
+        <button class="tab" data-tab="registry">🔵 Registry Updates</button>
+        <button class="tab" data-tab="unverified">⚪ Unverified</button>
         <button class="tab" data-tab="open">Open weights</button>
         <button class="tab" data-tab="unread" id="tab-unread">Unread</button>
       </div>
@@ -288,7 +298,7 @@
       kimi: ["#06b6d4", "K"], minimax: ["#ec4899", "MM"], zai: ["#6366f1", "GLM"], nvidia: ["#76b900", "NV"],
       xai: ["#18181b", "xAI"], qwen: ["#7c3aed", "QW"], deepseek: ["#0284c7", "DS"], meta: ["#0668E1", "∞"],
       mistral: ["#FA520F", "M"], cursor: ["#2563eb", "CU"], perplexity: ["#0ea5e9", "PX"],
-      thinkingmachines: ["#8b5cf6", "TML"], microsoft: ["#0078d4", "MS"],
+      thinkingmachines: ["#8b5cf6", "TML"], microsoft: ["#0078d4", "MS"], azure: ["#0078d4", "AZ"],
     };
     function logoSvg(slug, name) {
       if (LOGOS[slug]) return LOGOS[slug];
@@ -320,8 +330,19 @@
       return `${Math.round(m / 1440)} d ago`;
     }
     const hoursAgo = iso => (Date.now() - new Date(iso)) / 3600000;
-    const stageOf = s => s.kind === "leak" ? "leak" : (s.open_weights ? "open" : "release");
-    const STAGE_LABEL = { leak: "LEAK", release: "RELEASED", open: "OPEN WEIGHTS" };
+    const stageOf = s => {
+      if (s.kind === "registry") return "registry";
+      if (s.kind === "unverified") return "unverified";
+      if (s.kind === "leak") return "leak";
+      return s.open_weights ? "open" : "release";
+    };
+    const STAGE_LABEL = {
+      leak: "LEAK",
+      release: "NEW MODEL",
+      open: "OPEN WEIGHTS",
+      registry: "REGISTRY UPDATE",
+      unverified: "UNVERIFIED",
+    };
 
     // Older feeds (before story grouping) only have cards: show one story per card
     function storiesFromFeed(feed) {
@@ -376,15 +397,17 @@
     function modelBulletRows(models, story) {
       const sp = formatPricingText(story.pricing);
       const minted = extractMintedTs(story);
-      const tsLabel = minted ? "minted" : "spotted";
+      const tsLabel = minted ? "minted" : (story.kind === "registry" ? "detected" : "spotted");
       const tsVal = minted || fmtIsoShort(story.detected_at);
       return models.map((model, i) => {
         const rawId = String(model.id || "");
-        const id = (rawId.startsWith("org:") || rawId.includes(" · ")) ? String(model.name || rawId) : rawId.replace(/^(?:chatgpt|openai|anthropic|google|vertex_ai|bedrock)\//i, "");
+        const id = (rawId.startsWith("org:") || rawId.includes(" · ")) ? String(model.name || rawId) : rawId.replace(/^(?:chatgpt|openai|anthropic|google|vertex_ai|bedrock|azure|dashscope)\//i, "");
         const mp = formatPricingText(model.pricing);
         const pr = mp && mp !== sp ? ` · <code class="chip price mono">${escapeHtml(mp)}</code>` : "";
+        const relDate = String(model.released_on || "").trim();
+        const relChip = relDate ? `<span class="ts-inline">· released <code class="chip ts mono">${escapeHtml(relDate)}</code></span>` : "";
         const tsChip = i === 0 && tsVal ? `<span class="ts-inline">· ${tsLabel} <code class="chip ts mono">${escapeHtml(tsVal)}</code></span>` : "";
-        return `<li><span class="dot-bullet">•</span><code class="chip mono">${escapeHtml(id)}</code>${tsChip}${pr}</li>`;
+        return `<li><span class="dot-bullet">•</span><code class="chip mono">${escapeHtml(id)}</code>${relChip}${tsChip}${pr}</li>`;
       }).join("");
     }
 
@@ -397,11 +420,25 @@
       const moreIds = models.length > 6 ? `<details><summary>+${models.length - 6} more models</summary><ul class="embed-list">${modelBulletRows(models.slice(6), s)}</ul></details>` : "";
       const srcs = s.sources || [];
       const primaryUrl = safeUrl((srcs[0] && srcs[0].url) || ((evidenceFor(s)[0]?.links || [])[0]?.url) || "");
-      const headerLabel = [s.provider_name ? `${s.provider_name} models` : s.title, s.first_source].filter(Boolean).join(" · ");
+      const headerLabel = (s.kind === "registry" || !s.provider_name)
+        ? [s.title, s.first_source].filter(Boolean).join(" · ")
+        : [`${s.provider_name} models`, s.first_source].filter(Boolean).join(" · ");
       const headerEl = primaryUrl
         ? `<a href="${escapeHtml(primaryUrl)}" target="_blank" rel="noopener">${escapeHtml(headerLabel)}</a>`
         : `<span>${escapeHtml(headerLabel)}</span>`;
       const logo = logoSvg(s.provider_slug, s.provider_name);
+      const badgeWord = stage === "registry" ? "UPDATE" : (stage === "unverified" ? "ALERT" : "NEW");
+      const badgeClass = stage === "registry" ? "new-badge registry" : (stage === "unverified" ? "new-badge unverified" : "new-badge");
+      const countText = stage === "registry"
+        ? `${models.length || 1} ${(models.length || 1) === 1 ? "entry" : "entries"} detected`
+        : (stage === "unverified" ? `${models.length || 1} unverified` : `${models.length || 1} new`);
+      const pillClass = stage === "leak" ? "leak" : (stage === "registry" ? "registry" : (stage === "unverified" ? "unverified" : "release"));
+      const sectionHead = stage === "registry"
+        ? "Existing models newly added to LiteLLM"
+        : (stage === "unverified" ? "Unverified model identifiers" : "New models");
+      const relSummary = (stage === "registry" && s.released_on)
+        ? `<span>·</span><span class="ts-inline">First released <code class="chip ts mono">${escapeHtml(s.released_on)}</code></span>`
+        : "";
       return `
         <article class="story ${stage}">
           <div class="embed-body">
@@ -411,12 +448,13 @@
                 ${headerEl}
               </div>
               <div class="embed-counts">
-                <span class="new-badge">NEW</span>
-                <span>${models.length || 1} new</span>
+                <span class="${badgeClass}">${badgeWord}</span>
+                <span>${countText}</span>
                 <span>·</span>
-                <span class="stage-pill ${stage === "leak" ? "leak" : "release"}">${STAGE_LABEL[stage]}</span>
+                <span class="stage-pill ${pillClass}">${STAGE_LABEL[stage]}</span>
+                ${relSummary}
               </div>
-              <div class="section-head">New models</div>
+              <div class="section-head">${sectionHead}</div>
               ${ids}${moreIds}
             </div>
             <div class="embed-thumb">${logo}</div>
@@ -445,6 +483,8 @@
       STORIES_VIEW = STORIES.filter(s => {
         if (TAB === "leak" && s.kind !== "leak") return false;
         if (TAB === "release" && s.kind !== "release") return false;
+        if (TAB === "registry" && s.kind !== "registry") return false;
+        if (TAB === "unverified" && s.kind !== "unverified") return false;
         if (TAB === "open" && !s.open_weights) return false;
         if (TAB === "unread" && (!seen || seen.has(s.id))) return false;
         if (prov && (s.provider_name || "Other") !== prov) return false;
@@ -462,10 +502,13 @@
 
     function renderChrome() {
       const leaks = STORIES.filter(s => s.kind === "leak").length;
+      const releases = STORIES.filter(s => s.kind === "release").length;
+      const regUpdates = STORIES.filter(s => s.kind === "registry").length;
+      const unverified = STORIES.filter(s => s.kind === "unverified").length;
       const day = STORIES.filter(s => hoursAgo(s.updated_at || s.detected_at) <= 24).length;
       const srcCount = STORIES.reduce((n, s) => n + (s.sources || []).length, 0);
       document.getElementById("summary").innerHTML =
-        `<b>${STORIES.length}</b> models tracked (last 21 days) · <b>${leaks}</b> leaks · <b>${STORIES.length - leaks}</b> releases · <b>${day}</b> active in 24h · ${srcCount} source sightings merged`;
+        `<b>${STORIES.length}</b> alerts tracked (last 21 days) · <b>${leaks}</b> leaks · <b>${releases}</b> new models · <b>${regUpdates}</b> registry updates · <b>${unverified}</b> unverified · <b>${day}</b> active in 24h · ${srcCount} source sightings merged`;
       const counts = {};
       STORIES.forEach(s => { const p = s.provider_name || "Other"; counts[p] = (counts[p] || 0) + 1; });
       const sel = document.getElementById("provider");
@@ -541,16 +584,26 @@
 
     function shareText(s) {
       const weight = text => Array.from(text).reduce((total, char) => total + (char.codePointAt(0) > 127 ? 2 : 1), 0);
-      let headline = `${s.kind === "leak" ? "LEAK" : "NEW"}: ${s.title}${s.provider_name ? " by " + s.provider_name : ""}`;
+      const tagMap = { leak: "LEAK", release: "NEW MODEL", registry: "REGISTRY UPDATE", unverified: "UNVERIFIED" };
+      const tag = tagMap[s.kind] || "LEAK";
+      const bySuffix = (s.provider_name && s.kind !== "registry") ? " by " + s.provider_name : "";
+      let headline = `${tag}: ${s.title}${bySuffix}`;
       if (weight(headline) > 130) {
         const chars = Array.from(headline);
         while (weight(chars.join("")) > 127) chars.pop();
         headline = chars.join("") + "...";
       }
-      const lines = [headline, `First spotted ${fmtUTC(s.detected_at)}`];
+      const lines = [headline, `First detected ${fmtUTC(s.detected_at)}`];
       const credit = "Developed by @StatsWire on X";
       const sourceCount = (s.sources || []).length;
-      const extras = [s.pricing ? "Pricing: " + s.pricing : "", s.first_source ? "Source: " + s.first_source : "", (s.codenames || []).length ? "Codename: " + s.codenames.join(", ") : "", `${sourceCount} source sighting${sourceCount === 1 ? "" : "s"}`, (s.models || []).length ? "IDs: " + s.models.map(model => model.id).join(", ") : ""];
+      const extras = [
+        s.released_on ? "First released: " + s.released_on : "",
+        s.pricing ? "Pricing: " + s.pricing : "",
+        s.first_source ? "Source: " + s.first_source : "",
+        (s.codenames || []).length ? "Codename: " + s.codenames.join(", ") : "",
+        `${sourceCount} source sighting${sourceCount === 1 ? "" : "s"}`,
+        (s.models || []).length ? "IDs: " + s.models.map(model => model.id).join(", ") : "",
+      ];
       for (const extra of extras.filter(Boolean)) {
         if (weight([...lines, extra, credit].join("\n")) <= 280) lines.push(extra);
       }

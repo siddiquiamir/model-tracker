@@ -49,6 +49,12 @@ def _canonical_model_slug(raw_key: str) -> str:
     return re.sub(r"[-._]", "", tail)
 
 
+def _base_model_slug(raw_key: str) -> str:
+    """Canonical model slug with embedded YYYY-MM-DD / YYYYMMDD version date stamps stripped."""
+    stripped = re.sub(r"[-_.]?202\d[-_.]?(?:0[1-9]|1[0-2])[-_.]?(?:0[1-9]|[12]\d|3[01])\b", "", raw_key.strip().lower())
+    return _canonical_model_slug(stripped)
+
+
 def _decompress_brotli(comp_bytes: bytes) -> bytes:
     """Decompress Brotli (.br) binary payloads using Python brotli or built-in Node.js zlib."""
     try:
@@ -1951,6 +1957,7 @@ class DocsAndGlobalRegistryScanner:
                 current_keys = sorted(k for k in litellm_data.keys() if k != "sample_spec")
                 prev_keys = set(baselines.get("litellm_keys", []))
                 prev_canonical_slugs = {_canonical_model_slug(pk) for pk in prev_keys}
+                prev_base_slugs = {_base_model_slug(pk) for pk in prev_keys}
                 raw_added_keys = [k for k in current_keys if k not in prev_keys] if prev_keys else []
                 added_keys: List[str] = []
                 seen_new_canon: Set[str] = set()
@@ -1973,17 +1980,29 @@ class DocsAndGlobalRegistryScanner:
 
                 if added_keys:
                     sig = hashlib.sha256(",".join(added_keys[:10]).encode("utf-8")).hexdigest()[:8]
+                    litellm_models: List[Dict[str, Any]] = []
+                    for k in added_keys[:8]:
+                        m_entry: Dict[str, Any] = {"id": k, "name": k}
+                        if _base_model_slug(k) in prev_base_slugs:
+                            m_entry["registry_update"] = True
+                        litellm_models.append(m_entry)
+                    is_reg_only = all(m.get("registry_update") for m in litellm_models)
                     cards.append(
                         {
                             "id": f"litellm-diff-{sig}",
                             "category": "cli-sdk-diff",
                             "scanner": "litellm",
                             "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
-                            "title": f"{len(added_keys)} New Model(s) Added to LiteLLM",
+                            "title": (
+                                f"LiteLLM Registry Update — {len(added_keys)} Entries Detected"
+                                if is_reg_only
+                                else f"{len(added_keys)} New Model(s) Added to LiteLLM"
+                            ),
                             "subtitle": "Verified model_prices_and_context_window.json diff",
                             "build_label": "Registry Diff",
-                            "build_transition": f"+{len(added_keys)} new model keys",
-                            "models": [{"id": k, "name": k} for k in added_keys[:8]],
+                            "build_transition": f"+{len(added_keys)} model keys",
+                            "models": litellm_models,
+                            **({"registry_update": True} if is_reg_only else {}),
                             "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
                             "source_text": "official LiteLLM master pricing & context window registry.",
                             "disclaimer_1": "",

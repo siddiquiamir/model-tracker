@@ -27,7 +27,7 @@ CATALOG_CACHE = ROOT_DIR / ".cache" / "released_catalog.json"
 HINTS_FILE = ROOT_DIR / "data" / "hints.json"
 MODELS_DEV_URL = "https://models.dev/api.json"
 CATALOG_TTL = timedelta(hours=6)
-CATALOG_FORMAT = 2  # bump whenever normalize() changes so cached keys are rebuilt
+CATALOG_FORMAT = 3  # bump whenever normalize() changes so cached keys are rebuilt
 RELEASE_GRACE = timedelta(days=7)
 HF_PUBLIC_GRACE = timedelta(days=30)
 # Cards that reference Hugging Face repos by "org/repo" (checked against the repo's public createdAt)
@@ -62,8 +62,29 @@ GENERIC_TOKENS: Set[str] = VARIANT_TOKENS | {
 }
 
 _DATE_TOKEN = re.compile(r"^(?:\d{4,8}|20\d{2}-\d{2}(?:-\d{2})?)$")
+_EMBEDDED_ISO_DATE_RE = re.compile(
+    r"(?:^|(?<=[-_./]))(202\d)-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])(?=$|[-_.:/])"
+)
+_EMBEDDED_COMPACT_DATE_RE = re.compile(
+    r"(?:^|(?<=[-_./]))(202\d)(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(?=$|[-_.:/])"
+)
+_EMBEDDED_YEAR_MONTH_RE = re.compile(
+    r"(?:^|(?<=[-_./]))(202\d)-(0[1-9]|1[0-2])(?=$|[-_.:/])"
+)
 _PREFIX_PATH = re.compile(r"^(?:[a-z0-9_-]+/)+")
 _DOTTED_VENDOR = re.compile(r"^(?:[a-z]+\.)+(?=[a-z])")
+
+
+def extract_embedded_date(raw: str) -> Optional[str]:
+    """Extract an explicit YYYY-MM-DD release/snapshot date embedded in a model ID, if any."""
+    s = (raw or "").strip()
+    m = _EMBEDDED_ISO_DATE_RE.search(s)
+    if m:
+        return f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
+    m = _EMBEDDED_COMPACT_DATE_RE.search(s)
+    if m:
+        return f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
+    return None
 
 
 def normalize(raw: str) -> str:
@@ -73,6 +94,11 @@ def normalize(raw: str) -> str:
     s = _PREFIX_PATH.sub("", s)
     s = re.split(r"[:@]", s, maxsplit=1)[0]
     s = _DOTTED_VENDOR.sub("", s)
+    # Strip explicit YYYY-MM-DD / YYYYMMDD / YYYY-MM date stamps BEFORE splitting on '-'
+    # so 'gpt-realtime-2.1-2026-07-07' becomes 'gpt-realtime-2-1' instead of 'gpt-realtime-2-1-07-07'.
+    s = _EMBEDDED_ISO_DATE_RE.sub("", s)
+    s = _EMBEDDED_COMPACT_DATE_RE.sub("", s)
+    s = _EMBEDDED_YEAR_MONTH_RE.sub("", s)
     s = re.sub(r"(?<=[a-z])(?=\d)", "-", s)
     s = re.sub(r"[^a-z0-9]+", "-", s).strip("-")
     raw_toks = [t for t in s.split("-") if t]
@@ -154,15 +180,22 @@ class ReleasedCatalog:
 
     def released_on(self, raw: str) -> Optional[Tuple[str, str]]:
         """Return (date, reason) when the model is already public, else None."""
+        emb = extract_embedded_date(raw)
         key = normalize(raw)
         if not key:
-            return None
+            return (emb, f"version date {emb}") if emb else None
         base = strip_variants(key)
         for k in (key, base):
             if k in self.release:
-                return self.release[k], f"released as {k}"
+                cat_date = self.release[k]
+                if emb and emb < cat_date:
+                    return emb, f"version date {emb}"
+                return cat_date, f"released as {k}"
         if any(c.isdigit() for c in base) and base.count("-") >= 1 and base in self.prefix_min:
-            return self.prefix_min[base], f"family {base} shipped"
+            cat_date = self.prefix_min[base]
+            if emb and emb < cat_date:
+                return emb, f"version date {emb}"
+            return cat_date, f"family {base} shipped"
         fam, major = family_version(base)
         if fam and major is not None and fam in self.family_majors:
             # Two full generations behind the shipped frontier is never a leak (gpt-4 vs gpt-6);
@@ -170,6 +203,8 @@ class ReleasedCatalog:
             newer = [d for (mj, d) in self.family_majors[fam] if mj >= major + 2]
             if newer:
                 return min(newer), f"{fam} {major} superseded"
+        if emb:
+            return emb, f"version date {emb}"
         return None
 
     def unknown_tokens(self, raw: str) -> List[str]:
@@ -278,16 +313,20 @@ def _parse_dt(iso: str) -> datetime:
 def is_old_model(raw: str, detected_at: datetime, catalog: Optional[ReleasedCatalog]) -> Optional[str]:
     if is_legacy_model_id(raw.lower()) or is_legacy_model_id(normalize(raw)):
         return "legacy generation"
+    emb = extract_embedded_date(raw)
+    cutoff = (detected_at - RELEASE_GRACE).strftime("%Y-%m-%d")
+    if emb and emb < cutoff:
+        return f"version date ({emb})"
     if catalog is None:
         return None
     hit = catalog.released_on(raw)
-    if hit and hit[0] < (detected_at - RELEASE_GRACE).strftime("%Y-%m-%d"):
+    if hit and hit[0] < cutoff:
         return f"{hit[1]} ({hit[0]})"
     return None
 
 
 def apply(cards: Iterable[Dict[str, Any]], catalog: Optional[ReleasedCatalog] = None) -> List[Dict[str, Any]]:
-    """Strip already-released models from every card, drop emptied cards, tag codename hints."""
+    """Strip already-released models from non-registry cards, annotate released_on dates, and tag codename hints."""
     catalog = catalog if catalog is not None else get_catalog()
     watch = load_watchlist()
     out: List[Dict[str, Any]] = []
@@ -300,10 +339,21 @@ def apply(cards: Iterable[Dict[str, Any]], catalog: Optional[ReleasedCatalog] = 
         removed: List[str] = []
         for m in card["models"]:
             label = _model_label(m)
+            rel_hit = catalog.released_on(label) if (catalog is not None and label) else None
+            emb_date = extract_embedded_date(label) if label else None
+            rel_date = rel_hit[0] if rel_hit else (emb_date or "")
+            if rel_date and not m.get("released_on"):
+                m["released_on"] = rel_date
             if label and is_old_model(label, det, catalog):
-                removed.append(label)
+                if card.get("scanner") == "litellm" and not (is_legacy_model_id(label.lower()) or is_legacy_model_id(normalize(label))):
+                    m["registry_update"] = True
+                    kept.append(m)
+                else:
+                    removed.append(label)
             elif card.get("scanner") in HF_REPO_SCANNERS and re.fullmatch(r"[\w.-]+/[\w.-]+", label):
                 created = hf_created_at(label)
+                if created:
+                    m.setdefault("released_on", created[:10])
                 if created and _parse_dt(created) < det - HF_PUBLIC_GRACE:
                     removed.append(label)
                 else:
@@ -319,9 +369,13 @@ def apply(cards: Iterable[Dict[str, Any]], catalog: Optional[ReleasedCatalog] = 
             for r in removed:
                 if r and r in card.get("title", ""):
                     card["title"] = card["title"].replace(r, first)
+        if card.get("scanner") == "litellm" and all(m.get("registry_update") for m in kept):
+            card["registry_update"] = True
         # Codename flags are sticky: once a card was flagged, a later public release does not unflag it
         hints: Set[str] = set(card.get("codenames") or [])
         for m in kept if card.get("scanner") not in NO_CODENAME_SCANNERS else []:
+            if m.get("registry_update"):
+                continue
             label = _model_label(m)
             if catalog is not None and catalog.released_on(label):
                 continue  # already-public identifier (released within the grace window): no codename flag

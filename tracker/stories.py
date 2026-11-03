@@ -7,11 +7,12 @@ from datetime import datetime, timedelta, timezone
 import re
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 
-from tracker.novelty import ReleasedCatalog, normalize, strip_variants
+from tracker.novelty import RELEASE_GRACE, ReleasedCatalog, extract_embedded_date, normalize, strip_variants
 from tracker.pricing import PricingCatalog, get_pricing_catalog
 
 # Scanners whose sighting means the model is publicly usable (a release, not a leak)
-RELEASE_SCANNERS: Set[str] = {"openrouter", "huggingface", "gateway-radar"}
+RELEASE_SCANNERS: Set[str] = {"openrouter", "huggingface", "gateway-radar", "provider-openapi"}
+UNVERIFIED_SCANNERS: Set[str] = {"github-code-leak"}
 OPEN_WEIGHT_SCANNERS: Set[str] = {"huggingface", "engine-pr-leak"}
 EXCLUDED_SCANNERS: Set[str] = {"cert-transparency", "cert-transparency-snapshot"}
 GENERIC_PROVIDERS: Set[str] = {"modelsdev", "openrouter", "opensource", ""}
@@ -20,8 +21,30 @@ STORY_WINDOW = timedelta(days=21)
 PROVIDER_NAMES: Dict[str, str] = {
     "google": "Google", "anthropic": "Anthropic", "openai": "OpenAI", "xai": "xAI", "meta": "Meta",
     "mistral": "Mistral", "deepseek": "DeepSeek", "qwen": "Qwen", "kimi": "Moonshot", "zai": "Z.ai",
-    "minimax": "MiniMax", "nvidia": "NVIDIA", "microsoft": "Microsoft", "amazon": "Amazon",
+    "minimax": "MiniMax", "nvidia": "NVIDIA", "microsoft": "Microsoft", "azure": "Azure", "amazon": "Amazon",
     "cohere": "Cohere", "perplexity": "Perplexity", "cursor": "Cursor", "thinkingmachines": "Thinking Machines",
+}
+LITELLM_PREFIX_PROVIDERS: Dict[str, Tuple[str, str]] = {
+    "azure": ("azure", "Azure"),
+    "azure_ai": ("azure", "Azure AI"),
+    "openai": ("openai", "OpenAI"),
+    "chatgpt": ("openai", "OpenAI"),
+    "anthropic": ("anthropic", "Anthropic"),
+    "gemini": ("google", "Google"),
+    "vertex_ai": ("google", "Vertex AI"),
+    "bedrock": ("amazon", "AWS Bedrock"),
+    "bedrock_converse": ("amazon", "AWS Bedrock"),
+    "bedrock_mantle": ("amazon", "AWS Bedrock"),
+    "dashscope": ("qwen", "DashScope"),
+    "xai": ("xai", "xAI"),
+    "deepseek": ("deepseek", "DeepSeek"),
+    "moonshot": ("kimi", "Moonshot"),
+    "zai": ("zai", "Z.ai"),
+    "minimax": ("minimax", "MiniMax"),
+    "mistral": ("mistral", "Mistral"),
+    "github_copilot": ("microsoft", "GitHub Copilot"),
+    "vercel_ai_gateway": ("openrouter", "Vercel AI Gateway"),
+    "openrouter": ("openrouter", "OpenRouter"),
 }
 ORG_NAMES: Dict[str, str] = {
     "liquidai": "Liquid AI", "inclusionai": "Ant Group", "ibm-granite": "IBM", "ai21labs": "AI21 Labs",
@@ -181,8 +204,16 @@ def build_stories(
         and c.get("category") != "subdomain-ct"
         and not str(c.get("id", "")).startswith("web-bundle-aistudio-routes-")
     ]
-    keyed = [(c, _card_keys(c)) for c in usable]
-    primaries = {kms[0][0] for _, kms in keyed}
+    non_litellm_keyed = [(c, _card_keys(c)) for c in usable if c.get("scanner") != "litellm"]
+    non_litellm_all_keys = {k for _, kms in non_litellm_keyed for k, _ in kms}
+    litellm_shared_primaries = {
+        kms[0][0]
+        for c in usable
+        if c.get("scanner") == "litellm"
+        for kms in (_card_keys(c),)
+        if kms and kms[0][0] in non_litellm_all_keys and not kms[0][1].get("registry_update")
+    }
+    primaries = {kms[0][0] for _, kms in non_litellm_keyed if kms} | litellm_shared_primaries
 
     def resolve(k: str) -> Optional[str]:
         if k in primaries:
@@ -194,12 +225,32 @@ def build_stories(
         return best
 
     groups: Dict[str, Dict[str, Any]] = {}
-    for card, kms in keyed:
+    for card, kms in non_litellm_keyed:
         primary = kms[0][0]
         per_story: Dict[str, List[Dict[str, Any]]] = {}
         for k, m in kms:
             target = resolve(k) or primary
             per_story.setdefault(target, []).append(m)
+        for target, models in per_story.items():
+            g = groups.setdefault(target, {"cards": [], "models": []})
+            g["cards"].append(card)
+            g["models"].extend(models)
+
+    # Process LiteLLM cards: merge entries that confirm an existing story from another source,
+    # and group standalone LiteLLM additions by (card, provider_prefix) as "REGISTRY UPDATE" alerts.
+    for card in (c for c in usable if c.get("scanner") == "litellm"):
+        kms = _card_keys(card)
+        per_story: Dict[str, List[Dict[str, Any]]] = {}
+        for k, m in kms:
+            matched = resolve(k) if not m.get("registry_update") else None
+            if matched:
+                per_story.setdefault(matched, []).append(m)
+            else:
+                raw_id = _model_label(m)
+                prefix = raw_id.split("/")[0].lower() if "/" in raw_id else "openai"
+                short_cid = str(card.get("id", "litellm")).rsplit("-", 1)[-1]
+                reg_key = f"litellm-registry-{prefix}-{short_cid}"
+                per_story.setdefault(reg_key, []).append(m)
         for target, models in per_story.items():
             g = groups.setdefault(target, {"cards": [], "models": []})
             g["cards"].append(card)
@@ -224,6 +275,7 @@ def _make_story(
     cards = sorted(cards, key=lambda c: c.get("detected_at") or "")
     first = cards[0]
     scanners = {c.get("scanner", "") for c in cards}
+    is_litellm_registry_group = key.startswith("litellm-registry-")
 
     # Provider: most specific lab seen across sources
     lab = next((c for c in cards if c.get("provider_slug") not in GENERIC_PROVIDERS), first)
@@ -239,19 +291,22 @@ def _make_story(
                          or " ".join(_WORD_FIX.get(w.capitalize(), w.capitalize()) for w in arena_org.split("-")))
     if not provider_name and " · " in str(lab.get("header", "")):
         org = str(lab["header"]).split(" · ")[-1]
-        if org.upper() not in ("LIVE MODELS", "MULTI-PROVIDER", "NEXT.JS RSC STREAM") and not org.startswith("v"):
+        if org.upper() not in ("LIVE MODELS", "MULTI-PROVIDER", "NEXT.JS RSC STREAM", "LIVE DIFF") and not org.startswith("v"):
             provider_name = " ".join(_WORD_FIX.get(w.capitalize(), w.capitalize()) for w in org.split())
     if not provider_name:
         org_ids = [str(m.get("id", "")).split("/")[0].lower() for m in models if "/" in str(m.get("id", ""))]
         org = org_ids[0] if org_ids else ""
-        slug = {"mistralai": "mistral", "moonshotai": "kimi", "deepseek-ai": "deepseek", "meta-llama": "meta",
-                "zai-org": "zai", "minimaxai": "minimax", "qwen": "qwen", "google": "google", "openai": "openai",
-                "nvidia": "nvidia", "microsoft": "microsoft", "xai-org": "xai", "coherelabs": "cohere",
-                "perplexity-ai": "perplexity"}.get(org, "")
-        if slug:
-            provider_slug, provider_name = slug, PROVIDER_NAMES.get(slug, org)
-        elif org:
-            provider_name = ORG_NAMES.get(org, org)
+        if org in LITELLM_PREFIX_PROVIDERS:
+            provider_slug, provider_name = LITELLM_PREFIX_PROVIDERS[org]
+        else:
+            slug = {"mistralai": "mistral", "moonshotai": "kimi", "deepseek-ai": "deepseek", "meta-llama": "meta",
+                    "zai-org": "zai", "minimaxai": "minimax", "qwen": "qwen", "google": "google", "openai": "openai",
+                    "nvidia": "nvidia", "microsoft": "microsoft", "xai-org": "xai", "coherelabs": "cohere",
+                    "perplexity-ai": "perplexity"}.get(org, "")
+            if slug:
+                provider_slug, provider_name = slug, PROVIDER_NAMES.get(slug, org)
+            elif org:
+                provider_name = ORG_NAMES.get(org, org)
 
     # Display name: the most-used clean catalog name that maps back to this story
     names: Counter = Counter()
@@ -274,17 +329,23 @@ def _make_story(
     variants: List[Dict[str, str]] = []
     by_norm: Dict[str, Dict[str, str]] = {}
     story_prices: List[str] = []
+    model_release_dates: List[str] = []
     for m in models:
         label = _model_label(m)
         vid = re.sub(r"^(?:[\w.-]+/)+", "", label)
         vid = re.sub(r"^(?:global|us|eu|apac|jp|au)\.(?:[a-z]+\.)?", "", vid)
         vid = re.sub(r"\s*\((?:in|out):[^)]*\)$", "", vid).strip()
-        vk = re.sub(r"^introducing-", "", normalize(vid))
+        vk = vid.lower() if is_litellm_registry_group else re.sub(r"^introducing-", "", normalize(vid))
         if not vid:
             continue
         price = str(m.get("pricing") or (pricing_catalog.lookup(label) if pricing_catalog else "") or (pricing_catalog.lookup(vid) if pricing_catalog else "")).strip()
         if price and price not in story_prices:
             story_prices.append(price)
+        rel_hit = catalog.released_on(label) if catalog is not None else None
+        emb_dt = extract_embedded_date(label) or extract_embedded_date(vid)
+        m_rel = str(m.get("released_on") or (rel_hit[0] if rel_hit else "") or emb_dt or "").strip()
+        if m_rel and m_rel not in model_release_dates:
+            model_release_dates.append(m_rel)
         if vk not in by_norm:
             raw_name = str(m.get("name") or "")
             if raw_name.startswith("Referenced in "):
@@ -295,6 +356,8 @@ def _make_story(
             entry: Dict[str, str] = {"id": vid, "name": clean_n}
             if price:
                 entry["pricing"] = price
+            if m_rel:
+                entry["released_on"] = m_rel
             by_norm[vk] = entry
             variants.append(by_norm[vk])
         else:
@@ -302,11 +365,19 @@ def _make_story(
                 by_norm[vk]["id"] = vid
             if price and not by_norm[vk].get("pricing"):
                 by_norm[vk]["pricing"] = price
-    variants.sort(key=lambda v: (len(v["id"]), v["id"]))
-    if len(variants) > 1:
-        title = _DISPLAY_SIZE.sub("", title)
-    title = re.sub(r"\s+—\s+\$[0-9].*$", "", title)
-    title = _DISPLAY_NOISE.sub("", title).strip(" -_") or title
+            if m_rel and not by_norm[vk].get("released_on"):
+                by_norm[vk]["released_on"] = m_rel
+    if not is_litellm_registry_group:
+        variants.sort(key=lambda v: (len(v["id"]), v["id"]))
+    if is_litellm_registry_group:
+        prov_title = provider_name or "Model"
+        n_entries = len(variants)
+        title = f"LiteLLM {prov_title} Registry Update — {n_entries} {'Entry' if n_entries == 1 else 'Entries'} Detected"
+    else:
+        if len(variants) > 1:
+            title = _DISPLAY_SIZE.sub("", title)
+        title = re.sub(r"\s+—\s+\$[0-9].*$", "", title)
+        title = _DISPLAY_NOISE.sub("", title).strip(" -_") or title
     story_pricing = story_prices[0] if story_prices else (pricing_catalog.lookup(key) if pricing_catalog else "")
 
     sources: List[Dict[str, Any]] = []
@@ -326,13 +397,44 @@ def _make_story(
             "backfill": bool(c.get("backfill")),
         })
 
-    released = catalog.released_on(key) if catalog is not None else None
+    first_dt = _parse(first.get("detected_at", ""))
+    released = catalog.released_on(key) if (catalog is not None and not is_litellm_registry_group) else None
+    earliest_model_rel = min(model_release_dates) if model_release_dates else (released[0] if released else "")
+    latest_model_rel = max(model_release_dates) if model_release_dates else earliest_model_rel
+    released_on_str = (
+        f"{earliest_model_rel} to {latest_model_rel}"
+        if (is_litellm_registry_group and earliest_model_rel and latest_model_rel and earliest_model_rel != latest_model_rel)
+        else earliest_model_rel
+    )
+
     release_srcs = [c for c in cards if c.get("scanner") in RELEASE_SCANNERS]
-    kind = "release" if (released or release_srcs) else "leak"
+    cutoff_str = (first_dt - RELEASE_GRACE).strftime("%Y-%m-%d")
+    is_previously_released = bool(earliest_model_rel and earliest_model_rel < cutoff_str)
+
+    # 4-Stage Taxonomy:
+    # 1. REGISTRY UPDATE ("registry"): Existing models newly added to LiteLLM (or registry-only additions of older models)
+    # 2. UNVERIFIED ("unverified"): Unknown model identifiers from single-source external configs or anonymous/unmapped routers
+    # 3. NEW MODEL ("release"): Evidence of a genuinely new release
+    # 4. LEAK ("leak"): Reserved for credible evidence of an unreleased model
+    is_anonymous = key.startswith("anonymous-") or any(v["id"].lower().startswith("anonymous-") for v in variants)
+    is_stealth_gateway = (
+        scanners <= {"gateway-radar", "models-dev"}
+        and (
+            any("stealth codename" in str(c.get("subtitle", "")).lower() for c in cards)
+            or (provider_slug in GENERIC_PROVIDERS and not released)
+        )
+    )
+    if is_litellm_registry_group or (scanners <= {"litellm", "models-dev"} and is_previously_released):
+        kind = "registry"
+    elif scanners <= UNVERIFIED_SCANNERS or is_anonymous or is_stealth_gateway:
+        kind = "unverified"
+    elif (released and not is_previously_released) or release_srcs or (scanners == {"models-dev"} and not is_previously_released):
+        kind = "release"
+    else:
+        kind = "leak"
 
     lead = ""
-    first_dt = _parse(first.get("detected_at", ""))
-    if first.get("scanner") not in RELEASE_SCANNERS:
+    if kind in ("leak", "release") and first.get("scanner") not in RELEASE_SCANNERS:
         if release_srcs:
             delta = (_parse(release_srcs[0].get("detected_at", "")) - first_dt).total_seconds()
             if delta >= 60:
@@ -343,9 +445,15 @@ def _make_story(
 
     # Only codenames that occur in this story's own identifiers (multi-model cards carry others)
     var_toks = {t for v in variants for t in normalize(v["id"]).split("-")}
-    codenames = sorted({cn for c in cards for cn in (c.get("codenames") or []) if cn in var_toks})
-    open_weights = bool(scanners & OPEN_WEIGHT_SCANNERS)
-    stage_word = "LEAK" if kind == "leak" else ("OPEN WEIGHTS" if open_weights else "RELEASE")
+    codenames = [] if kind == "registry" else sorted({cn for c in cards for cn in (c.get("codenames") or []) if cn in var_toks})
+    open_weights = bool(scanners & OPEN_WEIGHT_SCANNERS) and kind != "registry"
+    stage_map = {
+        "leak": "LEAK",
+        "release": "OPEN WEIGHTS" if open_weights else "NEW MODEL",
+        "registry": "REGISTRY UPDATE",
+        "unverified": "UNVERIFIED",
+    }
+    stage_word = stage_map.get(kind, "LEAK")
 
     return {
         "id": f"story-{key}",
@@ -360,7 +468,7 @@ def _make_story(
         "updated_at": cards[-1].get("detected_at", ""),
         "first_source": sources[0]["label"] if sources else "",
         "lead": lead,
-        "released_on": released[0] if released else "",
+        "released_on": released_on_str,
         "pricing": story_pricing,
         "codenames": codenames,
         "models": variants[:40],
@@ -375,24 +483,36 @@ def _make_story(
 def story_x_text(story: Dict[str, Any]) -> str:
     """Post copy that fits X's 280-character limit (optional lines are dropped until it fits)."""
     when = _parse(story["detected_at"]).strftime("%d %b %H:%M UTC")
-    tag = {"leak": "🟠 LEAK", "release": "🟢 NEW"}[story["kind"]]
-    head = f"{tag}: {story['title']}" + (f" by {story['provider_name']}" if story.get("provider_name") else "")
+    tag = {
+        "leak": "🟠 LEAK",
+        "release": "🟢 NEW MODEL",
+        "registry": "🔵 REGISTRY UPDATE",
+        "unverified": "⚪ UNVERIFIED",
+    }.get(story["kind"], "🟠 LEAK")
+    by_suffix = (
+        f" by {story['provider_name']}"
+        if story.get("provider_name") and story["kind"] != "registry"
+        else ""
+    )
+    head = f"{tag}: {story['title']}{by_suffix}"
     others = [s["label"] for s in story["sources"][1:]]
     optional: List[Tuple[int, str]] = []  # (drop priority, line); highest priority dropped first
+    if story.get("released_on"):
+        optional.append((1, f"📅 First released: {story['released_on']}"))
     if story.get("pricing"):
-        optional.append((1, f"💰 Pricing: {story['pricing']}"))
+        optional.append((2, f"💰 Pricing: {story['pricing']}"))
     if story.get("lead"):
-        optional.append((2, f"⏱ {story['lead']}"))
+        optional.append((3, f"⏱ {story['lead']}"))
     if others:
         extra = f" +{len(others) - 3}" if len(others) > 3 else ""
-        optional.append((3, f"Confirmed by {', '.join(others[:3])}{extra}"))
+        optional.append((4, f"Confirmed by {', '.join(others[:3])}{extra}"))
     if story.get("codenames"):
-        optional.append((4, f"Codename: {', '.join(story['codenames'][:3])}"))
+        optional.append((5, f"Codename: {', '.join(story['codenames'][:3])}"))
     ids = [v["id"] for v in story["models"][:3]]
     if len(story["models"]) > 1:
-        optional.append((5, f"IDs: {', '.join(ids)}" + (f" +{len(story['models']) - 3}" if len(story["models"]) > 3 else "")))
+        optional.append((6, f"IDs: {', '.join(ids)}" + (f" +{len(story['models']) - 3}" if len(story["models"]) > 3 else "")))
     while True:
-        lines = [head, "", f"First spotted {when} in {story['first_source']}"]
+        lines = [head, "", f"First detected {when} in {story['first_source']}"]
         lines += [line for _, line in sorted(optional)]
         lines += ["", "via @StatsWire"]
         text = "\n".join(lines)
