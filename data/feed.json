@@ -1,16 +1,58 @@
 {
-  "generated_at": "2026-11-04T18:46:00.707107+00:00",
+  "generated_at": "2026-11-04T18:56:00.186528+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 114,
-    "leaks": 22,
+    "stories": 115,
+    "leaks": 23,
     "releases": 84,
-    "stories_24h": 8,
-    "sources_ok": 12,
-    "total_cards": 178,
-    "new_in_this_scan": 1
+    "stories_24h": 9,
+    "sources_ok": 11,
+    "total_cards": 180,
+    "new_in_this_scan": 2
   },
   "stories": [
+    {
+      "id": "story-unlimitedocr-2textforcausallm",
+      "group": "unlimitedocr-2textforcausallm",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "UnlimitedOCR2TextForCausalLM",
+      "provider_slug": "opensource",
+      "provider_name": "Architecture Diff",
+      "accent_color": "#8b5cf6",
+      "detected_at": "2026-11-04T18:56:09.539471+00:00",
+      "updated_at": "2026-11-04T18:56:09.539471+00:00",
+      "first_source": "vLLM registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "unlimitedocr"
+      ],
+      "models": [
+        {
+          "id": "UnlimitedOCR2TextForCausalLM",
+          "name": "UnlimitedOCR2TextForCausalLM"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM registry",
+          "scanner": "vllm-registry",
+          "detected_at": "2026-11-04T18:56:09.539471+00:00",
+          "title": "New Engine Architecture: UnlimitedOCR2TextForCausalLM",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · ARCHITECTURE DIFF",
+      "card_ids": [
+        "vllm-arch-274052b8a3"
+      ],
+      "x_post_text": "🟠 LEAK: UnlimitedOCR2TextForCausalLM by Architecture Diff\n\nFirst detected 04 Nov 18:56 UTC in vLLM registry\nCodename: unlimitedocr\n\nvia @StatsWire"
+    },
     {
       "id": "story-ripple",
       "group": "ripple",
@@ -21,7 +63,7 @@
       "provider_name": "Gmicloud",
       "accent_color": "#10b981",
       "detected_at": "2026-11-04T18:46:07.440555+00:00",
-      "updated_at": "2026-11-04T18:46:07.440555+00:00",
+      "updated_at": "2026-11-04T18:56:09.539471+00:00",
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "",
@@ -50,7 +92,8 @@
       "backfill": false,
       "header": "NEW MODEL · GMICLOUD",
       "card_ids": [
-        "openrouter-model-gmicloud_ripple-65b-preview"
+        "openrouter-model-gmicloud_ripple-65b-preview",
+        "openrouter-model-recursiveAI_ripple-65b-preview"
       ],
       "x_post_text": "🟢 NEW MODEL: ricursiveAI/Ripple-65B-Preview by Gmicloud\n\nFirst detected 04 Nov 18:46 UTC in OpenRouter\n💰 Pricing: $0.20 / $0.60 per 1M tokens ($0.05 cached)\nCodename: ripple\n\nvia @StatsWire"
     },
@@ -5200,6 +5243,81 @@
     }
   ],
   "cards": [
+    {
+      "id": "vllm-arch-274052b8a3",
+      "category": "open-source",
+      "scanner": "vllm-registry",
+      "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
+      "title": "New Engine Architecture: UnlimitedOCR2TextForCausalLM",
+      "subtitle": "New model_executor/models/registry.py architecture declarations",
+      "build_label": "Registry File",
+      "build_transition": "vllm/model_executor/models/registry.py",
+      "models": [
+        {
+          "id": "UnlimitedOCR2TextForCausalLM",
+          "name": "UnlimitedOCR2TextForCausalLM"
+        }
+      ],
+      "evidence": "vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+      "source_text": "official vLLM model architecture registry.",
+      "disclaimer_1": "Tracks only model architecture class registrations in registry.py.",
+      "disclaimer_2": "Open-source labs register their architecture classes here prior to weight drops.",
+      "provider_name": "VLLM REGISTRY",
+      "provider_slug": "opensource",
+      "accent_color": "#8b5cf6",
+      "links": [
+        {
+          "label": "vLLM registry.py",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py"
+        },
+        {
+          "label": "Supported Models Docs",
+          "url": "https://docs.vllm.ai/en/latest/models/supported_models.html"
+        }
+      ],
+      "detected_at": "2026-11-04T18:56:09.539471+00:00",
+      "codenames": [
+        "unlimitedocr"
+      ],
+      "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: UnlimitedOCR2TextForCausalLM spotted in Registry File vllm/model_executor/models/registry.py!\n\n• UnlimitedOCR2TextForCausalLM (UnlimitedOCR2TextForCausalLM)\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM model architecture registry.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "openrouter-model-recursiveAI_ripple-65b-preview",
+      "category": "cli-sdk-diff",
+      "scanner": "openrouter",
+      "header": "OPENROUTER LIVE REGISTRY · RECURSIVEAI",
+      "title": "ricursiveAI/Ripple-65B-Preview",
+      "subtitle": "Newly registered model endpoint on OpenRouter (/api/v1/models)",
+      "build_label": "Endpoint ID",
+      "build_transition": "recursiveAI/ripple-65b-preview",
+      "models": [
+        {
+          "id": "recursiveAI/ripple-65b-preview",
+          "name": "ricursiveAI/Ripple-65B-Preview (16k context window)",
+          "pricing": "$0.20 / $0.60 per 1M tokens ($0.05 cached)"
+        }
+      ],
+      "evidence": "openrouter.ai/api/v1/models",
+      "source_text": "official public OpenRouter /api/v1/models JSON registry.",
+      "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
+      "disclaimer_2": "Publicly listed API model identifier and context length specification.",
+      "provider_name": "RECURSIVEAI",
+      "provider_slug": "openrouter",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "OpenRouter Model Page",
+          "url": "https://openrouter.ai/recursiveAI/ripple-65b-preview"
+        },
+        {
+          "label": "OpenRouter Models API",
+          "url": "https://openrouter.ai/api/v1/models"
+        }
+      ],
+      "detected_at": "2026-11-04T18:56:09.539471+00:00",
+      "pricing": "$0.20 / $0.60 per 1M tokens ($0.05 cached)",
+      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · RECURSIVEAI\nricursiveAI/Ripple-65B-Preview spotted in Endpoint ID recursiveAI/ripple-65b-preview!\n\n• ricursiveAI/Ripple-65B-Preview (16k context window) (recursiveAI/ripple-65b-preview)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "openrouter-model-gmicloud_ripple-65b-preview",
       "category": "cli-sdk-diff",
