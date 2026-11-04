@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-04T04:46:52.666946+00:00",
+  "generated_at": "2026-11-04T04:52:52.552887+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 110,
     "leaks": 19,
     "releases": 83,
-    "stories_24h": 4,
-    "sources_ok": 12,
-    "total_cards": 173,
-    "new_in_this_scan": 0
+    "stories_24h": 5,
+    "sources_ok": 11,
+    "total_cards": 174,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -785,7 +785,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-10-30T18:35:00+00:00",
-      "updated_at": "2026-10-30T18:38:01.166171+00:00",
+      "updated_at": "2026-11-04T04:53:24.886266+00:00",
       "first_source": "Official pricing page",
       "lead": "",
       "released_on": "",
@@ -827,16 +827,25 @@
           "title": "1 New Model(s) Added to LiteLLM",
           "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
           "backfill": false
+        },
+        {
+          "label": "OpenAI API spec",
+          "scanner": "openai-spec",
+          "detected_at": "2026-11-04T04:53:24.886266+00:00",
+          "title": "New model ID in OpenAI's API spec: gpt-6-rosalind",
+          "url": "https://github.com/openai/openai-openapi/blob/main/openapi.yaml",
+          "backfill": false
         }
       ],
-      "source_count": 2,
+      "source_count": 3,
       "backfill": false,
       "header": "LEAK · OPENAI",
       "card_ids": [
         "pricing-radar-openai_pricing_md-40786a23",
-        "litellm-diff-85f02e7f"
+        "litellm-diff-85f02e7f",
+        "openai-spec-ids-19b03197"
       ],
-      "x_post_text": "🟠 LEAK: GPT 6 Rosalind by OpenAI\n\nFirst detected 30 Oct 18:35 UTC in Official pricing page\n💰 Pricing: $15 / $75 per 1M tokens ($1.50 cached)\nConfirmed by LiteLLM registry\nCodename: discovery, rosalind\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: GPT 6 Rosalind by OpenAI\n\nFirst detected 30 Oct 18:35 UTC in Official pricing page\n💰 Pricing: $15 / $75 per 1M tokens ($1.50 cached)\nConfirmed by LiteLLM registry, OpenAI API spec\nCodename: discovery, rosalind\n\nvia @StatsWire"
     },
     {
       "id": "story-gpt-6-astra-law",
@@ -5024,6 +5033,39 @@
     }
   ],
   "cards": [
+    {
+      "id": "openai-spec-ids-19b03197",
+      "category": "cli-sdk-diff",
+      "scanner": "openai-spec",
+      "header": "OPENAI API SPEC · OPENAI",
+      "title": "New model ID in OpenAI's API spec: gpt-6-rosalind",
+      "subtitle": "+1 model ID(s) in openapi.yaml",
+      "build_label": "OpenAI API spec",
+      "build_transition": "openai/openai-openapi · main",
+      "models": [
+        {
+          "id": "gpt-6-rosalind",
+          "name": "GPT 6 Rosalind",
+          "pricing": "$15 / $75 per 1M tokens ($1.50 cached)"
+        }
+      ],
+      "evidence": "github.com/openai/openai-openapi/blob/main/openapi.yaml",
+      "source_text": "OpenAI's published OpenAPI specification.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10a37f",
+      "links": [
+        {
+          "label": "openai-openapi spec",
+          "url": "https://github.com/openai/openai-openapi/blob/main/openapi.yaml"
+        }
+      ],
+      "detected_at": "2026-11-04T04:53:24.886266+00:00",
+      "pricing": "$15 / $75 per 1M tokens ($1.50 cached)",
+      "x_post_text": "🚨 OPENAI API SPEC · OPENAI\nNew model ID in OpenAI's API spec: gpt-6-rosalind spotted in OpenAI API spec openai/openai-openapi · main!\n\n• GPT 6 Rosalind (gpt-6-rosalind)\n\nEvidence: github.com/openai/openai-openapi/blob/main/openapi.yaml\nSource: OpenAI's published OpenAPI specification.\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-nvidia_NVIDIA-NemotronLabs-AI-for-Media-Sports-Basketball",
       "category": "open-source",
