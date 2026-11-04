@@ -1,16 +1,58 @@
 {
-  "generated_at": "2026-11-04T16:39:33.406086+00:00",
+  "generated_at": "2026-11-04T16:43:33.576528+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 110,
-    "leaks": 20,
+    "stories": 111,
+    "leaks": 21,
     "releases": 82,
-    "stories_24h": 4,
-    "sources_ok": 11,
-    "total_cards": 174,
-    "new_in_this_scan": 0
+    "stories_24h": 5,
+    "sources_ok": 12,
+    "total_cards": 175,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-zayaforcausallm",
+      "group": "zayaforcausallm",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "ZayaForCausalLM",
+      "provider_slug": "opensource",
+      "provider_name": "Architecture Diff",
+      "accent_color": "#8b5cf6",
+      "detected_at": "2026-11-04T16:43:41.219322+00:00",
+      "updated_at": "2026-11-04T16:43:41.219322+00:00",
+      "first_source": "vLLM registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "zayaforcausallm"
+      ],
+      "models": [
+        {
+          "id": "ZayaForCausalLM",
+          "name": "ZayaForCausalLM"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM registry",
+          "scanner": "vllm-registry",
+          "detected_at": "2026-11-04T16:43:41.219322+00:00",
+          "title": "New Engine Architecture: ZayaForCausalLM",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · ARCHITECTURE DIFF",
+      "card_ids": [
+        "vllm-arch-7b9f214470"
+      ],
+      "x_post_text": "🟠 LEAK: ZayaForCausalLM by Architecture Diff\n\nFirst detected 04 Nov 16:43 UTC in vLLM registry\nCodename: zayaforcausallm\n\nvia @StatsWire"
+    },
     {
       "id": "story-ultravbertmodel",
       "group": "ultravbertmodel",
@@ -751,7 +793,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "2026-09-10",
-      "pricing": "$0.156 / $1.20 per 1M tokens ($0.006 cached)",
+      "pricing": "$0.155 / $0.62 per 1M tokens ($0.0031 cached)",
       "codenames": [],
       "models": [
         {
@@ -775,7 +817,7 @@
       "card_ids": [
         "hf-nvidia_DeepSeek-V4.1-Flash-1017-NVFP4"
       ],
-      "x_post_text": "🟢 NEW MODEL: DeepSeek V4.1 Flash 1017 by NVIDIA\n\nFirst detected 30 Oct 20:08 UTC in Hugging Face\n📅 First released: 2026-09-10\n💰 Pricing: $0.156 / $1.20 per 1M tokens ($0.006 cached)\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: DeepSeek V4.1 Flash 1017 by NVIDIA\n\nFirst detected 30 Oct 20:08 UTC in Hugging Face\n📅 First released: 2026-09-10\n💰 Pricing: $0.155 / $0.62 per 1M tokens ($0.0031 cached)\n\nvia @StatsWire"
     },
     {
       "id": "story-rfd-4-proteina",
@@ -5035,6 +5077,44 @@
     }
   ],
   "cards": [
+    {
+      "id": "vllm-arch-7b9f214470",
+      "category": "open-source",
+      "scanner": "vllm-registry",
+      "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
+      "title": "New Engine Architecture: ZayaForCausalLM",
+      "subtitle": "New model_executor/models/registry.py architecture declarations",
+      "build_label": "Registry File",
+      "build_transition": "vllm/model_executor/models/registry.py",
+      "models": [
+        {
+          "id": "ZayaForCausalLM",
+          "name": "ZayaForCausalLM"
+        }
+      ],
+      "evidence": "vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+      "source_text": "official vLLM model architecture registry.",
+      "disclaimer_1": "Tracks only model architecture class registrations in registry.py.",
+      "disclaimer_2": "Open-source labs register their architecture classes here prior to weight drops.",
+      "provider_name": "VLLM REGISTRY",
+      "provider_slug": "opensource",
+      "accent_color": "#8b5cf6",
+      "links": [
+        {
+          "label": "vLLM registry.py",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py"
+        },
+        {
+          "label": "Supported Models Docs",
+          "url": "https://docs.vllm.ai/en/latest/models/supported_models.html"
+        }
+      ],
+      "detected_at": "2026-11-04T16:43:41.219322+00:00",
+      "codenames": [
+        "zayaforcausallm"
+      ],
+      "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: ZayaForCausalLM spotted in Registry File vllm/model_executor/models/registry.py!\n\n• ZayaForCausalLM (ZayaForCausalLM)\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM model architecture registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "vllm-arch-7287ca1b3d",
       "category": "open-source",
