@@ -1,16 +1,58 @@
 {
-  "generated_at": "2026-11-04T14:23:33.755683+00:00",
+  "generated_at": "2026-11-04T14:35:33.848109+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 109,
-    "leaks": 19,
+    "stories": 110,
+    "leaks": 20,
     "releases": 82,
-    "stories_24h": 3,
+    "stories_24h": 4,
     "sources_ok": 11,
-    "total_cards": 173,
-    "new_in_this_scan": 0
+    "total_cards": 174,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-ultravbertmodel",
+      "group": "ultravbertmodel",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "UltraVBertModel",
+      "provider_slug": "opensource",
+      "provider_name": "Architecture Diff",
+      "accent_color": "#8b5cf6",
+      "detected_at": "2026-11-04T14:35:42.086065+00:00",
+      "updated_at": "2026-11-04T14:35:42.086065+00:00",
+      "first_source": "vLLM registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "ultravbertmodel"
+      ],
+      "models": [
+        {
+          "id": "UltraVBertModel",
+          "name": "UltraVBertModel"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM registry",
+          "scanner": "vllm-registry",
+          "detected_at": "2026-11-04T14:35:42.086065+00:00",
+          "title": "New Engine Architecture: UltraVBertModel",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · ARCHITECTURE DIFF",
+      "card_ids": [
+        "vllm-arch-7287ca1b3d"
+      ],
+      "x_post_text": "🟠 LEAK: UltraVBertModel by Architecture Diff\n\nFirst detected 04 Nov 14:35 UTC in vLLM registry\nCodename: ultravbertmodel\n\nvia @StatsWire"
+    },
     {
       "id": "story-nvidia-nemotronlabs-ai-for-media-sports-basketball",
       "group": "nvidia-nemotronlabs-ai-for-media-sports-basketball",
@@ -709,7 +751,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "2026-09-10",
-      "pricing": "$0.223 / $1.115 per 1M tokens ($0.01115 cached)",
+      "pricing": "$0.30 / $1.20 per 1M tokens ($0.075 cached)",
       "codenames": [],
       "models": [
         {
@@ -733,7 +775,7 @@
       "card_ids": [
         "hf-nvidia_DeepSeek-V4.1-Flash-1017-NVFP4"
       ],
-      "x_post_text": "🟢 NEW MODEL: DeepSeek V4.1 Flash 1017 by NVIDIA\n\nFirst detected 30 Oct 20:08 UTC in Hugging Face\n📅 First released: 2026-09-10\n💰 Pricing: $0.223 / $1.115 per 1M tokens ($0.01115 cached)\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: DeepSeek V4.1 Flash 1017 by NVIDIA\n\nFirst detected 30 Oct 20:08 UTC in Hugging Face\n📅 First released: 2026-09-10\n💰 Pricing: $0.30 / $1.20 per 1M tokens ($0.075 cached)\n\nvia @StatsWire"
     },
     {
       "id": "story-rfd-4-proteina",
@@ -1339,7 +1381,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "2026-09-30",
-      "pricing": "$0.70 / $2.10 per 1M tokens ($0.07 cached)",
+      "pricing": "$0.765 / $2.351 per 1M tokens ($0.079 cached)",
       "codenames": [],
       "models": [
         {
@@ -1378,7 +1420,7 @@
         "hf-mistralai_Mistral-Large-4-1T-A52B",
         "engine-pr-vllm-project_vllm-64534"
       ],
-      "x_post_text": "🟢 NEW MODEL: Mistral Large 4 1T by Mistral\n\nFirst detected 29 Oct 14:11 UTC in Hugging Face\n📅 First released: 2026-09-30\n💰 Pricing: $0.70 / $2.10 per 1M tokens ($0.07 cached)\nConfirmed by vLLM pull request\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Mistral Large 4 1T by Mistral\n\nFirst detected 29 Oct 14:11 UTC in Hugging Face\n📅 First released: 2026-09-30\n💰 Pricing: $0.765 / $2.351 per 1M tokens ($0.079 cached)\nConfirmed by vLLM pull request\n\nvia @StatsWire"
     },
     {
       "id": "story-mingv-3asrforconditionalgeneration",
@@ -4993,6 +5035,44 @@
     }
   ],
   "cards": [
+    {
+      "id": "vllm-arch-7287ca1b3d",
+      "category": "open-source",
+      "scanner": "vllm-registry",
+      "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
+      "title": "New Engine Architecture: UltraVBertModel",
+      "subtitle": "New model_executor/models/registry.py architecture declarations",
+      "build_label": "Registry File",
+      "build_transition": "vllm/model_executor/models/registry.py",
+      "models": [
+        {
+          "id": "UltraVBertModel",
+          "name": "UltraVBertModel"
+        }
+      ],
+      "evidence": "vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+      "source_text": "official vLLM model architecture registry.",
+      "disclaimer_1": "Tracks only model architecture class registrations in registry.py.",
+      "disclaimer_2": "Open-source labs register their architecture classes here prior to weight drops.",
+      "provider_name": "VLLM REGISTRY",
+      "provider_slug": "opensource",
+      "accent_color": "#8b5cf6",
+      "links": [
+        {
+          "label": "vLLM registry.py",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py"
+        },
+        {
+          "label": "Supported Models Docs",
+          "url": "https://docs.vllm.ai/en/latest/models/supported_models.html"
+        }
+      ],
+      "detected_at": "2026-11-04T14:35:42.086065+00:00",
+      "codenames": [
+        "ultravbertmodel"
+      ],
+      "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: UltraVBertModel spotted in Registry File vllm/model_executor/models/registry.py!\n\n• UltraVBertModel (UltraVBertModel)\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM model architecture registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "openai-spec-ids-19b03197",
       "category": "cli-sdk-diff",
