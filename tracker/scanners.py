@@ -3888,6 +3888,10 @@ class HighAlphaLeakChannelsScanner:
         for doc_url in (
             "https://cloud.google.com/vertex-ai/generative-ai/docs/quotas",
             "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models",
+            "https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/use-partner-models",
+            "https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/claude",
+            "https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/llama",
+            "https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/mistral",
             "https://cloud.google.com/vertex-ai/docs/quotas",
         ):
             try:
