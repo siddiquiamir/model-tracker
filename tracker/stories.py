@@ -76,6 +76,7 @@ SCANNER_LABELS: Dict[str, str] = {
     "pricing-radar": "Official pricing page",
     "github-code-leak": "GitHub benchmark & config",
     "provider-openapi": "Official OpenAPI spec",
+    "vertex-ai-quotas": "Vertex AI Quotas registry",
 }
 _WORD_FIX = {
     "Openai": "OpenAI", "Ai": "AI", "Sdk": "SDK", "Github": "GitHub", "Vllm": "vLLM", "Sglang": "SGLang",

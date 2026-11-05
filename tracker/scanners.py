@@ -3672,6 +3672,301 @@ class HighAlphaLeakChannelsScanner:
 
         return cards, changed
 
+    VERTEX_QUOTA_MODEL_RE = re.compile(
+        r"\b("
+        r"gpt-[567](?:\.[0-9])?[a-z0-9._-]{0,28}"
+        r"|gemini-[2345](?:\.[0-9])?[a-z0-9._-]{1,36}"
+        r"|claude-(?:opus|sonnet|haiku|fable|mythos)-[456][a-z0-9._-]{0,28}"
+        r"|deepseek-(?:v[345]|r[12]|ocr)[a-z0-9._-]{0,24}"
+        r"|llama-[345][a-z0-9._-]{1,28}"
+        r"|mistral-(?:large|medium|small|nemo|saba|orange|red|yellow)[a-z0-9._-]{0,24}"
+        r"|codestral-[a-z0-9._-]{2,24}"
+        r"|qwen[2345][a-z0-9._-]{1,28}"
+        r"|glm-[456](?:\.[0-9])?[a-z0-9._-]{1,28}"
+        r"|grok-[345](?:\.[0-9])?[a-z0-9._-]{0,24}"
+        r"|imagen-[345][a-z0-9._-]{0,24}"
+        r"|veo-[234][a-z0-9._-]{0,24}"
+        r")\b",
+        re.IGNORECASE,
+    )
+
+    @staticmethod
+    def _mint_gcp_bearer_token() -> Tuple[Optional[str], Optional[str]]:
+        """
+        Return (access_token, project_id) using GCP_ACCESS_TOKEN, GCP_SA_KEY (Service Account JSON),
+        or GOOGLE_APPLICATION_CREDENTIALS so GitHub Actions can poll live Vertex AI base_model quotas.
+        """
+        direct_tok = (os.environ.get("GCP_ACCESS_TOKEN") or "").strip()
+        proj_id = (os.environ.get("GCP_PROJECT_ID") or "").strip()
+        if direct_tok and proj_id:
+            return direct_tok, proj_id
+
+        sa_raw = (os.environ.get("GCP_SA_KEY") or "").strip()
+        if not sa_raw:
+            cred_path = (os.environ.get("GOOGLE_APPLICATION_CREDENTIALS") or "").strip()
+            if cred_path and pathlib.Path(cred_path).exists():
+                sa_raw = pathlib.Path(cred_path).read_text(encoding="utf-8")
+        if not sa_raw:
+            return None, None
+
+        try:
+            import base64
+            import tempfile
+
+            sa = json.loads(sa_raw)
+            proj_id = proj_id or str(sa.get("project_id") or "").strip()
+            # Support OAuth2 authorized_user refresh token JSON as well as service_account JSON
+            if sa.get("type") == "authorized_user" or sa.get("refresh_token"):
+                payload = urllib.parse.urlencode(
+                    {
+                        "client_id": sa["client_id"],
+                        "client_secret": sa["client_secret"],
+                        "refresh_token": sa["refresh_token"],
+                        "grant_type": "refresh_token",
+                    }
+                ).encode("utf-8")
+                req = urllib.request.Request(
+                    "https://oauth2.googleapis.com/token",
+                    data=payload,
+                    headers={"Content-Type": "application/x-www-form-urlencoded"},
+                )
+                with urllib.request.urlopen(req, timeout=12) as resp:
+                    tok_doc = json.loads(resp.read().decode("utf-8", "ignore"))
+                return tok_doc.get("access_token"), proj_id
+
+            client_email = sa["client_email"]
+            private_key_pem = sa["private_key"]
+            token_uri = sa.get("token_uri") or "https://oauth2.googleapis.com/token"
+            now = int(time.time())
+
+            def _b64u(data: bytes) -> str:
+                return base64.urlsafe_b64encode(data).rstrip(b"=").decode("ascii")
+
+            hdr = _b64u(json.dumps({"alg": "RS256", "typ": "JWT"}, separators=(",", ":")).encode("utf-8"))
+            claim = _b64u(
+                json.dumps(
+                    {
+                        "iss": client_email,
+                        "scope": "https://www.googleapis.com/auth/cloud-platform.read-only",
+                        "aud": token_uri,
+                        "iat": now,
+                        "exp": now + 3600,
+                    },
+                    separators=(",", ":"),
+                ).encode("utf-8")
+            )
+            signing_input = f"{hdr}.{claim}".encode("ascii")
+
+            sig_bytes: Optional[bytes] = None
+            try:
+                from cryptography.hazmat.primitives import hashes, serialization  # type: ignore
+                from cryptography.hazmat.primitives.asymmetric import padding  # type: ignore
+
+                pkey = serialization.load_pem_private_key(private_key_pem.encode("utf-8"), password=None)
+                sig_bytes = pkey.sign(signing_input, padding.PKCS1v15(), hashes.SHA256())  # type: ignore[union-attr]
+            except Exception:
+                with tempfile.NamedTemporaryFile("w", suffix=".pem", delete=False) as tf:
+                    tf.write(private_key_pem)
+                    key_file = tf.name
+                try:
+                    proc = subprocess.run(
+                        ["openssl", "dgst", "-sha256", "-sign", key_file],
+                        input=signing_input,
+                        capture_output=True,
+                        timeout=10,
+                        check=True,
+                    )
+                    sig_bytes = proc.stdout
+                finally:
+                    try:
+                        os.remove(key_file)
+                    except OSError:
+                        pass
+
+            if not sig_bytes:
+                return None, proj_id
+
+            assertion = f"{hdr}.{claim}.{_b64u(sig_bytes)}"
+            body = urllib.parse.urlencode(
+                {
+                    "grant_type": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+                    "assertion": assertion,
+                }
+            ).encode("utf-8")
+            req = urllib.request.Request(
+                token_uri,
+                data=body,
+                headers={"Content-Type": "application/x-www-form-urlencoded"},
+            )
+            with urllib.request.urlopen(req, timeout=12) as resp:
+                tok_doc = json.loads(resp.read().decode("utf-8", "ignore"))
+            return tok_doc.get("access_token"), proj_id
+        except Exception as exc:
+            print(f"[HighAlphaScanner] GCP token mint warning: {exc}")
+            return None, None
+
+    @classmethod
+    def _collect_base_models_from_json(cls, obj: Any, out: Set[str]) -> None:
+        if isinstance(obj, dict):
+            for k, v in obj.items():
+                if k == "base_model" and isinstance(v, str) and v.strip():
+                    out.add(v.strip().lower())
+                else:
+                    cls._collect_base_models_from_json(v, out)
+        elif isinstance(obj, list):
+            for item in obj:
+                cls._collect_base_models_from_json(item, out)
+
+    def _scan_vertex_ai_quotas(
+        self,
+        baselines: Dict[str, Any],
+        known_canon: Set[str],
+    ) -> Tuple[List[Dict[str, Any]], bool]:
+        """
+        Polls Google Cloud Vertex AI `base_model:` quota dimensions (via Cloud Quotas / Service Usage API
+        when `GCP_SA_KEY` or `GCP_ACCESS_TOKEN` is configured, plus public Vertex AI quota & model docs)
+        to catch ephemeral pre-release partner/first-party models (OpenAI GPT-6.x, Claude, Gemini, DeepSeek,
+        Mistral, Llama, Qwen) even if Google adds and removes them minutes later.
+        """
+        cards: List[Dict[str, Any]] = []
+        changed = False
+        vq_state: Dict[str, Any] = dict(baselines.get("vertex_ai_quotas", {}))
+        seen_all: Set[str] = set(vq_state.get("seen_base_models", []))
+        # Pre-seed the 4 known OpenAI partner models already live on Vertex AI so first run doesn't false-positive
+        default_seed = {"gpt-6-astra", "gpt-6-luna", "gpt-6.1-sol", "gpt-6.1-terra"}
+        is_bootstrap = len(seen_all) == 0
+        seen_all |= default_seed
+
+        live_found: Set[str] = set()
+        source_mode = "public-docs"
+
+        # 1. Authenticated Google Cloud Quotas / Service Usage API poll (exact source of `base_model:` dropdown)
+        token, proj_id = self._mint_gcp_bearer_token()
+        if token and proj_id:
+            hdrs = {"Authorization": f"Bearer {token}", "Accept": "application/json"}
+            # 1a. Cloud Quotas API v1
+            next_tok = ""
+            for _ in range(10):
+                q_url = (
+                    f"https://cloudquotas.googleapis.com/v1/projects/{urllib.parse.quote(proj_id)}"
+                    f"/locations/global/services/aiplatform.googleapis.com/quotaInfos?pageSize=500"
+                )
+                if next_tok:
+                    q_url += f"&pageToken={urllib.parse.quote(next_tok)}"
+                try:
+                    doc = _http_get_json(q_url, timeout=20, extra_headers=hdrs)
+                    self._collect_base_models_from_json(doc, live_found)
+                    next_tok = str(doc.get("nextPageToken") or "").strip() if isinstance(doc, dict) else ""
+                    source_mode = "cloudquotas-api"
+                    if not next_tok:
+                        break
+                except Exception as exc:
+                    print(f"[HighAlphaScanner] CloudQuotas API note: {exc}")
+                    break
+
+            # 1b. Service Usage v1beta1 consumerQuotaMetrics (backs the IAM & Admin -> Quotas filter bar)
+            next_tok = ""
+            for _ in range(10):
+                su_url = (
+                    f"https://serviceusage.googleapis.com/v1beta1/projects/{urllib.parse.quote(proj_id)}"
+                    f"/services/aiplatform.googleapis.com/consumerQuotaMetrics?pageSize=500&view=FULL"
+                )
+                if next_tok:
+                    su_url += f"&pageToken={urllib.parse.quote(next_tok)}"
+                try:
+                    doc = _http_get_json(su_url, timeout=25, extra_headers=hdrs)
+                    self._collect_base_models_from_json(doc, live_found)
+                    next_tok = str(doc.get("nextPageToken") or "").strip() if isinstance(doc, dict) else ""
+                    source_mode = "serviceusage-quotas-api"
+                    if not next_tok:
+                        break
+                except Exception as exc:
+                    print(f"[HighAlphaScanner] ServiceUsage Quotas API note: {exc}")
+                    break
+
+        # 2. Public Vertex AI Quotas & Partner Model Docs index (always runs, zero credentials required)
+        for doc_url in (
+            "https://cloud.google.com/vertex-ai/generative-ai/docs/quotas",
+            "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models",
+            "https://cloud.google.com/vertex-ai/docs/quotas",
+        ):
+            try:
+                html = _http_get_text(doc_url, timeout=15)
+                for m in self.VERTEX_QUOTA_MODEL_RE.findall(html):
+                    clean = m.lower().strip("._-")
+                    if not is_legacy_model_id(clean) and clean not in self.IDE_EXCLUDED_TOKENS:
+                        live_found.add(clean)
+            except Exception as exc:
+                print(f"[HighAlphaScanner] Vertex AI public doc note ({doc_url}): {exc}")
+
+        if not live_found:
+            return cards, changed
+
+        if is_bootstrap:
+            vq_state["seen_base_models"] = sorted(seen_all | live_found)
+            vq_state["current_live_models"] = sorted(live_found)
+            vq_state["last_source_mode"] = source_mode
+            baselines["vertex_ai_quotas"] = vq_state
+            return cards, True
+
+        added = sorted(
+            m
+            for m in live_found
+            if m not in seen_all and not is_legacy_model_id(m) and _canonical_model_slug(m) not in known_canon
+        )
+
+        prev_live = set(vq_state.get("current_live_models", []))
+        removed = sorted(m for m in prev_live if m not in live_found and m not in default_seed)
+
+        if added:
+            # Group newly surfaced base_model entries by inferred provider (OpenAI, Google, Anthropic, DeepSeek, etc.)
+            by_prov: Dict[str, List[str]] = {}
+            for m in added:
+                p_slug = infer_provider(m)["slug"]
+                by_prov.setdefault(p_slug, []).append(m)
+
+            for p_slug, p_models in by_prov.items():
+                p_info = infer_provider(p_models[0])
+                sig = hashlib.sha256(f"vertex-quota:{p_slug}:{','.join(p_models)}".encode("utf-8")).hexdigest()[:8]
+                cards.append(
+                    {
+                        "id": f"vertex-quota-{p_slug}-{sig}",
+                        "category": "cli-sdk-diff",
+                        "scanner": "vertex-ai-quotas",
+                        "header": f"GOOGLE CLOUD VERTEX AI QUOTA REGISTRY · {p_info['name']}",
+                        "title": f"New {p_info['name']} Model(s) on Google Cloud Vertex AI: {', '.join(p_models[:2])}",
+                        "subtitle": f"Detected in Google Cloud Vertex AI `base_model:` quota dimensions ({len(p_models)} new)",
+                        "build_label": "Vertex AI Quotas",
+                        "build_transition": f"aiplatform.googleapis.com (+{len(p_models)} base_model)",
+                        "models": [{"id": m, "name": f"base_model:{m}"} for m in p_models[:10]],
+                        "evidence": "console.cloud.google.com/iam-admin/quotas (aiplatform.googleapis.com)",
+                        "source_text": "Google Cloud Vertex AI `base_model` quota dimension registry.",
+                        "disclaimer_1": "",
+                        "disclaimer_2": "",
+                        "provider_name": p_info["name"],
+                        "provider_slug": p_info["slug"],
+                        "accent_color": p_info["color"],
+                        "links": [
+                            {"label": "GCP Vertex AI Quotas", "url": "https://console.cloud.google.com/iam-admin/quotas"},
+                            {"label": "Vertex AI Models", "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"},
+                        ],
+                        "detected_at": datetime.now(timezone.utc).isoformat(),
+                    }
+                )
+
+        new_seen = sorted(seen_all | live_found)
+        if set(new_seen) != seen_all or set(live_found) != prev_live:
+            vq_state["seen_base_models"] = new_seen
+            vq_state["current_live_models"] = sorted(live_found)
+            vq_state["last_source_mode"] = source_mode
+            if removed:
+                hist_rem = set(vq_state.get("ephemeral_removed_models", []))
+                vq_state["ephemeral_removed_models"] = sorted(hist_rem | set(removed))[-100:]
+            baselines["vertex_ai_quotas"] = vq_state
+            changed = True
+
+        return cards, changed
+
     def scan(self) -> List[Dict[str, Any]]:
         baselines = _load_baselines()
         known_canon = (
@@ -3689,6 +3984,7 @@ class HighAlphaLeakChannelsScanner:
             ("engine-prs", lambda: self._scan_inference_engine_prs(baselines, known_canon)),
             ("github-code-leaks", lambda: self._scan_github_global_code_leaks(baselines, known_canon)),
             ("provider-openapi", lambda: self._scan_provider_openapi_specs(baselines, known_canon)),
+            ("vertex-ai-quotas", lambda: self._scan_vertex_ai_quotas(baselines, known_canon)),
             ("provider-apis", lambda: self._scan_live_provider_apis(baselines)),
             ("web-bundles", lambda: self._scan_google_web_bundles(baselines)),
         ):
