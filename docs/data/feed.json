@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-11-05T17:04:19.666162+00:00",
+  "generated_at": "2026-11-05T17:06:19.516978+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 120,
-    "leaks": 25,
-    "releases": 87,
+    "leaks": 24,
+    "releases": 88,
     "stories_24h": 13,
     "sources_ok": 11,
-    "total_cards": 191,
+    "total_cards": 192,
     "new_in_this_scan": 1
   },
   "stories": [
     {
       "id": "story-gemini-omni-1-2-flash",
       "group": "gemini-omni-1-2-flash",
-      "kind": "leak",
+      "kind": "release",
       "open_weights": false,
       "title": "Gemini Omni 1.2 Flash",
       "provider_slug": "google",
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-05T16:58:34.695577+00:00",
-      "updated_at": "2026-11-05T17:04:32.283255+00:00",
+      "updated_at": "2026-11-05T17:06:45.897433+00:00",
       "first_source": "GCP Vertex AI Model Versions",
-      "lead": "",
+      "lead": "8 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "",
       "pricing": "",
       "codenames": [],
@@ -49,16 +49,25 @@
           "title": "New Model Spotted in Gemini API Official Models Page",
           "url": "https://ai.google.dev/gemini-api/docs/models",
           "backfill": false
+        },
+        {
+          "label": "Vercel AI Gateway Catalog",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-11-05T17:06:45.897433+00:00",
+          "title": "New Model on Vercel AI Gateway: Gemini Omni 1.2 Flash",
+          "url": "https://ai-gateway.vercel.sh/v1/models",
+          "backfill": false
         }
       ],
-      "source_count": 2,
+      "source_count": 3,
       "backfill": false,
-      "header": "LEAK · GOOGLE",
+      "header": "NEW MODEL · GOOGLE",
       "card_ids": [
         "docs-diff-gcp-vertex-versions-001fe207",
-        "docs-diff-gemini-docs-001fe207"
+        "docs-diff-gemini-docs-001fe207",
+        "vercel-gateway-diff-73a1fc6a"
       ],
-      "x_post_text": "🟠 LEAK: Gemini Omni 1.2 Flash by Google\n\nFirst detected 05 Nov 16:58 UTC in GCP Vertex AI Model Versions\nConfirmed by Gemini API Docs\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Gemini Omni 1.2 Flash by Google\n\nFirst detected 05 Nov 16:58 UTC in GCP Vertex AI Model Versions\n⏱ 8 min before it went live on Vercel AI Gateway Catalog\nConfirmed by Gemini API Docs, Vercel AI Gateway Catalog\n\nvia @StatsWire"
     },
     {
       "id": "story-gemma-4audio-2textmodeltest",
@@ -5567,6 +5576,37 @@
     }
   ],
   "cards": [
+    {
+      "id": "vercel-gateway-diff-73a1fc6a",
+      "category": "cli-sdk-diff",
+      "scanner": "gateway-radar",
+      "header": "VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS",
+      "title": "New Model on Vercel AI Gateway: Gemini Omni 1.2 Flash",
+      "subtitle": "Detected in ai-gateway.vercel.sh/v1/models (+1 new)",
+      "build_label": "Gateway Diff",
+      "build_transition": "+1 new model(s)",
+      "models": [
+        {
+          "id": "google/gemini-omni-1.2-flash",
+          "name": "Gemini Omni 1.2 Flash"
+        }
+      ],
+      "evidence": "ai-gateway.vercel.sh/v1/models",
+      "source_text": "public Vercel AI Gateway /v1/models catalog.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Vercel AI Gateway Models",
+          "url": "https://ai-gateway.vercel.sh/v1/models"
+        }
+      ],
+      "detected_at": "2026-11-05T17:06:45.897433+00:00",
+      "x_post_text": "🚨 VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS\nNew Model on Vercel AI Gateway: Gemini Omni 1.2 Flash spotted in Gateway Diff +1 new model(s)!\n\n• Gemini Omni 1.2 Flash (google/gemini-omni-1.2-flash)\n\nEvidence: ai-gateway.vercel.sh/v1/models\nSource: public Vercel AI Gateway /v1/models catalog.\n\nTracked by @StatsWire"
+    },
     {
       "id": "docs-diff-gemini-docs-001fe207",
       "category": "cli-sdk-diff",
