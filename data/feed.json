@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T17:40:19.494929+00:00",
+  "generated_at": "2026-11-05T17:48:19.514823+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 122,
@@ -7,7 +7,7 @@
     "releases": 88,
     "stories_24h": 15,
     "sources_ok": 11,
-    "total_cards": 198,
+    "total_cards": 199,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -68,7 +68,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-05T17:08:35.308954+00:00",
-      "updated_at": "2026-11-05T17:33:03.140082+00:00",
+      "updated_at": "2026-11-05T17:48:39.306676+00:00",
       "first_source": "OpenAI Docs Route",
       "lead": "",
       "released_on": "",
@@ -105,17 +105,26 @@
           "title": "New model ID in OpenAI's API spec: gpt-6-cyber",
           "url": "https://github.com/openai/openai-openapi/blob/main/openapi.yaml",
           "backfill": false
+        },
+        {
+          "label": "OpenAI SDK GitHub Master",
+          "scanner": "docs-radar",
+          "detected_at": "2026-11-05T17:48:39.306676+00:00",
+          "title": "New OpenAI Model Merged to SDK Master: gpt-6-cyber",
+          "url": "https://github.com/openai/openai-node/commits/master/src/resources/shared.ts",
+          "backfill": false
         }
       ],
-      "source_count": 3,
+      "source_count": 4,
       "backfill": false,
       "header": "LEAK · OPENAI",
       "card_ids": [
         "pre-release-openai_llms_model_routes-f9138464",
         "pricing-radar-openai_pricing_md-f9138464",
-        "openai-spec-ids-f9138464"
+        "openai-spec-ids-f9138464",
+        "pre-release-gh_openai_sdk_union-f9138464"
       ],
-      "x_post_text": "🟠 LEAK: GPT 6 Cyber by OpenAI\n\nFirst detected 05 Nov 17:08 UTC in OpenAI Docs Route\n💰 Pricing: $20 / $100 per 1M tokens ($2 cached)\nConfirmed by Official pricing page, OpenAI API spec\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: GPT 6 Cyber by OpenAI\n\nFirst detected 05 Nov 17:08 UTC in OpenAI Docs Route\n💰 Pricing: $20 / $100 per 1M tokens ($2 cached)\nConfirmed by Official pricing page, OpenAI API spec, OpenAI SDK GitHub Master\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-omni-1-2-flash",
@@ -5701,6 +5710,39 @@
     }
   ],
   "cards": [
+    {
+      "id": "pre-release-gh_openai_sdk_union-f9138464",
+      "category": "cli-sdk-diff",
+      "scanner": "docs-radar",
+      "header": "OPENAI SDK GITHUB MASTER DIFF · OPENAI",
+      "title": "New OpenAI Model Merged to SDK Master: gpt-6-cyber",
+      "subtitle": "Detected in openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel) (+1 new)",
+      "build_label": "Pre-Release Scout",
+      "build_transition": "+1 unannounced identifier(s)",
+      "models": [
+        {
+          "id": "gpt-6-cyber",
+          "name": "GPT 6 Cyber",
+          "pricing": "$20 / $100 per 1M tokens ($2 cached)"
+        }
+      ],
+      "evidence": "openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel)",
+      "source_text": "openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel)",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "Source Feed",
+          "url": "https://github.com/openai/openai-node/commits/master/src/resources/shared.ts"
+        }
+      ],
+      "detected_at": "2026-11-05T17:48:39.306676+00:00",
+      "pricing": "$20 / $100 per 1M tokens ($2 cached)",
+      "x_post_text": "🚨 OPENAI SDK GITHUB MASTER DIFF · OPENAI\nNew OpenAI Model Merged to SDK Master: gpt-6-cyber spotted in Pre-Release Scout +1 unannounced identifier(s)!\n\n• GPT 6 Cyber (gpt-6-cyber)\n\nEvidence: openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel)\nSource: openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel)\n\nTracked by @StatsWire"
+    },
     {
       "id": "vllm-arch-88206320f0",
       "category": "open-source",
