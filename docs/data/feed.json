@@ -1,16 +1,57 @@
 {
-  "generated_at": "2026-11-05T23:05:13.170636+00:00",
+  "generated_at": "2026-11-05T23:09:13.721621+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 124,
+    "stories": 125,
     "leaks": 27,
     "releases": 88,
-    "stories_24h": 15,
-    "sources_ok": 11,
-    "total_cards": 201,
-    "new_in_this_scan": 0
+    "stories_24h": 16,
+    "sources_ok": 12,
+    "total_cards": 202,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-litellm-registry-openai-cbe587a8",
+      "group": "litellm-registry-openai-cbe587a8",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "LiteLLM Model Registry Update — 1 Entry Detected",
+      "provider_slug": "modelsdev",
+      "provider_name": "",
+      "accent_color": "#10b981",
+      "detected_at": "2026-11-05T23:09:43.100656+00:00",
+      "updated_at": "2026-11-05T23:09:43.100656+00:00",
+      "first_source": "LiteLLM registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "$2.64 / $7.92 per 1M tokens ($0.66 cached)",
+      "codenames": [],
+      "models": [
+        {
+          "id": "us-gov.xai.grok-4.7",
+          "name": "us-gov.xai.grok-4.7",
+          "pricing": "$2.64 / $7.92 per 1M tokens ($0.66 cached)"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM registry",
+          "scanner": "litellm",
+          "detected_at": "2026-11-05T23:09:43.100656+00:00",
+          "title": "1 New Model(s) Added to LiteLLM",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE",
+      "card_ids": [
+        "litellm-diff-cbe587a8"
+      ],
+      "x_post_text": "🔵 REGISTRY UPDATE: LiteLLM Model Registry Update — 1 Entry Detected\n\nFirst detected 05 Nov 23:09 UTC in LiteLLM registry\n💰 Pricing: $2.64 / $7.92 per 1M tokens ($0.66 cached)\n\nvia @StatsWire"
+    },
     {
       "id": "story-tensorrt-llm",
       "group": "tensorrt-llm",
@@ -5810,6 +5851,43 @@
     }
   ],
   "cards": [
+    {
+      "id": "litellm-diff-cbe587a8",
+      "category": "cli-sdk-diff",
+      "scanner": "litellm",
+      "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
+      "title": "1 New Model(s) Added to LiteLLM",
+      "subtitle": "Verified model_prices_and_context_window.json diff",
+      "build_label": "Registry Diff",
+      "build_transition": "+1 model keys",
+      "models": [
+        {
+          "id": "us-gov.xai.grok-4.7",
+          "name": "us-gov.xai.grok-4.7",
+          "pricing": "$2.64 / $7.92 per 1M tokens ($0.66 cached)"
+        }
+      ],
+      "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
+      "source_text": "official LiteLLM master pricing & context window registry.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "LITELLM",
+      "provider_slug": "modelsdev",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "LiteLLM JSON Registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        },
+        {
+          "label": "LiteLLM Commits",
+          "url": "https://github.com/BerriAI/litellm/commits/main"
+        }
+      ],
+      "detected_at": "2026-11-05T23:09:43.100656+00:00",
+      "pricing": "$2.64 / $7.92 per 1M tokens ($0.66 cached)",
+      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 model keys!\n\n• us-gov.xai.grok-4.7 (us-gov.xai.grok-4.7)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "engine-pr-NVIDIA_TensorRT-LLM-21737",
       "category": "open-source",
