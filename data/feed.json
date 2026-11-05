@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T16:58:19.184073+00:00",
+  "generated_at": "2026-11-05T17:04:19.666162+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 120,
@@ -7,7 +7,7 @@
     "releases": 87,
     "stories_24h": 13,
     "sources_ok": 11,
-    "total_cards": 190,
+    "total_cards": 191,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -21,7 +21,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-05T16:58:34.695577+00:00",
-      "updated_at": "2026-11-05T16:58:34.695577+00:00",
+      "updated_at": "2026-11-05T17:04:32.283255+00:00",
       "first_source": "GCP Vertex AI Model Versions",
       "lead": "",
       "released_on": "",
@@ -41,15 +41,24 @@
           "title": "New Model Spotted in GCP Vertex AI Model Versions & Lifecycle",
           "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions",
           "backfill": false
+        },
+        {
+          "label": "Gemini API Docs",
+          "scanner": "docs-radar",
+          "detected_at": "2026-11-05T17:04:32.283255+00:00",
+          "title": "New Model Spotted in Gemini API Official Models Page",
+          "url": "https://ai.google.dev/gemini-api/docs/models",
+          "backfill": false
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
       "header": "LEAK · GOOGLE",
       "card_ids": [
-        "docs-diff-gcp-vertex-versions-001fe207"
+        "docs-diff-gcp-vertex-versions-001fe207",
+        "docs-diff-gemini-docs-001fe207"
       ],
-      "x_post_text": "🟠 LEAK: Gemini Omni 1.2 Flash by Google\n\nFirst detected 05 Nov 16:58 UTC in GCP Vertex AI Model Versions\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: Gemini Omni 1.2 Flash by Google\n\nFirst detected 05 Nov 16:58 UTC in GCP Vertex AI Model Versions\nConfirmed by Gemini API Docs\n\nvia @StatsWire"
     },
     {
       "id": "story-gemma-4audio-2textmodeltest",
@@ -5558,6 +5567,41 @@
     }
   ],
   "cards": [
+    {
+      "id": "docs-diff-gemini-docs-001fe207",
+      "category": "cli-sdk-diff",
+      "scanner": "docs-radar",
+      "header": "GEMINI API DOCS RADAR · GOOGLE",
+      "title": "New Model Spotted in Gemini API Official Models Page",
+      "subtitle": "Verified live API documentation diff",
+      "build_label": "Docs Diff",
+      "build_transition": "+1 new identifier(s)",
+      "models": [
+        {
+          "id": "gemini-omni-1.2-flash",
+          "name": "Gemini Omni 1.2 Flash"
+        }
+      ],
+      "evidence": "ai.google.dev/gemini-api/docs/models",
+      "source_text": "official Google AI for Developers Gemini API documentation.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Official Docs Page",
+          "url": "https://ai.google.dev/gemini-api/docs/models"
+        },
+        {
+          "label": "Raw Docs Feed",
+          "url": "https://ai.google.dev/gemini-api/docs/models"
+        }
+      ],
+      "detected_at": "2026-11-05T17:04:32.283255+00:00",
+      "x_post_text": "🚨 GEMINI API DOCS RADAR · GOOGLE\nNew Model Spotted in Gemini API Official Models Page spotted in Docs Diff +1 new identifier(s)!\n\n• Gemini Omni 1.2 Flash (gemini-omni-1.2-flash)\n\nEvidence: ai.google.dev/gemini-api/docs/models\nSource: official Google AI for Developers Gemini API documentation.\n\nTracked by @StatsWire"
+    },
     {
       "id": "docs-diff-gcp-vertex-versions-001fe207",
       "category": "cli-sdk-diff",
