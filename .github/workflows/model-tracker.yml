@@ -37,7 +37,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install optional TLS fingerprint client
-        run: pip install -q curl_cffi
+        run: pip install -q curl_cffi cryptography
 
       - name: Cache binary .rodata slices & npm metadata
         uses: actions/cache@v4

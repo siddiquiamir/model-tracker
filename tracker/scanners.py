@@ -3747,7 +3747,7 @@ class HighAlphaLeakChannelsScanner:
                 json.dumps(
                     {
                         "iss": client_email,
-                        "scope": "https://www.googleapis.com/auth/cloud-platform.read-only",
+                        "scope": "https://www.googleapis.com/auth/cloud-platform",
                         "aud": token_uri,
                         "iat": now,
                         "exp": now + 3600,
@@ -3906,7 +3906,11 @@ class HighAlphaLeakChannelsScanner:
         if not live_found:
             return cards, changed
 
-        if is_bootstrap:
+        upgraded_to_auth = (
+            vq_state.get("last_source_mode") in (None, "", "public-docs")
+            and source_mode != "public-docs"
+        )
+        if is_bootstrap or upgraded_to_auth:
             vq_state["seen_base_models"] = sorted(seen_all | live_found)
             vq_state["current_live_models"] = sorted(live_found)
             vq_state["last_source_mode"] = source_mode
@@ -3927,10 +3931,14 @@ class HighAlphaLeakChannelsScanner:
             by_prov: Dict[str, List[str]] = {}
             for m in added:
                 p_slug = infer_provider(m)["slug"]
+                if p_slug == "openrouter":
+                    p_slug = "google"
                 by_prov.setdefault(p_slug, []).append(m)
 
             for p_slug, p_models in by_prov.items():
                 p_info = infer_provider(p_models[0])
+                if p_info["slug"] == "openrouter":
+                    p_info = {"name": "GOOGLE", "slug": "google", "color": "#38bdf8"}
                 sig = hashlib.sha256(f"vertex-quota:{p_slug}:{','.join(p_models)}".encode("utf-8")).hexdigest()[:8]
                 cards.append(
                     {
