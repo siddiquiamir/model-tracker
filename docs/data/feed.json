@@ -1,16 +1,66 @@
 {
-  "generated_at": "2026-11-05T17:06:19.516978+00:00",
+  "generated_at": "2026-11-05T17:08:19.316409+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 120,
-    "leaks": 24,
+    "stories": 121,
+    "leaks": 25,
     "releases": 88,
-    "stories_24h": 13,
+    "stories_24h": 14,
     "sources_ok": 11,
-    "total_cards": 192,
-    "new_in_this_scan": 1
+    "total_cards": 194,
+    "new_in_this_scan": 2
   },
   "stories": [
+    {
+      "id": "story-gpt-6-cyber",
+      "group": "gpt-6-cyber",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "GPT 6 Cyber",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "accent_color": "#10b981",
+      "detected_at": "2026-11-05T17:08:35.308954+00:00",
+      "updated_at": "2026-11-05T17:08:38.462614+00:00",
+      "first_source": "OpenAI Docs Route",
+      "lead": "",
+      "released_on": "",
+      "pricing": "$20 / $100 per 1M tokens ($2 cached)",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gpt-6-cyber",
+          "name": "GPT 6 Cyber",
+          "pricing": "$20 / $100 per 1M tokens ($2 cached)"
+        }
+      ],
+      "sources": [
+        {
+          "label": "OpenAI Docs Route",
+          "scanner": "docs-radar",
+          "detected_at": "2026-11-05T17:08:35.308954+00:00",
+          "title": "New Model Doc Page Staged on OpenAI: gpt-6-cyber",
+          "url": "https://developers.openai.com/api/docs/models/all",
+          "backfill": false
+        },
+        {
+          "label": "Official pricing page",
+          "scanner": "pricing-radar",
+          "detected_at": "2026-11-05T17:08:38.462614+00:00",
+          "title": "New Model Pricing Published on OpenAI: gpt-6-cyber ($20 / $100 per 1M tokens ($2 cached))",
+          "url": "https://developers.openai.com/api/docs/pricing",
+          "backfill": false
+        }
+      ],
+      "source_count": 2,
+      "backfill": false,
+      "header": "LEAK · OPENAI",
+      "card_ids": [
+        "pre-release-openai_llms_model_routes-f9138464",
+        "pricing-radar-openai_pricing_md-f9138464"
+      ],
+      "x_post_text": "🟠 LEAK: GPT 6 Cyber by OpenAI\n\nFirst detected 05 Nov 17:08 UTC in OpenAI Docs Route\n💰 Pricing: $20 / $100 per 1M tokens ($2 cached)\nConfirmed by Official pricing page\n\nvia @StatsWire"
+    },
     {
       "id": "story-gemini-omni-1-2-flash",
       "group": "gemini-omni-1-2-flash",
@@ -5576,6 +5626,74 @@
     }
   ],
   "cards": [
+    {
+      "id": "pricing-radar-openai_pricing_md-f9138464",
+      "category": "cli-sdk-diff",
+      "scanner": "pricing-radar",
+      "header": "OPENAI OFFICIAL PRICING RADAR · OPENAI",
+      "title": "New Model Pricing Published on OpenAI: gpt-6-cyber ($20 / $100 per 1M tokens ($2 cached))",
+      "subtitle": "Verified official token pricing in developers.openai.com/api/docs/pricing.md",
+      "build_label": "Official Pricing",
+      "build_transition": "gpt-6-cyber: $20 / $100 per 1M tokens ($2 cached)",
+      "pricing": "$20 / $100 per 1M tokens ($2 cached)",
+      "models": [
+        {
+          "id": "gpt-6-cyber",
+          "name": "GPT 6 Cyber — $20 / $100 per 1M tokens ($2 cached)",
+          "pricing": "$20 / $100 per 1M tokens ($2 cached)"
+        }
+      ],
+      "evidence": "developers.openai.com/api/docs/pricing.md",
+      "source_text": "official OpenAI API pricing page (developers.openai.com/api/docs/pricing.md).",
+      "disclaimer_1": "Extracted directly from official first-party API pricing tables.",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "Official Pricing Page",
+          "url": "https://developers.openai.com/api/docs/pricing"
+        },
+        {
+          "label": "Raw Pricing Markdown",
+          "url": "https://developers.openai.com/api/docs/pricing.md"
+        }
+      ],
+      "detected_at": "2026-11-05T17:08:38.462614+00:00",
+      "x_post_text": "🚨 OPENAI OFFICIAL PRICING RADAR · OPENAI\nNew Model Pricing Published on OpenAI: gpt-6-cyber ($20 / $100 per 1M tokens ($2 cached)) spotted in Official Pricing gpt-6-cyber: $20 / $100 per 1M tokens ($2 cached)!\n\n• GPT 6 Cyber — $20 / $100 per 1M tokens ($2 cached) (gpt-6-cyber)\n\nEvidence: developers.openai.com/api/docs/pricing.md\nSource: official OpenAI API pricing page (developers.openai.com/api/docs/pricing.md).\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "pre-release-openai_llms_model_routes-f9138464",
+      "category": "cli-sdk-diff",
+      "scanner": "docs-radar",
+      "header": "OPENAI DOCS ROUTE SCOUT · OPENAI",
+      "title": "New Model Doc Page Staged on OpenAI: gpt-6-cyber",
+      "subtitle": "Detected in developers.openai.com/api/docs/models/*.md (+1 new)",
+      "build_label": "Pre-Release Scout",
+      "build_transition": "+1 unannounced identifier(s)",
+      "models": [
+        {
+          "id": "gpt-6-cyber",
+          "name": "GPT 6 Cyber"
+        }
+      ],
+      "evidence": "developers.openai.com/api/docs/models/*.md",
+      "source_text": "developers.openai.com/api/docs/models/*.md",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "Source Feed",
+          "url": "https://developers.openai.com/api/docs/models/all"
+        }
+      ],
+      "detected_at": "2026-11-05T17:08:35.308954+00:00",
+      "x_post_text": "🚨 OPENAI DOCS ROUTE SCOUT · OPENAI\nNew Model Doc Page Staged on OpenAI: gpt-6-cyber spotted in Pre-Release Scout +1 unannounced identifier(s)!\n\n• GPT 6 Cyber (gpt-6-cyber)\n\nEvidence: developers.openai.com/api/docs/models/*.md\nSource: developers.openai.com/api/docs/models/*.md\n\nTracked by @StatsWire"
+    },
     {
       "id": "vercel-gateway-diff-73a1fc6a",
       "category": "cli-sdk-diff",
