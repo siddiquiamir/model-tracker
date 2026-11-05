@@ -10,9 +10,9 @@ from typing import List, Tuple
 from PIL import Image, ImageChops, ImageDraw, ImageFont
 
 W, H = 1400, 540
-BG = (14, 16, 20)
-CARD_BG = (24, 27, 32)
-CARD_BORDER = (52, 57, 66)
+BG = (0, 0, 0)
+CARD_BG = (0, 0, 0)
+CARD_BORDER = (38, 42, 48)
 WHITE = (255, 255, 255)
 TEXT_LIST = (212, 218, 226)
 TEXT_MUTED = (156, 163, 175)
@@ -205,7 +205,21 @@ def make_provider_emblem(provider: str, size: int, accent: Tuple[int, int, int])
 
 
 def make_sw_circle(size: int) -> Image.Image:
+    logo_file = pathlib.Path(__file__).resolve().parent.parent / "docs" / "statswire-logo.png"
     ss = size * 4
+    if logo_file.exists():
+        raw = Image.open(logo_file).convert("RGBA").resize((ss, ss), Image.Resampling.LANCZOS)
+        mask = Image.new("L", (ss, ss), 0)
+        ImageDraw.Draw(mask).rounded_rectangle([0, 0, ss - 1, ss - 1], radius=int(ss * 0.24), fill=255)
+        out = Image.new("RGBA", (ss, ss), (0, 0, 0, 0))
+        out.paste(raw, (0, 0), mask)
+        ImageDraw.Draw(out).rounded_rectangle(
+            [2, 2, ss - 3, ss - 3],
+            radius=int(ss * 0.24),
+            outline=(72, 78, 88, 255),
+            width=max(4, int(ss * 0.035)),
+        )
+        return out.resize((size, size), Image.Resampling.LANCZOS)
     img = Image.new("RGBA", (ss, ss), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
     d.ellipse([0, 0, ss - 1, ss - 1], fill=(255, 255, 255, 255))
@@ -260,16 +274,16 @@ def render_card(provider: str, models: List[str], out_path: str, custom_title: s
         draw.text((lx + 46, y), m, font=f_item, fill=TEXT_LIST)
         y += 68
 
-    fy = cy1 - 84
-    sw_icon = make_sw_circle(44)
+    fy = cy1 - 88
+    sw_icon = make_sw_circle(54)
     base.paste(sw_icon, (lx, fy), sw_icon)
 
-    fx = lx + 60
-    draw.text((fx, fy + 2), "Tracked by ", font=f_foot, fill=TEXT_MUTED)
+    fx = lx + 68
+    draw.text((fx, fy + 6), "Tracked by ", font=f_foot, fill=TEXT_MUTED)
     fx += int(draw.textlength("Tracked by ", font=f_foot))
-    draw.text((fx, fy + 2), "@StatsWire", font=f_foot, fill=ACCENT_BLUE)
+    draw.text((fx, fy + 6), "@StatsWire", font=f_foot, fill=ACCENT_BLUE)
     fx += int(draw.textlength("@StatsWire", font=f_foot))
-    draw.text((fx, fy + 2), " · x.com/StatsWire", font=f_foot, fill=TEXT_MUTED)
+    draw.text((fx, fy + 6), " · x.com/StatsWire", font=f_foot, fill=TEXT_MUTED)
 
     wm_layer = Image.new("RGBA", (W, h), (0, 0, 0, 0))
     for wy in range(-40, h + 100, 165):
