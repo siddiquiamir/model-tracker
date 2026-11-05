@@ -1,16 +1,56 @@
 {
-  "generated_at": "2026-11-05T15:54:19.817397+00:00",
+  "generated_at": "2026-11-05T16:00:19.510186+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 118,
-    "leaks": 23,
+    "stories": 119,
+    "leaks": 24,
     "releases": 87,
-    "stories_24h": 12,
-    "sources_ok": 12,
-    "total_cards": 188,
-    "new_in_this_scan": 0
+    "stories_24h": 13,
+    "sources_ok": 11,
+    "total_cards": 189,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-gemma-4audio-2textmodeltest",
+      "group": "gemma-4audio-2textmodeltest",
+      "kind": "leak",
+      "open_weights": true,
+      "title": "Gemma4Audio2TextModelTest",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "accent_color": "#38bdf8",
+      "detected_at": "2026-11-05T15:59:23Z",
+      "updated_at": "2026-11-05T15:59:23Z",
+      "first_source": "Hf pull request",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Gemma4Audio2TextModelTest",
+          "name": "Gemma4Audio2TextModelTest"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Hf pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-11-05T15:59:23Z",
+          "title": "Gemma4Audio2TextModelTest (HF Transformers PR #50410)",
+          "url": "https://github.com/huggingface/transformers/pull/50410",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · GOOGLE",
+      "card_ids": [
+        "engine-pr-huggingface_transformers-50410"
+      ],
+      "x_post_text": "🟠 LEAK: Gemma4Audio2TextModelTest by Google\n\nFirst detected 05 Nov 15:59 UTC in Hf pull request\n\nvia @StatsWire"
+    },
     {
       "id": "story-auto-code",
       "group": "auto-code",
@@ -5478,6 +5518,37 @@
     }
   ],
   "cards": [
+    {
+      "id": "engine-pr-huggingface_transformers-50410",
+      "category": "open-source",
+      "scanner": "engine-pr-leak",
+      "header": "HF TRANSFORMERS PR DAY-0 MODEL ONBOARDING (OPEN)",
+      "title": "Gemma4Audio2TextModelTest (HF Transformers PR #50410)",
+      "subtitle": "Fix flaky `Gemma4Audio2TextModelTest::test_training_gradient_checkpointing_use_reentrant_true`",
+      "build_label": "HF Transformers PR",
+      "build_transition": "PR #50410 (open)",
+      "models": [
+        {
+          "id": "Gemma4Audio2TextModelTest",
+          "name": "Gemma4Audio2TextModelTest"
+        }
+      ],
+      "evidence": "huggingface/transformers/pull/50410",
+      "source_text": "public GitHub pull request #50410 on huggingface/transformers.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "huggingface/transformers PR #50410",
+          "url": "https://github.com/huggingface/transformers/pull/50410"
+        }
+      ],
+      "detected_at": "2026-11-05T15:59:23Z",
+      "x_post_text": "🚨 HF TRANSFORMERS PR DAY-0 MODEL ONBOARDING (OPEN)\nGemma4Audio2TextModelTest (HF Transformers PR #50410) spotted in HF Transformers PR PR #50410 (open)!\n\n• Gemma4Audio2TextModelTest (Gemma4Audio2TextModelTest)\n\nEvidence: huggingface/transformers/pull/50410\nSource: public GitHub pull request #50410 on huggingface/transformers.\n\nTracked by @StatsWire"
+    },
     {
       "id": "openrouter-model-openrouter_auto-code",
       "category": "cli-sdk-diff",
