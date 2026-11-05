@@ -1,16 +1,58 @@
 {
-  "generated_at": "2026-11-05T20:13:11.496732+00:00",
+  "generated_at": "2026-11-05T20:27:12.431528+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 124,
-    "leaks": 26,
+    "stories": 125,
+    "leaks": 27,
     "releases": 89,
-    "stories_24h": 14,
-    "sources_ok": 11,
-    "total_cards": 202,
+    "stories_24h": 15,
+    "sources_ok": 12,
+    "total_cards": 203,
     "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-tensorrt-llm",
+      "group": "tensorrt-llm",
+      "kind": "leak",
+      "open_weights": true,
+      "title": "tensorrt llm",
+      "provider_slug": "nvidia",
+      "provider_name": "NVIDIA",
+      "accent_color": "#10b981",
+      "detected_at": "2026-11-05T20:26:54Z",
+      "updated_at": "2026-11-05T20:26:54Z",
+      "first_source": "Tensorrt-llm pull request",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "tensorrt"
+      ],
+      "models": [
+        {
+          "id": "tensorrt-llm",
+          "name": "tensorrt-llm"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Tensorrt-llm pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-11-05T20:26:54Z",
+          "title": "nvidia/tensorrt-llm (TensorRT-LLM PR #21737)",
+          "url": "https://github.com/NVIDIA/TensorRT-LLM/pull/21737",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · NVIDIA",
+      "card_ids": [
+        "engine-pr-NVIDIA_TensorRT-LLM-21737"
+      ],
+      "x_post_text": "🟠 LEAK: tensorrt llm by NVIDIA\n\nFirst detected 05 Nov 20:26 UTC in Tensorrt-llm pull request\nCodename: tensorrt\n\nvia @StatsWire"
+    },
     {
       "id": "story-litellm-registry-openai-abac7cca",
       "group": "litellm-registry-openai-abac7cca",
@@ -5813,6 +5855,40 @@
     }
   ],
   "cards": [
+    {
+      "id": "engine-pr-NVIDIA_TensorRT-LLM-21737",
+      "category": "open-source",
+      "scanner": "engine-pr-leak",
+      "header": "TENSORRT-LLM PR DAY-0 MODEL ONBOARDING (OPEN)",
+      "title": "nvidia/tensorrt-llm (TensorRT-LLM PR #21737)",
+      "subtitle": "[None][doc] Point MiniMax-M3.1-Flash to its latest release container",
+      "build_label": "TensorRT-LLM PR",
+      "build_transition": "PR #21737 (open)",
+      "models": [
+        {
+          "id": "nvidia/tensorrt-llm",
+          "name": "tensorrt-llm"
+        }
+      ],
+      "evidence": "NVIDIA/TensorRT-LLM/pull/21737",
+      "source_text": "public GitHub pull request #21737 on NVIDIA/TensorRT-LLM.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "TENSORRT-LLM PR",
+      "provider_slug": "opensource",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "NVIDIA/TensorRT-LLM PR #21737",
+          "url": "https://github.com/NVIDIA/TensorRT-LLM/pull/21737"
+        }
+      ],
+      "detected_at": "2026-11-05T20:26:54Z",
+      "codenames": [
+        "tensorrt"
+      ],
+      "x_post_text": "🚨 TENSORRT-LLM PR DAY-0 MODEL ONBOARDING (OPEN)\nnvidia/tensorrt-llm (TensorRT-LLM PR #21737) spotted in TensorRT-LLM PR PR #21737 (open)!\n\n• tensorrt-llm (nvidia/tensorrt-llm)\n\nEvidence: NVIDIA/TensorRT-LLM/pull/21737\nSource: public GitHub pull request #21737 on NVIDIA/TensorRT-LLM.\n\nTracked by @StatsWire"
+    },
     {
       "id": "litellm-diff-abac7cca",
       "category": "cli-sdk-diff",
