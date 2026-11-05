@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T17:24:19.696612+00:00",
+  "generated_at": "2026-11-05T17:32:19.867269+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 121,
@@ -7,7 +7,7 @@
     "releases": 88,
     "stories_24h": 14,
     "sources_ok": 11,
-    "total_cards": 195,
+    "total_cards": 196,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -21,7 +21,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-05T17:08:35.308954+00:00",
-      "updated_at": "2026-11-05T17:08:38.462614+00:00",
+      "updated_at": "2026-11-05T17:33:03.140082+00:00",
       "first_source": "OpenAI Docs Route",
       "lead": "",
       "released_on": "",
@@ -50,16 +50,25 @@
           "title": "New Model Pricing Published on OpenAI: gpt-6-cyber ($20 / $100 per 1M tokens ($2 cached))",
           "url": "https://developers.openai.com/api/docs/pricing",
           "backfill": false
+        },
+        {
+          "label": "OpenAI API spec",
+          "scanner": "openai-spec",
+          "detected_at": "2026-11-05T17:33:03.140082+00:00",
+          "title": "New model ID in OpenAI's API spec: gpt-6-cyber",
+          "url": "https://github.com/openai/openai-openapi/blob/main/openapi.yaml",
+          "backfill": false
         }
       ],
-      "source_count": 2,
+      "source_count": 3,
       "backfill": false,
       "header": "LEAK · OPENAI",
       "card_ids": [
         "pre-release-openai_llms_model_routes-f9138464",
-        "pricing-radar-openai_pricing_md-f9138464"
+        "pricing-radar-openai_pricing_md-f9138464",
+        "openai-spec-ids-f9138464"
       ],
-      "x_post_text": "🟠 LEAK: GPT 6 Cyber by OpenAI\n\nFirst detected 05 Nov 17:08 UTC in OpenAI Docs Route\n💰 Pricing: $20 / $100 per 1M tokens ($2 cached)\nConfirmed by Official pricing page\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: GPT 6 Cyber by OpenAI\n\nFirst detected 05 Nov 17:08 UTC in OpenAI Docs Route\n💰 Pricing: $20 / $100 per 1M tokens ($2 cached)\nConfirmed by Official pricing page, OpenAI API spec\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-omni-1-2-flash",
@@ -75,12 +84,13 @@
       "first_source": "GCP Vertex AI Model Versions",
       "lead": "8 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "",
-      "pricing": "",
+      "pricing": "$1.50 / $9 per 1M tokens",
       "codenames": [],
       "models": [
         {
           "id": "gemini-omni-1.2-flash",
-          "name": "Gemini Omni 1.2 Flash"
+          "name": "Gemini Omni 1.2 Flash",
+          "pricing": "$1.50 / $9 per 1M tokens"
         }
       ],
       "sources": [
@@ -126,7 +136,7 @@
         "vercel-gateway-diff-73a1fc6a",
         "openrouter-model-google_gemini-omni-1.2-flash"
       ],
-      "x_post_text": "🟢 NEW MODEL: Gemini Omni 1.2 Flash by Google\n\nFirst detected 05 Nov 16:58 UTC in GCP Vertex AI Model Versions\n⏱ 8 min before it went live on Vercel AI Gateway Catalog\nConfirmed by Gemini API Docs, Vercel AI Gateway Catalog, OpenRouter\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Gemini Omni 1.2 Flash by Google\n\nFirst detected 05 Nov 16:58 UTC in GCP Vertex AI Model Versions\n💰 Pricing: $1.50 / $9 per 1M tokens\n⏱ 8 min before it went live on Vercel AI Gateway Catalog\n\nvia @StatsWire"
     },
     {
       "id": "story-gemma-4audio-2textmodeltest",
@@ -5636,6 +5646,39 @@
   ],
   "cards": [
     {
+      "id": "openai-spec-ids-f9138464",
+      "category": "cli-sdk-diff",
+      "scanner": "openai-spec",
+      "header": "OPENAI API SPEC · OPENAI",
+      "title": "New model ID in OpenAI's API spec: gpt-6-cyber",
+      "subtitle": "+1 model ID(s) in openapi.yaml",
+      "build_label": "OpenAI API spec",
+      "build_transition": "openai/openai-openapi · main",
+      "models": [
+        {
+          "id": "gpt-6-cyber",
+          "name": "GPT 6 Cyber",
+          "pricing": "$20 / $100 per 1M tokens ($2 cached)"
+        }
+      ],
+      "evidence": "github.com/openai/openai-openapi/blob/main/openapi.yaml",
+      "source_text": "OpenAI's published OpenAPI specification.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10a37f",
+      "links": [
+        {
+          "label": "openai-openapi spec",
+          "url": "https://github.com/openai/openai-openapi/blob/main/openapi.yaml"
+        }
+      ],
+      "detected_at": "2026-11-05T17:33:03.140082+00:00",
+      "pricing": "$20 / $100 per 1M tokens ($2 cached)",
+      "x_post_text": "🚨 OPENAI API SPEC · OPENAI\nNew model ID in OpenAI's API spec: gpt-6-cyber spotted in OpenAI API spec openai/openai-openapi · main!\n\n• GPT 6 Cyber (gpt-6-cyber)\n\nEvidence: github.com/openai/openai-openapi/blob/main/openapi.yaml\nSource: OpenAI's published OpenAPI specification.\n\nTracked by @StatsWire"
+    },
+    {
       "id": "openrouter-model-google_gemini-omni-1.2-flash",
       "category": "cli-sdk-diff",
       "scanner": "openrouter",
@@ -5647,7 +5690,8 @@
       "models": [
         {
           "id": "google/gemini-omni-1.2-flash",
-          "name": "Google: Gemini Omni 1.2 Flash (131k context window)"
+          "name": "Google: Gemini Omni 1.2 Flash (131k context window)",
+          "pricing": "$1.50 / $9 per 1M tokens"
         }
       ],
       "evidence": "openrouter.ai/api/v1/models",
@@ -5668,7 +5712,8 @@
         }
       ],
       "detected_at": "2026-11-05T17:24:28.602877+00:00",
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · GOOGLE\nGoogle: Gemini Omni 1.2 Flash spotted in Endpoint ID google/gemini-omni-1.2-flash!\n\n• Google: Gemini Omni 1.2 Flash (131k context window) (google/gemini-omni-1.2-flash)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · GOOGLE\nGoogle: Gemini Omni 1.2 Flash spotted in Endpoint ID google/gemini-omni-1.2-flash!\n\n• Google: Gemini Omni 1.2 Flash (131k context window) (google/gemini-omni-1.2-flash)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire",
+      "pricing": "$1.50 / $9 per 1M tokens"
     },
     {
       "id": "pricing-radar-openai_pricing_md-f9138464",
@@ -5752,7 +5797,8 @@
       "models": [
         {
           "id": "google/gemini-omni-1.2-flash",
-          "name": "Gemini Omni 1.2 Flash"
+          "name": "Gemini Omni 1.2 Flash",
+          "pricing": "$1.50 / $9 per 1M tokens"
         }
       ],
       "evidence": "ai-gateway.vercel.sh/v1/models",
@@ -5769,7 +5815,8 @@
         }
       ],
       "detected_at": "2026-11-05T17:06:45.897433+00:00",
-      "x_post_text": "🚨 VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS\nNew Model on Vercel AI Gateway: Gemini Omni 1.2 Flash spotted in Gateway Diff +1 new model(s)!\n\n• Gemini Omni 1.2 Flash (google/gemini-omni-1.2-flash)\n\nEvidence: ai-gateway.vercel.sh/v1/models\nSource: public Vercel AI Gateway /v1/models catalog.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS\nNew Model on Vercel AI Gateway: Gemini Omni 1.2 Flash spotted in Gateway Diff +1 new model(s)!\n\n• Gemini Omni 1.2 Flash (google/gemini-omni-1.2-flash)\n\nEvidence: ai-gateway.vercel.sh/v1/models\nSource: public Vercel AI Gateway /v1/models catalog.\n\nTracked by @StatsWire",
+      "pricing": "$1.50 / $9 per 1M tokens"
     },
     {
       "id": "docs-diff-gemini-docs-001fe207",
@@ -5783,7 +5830,8 @@
       "models": [
         {
           "id": "gemini-omni-1.2-flash",
-          "name": "Gemini Omni 1.2 Flash"
+          "name": "Gemini Omni 1.2 Flash",
+          "pricing": "$1.50 / $9 per 1M tokens"
         }
       ],
       "evidence": "ai.google.dev/gemini-api/docs/models",
@@ -5804,7 +5852,8 @@
         }
       ],
       "detected_at": "2026-11-05T17:04:32.283255+00:00",
-      "x_post_text": "🚨 GEMINI API DOCS RADAR · GOOGLE\nNew Model Spotted in Gemini API Official Models Page spotted in Docs Diff +1 new identifier(s)!\n\n• Gemini Omni 1.2 Flash (gemini-omni-1.2-flash)\n\nEvidence: ai.google.dev/gemini-api/docs/models\nSource: official Google AI for Developers Gemini API documentation.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 GEMINI API DOCS RADAR · GOOGLE\nNew Model Spotted in Gemini API Official Models Page spotted in Docs Diff +1 new identifier(s)!\n\n• Gemini Omni 1.2 Flash (gemini-omni-1.2-flash)\n\nEvidence: ai.google.dev/gemini-api/docs/models\nSource: official Google AI for Developers Gemini API documentation.\n\nTracked by @StatsWire",
+      "pricing": "$1.50 / $9 per 1M tokens"
     },
     {
       "id": "docs-diff-gcp-vertex-versions-001fe207",
@@ -5818,7 +5867,8 @@
       "models": [
         {
           "id": "gemini-omni-1.2-flash",
-          "name": "Gemini Omni 1.2 Flash"
+          "name": "Gemini Omni 1.2 Flash",
+          "pricing": "$1.50 / $9 per 1M tokens"
         }
       ],
       "evidence": "cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions",
@@ -5839,7 +5889,8 @@
         }
       ],
       "detected_at": "2026-11-05T16:58:34.695577+00:00",
-      "x_post_text": "🚨 GCP VERTEX AI MODEL VERSIONS · GOOGLE CLOUD\nNew Model Spotted in GCP Vertex AI Model Versions & Lifecycle spotted in Docs Diff +1 new identifier(s)!\n\n• Gemini Omni 1.2 Flash (gemini-omni-1.2-flash)\n\nEvidence: cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions\nSource: official Google Cloud Vertex AI model versions & endpoint table.\n\nTracked by @StatsWire"
+      "x_post_text": "🚨 GCP VERTEX AI MODEL VERSIONS · GOOGLE CLOUD\nNew Model Spotted in GCP Vertex AI Model Versions & Lifecycle spotted in Docs Diff +1 new identifier(s)!\n\n• Gemini Omni 1.2 Flash (gemini-omni-1.2-flash)\n\nEvidence: cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions\nSource: official Google Cloud Vertex AI model versions & endpoint table.\n\nTracked by @StatsWire",
+      "pricing": "$1.50 / $9 per 1M tokens"
     },
     {
       "id": "engine-pr-huggingface_transformers-50410",
