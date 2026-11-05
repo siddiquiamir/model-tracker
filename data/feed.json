@@ -1,16 +1,60 @@
 {
-  "generated_at": "2026-11-05T20:05:11.205930+00:00",
+  "generated_at": "2026-11-05T20:13:11.496732+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 123,
+    "stories": 124,
     "leaks": 26,
     "releases": 89,
-    "stories_24h": 13,
+    "stories_24h": 14,
     "sources_ok": 11,
-    "total_cards": 201,
-    "new_in_this_scan": 0
+    "total_cards": 202,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-litellm-registry-openai-abac7cca",
+      "group": "litellm-registry-openai-abac7cca",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "LiteLLM Model Registry Update — 2 Entries Detected",
+      "provider_slug": "modelsdev",
+      "provider_name": "",
+      "accent_color": "#10b981",
+      "detected_at": "2026-11-05T20:13:31.531520+00:00",
+      "updated_at": "2026-11-05T20:13:31.531520+00:00",
+      "first_source": "LiteLLM registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "jina-reranker-m0",
+          "name": "jina-reranker-m0"
+        },
+        {
+          "id": "jina-reranker-v3.5",
+          "name": "jina-reranker-v3.5"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM registry",
+          "scanner": "litellm",
+          "detected_at": "2026-11-05T20:13:31.531520+00:00",
+          "title": "3 New Model(s) Added to LiteLLM",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE",
+      "card_ids": [
+        "litellm-diff-abac7cca"
+      ],
+      "x_post_text": "🔵 REGISTRY UPDATE: LiteLLM Model Registry Update — 2 Entries Detected\n\nFirst detected 05 Nov 20:13 UTC in LiteLLM registry\nIDs: jina-reranker-m0, jina-reranker-v3.5\n\nvia @StatsWire"
+    },
     {
       "id": "story-molmo-2-tb",
       "group": "molmo-2-tb",
@@ -148,7 +192,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-05T17:08:35.308954+00:00",
-      "updated_at": "2026-11-05T18:14:55.268Z",
+      "updated_at": "2026-11-05T20:13:31.531520+00:00",
       "first_source": "OpenAI Docs Route",
       "lead": "",
       "released_on": "",
@@ -201,9 +245,17 @@
           "title": "Openai (GPT 6 Cyber)",
           "url": "https://www.npmjs.com/package/openai?activeTab=versions",
           "backfill": false
+        },
+        {
+          "label": "LiteLLM registry",
+          "scanner": "litellm",
+          "detected_at": "2026-11-05T20:13:31.531520+00:00",
+          "title": "3 New Model(s) Added to LiteLLM",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+          "backfill": false
         }
       ],
-      "source_count": 5,
+      "source_count": 6,
       "backfill": false,
       "header": "LEAK · OPENAI",
       "card_ids": [
@@ -211,9 +263,10 @@
         "pricing-radar-openai_pricing_md-f9138464",
         "openai-spec-ids-f9138464",
         "pre-release-gh_openai_sdk_union-f9138464",
-        "npm-openai-7.51.0-7.52.0"
+        "npm-openai-7.51.0-7.52.0",
+        "litellm-diff-abac7cca"
       ],
-      "x_post_text": "🟠 LEAK: GPT 6 Cyber by OpenAI\n\nFirst detected 05 Nov 17:08 UTC in OpenAI Docs Route\n💰 Pricing: $20 / $100 per 1M tokens ($2 cached)\nConfirmed by Official pricing page, OpenAI API spec, OpenAI SDK GitHub Master +1\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: GPT 6 Cyber by OpenAI\n\nFirst detected 05 Nov 17:08 UTC in OpenAI Docs Route\n💰 Pricing: $20 / $100 per 1M tokens ($2 cached)\nConfirmed by Official pricing page, OpenAI API spec, OpenAI SDK GitHub Master +2\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-omni-1-2-flash",
@@ -5760,6 +5813,51 @@
     }
   ],
   "cards": [
+    {
+      "id": "litellm-diff-abac7cca",
+      "category": "cli-sdk-diff",
+      "scanner": "litellm",
+      "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
+      "title": "3 New Model(s) Added to LiteLLM",
+      "subtitle": "Verified model_prices_and_context_window.json diff",
+      "build_label": "Registry Diff",
+      "build_transition": "+3 model keys",
+      "models": [
+        {
+          "id": "gpt-6-cyber",
+          "name": "gpt-6-cyber",
+          "pricing": "$20 / $100 per 1M tokens ($2 cached)"
+        },
+        {
+          "id": "jina-reranker-m0",
+          "name": "jina-reranker-m0"
+        },
+        {
+          "id": "jina-reranker-v3.5",
+          "name": "jina-reranker-v3.5"
+        }
+      ],
+      "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
+      "source_text": "official LiteLLM master pricing & context window registry.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "LITELLM",
+      "provider_slug": "modelsdev",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "LiteLLM JSON Registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        },
+        {
+          "label": "LiteLLM Commits",
+          "url": "https://github.com/BerriAI/litellm/commits/main"
+        }
+      ],
+      "detected_at": "2026-11-05T20:13:31.531520+00:00",
+      "pricing": "$20 / $100 per 1M tokens ($2 cached)",
+      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n3 New Model(s) Added to LiteLLM spotted in Registry Diff +3 model keys!\n\n• gpt-6-cyber (gpt-6-cyber)\n• jina-reranker-m0 (jina-reranker-m0)\n• jina-reranker-v3.5 (jina-reranker-v3.5)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "npm-openai-7.51.0-7.52.0",
       "category": "cli-sdk-diff",
