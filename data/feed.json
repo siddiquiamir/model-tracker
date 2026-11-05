@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T18:12:41.322460+00:00",
+  "generated_at": "2026-11-05T18:16:41.210691+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 124,
@@ -7,7 +7,7 @@
     "releases": 90,
     "stories_24h": 16,
     "sources_ok": 11,
-    "total_cards": 201,
+    "total_cards": 202,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -148,7 +148,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-05T17:08:35.308954+00:00",
-      "updated_at": "2026-11-05T17:48:39.306676+00:00",
+      "updated_at": "2026-11-05T18:14:55.268Z",
       "first_source": "OpenAI Docs Route",
       "lead": "",
       "released_on": "",
@@ -193,18 +193,27 @@
           "title": "New OpenAI Model Merged to SDK Master: gpt-6-cyber",
           "url": "https://github.com/openai/openai-node/commits/master/src/resources/shared.ts",
           "backfill": false
+        },
+        {
+          "label": "npm SDK release",
+          "scanner": "npm",
+          "detected_at": "2026-11-05T18:14:55.268Z",
+          "title": "Openai (GPT 6 Cyber)",
+          "url": "https://www.npmjs.com/package/openai?activeTab=versions",
+          "backfill": false
         }
       ],
-      "source_count": 4,
+      "source_count": 5,
       "backfill": false,
       "header": "LEAK · OPENAI",
       "card_ids": [
         "pre-release-openai_llms_model_routes-f9138464",
         "pricing-radar-openai_pricing_md-f9138464",
         "openai-spec-ids-f9138464",
-        "pre-release-gh_openai_sdk_union-f9138464"
+        "pre-release-gh_openai_sdk_union-f9138464",
+        "npm-openai-7.51.0-7.52.0"
       ],
-      "x_post_text": "🟠 LEAK: GPT 6 Cyber by OpenAI\n\nFirst detected 05 Nov 17:08 UTC in OpenAI Docs Route\n💰 Pricing: $20 / $100 per 1M tokens ($2 cached)\nConfirmed by Official pricing page, OpenAI API spec, OpenAI SDK GitHub Master\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: GPT 6 Cyber by OpenAI\n\nFirst detected 05 Nov 17:08 UTC in OpenAI Docs Route\n💰 Pricing: $20 / $100 per 1M tokens ($2 cached)\nConfirmed by Official pricing page, OpenAI API spec, OpenAI SDK GitHub Master +1\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-omni-1-2-flash",
@@ -5790,6 +5799,45 @@
     }
   ],
   "cards": [
+    {
+      "id": "npm-openai-7.51.0-7.52.0",
+      "category": "cli-sdk-diff",
+      "scanner": "npm",
+      "header": "OPENAI OFFICIAL SDK DIFF · OPENAI",
+      "title": "Openai (GPT 6 Cyber)",
+      "subtitle": "Verified official TypeScript SDK model union comparison",
+      "build_label": "Package Diff",
+      "build_transition": "7.51.0 -> 7.52.0",
+      "old_version": "7.51.0",
+      "new_version": "7.52.0",
+      "models": [
+        {
+          "id": "gpt-6-cyber",
+          "name": "GPT 6 Cyber",
+          "pricing": "$20 / $100 per 1M tokens ($2 cached)"
+        }
+      ],
+      "evidence": "resources/shared.d.ts / SDK bundle",
+      "source_text": "official public npm registry tarball (openai).",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "Public npm feed",
+          "url": "https://www.npmjs.com/package/openai?activeTab=versions"
+        },
+        {
+          "label": "Official tarball",
+          "url": "https://registry.npmjs.org/openai/-/openai-7.52.0.tgz"
+        }
+      ],
+      "detected_at": "2026-11-05T18:14:55.268Z",
+      "pricing": "$20 / $100 per 1M tokens ($2 cached)",
+      "x_post_text": "🚨 OPENAI OFFICIAL SDK DIFF · OPENAI\nOpenai (GPT 6 Cyber) spotted in Package Diff 7.51.0 -> 7.52.0!\n\n• GPT 6 Cyber (gpt-6-cyber)\n\nEvidence: resources/shared.d.ts / SDK bundle\nSource: official public npm registry tarball (openai).\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-allenai_Molmo2-4B-tb",
       "category": "open-source",
