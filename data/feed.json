@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-05T17:32:19.867269+00:00",
+  "generated_at": "2026-11-05T17:34:19.791563+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 121,
     "leaks": 25,
     "releases": 88,
     "stories_24h": 14,
-    "sources_ok": 11,
-    "total_cards": 196,
+    "sources_ok": 12,
+    "total_cards": 197,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -80,7 +80,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-05T16:58:34.695577+00:00",
-      "updated_at": "2026-11-05T17:24:28.602877+00:00",
+      "updated_at": "2026-11-05T17:34:40.623776+00:00",
       "first_source": "GCP Vertex AI Model Versions",
       "lead": "8 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "",
@@ -125,16 +125,25 @@
           "title": "Google: Gemini Omni 1.2 Flash",
           "url": "https://openrouter.ai/google/gemini-omni-1.2-flash",
           "backfill": false
+        },
+        {
+          "label": "LiteLLM registry",
+          "scanner": "litellm",
+          "detected_at": "2026-11-05T17:34:40.623776+00:00",
+          "title": "1 New Model(s) Added to LiteLLM",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+          "backfill": false
         }
       ],
-      "source_count": 4,
+      "source_count": 5,
       "backfill": false,
       "header": "NEW MODEL · GOOGLE",
       "card_ids": [
         "docs-diff-gcp-vertex-versions-001fe207",
         "docs-diff-gemini-docs-001fe207",
         "vercel-gateway-diff-73a1fc6a",
-        "openrouter-model-google_gemini-omni-1.2-flash"
+        "openrouter-model-google_gemini-omni-1.2-flash",
+        "litellm-diff-0f824be4"
       ],
       "x_post_text": "🟢 NEW MODEL: Gemini Omni 1.2 Flash by Google\n\nFirst detected 05 Nov 16:58 UTC in GCP Vertex AI Model Versions\n💰 Pricing: $1.50 / $9 per 1M tokens\n⏱ 8 min before it went live on Vercel AI Gateway Catalog\n\nvia @StatsWire"
     },
@@ -5645,6 +5654,43 @@
     }
   ],
   "cards": [
+    {
+      "id": "litellm-diff-0f824be4",
+      "category": "cli-sdk-diff",
+      "scanner": "litellm",
+      "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
+      "title": "1 New Model(s) Added to LiteLLM",
+      "subtitle": "Verified model_prices_and_context_window.json diff",
+      "build_label": "Registry Diff",
+      "build_transition": "+1 model keys",
+      "models": [
+        {
+          "id": "vertex_ai/gemini-omni-1.2-flash",
+          "name": "vertex_ai/gemini-omni-1.2-flash",
+          "pricing": "$1.50 / $9 per 1M tokens"
+        }
+      ],
+      "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
+      "source_text": "official LiteLLM master pricing & context window registry.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "LITELLM",
+      "provider_slug": "modelsdev",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "LiteLLM JSON Registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        },
+        {
+          "label": "LiteLLM Commits",
+          "url": "https://github.com/BerriAI/litellm/commits/main"
+        }
+      ],
+      "detected_at": "2026-11-05T17:34:40.623776+00:00",
+      "pricing": "$1.50 / $9 per 1M tokens",
+      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 model keys!\n\n• vertex_ai/gemini-omni-1.2-flash (vertex_ai/gemini-omni-1.2-flash)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "openai-spec-ids-f9138464",
       "category": "cli-sdk-diff",
