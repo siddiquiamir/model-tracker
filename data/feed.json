@@ -1,16 +1,61 @@
 {
-  "generated_at": "2026-11-06T19:44:56.312707+00:00",
+  "generated_at": "2026-11-06T20:04:56.701291+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 132,
-    "leaks": 32,
+    "stories": 133,
+    "leaks": 33,
     "releases": 89,
-    "stories_24h": 14,
-    "sources_ok": 11,
-    "total_cards": 208,
-    "new_in_this_scan": 2
+    "stories_24h": 15,
+    "sources_ok": 12,
+    "total_cards": 209,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-gemini-omni-1-2-flash-ckpt-01a-273",
+      "group": "gemini-omni-1-2-flash-ckpt-01a-273",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Gemini Omni 1.2 Flash — Stealth Checkpoint",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "accent_color": "#38bdf8",
+      "detected_at": "2026-11-06T20:05:10.366270+00:00",
+      "updated_at": "2026-11-06T20:05:10.366270+00:00",
+      "first_source": "LMArena",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gemini-omni-1.2-flash-ckpt-01a1b273",
+          "name": "Gemini Omni 1.2 Flash — Stealth Checkpoint",
+          "host_slot": "gemini-omni-1.2-flash",
+          "uuid": "01a1b273-562f-75bf-b5c8-6869ff0a3c38",
+          "minted_at": "2026-11-06 20:01:05 UTC",
+          "org": "google",
+          "arena_provider": "googleVertexApi"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LMArena",
+          "scanner": "lmarena",
+          "detected_at": "2026-11-06T20:05:10.366270+00:00",
+          "title": "Silent Arena Checkpoint Swap Under gemini-omni-1.2-flash (01a1b273)",
+          "url": "https://arena.ai/?mode=direct&model=gemini-omni-1.2-flash",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · GOOGLE",
+      "card_ids": [
+        "arena-ckpt-swap-700ebed5a4"
+      ],
+      "x_post_text": "🟠 LEAK: Gemini Omni 1.2 Flash — Stealth Checkpoint by Google\n\nFirst detected 06 Nov 20:05 UTC in LMArena\n🆔 UUID: 01a1b273-562f-75bf-b5c8-6869ff0a3c38\n\nvia @StatsWire"
+    },
     {
       "id": "story-flora-tempseg",
       "group": "flora-tempseg",
@@ -6145,6 +6190,44 @@
     }
   ],
   "cards": [
+    {
+      "id": "arena-ckpt-swap-700ebed5a4",
+      "category": "cli-sdk-diff",
+      "scanner": "lmarena",
+      "header": "ARENA.AI SILENT CHECKPOINT SWAP · GOOGLE",
+      "title": "Silent Arena Checkpoint Swap Under gemini-omni-1.2-flash (01a1b273)",
+      "subtitle": "1 newly minted RFC 9562 UUIDv7 checkpoint detected under gemini-omni-1.2-flash on arena.ai (Org: google, Provider: googleVertexApi)",
+      "build_label": "UUIDv7 Forensics",
+      "build_transition": "01a1b273 (2026-11-06 20:01:05 UTC)",
+      "models": [
+        {
+          "id": "gemini-omni-1.2-flash-ckpt-01a1b273",
+          "name": "Gemini Omni 1.2 Flash — Stealth Checkpoint (Stealth Checkpoint: 01a1b273-562f-75bf-b5c8-6869ff0a3c38 · minted 2026-11-06 20:01:05 UTC)",
+          "host_slot": "gemini-omni-1.2-flash",
+          "uuid": "01a1b273-562f-75bf-b5c8-6869ff0a3c38",
+          "minted_at": "2026-11-06 20:01:05 UTC",
+          "prev_uuid": "",
+          "prev_minted_at": "",
+          "org": "google",
+          "arena_provider": "googleVertexApi"
+        }
+      ],
+      "evidence": "arena.ai -> self.__next_f.push (initialModels UUIDv7 diff)",
+      "source_text": "live Arena (arena.ai) Next.js RSC stream & RFC 9562 UUIDv7 timestamp forensics.",
+      "disclaimer_1": "Verified newly minted RFC 9562 UUIDv7 model checkpoint(s) attached to an Arena slot or environment.",
+      "disclaimer_2": "Labs frequently A/B-test unreleased frontier checkpoints under existing Arena publicName slots prior to launch.",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Open on Arena.ai",
+          "url": "https://arena.ai/?mode=direct&model=gemini-omni-1.2-flash"
+        }
+      ],
+      "detected_at": "2026-11-06T20:05:10.366270+00:00",
+      "x_post_text": "🚨 ARENA.AI SILENT CHECKPOINT SWAP · GOOGLE\nSilent Arena Checkpoint Swap Under gemini-omni-1.2-flash (01a1b273) spotted in UUIDv7 Forensics 01a1b273 (2026-11-06 20:01:05 UTC)!\n\n• Gemini Omni 1.2 Flash — Stealth Checkpoint (Stealth Checkpoint: 01a1b273-562f-75bf-b5c8-6869ff0a3c38 · minted 2026-11-06 20:01:05 UTC) (gemini-omni-1.2-flash-ckpt-01a1b273)\n\nEvidence: arena.ai -> self.__next_f.push (initialModels UUIDv7 diff)\nSource: live Arena (arena.ai) Next.js RSC stream & RFC 9562 UUIDv7 timestamp forensics.\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-nvidia_Flora-TempSeg",
       "category": "open-source",
