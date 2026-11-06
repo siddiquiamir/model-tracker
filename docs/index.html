@@ -175,8 +175,8 @@
       list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;
     }
     .embed-list li {
-      display: flex; flex-wrap: nowrap; align-items: center; gap: 6px;
-      font-size: 13px; color: #dbdee1; line-height: 1.5; white-space: nowrap;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 6px; row-gap: 4px;
+      font-size: 13px; color: #dbdee1; line-height: 1.5;
     }
     .embed-list .dot-bullet {
       color: #FFFFFF; font-weight: 800; margin-right: 1px;
@@ -194,6 +194,9 @@
     }
     .chip.ts {
       font-size: 11.5px; padding: 2px 7px; color: #cfd6e0;
+    }
+    .chip.uuid {
+      font-size: 11.5px; padding: 2px 8px; letter-spacing: -0.01em;
     }
     .story { min-width: 0; }
     details summary { cursor: pointer; font-size: 12px; color: #A4ADB9; margin-top: 4px; }
@@ -405,6 +408,27 @@
       const minted = extractMintedTs(story);
       const tsLabel = minted ? "minted" : (story.kind === "registry" ? "detected" : "spotted");
       const tsVal = minted || fmtIsoShort(story.detected_at);
+      const isCkpt = models.some(m => m && m.uuid);
+      if (isCkpt) {
+        const rows = [];
+        const first = models[0] || {};
+        if (first.org || first.arena_provider) {
+          const orgStr = first.org || "unknown";
+          const provStr = first.arena_provider || "unknown";
+          rows.push(`<li><span class="dot-bullet">•</span><span class="ts-inline">org <code class="chip mono">${escapeHtml(orgStr)}</code> · provider <code class="chip ts mono">${escapeHtml(provStr)}</code></span></li>`);
+        }
+        models.forEach((m, idx) => {
+          if (!m.uuid) return;
+          const lbl = models.length > 1 ? `ckpt ${String.fromCharCode(65 + idx)} ` : "new uuid ";
+          const mintChip = m.minted_at ? `<span class="ts-inline">· minted <code class="chip ts mono">${escapeHtml(m.minted_at)}</code></span>` : "";
+          rows.push(`<li><span class="dot-bullet">•</span><span class="ts-inline">${lbl}<code class="chip uuid mono">${escapeHtml(m.uuid)}</code></span>${mintChip}</li>`);
+        });
+        if (first.prev_uuid) {
+          const prevMint = first.prev_minted_at ? `<span class="ts-inline">· minted <code class="chip ts mono">${escapeHtml(first.prev_minted_at)}</code></span>` : "";
+          rows.push(`<li><span class="dot-bullet">•</span><span class="ts-inline">prev uuid <code class="chip ts uuid mono">${escapeHtml(first.prev_uuid)}</code></span>${prevMint}</li>`);
+        }
+        return rows.join("");
+      }
       return models.map((model, i) => {
         const rawId = String(model.id || "");
         const id = (rawId.startsWith("org:") || rawId.includes(" · ")) ? String(model.name || rawId) : rawId.replace(/^(?:chatgpt|openai|anthropic|google|vertex_ai|bedrock|azure|dashscope)\//i, "");
@@ -420,6 +444,7 @@
     function storyHtml(s, idx, seen) {
       const stage = stageOf(s);
       const models = modelsFor(s);
+      const isCkpt = models.some(m => m && m.uuid);
       const formattedPrice = formatPricingText(s.pricing);
       const priceRow = formattedPrice ? `<li><span class="dot-bullet">•</span><code class="chip price mono">${escapeHtml(formattedPrice)}</code></li>` : "";
       const ids = `<ul class="embed-list">${modelBulletRows(models.slice(0, 6), s)}${priceRow}</ul>`;
@@ -433,15 +458,20 @@
         ? `<a href="${escapeHtml(primaryUrl)}" target="_blank" rel="noopener">${escapeHtml(headerLabel)}</a>`
         : `<span>${escapeHtml(headerLabel)}</span>`;
       const logo = logoSvg(s.provider_slug, s.provider_name);
-      const badgeWord = stage === "registry" ? "UPDATE" : (stage === "unverified" ? "ALERT" : "NEW");
+      const badgeWord = stage === "registry" ? "UPDATE" : (stage === "unverified" ? "ALERT" : (isCkpt ? "CHECKPOINT" : "NEW"));
       const badgeClass = stage === "registry" ? "new-badge registry" : (stage === "unverified" ? "new-badge unverified" : "new-badge");
-      const countText = stage === "registry"
-        ? `${models.length || 1} ${(models.length || 1) === 1 ? "entry" : "entries"} detected`
-        : (stage === "unverified" ? `${models.length || 1} unverified` : `${models.length || 1} new`);
+      const countText = isCkpt
+        ? `${models.length || 1} ${(models.length || 1) === 1 ? "checkpoint" : "checkpoints"}`
+        : (stage === "registry"
+          ? `${models.length || 1} ${(models.length || 1) === 1 ? "entry" : "entries"} detected`
+          : (stage === "unverified" ? `${models.length || 1} unverified` : `${models.length || 1} new`));
       const pillClass = stage === "leak" ? "leak" : (stage === "registry" ? "registry" : (stage === "unverified" ? "unverified" : "release"));
-      const sectionHead = stage === "registry"
-        ? "Existing models newly added to LiteLLM"
-        : (stage === "unverified" ? "Unverified model identifiers" : "New models");
+      const ckptSlot = isCkpt ? (models[0]?.host_slot || s.title || "") : "";
+      const sectionHead = isCkpt
+        ? `New checkpoint detected${ckptSlot ? ": " + escapeHtml(ckptSlot) : ""}`
+        : (stage === "registry"
+          ? "Existing models newly added to LiteLLM"
+          : (stage === "unverified" ? "Unverified model identifiers" : "New models"));
       const relSummary = (stage === "registry" && s.released_on)
         ? `<span>·</span><span class="ts-inline">First released <code class="chip ts mono">${escapeHtml(s.released_on)}</code></span>`
         : "";
@@ -495,7 +525,7 @@
         if (TAB === "unread" && (!seen || seen.has(s.id))) return false;
         if (prov && (s.provider_name || "Other") !== prov) return false;
         if (!q) return true;
-        const hay = [s.title, s.provider_name, s.first_source, s.pricing, ...(s.codenames || []), ...modelsFor(s).flatMap(model => [model.id, model.name, model.pricing]), ...evidenceFor(s).map(card => card.build_transition), ...(s.sources || []).map(x => x.label)].join(" ").toLowerCase();
+        const hay = [s.title, s.provider_name, s.first_source, s.pricing, ...(s.codenames || []), ...modelsFor(s).flatMap(model => [model.id, model.name, model.pricing, model.uuid, model.prev_uuid, model.host_slot]), ...evidenceFor(s).map(card => card.build_transition), ...(s.sources || []).map(x => x.label)].join(" ").toLowerCase();
         return hay.includes(q);
       });
       const unread = seen ? STORIES.filter(s => !seen.has(s.id)).length : 0;
@@ -602,13 +632,16 @@
       const lines = [headline, `First detected ${fmtUTC(s.detected_at)}`];
       const credit = "Developed by @StatsWire on X";
       const sourceCount = (s.sources || []).length;
+      const ckpts = (s.models || []).filter(m => m && m.uuid);
       const extras = [
+        ckpts.length === 1 ? "New UUID: " + ckpts[0].uuid : (ckpts.length > 1 ? "UUIDs: " + ckpts.map(m => m.uuid.slice(0, 8)).join(", ") : ""),
+        ckpts[0]?.prev_uuid ? "Prev UUID: " + ckpts[0].prev_uuid.slice(0, 8) : "",
         s.released_on ? "First released: " + s.released_on : "",
         s.pricing ? "Pricing: " + s.pricing : "",
         s.first_source ? "Source: " + s.first_source : "",
         (s.codenames || []).length ? "Codename: " + s.codenames.join(", ") : "",
         `${sourceCount} source sighting${sourceCount === 1 ? "" : "s"}`,
-        (s.models || []).length ? "IDs: " + s.models.map(model => model.id).join(", ") : "",
+        (!ckpts.length && (s.models || []).length) ? "IDs: " + s.models.map(model => model.id).join(", ") : "",
       ];
       for (const extra of extras.filter(Boolean)) {
         if (weight([...lines, extra, credit].join("\n")) <= 280) lines.push(extra);

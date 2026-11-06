@@ -121,7 +121,10 @@ def group_models_by_family(model_ids: Set[str]) -> Dict[str, List[str]]:
     groups: Dict[str, List[str]] = {}
     for mid in sorted(model_ids):
         parts = mid.split("-")
-        if len(parts) >= 3 and parts[0] == "gemini" and parts[1] == "4" and parts[2] in {"argon", "carbon", "krypton", "xenon"}:
+        if len(parts) >= 3 and parts[0] == "gemini" and parts[1] == "4" and parts[2] in {
+            "hydrogen", "helium", "lithium", "beryllium", "boron", "carbon", "nitrogen", "oxygen",
+            "fluorine", "neon", "argon", "titanium", "krypton", "zirconium", "xenon", "barium",
+        }:
             key = f"gemini-4-{parts[2]}"
         elif len(parts) >= 3 and parts[0] == "gemini" and parts[1] == "omni":
             key = "gemini-omni-flash"
@@ -2040,11 +2043,14 @@ class DocsAndGlobalRegistryScanner:
 
 class LmArenaScanner:
     """
-    Scans Arena (arena.ai / lmarena.ai) via two complementary channels:
-    1. Live Next.js React Server Components (`self.__next_f.push`) `initialModels` stream on arena.ai / lmarena.ai
-       (extracting `publicName`, `organization`, `provider`, `inputCapabilities`, and `outputCapabilities` —
-       the exact source used by Arena Scout / LMArenaBridge).
-    2. Official `lmarena-ai/leaderboard-dataset` on Hugging Face (`datasets-server.huggingface.co`)
+    Scans Arena (arena.ai / lmarena.ai) via three complementary channels:
+    1. Live Next.js React Server Components (`self.__next_f.push`) `initialModels` / `availableModels` / `battleModels`
+       stream on arena.ai / lmarena.ai (extracting `publicName`, `organization`, `provider`, `inputCapabilities`,
+       and `outputCapabilities` — the exact source used by Arena Scout / LMArenaBridge).
+    2. RFC 9562 UUIDv7 checkpoint forensics — detecting silent model/checkpoint hot-swaps and parallel A/B sub-checkpoints
+       disguised under existing `publicName` or `environment` slots (e.g. stealth Gemini 4 Hydrogen checkpoints served
+       under `3.8-flash` / `gemini-3.8-flash-high`), plus hidden canary model objects in the RSC Flight stream.
+    3. Official `lmarena-ai/leaderboard-dataset` on Hugging Face (`datasets-server.huggingface.co`)
        across Text, WebDev, Agent, Vision, Search, Text-to-Image, and Image Edit arenas.
     """
 
@@ -2052,15 +2058,19 @@ class LmArenaScanner:
         "https://arena.ai/",
         "https://arena.ai/?mode=direct",
         "https://arena.ai/?mode=side-by-side",
+        "https://arena.ai/?mode=battle",
         "https://arena.ai/code",
         "https://arena.ai/code?mode=direct",
         "https://arena.ai/code?mode=side-by-side",
+        "https://arena.ai/code?mode=battle",
         "https://web.arena.ai/",
         "https://lmarena.ai/?mode=direct",
         "https://arena.ai/?chat-modality=webdev",
         "https://arena.ai/?chat-modality=image",
         "https://arena.ai/?chat-modality=video",
         "https://arena.ai/?chat-modality=search",
+        "https://arena.ai/leaderboard",
+        "https://arena.ai/leaderboard/webdev",
     ]
     HF_ARENA_CONFIGS = [
         ("text", "Text Arena"),
@@ -2074,6 +2084,53 @@ class LmArenaScanner:
 
     _NEXT_F_CHUNK_RE = re.compile(r'self\.__next_f\.push\(\[\s*\d+\s*,\s*("(?:[^"\\]|\\.)*")\s*\]\)')
     _NEXT_DATA_RE = re.compile(r'<script[^>]+id="__NEXT_DATA__"[^>]*>([\s\S]*?)</script>')
+    _UUIDV7_EXACT_RE = re.compile(
+        r"^([0-9a-f]{8})-([0-9a-f]{4})-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    )
+    _UUIDV7_SCAN_RE = re.compile(
+        r"\b([0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})\b",
+        re.I,
+    )
+    _SESSION_KEY_PREFIX_RE = re.compile(
+        r'"(?:sessionId|session_id|conversationId|conversation_id|userId|user_id|evaluationId|'
+        r'battleId|messageId|traceId|requestId|anonId|visitorId)"\s*:\s*"$'
+    )
+    _MODEL_ID_KEYS = (
+        "id", "modelId", "model_id", "checkpointId", "checkpoint_id", "canaryId", "canaryModelId", "targetModelId",
+    )
+    _NESTED_CHECKPOINT_KEYS = (
+        "checkpoints", "subModels", "variants", "abModels", "canaryModels", "candidateModels", "modelIds", "activeCheckpoints",
+    )
+    _MODEL_SCHEMA_KEYS = {
+        "publicName", "organization", "modelOrganization", "provider", "capabilities",
+        "inputCapabilities", "outputCapabilities", "apiModelId", "modelName", "modelDisplayName",
+        "displayName", "environment", "isCanary", "isPrivate", "pricing", "elo", "rating",
+    }
+    _EXCLUDED_SESSION_KEYS = {
+        "messages", "turns", "sessionId", "session_id", "conversationId", "conversation_id",
+        "userId", "user_id", "voterId", "voter", "prompt", "traceId", "requestId",
+        "evaluationId", "battleId", "messageId", "anonId", "visitorId",
+    }
+    _ARENA_ORG_META: Dict[str, Tuple[str, str, str]] = {
+        "google": ("GOOGLE", "google", "#38bdf8"),
+        "openai": ("OPENAI", "openai", "#10b981"),
+        "anthropic": ("ANTHROPIC", "anthropic", "#f97316"),
+        "xai": ("XAI", "xai", "#e2e8f0"),
+        "deepseek": ("DEEPSEEK", "deepseek", "#06b6d4"),
+        "alibaba": ("QWEN · ALIBABA", "qwen", "#a855f7"),
+        "qwen": ("QWEN · ALIBABA", "qwen", "#a855f7"),
+        "moonshot": ("MOONSHOT · KIMI", "kimi", "#6366f1"),
+        "zhipu": ("Z.AI · ZHIPU GLM", "zai", "#14b8a6"),
+        "zai": ("Z.AI · ZHIPU GLM", "zai", "#14b8a6"),
+        "minimax": ("MINIMAX", "minimax", "#ec4899"),
+        "mistral": ("MISTRAL AI", "mistral", "#f59e0b"),
+        "meta": ("META", "meta", "#3b82f6"),
+        "nvidia": ("NVIDIA", "nvidia", "#84cc16"),
+        "microsoft": ("MICROSOFT AI", "microsoft", "#38bdf8"),
+        "microsoft-ai": ("MICROSOFT AI", "microsoft", "#38bdf8"),
+        "amazon": ("AMAZON", "amazon", "#f59e0b"),
+        "cohere": ("COHERE", "cohere", "#14b8a6"),
+    }
 
     @staticmethod
     def _format_capabilities(cap_obj: Dict[str, Any]) -> str:
@@ -2092,19 +2149,67 @@ class LmArenaScanner:
                     tags.append(f"out:{k}")
         return ", ".join(tags)
 
-    @staticmethod
-    def _decode_uuidv7_iso(mid: str) -> str:
-        """Extract the 48-bit Unix ms creation timestamp from an Arena RFC 9562 UUIDv7 model ID."""
-        m = re.match(
-            r"^([0-9a-f]{8})-([0-9a-f]{4})-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
-            (mid or "").strip().lower(),
-        )
+    @classmethod
+    def _decode_uuidv7_ms(cls, mid: str) -> Optional[int]:
+        """Return the 48-bit Unix millisecond timestamp from an RFC 9562 UUIDv7, or None if not a valid UUIDv7."""
+        m = cls._UUIDV7_EXACT_RE.match((mid or "").strip().lower())
         if not m:
-            return ""
+            return None
         ms = int(m.group(1) + m.group(2), 16)
         if 1_700_000_000_000 <= ms <= 2_100_000_000_000:
-            return datetime.fromtimestamp(ms / 1000.0, tz=timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-        return ""
+            return ms
+        return None
+
+    @classmethod
+    def _decode_uuidv7_iso(cls, mid: str, include_seconds: bool = False) -> str:
+        """Extract the 48-bit Unix ms creation timestamp from an Arena RFC 9562 UUIDv7 model ID."""
+        ms = cls._decode_uuidv7_ms(mid)
+        if ms is None:
+            return ""
+        fmt = "%Y-%m-%d %H:%M:%S UTC" if include_seconds else "%Y-%m-%d %H:%M UTC"
+        return datetime.fromtimestamp(ms / 1000.0, tz=timezone.utc).strftime(fmt)
+
+    @classmethod
+    def _arena_provider_meta(cls, org: str, model_hint: str = "") -> Tuple[str, str, str]:
+        """Resolve (provider_name, provider_slug, accent_color) from Arena organization or model name."""
+        org_l = (org or "").strip().lower()
+        if org_l in cls._ARENA_ORG_META:
+            return cls._ARENA_ORG_META[org_l]
+        for candidate in (model_hint, org_l):
+            cand = (candidate or "").strip().lower()
+            if not cand or cand == "unknown":
+                continue
+            cand_clean = cand[3:] if cand.startswith("fe-") else cand
+            if re.match(r"^\d+(?:\.\d+)?-(?:flash|pro|ultra|lite|nano)\b", cand_clean):
+                return cls._ARENA_ORG_META["google"]
+            p = infer_provider(cand_clean)
+            if p.get("slug") and p["slug"] != "openrouter":
+                return p["name"], p["slug"], p["color"]
+        return ("ARENA.AI", "modelsdev", "#10b981")
+
+    @staticmethod
+    def _checkpoint_host_family(host_name: str, org: str = "") -> str:
+        """Normalize a host slot / environment name so sibling effort/route checkpoints group into one card."""
+        s = (host_name or "").strip().lower()
+        if not s:
+            return "stealth-canary"
+        if s.startswith("fe-"):
+            s = s[3:]
+        if (org or "").strip().lower() == "google" and re.match(r"^\d+(?:\.\d+)?-(?:flash|pro|ultra|lite|nano)\b", s):
+            s = f"gemini-{s}"
+        s = re.sub(r"-(?:extra-low|xhigh|high|medium|low|thinking|non-thinking)$", "", s)
+        return s or "stealth-canary"
+
+    @staticmethod
+    def _normalize_slot_for_id(host_name: str, org: str = "") -> str:
+        """Build a clean slug prefix for checkpoint variant IDs (e.g. '3.8-flash' + google -> 'gemini-3.8-flash')."""
+        s = re.sub(r"[^a-zA-Z0-9._-]+", "-", (host_name or "").strip()).strip("-").lower()
+        org_l = re.sub(r"[^a-z0-9-]+", "-", (org or "").strip().lower()).strip("-")
+        if not s:
+            return f"{org_l}-arena" if org_l and org_l != "unknown" else "arena-stealth"
+        if org_l == "google" and re.match(r"^\d+(?:\.\d+)?-(?:flash|pro|ultra|lite|nano)\b", s):
+            return f"gemini-{s}"
+        return s
 
     @staticmethod
     def _fetch_arena_html(url: str) -> str:
@@ -2133,7 +2238,55 @@ class LmArenaScanner:
             return resp.read().decode("utf-8", "ignore")
 
     @classmethod
-    def _extract_models_from_html(cls, html: str) -> List[Dict[str, Any]]:
+    def _reassemble_rsc_stream(cls, html: str) -> str:
+        """Concatenate all `self.__next_f.push([..., "..."])` Flight chunks in document order."""
+        chunks: List[str] = []
+        for m_ch in cls._NEXT_F_CHUNK_RE.finditer(html):
+            try:
+                decoded = json.loads(m_ch.group(1))
+                if isinstance(decoded, str):
+                    chunks.append(decoded)
+            except Exception:
+                continue
+        return "".join(chunks)
+
+    @classmethod
+    def _extract_nested_model_uuidv7s(cls, m: Dict[str, Any]) -> List[str]:
+        """Extract all valid RFC 9562 UUIDv7 checkpoint/model IDs referenced by an Arena model/environment dict."""
+        if not isinstance(m, dict):
+            return []
+        out: List[str] = []
+        seen: Set[str] = set()
+
+        def _add(val: Any) -> None:
+            if isinstance(val, str):
+                u = val.strip().lower()
+                if u not in seen and cls._decode_uuidv7_ms(u) is not None:
+                    seen.add(u)
+                    out.append(u)
+
+        for k in cls._MODEL_ID_KEYS:
+            _add(m.get(k))
+        for k in cls._NESTED_CHECKPOINT_KEYS:
+            nested = m.get(k)
+            if isinstance(nested, list):
+                for item in nested:
+                    if isinstance(item, str):
+                        _add(item)
+                    elif isinstance(item, dict):
+                        for ik in cls._MODEL_ID_KEYS:
+                            _add(item.get(ik))
+            elif isinstance(nested, dict):
+                for v in nested.values():
+                    if isinstance(v, str):
+                        _add(v)
+                    elif isinstance(v, dict):
+                        for ik in cls._MODEL_ID_KEYS:
+                            _add(v.get(ik))
+        return out
+
+    @classmethod
+    def _extract_models_from_html(cls, html: str, rsc_stream: Optional[str] = None) -> List[Dict[str, Any]]:
         """Reassemble multi-chunk Next.js RSC Flight streams (`self.__next_f.push`) and extract Arena model objects."""
         found: List[Dict[str, Any]] = []
         decoder = json.JSONDecoder()
@@ -2151,15 +2304,8 @@ class LmArenaScanner:
 
         # 2. Reassemble all `self.__next_f.push([1, "..."])` chunks in document order so arrays split across
         #    multiple <script> tags (250+ models) decode cleanly without HTML boundary corruption.
-        chunks: List[str] = []
-        for m_ch in cls._NEXT_F_CHUNK_RE.finditer(html):
-            try:
-                decoded = json.loads(m_ch.group(1))
-                if isinstance(decoded, str):
-                    chunks.append(decoded)
-            except Exception:
-                continue
-        rsc_stream = "".join(chunks)
+        if rsc_stream is None:
+            rsc_stream = cls._reassemble_rsc_stream(html)
 
         for stream in (rsc_stream, html):
             if not stream:
@@ -2201,35 +2347,209 @@ class LmArenaScanner:
 
         return found
 
-    def _scan_live_initial_models(self, baselines: Dict[str, Any]) -> tuple[List[Dict[str, Any]], bool]:
-        """Parse `initialModels` across Arena Chat, Direct, Side-by-Side, and Code/Frontend (`/code`) routes."""
+    @classmethod
+    def _extract_rsc_uuidv7_checkpoints(
+        cls,
+        html: str,
+        now_ms: int,
+        max_age_days: int = 14,
+        rsc_stream: Optional[str] = None,
+    ) -> List[Dict[str, Any]]:
+        """
+        Scan Next.js RSC Flight & __NEXT_DATA__ payloads for freshly minted RFC 9562 UUIDv7 checkpoints
+        embedded inside model, canary, or A/B environment objects (even when omitted from `initialModels`),
+        strictly rejecting user/session/battle/turn UUIDv7s.
+        """
+        if rsc_stream is None:
+            rsc_stream = cls._reassemble_rsc_stream(html)
+        streams: List[str] = []
+        if rsc_stream:
+            streams.append(rsc_stream)
+        m_nd = cls._NEXT_DATA_RE.search(html)
+        if m_nd:
+            streams.append(m_nd.group(1))
+
+        decoder = json.JSONDecoder()
+        max_age_ms = max_age_days * 86_400_000
+        hits_by_uuid: Dict[str, Dict[str, Any]] = {}
+
+        for stream in streams:
+            for m_uid in cls._UUIDV7_SCAN_RE.finditer(stream):
+                uid = m_uid.group(1).lower()
+                ms = cls._decode_uuidv7_ms(uid)
+                if ms is None or (now_ms - ms) > max_age_ms or ms > now_ms + 3_600_000:
+                    continue
+
+                prefix_slice = stream[max(0, m_uid.start() - 56) : m_uid.start()]
+                if cls._SESSION_KEY_PREFIX_RE.search(prefix_slice):
+                    continue
+
+                # Step outward through up to 5 enclosing '{' positions so both direct model dicts and
+                # parent environment dicts wrapping `checkpoints: [{label, id}, ...]` are captured cleanly.
+                search_hi = m_uid.start()
+                min_lo = max(0, m_uid.start() - 950)
+                for _ in range(5):
+                    brace_pos = stream.rfind("{", min_lo, search_hi)
+                    if brace_pos == -1:
+                        break
+                    search_hi = brace_pos
+                    try:
+                        obj, end_pos = decoder.raw_decode(stream, brace_pos)
+                    except Exception:
+                        continue
+                    if end_pos <= m_uid.end() or not isinstance(obj, dict) or len(obj) > 40:
+                        continue
+                    if obj.keys() & cls._EXCLUDED_SESSION_KEYS:
+                        break
+
+                    direct_id_match = any(
+                        str(obj.get(k) or "").strip().lower() == uid for k in cls._MODEL_ID_KEYS
+                    )
+                    schema_overlap = obj.keys() & cls._MODEL_SCHEMA_KEYS
+                    is_direct_model = direct_id_match and (
+                        len(schema_overlap) >= 2
+                        or bool(
+                            obj.keys()
+                            & {"publicName", "modelName", "modelDisplayName", "apiModelId", "environment"}
+                        )
+                    )
+                    is_env_checkpoint = (
+                        not is_direct_model
+                        and any(k in obj for k in cls._NESTED_CHECKPOINT_KEYS)
+                        and bool(
+                            obj.keys()
+                            & {"publicName", "environment", "organization", "provider", "modelName", "apiModelId"}
+                        )
+                        and uid in cls._extract_nested_model_uuidv7s(obj)
+                    )
+                    if not (is_direct_model or is_env_checkpoint):
+                        continue
+
+                    host_name = str(
+                        obj.get("publicName")
+                        or obj.get("environment")
+                        or obj.get("modelName")
+                        or obj.get("modelDisplayName")
+                        or obj.get("displayName")
+                        or obj.get("apiModelId")
+                        or obj.get("name")
+                        or ""
+                    ).strip()
+                    org = str(obj.get("organization") or obj.get("modelOrganization") or "unknown").strip()
+                    prov = str(obj.get("provider") or "unknown").strip()
+                    caps = cls._format_capabilities(obj.get("capabilities") or obj)
+                    existing = hits_by_uuid.get(uid)
+                    if existing is None or (host_name and not existing.get("host_name")):
+                        hits_by_uuid[uid] = {
+                            "uuid": uid,
+                            "mint_ms": ms,
+                            "host_name": host_name,
+                            "org": org if org else "unknown",
+                            "provider": prov if prov else "unknown",
+                            "caps": caps,
+                        }
+                    break
+
+        return list(hits_by_uuid.values())
+
+    def _scan_live_initial_models(
+        self,
+        baselines: Dict[str, Any],
+        now_dt: Optional[datetime] = None,
+    ) -> tuple[List[Dict[str, Any]], bool]:
+        """Parse `initialModels` & RSC UUIDv7 checkpoints across Arena Chat, Direct, Side-by-Side, and `/code` routes."""
         cards: List[Dict[str, Any]] = []
         changed = False
-        merged_map: Dict[str, Dict[str, Any]] = dict(baselines.get("arena_initial_models", {}))
-        prev_keys = set(merged_map.keys())
+        now_dt = now_dt or datetime.now(timezone.utc)
+        now_ms = int(now_dt.timestamp() * 1000)
+        now_iso = now_dt.isoformat()
+
+        raw_prev_map = baselines.get("arena_initial_models") or {}
+        prev_map: Dict[str, Dict[str, Any]] = {
+            k: dict(v) if isinstance(v, dict) else {} for k, v in raw_prev_map.items()
+        }
+        merged_map: Dict[str, Dict[str, Any]] = {k: dict(v) for k, v in prev_map.items()}
+        prev_keys = set(prev_map.keys())
+
+        # Seed known UUIDv7 set from explicit history + every model_id / seen_ids already in arena_initial_models
+        # so deploying UUIDv7 forensics produces zero false alarms on the existing 260+ Arena models.
+        known_uuidv7s: Set[str] = {
+            str(u).strip().lower()
+            for u in baselines.get("arena_seen_uuidv7s", [])
+            if self._decode_uuidv7_ms(str(u)) is not None
+        }
+        for entry in prev_map.values():
+            for cand in [entry.get("model_id", ""), *(entry.get("seen_ids") or [])]:
+                cs = str(cand or "").strip().lower()
+                if self._decode_uuidv7_ms(cs) is not None:
+                    known_uuidv7s.add(cs)
+        curr_seen_uuidv7s: Set[str] = set(known_uuidv7s)
+
+        observed_by_pub: Dict[str, List[Tuple[str, str]]] = {}
+        hidden_rsc_hits: Dict[str, Dict[str, Any]] = {}
         fetched_any = False
 
         for url in self.ARENA_URLS:
             try:
                 html = self._fetch_arena_html(url)
-                models_arr = self._extract_models_from_html(html)
-                if not models_arr:
+                rsc_stream = self._reassemble_rsc_stream(html)
+                models_arr = self._extract_models_from_html(html, rsc_stream=rsc_stream)
+                rsc_ckpts = self._extract_rsc_uuidv7_checkpoints(
+                    html, now_ms=now_ms, max_age_days=14, rsc_stream=rsc_stream
+                )
+                if not models_arr and not rsc_ckpts:
                     continue
 
                 fetched_any = True
                 is_code_route = "/code" in url or "web.arena.ai" in url or "modality=webdev" in url
+                route_tag = "code" if is_code_route else "chat"
+
                 for m in models_arr:
                     pub_name = str(m.get("publicName") or m.get("id") or "").strip()
                     if not pub_name:
                         continue
                     prev_entry = merged_map.get(pub_name) or {}
-                    merged_map[pub_name] = {
+                    model_uuids = self._extract_nested_model_uuidv7s(m)
+                    prev_seen_ids = [
+                        str(x).strip().lower()
+                        for x in (prev_entry.get("seen_ids") or [])
+                        if self._decode_uuidv7_ms(str(x)) is not None
+                    ]
+                    prev_mid = str(prev_entry.get("model_id") or "").strip()
+                    if self._decode_uuidv7_ms(prev_mid) is not None and prev_mid.lower() not in prev_seen_ids:
+                        prev_seen_ids.append(prev_mid.lower())
+                    for u in model_uuids:
+                        if u not in prev_seen_ids:
+                            prev_seen_ids.append(u)
+                        curr_seen_uuidv7s.add(u)
+                        observed_by_pub.setdefault(pub_name, []).append(
+                            ("code" if (is_code_route or pub_name.startswith("fe-")) else route_tag, u)
+                        )
+
+                    # Track the active model_id observed on Arena (so swaps between sibling checkpoints like
+                    # 01a1ade7 -> 01a1ade5 accurately record the previous active UUID), while seen_ids keeps full history.
+                    raw_mid = str(m.get("id") or prev_mid or "").strip()
+                    best_mid = raw_mid.lower() if self._decode_uuidv7_ms(raw_mid) is not None else raw_mid
+
+                    new_entry: Dict[str, Any] = {
                         "org": m.get("organization") or prev_entry.get("org") or "unknown",
                         "provider": m.get("provider") or prev_entry.get("provider") or "unknown",
                         "caps": self._format_capabilities(m.get("capabilities") or {}) or prev_entry.get("caps", ""),
-                        "model_id": str(m.get("id") or prev_entry.get("model_id") or ""),
+                        "model_id": best_mid,
                         "route": "code" if (is_code_route or pub_name.startswith("fe-")) else prev_entry.get("route", "chat"),
                     }
+                    if len(prev_seen_ids) > 1:
+                        new_entry["seen_ids"] = sorted(set(prev_seen_ids))
+                    merged_map[pub_name] = new_entry
+
+                for hc in rsc_ckpts:
+                    uid = hc["uuid"]
+                    curr_seen_uuidv7s.add(uid)
+                    prev_hc = hidden_rsc_hits.get(uid)
+                    if prev_hc is None or (hc.get("host_name") and not prev_hc.get("host_name")):
+                        hidden_rsc_hits[uid] = {**hc, "route": route_tag}
+                    elif is_code_route and prev_hc.get("route") != "code":
+                        prev_hc["route"] = "code"
             except Exception as exc:
                 print(f"[LmArenaScanner] Note (arena.ai live RSC stream {url}): {exc}")
 
@@ -2245,12 +2565,8 @@ class LmArenaScanner:
                 and _canonical_model_slug(k) not in already_known_canon
                 and not is_legacy_model_id(k)
             ] if prev_keys else []
-            if set(merged_map.keys()) != prev_keys:
-                baselines["arena_initial_models"] = merged_map
-                changed = True
 
-            now_dt = datetime.now(timezone.utc)
-            now_iso = now_dt.isoformat()
+            emitted_scout_uuids: Set[str] = set()
             for name in added_names:
                 meta = merged_map[name]
                 org = meta.get("org") or "unknown"
@@ -2258,15 +2574,16 @@ class LmArenaScanner:
                 mid = meta.get("model_id") or ""
                 caps = meta.get("caps") or "chat"
                 is_code = meta.get("route") == "code" or name.startswith("fe-")
-                uuid_ts = self._decode_uuidv7_iso(mid)
-                if uuid_ts:
-                    try:
-                        minted_dt = datetime.strptime(uuid_ts, "%Y-%m-%d %H:%M UTC").replace(tzinfo=timezone.utc)
-                        if (now_dt - minted_dt).days > 14:
-                            print(f"[LmArenaScanner] Skipping old re-exposed Arena model {name} (DB minted {uuid_ts})")
-                            continue
-                    except ValueError:
-                        pass
+                uuid_ms = self._decode_uuidv7_ms(mid)
+                uuid_ts = self._decode_uuidv7_iso(mid, include_seconds=True)
+                if uuid_ms is not None and (now_ms - uuid_ms) > 14 * 86_400_000:
+                    print(f"[LmArenaScanner] Skipping old re-exposed Arena model {name} (DB minted {uuid_ts})")
+                    continue
+                for _, obs_u in observed_by_pub.get(name, []):
+                    emitted_scout_uuids.add(obs_u)
+                if uuid_ms is not None:
+                    emitted_scout_uuids.add(mid.strip().lower())
+
                 q_name = urllib.parse.quote(name, safe="")
                 deep_url = (
                     f"https://arena.ai/code?mode=direct&model={q_name}"
@@ -2279,13 +2596,14 @@ class LmArenaScanner:
                 if uuid_ts:
                     meta_parts.append(f"DB minted {uuid_ts}")
 
+                prov_name, prov_slug, accent_col = self._arena_provider_meta(org, name)
                 sig = hashlib.sha256(name.encode("utf-8")).hexdigest()[:8]
                 cards.append(
                     {
                         "id": f"arena-scout-diff-{sig}",
                         "category": "cli-sdk-diff",
                         "scanner": "lmarena",
-                        "header": "ARENA.AI LIVE MODEL SCOUT · NEXT.JS RSC STREAM",
+                        "header": f"ARENA.AI LIVE MODEL SCOUT · {prov_name if prov_slug != 'modelsdev' else 'NEXT.JS RSC STREAM'}",
                         "title": f"New Model Found on Arena: {name}",
                         "subtitle": f"Detected in {'Arena Code (/code)' if is_code else 'arena.ai'} initialModels RSC stream ({caps})",
                         "build_label": "Arena Metadata",
@@ -2294,19 +2612,213 @@ class LmArenaScanner:
                             {
                                 "id": f"org:{org} · {prov}",
                                 "name": name,
+                                "org": org,
                             }
                         ],
                         "evidence": f"{'arena.ai/code' if is_code else 'arena.ai'} -> self.__next_f.push (initialModels)",
                         "source_text": "live Arena (arena.ai) Next.js RSC model config.",
                         "disclaimer_1": "",
                         "disclaimer_2": "",
-                        "provider_name": "ARENA.AI",
-                        "provider_slug": "modelsdev",
-                        "accent_color": "#10b981",
+                        "provider_name": prov_name,
+                        "provider_slug": prov_slug,
+                        "accent_color": accent_col,
                         "links": [{"label": "Open on Arena.ai", "url": deep_url}],
                         "detected_at": now_iso,
                     }
                 )
+
+            # Channel 2: Silent RFC 9562 UUIDv7 checkpoint hot-swaps & disguised RSC environment/canary checkpoints
+            if prev_keys:
+                fresh_ckpts: Dict[str, Dict[str, Any]] = {}
+
+                # 2a. Existing publicName (or newly added old-slug alias like 'gemini-3.8-flash') receiving a fresh UUIDv7
+                for pub_name, obs_pairs in observed_by_pub.items():
+                    if pub_name in added_names or is_legacy_model_id(pub_name):
+                        continue
+                    prev_entry = prev_map.get(pub_name) or {}
+                    curr_entry = merged_map.get(pub_name) or {}
+                    prev_primary_raw = str(prev_entry.get("model_id") or "").strip().lower()
+                    prev_primary_uid = prev_primary_raw if self._decode_uuidv7_ms(prev_primary_raw) is not None else ""
+                    if not prev_primary_uid:
+                        for cand in prev_entry.get("seen_ids") or []:
+                            cs = str(cand or "").strip().lower()
+                            if self._decode_uuidv7_ms(cs) is not None:
+                                prev_primary_uid = cs
+                                break
+                    # Any unseen RFC 9562 UUIDv7 minted within the last 14 days (7 days for newly added old-slug slots)
+                    # is a genuine new checkpoint, even if a sibling checkpoint minted seconds later was tested first!
+                    max_window_ms = (14 if pub_name in prev_keys else 7) * 86_400_000
+
+                    for obs_route, uid in obs_pairs:
+                        if uid in known_uuidv7s or uid in emitted_scout_uuids or uid in fresh_ckpts:
+                            continue
+                        u_ms = self._decode_uuidv7_ms(uid)
+                        if u_ms is None or (now_ms - u_ms) > max_window_ms or u_ms > now_ms + 3_600_000:
+                            continue
+                        fresh_ckpts[uid] = {
+                            "uuid": uid,
+                            "mint_ms": u_ms,
+                            "mint_iso_sec": self._decode_uuidv7_iso(uid, include_seconds=True),
+                            "host_name": pub_name,
+                            "prev_uuid": prev_primary_uid,
+                            "prev_mint_iso": self._decode_uuidv7_iso(prev_primary_uid, include_seconds=True),
+                            "org": str(curr_entry.get("org") or "unknown"),
+                            "provider": str(curr_entry.get("provider") or "unknown"),
+                            "caps": str(curr_entry.get("caps") or "chat"),
+                            "route": obs_route,
+                            "discovery_kind": "swap" if pub_name in prev_keys else "disguised-slot",
+                        }
+
+                # 2b. Hidden / environment / canary checkpoints in RSC stream outside standard initialModels
+                for uid, hc in hidden_rsc_hits.items():
+                    if uid in known_uuidv7s or uid in emitted_scout_uuids or uid in fresh_ckpts:
+                        continue
+                    host_name = str(hc.get("host_name") or "").strip()
+                    if host_name and is_legacy_model_id(host_name):
+                        continue
+                    prev_entry = prev_map.get(host_name) or {}
+                    prev_uid = str(prev_entry.get("model_id") or "").strip().lower()
+                    prev_ms = self._decode_uuidv7_ms(prev_uid)
+                    u_ms = int(hc["mint_ms"])
+                    fresh_ckpts[uid] = {
+                        "uuid": uid,
+                        "mint_ms": u_ms,
+                        "mint_iso_sec": self._decode_uuidv7_iso(uid, include_seconds=True),
+                        "host_name": host_name,
+                        "prev_uuid": prev_uid if prev_ms is not None else "",
+                        "prev_mint_iso": self._decode_uuidv7_iso(prev_uid, include_seconds=True) if prev_ms is not None else "",
+                        "org": str(hc.get("org") or prev_entry.get("org") or "unknown"),
+                        "provider": str(hc.get("provider") or prev_entry.get("provider") or "unknown"),
+                        "caps": str(hc.get("caps") or prev_entry.get("caps") or "chat"),
+                        "route": str(hc.get("route") or "chat"),
+                        "discovery_kind": "rsc-hidden",
+                    }
+
+                # Group parallel/A-B checkpoints discovered in the same scan by (org, host_family)
+                grouped_ckpts: Dict[Tuple[str, str], List[Dict[str, Any]]] = {}
+                for item in fresh_ckpts.values():
+                    org_key = (item["org"] or "unknown").strip().lower()
+                    fam_key = self._checkpoint_host_family(item["host_name"], org_key)
+                    grouped_ckpts.setdefault((org_key, fam_key), []).append(item)
+
+                for (org_key, fam_key), grp in grouped_ckpts.items():
+                    grp.sort(key=lambda x: (x["mint_ms"], x["uuid"]))
+                    first_item = grp[0]
+                    org_raw = first_item["org"]
+                    prov_raw = first_item["provider"]
+                    host_raw = first_item["host_name"]
+                    prov_name, prov_slug, accent_col = self._arena_provider_meta(org_raw, host_raw or fam_key)
+                    any_code = any(x["route"] == "code" or x["host_name"].startswith("fe-") for x in grp)
+                    arena_surface = "Arena Code (/code)" if any_code else "arena.ai"
+
+                    if host_raw:
+                        distinct_hosts = list(dict.fromkeys(x["host_name"] for x in grp if x["host_name"]))
+                        display_host = distinct_hosts[0] if len(distinct_hosts) == 1 else fam_key
+                        if len(grp) > 1:
+                            title = f"Silent Arena Checkpoint Swap Under {display_host} ({len(grp)} New UUIDv7s)"
+                        else:
+                            title = f"Silent Arena Checkpoint Swap Under {display_host} ({first_item['uuid'][:8]})"
+                        header_prefix = "ARENA.AI SILENT CHECKPOINT SWAP"
+                    else:
+                        display_host = ""
+                        title = (
+                            f"Stealth Arena Canary Checkpoint ({prov_name} · {len(grp)} New UUIDv7s)"
+                            if len(grp) > 1
+                            else f"Stealth Arena Canary Checkpoint ({prov_name} · {first_item['uuid'][:8]})"
+                        )
+                        header_prefix = "ARENA.AI STEALTH CANARY CHECKPOINT"
+
+                    header_suffix = prov_name if prov_slug != "modelsdev" else "UUIDV7 FORENSICS"
+                    prev_note = (
+                        f"; baseline {first_item['prev_uuid'][:8]} minted {first_item['prev_mint_iso']}"
+                        if first_item.get("prev_uuid") and first_item.get("prev_mint_iso")
+                        else ""
+                    )
+                    subtitle = (
+                        f"{len(grp)} newly minted RFC 9562 UUIDv7 checkpoint{'s' if len(grp) != 1 else ''} "
+                        f"detected {'under ' + display_host + ' ' if display_host else ''}on {arena_surface} "
+                        f"(Org: {org_raw}, Provider: {prov_raw}{prev_note})"
+                    )
+
+                    trans_parts = [f"{x['uuid'][:8]} ({x['mint_iso_sec']})" for x in grp[:4]]
+                    if len(grp) > 4:
+                        trans_parts.append(f"+{len(grp) - 4} more")
+                    if first_item.get("prev_uuid"):
+                        build_transition = f"{first_item['prev_uuid'][:8]} -> " + ", ".join(trans_parts)
+                    else:
+                        build_transition = " · ".join(trans_parts)
+
+                    card_models: List[Dict[str, Any]] = []
+                    for idx, x in enumerate(grp):
+                        slot_slug = self._normalize_slot_for_id(x["host_name"], org_raw)
+                        short_u = x["uuid"][:8]
+                        m_id = f"{slot_slug}-ckpt-{short_u}"
+                        pretty_base = (
+                            humanize_model_id(slot_slug)
+                            if "-" in slot_slug and not slot_slug.endswith("-arena")
+                            else (x["host_name"] or f"{prov_name.title()} Arena Canary")
+                        )
+                        ckpt_tag = f"Checkpoint {chr(65 + idx)}" if len(grp) > 1 and idx < 26 else "Stealth Checkpoint"
+                        card_models.append(
+                            {
+                                "id": m_id,
+                                "name": f"{pretty_base} — Stealth Checkpoint ({ckpt_tag}: {x['uuid']} · minted {x['mint_iso_sec']})",
+                                "host_slot": x["host_name"],
+                                "uuid": x["uuid"],
+                                "minted_at": x["mint_iso_sec"],
+                                "prev_uuid": x["prev_uuid"],
+                                "prev_minted_at": x["prev_mint_iso"],
+                                "org": org_raw,
+                                "arena_provider": prov_raw,
+                            }
+                        )
+
+                    if display_host and display_host in merged_map:
+                        q_host = urllib.parse.quote(display_host, safe="")
+                        deep_url = (
+                            f"https://arena.ai/code?mode=direct&model={q_host}"
+                            if any_code
+                            else f"https://arena.ai/?mode=direct&model={q_host}"
+                        )
+                    else:
+                        deep_url = "https://arena.ai/code" if any_code else "https://arena.ai/?mode=direct"
+
+                    sig = hashlib.sha256(",".join(x["uuid"] for x in grp).encode("utf-8")).hexdigest()[:10]
+                    cards.append(
+                        {
+                            "id": f"arena-ckpt-swap-{sig}",
+                            "category": "cli-sdk-diff",
+                            "scanner": "lmarena",
+                            "header": f"{header_prefix} · {header_suffix}",
+                            "title": title,
+                            "subtitle": subtitle,
+                            "build_label": "UUIDv7 Forensics",
+                            "build_transition": build_transition,
+                            "models": card_models,
+                            "evidence": (
+                                f"{'arena.ai/code' if any_code else 'arena.ai'} -> "
+                                f"self.__next_f.push ({'RSC environment/canary' if first_item['discovery_kind'] == 'rsc-hidden' else 'initialModels UUIDv7 diff'})"
+                            ),
+                            "source_text": "live Arena (arena.ai) Next.js RSC stream & RFC 9562 UUIDv7 timestamp forensics.",
+                            "disclaimer_1": (
+                                "Verified newly minted RFC 9562 UUIDv7 model checkpoint(s) attached to an Arena slot or environment."
+                            ),
+                            "disclaimer_2": (
+                                "Labs frequently A/B-test unreleased frontier checkpoints under existing Arena publicName slots prior to launch."
+                            ),
+                            "provider_name": prov_name,
+                            "provider_slug": prov_slug,
+                            "accent_color": accent_col,
+                            "links": [{"label": "Open on Arena.ai", "url": deep_url}],
+                            "detected_at": now_iso,
+                        }
+                    )
+
+            prev_seen_set = set(baselines.get("arena_seen_uuidv7s", []))
+            if merged_map != prev_map or curr_seen_uuidv7s != prev_seen_set:
+                baselines["arena_initial_models"] = merged_map
+                baselines["arena_seen_uuidv7s"] = sorted(curr_seen_uuidv7s)
+                changed = True
 
         return cards, changed
 

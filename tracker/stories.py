@@ -282,9 +282,16 @@ def _make_story(
     lab = next((c for c in cards if c.get("provider_slug") not in GENERIC_PROVIDERS), first)
     provider_name = PROVIDER_NAMES.get(lab.get("provider_slug", ""), "")
     provider_slug = lab.get("provider_slug", "")
-    # Arena's model config names the lab: {"id": "org:microsoft-ai · microsoftFalcon"}
-    arena_org = next((str(m["id"])[4:].split(" · ")[0].lower() for c in cards for m in c.get("models") or []
-                      if str(m.get("id", "")).startswith("org:")), "")
+    # Arena's model config names the lab: {"id": "org:microsoft-ai · microsoftFalcon"} or {"org": "google"}
+    arena_org = next(
+        (
+            (str(m.get("org") or "") or (str(m["id"])[4:].split(" · ")[0] if str(m.get("id", "")).startswith("org:") else "")).lower()
+            for c in cards
+            for m in c.get("models") or []
+            if m.get("org") or str(m.get("id", "")).startswith("org:")
+        ),
+        "",
+    )
     if not provider_name and arena_org and arena_org not in ("unknown", "none", "null"):
         slug = ARENA_ORGS.get(arena_org, "")
         provider_slug = slug or provider_slug
@@ -365,6 +372,9 @@ def _make_story(
                 entry["pricing"] = price
             if m_rel:
                 entry["released_on"] = m_rel
+            for extra_k in ("host_slot", "uuid", "minted_at", "prev_uuid", "prev_minted_at", "org", "arena_provider"):
+                if m.get(extra_k):
+                    entry[extra_k] = str(m[extra_k])
             by_norm[vk] = entry
             variants.append(by_norm[vk])
         else:
@@ -515,9 +525,18 @@ def story_x_text(story: Dict[str, Any]) -> str:
         optional.append((4, f"Confirmed by {', '.join(others[:3])}{extra}"))
     if story.get("codenames"):
         optional.append((5, f"Codename: {', '.join(story['codenames'][:3])}"))
-    ids = [v["id"] for v in story["models"][:3]]
-    if len(story["models"]) > 1:
-        optional.append((6, f"IDs: {', '.join(ids)}" + (f" +{len(story['models']) - 3}" if len(story["models"]) > 3 else "")))
+    ckpt_models = [v for v in story["models"] if v.get("uuid")]
+    if ckpt_models:
+        if len(ckpt_models) == 1:
+            optional.append((2, f"🆔 UUID: {ckpt_models[0]['uuid']}"))
+        else:
+            optional.append((2, "🆔 UUIDs: " + ", ".join(v["uuid"][:8] for v in ckpt_models[:3])))
+        if ckpt_models[0].get("prev_uuid"):
+            optional.append((7, f"📜 Prev: {ckpt_models[0]['prev_uuid'][:8]}"))
+    else:
+        ids = [v["id"] for v in story["models"][:3]]
+        if len(story["models"]) > 1:
+            optional.append((6, f"IDs: {', '.join(ids)}" + (f" +{len(story['models']) - 3}" if len(story["models"]) > 3 else "")))
     while True:
         lines = [head, "", f"First detected {when} in {story['first_source']}"]
         lines += [line for _, line in sorted(optional)]

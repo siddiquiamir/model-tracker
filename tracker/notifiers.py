@@ -31,10 +31,41 @@ def hex_to_discord_color(hex_str: str) -> int:
         return 0x38BDF8
 
 
+def _format_checkpoint_blockquote(ckpt_items: List[Dict[str, Any]], resolved_provider: str = "") -> List[str]:
+    """Render Discord blockquote lines for Arena RFC 9562 UUIDv7 checkpoint detections."""
+    if not ckpt_items:
+        return []
+    first = ckpt_items[0]
+    raw_org = first.get("org") or "unknown"
+    org_note = (
+        f" ({resolved_provider})"
+        if resolved_provider and resolved_provider.lower() != raw_org.lower()
+        else ""
+    )
+    raw_prov = first.get("arena_provider") or "unknown"
+    q_lines = [
+        f"> 🏛️ **Organization:** `{raw_org}`{org_note}",
+        f"> ⚙️ **Provider:** `{raw_prov}`",
+    ]
+    if len(ckpt_items) == 1:
+        ts_note = f" *(minted `{first['minted_at']}`)*" if first.get("minted_at") else ""
+        q_lines.append(f"> 🆔 **New Checkpoint UUID:** `{first['uuid']}`{ts_note}")
+    else:
+        for idx, item in enumerate(ckpt_items):
+            tag = chr(65 + idx) if idx < 26 else str(idx + 1)
+            ts_note = f" *(minted `{item['minted_at']}`)*" if item.get("minted_at") else ""
+            q_lines.append(f"> 🆔 **Checkpoint {tag} UUID:** `{item['uuid']}`{ts_note}")
+    if first.get("prev_uuid"):
+        prev_ts = f" *(minted `{first['prev_minted_at']}`)*" if first.get("prev_minted_at") else ""
+        q_lines.append(f"> 📜 **Previous UUID:** `{first['prev_uuid']}`{prev_ts}")
+    return q_lines
+
+
 def build_discord_embed(card: Dict[str, Any], github_user: str = "siddiquiamir") -> Dict[str, Any]:
     """
     Build a Discord webhook embed matching the exact LuminaBench-style diff card layout.
     """
+    ckpt_items = [m for m in card.get("models", [])[:6] if m.get("uuid")]
     models_lines = []
     for item in card.get("models", [])[:15]:
         label = item.get("name", item["id"])
@@ -54,23 +85,30 @@ def build_discord_embed(card: Dict[str, Any], github_user: str = "siddiquiamir")
     desc_parts = [
         f"**{card.get('subtitle', 'Verified build comparison')}**",
         "",
-        f"**{card.get('build_label', 'Build')}:** `{card.get('build_transition', 'latest')}`",
-        "",
-        "\n".join(models_lines),
-        "",
-        f"**Evidence:** `{card.get('evidence', 'binary/strings')}`",
-        f"**Source:** {card.get('source_text', 'official public release archive.')}",
-        "",
-        card.get(
-            "disclaimer_1",
-            "Verified differences between existing builds; this is not a newly published release announcement.",
-        ),
-        "",
-        card.get(
-            "disclaimer_2",
-            "Compiled-in names and identifiers. This does not confirm model rollout or account access.",
-        ),
     ]
+    if ckpt_items:
+        desc_parts.extend(_format_checkpoint_blockquote(ckpt_items, card.get("provider_name", "")))
+        desc_parts.append("")
+    desc_parts.extend(
+        [
+            f"**{card.get('build_label', 'Build')}:** `{card.get('build_transition', 'latest')}`",
+            "",
+            "\n".join(models_lines),
+            "",
+            f"**Evidence:** `{card.get('evidence', 'binary/strings')}`",
+            f"**Source:** {card.get('source_text', 'official public release archive.')}",
+            "",
+            card.get(
+                "disclaimer_1",
+                "Verified differences between existing builds; this is not a newly published release announcement.",
+            ),
+            "",
+            card.get(
+                "disclaimer_2",
+                "Compiled-in names and identifiers. This does not confirm model rollout or account access.",
+            ),
+        ]
+    )
     if links_md:
         desc_parts.extend(["", links_md])
 
@@ -136,7 +174,15 @@ def build_x_post_text(card: Dict[str, Any]) -> str:
 
 def build_story_embed(story: Dict[str, Any], github_user: str = "siddiquiamir") -> Dict[str, Any]:
     """One Discord embed per model story: amber for leaks, green for releases."""
-    lines = [f"**First spotted:** <t:{_epoch(story['detected_at'])}:f> in {story.get('first_source', '')}"]
+    ckpt_items = [v for v in story.get("models", [])[:6] if v.get("uuid")]
+    lines: List[str] = []
+    if ckpt_items:
+        slot_label = ckpt_items[0].get("host_slot") or story.get("title", "")
+        if slot_label:
+            lines.extend([f"**{slot_label}**", ""])
+        lines.extend(_format_checkpoint_blockquote(ckpt_items, story.get("provider_name", "")))
+        lines.append("")
+    lines.append(f"**First spotted:** <t:{_epoch(story['detected_at'])}:f> in {story.get('first_source', '')}")
     if story.get("pricing"):
         lines.append(f"**Pricing:** `{story['pricing']}`")
     if story.get("lead"):
@@ -144,7 +190,7 @@ def build_story_embed(story: Dict[str, Any], github_user: str = "siddiquiamir") 
     if story.get("codenames"):
         lines.append(f"**Codename:** {', '.join(story['codenames'])}")
     ids = [f"`{v['id']}`" for v in story.get("models", [])[:10]]
-    if ids:
+    if ids and not ckpt_items:
         lines.append(f"**Identifiers:** {' '.join(ids)}")
     srcs = []
     for s in story.get("sources", [])[:8]:
@@ -153,9 +199,14 @@ def build_story_embed(story: Dict[str, Any], github_user: str = "siddiquiamir") 
     if srcs:
         lines += ["", "**Sources**", *srcs]
     lines += ["", f"[Live tracker](https://{github_user}.github.io/model-tracker/) · [@StatsWire](https://x.com/StatsWire)"]
+    embed_title = (
+        "🚨 NEW CHECKPOINT DETECTED:"
+        if ckpt_items
+        else story.get("title", "New model")
+    )[:256]
     embed: Dict[str, Any] = {
         "author": {"name": story.get("header", "")},
-        "title": story.get("title", "New model")[:256],
+        "title": embed_title,
         "description": "\n".join(lines)[:4000],
         "color": 0xF59E0B if story.get("kind") == "leak" else 0x22C55E,
         "thumbnail": {"url": PROVIDER_LOGOS.get(story.get("provider_slug", ""), PROVIDER_LOGOS["opensource"])},

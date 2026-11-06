@@ -25,9 +25,10 @@ VALID_MODEL_TOKENS: Set[str] = {
     "audio", "realtime", "tts", "stt", "image", "video", "voice", "imagine", "coder", "code",
     "robotics", "omni", "search", "live", "native", "embed", "embedding", "multi", "agent", "build", "composer",
     "edit", "inpaint", "transcribe", "guard", "reward", "vl", "moe", "deep", "research",
-    # Family code-names, noble gases, periodic table elements & series (Argon, Carbon, Fable, etc.)
-    "argon", "helium", "neon", "krypton", "xenon", "radon",
-    "carbon", "lithium", "beryllium", "boron", "nitrogen", "oxygen", "silicon", "cobalt", "titanium",
+    # Family code-names, noble gases, periodic table elements & series (Hydrogen, Argon, Carbon, Fable, etc.)
+    "hydrogen", "argon", "helium", "neon", "krypton", "xenon", "radon",
+    "carbon", "lithium", "beryllium", "boron", "nitrogen", "oxygen", "fluorine", "sodium", "magnesium",
+    "aluminum", "silicon", "phosphorus", "sulfur", "chlorine", "cobalt", "titanium", "zirconium",
     "fable", "opus", "sonnet", "haiku", "mythos", "fennec", "capybara", "orion", "strawberry", "behemoth",
     "astra", "sol", "luna", "terra", "sunburst", "flare", "daybreak", "rosalind", "heisenberg", "glacier", "arcanine",
     "blue", "red", "translate",
@@ -415,7 +416,7 @@ def infer_family_title(model_ids: List[str]) -> str:
 def infer_provider(model_id: str) -> Dict[str, str]:
     """Return provider metadata (name, slug, accent color) for a model ID."""
     mid = model_id.lower()
-    if mid.startswith(("gemini", "lyria", "veo", "imagen", "gemma", "google/", "google-", "carbon-", "barium-", "argon-", "alphafold", "alphagenome", "medlm")):
+    if mid.startswith(("gemini", "lyria", "veo", "imagen", "gemma", "google/", "google-", "hydrogen-", "carbon-", "barium-", "argon-", "alphafold", "alphagenome", "medlm")):
         return {"name": "GOOGLE", "slug": "google", "color": "#38bdf8"}
     if mid.startswith(("claude", "anthropic/", "anthropic-", "sonnet-", "opus-", "haiku-", "fable-", "mythos-")):
         return {"name": "ANTHROPIC", "slug": "anthropic", "color": "#f97316"}

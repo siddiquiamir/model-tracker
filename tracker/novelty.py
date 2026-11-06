@@ -51,7 +51,7 @@ GENERIC_TOKENS: Set[str] = VARIANT_TOKENS | {
     "image", "images", "imagine", "vision", "audio", "voice", "video", "realtime", "live", "tts", "stt",
     "asr", "omni", "embedding", "embed", "rerank", "search", "deep", "research", "code", "coder", "codex",
     "agent", "computer", "use", "tools", "tool", "vl", "next", "edit", "mode", "native", "model", "models",
-    "open", "oss", "next", "release", "staging", "internal", "test", "eval", "evals", "dev", "prod",
+    "open", "oss", "next", "release", "staging", "internal", "test", "eval", "evals", "dev", "prod", "checkpoint", "ckpt",
     "global", "us", "eu", "au", "apac", "jp", "regional", "version", "new", "final", "response",
     "concise", "visibles", "permissive", "disabled", "enabled", "cyber", "safety", "teamfood",
     "introducing", "with", "and", "for", "the", "bon", "le", "dense", "moe", "sparse", "distill",
