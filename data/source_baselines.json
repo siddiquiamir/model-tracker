@@ -4123,6 +4123,7 @@
     "llmgateway-providers/sakana/fugu-max",
     "llmgateway-providers/sakana/fugu-ultra",
     "llmgateway-providers/sakana/fugu-ultra-v2.0",
+    "llmgateway-providers/sciforium/deepseek-v4.1-flash-1017",
     "llmgateway-providers/scx-ai-gp/deepseek-v4.1-flash",
     "llmgateway-providers/scx-ai-gp/glm-5.2",
     "llmgateway-providers/scx-ai-gp/glm-5.2-fast",
@@ -4169,7 +4170,6 @@
     "llmgateway-providers/together-ai/glm-5.3-flash",
     "llmgateway-providers/together-ai/gpt-oss-120b",
     "llmgateway-providers/together-ai/kimi-k3",
-    "llmgateway-providers/together-ai/minimax-m3",
     "llmgateway-providers/together-ai/minimax-m3.1-flash",
     "llmgateway-providers/together-ai/muse-glimmer-30b",
     "llmgateway-providers/vertex-anthropic/claude-haiku-4-5",
@@ -8089,6 +8089,7 @@
     "venice/deepseek-v3.2",
     "venice/deepseek-v4-1-flash",
     "venice/deepseek-v4-1-flash-1017",
+    "venice/deepseek-v4-1-flash-1017-ultrafast",
     "venice/deepseek-v4-1-flash-1017-uncensored",
     "venice/deepseek-v4-1-flash-uncensored",
     "venice/deepseek-v4-flash",
@@ -14018,6 +14019,7 @@
     "deepseek-v3.2-exp-thinking",
     "deepseek-v3.2-maas",
     "deepseek-v3.2-speciale",
+    "deepseek-v4-1-flash-1017-ultrafast",
     "deepseek-v4-1-flash-1017-uncensored",
     "deepseek-v4-1-flash-uncensored",
     "deepseek-v4-flash-latest",
@@ -20520,17 +20522,6 @@
     "claude-sonnet-5-5"
   ],
   "npm_binary_models": {
-    "@anthropic-ai/claude-code-linux-x64@2.1.312": [
-      "claude-fable-5",
-      "claude-fable-5-1",
-      "claude-haiku-5-5",
-      "claude-mythos-5",
-      "claude-mythos-5-1",
-      "claude-opus-5",
-      "claude-opus-5-5",
-      "claude-sonnet-5",
-      "claude-sonnet-5-5"
-    ],
     "@anthropic-ai/claude-code-linux-x64@2.1.314": [
       "claude-fable-5",
       "claude-fable-5-1",
@@ -20576,6 +20567,17 @@
       "claude-sonnet-5-5"
     ],
     "@anthropic-ai/claude-code-linux-x64@2.1.318": [
+      "claude-fable-5",
+      "claude-fable-5-1",
+      "claude-haiku-5-5",
+      "claude-mythos-5",
+      "claude-mythos-5-1",
+      "claude-opus-5",
+      "claude-opus-5-5",
+      "claude-sonnet-5",
+      "claude-sonnet-5-5"
+    ],
+    "@anthropic-ai/claude-code-linux-x64@2.1.319": [
       "claude-fable-5",
       "claude-fable-5-1",
       "claude-haiku-5-5",
@@ -21897,8 +21899,6 @@
   "copilot_cli_release_models": [],
   "engine_seen_prs": {
     "vllm-project/vllm": [
-      65788,
-      65789,
       65790,
       65791,
       65792,
@@ -22096,11 +22096,11 @@
       66016,
       66017,
       66018,
-      66019
+      66019,
+      66020,
+      66021
     ],
     "sgl-project/sglang": [
-      48540,
-      48541,
       48542,
       48543,
       48544,
@@ -22298,7 +22298,9 @@
       48759,
       48760,
       48761,
-      48762
+      48762,
+      48763,
+      48764
     ],
     "NVIDIA/TensorRT-LLM": [
       21546,
