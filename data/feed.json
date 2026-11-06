@@ -1,16 +1,56 @@
 {
-  "generated_at": "2026-11-06T18:00:56.266787+00:00",
+  "generated_at": "2026-11-06T18:08:56.557499+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 130,
-    "leaks": 31,
+    "stories": 131,
+    "leaks": 32,
     "releases": 88,
-    "stories_24h": 12,
-    "sources_ok": 11,
-    "total_cards": 206,
-    "new_in_this_scan": 0
+    "stories_24h": 13,
+    "sources_ok": 12,
+    "total_cards": 207,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-gemma-4parser",
+      "group": "gemma-4parser",
+      "kind": "leak",
+      "open_weights": true,
+      "title": "Gemma4Parser",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "accent_color": "#38bdf8",
+      "detected_at": "2026-11-06T18:08:28Z",
+      "updated_at": "2026-11-06T18:08:28Z",
+      "first_source": "Ollama pull request",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Gemma4Parser",
+          "name": "Gemma4Parser"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Ollama pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-11-06T18:08:28Z",
+          "title": "Gemma4Parser (Ollama PR #19574)",
+          "url": "https://github.com/ollama/ollama/pull/19574",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · GOOGLE",
+      "card_ids": [
+        "engine-pr-ollama_ollama-19574"
+      ],
+      "x_post_text": "🟠 LEAK: Gemma4Parser by Google\n\nFirst detected 06 Nov 18:08 UTC in Ollama pull request\n\nvia @StatsWire"
+    },
     {
       "id": "story-parallel-decisions",
       "group": "parallel-decisions",
@@ -6065,6 +6105,37 @@
     }
   ],
   "cards": [
+    {
+      "id": "engine-pr-ollama_ollama-19574",
+      "category": "open-source",
+      "scanner": "engine-pr-leak",
+      "header": "OLLAMA PR DAY-0 MODEL ONBOARDING (OPEN)",
+      "title": "Gemma4Parser (Ollama PR #19574)",
+      "subtitle": "model/parsers: drop stray <channel|> close tags in Gemma4Parser (#18288)",
+      "build_label": "Ollama PR",
+      "build_transition": "PR #19574 (open)",
+      "models": [
+        {
+          "id": "Gemma4Parser",
+          "name": "Gemma4Parser"
+        }
+      ],
+      "evidence": "ollama/ollama/pull/19574",
+      "source_text": "public GitHub pull request #19574 on ollama/ollama.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "ollama/ollama PR #19574",
+          "url": "https://github.com/ollama/ollama/pull/19574"
+        }
+      ],
+      "detected_at": "2026-11-06T18:08:28Z",
+      "x_post_text": "🚨 OLLAMA PR DAY-0 MODEL ONBOARDING (OPEN)\nGemma4Parser (Ollama PR #19574) spotted in Ollama PR PR #19574 (open)!\n\n• Gemma4Parser (Gemma4Parser)\n\nEvidence: ollama/ollama/pull/19574\nSource: public GitHub pull request #19574 on ollama/ollama.\n\nTracked by @StatsWire"
+    },
     {
       "id": "vercel-gateway-diff-e6ea0adf",
       "category": "cli-sdk-diff",
