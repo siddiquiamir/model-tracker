@@ -72,7 +72,7 @@ _EMBEDDED_YEAR_MONTH_RE = re.compile(
     r"(?:^|(?<=[-_./]))(202\d)-(0[1-9]|1[0-2])(?=$|[-_.:/])"
 )
 _PREFIX_PATH = re.compile(r"^(?:[a-z0-9_-]+/)+")
-_DOTTED_VENDOR = re.compile(r"^(?:[a-z]+\.)+(?=[a-z])")
+_DOTTED_VENDOR = re.compile(r"^(?:(?:us-gov|us|eu|global|apac|jp|au|[a-z]+)\.)+(?=[a-z])")
 
 
 def extract_embedded_date(raw: str) -> Optional[str]:

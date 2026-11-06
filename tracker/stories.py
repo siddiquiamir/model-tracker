@@ -308,6 +308,12 @@ def _make_story(
                 provider_slug, provider_name = slug, PROVIDER_NAMES.get(slug, org)
             elif org:
                 provider_name = ORG_NAMES.get(org, org)
+        if not provider_name and models:
+            m0 = str(models[0].get("id") or "").lower()
+            m_dot = re.match(r"^(?:us-gov|us|eu|global|apac|jp|au)\.([a-z0-9-]+)\.", m0)
+            if m_dot:
+                v_slug = {"xai": "xai", "anthropic": "anthropic", "meta": "meta", "mistral": "mistral", "deepseek": "deepseek", "qwen": "qwen", "amazon": "amazon", "cohere": "cohere"}.get(m_dot.group(1), "amazon")
+                provider_slug, provider_name = v_slug, PROVIDER_NAMES.get(v_slug, "AWS Bedrock")
 
     # Display name: the most-used clean catalog name that maps back to this story
     names: Counter = Counter()

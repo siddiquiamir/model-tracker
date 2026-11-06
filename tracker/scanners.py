@@ -36,7 +36,7 @@ ANTIGRAVITY_GCS_BASE = "https://storage.googleapis.com/antigravity-public"
 ANTIGRAVITY_INSIDERS_YML = f"{ANTIGRAVITY_GCS_BASE}/insiders/latest-x64-linux.yml"
 
 _VENDOR_PREFIX_RE = re.compile(
-    r"^(?:(?:us|eu|global|apac)\.)?(?:anthropic\.|meta\.|mistral\.|amazon\.|cohere\.|ai21\.|xai\.|zai-|zhipu-|thudm-|moonshot-|minimax-|qwen-|deepseek-)"
+    r"^(?:(?:us-gov|us|eu|global|apac)\.)?(?:anthropic\.|meta\.|mistral\.|amazon\.|cohere\.|ai21\.|xai\.|zai-|zhipu-|thudm-|moonshot-|minimax-|qwen-|deepseek-)"
 )
 
 
@@ -2986,6 +2986,8 @@ class HighAlphaLeakChannelsScanner:
 
                     candidates: List[str] = []
                     for m in self.PR_HF_SLUG_RE.findall(combined):
+                        if m.lower() == repo.lower():
+                            continue
                         tail = m.split("/")[-1]
                         if (
                             not is_legacy_model_id(tail)
