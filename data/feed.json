@@ -1,16 +1,56 @@
 {
-  "generated_at": "2026-11-06T22:17:15.458138+00:00",
+  "generated_at": "2026-11-06T22:33:15.966016+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 135,
-    "leaks": 34,
+    "stories": 136,
+    "leaks": 35,
     "releases": 90,
-    "stories_24h": 14,
+    "stories_24h": 15,
     "sources_ok": 11,
-    "total_cards": 211,
-    "new_in_this_scan": 0
+    "total_cards": 212,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-kimik-31forconditionalgeneration",
+      "group": "kimik-31forconditionalgeneration",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "KimiK31ForConditionalGeneration",
+      "provider_slug": "opensource",
+      "provider_name": "Architecture Diff",
+      "accent_color": "#8b5cf6",
+      "detected_at": "2026-11-06T22:33:26.651143+00:00",
+      "updated_at": "2026-11-06T22:33:26.651143+00:00",
+      "first_source": "vLLM registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "KimiK31ForConditionalGeneration",
+          "name": "KimiK31ForConditionalGeneration"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM registry",
+          "scanner": "vllm-registry",
+          "detected_at": "2026-11-06T22:33:26.651143+00:00",
+          "title": "New Engine Architecture: KimiK31ForConditionalGeneration",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · ARCHITECTURE DIFF",
+      "card_ids": [
+        "vllm-arch-060d2cd694"
+      ],
+      "x_post_text": "🟠 LEAK: KimiK31ForConditionalGeneration by Architecture Diff\n\nFirst detected 06 Nov 22:33 UTC in vLLM registry\n\nvia @StatsWire"
+    },
     {
       "id": "story-gemini-robotics",
       "group": "gemini-robotics",
@@ -2321,7 +2361,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "2026-09-10",
-      "pricing": "$0.1092 / $1.20 per 1M tokens ($0.006 cached)",
+      "pricing": "$0.50 / $1.50 per 1M tokens ($0.13 cached)",
       "codenames": [],
       "models": [
         {
@@ -2345,7 +2385,7 @@
       "card_ids": [
         "hf-nvidia_DeepSeek-V4.1-Flash-1017-NVFP4"
       ],
-      "x_post_text": "🟢 NEW MODEL: DeepSeek V4.1 Flash 1017 by NVIDIA\n\nFirst detected 30 Oct 20:08 UTC in Hugging Face\n📅 First released: 2026-09-10\n💰 Pricing: $0.1092 / $1.20 per 1M tokens ($0.006 cached)\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: DeepSeek V4.1 Flash 1017 by NVIDIA\n\nFirst detected 30 Oct 20:08 UTC in Hugging Face\n📅 First released: 2026-09-10\n💰 Pricing: $0.50 / $1.50 per 1M tokens ($0.13 cached)\n\nvia @StatsWire"
     },
     {
       "id": "story-rfd-4-proteina",
@@ -2960,7 +3000,7 @@
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "2026-09-30",
-      "pricing": "$0.70 / $2.10 per 1M tokens ($0.07 cached)",
+      "pricing": "$0.68 / $2.09 per 1M tokens ($0.07 cached)",
       "codenames": [],
       "models": [
         {
@@ -2999,7 +3039,7 @@
         "hf-mistralai_Mistral-Large-4-1T-A52B",
         "engine-pr-vllm-project_vllm-64534"
       ],
-      "x_post_text": "🟢 NEW MODEL: Mistral Large 4 1T by Mistral\n\nFirst detected 29 Oct 14:11 UTC in Hugging Face\n📅 First released: 2026-09-30\n💰 Pricing: $0.70 / $2.10 per 1M tokens ($0.07 cached)\nConfirmed by vLLM pull request\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Mistral Large 4 1T by Mistral\n\nFirst detected 29 Oct 14:11 UTC in Hugging Face\n📅 First released: 2026-09-30\n💰 Pricing: $0.68 / $2.09 per 1M tokens ($0.07 cached)\nConfirmed by vLLM pull request\n\nvia @StatsWire"
     },
     {
       "id": "story-mingv-3asrforconditionalgeneration",
@@ -6271,6 +6311,41 @@
     }
   ],
   "cards": [
+    {
+      "id": "vllm-arch-060d2cd694",
+      "category": "open-source",
+      "scanner": "vllm-registry",
+      "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
+      "title": "New Engine Architecture: KimiK31ForConditionalGeneration",
+      "subtitle": "New model_executor/models/registry.py architecture declarations",
+      "build_label": "Registry File",
+      "build_transition": "vllm/model_executor/models/registry.py",
+      "models": [
+        {
+          "id": "KimiK31ForConditionalGeneration",
+          "name": "KimiK31ForConditionalGeneration"
+        }
+      ],
+      "evidence": "vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+      "source_text": "official vLLM model architecture registry.",
+      "disclaimer_1": "Tracks only model architecture class registrations in registry.py.",
+      "disclaimer_2": "Open-source labs register their architecture classes here prior to weight drops.",
+      "provider_name": "VLLM REGISTRY",
+      "provider_slug": "opensource",
+      "accent_color": "#8b5cf6",
+      "links": [
+        {
+          "label": "vLLM registry.py",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py"
+        },
+        {
+          "label": "Supported Models Docs",
+          "url": "https://docs.vllm.ai/en/latest/models/supported_models.html"
+        }
+      ],
+      "detected_at": "2026-11-06T22:33:26.651143+00:00",
+      "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: KimiK31ForConditionalGeneration spotted in Registry File vllm/model_executor/models/registry.py!\n\n• KimiK31ForConditionalGeneration (KimiK31ForConditionalGeneration)\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM model architecture registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "web-bundle-aistudio-models-e3d81658",
       "category": "cli-sdk-diff",
