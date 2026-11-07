@@ -166,12 +166,12 @@ def parse_anthropic_pricing_md(txt: str) -> Dict[str, str]:
         cells = [c.strip() for c in line.strip("|").split("|")]
         if len(cells) < 6 or cells[0].lower().startswith("model") or set(cells[0]) <= {"-", ":", " "}:
             continue
-        if "retired" in cells[0].lower():
+        if "retired" in cells[0].lower() or "limited availability" in cells[0].lower():
             continue
         m_name = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", cells[0])
         m_name = re.sub(r"\s*\([^)]*\)", "", m_name).strip()
         slug = re.sub(r"[^a-z0-9.]+", "-", m_name.lower()).strip("-")
-        if not slug.startswith("claude-") or is_legacy_model_id(slug):
+        if not slug.startswith("claude-") or is_legacy_model_id(slug) or slug.startswith(("claude-mythos", "claude-fable")):
             continue
         inp_v = _clean_price_token(cells[1])
         cac_v = _clean_price_token(cells[4])
@@ -211,6 +211,9 @@ def parse_xai_pricing_md(txt: str) -> Dict[str, str]:
     return out
 
 
+EXCLUDED_PRICING_PREFIXES = ("claude-mythos", "claude-fable")
+
+
 class PricingCatalog:
     """Lookup table mapping normalized/raw model IDs to formatted pricing strings."""
 
@@ -221,15 +224,18 @@ class PricingCatalog:
         if not raw_id:
             return ""
         raw_clean = raw_id.strip().lower()
+        tail = raw_clean.split("/")[-1].split(":")[0].split("@")[0]
+        norm = normalize(raw_id)
+        base = strip_variants(norm)
+        for cand in (raw_clean, tail, norm, base):
+            if any(cand.startswith(p) for p in EXCLUDED_PRICING_PREFIXES):
+                return ""
         if raw_clean in self.by_key:
             return self.by_key[raw_clean]
-        tail = raw_clean.split("/")[-1].split(":")[0].split("@")[0]
         if tail in self.by_key:
             return self.by_key[tail]
-        norm = normalize(raw_id)
         if norm in self.by_key:
             return self.by_key[norm]
-        base = strip_variants(norm)
         if base in self.by_key:
             return self.by_key[base]
         return ""
@@ -265,6 +271,8 @@ def get_pricing_catalog(force_refresh: bool = False) -> PricingCatalog:
         k_raw = mid.strip().lower()
         k_tail = k_raw.split("/")[-1].split(":")[0].split("@")[0]
         k_norm = normalize(mid)
+        if any(k.startswith(p) for k in (k_raw, k_tail, k_norm) for p in EXCLUDED_PRICING_PREFIXES):
+            return
         for k in (k_raw, k_tail, k_norm):
             if k and (overwrite or k not in by_key):
                 by_key[k] = price_str
@@ -488,6 +496,8 @@ def enrich_cards_with_pricing(cards: Iterable[Dict[str, Any]], catalog: Optional
     """Attach pricing to every model entry and top-level card in place when available."""
     catalog = catalog or get_pricing_catalog()
     for card in cards:
+        if card.get("scanner") in ("ide-build-diff", "engine-pr-leak") or card.get("category") == "desktop-diff":
+            continue
         card_prices: List[str] = []
         for m in card.get("models") or []:
             mid = str(m.get("id") or "")
