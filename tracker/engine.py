@@ -39,6 +39,8 @@ RETIRED_CARD_IDS: Set[str] = {
     "docs-diff-gcp-vertex-versions-d86bce0d",
     "engine-pr-sgl-project_sglang-46514",
     "engine-pr-sgl-project_sglang-46546",
+    "arena-ckpt-swap-700ebed5a4",
+    "web-bundle-aistudio-models-e3d81658",
 }
 
 # Scanners that re-emit their complete card set on every successful run (previous cards are replaced, not retained)

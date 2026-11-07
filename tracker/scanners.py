@@ -20,6 +20,7 @@ import zlib
 
 from tracker.extractor import (
     CACHE_DIR,
+    EXCLUDED_EXACT,
     clean_go_model_id,
     extract_models_from_bytes,
     extract_models_from_text,
@@ -30,6 +31,7 @@ from tracker.extractor import (
     infer_provider,
     is_legacy_model_id,
 )
+from tracker.novelty import get_catalog, normalize, strip_variants
 
 ANTIGRAVITY_RELEASES_URL = "https://antigravity-hub-auto-updater-974169037036.us-central1.run.app/releases"
 ANTIGRAVITY_GCS_BASE = "https://storage.googleapis.com/antigravity-public"
@@ -2630,6 +2632,21 @@ class LmArenaScanner:
             # Channel 2: Silent RFC 9562 UUIDv7 checkpoint hot-swaps & disguised RSC environment/canary checkpoints
             if prev_keys:
                 fresh_ckpts: Dict[str, Dict[str, Any]] = {}
+                prev_base_map: Dict[str, List[str]] = {}
+                for pk in prev_keys:
+                    bk = strip_variants(normalize(pk))
+                    if bk:
+                        prev_base_map.setdefault(bk, []).append(pk)
+                release_catalog = get_catalog()
+                disguised_min_cutoff = (now_dt - timedelta(days=30)).strftime("%Y-%m-%d")
+                ignored_onboarding_uuids: Set[str] = set()
+
+                def _is_disguised_old_slot(slot_name: str) -> bool:
+                    base_k = strip_variants(normalize(slot_name))
+                    if base_k and prev_base_map.get(base_k):
+                        return True
+                    rel_hit = release_catalog.released_on(slot_name) if release_catalog is not None else None
+                    return bool(rel_hit and rel_hit[0] < disguised_min_cutoff)
 
                 # 2a. Existing publicName (or newly added old-slug alias like 'gemini-3.8-flash') receiving a fresh UUIDv7
                 for pub_name, obs_pairs in observed_by_pub.items():
@@ -2649,12 +2666,26 @@ class LmArenaScanner:
                     # is a genuine new checkpoint, even if a sibling checkpoint minted seconds later was tested first!
                     max_window_ms = (14 if pub_name in prev_keys else 7) * 86_400_000
 
+                    slot_candidates: List[Tuple[str, str, int]] = []
+                    seen_slot_u: Set[str] = set()
                     for obs_route, uid in obs_pairs:
-                        if uid in known_uuidv7s or uid in emitted_scout_uuids or uid in fresh_ckpts:
+                        if uid in known_uuidv7s or uid in emitted_scout_uuids or uid in fresh_ckpts or uid in seen_slot_u:
                             continue
                         u_ms = self._decode_uuidv7_ms(uid)
                         if u_ms is None or (now_ms - u_ms) > max_window_ms or u_ms > now_ms + 3_600_000:
                             continue
+                        seen_slot_u.add(uid)
+                        slot_candidates.append((obs_route, uid, u_ms))
+                    if not slot_candidates:
+                        continue
+
+                    # Skip routine first-time Arena onboarding of a newly launched public model (e.g. already in
+                    # litellm_keys from yesterday's release, single initial UUIDv7, no prior Arena slot/sibling).
+                    if pub_name not in prev_keys and len(slot_candidates) == 1 and not _is_disguised_old_slot(pub_name):
+                        ignored_onboarding_uuids.update(uid for _, uid, _ in slot_candidates)
+                        continue
+
+                    for obs_route, uid, u_ms in slot_candidates:
                         fresh_ckpts[uid] = {
                             "uuid": uid,
                             "mint_ms": u_ms,
@@ -2670,11 +2701,27 @@ class LmArenaScanner:
                         }
 
                 # 2b. Hidden / environment / canary checkpoints in RSC stream outside standard initialModels
+                hidden_host_counts: Dict[str, int] = {}
                 for uid, hc in hidden_rsc_hits.items():
-                    if uid in known_uuidv7s or uid in emitted_scout_uuids or uid in fresh_ckpts:
+                    if uid in known_uuidv7s or uid in emitted_scout_uuids or uid in ignored_onboarding_uuids or uid in fresh_ckpts:
+                        continue
+                    hn = str(hc.get("host_name") or "").strip()
+                    if hn:
+                        hidden_host_counts[hn] = hidden_host_counts.get(hn, 0) + 1
+
+                for uid, hc in hidden_rsc_hits.items():
+                    if uid in known_uuidv7s or uid in emitted_scout_uuids or uid in ignored_onboarding_uuids or uid in fresh_ckpts:
                         continue
                     host_name = str(hc.get("host_name") or "").strip()
                     if host_name and is_legacy_model_id(host_name):
+                        continue
+                    if (
+                        host_name
+                        and host_name not in prev_keys
+                        and _canonical_model_slug(host_name) in already_known_canon
+                        and hidden_host_counts.get(host_name, 0) == 1
+                        and not _is_disguised_old_slot(host_name)
+                    ):
                         continue
                     prev_entry = prev_map.get(host_name) or {}
                     prev_uid = str(prev_entry.get("model_id") or "").strip().lower()
@@ -2710,15 +2757,23 @@ class LmArenaScanner:
                     prov_name, prov_slug, accent_col = self._arena_provider_meta(org_raw, host_raw or fam_key)
                     any_code = any(x["route"] == "code" or x["host_name"].startswith("fe-") for x in grp)
                     arena_surface = "Arena Code (/code)" if any_code else "arena.ai"
+                    has_prev_swap = any(bool(x.get("prev_uuid")) or x.get("discovery_kind") == "swap" for x in grp)
 
                     if host_raw:
                         distinct_hosts = list(dict.fromkeys(x["host_name"] for x in grp if x["host_name"]))
                         display_host = distinct_hosts[0] if len(distinct_hosts) == 1 else fam_key
-                        if len(grp) > 1:
-                            title = f"Silent Arena Checkpoint Swap Under {display_host} ({len(grp)} New UUIDv7s)"
+                        if has_prev_swap:
+                            if len(grp) > 1:
+                                title = f"Silent Arena Checkpoint Swap Under {display_host} ({len(grp)} New UUIDv7s)"
+                            else:
+                                title = f"Silent Arena Checkpoint Swap Under {display_host} ({first_item['uuid'][:8]})"
+                            header_prefix = "ARENA.AI SILENT CHECKPOINT SWAP"
+                        elif len(grp) > 1:
+                            title = f"Parallel Arena A/B Checkpoints Under {display_host} ({len(grp)} New UUIDv7s)"
+                            header_prefix = "ARENA.AI PARALLEL CHECKPOINTS"
                         else:
-                            title = f"Silent Arena Checkpoint Swap Under {display_host} ({first_item['uuid'][:8]})"
-                        header_prefix = "ARENA.AI SILENT CHECKPOINT SWAP"
+                            title = f"Stealth Arena Checkpoint Under {display_host} ({first_item['uuid'][:8]})"
+                            header_prefix = "ARENA.AI STEALTH CHECKPOINT"
                     else:
                         display_host = ""
                         title = (
@@ -3714,7 +3769,7 @@ class HighAlphaLeakChannelsScanner:
         generic_buckets = {
             "gemini", "google", "imagen", "veo", "lyria", "transcribe",
             "gemini-2.0", "gemini-3", "id", ":id",
-        }
+        } | EXCLUDED_EXACT
 
         model_labels: Dict[str, str] = {}
 
@@ -3728,8 +3783,8 @@ class HighAlphaLeakChannelsScanner:
                 if clean not in generic_buckets:
                     model_labels[clean] = f"{humanize_model_id(clean)} (Mendel #{flag_id})"
 
-            # 2. Explicit models/<slug> references inside MakerSuite
-            for mslug in re.findall(r'\bmodels/([a-zA-Z0-9][a-zA-Z0-9._-]{2,55})\b', js):
+            # 2. Explicit models/<slug> references inside MakerSuite (excluding .startsWith("models/...") family prefixes)
+            for mslug in re.findall(r'(?<!startsWith\(")\bmodels/([a-zA-Z0-9][a-zA-Z0-9._-]{2,55})\b', js):
                 clean = mslug.strip().lower()
                 if clean in generic_buckets:
                     continue
