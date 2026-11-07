@@ -6,6 +6,7 @@ from datetime import datetime, timedelta, timezone
 import json
 import os
 import pathlib
+import re
 import time
 from typing import Any, Dict, List, Set
 
@@ -222,6 +223,12 @@ class TrackerEngine:
             cid = card["id"]
             if cid in RETIRED_CARD_IDS or _is_retired_card(card):
                 continue
+            if card.get("scanner") == "ide-build-diff" and card.get("models"):
+                card["models"] = [
+                    m for m in card["models"] if not re.search(r"\.[a-z]", str(m.get("id", "")), re.I)
+                ]
+                if not card["models"]:
+                    continue
             models_sig = ",".join(sorted(m.get("id", "") for m in card.get("models", [])))
             content_key = f"{card.get('scanner')}|{card.get('header')}|{models_sig}"
             if cid in seen_card_keys or content_key in seen_card_keys:

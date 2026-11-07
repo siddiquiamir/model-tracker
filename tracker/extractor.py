@@ -30,6 +30,7 @@ VALID_MODEL_TOKENS: Set[str] = {
     "carbon", "lithium", "beryllium", "boron", "nitrogen", "oxygen", "fluorine", "sodium", "magnesium",
     "aluminum", "silicon", "phosphorus", "sulfur", "chlorine", "cobalt", "titanium", "zirconium",
     "fable", "opus", "sonnet", "haiku", "mythos", "fennec", "capybara", "orion", "strawberry", "behemoth",
+    "donut", "onigiri", "odango", "honeycomb", "marshmallow", "melon", "eap",
     "astra", "sol", "luna", "terra", "sunburst", "flare", "daybreak", "rosalind", "heisenberg", "glacier", "arcanine",
     "blue", "red", "translate",
     "aurora", "vega", "stella", "eclipse", "sirius", "hyperion", "titan", "atlas",
@@ -176,10 +177,11 @@ def clean_go_model_id(raw: str, allow_unknown_tail: bool = False) -> str:
             return ""
     elif prefix == "claude":
         has_version_after = len(parts) >= 3 and bool(re.fullmatch(r"[0-9]+(?:\.[0-9]+)?", parts[2]))
+        has_eap_after = len(parts) >= 3 and parts[2].lower().startswith("eap")
         if (
             second not in VALID_MODEL_TOKENS
             and not re.fullmatch(r"[0-9]+(?:\.[0-9]+)?", second)
-            and not (has_version_after and re.fullmatch(r"[a-z]{3,12}", second))
+            and not ((has_version_after or has_eap_after) and re.fullmatch(r"[a-z]{3,14}", second))
         ):
             return ""
     elif prefix == "gpt":
@@ -249,7 +251,7 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
     split_lookahead = (
         r"(?=(?:"
         r"gemini-[0-9a-z]|"
-        r"claude-(?:opus|sonnet|haiku|fable|mythos|[a-z]{3,10}-[0-9])|"
+        r"claude-(?:opus|sonnet|haiku|fable|mythos|[a-z]{3,14}-(?:[0-9]|eap\b))|"
         r"gpt-(?:[56789]|oss|image|audio|realtime|live|daybreak|rosalind|aurora)|"
         r"o[56789]-(?:mini|preview|pro|high|low|medium)|"
         r"grok-(?:[3456789]|imagine|voice|build)|"
@@ -264,7 +266,7 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
         r"imagen-[345]|"
         r"mai-(?:code|[234])|"
         r"astra-cyber|"
-        r"fable-[567]|"
+        r"(?<!claude-)fable-[567]|"
         r"composer-[2345]|"
         r"muse-(?:spark|wonder)|"
         r"swe-[23]"
@@ -275,7 +277,7 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
     raw_pattern = re.compile(
         r"((?:"
         r"gemini-[0-9a-z][a-z0-9._-]{1,42}|"
-        r"claude-(?:opus|sonnet|haiku|fable|mythos|[a-z]{3,10})-[0-9a-z][a-z0-9._-]{0,38}|"
+        r"claude-(?:opus|sonnet|haiku|fable|mythos|[a-z]{3,14})-[0-9a-z][a-z0-9._-]{0,38}|"
         r"gpt-(?:[56789]|oss|image|audio|realtime|live|daybreak|rosalind|aurora)[a-z0-9._-]{0,35}|"
         r"o[56789]-(?:mini|preview|pro)[a-z0-9._-]{0,25}|"
         r"grok-(?:[3456789]|imagine|voice|build)[a-z0-9._-]{0,30}|"
@@ -326,7 +328,7 @@ def extract_models_from_text(text: str) -> Set[str]:
     models: Set[str] = set()
     for m in _TEXT_MODEL_RE.finditer(text):
         mid = m.group(1).rstrip(".-_")
-        if _TEXT_FILE_SUFFIX_RE.search(mid) or not any(ch.isdigit() for ch in mid):
+        if _TEXT_FILE_SUFFIX_RE.search(mid) or (not any(ch.isdigit() for ch in mid) and not mid.endswith("-eap")):
             continue
         if mid in EXCLUDED_EXACT or len(mid) < 5 or is_legacy_model_id(mid):
             continue
@@ -383,6 +385,7 @@ def humanize_model_id(model_id: str) -> str:
         "di": "DI",
         "v7": "v7",
         "acp": "ACP",
+        "eap": "EAP",
         "mai": "MAI",
         "swe": "SWE",
     }

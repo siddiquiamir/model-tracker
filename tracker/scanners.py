@@ -3084,6 +3084,8 @@ class HighAlphaLeakChannelsScanner:
         ("stable", "https://windsurf-stable.codeium.com/api/update/linux-x64/stable/latest"),
         ("next", "https://windsurf-stable.codeium.com/api/update/linux-x64/next/latest"),
     ]
+    DEVIN_CLI_MANIFEST_URL = "https://static.devin.ai/cli/current/manifest.json"
+    DEVIN_CLI_CASK_URL = "https://raw.githubusercontent.com/Homebrew/homebrew-cask/master/Casks/d/devin-cli.rb"
 
     ENGINE_PR_REPOS = [
         ("vllm-project/vllm", "vLLM PR"),
@@ -3094,21 +3096,40 @@ class HighAlphaLeakChannelsScanner:
         ("ollama/ollama", "Ollama PR"),
     ]
 
+    _IDE_RODATA_SPLIT_RE = re.compile(
+        rb"(?=(?:"
+        rb"claude-(?:opus|sonnet|haiku|fable|mythos|donut|onigiri|odango|honeycomb|marshmallow|melon|[a-z]{3,14}-(?:[0-9]|eap\b))|"
+        rb"(?<!claude-)fable-[567](?:[.-][0-9]+)?|"
+        rb"composer-[2345](?:[.-][0-9]+)?|"
+        rb"gpt-(?:[56789]|daybreak|rosalind|aurora)|"
+        rb"astra-cyber|"
+        rb"gemini-[345][.-][0-9a-z]|"
+        rb"grok-[456][.-]|"
+        rb"kimi-k[234]|"
+        rb"deepseek-(?:v[456]|r[234])|"
+        rb"glm-[567]|"
+        rb"minimax-m[345]|"
+        rb"mai-(?:code|[234])|"
+        rb"swe-[23]-(?:lightning|mini|medium|high|max|pro)"
+        rb"))"
+    )
+
     IDE_BUNDLE_MODEL_RE = re.compile(
         rb"\b("
-        rb"claude-(?:opus|sonnet|haiku|fable|mythos)-[0-9a-z][a-z0-9._-]{0,30}|"
-        rb"fable-[567](?:[.-][0-9]+)?(?:-[a-z0-9._-]+)?|"
+        rb"claude-(?:opus|sonnet|haiku|fable|mythos)-(?:[0-9a-z]|(?:\.[0-9]+|[a-z0-9_-])){1,30}|"
+        rb"claude-[a-z]{3,14}-eap(?:-[a-z0-9_-]{1,16})?|"
+        rb"fable-[567](?:[.-][0-9]+)?(?:-(?:[a-z0-9_-]|\.[0-9]+)+)?|"
         rb"composer-[2345](?:[.-][0-9]+)?(?:-(?:fast|mini|pro|max|thinking|high))?|"
-        rb"gpt-(?:[56789]|daybreak|rosalind|aurora)[a-z0-9._-]{0,28}|"
-        rb"astra-cyber[a-z0-9._-]{0,22}|"
-        rb"gemini-[345][a-z0-9._-]{1,32}|"
-        rb"grok-[456][a-z0-9._-]{0,25}|"
-        rb"kimi-k[234][a-z0-9._-]{0,25}|"
-        rb"deepseek-(?:v[456]|r[234])[a-z0-9._-]{0,25}|"
-        rb"glm-[567][a-z0-9._-]{0,22}|"
-        rb"minimax-m[345][a-z0-9._-]{0,22}|"
-        rb"mai-(?:code|[234])[a-z0-9._-]{0,22}|"
-        rb"swe-[23]-(?:lightning|mini|medium|high|max|pro)[a-z0-9._-]{0,20}"
+        rb"gpt-(?:[56789]|daybreak|rosalind|aurora)(?:\.[0-9]+|[a-z0-9_-]){0,28}|"
+        rb"astra-cyber(?:\.[0-9]+|[a-z0-9_-]){0,22}|"
+        rb"gemini-[345](?:\.[0-9]+|[a-z0-9_-]){1,32}|"
+        rb"grok-[456](?:\.[0-9]+|[a-z0-9_-]){0,25}|"
+        rb"kimi-k[234](?:\.[0-9]+|[a-z0-9_-]){0,25}|"
+        rb"deepseek-(?:v[456]|r[234])(?:\.[0-9]+|[a-z0-9_-]){0,25}|"
+        rb"glm-[567](?:\.[0-9]+|[a-z0-9_-]){0,22}|"
+        rb"minimax-m[345](?:\.[0-9]+|[a-z0-9_-]){0,22}|"
+        rb"mai-(?:code|[234])(?:\.[0-9]+|[a-z0-9_-]){0,22}|"
+        rb"swe-[23]-(?:lightning|mini|medium|high|max|pro)(?:\.[0-9]+|[a-z0-9_-]){0,20}"
         rb")\b"
     )
 
@@ -3266,7 +3287,19 @@ class HighAlphaLeakChannelsScanner:
 
         return cards, changed
 
-    def _extract_tar_gz_ide_models(self, archive_url: str, timeout: int = 55) -> Set[str]:
+    def _extract_ide_blob_models(self, blob: bytes) -> Set[str]:
+        found: Set[str] = set()
+        segmented = self._IDE_RODATA_SPLIT_RE.sub(b"\n", blob)
+        for m in self.IDE_BUNDLE_MODEL_RE.findall(segmented):
+            mid = m.decode("utf-8", "ignore").rstrip("._-")
+            if mid in self.IDE_EXCLUDED_TOKENS or mid in EXCLUDED_EXACT or is_legacy_model_id(mid):
+                continue
+            found.add(mid)
+        return found
+
+    def _extract_tar_gz_ide_models(
+        self, archive_url: str, timeout: int = 55, include_binaries: bool = False
+    ) -> Set[str]:
         req = urllib.request.Request(
             archive_url,
             headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"},
@@ -3274,21 +3307,22 @@ class HighAlphaLeakChannelsScanner:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             raw_bytes = resp.read()
         found: Set[str] = set()
+        max_sz = 120_000_000 if include_binaries else 25_000_000
         with tarfile.open(fileobj=io.BytesIO(raw_bytes), mode="r:gz") as tf:
             for member in tf.getmembers():
-                if not member.isfile() or member.size > 25_000_000:
+                if not member.isfile() or member.size > max_sz:
                     continue
-                if not member.name.endswith((".js", ".mjs", ".cjs", ".json")):
+                is_text_bundle = member.name.endswith((".js", ".mjs", ".cjs", ".json"))
+                is_cli_bin = include_binaries and (
+                    member.name.endswith(("/devin", "bin/devin", "devin")) or "/bin/" in member.name
+                )
+                if not (is_text_bundle or is_cli_bin):
                     continue
                 fobj = tf.extractfile(member)
                 if not fobj:
                     continue
                 blob = fobj.read()
-                for m in self.IDE_BUNDLE_MODEL_RE.findall(blob):
-                    mid = m.decode("utf-8", "ignore").rstrip("._-")
-                    if mid in self.IDE_EXCLUDED_TOKENS or is_legacy_model_id(mid):
-                        continue
-                    found.add(mid)
+                found.update(self._extract_ide_blob_models(blob))
         return found
 
     def _scan_ide_desktop_builds(
@@ -3424,6 +3458,83 @@ class HighAlphaLeakChannelsScanner:
             except Exception as exc:
                 print(f"[HighAlphaScanner] Devin/Windsurf {track} note (cloud-only if behind proxy): {exc}")
 
+        # 2c. Devin CLI Official Linux Binary (`static.devin.ai/cli/{ver}/devin-{ver}-x86_64-unknown-linux.tar.gz`)
+        try:
+            cli_ver = ""
+            try:
+                cli_meta = _http_get_json(self.DEVIN_CLI_MANIFEST_URL, timeout=10, extra_headers={"User-Agent": "Mozilla/5.0"})
+                if isinstance(cli_meta, dict):
+                    cli_ver = str(cli_meta.get("version") or "").strip()
+            except Exception:
+                pass
+            if not cli_ver:
+                cask_req = urllib.request.Request(self.DEVIN_CLI_CASK_URL, headers={"User-Agent": "Mozilla/5.0"})
+                with urllib.request.urlopen(cask_req, timeout=10) as cresp:
+                    cask_txt = cresp.read().decode("utf-8", errors="ignore")
+                m_ver = re.search(r'version\s+"([0-9]+\.[0-9]+\.[0-9]+)"', cask_txt)
+                if m_ver:
+                    cli_ver = m_ver.group(1)
+
+            if cli_ver:
+                cli_url = f"https://static.devin.ai/cli/{cli_ver}/devin-{cli_ver}-x86_64-unknown-linux.tar.gz"
+                ckey = f"devin-cli@{cli_ver}"
+                if ckey in ide_cache:
+                    curr_models = set(ide_cache[ckey])
+                else:
+                    curr_models = self._extract_tar_gz_ide_models(cli_url, timeout=65, include_binaries=True)
+                    if curr_models:
+                        ide_cache[ckey] = sorted(curr_models)
+                        changed = True
+
+                if curr_models:
+                    track_key = "devin-cli"
+                    prev_ver = ide_latest.get(track_key) or "3000.11.239"
+                    if prev_ver != cli_ver and f"devin-cli@{prev_ver}" not in ide_cache:
+                        try:
+                            prev_cli_url = f"https://static.devin.ai/cli/{prev_ver}/devin-{prev_ver}-x86_64-unknown-linux.tar.gz"
+                            prev_cli_models = self._extract_tar_gz_ide_models(prev_cli_url, timeout=65, include_binaries=True)
+                            if prev_cli_models:
+                                ide_cache[f"devin-cli@{prev_ver}"] = sorted(prev_cli_models)
+                                changed = True
+                        except Exception:
+                            pass
+                    if prev_ver and prev_ver != cli_ver and f"devin-cli@{prev_ver}" in ide_cache:
+                        prev_models = set(ide_cache[f"devin-cli@{prev_ver}"])
+                        raw_added = sorted(curr_models - prev_models)
+                        added = [
+                            m for m in raw_added
+                            if _canonical_model_slug(m) not in known_canon
+                        ]
+                        if added:
+                            inferred = infer_provider(added[0])
+                            cards.append(
+                                {
+                                    "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"devin-cli-{prev_ver}-{cli_ver}"),
+                                    "category": "desktop-diff",
+                                    "scanner": "ide-build-diff",
+                                    "header": f"DEVIN CLI OFFICIAL BINARY DIFF · {inferred['name']}",
+                                    "title": f"Devin CLI {cli_ver}: {infer_family_title(added)}",
+                                    "subtitle": "Verified Devin CLI (bin/devin) compiled model table diff",
+                                    "build_label": "Devin CLI",
+                                    "build_transition": f"{prev_ver} -> {cli_ver}",
+                                    "models": [{"id": m, "name": humanize_model_id(m)} for m in added[:8]],
+                                    "evidence": f"static.devin.ai/cli/{cli_ver} (bin/devin)",
+                                    "source_text": "official Devin CLI Linux x64 binary release archive.",
+                                    "disclaimer_1": "",
+                                    "disclaimer_2": "",
+                                    "provider_name": inferred["name"],
+                                    "provider_slug": inferred["slug"],
+                                    "accent_color": inferred["color"],
+                                    "links": [{"label": "Devin CLI Manifest", "url": self.DEVIN_CLI_MANIFEST_URL}],
+                                    "detected_at": datetime.now(timezone.utc).isoformat(),
+                                }
+                            )
+                    if ide_latest.get(track_key) != cli_ver:
+                        ide_latest[track_key] = cli_ver
+                        changed = True
+        except Exception as exc:
+            print(f"[HighAlphaScanner] Devin CLI note (cloud-only if behind proxy): {exc}")
+
         if changed:
             # Trim ide_cache to last 8 entries total so source_baselines.json remains compact
             trimmed_ide: Dict[str, List[str]] = {}
@@ -3433,7 +3544,7 @@ class HighAlphaLeakChannelsScanner:
                 by_prefix.setdefault(pfx, []).append(k)
             for pfx, keys in by_prefix.items():
                 for k in keys[-3:]:
-                    trimmed_ide[k] = ide_cache[k]
+                    trimmed_ide[k] = [m for m in ide_cache[k] if not re.search(r"\.[a-z]", m, re.I)]
             baselines["ide_build_models"] = trimmed_ide
             baselines["ide_latest_versions"] = ide_latest
 

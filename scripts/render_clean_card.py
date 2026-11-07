@@ -48,6 +48,12 @@ OPENAI_SVG_PATH = (
     "m1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"
 )
 
+ANTHROPIC_SVG_PATH = (
+    "M17.304 3.541h-3.672l6.696 16.918H24Z"
+    "m-10.608 0L0 20.459h3.744l1.37-3.553h7.005l1.369 3.553h3.744L10.536 3.541Z"
+    "m-.371 10.223L8.616 7.82l2.291 5.945Z"
+)
+
 
 def load_font(names: List[str], size: int) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
     for n in names:
@@ -172,6 +178,18 @@ def make_provider_emblem(provider: str, size: int, accent: Tuple[int, int, int])
                 ImageDraw.Draw(poly).polygon(sp, fill=255)
                 mask = ImageChops.difference(mask, poly)
         img = Image.new("RGBA", (ss, ss), (255, 255, 255, 0))
+        img.putalpha(mask)
+        return img.resize((size, size), Image.Resampling.LANCZOS)
+
+    if provider == "anthropic":
+        subpaths = parse_svg_subpaths(ANTHROPIC_SVG_PATH, ss / 24.0)
+        mask = Image.new("L", (ss, ss), 0)
+        for sp in subpaths:
+            if len(sp) >= 3:
+                poly = Image.new("L", (ss, ss), 0)
+                ImageDraw.Draw(poly).polygon(sp, fill=255)
+                mask = ImageChops.difference(mask, poly)
+        img = Image.new("RGBA", (ss, ss), (*accent, 0))
         img.putalpha(mask)
         return img.resize((size, size), Image.Resampling.LANCZOS)
 
