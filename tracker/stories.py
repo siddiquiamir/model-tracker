@@ -84,7 +84,7 @@ _WORD_FIX = {
     "Pr": "PR", "Api": "API", "Ct": "CT", "Npm": "npm", "Xai": "xAI", "Llm": "LLM", "Gcp": "GCP",
     "Aws": "AWS", "Deepseek": "DeepSeek", "Minimax": "MiniMax", "Z.ai": "Z.ai", "Day-0": "Day-0",
     "Ibm": "IBM", "Ai21": "AI21", "Internlm": "InternLM", "Minicpm": "MiniCPM", "Longcat": "LongCat",
-    "Rednote": "RedNote", "Llama.cpp": "llama.cpp",
+    "Rednote": "RedNote", "Llama.cpp": "llama.cpp", "Cli": "CLI", "Ide": "IDE", "Eap": "EAP",
 }
 _SIZE = re.compile(r"^\d+(?:\.\d+)?[mbkt]$")
 _PRECISION = {"fp", "bf", "int", "nvfp", "mxfp", "w"}
@@ -340,6 +340,11 @@ def _make_story(
         title = sorted(pretty, key=lambda n: (-names[n], len(n)))[0]
     else:
         title = _humanize(key)
+    model_ids_lower = {str(m.get("id", "")).lower() for m in models}
+    if key == "cactus" and any(mid.startswith("kraken-") for mid in model_ids_lower):
+        title = "Cactus & Kraken"
+    elif key == "claude-donut-eap" and any(mid.startswith("silicon-") for mid in model_ids_lower):
+        title = "Claude Donut EAP & Silicon"
 
     variants: List[Dict[str, str]] = []
     by_norm: Dict[str, Dict[str, str]] = {}
