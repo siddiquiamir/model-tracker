@@ -1,16 +1,56 @@
 {
-  "generated_at": "2026-11-08T17:10:31.723709+00:00",
+  "generated_at": "2026-11-08T17:24:31.123288+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 143,
-    "leaks": 33,
+    "stories": 144,
+    "leaks": 34,
     "releases": 92,
-    "stories_24h": 4,
-    "sources_ok": 12,
-    "total_cards": 224,
-    "new_in_this_scan": 0
+    "stories_24h": 5,
+    "sources_ok": 11,
+    "total_cards": 225,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-minicpm-4-6",
+      "group": "minicpm-4-6",
+      "kind": "leak",
+      "open_weights": true,
+      "title": "MiniCPM-V-4.6",
+      "provider_slug": "opensource",
+      "provider_name": "",
+      "accent_color": "#10b981",
+      "detected_at": "2026-11-08T17:23:07Z",
+      "updated_at": "2026-11-08T17:23:07Z",
+      "first_source": "vLLM pull request",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "MiniCPM-V-4.6",
+          "name": "MiniCPM-V-4.6"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-11-08T17:23:07Z",
+          "title": "MiniCPM-V-4.6 (vLLM PR #66405)",
+          "url": "https://github.com/vllm-project/vllm/pull/66405",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK",
+      "card_ids": [
+        "engine-pr-vllm-project_vllm-66405"
+      ],
+      "x_post_text": "🟠 LEAK: MiniCPM-V-4.6\n\nFirst detected 08 Nov 17:23 UTC in vLLM pull request\n\nvia @StatsWire"
+    },
     {
       "id": "story-video-to-data-gr-n-1-7-finetuned-tissue-box-lift",
       "group": "video-to-data-gr-n-1-7-finetuned-tissue-box-lift",
@@ -6668,6 +6708,38 @@
     }
   ],
   "cards": [
+    {
+      "id": "engine-pr-vllm-project_vllm-66405",
+      "category": "open-source",
+      "scanner": "engine-pr-leak",
+      "header": "VLLM PR DAY-0 MODEL ONBOARDING (OPEN)",
+      "title": "MiniCPM-V-4.6 (vLLM PR #66405)",
+      "subtitle": "[Perf][Multimodal][CG] Enable encoder CUDA Graph for MiniCPM-V-4.6 and 4.7",
+      "build_label": "vLLM PR",
+      "build_transition": "PR #66405 (open)",
+      "models": [
+        {
+          "id": "MiniCPM-V-4.6",
+          "name": "MiniCPM-V-4.6"
+        }
+      ],
+      "evidence": "vllm-project/vllm/pull/66405",
+      "source_text": "public GitHub pull request #66405 on vllm-project/vllm.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "VLLM PR",
+      "provider_slug": "opensource",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "vllm-project/vllm PR #66405",
+          "url": "https://github.com/vllm-project/vllm/pull/66405"
+        }
+      ],
+      "detected_at": "2026-11-08T17:23:07Z",
+      "pricing": null,
+      "x_post_text": "🚨 VLLM PR DAY-0 MODEL ONBOARDING (OPEN)\nMiniCPM-V-4.6 (vLLM PR #66405) spotted in vLLM PR PR #66405 (open)!\n\n• MiniCPM-V-4.6 (MiniCPM-V-4.6)\n\nEvidence: vllm-project/vllm/pull/66405\nSource: public GitHub pull request #66405 on vllm-project/vllm.\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-nvidia_video-to-data-GR00T-N1.7-finetuned-tissue-box-lift",
       "category": "open-source",
