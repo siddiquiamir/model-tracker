@@ -249,6 +249,36 @@ def clean_go_model_id(raw: str, allow_unknown_tail: bool = False) -> str:
     return candidate
 
 
+_GENERIC_TIER_STEMS_EX: Set[str] = {
+    "font", "text", "size", "padding", "margin", "border", "shadow", "opacity", "priority",
+    "severity", "quality", "speed", "volume", "latency", "effort", "reasoning", "thinking",
+    "budget", "level", "tier", "mode", "scale", "width", "height", "spacing", "radius",
+    "contrast", "brightness", "saturation", "elevation", "density", "confidence", "risk",
+    "impact", "urgency", "complexity", "accuracy", "detail", "verbosity", "temperature",
+    "frequency", "interval", "timeout", "retry", "limit", "quota", "usage", "cost",
+    "memory", "cpu", "gpu", "disk", "network", "bandwidth", "throughput", "pressure",
+    "load", "capacity", "threshold", "sensitivity", "resolution", "bitrate", "framerate",
+    "compression", "security", "privacy", "logging", "trace", "debug", "warning", "error",
+    "extra", "ultra", "super", "very", "auto",
+}
+_QUOTED_TIER_RE = re.compile(r'["\']([a-z][a-z0-9]{2,15})-(minimal|low|medium|high|xhigh|max)["\']')
+
+
+def discover_multi_tier_codenames(text: str) -> Set[str]:
+    """Find any bare codename stem appearing as a quoted string across >= 3 reasoning tiers."""
+    by_stem: Dict[str, Set[str]] = {}
+    for stem, tier in _QUOTED_TIER_RE.findall(text):
+        if stem in _GENERIC_TIER_STEMS_EX:
+            continue
+        by_stem.setdefault(stem, set()).add(tier)
+    out: Set[str] = set()
+    for stem, tiers in by_stem.items():
+        if len(tiers) >= 3:
+            for t in tiers:
+                out.add(f"{stem}-{t}")
+    return out
+
+
 def extract_models_from_bytes(data: bytes) -> Set[str]:
     """
     Extract all compiled-in or documented frontier model identifiers from binary/text bytes.
@@ -316,6 +346,7 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
         if cleaned:
             models.add(cleaned)
 
+    models.update(discover_multi_tier_codenames(text))
     return models
 
 

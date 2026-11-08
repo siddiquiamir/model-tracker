@@ -3294,6 +3294,22 @@ class HighAlphaLeakChannelsScanner:
 
         return cards, changed
 
+    _GENERIC_TIER_STEMS = {
+        "font", "text", "size", "padding", "margin", "border", "shadow", "opacity", "priority",
+        "severity", "quality", "speed", "volume", "latency", "effort", "reasoning", "thinking",
+        "budget", "level", "tier", "mode", "scale", "width", "height", "spacing", "radius",
+        "contrast", "brightness", "saturation", "elevation", "density", "confidence", "risk",
+        "impact", "urgency", "complexity", "accuracy", "detail", "verbosity", "temperature",
+        "frequency", "interval", "timeout", "retry", "limit", "quota", "usage", "cost",
+        "memory", "cpu", "gpu", "disk", "network", "bandwidth", "throughput", "pressure",
+        "load", "capacity", "threshold", "sensitivity", "resolution", "bitrate", "framerate",
+        "compression", "security", "privacy", "logging", "trace", "debug", "warning", "error",
+        "extra", "ultra", "super", "very", "auto",
+    }
+    _QUOTED_TIER_MODEL_RE = re.compile(
+        rb'["\']([a-z][a-z0-9]{2,15})-(minimal|low|medium|high|xhigh|max)["\']'
+    )
+
     def _extract_ide_blob_models(self, blob: bytes) -> Set[str]:
         found: Set[str] = set()
         segmented = self._IDE_RODATA_SPLIT_RE.sub(b"\n", blob)
@@ -3302,10 +3318,24 @@ class HighAlphaLeakChannelsScanner:
             if mid in self.IDE_EXCLUDED_TOKENS or mid in EXCLUDED_EXACT or is_legacy_model_id(mid):
                 continue
             found.add(mid)
+
+        # Zero-knowledge multi-tier codename discovery: any bare codename stem that appears as a
+        # quoted string across >= 3 reasoning/effort tiers (minimal/low/medium/high/xhigh/max)
+        tier_by_stem: Dict[str, Set[str]] = {}
+        for stem_b, tier_b in self._QUOTED_TIER_MODEL_RE.findall(blob):
+            stem = stem_b.decode("ascii", "ignore")
+            tier = tier_b.decode("ascii", "ignore")
+            if stem in self._GENERIC_TIER_STEMS:
+                continue
+            tier_by_stem.setdefault(stem, set()).add(tier)
+        for stem, tiers in tier_by_stem.items():
+            if len(tiers) >= 3:
+                for t in tiers:
+                    found.add(f"{stem}-{t}")
         return found
 
     def _extract_tar_gz_ide_models(
-        self, archive_url: str, timeout: int = 55, include_binaries: bool = False
+        self, archive_url: str, timeout: int = 90, include_binaries: bool = False
     ) -> Set[str]:
         req = urllib.request.Request(
             archive_url,
@@ -3314,14 +3344,16 @@ class HighAlphaLeakChannelsScanner:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             raw_bytes = resp.read()
         found: Set[str] = set()
-        max_sz = 120_000_000 if include_binaries else 25_000_000
+        max_sz = 350_000_000 if include_binaries else 25_000_000
         with tarfile.open(fileobj=io.BytesIO(raw_bytes), mode="r:gz") as tf:
             for member in tf.getmembers():
                 if not member.isfile() or member.size > max_sz:
                     continue
                 is_text_bundle = member.name.endswith((".js", ".mjs", ".cjs", ".json"))
                 is_cli_bin = include_binaries and (
-                    member.name.endswith(("/devin", "bin/devin", "devin")) or "/bin/" in member.name
+                    member.name.endswith(("/devin", "bin/devin", "devin", "devin-cli"))
+                    or "/bin/" in member.name
+                    or member.size > 1_000_000
                 )
                 if not (is_text_bundle or is_cli_bin):
                     continue
@@ -3465,21 +3497,26 @@ class HighAlphaLeakChannelsScanner:
             except Exception as exc:
                 print(f"[HighAlphaScanner] Devin/Windsurf {track} note (cloud-only if behind proxy): {exc}")
 
-        # 2c. Devin CLI Official Binary (`formulae.brew.sh/api/cask/devin-cli.json` / `static.devin.ai/cli`)
+        # 2c. Devin CLI Official Linux Binary (`static.devin.ai/cli/{ver}/devin-{ver}-x86_64-unknown-linux.tar.gz`)
         try:
             cli_ver = ""
-            cli_url = ""
+            cask_versions: List[str] = []
             try:
-                cask_api = _http_get_json(
-                    "https://formulae.brew.sh/api/cask/devin-cli.json",
+                cask_commits = _http_get_json(
+                    "https://api.github.com/repos/Homebrew/homebrew-cask/commits?path=Casks/d/devin-cli.rb&per_page=5",
                     timeout=10,
-                    extra_headers={"User-Agent": "Mozilla/5.0"},
+                    extra_headers=self._gh_headers(),
                 )
-                if isinstance(cask_api, dict):
-                    cli_ver = str(cask_api.get("version") or "").strip()
-                    cli_url = str(cask_api.get("url") or "").strip()
+                if isinstance(cask_commits, list):
+                    for cm in cask_commits:
+                        msg = str(((cm.get("commit") or {}).get("message") or "")).splitlines()[0]
+                        mv = re.search(r"\b([0-9]+\.[0-9]+\.[0-9]+)\b", msg)
+                        if mv and mv.group(1) not in cask_versions:
+                            cask_versions.append(mv.group(1))
             except Exception:
                 pass
+            if cask_versions:
+                cli_ver = cask_versions[0]
             if not cli_ver:
                 try:
                     cli_meta = _http_get_json(self.DEVIN_CLI_MANIFEST_URL, timeout=10, extra_headers={"User-Agent": "Mozilla/5.0"})
@@ -3496,24 +3533,24 @@ class HighAlphaLeakChannelsScanner:
                     cli_ver = m_ver.group(1)
 
             if cli_ver:
-                if not cli_url:
-                    cli_url = f"https://static.devin.ai/cli/{cli_ver}/devin-{cli_ver}-x86_64-unknown-linux.tar.gz"
+                cli_url = f"https://static.devin.ai/cli/{cli_ver}/devin-{cli_ver}-x86_64-unknown-linux.tar.gz"
                 ckey = f"devin-cli@{cli_ver}"
                 if ckey in ide_cache:
                     curr_models = set(ide_cache[ckey])
                 else:
-                    curr_models = self._extract_tar_gz_ide_models(cli_url, timeout=65, include_binaries=True)
+                    curr_models = self._extract_tar_gz_ide_models(cli_url, timeout=90, include_binaries=True)
                     if curr_models:
                         ide_cache[ckey] = sorted(curr_models)
                         changed = True
 
                 if curr_models:
                     track_key = "devin-cli"
-                    prev_ver = ide_latest.get(track_key) or "3000.11.239"
+                    fallback_prev = cask_versions[1] if len(cask_versions) >= 2 else "3000.11.234"
+                    prev_ver = ide_latest.get(track_key) or fallback_prev
                     if prev_ver != cli_ver and f"devin-cli@{prev_ver}" not in ide_cache:
                         try:
-                            prev_cli_url = cli_url.replace(cli_ver, prev_ver) if cli_ver in cli_url else f"https://static.devin.ai/cli/{prev_ver}/devin-{prev_ver}-x86_64-unknown-linux.tar.gz"
-                            prev_cli_models = self._extract_tar_gz_ide_models(prev_cli_url, timeout=65, include_binaries=True)
+                            prev_cli_url = f"https://static.devin.ai/cli/{prev_ver}/devin-{prev_ver}-x86_64-unknown-linux.tar.gz"
+                            prev_cli_models = self._extract_tar_gz_ide_models(prev_cli_url, timeout=90, include_binaries=True)
                             if prev_cli_models:
                                 ide_cache[f"devin-cli@{prev_ver}"] = sorted(prev_cli_models)
                                 changed = True
@@ -3527,29 +3564,34 @@ class HighAlphaLeakChannelsScanner:
                             if _canonical_model_slug(m) not in known_canon
                         ]
                         if added:
-                            inferred = infer_provider(added[0])
-                            cards.append(
-                                {
-                                    "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"devin-cli-{prev_ver}-{cli_ver}"),
-                                    "category": "desktop-diff",
-                                    "scanner": "ide-build-diff",
-                                    "header": f"DEVIN CLI OFFICIAL BINARY DIFF · {inferred['name']}",
-                                    "title": f"Devin CLI {cli_ver}: {infer_family_title(added)}",
-                                    "subtitle": "Verified Devin CLI (bin/devin) compiled model table diff",
-                                    "build_label": "Devin CLI",
-                                    "build_transition": f"{prev_ver} -> {cli_ver}",
-                                    "models": [{"id": m, "name": humanize_model_id(m)} for m in added[:8]],
-                                    "evidence": f"static.devin.ai/cli/{cli_ver} (bin/devin)",
-                                    "source_text": "official Devin CLI Linux x64 binary release archive.",
-                                    "disclaimer_1": "",
-                                    "disclaimer_2": "",
-                                    "provider_name": inferred["name"],
-                                    "provider_slug": inferred["slug"],
-                                    "accent_color": inferred["color"],
-                                    "links": [{"label": "Devin CLI Manifest", "url": self.DEVIN_CLI_MANIFEST_URL}],
-                                    "detected_at": datetime.now(timezone.utc).isoformat(),
-                                }
-                            )
+                            by_prov: Dict[str, List[str]] = {}
+                            for m in added:
+                                pslug = infer_provider(m)["slug"]
+                                by_prov.setdefault(pslug, []).append(m)
+                            for pslug, pmodels in by_prov.items():
+                                inferred = infer_provider(pmodels[0])
+                                cards.append(
+                                    {
+                                        "id": re.sub(r"[^a-zA-Z0-9._-]", "_", f"devin-cli-{prev_ver}-{cli_ver}-{pslug}"),
+                                        "category": "desktop-diff",
+                                        "scanner": "ide-build-diff",
+                                        "header": f"DEVIN CLI OFFICIAL BINARY DIFF · {inferred['name']}",
+                                        "title": f"Devin CLI {cli_ver}: {infer_family_title(pmodels)}",
+                                        "subtitle": "Verified Devin CLI (bin/devin) compiled model table diff",
+                                        "build_label": "Devin CLI",
+                                        "build_transition": f"{prev_ver} -> {cli_ver}",
+                                        "models": [{"id": m, "name": humanize_model_id(m)} for m in pmodels[:12]],
+                                        "evidence": f"static.devin.ai/cli/{cli_ver} (bin/devin)",
+                                        "source_text": "official Devin CLI Linux x64 binary release archive.",
+                                        "disclaimer_1": "",
+                                        "disclaimer_2": "",
+                                        "provider_name": inferred["name"],
+                                        "provider_slug": inferred["slug"],
+                                        "accent_color": inferred["color"],
+                                        "links": [{"label": "Devin CLI Manifest", "url": self.DEVIN_CLI_MANIFEST_URL}],
+                                        "detected_at": datetime.now(timezone.utc).isoformat(),
+                                    }
+                                )
                     if ide_latest.get(track_key) != cli_ver:
                         ide_latest[track_key] = cli_ver
                         changed = True
