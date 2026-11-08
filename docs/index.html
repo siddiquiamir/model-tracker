@@ -384,12 +384,7 @@
       });
     }
     function formatPricingText(raw) {
-      let s = String(raw || "").trim();
-      if (!s) return "";
-      s = s.replace(/^price:\s*/i, "");
-      s = s.replace(/\bper\s+1M\b(?!\s+tokens)/i, "per 1M tokens");
-      s = s.replace(/\(\s*cache\s+(\$[0-9.]+)\s*\)/i, "($1 cached)");
-      return `price: ${s}`;
+      return "";
     }
     function fmtIsoShort(iso) {
       const d = new Date(iso);
@@ -432,12 +427,10 @@
       return models.map((model, i) => {
         const rawId = String(model.id || "");
         const id = (rawId.startsWith("org:") || rawId.includes(" · ")) ? String(model.name || rawId) : rawId.replace(/^(?:chatgpt|openai|anthropic|google|vertex_ai|bedrock|azure|dashscope)\//i, "");
-        const mp = formatPricingText(model.pricing);
-        const pr = mp && mp !== sp ? ` · <code class="chip price mono">${escapeHtml(mp)}</code>` : "";
         const relDate = String(model.released_on || "").trim();
         const relChip = relDate ? `<span class="ts-inline">· released <code class="chip ts mono">${escapeHtml(relDate)}</code></span>` : "";
         const tsChip = i === 0 && tsVal ? `<span class="ts-inline">· ${tsLabel} <code class="chip ts mono">${escapeHtml(tsVal)}</code></span>` : "";
-        return `<li><span class="dot-bullet">•</span><code class="chip mono">${escapeHtml(id)}</code>${relChip}${tsChip}${pr}</li>`;
+        return `<li><span class="dot-bullet">•</span><code class="chip mono">${escapeHtml(id)}</code>${relChip}${tsChip}</li>`;
       }).join("");
     }
 
@@ -445,9 +438,7 @@
       const stage = stageOf(s);
       const models = modelsFor(s);
       const isCkpt = models.some(m => m && m.uuid);
-      const formattedPrice = formatPricingText(s.pricing);
-      const priceRow = formattedPrice ? `<li><span class="dot-bullet">•</span><code class="chip price mono">${escapeHtml(formattedPrice)}</code></li>` : "";
-      const ids = `<ul class="embed-list">${modelBulletRows(models.slice(0, 6), s)}${priceRow}</ul>`;
+      const ids = `<ul class="embed-list">${modelBulletRows(models.slice(0, 6), s)}</ul>`;
       const moreIds = models.length > 6 ? `<details><summary>+${models.length - 6} more models</summary><ul class="embed-list">${modelBulletRows(models.slice(6), s)}</ul></details>` : "";
       const srcs = s.sources || [];
       const primaryUrl = safeUrl((srcs[0] && srcs[0].url) || ((evidenceFor(s)[0]?.links || [])[0]?.url) || "");
@@ -637,7 +628,6 @@
         ckpts.length === 1 ? "New UUID: " + ckpts[0].uuid : (ckpts.length > 1 ? "UUIDs: " + ckpts.map(m => m.uuid.slice(0, 8)).join(", ") : ""),
         ckpts[0]?.prev_uuid ? "Prev UUID: " + ckpts[0].prev_uuid.slice(0, 8) : "",
         s.released_on ? "First released: " + s.released_on : "",
-        s.pricing ? "Pricing: " + s.pricing : "",
         s.first_source ? "Source: " + s.first_source : "",
         (s.codenames || []).length ? "Codename: " + s.codenames.join(", ") : "",
         `${sourceCount} source sighting${sourceCount === 1 ? "" : "s"}`,

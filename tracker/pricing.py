@@ -493,19 +493,8 @@ def scan_official_pricing_pages(baselines: Dict[str, Any]) -> Tuple[List[Dict[st
 
 
 def enrich_cards_with_pricing(cards: Iterable[Dict[str, Any]], catalog: Optional[PricingCatalog] = None) -> None:
-    """Attach pricing to every model entry and top-level card in place when available."""
-    catalog = catalog or get_pricing_catalog()
+    """Pricing on cards disabled by user configuration."""
     for card in cards:
-        if card.get("scanner") in ("ide-build-diff", "engine-pr-leak") or card.get("category") == "desktop-diff":
-            continue
-        card_prices: List[str] = []
+        card["pricing"] = None
         for m in card.get("models") or []:
-            mid = str(m.get("id") or "")
-            price = m.get("pricing") or catalog.lookup(mid)
-            if price:
-                m["pricing"] = price
-                if price not in card_prices:
-                    card_prices.append(price)
-        if card_prices and not card.get("pricing"):
-            if len(card_prices) == 1:
-                card["pricing"] = card_prices[0]
+            m.pop("pricing", None)

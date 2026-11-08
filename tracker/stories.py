@@ -368,8 +368,6 @@ def _make_story(
             # Strip trailing pricing suffix from clean_n if pricing_radar put it in name
             clean_n = re.sub(r"\s+—\s+\$[0-9].*$", "", clean_n).strip()
             entry: Dict[str, str] = {"id": vid, "name": clean_n}
-            if price:
-                entry["pricing"] = price
             if m_rel:
                 entry["released_on"] = m_rel
             for extra_k in ("host_slot", "uuid", "minted_at", "prev_uuid", "prev_minted_at", "org", "arena_provider"):
@@ -380,8 +378,6 @@ def _make_story(
         else:
             if len(vid) < len(by_norm[vk]["id"]):
                 by_norm[vk]["id"] = vid
-            if price and not by_norm[vk].get("pricing"):
-                by_norm[vk]["pricing"] = price
             if m_rel and not by_norm[vk].get("released_on"):
                 by_norm[vk]["released_on"] = m_rel
     if not is_litellm_registry_group:
@@ -395,10 +391,7 @@ def _make_story(
             title = _DISPLAY_SIZE.sub("", title)
         title = re.sub(r"\s+—\s+\$[0-9].*$", "", title)
         title = _DISPLAY_NOISE.sub("", title).strip(" -_") or title
-    if is_litellm_registry_group or len(story_prices) > 1:
-        story_pricing = story_prices[0] if len(story_prices) == 1 else ""
-    else:
-        story_pricing = story_prices[0] if story_prices else (pricing_catalog.lookup(key) if pricing_catalog else "")
+    story_pricing = ""
 
     sources: List[Dict[str, Any]] = []
     seen_src: Set[str] = set()
@@ -519,8 +512,6 @@ def story_x_text(story: Dict[str, Any]) -> str:
     optional: List[Tuple[int, str]] = []  # (drop priority, line); highest priority dropped first
     if story.get("released_on"):
         optional.append((1, f"📅 First released: {story['released_on']}"))
-    if story.get("pricing"):
-        optional.append((2, f"💰 Pricing: {story['pricing']}"))
     if story.get("lead"):
         optional.append((3, f"⏱ {story['lead']}"))
     if others:
