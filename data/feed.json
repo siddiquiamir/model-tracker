@@ -1,16 +1,74 @@
 {
-  "generated_at": "2026-11-08T17:51:32.733802+00:00",
+  "generated_at": "2026-11-08T18:03:17.941126+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 146,
-    "leaks": 36,
+    "stories": 147,
+    "leaks": 37,
     "releases": 92,
     "stories_24h": 5,
     "sources_ok": 11,
-    "total_cards": 227,
+    "total_cards": 228,
     "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-hyperion",
+      "group": "hyperion",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Hyperion",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "accent_color": "#38bdf8",
+      "detected_at": "2026-11-08T17:55:00+00:00",
+      "updated_at": "2026-11-08T17:55:00+00:00",
+      "first_source": "Devin CLI Official Binary",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "hyperion"
+      ],
+      "models": [
+        {
+          "id": "hyperion",
+          "name": "Hyperion"
+        },
+        {
+          "id": "hyperion-low",
+          "name": "Hyperion Low"
+        },
+        {
+          "id": "hyperion-high",
+          "name": "Hyperion High"
+        },
+        {
+          "id": "hyperion-medium",
+          "name": "Hyperion Medium"
+        },
+        {
+          "id": "hyperion-minimal",
+          "name": "Hyperion Minimal"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Devin CLI Official Binary",
+          "scanner": "ide-build-diff",
+          "detected_at": "2026-11-08T17:55:00+00:00",
+          "title": "Devin CLI 3000.12.17: Google Hyperion",
+          "url": "https://static.devin.ai/cli/current/manifest.json",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · GOOGLE",
+      "card_ids": [
+        "devin-cli-3000.11.239-3000.12.17-google"
+      ],
+      "x_post_text": "🟠 LEAK: Hyperion by Google\n\nFirst detected 08 Nov 17:55 UTC in Devin CLI Official Binary\nCodename: hyperion\nIDs: hyperion, hyperion-low, hyperion-high +2\n\nvia @StatsWire"
+    },
     {
       "id": "story-minicpm-4-6",
       "group": "minicpm-4-6",
@@ -6850,6 +6908,56 @@
     }
   ],
   "cards": [
+    {
+      "id": "devin-cli-3000.11.239-3000.12.17-google",
+      "category": "desktop-diff",
+      "scanner": "ide-build-diff",
+      "header": "DEVIN CLI OFFICIAL BINARY DIFF · GOOGLE",
+      "title": "Devin CLI 3000.12.17: Google Hyperion",
+      "subtitle": "Verified Devin CLI (bin/devin) compiled model table diff",
+      "build_label": "Devin CLI",
+      "build_transition": "3000.11.239 -> 3000.12.17",
+      "models": [
+        {
+          "id": "hyperion",
+          "name": "Hyperion"
+        },
+        {
+          "id": "hyperion-minimal",
+          "name": "Hyperion Minimal"
+        },
+        {
+          "id": "hyperion-low",
+          "name": "Hyperion Low"
+        },
+        {
+          "id": "hyperion-medium",
+          "name": "Hyperion Medium"
+        },
+        {
+          "id": "hyperion-high",
+          "name": "Hyperion High"
+        }
+      ],
+      "codenames": [
+        "hyperion"
+      ],
+      "evidence": "static.devin.ai/cli/3000.12.17 (bin/devin)",
+      "source_text": "official Devin CLI Linux x64 binary release archive.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Devin CLI Manifest",
+          "url": "https://static.devin.ai/cli/current/manifest.json"
+        }
+      ],
+      "detected_at": "2026-11-08T17:55:00+00:00",
+      "x_post_text": "🚨 DEVIN CLI OFFICIAL BINARY DIFF · GOOGLE\nDevin CLI 3000.12.17: Google Hyperion spotted in Devin CLI 3000.11.239 -> 3000.12.17!\n\n• Hyperion (hyperion)\n• Hyperion Minimal (hyperion-minimal)\n• Hyperion Low (hyperion-low)\n• Hyperion Medium (hyperion-medium)\n• Hyperion High (hyperion-high)\n\nEvidence: static.devin.ai/cli/3000.12.17 (bin/devin)\nSource: official Devin CLI Linux x64 binary release archive.\n\nTracked by @StatsWire"
+    },
     {
       "id": "engine-pr-vllm-project_vllm-66405",
       "category": "open-source",

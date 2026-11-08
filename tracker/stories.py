@@ -345,6 +345,8 @@ def _make_story(
         title = "Cactus & Kraken"
     elif key == "claude-donut-eap" and any(mid.startswith("silicon-") for mid in model_ids_lower):
         title = "Claude Donut EAP & Silicon"
+    elif key == "hyperion":
+        title = "Hyperion"
 
     variants: List[Dict[str, str]] = []
     by_norm: Dict[str, Dict[str, str]] = {}

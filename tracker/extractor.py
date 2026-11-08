@@ -15,7 +15,7 @@ CACHE_DIR = pathlib.Path(__file__).resolve().parent.parent / ".cache"
 # Used to strip trailing neighbor strings from Go's length-sorted .rodata string table.
 VALID_MODEL_TOKENS: Set[str] = {
     # Tiers & sizes
-    "pro", "flash", "ultra", "lite", "mini", "nano", "max", "high", "xhigh", "medium", "low",
+    "pro", "flash", "ultra", "lite", "mini", "nano", "max", "high", "xhigh", "medium", "low", "minimal",
     "extra", "plus", "base", "small", "large", "huge", "tiny", "micro", "super",
     # Lifecycle & channels
     "preview", "exp", "experimental", "latest", "beta", "alpha", "rc", "nightly",
@@ -200,6 +200,9 @@ def clean_go_model_id(raw: str, allow_unknown_tail: bool = False) -> str:
     elif prefix in {"cactus", "kraken", "silicon"}:
         if second not in {"low", "medium", "high", "xhigh", "max"}:
             return ""
+    elif prefix == "hyperion":
+        if second not in {"minimal", "low", "medium", "high", "base"}:
+            return ""
     elif prefix == "fable":
         if not re.fullmatch(r"[567](?:\.[0-9]+)?", second):
             return ""
@@ -271,6 +274,7 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
         r"mai-(?:code|[234])|"
         r"astra-cyber|"
         r"(?:cactus|kraken|silicon)-(?:low|medium|high|xhigh|max)|"
+        r"hyperion-(?:minimal|low|medium|high|base)|"
         r"(?<!claude-)fable-[567]|"
         r"composer-[2345]|"
         r"muse-(?:spark|wonder)|"
@@ -296,6 +300,7 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
         r"mai-(?:code|[234])[a-z0-9._-]{0,25}|"
         r"astra-cyber[a-z0-9._-]{0,25}|"
         r"(?:cactus|kraken|silicon)-(?:low|medium|high|xhigh|max)|"
+        r"hyperion-(?:minimal|low|medium|high|base)|"
         r"fable-[567][a-z0-9._-]{0,20}|"
         r"composer-[2345][a-z0-9._-]{0,20}|"
         r"muse-(?:spark|wonder)[a-z0-9._-]{0,20}|"
@@ -425,7 +430,7 @@ def infer_family_title(model_ids: List[str]) -> str:
 def infer_provider(model_id: str) -> Dict[str, str]:
     """Return provider metadata (name, slug, accent color) for a model ID."""
     mid = model_id.lower()
-    if mid.startswith(("gemini", "lyria", "veo", "imagen", "gemma", "google/", "google-", "hydrogen-", "carbon-", "barium-", "argon-", "alphafold", "alphagenome", "medlm")):
+    if mid.startswith(("gemini", "lyria", "veo", "imagen", "gemma", "google/", "google-", "hydrogen-", "carbon-", "barium-", "argon-", "hyperion-", "hyperion", "alphafold", "alphagenome", "medlm")):
         return {"name": "GOOGLE", "slug": "google", "color": "#38bdf8"}
     if mid.startswith(("claude", "anthropic/", "anthropic-", "sonnet-", "opus-", "haiku-", "fable-", "mythos-", "silicon-", "silicon")):
         return {"name": "ANTHROPIC", "slug": "anthropic", "color": "#f97316"}
