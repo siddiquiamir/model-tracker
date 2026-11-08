@@ -7,6 +7,7 @@ from datetime import datetime, timedelta, timezone
 import re
 from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
 
+from tracker.extractor import infer_provider
 from tracker.novelty import RELEASE_GRACE, ReleasedCatalog, extract_embedded_date, normalize, strip_variants
 from tracker.pricing import PricingCatalog, get_pricing_catalog
 
@@ -468,6 +469,14 @@ def _make_story(
     }
     stage_word = stage_map.get(kind, "LEAK")
 
+    model_providers = {infer_provider(v["id"])["name"] for v in variants if v.get("id")}
+    if len(model_providers) > 1 and not is_litellm_registry_group:
+        provider_name = "AI Model Identifiers"
+        provider_slug = "multi"
+        story_accent = "#6366f1"
+    else:
+        story_accent = lab.get("accent_color", "#38bdf8")
+
     return {
         "id": f"story-{key}",
         "group": key,
@@ -476,7 +485,7 @@ def _make_story(
         "title": title,
         "provider_slug": provider_slug,
         "provider_name": provider_name,
-        "accent_color": lab.get("accent_color", "#38bdf8"),
+        "accent_color": story_accent,
         "detected_at": first.get("detected_at", ""),
         "updated_at": cards[-1].get("detected_at", ""),
         "first_source": sources[0]["label"] if sources else "",

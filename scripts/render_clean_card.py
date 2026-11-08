@@ -27,6 +27,7 @@ PROVIDER_THEMES = {
     "zai": ("New Z.ai Models", (99, 102, 241)),
     "qwen": ("New Qwen Models", (168, 85, 247)),
     "mistral": ("New Mistral Models", (245, 158, 11)),
+    "multi": ("AI Model Identifiers", (99, 102, 241)),
 }
 
 OPENAI_SVG_PATH = (

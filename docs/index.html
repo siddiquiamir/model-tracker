@@ -308,6 +308,7 @@
       xai: ["#18181b", "xAI"], qwen: ["#7c3aed", "QW"], deepseek: ["#0284c7", "DS"], meta: ["#0668E1", "∞"],
       mistral: ["#FA520F", "M"], cursor: ["#2563eb", "CU"], perplexity: ["#0ea5e9", "PX"],
       thinkingmachines: ["#8b5cf6", "TML"], microsoft: ["#0078d4", "MS"], azure: ["#0078d4", "AZ"],
+      multi: ["#6366f1", "AI"],
     };
     function logoSvg(slug, name) {
       if (LOGOS[slug]) return LOGOS[slug];
@@ -444,7 +445,9 @@
       const primaryUrl = safeUrl((srcs[0] && srcs[0].url) || ((evidenceFor(s)[0]?.links || [])[0]?.url) || "");
       const headerLabel = (s.kind === "registry" || !s.provider_name)
         ? [s.title, s.first_source].filter(Boolean).join(" · ")
-        : [`${s.provider_name} models`, s.first_source].filter(Boolean).join(" · ");
+        : (s.provider_name === "AI Model Identifiers" || s.provider_slug === "multi")
+          ? [s.provider_name, s.first_source].filter(Boolean).join(" · ")
+          : [`${s.provider_name} models`, s.first_source].filter(Boolean).join(" · ");
       const headerEl = primaryUrl
         ? `<a href="${escapeHtml(primaryUrl)}" target="_blank" rel="noopener">${escapeHtml(headerLabel)}</a>`
         : `<span>${escapeHtml(headerLabel)}</span>`;
