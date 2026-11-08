@@ -308,7 +308,7 @@ def render_card(provider: str, models: List[str], out_path: str, custom_title: s
     for wy in range(-40, h + 100, 165):
         for wx in range(-60, W + 140, 290):
             stamp = Image.new("RGBA", (240, 80), (0, 0, 0, 0))
-            ImageDraw.Draw(stamp).text((14, 20), "@StatsWire", font=f_wm, fill=(255, 255, 255, 34))
+            ImageDraw.Draw(stamp).text((14, 20), "@StatsWire", font=f_wm, fill=(255, 255, 255, 10))
             rot = stamp.rotate(22, resample=Image.Resampling.BICUBIC, expand=True)
             wm_layer.alpha_composite(rot, (wx, wy))
 
