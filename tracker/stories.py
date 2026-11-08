@@ -395,7 +395,10 @@ def _make_story(
             title = _DISPLAY_SIZE.sub("", title)
         title = re.sub(r"\s+—\s+\$[0-9].*$", "", title)
         title = _DISPLAY_NOISE.sub("", title).strip(" -_") or title
-    story_pricing = story_prices[0] if story_prices else (pricing_catalog.lookup(key) if pricing_catalog else "")
+    if is_litellm_registry_group or len(story_prices) > 1:
+        story_pricing = story_prices[0] if len(story_prices) == 1 else ""
+    else:
+        story_pricing = story_prices[0] if story_prices else (pricing_catalog.lookup(key) if pricing_catalog else "")
 
     sources: List[Dict[str, Any]] = []
     seen_src: Set[str] = set()

@@ -507,4 +507,5 @@ def enrich_cards_with_pricing(cards: Iterable[Dict[str, Any]], catalog: Optional
                 if price not in card_prices:
                     card_prices.append(price)
         if card_prices and not card.get("pricing"):
-            card["pricing"] = card_prices[0]
+            if len(card_prices) == 1:
+                card["pricing"] = card_prices[0]
