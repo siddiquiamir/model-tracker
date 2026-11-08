@@ -770,7 +770,7 @@ class NpmCliAndSdkScanner:
                 r"veo-[2345][a-z0-9._-]{1,30}|"
                 r"mai-(?:code|[234])[a-z0-9._-]{0,25}|"
                 r"astra-cyber[a-z0-9._-]{0,25}|"
-                r"(?:cactus|kraken)-(?:low|medium|high|xhigh|max)|"
+                r"(?:cactus|kraken|silicon)-(?:low|medium|high|xhigh|max)|"
                 r"fable-[567][a-z0-9._-]{0,20}|"
                 r"composer-[2345][a-z0-9._-]{0,20}|"
                 r"muse-(?:spark|wonder)[a-z0-9._-]{0,20}|"
@@ -3104,7 +3104,7 @@ class HighAlphaLeakChannelsScanner:
         rb"composer-[2345](?:[.-][0-9]+)?|"
         rb"gpt-(?:[56789]|daybreak|rosalind|aurora)|"
         rb"astra-cyber|"
-        rb"(?:cactus|kraken)-(?:low|medium|high|xhigh|max)|"
+        rb"(?:cactus|kraken|silicon)-(?:low|medium|high|xhigh|max)|"
         rb"gemini-[345][.-][0-9a-z]|"
         rb"grok-[456][.-]|"
         rb"kimi-k[234]|"
@@ -3124,7 +3124,7 @@ class HighAlphaLeakChannelsScanner:
         rb"composer-[2345](?:[.-][0-9]+)?(?:-(?:fast|mini|pro|max|thinking|high))?|"
         rb"gpt-(?:[56789]|daybreak|rosalind|aurora)(?:\.[0-9]+|[a-z0-9_-]){0,28}|"
         rb"astra-cyber(?:\.[0-9]+|[a-z0-9_-]){0,22}|"
-        rb"(?:cactus|kraken)-(?:low|medium|high|xhigh|max)|"
+        rb"(?:cactus|kraken|silicon)-(?:low|medium|high|xhigh|max)|"
         rb"gemini-[345](?:\.[0-9]+|[a-z0-9_-]){1,32}|"
         rb"grok-[456](?:\.[0-9]+|[a-z0-9_-]){0,25}|"
         rb"kimi-k[234](?:\.[0-9]+|[a-z0-9_-]){0,25}|"
@@ -3157,7 +3157,7 @@ class HighAlphaLeakChannelsScanner:
         r"kimi-k3\.[1-9][a-z0-9._-]{0,22}|kimi-k4[a-z0-9._-]{0,22}|"
         r"deepseek-v4(?:\.[1-9])?-pro[a-z0-9._-]{0,16}|deepseek-v4\.[2-9][a-z0-9._-]{0,22}|deepseek-v5[a-z0-9._-]{0,22}|"
         r"gpt-6(?:\.[1-9])?-[a-z0-9._-]{2,22}|"
-        r"(?:cactus|kraken)-(?:low|medium|high|xhigh|max)|"
+        r"(?:cactus|kraken|silicon)-(?:low|medium|high|xhigh|max)|"
         r"claude-(?:fable|opus|sonnet)-[56][a-z0-9._-]{0,22}|"
         r"gemini-4-[a-z0-9._-]{2,22}|"
         r"grok-(?:4\.[89]|5)[a-z0-9._-]{0,22}|"
@@ -3462,15 +3462,28 @@ class HighAlphaLeakChannelsScanner:
             except Exception as exc:
                 print(f"[HighAlphaScanner] Devin/Windsurf {track} note (cloud-only if behind proxy): {exc}")
 
-        # 2c. Devin CLI Official Linux Binary (`static.devin.ai/cli/{ver}/devin-{ver}-x86_64-unknown-linux.tar.gz`)
+        # 2c. Devin CLI Official Binary (`formulae.brew.sh/api/cask/devin-cli.json` / `static.devin.ai/cli`)
         try:
             cli_ver = ""
+            cli_url = ""
             try:
-                cli_meta = _http_get_json(self.DEVIN_CLI_MANIFEST_URL, timeout=10, extra_headers={"User-Agent": "Mozilla/5.0"})
-                if isinstance(cli_meta, dict):
-                    cli_ver = str(cli_meta.get("version") or "").strip()
+                cask_api = _http_get_json(
+                    "https://formulae.brew.sh/api/cask/devin-cli.json",
+                    timeout=10,
+                    extra_headers={"User-Agent": "Mozilla/5.0"},
+                )
+                if isinstance(cask_api, dict):
+                    cli_ver = str(cask_api.get("version") or "").strip()
+                    cli_url = str(cask_api.get("url") or "").strip()
             except Exception:
                 pass
+            if not cli_ver:
+                try:
+                    cli_meta = _http_get_json(self.DEVIN_CLI_MANIFEST_URL, timeout=10, extra_headers={"User-Agent": "Mozilla/5.0"})
+                    if isinstance(cli_meta, dict):
+                        cli_ver = str(cli_meta.get("version") or "").strip()
+                except Exception:
+                    pass
             if not cli_ver:
                 cask_req = urllib.request.Request(self.DEVIN_CLI_CASK_URL, headers={"User-Agent": "Mozilla/5.0"})
                 with urllib.request.urlopen(cask_req, timeout=10) as cresp:
@@ -3480,7 +3493,8 @@ class HighAlphaLeakChannelsScanner:
                     cli_ver = m_ver.group(1)
 
             if cli_ver:
-                cli_url = f"https://static.devin.ai/cli/{cli_ver}/devin-{cli_ver}-x86_64-unknown-linux.tar.gz"
+                if not cli_url:
+                    cli_url = f"https://static.devin.ai/cli/{cli_ver}/devin-{cli_ver}-x86_64-unknown-linux.tar.gz"
                 ckey = f"devin-cli@{cli_ver}"
                 if ckey in ide_cache:
                     curr_models = set(ide_cache[ckey])
@@ -3495,7 +3509,7 @@ class HighAlphaLeakChannelsScanner:
                     prev_ver = ide_latest.get(track_key) or "3000.11.239"
                     if prev_ver != cli_ver and f"devin-cli@{prev_ver}" not in ide_cache:
                         try:
-                            prev_cli_url = f"https://static.devin.ai/cli/{prev_ver}/devin-{prev_ver}-x86_64-unknown-linux.tar.gz"
+                            prev_cli_url = cli_url.replace(cli_ver, prev_ver) if cli_ver in cli_url else f"https://static.devin.ai/cli/{prev_ver}/devin-{prev_ver}-x86_64-unknown-linux.tar.gz"
                             prev_cli_models = self._extract_tar_gz_ide_models(prev_cli_url, timeout=65, include_binaries=True)
                             if prev_cli_models:
                                 ide_cache[f"devin-cli@{prev_ver}"] = sorted(prev_cli_models)

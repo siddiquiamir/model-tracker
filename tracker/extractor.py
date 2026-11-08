@@ -197,7 +197,7 @@ def clean_go_model_id(raw: str, allow_unknown_tail: bool = False) -> str:
     elif prefix == "composer":
         if not re.fullmatch(r"[2345](?:\.[0-9]+)?", second):
             return ""
-    elif prefix in {"cactus", "kraken"}:
+    elif prefix in {"cactus", "kraken", "silicon"}:
         if second not in {"low", "medium", "high", "xhigh", "max"}:
             return ""
     elif prefix == "fable":
@@ -270,7 +270,7 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
         r"imagen-[345]|"
         r"mai-(?:code|[234])|"
         r"astra-cyber|"
-        r"(?:cactus|kraken)-(?:low|medium|high|xhigh|max)|"
+        r"(?:cactus|kraken|silicon)-(?:low|medium|high|xhigh|max)|"
         r"(?<!claude-)fable-[567]|"
         r"composer-[2345]|"
         r"muse-(?:spark|wonder)|"
@@ -295,7 +295,7 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
         r"imagen-[345][a-z0-9._-]{1,30}|"
         r"mai-(?:code|[234])[a-z0-9._-]{0,25}|"
         r"astra-cyber[a-z0-9._-]{0,25}|"
-        r"(?:cactus|kraken)-(?:low|medium|high|xhigh|max)|"
+        r"(?:cactus|kraken|silicon)-(?:low|medium|high|xhigh|max)|"
         r"fable-[567][a-z0-9._-]{0,20}|"
         r"composer-[2345][a-z0-9._-]{0,20}|"
         r"muse-(?:spark|wonder)[a-z0-9._-]{0,20}|"
@@ -427,7 +427,7 @@ def infer_provider(model_id: str) -> Dict[str, str]:
     mid = model_id.lower()
     if mid.startswith(("gemini", "lyria", "veo", "imagen", "gemma", "google/", "google-", "hydrogen-", "carbon-", "barium-", "argon-", "alphafold", "alphagenome", "medlm")):
         return {"name": "GOOGLE", "slug": "google", "color": "#38bdf8"}
-    if mid.startswith(("claude", "anthropic/", "anthropic-", "sonnet-", "opus-", "haiku-", "fable-", "mythos-")):
+    if mid.startswith(("claude", "anthropic/", "anthropic-", "sonnet-", "opus-", "haiku-", "fable-", "mythos-", "silicon-", "silicon")):
         return {"name": "ANTHROPIC", "slug": "anthropic", "color": "#f97316"}
     if mid.startswith(("gpt", "o1", "o3", "o4", "o5", "codex", "openai/", "openai-", "astra-cyber", "cactus-", "kraken-", "cactus", "kraken")):
         return {"name": "OPENAI", "slug": "openai", "color": "#10b981"}
