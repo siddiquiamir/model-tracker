@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-09T18:59:24.339196+00:00",
+  "generated_at": "2026-11-09T19:01:24.298434+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 155,
     "leaks": 43,
     "releases": 93,
     "stories_24h": 9,
-    "sources_ok": 12,
-    "total_cards": 231,
+    "sources_ok": 11,
+    "total_cards": 232,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -67,7 +67,7 @@
       "provider_name": "Anthropic",
       "accent_color": "#f97316",
       "detected_at": "2026-11-09T18:53:39.765416+00:00",
-      "updated_at": "2026-11-09T18:59:35.614862+00:00",
+      "updated_at": "2026-11-09T19:01:45.393144+00:00",
       "first_source": "Anthropic SDK GitHub Main",
       "lead": "",
       "released_on": "",
@@ -117,21 +117,32 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Anthropic Llms.txt Route",
+          "scanner": "docs-radar",
+          "detected_at": "2026-11-09T19:01:45.393144+00:00",
+          "title": "New Claude Model Doc Page Staged on Anthropic: claude-fable-5-2",
+          "url": "https://platform.claude.com/docs/en/models/overview",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 3,
+      "source_count": 4,
       "backfill": false,
       "header": "LEAK · ANTHROPIC",
       "card_ids": [
         "pre-release-gh_anthropic_sdk_union-80302d38",
         "npm-_anthropic-ai_sdk-1.6.0-1.7.0",
-        "docs-diff-anthropic-platform-docs-a2801b5f"
+        "docs-diff-anthropic-platform-docs-a2801b5f",
+        "pre-release-anthropic_llms_model_routes-80302d38"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: Claude Fable 5.2 by Anthropic\n\nFirst detected 09 Nov 18:53 UTC in Anthropic SDK GitHub Main\nConfirmed by npm SDK release, Anthropic Platform Models Docs\nIDs: fable-5-2, claude-fable-5-2, claude-mythos-5-2\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: Claude Fable 5.2 by Anthropic\n\nFirst detected 09 Nov 18:53 UTC in Anthropic SDK GitHub Main\nConfirmed by npm SDK release, Anthropic Platform Models Docs, Anthropic Llms.txt Route\nIDs: fable-5-2, claude-fable-5-2, claude-mythos-5-2\n\nvia @StatsWire"
     },
     {
       "id": "story-muse-ember",
@@ -8311,6 +8322,42 @@
     }
   ],
   "cards": [
+    {
+      "id": "pre-release-anthropic_llms_model_routes-80302d38",
+      "category": "cli-sdk-diff",
+      "scanner": "docs-radar",
+      "header": "ANTHROPIC LLMS.TXT ROUTE SCOUT · ANTHROPIC",
+      "title": "New Claude Model Doc Page Staged on Anthropic: claude-fable-5-2",
+      "subtitle": "Detected in platform.claude.com/llms.txt (/docs/en/models/*/overview.md) (+2 new)",
+      "build_label": "Pre-Release Scout",
+      "build_transition": "+2 unannounced identifier(s)",
+      "models": [
+        {
+          "id": "claude-fable-5-2",
+          "name": "Claude Fable 5.2"
+        },
+        {
+          "id": "claude-mythos-5-2",
+          "name": "Claude Mythos 5.2"
+        }
+      ],
+      "evidence": "platform.claude.com/llms.txt (/docs/en/models/*/overview.md)",
+      "source_text": "platform.claude.com/llms.txt (/docs/en/models/*/overview.md)",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "ANTHROPIC",
+      "provider_slug": "anthropic",
+      "accent_color": "#f97316",
+      "links": [
+        {
+          "label": "Source Feed",
+          "url": "https://platform.claude.com/docs/en/models/overview"
+        }
+      ],
+      "detected_at": "2026-11-09T19:01:45.393144+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 ANTHROPIC LLMS.TXT ROUTE SCOUT · ANTHROPIC\nNew Claude Model Doc Page Staged on Anthropic: claude-fable-5-2 spotted in Pre-Release Scout +2 unannounced identifier(s)!\n\n• Claude Fable 5.2 (claude-fable-5-2)\n• Claude Mythos 5.2 (claude-mythos-5-2)\n\nEvidence: platform.claude.com/llms.txt (/docs/en/models/*/overview.md)\nSource: platform.claude.com/llms.txt (/docs/en/models/*/overview.md)\n\nTracked by @StatsWire"
+    },
     {
       "id": "docs-diff-anthropic-platform-docs-a2801b5f",
       "category": "cli-sdk-diff",
