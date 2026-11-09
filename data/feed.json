@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-09T19:39:24.813845+00:00",
+  "generated_at": "2026-11-09T19:41:24.199427+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 158,
     "leaks": 43,
     "releases": 95,
     "stories_24h": 12,
-    "sources_ok": 12,
-    "total_cards": 241,
+    "sources_ok": 11,
+    "total_cards": 242,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -185,7 +185,7 @@
       "provider_name": "Anthropic",
       "accent_color": "#f97316",
       "detected_at": "2026-11-09T18:53:39.765416+00:00",
-      "updated_at": "2026-11-09T19:31:50.716390+00:00",
+      "updated_at": "2026-11-09T19:41:38.773439+00:00",
       "first_source": "Anthropic SDK GitHub Main",
       "lead": "38 min before it went live on Official OpenAPI spec",
       "released_on": "",
@@ -237,9 +237,19 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "AWS Bedrock Model Cards",
+          "scanner": "docs-radar",
+          "detected_at": "2026-11-09T19:41:38.773439+00:00",
+          "title": "New Model Card on AWS Bedrock: claude-mythos-5-2",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 4,
+      "source_count": 5,
       "backfill": false,
       "header": "NEW MODEL · ANTHROPIC",
       "card_ids": [
@@ -247,13 +257,14 @@
         "npm-_anthropic-ai_sdk-1.6.0-1.7.0",
         "pre-release-anthropic_llms_model_routes-80302d38",
         "npm-_anthropic-ai_claude-code-linux-x64-2.1.319-2.1.321",
-        "openapi-spec-anthropic-2081c0f5"
+        "openapi-spec-anthropic-2081c0f5",
+        "pre-release-aws_bedrock_model_cards-ef0b020e"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Claude Mythos 5.2 by Anthropic\n\nFirst detected 09 Nov 18:53 UTC in Anthropic SDK GitHub Main\n⏱ 38 min before it went live on Official OpenAPI spec\nConfirmed by npm SDK release, Anthropic Llms.txt Route, Official OpenAPI spec\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Claude Mythos 5.2 by Anthropic\n\nFirst detected 09 Nov 18:53 UTC in Anthropic SDK GitHub Main\n⏱ 38 min before it went live on Official OpenAPI spec\nConfirmed by npm SDK release, Anthropic Llms.txt Route, Official OpenAPI spec +1\n\nvia @StatsWire"
     },
     {
       "id": "story-claude-fable-5-2",
@@ -8561,6 +8572,38 @@
     }
   ],
   "cards": [
+    {
+      "id": "pre-release-aws_bedrock_model_cards-ef0b020e",
+      "category": "cli-sdk-diff",
+      "scanner": "docs-radar",
+      "header": "AWS BEDROCK MODEL CARDS · AWS / MULTI-LAB",
+      "title": "New Model Card on AWS Bedrock: claude-mythos-5-2",
+      "subtitle": "Detected in docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html (+1 new)",
+      "build_label": "Pre-Release Scout",
+      "build_transition": "+1 unannounced identifier(s)",
+      "models": [
+        {
+          "id": "claude-mythos-5-2",
+          "name": "Claude Mythos 5.2"
+        }
+      ],
+      "evidence": "docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html",
+      "source_text": "docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "AWS / MULTI-LAB",
+      "provider_slug": "anthropic",
+      "accent_color": "#f97316",
+      "links": [
+        {
+          "label": "Source Feed",
+          "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html"
+        }
+      ],
+      "detected_at": "2026-11-09T19:41:38.773439+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 AWS BEDROCK MODEL CARDS · AWS / MULTI-LAB\nNew Model Card on AWS Bedrock: claude-mythos-5-2 spotted in Pre-Release Scout +1 unannounced identifier(s)!\n\n• Claude Mythos 5.2 (claude-mythos-5-2)\n\nEvidence: docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html\nSource: docs.aws.amazon.com/bedrock/latest/userguide/model-cards.html\n\nTracked by @StatsWire"
+    },
     {
       "id": "vercel-gateway-diff-aee1b098",
       "category": "cli-sdk-diff",
