@@ -1,16 +1,58 @@
 {
-  "generated_at": "2026-11-09T12:16:02.011512+00:00",
+  "generated_at": "2026-11-09T12:24:01.970879+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 148,
-    "leaks": 39,
+    "stories": 149,
+    "leaks": 40,
     "releases": 90,
-    "stories_24h": 6,
+    "stories_24h": 7,
     "sources_ok": 11,
-    "total_cards": 230,
-    "new_in_this_scan": 0
+    "total_cards": 231,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-transformersmultimodalfortranscription",
+      "group": "transformersmultimodalfortranscription",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "TransformersMultiModalForTranscription",
+      "provider_slug": "opensource",
+      "provider_name": "Architecture Diff",
+      "accent_color": "#8b5cf6",
+      "detected_at": "2026-11-09T12:24:09.204648+00:00",
+      "updated_at": "2026-11-09T12:24:09.204648+00:00",
+      "first_source": "vLLM registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "transformersmultimodalfortranscription"
+      ],
+      "models": [
+        {
+          "id": "TransformersMultiModalForTranscription",
+          "name": "TransformersMultiModalForTranscription"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM registry",
+          "scanner": "vllm-registry",
+          "detected_at": "2026-11-09T12:24:09.204648+00:00",
+          "title": "New Engine Architecture: TransformersMultiModalForTranscription",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · ARCHITECTURE DIFF",
+      "card_ids": [
+        "vllm-arch-47b2144595"
+      ],
+      "x_post_text": "🟠 LEAK: TransformersMultiModalForTranscription by Architecture Diff\n\nFirst detected 09 Nov 12:24 UTC in vLLM registry\nCodename: transformersmultimodalfortranscription\n\nvia @StatsWire"
+    },
     {
       "id": "story-gemini-3-8-flash-ckpt-01a-1bc-5c-fe-74",
       "group": "gemini-3-8-flash-ckpt-01a-1bc-5c-fe-74",
@@ -6979,6 +7021,45 @@
     }
   ],
   "cards": [
+    {
+      "id": "vllm-arch-47b2144595",
+      "category": "open-source",
+      "scanner": "vllm-registry",
+      "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
+      "title": "New Engine Architecture: TransformersMultiModalForTranscription",
+      "subtitle": "New model_executor/models/registry.py architecture declarations",
+      "build_label": "Registry File",
+      "build_transition": "vllm/model_executor/models/registry.py",
+      "models": [
+        {
+          "id": "TransformersMultiModalForTranscription",
+          "name": "TransformersMultiModalForTranscription"
+        }
+      ],
+      "evidence": "vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+      "source_text": "official vLLM model architecture registry.",
+      "disclaimer_1": "Tracks only model architecture class registrations in registry.py.",
+      "disclaimer_2": "Open-source labs register their architecture classes here prior to weight drops.",
+      "provider_name": "VLLM REGISTRY",
+      "provider_slug": "opensource",
+      "accent_color": "#8b5cf6",
+      "links": [
+        {
+          "label": "vLLM registry.py",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py"
+        },
+        {
+          "label": "Supported Models Docs",
+          "url": "https://docs.vllm.ai/en/latest/models/supported_models.html"
+        }
+      ],
+      "detected_at": "2026-11-09T12:24:09.204648+00:00",
+      "codenames": [
+        "transformersmultimodalfortranscription"
+      ],
+      "pricing": null,
+      "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: TransformersMultiModalForTranscription spotted in Registry File vllm/model_executor/models/registry.py!\n\n• TransformersMultiModalForTranscription (TransformersMultiModalForTranscription)\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM model architecture registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "arena-ckpt-swap-7e5ae13e31",
       "category": "cli-sdk-diff",
