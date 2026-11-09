@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-09T19:53:25.017934+00:00",
+  "generated_at": "2026-11-09T19:57:24.624262+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 159,
@@ -7,7 +7,7 @@
     "releases": 95,
     "stories_24h": 13,
     "sources_ok": 11,
-    "total_cards": 243,
+    "total_cards": 244,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -233,7 +233,7 @@
       "provider_name": "Anthropic",
       "accent_color": "#f97316",
       "detected_at": "2026-11-09T18:53:39.765416+00:00",
-      "updated_at": "2026-11-09T19:41:38.773439+00:00",
+      "updated_at": "2026-11-09T19:57:42.906926+00:00",
       "first_source": "Anthropic SDK GitHub Main",
       "lead": "38 min before it went live on Official OpenAPI spec",
       "released_on": "",
@@ -295,9 +295,19 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "LiteLLM registry",
+          "scanner": "litellm",
+          "detected_at": "2026-11-09T19:57:42.906926+00:00",
+          "title": "1 New Model(s) Added to LiteLLM",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 5,
+      "source_count": 6,
       "backfill": false,
       "header": "NEW MODEL · ANTHROPIC",
       "card_ids": [
@@ -306,13 +316,14 @@
         "pre-release-anthropic_llms_model_routes-80302d38",
         "npm-_anthropic-ai_claude-code-linux-x64-2.1.319-2.1.321",
         "openapi-spec-anthropic-2081c0f5",
-        "pre-release-aws_bedrock_model_cards-ef0b020e"
+        "pre-release-aws_bedrock_model_cards-ef0b020e",
+        "litellm-diff-0ec7fd5f"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Claude Mythos 5.2 by Anthropic\n\nFirst detected 09 Nov 18:53 UTC in Anthropic SDK GitHub Main\n⏱ 38 min before it went live on Official OpenAPI spec\nConfirmed by npm SDK release, Anthropic Llms.txt Route, Official OpenAPI spec +1\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Claude Mythos 5.2 by Anthropic\n\nFirst detected 09 Nov 18:53 UTC in Anthropic SDK GitHub Main\n⏱ 38 min before it went live on Official OpenAPI spec\nConfirmed by npm SDK release, Anthropic Llms.txt Route, Official OpenAPI spec +2\n\nvia @StatsWire"
     },
     {
       "id": "story-claude-fable-5-2",
@@ -8620,6 +8631,42 @@
     }
   ],
   "cards": [
+    {
+      "id": "litellm-diff-0ec7fd5f",
+      "category": "cli-sdk-diff",
+      "scanner": "litellm",
+      "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
+      "title": "1 New Model(s) Added to LiteLLM",
+      "subtitle": "Verified model_prices_and_context_window.json diff",
+      "build_label": "Registry Diff",
+      "build_transition": "+1 model keys",
+      "models": [
+        {
+          "id": "anthropic.claude-mythos-5-2",
+          "name": "anthropic.claude-mythos-5-2"
+        }
+      ],
+      "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
+      "source_text": "official LiteLLM master pricing & context window registry.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "LITELLM",
+      "provider_slug": "modelsdev",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "LiteLLM JSON Registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        },
+        {
+          "label": "LiteLLM Commits",
+          "url": "https://github.com/BerriAI/litellm/commits/main"
+        }
+      ],
+      "detected_at": "2026-11-09T19:57:42.906926+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 model keys!\n\n• anthropic.claude-mythos-5-2 (anthropic.claude-mythos-5-2)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "vertex-quota-meta-f083bf91",
       "category": "cli-sdk-diff",
