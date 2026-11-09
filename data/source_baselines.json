@@ -3499,7 +3499,6 @@
     "kilo/meta/muse-spark-open",
     "kilo/meta/muse-wonder",
     "kilo/microsoft/phi-4",
-    "kilo/minimax/minimax-m1",
     "kilo/minimax/minimax-m2.5",
     "kilo/minimax/minimax-m2.7",
     "kilo/minimax/minimax-m3",
@@ -5028,7 +5027,6 @@
     "nano-gpt/anthropic/claude-sonnet-5:thinking",
     "nano-gpt/anthropic/claude-sonnet-latest",
     "nano-gpt/arcee-ai/trinity-large-thinking",
-    "nano-gpt/asi1-mini",
     "nano-gpt/auto-model",
     "nano-gpt/auto-model-basic",
     "nano-gpt/auto-model-premium",
@@ -6388,7 +6386,6 @@
     "openrouter/meta/muse-wonder",
     "openrouter/microsoft/microsoft-decision-1",
     "openrouter/microsoft/phi-4",
-    "openrouter/minimax/minimax-m1",
     "openrouter/minimax/minimax-m2.5",
     "openrouter/minimax/minimax-m2.7",
     "openrouter/minimax/minimax-m3",
@@ -14024,7 +14021,6 @@
     "arcee-ai/trinity-mini",
     "artemis-31b-v1.2",
     "artemis-v1.1",
-    "asi1-mini",
     "assistant-pepe-32b",
     "auto",
     "auto-model",
@@ -20203,22 +20199,22 @@
     "hailuo-02-pro": {
       "org": "minimax",
       "provider": "fal",
-      "caps": "in:text, out:video",
-      "model_id": "55069e04-a634-4d98-8765-95113b945f5e",
+      "caps": "in:text, in:image, out:video",
+      "model_id": "527e3f88-c13f-404c-92b4-0dcf7eeb61e6",
       "route": "code"
     },
     "seedance-v1-pro": {
       "org": "bytedance",
       "provider": "fal",
-      "caps": "in:text, in:image, out:video",
-      "model_id": "4ddc4e52-2867-49b6-a603-5aab24a566ca",
+      "caps": "in:text, out:video",
+      "model_id": "e705b65f-82cd-40cb-9630-d9e6ca92d06f",
       "route": "code"
     },
     "hailuo-02-standard": {
       "org": "minimax",
       "provider": "fal",
-      "caps": "in:text, in:image, out:video",
-      "model_id": "bf03b5bb-8b4e-4a36-a893-0b2809f1daec",
+      "caps": "in:text, out:video",
+      "model_id": "e652c45e-8699-4392-94f0-7834e7464137",
       "route": "code"
     },
     "kandinsky-5.0-t2v-pro": {
@@ -20274,8 +20270,8 @@
     "seedance-v1-lite": {
       "org": "bytedance",
       "provider": "fal",
-      "caps": "in:text, in:image, out:video",
-      "model_id": "4c8dde6e-1b2c-45b9-91c3-413b2ceafffb",
+      "caps": "in:text, out:video",
+      "model_id": "13ce11ba-def2-4c80-a70b-b0b2c14d293e",
       "route": "code"
     },
     "kandinsky-5.0-t2v-lite": {
@@ -20295,15 +20291,15 @@
     "ray2": {
       "org": "luma-ai",
       "provider": "fal",
-      "caps": "in:text, in:image, out:video",
-      "model_id": "5b3383a9-6bca-4f71-8210-78895c9d84d5",
+      "caps": "in:text, out:video",
+      "model_id": "217158f9-793e-4ffe-a197-6de9448432fc",
       "route": "code"
     },
     "pika-v2.2": {
       "org": "pika",
       "provider": "fal",
-      "caps": "in:text, in:image, out:video",
-      "model_id": "f9b9f030-9ebc-4765-bf76-c64a82a72dfd",
+      "caps": "in:text, out:video",
+      "model_id": "86de5aea-fc0c-4c36-b65a-7afc443a32d2",
       "route": "code"
     },
     "mochi-v1": {
@@ -23043,15 +23039,13 @@
     "v1.0.106-8",
     "v1.0.106-9",
     "v1.0.107",
+    "v1.0.108",
     "v1.0.108-0",
     "v1.0.108-1"
   ],
   "copilot_cli_release_models": [],
   "engine_seen_prs": {
     "vllm-project/vllm": [
-      66365,
-      66367,
-      66369,
       66370,
       66371,
       66372,
@@ -23248,11 +23242,12 @@
       66599,
       66600,
       66601,
-      66602
+      66602,
+      66603,
+      66604,
+      66605
     ],
     "sgl-project/sglang": [
-      49107,
-      49109,
       49110,
       49111,
       49112,
@@ -23450,10 +23445,11 @@
       49335,
       49337,
       49338,
-      49339
+      49339,
+      49341,
+      49342
     ],
     "NVIDIA/TensorRT-LLM": [
-      21719,
       21720,
       21721,
       21722,
@@ -23652,10 +23648,10 @@
       21934,
       21935,
       21937,
-      21938
+      21938,
+      21939
     ],
     "huggingface/transformers": [
-      50258,
       50259,
       50260,
       50261,
@@ -23854,11 +23850,10 @@
       50516,
       50521,
       50522,
-      50523
+      50523,
+      50524
     ],
     "ggml-org/llama.cpp": [
-      31662,
-      31663,
       31664,
       31665,
       31666,
@@ -24056,10 +24051,11 @@
       31946,
       31948,
       31949,
-      31952
+      31952,
+      31954,
+      31955
     ],
     "ollama/ollama": [
-      19324,
       19325,
       19327,
       19328,
@@ -24258,7 +24254,8 @@
       19618,
       19619,
       19620,
-      19622
+      19622,
+      19625
     ]
   },
   "engine_seen_model_slugs": [
