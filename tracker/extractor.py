@@ -259,7 +259,9 @@ _GENERIC_TIER_STEMS_EX: Set[str] = {
     "memory", "cpu", "gpu", "disk", "network", "bandwidth", "throughput", "pressure",
     "load", "capacity", "threshold", "sensitivity", "resolution", "bitrate", "framerate",
     "compression", "security", "privacy", "logging", "trace", "debug", "warning", "error",
-    "extra", "ultra", "super", "very", "auto",
+    "extra", "ultra", "super", "very", "auto", "battery", "signal", "wifi", "sound",
+    "audio", "video", "image", "power", "charge", "storage", "zoom", "scroll", "motion",
+    "animation",
 }
 _QUOTED_TIER_RE = re.compile(r'["\']([a-z][a-z0-9]{2,15})-(minimal|low|medium|high|xhigh|max)["\']')
 

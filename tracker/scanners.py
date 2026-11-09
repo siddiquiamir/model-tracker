@@ -2218,6 +2218,32 @@ class LmArenaScanner:
     @staticmethod
     def _fetch_arena_html(url: str) -> str:
         """Fetch Arena HTML using Chrome BoringSSL TLS impersonation (curl_cffi) when available."""
+        try:
+            from curl_cffi import requests as cffi_requests  # type: ignore
+
+            for imp in ("chrome", "chrome124", "safari17_0"):
+                try:
+                    resp = cffi_requests.get(
+                        url,
+                        headers={
+                            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                            "Accept-Language": "en-US,en;q=0.9",
+                        },
+                        impersonate=imp,
+                        timeout=15,
+                        allow_redirects=True,
+                    )
+                    if resp.status_code == 200 and resp.text and "initialModels" in resp.text:
+                        return resp.text
+                    if resp.status_code == 200 and resp.text:
+                        return resp.text
+                except Exception:
+                    continue
+        except ImportError:
+            pass
+        except Exception:
+            pass
+
         hdrs = {
             "User-Agent": (
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -2226,17 +2252,6 @@ class LmArenaScanner:
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
             "Accept-Language": "en-US,en;q=0.9",
         }
-        try:
-            from curl_cffi import requests as cffi_requests  # type: ignore
-
-            resp = cffi_requests.get(url, headers=hdrs, impersonate="chrome", timeout=15, allow_redirects=True)
-            if resp.status_code == 200 and resp.text:
-                return resp.text
-        except ImportError:
-            pass
-        except Exception:
-            pass
-
         req = urllib.request.Request(url, headers=hdrs)
         with urllib.request.urlopen(req, timeout=12) as resp:
             return resp.read().decode("utf-8", "ignore")
@@ -3304,7 +3319,9 @@ class HighAlphaLeakChannelsScanner:
         "memory", "cpu", "gpu", "disk", "network", "bandwidth", "throughput", "pressure",
         "load", "capacity", "threshold", "sensitivity", "resolution", "bitrate", "framerate",
         "compression", "security", "privacy", "logging", "trace", "debug", "warning", "error",
-        "extra", "ultra", "super", "very", "auto",
+        "extra", "ultra", "super", "very", "auto", "battery", "signal", "wifi", "sound",
+        "audio", "video", "image", "power", "charge", "storage", "zoom", "scroll", "motion",
+        "animation",
     }
     _QUOTED_TIER_MODEL_RE = re.compile(
         rb'["\']([a-z][a-z0-9]{2,15})-(minimal|low|medium|high|xhigh|max)["\']'
