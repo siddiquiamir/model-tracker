@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-09T03:49:05.963968+00:00",
+  "generated_at": "2026-11-09T04:17:05.762277+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 149,
-    "leaks": 38,
-    "releases": 92,
-    "stories_24h": 5,
-    "sources_ok": 11,
+    "leaks": 39,
+    "releases": 91,
+    "stories_24h": 6,
+    "sources_ok": 12,
     "total_cards": 232,
-    "new_in_this_scan": 0
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -2015,16 +2015,17 @@
       "provider_name": "Baidu",
       "accent_color": "#2932e1",
       "detected_at": "2026-11-05T05:32:32.825217+00:00",
-      "updated_at": "2026-11-05T05:32:32.825217+00:00",
+      "updated_at": "2026-11-09T04:16:40Z",
       "first_source": "Hugging Face",
       "lead": "",
-      "released_on": "",
+      "released_on": "2026-10-21",
       "pricing": "",
       "codenames": [],
       "models": [
         {
           "id": "ERNIE-5.5-Flash-Base",
-          "name": "ERNIE-5.5-Flash-Base"
+          "name": "ERNIE-5.5-Flash-Base",
+          "released_on": "2026-10-21"
         },
         {
           "id": "ERNIE-5.5-Flash-Base-BF16",
@@ -2039,16 +2040,25 @@
           "title": "ERNIE 5.5 Flash Base",
           "url": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Base",
           "backfill": false
+        },
+        {
+          "label": "llama.cpp pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-11-09T04:16:40Z",
+          "title": "baidu/ERNIE-5.5-Flash-Base (llama.cpp PR #31925)",
+          "url": "https://github.com/ggml-org/llama.cpp/pull/31925",
+          "backfill": false
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
       "header": "OPEN WEIGHTS · BAIDU",
       "card_ids": [
         "hf-baidu_ERNIE-5.5-Flash-Base",
-        "hf-baidu_ERNIE-5.5-Flash-Base-BF16"
+        "hf-baidu_ERNIE-5.5-Flash-Base-BF16",
+        "engine-pr-ggml-org_llama.cpp-31925"
       ],
-      "x_post_text": "🟢 NEW MODEL: ERNIE 5.5 Flash Base by Baidu\n\nFirst detected 05 Nov 05:32 UTC in Hugging Face\nIDs: ERNIE-5.5-Flash-Base, ERNIE-5.5-Flash-Base-BF16\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: ERNIE 5.5 Flash Base by Baidu\n\nFirst detected 05 Nov 05:32 UTC in Hugging Face\n📅 First released: 2026-10-21\nConfirmed by llama.cpp pull request\nIDs: ERNIE-5.5-Flash-Base, ERNIE-5.5-Flash-Base-BF16\n\nvia @StatsWire"
     },
     {
       "id": "story-gpt-image-2-6-flare",
@@ -3987,6 +3997,49 @@
         "vllm-arch-9e7e335db0"
       ],
       "x_post_text": "🟠 LEAK: DSparkMiniMaxDraftModel by Architecture Diff\n\nFirst detected 29 Oct 05:44 UTC in vLLM registry\nCodename: dsparkminimaxdraftmodel\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-unlimited-ocr-2",
+      "group": "unlimited-ocr-2",
+      "kind": "leak",
+      "open_weights": true,
+      "title": "Unlimited OCR 2",
+      "provider_slug": "opensource",
+      "provider_name": "Baidu",
+      "accent_color": "#10b981",
+      "detected_at": "2026-10-29T04:40:24Z",
+      "updated_at": "2026-10-29T04:40:24Z",
+      "first_source": "SGLang pull request",
+      "lead": "",
+      "released_on": "2026-10-26",
+      "pricing": "",
+      "codenames": [
+        "unlimited"
+      ],
+      "models": [
+        {
+          "id": "Unlimited-OCR-2",
+          "name": "Unlimited-OCR-2",
+          "released_on": "2026-10-26"
+        }
+      ],
+      "sources": [
+        {
+          "label": "SGLang pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-10-29T04:40:24Z",
+          "title": "baidu/Unlimited-OCR-2 (SGLang PR #47196)",
+          "url": "https://github.com/sgl-project/sglang/pull/47196",
+          "backfill": false
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · BAIDU",
+      "card_ids": [
+        "engine-pr-sgl-project_sglang-47196"
+      ],
+      "x_post_text": "🟠 LEAK: Unlimited OCR 2 by Baidu\n\nFirst detected 29 Oct 04:40 UTC in SGLang pull request\n📅 First released: 2026-10-26\nCodename: unlimited\n\nvia @StatsWire"
     },
     {
       "id": "story-nemotron-labs-dory",
@@ -6794,58 +6847,6 @@
       "x_post_text": "🟢 NEW MODEL: LBS 27B by Ant Group\n\nFirst detected 26 Oct 05:36 UTC in Hugging Face\n\nvia @StatsWire"
     },
     {
-      "id": "story-unlimited-ocr-2",
-      "group": "unlimited-ocr-2",
-      "kind": "release",
-      "open_weights": true,
-      "title": "Unlimited OCR 2",
-      "provider_slug": "opensource",
-      "provider_name": "Baidu",
-      "accent_color": "#2932e1",
-      "detected_at": "2026-10-26T03:57:46.000Z",
-      "updated_at": "2026-10-29T04:40:24Z",
-      "first_source": "Hugging Face",
-      "lead": "",
-      "released_on": "2026-10-26",
-      "pricing": "",
-      "codenames": [
-        "unlimited"
-      ],
-      "models": [
-        {
-          "id": "Unlimited-OCR-2",
-          "name": "Unlimited-OCR-2",
-          "released_on": "2026-10-26"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Hugging Face",
-          "scanner": "huggingface",
-          "detected_at": "2026-10-26T03:57:46.000Z",
-          "title": "Unlimited OCR 2",
-          "url": "https://huggingface.co/baidu/Unlimited-OCR-2",
-          "backfill": true
-        },
-        {
-          "label": "SGLang pull request",
-          "scanner": "engine-pr-leak",
-          "detected_at": "2026-10-29T04:40:24Z",
-          "title": "baidu/Unlimited-OCR-2 (SGLang PR #47196)",
-          "url": "https://github.com/sgl-project/sglang/pull/47196",
-          "backfill": false
-        }
-      ],
-      "source_count": 2,
-      "backfill": false,
-      "header": "OPEN WEIGHTS · BAIDU",
-      "card_ids": [
-        "hf-baidu_Unlimited-OCR-2",
-        "engine-pr-sgl-project_sglang-47196"
-      ],
-      "x_post_text": "🟢 NEW MODEL: Unlimited OCR 2 by Baidu\n\nFirst detected 26 Oct 03:57 UTC in Hugging Face\n📅 First released: 2026-10-26\nConfirmed by SGLang pull request\nCodename: unlimited\n\nvia @StatsWire"
-    },
-    {
       "id": "story-gemini-4-carbon",
       "group": "gemini-4-carbon",
       "kind": "leak",
@@ -7019,6 +7020,39 @@
     }
   ],
   "cards": [
+    {
+      "id": "engine-pr-ggml-org_llama.cpp-31925",
+      "category": "open-source",
+      "scanner": "engine-pr-leak",
+      "header": "LLAMA.CPP PR DAY-0 MODEL ONBOARDING (OPEN)",
+      "title": "baidu/ERNIE-5.5-Flash-Base (llama.cpp PR #31925)",
+      "subtitle": "model : add ERNIE 5.5",
+      "build_label": "llama.cpp PR",
+      "build_transition": "PR #31925 (open)",
+      "models": [
+        {
+          "id": "baidu/ERNIE-5.5-Flash-Base",
+          "name": "ERNIE-5.5-Flash-Base",
+          "released_on": "2026-10-21"
+        }
+      ],
+      "evidence": "ggml-org/llama.cpp/pull/31925",
+      "source_text": "public GitHub pull request #31925 on ggml-org/llama.cpp.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "LLAMA.CPP PR",
+      "provider_slug": "opensource",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "ggml-org/llama.cpp PR #31925",
+          "url": "https://github.com/ggml-org/llama.cpp/pull/31925"
+        }
+      ],
+      "detected_at": "2026-11-09T04:16:40Z",
+      "pricing": null,
+      "x_post_text": "🚨 LLAMA.CPP PR DAY-0 MODEL ONBOARDING (OPEN)\nbaidu/ERNIE-5.5-Flash-Base (llama.cpp PR #31925) spotted in llama.cpp PR PR #31925 (open)!\n\n• ERNIE-5.5-Flash-Base (baidu/ERNIE-5.5-Flash-Base)\n\nEvidence: ggml-org/llama.cpp/pull/31925\nSource: public GitHub pull request #31925 on ggml-org/llama.cpp.\n\nTracked by @StatsWire"
+    },
     {
       "id": "windsurf-next-3.12.28-3.12.32",
       "category": "desktop-diff",
@@ -15630,44 +15664,6 @@
       "detected_at": "2026-10-26T05:36:52.000Z",
       "backfill": true,
       "x_post_text": "🚨 HUGGING FACE NEW REPO · ANT GROUP\nLBS 27B spotted in Repo Created 2026-10-26 (image-text-to-text)!\n\n• LBS-27B (image-text-to-text) (inclusionAI/LBS-27B)\n\nEvidence: huggingface.co/api/models\nSource: official inclusionAI Hugging Face organization feed.\n\nTracked by @StatsWire",
-      "codenames": [],
-      "pricing": null
-    },
-    {
-      "id": "hf-baidu_Unlimited-OCR-2",
-      "category": "open-source",
-      "scanner": "huggingface",
-      "header": "HUGGING FACE NEW REPO · BAIDU",
-      "title": "Unlimited OCR 2",
-      "subtitle": "Newly published public model repository (baidu)",
-      "build_label": "Repo",
-      "build_transition": "Created 2026-10-26 (image-text-to-text)",
-      "models": [
-        {
-          "id": "baidu/Unlimited-OCR-2",
-          "name": "Unlimited-OCR-2 (image-text-to-text)"
-        }
-      ],
-      "evidence": "huggingface.co/api/models",
-      "source_text": "official baidu Hugging Face organization feed.",
-      "disclaimer_1": "Repository became publicly visible since the previous scan.",
-      "disclaimer_2": "Public weights / model cards published directly by the organization.",
-      "provider_name": "BAIDU",
-      "provider_slug": "opensource",
-      "accent_color": "#2932e1",
-      "links": [
-        {
-          "label": "Hugging Face Repo",
-          "url": "https://huggingface.co/baidu/Unlimited-OCR-2"
-        },
-        {
-          "label": "baidu Hub Feed",
-          "url": "https://huggingface.co/baidu"
-        }
-      ],
-      "detected_at": "2026-10-26T03:57:46.000Z",
-      "backfill": true,
-      "x_post_text": "🚨 HUGGING FACE NEW REPO · BAIDU\nUnlimited OCR 2 spotted in Repo Created 2026-10-26 (image-text-to-text)!\n\n• Unlimited-OCR-2 (image-text-to-text) (baidu/Unlimited-OCR-2)\n\nEvidence: huggingface.co/api/models\nSource: official baidu Hugging Face organization feed.\n\nTracked by @StatsWire",
       "codenames": [],
       "pricing": null
     },
