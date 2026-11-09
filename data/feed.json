@@ -1,16 +1,84 @@
 {
-  "generated_at": "2026-11-09T19:01:24.298434+00:00",
+  "generated_at": "2026-11-09T19:03:24.252097+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 155,
-    "leaks": 43,
+    "stories": 156,
+    "leaks": 44,
     "releases": 93,
-    "stories_24h": 9,
+    "stories_24h": 10,
     "sources_ok": 11,
-    "total_cards": 232,
-    "new_in_this_scan": 1
+    "total_cards": 235,
+    "new_in_this_scan": 3
   },
   "stories": [
+    {
+      "id": "story-fable-5-2",
+      "group": "fable-5-2",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Fable 5 2",
+      "provider_slug": "anthropic",
+      "provider_name": "Anthropic",
+      "accent_color": "#f97316",
+      "detected_at": "2026-11-09T18:59:35.614862+00:00",
+      "updated_at": "2026-11-09T19:03:38.715222+00:00",
+      "first_source": "Anthropic Platform Models Docs",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "fable-5-2",
+          "name": "Fable 5 2"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Anthropic Platform Models Docs",
+          "scanner": "docs-radar",
+          "detected_at": "2026-11-09T18:59:35.614862+00:00",
+          "title": "New Model Spotted in Anthropic Platform Models Overview",
+          "url": "https://platform.claude.com/docs/en/models/overview",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "GCP Vertex AI Models Docs",
+          "scanner": "docs-radar",
+          "detected_at": "2026-11-09T19:03:37.355965+00:00",
+          "title": "New Model Spotted in GCP Vertex AI Generative Models",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "GCP Vertex AI Model Versions",
+          "scanner": "docs-radar",
+          "detected_at": "2026-11-09T19:03:38.715222+00:00",
+          "title": "New Model Spotted in GCP Vertex AI Model Versions & Lifecycle",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 3,
+      "backfill": false,
+      "header": "LEAK · ANTHROPIC",
+      "card_ids": [
+        "docs-diff-anthropic-platform-docs-a2801b5f",
+        "docs-diff-gcp-vertex-models-e08d84c9",
+        "docs-diff-gcp-vertex-versions-e08d84c9"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: Fable 5 2 by Anthropic\n\nFirst detected 09 Nov 18:59 UTC in Anthropic Platform Models Docs\nConfirmed by GCP Vertex AI Models Docs, GCP Vertex AI Model Versions\n\nvia @StatsWire"
+    },
     {
       "id": "story-claude-fable-and-mythos-5-2",
       "group": "claude-fable-and-mythos-5-2",
@@ -67,7 +135,7 @@
       "provider_name": "Anthropic",
       "accent_color": "#f97316",
       "detected_at": "2026-11-09T18:53:39.765416+00:00",
-      "updated_at": "2026-11-09T19:01:45.393144+00:00",
+      "updated_at": "2026-11-09T19:04:00.004044+00:00",
       "first_source": "Anthropic SDK GitHub Main",
       "lead": "",
       "released_on": "",
@@ -75,12 +143,8 @@
       "codenames": [],
       "models": [
         {
-          "id": "fable-5-2",
-          "name": "Fable 5 2"
-        },
-        {
           "id": "claude-fable-5-2",
-          "name": "Claude Fable 5.2"
+          "name": "base_model:claude-fable-5-2"
         },
         {
           "id": "claude-mythos-5-2",
@@ -127,22 +191,33 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Vertex AI Quotas registry",
+          "scanner": "vertex-ai-quotas",
+          "detected_at": "2026-11-09T19:04:00.004044+00:00",
+          "title": "New ANTHROPIC Model(s) on Google Cloud Vertex AI: claude-fable-5-2",
+          "url": "https://console.cloud.google.com/iam-admin/quotas",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 4,
+      "source_count": 5,
       "backfill": false,
       "header": "LEAK · ANTHROPIC",
       "card_ids": [
         "pre-release-gh_anthropic_sdk_union-80302d38",
         "npm-_anthropic-ai_sdk-1.6.0-1.7.0",
         "docs-diff-anthropic-platform-docs-a2801b5f",
-        "pre-release-anthropic_llms_model_routes-80302d38"
+        "pre-release-anthropic_llms_model_routes-80302d38",
+        "vertex-quota-anthropic-521c31bd"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: Claude Fable 5.2 by Anthropic\n\nFirst detected 09 Nov 18:53 UTC in Anthropic SDK GitHub Main\nConfirmed by npm SDK release, Anthropic Platform Models Docs, Anthropic Llms.txt Route\nIDs: fable-5-2, claude-fable-5-2, claude-mythos-5-2\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: Claude Fable 5.2 by Anthropic\n\nFirst detected 09 Nov 18:53 UTC in Anthropic SDK GitHub Main\nConfirmed by npm SDK release, Anthropic Platform Models Docs, Anthropic Llms.txt Route +1\nIDs: claude-fable-5-2, claude-mythos-5-2\n\nvia @StatsWire"
     },
     {
       "id": "story-muse-ember",
@@ -8322,6 +8397,114 @@
     }
   ],
   "cards": [
+    {
+      "id": "vertex-quota-anthropic-521c31bd",
+      "category": "cli-sdk-diff",
+      "scanner": "vertex-ai-quotas",
+      "header": "GOOGLE CLOUD VERTEX AI QUOTA REGISTRY · ANTHROPIC",
+      "title": "New ANTHROPIC Model(s) on Google Cloud Vertex AI: claude-fable-5-2",
+      "subtitle": "Detected in Google Cloud Vertex AI `base_model:` quota dimensions (1 new)",
+      "build_label": "Vertex AI Quotas",
+      "build_transition": "aiplatform.googleapis.com (+1 base_model)",
+      "models": [
+        {
+          "id": "claude-fable-5-2",
+          "name": "base_model:claude-fable-5-2"
+        }
+      ],
+      "evidence": "console.cloud.google.com/iam-admin/quotas (aiplatform.googleapis.com)",
+      "source_text": "Google Cloud Vertex AI `base_model` quota dimension registry.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "ANTHROPIC",
+      "provider_slug": "anthropic",
+      "accent_color": "#f97316",
+      "links": [
+        {
+          "label": "GCP Vertex AI Quotas",
+          "url": "https://console.cloud.google.com/iam-admin/quotas"
+        },
+        {
+          "label": "Vertex AI Models",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
+        }
+      ],
+      "detected_at": "2026-11-09T19:04:00.004044+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 GOOGLE CLOUD VERTEX AI QUOTA REGISTRY · ANTHROPIC\nNew ANTHROPIC Model(s) on Google Cloud Vertex AI: claude-fable-5-2 spotted in Vertex AI Quotas aiplatform.googleapis.com (+1 base_model)!\n\n• base_model:claude-fable-5-2 (claude-fable-5-2)\n\nEvidence: console.cloud.google.com/iam-admin/quotas (aiplatform.googleapis.com)\nSource: Google Cloud Vertex AI `base_model` quota dimension registry.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "docs-diff-gcp-vertex-versions-e08d84c9",
+      "category": "cli-sdk-diff",
+      "scanner": "docs-radar",
+      "header": "GCP VERTEX AI MODEL VERSIONS · GOOGLE CLOUD",
+      "title": "New Model Spotted in GCP Vertex AI Model Versions & Lifecycle",
+      "subtitle": "Verified live API documentation diff",
+      "build_label": "Docs Diff",
+      "build_transition": "+1 new identifier(s)",
+      "models": [
+        {
+          "id": "fable-5-2",
+          "name": "Fable 5 2"
+        }
+      ],
+      "evidence": "cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions",
+      "source_text": "official Google Cloud Vertex AI model versions & endpoint table.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE CLOUD",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Official Docs Page",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions"
+        },
+        {
+          "label": "Raw Docs Feed",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions"
+        }
+      ],
+      "detected_at": "2026-11-09T19:03:38.715222+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 GCP VERTEX AI MODEL VERSIONS · GOOGLE CLOUD\nNew Model Spotted in GCP Vertex AI Model Versions & Lifecycle spotted in Docs Diff +1 new identifier(s)!\n\n• Fable 5 2 (fable-5-2)\n\nEvidence: cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions\nSource: official Google Cloud Vertex AI model versions & endpoint table.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "docs-diff-gcp-vertex-models-e08d84c9",
+      "category": "cli-sdk-diff",
+      "scanner": "docs-radar",
+      "header": "GCP VERTEX AI MODELS DOCS · GOOGLE CLOUD",
+      "title": "New Model Spotted in GCP Vertex AI Generative Models",
+      "subtitle": "Verified live API documentation diff",
+      "build_label": "Docs Diff",
+      "build_transition": "+1 new identifier(s)",
+      "models": [
+        {
+          "id": "fable-5-2",
+          "name": "Fable 5 2"
+        }
+      ],
+      "evidence": "cloud.google.com/vertex-ai/generative-ai/docs/learn/models",
+      "source_text": "official Google Cloud Vertex AI Models documentation (Gemini, Imagen, Veo, Claude, Llama).",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE CLOUD",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Official Docs Page",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
+        },
+        {
+          "label": "Raw Docs Feed",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
+        }
+      ],
+      "detected_at": "2026-11-09T19:03:37.355965+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 GCP VERTEX AI MODELS DOCS · GOOGLE CLOUD\nNew Model Spotted in GCP Vertex AI Generative Models spotted in Docs Diff +1 new identifier(s)!\n\n• Fable 5 2 (fable-5-2)\n\nEvidence: cloud.google.com/vertex-ai/generative-ai/docs/learn/models\nSource: official Google Cloud Vertex AI Models documentation (Gemini, Imagen, Veo, Claude, Llama).\n\nTracked by @StatsWire"
+    },
     {
       "id": "pre-release-anthropic_llms_model_routes-80302d38",
       "category": "cli-sdk-diff",
