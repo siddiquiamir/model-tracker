@@ -1,16 +1,64 @@
 {
-  "generated_at": "2026-11-09T19:41:24.199427+00:00",
+  "generated_at": "2026-11-09T19:53:25.017934+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 158,
-    "leaks": 43,
+    "stories": 159,
+    "leaks": 44,
     "releases": 95,
-    "stories_24h": 12,
+    "stories_24h": 13,
     "sources_ok": 11,
-    "total_cards": 242,
+    "total_cards": 243,
     "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-muse-ember-nonprod",
+      "group": "muse-ember-nonprod",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Muse Ember Nonprod",
+      "provider_slug": "meta",
+      "provider_name": "Meta",
+      "accent_color": "#3b82f6",
+      "detected_at": "2026-11-09T19:54:05.184839+00:00",
+      "updated_at": "2026-11-09T19:54:05.184839+00:00",
+      "first_source": "Vertex AI Quotas registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "nonprod"
+      ],
+      "models": [
+        {
+          "id": "muse-ember-nonprod",
+          "name": "base_model:muse-ember-nonprod"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vertex AI Quotas registry",
+          "scanner": "vertex-ai-quotas",
+          "detected_at": "2026-11-09T19:54:05.184839+00:00",
+          "title": "New META Model(s) on Google Cloud Vertex AI: muse-ember-nonprod",
+          "url": "https://console.cloud.google.com/iam-admin/quotas",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · META",
+      "card_ids": [
+        "vertex-quota-meta-f083bf91"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: Muse Ember Nonprod by Meta\n\nFirst detected 09 Nov 19:54 UTC in Vertex AI Quotas registry\nCodename: nonprod\n\nvia @StatsWire"
+    },
     {
       "id": "story-drex-max-finance",
       "group": "drex-max-finance",
@@ -8572,6 +8620,45 @@
     }
   ],
   "cards": [
+    {
+      "id": "vertex-quota-meta-f083bf91",
+      "category": "cli-sdk-diff",
+      "scanner": "vertex-ai-quotas",
+      "header": "GOOGLE CLOUD VERTEX AI QUOTA REGISTRY · META",
+      "title": "New META Model(s) on Google Cloud Vertex AI: muse-ember-nonprod",
+      "subtitle": "Detected in Google Cloud Vertex AI `base_model:` quota dimensions (1 new)",
+      "build_label": "Vertex AI Quotas",
+      "build_transition": "aiplatform.googleapis.com (+1 base_model)",
+      "models": [
+        {
+          "id": "muse-ember-nonprod",
+          "name": "base_model:muse-ember-nonprod"
+        }
+      ],
+      "evidence": "console.cloud.google.com/iam-admin/quotas (aiplatform.googleapis.com)",
+      "source_text": "Google Cloud Vertex AI `base_model` quota dimension registry.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "META",
+      "provider_slug": "meta",
+      "accent_color": "#3b82f6",
+      "links": [
+        {
+          "label": "GCP Vertex AI Quotas",
+          "url": "https://console.cloud.google.com/iam-admin/quotas"
+        },
+        {
+          "label": "Vertex AI Models",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
+        }
+      ],
+      "detected_at": "2026-11-09T19:54:05.184839+00:00",
+      "codenames": [
+        "nonprod"
+      ],
+      "pricing": null,
+      "x_post_text": "🚨 GOOGLE CLOUD VERTEX AI QUOTA REGISTRY · META\nNew META Model(s) on Google Cloud Vertex AI: muse-ember-nonprod spotted in Vertex AI Quotas aiplatform.googleapis.com (+1 base_model)!\n\n• base_model:muse-ember-nonprod (muse-ember-nonprod)\n\nEvidence: console.cloud.google.com/iam-admin/quotas (aiplatform.googleapis.com)\nSource: Google Cloud Vertex AI `base_model` quota dimension registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "pre-release-aws_bedrock_model_cards-ef0b020e",
       "category": "cli-sdk-diff",
