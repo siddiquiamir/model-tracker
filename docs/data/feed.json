@@ -1,36 +1,36 @@
 {
-  "generated_at": "2026-11-09T18:14:59.744701+00:00",
+  "generated_at": "2026-11-09T18:18:59.536956+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 152,
     "leaks": 41,
-    "releases": 91,
+    "releases": 92,
     "stories_24h": 7,
-    "sources_ok": 12,
+    "sources_ok": 11,
     "total_cards": 230,
-    "new_in_this_scan": 1
+    "new_in_this_scan": 2
   },
   "stories": [
     {
       "id": "story-muse-ember-1",
       "group": "muse-ember-1",
-      "kind": "unverified",
+      "kind": "release",
       "open_weights": false,
       "title": "Muse Ember 1.0",
       "provider_slug": "meta",
       "provider_name": "Meta",
       "accent_color": "#3b82f6",
       "detected_at": "2026-11-09T17:59:11.669517+00:00",
-      "updated_at": "2026-11-09T18:16:08.546812+00:00",
+      "updated_at": "2026-11-09T18:19:17.144315+00:00",
       "first_source": "models.dev",
-      "lead": "",
+      "lead": "16 min before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "",
       "pricing": "",
       "codenames": [],
       "models": [
         {
-          "id": "muse-ember-1.0",
-          "name": "Muse Ember 1.0"
+          "id": "muse-ember-1-0",
+          "name": "Muse Ember 1 0"
         }
       ],
       "sources": [
@@ -53,20 +53,42 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "GCP Vertex AI Models Docs",
+          "scanner": "docs-radar",
+          "detected_at": "2026-11-09T18:19:13.605195+00:00",
+          "title": "New Model Spotted in GCP Vertex AI Generative Models",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "GCP Vertex AI Model Versions",
+          "scanner": "docs-radar",
+          "detected_at": "2026-11-09T18:19:17.144315+00:00",
+          "title": "New Model Spotted in GCP Vertex AI Model Versions & Lifecycle",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 2,
+      "source_count": 4,
       "backfill": false,
-      "header": "UNVERIFIED · META",
+      "header": "NEW MODEL · META",
       "card_ids": [
         "models-dev-diff-83de41f0",
-        "opencode-zen-diff-e2a90b6f"
+        "opencode-zen-diff-e2a90b6f",
+        "docs-diff-gcp-vertex-models-1196651f",
+        "docs-diff-gcp-vertex-versions-1196651f"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "⚪ UNVERIFIED: Muse Ember 1.0 by Meta\n\nFirst detected 09 Nov 17:59 UTC in models.dev\nConfirmed by Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Muse Ember 1.0 by Meta\n\nFirst detected 09 Nov 17:59 UTC in models.dev\n⏱ 16 min before it went live on Opencode Zen Stealth & Model Gateway\nConfirmed by Opencode Zen Stealth & Model Gateway, GCP Vertex AI Models Docs, GCP Vertex AI Model Versions\n\nvia @StatsWire"
     },
     {
       "id": "story-longcat-2-5-w-4a-4",
@@ -7834,13 +7856,13 @@
       "group": "gpt-6-1-terra",
       "kind": "release",
       "open_weights": false,
-      "title": "GPT-6.1 Terra Pro",
+      "title": "GPT 6.1 Terra",
       "provider_slug": "multi",
       "provider_name": "AI Model Identifiers",
       "accent_color": "#6366f1",
-      "detected_at": "2026-10-26T18:15:56+00:00",
+      "detected_at": "2026-10-26T18:48:05.210810+00:00",
       "updated_at": "2026-10-28T03:41:24.000Z",
-      "first_source": "OpenRouter",
+      "first_source": "models.dev",
       "lead": "",
       "released_on": "2026-10-26",
       "pricing": "",
@@ -7849,11 +7871,6 @@
         {
           "id": "gpt-6.1-terra",
           "name": "GPT-6.1 Terra",
-          "released_on": "2026-10-26"
-        },
-        {
-          "id": "gpt-6.1-terra-pro",
-          "name": "GPT-6.1 Terra Pro",
           "released_on": "2026-10-26"
         },
         {
@@ -7867,16 +7884,6 @@
         }
       ],
       "sources": [
-        {
-          "label": "OpenRouter",
-          "scanner": "openrouter",
-          "detected_at": "2026-10-26T18:15:56+00:00",
-          "title": "OpenAI: GPT-6.1 Terra Pro",
-          "url": "https://openrouter.ai/openai/gpt-6.1-terra-pro",
-          "backfill": true,
-          "build": "",
-          "evidence_path": ""
-        },
         {
           "label": "models.dev",
           "scanner": "models-dev",
@@ -7948,12 +7955,10 @@
           "evidence_path": ""
         }
       ],
-      "source_count": 8,
+      "source_count": 7,
       "backfill": false,
       "header": "NEW MODEL · AI MODEL IDENTIFIERS",
       "card_ids": [
-        "openrouter-model-openai_gpt-6.1-terra-pro",
-        "openrouter-model-openai_gpt-6.1-terra-pro_batch",
         "models-dev-diff-1dcd13c2",
         "docs-diff-azure-foundry-direct-901b6769",
         "pre-release-gh_openai_sdk_union-901b6769",
@@ -7969,7 +7974,7 @@
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: GPT-6.1 Terra Pro by AI Model Identifiers\n\nFirst detected 26 Oct 18:15 UTC in OpenRouter\n📅 First released: 2026-10-26\nConfirmed by models.dev, Azure AI Foundry Direct Models, OpenAI SDK GitHub Master +4\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: GPT 6.1 Terra by AI Model Identifiers\n\nFirst detected 26 Oct 18:48 UTC in models.dev\n📅 First released: 2026-10-26\nConfirmed by Azure AI Foundry Direct Models, OpenAI SDK GitHub Master, LiteLLM registry +3\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-carbon",
@@ -8167,6 +8172,78 @@
     }
   ],
   "cards": [
+    {
+      "id": "docs-diff-gcp-vertex-versions-1196651f",
+      "category": "cli-sdk-diff",
+      "scanner": "docs-radar",
+      "header": "GCP VERTEX AI MODEL VERSIONS · GOOGLE CLOUD",
+      "title": "New Model Spotted in GCP Vertex AI Model Versions & Lifecycle",
+      "subtitle": "Verified live API documentation diff",
+      "build_label": "Docs Diff",
+      "build_transition": "+1 new identifier(s)",
+      "models": [
+        {
+          "id": "muse-ember-1-0",
+          "name": "Muse Ember 1 0"
+        }
+      ],
+      "evidence": "cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions",
+      "source_text": "official Google Cloud Vertex AI model versions & endpoint table.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE CLOUD",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Official Docs Page",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions"
+        },
+        {
+          "label": "Raw Docs Feed",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions"
+        }
+      ],
+      "detected_at": "2026-11-09T18:19:17.144315+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 GCP VERTEX AI MODEL VERSIONS · GOOGLE CLOUD\nNew Model Spotted in GCP Vertex AI Model Versions & Lifecycle spotted in Docs Diff +1 new identifier(s)!\n\n• Muse Ember 1 0 (muse-ember-1-0)\n\nEvidence: cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions\nSource: official Google Cloud Vertex AI model versions & endpoint table.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "docs-diff-gcp-vertex-models-1196651f",
+      "category": "cli-sdk-diff",
+      "scanner": "docs-radar",
+      "header": "GCP VERTEX AI MODELS DOCS · GOOGLE CLOUD",
+      "title": "New Model Spotted in GCP Vertex AI Generative Models",
+      "subtitle": "Verified live API documentation diff",
+      "build_label": "Docs Diff",
+      "build_transition": "+1 new identifier(s)",
+      "models": [
+        {
+          "id": "muse-ember-1-0",
+          "name": "Muse Ember 1 0"
+        }
+      ],
+      "evidence": "cloud.google.com/vertex-ai/generative-ai/docs/learn/models",
+      "source_text": "official Google Cloud Vertex AI Models documentation (Gemini, Imagen, Veo, Claude, Llama).",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE CLOUD",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Official Docs Page",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
+        },
+        {
+          "label": "Raw Docs Feed",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
+        }
+      ],
+      "detected_at": "2026-11-09T18:19:13.605195+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 GCP VERTEX AI MODELS DOCS · GOOGLE CLOUD\nNew Model Spotted in GCP Vertex AI Generative Models spotted in Docs Diff +1 new identifier(s)!\n\n• Muse Ember 1 0 (muse-ember-1-0)\n\nEvidence: cloud.google.com/vertex-ai/generative-ai/docs/learn/models\nSource: official Google Cloud Vertex AI Models documentation (Gemini, Imagen, Veo, Claude, Llama).\n\nTracked by @StatsWire"
+    },
     {
       "id": "opencode-zen-diff-e2a90b6f",
       "category": "cli-sdk-diff",
@@ -16678,84 +16755,6 @@
       ],
       "detected_at": "2026-10-26T18:48:05.210810+00:00",
       "x_post_text": "🚨 MODELS.DEV GLOBAL REGISTRY DIFF · OPENCODE / SST\n1 New Model(s) Added to models.dev spotted in Registry Diff +1 new canonical model(s)!\n\n• GPT-6.1 Terra (OpenAI · release: 2026-10-26) (openai/gpt-6.1-terra)\n\nEvidence: models.dev/api.json\nSource: official models.dev global AI coding model registry.\n\nTracked by @StatsWire",
-      "pricing": null,
-      "codenames": []
-    },
-    {
-      "id": "openrouter-model-openai_gpt-6.1-terra-pro",
-      "category": "cli-sdk-diff",
-      "scanner": "openrouter",
-      "header": "OPENROUTER LIVE REGISTRY · OPENAI",
-      "title": "OpenAI: GPT-6.1 Terra Pro",
-      "subtitle": "Newly registered model endpoint on OpenRouter (/api/v1/models)",
-      "build_label": "Endpoint ID",
-      "build_transition": "openai/gpt-6.1-terra-pro",
-      "models": [
-        {
-          "id": "openai/gpt-6.1-terra-pro",
-          "name": "OpenAI: GPT-6.1 Terra Pro (1050k context window)",
-          "released_on": "2026-10-26"
-        }
-      ],
-      "evidence": "openrouter.ai/api/v1/models",
-      "source_text": "official public OpenRouter /api/v1/models JSON registry.",
-      "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
-      "disclaimer_2": "Publicly listed API model identifier and context length specification.",
-      "provider_name": "OPENAI",
-      "provider_slug": "openai",
-      "accent_color": "#10b981",
-      "links": [
-        {
-          "label": "OpenRouter Model Page",
-          "url": "https://openrouter.ai/openai/gpt-6.1-terra-pro"
-        },
-        {
-          "label": "OpenRouter Models API",
-          "url": "https://openrouter.ai/api/v1/models"
-        }
-      ],
-      "detected_at": "2026-10-26T18:15:56+00:00",
-      "backfill": true,
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · OPENAI\nOpenAI: GPT-6.1 Terra Pro spotted in Endpoint ID openai/gpt-6.1-terra-pro!\n\n• OpenAI: GPT-6.1 Terra Pro (1050k context window) (openai/gpt-6.1-terra-pro)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire",
-      "pricing": null,
-      "codenames": []
-    },
-    {
-      "id": "openrouter-model-openai_gpt-6.1-terra-pro_batch",
-      "category": "cli-sdk-diff",
-      "scanner": "openrouter",
-      "header": "OPENROUTER LIVE REGISTRY · OPENAI",
-      "title": "OpenAI: GPT-6.1 Terra Pro (batch)",
-      "subtitle": "Newly registered model endpoint on OpenRouter (/api/v1/models)",
-      "build_label": "Endpoint ID",
-      "build_transition": "openai/gpt-6.1-terra-pro:batch",
-      "models": [
-        {
-          "id": "openai/gpt-6.1-terra-pro:batch",
-          "name": "OpenAI: GPT-6.1 Terra Pro (batch) (1050k context window)",
-          "released_on": "2026-10-26"
-        }
-      ],
-      "evidence": "openrouter.ai/api/v1/models",
-      "source_text": "official public OpenRouter /api/v1/models JSON registry.",
-      "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
-      "disclaimer_2": "Publicly listed API model identifier and context length specification.",
-      "provider_name": "OPENAI",
-      "provider_slug": "openai",
-      "accent_color": "#10b981",
-      "links": [
-        {
-          "label": "OpenRouter Model Page",
-          "url": "https://openrouter.ai/openai/gpt-6.1-terra-pro:batch"
-        },
-        {
-          "label": "OpenRouter Models API",
-          "url": "https://openrouter.ai/api/v1/models"
-        }
-      ],
-      "detected_at": "2026-10-26T18:15:56+00:00",
-      "backfill": true,
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · OPENAI\nOpenAI: GPT-6.1 Terra Pro (batch) spotted in Endpoint ID openai/gpt-6.1-terra-pro:batch!\n\n• OpenAI: GPT-6.1 Terra Pro (batch) (1050k context window) (openai/gpt-6.1-terra-pro:batch)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire",
       "pricing": null,
       "codenames": []
     },
