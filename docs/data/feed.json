@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-09T19:03:24.252097+00:00",
+  "generated_at": "2026-11-09T19:05:25.028351+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 156,
-    "leaks": 44,
-    "releases": 93,
+    "leaks": 43,
+    "releases": 94,
     "stories_24h": 10,
     "sources_ok": 11,
-    "total_cards": 235,
-    "new_in_this_scan": 3
+    "total_cards": 236,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -128,27 +128,31 @@
     {
       "id": "story-claude-fable-5-2",
       "group": "claude-fable-5-2",
-      "kind": "leak",
+      "kind": "release",
       "open_weights": false,
       "title": "Claude Fable 5.2",
       "provider_slug": "anthropic",
       "provider_name": "Anthropic",
       "accent_color": "#f97316",
       "detected_at": "2026-11-09T18:53:39.765416+00:00",
-      "updated_at": "2026-11-09T19:04:00.004044+00:00",
+      "updated_at": "2026-11-09T19:05:43.188642+00:00",
       "first_source": "Anthropic SDK GitHub Main",
-      "lead": "",
+      "lead": "12 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "",
       "pricing": "",
       "codenames": [],
       "models": [
         {
-          "id": "claude-fable-5-2",
-          "name": "base_model:claude-fable-5-2"
+          "id": "claude-fable-5.2",
+          "name": "Claude Fable 5.2"
         },
         {
           "id": "claude-mythos-5-2",
           "name": "Claude Mythos 5.2"
+        },
+        {
+          "id": "claude-fable-5.2-batch",
+          "name": "Claude Fable 5.2"
         }
       ],
       "sources": [
@@ -201,23 +205,34 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Vercel AI Gateway Catalog",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-11-09T19:05:43.188642+00:00",
+          "title": "New Model on Vercel AI Gateway: Claude Fable 5.2",
+          "url": "https://ai-gateway.vercel.sh/v1/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 5,
+      "source_count": 6,
       "backfill": false,
-      "header": "LEAK · ANTHROPIC",
+      "header": "NEW MODEL · ANTHROPIC",
       "card_ids": [
         "pre-release-gh_anthropic_sdk_union-80302d38",
         "npm-_anthropic-ai_sdk-1.6.0-1.7.0",
         "docs-diff-anthropic-platform-docs-a2801b5f",
         "pre-release-anthropic_llms_model_routes-80302d38",
-        "vertex-quota-anthropic-521c31bd"
+        "vertex-quota-anthropic-521c31bd",
+        "vercel-gateway-diff-086f9e1a"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: Claude Fable 5.2 by Anthropic\n\nFirst detected 09 Nov 18:53 UTC in Anthropic SDK GitHub Main\nConfirmed by npm SDK release, Anthropic Platform Models Docs, Anthropic Llms.txt Route +1\nIDs: claude-fable-5-2, claude-mythos-5-2\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Claude Fable 5.2 by Anthropic\n\nFirst detected 09 Nov 18:53 UTC in Anthropic SDK GitHub Main\n⏱ 12 min before it went live on Vercel AI Gateway Catalog\nConfirmed by npm SDK release, Anthropic Platform Models Docs, Anthropic Llms.txt Route +2\n\nvia @StatsWire"
     },
     {
       "id": "story-muse-ember",
@@ -8397,6 +8412,42 @@
     }
   ],
   "cards": [
+    {
+      "id": "vercel-gateway-diff-086f9e1a",
+      "category": "cli-sdk-diff",
+      "scanner": "gateway-radar",
+      "header": "VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS",
+      "title": "New Model on Vercel AI Gateway: Claude Fable 5.2",
+      "subtitle": "Detected in ai-gateway.vercel.sh/v1/models (+2 new)",
+      "build_label": "Gateway Diff",
+      "build_transition": "+2 new model(s)",
+      "models": [
+        {
+          "id": "anthropic/claude-fable-5.2",
+          "name": "Claude Fable 5.2"
+        },
+        {
+          "id": "anthropic/claude-fable-5.2-batch",
+          "name": "Claude Fable 5.2 (Batch)"
+        }
+      ],
+      "evidence": "ai-gateway.vercel.sh/v1/models",
+      "source_text": "public Vercel AI Gateway /v1/models catalog.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "ANTHROPIC",
+      "provider_slug": "anthropic",
+      "accent_color": "#f97316",
+      "links": [
+        {
+          "label": "Vercel AI Gateway Models",
+          "url": "https://ai-gateway.vercel.sh/v1/models"
+        }
+      ],
+      "detected_at": "2026-11-09T19:05:43.188642+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS\nNew Model on Vercel AI Gateway: Claude Fable 5.2 spotted in Gateway Diff +2 new model(s)!\n\n• Claude Fable 5.2 (anthropic/claude-fable-5.2)\n• Claude Fable 5.2 (Batch) (anthropic/claude-fable-5.2-batch)\n\nEvidence: ai-gateway.vercel.sh/v1/models\nSource: public Vercel AI Gateway /v1/models catalog.\n\nTracked by @StatsWire"
+    },
     {
       "id": "vertex-quota-anthropic-521c31bd",
       "category": "cli-sdk-diff",
