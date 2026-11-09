@@ -78,6 +78,9 @@ SCANNER_LABELS: Dict[str, str] = {
     "github-code-leak": "GitHub benchmark & config",
     "provider-openapi": "Official OpenAPI spec",
     "vertex-ai-quotas": "Vertex AI Quotas registry",
+    "devin-cli": "Devin CLI binary",
+    "devin-desktop": "Devin Desktop bundle",
+    "litellm-intelligence": "LiteLLM commit-pinned registry",
 }
 _WORD_FIX = {
     "Openai": "OpenAI", "Ai": "AI", "Sdk": "SDK", "Github": "GitHub", "Vllm": "vLLM", "Sglang": "SGLang",
@@ -176,6 +179,8 @@ def _fmt_delta(seconds: float) -> str:
 
 
 def _card_keys(card: Dict[str, Any]) -> List[Tuple[str, Dict[str, Any]]]:
+    if card.get("intelligence") and card.get("family"):
+        return [(card["family"], model) for model in card.get("models", [])]
     out: List[Tuple[str, Dict[str, Any]]] = []
     models = card.get("models") or []
     if card.get("scanner") == "engine-pr-leak":
@@ -278,6 +283,7 @@ def _make_story(
     first = cards[0]
     scanners = {c.get("scanner", "") for c in cards}
     is_litellm_registry_group = key.startswith("litellm-registry-")
+    intelligence_only = all(card.get("intelligence") for card in cards)
 
     # Provider: most specific lab seen across sources
     lab = next((c for c in cards if c.get("provider_slug") not in GENERIC_PROVIDERS), first)
@@ -323,6 +329,11 @@ def _make_story(
                 v_slug = {"xai": "xai", "anthropic": "anthropic", "meta": "meta", "mistral": "mistral", "deepseek": "deepseek", "qwen": "qwen", "amazon": "amazon", "cohere": "cohere"}.get(m_dot.group(1), "amazon")
                 provider_slug, provider_name = v_slug, PROVIDER_NAMES.get(v_slug, "AWS Bedrock")
 
+    if intelligence_only:
+        explicit_providers = {card.get("provider_slug", "unknown") for card in cards} - {"unknown", ""}
+        provider_slug = next(iter(explicit_providers)) if len(explicit_providers) == 1 else "unknown"
+        provider_name = next((card["provider_name"] for card in cards if card.get("provider_slug") == provider_slug), "Unattributed") if provider_slug != "unknown" else "Unattributed"
+
     # Display name: the most-used clean catalog name that maps back to this story
     names: Counter = Counter()
     for c in cards:
@@ -347,6 +358,8 @@ def _make_story(
         title = "Claude Donut EAP & Silicon"
     elif key == "hyperion":
         title = "Hyperion"
+    elif key == "krypton":
+        title = "Gemini 4 Krypton"
 
     variants: List[Dict[str, str]] = []
     by_norm: Dict[str, Dict[str, str]] = {}
@@ -416,6 +429,8 @@ def _make_story(
             "title": c.get("title", ""),
             "url": link,
             "backfill": bool(c.get("backfill")),
+            "build": c.get("build", ""),
+            "evidence_path": c.get("evidence_path", ""),
         })
 
     first_dt = _parse(first.get("detected_at", ""))
@@ -445,7 +460,9 @@ def _make_story(
             or (provider_slug in GENERIC_PROVIDERS and not released)
         )
     )
-    if is_litellm_registry_group or (scanners <= {"litellm", "models-dev"} and is_previously_released):
+    if intelligence_only:
+        kind = "registry" if all(card.get("event_label") == "Registry update" for card in cards) else "unverified"
+    elif is_litellm_registry_group or (scanners <= {"litellm", "models-dev"} and is_previously_released):
         kind = "registry"
     elif scanners <= UNVERIFIED_SCANNERS or is_anonymous or is_stealth_gateway:
         kind = "unverified"
@@ -475,9 +492,15 @@ def _make_story(
         "unverified": "UNVERIFIED",
     }
     stage_word = stage_map.get(kind, "LEAK")
+    event_label = ""
+    intelligence_cards = [card for card in cards if card.get("intelligence")]
+    if intelligence_cards:
+        event_label = "Released" if kind == "release" else intelligence_cards[-1].get("event_label", "New identifier")
+        if intelligence_only:
+            stage_word = event_label.upper()
 
     model_providers = {infer_provider(v["id"])["name"] for v in variants if v.get("id")}
-    if len(model_providers) > 1 and not is_litellm_registry_group:
+    if len(model_providers) > 1 and not is_litellm_registry_group and not intelligence_only:
         provider_name = "AI Model Identifiers"
         provider_slug = "multi"
         story_accent = "#6366f1"
@@ -506,11 +529,20 @@ def _make_story(
         "backfill": all(s["backfill"] for s in sources),
         "header": f"{stage_word} · {provider_name.upper()}".strip(" ·"),
         "card_ids": [c["id"] for c in cards],
+        "event_label": event_label,
+        "intelligence_only": intelligence_only,
+        "candidate_only": all(card.get("candidate_only") for card in cards),
+        "registry_evidence": [record for card in intelligence_cards for record in card.get("registry_evidence", [])][:40],
     }
 
 
 def story_x_text(story: Dict[str, Any]) -> str:
     """Post copy that fits X's 280-character limit (optional lines are dropped until it fits)."""
+    if (story.get("intelligence_only") and story.get("kind") != "release") or story.get("candidate_only"):
+        from tracker.notifiers import build_x_post_text
+
+        first = (story.get("sources") or [{}])[0]
+        return build_x_post_text({"intelligence": bool(story.get("intelligence_only")), "candidate_only": bool(story.get("candidate_only")), "models": story.get("models", []), "build_label": first.get("label", "Public registry"), "build": first.get("build", ""), "source_text": first.get("url", "")})
     when = _parse(story["detected_at"]).strftime("%d %b %H:%M UTC")
     tag = {
         "leak": "🟠 LEAK",

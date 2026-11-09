@@ -307,6 +307,7 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
         r"astra-cyber|"
         r"(?:cactus|kraken|silicon)-(?:low|medium|high|xhigh|max)|"
         r"hyperion-(?:minimal|low|medium|high|base)|"
+        r"krypton-(?:[ab]|minimal|low|medium|high|xhigh|max|base)|"
         r"(?<!claude-)fable-[567]|"
         r"composer-[2345]|"
         r"muse-(?:spark|wonder)|"
@@ -333,6 +334,7 @@ def extract_models_from_bytes(data: bytes) -> Set[str]:
         r"astra-cyber[a-z0-9._-]{0,25}|"
         r"(?:cactus|kraken|silicon)-(?:low|medium|high|xhigh|max)|"
         r"hyperion-(?:minimal|low|medium|high|base)|"
+        r"krypton-(?:[ab]|minimal|low|medium|high|xhigh|max|base)|"
         r"fable-[567][a-z0-9._-]{0,20}|"
         r"composer-[2345][a-z0-9._-]{0,20}|"
         r"muse-(?:spark|wonder)[a-z0-9._-]{0,20}|"
@@ -463,7 +465,7 @@ def infer_family_title(model_ids: List[str]) -> str:
 def infer_provider(model_id: str) -> Dict[str, str]:
     """Return provider metadata (name, slug, accent color) for a model ID."""
     mid = model_id.lower()
-    if mid.startswith(("gemini", "lyria", "veo", "imagen", "gemma", "google/", "google-", "hydrogen-", "carbon-", "barium-", "argon-", "hyperion-", "hyperion", "alphafold", "alphagenome", "medlm")):
+    if mid.startswith(("gemini", "lyria", "veo", "imagen", "gemma", "google/", "google-", "hydrogen-", "carbon-", "barium-", "argon-", "hyperion-", "hyperion", "krypton-", "krypton", "alphafold", "alphagenome", "medlm")):
         return {"name": "GOOGLE", "slug": "google", "color": "#38bdf8"}
     if mid.startswith(("claude", "anthropic/", "anthropic-", "sonnet-", "opus-", "haiku-", "fable-", "mythos-", "silicon-", "silicon")):
         return {"name": "ANTHROPIC", "slug": "anthropic", "color": "#f97316"}

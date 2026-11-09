@@ -1376,7 +1376,7 @@ class DocsAndGlobalRegistryScanner:
         },
     ]
 
-    MODELS_DEV_URL = "https://models.dev/api.json"
+    MODELS_DEV_URL = "https://models.dev/api.json?type=all"
     LITELLM_JSON_URL = "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
 
     def scan(self) -> List[Dict[str, Any]]:
@@ -3122,6 +3122,7 @@ class HighAlphaLeakChannelsScanner:
         rb"astra-cyber|"
         rb"(?:cactus|kraken|silicon)-(?:low|medium|high|xhigh|max)|"
         rb"hyperion-(?:minimal|low|medium|high|base)|"
+        rb"krypton-(?:[ab]|minimal|low|medium|high|xhigh|max|base)|"
         rb"gemini-[345][.-][0-9a-z]|"
         rb"grok-[456][.-]|"
         rb"kimi-k[234]|"
@@ -3143,6 +3144,7 @@ class HighAlphaLeakChannelsScanner:
         rb"astra-cyber(?:\.[0-9]+|[a-z0-9_-]){0,22}|"
         rb"(?:cactus|kraken|silicon)-(?:low|medium|high|xhigh|max)|"
         rb"hyperion-(?:minimal|low|medium|high|base)|"
+        rb"krypton-(?:[ab]|minimal|low|medium|high|xhigh|max|base)|"
         rb"gemini-[345](?:\.[0-9]+|[a-z0-9_-]){1,32}|"
         rb"grok-[456](?:\.[0-9]+|[a-z0-9_-]){0,25}|"
         rb"kimi-k[234](?:\.[0-9]+|[a-z0-9_-]){0,25}|"
