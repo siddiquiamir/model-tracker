@@ -1,16 +1,132 @@
 {
-  "generated_at": "2026-11-10T19:58:18.338809+00:00",
+  "generated_at": "2026-11-10T20:08:18.618459+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 134,
-    "leaks": 44,
+    "stories": 136,
+    "leaks": 46,
     "releases": 72,
-    "stories_24h": 18,
+    "stories_24h": 20,
     "sources_ok": 11,
-    "total_cards": 215,
-    "new_in_this_scan": 0
+    "total_cards": 217,
+    "new_in_this_scan": 2
   },
   "stories": [
+    {
+      "id": "story-gpt",
+      "group": "gpt",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "GPT",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "accent_color": "#10b981",
+      "detected_at": "2026-11-10T20:08:50.441788+00:00",
+      "updated_at": "2026-11-10T20:08:50.441788+00:00",
+      "first_source": "Vertex AI Quotas registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gpt-default",
+          "name": "base_model:gpt-default"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vertex AI Quotas registry",
+          "scanner": "vertex-ai-quotas",
+          "detected_at": "2026-11-10T20:08:50.441788+00:00",
+          "title": "New OPENAI Model(s) on Google Cloud Vertex AI: gpt-default",
+          "url": "https://console.cloud.google.com/iam-admin/quotas",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · OPENAI",
+      "card_ids": [
+        "vertex-quota-openai-614c430f"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: GPT by OpenAI\n\nFirst detected 10 Nov 20:08 UTC in Vertex AI Quotas registry\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-clipper",
+      "group": "clipper",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Clipper",
+      "provider_slug": "multi",
+      "provider_name": "AI Model Identifiers",
+      "accent_color": "#6366f1",
+      "detected_at": "2026-11-10T20:08:50.441763+00:00",
+      "updated_at": "2026-11-10T20:08:50.441763+00:00",
+      "first_source": "Vertex AI Quotas registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "clipper",
+        "early",
+        "galleon"
+      ],
+      "models": [
+        {
+          "id": "clipper",
+          "name": "base_model:clipper"
+        },
+        {
+          "id": "galleon",
+          "name": "base_model:galleon"
+        },
+        {
+          "id": "sonic-buzz",
+          "name": "base_model:sonic-buzz"
+        },
+        {
+          "id": "gemini-3.8-flash-tts-qcd",
+          "name": "base_model:gemini-3.8-flash-tts-qcd"
+        },
+        {
+          "id": "gemini-flash-cyber-early-exp",
+          "name": "base_model:gemini-flash-cyber-early-exp"
+        },
+        {
+          "id": "gemini-3.8-flash-lite-tts-qcd",
+          "name": "base_model:gemini-3.8-flash-lite-tts-qcd"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vertex AI Quotas registry",
+          "scanner": "vertex-ai-quotas",
+          "detected_at": "2026-11-10T20:08:50.441763+00:00",
+          "title": "New GOOGLE Model(s) on Google Cloud Vertex AI: clipper, galleon",
+          "url": "https://console.cloud.google.com/iam-admin/quotas",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · AI MODEL IDENTIFIERS",
+      "card_ids": [
+        "vertex-quota-google-304c1f2e"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: Clipper by AI Model Identifiers\n\nFirst detected 10 Nov 20:08 UTC in Vertex AI Quotas registry\nCodename: clipper, early, galleon\nIDs: clipper, galleon, sonic-buzz +3\n\nvia @StatsWire"
+    },
     {
       "id": "story-ernie-light-dt-1-intl",
       "group": "ernie-light-dt-1-intl",
@@ -69,7 +185,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-10T15:50:16.177666+00:00",
-      "updated_at": "2026-11-10T16:46:22.745361+00:00",
+      "updated_at": "2026-11-10T20:08:50.441763+00:00",
       "first_source": "GCP Vertex AI Model Versions",
       "lead": "",
       "released_on": "",
@@ -79,6 +195,10 @@
         {
           "id": "gemini-4-carbon-cyber-permissive",
           "name": "Gemini 4 Carbon Cyber Permissive"
+        },
+        {
+          "id": "gemini-4-carbon-cyber-permissive-qcd",
+          "name": "base_model:gemini-4-carbon-cyber-permissive-qcd"
         }
       ],
       "sources": [
@@ -101,20 +221,31 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Vertex AI Quotas registry",
+          "scanner": "vertex-ai-quotas",
+          "detected_at": "2026-11-10T20:08:50.441763+00:00",
+          "title": "New GOOGLE Model(s) on Google Cloud Vertex AI: clipper, galleon",
+          "url": "https://console.cloud.google.com/iam-admin/quotas",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 2,
+      "source_count": 3,
       "backfill": false,
       "header": "LEAK · GOOGLE",
       "card_ids": [
         "docs-diff-gcp-vertex-versions-b375ff7f",
-        "litellm-diff-91d2c4d7"
+        "litellm-diff-91d2c4d7",
+        "vertex-quota-google-304c1f2e"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: Gemini 4 Carbon Cyber Permissive by Google\n\nFirst detected 10 Nov 15:50 UTC in GCP Vertex AI Model Versions\nConfirmed by LiteLLM registry\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: Gemini 4 Carbon Cyber Permissive by Google\n\nFirst detected 10 Nov 15:50 UTC in GCP Vertex AI Model Versions\nConfirmed by LiteLLM registry, Vertex AI Quotas registry\nIDs: gemini-4-carbon-cyber-permissive, gemini-4-carbon-cyber-permissive-qcd\n\nvia @StatsWire"
     },
     {
       "id": "story-carbon",
@@ -7230,7 +7361,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-10-23T19:51:16+00:00",
-      "updated_at": "2026-11-10T16:46:33.893419+00:00",
+      "updated_at": "2026-11-10T20:08:50.441763+00:00",
       "first_source": "Antigravity ACP config",
       "lead": "17 days before it went live on Vercel AI Gateway Catalog",
       "released_on": "2026-11-10",
@@ -7253,6 +7384,10 @@
           "id": "gemini-4-carbon-low",
           "name": "Gemini 4 Carbon",
           "released_on": "2026-11-10"
+        },
+        {
+          "id": "gemini-4-carbon-qcd",
+          "name": "base_model:gemini-4-carbon-qcd"
         },
         {
           "id": "gemini-4-carbon-high",
@@ -7464,7 +7599,8 @@
         "openrouter-model-google_gemini-4-carbon",
         "openrouter-model-google_gemini-4-carbon_batch",
         "models-dev-diff-f20a35d0",
-        "opencode-zen-diff-06dfe89e"
+        "opencode-zen-diff-06dfe89e",
+        "vertex-quota-google-304c1f2e"
       ],
       "event_label": "",
       "intelligence_only": false,
@@ -7538,6 +7674,111 @@
     }
   ],
   "cards": [
+    {
+      "id": "vertex-quota-openai-614c430f",
+      "category": "cli-sdk-diff",
+      "scanner": "vertex-ai-quotas",
+      "header": "GOOGLE CLOUD VERTEX AI QUOTA REGISTRY · OPENAI",
+      "title": "New OPENAI Model(s) on Google Cloud Vertex AI: gpt-default",
+      "subtitle": "Detected in Google Cloud Vertex AI `base_model:` quota dimensions (1 new)",
+      "build_label": "Vertex AI Quotas",
+      "build_transition": "aiplatform.googleapis.com (+1 base_model)",
+      "models": [
+        {
+          "id": "gpt-default",
+          "name": "base_model:gpt-default"
+        }
+      ],
+      "evidence": "console.cloud.google.com/iam-admin/quotas (aiplatform.googleapis.com)",
+      "source_text": "Google Cloud Vertex AI `base_model` quota dimension registry.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "GCP Vertex AI Quotas",
+          "url": "https://console.cloud.google.com/iam-admin/quotas"
+        },
+        {
+          "label": "Vertex AI Models",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
+        }
+      ],
+      "detected_at": "2026-11-10T20:08:50.441788+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 GOOGLE CLOUD VERTEX AI QUOTA REGISTRY · OPENAI\nNew OPENAI Model(s) on Google Cloud Vertex AI: gpt-default spotted in Vertex AI Quotas aiplatform.googleapis.com (+1 base_model)!\n\n• base_model:gpt-default (gpt-default)\n\nEvidence: console.cloud.google.com/iam-admin/quotas (aiplatform.googleapis.com)\nSource: Google Cloud Vertex AI `base_model` quota dimension registry.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "vertex-quota-google-304c1f2e",
+      "category": "cli-sdk-diff",
+      "scanner": "vertex-ai-quotas",
+      "header": "GOOGLE CLOUD VERTEX AI QUOTA REGISTRY · GOOGLE",
+      "title": "New GOOGLE Model(s) on Google Cloud Vertex AI: clipper, galleon",
+      "subtitle": "Detected in Google Cloud Vertex AI `base_model:` quota dimensions (8 new)",
+      "build_label": "Vertex AI Quotas",
+      "build_transition": "aiplatform.googleapis.com (+8 base_model)",
+      "models": [
+        {
+          "id": "clipper",
+          "name": "base_model:clipper"
+        },
+        {
+          "id": "galleon",
+          "name": "base_model:galleon"
+        },
+        {
+          "id": "gemini-3.8-flash-lite-tts-qcd",
+          "name": "base_model:gemini-3.8-flash-lite-tts-qcd"
+        },
+        {
+          "id": "gemini-3.8-flash-tts-qcd",
+          "name": "base_model:gemini-3.8-flash-tts-qcd"
+        },
+        {
+          "id": "gemini-4-carbon-cyber-permissive-qcd",
+          "name": "base_model:gemini-4-carbon-cyber-permissive-qcd"
+        },
+        {
+          "id": "gemini-4-carbon-qcd",
+          "name": "base_model:gemini-4-carbon-qcd"
+        },
+        {
+          "id": "gemini-flash-cyber-early-exp",
+          "name": "base_model:gemini-flash-cyber-early-exp"
+        },
+        {
+          "id": "sonic-buzz",
+          "name": "base_model:sonic-buzz"
+        }
+      ],
+      "evidence": "console.cloud.google.com/iam-admin/quotas (aiplatform.googleapis.com)",
+      "source_text": "Google Cloud Vertex AI `base_model` quota dimension registry.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "GCP Vertex AI Quotas",
+          "url": "https://console.cloud.google.com/iam-admin/quotas"
+        },
+        {
+          "label": "Vertex AI Models",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
+        }
+      ],
+      "detected_at": "2026-11-10T20:08:50.441763+00:00",
+      "codenames": [
+        "clipper",
+        "early",
+        "galleon"
+      ],
+      "pricing": null,
+      "x_post_text": "🚨 GOOGLE CLOUD VERTEX AI QUOTA REGISTRY · GOOGLE\nNew GOOGLE Model(s) on Google Cloud Vertex AI: clipper, galleon spotted in Vertex AI Quotas aiplatform.googleapis.com (+8 base_model)!\n\n• base_model:clipper (clipper)\n• base_model:galleon (galleon)\n• base_model:gemini-3.8-flash-lite-tts-qcd (gemini-3.8-flash-lite-tts-qcd)\n• base_model:gemini-3.8-flash-tts-qcd (gemini-3.8-flash-tts-qcd)\n• base_model:gemini-4-carbon-cyber-permissive-qcd (gemini-4-carbon-cyber-permissive-qcd)\n• base_model:gemini-4-carbon-qcd (gemini-4-carbon-qcd)\n• +2 more variants\n\nEvidence: console.cloud.google.com/iam-admin/quotas (aiplatform.googleapis.com)\nSource: Google Cloud Vertex AI `base_model` quota dimension registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "openrouter-model-baidu_ernie-light-dt-1.0-intl",
       "category": "cli-sdk-diff",
