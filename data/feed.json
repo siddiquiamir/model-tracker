@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-10T15:49:58.633658+00:00",
+  "generated_at": "2026-11-10T15:59:58.967432+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 165,
-    "leaks": 44,
-    "releases": 102,
+    "leaks": 43,
+    "releases": 103,
     "stories_24h": 20,
     "sources_ok": 11,
-    "total_cards": 266,
-    "new_in_this_scan": 3
+    "total_cards": 267,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -8822,16 +8822,16 @@
     {
       "id": "story-gemini-4-carbon",
       "group": "gemini-4-carbon",
-      "kind": "leak",
+      "kind": "release",
       "open_weights": false,
       "title": "Gemini 4 Carbon",
       "provider_slug": "google",
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-10-23T19:51:16+00:00",
-      "updated_at": "2026-11-10T15:50:31.886108+00:00",
+      "updated_at": "2026-11-10T16:00:33.694404+00:00",
       "first_source": "Antigravity ACP config",
-      "lead": "",
+      "lead": "17 days before it went live on Vercel AI Gateway Catalog",
       "released_on": "",
       "pricing": "",
       "codenames": [
@@ -8841,7 +8841,7 @@
       "models": [
         {
           "id": "gemini-4-carbon",
-          "name": "base_model:gemini-4-carbon"
+          "name": "Gemini 4 Carbon"
         },
         {
           "id": "carbon-g-medium-tf",
@@ -8990,11 +8990,21 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Vercel AI Gateway Catalog",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-11-10T16:00:33.694404+00:00",
+          "title": "New Model on Vercel AI Gateway: Gemini 4 Carbon",
+          "url": "https://ai-gateway.vercel.sh/v1/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 11,
+      "source_count": 12,
       "backfill": false,
-      "header": "LEAK · GOOGLE",
+      "header": "NEW MODEL · GOOGLE",
       "card_ids": [
         "ag-acp-1.4.3-revision-diff",
         "lmarena-lb-diff-54e458eb",
@@ -9006,13 +9016,14 @@
         "docs-diff-gemini-docs-06dfe89e",
         "docs-diff-gcp-vertex-models-06dfe89e",
         "docs-diff-gcp-vertex-versions-b375ff7f",
-        "vertex-quota-google-9187a17f"
+        "vertex-quota-google-9187a17f",
+        "vercel-gateway-diff-e1cd38a6"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: Gemini 4 Carbon by Google\n\nFirst detected 23 Oct 19:51 UTC in Antigravity ACP config\nConfirmed by LMArena, Gemini Web App Config, Google Cloud Billing catalog +7\nCodename: carbon, mobile\nIDs: gemini-4-carbon, carbon-g-medium-tf, gemini-4-carbon-low +7\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Gemini 4 Carbon by Google\n\nFirst detected 23 Oct 19:51 UTC in Antigravity ACP config\n⏱ 17 days before it went live on Vercel AI Gateway Catalog\nConfirmed by LMArena, Gemini Web App Config, Google Cloud Billing catalog +8\nCodename: carbon, mobile\n\nvia @StatsWire"
     },
     {
       "id": "story-sonnet-5-5-high-bon-le",
@@ -9080,6 +9091,38 @@
     }
   ],
   "cards": [
+    {
+      "id": "vercel-gateway-diff-e1cd38a6",
+      "category": "cli-sdk-diff",
+      "scanner": "gateway-radar",
+      "header": "VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS",
+      "title": "New Model on Vercel AI Gateway: Gemini 4 Carbon",
+      "subtitle": "Detected in ai-gateway.vercel.sh/v1/models (+1 new)",
+      "build_label": "Gateway Diff",
+      "build_transition": "+1 new model(s)",
+      "models": [
+        {
+          "id": "google/gemini-4-carbon",
+          "name": "Gemini 4 Carbon"
+        }
+      ],
+      "evidence": "ai-gateway.vercel.sh/v1/models",
+      "source_text": "public Vercel AI Gateway /v1/models catalog.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Vercel AI Gateway Models",
+          "url": "https://ai-gateway.vercel.sh/v1/models"
+        }
+      ],
+      "detected_at": "2026-11-10T16:00:33.694404+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS\nNew Model on Vercel AI Gateway: Gemini 4 Carbon spotted in Gateway Diff +1 new model(s)!\n\n• Gemini 4 Carbon (google/gemini-4-carbon)\n\nEvidence: ai-gateway.vercel.sh/v1/models\nSource: public Vercel AI Gateway /v1/models catalog.\n\nTracked by @StatsWire"
+    },
     {
       "id": "vertex-quota-google-9187a17f",
       "category": "cli-sdk-diff",
