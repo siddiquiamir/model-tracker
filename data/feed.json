@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-10T22:52:18.141638+00:00",
+  "generated_at": "2026-11-10T23:10:18.896164+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 133,
     "leaks": 46,
     "releases": 69,
-    "stories_24h": 19,
+    "stories_24h": 18,
     "sources_ok": 11,
     "total_cards": 216,
-    "new_in_this_scan": 2
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -349,7 +349,7 @@
       "provider_name": "MiniMax",
       "accent_color": "#ec4899",
       "detected_at": "2026-11-10T12:34:38Z",
-      "updated_at": "2026-11-10T14:58:18.855065+00:00",
+      "updated_at": "2026-11-10T23:10:57.311216+00:00",
       "first_source": "SGLang pull request",
       "lead": "2 h before it went live on Hugging Face",
       "released_on": "",
@@ -357,8 +357,12 @@
       "codenames": [],
       "models": [
         {
-          "id": "MiniMax-H3-Image",
-          "name": "MiniMax-H3-Image"
+          "id": "minimax-h3-image",
+          "name": "MiniMax H3 Image"
+        },
+        {
+          "id": "minimax-h3-image-highspeed",
+          "name": "MiniMax H3 Image Highspeed"
         }
       ],
       "sources": [
@@ -381,20 +385,31 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Vercel AI Gateway Catalog",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-11-10T23:10:57.311216+00:00",
+          "title": "New Model on Vercel AI Gateway: MiniMax H3 Image",
+          "url": "https://ai-gateway.vercel.sh/v1/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 2,
+      "source_count": 3,
       "backfill": false,
       "header": "OPEN WEIGHTS · MINIMAX",
       "card_ids": [
         "engine-pr-sgl-project_sglang-49552",
-        "hf-MiniMaxAI_MiniMax-H3-Image"
+        "hf-MiniMaxAI_MiniMax-H3-Image",
+        "vercel-gateway-diff-f90b102a"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: MiniMax H3 Image by MiniMax\n\nFirst detected 10 Nov 12:34 UTC in SGLang pull request\n⏱ 2 h before it went live on Hugging Face\nConfirmed by Hugging Face\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: MiniMax H3 Image by MiniMax\n\nFirst detected 10 Nov 12:34 UTC in SGLang pull request\n⏱ 2 h before it went live on Hugging Face\nConfirmed by Hugging Face, Vercel AI Gateway Catalog\nIDs: minimax-h3-image, minimax-h3-image-highspeed\n\nvia @StatsWire"
     },
     {
       "id": "story-zoomgain",
@@ -3620,7 +3635,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-05T16:58:34.695577+00:00",
-      "updated_at": "2026-11-10T20:09:14Z",
+      "updated_at": "2026-11-05T17:34:40.623776+00:00",
       "first_source": "GCP Vertex AI Model Versions",
       "lead": "8 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "2026-11-05",
@@ -3683,19 +3698,9 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
-        },
-        {
-          "label": "Antigravity desktop build",
-          "scanner": "antigravity",
-          "detected_at": "2026-11-10T20:09:14Z",
-          "title": "Gemini Omni 1.2 Flash",
-          "url": "https://storage.googleapis.com/antigravity-public/insiders/latest-x64-linux.yml",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
         }
       ],
-      "source_count": 6,
+      "source_count": 5,
       "backfill": false,
       "header": "NEW MODEL · GOOGLE",
       "card_ids": [
@@ -3703,8 +3708,7 @@
         "docs-diff-gemini-docs-001fe207",
         "vercel-gateway-diff-73a1fc6a",
         "openrouter-model-google_gemini-omni-1.2-flash",
-        "litellm-diff-0f824be4",
-        "ag-2.31.0-1.0.20261110200914__Insiders_-gemini-omni-flash"
+        "litellm-diff-0f824be4"
       ],
       "event_label": "",
       "intelligence_only": false,
@@ -7332,6 +7336,16 @@
           "evidence_path": ""
         },
         {
+          "label": "Antigravity desktop build",
+          "scanner": "antigravity",
+          "detected_at": "2026-11-10T11:00:25Z",
+          "title": "Gemini 4 Carbon",
+          "url": "https://storage.googleapis.com/antigravity-public/insiders/latest-x64-linux.yml",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
           "label": "npm SDK release",
           "scanner": "npm",
           "detected_at": "2026-11-10T12:32:17Z",
@@ -7440,16 +7454,6 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
-        },
-        {
-          "label": "Antigravity desktop build",
-          "scanner": "antigravity",
-          "detected_at": "2026-11-10T20:09:14Z",
-          "title": "Gemini 4 Carbon",
-          "url": "https://storage.googleapis.com/antigravity-public/insiders/latest-x64-linux.yml",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
         }
       ],
       "source_count": 16,
@@ -7460,6 +7464,7 @@
         "lmarena-lb-diff-54e458eb",
         "web-bundle-gemini-web-2d205456",
         "cloud-billing-vertex-c75df4fd",
+        "ag-2.31.0-1.0.20261110110025__Insiders_-gemini-4-carbon",
         "cli-factory-droid-1.7.0-1.7.1",
         "web-bundle-aistudio-models-336aaf20",
         "docs-diff-gemini-docs-06dfe89e",
@@ -7473,7 +7478,6 @@
         "models-dev-diff-f20a35d0",
         "opencode-zen-diff-06dfe89e",
         "vertex-quota-google-304c1f2e",
-        "ag-2.31.0-1.0.20261110200914__Insiders_-gemini-4-carbon",
         "npm-_google_genai-3.0.0-3.1.0"
       ],
       "event_label": "",
@@ -7549,6 +7553,42 @@
   ],
   "cards": [
     {
+      "id": "vercel-gateway-diff-f90b102a",
+      "category": "cli-sdk-diff",
+      "scanner": "gateway-radar",
+      "header": "VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS",
+      "title": "New Model on Vercel AI Gateway: MiniMax H3 Image",
+      "subtitle": "Detected in ai-gateway.vercel.sh/v1/models (+2 new)",
+      "build_label": "Gateway Diff",
+      "build_transition": "+2 new model(s)",
+      "models": [
+        {
+          "id": "minimax/minimax-h3-image",
+          "name": "MiniMax H3 Image"
+        },
+        {
+          "id": "minimax/minimax-h3-image-highspeed",
+          "name": "MiniMax H3 Image Highspeed"
+        }
+      ],
+      "evidence": "ai-gateway.vercel.sh/v1/models",
+      "source_text": "public Vercel AI Gateway /v1/models catalog.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "MINIMAX",
+      "provider_slug": "minimax",
+      "accent_color": "#ec4899",
+      "links": [
+        {
+          "label": "Vercel AI Gateway Models",
+          "url": "https://ai-gateway.vercel.sh/v1/models"
+        }
+      ],
+      "detected_at": "2026-11-10T23:10:57.311216+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS\nNew Model on Vercel AI Gateway: MiniMax H3 Image spotted in Gateway Diff +2 new model(s)!\n\n• MiniMax H3 Image (minimax/minimax-h3-image)\n• MiniMax H3 Image Highspeed (minimax/minimax-h3-image-highspeed)\n\nEvidence: ai-gateway.vercel.sh/v1/models\nSource: public Vercel AI Gateway /v1/models catalog.\n\nTracked by @StatsWire"
+    },
+    {
       "id": "npm-_google_genai-3.0.0-3.1.0",
       "category": "cli-sdk-diff",
       "scanner": "npm",
@@ -7586,99 +7626,6 @@
       "detected_at": "2026-11-10T20:47:12.461Z",
       "pricing": null,
       "x_post_text": "🚨 GOOGLE GENAI SDK DIFF · GOOGLE\nGenai (Gemini 4 Carbon) spotted in Package Diff 3.0.0 -> 3.1.0!\n\n• Gemini 4 Carbon (gemini-4-carbon)\n\nEvidence: dist/index.d.ts / SDK bundle\nSource: official public npm registry tarball (@google/genai).\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "ag-2.31.0-1.0.20261110200914__Insiders_-gemini-4-carbon",
-      "category": "desktop-diff",
-      "scanner": "antigravity",
-      "header": "ANTIGRAVITY DESKTOP DIFF · GOOGLE",
-      "title": "Gemini 4 Carbon",
-      "subtitle": "Verified desktop build comparison",
-      "build_label": "Build",
-      "build_transition": "2.31.0 -> 1.0.20261110200914 (Insiders)",
-      "old_version": "2.31.0",
-      "new_version": "1.0.20261110200914 (Insiders)",
-      "models": [
-        {
-          "id": "gemini-4-carbon",
-          "name": "Gemini 4 Carbon",
-          "released_on": "2026-11-10"
-        },
-        {
-          "id": "gemini-4-carbon-high",
-          "name": "Gemini 4 Carbon (High)",
-          "released_on": "2026-11-10"
-        },
-        {
-          "id": "gemini-4-carbon-low",
-          "name": "Gemini 4 Carbon (Low)",
-          "released_on": "2026-11-10"
-        },
-        {
-          "id": "gemini-4-carbon-medium",
-          "name": "Gemini 4 Carbon (Medium)",
-          "released_on": "2026-11-10"
-        }
-      ],
-      "evidence": "resources/bin/language_server",
-      "source_text": "official public Linux x64 release archives.",
-      "disclaimer_1": "Verified differences between existing builds; this is not a newly published release announcement.",
-      "disclaimer_2": "Compiled-in names and identifiers. This does not confirm model rollout or account access.",
-      "provider_name": "GOOGLE",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "Public release feed",
-          "url": "https://storage.googleapis.com/antigravity-public/insiders/latest-x64-linux.yml"
-        },
-        {
-          "label": "Official build",
-          "url": "https://storage.googleapis.com/antigravity-public/insiders/1.0.20261110200914/unsigned/language_server-linux-x64"
-        }
-      ],
-      "detected_at": "2026-11-10T20:09:14Z",
-      "pricing": null,
-      "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini 4 Carbon spotted in Build 2.31.0 -> 1.0.20261110200914 (Insiders)!\n\n• Gemini 4 Carbon (gemini-4-carbon)\n• Gemini 4 Carbon (High) (gemini-4-carbon-high)\n• Gemini 4 Carbon (Low) (gemini-4-carbon-low)\n• Gemini 4 Carbon (Medium) (gemini-4-carbon-medium)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "ag-2.31.0-1.0.20261110200914__Insiders_-gemini-omni-flash",
-      "category": "desktop-diff",
-      "scanner": "antigravity",
-      "header": "ANTIGRAVITY DESKTOP DIFF · GOOGLE",
-      "title": "Gemini Omni 1.2 Flash",
-      "subtitle": "Verified desktop build comparison",
-      "build_label": "Build",
-      "build_transition": "2.31.0 -> 1.0.20261110200914 (Insiders)",
-      "old_version": "2.31.0",
-      "new_version": "1.0.20261110200914 (Insiders)",
-      "models": [
-        {
-          "id": "gemini-omni-1.2-flash",
-          "name": "Gemini Omni 1.2 Flash",
-          "released_on": "2026-11-05"
-        }
-      ],
-      "evidence": "resources/bin/language_server",
-      "source_text": "official public Linux x64 release archives.",
-      "disclaimer_1": "Verified differences between existing builds; this is not a newly published release announcement.",
-      "disclaimer_2": "Compiled-in names and identifiers. This does not confirm model rollout or account access.",
-      "provider_name": "GOOGLE",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "Public release feed",
-          "url": "https://storage.googleapis.com/antigravity-public/insiders/latest-x64-linux.yml"
-        },
-        {
-          "label": "Official build",
-          "url": "https://storage.googleapis.com/antigravity-public/insiders/1.0.20261110200914/unsigned/language_server-linux-x64"
-        }
-      ],
-      "detected_at": "2026-11-10T20:09:14Z",
-      "pricing": null,
-      "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini Omni 1.2 Flash spotted in Build 2.31.0 -> 1.0.20261110200914 (Insiders)!\n\n• Gemini Omni 1.2 Flash (gemini-omni-1.2-flash)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
     {
       "id": "vertex-quota-openai-614c430f",
@@ -8605,6 +8552,60 @@
       "detected_at": "2026-11-10T11:40:33.706631+00:00",
       "pricing": null,
       "x_post_text": "🚨 HUGGING FACE NEW REPO · ANT GROUP\nZoomGain 4B spotted in Repo Created 2026-11-10 (model)!\n\n• ZoomGain-4B (model) (inclusionAI/ZoomGain-4B)\n\nEvidence: huggingface.co/api/models\nSource: official inclusionAI Hugging Face organization feed.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "ag-2.31.0-1.0.20261110110025__Insiders_-gemini-4-carbon",
+      "category": "desktop-diff",
+      "scanner": "antigravity",
+      "header": "ANTIGRAVITY DESKTOP DIFF · GOOGLE",
+      "title": "Gemini 4 Carbon",
+      "subtitle": "Verified desktop build comparison",
+      "build_label": "Build",
+      "build_transition": "2.31.0 -> 1.0.20261110110025 (Insiders)",
+      "old_version": "2.31.0",
+      "new_version": "1.0.20261110110025 (Insiders)",
+      "models": [
+        {
+          "id": "gemini-4-carbon",
+          "name": "Gemini 4 Carbon",
+          "released_on": "2026-11-10"
+        },
+        {
+          "id": "gemini-4-carbon-high",
+          "name": "Gemini 4 Carbon (High)",
+          "released_on": "2026-11-10"
+        },
+        {
+          "id": "gemini-4-carbon-low",
+          "name": "Gemini 4 Carbon (Low)",
+          "released_on": "2026-11-10"
+        },
+        {
+          "id": "gemini-4-carbon-medium",
+          "name": "Gemini 4 Carbon (Medium)",
+          "released_on": "2026-11-10"
+        }
+      ],
+      "evidence": "resources/bin/language_server",
+      "source_text": "official public Linux x64 release archives.",
+      "disclaimer_1": "Verified differences between existing builds; this is not a newly published release announcement.",
+      "disclaimer_2": "Compiled-in names and identifiers. This does not confirm model rollout or account access.",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Public release feed",
+          "url": "https://storage.googleapis.com/antigravity-public/insiders/latest-x64-linux.yml"
+        },
+        {
+          "label": "Official build",
+          "url": "https://storage.googleapis.com/antigravity-public/insiders/1.0.20261110110025/unsigned/language_server-linux-x64"
+        }
+      ],
+      "detected_at": "2026-11-10T11:00:25Z",
+      "pricing": null,
+      "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini 4 Carbon spotted in Build 2.31.0 -> 1.0.20261110110025 (Insiders)!\n\n• Gemini 4 Carbon (gemini-4-carbon)\n• Gemini 4 Carbon (High) (gemini-4-carbon-high)\n• Gemini 4 Carbon (Low) (gemini-4-carbon-low)\n• Gemini 4 Carbon (Medium) (gemini-4-carbon-medium)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-nvidia_Nemotron-3-Diarization",
