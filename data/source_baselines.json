@@ -20383,8 +20383,8 @@
     "seedance-v1-lite": {
       "org": "bytedance",
       "provider": "fal",
-      "caps": "in:text, in:image, out:video",
-      "model_id": "4c8dde6e-1b2c-45b9-91c3-413b2ceafffb",
+      "caps": "in:text, out:video",
+      "model_id": "13ce11ba-def2-4c80-a70b-b0b2c14d293e",
       "route": "code"
     },
     "kandinsky-5.0-t2v-lite": {
@@ -20411,8 +20411,8 @@
     "pika-v2.2": {
       "org": "pika",
       "provider": "fal",
-      "caps": "in:text, out:video",
-      "model_id": "86de5aea-fc0c-4c36-b65a-7afc443a32d2",
+      "caps": "in:text, in:image, out:video",
+      "model_id": "f9b9f030-9ebc-4765-bf76-c64a82a72dfd",
       "route": "code"
     },
     "mochi-v1": {
@@ -20988,19 +20988,6 @@
       "claude-sonnet-5",
       "claude-sonnet-5-5"
     ],
-    "@openai/codex@0.168.0-alpha.6-linux-x64": [
-      "gpt-5.5",
-      "gpt-5.6-luna",
-      "gpt-5.6-sol",
-      "gpt-5.6-terra",
-      "gpt-6-astra",
-      "gpt-6-luna",
-      "gpt-6-sol",
-      "gpt-6.1-sol",
-      "gpt-6.1-terra",
-      "gpt-daybreak-blue-latest",
-      "gpt-daybreak-red-latest"
-    ],
     "@openai/codex@0.168.0-alpha.7-linux-x64": [
       "gpt-5.5",
       "gpt-5.6-luna",
@@ -21054,6 +21041,19 @@
       "gpt-daybreak-red-latest"
     ],
     "@openai/codex@0.169.0-alpha.7-linux-x64": [
+      "gpt-5.5",
+      "gpt-5.6-luna",
+      "gpt-5.6-sol",
+      "gpt-5.6-terra",
+      "gpt-6-astra",
+      "gpt-6-luna",
+      "gpt-6-sol",
+      "gpt-6.1-sol",
+      "gpt-6.1-terra",
+      "gpt-daybreak-blue-latest",
+      "gpt-daybreak-red-latest"
+    ],
+    "@openai/codex@0.169.0-alpha.9-linux-x64": [
       "gpt-5.5",
       "gpt-5.6-luna",
       "gpt-5.6-sol",
@@ -23610,10 +23610,6 @@
   "copilot_cli_release_models": [],
   "engine_seen_prs": {
     "vllm-project/vllm": [
-      66667,
-      66668,
-      66669,
-      66670,
       66671,
       66672,
       66673,
@@ -23809,31 +23805,13 @@
       66889,
       66890,
       66891,
-      66892
+      66892,
+      66893,
+      66895,
+      66897,
+      66899
     ],
     "sgl-project/sglang": [
-      49409,
-      49410,
-      49411,
-      49412,
-      49413,
-      49414,
-      49415,
-      49416,
-      49417,
-      49418,
-      49419,
-      49420,
-      49421,
-      49422,
-      49423,
-      49424,
-      49425,
-      49426,
-      49427,
-      49428,
-      49429,
-      49430,
       49431,
       49432,
       49433,
@@ -24011,7 +23989,29 @@
       49623,
       49625,
       49627,
-      49628
+      49628,
+      49629,
+      49630,
+      49631,
+      49632,
+      49633,
+      49634,
+      49635,
+      49636,
+      49637,
+      49638,
+      49639,
+      49640,
+      49641,
+      49642,
+      49643,
+      49644,
+      49646,
+      49647,
+      49648,
+      49649,
+      49650,
+      49652
     ],
     "NVIDIA/TensorRT-LLM": [
       21830,
@@ -24418,8 +24418,6 @@
       50596
     ],
     "ggml-org/llama.cpp": [
-      31761,
-      31762,
       31763,
       31764,
       31775,
@@ -24617,7 +24615,9 @@
       32042,
       32043,
       32044,
-      32045
+      32045,
+      32046,
+      32047
     ],
     "ollama/ollama": [
       19354,
@@ -24913,7 +24913,7 @@
       "veo-3.0-fast-generate-001",
       "veo-3.1-generate-preview"
     ],
-    "aistudio_build_key": "boq-makersuite.MakerSuite.en_US.3AU5ENVHRJY.2018.O",
+    "aistudio_build_key": "boq-makersuite.MakerSuite.en_US.sGo3MUEXlKY.2018.O",
     "gemini_web_models": [
       "gemini-2.0-flash",
       "gemini-2.5-flash",
@@ -26599,7 +26599,13 @@
       "nvidia/Cosmos3-Nano-FP8",
       "nvidia/Nemotron-3-Diarization",
       "nvidia/cbottle",
-      "nvidia/Alpamayo2-Edge"
+      "nvidia/Alpamayo2-Edge",
+      "nvidia/GR00T-N1.7-3B",
+      "nvidia/GR00T-N1.7-SimplerEnv-Fractal",
+      "nvidia/GR00T-N1.7-SimplerEnv-Bridge",
+      "nvidia/GR00T-N1.7-DROID",
+      "nvidia/GR00T-N1.7-LIBERO",
+      "nvidia/GR00T-H-N1.7"
     ],
     "google": [
       "google/embeddinggemma-2",
@@ -28046,7 +28052,7 @@
     "voxtral-small-24b-2507"
   ],
   "openai_api_spec": {
-    "etag": "\"04e72186c356ffeddff86f21bcf5c3b7929aacaae10e7aae5f48f56266d4e5cf\"",
+    "etag": "\"3661a798691dcd08b9e26897e3e9742a2b5b637c5277cedf26128bcc8fbdf7d7\"",
     "ids": [
       "chatgpt",
       "chatgpt-4o-latest",
@@ -28988,7 +28994,7 @@
       ]
     },
     "@openai/codex": {
-      "version": "0.167.1-linux-x64",
+      "version": "0.169.0-alpha.9-linux-x64",
       "models": [
         "gpt-5.5",
         "gpt-5.6-luna",
