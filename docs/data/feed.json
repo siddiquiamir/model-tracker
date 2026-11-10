@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-10T19:17:58.738604+00:00",
+  "generated_at": "2026-11-10T19:20:18.780578+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 135,
     "leaks": 44,
     "releases": 73,
-    "stories_24h": 18,
-    "sources_ok": 11,
-    "total_cards": 216,
-    "new_in_this_scan": 0
+    "stories_24h": 19,
+    "sources_ok": 12,
+    "total_cards": 217,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -3716,7 +3716,7 @@
       "provider_name": "Baidu",
       "accent_color": "#2932e1",
       "detected_at": "2026-11-05T05:32:32.825217+00:00",
-      "updated_at": "2026-11-09T04:16:40Z",
+      "updated_at": "2026-11-10T19:20:28.481392+00:00",
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "2026-10-21",
@@ -3727,6 +3727,10 @@
           "id": "ERNIE-5.5-Flash-Base",
           "name": "ERNIE-5.5-Flash-Base",
           "released_on": "2026-10-21"
+        },
+        {
+          "id": "ernie-5.5-flash-preview",
+          "name": "ERNIE-5.5-Flash-Preview"
         },
         {
           "id": "ERNIE-5.5-Flash-Base-BF16",
@@ -3753,21 +3757,32 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "OpenRouter",
+          "scanner": "openrouter",
+          "detected_at": "2026-11-10T19:20:28.481392+00:00",
+          "title": "Baidu Qianfan: ERNIE-5.5-Flash-Preview",
+          "url": "https://openrouter.ai/baidu/ernie-5.5-flash-preview",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 2,
+      "source_count": 3,
       "backfill": false,
       "header": "OPEN WEIGHTS · BAIDU",
       "card_ids": [
         "hf-baidu_ERNIE-5.5-Flash-Base",
         "hf-baidu_ERNIE-5.5-Flash-Base-BF16",
-        "engine-pr-ggml-org_llama.cpp-31925"
+        "engine-pr-ggml-org_llama.cpp-31925",
+        "openrouter-model-baidu_ernie-5.5-flash-preview"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: ERNIE 5.5 Flash Base by Baidu\n\nFirst detected 05 Nov 05:32 UTC in Hugging Face\n📅 First released: 2026-10-21\nConfirmed by llama.cpp pull request\nIDs: ERNIE-5.5-Flash-Base, ERNIE-5.5-Flash-Base-BF16\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: ERNIE 5.5 Flash Base by Baidu\n\nFirst detected 05 Nov 05:32 UTC in Hugging Face\n📅 First released: 2026-10-21\nConfirmed by llama.cpp pull request, OpenRouter\nIDs: ERNIE-5.5-Flash-Base, ernie-5.5-flash-preview, ERNIE-5.5-Flash-Base-BF16\n\nvia @StatsWire"
     },
     {
       "id": "story-gpt-image-2-6-flare",
@@ -7572,6 +7587,42 @@
     }
   ],
   "cards": [
+    {
+      "id": "openrouter-model-baidu_ernie-5.5-flash-preview",
+      "category": "cli-sdk-diff",
+      "scanner": "openrouter",
+      "header": "OPENROUTER LIVE REGISTRY · BAIDU",
+      "title": "Baidu Qianfan: ERNIE-5.5-Flash-Preview",
+      "subtitle": "Newly registered model endpoint on OpenRouter (/api/v1/models)",
+      "build_label": "Endpoint ID",
+      "build_transition": "baidu/ernie-5.5-flash-preview",
+      "models": [
+        {
+          "id": "baidu/ernie-5.5-flash-preview",
+          "name": "Baidu Qianfan: ERNIE-5.5-Flash-Preview (1024k context window)"
+        }
+      ],
+      "evidence": "openrouter.ai/api/v1/models",
+      "source_text": "official public OpenRouter /api/v1/models JSON registry.",
+      "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
+      "disclaimer_2": "Publicly listed API model identifier and context length specification.",
+      "provider_name": "BAIDU",
+      "provider_slug": "openrouter",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "OpenRouter Model Page",
+          "url": "https://openrouter.ai/baidu/ernie-5.5-flash-preview"
+        },
+        {
+          "label": "OpenRouter Models API",
+          "url": "https://openrouter.ai/api/v1/models"
+        }
+      ],
+      "detected_at": "2026-11-10T19:20:28.481392+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · BAIDU\nBaidu Qianfan: ERNIE-5.5-Flash-Preview spotted in Endpoint ID baidu/ernie-5.5-flash-preview!\n\n• Baidu Qianfan: ERNIE-5.5-Flash-Preview (1024k context window) (baidu/ernie-5.5-flash-preview)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "litellm-diff-782b2563",
       "category": "cli-sdk-diff",
