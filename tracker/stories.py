@@ -78,6 +78,7 @@ SCANNER_LABELS: Dict[str, str] = {
     "github-code-leak": "GitHub benchmark & config",
     "provider-openapi": "Official OpenAPI spec",
     "vertex-ai-quotas": "Vertex AI Quotas registry",
+    "cloud-billing": "Google Cloud Billing catalog",
     "devin-cli": "Devin CLI binary",
     "devin-desktop": "Devin Desktop bundle",
     "litellm-intelligence": "LiteLLM commit-pinned registry",
@@ -358,8 +359,6 @@ def _make_story(
         title = "Claude Donut EAP & Silicon"
     elif key == "hyperion":
         title = "Hyperion"
-    elif key == "krypton":
-        title = "Gemini 4 Krypton"
 
     variants: List[Dict[str, str]] = []
     by_norm: Dict[str, Dict[str, str]] = {}

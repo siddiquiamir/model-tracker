@@ -4741,6 +4741,138 @@ class HighAlphaLeakChannelsScanner:
 
         return cards, changed
 
+    VERTEX_BILLING_SERVICE_ID = "C78E-0083-1060"
+    _BILLING_SKU_MODEL_RE = re.compile(
+        r"\b("
+        r"Gemini\s+[345](?:\.[0-9]+)?(?:\s+(?:Pro|Flash|Ultra|Lite|Nano|Argon|Carbon|Krypton|Hydrogen|Barium|Hyperion|Live|Image|Audio|Robotics))+(?:\s+[A-Za-z0-9.]+)?|"
+        r"Claude\s+(?:Opus|Sonnet|Haiku|Fable|Mythos|Donut|Silicon)\s+[456](?:\.[0-9]+)?(?:\s+Fast)?|"
+        r"GPT-[567](?:\.[0-9]+)?(?:\s+(?:Astra|Luna|Sol|Terra|Mini|Nano|Pro|Cyber))?|"
+        r"Llama\s+[456](?:\.[0-9]+)?(?:\s+[A-Za-z0-9.]+)?|"
+        r"DeepSeek\s+(?:V[456]|R[234])(?:\.[0-9]+)?(?:\s+Flash)?|"
+        r"Mistral\s+[A-Za-z0-9.]+\s+[345]|"
+        r"Veo\s+[345](?:\.[0-9]+)?|"
+        r"Imagen\s+[45](?:\.[0-9]+)?|"
+        r"Lyria\s+[345](?:\.[0-9]+)?"
+        r")\b",
+        re.IGNORECASE,
+    )
+
+    def _scan_cloud_billing_skus(
+        self,
+        baselines: Dict[str, Any],
+        known_canon: Set[str],
+    ) -> Tuple[List[Dict[str, Any]], bool]:
+        """
+        Polls the official Google Cloud Billing Catalog API (`cloudbilling.googleapis.com/v1/services/C78E-0083-1060/skus`)
+        for Vertex AI SKU descriptions to detect newly published pre-release model billing SKUs (e.g. Gemini 4 Carbon
+        90 published SKUs across Online, Batch, and Flex tiers) before public API endpoints open.
+        """
+        cards: List[Dict[str, Any]] = []
+        changed = False
+        cb_state: Dict[str, Any] = dict(baselines.get("cloud_billing_skus", {}))
+        seen_families: Set[str] = set(cb_state.get("seen_model_families", []))
+        is_bootstrap = len(seen_families) == 0
+
+        token, _ = self._mint_gcp_bearer_token()
+        api_key = (os.environ.get("GEMINI_API_KEY") or os.environ.get("GCP_BILLING_API_KEY") or "").strip()
+        if not token and not api_key:
+            return cards, changed
+
+        hdrs: Dict[str, str] = {"Accept": "application/json", "User-Agent": "ModelPulse-Tracker/2.0"}
+        if token:
+            hdrs["Authorization"] = f"Bearer {token}"
+
+        sku_counts_by_model: Dict[str, int] = {}
+        sku_samples_by_model: Dict[str, List[str]] = {}
+        next_tok = ""
+
+        for _ in range(15):
+            url = f"https://cloudbilling.googleapis.com/v1/services/{self.VERTEX_BILLING_SERVICE_ID}/skus?pageSize=5000"
+            if not token and api_key:
+                url += f"&key={urllib.parse.quote(api_key)}"
+            if next_tok:
+                url += f"&pageToken={urllib.parse.quote(next_tok)}"
+            try:
+                doc = _http_get_json(url, timeout=25, extra_headers=hdrs)
+            except Exception as exc:
+                print(f"[HighAlphaScanner] Cloud Billing SKU API note: {exc}")
+                break
+            skus = doc.get("skus", []) if isinstance(doc, dict) else []
+            for sku in skus:
+                if not isinstance(sku, dict):
+                    continue
+                desc = str(sku.get("description") or "").strip()
+                if not desc:
+                    continue
+                for m in self._BILLING_SKU_MODEL_RE.findall(desc):
+                    slug = re.sub(r"[^a-z0-9.]+", "-", m.strip().lower()).strip("-")
+                    if not slug or is_legacy_model_id(slug):
+                        continue
+                    sku_counts_by_model[slug] = sku_counts_by_model.get(slug, 0) + 1
+                    samples = sku_samples_by_model.setdefault(slug, [])
+                    if len(samples) < 5 and desc not in samples:
+                        samples.append(desc)
+            next_tok = str(doc.get("nextPageToken") or "").strip() if isinstance(doc, dict) else ""
+            if not next_tok:
+                break
+
+        if not sku_counts_by_model:
+            return cards, changed
+
+        curr_families = sorted(sku_counts_by_model.keys())
+        if is_bootstrap:
+            cb_state["seen_model_families"] = curr_families
+            cb_state["sku_counts"] = sku_counts_by_model
+            baselines["cloud_billing_skus"] = cb_state
+            return cards, True
+
+        added = [
+            m for m in curr_families
+            if m not in seen_families and not is_legacy_model_id(m) and _canonical_model_slug(m) not in known_canon
+        ]
+        if added:
+            for m in added:
+                p_info = infer_provider(m)
+                if p_info["slug"] == "openrouter":
+                    p_info = {"name": "GOOGLE", "slug": "google", "color": "#38bdf8"}
+                cnt = sku_counts_by_model.get(m, 1)
+                pretty = humanize_model_id(m)
+                sig = hashlib.sha256(f"cloud-billing:{m}:{cnt}".encode("utf-8")).hexdigest()[:8]
+                cards.append(
+                    {
+                        "id": f"cloud-billing-vertex-{sig}",
+                        "category": "cli-sdk-diff",
+                        "scanner": "cloud-billing",
+                        "header": f"CLOUD BILLING LISTING · {p_info['name']}",
+                        "title": f"{pretty} Spotted in Google Cloud Billing Catalog ({cnt} Vertex AI SKUs)",
+                        "subtitle": f"Service: Vertex AI · {cnt} published billing SKUs in cloudbilling.googleapis.com",
+                        "build_label": "Cloud Billing SKUs",
+                        "build_transition": f"Vertex AI (+{cnt} published billing SKUs)",
+                        "models": [{"id": m, "name": f"{pretty} ({cnt} Vertex AI billing SKUs)"}],
+                        "evidence": f"{cnt} published billing SKUs (cloudbilling.googleapis.com/v1/services/{self.VERTEX_BILLING_SERVICE_ID}/skus)",
+                        "source_text": "Google Cloud public billing catalog (Vertex AI service SKUs).",
+                        "disclaimer_1": "",
+                        "disclaimer_2": "",
+                        "provider_name": p_info["name"],
+                        "provider_slug": p_info["slug"],
+                        "accent_color": p_info["color"],
+                        "links": [
+                            {"label": "Google Cloud SKUs", "url": "https://cloud.google.com/skus"},
+                            {"label": "Vertex AI Pricing", "url": "https://cloud.google.com/vertex-ai/generative-ai/pricing"},
+                        ],
+                        "detected_at": datetime.now(timezone.utc).isoformat(),
+                    }
+                )
+
+        new_seen = sorted(seen_families | set(curr_families))
+        if set(new_seen) != seen_families or cb_state.get("sku_counts") != sku_counts_by_model:
+            cb_state["seen_model_families"] = new_seen
+            cb_state["sku_counts"] = sku_counts_by_model
+            baselines["cloud_billing_skus"] = cb_state
+            changed = True
+
+        return cards, changed
+
     def scan(self) -> List[Dict[str, Any]]:
         baselines = _load_baselines()
         known_canon = (
@@ -4759,6 +4891,7 @@ class HighAlphaLeakChannelsScanner:
             ("github-code-leaks", lambda: self._scan_github_global_code_leaks(baselines, known_canon)),
             ("provider-openapi", lambda: self._scan_provider_openapi_specs(baselines, known_canon)),
             ("vertex-ai-quotas", lambda: self._scan_vertex_ai_quotas(baselines, known_canon)),
+            ("cloud-billing-skus", lambda: self._scan_cloud_billing_skus(baselines, known_canon)),
             ("provider-apis", lambda: self._scan_live_provider_apis(baselines)),
             ("web-bundles", lambda: self._scan_google_web_bundles(baselines)),
         ):
