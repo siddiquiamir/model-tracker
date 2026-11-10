@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-10T12:35:29.223055+00:00",
+  "generated_at": "2026-11-10T13:07:29.183714+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 166,
     "leaks": 45,
     "releases": 102,
-    "stories_24h": 20,
-    "sources_ok": 12,
-    "total_cards": 260,
+    "stories_24h": 19,
+    "sources_ok": 11,
+    "total_cards": 261,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -8843,7 +8843,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-10-23T19:51:16+00:00",
-      "updated_at": "2026-11-10T08:15:00+00:00",
+      "updated_at": "2026-11-10T11:00:25Z",
       "first_source": "Antigravity ACP config",
       "lead": "",
       "released_on": "",
@@ -8859,6 +8859,18 @@
         {
           "id": "carbon-g-medium-tf",
           "name": "Carbon G Medium TF"
+        },
+        {
+          "id": "gemini-4-carbon-low",
+          "name": "Gemini 4 Carbon"
+        },
+        {
+          "id": "gemini-4-carbon-high",
+          "name": "Gemini 4 Carbon"
+        },
+        {
+          "id": "gemini-4-carbon-medium",
+          "name": "Gemini 4 Carbon"
         },
         {
           "id": "gemini-4-carbon-teamfood",
@@ -8905,22 +8917,33 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Antigravity desktop build",
+          "scanner": "antigravity",
+          "detected_at": "2026-11-10T11:00:25Z",
+          "title": "Gemini 4 Carbon",
+          "url": "https://storage.googleapis.com/antigravity-public/insiders/latest-x64-linux.yml",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 4,
+      "source_count": 5,
       "backfill": false,
       "header": "LEAK · GOOGLE",
       "card_ids": [
         "ag-acp-1.4.3-revision-diff",
         "lmarena-lb-diff-54e458eb",
         "web-bundle-gemini-web-2d205456",
-        "cloud-billing-vertex-c75df4fd"
+        "cloud-billing-vertex-c75df4fd",
+        "ag-2.31.0-1.0.20261110110025__Insiders_-gemini-4-carbon"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: Gemini 4 Carbon by Google\n\nFirst detected 23 Oct 19:51 UTC in Antigravity ACP config\nConfirmed by LMArena, Gemini Web App Config, Google Cloud Billing catalog\nCodename: carbon\nIDs: gemini-4-carbon, carbon-g-medium-tf, gemini-4-carbon-teamfood\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: Gemini 4 Carbon by Google\n\nFirst detected 23 Oct 19:51 UTC in Antigravity ACP config\nConfirmed by LMArena, Gemini Web App Config, Google Cloud Billing catalog +1\nCodename: carbon\nIDs: gemini-4-carbon, carbon-g-medium-tf, gemini-4-carbon-low +3\n\nvia @StatsWire"
     },
     {
       "id": "story-sonnet-5-5-high-bon-le",
@@ -9154,6 +9177,56 @@
       "detected_at": "2026-11-10T11:40:33.706631+00:00",
       "pricing": null,
       "x_post_text": "🚨 HUGGING FACE NEW REPO · ANT GROUP\nZoomGain 4B spotted in Repo Created 2026-11-10 (model)!\n\n• ZoomGain-4B (model) (inclusionAI/ZoomGain-4B)\n\nEvidence: huggingface.co/api/models\nSource: official inclusionAI Hugging Face organization feed.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "ag-2.31.0-1.0.20261110110025__Insiders_-gemini-4-carbon",
+      "category": "desktop-diff",
+      "scanner": "antigravity",
+      "header": "ANTIGRAVITY DESKTOP DIFF · GOOGLE",
+      "title": "Gemini 4 Carbon",
+      "subtitle": "Verified desktop build comparison",
+      "build_label": "Build",
+      "build_transition": "2.31.0 -> 1.0.20261110110025 (Insiders)",
+      "old_version": "2.31.0",
+      "new_version": "1.0.20261110110025 (Insiders)",
+      "models": [
+        {
+          "id": "gemini-4-carbon",
+          "name": "Gemini 4 Carbon"
+        },
+        {
+          "id": "gemini-4-carbon-high",
+          "name": "Gemini 4 Carbon (High)"
+        },
+        {
+          "id": "gemini-4-carbon-low",
+          "name": "Gemini 4 Carbon (Low)"
+        },
+        {
+          "id": "gemini-4-carbon-medium",
+          "name": "Gemini 4 Carbon (Medium)"
+        }
+      ],
+      "evidence": "resources/bin/language_server",
+      "source_text": "official public Linux x64 release archives.",
+      "disclaimer_1": "Verified differences between existing builds; this is not a newly published release announcement.",
+      "disclaimer_2": "Compiled-in names and identifiers. This does not confirm model rollout or account access.",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Public release feed",
+          "url": "https://storage.googleapis.com/antigravity-public/insiders/latest-x64-linux.yml"
+        },
+        {
+          "label": "Official build",
+          "url": "https://storage.googleapis.com/antigravity-public/insiders/1.0.20261110110025/unsigned/language_server-linux-x64"
+        }
+      ],
+      "detected_at": "2026-11-10T11:00:25Z",
+      "pricing": null,
+      "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini 4 Carbon spotted in Build 2.31.0 -> 1.0.20261110110025 (Insiders)!\n\n• Gemini 4 Carbon (gemini-4-carbon)\n• Gemini 4 Carbon (High) (gemini-4-carbon-high)\n• Gemini 4 Carbon (Low) (gemini-4-carbon-low)\n• Gemini 4 Carbon (Medium) (gemini-4-carbon-medium)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-nvidia_Nemotron-3-Diarization",
