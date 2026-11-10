@@ -20,7 +20,9 @@ ACCENT_BLUE = (185, 213, 245)
 
 PROVIDER_THEMES = {
     "openai": ("New OpenAI Models", (34, 197, 94)),
-    "google": ("New Google Models", (56, 189, 248)),
+    "google": ("New Google Models", (66, 133, 244)),
+    "gemini": ("New Google Models", (66, 133, 244)),
+    "google-classic": ("New Google Models", (138, 120, 224)),
     "anthropic": ("New Anthropic Models", (217, 119, 87)),
     "xai": ("New xAI Models", (244, 63, 94)),
     "deepseek": ("New DeepSeek Models", (6, 182, 212)),
@@ -194,21 +196,72 @@ def make_provider_emblem(provider: str, size: int, accent: Tuple[int, int, int])
         img.putalpha(mask)
         return img.resize((size, size), Image.Resampling.LANCZOS)
 
-    if provider == "google":
-        # Clean 4-point Gemini sparkle star
-        img = Image.new("RGBA", (ss, ss), (0, 0, 0, 0))
-        d = ImageDraw.Draw(img)
+    if provider in ("google", "gemini", "google-classic"):
+        # Clean 4-point Gemini sparkle star mask with official multi-color Gemini gradient
+        mask = Image.new("L", (ss, ss), 0)
+        d = ImageDraw.Draw(mask)
         c = ss / 2.0
         r_out = ss * 0.46
         pts = []
         for deg in range(0, 360, 2):
             rad = math.radians(deg)
             cs, sn = math.cos(rad), math.sin(rad)
-            # Superellipse / astroid curve |x|^0.55 + |y|^0.55 = 1
             denom = (abs(cs) ** 0.55 + abs(sn) ** 0.55) ** (1 / 0.55)
             r = r_out / denom if denom else 0
             pts.append((c + r * cs, c + r * sn))
-        d.polygon(pts, fill=(*accent, 255))
+        d.polygon(pts, fill=255)
+
+        # Render gradient at 1/2 supersampled resolution and upscale smoothly
+        gs = max(128, ss // 2)
+        grad = Image.new("RGBA", (gs, gs), (0, 0, 0, 0))
+        px = grad.load()
+        if provider == "google-classic":
+            # Classic Gemini blue -> purple -> coral diagonal gradient
+            c1 = (66, 133, 244)   # #4285F4
+            c2 = (155, 114, 203)  # #9B72CB
+            c3 = (217, 101, 112)  # #D96570
+            for py in range(gs):
+                ny = py / (gs - 1)
+                for pxx in range(gs):
+                    nx = pxx / (gs - 1)
+                    t = max(0.0, min(1.0, (nx * 0.72 + (1.0 - ny) * 0.48) - 0.10))
+                    if t < 0.5:
+                        u = t * 2.0
+                        r_c = int(c1[0] + (c2[0] - c1[0]) * u)
+                        g_c = int(c1[1] + (c2[1] - c1[1]) * u)
+                        b_c = int(c1[2] + (c2[2] - c1[2]) * u)
+                    else:
+                        u = (t - 0.5) * 2.0
+                        r_c = int(c2[0] + (c3[0] - c2[0]) * u)
+                        g_c = int(c2[1] + (c3[1] - c2[1]) * u)
+                        b_c = int(c2[2] + (c3[2] - c2[2]) * u)
+                    px[pxx, py] = (r_c, g_c, b_c, 255)
+        else:
+            # Official 4-color Google Gemini sparkle gradient (Red top, Yellow left, Green bottom, Blue right/center)
+            anchors = [
+                (0.50, 0.08, (234, 67, 53), 1.15),   # Top: Google Red #EA4335
+                (0.08, 0.50, (251, 188, 5), 1.05),   # Left: Google Yellow #FBBC05
+                (0.50, 0.92, (52, 168, 83), 1.10),   # Bottom: Google Green #34A853
+                (0.86, 0.50, (66, 133, 244), 1.55),  # Right/Center: Google Blue #4285F4
+                (0.58, 0.48, (66, 133, 244), 1.25),  # Core Blue dominance
+            ]
+            for py in range(gs):
+                ny = py / (gs - 1)
+                for pxx in range(gs):
+                    nx = pxx / (gs - 1)
+                    w_sum = 0.0
+                    rr = gg = bb = 0.0
+                    for ax, ay, col, boost in anchors:
+                        dist2 = (nx - ax) ** 2 + (ny - ay) ** 2 + 0.032
+                        w = boost / (dist2 ** 1.65)
+                        w_sum += w
+                        rr += col[0] * w
+                        gg += col[1] * w
+                        bb += col[2] * w
+                    px[pxx, py] = (int(rr / w_sum), int(gg / w_sum), int(bb / w_sum), 255)
+
+        img = grad.resize((ss, ss), Image.Resampling.BICUBIC)
+        img.putalpha(mask)
         return img.resize((size, size), Image.Resampling.LANCZOS)
 
     # Fallback clean monogram badge for Anthropic, xAI, DeepSeek, Z.ai, etc.

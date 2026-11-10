@@ -645,6 +645,26 @@ class NpmCliAndSdkScanner:
             "accent_color": "#38bdf8",
         },
         {
+            "pkg": "@google/gemini-cli",
+            "mode": "js_sdk",
+            "header": "GEMINI CLI NPM DIFF · GOOGLE",
+            "subtitle": "Verified official CLI package comparison (latest, preview, nightly)",
+            "evidence": "@google/gemini-cli published package",
+            "source_text": "official public npm registry tarball (@google/gemini-cli).",
+            "provider_slug": "google",
+            "accent_color": "#38bdf8",
+        },
+        {
+            "pkg": "@google/gemini-cli-core",
+            "mode": "js_sdk",
+            "header": "GEMINI CLI CORE NPM DIFF · GOOGLE",
+            "subtitle": "Verified official CLI core model definitions (latest, preview, nightly)",
+            "evidence": "@google/gemini-cli-core model configuration",
+            "source_text": "official public npm registry tarball (@google/gemini-cli-core).",
+            "provider_slug": "google",
+            "accent_color": "#38bdf8",
+        },
+        {
             "pkg": "openai",
             "mode": "js_sdk",
             "header": "OPENAI OFFICIAL SDK DIFF · OPENAI",
@@ -825,6 +845,7 @@ class NpmCliAndSdkScanner:
             return candidates[-3:]
 
         all_versions = [v for v in versions_dict.keys() if "-" not in v] or list(versions_dict.keys())
+        all_versions.sort(key=lambda version: times.get(version, ""))
         if len(all_versions) < 2:
             return []
         latest_ver = dist_tags.get("latest", all_versions[-1])
@@ -839,10 +860,10 @@ class NpmCliAndSdkScanner:
                     selected.append(pv)
         return selected
 
-    def scan_package(self, cfg: Dict[str, str], bin_cache: Dict[str, List[str]], known_litellm: Set[str]) -> List[Dict[str, Any]]:
+    def scan_package(self, cfg: Dict[str, str], bin_cache: Dict[str, List[str]], known_litellm: Set[str], observed: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any]]:
         pkg = cfg["pkg"]
         mode = cfg.get("mode", "js_sdk")
-        if pkg == "@google/gemini-cli":
+        if pkg in {"@google/gemini-cli", "@google/gemini-cli-core"}:
             # Fast-path for @google/gemini-cli (whose full packument is >60 MB due to daily nightlies):
             # fetch only the 4 KB per-tag endpoints for latest, preview, and nightly.
             versions_dict = {}
@@ -862,17 +883,24 @@ class NpmCliAndSdkScanner:
             versions_dict = meta.get("versions", {})
             selected = self._select_versions_to_diff(cfg, meta)
             times = meta.get("time", {})
-        if len(selected) < 2:
+        if not selected:
             return []
 
         cards: List[Dict[str, Any]] = []
         pkg_short = pkg.split("/")[-1].replace("-linux-x64", "").replace("-", " ").title()
 
-        prev_ver = selected[0]
-        prev_tar = versions_dict[prev_ver]["dist"]["tarball"]
-        prev_models = self._extract_npm_tarball_models(pkg, prev_ver, prev_tar, mode, bin_cache)
+        previous = observed.get(pkg) if observed is not None else None
+        if previous is not None:
+            prev_ver = previous["version"]
+            prev_models = set(previous["models"])
+            remaining = selected
+        else:
+            prev_ver = selected[0]
+            prev_tar = versions_dict[prev_ver]["dist"]["tarball"]
+            prev_models = self._extract_npm_tarball_models(pkg, prev_ver, prev_tar, mode, bin_cache)
+            remaining = selected[1:]
 
-        for curr_ver in selected[1:]:
+        for curr_ver in remaining:
             curr_tar = versions_dict[curr_ver]["dist"]["tarball"]
             curr_models = self._extract_npm_tarball_models(pkg, curr_ver, curr_tar, mode, bin_cache)
             raw_added = sorted(curr_models - prev_models)
@@ -906,7 +934,7 @@ class NpmCliAndSdkScanner:
                         "build_transition": f"{clean_prev} -> {clean_curr}",
                         "old_version": clean_prev,
                         "new_version": clean_curr,
-                        "models": [{"id": mid, "name": humanize_model_id(mid)} for mid in added[:10]],
+                        "models": [{"id": mid, "name": humanize_model_id(mid)} for mid in added],
                         "evidence": cfg["evidence"],
                         "source_text": cfg["source_text"],
                         "disclaimer_1": "",
@@ -922,25 +950,28 @@ class NpmCliAndSdkScanner:
                     }
                 )
             prev_ver = curr_ver
-            prev_models = curr_models
+            prev_models |= curr_models
 
+        if observed is not None:
+            observed[pkg] = {"version": prev_ver, "models": sorted(prev_models)}
         return cards
 
     def scan(self) -> List[Dict[str, Any]]:
         baselines = _load_baselines()
         bin_cache: Dict[str, List[str]] = dict(baselines.get("npm_binary_models", {}))
         orig_cache_keys = set(bin_cache.keys())
+        observed: Dict[str, Any] = dict(baselines.get("npm_observed_models", {}))
         known_litellm = {_canonical_model_slug(k) for k in baselines.get("litellm_keys", [])}
 
         cards: List[Dict[str, Any]] = []
         for cfg in self.PACKAGES:
             try:
-                cards.extend(self.scan_package(cfg, bin_cache, known_litellm))
+                cards.extend(self.scan_package(cfg, bin_cache, known_litellm, observed))
             except Exception as exc:
                 print(f"[NpmScanner] Warning ({cfg['pkg']}): {exc}")
 
         # Keep only the latest 6 cached binary versions per package so source_baselines.json stays tiny
-        if set(bin_cache.keys()) != orig_cache_keys:
+        if set(bin_cache.keys()) != orig_cache_keys or observed != baselines.get("npm_observed_models", {}):
             trimmed: Dict[str, List[str]] = {}
             by_pkg: Dict[str, List[str]] = {}
             for k in sorted(bin_cache.keys()):
@@ -950,6 +981,7 @@ class NpmCliAndSdkScanner:
                 for k in keys[-6:]:
                     trimmed[k] = bin_cache[k]
             baselines["npm_binary_models"] = trimmed
+            baselines["npm_observed_models"] = observed
             _save_baselines(baselines)
 
         return cards
@@ -3093,6 +3125,16 @@ class HighAlphaLeakChannelsScanner:
     OPENCODE_ZEN_URL = "https://opencode.ai/zen/v1/models"
     VERCEL_GATEWAY_URL = "https://ai-gateway.vercel.sh/v1/models"
 
+    def __init__(self) -> None:
+        self.source_health: Dict[str, Any] = {}
+
+    def _record_source_health(self, name: str, status: str, reason: str = "") -> None:
+        self.source_health[name] = {
+            "status": status,
+            "checked_at": datetime.now(timezone.utc).isoformat(),
+            "reason": reason,
+        }
+
     CURSOR_TRACKS = [
         ("stable", "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=stable"),
         ("dev", "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=dev"),
@@ -3830,28 +3872,50 @@ class HighAlphaLeakChannelsScanner:
 
         # 5a. Google Gemini AI Studio: poll BOTH v1alpha/models AND v1beta/models
         gem_key = (os.environ.get("GEMINI_API_KEY") or "").strip()
+        if not gem_key:
+            for ver in ("v1alpha", "v1beta"):
+                self._record_source_health(f"gemini-{ver}", "disabled", "missing_credentials")
         if gem_key:
             gem_models: Dict[str, str] = {}
             for ver in ("v1alpha", "v1beta"):
                 try:
-                    g_url = f"https://generativelanguage.googleapis.com/{ver}/models?pageSize=200&key={urllib.parse.quote(gem_key)}"
-                    g_doc = _http_get_json(g_url, timeout=12)
-                    for m in (g_doc.get("models") or []) if isinstance(g_doc, dict) else []:
-                        if isinstance(m, dict) and m.get("name"):
-                            mid = str(m["name"]).replace("models/", "").strip()
-                            disp = str(m.get("displayName") or mid).strip()
-                            gem_models[mid] = f"{disp} ({ver})"
+                    version_models: Dict[str, str] = {}
+                    page_token = ""
+                    page_tokens: Set[str] = set()
+                    for _ in range(25):
+                        g_url = f"https://generativelanguage.googleapis.com/{ver}/models?pageSize=200"
+                        if page_token:
+                            g_url += f"&pageToken={urllib.parse.quote(page_token)}"
+                        g_doc = _http_get_json(g_url, timeout=12, extra_headers={"x-goog-api-key": gem_key})
+                        if not isinstance(g_doc, dict) or not isinstance(g_doc.get("models"), list):
+                            raise ValueError("Invalid Gemini models response")
+                        for model in g_doc["models"]:
+                            if isinstance(model, dict) and model.get("name"):
+                                mid = str(model["name"]).removeprefix("models/").strip()
+                                display = str(model.get("displayName") or mid).strip()
+                                version_models[mid] = f"{display} ({ver})"
+                        page_token = str(g_doc.get("nextPageToken") or "").strip()
+                        if not page_token:
+                            break
+                        if page_token in page_tokens:
+                            raise ValueError("Repeated Gemini models page token")
+                        page_tokens.add(page_token)
+                    else:
+                        raise ValueError("Incomplete Gemini models pagination")
+                    gem_models.update(version_models)
+                    self._record_source_health(f"gemini-{ver}", "ok")
                 except Exception as exc:
-                    print(f"[HighAlphaScanner] Gemini {ver}/models warning: {exc}")
+                    self._record_source_health(f"gemini-{ver}", "failed", type(exc).__name__)
+                    print(f"[HighAlphaScanner] Gemini {ver}/models warning: {type(exc).__name__}")
             if gem_models:
-                curr_g = sorted(gem_models.keys())
                 prev_g = set(api_baselines.get("gemini", []))
-                added_g = [m for m in curr_g if m not in prev_g and not is_legacy_model_id(m)] if prev_g else []
+                curr_g = sorted(prev_g | set(gem_models))
+                added_g = sorted(m for m in gem_models if m not in prev_g and not is_legacy_model_id(m)) if prev_g else []
                 if set(curr_g) != prev_g:
                     api_baselines["gemini"] = curr_g
                     changed = True
                 if added_g:
-                    sig = hashlib.sha256(",".join(added_g[:8]).encode("utf-8")).hexdigest()[:8]
+                    sig = hashlib.sha256(",".join(added_g).encode("utf-8")).hexdigest()[:8]
                     cards.append(
                         {
                             "id": f"live-api-gemini-{sig}",
@@ -3862,7 +3926,7 @@ class HighAlphaLeakChannelsScanner:
                             "subtitle": "Newly exposed model on generativelanguage.googleapis.com/{v1alpha,v1beta}/models",
                             "build_label": "Gemini Live API",
                             "build_transition": f"+{len(added_g)} new model(s)",
-                            "models": [{"id": m, "name": gem_models.get(m, m)} for m in added_g[:8]],
+                            "models": [{"id": m, "name": gem_models.get(m, m)} for m in added_g],
                             "evidence": "generativelanguage.googleapis.com/v1alpha/models",
                             "source_text": "official Google Gemini API live models endpoint.",
                             "disclaimer_1": "",
@@ -4741,10 +4805,10 @@ class HighAlphaLeakChannelsScanner:
 
         return cards, changed
 
-    VERTEX_BILLING_SERVICE_ID = "C78E-0083-1060"
+    VERTEX_BILLING_SERVICE_ID = "C7E2-9256-1C43"
     _BILLING_SKU_MODEL_RE = re.compile(
         r"\b("
-        r"Gemini\s+[345](?:\.[0-9]+)?(?:\s+(?:Pro|Flash|Ultra|Lite|Nano|Argon|Carbon|Krypton|Hydrogen|Barium|Hyperion|Live|Image|Audio|Robotics))+(?:\s+[A-Za-z0-9.]+)?|"
+        r"Gemini\s+\d+(?:\.\d+)?(?:\s+(?!(?:global|regional|online|batch|flex|offpeak|deferred|priority|contributor|text|image|audio|video|input|output|cached|caching|cache|token|tokens|count|prediction|predictions|storage|requests|per)\b)[a-z][a-z0-9.-]*){1,4}|"
         r"Claude\s+(?:Opus|Sonnet|Haiku|Fable|Mythos|Donut|Silicon)\s+[456](?:\.[0-9]+)?(?:\s+Fast)?|"
         r"GPT-[567](?:\.[0-9]+)?(?:\s+(?:Astra|Luna|Sol|Terra|Mini|Nano|Pro|Cyber))?|"
         r"Llama\s+[456](?:\.[0-9]+)?(?:\s+[A-Za-z0-9.]+)?|"
@@ -4763,9 +4827,7 @@ class HighAlphaLeakChannelsScanner:
         known_canon: Set[str],
     ) -> Tuple[List[Dict[str, Any]], bool]:
         """
-        Polls the official Google Cloud Billing Catalog API (`cloudbilling.googleapis.com/v1/services/C78E-0083-1060/skus`)
-        for Vertex AI SKU descriptions to detect newly published pre-release model billing SKUs (e.g. Gemini 4 Carbon
-        90 published SKUs across Online, Batch, and Flex tiers) before public API endpoints open.
+        Poll the official Vertex AI billing catalog for model-family listings, not serving availability.
         """
         cards: List[Dict[str, Any]] = []
         changed = False
@@ -4774,30 +4836,36 @@ class HighAlphaLeakChannelsScanner:
         is_bootstrap = len(seen_families) == 0
 
         token, _ = self._mint_gcp_bearer_token()
-        api_key = (os.environ.get("GEMINI_API_KEY") or os.environ.get("GCP_BILLING_API_KEY") or "").strip()
+        api_key = (os.environ.get("GCP_BILLING_API_KEY") or os.environ.get("GEMINI_API_KEY") or "").strip()
         if not token and not api_key:
+            self._record_source_health("cloud-billing", "disabled", "missing_credentials")
             return cards, changed
 
         hdrs: Dict[str, str] = {"Accept": "application/json", "User-Agent": "ModelPulse-Tracker/2.0"}
         if token:
             hdrs["Authorization"] = f"Bearer {token}"
+        elif api_key:
+            hdrs["x-goog-api-key"] = api_key
 
         sku_counts_by_model: Dict[str, int] = {}
         sku_samples_by_model: Dict[str, List[str]] = {}
         next_tok = ""
+        page_tokens: Set[str] = set()
 
         for _ in range(15):
             url = f"https://cloudbilling.googleapis.com/v1/services/{self.VERTEX_BILLING_SERVICE_ID}/skus?pageSize=5000"
-            if not token and api_key:
-                url += f"&key={urllib.parse.quote(api_key)}"
             if next_tok:
                 url += f"&pageToken={urllib.parse.quote(next_tok)}"
             try:
                 doc = _http_get_json(url, timeout=25, extra_headers=hdrs)
             except Exception as exc:
-                print(f"[HighAlphaScanner] Cloud Billing SKU API note: {exc}")
-                break
-            skus = doc.get("skus", []) if isinstance(doc, dict) else []
+                self._record_source_health("cloud-billing", "failed", type(exc).__name__)
+                print(f"[HighAlphaScanner] Cloud Billing SKU API failed: {type(exc).__name__}")
+                return [], False
+            if not isinstance(doc, dict) or not isinstance(doc.get("skus"), list):
+                self._record_source_health("cloud-billing", "failed", "invalid_response")
+                return [], False
+            skus = doc["skus"]
             for sku in skus:
                 if not isinstance(sku, dict):
                     continue
@@ -4812,15 +4880,23 @@ class HighAlphaLeakChannelsScanner:
                     samples = sku_samples_by_model.setdefault(slug, [])
                     if len(samples) < 5 and desc not in samples:
                         samples.append(desc)
-            next_tok = str(doc.get("nextPageToken") or "").strip() if isinstance(doc, dict) else ""
+            next_tok = str(doc.get("nextPageToken") or "").strip()
             if not next_tok:
                 break
+            if next_tok in page_tokens:
+                self._record_source_health("cloud-billing", "failed", "repeated_page_token")
+                return [], False
+            page_tokens.add(next_tok)
+        else:
+            self._record_source_health("cloud-billing", "failed", "pagination_limit")
+            return [], False
 
+        self._record_source_health("cloud-billing", "ok")
         if not sku_counts_by_model:
             return cards, changed
 
         curr_families = sorted(sku_counts_by_model.keys())
-        if is_bootstrap:
+        if is_bootstrap and not known_canon:
             cb_state["seen_model_families"] = curr_families
             cb_state["sku_counts"] = sku_counts_by_model
             baselines["cloud_billing_skus"] = cb_state
@@ -4851,13 +4927,14 @@ class HighAlphaLeakChannelsScanner:
                         "models": [{"id": m, "name": f"{pretty} ({cnt} Vertex AI billing SKUs)"}],
                         "evidence": f"{cnt} published billing SKUs (cloudbilling.googleapis.com/v1/services/{self.VERTEX_BILLING_SERVICE_ID}/skus)",
                         "source_text": "Google Cloud public billing catalog (Vertex AI service SKUs).",
-                        "disclaimer_1": "",
-                        "disclaimer_2": "",
+                        "disclaimer_1": "Billing listing only; not confirmation of public API access.",
+                        "disclaimer_2": "SKU descriptions do not establish the public inference model ID.",
                         "provider_name": p_info["name"],
                         "provider_slug": p_info["slug"],
                         "accent_color": p_info["color"],
+                        "sku_samples": sku_samples_by_model.get(m, []),
                         "links": [
-                            {"label": "Google Cloud SKUs", "url": "https://cloud.google.com/skus"},
+                            {"label": "Google Cloud SKUs", "url": f"https://cloud.google.com/skus?currency=USD&filter={urllib.parse.quote(pretty)}"},
                             {"label": "Vertex AI Pricing", "url": "https://cloud.google.com/vertex-ai/generative-ai/pricing"},
                         ],
                         "detected_at": datetime.now(timezone.utc).isoformat(),
@@ -4873,6 +4950,108 @@ class HighAlphaLeakChannelsScanner:
 
         return cards, changed
 
+    def _scan_factory_droid_cli(
+        self,
+        baselines: Dict[str, Any],
+        known_canon: Set[str],
+    ) -> Tuple[List[Dict[str, Any]], bool]:
+        """
+        Monitor Factory's Droid CLI (@factory/cli on npm / downloads.factory.ai) by reading
+        the .bun ELF section via HTTP Range requests whenever a new release version lands.
+        """
+        import struct
+
+        cards: List[Dict[str, Any]] = []
+        changed = False
+        droid_state: Dict[str, Any] = dict(baselines.get("factory_droid_cli", {}))
+        last_ver = str(droid_state.get("version") or "").strip()
+        seen_models: Set[str] = set(droid_state.get("models", []))
+
+        meta = _http_get_json("https://registry.npmjs.org/@factory/cli/latest", timeout=15)
+        if not isinstance(meta, dict):
+            return cards, changed
+        curr_ver = str(meta.get("version") or "").strip()
+        if not curr_ver or curr_ver == last_ver:
+            return cards, changed
+
+        bin_url = f"https://downloads.factory.ai/factory-cli/releases/{curr_ver}/linux/x64/droid"
+
+        def _range_get(start: int, end: int) -> bytes:
+            req = urllib.request.Request(
+                bin_url,
+                headers={"User-Agent": "ModelPulse-Tracker/2.0", "Range": f"bytes={start}-{end}"},
+            )
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return resp.read()
+
+        head = _range_get(0, 4095)
+        if len(head) < 64 or head[:4] != b"\x7fELF":
+            return cards, changed
+        e_shoff = struct.unpack_from("<Q", head, 40)[0]
+        e_shentsize, e_shnum, e_shstrndx = struct.unpack_from("<HHH", head, 58)
+        sh_table = _range_get(e_shoff, e_shoff + e_shentsize * e_shnum - 1)
+        str_sec = sh_table[e_shstrndx * e_shentsize : (e_shstrndx + 1) * e_shentsize]
+        str_off, str_size = struct.unpack_from("<QQ", str_sec, 24)
+        shstrtab = _range_get(str_off, str_off + str_size - 1)
+
+        bun_text = ""
+        for i in range(e_shnum):
+            ent = sh_table[i * e_shentsize : (i + 1) * e_shentsize]
+            sh_name = struct.unpack_from("<I", ent, 0)[0]
+            sh_offset, sh_size = struct.unpack_from("<QQ", ent, 24)
+            name_end = shstrtab.find(b"\x00", sh_name)
+            sec_name = shstrtab[sh_name:name_end].decode("ascii", errors="ignore")
+            if sec_name == ".bun":
+                chunk = _range_get(sh_offset, sh_offset + min(sh_size - 1, 16000000))
+                bun_text = chunk.decode("utf-8", errors="ignore")
+                break
+
+        if not bun_text:
+            return cards, changed
+
+        found = sorted(
+            m for m in extract_models_from_text(bun_text)
+            if not is_legacy_model_id(m)
+        )
+        added = [
+            m for m in found
+            if m not in seen_models and _canonical_model_slug(m) not in known_canon
+        ]
+        if added and seen_models:
+            p_info = infer_provider(added[0])
+            cards.append(
+                {
+                    "id": f"cli-factory-droid-{last_ver}-{curr_ver}",
+                    "category": "cli-sdk-diff",
+                    "scanner": "npm",
+                    "header": f"CLI BINARY DIFF · FACTORY DROID · {p_info['name']}",
+                    "title": f"Factory Droid CLI v{curr_ver} ({', '.join(added[:3])})",
+                    "subtitle": f"Added to Factory Droid CLI (@factory/cli v{last_ver} -> v{curr_ver}) built-in model registry.",
+                    "build_label": "Droid CLI Diff",
+                    "build_transition": f"{last_ver} -> {curr_ver}",
+                    "old_version": last_ver,
+                    "new_version": curr_ver,
+                    "models": [{"id": m, "name": humanize_model_id(m)} for m in added[:8]],
+                    "evidence": f"@factory/cli v{curr_ver} (.bun ELF section in downloads.factory.ai/factory-cli/releases/{curr_ver}/linux/x64/droid)",
+                    "source_text": "Factory Droid CLI standalone binary (.bun ELF section).",
+                    "disclaimer_1": "",
+                    "disclaimer_2": "",
+                    "provider_name": p_info["name"],
+                    "provider_slug": p_info["slug"],
+                    "accent_color": p_info["color"],
+                    "links": [
+                        {"label": "npm (@factory/cli)", "url": "https://www.npmjs.com/package/@factory/cli?activeTab=versions"},
+                        {"label": "Factory Docs", "url": "https://docs.factory.ai"},
+                    ],
+                    "detected_at": datetime.now(timezone.utc).isoformat(),
+                }
+            )
+
+        droid_state["version"] = curr_ver
+        droid_state["models"] = sorted(seen_models | set(found))
+        baselines["factory_droid_cli"] = droid_state
+        return cards, True
+
     def scan(self) -> List[Dict[str, Any]]:
         baselines = _load_baselines()
         known_canon = (
@@ -4884,16 +5063,17 @@ class HighAlphaLeakChannelsScanner:
         any_changed = False
 
         for name, fn in (
+            ("cloud-billing-skus", lambda: self._scan_cloud_billing_skus(baselines, known_canon)),
+            ("factory-droid-cli", lambda: self._scan_factory_droid_cli(baselines, known_canon)),
+            ("provider-apis", lambda: self._scan_live_provider_apis(baselines)),
+            ("vertex-ai-quotas", lambda: self._scan_vertex_ai_quotas(baselines, known_canon)),
+            ("web-bundles", lambda: self._scan_google_web_bundles(baselines)),
             ("gateways", lambda: self._scan_public_gateways(baselines, known_canon)),
             ("ide-builds", lambda: self._scan_ide_desktop_builds(baselines, known_canon)),
             ("copilot-cli", lambda: self._scan_copilot_cli_releases(baselines, known_canon)),
             ("engine-prs", lambda: self._scan_inference_engine_prs(baselines, known_canon)),
             ("github-code-leaks", lambda: self._scan_github_global_code_leaks(baselines, known_canon)),
             ("provider-openapi", lambda: self._scan_provider_openapi_specs(baselines, known_canon)),
-            ("vertex-ai-quotas", lambda: self._scan_vertex_ai_quotas(baselines, known_canon)),
-            ("cloud-billing-skus", lambda: self._scan_cloud_billing_skus(baselines, known_canon)),
-            ("provider-apis", lambda: self._scan_live_provider_apis(baselines)),
-            ("web-bundles", lambda: self._scan_google_web_bundles(baselines)),
         ):
             try:
                 c_list, ch = fn()

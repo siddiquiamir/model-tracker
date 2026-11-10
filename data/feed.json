@@ -8934,6 +8934,7 @@
       "backfill": false,
       "header": "LEAK · GOOGLE",
       "card_ids": [
+        "cli-factory-droid-1.7.0-1.7.1",
         "ag-acp-1.4.3-revision-diff",
         "lmarena-lb-diff-54e458eb",
         "web-bundle-gemini-web-2d205456",
@@ -8944,7 +8945,11 @@
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: Gemini 4 Carbon by Google\n\nFirst detected 23 Oct 19:51 UTC in Antigravity ACP config\nConfirmed by LMArena, Gemini Web App Config, Google Cloud Billing catalog +1\nCodename: carbon\nIDs: gemini-4-carbon, carbon-g-medium-tf, gemini-4-carbon-low +3\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: Gemini 4 Carbon by Google\n\nFirst detected 23 Oct 19:51 UTC in Antigravity ACP config\nConfirmed by LMArena, Gemini Web App Config, Google Cloud Billing catalog +1\nCodename: carbon\nIDs: gemini-4-carbon, carbon-g-medium-tf, gemini-4-carbon-low +3\n\nvia @StatsWire",
+      "corroboration_count": 6,
+      "confidence_tier": "confirmed",
+      "confidence_label": "Confirmed · 6 sources",
+      "summary": "Spotted in Factory Droid CLI v1.7.1 (@factory/cli), Google Cloud Billing catalog (90 Vertex AI SKUs: $4/$20 Online, $2/$10 Batch & Flex), and Gemini Web App config."
     },
     {
       "id": "story-sonnet-5-5-high-bon-le",
@@ -9075,6 +9080,46 @@
     }
   ],
   "cards": [
+    {
+      "id": "cli-factory-droid-1.7.0-1.7.1",
+      "category": "cli-sdk-diff",
+      "scanner": "npm",
+      "header": "CLI BINARY DIFF · FACTORY DROID · GOOGLE",
+      "title": "Factory Droid CLI v1.7.1 (gemini-4-carbon)",
+      "subtitle": "Added to Factory Droid CLI (@factory/cli v1.7.0 -> v1.7.1) built-in model registry.",
+      "build_label": "Droid CLI Diff",
+      "build_transition": "1.7.0 -> 1.7.1",
+      "old_version": "1.7.0",
+      "new_version": "1.7.1",
+      "models": [
+        {
+          "id": "gemini-4-carbon",
+          "name": "Gemini 4 Carbon"
+        }
+      ],
+      "evidence": "@factory/cli v1.7.1 (.bun ELF section in downloads.factory.ai/factory-cli/releases/1.7.1/linux/x64/droid)",
+      "source_text": "Factory Droid CLI standalone binary (.bun ELF section).",
+      "disclaimer_1": "Spotted in Factory Droid CLI v1.7.1 built-in model catalog alongside 90 Vertex AI billing SKUs ($4/$20) and Gemini Web App config.",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "npm (@factory/cli)",
+          "url": "https://www.npmjs.com/package/@factory/cli?activeTab=versions"
+        },
+        {
+          "label": "Factory Docs",
+          "url": "https://docs.factory.ai"
+        }
+      ],
+      "detected_at": "2026-11-10T12:32:17Z",
+      "story_id": "story-gemini-4-carbon",
+      "confidence_tier": "confirmed",
+      "confidence_label": "Confirmed · 3 sources",
+      "corroboration_count": 3
+    },
     {
       "id": "litellm-diff-ddf4c4a6",
       "category": "cli-sdk-diff",
