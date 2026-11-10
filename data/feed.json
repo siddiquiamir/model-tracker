@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-10T04:17:48.063532+00:00",
+  "generated_at": "2026-11-10T04:33:48.097021+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 160,
     "leaks": 44,
     "releases": 97,
     "stories_24h": 16,
-    "sources_ok": 11,
-    "total_cards": 251,
-    "new_in_this_scan": 0
+    "sources_ok": 12,
+    "total_cards": 252,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -622,7 +622,7 @@
       "provider_name": "Meta",
       "accent_color": "#3b82f6",
       "detected_at": "2026-11-09T18:31:21.125875+00:00",
-      "updated_at": "2026-11-09T18:37:09.563531+00:00",
+      "updated_at": "2026-11-10T04:04:53.000Z",
       "first_source": "Vercel AI Gateway Catalog",
       "lead": "",
       "released_on": "2026-11-09",
@@ -655,20 +655,31 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "LMArena",
+          "scanner": "lmarena",
+          "detected_at": "2026-11-10T04:04:53.000Z",
+          "title": "New Model(s) Added to Arena (Muse Ember (Max))",
+          "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 2,
+      "source_count": 3,
       "backfill": false,
       "header": "NEW MODEL · META",
       "card_ids": [
         "vercel-gateway-diff-57b54711",
-        "openrouter-model-meta_muse-ember"
+        "openrouter-model-meta_muse-ember",
+        "lmarena-lb-diff-2d020b2c"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Muse Ember by Meta\n\nFirst detected 09 Nov 18:31 UTC in Vercel AI Gateway Catalog\n📅 First released: 2026-11-09\nConfirmed by OpenRouter\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Muse Ember by Meta\n\nFirst detected 09 Nov 18:31 UTC in Vercel AI Gateway Catalog\n📅 First released: 2026-11-09\nConfirmed by OpenRouter, LMArena\n\nvia @StatsWire"
     },
     {
       "id": "story-muse-ember-1",
@@ -8747,6 +8758,39 @@
     }
   ],
   "cards": [
+    {
+      "id": "lmarena-lb-diff-2d020b2c",
+      "category": "cli-sdk-diff",
+      "scanner": "lmarena",
+      "header": "ARENA.AI NEW MODEL DIFF · LMARENA",
+      "title": "New Model(s) Added to Arena (Muse Ember (Max))",
+      "subtitle": "Newly added models in official lmarena-ai/leaderboard-dataset",
+      "build_label": "Arena Diff",
+      "build_transition": "+1 new Arena models",
+      "models": [
+        {
+          "id": "Muse Ember (Max)",
+          "name": "Muse Ember (Max) (WebDev Arena)",
+          "released_on": "2026-11-09"
+        }
+      ],
+      "evidence": "huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+      "source_text": "official LMArena (arena.ai) Hugging Face dataset.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "ARENA.AI",
+      "provider_slug": "modelsdev",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "LMArena Dataset",
+          "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset"
+        }
+      ],
+      "detected_at": "2026-11-10T04:04:53.000Z",
+      "pricing": null,
+      "x_post_text": "🚨 ARENA.AI NEW MODEL DIFF · LMARENA\nNew Model(s) Added to Arena (Muse Ember (Max)) spotted in Arena Diff +1 new Arena models!\n\n• Muse Ember (Max) (WebDev Arena) (Muse Ember (Max))\n\nEvidence: huggingface.co/datasets/lmarena-ai/leaderboard-dataset\nSource: official LMArena (arena.ai) Hugging Face dataset.\n\nTracked by @StatsWire"
+    },
     {
       "id": "pricing-radar-openai_pricing_md-4dd1d24d",
       "category": "cli-sdk-diff",
