@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T13:33:29.939040+00:00",
+  "generated_at": "2026-11-10T13:43:33.735393+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 166,
@@ -7,7 +7,7 @@
     "releases": 102,
     "stories_24h": 18,
     "sources_ok": 12,
-    "total_cards": 262,
+    "total_cards": 263,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -8844,7 +8844,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-10-23T19:51:16+00:00",
-      "updated_at": "2026-11-10T11:00:25Z",
+      "updated_at": "2026-11-10T12:32:17Z",
       "first_source": "Antigravity ACP config",
       "lead": "",
       "released_on": "",
@@ -8928,28 +8928,34 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "npm SDK release",
+          "scanner": "npm",
+          "detected_at": "2026-11-10T12:32:17Z",
+          "title": "Factory Droid CLI v1.7.1 (gemini-4-carbon)",
+          "url": "https://www.npmjs.com/package/@factory/cli?activeTab=versions",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 5,
+      "source_count": 6,
       "backfill": false,
       "header": "LEAK · GOOGLE",
       "card_ids": [
-        "cli-factory-droid-1.7.0-1.7.1",
         "ag-acp-1.4.3-revision-diff",
         "lmarena-lb-diff-54e458eb",
         "web-bundle-gemini-web-2d205456",
         "cloud-billing-vertex-c75df4fd",
-        "ag-2.31.0-1.0.20261110110025__Insiders_-gemini-4-carbon"
+        "ag-2.31.0-1.0.20261110110025__Insiders_-gemini-4-carbon",
+        "cli-factory-droid-1.7.0-1.7.1"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: Gemini 4 Carbon by Google\n\nFirst detected 23 Oct 19:51 UTC in Antigravity ACP config\nConfirmed by LMArena, Gemini Web App Config, Google Cloud Billing catalog +1\nCodename: carbon\nIDs: gemini-4-carbon, carbon-g-medium-tf, gemini-4-carbon-low +3\n\nvia @StatsWire",
-      "corroboration_count": 6,
-      "confidence_tier": "confirmed",
-      "confidence_label": "Confirmed · 6 sources",
-      "summary": "Spotted in Factory Droid CLI v1.7.1 (@factory/cli), Google Cloud Billing catalog (90 Vertex AI SKUs: $4/$20 Online, $2/$10 Batch & Flex), and Gemini Web App config."
+      "x_post_text": "🟠 LEAK: Gemini 4 Carbon by Google\n\nFirst detected 23 Oct 19:51 UTC in Antigravity ACP config\nConfirmed by LMArena, Gemini Web App Config, Google Cloud Billing catalog +2\nCodename: carbon\nIDs: gemini-4-carbon, carbon-g-medium-tf, gemini-4-carbon-low +3\n\nvia @StatsWire"
     },
     {
       "id": "story-sonnet-5-5-high-bon-le",
@@ -9081,46 +9087,6 @@
   ],
   "cards": [
     {
-      "id": "cli-factory-droid-1.7.0-1.7.1",
-      "category": "cli-sdk-diff",
-      "scanner": "npm",
-      "header": "CLI BINARY DIFF · FACTORY DROID · GOOGLE",
-      "title": "Factory Droid CLI v1.7.1 (gemini-4-carbon)",
-      "subtitle": "Added to Factory Droid CLI (@factory/cli v1.7.0 -> v1.7.1) built-in model registry.",
-      "build_label": "Droid CLI Diff",
-      "build_transition": "1.7.0 -> 1.7.1",
-      "old_version": "1.7.0",
-      "new_version": "1.7.1",
-      "models": [
-        {
-          "id": "gemini-4-carbon",
-          "name": "Gemini 4 Carbon"
-        }
-      ],
-      "evidence": "@factory/cli v1.7.1 (.bun ELF section in downloads.factory.ai/factory-cli/releases/1.7.1/linux/x64/droid)",
-      "source_text": "Factory Droid CLI standalone binary (.bun ELF section).",
-      "disclaimer_1": "Spotted in Factory Droid CLI v1.7.1 built-in model catalog alongside 90 Vertex AI billing SKUs ($4/$20) and Gemini Web App config.",
-      "disclaimer_2": "",
-      "provider_name": "GOOGLE",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "npm (@factory/cli)",
-          "url": "https://www.npmjs.com/package/@factory/cli?activeTab=versions"
-        },
-        {
-          "label": "Factory Docs",
-          "url": "https://docs.factory.ai"
-        }
-      ],
-      "detected_at": "2026-11-10T12:32:17Z",
-      "story_id": "story-gemini-4-carbon",
-      "confidence_tier": "confirmed",
-      "confidence_label": "Confirmed · 3 sources",
-      "corroboration_count": 3
-    },
-    {
       "id": "litellm-diff-ddf4c4a6",
       "category": "cli-sdk-diff",
       "scanner": "litellm",
@@ -9187,6 +9153,48 @@
       "detected_at": "2026-11-10T12:34:38Z",
       "pricing": null,
       "x_post_text": "🚨 SGLANG PR DAY-0 MODEL ONBOARDING (OPEN)\nMiniMaxAI/MiniMax-H3-Image (SGLang PR #49552) spotted in SGLang PR PR #49552 (open)!\n\n• MiniMax-H3-Image (MiniMaxAI/MiniMax-H3-Image)\n\nEvidence: sgl-project/sglang/pull/49552\nSource: public GitHub pull request #49552 on sgl-project/sglang.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "cli-factory-droid-1.7.0-1.7.1",
+      "category": "cli-sdk-diff",
+      "scanner": "npm",
+      "header": "CLI BINARY DIFF · FACTORY DROID · GOOGLE",
+      "title": "Factory Droid CLI v1.7.1 (gemini-4-carbon)",
+      "subtitle": "Added to Factory Droid CLI (@factory/cli v1.7.0 -> v1.7.1) built-in model registry.",
+      "build_label": "Droid CLI Diff",
+      "build_transition": "1.7.0 -> 1.7.1",
+      "old_version": "1.7.0",
+      "new_version": "1.7.1",
+      "models": [
+        {
+          "id": "gemini-4-carbon",
+          "name": "Gemini 4 Carbon"
+        }
+      ],
+      "evidence": "@factory/cli v1.7.1 (.bun ELF section in downloads.factory.ai/factory-cli/releases/1.7.1/linux/x64/droid)",
+      "source_text": "Factory Droid CLI standalone binary (.bun ELF section).",
+      "disclaimer_1": "Spotted in Factory Droid CLI v1.7.1 built-in model catalog alongside 90 Vertex AI billing SKUs ($4/$20) and Gemini Web App config.",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "npm (@factory/cli)",
+          "url": "https://www.npmjs.com/package/@factory/cli?activeTab=versions"
+        },
+        {
+          "label": "Factory Docs",
+          "url": "https://docs.factory.ai"
+        }
+      ],
+      "detected_at": "2026-11-10T12:32:17Z",
+      "story_id": "story-gemini-4-carbon",
+      "confidence_tier": "confirmed",
+      "confidence_label": "Confirmed · 3 sources",
+      "corroboration_count": 3,
+      "pricing": null,
+      "x_post_text": "🚨 CLI BINARY DIFF · FACTORY DROID · GOOGLE\nFactory Droid CLI v1.7.1 (gemini-4-carbon) spotted in Droid CLI Diff 1.7.0 -> 1.7.1!\n\n• Gemini 4 Carbon (gemini-4-carbon)\n\nEvidence: @factory/cli v1.7.1 (.bun ELF section in downloads.factory.ai/factory-cli/releases/1.7.1/linux/x64/droid)\nSource: Factory Droid CLI standalone binary (.bun ELF section).\n\nTracked by @StatsWire"
     },
     {
       "id": "hf-inclusionAI_ZoomGain-9B",
