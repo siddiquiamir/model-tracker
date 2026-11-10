@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T15:59:58.967432+00:00",
+  "generated_at": "2026-11-10T16:09:58.603675+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 165,
@@ -7,7 +7,7 @@
     "releases": 103,
     "stories_24h": 20,
     "sources_ok": 11,
-    "total_cards": 267,
+    "total_cards": 268,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -8829,7 +8829,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-10-23T19:51:16+00:00",
-      "updated_at": "2026-11-10T16:00:33.694404+00:00",
+      "updated_at": "2026-11-10T16:10:22.813445+00:00",
       "first_source": "Antigravity ACP config",
       "lead": "17 days before it went live on Vercel AI Gateway Catalog",
       "released_on": "",
@@ -9000,9 +9000,19 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "LiteLLM registry",
+          "scanner": "litellm",
+          "detected_at": "2026-11-10T16:10:22.813445+00:00",
+          "title": "1 New Model(s) Added to LiteLLM",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 12,
+      "source_count": 13,
       "backfill": false,
       "header": "NEW MODEL · GOOGLE",
       "card_ids": [
@@ -9017,13 +9027,14 @@
         "docs-diff-gcp-vertex-models-06dfe89e",
         "docs-diff-gcp-vertex-versions-b375ff7f",
         "vertex-quota-google-9187a17f",
-        "vercel-gateway-diff-e1cd38a6"
+        "vercel-gateway-diff-e1cd38a6",
+        "litellm-diff-734cf7b2"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Gemini 4 Carbon by Google\n\nFirst detected 23 Oct 19:51 UTC in Antigravity ACP config\n⏱ 17 days before it went live on Vercel AI Gateway Catalog\nConfirmed by LMArena, Gemini Web App Config, Google Cloud Billing catalog +8\nCodename: carbon, mobile\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Gemini 4 Carbon by Google\n\nFirst detected 23 Oct 19:51 UTC in Antigravity ACP config\n⏱ 17 days before it went live on Vercel AI Gateway Catalog\nConfirmed by LMArena, Gemini Web App Config, Google Cloud Billing catalog +9\nCodename: carbon, mobile\n\nvia @StatsWire"
     },
     {
       "id": "story-sonnet-5-5-high-bon-le",
@@ -9091,6 +9102,42 @@
     }
   ],
   "cards": [
+    {
+      "id": "litellm-diff-734cf7b2",
+      "category": "cli-sdk-diff",
+      "scanner": "litellm",
+      "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
+      "title": "1 New Model(s) Added to LiteLLM",
+      "subtitle": "Verified model_prices_and_context_window.json diff",
+      "build_label": "Registry Diff",
+      "build_transition": "+1 model keys",
+      "models": [
+        {
+          "id": "gemini/gemini-4-carbon",
+          "name": "gemini/gemini-4-carbon"
+        }
+      ],
+      "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
+      "source_text": "official LiteLLM master pricing & context window registry.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "LITELLM",
+      "provider_slug": "modelsdev",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "LiteLLM JSON Registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        },
+        {
+          "label": "LiteLLM Commits",
+          "url": "https://github.com/BerriAI/litellm/commits/main"
+        }
+      ],
+      "detected_at": "2026-11-10T16:10:22.813445+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 model keys!\n\n• gemini/gemini-4-carbon (gemini/gemini-4-carbon)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "vercel-gateway-diff-e1cd38a6",
       "category": "cli-sdk-diff",
