@@ -250,19 +250,38 @@ def make_sw_circle(size: int) -> Image.Image:
     return img.resize((size, size), Image.Resampling.LANCZOS)
 
 
-def render_card(provider: str, models: List[str], out_path: str, custom_title: str = "") -> str:
+def render_card(
+    provider: str,
+    models: List[str],
+    out_path: str,
+    custom_title: str = "",
+    header: str = "",
+    subtitle: str = "",
+    disclaimer: str = "",
+) -> str:
     p_key = provider.lower().strip()
     default_title, accent = PROVIDER_THEMES.get(p_key, (f"New {provider.title()} Models", (34, 197, 94)))
     title = custom_title or default_title
 
-    extra_rows = max(0, len(models) - 2)
-    h = H + extra_rows * 64
-
+    f_header = load_font([r"C:\Windows\Fonts\segoeuib.ttf", r"C:\Windows\Fonts\arialbd.ttf"], 28)
     f_title = load_font([r"C:\Windows\Fonts\segoeuib.ttf", r"C:\Windows\Fonts\arialbd.ttf"], 54)
-    f_item = load_font([r"C:\Windows\Fonts\segoeui.ttf", r"C:\Windows\Fonts\arial.ttf"], 42)
-    f_bullet = load_font([r"C:\Windows\Fonts\segoeuib.ttf", r"C:\Windows\Fonts\arialbd.ttf"], 42)
+    f_sub = load_font([r"C:\Windows\Fonts\segoeui.ttf", r"C:\Windows\Fonts\arial.ttf"], 34)
+    max_len = max((len(m) for m in models), default=0)
+    if max_len > 70:
+        item_sz = 33
+    elif header or subtitle or len(models) >= 5 or max_len > 56:
+        item_sz = 38
+    else:
+        item_sz = 42
+    f_item = load_font([r"C:\Windows\Fonts\segoeui.ttf", r"C:\Windows\Fonts\arial.ttf"], item_sz)
+    f_item_bold = load_font([r"C:\Windows\Fonts\segoeuib.ttf", r"C:\Windows\Fonts\arialbd.ttf"], item_sz)
+    f_bullet = load_font([r"C:\Windows\Fonts\segoeuib.ttf", r"C:\Windows\Fonts\arialbd.ttf"], item_sz)
+    f_disc = load_font([r"C:\Windows\Fonts\segoeui.ttf", r"C:\Windows\Fonts\arial.ttf"], 28)
     f_foot = load_font([r"C:\Windows\Fonts\segoeuib.ttf", r"C:\Windows\Fonts\arialbd.ttf"], 30)
     f_wm = load_font([r"C:\Windows\Fonts\segoeuib.ttf", r"C:\Windows\Fonts\arialbd.ttf"], 26)
+
+    extra_rows = max(0, len(models) - 2)
+    h = H + extra_rows * 62 + (46 if header else 0) + (56 if subtitle else 0) + (58 if disclaimer else 0)
 
     base = Image.new("RGB", (W, h), BG)
     draw = ImageDraw.Draw(base)
@@ -280,18 +299,39 @@ def render_card(provider: str, models: List[str], out_path: str, custom_title: s
 
     draw = ImageDraw.Draw(base)
     lx = cx0 + 64
-    y = cy0 + 54
+    y = cy0 + 48
+
+    if header:
+        draw.text((lx, y), header.upper(), font=f_header, fill=TEXT_MUTED)
+        y += 46
 
     draw.text((lx, y), title, font=f_title, fill=WHITE)
 
-    emblem = make_provider_emblem(p_key, 224, accent)
-    base.paste(emblem, (cx1 - 80 - 224, cy0 + 70), emblem)
+    emblem = make_provider_emblem(p_key, 210, accent)
+    base.paste(emblem, (cx1 - 74 - 210, cy0 + 56), emblem)
 
-    y += 104
+    y += 88
+    if subtitle:
+        draw.text((lx, y), subtitle, font=f_sub, fill=TEXT_LIST)
+        y += 66
+    else:
+        y += 16
+
     for m in models:
         draw.text((lx + 4, y), "•", font=f_bullet, fill=TEXT_LIST)
-        draw.text((lx + 46, y), m, font=f_item, fill=TEXT_LIST)
-        y += 68
+        if ":" in m and not m.startswith("http"):
+            k_part, v_part = m.split(":", 1)
+            k_str = k_part + ":"
+            draw.text((lx + 42, y), k_str, font=f_item_bold, fill=WHITE)
+            kw = int(draw.textlength(k_str, font=f_item_bold))
+            draw.text((lx + 42 + kw, y), v_part, font=f_item, fill=TEXT_LIST)
+        else:
+            draw.text((lx + 42, y), m, font=f_item, fill=TEXT_LIST)
+        y += 62
+
+    if disclaimer:
+        y += 10
+        draw.text((lx, y), disclaimer, font=f_disc, fill=TEXT_MUTED)
 
     fy = cy1 - 88
     sw_icon = make_sw_circle(54)
@@ -325,6 +365,9 @@ if __name__ == "__main__":
     ap.add_argument("--models", nargs="+", required=True, help="One or more model IDs to list as bullets")
     ap.add_argument("--out", required=True, help="Output PNG path")
     ap.add_argument("--title", default="", help="Optional custom card title")
+    ap.add_argument("--header", default="", help="Optional small uppercase header above title")
+    ap.add_argument("--subtitle", default="", help="Optional subtitle below title")
+    ap.add_argument("--disclaimer", default="", help="Optional disclaimer note above footer")
     args = ap.parse_args()
-    saved = render_card(args.provider, args.models, args.out, args.title)
+    saved = render_card(args.provider, args.models, args.out, args.title, args.header, args.subtitle, args.disclaimer)
     print(f"Saved card: {saved}")
