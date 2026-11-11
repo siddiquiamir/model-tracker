@@ -1,16 +1,63 @@
 {
-  "generated_at": "2026-11-11T04:26:37.510986+00:00",
+  "generated_at": "2026-11-11T04:56:37.972117+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 128,
     "leaks": 47,
-    "releases": 63,
-    "stories_24h": 19,
+    "releases": 62,
+    "stories_24h": 20,
     "sources_ok": 12,
     "total_cards": 215,
     "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-litellm-registry-azure_ai-cc1a7374",
+      "group": "litellm-registry-azure_ai-cc1a7374",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "LiteLLM Azure AI Registry Update — 1 Entry Detected",
+      "provider_slug": "azure",
+      "provider_name": "Azure AI",
+      "accent_color": "#10b981",
+      "detected_at": "2026-11-11T04:57:01.004241+00:00",
+      "updated_at": "2026-11-11T04:57:01.004241+00:00",
+      "first_source": "LiteLLM registry",
+      "lead": "",
+      "released_on": "2026-10-06",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "mistral-large-4-latest",
+          "name": "azure_ai/mistral-large-4-latest",
+          "released_on": "2026-10-06"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM registry",
+          "scanner": "litellm",
+          "detected_at": "2026-11-11T04:57:01.004241+00:00",
+          "title": "1 New Model(s) Added to LiteLLM",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · AZURE AI",
+      "card_ids": [
+        "litellm-diff-cc1a7374"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🔵 REGISTRY UPDATE: LiteLLM Azure AI Registry Update — 1 Entry Detected\n\nFirst detected 11 Nov 04:57 UTC in LiteLLM registry\n📅 First released: 2026-10-06\n\nvia @StatsWire"
+    },
     {
       "id": "story-claude-fable-5-10",
       "group": "claude-fable-5-10",
@@ -6988,52 +7035,6 @@
       "x_post_text": "🟢 NEW MODEL: NVIDIA Nemotron 3.5 Transcribe by NVIDIA\n\nFirst detected 28 Oct 13:38 UTC in vLLM pull request\n📅 First released: 2026-10-07\n⏱ 1 h before it went live on Hugging Face\nConfirmed by Hugging Face\n\nvia @StatsWire"
     },
     {
-      "id": "story-nemotron-3-5-parse",
-      "group": "nemotron-3-5-parse",
-      "kind": "release",
-      "open_weights": true,
-      "title": "Nemotron 3.5 Parse",
-      "provider_slug": "nvidia",
-      "provider_name": "NVIDIA",
-      "accent_color": "#84cc16",
-      "detected_at": "2026-10-28T04:32:23.951679+00:00",
-      "updated_at": "2026-10-28T04:32:23.951679+00:00",
-      "first_source": "Hugging Face",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "Nemotron-3.5-Parse",
-          "name": "Nemotron-3.5-Parse"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Hugging Face",
-          "scanner": "huggingface",
-          "detected_at": "2026-10-28T04:32:23.951679+00:00",
-          "title": "Nemotron 3.5 Parse",
-          "url": "https://huggingface.co/nvidia/Nemotron-3.5-Parse",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "OPEN WEIGHTS · NVIDIA",
-      "card_ids": [
-        "hf-nvidia_Nemotron-3.5-Parse"
-      ],
-      "event_label": "",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Nemotron 3.5 Parse by NVIDIA\n\nFirst detected 28 Oct 04:32 UTC in Hugging Face\n\nvia @StatsWire"
-    },
-    {
       "id": "story-gemini-4-carbon",
       "group": "gemini-4-carbon",
       "kind": "release",
@@ -7357,6 +7358,45 @@
     }
   ],
   "cards": [
+    {
+      "id": "litellm-diff-cc1a7374",
+      "category": "cli-sdk-diff",
+      "scanner": "litellm",
+      "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
+      "title": "1 New Model(s) Added to LiteLLM",
+      "subtitle": "Verified model_prices_and_context_window.json diff",
+      "build_label": "Registry Diff",
+      "build_transition": "+1 model keys",
+      "models": [
+        {
+          "id": "azure_ai/mistral-large-4-latest",
+          "name": "azure_ai/mistral-large-4-latest",
+          "released_on": "2026-10-06",
+          "registry_update": true
+        }
+      ],
+      "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
+      "source_text": "official LiteLLM master pricing & context window registry.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "LITELLM",
+      "provider_slug": "modelsdev",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "LiteLLM JSON Registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        },
+        {
+          "label": "LiteLLM Commits",
+          "url": "https://github.com/BerriAI/litellm/commits/main"
+        }
+      ],
+      "detected_at": "2026-11-11T04:57:01.004241+00:00",
+      "registry_update": true,
+      "pricing": null,
+      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 model keys!\n\n• azure_ai/mistral-large-4-latest (azure_ai/mistral-large-4-latest)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "lmarena-lb-diff-f1f3eee3",
       "category": "cli-sdk-diff",
@@ -15415,43 +15455,6 @@
       ],
       "detected_at": "2026-10-28T13:38:28Z",
       "x_post_text": "🚨 VLLM PR DAY-0 MODEL ONBOARDING (OPEN)\nnvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B (vLLM PR #64282) spotted in vLLM PR PR #64282 (open)!\n\n• NVIDIA-Nemotron-3.5-Transcribe-30B-A4B (nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B)\n\nEvidence: vllm-project/vllm/pull/64282\nSource: public GitHub pull request #64282 on vllm-project/vllm.\n\nTracked by @StatsWire",
-      "codenames": [],
-      "pricing": null
-    },
-    {
-      "id": "hf-nvidia_Nemotron-3.5-Parse",
-      "category": "open-source",
-      "scanner": "huggingface",
-      "header": "HUGGING FACE NEW REPO · NVIDIA",
-      "title": "Nemotron 3.5 Parse",
-      "subtitle": "Newly published public model repository (nvidia)",
-      "build_label": "Repo",
-      "build_transition": "Created 2026-09-03 (image-text-to-text)",
-      "models": [
-        {
-          "id": "nvidia/Nemotron-3.5-Parse",
-          "name": "Nemotron-3.5-Parse (image-text-to-text)"
-        }
-      ],
-      "evidence": "huggingface.co/api/models",
-      "source_text": "official nvidia Hugging Face organization feed.",
-      "disclaimer_1": "Repository became publicly visible since the previous scan.",
-      "disclaimer_2": "Public weights / model cards published directly by the organization.",
-      "provider_name": "NVIDIA",
-      "provider_slug": "nvidia",
-      "accent_color": "#84cc16",
-      "links": [
-        {
-          "label": "Hugging Face Repo",
-          "url": "https://huggingface.co/nvidia/Nemotron-3.5-Parse"
-        },
-        {
-          "label": "nvidia Hub Feed",
-          "url": "https://huggingface.co/nvidia"
-        }
-      ],
-      "detected_at": "2026-10-28T04:32:23.951679+00:00",
-      "x_post_text": "🚨 HUGGING FACE NEW REPO · NVIDIA\nNemotron 3.5 Parse spotted in Repo Created 2026-09-03 (image-text-to-text)!\n\n• Nemotron-3.5-Parse (image-text-to-text) (nvidia/Nemotron-3.5-Parse)\n\nEvidence: huggingface.co/api/models\nSource: official nvidia Hugging Face organization feed.\n\nTracked by @StatsWire",
       "codenames": [],
       "pricing": null
     },
