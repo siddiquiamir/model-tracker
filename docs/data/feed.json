@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-11T18:04:59.873320+00:00",
+  "generated_at": "2026-11-11T18:17:00.033394+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 125,
     "leaks": 46,
     "releases": 60,
     "stories_24h": 16,
-    "sources_ok": 11,
-    "total_cards": 212,
+    "sources_ok": 12,
+    "total_cards": 213,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -4238,7 +4238,7 @@
       "provider_name": "Baidu",
       "accent_color": "#2932e1",
       "detected_at": "2026-11-05T05:32:32.825217+00:00",
-      "updated_at": "2026-11-11T07:44:19.822967+00:00",
+      "updated_at": "2026-11-11T18:17:20.370053+00:00",
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "2026-10-21",
@@ -4252,8 +4252,9 @@
         },
         {
           "id": "ernie-5.5-flash-preview",
-          "name": "ERNIE-5.5-Flash-Preview",
-          "released_on": "2026-11-10"
+          "name": "ernie-5.5-flash-preview",
+          "released_on": "2026-11-10",
+          "org": "baidu"
         },
         {
           "id": "ERNIE-5.5-Flash-Base-BF16",
@@ -4290,9 +4291,19 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "LMArena",
+          "scanner": "lmarena",
+          "detected_at": "2026-11-11T18:17:20.370053+00:00",
+          "title": "New Model Found on Arena: ernie-5.5-flash-preview",
+          "url": "https://arena.ai/code?mode=direct&model=ernie-5.5-flash-preview",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 3,
+      "source_count": 4,
       "backfill": false,
       "header": "OPEN WEIGHTS · BAIDU",
       "card_ids": [
@@ -4300,13 +4311,14 @@
         "hf-baidu_ERNIE-5.5-Flash-Base-BF16",
         "engine-pr-ggml-org_llama.cpp-31925",
         "openrouter-model-baidu_ernie-5.5-flash-preview",
-        "openrouter-model-baidu_ernie-5.5-flash-preview_free"
+        "openrouter-model-baidu_ernie-5.5-flash-preview_free",
+        "arena-scout-diff-ac077d8f"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: ERNIE-5.5-Flash-Preview by Baidu\n\nFirst detected 05 Nov 05:32 UTC in Hugging Face\n📅 First released: 2026-10-21\nConfirmed by llama.cpp pull request, OpenRouter\nIDs: ERNIE-5.5-Flash-Base, ernie-5.5-flash-preview, ERNIE-5.5-Flash-Base-BF16\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: ERNIE-5.5-Flash-Preview by Baidu\n\nFirst detected 05 Nov 05:32 UTC in Hugging Face\n📅 First released: 2026-10-21\nConfirmed by llama.cpp pull request, OpenRouter, LMArena\nIDs: ERNIE-5.5-Flash-Base, ernie-5.5-flash-preview, ERNIE-5.5-Flash-Base-BF16\n\nvia @StatsWire"
     },
     {
       "id": "story-gpt-image-2-6-flare",
@@ -7211,6 +7223,40 @@
     }
   ],
   "cards": [
+    {
+      "id": "arena-scout-diff-ac077d8f",
+      "category": "cli-sdk-diff",
+      "scanner": "lmarena",
+      "header": "ARENA.AI LIVE MODEL SCOUT · NEXT.JS RSC STREAM",
+      "title": "New Model Found on Arena: ernie-5.5-flash-preview",
+      "subtitle": "Detected in Arena Code (/code) initialModels RSC stream (in:text, out:web)",
+      "build_label": "Arena Metadata",
+      "build_transition": "Org: baidu · Provider: baiduyiyanApi · ID: 01a1bc5c-e389-7e59-a728-9939461d4a62 · DB minted 2026-11-08 18:12:46 UTC",
+      "models": [
+        {
+          "id": "org:baidu · baiduyiyanApi",
+          "name": "ernie-5.5-flash-preview",
+          "org": "baidu",
+          "released_on": "2026-11-10"
+        }
+      ],
+      "evidence": "arena.ai/code -> self.__next_f.push (initialModels)",
+      "source_text": "live Arena (arena.ai) Next.js RSC model config.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "ARENA.AI",
+      "provider_slug": "modelsdev",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "Open on Arena.ai",
+          "url": "https://arena.ai/code?mode=direct&model=ernie-5.5-flash-preview"
+        }
+      ],
+      "detected_at": "2026-11-11T18:17:20.370053+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 ARENA.AI LIVE MODEL SCOUT · NEXT.JS RSC STREAM\nNew Model Found on Arena: ernie-5.5-flash-preview spotted in Arena Metadata Org: baidu · Provider: baiduyiyanApi · ID: 01a1bc5c-e389-7e59-a728-9939461d4a62 · DB minted 2026-11-08 18:12:46 UTC!\n\n• ernie-5.5-flash-preview (org:baidu · baiduyiyanApi)\n\nEvidence: arena.ai/code -> self.__next_f.push (initialModels)\nSource: live Arena (arena.ai) Next.js RSC model config.\n\nTracked by @StatsWire"
+    },
     {
       "id": "docs-diff-gemini-docs-477abdda",
       "category": "cli-sdk-diff",
