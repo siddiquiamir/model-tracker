@@ -1,16 +1,62 @@
 {
-  "generated_at": "2026-11-11T03:48:38.009039+00:00",
+  "generated_at": "2026-11-11T04:00:37.664698+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 127,
-    "leaks": 46,
+    "stories": 128,
+    "leaks": 47,
     "releases": 63,
-    "stories_24h": 18,
+    "stories_24h": 19,
     "sources_ok": 11,
-    "total_cards": 213,
-    "new_in_this_scan": 0
+    "total_cards": 214,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-claude-fable-5-10",
+      "group": "claude-fable-5-10",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Claude Fable 5.10",
+      "provider_slug": "anthropic",
+      "provider_name": "Anthropic",
+      "accent_color": "#f97316",
+      "detected_at": "2026-11-11T04:01:03.368167+00:00",
+      "updated_at": "2026-11-11T04:01:03.368167+00:00",
+      "first_source": "npm SDK release",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "claude-fable-5.10",
+          "name": "Claude Fable 5.10"
+        }
+      ],
+      "sources": [
+        {
+          "label": "npm SDK release",
+          "scanner": "npm",
+          "detected_at": "2026-11-11T04:01:03.368167+00:00",
+          "title": "Factory Droid CLI v1.8.0 (claude-fable-5.10)",
+          "url": "https://www.npmjs.com/package/@factory/cli?activeTab=versions",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · ANTHROPIC",
+      "card_ids": [
+        "cli-factory-droid-1.7.1-1.8.0"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: Claude Fable 5.10 by Anthropic\n\nFirst detected 11 Nov 04:01 UTC in npm SDK release\n\nvia @StatsWire"
+    },
     {
       "id": "story-midm-k-3",
       "group": "midm-k-3",
@@ -7296,6 +7342,44 @@
     }
   ],
   "cards": [
+    {
+      "id": "cli-factory-droid-1.7.1-1.8.0",
+      "category": "cli-sdk-diff",
+      "scanner": "npm",
+      "header": "CLI BINARY DIFF · FACTORY DROID · ANTHROPIC",
+      "title": "Factory Droid CLI v1.8.0 (claude-fable-5.10)",
+      "subtitle": "Added to Factory Droid CLI (@factory/cli v1.7.1 -> v1.8.0) built-in model registry.",
+      "build_label": "Droid CLI Diff",
+      "build_transition": "1.7.1 -> 1.8.0",
+      "old_version": "1.7.1",
+      "new_version": "1.8.0",
+      "models": [
+        {
+          "id": "claude-fable-5.10",
+          "name": "Claude Fable 5.10"
+        }
+      ],
+      "evidence": "@factory/cli v1.8.0 (.bun ELF section in downloads.factory.ai/factory-cli/releases/1.8.0/linux/x64/droid)",
+      "source_text": "Factory Droid CLI standalone binary (.bun ELF section).",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "ANTHROPIC",
+      "provider_slug": "anthropic",
+      "accent_color": "#f97316",
+      "links": [
+        {
+          "label": "npm (@factory/cli)",
+          "url": "https://www.npmjs.com/package/@factory/cli?activeTab=versions"
+        },
+        {
+          "label": "Factory Docs",
+          "url": "https://docs.factory.ai"
+        }
+      ],
+      "detected_at": "2026-11-11T04:01:03.368167+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 CLI BINARY DIFF · FACTORY DROID · ANTHROPIC\nFactory Droid CLI v1.8.0 (claude-fable-5.10) spotted in Droid CLI Diff 1.7.1 -> 1.8.0!\n\n• Claude Fable 5.10 (claude-fable-5.10)\n\nEvidence: @factory/cli v1.8.0 (.bun ELF section in downloads.factory.ai/factory-cli/releases/1.8.0/linux/x64/droid)\nSource: Factory Droid CLI standalone binary (.bun ELF section).\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-inclusionAI_ZoomGain-9B-GGUF",
       "category": "open-source",
