@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-11T17:32:59.720259+00:00",
+  "generated_at": "2026-11-11T18:04:59.873320+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 126,
+    "stories": 125,
     "leaks": 46,
-    "releases": 61,
-    "stories_24h": 17,
-    "sources_ok": 12,
+    "releases": 60,
+    "stories_24h": 16,
+    "sources_ok": 11,
     "total_cards": 212,
-    "new_in_this_scan": 0
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -21,7 +21,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-11T17:03:40.393114+00:00",
-      "updated_at": "2026-11-11T17:03:40.393114+00:00",
+      "updated_at": "2026-11-11T18:05:15.851395+00:00",
       "first_source": "Vercel AI Gateway Catalog",
       "lead": "",
       "released_on": "",
@@ -43,19 +43,30 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Gemini API Docs",
+          "scanner": "docs-radar",
+          "detected_at": "2026-11-11T18:05:15.851395+00:00",
+          "title": "New Model Spotted in Gemini API Official Models Page",
+          "url": "https://ai.google.dev/gemini-api/docs/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
       "header": "NEW MODEL · GOOGLE",
       "card_ids": [
-        "vercel-gateway-diff-60e4dee7"
+        "vercel-gateway-diff-60e4dee7",
+        "docs-diff-gemini-docs-477abdda"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Gemini Decision 1 by Google\n\nFirst detected 11 Nov 17:03 UTC in Vercel AI Gateway Catalog\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Gemini Decision 1 by Google\n\nFirst detected 11 Nov 17:03 UTC in Vercel AI Gateway Catalog\nConfirmed by Gemini API Docs\n\nvia @StatsWire"
     },
     {
       "id": "story-kimi-k-3-1",
@@ -6877,52 +6888,6 @@
       "x_post_text": "🟢 NEW MODEL: Particle-1 by Particle-ai\n\nFirst detected 28 Oct 19:27 UTC in OpenRouter\n📅 First released: 2026-10-28\nConfirmed by Vercel AI Gateway Catalog\n\nvia @StatsWire"
     },
     {
-      "id": "story-lidarverse",
-      "group": "lidarverse",
-      "kind": "release",
-      "open_weights": true,
-      "title": "Lidarverse",
-      "provider_slug": "nvidia",
-      "provider_name": "NVIDIA",
-      "accent_color": "#84cc16",
-      "detected_at": "2026-10-28T17:57:30.647194+00:00",
-      "updated_at": "2026-10-28T17:57:30.647194+00:00",
-      "first_source": "Hugging Face",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "lidarverse",
-          "name": "lidarverse"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Hugging Face",
-          "scanner": "huggingface",
-          "detected_at": "2026-10-28T17:57:30.647194+00:00",
-          "title": "lidarverse",
-          "url": "https://huggingface.co/nvidia/lidarverse",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "OPEN WEIGHTS · NVIDIA",
-      "card_ids": [
-        "hf-nvidia_lidarverse"
-      ],
-      "event_label": "",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Lidarverse by NVIDIA\n\nFirst detected 28 Oct 17:57 UTC in Hugging Face\n\nvia @StatsWire"
-    },
-    {
       "id": "story-gemini-4-carbon",
       "group": "gemini-4-carbon",
       "kind": "release",
@@ -7246,6 +7211,42 @@
     }
   ],
   "cards": [
+    {
+      "id": "docs-diff-gemini-docs-477abdda",
+      "category": "cli-sdk-diff",
+      "scanner": "docs-radar",
+      "header": "GEMINI API DOCS RADAR · GOOGLE",
+      "title": "New Model Spotted in Gemini API Official Models Page",
+      "subtitle": "Verified live API documentation diff",
+      "build_label": "Docs Diff",
+      "build_transition": "+1 new identifier(s)",
+      "models": [
+        {
+          "id": "gemini-decision-1",
+          "name": "Gemini Decision 1"
+        }
+      ],
+      "evidence": "ai.google.dev/gemini-api/docs/models",
+      "source_text": "official Google AI for Developers Gemini API documentation.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Official Docs Page",
+          "url": "https://ai.google.dev/gemini-api/docs/models"
+        },
+        {
+          "label": "Raw Docs Feed",
+          "url": "https://ai.google.dev/gemini-api/docs/models"
+        }
+      ],
+      "detected_at": "2026-11-11T18:05:15.851395+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 GEMINI API DOCS RADAR · GOOGLE\nNew Model Spotted in Gemini API Official Models Page spotted in Docs Diff +1 new identifier(s)!\n\n• Gemini Decision 1 (gemini-decision-1)\n\nEvidence: ai.google.dev/gemini-api/docs/models\nSource: official Google AI for Developers Gemini API documentation.\n\nTracked by @StatsWire"
+    },
     {
       "id": "vercel-gateway-diff-60e4dee7",
       "category": "cli-sdk-diff",
@@ -15183,43 +15184,6 @@
       "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · PARTICLE-AI\nParticle AI: Particle-1 spotted in Endpoint ID particle-ai/particle-1!\n\n• Particle AI: Particle-1 (1048k context window) (particle-ai/particle-1)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire",
       "pricing": null,
       "codenames": []
-    },
-    {
-      "id": "hf-nvidia_lidarverse",
-      "category": "open-source",
-      "scanner": "huggingface",
-      "header": "HUGGING FACE NEW REPO · NVIDIA",
-      "title": "lidarverse",
-      "subtitle": "Newly published public model repository (nvidia)",
-      "build_label": "Repo",
-      "build_transition": "Created 2026-10-06 (model)",
-      "models": [
-        {
-          "id": "nvidia/lidarverse",
-          "name": "lidarverse (model)"
-        }
-      ],
-      "evidence": "huggingface.co/api/models",
-      "source_text": "official nvidia Hugging Face organization feed.",
-      "disclaimer_1": "Repository became publicly visible since the previous scan.",
-      "disclaimer_2": "Public weights / model cards published directly by the organization.",
-      "provider_name": "NVIDIA",
-      "provider_slug": "nvidia",
-      "accent_color": "#84cc16",
-      "links": [
-        {
-          "label": "Hugging Face Repo",
-          "url": "https://huggingface.co/nvidia/lidarverse"
-        },
-        {
-          "label": "nvidia Hub Feed",
-          "url": "https://huggingface.co/nvidia"
-        }
-      ],
-      "detected_at": "2026-10-28T17:57:30.647194+00:00",
-      "x_post_text": "🚨 HUGGING FACE NEW REPO · NVIDIA\nlidarverse spotted in Repo Created 2026-10-06 (model)!\n\n• lidarverse (model) (nvidia/lidarverse)\n\nEvidence: huggingface.co/api/models\nSource: official nvidia Hugging Face organization feed.\n\nTracked by @StatsWire",
-      "codenames": [],
-      "pricing": null
     },
     {
       "id": "ag-acp-1.4.3-revision-diff",
