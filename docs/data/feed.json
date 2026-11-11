@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-11T04:00:37.664698+00:00",
+  "generated_at": "2026-11-11T04:26:37.510986+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 128,
     "leaks": 47,
     "releases": 63,
     "stories_24h": 19,
-    "sources_ok": 11,
-    "total_cards": 214,
+    "sources_ok": 12,
+    "total_cards": 215,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -1063,17 +1063,21 @@
       "kind": "release",
       "open_weights": false,
       "title": "Claude Fable 5.2",
-      "provider_slug": "anthropic",
-      "provider_name": "Anthropic",
-      "accent_color": "#f97316",
+      "provider_slug": "multi",
+      "provider_name": "AI Model Identifiers",
+      "accent_color": "#6366f1",
       "detected_at": "2026-11-09T18:53:39.765416+00:00",
-      "updated_at": "2026-11-09T21:23:41.493051+00:00",
+      "updated_at": "2026-11-11T04:01:46.000Z",
       "first_source": "Anthropic SDK GitHub Main",
       "lead": "12 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "2026-11-09",
       "pricing": "",
       "codenames": [],
       "models": [
+        {
+          "id": "U2 Flash",
+          "name": "U2 Flash"
+        },
         {
           "id": "claude-fable-5-2",
           "name": "Claude Fable 5.2",
@@ -1209,11 +1213,21 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "LMArena",
+          "scanner": "lmarena",
+          "detected_at": "2026-11-11T04:01:46.000Z",
+          "title": "New Model(s) Added to Arena (Claude Fable 5.2 (xHigh))",
+          "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 12,
+      "source_count": 13,
       "backfill": false,
-      "header": "NEW MODEL · ANTHROPIC",
+      "header": "NEW MODEL · AI MODEL IDENTIFIERS",
       "card_ids": [
         "pre-release-gh_anthropic_sdk_union-80302d38",
         "npm-_anthropic-ai_sdk-1.6.0-1.7.0",
@@ -1229,13 +1243,14 @@
         "models-dev-diff-36d4b8aa",
         "opencode-zen-diff-e1b48f11",
         "litellm-diff-9c57ca5d",
-        "litellm-diff-5cfbc93b"
+        "litellm-diff-5cfbc93b",
+        "lmarena-lb-diff-f1f3eee3"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Claude Fable 5.2 by Anthropic\n\nFirst detected 09 Nov 18:53 UTC in Anthropic SDK GitHub Main\n📅 First released: 2026-11-09\n⏱ 12 min before it went live on Vercel AI Gateway Catalog\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Claude Fable 5.2 by AI Model Identifiers\n\nFirst detected 09 Nov 18:53 UTC in Anthropic SDK GitHub Main\n📅 First released: 2026-11-09\n⏱ 12 min before it went live on Vercel AI Gateway Catalog\n\nvia @StatsWire"
     },
     {
       "id": "story-claude-mythos-5-2",
@@ -7342,6 +7357,43 @@
     }
   ],
   "cards": [
+    {
+      "id": "lmarena-lb-diff-f1f3eee3",
+      "category": "cli-sdk-diff",
+      "scanner": "lmarena",
+      "header": "ARENA.AI NEW MODEL DIFF · LMARENA",
+      "title": "New Model(s) Added to Arena (Claude Fable 5.2 (xHigh))",
+      "subtitle": "Newly added models in official lmarena-ai/leaderboard-dataset",
+      "build_label": "Arena Diff",
+      "build_transition": "+2 new Arena models",
+      "models": [
+        {
+          "id": "Claude Fable 5.2 (xHigh)",
+          "name": "Claude Fable 5.2 (xHigh) (WebDev Arena)",
+          "released_on": "2026-11-09"
+        },
+        {
+          "id": "U2 Flash",
+          "name": "U2 Flash (WebDev Arena)"
+        }
+      ],
+      "evidence": "huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+      "source_text": "official LMArena (arena.ai) Hugging Face dataset.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "ARENA.AI",
+      "provider_slug": "modelsdev",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "LMArena Dataset",
+          "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset"
+        }
+      ],
+      "detected_at": "2026-11-11T04:01:46.000Z",
+      "pricing": null,
+      "x_post_text": "🚨 ARENA.AI NEW MODEL DIFF · LMARENA\nNew Model(s) Added to Arena (Claude Fable 5.2 (xHigh)) spotted in Arena Diff +2 new Arena models!\n\n• Claude Fable 5.2 (xHigh) (WebDev Arena) (Claude Fable 5.2 (xHigh))\n• U2 Flash (WebDev Arena) (U2 Flash)\n\nEvidence: huggingface.co/datasets/lmarena-ai/leaderboard-dataset\nSource: official LMArena (arena.ai) Hugging Face dataset.\n\nTracked by @StatsWire"
+    },
     {
       "id": "cli-factory-droid-1.7.1-1.8.0",
       "category": "cli-sdk-diff",
