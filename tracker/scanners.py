@@ -737,7 +737,7 @@ class NpmCliAndSdkScanner:
                         fobj = tf.extractfile(member)
                         if not fobj:
                             continue
-                        data = fobj.read()
+                        data = re.sub(rb".[\x00-\x03]\x00\x80.{3}\x00", b"\n", fobj.read(), flags=re.DOTALL)
                         for m in re.finditer(rb'\{id:"(claude-[a-z0-9._-]+)",family:"[a-z0-9._-]+"', data):
                             mid = m.group(1).decode("utf-8", "ignore")
                             if not is_legacy_model_id(mid):
@@ -754,7 +754,7 @@ class NpmCliAndSdkScanner:
                         fobj = tf.extractfile(member)
                         if not fobj:
                             continue
-                        data = fobj.read()
+                        data = re.sub(rb".[\x00-\x03]\x00\x80.{3}\x00", b"\n", fobj.read(), flags=re.DOTALL)
                         for m in re.finditer(rb'\{\s*"slug":\s*"([a-z0-9._-]+)"', data):
                             mid = m.group(1).decode("utf-8", "ignore")
                             if not is_legacy_model_id(mid) and mid != "codex-auto-review":
@@ -5003,6 +5003,11 @@ class HighAlphaLeakChannelsScanner:
             sec_name = shstrtab[sh_name:name_end].decode("ascii", errors="ignore")
             if sec_name == ".bun":
                 chunk = _range_get(sh_offset, sh_offset + min(sh_size - 1, 16000000))
+                # Bun JSC bytecode string pools use 8-byte StringImpl headers
+                # ([len_u24][0x80][hash_3b][0x00]) and omit null padding when a string's
+                # byte length is a multiple of 4; replace headers with newlines so the
+                # next string's ASCII length byte never collides with the previous string.
+                chunk = re.sub(rb".[\x00-\x03]\x00\x80.{3}\x00", b"\n", chunk, flags=re.DOTALL)
                 bun_text = chunk.decode("utf-8", errors="ignore")
                 break
 
