@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T02:05:19.541714+00:00",
+  "generated_at": "2026-11-12T02:15:19.859824+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 120,
@@ -7,8 +7,8 @@
     "releases": 57,
     "stories_24h": 10,
     "sources_ok": 11,
-    "total_cards": 207,
-    "new_in_this_scan": 0
+    "total_cards": 208,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -21,7 +21,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-11T17:03:40.393114+00:00",
-      "updated_at": "2026-11-11T18:05:15.851395+00:00",
+      "updated_at": "2026-11-12T02:15:48.842510+00:00",
       "first_source": "Vercel AI Gateway Catalog",
       "lead": "",
       "released_on": "",
@@ -53,20 +53,31 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "LiteLLM registry",
+          "scanner": "litellm",
+          "detected_at": "2026-11-12T02:15:48.842510+00:00",
+          "title": "1 New Model(s) Added to LiteLLM",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 2,
+      "source_count": 3,
       "backfill": false,
       "header": "NEW MODEL · GOOGLE",
       "card_ids": [
         "vercel-gateway-diff-60e4dee7",
-        "docs-diff-gemini-docs-477abdda"
+        "docs-diff-gemini-docs-477abdda",
+        "litellm-diff-12222df2"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Gemini Decision 1 by Google\n\nFirst detected 11 Nov 17:03 UTC in Vercel AI Gateway Catalog\nConfirmed by Gemini API Docs\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Gemini Decision 1 by Google\n\nFirst detected 11 Nov 17:03 UTC in Vercel AI Gateway Catalog\nConfirmed by Gemini API Docs, LiteLLM registry\n\nvia @StatsWire"
     },
     {
       "id": "story-kimi-k-3-1",
@@ -6972,6 +6983,42 @@
     }
   ],
   "cards": [
+    {
+      "id": "litellm-diff-12222df2",
+      "category": "cli-sdk-diff",
+      "scanner": "litellm",
+      "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
+      "title": "1 New Model(s) Added to LiteLLM",
+      "subtitle": "Verified model_prices_and_context_window.json diff",
+      "build_label": "Registry Diff",
+      "build_transition": "+1 model keys",
+      "models": [
+        {
+          "id": "gemini/gemini-decision-1",
+          "name": "gemini/gemini-decision-1"
+        }
+      ],
+      "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
+      "source_text": "official LiteLLM master pricing & context window registry.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "LITELLM",
+      "provider_slug": "modelsdev",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "LiteLLM JSON Registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        },
+        {
+          "label": "LiteLLM Commits",
+          "url": "https://github.com/BerriAI/litellm/commits/main"
+        }
+      ],
+      "detected_at": "2026-11-12T02:15:48.842510+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 model keys!\n\n• gemini/gemini-decision-1 (gemini/gemini-decision-1)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "ag-2.31.1-2.31.2-gemini-4-carbon",
       "category": "desktop-diff",
