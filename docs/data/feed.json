@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-12T17:58:30.409602+00:00",
+  "generated_at": "2026-11-12T18:00:30.115030+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 118,
-    "leaks": 41,
-    "releases": 57,
+    "leaks": 40,
+    "releases": 58,
     "stories_24h": 10,
     "sources_ok": 11,
-    "total_cards": 207,
-    "new_in_this_scan": 1
+    "total_cards": 209,
+    "new_in_this_scan": 2
   },
   "stories": [
     {
@@ -16,12 +16,12 @@
       "group": "granite-4-1-llmon",
       "kind": "release",
       "open_weights": true,
-      "title": "granite 4.1 3b llmon preview",
+      "title": "granite 4.1 llmon preview",
       "provider_slug": "opensource",
       "provider_name": "IBM Granite",
       "accent_color": "#0f62fe",
       "detected_at": "2026-11-12T17:59:01.167599+00:00",
-      "updated_at": "2026-11-12T17:59:01.167599+00:00",
+      "updated_at": "2026-11-12T18:00:55.420850+00:00",
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
@@ -31,6 +31,10 @@
         {
           "id": "granite-4.1-3b-llmon-preview",
           "name": "granite-4.1-3b-llmon-preview"
+        },
+        {
+          "id": "granite-4.1-8b-llmon-preview",
+          "name": "granite-4.1-8b-llmon-preview"
         }
       ],
       "sources": [
@@ -49,13 +53,14 @@
       "backfill": false,
       "header": "OPEN WEIGHTS · IBM GRANITE",
       "card_ids": [
-        "hf-ibm-granite_granite-4.1-3b-llmon-preview"
+        "hf-ibm-granite_granite-4.1-3b-llmon-preview",
+        "hf-ibm-granite_granite-4.1-8b-llmon-preview"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: granite 4.1 3b llmon preview by IBM Granite\n\nFirst detected 12 Nov 17:59 UTC in Hugging Face\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: granite 4.1 llmon preview by IBM Granite\n\nFirst detected 12 Nov 17:59 UTC in Hugging Face\nIDs: granite-4.1-3b-llmon-preview, granite-4.1-8b-llmon-preview\n\nvia @StatsWire"
     },
     {
       "id": "story-pplx-decider-1-3",
@@ -152,16 +157,16 @@
     {
       "id": "story-gemini-4-hydrogen",
       "group": "gemini-4-hydrogen",
-      "kind": "leak",
+      "kind": "release",
       "open_weights": false,
       "title": "Gemini 4 Hydrogen",
       "provider_slug": "google",
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-12T17:34:46.236178+00:00",
-      "updated_at": "2026-11-12T17:43:03.001458+00:00",
+      "updated_at": "2026-11-12T18:01:08.202612+00:00",
       "first_source": "Gemini API Docs",
-      "lead": "",
+      "lead": "26 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "",
       "pricing": "",
       "codenames": [
@@ -170,7 +175,7 @@
       "models": [
         {
           "id": "gemini-4-hydrogen",
-          "name": "base_model:gemini-4-hydrogen"
+          "name": "Gemini 4 Hydrogen"
         }
       ],
       "sources": [
@@ -213,22 +218,33 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Vercel AI Gateway Catalog",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-11-12T18:01:08.202612+00:00",
+          "title": "New Model on Vercel AI Gateway: Gemini 4 Hydrogen",
+          "url": "https://ai-gateway.vercel.sh/v1/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 4,
+      "source_count": 5,
       "backfill": false,
-      "header": "LEAK · GOOGLE",
+      "header": "NEW MODEL · GOOGLE",
       "card_ids": [
         "docs-diff-gemini-docs-b5f21e2a",
         "docs-diff-gcp-vertex-models-b5f21e2a",
         "docs-diff-gcp-vertex-versions-b5f21e2a",
-        "vertex-quota-google-de7fd08b"
+        "vertex-quota-google-de7fd08b",
+        "vercel-gateway-diff-321f5620"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: Gemini 4 Hydrogen by Google\n\nFirst detected 12 Nov 17:34 UTC in Gemini API Docs\nConfirmed by GCP Vertex AI Models Docs, GCP Vertex AI Model Versions, Vertex AI Quotas registry\nCodename: hydrogen\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Gemini 4 Hydrogen by Google\n\nFirst detected 12 Nov 17:34 UTC in Gemini API Docs\n⏱ 26 min before it went live on Vercel AI Gateway Catalog\nConfirmed by GCP Vertex AI Models Docs, GCP Vertex AI Model Versions, Vertex AI Quotas registry +1\n\nvia @StatsWire"
     },
     {
       "id": "story-litellm-registry-gemini-c3e416cd",
@@ -6900,6 +6916,77 @@
     }
   ],
   "cards": [
+    {
+      "id": "vercel-gateway-diff-321f5620",
+      "category": "cli-sdk-diff",
+      "scanner": "gateway-radar",
+      "header": "VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS",
+      "title": "New Model on Vercel AI Gateway: Gemini 4 Hydrogen",
+      "subtitle": "Detected in ai-gateway.vercel.sh/v1/models (+1 new)",
+      "build_label": "Gateway Diff",
+      "build_transition": "+1 new model(s)",
+      "models": [
+        {
+          "id": "google/gemini-4-hydrogen",
+          "name": "Gemini 4 Hydrogen"
+        }
+      ],
+      "evidence": "ai-gateway.vercel.sh/v1/models",
+      "source_text": "public Vercel AI Gateway /v1/models catalog.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Vercel AI Gateway Models",
+          "url": "https://ai-gateway.vercel.sh/v1/models"
+        }
+      ],
+      "detected_at": "2026-11-12T18:01:08.202612+00:00",
+      "codenames": [
+        "hydrogen"
+      ],
+      "pricing": null,
+      "x_post_text": "🚨 VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS\nNew Model on Vercel AI Gateway: Gemini 4 Hydrogen spotted in Gateway Diff +1 new model(s)!\n\n• Gemini 4 Hydrogen (google/gemini-4-hydrogen)\n\nEvidence: ai-gateway.vercel.sh/v1/models\nSource: public Vercel AI Gateway /v1/models catalog.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "hf-ibm-granite_granite-4.1-8b-llmon-preview",
+      "category": "open-source",
+      "scanner": "huggingface",
+      "header": "HUGGING FACE NEW REPO · IBM GRANITE",
+      "title": "granite 4.1 8b llmon preview",
+      "subtitle": "Newly published public model repository (ibm-granite)",
+      "build_label": "Repo",
+      "build_transition": "Created 2026-10-01 (text-generation)",
+      "models": [
+        {
+          "id": "ibm-granite/granite-4.1-8b-llmon-preview",
+          "name": "granite-4.1-8b-llmon-preview (text-generation)"
+        }
+      ],
+      "evidence": "huggingface.co/api/models",
+      "source_text": "official ibm-granite Hugging Face organization feed.",
+      "disclaimer_1": "Repository became publicly visible since the previous scan.",
+      "disclaimer_2": "Public weights / model cards published directly by the organization.",
+      "provider_name": "IBM GRANITE",
+      "provider_slug": "opensource",
+      "accent_color": "#0f62fe",
+      "links": [
+        {
+          "label": "Hugging Face Repo",
+          "url": "https://huggingface.co/ibm-granite/granite-4.1-8b-llmon-preview"
+        },
+        {
+          "label": "ibm-granite Hub Feed",
+          "url": "https://huggingface.co/ibm-granite"
+        }
+      ],
+      "detected_at": "2026-11-12T18:00:55.420850+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 HUGGING FACE NEW REPO · IBM GRANITE\ngranite 4.1 8b llmon preview spotted in Repo Created 2026-10-01 (text-generation)!\n\n• granite-4.1-8b-llmon-preview (text-generation) (ibm-granite/granite-4.1-8b-llmon-preview)\n\nEvidence: huggingface.co/api/models\nSource: official ibm-granite Hugging Face organization feed.\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-ibm-granite_granite-4.1-3b-llmon-preview",
       "category": "open-source",
