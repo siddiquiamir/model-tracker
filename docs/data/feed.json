@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-12T14:06:05.515695+00:00",
+  "generated_at": "2026-11-12T14:38:05.990089+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 115,
-    "leaks": 40,
-    "releases": 56,
+    "leaks": 41,
+    "releases": 55,
     "stories_24h": 6,
-    "sources_ok": 11,
-    "total_cards": 203,
-    "new_in_this_scan": 1
+    "sources_ok": 12,
+    "total_cards": 201,
+    "new_in_this_scan": 0
   },
   "stories": [
     {
@@ -6310,6 +6310,53 @@
       "x_post_text": "🟢 NEW MODEL: NVIDIA Nemotron 3.5 Bolt 74B A9B 24GB by NVIDIA\n\nFirst detected 29 Oct 18:09 UTC in vLLM pull request\n📅 First released: 2026-10-07\n⏱ 8 days before it went live on Hugging Face\nConfirmed by Hugging Face\nCodename: bolt\n\nvia @StatsWire"
     },
     {
+      "id": "story-mistral-large-4",
+      "group": "mistral-large-4",
+      "kind": "leak",
+      "open_weights": true,
+      "title": "Mistral Large 4 1T A52B",
+      "provider_slug": "mistral",
+      "provider_name": "Mistral",
+      "accent_color": "#f59e0b",
+      "detected_at": "2026-10-29T15:01:08Z",
+      "updated_at": "2026-10-29T15:01:08Z",
+      "first_source": "vLLM pull request",
+      "lead": "",
+      "released_on": "2026-09-30",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Mistral-Large-4-1T-A52B",
+          "name": "Mistral-Large-4-1T-A52B",
+          "released_on": "2026-09-30"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-10-29T15:01:08Z",
+          "title": "mistralai/Mistral-Large-4-1T-A52B (vLLM PR #64534)",
+          "url": "https://github.com/vllm-project/vllm/pull/64534",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · MISTRAL",
+      "card_ids": [
+        "engine-pr-vllm-project_vllm-64534"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: Mistral Large 4 1T A52B by Mistral\n\nFirst detected 29 Oct 15:01 UTC in vLLM pull request\n📅 First released: 2026-09-30\n\nvia @StatsWire"
+    },
+    {
       "id": "story-ling-3-flash-sante",
       "group": "ling-3-flash-sante",
       "kind": "release",
@@ -6354,69 +6401,6 @@
       "candidate_only": false,
       "registry_evidence": [],
       "x_post_text": "🟢 NEW MODEL: Ling 3.0 flash Sante by Ant Group\n\nFirst detected 29 Oct 14:45 UTC in Hugging Face\n📅 First released: 2026-09-04\n\nvia @StatsWire"
-    },
-    {
-      "id": "story-mistral-large-4",
-      "group": "mistral-large-4",
-      "kind": "release",
-      "open_weights": true,
-      "title": "Mistral Large 4 1T",
-      "provider_slug": "mistral",
-      "provider_name": "Mistral",
-      "accent_color": "#f59e0b",
-      "detected_at": "2026-10-29T14:11:59.039912+00:00",
-      "updated_at": "2026-10-29T15:01:08Z",
-      "first_source": "Hugging Face",
-      "lead": "",
-      "released_on": "2026-09-30",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "Mistral-Large-4-1T-A52B",
-          "name": "Mistral-Large-4-1T-A52B",
-          "released_on": "2026-09-30"
-        },
-        {
-          "id": "Mistral-Large-4-1T-A52B-NVFP4",
-          "name": "Mistral-Large-4-1T-A52B-NVFP4"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Hugging Face",
-          "scanner": "huggingface",
-          "detected_at": "2026-10-29T14:11:59.039912+00:00",
-          "title": "Mistral Large 4 1T A52B NVFP4",
-          "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B-NVFP4",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "vLLM pull request",
-          "scanner": "engine-pr-leak",
-          "detected_at": "2026-10-29T15:01:08Z",
-          "title": "mistralai/Mistral-Large-4-1T-A52B (vLLM PR #64534)",
-          "url": "https://github.com/vllm-project/vllm/pull/64534",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        }
-      ],
-      "source_count": 2,
-      "backfill": false,
-      "header": "OPEN WEIGHTS · MISTRAL",
-      "card_ids": [
-        "hf-mistralai_Mistral-Large-4-1T-A52B-NVFP4",
-        "hf-mistralai_Mistral-Large-4-1T-A52B",
-        "engine-pr-vllm-project_vllm-64534"
-      ],
-      "event_label": "",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Mistral Large 4 1T by Mistral\n\nFirst detected 29 Oct 14:11 UTC in Hugging Face\n📅 First released: 2026-09-30\nConfirmed by vLLM pull request\nIDs: Mistral-Large-4-1T-A52B, Mistral-Large-4-1T-A52B-NVFP4\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-carbon",
@@ -14295,80 +14279,6 @@
       ],
       "detected_at": "2026-10-29T14:45:56.954326+00:00",
       "x_post_text": "🚨 HUGGING FACE NEW REPO · ANT GROUP\nLing 3.0 flash Sante fp8 spotted in Repo Created 2026-10-27 (text-generation)!\n\n• Ling-3.0-flash-Sante-fp8 (text-generation) (inclusionAI/Ling-3.0-flash-Sante-fp8)\n\nEvidence: huggingface.co/api/models\nSource: official inclusionAI Hugging Face organization feed.\n\nTracked by @StatsWire",
-      "codenames": [],
-      "pricing": null
-    },
-    {
-      "id": "hf-mistralai_Mistral-Large-4-1T-A52B",
-      "category": "open-source",
-      "scanner": "huggingface",
-      "header": "HUGGING FACE NEW REPO · MISTRAL AI",
-      "title": "Mistral Large 4 1T A52B",
-      "subtitle": "Newly published public model repository (mistralai)",
-      "build_label": "Repo",
-      "build_transition": "Created 2026-09-30 (image-text-to-text)",
-      "models": [
-        {
-          "id": "mistralai/Mistral-Large-4-1T-A52B",
-          "name": "Mistral-Large-4-1T-A52B (image-text-to-text)"
-        }
-      ],
-      "evidence": "huggingface.co/api/models",
-      "source_text": "official mistralai Hugging Face organization feed.",
-      "disclaimer_1": "Repository became publicly visible since the previous scan.",
-      "disclaimer_2": "Public weights / model cards published directly by the organization.",
-      "provider_name": "MISTRAL AI",
-      "provider_slug": "mistral",
-      "accent_color": "#f59e0b",
-      "links": [
-        {
-          "label": "Hugging Face Repo",
-          "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B"
-        },
-        {
-          "label": "mistralai Hub Feed",
-          "url": "https://huggingface.co/mistralai"
-        }
-      ],
-      "detected_at": "2026-10-29T14:13:54.531759+00:00",
-      "x_post_text": "🚨 HUGGING FACE NEW REPO · MISTRAL AI\nMistral Large 4 1T A52B spotted in Repo Created 2026-09-30 (image-text-to-text)!\n\n• Mistral-Large-4-1T-A52B (image-text-to-text) (mistralai/Mistral-Large-4-1T-A52B)\n\nEvidence: huggingface.co/api/models\nSource: official mistralai Hugging Face organization feed.\n\nTracked by @StatsWire",
-      "codenames": [],
-      "pricing": null
-    },
-    {
-      "id": "hf-mistralai_Mistral-Large-4-1T-A52B-NVFP4",
-      "category": "open-source",
-      "scanner": "huggingface",
-      "header": "HUGGING FACE NEW REPO · MISTRAL AI",
-      "title": "Mistral Large 4 1T A52B NVFP4",
-      "subtitle": "Newly published public model repository (mistralai)",
-      "build_label": "Repo",
-      "build_transition": "Created 2026-10-15 (model)",
-      "models": [
-        {
-          "id": "mistralai/Mistral-Large-4-1T-A52B-NVFP4",
-          "name": "Mistral-Large-4-1T-A52B-NVFP4 (model)"
-        }
-      ],
-      "evidence": "huggingface.co/api/models",
-      "source_text": "official mistralai Hugging Face organization feed.",
-      "disclaimer_1": "Repository became publicly visible since the previous scan.",
-      "disclaimer_2": "Public weights / model cards published directly by the organization.",
-      "provider_name": "MISTRAL AI",
-      "provider_slug": "mistral",
-      "accent_color": "#f59e0b",
-      "links": [
-        {
-          "label": "Hugging Face Repo",
-          "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B-NVFP4"
-        },
-        {
-          "label": "mistralai Hub Feed",
-          "url": "https://huggingface.co/mistralai"
-        }
-      ],
-      "detected_at": "2026-10-29T14:11:59.039912+00:00",
-      "x_post_text": "🚨 HUGGING FACE NEW REPO · MISTRAL AI\nMistral Large 4 1T A52B NVFP4 spotted in Repo Created 2026-10-15 (model)!\n\n• Mistral-Large-4-1T-A52B-NVFP4 (model) (mistralai/Mistral-Large-4-1T-A52B-NVFP4)\n\nEvidence: huggingface.co/api/models\nSource: official mistralai Hugging Face organization feed.\n\nTracked by @StatsWire",
       "codenames": [],
       "pricing": null
     },
