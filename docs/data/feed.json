@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-12T05:25:36.516315+00:00",
+  "generated_at": "2026-11-12T05:55:37.083209+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 119,
-    "leaks": 43,
+    "stories": 118,
+    "leaks": 42,
     "releases": 57,
-    "stories_24h": 8,
+    "stories_24h": 7,
     "sources_ok": 11,
-    "total_cards": 207,
+    "total_cards": 206,
     "new_in_this_scan": 0
   },
   "stories": [
@@ -6562,54 +6562,6 @@
       "candidate_only": false,
       "registry_evidence": [],
       "x_post_text": "🟠 LEAK: GPT Image 2.6 by OpenAI\n\nFirst detected 29 Oct 08:23 UTC in OpenAI API spec\n\nvia @StatsWire"
-    },
-    {
-      "id": "story-dsparkminimaxdraftmodel",
-      "group": "dsparkminimaxdraftmodel",
-      "kind": "leak",
-      "open_weights": false,
-      "title": "DSparkMiniMaxDraftModel",
-      "provider_slug": "opensource",
-      "provider_name": "Architecture Diff",
-      "accent_color": "#8b5cf6",
-      "detected_at": "2026-10-29T05:44:44.948828+00:00",
-      "updated_at": "2026-10-29T05:44:44.948828+00:00",
-      "first_source": "vLLM registry",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [
-        "dsparkminimaxdraftmodel"
-      ],
-      "models": [
-        {
-          "id": "DSparkMiniMaxDraftModel",
-          "name": "DSparkMiniMaxDraftModel"
-        }
-      ],
-      "sources": [
-        {
-          "label": "vLLM registry",
-          "scanner": "vllm-registry",
-          "detected_at": "2026-10-29T05:44:44.948828+00:00",
-          "title": "New Engine Architecture: DSparkMiniMaxDraftModel",
-          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "LEAK · ARCHITECTURE DIFF",
-      "card_ids": [
-        "vllm-arch-9e7e335db0"
-      ],
-      "event_label": "",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: DSparkMiniMaxDraftModel by Architecture Diff\n\nFirst detected 29 Oct 05:44 UTC in vLLM registry\nCodename: dsparkminimaxdraftmodel\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-carbon",
@@ -14663,45 +14615,6 @@
       "detected_at": "2026-10-29T08:23:52.302158+00:00",
       "x_post_text": "🚨 OPENAI API SPEC · OPENAI\nGPT Image 2.6 named in OpenAI's API spec spotted in OpenAI API spec openai/openai-openapi · main!\n\n• GPT Image 2.6 (gpt-image-2.6)\n\nEvidence: github.com/openai/openai-openapi/blob/main/openapi.yaml\nSource: A transparent PNG overlaid on the first image, referenced by file ID, HTTPS URL, or base64 data URL. Must match that image's dimensions after orientation and contain transparent pixels. Supports GPT Image 2.5 and 2.6.\n\nTracked by @StatsWire",
       "codenames": [],
-      "pricing": null
-    },
-    {
-      "id": "vllm-arch-9e7e335db0",
-      "category": "open-source",
-      "scanner": "vllm-registry",
-      "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
-      "title": "New Engine Architecture: DSparkMiniMaxDraftModel",
-      "subtitle": "New model_executor/models/registry.py architecture declarations",
-      "build_label": "Registry File",
-      "build_transition": "vllm/model_executor/models/registry.py",
-      "models": [
-        {
-          "id": "DSparkMiniMaxDraftModel",
-          "name": "DSparkMiniMaxDraftModel"
-        }
-      ],
-      "evidence": "vllm-project/vllm/main/vllm/model_executor/models/registry.py",
-      "source_text": "official vLLM model architecture registry.",
-      "disclaimer_1": "Tracks only model architecture class registrations in registry.py.",
-      "disclaimer_2": "Open-source labs register their architecture classes here prior to weight drops.",
-      "provider_name": "VLLM REGISTRY",
-      "provider_slug": "opensource",
-      "accent_color": "#8b5cf6",
-      "links": [
-        {
-          "label": "vLLM registry.py",
-          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py"
-        },
-        {
-          "label": "Supported Models Docs",
-          "url": "https://docs.vllm.ai/en/latest/models/supported_models.html"
-        }
-      ],
-      "detected_at": "2026-10-29T05:44:44.948828+00:00",
-      "codenames": [
-        "dsparkminimaxdraftmodel"
-      ],
-      "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: DSparkMiniMaxDraftModel spotted in Registry File vllm/model_executor/models/registry.py!\n\n• DSparkMiniMaxDraftModel (DSparkMiniMaxDraftModel)\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM model architecture registry.\n\nTracked by @StatsWire",
       "pricing": null
     },
     {
