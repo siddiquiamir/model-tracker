@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T17:34:30.579735+00:00",
+  "generated_at": "2026-11-12T17:42:30.752379+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 115,
@@ -7,8 +7,8 @@
     "releases": 54,
     "stories_24h": 7,
     "sources_ok": 11,
-    "total_cards": 201,
-    "new_in_this_scan": 1
+    "total_cards": 204,
+    "new_in_this_scan": 3
   },
   "stories": [
     {
@@ -21,7 +21,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-12T17:34:46.236178+00:00",
-      "updated_at": "2026-11-12T17:34:46.236178+00:00",
+      "updated_at": "2026-11-12T17:43:03.001458+00:00",
       "first_source": "Gemini API Docs",
       "lead": "",
       "released_on": "",
@@ -32,7 +32,7 @@
       "models": [
         {
           "id": "gemini-4-hydrogen",
-          "name": "Gemini 4 Hydrogen"
+          "name": "base_model:gemini-4-hydrogen"
         }
       ],
       "sources": [
@@ -45,19 +45,52 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "GCP Vertex AI Models Docs",
+          "scanner": "docs-radar",
+          "detected_at": "2026-11-12T17:42:47.180210+00:00",
+          "title": "New Model Spotted in GCP Vertex AI Generative Models",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "GCP Vertex AI Model Versions",
+          "scanner": "docs-radar",
+          "detected_at": "2026-11-12T17:42:48.111293+00:00",
+          "title": "New Model Spotted in GCP Vertex AI Model Versions & Lifecycle",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "Vertex AI Quotas registry",
+          "scanner": "vertex-ai-quotas",
+          "detected_at": "2026-11-12T17:43:03.001458+00:00",
+          "title": "New GOOGLE Model(s) on Google Cloud Vertex AI: gemini-4-hydrogen",
+          "url": "https://console.cloud.google.com/iam-admin/quotas",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 1,
+      "source_count": 4,
       "backfill": false,
       "header": "LEAK · GOOGLE",
       "card_ids": [
-        "docs-diff-gemini-docs-b5f21e2a"
+        "docs-diff-gemini-docs-b5f21e2a",
+        "docs-diff-gcp-vertex-models-b5f21e2a",
+        "docs-diff-gcp-vertex-versions-b5f21e2a",
+        "vertex-quota-google-de7fd08b"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: Gemini 4 Hydrogen by Google\n\nFirst detected 12 Nov 17:34 UTC in Gemini API Docs\nCodename: hydrogen\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: Gemini 4 Hydrogen by Google\n\nFirst detected 12 Nov 17:34 UTC in Gemini API Docs\nConfirmed by GCP Vertex AI Models Docs, GCP Vertex AI Model Versions, Vertex AI Quotas registry\nCodename: hydrogen\n\nvia @StatsWire"
     },
     {
       "id": "story-litellm-registry-gemini-c3e416cd",
@@ -6729,6 +6762,123 @@
     }
   ],
   "cards": [
+    {
+      "id": "vertex-quota-google-de7fd08b",
+      "category": "cli-sdk-diff",
+      "scanner": "vertex-ai-quotas",
+      "header": "GOOGLE CLOUD VERTEX AI QUOTA REGISTRY · GOOGLE",
+      "title": "New GOOGLE Model(s) on Google Cloud Vertex AI: gemini-4-hydrogen",
+      "subtitle": "Detected in Google Cloud Vertex AI `base_model:` quota dimensions (1 new)",
+      "build_label": "Vertex AI Quotas",
+      "build_transition": "aiplatform.googleapis.com (+1 base_model)",
+      "models": [
+        {
+          "id": "gemini-4-hydrogen",
+          "name": "base_model:gemini-4-hydrogen"
+        }
+      ],
+      "evidence": "console.cloud.google.com/iam-admin/quotas (aiplatform.googleapis.com)",
+      "source_text": "Google Cloud Vertex AI `base_model` quota dimension registry.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "GCP Vertex AI Quotas",
+          "url": "https://console.cloud.google.com/iam-admin/quotas"
+        },
+        {
+          "label": "Vertex AI Models",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
+        }
+      ],
+      "detected_at": "2026-11-12T17:43:03.001458+00:00",
+      "codenames": [
+        "hydrogen"
+      ],
+      "pricing": null,
+      "x_post_text": "🚨 GOOGLE CLOUD VERTEX AI QUOTA REGISTRY · GOOGLE\nNew GOOGLE Model(s) on Google Cloud Vertex AI: gemini-4-hydrogen spotted in Vertex AI Quotas aiplatform.googleapis.com (+1 base_model)!\n\n• base_model:gemini-4-hydrogen (gemini-4-hydrogen)\n\nEvidence: console.cloud.google.com/iam-admin/quotas (aiplatform.googleapis.com)\nSource: Google Cloud Vertex AI `base_model` quota dimension registry.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "docs-diff-gcp-vertex-versions-b5f21e2a",
+      "category": "cli-sdk-diff",
+      "scanner": "docs-radar",
+      "header": "GCP VERTEX AI MODEL VERSIONS · GOOGLE CLOUD",
+      "title": "New Model Spotted in GCP Vertex AI Model Versions & Lifecycle",
+      "subtitle": "Verified live API documentation diff",
+      "build_label": "Docs Diff",
+      "build_transition": "+1 new identifier(s)",
+      "models": [
+        {
+          "id": "gemini-4-hydrogen",
+          "name": "Gemini 4 Hydrogen"
+        }
+      ],
+      "evidence": "cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions",
+      "source_text": "official Google Cloud Vertex AI model versions & endpoint table.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE CLOUD",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Official Docs Page",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions"
+        },
+        {
+          "label": "Raw Docs Feed",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions"
+        }
+      ],
+      "detected_at": "2026-11-12T17:42:48.111293+00:00",
+      "codenames": [
+        "hydrogen"
+      ],
+      "pricing": null,
+      "x_post_text": "🚨 GCP VERTEX AI MODEL VERSIONS · GOOGLE CLOUD\nNew Model Spotted in GCP Vertex AI Model Versions & Lifecycle spotted in Docs Diff +1 new identifier(s)!\n\n• Gemini 4 Hydrogen (gemini-4-hydrogen)\n\nEvidence: cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions\nSource: official Google Cloud Vertex AI model versions & endpoint table.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "docs-diff-gcp-vertex-models-b5f21e2a",
+      "category": "cli-sdk-diff",
+      "scanner": "docs-radar",
+      "header": "GCP VERTEX AI MODELS DOCS · GOOGLE CLOUD",
+      "title": "New Model Spotted in GCP Vertex AI Generative Models",
+      "subtitle": "Verified live API documentation diff",
+      "build_label": "Docs Diff",
+      "build_transition": "+1 new identifier(s)",
+      "models": [
+        {
+          "id": "gemini-4-hydrogen",
+          "name": "Gemini 4 Hydrogen"
+        }
+      ],
+      "evidence": "cloud.google.com/vertex-ai/generative-ai/docs/learn/models",
+      "source_text": "official Google Cloud Vertex AI Models documentation (Gemini, Imagen, Veo, Claude, Llama).",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE CLOUD",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Official Docs Page",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
+        },
+        {
+          "label": "Raw Docs Feed",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
+        }
+      ],
+      "detected_at": "2026-11-12T17:42:47.180210+00:00",
+      "codenames": [
+        "hydrogen"
+      ],
+      "pricing": null,
+      "x_post_text": "🚨 GCP VERTEX AI MODELS DOCS · GOOGLE CLOUD\nNew Model Spotted in GCP Vertex AI Generative Models spotted in Docs Diff +1 new identifier(s)!\n\n• Gemini 4 Hydrogen (gemini-4-hydrogen)\n\nEvidence: cloud.google.com/vertex-ai/generative-ai/docs/learn/models\nSource: official Google Cloud Vertex AI Models documentation (Gemini, Imagen, Veo, Claude, Llama).\n\nTracked by @StatsWire"
+    },
     {
       "id": "docs-diff-gemini-docs-b5f21e2a",
       "category": "cli-sdk-diff",
