@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-12T18:10:30.471519+00:00",
+  "generated_at": "2026-11-12T18:26:30.401838+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 118,
     "leaks": 40,
     "releases": 58,
-    "stories_24h": 10,
+    "stories_24h": 9,
     "sources_ok": 11,
-    "total_cards": 210,
-    "new_in_this_scan": 1
+    "total_cards": 212,
+    "new_in_this_scan": 2
   },
   "stories": [
     {
@@ -164,7 +164,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-12T17:34:46.236178+00:00",
-      "updated_at": "2026-11-12T18:10:42.231465+00:00",
+      "updated_at": "2026-11-12T18:26:44.486782+00:00",
       "first_source": "Gemini API Docs",
       "lead": "26 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "",
@@ -175,7 +175,7 @@
       "models": [
         {
           "id": "gemini-4-hydrogen",
-          "name": "Gemini 4 Hydrogen"
+          "name": "2026-11-12)"
         }
       ],
       "sources": [
@@ -248,9 +248,19 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "models.dev",
+          "scanner": "models-dev",
+          "detected_at": "2026-11-12T18:26:44.486782+00:00",
+          "title": "2 New Model(s) Added to models.dev",
+          "url": "https://models.dev/api.json?type=all",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 7,
+      "source_count": 8,
       "backfill": false,
       "header": "NEW MODEL · GOOGLE",
       "card_ids": [
@@ -260,13 +270,15 @@
         "vertex-quota-google-de7fd08b",
         "vercel-gateway-diff-321f5620",
         "litellm-diff-11e7cd8f",
-        "openrouter-model-google_gemini-4-hydrogen"
+        "openrouter-model-google_gemini-4-hydrogen",
+        "openrouter-model-google_gemini-4-hydrogen_batch",
+        "models-dev-diff-bf802b3f"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Gemini 4 Hydrogen by Google\n\nFirst detected 12 Nov 17:34 UTC in Gemini API Docs\n⏱ 26 min before it went live on Vercel AI Gateway Catalog\nConfirmed by GCP Vertex AI Models Docs, GCP Vertex AI Model Versions, Vertex AI Quotas registry +3\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Gemini 4 Hydrogen by Google\n\nFirst detected 12 Nov 17:34 UTC in Gemini API Docs\n⏱ 26 min before it went live on Vercel AI Gateway Catalog\nConfirmed by GCP Vertex AI Models Docs, GCP Vertex AI Model Versions, Vertex AI Quotas registry +4\n\nvia @StatsWire"
     },
     {
       "id": "story-litellm-registry-gemini-c3e416cd",
@@ -6924,6 +6936,82 @@
     }
   ],
   "cards": [
+    {
+      "id": "models-dev-diff-bf802b3f",
+      "category": "cli-sdk-diff",
+      "scanner": "models-dev",
+      "header": "MODELS.DEV GLOBAL REGISTRY DIFF · OPENCODE / SST",
+      "title": "2 New Model(s) Added to models.dev",
+      "subtitle": "Verified newly added canonical model definitions in models.dev/api.json",
+      "build_label": "Registry Diff",
+      "build_transition": "+2 new canonical model(s)",
+      "models": [
+        {
+          "id": "google-vertex/gemini-4-hydrogen",
+          "name": "Gemini 4 Hydrogen (Vertex · release: 2026-11-12)"
+        },
+        {
+          "id": "google/gemini-4-hydrogen",
+          "name": "Gemini 4 Hydrogen (Google · release: 2026-11-12)"
+        }
+      ],
+      "evidence": "models.dev/api.json",
+      "source_text": "official models.dev global AI coding model registry.",
+      "disclaimer_1": "Filtered by canonical_model_id and release_date to exclude 3rd-party reseller re-listings of older models.",
+      "disclaimer_2": "Public registry specifications (context limits, pricing, tool-call support).",
+      "provider_name": "MODELS.DEV",
+      "provider_slug": "modelsdev",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "models.dev API",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "models.dev Catalog",
+          "url": "https://models.dev"
+        }
+      ],
+      "detected_at": "2026-11-12T18:26:44.486782+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 MODELS.DEV GLOBAL REGISTRY DIFF · OPENCODE / SST\n2 New Model(s) Added to models.dev spotted in Registry Diff +2 new canonical model(s)!\n\n• Gemini 4 Hydrogen (Vertex · release: 2026-11-12) (google-vertex/gemini-4-hydrogen)\n• Gemini 4 Hydrogen (Google · release: 2026-11-12) (google/gemini-4-hydrogen)\n\nEvidence: models.dev/api.json\nSource: official models.dev global AI coding model registry.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "openrouter-model-google_gemini-4-hydrogen_batch",
+      "category": "cli-sdk-diff",
+      "scanner": "openrouter",
+      "header": "OPENROUTER LIVE REGISTRY · GOOGLE",
+      "title": "Google: Gemini 4 Hydrogen (batch)",
+      "subtitle": "Newly registered model endpoint on OpenRouter (/api/v1/models)",
+      "build_label": "Endpoint ID",
+      "build_transition": "google/gemini-4-hydrogen:batch",
+      "models": [
+        {
+          "id": "google/gemini-4-hydrogen:batch",
+          "name": "Google: Gemini 4 Hydrogen (batch) (1048k context window)"
+        }
+      ],
+      "evidence": "openrouter.ai/api/v1/models",
+      "source_text": "official public OpenRouter /api/v1/models JSON registry.",
+      "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
+      "disclaimer_2": "Publicly listed API model identifier and context length specification.",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "OpenRouter Model Page",
+          "url": "https://openrouter.ai/google/gemini-4-hydrogen:batch"
+        },
+        {
+          "label": "OpenRouter Models API",
+          "url": "https://openrouter.ai/api/v1/models"
+        }
+      ],
+      "detected_at": "2026-11-12T18:26:42.333571+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · GOOGLE\nGoogle: Gemini 4 Hydrogen (batch) spotted in Endpoint ID google/gemini-4-hydrogen:batch!\n\n• Google: Gemini 4 Hydrogen (batch) (1048k context window) (google/gemini-4-hydrogen:batch)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "openrouter-model-google_gemini-4-hydrogen",
       "category": "cli-sdk-diff",
