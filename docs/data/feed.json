@@ -1,16 +1,68 @@
 {
-  "generated_at": "2026-11-13T14:43:42.503284+00:00",
+  "generated_at": "2026-11-13T15:05:42.223836+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 120,
-    "leaks": 41,
+    "stories": 121,
+    "leaks": 42,
     "releases": 61,
-    "stories_24h": 21,
+    "stories_24h": 22,
     "sources_ok": 11,
-    "total_cards": 220,
-    "new_in_this_scan": 0
+    "total_cards": 221,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-mistrallarge-4dsparkmodel",
+      "group": "mistrallarge-4dsparkmodel",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "MistralLarge4DSparkModel",
+      "provider_slug": "opensource",
+      "provider_name": "Architecture Diff",
+      "accent_color": "#8b5cf6",
+      "detected_at": "2026-11-13T15:06:06.416689+00:00",
+      "updated_at": "2026-11-13T15:06:06.416689+00:00",
+      "first_source": "vLLM registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "mistrallarge"
+      ],
+      "models": [
+        {
+          "id": "MistralLarge4DSparkModel",
+          "name": "MistralLarge4DSparkModel"
+        },
+        {
+          "id": "MistralLarge4ForCausalLM",
+          "name": "MistralLarge4ForCausalLM"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM registry",
+          "scanner": "vllm-registry",
+          "detected_at": "2026-11-13T15:06:06.416689+00:00",
+          "title": "New Engine Architecture: MistralLarge4DSparkModel (+1 more)",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · ARCHITECTURE DIFF",
+      "card_ids": [
+        "vllm-arch-36249aa367"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: MistralLarge4DSparkModel by Architecture Diff\n\nFirst detected 13 Nov 15:06 UTC in vLLM registry\nCodename: mistrallarge\nIDs: MistralLarge4DSparkModel, MistralLarge4ForCausalLM\n\nvia @StatsWire"
+    },
     {
       "id": "story-longcat-video-avatar-1-6",
       "group": "longcat-video-avatar-1-6",
@@ -7138,6 +7190,49 @@
     }
   ],
   "cards": [
+    {
+      "id": "vllm-arch-36249aa367",
+      "category": "open-source",
+      "scanner": "vllm-registry",
+      "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
+      "title": "New Engine Architecture: MistralLarge4DSparkModel (+1 more)",
+      "subtitle": "New model_executor/models/registry.py architecture declarations",
+      "build_label": "Registry File",
+      "build_transition": "vllm/model_executor/models/registry.py",
+      "models": [
+        {
+          "id": "MistralLarge4DSparkModel",
+          "name": "MistralLarge4DSparkModel"
+        },
+        {
+          "id": "MistralLarge4ForCausalLM",
+          "name": "MistralLarge4ForCausalLM"
+        }
+      ],
+      "evidence": "vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+      "source_text": "official vLLM model architecture registry.",
+      "disclaimer_1": "Tracks only model architecture class registrations in registry.py.",
+      "disclaimer_2": "Open-source labs register their architecture classes here prior to weight drops.",
+      "provider_name": "VLLM REGISTRY",
+      "provider_slug": "opensource",
+      "accent_color": "#8b5cf6",
+      "links": [
+        {
+          "label": "vLLM registry.py",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py"
+        },
+        {
+          "label": "Supported Models Docs",
+          "url": "https://docs.vllm.ai/en/latest/models/supported_models.html"
+        }
+      ],
+      "detected_at": "2026-11-13T15:06:06.416689+00:00",
+      "codenames": [
+        "mistrallarge"
+      ],
+      "pricing": null,
+      "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: MistralLarge4DSparkModel (+1 more) spotted in Registry File vllm/model_executor/models/registry.py!\n\n• MistralLarge4DSparkModel (MistralLarge4DSparkModel)\n• MistralLarge4ForCausalLM (MistralLarge4ForCausalLM)\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM model architecture registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-meituan-longcat_LongCat-Video-Avatar-1.6",
       "category": "open-source",
