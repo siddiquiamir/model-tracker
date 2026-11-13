@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-13T22:54:04.661380+00:00",
+  "generated_at": "2026-11-13T23:08:04.781421+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 117,
     "leaks": 39,
     "releases": 59,
     "stories_24h": 13,
-    "sources_ok": 12,
-    "total_cards": 215,
-    "new_in_this_scan": 0
+    "sources_ok": 11,
+    "total_cards": 216,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -726,7 +726,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-12T17:34:46.236178+00:00",
-      "updated_at": "2026-11-13T04:04:05.000Z",
+      "updated_at": "2026-11-13T23:00:49+00:00",
       "first_source": "Gemini API Docs",
       "lead": "26 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "2026-11-12",
@@ -737,6 +737,21 @@
       "models": [
         {
           "id": "gemini-4-hydrogen",
+          "name": "Gemini 4 Hydrogen",
+          "released_on": "2026-11-12"
+        },
+        {
+          "id": "gemini-4-hydrogen-low",
+          "name": "Gemini 4 Hydrogen",
+          "released_on": "2026-11-12"
+        },
+        {
+          "id": "gemini-4-hydrogen-high",
+          "name": "Gemini 4 Hydrogen",
+          "released_on": "2026-11-12"
+        },
+        {
+          "id": "gemini-4-hydrogen-medium",
           "name": "Gemini 4 Hydrogen",
           "released_on": "2026-11-12"
         }
@@ -851,9 +866,19 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Antigravity desktop build",
+          "scanner": "antigravity",
+          "detected_at": "2026-11-13T23:00:49+00:00",
+          "title": "Gemini 4 Hydrogen",
+          "url": "https://antigravity-hub-auto-updater-974169037036.us-central1.run.app/releases",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 11,
+      "source_count": 12,
       "backfill": false,
       "header": "NEW MODEL · GOOGLE",
       "card_ids": [
@@ -868,7 +893,8 @@
         "models-dev-diff-bf802b3f",
         "opencode-zen-diff-b5f21e2a",
         "npm-_google_genai-3.2.0-3.3.0",
-        "lmarena-lb-diff-8076212c"
+        "lmarena-lb-diff-8076212c",
+        "ag-2.32.0-2.32.1-gemini-4-hydrogen"
       ],
       "event_label": "",
       "intelligence_only": false,
@@ -6933,6 +6959,60 @@
     }
   ],
   "cards": [
+    {
+      "id": "ag-2.32.0-2.32.1-gemini-4-hydrogen",
+      "category": "desktop-diff",
+      "scanner": "antigravity",
+      "header": "ANTIGRAVITY DESKTOP DIFF · GOOGLE",
+      "title": "Gemini 4 Hydrogen",
+      "subtitle": "Verified desktop build comparison",
+      "build_label": "Build",
+      "build_transition": "2.32.0 -> 2.32.1",
+      "old_version": "2.32.0",
+      "new_version": "2.32.1",
+      "models": [
+        {
+          "id": "gemini-4-hydrogen",
+          "name": "Gemini 4 Hydrogen",
+          "released_on": "2026-11-12"
+        },
+        {
+          "id": "gemini-4-hydrogen-high",
+          "name": "Gemini 4 Hydrogen (High)",
+          "released_on": "2026-11-12"
+        },
+        {
+          "id": "gemini-4-hydrogen-low",
+          "name": "Gemini 4 Hydrogen (Low)",
+          "released_on": "2026-11-12"
+        },
+        {
+          "id": "gemini-4-hydrogen-medium",
+          "name": "Gemini 4 Hydrogen (Medium)",
+          "released_on": "2026-11-12"
+        }
+      ],
+      "evidence": "resources/bin/language_server",
+      "source_text": "official public Linux x64 release archives.",
+      "disclaimer_1": "Verified differences between existing builds; this is not a newly published release announcement.",
+      "disclaimer_2": "Compiled-in names and identifiers. This does not confirm model rollout or account access.",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Public release feed",
+          "url": "https://antigravity-hub-auto-updater-974169037036.us-central1.run.app/releases"
+        },
+        {
+          "label": "Official build",
+          "url": "https://storage.googleapis.com/antigravity-public/antigravity-hub/2.32.1-6001966350991360/unsigned/language_server-linux-x64"
+        }
+      ],
+      "detected_at": "2026-11-13T23:00:49+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini 4 Hydrogen spotted in Build 2.32.0 -> 2.32.1!\n\n• Gemini 4 Hydrogen (gemini-4-hydrogen)\n• Gemini 4 Hydrogen (High) (gemini-4-hydrogen-high)\n• Gemini 4 Hydrogen (Low) (gemini-4-hydrogen-low)\n• Gemini 4 Hydrogen (Medium) (gemini-4-hydrogen-medium)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
+    },
     {
       "id": "openrouter-model-inclusionai_ling-3.2-flash_free",
       "category": "cli-sdk-diff",
