@@ -7,7 +7,7 @@ import math
 import pathlib
 import re
 from typing import List, Tuple
-from PIL import Image, ImageChops, ImageDraw, ImageFont
+from PIL import Image, ImageChops, ImageDraw, ImageFont, ImageOps
 
 W, H = 1400, 540
 BG = (0, 0, 0)
@@ -25,7 +25,7 @@ PROVIDER_THEMES = {
     "google-classic": ("New Google Models", (138, 120, 224)),
     "anthropic": ("New Anthropic Models", (217, 119, 87)),
     "xai": ("New xAI Models", (244, 63, 94)),
-    "deepseek": ("New DeepSeek Models", (6, 182, 212)),
+    "deepseek": ("New DeepSeek Models", (77, 107, 254)),
     "zai": ("New Z.ai Models", (99, 102, 241)),
     "qwen": ("New Qwen Models", (168, 85, 247)),
     "mistral": ("New Mistral Models", (245, 158, 11)),
@@ -311,10 +311,24 @@ def render_card(
     header: str = "",
     subtitle: str = "",
     disclaimer: str = "",
+    emblem_path: str = "",
 ) -> str:
     p_key = provider.lower().strip()
     default_title, accent = PROVIDER_THEMES.get(p_key, (f"New {provider.title()} Models", (34, 197, 94)))
     title = custom_title or default_title
+
+    if emblem_path:
+        with Image.open(emblem_path) as source:
+            emblem = ImageOps.pad(source.convert("RGBA"), (210, 210), color=(0, 0, 0, 0))
+        swatches = emblem.resize((64, 64)).getcolors(4096) or []
+        brand_colors = [
+            (count, (color[0], color[1], color[2]))
+            for count, color in swatches
+            if color[3] >= 128 and max(color[:3]) - min(color[:3]) >= 48
+        ]
+        accent = max(brand_colors, key=lambda swatch: swatch[0])[1] if brand_colors else WHITE
+    else:
+        emblem = make_provider_emblem(p_key, 210, accent)
 
     f_header = load_font([r"C:\Windows\Fonts\segoeuib.ttf", r"C:\Windows\Fonts\arialbd.ttf"], 28)
     f_title = load_font([r"C:\Windows\Fonts\segoeuib.ttf", r"C:\Windows\Fonts\arialbd.ttf"], 54)
@@ -358,9 +372,8 @@ def render_card(
         draw.text((lx, y), header.upper(), font=f_header, fill=TEXT_MUTED)
         y += 46
 
-    draw.text((lx, y), title, font=f_title, fill=WHITE)
+    draw.text((lx, y), title, font=f_title, fill=accent)
 
-    emblem = make_provider_emblem(p_key, 210, accent)
     base.paste(emblem, (cx1 - 74 - 210, cy0 + 56), emblem)
 
     y += 88
@@ -391,11 +404,11 @@ def render_card(
     base.paste(sw_icon, (lx, fy), sw_icon)
 
     fx = lx + 68
-    draw.text((fx, fy + 6), "Tracked by ", font=f_foot, fill=TEXT_MUTED)
-    fx += int(draw.textlength("Tracked by ", font=f_foot))
+    draw.text((fx, fy + 6), "Developed by ", font=f_foot, fill=TEXT_MUTED)
+    fx += int(draw.textlength("Developed by ", font=f_foot))
     draw.text((fx, fy + 6), "@StatsWire", font=f_foot, fill=ACCENT_BLUE)
     fx += int(draw.textlength("@StatsWire", font=f_foot))
-    draw.text((fx, fy + 6), " · x.com/StatsWire", font=f_foot, fill=TEXT_MUTED)
+    draw.text((fx, fy + 6), " on X", font=f_foot, fill=TEXT_MUTED)
 
     wm_layer = Image.new("RGBA", (W, h), (0, 0, 0, 0))
     for wy in range(-40, h + 100, 165):
@@ -421,6 +434,7 @@ if __name__ == "__main__":
     ap.add_argument("--header", default="", help="Optional small uppercase header above title")
     ap.add_argument("--subtitle", default="", help="Optional subtitle below title")
     ap.add_argument("--disclaimer", default="", help="Optional disclaimer note above footer")
+    ap.add_argument("--emblem", default="", help="Optional provider logo image path")
     args = ap.parse_args()
-    saved = render_card(args.provider, args.models, args.out, args.title, args.header, args.subtitle, args.disclaimer)
+    saved = render_card(args.provider, args.models, args.out, args.title, args.header, args.subtitle, args.disclaimer, args.emblem)
     print(f"Saved card: {saved}")
