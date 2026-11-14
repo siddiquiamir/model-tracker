@@ -1,16 +1,66 @@
 {
-  "generated_at": "2026-11-14T14:15:09.428007+00:00",
+  "generated_at": "2026-11-14T14:45:09.518425+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 115,
+    "stories": 116,
     "leaks": 38,
     "releases": 59,
-    "stories_24h": 3,
+    "stories_24h": 4,
     "sources_ok": 11,
-    "total_cards": 214,
-    "new_in_this_scan": 0
+    "total_cards": 215,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-litellm-registry-vercel_ai_gateway-9093411f",
+      "group": "litellm-registry-vercel_ai_gateway-9093411f",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "LiteLLM Vercel AI Gateway Registry Update — 2 Entries Detected",
+      "provider_slug": "openrouter",
+      "provider_name": "Vercel AI Gateway",
+      "accent_color": "#10b981",
+      "detected_at": "2026-11-14T14:45:31.782160+00:00",
+      "updated_at": "2026-11-14T14:45:31.782160+00:00",
+      "first_source": "LiteLLM registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gpt-6-luna-decisions",
+          "name": "vercel_ai_gateway/openai/gpt-6-luna-decisions"
+        },
+        {
+          "id": "jev",
+          "name": "vercel_ai_gateway/typesafe-ai/jev"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM registry",
+          "scanner": "litellm",
+          "detected_at": "2026-11-14T14:45:31.782160+00:00",
+          "title": "2 New Model(s) Added to LiteLLM",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · VERCEL AI GATEWAY",
+      "card_ids": [
+        "litellm-diff-9093411f"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🔵 REGISTRY UPDATE: LiteLLM Vercel AI Gateway Registry Update — 2 Entries Detected\n\nFirst detected 14 Nov 14:45 UTC in LiteLLM registry\nIDs: gpt-6-luna-decisions, jev\n\nvia @StatsWire"
+    },
     {
       "id": "story-ling-3-2-flash",
       "group": "ling-3-2-flash",
@@ -6866,6 +6916,46 @@
     }
   ],
   "cards": [
+    {
+      "id": "litellm-diff-9093411f",
+      "category": "cli-sdk-diff",
+      "scanner": "litellm",
+      "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
+      "title": "2 New Model(s) Added to LiteLLM",
+      "subtitle": "Verified model_prices_and_context_window.json diff",
+      "build_label": "Registry Diff",
+      "build_transition": "+2 model keys",
+      "models": [
+        {
+          "id": "vercel_ai_gateway/openai/gpt-6-luna-decisions",
+          "name": "vercel_ai_gateway/openai/gpt-6-luna-decisions"
+        },
+        {
+          "id": "vercel_ai_gateway/typesafe-ai/jev",
+          "name": "vercel_ai_gateway/typesafe-ai/jev"
+        }
+      ],
+      "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
+      "source_text": "official LiteLLM master pricing & context window registry.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "LITELLM",
+      "provider_slug": "modelsdev",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "LiteLLM JSON Registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
+        },
+        {
+          "label": "LiteLLM Commits",
+          "url": "https://github.com/BerriAI/litellm/commits/main"
+        }
+      ],
+      "detected_at": "2026-11-14T14:45:31.782160+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n2 New Model(s) Added to LiteLLM spotted in Registry Diff +2 model keys!\n\n• vercel_ai_gateway/openai/gpt-6-luna-decisions (vercel_ai_gateway/openai/gpt-6-luna-decisions)\n• vercel_ai_gateway/typesafe-ai/jev (vercel_ai_gateway/typesafe-ai/jev)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "ag-2.32.0-2.32.1-gemini-4-hydrogen",
       "category": "desktop-diff",
