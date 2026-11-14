@@ -146,6 +146,20 @@ def build_x_post_text(card: Dict[str, Any]) -> str:
     """
     Generate a punchy, ready-to-post X / Twitter breaking-news draft for a diff card.
     """
+    if card.get("intelligence") or card.get("candidate_only"):
+        identifiers = [model["id"] for model in card.get("models", [])[:5]]
+        source = card.get("build_label") or card.get("scanner", "public source")
+        build = str(card.get("build", ""))[:12]
+        qualifier = "unverified candidate" if card.get("candidate_only") else "registry evidence"
+        url = card.get("source_text", "")
+        while True:
+            draft = f"{source} {build}: {', '.join(identifiers)}\n\n{qualifier}, not a model launch. availability and lab ownership still need verification.\n{url}".strip()
+            if len(draft) <= 280 or len(identifiers) <= 1:
+                break
+            identifiers.pop()
+        if len(draft) > 280:
+            draft = f"{qualifier}, not a launch: {', '.join(identifiers)}\n{url}"
+        return draft
     header = card.get("header", "MODEL DIFF")
     title = card.get("title", "New Model")
     transition = card.get("build_transition", "")
@@ -172,6 +186,31 @@ def build_x_post_text(card: Dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def build_intelligence_embed(card: Dict[str, Any], github_user: str = "siddiquiamir") -> Dict[str, Any]:
+    evidence = card.get("registry_evidence", [])
+    excerpt = evidence[0] if evidence else {}
+    lines = [
+        f"**Build:** `{card.get('build', '')}`",
+        f"**Provider:** {card.get('provider_name', 'Unattributed')} ({card.get('provider_evidence', '')})",
+        f"**First present in inspected builds:** {card.get('first_seen', '')}",
+        f"**Observed:** {card.get('observed_at', '')}",
+        "**Identifiers:** " + ", ".join(f"`{model['id']}`" for model in card.get("models", [])[:12]),
+        f"**File:** `{excerpt.get('file_path', '')}`",
+        f"**Artifact SHA-256:** `{card.get('artifact_sha256', '')}`",
+        f"**Verification:** {card.get('verification', '')}",
+        f"**Retained evidence:** `{card.get('evidence_path', '')}`",
+        f"**Source:** {card.get('source_text', '')}",
+        "```text\n" + str(excerpt.get("excerpt", "")).replace("```", "'''")[:900] + "\n```",
+        "Static registry discovery, not an official model launch or lab-ownership claim.",
+    ]
+    if card.get("sightings"):
+        lines.append("**Other sightings:** " + ", ".join(sighting["source"] for sighting in card["sightings"]))
+    lines.append("**Timestamp basis:** " + card.get("timestamp_source", "Upstream build metadata"))
+    confidence = card.get("confidence", {})
+    lines.append("**Confidence:** " + "; ".join(f"{dimension}: {value.get('level', 'unknown')}" for dimension, value in confidence.items()))
+    return {"title": f"{card.get('event_label', 'New identifier')}: {card.get('family', '')}"[:256], "description": "\n".join(lines)[:4000], "url": card.get("source_text", ""), "color": 0x0891B2, "timestamp": card.get("observed_at"), "fields": [{"name": "X draft (manual only)", "value": build_x_post_text(card)[:1024]}]}
+
+
 def build_story_embed(story: Dict[str, Any], github_user: str = "siddiquiamir") -> Dict[str, Any]:
     """One Discord embed per model story: amber for leaks, green for releases."""
     ckpt_items = [v for v in story.get("models", [])[:6] if v.get("uuid")]
@@ -189,6 +228,12 @@ def build_story_embed(story: Dict[str, Any], github_user: str = "siddiquiamir") 
         lines.append(f"**Lead time:** {story['lead']}")
     if story.get("codenames"):
         lines.append(f"**Codename:** {', '.join(story['codenames'])}")
+    if story.get("event_label"):
+        lines.append(f"**Classification:** {story['event_label']}")
+    if story.get("registry_evidence"):
+        record = story["registry_evidence"][0]
+        lines.append(f"**Registry evidence:** build `{record.get('build', '')}`, file `{record.get('file_path', '')}`")
+        lines.append("```text\n" + str(record.get("excerpt", "")).replace("```", "'''")[:600] + "\n```")
     ids = [f"`{v['id']}`" for v in story.get("models", [])[:10]]
     if ids and not ckpt_items:
         lines.append(f"**Identifiers:** {' '.join(ids)}")

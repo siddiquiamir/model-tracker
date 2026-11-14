@@ -124,7 +124,7 @@ def group_models_by_family(model_ids: Set[str]) -> Dict[str, List[str]]:
     for mid in sorted(model_ids):
         parts = mid.split("-")
         if len(parts) >= 3 and parts[0] == "gemini" and parts[1] == "4" and parts[2] in {
-            "hydrogen", "helium", "lithium", "beryllium", "boron", "carbon", "nitrogen", "oxygen",
+            "hydrogen", "helix", "helium", "lithium", "beryllium", "boron", "carbon", "nitrogen", "oxygen",
             "fluorine", "neon", "argon", "titanium", "krypton", "zirconium", "xenon", "barium",
         }:
             key = f"gemini-4-{parts[2]}"
@@ -256,7 +256,7 @@ class AntigravityDesktopScanner:
         priority_order = sorted(
             family_groups.keys(),
             key=lambda k: (
-                0 if ("argon" in k or "carbon" in k) else 1 if "5-5" in k else 2 if "omni" in k else 3,
+                0 if ("argon" in k or "carbon" in k or "hydrogen" in k or "helix" in k) else 1 if "5-5" in k else 2 if "omni" in k else 3,
                 k,
             ),
         )
@@ -4222,6 +4222,7 @@ class HighAlphaLeakChannelsScanner:
         '"gpt-6.2-astra" OR "gpt-6.2-betelgeuse" OR "gpt-6-rosalind"',
         '"claude-fable-5.2" OR "claude-opus-5.6" OR "claude-sonnet-5.6"',
         '"gemini-4-pro" OR "gemini-4-flash" OR "gemini-4-ultra" OR "grok-4.8" OR "grok-5"',
+        '"gemini-4-hydrogen" OR "gemini-4-helix" OR "gemini-4-carbon"',
     ]
     GITHUB_EXCLUDED_REPOS = {
         "siddiquiamir/model-tracker",
@@ -4635,8 +4636,10 @@ class HighAlphaLeakChannelsScanner:
     def _collect_base_models_from_json(cls, obj: Any, out: Set[str]) -> None:
         if isinstance(obj, dict):
             for k, v in obj.items():
-                if k == "base_model" and isinstance(v, str) and v.strip():
-                    out.add(v.strip().lower())
+                if k in ("base_model", "model") and isinstance(v, str) and v.strip():
+                    clean_v = v.strip().lower().removeprefix("models/")
+                    if clean_v and clean_v not in {"*", "default"}:
+                        out.add(clean_v)
                 else:
                     cls._collect_base_models_from_json(v, out)
         elif isinstance(obj, list):
@@ -4666,49 +4669,50 @@ class HighAlphaLeakChannelsScanner:
         live_found: Set[str] = set()
         source_mode = "public-docs"
 
-        # 1. Authenticated Google Cloud Quotas / Service Usage API poll (exact source of `base_model:` dropdown)
+        # 1. Authenticated Google Cloud Quotas / Service Usage API poll (both Vertex `base_model:` & Gemini API `model:`)
         token, proj_id = self._mint_gcp_bearer_token()
         if token and proj_id:
             hdrs = {"Authorization": f"Bearer {token}", "Accept": "application/json"}
-            # 1a. Cloud Quotas API v1
-            next_tok = ""
-            for _ in range(10):
-                q_url = (
-                    f"https://cloudquotas.googleapis.com/v1/projects/{urllib.parse.quote(proj_id)}"
-                    f"/locations/global/services/aiplatform.googleapis.com/quotaInfos?pageSize=500"
-                )
-                if next_tok:
-                    q_url += f"&pageToken={urllib.parse.quote(next_tok)}"
-                try:
-                    doc = _http_get_json(q_url, timeout=20, extra_headers=hdrs)
-                    self._collect_base_models_from_json(doc, live_found)
-                    next_tok = str(doc.get("nextPageToken") or "").strip() if isinstance(doc, dict) else ""
-                    source_mode = "cloudquotas-api"
-                    if not next_tok:
+            for quota_svc in ("aiplatform.googleapis.com", "generativelanguage.googleapis.com"):
+                # 1a. Cloud Quotas API v1
+                next_tok = ""
+                for _ in range(10):
+                    q_url = (
+                        f"https://cloudquotas.googleapis.com/v1/projects/{urllib.parse.quote(proj_id)}"
+                        f"/locations/global/services/{quota_svc}/quotaInfos?pageSize=500"
+                    )
+                    if next_tok:
+                        q_url += f"&pageToken={urllib.parse.quote(next_tok)}"
+                    try:
+                        doc = _http_get_json(q_url, timeout=20, extra_headers=hdrs)
+                        self._collect_base_models_from_json(doc, live_found)
+                        next_tok = str(doc.get("nextPageToken") or "").strip() if isinstance(doc, dict) else ""
+                        source_mode = "cloudquotas-api"
+                        if not next_tok:
+                            break
+                    except Exception as exc:
+                        print(f"[HighAlphaScanner] CloudQuotas API note ({quota_svc}): {exc}")
                         break
-                except Exception as exc:
-                    print(f"[HighAlphaScanner] CloudQuotas API note: {exc}")
-                    break
 
-            # 1b. Service Usage v1beta1 consumerQuotaMetrics (backs the IAM & Admin -> Quotas filter bar)
-            next_tok = ""
-            for _ in range(10):
-                su_url = (
-                    f"https://serviceusage.googleapis.com/v1beta1/projects/{urllib.parse.quote(proj_id)}"
-                    f"/services/aiplatform.googleapis.com/consumerQuotaMetrics?pageSize=500&view=FULL"
-                )
-                if next_tok:
-                    su_url += f"&pageToken={urllib.parse.quote(next_tok)}"
-                try:
-                    doc = _http_get_json(su_url, timeout=25, extra_headers=hdrs)
-                    self._collect_base_models_from_json(doc, live_found)
-                    next_tok = str(doc.get("nextPageToken") or "").strip() if isinstance(doc, dict) else ""
-                    source_mode = "serviceusage-quotas-api"
-                    if not next_tok:
+                # 1b. Service Usage v1beta1 consumerQuotaMetrics (backs the IAM & Admin -> Quotas filter bar)
+                next_tok = ""
+                for _ in range(10):
+                    su_url = (
+                        f"https://serviceusage.googleapis.com/v1beta1/projects/{urllib.parse.quote(proj_id)}"
+                        f"/services/{quota_svc}/consumerQuotaMetrics?pageSize=500&view=FULL"
+                    )
+                    if next_tok:
+                        su_url += f"&pageToken={urllib.parse.quote(next_tok)}"
+                    try:
+                        doc = _http_get_json(su_url, timeout=25, extra_headers=hdrs)
+                        self._collect_base_models_from_json(doc, live_found)
+                        next_tok = str(doc.get("nextPageToken") or "").strip() if isinstance(doc, dict) else ""
+                        source_mode = "serviceusage-quotas-api"
+                        if not next_tok:
+                            break
+                    except Exception as exc:
+                        print(f"[HighAlphaScanner] ServiceUsage Quotas API note ({quota_svc}): {exc}")
                         break
-                except Exception as exc:
-                    print(f"[HighAlphaScanner] ServiceUsage Quotas API note: {exc}")
-                    break
 
         # 2. Public Vertex AI Quotas & Partner Model Docs index (always runs, zero credentials required)
         for doc_url in (
@@ -4806,10 +4810,12 @@ class HighAlphaLeakChannelsScanner:
         return cards, changed
 
     VERTEX_BILLING_SERVICE_ID = "C7E2-9256-1C43"
+    GEMINI_API_BILLING_SERVICE_ID = "AEFD-7695-64FA"
     _BILLING_SKU_MODEL_RE = re.compile(
         r"\b("
         r"Gemini\s+\d+(?:\.\d+)?(?:\s+(?!(?:global|regional|online|batch|flex|offpeak|deferred|priority|contributor|text|image|audio|video|input|output|cached|caching|cache|token|tokens|count|prediction|predictions|storage|requests|per)\b)[a-z][a-z0-9.-]*){1,4}|"
-        r"Claude\s+(?:Opus|Sonnet|Haiku|Fable|Mythos|Donut|Silicon)\s+[456](?:\.[0-9]+)?(?:\s+Fast)?|"
+        r"Gemini\s+Decision\s+\d+(?:\.\d+)?|"
+        r"Claude\s+(?:Opus|Sonnet|Haiku|Fable|Mythos|Donut|Silicon)\s+[456](?:[\s.][0-9]+)?(?:\s+Fast)?|"
         r"GPT-[567](?:\.[0-9]+)?(?:\s+(?:Astra|Luna|Sol|Terra|Mini|Nano|Pro|Cyber))?|"
         r"Llama\s+[456](?:\.[0-9]+)?(?:\s+[A-Za-z0-9.]+)?|"
         r"DeepSeek\s+(?:V[456]|R[234])(?:\.[0-9]+)?(?:\s+Flash)?|"
@@ -4821,25 +4827,210 @@ class HighAlphaLeakChannelsScanner:
         re.IGNORECASE,
     )
 
+    def _fetch_keyless_public_skus(self, custom_queries: Optional[List[str]] = None) -> List[Dict[str, str]]:
+        """
+        Query Google Cloud's public keyless SKU catalog RPC (batchexecute rpcids=jBDUmc)
+        across Vertex AI (C7E2-9256-1C43) and Gemini API (AEFD-7695-64FA) when no GCP API key is set.
+        """
+        ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        html_req = urllib.request.Request("https://cloud.google.com/skus", headers={"User-Agent": ua})
+        with urllib.request.urlopen(html_req, timeout=12) as resp:
+            html = resp.read().decode("utf-8", "ignore")
+        bl_m = re.search(r'"cfb2h":"([^"]+)"', html)
+        bl = bl_m.group(1) if bl_m else ""
+        rpc_url = (
+            "https://cloud.google.com/_/GoogleCloudUxWebAppCgcUi/data/batchexecute"
+            f"?rpcids=jBDUmc&source-path=%2Fskus&bl={urllib.parse.quote(bl)}&hl=en-US&rt=c"
+        )
+        queries = custom_queries or [
+            "Gemini 4", "Gemini 5", "Gemini Decision", "Claude", "DeepSeek",
+            "Llama 5", "Mistral", "Veo 4", "Imagen 5", "Lyria 3", "Lyria 4",
+        ]
+        seen_sku_ids: Set[str] = set()
+        out_skus: List[Dict[str, str]] = []
+        target_services = {self.VERTEX_BILLING_SERVICE_ID, self.GEMINI_API_BILLING_SERVICE_ID}
+
+        for q in queries:
+            next_tok = ""
+            visited_tokens: Set[str] = set()
+            for _ in range(25):
+                inner = [q, "USD", next_tok] if next_tok else [q, "USD"]
+                freq = json.dumps([[["jBDUmc", json.dumps(inner), None, "generic"]]])
+                body = urllib.parse.urlencode({"f.req": freq}).encode("utf-8")
+                req = urllib.request.Request(
+                    rpc_url,
+                    data=body,
+                    headers={"User-Agent": ua, "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"},
+                )
+                with urllib.request.urlopen(req, timeout=12) as r:
+                    raw = r.read().decode("utf-8", "ignore")
+                m = re.search(r'\["wrb\.fr","jBDUmc","((?:\\.|[^"\\])*)"', raw)
+                if not m:
+                    break
+                payload = json.loads(json.loads('"' + m.group(1) + '"'))
+                if not isinstance(payload, list) or len(payload) < 2 or not isinstance(payload[1], list):
+                    break
+                page_new = 0
+                for svc_group in payload[1]:
+                    if not isinstance(svc_group, list) or len(svc_group) < 3:
+                        continue
+                    svc_id = str(svc_group[0] or "")
+                    svc_name = str(svc_group[1] or "")
+                    if svc_id not in target_services:
+                        continue
+                    rows = svc_group[2]
+                    if not isinstance(rows, list):
+                        continue
+                    for row in rows:
+                        if not isinstance(row, list) or len(row) < 2:
+                            continue
+                        sku_id = str(row[0] or "").strip()
+                        desc = str(row[1] or "").strip()
+                        prices = row[3] if len(row) > 3 and isinstance(row[3], list) else []
+                        price_str = str(prices[0]) if prices else ""
+                        if sku_id and sku_id not in seen_sku_ids:
+                            seen_sku_ids.add(sku_id)
+                            page_new += 1
+                            out_skus.append(
+                                {
+                                    "skuId": sku_id,
+                                    "serviceId": svc_id,
+                                    "serviceName": svc_name,
+                                    "description": f"{desc} ({price_str})" if price_str else desc,
+                                    "rawDescription": desc,
+                                }
+                            )
+                cand_tok = str(payload[0] or "").strip() if isinstance(payload[0], str) else ""
+                if not cand_tok or cand_tok in visited_tokens or page_new == 0:
+                    break
+                visited_tokens.add(cand_tok)
+                next_tok = cand_tok
+        return out_skus
+
+    def _accumulate_billing_sku_models(
+        self,
+        sku_entries: List[Dict[str, Any]],
+        sku_counts_by_model: Dict[str, int],
+        sku_samples_by_model: Dict[str, List[str]],
+    ) -> None:
+        """Extract model family slugs and SKU sample descriptions from billing catalog records."""
+        for sku in sku_entries:
+            if not isinstance(sku, dict):
+                continue
+            raw_desc = str(sku.get("rawDescription") or sku.get("description") or "").strip()
+            if not raw_desc:
+                continue
+            sample_desc = str(sku.get("description") or raw_desc).strip()
+            for match in self._BILLING_SKU_MODEL_RE.findall(raw_desc):
+                slug = re.sub(r"[^a-z0-9.]+", "-", match.strip().lower()).strip("-")
+                if not slug or is_legacy_model_id(slug):
+                    continue
+                sku_counts_by_model[slug] = sku_counts_by_model.get(slug, 0) + 1
+                samples = sku_samples_by_model.setdefault(slug, [])
+                if len(samples) < 6 and sample_desc not in samples:
+                    samples.append(sample_desc)
+
+    def _finalize_cloud_billing_skus(
+        self,
+        baselines: Dict[str, Any],
+        known_canon: Set[str],
+        sku_counts_by_model: Dict[str, int],
+        sku_samples_by_model: Dict[str, List[str]],
+        keyless: bool = False,
+    ) -> Tuple[List[Dict[str, Any]], bool]:
+        """Update Cloud Billing SKU baselines cleanly and emit cards for newly spotted families."""
+        cards: List[Dict[str, Any]] = []
+        if not sku_counts_by_model:
+            return cards, False
+
+        cb_state: Dict[str, Any] = dict(baselines.get("cloud_billing_skus", {}))
+        seen_families: Set[str] = set(cb_state.get("seen_model_families", []))
+        is_bootstrap = len(seen_families) == 0
+
+        curr_families = sorted(sku_counts_by_model.keys())
+        if is_bootstrap and not known_canon:
+            cb_state["seen_model_families"] = curr_families
+            cb_state["sku_counts"] = dict(sku_counts_by_model)
+            baselines["cloud_billing_skus"] = cb_state
+            return cards, True
+
+        added = [
+            m for m in curr_families
+            if m not in seen_families and not is_legacy_model_id(m) and _canonical_model_slug(m) not in known_canon
+        ]
+        for m in added:
+            p_info = infer_provider(m)
+            if p_info["slug"] == "openrouter":
+                p_info = {"name": "GOOGLE", "slug": "google", "color": "#38bdf8"}
+            cnt = sku_counts_by_model.get(m, 1)
+            pretty = humanize_model_id(m)
+            if keyless:
+                try:
+                    exact_skus = self._fetch_keyless_public_skus([pretty])
+                    exact_cnt = sum(
+                        1 for s in exact_skus
+                        if any(
+                            re.sub(r"[^a-z0-9.]+", "-", hit.strip().lower()).strip("-") == m
+                            for hit in self._BILLING_SKU_MODEL_RE.findall(s.get("rawDescription", ""))
+                        )
+                    )
+                    if exact_cnt > cnt:
+                        cnt = exact_cnt
+                        sku_counts_by_model[m] = cnt
+                except Exception:
+                    pass
+            sig = hashlib.sha256(f"cloud-billing:{m}:{cnt}".encode("utf-8")).hexdigest()[:8]
+            cards.append(
+                {
+                    "id": f"cloud-billing-vertex-{sig}",
+                    "category": "cli-sdk-diff",
+                    "scanner": "cloud-billing",
+                    "header": f"CLOUD BILLING LISTING · {p_info['name']}",
+                    "title": f"{pretty} Spotted in Google Cloud Billing Catalog ({cnt} Vertex AI SKUs)",
+                    "subtitle": f"Service: Vertex AI · {cnt} published billing SKUs in cloudbilling.googleapis.com",
+                    "build_label": "Cloud Billing SKUs",
+                    "build_transition": f"Vertex AI (+{cnt} published billing SKUs)",
+                    "models": [{"id": m, "name": f"{pretty} ({cnt} Vertex AI billing SKUs)"}],
+                    "evidence": f"{cnt} published billing SKUs (cloudbilling.googleapis.com/v1/services/{self.VERTEX_BILLING_SERVICE_ID}/skus)",
+                    "source_text": "Google Cloud public billing catalog (Vertex AI service SKUs).",
+                    "disclaimer_1": "Billing listing only; not confirmation of public API access.",
+                    "disclaimer_2": "SKU descriptions do not establish the public inference model ID.",
+                    "provider_name": p_info["name"],
+                    "provider_slug": p_info["slug"],
+                    "accent_color": p_info["color"],
+                    "sku_samples": sku_samples_by_model.get(m, []),
+                    "links": [
+                        {"label": "Google Cloud SKUs", "url": f"https://cloud.google.com/skus?currency=USD&filter={urllib.parse.quote(pretty)}"},
+                        {"label": "Vertex AI Pricing", "url": "https://cloud.google.com/vertex-ai/generative-ai/pricing"},
+                    ],
+                    "detected_at": datetime.now(timezone.utc).isoformat(),
+                }
+            )
+
+        new_seen = sorted(seen_families | set(curr_families))
+        merged_counts = {**cb_state.get("sku_counts", {}), **sku_counts_by_model}
+        changed = set(new_seen) != seen_families or cb_state.get("sku_counts") != merged_counts
+        if changed:
+            cb_state["seen_model_families"] = new_seen
+            cb_state["sku_counts"] = merged_counts
+            baselines["cloud_billing_skus"] = cb_state
+
+        return cards, changed
+
     def _scan_cloud_billing_skus(
         self,
         baselines: Dict[str, Any],
         known_canon: Set[str],
     ) -> Tuple[List[Dict[str, Any]], bool]:
         """
-        Poll the official Vertex AI billing catalog for model-family listings, not serving availability.
+        Poll the official Vertex AI billing catalog (cloudbilling.googleapis.com/v1/services/C7E2-9256-1C43/skus)
+        for model-family listings. Does not issue network requests when GCP/API credentials are missing.
         """
-        cards: List[Dict[str, Any]] = []
-        changed = False
-        cb_state: Dict[str, Any] = dict(baselines.get("cloud_billing_skus", {}))
-        seen_families: Set[str] = set(cb_state.get("seen_model_families", []))
-        is_bootstrap = len(seen_families) == 0
-
         token, _ = self._mint_gcp_bearer_token()
         api_key = (os.environ.get("GCP_BILLING_API_KEY") or os.environ.get("GEMINI_API_KEY") or "").strip()
         if not token and not api_key:
             self._record_source_health("cloud-billing", "disabled", "missing_credentials")
-            return cards, changed
+            return [], False
 
         hdrs: Dict[str, str] = {"Accept": "application/json", "User-Agent": "ModelPulse-Tracker/2.0"}
         if token:
@@ -4865,21 +5056,7 @@ class HighAlphaLeakChannelsScanner:
             if not isinstance(doc, dict) or not isinstance(doc.get("skus"), list):
                 self._record_source_health("cloud-billing", "failed", "invalid_response")
                 return [], False
-            skus = doc["skus"]
-            for sku in skus:
-                if not isinstance(sku, dict):
-                    continue
-                desc = str(sku.get("description") or "").strip()
-                if not desc:
-                    continue
-                for m in self._BILLING_SKU_MODEL_RE.findall(desc):
-                    slug = re.sub(r"[^a-z0-9.]+", "-", m.strip().lower()).strip("-")
-                    if not slug or is_legacy_model_id(slug):
-                        continue
-                    sku_counts_by_model[slug] = sku_counts_by_model.get(slug, 0) + 1
-                    samples = sku_samples_by_model.setdefault(slug, [])
-                    if len(samples) < 5 and desc not in samples:
-                        samples.append(desc)
+            self._accumulate_billing_sku_models(doc["skus"], sku_counts_by_model, sku_samples_by_model)
             next_tok = str(doc.get("nextPageToken") or "").strip()
             if not next_tok:
                 break
@@ -4892,63 +5069,35 @@ class HighAlphaLeakChannelsScanner:
             return [], False
 
         self._record_source_health("cloud-billing", "ok")
-        if not sku_counts_by_model:
-            return cards, changed
+        return self._finalize_cloud_billing_skus(
+            baselines, known_canon, sku_counts_by_model, sku_samples_by_model, keyless=False
+        )
 
-        curr_families = sorted(sku_counts_by_model.keys())
-        if is_bootstrap and not known_canon:
-            cb_state["seen_model_families"] = curr_families
-            cb_state["sku_counts"] = sku_counts_by_model
-            baselines["cloud_billing_skus"] = cb_state
-            return cards, True
-
-        added = [
-            m for m in curr_families
-            if m not in seen_families and not is_legacy_model_id(m) and _canonical_model_slug(m) not in known_canon
-        ]
-        if added:
-            for m in added:
-                p_info = infer_provider(m)
-                if p_info["slug"] == "openrouter":
-                    p_info = {"name": "GOOGLE", "slug": "google", "color": "#38bdf8"}
-                cnt = sku_counts_by_model.get(m, 1)
-                pretty = humanize_model_id(m)
-                sig = hashlib.sha256(f"cloud-billing:{m}:{cnt}".encode("utf-8")).hexdigest()[:8]
-                cards.append(
-                    {
-                        "id": f"cloud-billing-vertex-{sig}",
-                        "category": "cli-sdk-diff",
-                        "scanner": "cloud-billing",
-                        "header": f"CLOUD BILLING LISTING · {p_info['name']}",
-                        "title": f"{pretty} Spotted in Google Cloud Billing Catalog ({cnt} Vertex AI SKUs)",
-                        "subtitle": f"Service: Vertex AI · {cnt} published billing SKUs in cloudbilling.googleapis.com",
-                        "build_label": "Cloud Billing SKUs",
-                        "build_transition": f"Vertex AI (+{cnt} published billing SKUs)",
-                        "models": [{"id": m, "name": f"{pretty} ({cnt} Vertex AI billing SKUs)"}],
-                        "evidence": f"{cnt} published billing SKUs (cloudbilling.googleapis.com/v1/services/{self.VERTEX_BILLING_SERVICE_ID}/skus)",
-                        "source_text": "Google Cloud public billing catalog (Vertex AI service SKUs).",
-                        "disclaimer_1": "Billing listing only; not confirmation of public API access.",
-                        "disclaimer_2": "SKU descriptions do not establish the public inference model ID.",
-                        "provider_name": p_info["name"],
-                        "provider_slug": p_info["slug"],
-                        "accent_color": p_info["color"],
-                        "sku_samples": sku_samples_by_model.get(m, []),
-                        "links": [
-                            {"label": "Google Cloud SKUs", "url": f"https://cloud.google.com/skus?currency=USD&filter={urllib.parse.quote(pretty)}"},
-                            {"label": "Vertex AI Pricing", "url": "https://cloud.google.com/vertex-ai/generative-ai/pricing"},
-                        ],
-                        "detected_at": datetime.now(timezone.utc).isoformat(),
-                    }
-                )
-
-        new_seen = sorted(seen_families | set(curr_families))
-        if set(new_seen) != seen_families or cb_state.get("sku_counts") != sku_counts_by_model:
-            cb_state["seen_model_families"] = new_seen
-            cb_state["sku_counts"] = sku_counts_by_model
-            baselines["cloud_billing_skus"] = cb_state
-            changed = True
-
-        return cards, changed
+    def _scan_public_cloud_billing_skus(
+        self,
+        baselines: Dict[str, Any],
+        known_canon: Set[str],
+    ) -> Tuple[List[Dict[str, Any]], bool]:
+        """
+        Poll Google Cloud's keyless public SKU catalog RPC (cloud.google.com/skus) across
+        Vertex AI and Gemini API whenever the authenticated Cloud Billing API did not succeed.
+        """
+        if self.source_health.get("cloud-billing", {}).get("status") == "ok":
+            self._record_source_health("cloud-billing-public", "skipped", "authenticated_catalog_ok")
+            return [], False
+        try:
+            pub_skus = self._fetch_keyless_public_skus()
+        except Exception as exc:
+            self._record_source_health("cloud-billing-public", "failed", type(exc).__name__)
+            print(f"[HighAlphaScanner] Keyless Cloud Billing SKU RPC failed: {type(exc).__name__}")
+            return [], False
+        self._record_source_health("cloud-billing-public", "ok")
+        sku_counts_by_model: Dict[str, int] = {}
+        sku_samples_by_model: Dict[str, List[str]] = {}
+        self._accumulate_billing_sku_models(pub_skus, sku_counts_by_model, sku_samples_by_model)
+        return self._finalize_cloud_billing_skus(
+            baselines, known_canon, sku_counts_by_model, sku_samples_by_model, keyless=True
+        )
 
     def _scan_factory_droid_cli(
         self,
@@ -5069,6 +5218,7 @@ class HighAlphaLeakChannelsScanner:
 
         for name, fn in (
             ("cloud-billing-skus", lambda: self._scan_cloud_billing_skus(baselines, known_canon)),
+            ("cloud-billing-public", lambda: self._scan_public_cloud_billing_skus(baselines, known_canon)),
             ("factory-droid-cli", lambda: self._scan_factory_droid_cli(baselines, known_canon)),
             ("provider-apis", lambda: self._scan_live_provider_apis(baselines)),
             ("vertex-ai-quotas", lambda: self._scan_vertex_ai_quotas(baselines, known_canon)),

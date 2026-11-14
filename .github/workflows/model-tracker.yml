@@ -7,6 +7,11 @@ on:
   schedule:
     - cron: "17 * * * *"
   workflow_dispatch:
+    inputs:
+      intelligence_backfill:
+        description: "Backfill available October/November Devin and registry builds without alerts"
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths-ignore:
@@ -37,7 +42,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install optional TLS fingerprint client
-        run: pip install -q curl_cffi cryptography
+        run: pip install -q curl_cffi cryptography PyYAML 'tomli; python_version < "3.11"'
 
       - name: Cache binary .rodata slices & npm metadata
         uses: actions/cache@v4
@@ -47,6 +52,15 @@ jobs:
           restore-keys: |
             modelpulse-cache-
 
+      - name: Test binary and registry intelligence
+        run: python -m unittest discover -s tests -p test_intelligence.py -v
+
+      - name: Historical binary and registry backfill
+        if: inputs.intelligence_backfill == true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python -m tracker.intelligence --backfill --since 2026-10-01 --until 2026-12-01
+
       - name: Continuous scan loop
         env:
           LOOP_MINUTES: "335"
@@ -55,6 +69,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GCP_BILLING_API_KEY: ${{ secrets.GCP_BILLING_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
@@ -118,6 +133,15 @@ jobs:
             if [ "$SLEEP" -gt 0 ]; then sleep "$SLEEP"; fi
           done
           publish
+
+      - name: Retain intelligence evidence independently of feed publishing
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: intelligence-evidence-${{ github.run_id }}
+          path: data/intelligence/
+          if-no-files-found: ignore
+          retention-days: 90
 
       - name: Re-dispatch next scan loop
         if: success() || failure()

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
+import gzip
 import json
 import os
 import pathlib
@@ -11,7 +12,8 @@ import time
 from typing import Any, Dict, List, Set
 
 from tracker import novelty, pricing as pricing_mod, stories as story_mod
-from tracker.notifiers import build_story_embed, build_x_post_text, send_discord_webhook
+from tracker.intelligence import DevinCliScanner, DevinDesktopScanner, LiteLlmRegistryScanner, ModelsDevApiScanner, ModelsDevGitScanner, IdentityLedger, classify_known, intelligence_metrics, reconcile_identities
+from tracker.notifiers import build_intelligence_embed, build_story_embed, build_x_post_text, send_discord_webhook
 from tracker.scanners import (
     BASELINES_FILE,
     AntigravityAcpScanner,
@@ -42,6 +44,7 @@ RETIRED_CARD_IDS: Set[str] = {
     "engine-pr-sgl-project_sglang-46546",
     "arena-ckpt-swap-700ebed5a4",
     "web-bundle-aistudio-models-e3d81658",
+    "google-internal-registry-krypton",
 }
 
 # Scanners that re-emit their complete card set on every successful run (previous cards are replaced, not retained)
@@ -52,6 +55,17 @@ SNAPSHOT_SCANNERS: Set[str] = set()
 REFRESH_TIMESTAMP_SCANNERS: Set[str] = {"antigravity", "antigravity-acp"}
 CARD_RETENTION = timedelta(days=14)
 NOTIFY_MAX_AGE = timedelta(hours=48)
+STORY_ALERT_VERSION = "alerts:evidence:v1"
+
+
+def _story_alert_marks(story: Dict[str, Any]) -> Set[str]:
+    story_id = story["id"]
+    marks = {story_id}
+    marks.update(f"{story_id}#evidence:{card_id}" for card_id in story.get("card_ids", []))
+    marks.update(f"{story_id}#model:{model['id']}" for model in story.get("models", []) if model.get("id"))
+    if story.get("kind") == "release":
+        marks.add(story_id + "#release")
+    return marks
 
 
 def _is_retired_card(card: Dict[str, Any]) -> bool:
@@ -76,6 +90,9 @@ def _is_retired_card(card: Dict[str, Any]) -> bool:
 
 def _load_json(path: pathlib.Path, default: Any) -> Any:
     try:
+        if path.suffix == ".gz":
+            with gzip.open(path, "rt", encoding="utf-8") as stream:
+                return json.load(stream)
         return json.loads(path.read_text(encoding="utf-8"))
     except Exception:
         return default
@@ -125,6 +142,33 @@ class TrackerEngine:
         self.hf_scanner = HuggingFaceOpenSourceScanner()
         self.high_alpha_scanner = HighAlphaLeakChannelsScanner()
         self.openai_spec_scanner = OpenAiApiSpecScanner()
+        self.intelligence_scanners = [ModelsDevApiScanner(), LiteLlmRegistryScanner(), ModelsDevGitScanner(), DevinCliScanner(), DevinDesktopScanner()]
+
+    def notify_intelligence(self, cards: List[Dict[str, Any]], enabled: bool = True) -> None:
+        if not enabled:
+            return
+        seen = self.load_seen_ids()
+        pending = []
+        for card in cards:
+            marker = f"intel-alert-{card['id']}"
+            evidence_path = ROOT_DIR / card.get("evidence_path", "")
+            if marker in seen or card.get("backfill") or card.get("candidate_only") or not card.get("evidence_retained"):
+                continue
+            if not evidence_path.is_file():
+                continue
+            evidence = _load_json(evidence_path, {})
+            if evidence.get("artifact_sha256") != card.get("artifact_sha256"):
+                continue
+            if card.get("first_seen", "") < (datetime.now(timezone.utc) - NOTIFY_MAX_AGE).isoformat():
+                continue
+            pending.append(card)
+        for card in pending[:20]:
+            try:
+                if send_discord_webhook([card], github_user=self.github_user, embed_builder=build_intelligence_embed):
+                    seen.add(f"intel-alert-{card['id']}")
+                    self.save_seen_ids(seen)
+            except Exception:
+                print("[ModelPulse] Intelligence Discord delivery failed; retained event will retry.")
 
     def load_seen_ids(self) -> Set[str]:
         if SEEN_FILE.exists():
@@ -168,40 +212,70 @@ class TrackerEngine:
         prev_cards = [c for c in self.load_previous_cards() if not _is_retired_card(c)]
         prev_codenames = {c["id"]: c["codenames"] for c in prev_cards if c.get("codenames")}
         scanner_runs = _load_json(SCANNER_RUNS_FILE, {})
+        health_path = DATA_DIR / "intelligence/source_health.json"
+        source_health = _load_json(health_path, {})
         public_names = _public_names_snapshot()
         now = datetime.now(timezone.utc)
 
         # (name, callable, min seconds between runs, scanner tags it owns)
         scanner_specs = [
-            ("antigravity", lambda: self.ag_scanner.scan(max_stable=8), 0, {"antigravity"}),
-            ("antigravity-acp", self.ag_acp_scanner.scan, 0, {"antigravity-acp"}),
             ("npm", self.npm_scanner.scan, 0, {"npm"}),
-            ("kimi-vllm-openrouter", self.kimi_router_scanner.scan, 0, {"kimi-code", "vllm-registry", "openrouter"}),
+            ("antigravity-acp", self.ag_acp_scanner.scan, 0, {"antigravity-acp"}),
             ("docs-registries", self.docs_scanner.scan, 0, {"docs-radar", "models-dev", "litellm"}),
+            ("high-alpha", self.high_alpha_scanner.scan, 0, set()),
+        ] + [
+            (scanner.source, scanner.scan, scanner.poll_interval, {scanner.source}) for scanner in self.intelligence_scanners
+        ] + [
+            ("antigravity", lambda: self.ag_scanner.scan(max_stable=8), 0, {"antigravity"}),
+            ("kimi-vllm-openrouter", self.kimi_router_scanner.scan, 0, {"kimi-code", "vllm-registry", "openrouter"}),
             ("arena", self.arena_scanner.scan, 600, {"lmarena"}),
             ("huggingface", self.hf_scanner.scan, 0, {"huggingface"}),
-            ("high-alpha", self.high_alpha_scanner.scan, 0, set()),
             ("openai-spec", self.openai_spec_scanner.scan, 0, {"openai-spec"}),
         ]
 
         fresh_cards: List[Dict[str, Any]] = []
         ran_ok_tags: Set[str] = set()
+        intelligence_status: Dict[str, Any] = {name: dict(status) for name, status in source_health.items() if any(scanner.source == name for scanner in self.intelligence_scanners)}
+        intelligence_by_source = {scanner.source: scanner for scanner in self.intelligence_scanners}
+        self.notify_intelligence([card for card in prev_cards if card.get("intelligence")], notify_discord)
         for name, fn, min_interval, tags in scanner_specs:
+            health = source_health.setdefault(name, {})
+            health["poll_interval_seconds"] = min_interval or 120
+            last_success = health.get("last_success")
+            health["stale"] = not last_success or (now - datetime.fromisoformat(last_success)).total_seconds() > max(600, (min_interval or 120) * 3)
             last = scanner_runs.get(name, "")
             if min_interval and last and (now - datetime.fromisoformat(last)).total_seconds() < min_interval:
                 print(f"[ModelPulse] {name}: throttled (last run {last})")
+                if name in intelligence_by_source:
+                    intelligence_status[name] = dict(health)
                 continue
             t0 = time.monotonic()
+            health["last_attempt"] = datetime.now(timezone.utc).isoformat()
             try:
                 cards = fn()
             except Exception as exc:
-                print(f"[ModelPulse] {name}: FAILED after {time.monotonic() - t0:.1f}s: {exc}")
+                print(f"[ModelPulse] {name}: FAILED after {time.monotonic() - t0:.1f}s: {type(exc).__name__}")
+                health.update(status="failed", error_type=type(exc).__name__, consecutive_failures=health.get("consecutive_failures", 0) + 1, duration_seconds=round(time.monotonic() - t0, 3))
+                if name in intelligence_by_source:
+                    intelligence_status[name] = dict(health)
                 continue
+            completed = datetime.now(timezone.utc).isoformat()
+            health.update(status="ok", last_success=completed, error_type=None, consecutive_failures=0, stale=False, duration_seconds=round(time.monotonic() - t0, 3))
+            if name == "high-alpha":
+                health["subsources"] = dict(self.high_alpha_scanner.source_health)
             print(f"[ModelPulse] {name}: {len(cards)} card(s) in {time.monotonic() - t0:.1f}s")
+            if name in intelligence_by_source:
+                cards = classify_known(cards, public_names)
+                health.update(intelligence_by_source[name].status)
+                intelligence_status[name] = dict(health)
+                self.notify_intelligence(cards, notify_discord)
+            elif name == "docs-registries":
+                cards = [card for card in cards if card.get("scanner") not in {"litellm", "models-dev"}]
             fresh_cards.extend(cards)
             ran_ok_tags |= tags
             scanner_runs[name] = now.isoformat()
         _save_json(SCANNER_RUNS_FILE, scanner_runs)
+        _save_json(health_path, source_health)
 
         # Carry previous cards forward: snapshot/authoritative scanners only when they did not run this time,
         # every other (event-diff) card for CARD_RETENTION so catches never vanish when a source hiccups.
@@ -249,6 +323,14 @@ class TrackerEngine:
         print(f"[ModelPulse] novelty filter: {n_before} -> {len(all_cards)} card(s)")
 
         # Attach live pricing from Official Docs, LiteLLM, models.dev & OpenRouter to every card and model
+        ledger = IdentityLedger(DATA_DIR / "intelligence")
+        ledger.enqueue(all_cards)
+        reconciliation = _load_json(DATA_DIR / "intelligence/reconciliation.json", {})
+        if not reconciliation.get("completed_at") or (now - datetime.fromisoformat(reconciliation["completed_at"])).total_seconds() >= 86400:
+            try:
+                reconcile_identities(DATA_DIR / "intelligence")
+            except Exception as exc:
+                print(f"[ModelPulse] Retained evidence reconciliation: {type(exc).__name__}")
         pricing_catalog = pricing_mod.get_pricing_catalog()
         pricing_mod.enrich_cards_with_pricing(all_cards, pricing_catalog)
 
@@ -266,13 +348,19 @@ class TrackerEngine:
         seen_ids = self.load_seen_ids()
         first_run = not seen_ids
         story_migration = not any(i.startswith("story-") for i in seen_ids)
+        if STORY_ALERT_VERSION not in seen_ids:
+            for previous_story in _load_json(FEED_FILE, {}).get("stories", []):
+                previous_id = previous_story["id"]
+                if previous_id in seen_ids:
+                    seen_ids.update(_story_alert_marks(previous_story) - {previous_id, previous_id + "#release"})
+            seen_ids.add(STORY_ALERT_VERSION)
         notify_cutoff = (now - NOTIFY_MAX_AGE).isoformat()
         notify_stories: List[Dict[str, Any]] = []
         story_seen_ids: Set[str] = set()
         for s in stories:
-            marks = {s["id"]} | ({s["id"] + "#release"} if s["kind"] == "release" else set())
+            marks = _story_alert_marks(s)
             story_seen_ids |= marks
-            if marks <= seen_ids or s["backfill"]:
+            if marks <= seen_ids or s["backfill"] or s.get("candidate_only"):
                 continue
             if (s.get("updated_at") or "") >= notify_cutoff:
                 notify_stories.append(s)
@@ -297,7 +385,7 @@ class TrackerEngine:
         unsent = notify_stories if (not notified_ok and os.environ.get("DISCORD_WEBHOOK_URL")) else notify_stories[20:]
         if not first_run and not story_migration:
             for s in unsent:
-                retry_ids |= {s["id"], s["id"] + "#release"}
+                retry_ids |= _story_alert_marks(s)
         seen_ids.update(c["id"] for c in all_cards)
         seen_ids.update(story_seen_ids - retry_ids)
         self.save_seen_ids(seen_ids)
@@ -317,6 +405,10 @@ class TrackerEngine:
             },
             "stories": stories,
             "cards": all_cards,
+            "intelligence_status": intelligence_status,
+            "source_health": source_health,
+            "identities": ledger.summarize(),
+            "intelligence_metrics": intelligence_metrics(all_cards, source_health, DATA_DIR / "intelligence"),
         }
 
         DATA_DIR.mkdir(parents=True, exist_ok=True)

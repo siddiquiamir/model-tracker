@@ -331,6 +331,9 @@ def apply(cards: Iterable[Dict[str, Any]], catalog: Optional[ReleasedCatalog] = 
     watch = load_watchlist()
     out: List[Dict[str, Any]] = []
     for card in cards:
+        if card.get("intelligence"):
+            out.append(card)
+            continue
         if card.get("scanner") in NON_MODEL_SCANNERS or not card.get("models"):
             out.append(card)
             continue
