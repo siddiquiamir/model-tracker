@@ -1,16 +1,62 @@
 {
-  "generated_at": "2026-11-16T16:42:47.335010+00:00",
+  "generated_at": "2026-11-16T17:04:47.834805+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 113,
-    "leaks": 37,
+    "stories": 114,
+    "leaks": 38,
     "releases": 60,
-    "stories_24h": 5,
+    "stories_24h": 6,
     "sources_ok": 11,
-    "total_cards": 218,
-    "new_in_this_scan": 0
+    "total_cards": 219,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-lfm-3omniforconditionalgeneration",
+      "group": "lfm-3omniforconditionalgeneration",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Lfm3OmniForConditionalGeneration",
+      "provider_slug": "opensource",
+      "provider_name": "Architecture Diff",
+      "accent_color": "#8b5cf6",
+      "detected_at": "2026-11-16T17:04:58.414970+00:00",
+      "updated_at": "2026-11-16T17:04:58.414970+00:00",
+      "first_source": "vLLM registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Lfm3OmniForConditionalGeneration",
+          "name": "Lfm3OmniForConditionalGeneration"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM registry",
+          "scanner": "vllm-registry",
+          "detected_at": "2026-11-16T17:04:58.414970+00:00",
+          "title": "New Engine Architecture: Lfm3OmniForConditionalGeneration",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · ARCHITECTURE DIFF",
+      "card_ids": [
+        "vllm-arch-93800f3a1e"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: Lfm3OmniForConditionalGeneration by Architecture Diff\n\nFirst detected 16 Nov 17:04 UTC in vLLM registry\n\nvia @StatsWire"
+    },
     {
       "id": "story-hy-4-flash",
       "group": "hy-4-flash",
@@ -6829,6 +6875,42 @@
     }
   ],
   "cards": [
+    {
+      "id": "vllm-arch-93800f3a1e",
+      "category": "open-source",
+      "scanner": "vllm-registry",
+      "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
+      "title": "New Engine Architecture: Lfm3OmniForConditionalGeneration",
+      "subtitle": "New model_executor/models/registry.py architecture declarations",
+      "build_label": "Registry File",
+      "build_transition": "vllm/model_executor/models/registry.py",
+      "models": [
+        {
+          "id": "Lfm3OmniForConditionalGeneration",
+          "name": "Lfm3OmniForConditionalGeneration"
+        }
+      ],
+      "evidence": "vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+      "source_text": "official vLLM model architecture registry.",
+      "disclaimer_1": "Tracks only model architecture class registrations in registry.py.",
+      "disclaimer_2": "Open-source labs register their architecture classes here prior to weight drops.",
+      "provider_name": "VLLM REGISTRY",
+      "provider_slug": "opensource",
+      "accent_color": "#8b5cf6",
+      "links": [
+        {
+          "label": "vLLM registry.py",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py"
+        },
+        {
+          "label": "Supported Models Docs",
+          "url": "https://docs.vllm.ai/en/latest/models/supported_models.html"
+        }
+      ],
+      "detected_at": "2026-11-16T17:04:58.414970+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: Lfm3OmniForConditionalGeneration spotted in Registry File vllm/model_executor/models/registry.py!\n\n• Lfm3OmniForConditionalGeneration (Lfm3OmniForConditionalGeneration)\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM model architecture registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "openrouter-model-tencent_hy4-flash",
       "category": "cli-sdk-diff",
