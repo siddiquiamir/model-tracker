@@ -1,16 +1,64 @@
 {
-  "generated_at": "2026-11-16T20:04:49.994268+00:00",
+  "generated_at": "2026-11-16T20:14:49.458743+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 123,
-    "leaks": 39,
+    "stories": 124,
+    "leaks": 40,
     "releases": 66,
-    "stories_24h": 15,
+    "stories_24h": 16,
     "sources_ok": 11,
-    "total_cards": 236,
+    "total_cards": 237,
     "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-gemini-4-neon",
+      "group": "gemini-4-neon",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Gemini 4 Neon",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "accent_color": "#38bdf8",
+      "detected_at": "2026-11-16T20:15:16.430197+00:00",
+      "updated_at": "2026-11-16T20:15:16.430197+00:00",
+      "first_source": "Gemini Web App Config",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "neon"
+      ],
+      "models": [
+        {
+          "id": "gemini-4-neon",
+          "name": "Gemini 4 Neon"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Gemini Web App Config",
+          "scanner": "web-bundle-diff",
+          "detected_at": "2026-11-16T20:15:16.430197+00:00",
+          "title": "New Gemini Web Model: gemini-4-neon",
+          "url": "https://gemini.google.com/app",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · GOOGLE",
+      "card_ids": [
+        "web-bundle-gemini-web-4e194029"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: Gemini 4 Neon by Google\n\nFirst detected 16 Nov 20:15 UTC in Gemini Web App Config\nCodename: neon\n\nvia @StatsWire"
+    },
     {
       "id": "story-dspinedraftmodel",
       "group": "dspinedraftmodel",
@@ -7331,6 +7379,41 @@
     }
   ],
   "cards": [
+    {
+      "id": "web-bundle-gemini-web-4e194029",
+      "category": "cli-sdk-diff",
+      "scanner": "web-bundle-diff",
+      "header": "GEMINI WEB APP CONFIG DIFF · GOOGLE",
+      "title": "New Gemini Web Model: gemini-4-neon",
+      "subtitle": "Newly embedded model identifier in gemini.google.com/app (qOMM8EgiNOc -> qOMM8EgiNOc)",
+      "build_label": "BardChatUi Build",
+      "build_transition": "qOMM8EgiNOc -> qOMM8EgiNOc (+1 model)",
+      "models": [
+        {
+          "id": "gemini-4-neon",
+          "name": "Gemini 4 Neon"
+        }
+      ],
+      "evidence": "gemini.google.com/app WIZ_global_data (qOMM8EgiNOc)",
+      "source_text": "public Google Gemini web app (gemini.google.com/app) embedded model configuration.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Gemini Web App",
+          "url": "https://gemini.google.com/app"
+        }
+      ],
+      "detected_at": "2026-11-16T20:15:16.430197+00:00",
+      "codenames": [
+        "neon"
+      ],
+      "pricing": null,
+      "x_post_text": "🚨 GEMINI WEB APP CONFIG DIFF · GOOGLE\nNew Gemini Web Model: gemini-4-neon spotted in BardChatUi Build qOMM8EgiNOc -> qOMM8EgiNOc (+1 model)!\n\n• Gemini 4 Neon (gemini-4-neon)\n\nEvidence: gemini.google.com/app WIZ_global_data (qOMM8EgiNOc)\nSource: public Google Gemini web app (gemini.google.com/app) embedded model configuration.\n\nTracked by @StatsWire"
+    },
     {
       "id": "vllm-arch-d6fd9c00e0",
       "category": "open-source",
