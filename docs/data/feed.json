@@ -1,16 +1,77 @@
 {
-  "generated_at": "2026-11-16T23:27:06.872157+00:00",
+  "generated_at": "2026-11-16T23:33:06.508549+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 123,
-    "leaks": 40,
+    "stories": 124,
+    "leaks": 41,
     "releases": 65,
-    "stories_24h": 16,
-    "sources_ok": 12,
-    "total_cards": 235,
-    "new_in_this_scan": 0
+    "stories_24h": 17,
+    "sources_ok": 11,
+    "total_cards": 236,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-gemini-4-hydrogen-qcd",
+      "group": "gemini-4-hydrogen-qcd",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Gemini 4 Hydrogen Qcd",
+      "provider_slug": "multi",
+      "provider_name": "AI Model Identifiers",
+      "accent_color": "#6366f1",
+      "detected_at": "2026-11-16T23:33:39.931191+00:00",
+      "updated_at": "2026-11-16T23:33:39.931191+00:00",
+      "first_source": "Vertex AI Quotas registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "paper",
+        "volcano"
+      ],
+      "models": [
+        {
+          "id": "paper-volcano",
+          "name": "base_model:paper-volcano"
+        },
+        {
+          "id": "veo-experimental",
+          "name": "base_model:veo-experimental"
+        },
+        {
+          "id": "gemini-4-hydrogen-qcd",
+          "name": "base_model:gemini-4-hydrogen-qcd"
+        },
+        {
+          "id": "gemini-embedding-2-flash",
+          "name": "base_model:gemini-embedding-2-flash"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vertex AI Quotas registry",
+          "scanner": "vertex-ai-quotas",
+          "detected_at": "2026-11-16T23:33:39.931191+00:00",
+          "title": "New GOOGLE Model(s) on Google Cloud Vertex AI: gemini-4-hydrogen-qcd, gemini-embedding-2-flash",
+          "url": "https://console.cloud.google.com/iam-admin/quotas",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · AI MODEL IDENTIFIERS",
+      "card_ids": [
+        "vertex-quota-google-ede2816c"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: Gemini 4 Hydrogen Qcd by AI Model Identifiers\n\nFirst detected 16 Nov 23:33 UTC in Vertex AI Quotas registry\nCodename: paper, volcano\nIDs: paper-volcano, veo-experimental, gemini-4-hydrogen-qcd +1\n\nvia @StatsWire"
+    },
     {
       "id": "story-litellm-registry-openai-e70de26c",
       "group": "litellm-registry-openai-e70de26c",
@@ -7325,6 +7386,58 @@
     }
   ],
   "cards": [
+    {
+      "id": "vertex-quota-google-ede2816c",
+      "category": "cli-sdk-diff",
+      "scanner": "vertex-ai-quotas",
+      "header": "GOOGLE CLOUD VERTEX AI QUOTA REGISTRY · GOOGLE",
+      "title": "New GOOGLE Model(s) on Google Cloud Vertex AI: gemini-4-hydrogen-qcd, gemini-embedding-2-flash",
+      "subtitle": "Detected in Google Cloud Vertex AI `base_model:` quota dimensions (4 new)",
+      "build_label": "Vertex AI Quotas",
+      "build_transition": "aiplatform.googleapis.com (+4 base_model)",
+      "models": [
+        {
+          "id": "gemini-4-hydrogen-qcd",
+          "name": "base_model:gemini-4-hydrogen-qcd"
+        },
+        {
+          "id": "gemini-embedding-2-flash",
+          "name": "base_model:gemini-embedding-2-flash"
+        },
+        {
+          "id": "paper-volcano",
+          "name": "base_model:paper-volcano"
+        },
+        {
+          "id": "veo-experimental",
+          "name": "base_model:veo-experimental"
+        }
+      ],
+      "evidence": "console.cloud.google.com/iam-admin/quotas (aiplatform.googleapis.com)",
+      "source_text": "Google Cloud Vertex AI `base_model` quota dimension registry.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "GCP Vertex AI Quotas",
+          "url": "https://console.cloud.google.com/iam-admin/quotas"
+        },
+        {
+          "label": "Vertex AI Models",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
+        }
+      ],
+      "detected_at": "2026-11-16T23:33:39.931191+00:00",
+      "codenames": [
+        "paper",
+        "volcano"
+      ],
+      "pricing": null,
+      "x_post_text": "🚨 GOOGLE CLOUD VERTEX AI QUOTA REGISTRY · GOOGLE\nNew GOOGLE Model(s) on Google Cloud Vertex AI: gemini-4-hydrogen-qcd, gemini-embedding-2-flash spotted in Vertex AI Quotas aiplatform.googleapis.com (+4 base_model)!\n\n• base_model:gemini-4-hydrogen-qcd (gemini-4-hydrogen-qcd)\n• base_model:gemini-embedding-2-flash (gemini-embedding-2-flash)\n• base_model:paper-volcano (paper-volcano)\n• base_model:veo-experimental (veo-experimental)\n\nEvidence: console.cloud.google.com/iam-admin/quotas (aiplatform.googleapis.com)\nSource: Google Cloud Vertex AI `base_model` quota dimension registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "litellm-diff-e70de26c",
       "category": "cli-sdk-diff",
