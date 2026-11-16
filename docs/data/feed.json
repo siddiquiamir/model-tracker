@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-16T13:38:28.777189+00:00",
+  "generated_at": "2026-11-16T13:56:28.396140+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 114,
+    "stories": 113,
     "leaks": 37,
-    "releases": 60,
+    "releases": 59,
     "stories_24h": 5,
-    "sources_ok": 12,
+    "sources_ok": 11,
     "total_cards": 217,
-    "new_in_this_scan": 0
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -954,7 +954,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-12T17:34:46.236178+00:00",
-      "updated_at": "2026-11-16T01:00:26Z",
+      "updated_at": "2026-11-16T13:57:06.758487+00:00",
       "first_source": "Gemini API Docs",
       "lead": "26 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "2026-11-12",
@@ -1109,9 +1109,19 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Google AI Studio Js Bundle",
+          "scanner": "web-bundle-diff",
+          "detected_at": "2026-11-16T13:57:06.758487+00:00",
+          "title": "AI Studio Bundle Model: gemini-4-hydrogen",
+          "url": "https://aistudio.google.com/welcome",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 12,
+      "source_count": 13,
       "backfill": false,
       "header": "NEW MODEL · GOOGLE",
       "card_ids": [
@@ -1128,7 +1138,8 @@
         "npm-_google_genai-3.2.0-3.3.0",
         "lmarena-lb-diff-8076212c",
         "ag-2.32.0-2.32.1-gemini-4-hydrogen",
-        "ag-2.32.1-1.0.20261116010026__Insiders_-gemini-4-hydrogen"
+        "ag-2.32.1-1.0.20261116010026__Insiders_-gemini-4-hydrogen",
+        "web-bundle-aistudio-models-eb7f3e19"
       ],
       "event_label": "",
       "intelligence_only": false,
@@ -6547,55 +6558,6 @@
       "x_post_text": "🟢 NEW MODEL: Strata by NVIDIA\n\nFirst detected 02 Nov 21:58 UTC in Hugging Face\n\nvia @StatsWire"
     },
     {
-      "id": "story-glm-5-3-flashx-legal",
-      "group": "glm-5-3-flashx-legal",
-      "kind": "release",
-      "open_weights": false,
-      "title": "GLM 5.3 FlashX Legal",
-      "provider_slug": "openrouter",
-      "provider_name": "Z-ai",
-      "accent_color": "#10b981",
-      "detected_at": "2026-11-02T13:45:36.443485+00:00",
-      "updated_at": "2026-11-02T13:45:36.443485+00:00",
-      "first_source": "OpenRouter",
-      "lead": "",
-      "released_on": "2026-11-02",
-      "pricing": "",
-      "codenames": [
-        "legal"
-      ],
-      "models": [
-        {
-          "id": "glm-5.3-flashx-legal",
-          "name": "GLM 5.3 FlashX Legal",
-          "released_on": "2026-11-02"
-        }
-      ],
-      "sources": [
-        {
-          "label": "OpenRouter",
-          "scanner": "openrouter",
-          "detected_at": "2026-11-02T13:45:36.443485+00:00",
-          "title": "Z.ai: GLM 5.3 FlashX Legal",
-          "url": "https://openrouter.ai/z-ai/glm-5.3-flashx-legal",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "NEW MODEL · Z-AI",
-      "card_ids": [
-        "openrouter-model-z-ai_glm-5.3-flashx-legal"
-      ],
-      "event_label": "",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: GLM 5.3 FlashX Legal by Z-ai\n\nFirst detected 02 Nov 13:45 UTC in OpenRouter\n📅 First released: 2026-11-02\nCodename: legal\n\nvia @StatsWire"
-    },
-    {
       "id": "story-gemini-4-carbon",
       "group": "gemini-4-carbon",
       "kind": "release",
@@ -6856,6 +6818,43 @@
     }
   ],
   "cards": [
+    {
+      "id": "web-bundle-aistudio-models-eb7f3e19",
+      "category": "cli-sdk-diff",
+      "scanner": "web-bundle-diff",
+      "header": "GOOGLE AI STUDIO JS BUNDLE DIFF · GOOGLE",
+      "title": "AI Studio Bundle Model: gemini-4-hydrogen",
+      "subtitle": "New model / Mendel flag in boq-makersuite (JLBvzaeCXqM -> 6N-7dCE1q9A)",
+      "build_label": "MakerSuite Build",
+      "build_transition": "JLBvzaeCXqM -> 6N-7dCE1q9A (+1 model)",
+      "models": [
+        {
+          "id": "gemini-4-hydrogen",
+          "name": "Gemini 4 Hydrogen (Mendel #45863024)",
+          "released_on": "2026-11-12"
+        }
+      ],
+      "evidence": "gstatic.com/_/mss/boq-makersuite (6N-7dCE1q9A)",
+      "source_text": "public Google AI Studio (aistudio.google.com) Boq JavaScript bundle.",
+      "disclaimer_1": "Extracted from client-side MakerSuite JS bundle & Mendel experiment flags.",
+      "disclaimer_2": "Presence in frontend bundle does not guarantee public backend rollout.",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Google AI Studio",
+          "url": "https://aistudio.google.com/welcome"
+        },
+        {
+          "label": "MakerSuite JS Bundle",
+          "url": "https://www.gstatic.com/_/mss/boq-makersuite/_/js/k=boq-makersuite.MakerSuite.en_US.6N-7dCE1q9A.2018.O/am=QaSaAAPBIQ/d=1/excm=_b/ed=1/dg=0/wt=2/ujg=1/rs=AMOXD2_yd7KI9Ofk6f-Kn6cQY-NaKA9IiA/dti=1/m=_b"
+        }
+      ],
+      "detected_at": "2026-11-16T13:57:06.758487+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 GOOGLE AI STUDIO JS BUNDLE DIFF · GOOGLE\nAI Studio Bundle Model: gemini-4-hydrogen spotted in MakerSuite Build JLBvzaeCXqM -> 6N-7dCE1q9A (+1 model)!\n\n• Gemini 4 Hydrogen (Mendel #45863024) (gemini-4-hydrogen)\n\nEvidence: gstatic.com/_/mss/boq-makersuite (6N-7dCE1q9A)\nSource: public Google AI Studio (aistudio.google.com) Boq JavaScript bundle.\n\nTracked by @StatsWire"
+    },
     {
       "id": "opencode-zen-diff-cf353e6a",
       "category": "cli-sdk-diff",
@@ -15008,46 +15007,6 @@
       ],
       "detected_at": "2026-11-02T21:58:40.620474+00:00",
       "x_post_text": "🚨 HUGGING FACE NEW REPO · NVIDIA\nstrata spotted in Repo Created 2026-09-22 (model)!\n\n• strata (model) (nvidia/strata)\n\nEvidence: huggingface.co/api/models\nSource: official nvidia Hugging Face organization feed.\n\nTracked by @StatsWire",
-      "pricing": null
-    },
-    {
-      "id": "openrouter-model-z-ai_glm-5.3-flashx-legal",
-      "category": "cli-sdk-diff",
-      "scanner": "openrouter",
-      "header": "OPENROUTER LIVE REGISTRY · Z-AI",
-      "title": "Z.ai: GLM 5.3 FlashX Legal",
-      "subtitle": "Newly registered model endpoint on OpenRouter (/api/v1/models)",
-      "build_label": "Endpoint ID",
-      "build_transition": "z-ai/glm-5.3-flashx-legal",
-      "models": [
-        {
-          "id": "z-ai/glm-5.3-flashx-legal",
-          "name": "Z.ai: GLM 5.3 FlashX Legal (1048k context window)",
-          "released_on": "2026-11-02"
-        }
-      ],
-      "evidence": "openrouter.ai/api/v1/models",
-      "source_text": "official public OpenRouter /api/v1/models JSON registry.",
-      "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
-      "disclaimer_2": "Publicly listed API model identifier and context length specification.",
-      "provider_name": "Z-AI",
-      "provider_slug": "openrouter",
-      "accent_color": "#10b981",
-      "links": [
-        {
-          "label": "OpenRouter Model Page",
-          "url": "https://openrouter.ai/z-ai/glm-5.3-flashx-legal"
-        },
-        {
-          "label": "OpenRouter Models API",
-          "url": "https://openrouter.ai/api/v1/models"
-        }
-      ],
-      "detected_at": "2026-11-02T13:45:36.443485+00:00",
-      "codenames": [
-        "legal"
-      ],
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · Z-AI\nZ.ai: GLM 5.3 FlashX Legal spotted in Endpoint ID z-ai/glm-5.3-flashx-legal!\n\n• Z.ai: GLM 5.3 FlashX Legal (1048k context window) (z-ai/glm-5.3-flashx-legal)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire",
       "pricing": null
     },
     {
