@@ -671,5 +671,33 @@ class RegistryTests(unittest.TestCase):
             self.assertEqual(sent[0]["event_label"], "New identifier")
 
 
+class AntigravityAcpTests(unittest.TestCase):
+    def test_python_par_fallback_extracts_catalog_and_fails_closed(self) -> None:
+        from tracker.scanners import AntigravityAcpScanner
+
+        scanner = AntigravityAcpScanner()
+        meta = {
+            "url": "https://dl.google.com/agy-extensions/releases/macos/agy-acp-server-1.5.0-darwin-arm64.zip",
+            "zip_size": 100401185,
+            "last_modified": "Wed, 11 Nov 2026 17:49:08 GMT",
+            "etag": "abc",
+            "detected_at": "2026-11-11T17:49:08+00:00",
+        }
+        payload = (
+            b'DEFAULT_MODEL_METADATA_MAP = {\n'
+            b'    **_thinking_family("gemini-4-carbon", "Gemini 4 Carbon", []),\n'
+            b'    **_thinking_family("gemini-4-argon", "Gemini 4 Argon", []),\n'
+            b'}\n'
+            b'model = "gemini-decision-eap"\n'
+        )
+        snap = scanner._extract_python_par_snapshot("1.5.0", meta, payload)
+        self.assertIsNotNone(snap)
+        self.assertEqual(snap["catalog_mode"], "python-par")
+        self.assertIn("gemini-4-carbon", snap["models"])
+        self.assertIn("gemini-4-argon", snap["models"])
+        self.assertIn("gemini-decision-eap", snap["models"])
+        self.assertIsNone(scanner._extract_python_par_snapshot("1.5.0", meta, b"unrelated binary"))
+
+
 if __name__ == "__main__":
     unittest.main()

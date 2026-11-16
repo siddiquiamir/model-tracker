@@ -409,7 +409,7 @@ class AntigravityAcpScanner:
         while True:
             idx = uncomp.find(needle, pos)
             if idx == -1:
-                return None
+                return self._extract_python_par_snapshot(ver, head_meta, uncomp)
             pk_start = uncomp.rfind(b"PK\x03\x04", 0, idx + 1)
             fn_len = int.from_bytes(uncomp[pk_start + 26 : pk_start + 28], "little")
             ex_len = int.from_bytes(uncomp[pk_start + 28 : pk_start + 30], "little")
@@ -437,6 +437,37 @@ class AntigravityAcpScanner:
                     "enum_map": enum_map,
                 }
             pos = idx + 1
+
+    def _extract_python_par_snapshot(
+        self,
+        ver: str,
+        head_meta: Dict[str, Any],
+        uncomp: bytes,
+    ) -> Optional[Dict[str, Any]]:
+        """Fallback for ACP >=1.4.5 where Discovery JSON was replaced by Python catalog modules."""
+        if b"DEFAULT_MODEL_METADATA_MAP" not in uncomp and b"_thinking_family" not in uncomp:
+            return None
+        text = uncomp.decode("latin-1", errors="ignore")
+        families = {
+            m.lower()
+            for m in re.findall(r'_thinking_family\(\s*"([a-z0-9._-]+)"', text, flags=re.IGNORECASE)
+        }
+        models = sorted(families | extract_models_from_bytes(uncomp))
+        if not models:
+            return None
+        return {
+            "version": ver,
+            "url": head_meta["url"],
+            "zip_size": head_meta["zip_size"],
+            "last_modified": head_meta["last_modified"],
+            "etag": head_meta["etag"],
+            "detected_at": head_meta["detected_at"],
+            "doc_size": len(uncomp),
+            "active_count": len(models),
+            "models": models,
+            "enum_map": {},
+            "catalog_mode": "python-par",
+        }
 
     def scan(self) -> List[Dict[str, Any]]:
         baselines = _load_baselines()
