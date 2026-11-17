@@ -1,16 +1,85 @@
 {
-  "generated_at": "2026-11-17T03:25:28.490277+00:00",
+  "generated_at": "2026-11-17T03:35:28.428356+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 125,
-    "leaks": 41,
+    "stories": 126,
+    "leaks": 42,
     "releases": 65,
-    "stories_24h": 17,
-    "sources_ok": 11,
-    "total_cards": 237,
-    "new_in_this_scan": 1
+    "stories_24h": 18,
+    "sources_ok": 12,
+    "total_cards": 239,
+    "new_in_this_scan": 2
   },
   "stories": [
+    {
+      "id": "story-astra-cyber",
+      "group": "astra-cyber",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Astra Cyber Preview",
+      "provider_slug": "multi",
+      "provider_name": "AI Model Identifiers",
+      "accent_color": "#6366f1",
+      "detected_at": "2026-11-17T03:37:08.187999+00:00",
+      "updated_at": "2026-11-17T03:37:39.017582+00:00",
+      "first_source": "Devin Desktop (windsurf Stable) Build",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "swe-2-lightning-agent",
+          "name": "SWE 2 Lightning Agent"
+        },
+        {
+          "id": "swe-2-lightning-group",
+          "name": "SWE 2 Lightning Group"
+        },
+        {
+          "id": "astra-cyber-preview-xhigh",
+          "name": "Astra Cyber Preview XHigh"
+        },
+        {
+          "id": "astra-cyber-preview-medium",
+          "name": "Astra Cyber Preview"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Devin Desktop (windsurf Stable) Build",
+          "scanner": "ide-build-diff",
+          "detected_at": "2026-11-17T03:37:08.187999+00:00",
+          "title": "Devin Desktop 3.13.4: GPT 6 Luna",
+          "url": "https://windsurf-stable.codeium.com/api/update/linux-x64/stable/latest",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "Devin Desktop (windsurf Next) Build",
+          "scanner": "ide-build-diff",
+          "detected_at": "2026-11-17T03:37:39.017582+00:00",
+          "title": "Devin Desktop 3.13.4: GPT 6 Luna",
+          "url": "https://windsurf-stable.codeium.com/api/update/linux-x64/next/latest",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 2,
+      "backfill": false,
+      "header": "LEAK · AI MODEL IDENTIFIERS",
+      "card_ids": [
+        "windsurf-stable-3.12.59-3.13.4",
+        "windsurf-next-3.12.59-3.13.4"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: Astra Cyber Preview by AI Model Identifiers\n\nFirst detected 17 Nov 03:37 UTC in Devin Desktop (windsurf Stable) Build\nConfirmed by Devin Desktop (windsurf Next) Build\nIDs: swe-2-lightning-agent, swe-2-lightning-group, astra-cyber-preview-xhigh +1\n\nvia @StatsWire"
+    },
     {
       "id": "story-litellm-registry-dashscope-b6ed8142",
       "group": "litellm-registry-dashscope-b6ed8142",
@@ -7433,6 +7502,96 @@
     }
   ],
   "cards": [
+    {
+      "id": "windsurf-next-3.12.59-3.13.4",
+      "category": "desktop-diff",
+      "scanner": "ide-build-diff",
+      "header": "DEVIN DESKTOP (WINDSURF NEXT) BUILD DIFF · OPENAI",
+      "title": "Devin Desktop 3.13.4: GPT 6 Luna",
+      "subtitle": "Verified Devin / Windsurf Next official build comparison",
+      "build_label": "Devin Next",
+      "build_transition": "3.12.59 -> 3.13.4",
+      "models": [
+        {
+          "id": "astra-cyber-preview-medium",
+          "name": "Astra Cyber Preview (Medium)"
+        },
+        {
+          "id": "astra-cyber-preview-xhigh",
+          "name": "Astra Cyber Preview XHigh"
+        },
+        {
+          "id": "swe-2-lightning-agent",
+          "name": "SWE 2 Lightning Agent"
+        },
+        {
+          "id": "swe-2-lightning-group",
+          "name": "SWE 2 Lightning Group"
+        }
+      ],
+      "evidence": "Devin Desktop / Windsurf next (3.13.4)",
+      "source_text": "official Devin Desktop (Windsurf next) Linux x64 release archive.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "Update Feed JSON",
+          "url": "https://windsurf-stable.codeium.com/api/update/linux-x64/next/latest"
+        }
+      ],
+      "detected_at": "2026-11-17T03:37:39.017582+00:00",
+      "filtered_released": 1,
+      "pricing": null,
+      "x_post_text": "🚨 DEVIN DESKTOP (WINDSURF NEXT) BUILD DIFF · OPENAI\nDevin Desktop 3.13.4: GPT 6 Luna spotted in Devin Next 3.12.59 -> 3.13.4!\n\n• Astra Cyber Preview (Medium) (astra-cyber-preview-medium)\n• Astra Cyber Preview XHigh (astra-cyber-preview-xhigh)\n• SWE 2 Lightning Agent (swe-2-lightning-agent)\n• SWE 2 Lightning Group (swe-2-lightning-group)\n\nEvidence: Devin Desktop / Windsurf next (3.13.4)\nSource: official Devin Desktop (Windsurf next) Linux x64 release archive.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "windsurf-stable-3.12.59-3.13.4",
+      "category": "desktop-diff",
+      "scanner": "ide-build-diff",
+      "header": "DEVIN DESKTOP (WINDSURF STABLE) BUILD DIFF · OPENAI",
+      "title": "Devin Desktop 3.13.4: GPT 6 Luna",
+      "subtitle": "Verified Devin / Windsurf Stable official build comparison",
+      "build_label": "Devin Stable",
+      "build_transition": "3.12.59 -> 3.13.4",
+      "models": [
+        {
+          "id": "astra-cyber-preview-medium",
+          "name": "Astra Cyber Preview (Medium)"
+        },
+        {
+          "id": "astra-cyber-preview-xhigh",
+          "name": "Astra Cyber Preview XHigh"
+        },
+        {
+          "id": "swe-2-lightning-agent",
+          "name": "SWE 2 Lightning Agent"
+        },
+        {
+          "id": "swe-2-lightning-group",
+          "name": "SWE 2 Lightning Group"
+        }
+      ],
+      "evidence": "Devin Desktop / Windsurf stable (3.13.4)",
+      "source_text": "official Devin Desktop (Windsurf stable) Linux x64 release archive.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "Update Feed JSON",
+          "url": "https://windsurf-stable.codeium.com/api/update/linux-x64/stable/latest"
+        }
+      ],
+      "detected_at": "2026-11-17T03:37:08.187999+00:00",
+      "filtered_released": 1,
+      "pricing": null,
+      "x_post_text": "🚨 DEVIN DESKTOP (WINDSURF STABLE) BUILD DIFF · OPENAI\nDevin Desktop 3.13.4: GPT 6 Luna spotted in Devin Stable 3.12.59 -> 3.13.4!\n\n• Astra Cyber Preview (Medium) (astra-cyber-preview-medium)\n• Astra Cyber Preview XHigh (astra-cyber-preview-xhigh)\n• SWE 2 Lightning Agent (swe-2-lightning-agent)\n• SWE 2 Lightning Group (swe-2-lightning-group)\n\nEvidence: Devin Desktop / Windsurf stable (3.13.4)\nSource: official Devin Desktop (Windsurf stable) Linux x64 release archive.\n\nTracked by @StatsWire"
+    },
     {
       "id": "ag-2.32.2-1.0.20261117010701__Insiders_-gemini-4-hydrogen",
       "category": "desktop-diff",
