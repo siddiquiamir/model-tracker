@@ -699,5 +699,25 @@ class AntigravityAcpTests(unittest.TestCase):
         self.assertIsNone(scanner._extract_python_par_snapshot("1.5.0", meta, b"unrelated binary"))
 
 
+class IdeBuildDiffTests(unittest.TestCase):
+    def test_ide_blob_extractor_skips_harness_prose_and_backslash_truncated_slugs(self) -> None:
+        from tracker.scanners import HighAlphaLeakChannelsScanner
+
+        scanner = HighAlphaLeakChannelsScanner()
+        blob = (
+            b'Without the flag, models on the `gpt-5p6-codex` harness get `only` while the '
+            b'`cli-gpt6-scripted-tools-only` Unleash flag is active.\n'
+            b'find_file_by_namswe-1p5-thinkinggpt-5p4-persiste\\\\\\\\\n'
+            b'{"id": "gpt-6-astra", "name": "GPT-6 Astra"}\n'
+            b'"silicon-2-low" "silicon-2-medium" "silicon-2-high" "silicon-2-xhigh"\n'
+        )
+        found = scanner._extract_ide_blob_models(blob)
+        self.assertNotIn("gpt-5p6-codex", found)
+        self.assertNotIn("gpt-5p4-persiste", found)
+        self.assertIn("gpt-6-astra", found)
+        self.assertIn("silicon-2-low", found)
+        self.assertIn("silicon-2-xhigh", found)
+
+
 if __name__ == "__main__":
     unittest.main()

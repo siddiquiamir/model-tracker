@@ -45,6 +45,7 @@ RETIRED_CARD_IDS: Set[str] = {
     "arena-ckpt-swap-700ebed5a4",
     "web-bundle-aistudio-models-e3d81658",
     "google-internal-registry-krypton",
+    "devin-cli-3000.12.57-3000.13.4-openai",
 }
 
 # Scanners that re-emit their complete card set on every successful run (previous cards are replaced, not retained)

@@ -3399,15 +3399,25 @@ class HighAlphaLeakChannelsScanner:
         "animation",
     }
     _QUOTED_TIER_MODEL_RE = re.compile(
-        rb'["\']([a-z][a-z0-9]{2,15})-(minimal|low|medium|high|xhigh|max)["\']'
+        rb'["\']([a-z][a-z0-9]{1,15}(?:-[a-z0-9]{1,8})?)-(minimal|low|medium|high|xhigh|max)["\']'
     )
+
+    _PROSE_HARNESS_HINTS = (b"harness", b"unleash", b"without the flag", b"feature flag")
 
     def _extract_ide_blob_models(self, blob: bytes) -> Set[str]:
         found: Set[str] = set()
         segmented = self._IDE_RODATA_SPLIT_RE.sub(b"\n", blob)
-        for m in self.IDE_BUNDLE_MODEL_RE.findall(segmented):
-            mid = m.decode("utf-8", "ignore").rstrip("._-")
+        for m in self.IDE_BUNDLE_MODEL_RE.finditer(segmented):
+            mid = m.group(0).decode("utf-8", "ignore").rstrip("._-")
             if mid in self.IDE_EXCLUDED_TOKENS or mid in EXCLUDED_EXACT or is_legacy_model_id(mid):
+                continue
+            # Ignore truncated Rust .rodata literals packed against backslashes and prose-only
+            # harness / Unleash feature-flag references (e.g. `on the gpt-5p6-codex harness`).
+            tail = segmented[m.end() : m.end() + 2]
+            if tail.startswith(b"\\"):
+                continue
+            ctx = segmented[max(0, m.start() - 60) : min(len(segmented), m.end() + 80)].lower()
+            if any(hint in ctx for hint in self._PROSE_HARNESS_HINTS):
                 continue
             found.add(mid)
 
