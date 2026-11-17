@@ -1,16 +1,68 @@
 {
-  "generated_at": "2026-11-17T08:58:15.149569+00:00",
+  "generated_at": "2026-11-17T09:26:15.836982+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 125,
-    "leaks": 42,
+    "stories": 126,
+    "leaks": 43,
     "releases": 64,
-    "stories_24h": 17,
+    "stories_24h": 18,
     "sources_ok": 11,
-    "total_cards": 234,
-    "new_in_this_scan": 0
+    "total_cards": 235,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-gpt-5p-4-persiste",
+      "group": "gpt-5p-4-persiste",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "GPT 5p4 Persiste",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "accent_color": "#10b981",
+      "detected_at": "2026-11-17T09:27:35.763453+00:00",
+      "updated_at": "2026-11-17T09:27:35.763453+00:00",
+      "first_source": "Devin CLI Official Binary",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "persiste"
+      ],
+      "models": [
+        {
+          "id": "gpt-5p6-codex",
+          "name": "GPT 5p6 Codex"
+        },
+        {
+          "id": "gpt-5p4-persiste",
+          "name": "GPT 5p4 Persiste"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Devin CLI Official Binary",
+          "scanner": "ide-build-diff",
+          "detected_at": "2026-11-17T09:27:35.763453+00:00",
+          "title": "Devin CLI 3000.13.4: GPT 5p6 Codex",
+          "url": "https://static.devin.ai/cli/current/manifest.json",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · OPENAI",
+      "card_ids": [
+        "devin-cli-3000.12.57-3000.13.4-openai"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: GPT 5p4 Persiste by OpenAI\n\nFirst detected 17 Nov 09:27 UTC in Devin CLI Official Binary\nCodename: persiste\nIDs: gpt-5p6-codex, gpt-5p4-persiste\n\nvia @StatsWire"
+    },
     {
       "id": "story-astra-cyber",
       "group": "astra-cyber",
@@ -7328,6 +7380,45 @@
     }
   ],
   "cards": [
+    {
+      "id": "devin-cli-3000.12.57-3000.13.4-openai",
+      "category": "desktop-diff",
+      "scanner": "ide-build-diff",
+      "header": "DEVIN CLI OFFICIAL BINARY DIFF · OPENAI",
+      "title": "Devin CLI 3000.13.4: GPT 5p6 Codex",
+      "subtitle": "Verified Devin CLI (bin/devin) compiled model table diff",
+      "build_label": "Devin CLI",
+      "build_transition": "3000.12.57 -> 3000.13.4",
+      "models": [
+        {
+          "id": "gpt-5p4-persiste",
+          "name": "GPT 5p4 Persiste"
+        },
+        {
+          "id": "gpt-5p6-codex",
+          "name": "GPT 5p6 Codex"
+        }
+      ],
+      "evidence": "static.devin.ai/cli/3000.13.4 (bin/devin)",
+      "source_text": "official Devin CLI Linux x64 binary release archive.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "Devin CLI Manifest",
+          "url": "https://static.devin.ai/cli/current/manifest.json"
+        }
+      ],
+      "detected_at": "2026-11-17T09:27:35.763453+00:00",
+      "codenames": [
+        "persiste"
+      ],
+      "pricing": null,
+      "x_post_text": "🚨 DEVIN CLI OFFICIAL BINARY DIFF · OPENAI\nDevin CLI 3000.13.4: GPT 5p6 Codex spotted in Devin CLI 3000.12.57 -> 3000.13.4!\n\n• GPT 5p4 Persiste (gpt-5p4-persiste)\n• GPT 5p6 Codex (gpt-5p6-codex)\n\nEvidence: static.devin.ai/cli/3000.13.4 (bin/devin)\nSource: official Devin CLI Linux x64 binary release archive.\n\nTracked by @StatsWire"
+    },
     {
       "id": "windsurf-next-3.12.59-3.13.4",
       "category": "desktop-diff",
