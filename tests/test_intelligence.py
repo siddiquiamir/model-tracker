@@ -627,9 +627,11 @@ class RegistryTests(unittest.TestCase):
         with patch.object(engine, "load_seen_ids", return_value=set()), patch.object(engine, "save_seen_ids") as save, patch("tracker.engine._load_json", return_value={"artifact_sha256": "a" * 64}), patch("tracker.engine.send_discord_webhook", side_effect=[False, True]) as send:
             engine.notify_intelligence([card])
             save.assert_not_called()
+            self.assertNotIn("discord_alerted_at", card)
             engine.notify_intelligence([card])
             self.assertEqual(send.call_count, 2)
             save.assert_called_once_with({"intel-alert-intel-a"})
+            self.assertGreaterEqual(card["discord_alerted_at"], card["first_seen"])
         with patch.object(engine, "load_seen_ids", return_value=set()), patch("tracker.engine.send_discord_webhook") as send:
             engine.notify_intelligence([{**card, "evidence_path": "missing-evidence.json"}])
             send.assert_not_called()
@@ -652,7 +654,7 @@ class RegistryTests(unittest.TestCase):
             for source in engine.intelligence_scanners:
                 stack.enter_context(patch.object(source, "scan", return_value=cards if source.source == "devin-cli" else []))
             desktop = next(source for source in engine.intelligence_scanners if source.source == "devin-desktop")
-            stack.enter_context(patch.object(desktop, "scan", side_effect=RuntimeError("unavailable")))
+            desktop_scan = stack.enter_context(patch.object(desktop, "scan", side_effect=RuntimeError("unavailable")))
             for attribute in ("ag_scanner", "ag_acp_scanner", "npm_scanner", "kimi_router_scanner", "docs_scanner", "arena_scanner", "hf_scanner", "high_alpha_scanner", "openai_spec_scanner"):
                 stack.enter_context(patch.object(getattr(engine, attribute), "scan", return_value=[]))
             stack.enter_context(patch("tracker.engine._public_names_snapshot", return_value=[]))
@@ -661,14 +663,22 @@ class RegistryTests(unittest.TestCase):
             stack.enter_context(patch("tracker.engine.pricing_mod.get_pricing_catalog", return_value=pricing))
             stack.enter_context(patch("tracker.engine.pricing_mod.enrich_cards_with_pricing"))
             stack.enter_context(patch("tracker.engine.send_discord_webhook", return_value=True))
-            notify = stack.enter_context(patch.object(engine, "notify_intelligence"))
+            def deliver_early(pending, *args, **kwargs):
+                if pending:
+                    desktop_scan.assert_not_called()
+                    pending[0]["discord_alerted_at"] = datetime.now(timezone.utc).isoformat()
+
+            notify = stack.enter_context(patch.object(engine, "notify_intelligence", side_effect=deliver_early))
             feed = engine.run_all_scans()
             self.assertEqual(len(feed["stories"]), 1)
             self.assertEqual(feed["stories"][0]["id"], "story-hyperion")
             self.assertEqual(feed["intelligence_status"]["devin-desktop"]["status"], "failed")
             self.assertTrue((root / "docs/data/feed.json").exists())
             sent = [call.args[0][0] for call in notify.call_args_list if call.args[0]]
+            self.assertEqual(len(sent), 1)
             self.assertEqual(sent[0]["event_label"], "New identifier")
+            self.assertLessEqual(feed["cards"][0]["tracker_observed_at"], feed["cards"][0]["discord_alerted_at"])
+            self.assertLessEqual(feed["cards"][0]["discord_alerted_at"], feed["scan_completed_at"])
 
 
 class AntigravityAcpTests(unittest.TestCase):
@@ -1030,6 +1040,34 @@ class OldModelAndAlertRegressionTests(unittest.TestCase):
         )
         found = scanner._extract_ide_blob_models(blob)
         self.assertEqual(found, {"claude-mythos-5-1-thinking-high"})
+
+    def test_litellm_scanners_do_not_turn_registry_sightings_into_releases(self) -> None:
+        from tracker.stories import build_stories
+
+        now = datetime.fromisoformat("2026-11-18T12:00:00+00:00")
+        pricing = type("Pricing", (), {"lookup": lambda self, raw: ""})()
+        legacy = {
+            "id": "litellm-diff-b6ed8142",
+            "scanner": "litellm",
+            "detected_at": "2026-11-16T23:37:28+00:00",
+            "models": [{"id": "together_ai/Qwen/Qwen4-Max", "released_on": "2026-11-16"}],
+        }
+        pinned = {
+            "id": "intel-0168494f83bc205d16de",
+            "scanner": "litellm-intelligence",
+            "intelligence": True,
+            "detected_at": "2026-11-18T08:49:00+00:00",
+            "models": [{"id": "Qwen4-Max", "released_on": "2026-11-16"}],
+        }
+        stories = build_stories([legacy, pinned], now=now, pricing_catalog=pricing)
+        self.assertEqual(len(stories), 1)
+        self.assertEqual(stories[0]["kind"], "registry")
+        self.assertEqual(stories[0]["released_on"], "2026-11-16")
+
+        launch = dict(pinned, id="provider-release", scanner="provider-openapi", intelligence=False)
+        stories = build_stories([legacy, pinned, launch], now=now, pricing_catalog=pricing)
+        self.assertEqual(len(stories), 1)
+        self.assertEqual(stories[0]["kind"], "release")
 
     def test_stories_merge_dotted_vendor_families_and_discord_never_double_alerts_or_spams_registry(self) -> None:
         from tracker.engine import TrackerEngine, _is_retired_card

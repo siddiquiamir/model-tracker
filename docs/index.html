@@ -133,17 +133,17 @@
     }
     .embed-author a { color: #FFFFFF; text-decoration: none; }
     .embed-author a:hover { color: #B9D5F5; text-decoration: underline; }
+    .story-title { font-size: 1.27rem; margin: 0; line-height: 1.25; overflow-wrap: anywhere; }
+    .story-timing { color: var(--muted); font-size: .79rem; overflow-wrap: anywhere; }
+    .source-health { margin: 0 0 12px; color: var(--muted); font-size: .82rem; }
+    .source-health summary { cursor: pointer; }
+    .source-health ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 5px 16px; padding: 0; list-style: none; }
+    .source-health li { overflow-wrap: anywhere; }
     .author-icon {
       width: 24px; height: 24px; border-radius: 50%; overflow: hidden; flex-shrink: 0;
       display: inline-flex; align-items: center; justify-content: center;
     }
     .author-icon svg { width: 24px; height: 24px; display: block; }
-    .embed-thumb {
-      width: 74px; height: 74px; border-radius: 16px; overflow: hidden; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
-    }
-    .embed-thumb svg { width: 74px; height: 74px; display: block; }
     .embed-counts {
       display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
       font-size: 15px; font-weight: 600; color: #FFFFFF;
@@ -251,6 +251,7 @@
 
   <main class="container">
     <div class="summary" id="summary"></div>
+    <details class="source-health" id="source-health" hidden><summary id="source-health-summary">Source health</summary><ul id="source-health-list"></ul></details>
     <section class="toolbar">
       <div class="tabs" id="tabs">
         <button class="tab active" data-tab="all">All</button>
@@ -263,6 +264,11 @@
       </div>
       <div class="tools">
         <select id="provider" aria-label="Provider"></select>
+        <select id="feed-range" aria-label="Date range" onchange="render()">
+          <option value="24">Last 24 hours</option>
+          <option value="168">Last 7 days</option>
+          <option value="all">All history</option>
+        </select>
         <input type="search" id="search" placeholder="Search model, ID or codename…" />
         <button class="btn btn-sm" onclick="markAllRead()">✓ Mark read</button>
       </div>
@@ -287,7 +293,6 @@
   </div>
   <div class="toast" id="toast"></div>
 
-  <script src="./html-to-image.js"></script>
   <script>
     let FEED = { stories: [], cards: [] };
     let STORIES = [];
@@ -339,7 +344,14 @@
       if (m < 48 * 60) return `${Math.round(m / 60)} h ago`;
       return `${Math.round(m / 1440)} d ago`;
     }
-    const hoursAgo = iso => (Date.now() - new Date(iso)) / 3600000;
+    function activityTime(s) {
+      const detected = Date.parse(s.detected_at) || 0;
+      if (s.kind !== "release") return Date.parse(s.updated_at) || detected;
+      const released = Date.parse(s.released_on);
+      if (!Number.isFinite(released)) return detected;
+      return detected >= released && detected < released + 86400000 ? detected : released;
+    }
+    const isRecent = (s, hours, now = Date.now()) => activityTime(s) >= now - hours * 3600000;
     const stageOf = s => {
       if (s.kind === "registry") return "registry";
       if (s.kind === "unverified") return "unverified";
@@ -356,7 +368,13 @@
 
     // Older feeds (before story grouping) only have cards: show one story per card
     function storiesFromFeed(feed) {
-      if (Array.isArray(feed.stories)) return feed.stories.filter(s => !String(s.id || "").startsWith("story-ct-"));
+      if (Array.isArray(feed.stories)) return feed.stories.filter(s => !String(s.id || "").startsWith("story-ct-")).map(s => {
+        const sources = s.sources || [];
+        const liteLlmOnly = sources.length && sources.every(src => ["litellm", "litellm-intelligence"].includes(src.scanner));
+        return liteLlmOnly && ["release", "leak"].includes(s.kind)
+          ? { ...s, kind: "registry", open_weights: false, codenames: [] }
+          : s;
+      });
       return (feed.cards || []).filter(c => c.scanner !== "cert-transparency" && c.scanner !== "cert-transparency-snapshot" && c.category !== "subdomain-ct").map(c => ({
         id: "story-" + c.id, kind: "leak", open_weights: c.category === "open-source", title: c.title,
         provider_slug: c.provider_slug, provider_name: "", detected_at: c.detected_at, updated_at: c.detected_at,
@@ -376,6 +394,17 @@
     function evidenceFor(s) {
       const cardIds = new Set(s.card_ids || [s.id.replace(/^story-/, "")]);
       return (FEED.cards || []).filter(card => cardIds.has(card.id));
+    }
+    function timingFor(story) {
+      const evidence = evidenceFor(story);
+      const first = read => evidence.map(card => Date.parse(read(card))).filter(Number.isFinite).sort((a, b) => a - b)[0];
+      const published = first(card => card.intelligence ? card.first_seen : card.source_published_at);
+      const modified = first(card => card.artifact_modified_at);
+      const observed = first(card => card.observed_at || card.tracker_observed_at);
+      const delivered = Date.parse(story.discord_alerted_at) || first(card => card.discord_alerted_at);
+      return [
+        ["Source build", published], ["Artifact modified", modified], ["Observed", observed], ["Discord delivered", delivered],
+      ].filter(([, value]) => Number.isFinite(value)).map(([label, value]) => `${label} ${fmtUTC(value, true)}`);
     }
     function modelsFor(s) {
       const originals = evidenceFor(s).flatMap(card => card.models || []);
@@ -452,6 +481,7 @@
         ? `<a href="${escapeHtml(primaryUrl)}" target="_blank" rel="noopener">${escapeHtml(headerLabel)}</a>`
         : `<span>${escapeHtml(headerLabel)}</span>`;
       const logo = logoSvg(s.provider_slug, s.provider_name);
+      const timing = timingFor(s);
       const badgeWord = stage === "registry" ? "UPDATE" : (stage === "unverified" ? "ALERT" : (isCkpt ? "CHECKPOINT" : "NEW"));
       const badgeClass = stage === "registry" ? "new-badge registry" : (stage === "unverified" ? "new-badge unverified" : "new-badge");
       const countText = isCkpt
@@ -477,6 +507,7 @@
                 <span class="author-icon">${logo}</span>
                 ${headerEl}
               </div>
+              ${s.title && !headerLabel.startsWith(s.title) ? `<h2 class="story-title">${escapeHtml(s.title)}</h2>` : ""}
               <div class="embed-counts">
                 <span class="${badgeClass}">${badgeWord}</span>
                 <span>${countText}</span>
@@ -486,8 +517,8 @@
               </div>
               <div class="section-head">${sectionHead}</div>
               ${ids}${moreIds}
+              ${timing.length ? `<div class="story-timing">${escapeHtml(timing.join(" | "))}</div>` : ""}
             </div>
-            <div class="embed-thumb">${logo}</div>
           </div>
           <div class="foot">
             <div class="credit-line"><img class="sw-badge" src="${STATSWIRE_LOGO_URI}" alt="StatsWire" /><span>Developed by <a class="watermark-link" href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a> on X</span></div>
@@ -503,14 +534,19 @@
 
     let STORIES_VIEW = [];
     function render() {
+      const now = Date.now();
       let seen = getSeen();
       if (!seen && STORIES.length) {  // first visit: only the last 24h counts as unread
-        seen = new Set(STORIES.filter(s => hoursAgo(s.updated_at || s.detected_at) > 24).map(s => s.id));
+        seen = new Set(STORIES.filter(s => !isRecent(s, 24, now)).map(s => s.id));
         saveSeen(seen);
       }
       const prov = document.getElementById("provider").value;
       const q = document.getElementById("search").value.trim().toLowerCase();
+      const range = document.getElementById("feed-range").value;
+      const showAllDates = range === "all" || !!q;
       STORIES_VIEW = STORIES.filter(s => {
+        if (!showAllDates && !isRecent(s, Number(range), now)) return false;
+        if (TAB === "all" && !showAllDates && s.kind === "registry") return false;
         if (TAB === "leak" && s.kind !== "leak") return false;
         if (TAB === "release" && s.kind !== "release") return false;
         if (TAB === "registry" && s.kind !== "registry") return false;
@@ -522,12 +558,12 @@
         const hay = [s.title, s.provider_name, s.first_source, s.pricing, ...(s.codenames || []), ...modelsFor(s).flatMap(model => [model.id, model.name, model.pricing, model.uuid, model.prev_uuid, model.host_slot]), ...evidenceFor(s).map(card => card.build_transition), ...(s.sources || []).map(x => x.label)].join(" ").toLowerCase();
         return hay.includes(q);
       });
-      const unread = seen ? STORIES.filter(s => !seen.has(s.id)).length : 0;
+      const unread = seen ? STORIES.filter(s => !seen.has(s.id) && (showAllDates || isRecent(s, Number(range), now))).length : 0;
       document.getElementById("tab-unread").textContent = `Unread (${unread})`;
       const feedEl = document.getElementById("feed");
       feedEl.innerHTML = STORIES_VIEW.length
         ? STORIES_VIEW.map((s, i) => storyHtml(s, i, seen)).join("")
-        : `<div class="empty">Nothing here yet.</div>`;
+        : `<div class="empty">${showAllDates ? "No matching alerts." : "No matching alerts in this date range."}</div>`;
     }
 
     function renderChrome() {
@@ -535,10 +571,10 @@
       const releases = STORIES.filter(s => s.kind === "release").length;
       const regUpdates = STORIES.filter(s => s.kind === "registry").length;
       const unverified = STORIES.filter(s => s.kind === "unverified").length;
-      const day = STORIES.filter(s => hoursAgo(s.updated_at || s.detected_at) <= 24).length;
+      const day = STORIES.filter(s => s.kind !== "registry" && isRecent(s, 24)).length;
       const srcCount = STORIES.reduce((n, s) => n + (s.sources || []).length, 0);
       document.getElementById("summary").innerHTML =
-        `<b>${STORIES.length}</b> alerts tracked (last 21 days) · <b>${leaks}</b> leaks · <b>${releases}</b> new models · <b>${regUpdates}</b> registry updates · <b>${unverified}</b> unverified · <b>${day}</b> active in 24h · ${srcCount} source sightings merged`;
+        `<b>${STORIES.length}</b> alerts tracked (last 21 days) · <b>${leaks}</b> leaks · <b>${releases}</b> new models · <b>${regUpdates}</b> registry updates · <b>${unverified}</b> unverified · <b>${day}</b> recent non-registry alerts (24h) · ${srcCount} source sightings merged`;
       const counts = {};
       STORIES.forEach(s => { const p = s.provider_name || "Other"; counts[p] = (counts[p] || 0) + 1; });
       const sel = document.getElementById("provider");
@@ -546,6 +582,17 @@
       sel.innerHTML = `<option value="">All providers</option>` + Object.entries(counts).sort((a, b) => b[1] - a[1])
         .map(([p, n]) => `<option value="${escapeHtml(p)}">${escapeHtml(p)} (${n})</option>`).join("");
       sel.value = counts[cur] ? cur : "";
+      const health = Object.entries(FEED.source_health || {}).flatMap(([name, state]) => [
+        [name, state], ...Object.entries(state.subsources || {}),
+      ]);
+      const degraded = health.filter(([, state]) => state.status !== "ok" || state.stale).length;
+      document.getElementById("source-health").hidden = !health.length;
+      document.getElementById("source-health-summary").textContent = `Source health (${degraded} need attention)`;
+      document.getElementById("source-health-list").innerHTML = health.map(([name, state]) => {
+        const status = state.stale && state.status === "ok" ? "stale" : state.status || "pending";
+        const checked = state.last_success || (state.status === "ok" && state.checked_at);
+        return `<li><b>${escapeHtml(name)}</b> · ${escapeHtml(status)}${checked ? ` · ${escapeHtml(fmtUTC(checked))}` : ""}${state.reason ? ` · ${escapeHtml(state.reason.replaceAll("_", " "))}` : ""}</li>`;
+      }).join("");
       renderStatus();
     }
 
@@ -565,11 +612,12 @@
       }
     }
     function latestScanTime() {
-      return Math.max(Date.parse(HEARTBEAT?.last_scan) || 0, Date.parse(FEED.generated_at) || 0);
+      return Math.max(Date.parse(HEARTBEAT?.last_scan) || 0, Date.parse(FEED.scan_completed_at || FEED.generated_at) || 0);
     }
     function renderStatus() {
-      const hb = HEARTBEAT && HEARTBEAT.last_scan && new Date(HEARTBEAT.last_scan) > new Date(FEED.generated_at || 0) ? HEARTBEAT : null;
-      const last = hb ? hb.last_scan : FEED.generated_at;
+      const feedScan = FEED.scan_completed_at || FEED.generated_at;
+      const hb = HEARTBEAT && HEARTBEAT.last_scan && new Date(HEARTBEAT.last_scan) > new Date(feedScan || 0) ? HEARTBEAT : null;
+      const last = hb ? hb.last_scan : feedScan;
       if (!last) return;
       const mins = (Date.now() - new Date(last)) / 60000;
       document.getElementById("status-dot").className = "dot" + (mins > 15 ? " stale" : "");
@@ -591,7 +639,7 @@
       // Prefer a story-format feed, then the freshest one
       feeds.sort((a, b) => (!!b.stories - !!a.stories) || (new Date(b.generated_at || 0) - new Date(a.generated_at || 0)));
       FEED = feeds[0];
-      STORIES = storiesFromFeed(FEED).sort((a, b) => new Date(b.detected_at) - new Date(a.detected_at));
+      STORIES = storiesFromFeed(FEED).sort((a, b) => activityTime(b) - activityTime(a));
       renderChrome();
       render();
       return true;
@@ -647,28 +695,89 @@
     }
 
     let sharePending = false;
+    function shareImage(uri) {
+      return new Promise((resolve, reject) => {
+        const image = new Image();
+        image.onload = () => resolve(image);
+        image.onerror = reject;
+        image.src = uri;
+      });
+    }
+    function drawShareText(ctx, text, left, top, maxWidth, lineHeight, maxLines) {
+      let remaining = String(text || "").trim();
+      for (let line = 0; line < maxLines && remaining; line++) {
+        let length = remaining.length;
+        while (length > 1 && ctx.measureText(remaining.slice(0, length) + (line === maxLines - 1 && length < remaining.length ? "…" : "")).width > maxWidth) length--;
+        if (length < remaining.length && line < maxLines - 1) {
+          const space = remaining.lastIndexOf(" ", length);
+          if (space > length / 2) length = space;
+        }
+        const clipped = length < remaining.length && line === maxLines - 1;
+        ctx.fillText(remaining.slice(0, length).trimEnd() + (clipped ? "…" : ""), left, top + line * lineHeight);
+        remaining = remaining.slice(length).trimStart();
+      }
+    }
     async function openShare(idx) {
       if (sharePending) return;
       const story = STORIES_VIEW[idx];
-      const card = document.querySelectorAll(".story")[idx];
-      if (!story || !card) return;
+      if (!story) return;
       sharePending = true;
       try {
         await document.fonts.ready;
-        const snapshot = await htmlToImage.toCanvas(card, {
-          pixelRatio: 2,
-          skipFonts: true,
-          filter: node => !(node.classList && node.classList.contains("actions")),
-        });
+        const svg = logoSvg(story.provider_slug, story.provider_name).replace("<svg ", '<svg xmlns="http://www.w3.org/2000/svg" ');
+        const provider = await shareImage("data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg));
         const canvas = document.getElementById("share-canvas");
-        canvas.width = snapshot.width; canvas.height = snapshot.height;
-        canvas.getContext("2d").drawImage(snapshot, 0, 0);
-        canvas.style.maxWidth = snapshot.width / 2 + "px";
+        canvas.width = 1200; canvas.height = 675;
+        const ctx = canvas.getContext("2d");
+        const stage = stageOf(story);
+        const accent = { leak: "#f6ce77", release: "#85dfa8", open: "#85dfa8", registry: "#83cfff", unverified: "#b3bfce" }[stage];
+        ctx.fillStyle = "#080a0d";
+        ctx.fillRect(0, 0, 1200, 675);
+        ctx.save();
+        ctx.rotate(-0.15);
+        ctx.fillStyle = "#151a22";
+        ctx.font = '700 22px "Segoe UI", sans-serif';
+        for (let top = 170; top < 820; top += 150) {
+          for (let left = -60; left < 1320; left += 280) ctx.fillText("@StatsWire", left, top);
+        }
+        ctx.restore();
+        ctx.strokeStyle = "#303946";
+        ctx.strokeRect(20.5, 20.5, 1159, 634);
+        ctx.fillStyle = accent;
+        ctx.fillRect(68, 61, 43, 4);
+        ctx.font = '700 23px "Segoe UI", sans-serif';
+        ctx.fillText(STAGE_LABEL[stage], 68, 104);
+        ctx.drawImage(provider, 1018, 63, 100, 100);
+        ctx.fillStyle = "#f5f7fa";
+        ctx.font = '700 68px "Segoe UI", sans-serif';
+        drawShareText(ctx, story.title, 68, 213, 925, 76, 2);
+        ctx.fillStyle = "#aebaca";
+        ctx.font = '500 29px "Segoe UI", sans-serif';
+        const source = story.sources?.[0];
+        const proof = evidenceFor(story).find(card => card.scanner === source?.scanner);
+        const transition = String(proof?.build_transition || "");
+        const build = source?.build || (transition.includes("->") ? transition.replace(/\s*->\s*/g, " → ") : "");
+        const sourceLine = [story.first_source || source?.label, build].filter(Boolean).join(" · ");
+        drawShareText(ctx, sourceLine, 68, 349, 1050, 36, 1);
+        const identifiers = (story.models || []).map(model => model.id).filter(Boolean).slice(0, 2);
+        ctx.fillStyle = accent;
+        ctx.font = '500 24px Consolas, monospace';
+        drawShareText(ctx, identifiers.join("  /  "), 68, 421, 1050, 30, 2);
+        ctx.fillStyle = "#aebaca";
+        ctx.font = '400 22px "Segoe UI", sans-serif';
+        const timing = timingFor(story);
+        drawShareText(ctx, timing.find(line => line.startsWith("Observed ")) || (story.detected_at ? `Tracker record: ${fmtUTC(story.detected_at, true)}` : ""), 68, 525, 1050, 28, 1);
+        ctx.fillStyle = "#303946";
+        ctx.fillRect(68, 560, 1064, 1);
+        ctx.fillStyle = "#f5f7fa";
+        ctx.font = '700 25px "Segoe UI", sans-serif';
+        ctx.fillText("Developed by @StatsWire on X", 68, 610);
+        canvas.style.maxWidth = "800px";
         canvas.style.margin = "0 auto";
         SHARE_STORY = story;
         document.getElementById("modal").classList.add("open");
       } catch {
-        toast("Could not capture this card. Please try again.");
+        toast("Could not render this card. Please try again.");
       } finally {
         sharePending = false;
       }

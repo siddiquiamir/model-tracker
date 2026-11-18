@@ -253,6 +253,7 @@ class TrackerEngine:
         for card in pending[:20]:
             try:
                 if send_discord_webhook([card], github_user=self.github_user, embed_builder=build_intelligence_embed):
+                    card["discord_alerted_at"] = datetime.now(timezone.utc).isoformat()
                     seen.add(f"intel-alert-{card['id']}")
                     self.save_seen_ids(seen)
             except Exception:
@@ -301,12 +302,16 @@ class TrackerEngine:
             c for c in self.load_previous_cards()
             if not _is_retired_card(c) and not (c.get("intelligence") and c.get("backfill"))
         ]
+        previous_cards_by_id = {card["id"]: card for card in prev_cards}
         prev_codenames = {c["id"]: c["codenames"] for c in prev_cards if c.get("codenames")}
         scanner_runs = _load_json(SCANNER_RUNS_FILE, {})
         health_path = DATA_DIR / "intelligence/source_health.json"
         source_health = _load_json(health_path, {})
         public_names = _public_names_snapshot()
         now = datetime.now(timezone.utc)
+        catalog = None
+        early_intelligence_ids: Set[str] = set()
+        early_delivery_times: Dict[str, str] = {}
 
         # (name, callable, min seconds between runs, scanner tags it owns)
         scanner_specs = [
@@ -350,6 +355,14 @@ class TrackerEngine:
                     intelligence_status[name] = dict(health)
                 continue
             completed = datetime.now(timezone.utc).isoformat()
+            for card in cards:
+                previous = previous_cards_by_id.get(card["id"])
+                if previous is None:
+                    card.setdefault("tracker_observed_at", completed)
+                else:
+                    for field in ("tracker_observed_at", "discord_alerted_at", "artifact_modified_at"):
+                        if previous.get(field):
+                            card.setdefault(field, previous[field])
             health.update(status="ok", last_success=completed, error_type=None, consecutive_failures=0, stale=False, duration_seconds=round(time.monotonic() - t0, 3))
             if name == "high-alpha":
                 health["subsources"] = dict(self.high_alpha_scanner.source_health)
@@ -359,6 +372,12 @@ class TrackerEngine:
                 cards = classify_known(cards, public_names)
                 health.update(intelligence_by_source[name].status)
                 intelligence_status[name] = dict(health)
+                if notify_discord and name in {"devin-cli", "devin-desktop"} and cards:
+                    catalog = catalog or novelty.get_catalog(public_names)
+                    early_cards = novelty.apply([dict(card, models=[dict(model) for model in card.get("models", [])]) for card in cards], catalog)
+                    self.notify_intelligence(early_cards, catalog=catalog)
+                    early_intelligence_ids.update(card["id"] for card in early_cards)
+                    early_delivery_times.update({card["id"]: card["discord_alerted_at"] for card in early_cards if card.get("discord_alerted_at")})
             elif name == "docs-registries":
                 cards = [card for card in cards if card.get("scanner") not in {"litellm", "models-dev"}]
             fresh_cards.extend(cards)
@@ -428,15 +447,17 @@ class TrackerEngine:
                 card["detected_at"] = prev_timestamps[cid]
             if cid in prev_codenames:
                 card["codenames"] = sorted(set(card.get("codenames") or []) | set(prev_codenames[cid]))
+            if cid in early_delivery_times:
+                card["discord_alerted_at"] = early_delivery_times[cid]
 
             all_cards.append(card)
 
         # Drop models that were already public when the card was detected; flag unknown codename tokens
         n_before = len(all_cards)
-        catalog = novelty.get_catalog(public_names)
+        catalog = catalog or novelty.get_catalog(public_names)
         all_cards = novelty.apply(all_cards, catalog)
         print(f"[ModelPulse] novelty filter: {n_before} -> {len(all_cards)} card(s)")
-        self.notify_intelligence([c for c in all_cards if c.get("intelligence")], notify_discord, catalog=catalog)
+        self.notify_intelligence([c for c in all_cards if c.get("intelligence") and c["id"] not in early_intelligence_ids], notify_discord, catalog=catalog)
 
         # Attach live pricing from Official Docs, LiteLLM, models.dev & OpenRouter to every card and model
         ledger = IdentityLedger(DATA_DIR / "intelligence")
@@ -457,14 +478,18 @@ class TrackerEngine:
 
         # One story per model across all sources; notify once per story (and once more when a leak ships)
         stories = story_mod.build_stories(all_cards, catalog, now=now, pricing_catalog=pricing_catalog)
+        previous_stories = _load_json(FEED_FILE, {}).get("stories", [])
+        deliveries = {story["id"]: story["discord_alerted_at"] for story in previous_stories if story.get("discord_alerted_at")}
         for s in stories:
+            if s["id"] in deliveries:
+                s["discord_alerted_at"] = deliveries[s["id"]]
             s["x_post_text"] = story_mod.story_x_text(s)
 
         seen_ids = self.load_seen_ids()
         first_run = not seen_ids
         story_migration = not any(i.startswith("story-") for i in seen_ids)
         if STORY_ALERT_VERSION not in seen_ids:
-            for previous_story in _load_json(FEED_FILE, {}).get("stories", []):
+            for previous_story in previous_stories:
                 previous_id = previous_story["id"]
                 if previous_id in seen_ids:
                     seen_ids.update(_story_alert_marks(previous_story) - {previous_id, previous_id + "#release"})
@@ -516,6 +541,10 @@ class TrackerEngine:
                 notified_ok = send_discord_webhook(
                     notify_stories[:20], github_user=self.github_user, embed_builder=build_story_embed
                 )
+                if notified_ok:
+                    delivered_at = datetime.now(timezone.utc).isoformat()
+                    for story in notify_stories[:20]:
+                        story["discord_alerted_at"] = delivered_at
                 print(f"[ModelPulse] Discord: {'sent' if notified_ok else 'not sent'} {min(len(notify_stories), 20)} story alert(s).")
             except Exception as exc:
                 notified_ok = False
@@ -534,6 +563,7 @@ class TrackerEngine:
         day_ago = (now - timedelta(hours=24)).isoformat()
         feed_payload: Dict[str, Any] = {
             "generated_at": now.isoformat(),
+            "scan_completed_at": datetime.now(timezone.utc).isoformat(),
             "github_user": self.github_user,
             "stats": {
                 "stories": len(stories),

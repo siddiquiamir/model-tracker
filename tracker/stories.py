@@ -466,7 +466,9 @@ def _make_story(
             if (is_previously_released or all(card.get("event_label") == "Registry update" for card in cards))
             else "unverified"
         )
-    elif is_litellm_registry_group or (scanners <= {"litellm", "models-dev"} and is_previously_released):
+    elif is_litellm_registry_group or scanners <= {"litellm", "litellm-intelligence"} or (
+        scanners <= {"litellm", "litellm-intelligence", "models-dev"} and is_previously_released
+    ):
         kind = "registry"
     elif scanners <= UNVERIFIED_SCANNERS or is_anonymous or is_stealth_gateway:
         kind = "unverified"

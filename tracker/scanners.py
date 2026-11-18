@@ -5200,14 +5200,23 @@ class HighAlphaLeakChannelsScanner:
             return cards, changed
 
         bin_url = f"https://downloads.factory.ai/factory-cli/releases/{curr_ver}/linux/x64/droid"
+        artifact_modified_at = ""
 
         def _range_get(start: int, end: int) -> bytes:
+            nonlocal artifact_modified_at
             req = urllib.request.Request(
                 bin_url,
                 headers={"User-Agent": "ModelPulse-Tracker/2.0", "Range": f"bytes={start}-{end}"},
             )
             with urllib.request.urlopen(req, timeout=30) as resp:
-                return resp.read()
+                expected = end - start + 1
+                if resp.status != 206 or not re.fullmatch(rf"bytes {start}-{end}/\d+", resp.headers.get("Content-Range", "")):
+                    raise ValueError("Factory binary did not honor requested byte range")
+                artifact_modified_at = artifact_modified_at or resp.headers.get("Last-Modified", "")
+                data = resp.read(expected + 1)
+                if len(data) != expected:
+                    raise ValueError("Factory binary returned an incomplete byte range")
+                return data
 
         head = _range_get(0, 4095)
         if len(head) < 64 or head[:4] != b"\x7fELF":
@@ -5274,6 +5283,7 @@ class HighAlphaLeakChannelsScanner:
                         {"label": "Factory Docs", "url": "https://docs.factory.ai"},
                     ],
                     "detected_at": datetime.now(timezone.utc).isoformat(),
+                    "artifact_modified_at": artifact_modified_at,
                 }
             )
 
