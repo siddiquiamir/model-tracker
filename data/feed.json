@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-18T21:10:10.207511+00:00",
-  "scan_completed_at": "2026-11-18T21:11:41.917961+00:00",
+  "generated_at": "2026-11-18T21:14:11.057471+00:00",
+  "scan_completed_at": "2026-11-18T21:15:42.802474+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 162,
@@ -8,8 +8,8 @@
     "releases": 70,
     "stories_24h": 51,
     "sources_ok": 13,
-    "total_cards": 326,
-    "new_in_this_scan": 6
+    "total_cards": 328,
+    "new_in_this_scan": 2
   },
   "stories": [
     {
@@ -2860,7 +2860,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-17T18:31:10.791Z",
-      "updated_at": "2026-11-18T21:11:09.182350+00:00",
+      "updated_at": "2026-11-18T21:15:10.296154+00:00",
       "first_source": "npm SDK release",
       "lead": "10 h before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "2026-11-17",
@@ -2873,7 +2873,7 @@
         },
         {
           "id": "gpt-6.2-astra",
-          "name": "amazon-bedrock/global.openai.gpt-6.2-astra",
+          "name": "novita-ai/openai/gpt-6.2-astra",
           "released_on": "2026-11-17"
         },
         {
@@ -3022,7 +3022,8 @@
         "intel-a5c98aff103592852c8d",
         "intel-45203a6c3e43673444e9",
         "intel-3500f02d566203e21e52",
-        "intel-9f611c4f456346a61b76"
+        "intel-9f611c4f456346a61b76",
+        "intel-9fc4e63bdd10540b24c2"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -3331,6 +3332,34 @@
           "build": "3f33e33c9e7b782085d1f650b9ae51d43d76e1f59ddece7ebe60c1cb39f1a0c8",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-18T21:11:08.847170+00:00"
+        },
+        {
+          "id": "novita-ai/openai/gpt-6.2-astra",
+          "family": "gpt-6.2-astra",
+          "file_path": "api.json?type=all",
+          "file_sha256": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+          "excerpt": "{\"novita-ai/openai/gpt-6.2-astra\": {\"id\": \"openai/gpt-6.2-astra\", \"name\": \"GPT-6.2 Astra\", \"description\": \"A frontier reasoning model for coding, computer use, and professional work such as slides, spreadsheets, and documents.\", \"family\": \"gpt-astra\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-05-18\", \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"cost\": {\"input\": 8, \"output\": 40, \"cache_read\": 0.4, \"tiers\": [{\"input\": 16, \"output\": 60, \"cache_read\": 0.8, \"tier\": {\"type\": \"context\", \"size\": 272000}}], \"context_over_200k\": {\"input\": 16, \"output\": 60, \"cache_read\": 0.8}}, \"canonical_model_id\": \"openai/gpt-6.2-astra\"}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T21:15:09.958721+00:00"
+        },
+        {
+          "id": "ofox/openai/gpt-6.2-astra",
+          "family": "gpt-6.2-astra",
+          "file_path": "api.json?type=all",
+          "file_sha256": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+          "excerpt": "{\"ofox/openai/gpt-6.2-astra\": {\"id\": \"openai/gpt-6.2-astra\", \"name\": \"GPT-6.2 Astra\", \"description\": \"A frontier reasoning model for coding, computer use, and professional work such as slides, spreadsheets, and documents.\", \"family\": \"gpt-astra\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-05-18\", \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"provider\": {\"npm\": \"@ai-sdk/openai\", \"api\": \"https://api.ofox.ai/v1\"}, \"cost\": {\"input\": 8, \"output\": 40, \"cache_read\": 0.4, \"cache_write\": 10, \"tiers\": [{\"input\": 16, \"output\": 60, \"cache_read\": 0.8, \"cache_write\": 20, \"tier\": {\"type\": \"context\", \"size\": 272000}}], \"context_over_200k\": {\"input\": 16, \"output\": 60, \"cache_read\": 0.8, \"cache_write\": 20}}, \"canonical_model_id\": \"openai/gpt-6.2-astra\"}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T21:15:09.958721+00:00"
         }
       ],
       "x_post_text": "🟢 NEW MODEL: GPT 6.2 Astra by OpenAI\n\nFirst detected 17 Nov 18:31 UTC in npm SDK release\n📅 First released: 2026-11-17\n⏱ 10 h before it went live on Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire"
@@ -3345,7 +3374,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-17T18:31:10.791Z",
-      "updated_at": "2026-11-18T21:11:09.182350+00:00",
+      "updated_at": "2026-11-18T21:15:10.296154+00:00",
       "first_source": "npm SDK release",
       "lead": "10 h before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "2026-11-17",
@@ -3354,7 +3383,7 @@
       "models": [
         {
           "id": "gpt-6.2-sol",
-          "name": "amazon-bedrock/global.openai.gpt-6.2-sol",
+          "name": "novita-ai/openai/gpt-6.2-sol",
           "released_on": "2026-11-17"
         },
         {
@@ -3504,7 +3533,8 @@
         "intel-07b30f43b170d7b4b8f7",
         "intel-65ee2ecadd5889cb5988",
         "intel-2434b62df35c76817821",
-        "intel-49c82d62aa7641851668"
+        "intel-49c82d62aa7641851668",
+        "intel-36e2ee21bd610b7497f5"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -3813,6 +3843,34 @@
           "build": "3f33e33c9e7b782085d1f650b9ae51d43d76e1f59ddece7ebe60c1cb39f1a0c8",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-18T21:11:08.847170+00:00"
+        },
+        {
+          "id": "novita-ai/openai/gpt-6.2-sol",
+          "family": "gpt-6.2-sol",
+          "file_path": "api.json?type=all",
+          "file_sha256": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+          "excerpt": "{\"novita-ai/openai/gpt-6.2-sol\": {\"id\": \"openai/gpt-6.2-sol\", \"name\": \"GPT-6.2 Sol\", \"description\": \"An efficient reasoning model for everyday work, multistep agentic workflows, and coding.\", \"family\": \"gpt-sol\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-06-01\", \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"cost\": {\"input\": 2, \"output\": 10, \"cache_read\": 0.1, \"tiers\": [{\"input\": 4, \"output\": 15, \"cache_read\": 0.2, \"tier\": {\"type\": \"context\", \"size\": 272000}}], \"context_over_200k\": {\"input\": 4, \"output\": 15, \"cache_read\": 0.2}}, \"canonical_model_id\": \"openai/gpt-6.2-sol\"}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T21:15:09.958721+00:00"
+        },
+        {
+          "id": "ofox/openai/gpt-6.2-sol",
+          "family": "gpt-6.2-sol",
+          "file_path": "api.json?type=all",
+          "file_sha256": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+          "excerpt": "{\"ofox/openai/gpt-6.2-sol\": {\"id\": \"openai/gpt-6.2-sol\", \"name\": \"GPT-6.2 Sol\", \"description\": \"An efficient reasoning model for everyday work, multistep agentic workflows, and coding.\", \"family\": \"gpt-sol\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-06-01\", \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"provider\": {\"npm\": \"@ai-sdk/openai\", \"api\": \"https://api.ofox.ai/v1\"}, \"cost\": {\"input\": 2, \"output\": 10, \"cache_read\": 0.1, \"cache_write\": 2.5, \"tiers\": [{\"input\": 4, \"output\": 15, \"cache_read\": 0.2, \"cache_write\": 5, \"tier\": {\"type\": \"context\", \"size\": 272000}}], \"context_over_200k\": {\"input\": 4, \"output\": 15, \"cache_read\": 0.2, \"cache_write\": 5}}, \"canonical_model_id\": \"openai/gpt-6.2-sol\"}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T21:15:09.958721+00:00"
         }
       ],
       "x_post_text": "🟢 NEW MODEL: GPT 6.2 Sol by OpenAI\n\nFirst detected 17 Nov 18:31 UTC in npm SDK release\n📅 First released: 2026-11-17\n⏱ 10 h before it went live on Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire"
@@ -11010,6 +11068,232 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-9fc4e63bdd10540b24c2",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-astra",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "gpt-6.2-astra",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "novita-ai/openai/gpt-6.2-astra",
+          "name": "novita-ai/openai/gpt-6.2-astra",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        },
+        {
+          "id": "ofox/openai/gpt-6.2-astra",
+          "name": "ofox/openai/gpt-6.2-astra",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-18T21:15:10.296154+00:00",
+      "first_seen": "2026-11-18T21:15:09.958721+00:00",
+      "observed_at": "2026-11-18T21:15:10.296154+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "3f33e33c9e7b782085d1f650b9ae51d43d76e1f59ddece7ebe60c1cb39f1a0c8 -> 5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+      "build": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "novita-ai/openai/gpt-6.2-astra",
+          "family": "gpt-6.2-astra",
+          "file_path": "api.json?type=all",
+          "file_sha256": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+          "excerpt": "{\"novita-ai/openai/gpt-6.2-astra\": {\"id\": \"openai/gpt-6.2-astra\", \"name\": \"GPT-6.2 Astra\", \"description\": \"A frontier reasoning model for coding, computer use, and professional work such as slides, spreadsheets, and documents.\", \"family\": \"gpt-astra\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-05-18\", \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"cost\": {\"input\": 8, \"output\": 40, \"cache_read\": 0.4, \"tiers\": [{\"input\": 16, \"output\": 60, \"cache_read\": 0.8, \"tier\": {\"type\": \"context\", \"size\": 272000}}], \"context_over_200k\": {\"input\": 16, \"output\": 60, \"cache_read\": 0.8}}, \"canonical_model_id\": \"openai/gpt-6.2-astra\"}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T21:15:09.958721+00:00"
+        },
+        {
+          "id": "ofox/openai/gpt-6.2-astra",
+          "family": "gpt-6.2-astra",
+          "file_path": "api.json?type=all",
+          "file_sha256": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+          "excerpt": "{\"ofox/openai/gpt-6.2-astra\": {\"id\": \"openai/gpt-6.2-astra\", \"name\": \"GPT-6.2 Astra\", \"description\": \"A frontier reasoning model for coding, computer use, and professional work such as slides, spreadsheets, and documents.\", \"family\": \"gpt-astra\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-05-18\", \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"provider\": {\"npm\": \"@ai-sdk/openai\", \"api\": \"https://api.ofox.ai/v1\"}, \"cost\": {\"input\": 8, \"output\": 40, \"cache_read\": 0.4, \"cache_write\": 10, \"tiers\": [{\"input\": 16, \"output\": 60, \"cache_read\": 0.8, \"cache_write\": 20, \"tier\": {\"type\": \"context\", \"size\": 272000}}], \"context_over_200k\": {\"input\": 16, \"output\": 60, \"cache_read\": 0.8, \"cache_write\": 20}}, \"canonical_model_id\": \"openai/gpt-6.2-astra\"}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T21:15:09.958721+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-6.2-astra",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/f981489233e184decee114efd6668d17caa5bd9458b3c53ae5d91ef2c9890051.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-18T21:15:12.936667+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 5a0c82c9e897: novita-ai/openai/gpt-6.2-astra, ofox/openai/gpt-6.2-astra\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
+    {
+      "id": "intel-36e2ee21bd610b7497f5",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-sol",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "gpt-6.2-sol",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "novita-ai/openai/gpt-6.2-sol",
+          "name": "novita-ai/openai/gpt-6.2-sol",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        },
+        {
+          "id": "ofox/openai/gpt-6.2-sol",
+          "name": "ofox/openai/gpt-6.2-sol",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-18T21:15:10.296154+00:00",
+      "first_seen": "2026-11-18T21:15:09.958721+00:00",
+      "observed_at": "2026-11-18T21:15:10.296154+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "3f33e33c9e7b782085d1f650b9ae51d43d76e1f59ddece7ebe60c1cb39f1a0c8 -> 5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+      "build": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "novita-ai/openai/gpt-6.2-sol",
+          "family": "gpt-6.2-sol",
+          "file_path": "api.json?type=all",
+          "file_sha256": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+          "excerpt": "{\"novita-ai/openai/gpt-6.2-sol\": {\"id\": \"openai/gpt-6.2-sol\", \"name\": \"GPT-6.2 Sol\", \"description\": \"An efficient reasoning model for everyday work, multistep agentic workflows, and coding.\", \"family\": \"gpt-sol\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-06-01\", \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"cost\": {\"input\": 2, \"output\": 10, \"cache_read\": 0.1, \"tiers\": [{\"input\": 4, \"output\": 15, \"cache_read\": 0.2, \"tier\": {\"type\": \"context\", \"size\": 272000}}], \"context_over_200k\": {\"input\": 4, \"output\": 15, \"cache_read\": 0.2}}, \"canonical_model_id\": \"openai/gpt-6.2-sol\"}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T21:15:09.958721+00:00"
+        },
+        {
+          "id": "ofox/openai/gpt-6.2-sol",
+          "family": "gpt-6.2-sol",
+          "file_path": "api.json?type=all",
+          "file_sha256": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+          "excerpt": "{\"ofox/openai/gpt-6.2-sol\": {\"id\": \"openai/gpt-6.2-sol\", \"name\": \"GPT-6.2 Sol\", \"description\": \"An efficient reasoning model for everyday work, multistep agentic workflows, and coding.\", \"family\": \"gpt-sol\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-06-01\", \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"provider\": {\"npm\": \"@ai-sdk/openai\", \"api\": \"https://api.ofox.ai/v1\"}, \"cost\": {\"input\": 2, \"output\": 10, \"cache_read\": 0.1, \"cache_write\": 2.5, \"tiers\": [{\"input\": 4, \"output\": 15, \"cache_read\": 0.2, \"cache_write\": 5, \"tier\": {\"type\": \"context\", \"size\": 272000}}], \"context_over_200k\": {\"input\": 4, \"output\": 15, \"cache_read\": 0.2, \"cache_write\": 5}}, \"canonical_model_id\": \"openai/gpt-6.2-sol\"}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T21:15:09.958721+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-6.2-sol",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/f981489233e184decee114efd6668d17caa5bd9458b3c53ae5d91ef2c9890051.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-18T21:15:12.936667+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 5a0c82c9e897: novita-ai/openai/gpt-6.2-sol, ofox/openai/gpt-6.2-sol\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "intel-45203a6c3e43673444e9",
       "scanner": "models-dev-api",
@@ -27949,25 +28233,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T21:11:07.587998+00:00",
+      "last_attempt": "2026-11-18T21:15:07.392030+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T21:11:11.707419+00:00",
+      "last_success": "2026-11-18T21:15:12.936667+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.119,
-      "latest_build": "3f33e33c9e7b782085d1f650b9ae51d43d76e1f59ddece7ebe60c1cb39f1a0c8",
-      "builds_retained": 9,
-      "identifiers": 9605
+      "duration_seconds": 5.545,
+      "latest_build": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+      "builds_retained": 10,
+      "identifiers": 9610
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-18T21:11:11.866353+00:00",
+      "last_attempt": "2026-11-18T21:15:13.098987+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T21:11:12.438231+00:00",
+      "last_success": "2026-11-18T21:15:13.465377+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.572,
+      "duration_seconds": 0.367,
       "latest_build": "bfeaf183ab68096a4f2d0f94e86f31639918a004",
       "builds_retained": 10,
       "identifiers": 6918
@@ -27988,11 +28272,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-18T21:11:12.603646+00:00",
+      "last_attempt": "2026-11-18T21:15:13.627483+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 252,
-      "duration_seconds": 18.224
+      "consecutive_failures": 254,
+      "duration_seconds": 18.306
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -28012,61 +28296,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T21:10:10.207586+00:00",
+      "last_attempt": "2026-11-18T21:14:11.057539+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T21:10:12.232283+00:00",
+      "last_success": "2026-11-18T21:14:13.331579+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.025
+      "duration_seconds": 2.274
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T21:10:12.232360+00:00",
+      "last_attempt": "2026-11-18T21:14:13.331647+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T21:10:12.364733+00:00",
+      "last_success": "2026-11-18T21:14:13.461173+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.132
+      "duration_seconds": 0.13
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T21:10:12.364779+00:00",
+      "last_attempt": "2026-11-18T21:14:13.461221+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T21:10:19.373447+00:00",
+      "last_success": "2026-11-18T21:14:21.194115+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.009
+      "duration_seconds": 7.733
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T21:10:19.373515+00:00",
+      "last_attempt": "2026-11-18T21:14:21.194189+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T21:11:07.587928+00:00",
+      "last_success": "2026-11-18T21:15:07.391958+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 48.214,
+      "duration_seconds": 46.198,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-18T21:10:19.606500+00:00",
+          "checked_at": "2026-11-18T21:14:21.383847+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-18T21:10:31.045021+00:00",
+          "checked_at": "2026-11-18T21:14:32.761178+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-18T21:10:31.218230+00:00",
+          "checked_at": "2026-11-18T21:14:32.939641+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-18T21:10:31.218250+00:00",
+          "checked_at": "2026-11-18T21:14:32.939659+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -28074,25 +28358,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T21:11:07.587998+00:00",
+      "last_attempt": "2026-11-18T21:15:07.392030+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T21:11:11.707419+00:00",
+      "last_success": "2026-11-18T21:15:12.936667+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.119,
-      "latest_build": "3f33e33c9e7b782085d1f650b9ae51d43d76e1f59ddece7ebe60c1cb39f1a0c8",
-      "builds_retained": 9,
-      "identifiers": 9605
+      "duration_seconds": 5.545,
+      "latest_build": "5a0c82c9e8976b314e4152374f5db9fa0b4c4d02d94fd970e94000e2a000a085",
+      "builds_retained": 10,
+      "identifiers": 9610
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-18T21:11:11.866353+00:00",
+      "last_attempt": "2026-11-18T21:15:13.098987+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T21:11:12.438231+00:00",
+      "last_success": "2026-11-18T21:15:13.465377+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.572,
+      "duration_seconds": 0.367,
       "latest_build": "bfeaf183ab68096a4f2d0f94e86f31639918a004",
       "builds_retained": 10,
       "identifiers": 6918
@@ -28113,11 +28397,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-18T21:11:12.603646+00:00",
+      "last_attempt": "2026-11-18T21:15:13.627483+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 252,
-      "duration_seconds": 18.224
+      "consecutive_failures": 254,
+      "duration_seconds": 18.306
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -28135,22 +28419,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T21:11:30.831549+00:00",
+      "last_attempt": "2026-11-18T21:15:31.937922+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T21:11:39.153438+00:00",
+      "last_success": "2026-11-18T21:15:40.335831+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.322
+      "duration_seconds": 8.398
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T21:11:39.153510+00:00",
+      "last_attempt": "2026-11-18T21:15:40.335933+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T21:11:40.885578+00:00",
+      "last_success": "2026-11-18T21:15:41.852616+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.732
+      "duration_seconds": 1.517
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -28165,27 +28449,27 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T21:11:40.885641+00:00",
+      "last_attempt": "2026-11-18T21:15:41.852682+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T21:11:41.564666+00:00",
+      "last_success": "2026-11-18T21:15:42.417250+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.679
+      "duration_seconds": 0.565
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T21:11:41.564719+00:00",
+      "last_attempt": "2026-11-18T21:15:42.417303+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T21:11:41.592686+00:00",
+      "last_success": "2026-11-18T21:15:42.480690+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.028
+      "duration_seconds": 0.063
     }
   },
   "identities": {
-    "identifiers": 30573,
-    "declared_aliases": 17736,
+    "identifiers": 30578,
+    "declared_aliases": 17741,
     "pending_candidates": 0
   },
   "intelligence_metrics": {
@@ -28206,8 +28490,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 65,
-      "events": 65,
+      "complete": 67,
+      "events": 67,
       "rate": 1.0
     },
     "source_health": {
