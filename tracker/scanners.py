@@ -3203,7 +3203,7 @@ class HighAlphaLeakChannelsScanner:
         rb"glm-[567]|"
         rb"minimax-m[345]|"
         rb"mai-(?:code|[234])|"
-        rb"swe-[23]-(?:lightning|mini|medium|high|max|pro)"
+        rb"swe-[123](?:[p.][0-9]+)?-(?:lightning|mini|medium|high|max|pro|thinking|fast)"
         rb"))"
     )
 
@@ -3395,7 +3395,7 @@ class HighAlphaLeakChannelsScanner:
         "load", "capacity", "threshold", "sensitivity", "resolution", "bitrate", "framerate",
         "compression", "security", "privacy", "logging", "trace", "debug", "warning", "error",
         "extra", "ultra", "super", "very", "auto", "battery", "signal", "wifi", "sound",
-        "audio", "video", "image", "power", "charge", "storage", "zoom", "scroll", "motion",
+        "audio", "video", "image", "power", "charge", "charging", "storage", "zoom", "scroll", "motion",
         "animation",
     }
     _QUOTED_TIER_MODEL_RE = re.compile(
@@ -3409,7 +3409,7 @@ class HighAlphaLeakChannelsScanner:
         segmented = self._IDE_RODATA_SPLIT_RE.sub(b"\n", blob)
         for m in self.IDE_BUNDLE_MODEL_RE.finditer(segmented):
             mid = m.group(0).decode("utf-8", "ignore").rstrip("._-")
-            if mid in self.IDE_EXCLUDED_TOKENS or mid in EXCLUDED_EXACT or is_legacy_model_id(mid):
+            if mid in self.IDE_EXCLUDED_TOKENS or mid in EXCLUDED_EXACT or is_legacy_model_id(mid) or "persiste" in mid:
                 continue
             # Ignore truncated Rust .rodata literals packed against backslashes and prose-only
             # harness / Unleash feature-flag references (e.g. `on the gpt-5p6-codex harness`).
@@ -3427,7 +3427,8 @@ class HighAlphaLeakChannelsScanner:
         for stem_b, tier_b in self._QUOTED_TIER_MODEL_RE.findall(blob):
             stem = stem_b.decode("ascii", "ignore")
             tier = tier_b.decode("ascii", "ignore")
-            if stem in self._GENERIC_TIER_STEMS:
+            stem_toks = stem.split("-")
+            if stem in self._GENERIC_TIER_STEMS or stem_toks[0] in self._GENERIC_TIER_STEMS:
                 continue
             tier_by_stem.setdefault(stem, set()).add(tier)
         for stem, tiers in tier_by_stem.items():
@@ -4880,9 +4881,12 @@ class HighAlphaLeakChannelsScanner:
 
     VERTEX_BILLING_SERVICE_ID = "C7E2-9256-1C43"
     GEMINI_API_BILLING_SERVICE_ID = "AEFD-7695-64FA"
+    _BILLING_NON_MODEL_SUFFIX_RE = re.compile(
+        r"-(?:paid(?:-one|-two)?|free|short|long|grounding|maps|search|query|queries)$"
+    )
     _BILLING_SKU_MODEL_RE = re.compile(
         r"\b("
-        r"Gemini\s+\d+(?:\.\d+)?(?:\s+(?!(?:global|regional|online|batch|flex|offpeak|deferred|priority|contributor|text|image|audio|video|input|output|cached|caching|cache|token|tokens|count|prediction|predictions|storage|requests|per)\b)[a-z][a-z0-9.-]*){1,4}|"
+        r"Gemini\s+\d+(?:\.\d+)?(?:\s+(?!(?:global|regional|online|batch|flex|offpeak|deferred|priority|contributor|text|image|audio|video|input|output|cached|caching|cache|token|tokens|count|prediction|predictions|storage|requests|per|paid|free|one|two|tier|short|long|grounding|maps|search|query|queries|web|enterprise|standard|tuning|tuned|training|adapter|with|for|in|on|to|by|and|or|google|vertex|cloud)\b)[a-z][a-z0-9.-]*){1,4}|"
         r"Gemini\s+Decision\s+\d+(?:\.\d+)?|"
         r"Claude\s+(?:Opus|Sonnet|Haiku|Fable|Mythos|Donut|Silicon)\s+[456](?:[\s.][0-9]+)?(?:\s+Fast)?|"
         r"GPT-[567](?:\.[0-9]+)?(?:\s+(?:Astra|Luna|Sol|Terra|Mini|Nano|Pro|Cyber))?|"
@@ -4992,7 +4996,7 @@ class HighAlphaLeakChannelsScanner:
             sample_desc = str(sku.get("description") or raw_desc).strip()
             for match in self._BILLING_SKU_MODEL_RE.findall(raw_desc):
                 slug = re.sub(r"[^a-z0-9.]+", "-", match.strip().lower()).strip("-")
-                if not slug or is_legacy_model_id(slug):
+                if not slug or is_legacy_model_id(slug) or self._BILLING_NON_MODEL_SUFFIX_RE.search(slug):
                     continue
                 sku_counts_by_model[slug] = sku_counts_by_model.get(slug, 0) + 1
                 samples = sku_samples_by_model.setdefault(slug, [])
@@ -5025,7 +5029,10 @@ class HighAlphaLeakChannelsScanner:
 
         added = [
             m for m in curr_families
-            if m not in seen_families and not is_legacy_model_id(m) and _canonical_model_slug(m) not in known_canon
+            if m not in seen_families
+            and not is_legacy_model_id(m)
+            and not self._BILLING_NON_MODEL_SUFFIX_RE.search(m)
+            and _canonical_model_slug(m) not in known_canon
         ]
         for m in added:
             p_info = infer_provider(m)

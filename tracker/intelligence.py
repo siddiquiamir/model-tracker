@@ -21,6 +21,9 @@ import zipfile
 import uuid
 from typing import Any, Dict, Iterable
 
+from tracker.extractor import is_legacy_model_id
+from tracker.novelty import RELEASE_GRACE, extract_embedded_date, normalize
+
 try:
     import tomllib
 except ImportError:
@@ -43,6 +46,25 @@ PROVIDERS = {
     "cognition": "Cognition", "xai": "xAI", "deepseek": "DeepSeek",
     "mistral": "Mistral", "meta": "Meta",
 }
+AGGREGATOR_SOURCES = {"litellm-intelligence", "models-dev-api", "models-dev-git"}
+COMMUNITY_TUNE_RE = re.compile(r"(?:uncensored|abliterat|heretic|roleplay|nsfw|venice-edition)", re.I)
+
+
+def _is_old_registry_entry(identifier: str, record: Dict[str, Any], ref_dt: datetime) -> bool:
+    if is_legacy_model_id(identifier) or is_legacy_model_id(normalize(identifier)):
+        return True
+    metadata = record.get("metadata") or {}
+    canonical = str(record.get("canonical_id") or metadata.get("canonical_model_id") or metadata.get("base_model") or "")
+    if canonical and (is_legacy_model_id(canonical) or is_legacy_model_id(normalize(canonical))):
+        return True
+    cutoff = (ref_dt - RELEASE_GRACE).strftime("%Y-%m-%d")
+    rel_date = str(metadata.get("release_date") or "")[:10]
+    if re.match(r"^\d{4}-\d{2}-\d{2}$", rel_date) and rel_date < cutoff:
+        return True
+    emb = extract_embedded_date(identifier) or (extract_embedded_date(canonical) if canonical else None)
+    if emb and emb < cutoff:
+        return True
+    return False
 
 
 def family(identifier: str) -> str:
@@ -613,13 +635,21 @@ class ModelRegistryScanner:
         historical = history or not state or datetime.fromisoformat(published_at) < datetime.now(timezone.utc) - timedelta(hours=48)
         snapshot = {"source": self.source, "build": build, "artifact_sha256": sha256, "verification": verification, "observed_at": observed_at, "registry": registry}
         _write(self.state_dir / evidence_path, snapshot)
+        is_aggregator = self.registry_only or self.source in AGGREGATOR_SOURCES
+        pub_dt = datetime.fromisoformat(published_at)
         events = []
         for base, change in registry_diff(known, registry).items():
             identifiers = change["identifiers"]
+            if is_aggregator and not historical:
+                identifiers = [mid for mid in identifiers if not _is_old_registry_entry(mid, registry[mid], pub_dt)]
+                if not identifiers:
+                    continue
             sightings = self._other_sightings(identifiers, registry)
-            event_label = "Registry update" if self.registry_only or self.source == "litellm-intelligence" else change["event_label"]
-            if sightings:
-                event_label = "Multiple sightings"
+            event_label = "Registry update" if is_aggregator else change["event_label"]
+            if sightings and change["event_label"] != "Registry update":
+                has_primary_sighting = any(s["source"] not in AGGREGATOR_SOURCES for s in sightings)
+                if not is_aggregator or (change["event_label"] == "New identifier" and has_primary_sighting):
+                    event_label = "Multiple sightings"
             providers = {registry[mid]["provider"] for mid in identifiers}
             provider = next(iter(providers)) if len(providers) == 1 else "unknown"
             event_id = hashlib.sha256(f"{self.source}:{sha256}:{base}".encode()).hexdigest()[:20]
@@ -632,12 +662,25 @@ class ModelRegistryScanner:
             events.append({
                 "id": f"intel-{event_id}", "scanner": self.source, "intelligence": True,
                 "header": f"{event_label.upper()} · MULTI-PROVIDER", "title": base,
-                "event_label": event_label, "subtitle": f"{len(identifiers)} identifier(s) observed in {self.label}; not a model release claim.",
+                "event_label": event_label, "registry_update": event_label == "Registry update",
+                "subtitle": f"{len(identifiers)} identifier(s) observed in {self.label}; not a model release claim.",
                 "confidence": confidence, "candidate_only": confidence["novelty"]["level"] == "candidate",
                 "timestamp_source": build.get("timestamp_source", "Upstream release/commit timestamp; first inspected presence is an upper bound"),
                 "family": base, "provider_slug": provider, "provider_name": PROVIDERS.get(provider, "Unattributed"),
                 "provider_evidence": "Registry metadata" if provider != "unknown" else "No lab attribution established",
-                "models": [{"id": mid, "name": mid, "registry_update": event_label == "Registry update"} for mid in identifiers],
+                "models": [
+                    {
+                        "id": mid,
+                        "name": mid,
+                        "registry_update": event_label == "Registry update",
+                        **(
+                            {"released_on": str(registry[mid].get("metadata", {}).get("release_date"))[:10]}
+                            if re.match(r"^\d{4}-\d{2}-\d{2}$", str(registry[mid].get("metadata", {}).get("release_date") or "")[:10])
+                            else {}
+                        ),
+                    }
+                    for mid in identifiers
+                ],
                 "detected_at": published_at if historical else observed_at,
                 "first_seen": published_at, "observed_at": observed_at,
                 "backfill": historical, "build_label": self.label,
@@ -694,21 +737,39 @@ class ModelRegistryScanner:
 
 
 def classify_known(cards: list[Dict[str, Any]], public_names: Iterable[str]) -> list[Dict[str, Any]]:
-    public = {str(name).split("/")[-1].lower() for name in public_names}
-    public_families = {family(identifier) for identifier in public}
+    public_exact: set[str] = set()
+    for name in public_names:
+        raw = str(name)
+        tail = raw.split("/")[-1].lower()
+        if tail:
+            public_exact.add(tail)
+        norm = normalize(raw)
+        if norm:
+            public_exact.add(norm)
+    public_families = {family(identifier) for identifier in public_exact}
     for card in cards:
-        if card.get("event_label") != "New identifier":
+        models = card.get("models") or []
+        if not models:
             continue
-        identifiers = [model["id"].split("/")[-1].lower() for model in card["models"]]
-        if all(identifier in public for identifier in identifiers):
+        all_public = all(
+            model["id"].split("/")[-1].lower() in public_exact
+            or (bool(normalize(model["id"])) and normalize(model["id"]) in public_exact)
+            for model in models
+        )
+        prev_label = card.get("event_label", "")
+        if all_public:
             card["event_label"] = "Registry update"
-            for model in card["models"]:
+            card["registry_update"] = True
+            for model in models:
                 model["registry_update"] = True
-        elif card["family"] in public_families:
+        elif prev_label == "New identifier" and (
+            card.get("family") in public_families or normalize(str(card.get("family") or "")) in public_families
+        ):
             card["event_label"] = "New variant"
-        card["header"] = f"{card['event_label'].upper()} · MULTI-PROVIDER"
-        if card.get("confidence") and not card.get("candidate_only"):
-            card["confidence"]["novelty"]["level"] = card["event_label"].lower()
+        if card.get("event_label") != prev_label or prev_label == "New identifier":
+            card["header"] = f"{card['event_label'].upper()} · MULTI-PROVIDER"
+            if card.get("confidence") and not card.get("candidate_only"):
+                card["confidence"]["novelty"]["level"] = card["event_label"].lower()
     return cards
 
 
@@ -830,8 +891,11 @@ class ModelsDevApiScanner(ModelRegistryScanner):
                 continue
             for identifier, metadata in provider.get("models", {}).items():
                 full_id = f"{route}/{identifier}"
-                if _valid(full_id) and isinstance(metadata, dict):
-                    records[full_id] = catalog_record(full_id, metadata, "api.json?type=all", digest)
+                if not _valid(full_id) or not isinstance(metadata, dict):
+                    continue
+                if COMMUNITY_TUNE_RE.search(full_id) or COMMUNITY_TUNE_RE.search(str(metadata.get("name") or "")):
+                    continue
+                records[full_id] = catalog_record(full_id, metadata, "api.json?type=all", digest)
         if not records:
             raise ValueError("Empty models.dev full catalog; baseline unchanged")
         return records, digest, "Published full catalog; local SHA-256 retained"
@@ -880,11 +944,22 @@ class ModelsDevGitScanner(ModelRegistryScanner):
                     raise RuntimeError("models.dev source inspection requires tomli on Python 3.10")
                 metadata = tomllib.loads(content.decode("utf-8"))
                 if _valid(identifier):
+                    if COMMUNITY_TUNE_RE.search(identifier) or COMMUNITY_TUNE_RE.search(str(metadata.get("name") or "")):
+                        continue
                     if not canonical and identifier in records:
                         canonical = records[identifier].get("canonical_id", "")
                     record = catalog_record(identifier, metadata, path, hashlib.sha256(content).hexdigest(), canonical)
                     record["definition_url"] = f"https://github.com/anomalyco/models.dev/blob/{build['version']}/{path}"
                     records[identifier] = record
+        for identifier, record in records.items():
+            meta = record.get("metadata") or {}
+            if meta.get("release_date"):
+                continue
+            cand_ids = [record.get("canonical_id", ""), identifier.split("/", 1)[-1] if "/" in identifier else ""]
+            for cid in cand_ids:
+                if cid and cid in records and (records[cid].get("metadata") or {}).get("release_date"):
+                    meta["release_date"] = records[cid]["metadata"]["release_date"]
+                    break
         if not records:
             raise ValueError("No models.dev definitions found; baseline unchanged")
         return records, digest, "Commit-pinned source definitions; local SHA-256 retained"

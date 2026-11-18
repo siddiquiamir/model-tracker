@@ -12,6 +12,7 @@ import time
 from typing import Any, Dict, List, Set
 
 from tracker import novelty, pricing as pricing_mod, stories as story_mod
+from tracker.extractor import is_legacy_model_id
 from tracker.intelligence import DevinCliScanner, DevinDesktopScanner, LiteLlmRegistryScanner, ModelsDevApiScanner, ModelsDevGitScanner, IdentityLedger, classify_known, intelligence_metrics, reconcile_identities
 from tracker.notifiers import build_intelligence_embed, build_story_embed, build_x_post_text, send_discord_webhook
 from tracker.scanners import (
@@ -48,6 +49,68 @@ RETIRED_CARD_IDS: Set[str] = {
     "devin-cli-3000.12.57-3000.13.4-openai",
     "vertex-quota-kimi-bc14cc95",
     "vertex-quota-google-f3afe98e",
+    # 2026-11-18 aggregator route/metadata syncs of old/already-tracked models (models-dev & litellm-intelligence)
+    "intel-4ad4c1bab7fc82e03cda",
+    "intel-9b0456e9d15ddcef4f33",
+    "intel-2abf13489e0d4dc5b8a0",
+    "intel-5c86b7c6266cb99073c6",
+    "intel-b66a84eb72f7d9114144",
+    "intel-42e71477662b03c3a2c6",
+    "intel-3b1d856353caa61f8c1b",
+    "intel-e8c22353e4f12bdcf3f8",
+    "intel-0136f55572d98ec8c80f",
+    "intel-7d3c7d4fb0b519fd27f3",
+    "intel-492c4ee8fead716b68a8",
+    "intel-c49e080e57e806dda351",
+    "intel-08ef2fb8857160d3aa17",
+    "intel-5d7dadc4e4a322f9238b",
+    "intel-936f63c371b01bbad0ec",
+    "intel-5c35a9848ab9dc462ead",
+    "intel-e2dd2e17da5ab9aad6a5",
+    "intel-c385b548213e6fffdadb",
+    "intel-94a923745e50bf51ac0f",
+    "intel-98a6d84ef84f8589e25f",
+    "intel-c9780de0b72d985c03de",
+    "intel-ca63235db45fba36bdbe",
+    "intel-d2eff29d7acd9ba4d412",
+    "intel-656f6b5c6bf6d43f9a5e",
+    "intel-97f11ce462d2563cabaa",
+    "intel-3f03c1df8b9257b23e71",
+    "intel-849bd7f7e59226f36a5b",
+    "intel-0d1d9285fcbfe948f976",
+    "intel-d4b606d0fcd66e0ba617",
+    "intel-5f142ca4239f98b94ec2",
+    "intel-02013aa1ae3a49eb0e61",
+    "intel-60d19a02b16ad44b2e04",
+    "intel-501ffad87dacc940d231",
+    "intel-d311ad7a71b32744c74e",
+    "intel-1e844aa9325284afb7fc",
+    "intel-c2fca4a95ecbf3b0d310",
+    "intel-7d7856c62664277f7d1b",
+    "intel-f96d43e64ab5c8172ad8",
+    "intel-fc3e938aa6d523bfa2d6",
+    "intel-c5cadd9a21fb1f7337e5",
+    "intel-00e8129a7febdb9f1e8a",
+    "intel-277f473c4e61bf78e1eb",
+    "intel-0e5a00c77c1a085f2ff1",
+    "intel-b1d84fe743d6259d790d",
+    "intel-38b25ff67104134add73",
+    "intel-c86e1bc490734e56c617",
+    "intel-2fefbb483f70e0b8c495",
+    "intel-bce809cb3aeb49f08493",
+    "intel-5a39a4599e811f902a4f",
+    # 2026-11-18 GCP Cloud Billing non-model tier/context/grounding SKUs & legacy Gemini 3/3.1 SKUs
+    "cloud-billing-vertex-3a71508b",
+    "cloud-billing-vertex-cee49b6c",
+    "cloud-billing-vertex-84604e27",
+    "cloud-billing-vertex-867aa146",
+    "cloud-billing-vertex-3accefe3",
+    "cloud-billing-vertex-443c55ca",
+    "cloud-billing-vertex-98d84ad8",
+    # 2026-11-18 Devin CLI concatenated .rodata neighbor false positive
+    "devin-cli-3000.13.4-3000.14.30821-openai",
+    # Carried Antigravity ACP diff with truncated/legacy gemini-for & gemini-pro-agent strings
+    "ag-acp-1.4.4-1.4.5-diff",
 }
 
 # Scanners that re-emit their complete card set on every successful run (previous cards are replaced, not retained)
@@ -147,7 +210,7 @@ class TrackerEngine:
         self.openai_spec_scanner = OpenAiApiSpecScanner()
         self.intelligence_scanners = [ModelsDevApiScanner(), LiteLlmRegistryScanner(), ModelsDevGitScanner(), DevinCliScanner(), DevinDesktopScanner()]
 
-    def notify_intelligence(self, cards: List[Dict[str, Any]], enabled: bool = True) -> None:
+    def notify_intelligence(self, cards: List[Dict[str, Any]], enabled: bool = True, catalog: Any = None) -> None:
         if not enabled:
             return
         seen = self.load_seen_ids()
@@ -155,8 +218,30 @@ class TrackerEngine:
         for card in cards:
             marker = f"intel-alert-{card['id']}"
             evidence_path = ROOT_DIR / card.get("evidence_path", "")
-            if marker in seen or card.get("backfill") or card.get("candidate_only") or not card.get("evidence_retained"):
+            if (
+                marker in seen
+                or _is_retired_card(card)
+                or card.get("backfill")
+                or card.get("candidate_only")
+                or card.get("registry_update")
+                or card.get("event_label") == "Registry update"
+                or not card.get("evidence_retained")
+            ):
                 continue
+            models = card.get("models") or []
+            if models:
+                det = novelty._parse_dt(card.get("detected_at") or card.get("first_seen") or "")
+                cutoff = (det - novelty.RELEASE_GRACE).strftime("%Y-%m-%d")
+                if all(
+                    novelty.is_old_model(novelty._model_label(m), det, catalog)
+                    or (
+                        re.match(r"^\d{4}-\d{2}-\d{2}$", str(m.get("released_on") or "")[:10])
+                        and str(m.get("released_on"))[:10] < cutoff
+                    )
+                    or m.get("registry_update")
+                    for m in models
+                ):
+                    continue
             if not evidence_path.is_file():
                 continue
             evidence = _load_json(evidence_path, {})
@@ -243,7 +328,6 @@ class TrackerEngine:
         ran_ok_tags: Set[str] = set()
         intelligence_status: Dict[str, Any] = {name: dict(status) for name, status in source_health.items() if any(scanner.source == name for scanner in self.intelligence_scanners)}
         intelligence_by_source = {scanner.source: scanner for scanner in self.intelligence_scanners}
-        self.notify_intelligence([card for card in prev_cards if card.get("intelligence")], notify_discord)
         for name, fn, min_interval, tags in scanner_specs:
             health = source_health.setdefault(name, {})
             health["poll_interval_seconds"] = min_interval or 120
@@ -275,7 +359,6 @@ class TrackerEngine:
                 cards = classify_known(cards, public_names)
                 health.update(intelligence_by_source[name].status)
                 intelligence_status[name] = dict(health)
-                self.notify_intelligence(cards, notify_discord)
             elif name == "docs-registries":
                 cards = [card for card in cards if card.get("scanner") not in {"litellm", "models-dev"}]
             fresh_cards.extend(cards)
@@ -304,12 +387,36 @@ class TrackerEngine:
             cid = card["id"]
             if cid in RETIRED_CARD_IDS or _is_retired_card(card):
                 continue
-            if card.get("scanner") == "ide-build-diff" and card.get("models"):
+            if card.get("scanner") == "cloud-billing" and card.get("models"):
                 card["models"] = [
-                    m for m in card["models"] if not re.search(r"\.[a-z]", str(m.get("id", "")), re.I)
+                    m for m in card["models"]
+                    if not HighAlphaLeakChannelsScanner._BILLING_NON_MODEL_SUFFIX_RE.search(str(m.get("id", "")).lower())
                 ]
                 if not card["models"]:
                     continue
+            if card.get("scanner") == "ide-build-diff" and card.get("models"):
+                kept_ide: List[Dict[str, Any]] = []
+                removed_ide: List[str] = []
+                for m in card["models"]:
+                    mid_str = str(m.get("id", ""))
+                    stem_toks = re.sub(r"-(?:minimal|low|medium|high|xhigh|max)$", "", mid_str.lower()).split("-")
+                    if (
+                        re.search(r"\.[a-z]", mid_str, re.I)
+                        or is_legacy_model_id(mid_str)
+                        or "persiste" in mid_str.lower()
+                        or (stem_toks and stem_toks[0] in HighAlphaLeakChannelsScanner._GENERIC_TIER_STEMS)
+                    ):
+                        removed_ide.append(mid_str)
+                    else:
+                        kept_ide.append(m)
+                card["models"] = kept_ide
+                if not card["models"]:
+                    continue
+                if removed_ide:
+                    first_ide = str(kept_ide[0].get("id", ""))
+                    for r_id in removed_ide:
+                        if r_id and r_id in card.get("title", ""):
+                            card["title"] = card["title"].replace(r_id, first_ide)
             models_sig = ",".join(sorted(m.get("id", "") for m in card.get("models", [])))
             content_key = f"{card.get('scanner')}|{card.get('header')}|{models_sig}"
             if cid in seen_card_keys or content_key in seen_card_keys:
@@ -326,8 +433,10 @@ class TrackerEngine:
 
         # Drop models that were already public when the card was detected; flag unknown codename tokens
         n_before = len(all_cards)
-        all_cards = novelty.apply(all_cards, novelty.get_catalog(public_names))
+        catalog = novelty.get_catalog(public_names)
+        all_cards = novelty.apply(all_cards, catalog)
         print(f"[ModelPulse] novelty filter: {n_before} -> {len(all_cards)} card(s)")
+        self.notify_intelligence([c for c in all_cards if c.get("intelligence")], notify_discord, catalog=catalog)
 
         # Attach live pricing from Official Docs, LiteLLM, models.dev & OpenRouter to every card and model
         ledger = IdentityLedger(DATA_DIR / "intelligence")
@@ -347,7 +456,6 @@ class TrackerEngine:
         all_cards.sort(key=lambda c: c.get("detected_at", ""), reverse=True)
 
         # One story per model across all sources; notify once per story (and once more when a leak ships)
-        catalog = novelty.get_catalog(public_names)
         stories = story_mod.build_stories(all_cards, catalog, now=now, pricing_catalog=pricing_catalog)
         for s in stories:
             s["x_post_text"] = story_mod.story_x_text(s)
@@ -361,6 +469,7 @@ class TrackerEngine:
                 if previous_id in seen_ids:
                     seen_ids.update(_story_alert_marks(previous_story) - {previous_id, previous_id + "#release"})
             seen_ids.add(STORY_ALERT_VERSION)
+        intel_ids_in_feed = {c["id"] for c in all_cards if c.get("intelligence")}
         notify_cutoff = (now - NOTIFY_MAX_AGE).isoformat()
         notify_stories: List[Dict[str, Any]] = []
         story_seen_ids: Set[str] = set()
@@ -369,6 +478,31 @@ class TrackerEngine:
             story_seen_ids |= marks
             if marks <= seen_ids or s["backfill"] or s.get("candidate_only"):
                 continue
+            if s.get("kind") == "registry" or s.get("event_label") == "Registry update":
+                continue
+            s_models = s.get("models") or []
+            if s_models:
+                s_det = novelty._parse_dt(s.get("detected_at") or "")
+                s_cutoff = (s_det - novelty.RELEASE_GRACE).strftime("%Y-%m-%d")
+                if all(
+                    novelty.is_old_model(str(m.get("id") or ""), s_det, catalog)
+                    or (
+                        re.match(r"^\d{4}-\d{2}-\d{2}$", str(m.get("released_on") or "")[:10])
+                        and str(m.get("released_on"))[:10] < s_cutoff
+                    )
+                    for m in s_models
+                ):
+                    continue
+            intel_owned_cids = {
+                cid for cid in s.get("card_ids", [])
+                if cid in intel_ids_in_feed or f"intel-alert-{cid}" in seen_ids
+            }
+            if intel_owned_cids:
+                non_intel_cids = [cid for cid in s.get("card_ids", []) if cid not in intel_owned_cids]
+                has_unseen_non_intel = any(f"{s['id']}#evidence:{cid}" not in seen_ids for cid in non_intel_cids)
+                is_new_release = s.get("kind") == "release" and f"{s['id']}#release" not in seen_ids
+                if not has_unseen_non_intel and not is_new_release:
+                    continue
             if (s.get("updated_at") or "") >= notify_cutoff:
                 notify_stories.append(s)
         new_cards = [

@@ -181,7 +181,8 @@ def _fmt_delta(seconds: float) -> str:
 
 def _card_keys(card: Dict[str, Any]) -> List[Tuple[str, Dict[str, Any]]]:
     if card.get("intelligence") and card.get("family"):
-        return [(card["family"], model) for model in card.get("models", [])]
+        fam_key = story_key(card["family"]) or card["family"]
+        return [(fam_key, model) for model in card.get("models", [])]
     out: List[Tuple[str, Dict[str, Any]]] = []
     models = card.get("models") or []
     if card.get("scanner") == "engine-pr-leak":
@@ -460,7 +461,11 @@ def _make_story(
         )
     )
     if intelligence_only:
-        kind = "registry" if all(card.get("event_label") == "Registry update" for card in cards) else "unverified"
+        kind = (
+            "registry"
+            if (is_previously_released or all(card.get("event_label") == "Registry update" for card in cards))
+            else "unverified"
+        )
     elif is_litellm_registry_group or (scanners <= {"litellm", "models-dev"} and is_previously_released):
         kind = "registry"
     elif scanners <= UNVERIFIED_SCANNERS or is_anonymous or is_stealth_gateway:

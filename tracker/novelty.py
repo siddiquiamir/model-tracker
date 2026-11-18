@@ -27,7 +27,7 @@ CATALOG_CACHE = ROOT_DIR / ".cache" / "released_catalog.json"
 HINTS_FILE = ROOT_DIR / "data" / "hints.json"
 MODELS_DEV_URL = "https://models.dev/api.json"
 CATALOG_TTL = timedelta(hours=6)
-CATALOG_FORMAT = 3  # bump whenever normalize() changes so cached keys are rebuilt
+CATALOG_FORMAT = 4  # bump whenever normalize() or strip_variants() changes so cached keys are rebuilt
 RELEASE_GRACE = timedelta(days=7)
 HF_PUBLIC_GRACE = timedelta(days=30)
 # Cards that reference Hugging Face repos by "org/repo" (checked against the repo's public createdAt)
@@ -44,6 +44,7 @@ VARIANT_TOKENS: Set[str] = {
     "non", "instant", "fast", "chat", "latest", "preview", "exp", "experimental", "beta", "alpha",
     "tf", "teamfood", "fp8", "fp4", "nvfp4", "bf16", "fp16", "int4", "int8", "awq", "gptq", "gguf",
     "mlx", "it", "instruct", "free", "online", "tiered", "router", "default", "base", "hf", "local",
+    "short", "long",
 }
 # Tokens that are generic model-naming vocabulary and never a codename on their own
 GENERIC_TOKENS: Set[str] = VARIANT_TOKENS | {
@@ -119,7 +120,13 @@ def normalize(raw: str) -> str:
 def strip_variants(key: str) -> str:
     toks = key.split("-")
     while len(toks) > 1 and (
-        toks[-1] in VARIANT_TOKENS or (toks[-1].isdigit() and len(toks) > 2 and toks[-2] in VARIANT_TOKENS)
+        toks[-1] in VARIANT_TOKENS
+        or (
+            toks[-1].isdigit()
+            and len(toks) > 2
+            and toks[-2] in VARIANT_TOKENS
+            and any(any(ch.isdigit() for ch in t) for t in toks[:-2])
+        )
     ):
         toks.pop()
     return "-".join(toks)
@@ -191,11 +198,12 @@ class ReleasedCatalog:
                 if emb and emb < cat_date:
                     return emb, f"version date {emb}"
                 return cat_date, f"released as {k}"
-        if any(c.isdigit() for c in base) and base.count("-") >= 1 and base in self.prefix_min:
-            cat_date = self.prefix_min[base]
-            if emb and emb < cat_date:
-                return emb, f"version date {emb}"
-            return cat_date, f"family {base} shipped"
+        for cand in (key, base):
+            if any(c.isdigit() for c in cand) and cand.count("-") >= 1 and cand in self.prefix_min:
+                cat_date = self.prefix_min[cand]
+                if emb and emb < cat_date:
+                    return emb, f"version date {emb}"
+                return cat_date, f"family {cand} shipped"
         fam, major = family_version(base)
         if fam and major is not None and fam in self.family_majors:
             # Two full generations behind the shipped frontier is never a leak (gpt-4 vs gpt-6);
@@ -331,13 +339,11 @@ def apply(cards: Iterable[Dict[str, Any]], catalog: Optional[ReleasedCatalog] = 
     watch = load_watchlist()
     out: List[Dict[str, Any]] = []
     for card in cards:
-        if card.get("intelligence"):
-            out.append(card)
-            continue
         if card.get("scanner") in NON_MODEL_SCANNERS or not card.get("models"):
             out.append(card)
             continue
         det = _parse_dt(card.get("detected_at") or "")
+        cutoff = (det - RELEASE_GRACE).strftime("%Y-%m-%d")
         kept: List[Dict[str, Any]] = []
         removed: List[str] = []
         for m in card["models"]:
@@ -347,7 +353,9 @@ def apply(cards: Iterable[Dict[str, Any]], catalog: Optional[ReleasedCatalog] = 
             rel_date = rel_hit[0] if rel_hit else (emb_date or "")
             if rel_date and not m.get("released_on"):
                 m["released_on"] = rel_date
-            if label and is_old_model(label, det, catalog):
+            explicit_rel = str(m.get("released_on") or "")[:10]
+            explicit_old = bool(re.match(r"^\d{4}-\d{2}-\d{2}$", explicit_rel) and explicit_rel < cutoff)
+            if label and (is_old_model(label, det, catalog) or explicit_old):
                 if card.get("scanner") == "litellm" and not (is_legacy_model_id(label.lower()) or is_legacy_model_id(normalize(label))):
                     m["registry_update"] = True
                     kept.append(m)
@@ -368,6 +376,9 @@ def apply(cards: Iterable[Dict[str, Any]], catalog: Optional[ReleasedCatalog] = 
         if removed:
             card["models"] = kept
             card["filtered_released"] = len(removed)
+            if card.get("intelligence") and card.get("registry_evidence"):
+                kept_ids = {m.get("id") for m in kept}
+                card["registry_evidence"] = [r for r in card.get("registry_evidence", []) if r.get("id") in kept_ids]
             first = _model_label(kept[0])
             for r in removed:
                 if r and r in card.get("title", ""):
@@ -376,7 +387,7 @@ def apply(cards: Iterable[Dict[str, Any]], catalog: Optional[ReleasedCatalog] = 
             card["registry_update"] = True
         # Codename flags are sticky: once a card was flagged, a later public release does not unflag it
         hints: Set[str] = set(card.get("codenames") or [])
-        for m in kept if card.get("scanner") not in NO_CODENAME_SCANNERS else []:
+        for m in kept if (card.get("scanner") not in NO_CODENAME_SCANNERS and not card.get("intelligence")) else []:
             if m.get("registry_update"):
                 continue
             label = _model_label(m)

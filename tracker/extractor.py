@@ -59,6 +59,7 @@ EXCLUDED_EXACT: Set[str] = {
     "gemini-enterprise-agent",
     "gemini-enterprise-agent-platform",
     "gemini-robotics",
+    "gemini-for",
     "gemini-2",
     "gemini-3",
     "gemini-4",
@@ -83,17 +84,24 @@ EXCLUDED_EXACT: Set[str] = {
 
 
 def is_legacy_model_id(model_id: str) -> bool:
-    """Return True if a model ID belongs to a 2024/2025 legacy generation and should not trigger 2026 leak cards."""
-    m = model_id.lower()
+    """Return True if a model ID belongs to a 2024/2025/early-2026 legacy generation and should not trigger leak cards."""
+    m = model_id.lower().strip()
     if re.search(r"(?:2023|2024|2025)", m):
         return True
-    if m.startswith((
+    tail = m.rsplit("/", 1)[-1]
+    tail = re.sub(r"^(?:(?:us-gov|us|eu|global|apac|jp|au|[a-z]+)\.)+(?=[a-z])", "", tail)
+    legacy_prefixes = (
         "gemini-1.", "gemini-1-", "gemini-2.0", "gemini-2-0", "gemini-2.5", "gemini-2-5",
+        "gemini-3.0", "gemini-3-0", "gemini-3.1", "gemini-3-1", "gemini-3-pro", "gemini-3-flash",
+        "gemini-pro", "gemini-for",
         "claude-2", "claude-3", "claude-sonnet-4", "claude-opus-4", "claude-haiku-4",
-        "gpt-3", "gpt-4", "o1", "o3", "o4-mini",
+        "gpt-3", "gpt-4", "gpt-5p0", "gpt-5p1", "gpt-5p2", "gpt-5p3", "gpt-5p4",
+        "o1", "o3", "o4-mini",
         "grok-1", "grok-2", "grok-3", "llama-2", "llama-3", "llama3", "dall-e", "dalle",
-    )):
-        return True
+    )
+    for cand in (m, tail):
+        if cand.startswith(legacy_prefixes) or re.match(r"^gemini-3-[a-z]", cand):
+            return True
     return False
 
 
@@ -260,7 +268,7 @@ _GENERIC_TIER_STEMS_EX: Set[str] = {
     "load", "capacity", "threshold", "sensitivity", "resolution", "bitrate", "framerate",
     "compression", "security", "privacy", "logging", "trace", "debug", "warning", "error",
     "extra", "ultra", "super", "very", "auto", "battery", "signal", "wifi", "sound",
-    "audio", "video", "image", "power", "charge", "storage", "zoom", "scroll", "motion",
+    "audio", "video", "image", "power", "charge", "charging", "storage", "zoom", "scroll", "motion",
     "animation",
 }
 _QUOTED_TIER_RE = re.compile(r'["\']([a-z][a-z0-9]{2,15})-(minimal|low|medium|high|xhigh|max)["\']')
@@ -270,7 +278,8 @@ def discover_multi_tier_codenames(text: str) -> Set[str]:
     """Find any bare codename stem appearing as a quoted string across >= 3 reasoning tiers."""
     by_stem: Dict[str, Set[str]] = {}
     for stem, tier in _QUOTED_TIER_RE.findall(text):
-        if stem in _GENERIC_TIER_STEMS_EX:
+        stem_toks = stem.split("-")
+        if stem in _GENERIC_TIER_STEMS_EX or stem_toks[0] in _GENERIC_TIER_STEMS_EX:
             continue
         by_stem.setdefault(stem, set()).add(tier)
     out: Set[str] = set()

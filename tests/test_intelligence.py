@@ -782,5 +782,415 @@ class IdeBuildDiffTests(unittest.TestCase):
         self.assertEqual({m["id"] for m in cards[0]["models"]}, {"k3x9new001", "gdm-eval-model-next"})
 
 
+class OldModelAndAlertRegressionTests(unittest.TestCase):
+    def test_strip_variants_preserves_tier_named_version_and_strips_short_long(self) -> None:
+        from tracker import novelty
+
+        self.assertEqual(novelty.strip_variants(novelty.normalize("mistral-medium-3")), "mistral-medium-3")
+        self.assertEqual(novelty.strip_variants(novelty.normalize("gemini-3.1-pro-preview-short")), "gemini-3-1-pro")
+        self.assertEqual(novelty.strip_variants(novelty.normalize("gemini-3-pro-long")), "gemini-3-pro")
+        self.assertEqual(novelty.strip_variants(novelty.normalize("gpt-6-preview-2")), "gpt-6")
+
+        catalog = novelty.ReleasedCatalog.from_models_dev(
+            {
+                "mistral": {
+                    "models": {
+                        "mistral-medium-3": {"release_date": "2025-05-07"},
+                    }
+                }
+            }
+        )
+        det = datetime(2026, 11, 18, tzinfo=timezone.utc)
+        self.assertIsNotNone(novelty.is_old_model("edenai/mistralai/mistral-medium-3", det, catalog))
+
+    def test_legacy_model_ids_cover_gemini_3_and_3_1_and_llama_3_3_without_blocking_active_3_8(self) -> None:
+        from tracker.extractor import is_legacy_model_id
+
+        for legacy_id in (
+            "llama-3.3-70b-instruct",
+            "edenai/meta-llama/llama-3.3-70b-instruct",
+            "us.meta.llama3-3-70b-instruct-v1:0",
+            "gemini-3-pro-short",
+            "gemini-3-pro-long",
+            "gemini-3.1-pro-preview-short",
+            "gemini-3.1-pro-preview-long",
+            "google/gemini-3.1-pro-preview",
+            "gemini-3-flash-live",
+            "gemini-3-paid-one",
+            "gemini-for",
+            "gemini-pro-agent",
+            "gpt-5p4-persiste",
+        ):
+            with self.subTest(legacy_id=legacy_id):
+                self.assertTrue(is_legacy_model_id(legacy_id))
+
+        for active_id in (
+            "gemini-3.5-flash",
+            "gemini-3.8-flash",
+            "gemini-4-argon",
+            "gemini-4-pro",
+            "gpt-6.2-astra",
+            "gpt-5-6-sol-cyber-blue",
+            "paper-volcano",
+        ):
+            with self.subTest(active_id=active_id):
+                self.assertFalse(is_legacy_model_id(active_id))
+
+    def test_novelty_apply_filters_old_models_from_intelligence_cards_and_keeps_new_models(self) -> None:
+        from tracker import novelty
+
+        catalog = novelty.ReleasedCatalog.from_models_dev(
+            {
+                "provider": {
+                    "models": {
+                        "llama-3.3-70b-instruct": {"release_date": "2024-12-06"},
+                        "qwen3-235b-a22b-instruct-2507": {"release_date": "2025-07-21"},
+                        "gpt-oss-120b": {"release_date": "2025-08-05"},
+                        "deepseek-v4-flash": {"release_date": "2026-04-23"},
+                        "mistral-medium-3": {"release_date": "2025-05-07"},
+                        "glm-5.3-flash": {"release_date": "2026-08-26"},
+                    }
+                }
+            }
+        )
+        now_iso = "2026-11-18T07:00:00+00:00"
+        old_cards = [
+            {
+                "id": f"intel-old-{idx}",
+                "scanner": "models-dev-api",
+                "intelligence": True,
+                "detected_at": now_iso,
+                "title": mid,
+                "models": [{"id": mid, "name": mid}],
+            }
+            for idx, mid in enumerate(
+                [
+                    "edenai/meta-llama/llama-3.3-70b-instruct",
+                    "edenai/qwen/qwen3-235b-a22b-instruct-2507",
+                    "kilo/openai/gpt-oss-120b",
+                    "kilo/deepseek/deepseek-v4-flash-0731",
+                    "edenai/mistralai/mistral-medium-3",
+                    "openrouter/z-ai/glm-5.3-flash:free",
+                ]
+            )
+        ]
+        mixed_card = {
+            "id": "intel-mixed",
+            "scanner": "models-dev-api",
+            "intelligence": True,
+            "detected_at": now_iso,
+            "title": "edenai/qwen/qwen3-235b-a22b-instruct-2507",
+            "models": [
+                {"id": "edenai/qwen/qwen3-235b-a22b-instruct-2507", "name": "Qwen3"},
+                {"id": "openai/gpt-6.2-astra", "name": "GPT-6.2 Astra"},
+            ],
+            "registry_evidence": [
+                {"id": "edenai/qwen/qwen3-235b-a22b-instruct-2507"},
+                {"id": "openai/gpt-6.2-astra"},
+            ],
+        }
+        kept = novelty.apply([*old_cards, mixed_card], catalog)
+        self.assertEqual([c["id"] for c in kept], ["intel-mixed"])
+        self.assertEqual([m["id"] for m in kept[0]["models"]], ["openai/gpt-6.2-astra"])
+        self.assertEqual([r["id"] for r in kept[0]["registry_evidence"]], ["openai/gpt-6.2-astra"])
+        self.assertNotIn("codenames", kept[0])
+
+    def test_aggregator_scanners_skip_old_release_dates_and_community_tunes(self) -> None:
+        import zipfile
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            api_scanner = ModelsDevApiScanner(root)
+            seed_catalog = {"openai": {"models": {"seed-model": {"name": "Seed", "release_date": "2026-11-15"}}}}
+            with patch("tracker.intelligence.fetch", return_value=json.dumps(seed_catalog).encode()):
+                self.assertEqual(api_scanner.scan(), [])
+
+            updated_catalog = {
+                "openai": {
+                    "models": {
+                        "seed-model": {"name": "Seed", "release_date": "2026-11-15"},
+                        "gpt-6.2-astra": {"name": "GPT-6.2 Astra"},
+                    }
+                },
+                "edenai": {
+                    "models": {
+                        "qwen/qwen3-235b-a22b-instruct-2507": {"name": "Qwen3", "release_date": "2025-07-21"},
+                        "deepseek/deepseek-v4-flash-0731": {"name": "DeepSeek V4 Flash", "release_date": "2026-04-23"},
+                    }
+                },
+                "venice": {
+                    "models": {
+                        "gemma-4-uncensored": {"name": "Gemma 4 Uncensored"},
+                    }
+                },
+            }
+            with patch("tracker.intelligence.fetch", return_value=json.dumps(updated_catalog).encode()):
+                events = api_scanner.scan()
+            self.assertEqual([m["id"] for e in events for m in e["models"]], ["openai/gpt-6.2-astra"])
+
+            git_buf = io.BytesIO()
+            with zipfile.ZipFile(git_buf, "w") as zf:
+                zf.writestr("models-dev-sha/models/mistralai/mistral-medium-3.toml", 'name = "Mistral Medium 3"\nrelease_date = "2025-05-07"\n')
+                zf.writestr("models-dev-sha/providers/edenai/models/mistral-route.toml", 'name = "Mistral Medium 3"\nbase_model = "mistralai/mistral-medium-3"\n')
+                zf.writestr("models-dev-sha/providers/venice/models/gemma-4-uncensored.toml", 'name = "Gemma 4 Uncensored"\n')
+            git_scanner = ModelsDevGitScanner(root)
+            with patch("tracker.intelligence.fetch", return_value=git_buf.getvalue()):
+                records, _, _ = git_scanner.get_registry({"version": "sha", "url": "https://codeload.github.com/anomalyco/models.dev/zip/sha"})
+            self.assertNotIn("venice/gemma-4-uncensored", records)
+            self.assertEqual(records["edenai/mistral-route"]["metadata"]["release_date"], "2025-05-07")
+
+    def test_aggregator_echo_chamber_and_reseller_routes_do_not_promote_multiple_sightings(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            now_iso = datetime.now(timezone.utc).isoformat()
+            build = {"version": "1", "url": "https://models.dev/api.json?type=all", "published_at": now_iso, "manifest_url": "https://models.dev/api.json?type=all"}
+
+            mdev = ModelsDevApiScanner(root)
+            mdev.ingest(build, {"openai/seed": {"provider": "openai", "metadata": {}, "file_sha256": "s1"}}, "1" * 64, "ok", history=True)
+            mdev.ingest(
+                {**build, "version": "2"},
+                {
+                    "openai/seed": {"provider": "openai", "metadata": {}, "file_sha256": "s1"},
+                    "openai/gpt-6.2-astra": {"provider": "openai", "metadata": {}, "file_sha256": "a1"},
+                },
+                "2" * 64,
+                "ok",
+            )
+
+            litellm = ModelRegistryScanner(root)
+            litellm.source = "litellm-intelligence"
+            litellm.registry_only = True
+            litellm.ingest(build, {"openai/seed": {"provider": "openai", "metadata": {}, "file_sha256": "l0"}}, "3" * 64, "ok", history=True)
+            echo_events = litellm.ingest(
+                {**build, "version": "2"},
+                {
+                    "openai/seed": {"provider": "openai", "metadata": {}, "file_sha256": "l0"},
+                    "openai/gpt-6.2-astra": {"provider": "openai", "metadata": {}, "file_sha256": "l1"},
+                },
+                "4" * 64,
+                "ok",
+            )
+            self.assertEqual(echo_events[0]["event_label"], "Registry update")
+
+            devin = ModelRegistryScanner(root)
+            devin.source = "devin-cli"
+            devin.ingest(build, {"gpt-6.2-astra": {"provider": "openai", "metadata": {}, "file_sha256": "d1"}}, "5" * 64, "ok")
+
+            reseller_events = mdev.ingest(
+                {**build, "version": "3"},
+                {
+                    "openai/seed": {"provider": "openai", "metadata": {}, "file_sha256": "s1"},
+                    "openai/gpt-6.2-astra": {"provider": "openai", "metadata": {}, "file_sha256": "a1"},
+                    "kilo/gpt-6.2-astra": {"provider": "openai", "metadata": {}, "file_sha256": "a2"},
+                },
+                "6" * 64,
+                "ok",
+            )
+            self.assertEqual(reseller_events[0]["event_label"], "Registry update")
+
+        downgraded = classify_known(
+            [{"event_label": "Multiple sightings", "family": "qwen3-coder-30b-a3b-instruct", "models": [{"id": "edenai/qwen/qwen3-coder-30b-a3b-instruct"}]}],
+            ["qwen/qwen3-coder-30b-a3b-instruct"],
+        )
+        self.assertEqual(downgraded[0]["event_label"], "Registry update")
+        self.assertTrue(downgraded[0]["registry_update"])
+        self.assertTrue(downgraded[0]["models"][0]["registry_update"])
+
+    def test_billing_sku_regex_and_scanner_reject_paid_one_free_short_long_and_legacy_skus(self) -> None:
+        from tracker.scanners import HighAlphaLeakChannelsScanner
+
+        scanner = HighAlphaLeakChannelsScanner()
+        baselines = {"cloud_billing_skus": {"seen_model_families": ["gemini-4-argon"], "sku_counts": {"gemini-4-argon": 1}}}
+        skus = [
+            {"skuId": "1", "rawDescription": "Generate content maps grounding gemini 4 paid one"},
+            {"skuId": "2", "rawDescription": "Generate content web search query gemini 3 paid one"},
+            {"skuId": "3", "rawDescription": "Generate content search grounding gemini 4 free"},
+            {"skuId": "4", "rawDescription": "Gemini 3 Pro Short Input Text"},
+            {"skuId": "5", "rawDescription": "Gemini 3 Pro Long Output Text"},
+            {"skuId": "6", "rawDescription": "Gemini 3.1 Pro Preview Short Input Text"},
+            {"skuId": "7", "rawDescription": "Gemini 3.1 Pro Preview Long Output Text"},
+            {"skuId": "8", "rawDescription": "Bidi generate content Gemini 3 Flash Live"},
+            {"skuId": "9", "rawDescription": "Gemini 4 Pro Short Input Text"},
+            {"skuId": "10", "rawDescription": "Gemini 4 with Google Maps Grounding"},
+        ]
+        self.assertEqual(HighAlphaLeakChannelsScanner._BILLING_SKU_MODEL_RE.findall("Gemini 4 with Google Maps Grounding"), [])
+        with patch.object(scanner, "_fetch_keyless_public_skus", return_value=skus):
+            cards, changed = scanner._scan_public_cloud_billing_skus(baselines, set())
+        self.assertTrue(changed)
+        self.assertEqual([m["id"] for c in cards for m in c["models"]], ["gemini-4-pro"])
+
+    def test_ide_blob_and_engine_strip_battery_charging_and_concatenated_swe_slugs(self) -> None:
+        from tracker.scanners import HighAlphaLeakChannelsScanner
+
+        scanner = HighAlphaLeakChannelsScanner()
+        blob = (
+            b'"battery-charging-low" "battery-charging-medium" "battery-charging-high"\n'
+            b'gpt-5p4-persisteswe-1p5-thinking\n'
+            b'claude-mythos-5-1-thinking-high\n'
+        )
+        found = scanner._extract_ide_blob_models(blob)
+        self.assertEqual(found, {"claude-mythos-5-1-thinking-high"})
+
+    def test_stories_merge_dotted_vendor_families_and_discord_never_double_alerts_or_spams_registry(self) -> None:
+        from tracker.engine import TrackerEngine, _is_retired_card
+        from tracker.stories import build_stories
+
+        now_iso = datetime.now(timezone.utc).isoformat()
+        pricing = type("Pricing", (), {"lookup": lambda self, raw: ""})()
+        astra_cards = [
+            {
+                "id": f"intel-astra-{idx}",
+                "scanner": "litellm-intelligence",
+                "intelligence": True,
+                "family": fam,
+                "title": fam,
+                "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+                "provider_slug": "openai",
+                "provider_name": "OpenAI",
+                "event_label": "Registry update",
+                "registry_update": True,
+                "detected_at": now_iso,
+                "models": [{"id": fam, "name": fam, "registry_update": True}],
+                "links": [],
+            }
+            for idx, fam in enumerate(("gpt-6.2-astra", "openai.gpt-6.2-astra", "global.openai.gpt-6.2-astra", "us.openai.gpt-6.2-astra"))
+        ]
+        merged = build_stories(astra_cards, pricing_catalog=pricing)
+        self.assertEqual(len(merged), 1)
+        self.assertEqual(merged[0]["id"], "story-gpt-6-2-astra")
+        self.assertEqual(merged[0]["kind"], "registry")
+
+        for retired_cid in (
+            "intel-849bd7f7e59226f36a5b",
+            "intel-0d1d9285fcbfe948f976",
+            "cloud-billing-vertex-3a71508b",
+            "cloud-billing-vertex-cee49b6c",
+            "devin-cli-3000.13.4-3000.14.30821-openai",
+            "ag-acp-1.4.4-1.4.5-diff",
+        ):
+            self.assertTrue(_is_retired_card({"id": retired_cid}))
+
+        with tempfile.TemporaryDirectory() as directory, ExitStack() as stack:
+            from tracker.intelligence import _write
+
+            root = pathlib.Path(directory)
+            (root / "data").mkdir()
+            ev_rel = "data/intelligence/evidence/devin-cli/" + ("f" * 64) + ".json.gz"
+            ev_file = root / ev_rel
+            _write(
+                ev_file,
+                {
+                    "artifact_sha256": "f" * 64,
+                    "source": "devin-cli",
+                    "build": {"version": "1", "published_at": now_iso},
+                    "observed_at": now_iso,
+                    "registry": {"paper-volcano-high": {"provider": "unknown"}},
+                },
+            )
+
+            windsurf_card = {
+                "id": "windsurf-stable-3.13.4-3.14.30819",
+                "scanner": "ide-build-diff",
+                "header": "WINDSURF IDE BUILD DIFF",
+                "title": "Windsurf: battery-charging-high",
+                "detected_at": now_iso,
+                "models": [
+                    {"id": "battery-charging-low", "name": "Battery Charging (Low)"},
+                    {"id": "battery-charging-medium", "name": "Battery Charging (Medium)"},
+                    {"id": "battery-charging-high", "name": "Battery Charging (High)"},
+                    {"id": "claude-mythos-5-1-high", "name": "Claude Mythos 5.1 (High)"},
+                ],
+                "links": [],
+            }
+            (root / "data/feed.json").write_text(json.dumps({"stories": [], "cards": [windsurf_card]}), encoding="utf-8")
+            (root / "data/seen_ids.json").write_text(
+                json.dumps(
+                    [
+                        "alerts:evidence:v1",
+                        "story-seed",
+                        "windsurf-stable-3.13.4-3.14.30819",
+                        "story-claude-mythos-5-1",
+                        "story-claude-mythos-5-1#evidence:windsurf-stable-3.13.4-3.14.30819",
+                        "story-claude-mythos-5-1#model:claude-mythos-5-1-high",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+
+            new_intel_card = {
+                "id": "intel-volcano-new",
+                "scanner": "devin-cli",
+                "intelligence": True,
+                "family": "paper-volcano",
+                "title": "paper-volcano",
+                "header": "NEW IDENTIFIER · MULTI-PROVIDER",
+                "provider_slug": "unknown",
+                "provider_name": "Unattributed",
+                "event_label": "New identifier",
+                "detected_at": now_iso,
+                "first_seen": now_iso,
+                "evidence_path": ev_rel,
+                "evidence_retained": True,
+                "artifact_sha256": "f" * 64,
+                "models": [{"id": "paper-volcano-high", "name": "paper-volcano-high"}],
+                "links": [],
+            }
+            reg_intel_card = {
+                "id": "intel-reg-sync",
+                "scanner": "models-dev-api",
+                "intelligence": True,
+                "family": "gpt-6.2-astra",
+                "title": "gpt-6.2-astra",
+                "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+                "provider_slug": "openai",
+                "provider_name": "OpenAI",
+                "event_label": "Registry update",
+                "registry_update": True,
+                "detected_at": now_iso,
+                "first_seen": now_iso,
+                "evidence_path": ev_rel,
+                "evidence_retained": True,
+                "artifact_sha256": "f" * 64,
+                "models": [{"id": "openrouter/openai/gpt-6.2-astra", "name": "openrouter/openai/gpt-6.2-astra", "registry_update": True}],
+                "links": [],
+            }
+
+            engine = TrackerEngine()
+            for name, path in {
+                "ROOT_DIR": root,
+                "DATA_DIR": root / "data",
+                "DOCS_DATA_DIR": root / "docs/data",
+                "FEED_FILE": root / "data/feed.json",
+                "DOCS_FEED_FILE": root / "docs/data/feed.json",
+                "SEEN_FILE": root / "data/seen_ids.json",
+                "SCANNER_RUNS_FILE": root / "cache/runs.json",
+            }.items():
+                stack.enter_context(patch("tracker.engine." + name, path))
+            for src in engine.intelligence_scanners:
+                if src.source == "devin-cli":
+                    stack.enter_context(patch.object(src, "scan", return_value=[new_intel_card]))
+                elif src.source == "models-dev-api":
+                    stack.enter_context(patch.object(src, "scan", return_value=[reg_intel_card]))
+                else:
+                    stack.enter_context(patch.object(src, "scan", return_value=[]))
+            for attr in ("ag_scanner", "ag_acp_scanner", "npm_scanner", "kimi_router_scanner", "docs_scanner", "arena_scanner", "hf_scanner", "high_alpha_scanner", "openai_spec_scanner"):
+                stack.enter_context(patch.object(getattr(engine, attr), "scan", return_value=[]))
+            stack.enter_context(patch("tracker.engine._public_names_snapshot", return_value=[]))
+            stack.enter_context(patch("tracker.engine.novelty.get_catalog", return_value=None))
+            stack.enter_context(patch("tracker.engine.pricing_mod.get_pricing_catalog", return_value=pricing))
+            stack.enter_context(patch("tracker.engine.pricing_mod.enrich_cards_with_pricing"))
+            send = stack.enter_context(patch("tracker.engine.send_discord_webhook", return_value=True))
+            stack.enter_context(patch.dict(os.environ, {"DISCORD_WEBHOOK_URL": "https://example.invalid/webhook"}))
+
+            feed = engine.run_all_scans()
+            story_ids = {s["id"] for s in feed["stories"]}
+            self.assertNotIn("story-battery-charging", story_ids)
+            self.assertIn("story-claude-mythos-5-1", story_ids)
+            self.assertIn("story-paper-volcano", story_ids)
+            # Exactly 1 Discord call total (notify_intelligence on intel-volcano-new; 0 on reg_intel_card; 0 duplicate notify_stories)
+            self.assertEqual(send.call_count, 1)
+            self.assertEqual(send.call_args_list[0].args[0][0]["id"], "intel-volcano-new")
+
+
 if __name__ == "__main__":
     unittest.main()
