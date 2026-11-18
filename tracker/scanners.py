@@ -4707,7 +4707,18 @@ class HighAlphaLeakChannelsScanner:
         is_bootstrap = len(seen_all) == 0
         seen_all |= default_seed
 
+        seeded_services: Set[str] = set(vq_state.get("seeded_services", []))
+        if not seeded_services and not is_bootstrap and vq_state.get("last_source_mode") not in (None, "", "public-docs"):
+            seeded_services.add("aiplatform.googleapis.com")
+            if "antigravity" in seen_all or "chat-bard" in seen_all:
+                seeded_services.add("generativelanguage.googleapis.com")
+
         live_found: Set[str] = set()
+        svc_found: Dict[str, Set[str]] = {
+            "aiplatform.googleapis.com": set(),
+            "generativelanguage.googleapis.com": set(),
+        }
+        newly_seeded_service = False
         source_mode = "public-docs"
 
         # 1. Authenticated Google Cloud Quotas / Service Usage API poll (both Vertex `base_model:` & Gemini API `model:`)
@@ -4715,6 +4726,7 @@ class HighAlphaLeakChannelsScanner:
         if token and proj_id:
             hdrs = {"Authorization": f"Bearer {token}", "Accept": "application/json"}
             for quota_svc in ("aiplatform.googleapis.com", "generativelanguage.googleapis.com"):
+                svc_bucket = svc_found[quota_svc]
                 # 1a. Cloud Quotas API v1
                 next_tok = ""
                 for _ in range(10):
@@ -4726,7 +4738,7 @@ class HighAlphaLeakChannelsScanner:
                         q_url += f"&pageToken={urllib.parse.quote(next_tok)}"
                     try:
                         doc = _http_get_json(q_url, timeout=20, extra_headers=hdrs)
-                        self._collect_base_models_from_json(doc, live_found)
+                        self._collect_base_models_from_json(doc, svc_bucket)
                         next_tok = str(doc.get("nextPageToken") or "").strip() if isinstance(doc, dict) else ""
                         source_mode = "cloudquotas-api"
                         if not next_tok:
@@ -4746,7 +4758,7 @@ class HighAlphaLeakChannelsScanner:
                         su_url += f"&pageToken={urllib.parse.quote(next_tok)}"
                     try:
                         doc = _http_get_json(su_url, timeout=25, extra_headers=hdrs)
-                        self._collect_base_models_from_json(doc, live_found)
+                        self._collect_base_models_from_json(doc, svc_bucket)
                         next_tok = str(doc.get("nextPageToken") or "").strip() if isinstance(doc, dict) else ""
                         source_mode = "serviceusage-quotas-api"
                         if not next_tok:
@@ -4754,6 +4766,13 @@ class HighAlphaLeakChannelsScanner:
                     except Exception as exc:
                         print(f"[HighAlphaScanner] ServiceUsage Quotas API note ({quota_svc}): {exc}")
                         break
+
+                if svc_bucket:
+                    live_found |= svc_bucket
+                    if quota_svc not in seeded_services:
+                        seen_all |= svc_bucket
+                        seeded_services.add(quota_svc)
+                        newly_seeded_service = True
 
         # 2. Public Vertex AI Quotas & Partner Model Docs index (always runs, zero credentials required)
         for doc_url in (
@@ -4785,6 +4804,7 @@ class HighAlphaLeakChannelsScanner:
             vq_state["seen_base_models"] = sorted(seen_all | live_found)
             vq_state["current_live_models"] = sorted(live_found)
             vq_state["last_source_mode"] = source_mode
+            vq_state["seeded_services"] = sorted(seeded_services)
             baselines["vertex_ai_quotas"] = vq_state
             return cards, True
 
@@ -4798,39 +4818,46 @@ class HighAlphaLeakChannelsScanner:
         removed = sorted(m for m in prev_live if m not in live_found and m not in default_seed)
 
         if added:
-            # Group newly surfaced base_model entries by inferred provider (OpenAI, Google, Anthropic, DeepSeek, etc.)
-            by_prov: Dict[str, List[str]] = {}
+            google_info = {"name": "GOOGLE", "slug": "google", "color": "#38bdf8"}
+            gemini_api_only = svc_found["generativelanguage.googleapis.com"] - svc_found["aiplatform.googleapis.com"]
+            by_prov: Dict[str, Tuple[Dict[str, str], List[str]]] = {}
             for m in added:
-                p_slug = infer_provider(m)["slug"]
-                if p_slug == "openrouter":
-                    p_slug = "google"
-                by_prov.setdefault(p_slug, []).append(m)
+                # Gemini Developer API (generativelanguage.googleapis.com) is strictly first-party Google,
+                # and separator-free opaque tokens (e.g. 10-char hashes like k3p9mfl8q2) must never be prefix-guessed as partner labs.
+                if m in gemini_api_only or re.fullmatch(r"[a-z0-9]{5,12}", m):
+                    p_info = google_info
+                else:
+                    p_info = infer_provider(m)
+                    if p_info["slug"] == "openrouter":
+                        p_info = google_info
+                entry = by_prov.setdefault(p_info["slug"], (p_info, []))
+                entry[1].append(m)
 
-            for p_slug, p_models in by_prov.items():
-                p_info = infer_provider(p_models[0])
-                if p_info["slug"] == "openrouter":
-                    p_info = {"name": "GOOGLE", "slug": "google", "color": "#38bdf8"}
+            for p_slug, (p_info, p_models) in by_prov.items():
+                from_gemini_api = all(m in gemini_api_only for m in p_models)
+                svc_label = "generativelanguage.googleapis.com" if from_gemini_api else "aiplatform.googleapis.com"
+                surface_title = "Google Gemini API" if from_gemini_api else "Google Cloud Vertex AI"
                 sig = hashlib.sha256(f"vertex-quota:{p_slug}:{','.join(p_models)}".encode("utf-8")).hexdigest()[:8]
                 cards.append(
                     {
                         "id": f"vertex-quota-{p_slug}-{sig}",
                         "category": "cli-sdk-diff",
                         "scanner": "vertex-ai-quotas",
-                        "header": f"GOOGLE CLOUD VERTEX AI QUOTA REGISTRY · {p_info['name']}",
-                        "title": f"New {p_info['name']} Model(s) on Google Cloud Vertex AI: {', '.join(p_models[:2])}",
-                        "subtitle": f"Detected in Google Cloud Vertex AI `base_model:` quota dimensions ({len(p_models)} new)",
-                        "build_label": "Vertex AI Quotas",
-                        "build_transition": f"aiplatform.googleapis.com (+{len(p_models)} base_model)",
-                        "models": [{"id": m, "name": f"base_model:{m}"} for m in p_models[:10]],
-                        "evidence": "console.cloud.google.com/iam-admin/quotas (aiplatform.googleapis.com)",
-                        "source_text": "Google Cloud Vertex AI `base_model` quota dimension registry.",
+                        "header": f"GOOGLE CLOUD QUOTA REGISTRY · {p_info['name']}",
+                        "title": f"New {p_info['name']} Model(s) on {surface_title}: {', '.join(p_models[:2])}",
+                        "subtitle": f"Detected in `{svc_label}` quota dimensions ({len(p_models)} new; not confirmation of public rollout)",
+                        "build_label": "Gemini API Quotas" if from_gemini_api else "Vertex AI Quotas",
+                        "build_transition": f"{svc_label} (+{len(p_models)} model quota)",
+                        "models": [{"id": m, "name": f"base_model:{m}"} for m in p_models[:25]],
+                        "evidence": f"console.cloud.google.com/iam-admin/quotas ({svc_label})",
+                        "source_text": f"{surface_title} `{svc_label}` quota dimension registry.",
                         "disclaimer_1": "",
                         "disclaimer_2": "",
                         "provider_name": p_info["name"],
                         "provider_slug": p_info["slug"],
                         "accent_color": p_info["color"],
                         "links": [
-                            {"label": "GCP Vertex AI Quotas", "url": "https://console.cloud.google.com/iam-admin/quotas"},
+                            {"label": "GCP Quotas", "url": "https://console.cloud.google.com/iam-admin/quotas"},
                             {"label": "Vertex AI Models", "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"},
                         ],
                         "detected_at": datetime.now(timezone.utc).isoformat(),
@@ -4838,10 +4865,11 @@ class HighAlphaLeakChannelsScanner:
                 )
 
         new_seen = sorted(seen_all | live_found)
-        if set(new_seen) != seen_all or set(live_found) != prev_live:
+        if newly_seeded_service or set(new_seen) != seen_all or set(live_found) != prev_live or set(vq_state.get("seeded_services", [])) != seeded_services:
             vq_state["seen_base_models"] = new_seen
             vq_state["current_live_models"] = sorted(live_found)
             vq_state["last_source_mode"] = source_mode
+            vq_state["seeded_services"] = sorted(seeded_services)
             if removed:
                 hist_rem = set(vq_state.get("ephemeral_removed_models", []))
                 vq_state["ephemeral_removed_models"] = sorted(hist_rem | set(removed))[-100:]

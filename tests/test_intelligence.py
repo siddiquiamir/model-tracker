@@ -736,6 +736,51 @@ class IdeBuildDiffTests(unittest.TestCase):
             self.assertEqual(second[0]["models"][0]["id"], "host/new-frontier-1")
             self.assertFalse(second[0]["backfill"])
 
+    def test_opaque_quota_hashes_do_not_misclassify_as_moonshot_or_openai(self) -> None:
+        from tracker.extractor import infer_provider
+
+        self.assertNotEqual(infer_provider("k3p9mfl8q2")["slug"], "kimi")
+        self.assertNotEqual(infer_provider("o3kpjw07gm")["slug"], "openai")
+        self.assertNotEqual(infer_provider("o5wk9grrjt")["slug"], "openai")
+        self.assertEqual(infer_provider("k3-pro")["slug"], "kimi")
+        self.assertEqual(infer_provider("kimi-k3")["slug"], "kimi")
+        self.assertEqual(infer_provider("o3-mini")["slug"], "openai")
+
+    def test_new_quota_service_baselines_quietly_and_attributes_gemini_api_to_google(self) -> None:
+        from tracker.scanners import HighAlphaLeakChannelsScanner
+
+        scanner = HighAlphaLeakChannelsScanner()
+        baselines = {
+            "vertex_ai_quotas": {
+                "seen_base_models": ["gemini-4-argon"],
+                "current_live_models": ["gemini-4-argon"],
+                "last_source_mode": "serviceusage-quotas-api",
+                "seeded_services": ["aiplatform.googleapis.com"],
+            }
+        }
+
+        def fake_json(url, timeout=20, extra_headers=None):
+            if "aiplatform.googleapis.com" in url:
+                return {"metrics": [{"limits": [{"quotaBuckets": [{"dimensions": {"base_model": "gemini-4-argon"}}]}]}]}
+            if "generativelanguage.googleapis.com" in url:
+                return {"metrics": [{"limits": [{"quotaBuckets": [{"dimensions": {"model": m}} for m in gen_models]}]}]}
+            return {}
+
+        gen_models = ["chat-bard", "7s9d0xhwo8", "k3p9mfl8q2"]
+        with patch.object(scanner, "_mint_gcp_bearer_token", return_value=("tok", "proj")), patch("tracker.scanners._http_get_json", side_effect=fake_json), patch("tracker.scanners._http_get_text", return_value=""):
+            cards, changed = scanner._scan_vertex_ai_quotas(baselines, set())
+        self.assertEqual(cards, [])
+        self.assertTrue(changed)
+        self.assertIn("generativelanguage.googleapis.com", baselines["vertex_ai_quotas"]["seeded_services"])
+
+        gen_models = ["chat-bard", "7s9d0xhwo8", "k3p9mfl8q2", "k3x9new001", "gdm-eval-model-next"]
+        with patch.object(scanner, "_mint_gcp_bearer_token", return_value=("tok", "proj")), patch("tracker.scanners._http_get_json", side_effect=fake_json), patch("tracker.scanners._http_get_text", return_value=""):
+            cards, changed = scanner._scan_vertex_ai_quotas(baselines, set())
+        self.assertEqual(len(cards), 1)
+        self.assertEqual(cards[0]["provider_slug"], "google")
+        self.assertEqual(cards[0]["build_label"], "Gemini API Quotas")
+        self.assertEqual({m["id"] for m in cards[0]["models"]}, {"k3x9new001", "gdm-eval-model-next"})
+
 
 if __name__ == "__main__":
     unittest.main()

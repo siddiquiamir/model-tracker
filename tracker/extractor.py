@@ -469,7 +469,7 @@ def infer_provider(model_id: str) -> Dict[str, str]:
         return {"name": "GOOGLE", "slug": "google", "color": "#38bdf8"}
     if mid.startswith(("claude", "anthropic/", "anthropic-", "sonnet-", "opus-", "haiku-", "fable-", "mythos-", "silicon-", "silicon")):
         return {"name": "ANTHROPIC", "slug": "anthropic", "color": "#f97316"}
-    if mid.startswith(("gpt", "o1", "o3", "o4", "o5", "codex", "openai/", "openai-", "astra-cyber", "cactus-", "kraken-", "cactus", "kraken")):
+    if mid.startswith(("gpt", "codex", "openai/", "openai-", "astra-cyber", "cactus-", "kraken-", "cactus", "kraken")) or re.match(r"^o[1345](?:$|[-_./:])", mid):
         return {"name": "OPENAI", "slug": "openai", "color": "#10b981"}
     if mid.startswith(("mai-", "microsoft/")):
         return {"name": "MICROSOFT AI", "slug": "openai", "color": "#38bdf8"}
@@ -479,7 +479,7 @@ def infer_provider(model_id: str) -> Dict[str, str]:
         return {"name": "QWEN · ALIBABA", "slug": "qwen", "color": "#a855f7"}
     if mid.startswith(("deepseek",)):
         return {"name": "DEEPSEEK", "slug": "deepseek", "color": "#06b6d4"}
-    if mid.startswith(("kimi", "k3", "moonshot")):
+    if mid.startswith(("kimi", "moonshot")) or re.match(r"^k3(?:$|[-_./:])", mid):
         return {"name": "MOONSHOT · KIMI", "slug": "kimi", "color": "#6366f1"}
     if mid.startswith(("minimax",)):
         return {"name": "MINIMAX", "slug": "minimax", "color": "#ec4899"}
