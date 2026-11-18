@@ -1,16 +1,78 @@
 {
-  "generated_at": "2026-11-18T06:40:28.493401+00:00",
+  "generated_at": "2026-11-18T07:00:28.537417+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 172,
+    "stories": 173,
     "leaks": 56,
     "releases": 69,
-    "stories_24h": 51,
-    "sources_ok": 15,
-    "total_cards": 318,
-    "new_in_this_scan": 22
+    "stories_24h": 52,
+    "sources_ok": 13,
+    "total_cards": 319,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-glm-5.3-flash-free",
+      "group": "glm-5.3-flash-free",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "GLM 5.3 Flash Free",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-18T07:01:21.046695+00:00",
+      "updated_at": "2026-11-18T07:01:21.046695+00:00",
+      "first_source": "Registry Update",
+      "lead": "",
+      "released_on": "2026-08-26",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "glm-5.3-flash-free",
+          "name": "opencode/glm-5.3-flash-free",
+          "released_on": "2026-08-26"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-api",
+          "detected_at": "2026-11-18T07:01:21.046695+00:00",
+          "title": "glm-5.3-flash-free",
+          "url": "https://models.dev/api.json?type=all",
+          "backfill": false,
+          "build": "14afa3aac786359ccd7aac7090dbb95a35ff0cd08b2a44b5345623350d999da7",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/14afa3aac786359ccd7aac7090dbb95a35ff0cd08b2a44b5345623350d999da7.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-9b0456e9d15ddcef4f33"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": true,
+      "registry_evidence": [
+        {
+          "id": "opencode/glm-5.3-flash-free",
+          "family": "glm-5.3-flash-free",
+          "file_path": "api.json?type=all",
+          "file_sha256": "14afa3aac786359ccd7aac7090dbb95a35ff0cd08b2a44b5345623350d999da7",
+          "excerpt": "{\"opencode/glm-5.3-flash-free\": {\"id\": \"glm-5.3-flash-free\", \"name\": \"GLM-5.3-Flash Free\", \"description\": \"Native multimodal GLM model for efficient coding and long-horizon agent tasks\", \"family\": \"glm-flash\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"high\", \"max\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-08-26\", \"last_updated\": \"2026-08-26\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 200000, \"output\": 32000}, \"status\": \"deprecated\", \"provider\": {\"api\": \"https://opencode.ai/inference/openai/v1\"}, \"cost\": {\"input\": 0, \"output\": 0, \"cache_read\": 0}, \"canonical_model_id\": \"zhipuai/glm-5.3-flash\"}}",
+          "canonical_id": "zhipuai/glm-5.3-flash",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "14afa3aac786359ccd7aac7090dbb95a35ff0cd08b2a44b5345623350d999da7",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T07:01:20.809005+00:00"
+        }
+      ],
+      "x_post_text": "Registry Update 14afa3aac786: glm-5.3-flash-free\n\nunverified candidate, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "story-minimax-m3",
       "group": "minimax-m3",
@@ -10908,6 +10970,85 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-9b0456e9d15ddcef4f33",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "glm-5.3-flash-free",
+      "event_label": "Registry update",
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "unverified"
+        },
+        "attribution": {
+          "level": "unknown"
+        },
+        "availability": {
+          "level": "unknown"
+        },
+        "novelty": {
+          "level": "candidate"
+        }
+      },
+      "candidate_only": true,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "glm-5.3-flash-free",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "opencode/glm-5.3-flash-free",
+          "name": "opencode/glm-5.3-flash-free",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-18T07:01:21.046695+00:00",
+      "first_seen": "2026-11-18T07:01:20.809005+00:00",
+      "observed_at": "2026-11-18T07:01:21.046695+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "2ef88dbda4527af1fd253d43b186cafedad751463ec83155ca15645ce4a149ac -> 14afa3aac786359ccd7aac7090dbb95a35ff0cd08b2a44b5345623350d999da7",
+      "build": "14afa3aac786359ccd7aac7090dbb95a35ff0cd08b2a44b5345623350d999da7",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "14afa3aac786359ccd7aac7090dbb95a35ff0cd08b2a44b5345623350d999da7",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/14afa3aac786359ccd7aac7090dbb95a35ff0cd08b2a44b5345623350d999da7.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/14afa3aac786359ccd7aac7090dbb95a35ff0cd08b2a44b5345623350d999da7.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "opencode/glm-5.3-flash-free",
+          "family": "glm-5.3-flash-free",
+          "file_path": "api.json?type=all",
+          "file_sha256": "14afa3aac786359ccd7aac7090dbb95a35ff0cd08b2a44b5345623350d999da7",
+          "excerpt": "{\"opencode/glm-5.3-flash-free\": {\"id\": \"glm-5.3-flash-free\", \"name\": \"GLM-5.3-Flash Free\", \"description\": \"Native multimodal GLM model for efficient coding and long-horizon agent tasks\", \"family\": \"glm-flash\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"high\", \"max\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-08-26\", \"last_updated\": \"2026-08-26\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 200000, \"output\": 32000}, \"status\": \"deprecated\", \"provider\": {\"api\": \"https://opencode.ai/inference/openai/v1\"}, \"cost\": {\"input\": 0, \"output\": 0, \"cache_read\": 0}, \"canonical_model_id\": \"zhipuai/glm-5.3-flash\"}}",
+          "canonical_id": "zhipuai/glm-5.3-flash",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "14afa3aac786359ccd7aac7090dbb95a35ff0cd08b2a44b5345623350d999da7",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T07:01:20.809005+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 14afa3aac786: opencode/glm-5.3-flash-free\n\nunverified candidate, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "intel-2abf13489e0d4dc5b8a0",
       "scanner": "models-dev-git",
@@ -26161,25 +26302,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T06:41:26.383971+00:00",
+      "last_attempt": "2026-11-18T07:01:20.593682+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:41:26.693475+00:00",
+      "last_success": "2026-11-18T07:01:22.744107+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.31,
-      "latest_build": "2ef88dbda4527af1fd253d43b186cafedad751463ec83155ca15645ce4a149ac",
-      "builds_retained": 2,
+      "duration_seconds": 2.15,
+      "latest_build": "14afa3aac786359ccd7aac7090dbb95a35ff0cd08b2a44b5345623350d999da7",
+      "builds_retained": 3,
       "identifiers": 9679
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-18T06:41:26.701492+00:00",
+      "last_attempt": "2026-11-18T07:01:22.751961+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:41:27.030732+00:00",
+      "last_success": "2026-11-18T07:01:23.084933+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.329,
+      "duration_seconds": 0.333,
       "latest_build": "736b05716593347fa51b92afa9526a2397af312c",
       "builds_retained": 2,
       "identifiers": 6124
@@ -26187,12 +26328,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-18T06:41:27.038695+00:00",
+      "last_attempt": "2026-11-18T06:53:21.292359+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:41:37.753401+00:00",
+      "last_success": "2026-11-18T06:53:21.699393+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 10.715,
+      "duration_seconds": 0.407,
       "latest_build": "a7ce33dc01f58fd323f7165d07a7f00e8f926664",
       "builds_retained": 4,
       "identifiers": 10804
@@ -26200,81 +26341,81 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-18T06:41:44.711042+00:00",
+      "last_attempt": "2026-11-18T07:01:23.092600+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 16,
-      "duration_seconds": 14.152
+      "consecutive_failures": 26,
+      "duration_seconds": 14.074
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": true,
-      "last_attempt": "2026-11-18T06:41:58.866094+00:00",
+      "last_attempt": "2026-11-18T07:01:37.170223+00:00",
       "status": "failed",
       "error_type": "HTTPError",
-      "consecutive_failures": 16,
-      "duration_seconds": 0.226
+      "consecutive_failures": 26,
+      "duration_seconds": 0.209
     }
   },
   "source_health": {
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T06:40:28.493830+00:00",
+      "last_attempt": "2026-11-18T07:00:28.537855+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:40:30.397308+00:00",
+      "last_success": "2026-11-18T07:00:30.503612+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.904
+      "duration_seconds": 1.966
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T06:40:30.397378+00:00",
+      "last_attempt": "2026-11-18T07:00:30.503671+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:40:30.561572+00:00",
+      "last_success": "2026-11-18T07:00:30.673119+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.164
+      "duration_seconds": 0.169
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T06:40:30.561608+00:00",
+      "last_attempt": "2026-11-18T07:00:30.673145+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:40:39.014340+00:00",
+      "last_success": "2026-11-18T07:00:37.739172+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.453
+      "duration_seconds": 7.066
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T06:40:39.014410+00:00",
+      "last_attempt": "2026-11-18T07:00:37.739218+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:41:26.383904+00:00",
+      "last_success": "2026-11-18T07:01:20.593623+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 47.37,
+      "duration_seconds": 42.854,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-18T06:40:39.240887+00:00",
+          "checked_at": "2026-11-18T07:00:38.161038+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-18T06:40:49.298154+00:00",
+          "checked_at": "2026-11-18T07:00:47.826323+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-18T06:40:49.403859+00:00",
+          "checked_at": "2026-11-18T07:00:47.942127+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-18T06:40:49.403879+00:00",
+          "checked_at": "2026-11-18T07:00:47.942138+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -26282,25 +26423,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T06:41:26.383971+00:00",
+      "last_attempt": "2026-11-18T07:01:20.593682+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:41:26.693475+00:00",
+      "last_success": "2026-11-18T07:01:22.744107+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.31,
-      "latest_build": "2ef88dbda4527af1fd253d43b186cafedad751463ec83155ca15645ce4a149ac",
-      "builds_retained": 2,
+      "duration_seconds": 2.15,
+      "latest_build": "14afa3aac786359ccd7aac7090dbb95a35ff0cd08b2a44b5345623350d999da7",
+      "builds_retained": 3,
       "identifiers": 9679
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-18T06:41:26.701492+00:00",
+      "last_attempt": "2026-11-18T07:01:22.751961+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:41:27.030732+00:00",
+      "last_success": "2026-11-18T07:01:23.084933+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.329,
+      "duration_seconds": 0.333,
       "latest_build": "736b05716593347fa51b92afa9526a2397af312c",
       "builds_retained": 2,
       "identifiers": 6124
@@ -26308,12 +26449,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-18T06:41:27.038695+00:00",
+      "last_attempt": "2026-11-18T06:53:21.292359+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:41:37.753401+00:00",
+      "last_success": "2026-11-18T06:53:21.699393+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 10.715,
+      "duration_seconds": 0.407,
       "latest_build": "a7ce33dc01f58fd323f7165d07a7f00e8f926664",
       "builds_retained": 4,
       "identifiers": 10804
@@ -26321,76 +26462,76 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-18T06:41:44.711042+00:00",
+      "last_attempt": "2026-11-18T07:01:23.092600+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 16,
-      "duration_seconds": 14.152
+      "consecutive_failures": 26,
+      "duration_seconds": 14.074
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": true,
-      "last_attempt": "2026-11-18T06:41:58.866094+00:00",
+      "last_attempt": "2026-11-18T07:01:37.170223+00:00",
       "status": "failed",
       "error_type": "HTTPError",
-      "consecutive_failures": 16,
-      "duration_seconds": 0.226
+      "consecutive_failures": 26,
+      "duration_seconds": 0.209
     },
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T06:41:59.092906+00:00",
+      "last_attempt": "2026-11-18T07:01:37.379570+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:42:07.225981+00:00",
+      "last_success": "2026-11-18T07:01:45.468156+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.133
+      "duration_seconds": 8.089
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T06:42:07.226049+00:00",
+      "last_attempt": "2026-11-18T07:01:45.468208+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:42:09.011573+00:00",
+      "last_success": "2026-11-18T07:01:47.822200+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.786
+      "duration_seconds": 2.354
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-18T06:42:09.011629+00:00",
+      "last_attempt": "2026-11-18T06:53:45.636518+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:42:16.789636+00:00",
+      "last_success": "2026-11-18T06:53:56.030527+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.778
+      "duration_seconds": 10.394
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T06:42:16.789694+00:00",
+      "last_attempt": "2026-11-18T07:01:47.822254+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:42:18.346425+00:00",
+      "last_success": "2026-11-18T07:01:49.365343+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.557
+      "duration_seconds": 1.543
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T06:42:18.346478+00:00",
+      "last_attempt": "2026-11-18T07:01:49.365389+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:42:18.432399+00:00",
+      "last_success": "2026-11-18T07:01:49.396217+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.086
+      "duration_seconds": 0.031
     }
   },
   "identities": {
     "identifiers": 29216,
     "declared_aliases": 17769,
-    "pending_candidates": 2
+    "pending_candidates": 3
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
@@ -26410,8 +26551,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 47,
-      "events": 47,
+      "complete": 48,
+      "events": 48,
       "rate": 1.0
     },
     "source_health": {
