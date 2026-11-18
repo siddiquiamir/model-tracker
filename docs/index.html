@@ -725,7 +725,10 @@
       try {
         await document.fonts.ready;
         const svg = logoSvg(story.provider_slug, story.provider_name).replace("<svg ", '<svg xmlns="http://www.w3.org/2000/svg" ');
-        const provider = await shareImage("data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg));
+        const [provider, statsWire] = await Promise.all([
+          shareImage("data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg)),
+          shareImage(STATSWIRE_LOGO_URI)
+        ]);
         const canvas = document.getElementById("share-canvas");
         canvas.width = 1200; canvas.height = 675;
         const ctx = canvas.getContext("2d");
@@ -735,7 +738,7 @@
         ctx.fillRect(0, 0, 1200, 675);
         ctx.save();
         ctx.rotate(-0.15);
-        ctx.fillStyle = "#151a22";
+        ctx.fillStyle = "#0b0e12";
         ctx.font = '700 22px "Segoe UI", sans-serif';
         for (let top = 170; top < 820; top += 150) {
           for (let left = -60; left < 1320; left += 280) ctx.fillText("@StatsWire", left, top);
@@ -769,9 +772,10 @@
         drawShareText(ctx, timing.find(line => line.startsWith("Observed ")) || (story.detected_at ? `Tracker record: ${fmtUTC(story.detected_at, true)}` : ""), 68, 525, 1050, 28, 1);
         ctx.fillStyle = "#303946";
         ctx.fillRect(68, 560, 1064, 1);
+        ctx.drawImage(statsWire, 68, 581, 42, 42);
         ctx.fillStyle = "#f5f7fa";
         ctx.font = '700 25px "Segoe UI", sans-serif';
-        ctx.fillText("Developed by @StatsWire on X", 68, 610);
+        ctx.fillText("Developed by @StatsWire on X", 124, 610);
         canvas.style.maxWidth = "800px";
         canvas.style.margin = "0 auto";
         SHARE_STORY = story;
