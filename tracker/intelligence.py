@@ -625,6 +625,10 @@ class ModelRegistryScanner:
             event_id = hashlib.sha256(f"{self.source}:{sha256}:{base}".encode()).hexdigest()[:20]
             excerpts = [{**registry[mid], "build": build["version"], "source_url": build["url"], "first_seen": published_at} for mid in identifiers]
             confidence = evidence_confidence(excerpts, event_label)
+            retained_excerpts = [
+                {k: v for k, v in item.items() if k != "metadata"}
+                for item in excerpts[:25]
+            ]
             events.append({
                 "id": f"intel-{event_id}", "scanner": self.source, "intelligence": True,
                 "header": f"{event_label.upper()} · MULTI-PROVIDER", "title": base,
@@ -641,23 +645,24 @@ class ModelRegistryScanner:
                 "build": build["version"], "source_text": build["url"],
                 "artifact_sha256": sha256, "verification": verification,
                 "evidence": f"data/intelligence/{evidence_path}", "evidence_path": f"data/intelligence/{evidence_path}",
-                "evidence_retained": True, "registry_evidence": excerpts, "sightings": sightings,
+                "evidence_retained": True, "registry_evidence": retained_excerpts, "sightings": sightings,
                 "accent_color": "#0891b2", "links": [{"label": self.label, "url": build["url"]}, {"label": "Release metadata", "url": build["manifest_url"]}],
             })
         for identifier, record in registry.items():
             previous = known.get(identifier, {})
             first_seen = min(published_at, previous.get("first_seen", published_at))
             first_evidence = previous.get("first_seen_evidence_path", previous.get("evidence_path", "")) if previous.get("first_seen", "") <= published_at else ""
-            known[identifier] = {**record, "first_seen": first_seen, "first_seen_evidence_path": first_evidence or f"data/intelligence/{evidence_path}", "evidence_path": f"data/intelligence/{evidence_path}"}
+            compact_record = {k: v for k, v in record.items() if k != "excerpt"}
+            known[identifier] = {**compact_record, "first_seen": first_seen, "first_seen_evidence_path": first_evidence or f"data/intelligence/{evidence_path}", "evidence_path": f"data/intelligence/{evidence_path}"}
         latest = state.get("latest", {})
         if not latest or published_at >= latest.get("published_at", ""):
             state["latest"] = {**build, "published_at": published_at, "artifact_sha256": sha256, "registry_ids": sorted(registry)}
         state["known"] = known
         state.setdefault("builds", {})[build["version"]] = {"published_at": published_at, "artifact_sha256": sha256, "evidence_path": evidence_path, "url": build["url"], "integrity": build.get("integrity", "")}
-        existing_events = {event["id"]: event for event in state.get("events", [])}
-        existing_events.update({event["id"]: event for event in events})
+        existing_events = {event["id"]: event for event in state.get("events", []) if not event.get("backfill")}
+        existing_events.update({event["id"]: event for event in events if not event.get("backfill")})
         cutoff = (datetime.now(timezone.utc) - timedelta(days=14)).isoformat()
-        state["events"] = [event for event in existing_events.values() if event["detected_at"] >= cutoff]
+        state["events"] = [event for event in existing_events.values() if event.get("detected_at", "") >= cutoff]
         _write(state_path, state)
         IdentityLedger(self.state_dir).ingest(self.source, registry, {**build, "published_at": published_at}, f"data/intelligence/{evidence_path}", observed_at)
         return events
@@ -685,7 +690,7 @@ class ModelRegistryScanner:
             self.ingest(build, registry, sha256, verification, history or bootstrap)
             state = _read(state_path)
         self.status = {"status": "ok", "latest_build": state.get("latest", {}).get("version"), "builds_retained": len(state.get("builds", {})), "identifiers": len(state.get("known", {}))}
-        return state.get("events", [])
+        return [event for event in state.get("events", []) if not event.get("backfill")]
 
 
 def classify_known(cards: list[Dict[str, Any]], public_names: Iterable[str]) -> list[Dict[str, Any]]:

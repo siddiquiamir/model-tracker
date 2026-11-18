@@ -210,7 +210,10 @@ class TrackerEngine:
 
     def run_all_scans(self, notify_discord: bool = True) -> Dict[str, Any]:
         prev_timestamps = self.load_previous_timestamps()
-        prev_cards = [c for c in self.load_previous_cards() if not _is_retired_card(c)]
+        prev_cards = [
+            c for c in self.load_previous_cards()
+            if not _is_retired_card(c) and not (c.get("intelligence") and c.get("backfill"))
+        ]
         prev_codenames = {c["id"]: c["codenames"] for c in prev_cards if c.get("codenames")}
         scanner_runs = _load_json(SCANNER_RUNS_FILE, {})
         health_path = DATA_DIR / "intelligence/source_health.json"
@@ -266,6 +269,7 @@ class TrackerEngine:
                 health["subsources"] = dict(self.high_alpha_scanner.source_health)
             print(f"[ModelPulse] {name}: {len(cards)} card(s) in {time.monotonic() - t0:.1f}s")
             if name in intelligence_by_source:
+                cards = [card for card in cards if not card.get("backfill")]
                 cards = classify_known(cards, public_names)
                 health.update(intelligence_by_source[name].status)
                 intelligence_status[name] = dict(health)

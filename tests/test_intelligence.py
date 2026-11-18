@@ -718,6 +718,24 @@ class IdeBuildDiffTests(unittest.TestCase):
         self.assertIn("silicon-2-low", found)
         self.assertIn("silicon-2-xhigh", found)
 
+    def test_bootstrap_backfill_events_do_not_bloat_live_scan_feed(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            scanner = ModelsDevApiScanner(root)
+            catalog = {"host": {"models": {f"model-{i}": {"name": f"Model {i}"} for i in range(50)}}}
+            with patch("tracker.intelligence.fetch", return_value=json.dumps(catalog).encode()):
+                first = scanner.scan()
+            self.assertEqual(first, [])
+            state = _read(root / "models-dev-api.json")
+            self.assertEqual(state["events"], [])
+            self.assertEqual(len(state["known"]), 50)
+            catalog["host"]["models"]["new-frontier-1"] = {"name": "New Frontier 1"}
+            with patch("tracker.intelligence.fetch", return_value=json.dumps(catalog).encode()):
+                second = scanner.scan()
+            self.assertEqual(len(second), 1)
+            self.assertEqual(second[0]["models"][0]["id"], "host/new-frontier-1")
+            self.assertFalse(second[0]["backfill"])
+
 
 if __name__ == "__main__":
     unittest.main()

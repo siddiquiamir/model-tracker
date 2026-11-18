@@ -95,6 +95,7 @@ jobs:
           publish() {
             git add data/feed.json data/seen_ids.json data/source_baselines.json data/hints.json docs/data/feed.json
             if git diff --cached --quiet; then return 0; fi
+            PRE_COMMIT_SHA=$(git rev-parse HEAD)
             git commit -q -m "chore(feed): update detected model diffs"
             for attempt in 1 2 3; do
               if git pull -q --rebase -X theirs origin main && git push -q origin HEAD:main; then
@@ -103,6 +104,7 @@ jobs:
               git rebase --abort 2>/dev/null || true
               sleep 5
             done
+            git reset --mixed -q "$PRE_COMMIT_SHA" || true
             echo "::warning::Feed push failed after 3 attempts; will retry next cycle."
           }
 
