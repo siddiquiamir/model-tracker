@@ -1,17 +1,68 @@
 {
-  "generated_at": "2026-11-18T17:00:53.711495+00:00",
-  "scan_completed_at": "2026-11-18T17:02:34.549668+00:00",
+  "generated_at": "2026-11-18T17:16:53.398723+00:00",
+  "scan_completed_at": "2026-11-18T17:18:27.482973+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 165,
-    "leaks": 44,
+    "stories": 166,
+    "leaks": 45,
     "releases": 71,
-    "stories_24h": 49,
-    "sources_ok": 12,
-    "total_cards": 299,
-    "new_in_this_scan": 0
+    "stories_24h": 50,
+    "sources_ok": 13,
+    "total_cards": 300,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-inkling-2dsparkmodel",
+      "group": "inkling-2dsparkmodel",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Inkling2DSparkModel",
+      "provider_slug": "opensource",
+      "provider_name": "Architecture Diff",
+      "accent_color": "#8b5cf6",
+      "detected_at": "2026-11-18T17:18:23.701759+00:00",
+      "updated_at": "2026-11-18T17:18:23.701759+00:00",
+      "first_source": "vLLM registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Inkling2DSparkModel",
+          "name": "Inkling2DSparkModel"
+        },
+        {
+          "id": "Inkling2ForConditionalGeneration",
+          "name": "Inkling2ForConditionalGeneration"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM registry",
+          "scanner": "vllm-registry",
+          "detected_at": "2026-11-18T17:18:23.701759+00:00",
+          "title": "New Engine Architecture: Inkling2DSparkModel (+1 more)",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · ARCHITECTURE DIFF",
+      "card_ids": [
+        "vllm-arch-2045869664"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: Inkling2DSparkModel by Architecture Diff\n\nFirst detected 18 Nov 17:18 UTC in vLLM registry\nIDs: Inkling2DSparkModel, Inkling2ForConditionalGeneration\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-18T17:18:27.480768+00:00"
+    },
     {
       "id": "story-inkling",
       "group": "inkling",
@@ -10373,6 +10424,47 @@
     }
   ],
   "cards": [
+    {
+      "id": "vllm-arch-2045869664",
+      "category": "open-source",
+      "scanner": "vllm-registry",
+      "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
+      "title": "New Engine Architecture: Inkling2DSparkModel (+1 more)",
+      "subtitle": "New model_executor/models/registry.py architecture declarations",
+      "build_label": "Registry File",
+      "build_transition": "vllm/model_executor/models/registry.py",
+      "models": [
+        {
+          "id": "Inkling2DSparkModel",
+          "name": "Inkling2DSparkModel"
+        },
+        {
+          "id": "Inkling2ForConditionalGeneration",
+          "name": "Inkling2ForConditionalGeneration"
+        }
+      ],
+      "evidence": "vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+      "source_text": "official vLLM model architecture registry.",
+      "disclaimer_1": "Tracks only model architecture class registrations in registry.py.",
+      "disclaimer_2": "Open-source labs register their architecture classes here prior to weight drops.",
+      "provider_name": "VLLM REGISTRY",
+      "provider_slug": "opensource",
+      "accent_color": "#8b5cf6",
+      "links": [
+        {
+          "label": "vLLM registry.py",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py"
+        },
+        {
+          "label": "Supported Models Docs",
+          "url": "https://docs.vllm.ai/en/latest/models/supported_models.html"
+        }
+      ],
+      "detected_at": "2026-11-18T17:18:23.701759+00:00",
+      "tracker_observed_at": "2026-11-18T17:18:25.630184+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: Inkling2DSparkModel (+1 more) spotted in Registry File vllm/model_executor/models/registry.py!\n\n• Inkling2DSparkModel (Inkling2DSparkModel)\n• Inkling2ForConditionalGeneration (Inkling2ForConditionalGeneration)\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM model architecture registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "intel-8c1871420df2048382e8",
       "scanner": "litellm-intelligence",
@@ -24400,12 +24492,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T16:59:55.566295+00:00",
+      "last_attempt": "2026-11-18T17:17:52.691117+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T16:59:56.492054+00:00",
+      "last_success": "2026-11-18T17:17:52.977472+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.926,
+      "duration_seconds": 0.286,
       "latest_build": "21be2aae8e75c3dcac78b024ec6a4a0826d433e9cdb20883812e507d5c46e340",
       "builds_retained": 1,
       "identifiers": 9583
@@ -24413,12 +24505,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-18T17:02:00.669551+00:00",
+      "last_attempt": "2026-11-18T17:17:53.169657+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T17:02:01.085353+00:00",
+      "last_success": "2026-11-18T17:17:53.581693+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.416,
+      "duration_seconds": 0.412,
       "latest_build": "65a926600a92b11f1464433a3a60a2c25cb93574",
       "builds_retained": 8,
       "identifiers": 6917
@@ -24426,12 +24518,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-18T16:51:54.914124+00:00",
+      "last_attempt": "2026-11-18T17:13:57.443102+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T16:51:55.393336+00:00",
+      "last_success": "2026-11-18T17:13:57.966569+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.479,
+      "duration_seconds": 0.523,
       "latest_build": "d893237face842c5a4c918009d50c8e33b7c6523",
       "builds_retained": 2,
       "identifiers": 10700
@@ -24439,21 +24531,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-18T17:02:01.284339+00:00",
+      "last_attempt": "2026-11-18T17:17:53.781891+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 128,
-      "duration_seconds": 21.222
+      "consecutive_failures": 136,
+      "duration_seconds": 21.027
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-18T17:00:17.654909+00:00",
+      "last_attempt": "2026-11-18T17:16:15.612885+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T17:00:17.868029+00:00",
+      "last_success": "2026-11-18T17:16:15.781629+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.213,
+      "duration_seconds": 0.169,
       "latest_build": "3.14.30819",
       "builds_retained": 2,
       "identifiers": 3330
@@ -24463,61 +24555,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T17:00:53.711575+00:00",
+      "last_attempt": "2026-11-18T17:16:53.398771+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T17:00:55.787008+00:00",
+      "last_success": "2026-11-18T17:16:55.229367+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.075
+      "duration_seconds": 1.831
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T17:00:55.787071+00:00",
+      "last_attempt": "2026-11-18T17:16:55.229420+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T17:00:56.113562+00:00",
+      "last_success": "2026-11-18T17:16:55.578681+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.327
+      "duration_seconds": 0.349
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T17:00:56.113609+00:00",
+      "last_attempt": "2026-11-18T17:16:55.578714+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T17:01:03.228139+00:00",
+      "last_success": "2026-11-18T17:17:03.079092+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.115
+      "duration_seconds": 7.5
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T17:01:03.228234+00:00",
+      "last_attempt": "2026-11-18T17:17:03.079160+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T17:02:00.669463+00:00",
+      "last_success": "2026-11-18T17:17:52.691053+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 57.441,
+      "duration_seconds": 49.612,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-18T17:01:03.835759+00:00",
+          "checked_at": "2026-11-18T17:17:03.653304+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-18T17:01:16.660197+00:00",
+          "checked_at": "2026-11-18T17:17:13.215716+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-18T17:01:16.804555+00:00",
+          "checked_at": "2026-11-18T17:17:13.326957+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-18T17:01:16.804569+00:00",
+          "checked_at": "2026-11-18T17:17:13.326969+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -24525,12 +24617,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T16:59:55.566295+00:00",
+      "last_attempt": "2026-11-18T17:17:52.691117+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T16:59:56.492054+00:00",
+      "last_success": "2026-11-18T17:17:52.977472+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.926,
+      "duration_seconds": 0.286,
       "latest_build": "21be2aae8e75c3dcac78b024ec6a4a0826d433e9cdb20883812e507d5c46e340",
       "builds_retained": 1,
       "identifiers": 9583
@@ -24538,12 +24630,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-18T17:02:00.669551+00:00",
+      "last_attempt": "2026-11-18T17:17:53.169657+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T17:02:01.085353+00:00",
+      "last_success": "2026-11-18T17:17:53.581693+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.416,
+      "duration_seconds": 0.412,
       "latest_build": "65a926600a92b11f1464433a3a60a2c25cb93574",
       "builds_retained": 8,
       "identifiers": 6917
@@ -24551,12 +24643,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-18T16:51:54.914124+00:00",
+      "last_attempt": "2026-11-18T17:13:57.443102+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T16:51:55.393336+00:00",
+      "last_success": "2026-11-18T17:13:57.966569+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.479,
+      "duration_seconds": 0.523,
       "latest_build": "d893237face842c5a4c918009d50c8e33b7c6523",
       "builds_retained": 2,
       "identifiers": 10700
@@ -24564,21 +24656,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-18T17:02:01.284339+00:00",
+      "last_attempt": "2026-11-18T17:17:53.781891+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 128,
-      "duration_seconds": 21.222
+      "consecutive_failures": 136,
+      "duration_seconds": 21.027
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-18T17:00:17.654909+00:00",
+      "last_attempt": "2026-11-18T17:16:15.612885+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T17:00:17.868029+00:00",
+      "last_success": "2026-11-18T17:16:15.781629+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.213,
+      "duration_seconds": 0.169,
       "latest_build": "3.14.30819",
       "builds_retained": 2,
       "identifiers": 3330
@@ -24586,52 +24678,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T17:02:22.514335+00:00",
+      "last_attempt": "2026-11-18T17:18:14.816798+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T17:02:31.390856+00:00",
+      "last_success": "2026-11-18T17:18:23.697483+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.877
+      "duration_seconds": 8.881
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T17:02:31.390930+00:00",
+      "last_attempt": "2026-11-18T17:18:23.697560+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T17:02:32.894527+00:00",
+      "last_success": "2026-11-18T17:18:25.630184+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.504
+      "duration_seconds": 1.933
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-18T16:52:27.532519+00:00",
+      "last_attempt": "2026-11-18T17:14:29.464834+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T16:52:36.221445+00:00",
+      "last_success": "2026-11-18T17:14:37.630828+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.689
+      "duration_seconds": 8.166
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T17:02:32.894582+00:00",
+      "last_attempt": "2026-11-18T17:18:25.630240+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T17:02:34.137615+00:00",
+      "last_success": "2026-11-18T17:18:26.814068+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.243
+      "duration_seconds": 1.184
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T17:02:34.137664+00:00",
+      "last_attempt": "2026-11-18T17:18:26.814114+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T17:02:34.162836+00:00",
+      "last_success": "2026-11-18T17:18:26.928193+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.025
+      "duration_seconds": 0.114
     }
   },
   "identities": {
