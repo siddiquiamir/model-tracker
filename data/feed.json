@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-18T07:36:28.520378+00:00",
+  "generated_at": "2026-11-18T08:00:28.689214+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 173,
     "leaks": 56,
     "releases": 69,
-    "stories_24h": 52,
-    "sources_ok": 14,
-    "total_cards": 320,
-    "new_in_this_scan": 0
+    "stories_24h": 53,
+    "sources_ok": 13,
+    "total_cards": 321,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -4018,7 +4018,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-16T20:15:16.430197+00:00",
-      "updated_at": "2026-11-16T20:15:16.430197+00:00",
+      "updated_at": "2026-11-18T08:00:53.066564+00:00",
       "first_source": "Gemini Web App Config",
       "lead": "",
       "released_on": "",
@@ -4042,19 +4042,30 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Google Cloud Billing catalog",
+          "scanner": "cloud-billing",
+          "detected_at": "2026-11-18T08:00:53.066564+00:00",
+          "title": "Gemini 4 Neon Spotted in Google Cloud Billing Catalog (135 Vertex AI SKUs)",
+          "url": "https://cloud.google.com/skus?currency=USD&filter=Gemini%204%20Neon",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
       "header": "LEAK · GOOGLE",
       "card_ids": [
-        "web-bundle-gemini-web-4e194029"
+        "web-bundle-gemini-web-4e194029",
+        "cloud-billing-vertex-1dbcebe8"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: Gemini 4 Neon by Google\n\nFirst detected 16 Nov 20:15 UTC in Gemini Web App Config\nCodename: neon\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: Gemini 4 Neon by Google\n\nFirst detected 16 Nov 20:15 UTC in Gemini Web App Config\nConfirmed by Google Cloud Billing catalog\nCodename: neon\n\nvia @StatsWire"
     },
     {
       "id": "story-dspinedraftmodel",
@@ -10986,6 +10997,53 @@
     }
   ],
   "cards": [
+    {
+      "id": "cloud-billing-vertex-1dbcebe8",
+      "category": "cli-sdk-diff",
+      "scanner": "cloud-billing",
+      "header": "CLOUD BILLING LISTING · GOOGLE",
+      "title": "Gemini 4 Neon Spotted in Google Cloud Billing Catalog (135 Vertex AI SKUs)",
+      "subtitle": "Service: Vertex AI · 135 published billing SKUs in cloudbilling.googleapis.com",
+      "build_label": "Cloud Billing SKUs",
+      "build_transition": "Vertex AI (+135 published billing SKUs)",
+      "models": [
+        {
+          "id": "gemini-4-neon",
+          "name": "Gemini 4 Neon (135 Vertex AI billing SKUs)"
+        }
+      ],
+      "evidence": "135 published billing SKUs (cloudbilling.googleapis.com/v1/services/C7E2-9256-1C43/skus)",
+      "source_text": "Google Cloud public billing catalog (Vertex AI service SKUs).",
+      "disclaimer_1": "Billing listing only; not confirmation of public API access.",
+      "disclaimer_2": "SKU descriptions do not establish the public inference model ID.",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "sku_samples": [
+        "Generate content input token count gemini 4 neon image flex caching (0.075 USD per 1,000,000 count)",
+        "Generate content input token count gemini 4 neon video (3.00 USD per 1,000,000 count)",
+        "Generate content input token count gemini 4 neon audio contributor (1.50 USD per 1,000,000 count)",
+        "Generate content input token count gemini 4 neon image batch caching (0.075 USD per 1,000,000 count)",
+        "Generate content input token count gemini 4 neon text priority caching (0.27 USD per 1,000,000 count)",
+        "Generate content output token count gemini 4 neon text (15.00 USD per 1,000,000 count)"
+      ],
+      "links": [
+        {
+          "label": "Google Cloud SKUs",
+          "url": "https://cloud.google.com/skus?currency=USD&filter=Gemini%204%20Neon"
+        },
+        {
+          "label": "Vertex AI Pricing",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/pricing"
+        }
+      ],
+      "detected_at": "2026-11-18T08:00:53.066564+00:00",
+      "codenames": [
+        "neon"
+      ],
+      "pricing": null,
+      "x_post_text": "🚨 CLOUD BILLING LISTING · GOOGLE\nGemini 4 Neon Spotted in Google Cloud Billing Catalog (135 Vertex AI SKUs) spotted in Cloud Billing SKUs Vertex AI (+135 published billing SKUs)!\n\n• Gemini 4 Neon (135 Vertex AI billing SKUs) (gemini-4-neon)\n\nEvidence: 135 published billing SKUs (cloudbilling.googleapis.com/v1/services/C7E2-9256-1C43/skus)\nSource: Google Cloud public billing catalog (Vertex AI service SKUs).\n\nTracked by @StatsWire"
+    },
     {
       "id": "intel-4ad4c1bab7fc82e03cda",
       "scanner": "models-dev-git",
@@ -26398,12 +26456,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T07:35:21.365145+00:00",
+      "last_attempt": "2026-11-18T07:59:22.921311+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T07:35:21.649819+00:00",
+      "last_success": "2026-11-18T07:59:23.201066+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.285,
+      "duration_seconds": 0.28,
       "latest_build": "14afa3aac786359ccd7aac7090dbb95a35ff0cd08b2a44b5345623350d999da7",
       "builds_retained": 3,
       "identifiers": 9679
@@ -26411,12 +26469,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-18T07:37:23.198617+00:00",
+      "last_attempt": "2026-11-18T08:01:28.689150+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T07:37:23.531549+00:00",
+      "last_success": "2026-11-18T08:01:29.271940+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.333,
+      "duration_seconds": 0.583,
       "latest_build": "736b05716593347fa51b92afa9526a2397af312c",
       "builds_retained": 2,
       "identifiers": 6124
@@ -26424,12 +26482,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-18T07:37:23.539170+00:00",
+      "last_attempt": "2026-11-18T07:59:23.209256+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T07:37:23.946961+00:00",
+      "last_success": "2026-11-18T07:59:23.646415+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.408,
+      "duration_seconds": 0.437,
       "latest_build": "7b22cc903b46d459e83ec6420d702426f34f813c",
       "builds_retained": 5,
       "identifiers": 10804
@@ -26437,21 +26495,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-18T07:37:23.954539+00:00",
+      "last_attempt": "2026-11-18T08:01:29.279993+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 44,
-      "duration_seconds": 14.029
+      "consecutive_failures": 56,
+      "duration_seconds": 14.111
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-18T07:29:41.293460+00:00",
+      "last_attempt": "2026-11-18T08:01:43.395366+00:00",
       "status": "ok",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.227,
-      "last_success": "2026-11-18T07:29:41.520643+00:00",
+      "duration_seconds": 0.217,
+      "last_success": "2026-11-18T08:01:43.612483+00:00",
       "latest_build": "3.14.30819",
       "builds_retained": 1,
       "identifiers": 2609
@@ -26461,61 +26519,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T07:36:28.520831+00:00",
+      "last_attempt": "2026-11-18T08:00:28.689706+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T07:36:30.353154+00:00",
+      "last_success": "2026-11-18T08:00:30.404957+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.832
+      "duration_seconds": 1.715
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T07:36:30.353217+00:00",
+      "last_attempt": "2026-11-18T08:00:30.405037+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T07:36:30.484768+00:00",
+      "last_success": "2026-11-18T08:00:30.533553+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.132
+      "duration_seconds": 0.129
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T07:36:30.484803+00:00",
+      "last_attempt": "2026-11-18T08:00:30.533601+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T07:36:37.358826+00:00",
+      "last_success": "2026-11-18T08:00:40.935168+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.874
+      "duration_seconds": 10.402
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T07:36:37.358878+00:00",
+      "last_attempt": "2026-11-18T08:00:40.935258+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T07:37:23.198556+00:00",
+      "last_success": "2026-11-18T08:01:28.689060+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 45.84,
+      "duration_seconds": 47.754,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-18T07:36:37.805402+00:00",
+          "checked_at": "2026-11-18T08:00:41.180440+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-18T07:36:47.890886+00:00",
+          "checked_at": "2026-11-18T08:00:51.851982+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-18T07:36:47.995279+00:00",
+          "checked_at": "2026-11-18T08:00:53.154412+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-18T07:36:47.995289+00:00",
+          "checked_at": "2026-11-18T08:00:53.154430+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -26523,12 +26581,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T07:35:21.365145+00:00",
+      "last_attempt": "2026-11-18T07:59:22.921311+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T07:35:21.649819+00:00",
+      "last_success": "2026-11-18T07:59:23.201066+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.285,
+      "duration_seconds": 0.28,
       "latest_build": "14afa3aac786359ccd7aac7090dbb95a35ff0cd08b2a44b5345623350d999da7",
       "builds_retained": 3,
       "identifiers": 9679
@@ -26536,12 +26594,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-18T07:37:23.198617+00:00",
+      "last_attempt": "2026-11-18T08:01:28.689150+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T07:37:23.531549+00:00",
+      "last_success": "2026-11-18T08:01:29.271940+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.333,
+      "duration_seconds": 0.583,
       "latest_build": "736b05716593347fa51b92afa9526a2397af312c",
       "builds_retained": 2,
       "identifiers": 6124
@@ -26549,12 +26607,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-18T07:37:23.539170+00:00",
+      "last_attempt": "2026-11-18T07:59:23.209256+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T07:37:23.946961+00:00",
+      "last_success": "2026-11-18T07:59:23.646415+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.408,
+      "duration_seconds": 0.437,
       "latest_build": "7b22cc903b46d459e83ec6420d702426f34f813c",
       "builds_retained": 5,
       "identifiers": 10804
@@ -26562,21 +26620,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-18T07:37:23.954539+00:00",
+      "last_attempt": "2026-11-18T08:01:29.279993+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 44,
-      "duration_seconds": 14.029
+      "consecutive_failures": 56,
+      "duration_seconds": 14.111
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-18T07:29:41.293460+00:00",
+      "last_attempt": "2026-11-18T08:01:43.395366+00:00",
       "status": "ok",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.227,
-      "last_success": "2026-11-18T07:29:41.520643+00:00",
+      "duration_seconds": 0.217,
+      "last_success": "2026-11-18T08:01:43.612483+00:00",
       "latest_build": "3.14.30819",
       "builds_retained": 1,
       "identifiers": 2609
@@ -26584,52 +26642,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T07:37:37.987482+00:00",
+      "last_attempt": "2026-11-18T08:01:43.620351+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T07:37:46.008604+00:00",
+      "last_success": "2026-11-18T08:01:51.676557+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.021
+      "duration_seconds": 8.056
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T07:37:46.008659+00:00",
+      "last_attempt": "2026-11-18T08:01:51.676633+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T07:37:48.013796+00:00",
+      "last_success": "2026-11-18T08:01:53.604620+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.005
+      "duration_seconds": 1.928
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-18T07:37:48.013850+00:00",
+      "last_attempt": "2026-11-18T07:59:47.606328+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T07:37:56.632501+00:00",
+      "last_success": "2026-11-18T07:59:55.048162+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.619
+      "duration_seconds": 7.442
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T07:37:56.632557+00:00",
+      "last_attempt": "2026-11-18T08:01:53.604695+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T07:37:58.114248+00:00",
+      "last_success": "2026-11-18T08:01:55.078103+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.482
+      "duration_seconds": 1.473
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T07:37:58.114295+00:00",
+      "last_attempt": "2026-11-18T08:01:55.078164+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T07:37:58.144025+00:00",
+      "last_success": "2026-11-18T08:01:55.114804+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.03
+      "duration_seconds": 0.037
     }
   },
   "identities": {
