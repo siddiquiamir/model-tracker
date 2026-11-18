@@ -7,8 +7,11 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import json
 import os
 import pathlib
+import socket
 import sys
 from urllib.parse import parse_qs, urlparse
+
+socket.setdefaulttimeout(45)
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")

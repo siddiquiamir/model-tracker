@@ -44,10 +44,12 @@ jobs:
       - name: Install optional TLS fingerprint client
         run: pip install -q curl_cffi cryptography PyYAML 'tomli; python_version < "3.11"'
 
-      - name: Cache binary .rodata slices & npm metadata
+      - name: Cache binary .rodata slices, intelligence state & npm metadata
         uses: actions/cache@v4
         with:
-          path: .cache
+          path: |
+            .cache
+            data/intelligence
           key: modelpulse-cache-${{ github.run_id }}
           restore-keys: |
             modelpulse-cache-
@@ -91,7 +93,7 @@ jobs:
           PENDING=0
 
           publish() {
-            git add data/ docs/data/feed.json
+            git add data/feed.json data/seen_ids.json data/source_baselines.json data/hints.json docs/data/feed.json
             if git diff --cached --quiet; then return 0; fi
             git commit -q -m "chore(feed): update detected model diffs"
             for attempt in 1 2 3; do
@@ -117,7 +119,7 @@ jobs:
 
           while [ "$(date +%s)" -lt "$END" ]; do
             ITER_START=$(date +%s)
-            timeout 900 python server.py --scan || echo "::warning::Scan exited with status $?"
+            timeout 2400 python server.py --scan || echo "::warning::Scan exited with status $?"
             heartbeat
             NEW=$(python -c "import json; print(json.load(open('data/feed.json'))['stats']['new_in_this_scan'])" 2>/dev/null || echo 0)
             if [ "$NEW" != "0" ]; then PENDING=1; fi
