@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-18T20:53:20.276990+00:00",
-  "scan_completed_at": "2026-11-18T20:54:48.627890+00:00",
+  "generated_at": "2026-11-18T20:55:20.245035+00:00",
+  "scan_completed_at": "2026-11-18T20:56:46.654583+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 162,
     "leaks": 43,
     "releases": 69,
     "stories_24h": 51,
-    "sources_ok": 13,
-    "total_cards": 305,
-    "new_in_this_scan": 1
+    "sources_ok": 11,
+    "total_cards": 307,
+    "new_in_this_scan": 2
   },
   "stories": [
     {
@@ -3716,7 +3716,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-16T20:15:16.430197+00:00",
-      "updated_at": "2026-11-18T20:54:17.454649+00:00",
+      "updated_at": "2026-11-18T20:55:26.432566+00:00",
       "first_source": "Gemini Web App Config",
       "lead": "",
       "released_on": "",
@@ -3727,7 +3727,7 @@
       "models": [
         {
           "id": "gemini-4-neon",
-          "name": "gemini/gemini-4-neon"
+          "name": "Gemini 4 Neon"
         }
       ],
       "sources": [
@@ -3780,9 +3780,29 @@
           "backfill": false,
           "build": "bfeaf183ab68096a4f2d0f94e86f31639918a004",
           "evidence_path": "data/intelligence/evidence/litellm-intelligence/f981489233e184decee114efd6668d17caa5bd9458b3c53ae5d91ef2c9890051.json.gz"
+        },
+        {
+          "label": "GCP Vertex AI Models Docs",
+          "scanner": "docs-radar",
+          "detected_at": "2026-11-18T20:55:25.713208+00:00",
+          "title": "New Model Spotted in GCP Vertex AI Generative Models",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "GCP Vertex AI Model Versions",
+          "scanner": "docs-radar",
+          "detected_at": "2026-11-18T20:55:26.432566+00:00",
+          "title": "New Model Spotted in GCP Vertex AI Model Versions & Lifecycle",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 5,
+      "source_count": 7,
       "backfill": false,
       "header": "LEAK · GOOGLE",
       "card_ids": [
@@ -3790,7 +3810,9 @@
         "cloud-billing-vertex-1dbcebe8",
         "vertex-quota-google-032823d4",
         "docs-diff-gemini-docs-4e194029",
-        "intel-6f03bbbb8f3037071e55"
+        "intel-6f03bbbb8f3037071e55",
+        "docs-diff-gcp-vertex-models-4e194029",
+        "docs-diff-gcp-vertex-versions-4e194029"
       ],
       "event_label": "Registry update",
       "intelligence_only": false,
@@ -3811,7 +3833,7 @@
         }
       ],
       "discord_alerted_at": "2026-11-18T20:32:45.461978+00:00",
-      "x_post_text": "🟠 LEAK: Gemini 4 Neon by Google\n\nFirst detected 16 Nov 20:15 UTC in Gemini Web App Config\nConfirmed by Google Cloud Billing catalog, Vertex AI Quotas registry, Gemini API Docs +1\nCodename: neon\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: Gemini 4 Neon by Google\n\nFirst detected 16 Nov 20:15 UTC in Gemini Web App Config\nConfirmed by Google Cloud Billing catalog, Vertex AI Quotas registry, Gemini API Docs +3\nCodename: neon\n\nvia @StatsWire"
     },
     {
       "id": "story-dspinedraftmodel",
@@ -10525,6 +10547,86 @@
     }
   ],
   "cards": [
+    {
+      "id": "docs-diff-gcp-vertex-versions-4e194029",
+      "category": "cli-sdk-diff",
+      "scanner": "docs-radar",
+      "header": "GCP VERTEX AI MODEL VERSIONS · GOOGLE CLOUD",
+      "title": "New Model Spotted in GCP Vertex AI Model Versions & Lifecycle",
+      "subtitle": "Verified live API documentation diff",
+      "build_label": "Docs Diff",
+      "build_transition": "+1 new identifier(s)",
+      "models": [
+        {
+          "id": "gemini-4-neon",
+          "name": "Gemini 4 Neon"
+        }
+      ],
+      "evidence": "cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions",
+      "source_text": "official Google Cloud Vertex AI model versions & endpoint table.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE CLOUD",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Official Docs Page",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions"
+        },
+        {
+          "label": "Raw Docs Feed",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions"
+        }
+      ],
+      "detected_at": "2026-11-18T20:55:26.432566+00:00",
+      "tracker_observed_at": "2026-11-18T20:55:29.680080+00:00",
+      "codenames": [
+        "neon"
+      ],
+      "pricing": null,
+      "x_post_text": "🚨 GCP VERTEX AI MODEL VERSIONS · GOOGLE CLOUD\nNew Model Spotted in GCP Vertex AI Model Versions & Lifecycle spotted in Docs Diff +1 new identifier(s)!\n\n• Gemini 4 Neon (gemini-4-neon)\n\nEvidence: cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions\nSource: official Google Cloud Vertex AI model versions & endpoint table.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "docs-diff-gcp-vertex-models-4e194029",
+      "category": "cli-sdk-diff",
+      "scanner": "docs-radar",
+      "header": "GCP VERTEX AI MODELS DOCS · GOOGLE CLOUD",
+      "title": "New Model Spotted in GCP Vertex AI Generative Models",
+      "subtitle": "Verified live API documentation diff",
+      "build_label": "Docs Diff",
+      "build_transition": "+1 new identifier(s)",
+      "models": [
+        {
+          "id": "gemini-4-neon",
+          "name": "Gemini 4 Neon"
+        }
+      ],
+      "evidence": "cloud.google.com/vertex-ai/generative-ai/docs/learn/models",
+      "source_text": "official Google Cloud Vertex AI Models documentation (Gemini, Imagen, Veo, Claude, Llama).",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE CLOUD",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Official Docs Page",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
+        },
+        {
+          "label": "Raw Docs Feed",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
+        }
+      ],
+      "detected_at": "2026-11-18T20:55:25.713208+00:00",
+      "tracker_observed_at": "2026-11-18T20:55:29.680080+00:00",
+      "codenames": [
+        "neon"
+      ],
+      "pricing": null,
+      "x_post_text": "🚨 GCP VERTEX AI MODELS DOCS · GOOGLE CLOUD\nNew Model Spotted in GCP Vertex AI Generative Models spotted in Docs Diff +1 new identifier(s)!\n\n• Gemini 4 Neon (gemini-4-neon)\n\nEvidence: cloud.google.com/vertex-ai/generative-ai/docs/learn/models\nSource: official Google Cloud Vertex AI Models documentation (Gemini, Imagen, Veo, Claude, Llama).\n\nTracked by @StatsWire"
+    },
     {
       "id": "intel-6f03bbbb8f3037071e55",
       "scanner": "litellm-intelligence",
@@ -25458,11 +25560,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-18T20:54:19.306486+00:00",
+      "last_attempt": "2026-11-18T20:56:16.865274+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 244,
-      "duration_seconds": 18.515
+      "consecutive_failures": 245,
+      "duration_seconds": 18.711
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -25482,61 +25584,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T20:53:20.277056+00:00",
+      "last_attempt": "2026-11-18T20:55:20.245101+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T20:53:22.428746+00:00",
+      "last_success": "2026-11-18T20:55:22.591136+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.152
+      "duration_seconds": 2.346
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T20:53:22.428815+00:00",
+      "last_attempt": "2026-11-18T20:55:22.591207+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T20:53:22.607697+00:00",
+      "last_success": "2026-11-18T20:55:22.768006+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.179
+      "duration_seconds": 0.177
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T20:53:22.607757+00:00",
+      "last_attempt": "2026-11-18T20:55:22.768056+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T20:53:31.198097+00:00",
+      "last_success": "2026-11-18T20:55:29.680080+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.59
+      "duration_seconds": 6.912
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T20:53:31.198183+00:00",
+      "last_attempt": "2026-11-18T20:55:29.680156+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T20:54:16.305150+00:00",
+      "last_success": "2026-11-18T20:56:16.865187+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 45.107,
+      "duration_seconds": 47.185,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-18T20:53:31.408737+00:00",
+          "checked_at": "2026-11-18T20:55:29.896456+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-18T20:53:42.275103+00:00",
+          "checked_at": "2026-11-18T20:55:40.942707+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-18T20:53:42.448269+00:00",
+          "checked_at": "2026-11-18T20:55:41.109004+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-18T20:53:42.448287+00:00",
+          "checked_at": "2026-11-18T20:55:41.109023+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -25583,11 +25685,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-18T20:54:19.306486+00:00",
+      "last_attempt": "2026-11-18T20:56:16.865274+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 244,
-      "duration_seconds": 18.515
+      "consecutive_failures": 245,
+      "duration_seconds": 18.711
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -25605,22 +25707,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T20:54:37.824637+00:00",
+      "last_attempt": "2026-11-18T20:56:35.580680+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T20:54:46.346908+00:00",
+      "last_success": "2026-11-18T20:56:44.184697+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.522
+      "duration_seconds": 8.604
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T20:54:46.346986+00:00",
+      "last_attempt": "2026-11-18T20:56:44.184777+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T20:54:47.682973+00:00",
+      "last_success": "2026-11-18T20:56:45.722526+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.336
+      "duration_seconds": 1.538
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -25635,22 +25737,22 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T20:54:47.683045+00:00",
+      "last_attempt": "2026-11-18T20:56:45.722591+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T20:54:48.263803+00:00",
+      "last_success": "2026-11-18T20:56:46.302367+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.581
+      "duration_seconds": 0.58
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T20:54:48.263859+00:00",
+      "last_attempt": "2026-11-18T20:56:46.302420+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T20:54:48.299732+00:00",
+      "last_success": "2026-11-18T20:56:46.366859+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.036
+      "duration_seconds": 0.065
     }
   },
   "identities": {
