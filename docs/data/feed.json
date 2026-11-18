@@ -1,16 +1,408 @@
 {
-  "generated_at": "2026-11-18T06:01:38.088680+00:00",
+  "generated_at": "2026-11-18T06:03:38.060087+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 147,
+    "stories": 153,
     "leaks": 58,
     "releases": 69,
-    "stories_24h": 26,
+    "stories_24h": 32,
     "sources_ok": 12,
-    "total_cards": 273,
-    "new_in_this_scan": 0
+    "total_cards": 279,
+    "new_in_this_scan": 6
   },
   "stories": [
+    {
+      "id": "story-openai.gpt-6.2-astra",
+      "group": "openai.gpt-6.2-astra",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Openai.gpt 6.2 Astra",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-18T06:04:37.833682+00:00",
+      "updated_at": "2026-11-18T06:04:37.833682+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "2026-11-17",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "openai.gpt-6.2-astra",
+          "name": "bedrock_mantle/openai.gpt-6.2-astra",
+          "released_on": "2026-11-17"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-18T06:04:37.833682+00:00",
+          "title": "openai.gpt-6.2-astra",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-b1d84fe743d6259d790d"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "bedrock_mantle/openai.gpt-6.2-astra",
+          "family": "openai.gpt-6.2-astra",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"bedrock_mantle/openai.gpt-6.2-astra\": {\"cache_creation_input_token_cost\": 1.1e-05, \"cache_creation_input_token_cost_above_272k_tokens\": 2.2e-05, \"cache_creation_input_token_cost_above_272k_tokens_ultrafast\": 6.6e-05, \"cache_creation_input_token_cost_ultrafast\": 3.3e-05, \"cache_read_input_token_cost\": 4.4e-07, \"cache_read_input_token_cost_above_272k_tokens\": 8.8e-07, \"cache_read_input_token_cost_above_272k_tokens_ultrafast\": 2.64e-06, \"cache_read_input_token_cost_ultrafast\": 1.32e-06, \"input_cost_per_token\": 8.8e-06, \"input_cost_per_token_above_272k_tokens\": 1.76e-05, \"input_cost_per_token_above_272k_tokens_ultrafast\": 5.28e-05, \"input_cost_per_token_ultrafast\": 2.64e-05, \"litellm_provider\": \"bedrock_mantle\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"responses\", \"output_cost_per_token\": 4.4e-05, \"output_cost_per_token_above_272k_tokens\": 6.6e-05, \"output_cost_per_token_above_272k_tokens_ultrafast\": 0.000198, \"output_cost_per_token_ultrafast\": 0.000132, \"source\": \"https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-2-astra.html\", \"supported_endpoints\": [\"/v1/chat/completions\", \"/v1/responses\"], \"supported_modalities\": [\"text\", \"image",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+          "method": "structured registry",
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T06:03:29+00:00"
+        },
+        {
+          "id": "openai.gpt-6.2-astra",
+          "family": "openai.gpt-6.2-astra",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"openai.gpt-6.2-astra\": {\"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_272k_tokens\": 2e-05, \"cache_creation_input_token_cost_above_272k_tokens_ultrafast\": 6e-05, \"cache_creation_input_token_cost_ultrafast\": 3e-05, \"cache_read_input_token_cost\": 4e-07, \"cache_read_input_token_cost_above_272k_tokens\": 8e-07, \"cache_read_input_token_cost_above_272k_tokens_ultrafast\": 2.4e-06, \"cache_read_input_token_cost_ultrafast\": 1.2e-06, \"input_cost_per_token\": 8e-06, \"input_cost_per_token_above_272k_tokens\": 1.6e-05, \"input_cost_per_token_above_272k_tokens_ultrafast\": 4.8e-05, \"input_cost_per_token_ultrafast\": 2.4e-05, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4e-05, \"output_cost_per_token_above_272k_tokens\": 6e-05, \"output_cost_per_token_above_272k_tokens_ultrafast\": 0.00018, \"output_cost_per_token_ultrafast\": 0.00012, \"source\": \"https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-2-astra.html\", \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"text\"], \"supports_bedrock_converse_tool_result_images\": false, \"supports",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+          "method": "structured registry",
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T06:03:29+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: openai.gpt-6.2-astra\nhttps://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json"
+    },
+    {
+      "id": "story-openai.gpt-6.2-sol",
+      "group": "openai.gpt-6.2-sol",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Openai.gpt 6.2 Sol",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-18T06:04:37.833682+00:00",
+      "updated_at": "2026-11-18T06:04:37.833682+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "2026-11-17",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "openai.gpt-6.2-sol",
+          "name": "bedrock_mantle/openai.gpt-6.2-sol",
+          "released_on": "2026-11-17"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-18T06:04:37.833682+00:00",
+          "title": "openai.gpt-6.2-sol",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-38b25ff67104134add73"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "bedrock_mantle/openai.gpt-6.2-sol",
+          "family": "openai.gpt-6.2-sol",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"bedrock_mantle/openai.gpt-6.2-sol\": {\"cache_creation_input_token_cost\": 2.75e-06, \"cache_creation_input_token_cost_above_272k_tokens\": 5.5e-06, \"cache_read_input_token_cost\": 1.1e-07, \"cache_read_input_token_cost_above_272k_tokens\": 2.2e-07, \"input_cost_per_token\": 2.2e-06, \"input_cost_per_token_above_272k_tokens\": 4.4e-06, \"litellm_provider\": \"bedrock_mantle\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"responses\", \"output_cost_per_token\": 1.1e-05, \"output_cost_per_token_above_272k_tokens\": 1.65e-05, \"source\": \"https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-2-sol.html\", \"supported_endpoints\": [\"/v1/chat/completions\", \"/v1/responses\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"text\"], \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_minimal_reasoning_effort\": false, \"supports_none_reasoning_effort\": false, \"supports_prompt_cache_breakpoint\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"use_openai_responses_path",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+          "method": "structured registry",
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T06:03:29+00:00"
+        },
+        {
+          "id": "openai.gpt-6.2-sol",
+          "family": "openai.gpt-6.2-sol",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"openai.gpt-6.2-sol\": {\"cache_creation_input_token_cost\": 2.5e-06, \"cache_creation_input_token_cost_above_272k_tokens\": 5e-06, \"cache_read_input_token_cost\": 1e-07, \"cache_read_input_token_cost_above_272k_tokens\": 2e-07, \"input_cost_per_token\": 2e-06, \"input_cost_per_token_above_272k_tokens\": 4e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 1e-05, \"output_cost_per_token_above_272k_tokens\": 1.5e-05, \"source\": \"https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-2-sol.html\", \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"text\"], \"supports_bedrock_converse_tool_result_images\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_minimal_reasoning_effort\": false, \"supports_none_reasoning_effort\": false, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+          "method": "structured registry",
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T06:03:29+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: openai.gpt-6.2-sol\nhttps://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json"
+    },
+    {
+      "id": "story-global.openai.gpt-6.2-astra",
+      "group": "global.openai.gpt-6.2-astra",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Global.openai.gpt 6.2 Astra",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-18T06:04:37.833682+00:00",
+      "updated_at": "2026-11-18T06:04:37.833682+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "2026-11-17",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gpt-6.2-astra",
+          "name": "global.openai.gpt-6.2-astra",
+          "released_on": "2026-11-17"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-18T06:04:37.833682+00:00",
+          "title": "global.openai.gpt-6.2-astra",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-c86e1bc490734e56c617"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "global.openai.gpt-6.2-astra",
+          "family": "global.openai.gpt-6.2-astra",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"global.openai.gpt-6.2-astra\": {\"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_272k_tokens\": 2e-05, \"cache_creation_input_token_cost_above_272k_tokens_ultrafast\": 6e-05, \"cache_creation_input_token_cost_ultrafast\": 3e-05, \"cache_read_input_token_cost\": 4e-07, \"cache_read_input_token_cost_above_272k_tokens\": 8e-07, \"cache_read_input_token_cost_above_272k_tokens_ultrafast\": 2.4e-06, \"cache_read_input_token_cost_ultrafast\": 1.2e-06, \"input_cost_per_token\": 8e-06, \"input_cost_per_token_above_272k_tokens\": 1.6e-05, \"input_cost_per_token_above_272k_tokens_ultrafast\": 4.8e-05, \"input_cost_per_token_ultrafast\": 2.4e-05, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4e-05, \"output_cost_per_token_above_272k_tokens\": 6e-05, \"output_cost_per_token_above_272k_tokens_ultrafast\": 0.00018, \"output_cost_per_token_ultrafast\": 0.00012, \"source\": \"https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-2-astra.html\", \"supported_endpoints\": [\"/v1/chat/completions\", \"/v1/responses\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+          "method": "structured registry",
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T06:03:29+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: gpt-6.2-astra\nhttps://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json"
+    },
+    {
+      "id": "story-global.openai.gpt-6.2-sol",
+      "group": "global.openai.gpt-6.2-sol",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Global.openai.gpt 6.2 Sol",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-18T06:04:37.833682+00:00",
+      "updated_at": "2026-11-18T06:04:37.833682+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "2026-11-17",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gpt-6.2-sol",
+          "name": "global.openai.gpt-6.2-sol",
+          "released_on": "2026-11-17"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-18T06:04:37.833682+00:00",
+          "title": "global.openai.gpt-6.2-sol",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-2fefbb483f70e0b8c495"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "global.openai.gpt-6.2-sol",
+          "family": "global.openai.gpt-6.2-sol",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"global.openai.gpt-6.2-sol\": {\"cache_creation_input_token_cost\": 2.5e-06, \"cache_creation_input_token_cost_above_272k_tokens\": 5e-06, \"cache_read_input_token_cost\": 1e-07, \"cache_read_input_token_cost_above_272k_tokens\": 2e-07, \"input_cost_per_token\": 2e-06, \"input_cost_per_token_above_272k_tokens\": 4e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 1e-05, \"output_cost_per_token_above_272k_tokens\": 1.5e-05, \"source\": \"https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-2-sol.html\", \"supported_endpoints\": [\"/v1/chat/completions\", \"/v1/responses\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"text\"], \"supports_bedrock_converse_tool_result_images\": false, \"supports_bedrock_runtime_chat_completions_response_format\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_minimal_reasoning_effort\": false, \"supports_none_reasoning_effort\": false, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_x",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+          "method": "structured registry",
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T06:03:29+00:00"
+        }
+      ],
+      "x_post_text": "LiteLLM commit-pinned registry 736b05716593: gpt-6.2-sol\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json"
+    },
+    {
+      "id": "story-us.openai.gpt-6.2-astra",
+      "group": "us.openai.gpt-6.2-astra",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Us.openai.gpt 6.2 Astra",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-18T06:04:37.833682+00:00",
+      "updated_at": "2026-11-18T06:04:37.833682+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "2026-11-17",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gpt-6.2-astra",
+          "name": "us.openai.gpt-6.2-astra",
+          "released_on": "2026-11-17"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-18T06:04:37.833682+00:00",
+          "title": "us.openai.gpt-6.2-astra",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-bce809cb3aeb49f08493"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "us.openai.gpt-6.2-astra",
+          "family": "us.openai.gpt-6.2-astra",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"us.openai.gpt-6.2-astra\": {\"cache_creation_input_token_cost\": 1.1e-05, \"cache_creation_input_token_cost_above_272k_tokens\": 2.2e-05, \"cache_creation_input_token_cost_above_272k_tokens_ultrafast\": 6.6e-05, \"cache_creation_input_token_cost_ultrafast\": 3.3e-05, \"cache_read_input_token_cost\": 4.4e-07, \"cache_read_input_token_cost_above_272k_tokens\": 8.8e-07, \"cache_read_input_token_cost_above_272k_tokens_ultrafast\": 2.64e-06, \"cache_read_input_token_cost_ultrafast\": 1.32e-06, \"input_cost_per_token\": 8.8e-06, \"input_cost_per_token_above_272k_tokens\": 1.76e-05, \"input_cost_per_token_above_272k_tokens_ultrafast\": 5.28e-05, \"input_cost_per_token_ultrafast\": 2.64e-05, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.4e-05, \"output_cost_per_token_above_272k_tokens\": 6.6e-05, \"output_cost_per_token_above_272k_tokens_ultrafast\": 0.000198, \"output_cost_per_token_ultrafast\": 0.000132, \"source\": \"https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-2-astra.html\", \"supported_endpoints\": [\"/v1/chat/completions\", \"/v1/responses\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+          "method": "structured registry",
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T06:03:29+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: gpt-6.2-astra\nhttps://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json"
+    },
+    {
+      "id": "story-us.openai.gpt-6.2-sol",
+      "group": "us.openai.gpt-6.2-sol",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Us.openai.gpt 6.2 Sol",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-18T06:04:37.833682+00:00",
+      "updated_at": "2026-11-18T06:04:37.833682+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "2026-11-17",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gpt-6.2-sol",
+          "name": "us.openai.gpt-6.2-sol",
+          "released_on": "2026-11-17"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-18T06:04:37.833682+00:00",
+          "title": "us.openai.gpt-6.2-sol",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-5a39a4599e811f902a4f"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "us.openai.gpt-6.2-sol",
+          "family": "us.openai.gpt-6.2-sol",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"us.openai.gpt-6.2-sol\": {\"cache_creation_input_token_cost\": 2.75e-06, \"cache_creation_input_token_cost_above_272k_tokens\": 5.5e-06, \"cache_read_input_token_cost\": 1.1e-07, \"cache_read_input_token_cost_above_272k_tokens\": 2.2e-07, \"input_cost_per_token\": 2.2e-06, \"input_cost_per_token_above_272k_tokens\": 4.4e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 1.1e-05, \"output_cost_per_token_above_272k_tokens\": 1.65e-05, \"source\": \"https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-2-sol.html\", \"supported_endpoints\": [\"/v1/chat/completions\", \"/v1/responses\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"text\"], \"supports_bedrock_converse_tool_result_images\": false, \"supports_bedrock_runtime_chat_completions_response_format\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_minimal_reasoning_effort\": false, \"supports_none_reasoning_effort\": false, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+          "method": "structured registry",
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T06:03:29+00:00"
+        }
+      ],
+      "x_post_text": "LiteLLM commit-pinned registry 736b05716593: gpt-6.2-sol\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json"
+    },
     {
       "id": "story-invoker-render-1",
       "group": "invoker-render-1",
@@ -8631,6 +9023,534 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-b1d84fe743d6259d790d",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "openai.gpt-6.2-astra",
+      "event_label": "Registry update",
+      "subtitle": "2 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "openai.gpt-6.2-astra",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "bedrock_mantle/openai.gpt-6.2-astra",
+          "name": "bedrock_mantle/openai.gpt-6.2-astra",
+          "registry_update": true
+        },
+        {
+          "id": "openai.gpt-6.2-astra",
+          "name": "openai.gpt-6.2-astra",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-18T06:04:37.833682+00:00",
+      "first_seen": "2026-11-18T06:03:29+00:00",
+      "observed_at": "2026-11-18T06:04:37.833682+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "b38c7fb61d78b3d1da15ad2c3ccd142b5b22d4aa -> 736b05716593347fa51b92afa9526a2397af312c",
+      "build": "736b05716593347fa51b92afa9526a2397af312c",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+      "artifact_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "bedrock_mantle/openai.gpt-6.2-astra",
+          "family": "openai.gpt-6.2-astra",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"bedrock_mantle/openai.gpt-6.2-astra\": {\"cache_creation_input_token_cost\": 1.1e-05, \"cache_creation_input_token_cost_above_272k_tokens\": 2.2e-05, \"cache_creation_input_token_cost_above_272k_tokens_ultrafast\": 6.6e-05, \"cache_creation_input_token_cost_ultrafast\": 3.3e-05, \"cache_read_input_token_cost\": 4.4e-07, \"cache_read_input_token_cost_above_272k_tokens\": 8.8e-07, \"cache_read_input_token_cost_above_272k_tokens_ultrafast\": 2.64e-06, \"cache_read_input_token_cost_ultrafast\": 1.32e-06, \"input_cost_per_token\": 8.8e-06, \"input_cost_per_token_above_272k_tokens\": 1.76e-05, \"input_cost_per_token_above_272k_tokens_ultrafast\": 5.28e-05, \"input_cost_per_token_ultrafast\": 2.64e-05, \"litellm_provider\": \"bedrock_mantle\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"responses\", \"output_cost_per_token\": 4.4e-05, \"output_cost_per_token_above_272k_tokens\": 6.6e-05, \"output_cost_per_token_above_272k_tokens_ultrafast\": 0.000198, \"output_cost_per_token_ultrafast\": 0.000132, \"source\": \"https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-2-astra.html\", \"supported_endpoints\": [\"/v1/chat/completions\", \"/v1/responses\"], \"supported_modalities\": [\"text\", \"image",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+          "method": "structured registry",
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T06:03:29+00:00"
+        },
+        {
+          "id": "openai.gpt-6.2-astra",
+          "family": "openai.gpt-6.2-astra",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"openai.gpt-6.2-astra\": {\"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_272k_tokens\": 2e-05, \"cache_creation_input_token_cost_above_272k_tokens_ultrafast\": 6e-05, \"cache_creation_input_token_cost_ultrafast\": 3e-05, \"cache_read_input_token_cost\": 4e-07, \"cache_read_input_token_cost_above_272k_tokens\": 8e-07, \"cache_read_input_token_cost_above_272k_tokens_ultrafast\": 2.4e-06, \"cache_read_input_token_cost_ultrafast\": 1.2e-06, \"input_cost_per_token\": 8e-06, \"input_cost_per_token_above_272k_tokens\": 1.6e-05, \"input_cost_per_token_above_272k_tokens_ultrafast\": 4.8e-05, \"input_cost_per_token_ultrafast\": 2.4e-05, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4e-05, \"output_cost_per_token_above_272k_tokens\": 6e-05, \"output_cost_per_token_above_272k_tokens_ultrafast\": 0.00018, \"output_cost_per_token_ultrafast\": 0.00012, \"source\": \"https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-2-astra.html\", \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"text\"], \"supports_bedrock_converse_tool_result_images\": false, \"supports",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+          "method": "structured registry",
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T06:03:29+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/736b05716593347fa51b92afa9526a2397af312c"
+        }
+      ],
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: bedrock_mantle/openai.gpt-6.2-astra\nhttps://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-38b25ff67104134add73",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "openai.gpt-6.2-sol",
+      "event_label": "Registry update",
+      "subtitle": "2 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "openai.gpt-6.2-sol",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "bedrock_mantle/openai.gpt-6.2-sol",
+          "name": "bedrock_mantle/openai.gpt-6.2-sol",
+          "registry_update": true
+        },
+        {
+          "id": "openai.gpt-6.2-sol",
+          "name": "openai.gpt-6.2-sol",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-18T06:04:37.833682+00:00",
+      "first_seen": "2026-11-18T06:03:29+00:00",
+      "observed_at": "2026-11-18T06:04:37.833682+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "b38c7fb61d78b3d1da15ad2c3ccd142b5b22d4aa -> 736b05716593347fa51b92afa9526a2397af312c",
+      "build": "736b05716593347fa51b92afa9526a2397af312c",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+      "artifact_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "bedrock_mantle/openai.gpt-6.2-sol",
+          "family": "openai.gpt-6.2-sol",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"bedrock_mantle/openai.gpt-6.2-sol\": {\"cache_creation_input_token_cost\": 2.75e-06, \"cache_creation_input_token_cost_above_272k_tokens\": 5.5e-06, \"cache_read_input_token_cost\": 1.1e-07, \"cache_read_input_token_cost_above_272k_tokens\": 2.2e-07, \"input_cost_per_token\": 2.2e-06, \"input_cost_per_token_above_272k_tokens\": 4.4e-06, \"litellm_provider\": \"bedrock_mantle\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"responses\", \"output_cost_per_token\": 1.1e-05, \"output_cost_per_token_above_272k_tokens\": 1.65e-05, \"source\": \"https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-2-sol.html\", \"supported_endpoints\": [\"/v1/chat/completions\", \"/v1/responses\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"text\"], \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_minimal_reasoning_effort\": false, \"supports_none_reasoning_effort\": false, \"supports_prompt_cache_breakpoint\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"use_openai_responses_path",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+          "method": "structured registry",
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T06:03:29+00:00"
+        },
+        {
+          "id": "openai.gpt-6.2-sol",
+          "family": "openai.gpt-6.2-sol",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"openai.gpt-6.2-sol\": {\"cache_creation_input_token_cost\": 2.5e-06, \"cache_creation_input_token_cost_above_272k_tokens\": 5e-06, \"cache_read_input_token_cost\": 1e-07, \"cache_read_input_token_cost_above_272k_tokens\": 2e-07, \"input_cost_per_token\": 2e-06, \"input_cost_per_token_above_272k_tokens\": 4e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 1e-05, \"output_cost_per_token_above_272k_tokens\": 1.5e-05, \"source\": \"https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-2-sol.html\", \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"text\"], \"supports_bedrock_converse_tool_result_images\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_minimal_reasoning_effort\": false, \"supports_none_reasoning_effort\": false, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+          "method": "structured registry",
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T06:03:29+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/736b05716593347fa51b92afa9526a2397af312c"
+        }
+      ],
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: bedrock_mantle/openai.gpt-6.2-sol\nhttps://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-c86e1bc490734e56c617",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "global.openai.gpt-6.2-astra",
+      "event_label": "Registry update",
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "global.openai.gpt-6.2-astra",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "global.openai.gpt-6.2-astra",
+          "name": "global.openai.gpt-6.2-astra",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-18T06:04:37.833682+00:00",
+      "first_seen": "2026-11-18T06:03:29+00:00",
+      "observed_at": "2026-11-18T06:04:37.833682+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "b38c7fb61d78b3d1da15ad2c3ccd142b5b22d4aa -> 736b05716593347fa51b92afa9526a2397af312c",
+      "build": "736b05716593347fa51b92afa9526a2397af312c",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+      "artifact_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "global.openai.gpt-6.2-astra",
+          "family": "global.openai.gpt-6.2-astra",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"global.openai.gpt-6.2-astra\": {\"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_272k_tokens\": 2e-05, \"cache_creation_input_token_cost_above_272k_tokens_ultrafast\": 6e-05, \"cache_creation_input_token_cost_ultrafast\": 3e-05, \"cache_read_input_token_cost\": 4e-07, \"cache_read_input_token_cost_above_272k_tokens\": 8e-07, \"cache_read_input_token_cost_above_272k_tokens_ultrafast\": 2.4e-06, \"cache_read_input_token_cost_ultrafast\": 1.2e-06, \"input_cost_per_token\": 8e-06, \"input_cost_per_token_above_272k_tokens\": 1.6e-05, \"input_cost_per_token_above_272k_tokens_ultrafast\": 4.8e-05, \"input_cost_per_token_ultrafast\": 2.4e-05, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4e-05, \"output_cost_per_token_above_272k_tokens\": 6e-05, \"output_cost_per_token_above_272k_tokens_ultrafast\": 0.00018, \"output_cost_per_token_ultrafast\": 0.00012, \"source\": \"https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-2-astra.html\", \"supported_endpoints\": [\"/v1/chat/completions\", \"/v1/responses\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+          "method": "structured registry",
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T06:03:29+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/736b05716593347fa51b92afa9526a2397af312c"
+        }
+      ],
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: global.openai.gpt-6.2-astra\nhttps://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-2fefbb483f70e0b8c495",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "global.openai.gpt-6.2-sol",
+      "event_label": "Registry update",
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "global.openai.gpt-6.2-sol",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "global.openai.gpt-6.2-sol",
+          "name": "global.openai.gpt-6.2-sol",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-18T06:04:37.833682+00:00",
+      "first_seen": "2026-11-18T06:03:29+00:00",
+      "observed_at": "2026-11-18T06:04:37.833682+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "b38c7fb61d78b3d1da15ad2c3ccd142b5b22d4aa -> 736b05716593347fa51b92afa9526a2397af312c",
+      "build": "736b05716593347fa51b92afa9526a2397af312c",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+      "artifact_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "global.openai.gpt-6.2-sol",
+          "family": "global.openai.gpt-6.2-sol",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"global.openai.gpt-6.2-sol\": {\"cache_creation_input_token_cost\": 2.5e-06, \"cache_creation_input_token_cost_above_272k_tokens\": 5e-06, \"cache_read_input_token_cost\": 1e-07, \"cache_read_input_token_cost_above_272k_tokens\": 2e-07, \"input_cost_per_token\": 2e-06, \"input_cost_per_token_above_272k_tokens\": 4e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 1e-05, \"output_cost_per_token_above_272k_tokens\": 1.5e-05, \"source\": \"https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-2-sol.html\", \"supported_endpoints\": [\"/v1/chat/completions\", \"/v1/responses\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"text\"], \"supports_bedrock_converse_tool_result_images\": false, \"supports_bedrock_runtime_chat_completions_response_format\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_minimal_reasoning_effort\": false, \"supports_none_reasoning_effort\": false, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_x",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+          "method": "structured registry",
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T06:03:29+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/736b05716593347fa51b92afa9526a2397af312c"
+        }
+      ],
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: global.openai.gpt-6.2-sol\nhttps://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-bce809cb3aeb49f08493",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "us.openai.gpt-6.2-astra",
+      "event_label": "Registry update",
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "us.openai.gpt-6.2-astra",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "us.openai.gpt-6.2-astra",
+          "name": "us.openai.gpt-6.2-astra",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-18T06:04:37.833682+00:00",
+      "first_seen": "2026-11-18T06:03:29+00:00",
+      "observed_at": "2026-11-18T06:04:37.833682+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "b38c7fb61d78b3d1da15ad2c3ccd142b5b22d4aa -> 736b05716593347fa51b92afa9526a2397af312c",
+      "build": "736b05716593347fa51b92afa9526a2397af312c",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+      "artifact_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "us.openai.gpt-6.2-astra",
+          "family": "us.openai.gpt-6.2-astra",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"us.openai.gpt-6.2-astra\": {\"cache_creation_input_token_cost\": 1.1e-05, \"cache_creation_input_token_cost_above_272k_tokens\": 2.2e-05, \"cache_creation_input_token_cost_above_272k_tokens_ultrafast\": 6.6e-05, \"cache_creation_input_token_cost_ultrafast\": 3.3e-05, \"cache_read_input_token_cost\": 4.4e-07, \"cache_read_input_token_cost_above_272k_tokens\": 8.8e-07, \"cache_read_input_token_cost_above_272k_tokens_ultrafast\": 2.64e-06, \"cache_read_input_token_cost_ultrafast\": 1.32e-06, \"input_cost_per_token\": 8.8e-06, \"input_cost_per_token_above_272k_tokens\": 1.76e-05, \"input_cost_per_token_above_272k_tokens_ultrafast\": 5.28e-05, \"input_cost_per_token_ultrafast\": 2.64e-05, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.4e-05, \"output_cost_per_token_above_272k_tokens\": 6.6e-05, \"output_cost_per_token_above_272k_tokens_ultrafast\": 0.000198, \"output_cost_per_token_ultrafast\": 0.000132, \"source\": \"https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-2-astra.html\", \"supported_endpoints\": [\"/v1/chat/completions\", \"/v1/responses\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+          "method": "structured registry",
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T06:03:29+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/736b05716593347fa51b92afa9526a2397af312c"
+        }
+      ],
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: us.openai.gpt-6.2-astra\nhttps://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-5a39a4599e811f902a4f",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "us.openai.gpt-6.2-sol",
+      "event_label": "Registry update",
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "us.openai.gpt-6.2-sol",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "us.openai.gpt-6.2-sol",
+          "name": "us.openai.gpt-6.2-sol",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-18T06:04:37.833682+00:00",
+      "first_seen": "2026-11-18T06:03:29+00:00",
+      "observed_at": "2026-11-18T06:04:37.833682+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "b38c7fb61d78b3d1da15ad2c3ccd142b5b22d4aa -> 736b05716593347fa51b92afa9526a2397af312c",
+      "build": "736b05716593347fa51b92afa9526a2397af312c",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+      "artifact_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "us.openai.gpt-6.2-sol",
+          "family": "us.openai.gpt-6.2-sol",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"us.openai.gpt-6.2-sol\": {\"cache_creation_input_token_cost\": 2.75e-06, \"cache_creation_input_token_cost_above_272k_tokens\": 5.5e-06, \"cache_read_input_token_cost\": 1.1e-07, \"cache_read_input_token_cost_above_272k_tokens\": 2.2e-07, \"input_cost_per_token\": 2.2e-06, \"input_cost_per_token_above_272k_tokens\": 4.4e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 1.1e-05, \"output_cost_per_token_above_272k_tokens\": 1.65e-05, \"source\": \"https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-2-sol.html\", \"supported_endpoints\": [\"/v1/chat/completions\", \"/v1/responses\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"text\"], \"supports_bedrock_converse_tool_result_images\": false, \"supports_bedrock_runtime_chat_completions_response_format\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_minimal_reasoning_effort\": false, \"supports_none_reasoning_effort\": false, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "402eab1ac46be2cd45bafa5ff849f07caf2fd828ec9a1153973df8d82cb8a99d",
+          "method": "structured registry",
+          "build": "736b05716593347fa51b92afa9526a2397af312c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T06:03:29+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/736b05716593347fa51b92afa9526a2397af312c"
+        }
+      ],
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: us.openai.gpt-6.2-sol\nhttps://raw.githubusercontent.com/BerriAI/litellm/736b05716593347fa51b92afa9526a2397af312c/model_prices_and_context_window.json"
+    },
     {
       "id": "openai-spec-ids-89db7778",
       "category": "cli-sdk-diff",
@@ -19262,14 +20182,14 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-18T06:00:39.064169+00:00",
+      "last_attempt": "2026-11-18T06:04:37.219721+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:00:39.410097+00:00",
+      "last_success": "2026-11-18T06:04:39.378599+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.346,
-      "latest_build": "b38c7fb61d78b3d1da15ad2c3ccd142b5b22d4aa",
-      "builds_retained": 2,
+      "duration_seconds": 2.159,
+      "latest_build": "736b05716593347fa51b92afa9526a2397af312c",
+      "builds_retained": 3,
       "identifiers": 6124
     },
     "models-dev-git": {
@@ -19288,81 +20208,81 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-18T06:02:42.999834+00:00",
+      "last_attempt": "2026-11-18T06:04:40.815499+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 17,
-      "duration_seconds": 20.962
+      "consecutive_failures": 18,
+      "duration_seconds": 21.047
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": true,
-      "last_attempt": "2026-11-18T06:03:03.961691+00:00",
+      "last_attempt": "2026-11-18T06:05:01.869353+00:00",
       "status": "failed",
       "error_type": "HTTPError",
-      "consecutive_failures": 17,
-      "duration_seconds": 0.47
+      "consecutive_failures": 18,
+      "duration_seconds": 0.275
     }
   },
   "source_health": {
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T06:01:38.089196+00:00",
+      "last_attempt": "2026-11-18T06:03:38.060511+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:01:49.255263+00:00",
+      "last_success": "2026-11-18T06:03:40.004421+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 11.166
+      "duration_seconds": 1.944
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T06:01:49.255329+00:00",
+      "last_attempt": "2026-11-18T06:03:40.004480+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:01:49.392299+00:00",
+      "last_success": "2026-11-18T06:03:40.119828+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.137
+      "duration_seconds": 0.115
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T06:01:49.392334+00:00",
+      "last_attempt": "2026-11-18T06:03:40.119860+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:01:55.386516+00:00",
+      "last_success": "2026-11-18T06:03:46.903749+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.994
+      "duration_seconds": 6.784
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T06:01:55.386607+00:00",
+      "last_attempt": "2026-11-18T06:03:46.903820+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:02:42.725146+00:00",
+      "last_success": "2026-11-18T06:04:37.219646+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 47.339,
+      "duration_seconds": 50.316,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-18T06:01:55.625478+00:00",
+          "checked_at": "2026-11-18T06:03:47.108816+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-18T06:02:05.874128+00:00",
+          "checked_at": "2026-11-18T06:03:57.582599+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-18T06:02:06.032307+00:00",
+          "checked_at": "2026-11-18T06:03:57.797839+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-18T06:02:06.032324+00:00",
+          "checked_at": "2026-11-18T06:03:57.797857+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -19383,14 +20303,14 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-18T06:00:39.064169+00:00",
+      "last_attempt": "2026-11-18T06:04:37.219721+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:00:39.410097+00:00",
+      "last_success": "2026-11-18T06:04:39.378599+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.346,
-      "latest_build": "b38c7fb61d78b3d1da15ad2c3ccd142b5b22d4aa",
-      "builds_retained": 2,
+      "duration_seconds": 2.159,
+      "latest_build": "736b05716593347fa51b92afa9526a2397af312c",
+      "builds_retained": 3,
       "identifiers": 6124
     },
     "models-dev-git": {
@@ -19409,40 +20329,40 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-18T06:02:42.999834+00:00",
+      "last_attempt": "2026-11-18T06:04:40.815499+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 17,
-      "duration_seconds": 20.962
+      "consecutive_failures": 18,
+      "duration_seconds": 21.047
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": true,
-      "last_attempt": "2026-11-18T06:03:03.961691+00:00",
+      "last_attempt": "2026-11-18T06:05:01.869353+00:00",
       "status": "failed",
       "error_type": "HTTPError",
-      "consecutive_failures": 17,
-      "duration_seconds": 0.47
+      "consecutive_failures": 18,
+      "duration_seconds": 0.275
     },
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T06:03:04.433234+00:00",
+      "last_attempt": "2026-11-18T06:05:02.146302+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:03:13.277479+00:00",
+      "last_success": "2026-11-18T06:05:10.911515+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.844
+      "duration_seconds": 8.765
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T06:03:13.277544+00:00",
+      "last_attempt": "2026-11-18T06:05:10.911583+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:03:15.870714+00:00",
+      "last_success": "2026-11-18T06:05:12.147463+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.593
+      "duration_seconds": 1.236
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -19457,22 +20377,22 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T06:03:15.870768+00:00",
+      "last_attempt": "2026-11-18T06:05:12.147515+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:03:16.409822+00:00",
+      "last_success": "2026-11-18T06:05:12.685267+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.539
+      "duration_seconds": 0.538
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T06:03:16.409861+00:00",
+      "last_attempt": "2026-11-18T06:05:12.685306+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T06:03:16.530809+00:00",
+      "last_success": "2026-11-18T06:05:12.710762+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.121
+      "duration_seconds": 0.025
     }
   },
   "identities": {
@@ -19483,8 +20403,8 @@
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 0,
-      "seconds_mean": null,
+      "samples": 6,
+      "seconds_mean": 68.833682,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -19498,9 +20418,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 0,
-      "events": 0,
-      "rate": null
+      "complete": 6,
+      "events": 6,
+      "rate": 1.0
     },
     "source_health": {
       "sources": 14,
