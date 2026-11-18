@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-18T18:19:20.378051+00:00",
-  "scan_completed_at": "2026-11-18T18:21:10.634860+00:00",
+  "generated_at": "2026-11-18T18:29:20.946917+00:00",
+  "scan_completed_at": "2026-11-18T18:31:07.039504+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 165,
@@ -8,8 +8,8 @@
     "releases": 70,
     "stories_24h": 51,
     "sources_ok": 15,
-    "total_cards": 300,
-    "new_in_this_scan": 1
+    "total_cards": 308,
+    "new_in_this_scan": 8
   },
   "stories": [
     {
@@ -2860,7 +2860,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-17T18:31:10.791Z",
-      "updated_at": "2026-11-18T05:31:30.169694+00:00",
+      "updated_at": "2026-11-18T18:30:17.258145+00:00",
       "first_source": "npm SDK release",
       "lead": "10 h before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "2026-11-17",
@@ -2873,7 +2873,7 @@
         },
         {
           "id": "gpt-6.2-astra",
-          "name": "GPT 6.2 Astra",
+          "name": "kilo/openai/gpt-6.2-astra",
           "released_on": "2026-11-17"
         },
         {
@@ -2882,7 +2882,12 @@
         },
         {
           "id": "gpt-6.2-astra-pro",
-          "name": "GPT-6.2 Astra Pro",
+          "name": "kilo/openai/gpt-6.2-astra-pro",
+          "released_on": "2026-11-17"
+        },
+        {
+          "id": "gpt-6.2-astra-fast",
+          "name": "kilo/openai/gpt-6.2-astra-fast",
           "released_on": "2026-11-17"
         }
       ],
@@ -2976,9 +2981,19 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-api",
+          "detected_at": "2026-11-18T18:30:09.353075+00:00",
+          "title": "gpt-6.2-astra",
+          "url": "https://models.dev/api.json?type=all",
+          "backfill": false,
+          "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff.json.gz"
         }
       ],
-      "source_count": 9,
+      "source_count": 10,
       "backfill": false,
       "header": "NEW MODEL · OPENAI",
       "card_ids": [
@@ -2994,12 +3009,104 @@
         "openrouter-model-openai_gpt-6.2-astra-pro",
         "openrouter-model-openai_gpt-6.2-astra-pro_batch",
         "openrouter-model-openai_gpt-6.2-astra_batch",
-        "openai-spec-ids-89db7778"
+        "openai-spec-ids-89db7778",
+        "intel-5e5442eb1f3ebfae00c7",
+        "intel-32bb25e2e0abccfca5ba",
+        "intel-4042fe54463c48765840",
+        "intel-8794a151e677e1224ee9"
       ],
-      "event_label": "",
+      "event_label": "Released",
       "intelligence_only": false,
       "candidate_only": false,
-      "registry_evidence": [],
+      "registry_evidence": [
+        {
+          "id": "kilo/openai/gpt-6.2-astra",
+          "family": "gpt-6.2-astra",
+          "file_path": "api.json?type=all",
+          "file_sha256": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "excerpt": "{\"kilo/openai/gpt-6.2-astra\": {\"id\": \"openai/gpt-6.2-astra\", \"name\": \"OpenAI: GPT-6.2 Astra\", \"description\": \"GPT-6.2 Astra is the flagship model in the GPT-6.2 series from OpenAI, built for the hardest projects. It is suited for real-world engineering, professional work and scientific research, with stronger...\", \"family\": \"gpt-astra\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-05-18\", \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"cost\": {\"input\": 8, \"output\": 40, \"cache_read\": 0.4, \"cache_write\": 10}, \"canonical_model_id\": \"openai/gpt-6.2-astra\"}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T18:30:08.988984+00:00"
+        },
+        {
+          "id": "kilo/openai/gpt-6.2-astra-fast",
+          "family": "gpt-6.2-astra",
+          "file_path": "api.json?type=all",
+          "file_sha256": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "excerpt": "{\"kilo/openai/gpt-6.2-astra-fast\": {\"id\": \"openai/gpt-6.2-astra-fast\", \"name\": \"OpenAI: GPT-6.2 Astra (Fast) ($$$$)\", \"description\": \"GPT-6.2 Astra is OpenAI's frontier reasoning model for coding and professional work. It can build and revise software, use a computer, and work with documents. It accepts text and images, generates text, and supports a 1,050,000-token context window with up to 128,000 output tokens, along with structured outputs, prompt caching, and Responses API tools such as web search.\", \"family\": \"gpt-astra\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-05-18\", \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"cost\": {\"input\": 16, \"output\": 80, \"reasoning\": 0, \"cache_read\": 0.8, \"cache_write\": 20}, \"canonical_model_id\": \"openai/gpt-6.2-astra\"}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T18:30:08.988984+00:00"
+        },
+        {
+          "id": "kilo/openai/gpt-6.2-astra-pro",
+          "family": "gpt-6.2-astra-pro",
+          "file_path": "api.json?type=all",
+          "file_sha256": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "excerpt": "{\"kilo/openai/gpt-6.2-astra-pro\": {\"id\": \"openai/gpt-6.2-astra-pro\", \"name\": \"OpenAI: GPT-6.2 Astra Pro\", \"description\": \"GPT-6.2 Astra Pro is the same underlying model as [GPT-6.2 Astra](https://openrouter.ai/openai/gpt-6.2-astra), served with `reasoning.mode` set to `pro` for higher-quality responses on complex tasks. **Cost note:** pro mode spends far more...\", \"family\": \"gpt\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"pdf\", \"image\", \"text\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"output\": 128000}, \"cost\": {\"input\": 8, \"output\": 40, \"cache_read\": 0.4, \"cache_write\": 10}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T18:30:08.988984+00:00"
+        },
+        {
+          "id": "kilo/openai/gpt-6.2-astra",
+          "family": "gpt-6.2-astra",
+          "file_path": "providers/kilo/models/openai/gpt-6.2-astra.toml",
+          "file_sha256": "b1ddd0261fc203164a6b6048a40d08658e88ee3496cc11978a92058cb84abf09",
+          "excerpt": "{\"kilo/openai/gpt-6.2-astra\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-astra\", \"name\": \"OpenAI: GPT-6.2 Astra\", \"description\": \"GPT-6.2 Astra is the flagship model in the GPT-6.2 series from OpenAI, built for the hardest projects. It is suited for real-world engineering, professional work and scientific research, with stronger...\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 8, \"cache\": {\"read\": 0.4, \"write\": 10}}, \"output\": {\"price\": 40}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5008914af1b32e1ac860b442e13363ab43b0fccf/providers/kilo/models/openai/gpt-6.2-astra.toml",
+          "build": "5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "first_seen": "2026-11-18T18:29:18+00:00"
+        },
+        {
+          "id": "kilo/openai/gpt-6.2-astra-fast",
+          "family": "gpt-6.2-astra",
+          "file_path": "providers/kilo/models/openai/gpt-6.2-astra-fast.toml",
+          "file_sha256": "079f7ff5cb20edbbc3efd4249d7d76c3f62078f247e3fa44673d71c117cf672e",
+          "excerpt": "{\"kilo/openai/gpt-6.2-astra-fast\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-astra\", \"name\": \"OpenAI: GPT-6.2 Astra (Fast) ($$$$)\", \"description\": \"GPT-6.2 Astra is OpenAI's frontier reasoning model for coding and professional work. It can build and revise software, use a computer, and work with documents. It accepts text and images, generates text, and supports a 1,050,000-token context window with up to 128,000 output tokens, along with structured outputs, prompt caching, and Responses API tools such as web search.\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 16, \"cache\": {\"read\": 0.8, \"write\": 20}}, \"output\": {\"price\": 80, \"reasoning\": 0}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5008914af1b32e1ac860b442e13363ab43b0fccf/providers/kilo/models/openai/gpt-6.2-astra-fast.toml",
+          "build": "5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "first_seen": "2026-11-18T18:29:18+00:00"
+        },
+        {
+          "id": "kilo/openai/gpt-6.2-astra-pro",
+          "family": "gpt-6.2-astra-pro",
+          "file_path": "providers/kilo/models/openai/gpt-6.2-astra-pro.toml",
+          "file_sha256": "1d8bde84ff4ee47175c928f98b8cc4ba03e6da9586e39557a4fb92e4586acc28",
+          "excerpt": "{\"kilo/openai/gpt-6.2-astra-pro\": {\"schema\": 2, \"name\": \"OpenAI: GPT-6.2 Astra Pro\", \"description\": \"GPT-6.2 Astra Pro is the same underlying model as [GPT-6.2 Astra](https://openrouter.ai/openai/gpt-6.2-astra), served with `reasoning.mode` set to `pro` for higher-quality responses on complex tasks. **Cost note:** pro mode spends far more...\", \"family\": \"gpt\", \"open_weights\": false, \"release_date\": \"2026-11-17\", \"modalities\": {\"input\": [\"application/pdf\", \"image\", \"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"temperature\": false}, \"limit\": {\"context\": 1050000, \"output\": 128000}, \"cost\": {\"text\": {\"input\": {\"price\": 8, \"cache\": {\"read\": 0.4, \"write\": 10}}, \"output\": {\"price\": 40}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5008914af1b32e1ac860b442e13363ab43b0fccf/providers/kilo/models/openai/gpt-6.2-astra-pro.toml",
+          "build": "5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "first_seen": "2026-11-18T18:29:18+00:00"
+        }
+      ],
       "x_post_text": "🟢 NEW MODEL: GPT 6.2 Astra by OpenAI\n\nFirst detected 17 Nov 18:31 UTC in npm SDK release\n📅 First released: 2026-11-17\n⏱ 10 h before it went live on Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire"
     },
     {
@@ -3012,7 +3119,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-17T18:31:10.791Z",
-      "updated_at": "2026-11-18T05:31:30.169694+00:00",
+      "updated_at": "2026-11-18T18:30:17.258145+00:00",
       "first_source": "npm SDK release",
       "lead": "10 h before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "2026-11-17",
@@ -3021,12 +3128,17 @@
       "models": [
         {
           "id": "gpt-6.2-sol",
-          "name": "GPT 6.2 Sol",
+          "name": "kilo/openai/gpt-6.2-sol",
           "released_on": "2026-11-17"
         },
         {
           "id": "gpt-6.2-sol-pro",
-          "name": "GPT-6.2 Sol Pro",
+          "name": "kilo/openai/gpt-6.2-sol-pro",
+          "released_on": "2026-11-17"
+        },
+        {
+          "id": "gpt-6.2-sol-fast",
+          "name": "kilo/openai/gpt-6.2-sol-fast",
           "released_on": "2026-11-17"
         },
         {
@@ -3124,9 +3236,19 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-api",
+          "detected_at": "2026-11-18T18:30:09.353075+00:00",
+          "title": "gpt-6.2-sol",
+          "url": "https://models.dev/api.json?type=all",
+          "backfill": false,
+          "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff.json.gz"
         }
       ],
-      "source_count": 9,
+      "source_count": 10,
       "backfill": false,
       "header": "NEW MODEL · OPENAI",
       "card_ids": [
@@ -3143,12 +3265,104 @@
         "openrouter-model-openai_gpt-6.2-sol-pro",
         "openrouter-model-openai_gpt-6.2-sol-pro_batch",
         "openrouter-model-openai_gpt-6.2-sol_batch",
-        "openai-spec-ids-89db7778"
+        "openai-spec-ids-89db7778",
+        "intel-1e7f03878fcc735d9ff0",
+        "intel-5278a8c191ad3b0d8bf9",
+        "intel-2671f9650a35a76dc159",
+        "intel-9f21532e642cc8033a5f"
       ],
-      "event_label": "",
+      "event_label": "Released",
       "intelligence_only": false,
       "candidate_only": false,
-      "registry_evidence": [],
+      "registry_evidence": [
+        {
+          "id": "kilo/openai/gpt-6.2-sol",
+          "family": "gpt-6.2-sol",
+          "file_path": "api.json?type=all",
+          "file_sha256": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "excerpt": "{\"kilo/openai/gpt-6.2-sol\": {\"id\": \"openai/gpt-6.2-sol\", \"name\": \"OpenAI: GPT-6.2 Sol (new)\", \"description\": \"GPT-6.2 Sol is an upgrade to GPT-6.1 Sol from OpenAI, positioned below the flagship GPT-6.2 Astra in the GPT-6.2 series. It is an efficient, versatile model for everyday work, suited...\", \"family\": \"gpt-sol\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-06-01\", \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"cost\": {\"input\": 2, \"output\": 10, \"cache_read\": 0.1, \"cache_write\": 2.5}, \"canonical_model_id\": \"openai/gpt-6.2-sol\"}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T18:30:08.988984+00:00"
+        },
+        {
+          "id": "kilo/openai/gpt-6.2-sol-fast",
+          "family": "gpt-6.2-sol",
+          "file_path": "api.json?type=all",
+          "file_sha256": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "excerpt": "{\"kilo/openai/gpt-6.2-sol-fast\": {\"id\": \"openai/gpt-6.2-sol-fast\", \"name\": \"OpenAI: GPT-6.2 Sol (Fast)\", \"description\": \"GPT-6.2 Sol is OpenAI's reasoning model for text, images, and tool use. It accepts text and images, generates text, and supports a 1,050,000-token context window with up to 128,000 output tokens. Structured outputs, prompt caching, and Responses API tools such as web search and computer use support multi-step workflows.\", \"family\": \"gpt-sol\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-06-01\", \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"cost\": {\"input\": 4, \"output\": 20, \"reasoning\": 0, \"cache_read\": 0.2, \"cache_write\": 5}, \"canonical_model_id\": \"openai/gpt-6.2-sol\"}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T18:30:08.988984+00:00"
+        },
+        {
+          "id": "kilo/openai/gpt-6.2-sol-pro",
+          "family": "gpt-6.2-sol-pro",
+          "file_path": "api.json?type=all",
+          "file_sha256": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "excerpt": "{\"kilo/openai/gpt-6.2-sol-pro\": {\"id\": \"openai/gpt-6.2-sol-pro\", \"name\": \"OpenAI: GPT-6.2 Sol Pro\", \"description\": \"GPT-6.2 Sol Pro is the same underlying model as [GPT-6.2 Sol](https://openrouter.ai/openai/gpt-6.2-sol), served with `reasoning.mode` set to `pro` for higher-quality responses on complex tasks. **Cost note:** pro mode spends far more...\", \"family\": \"gpt\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"pdf\", \"image\", \"text\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"output\": 128000}, \"cost\": {\"input\": 2, \"output\": 10, \"cache_read\": 0.1, \"cache_write\": 2.5}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T18:30:08.988984+00:00"
+        },
+        {
+          "id": "kilo/openai/gpt-6.2-sol",
+          "family": "gpt-6.2-sol",
+          "file_path": "providers/kilo/models/openai/gpt-6.2-sol.toml",
+          "file_sha256": "fd6f4ca4c3eef331df8dc7b65c19dbb984e6ee7f5497add7e4807c3456acc29a",
+          "excerpt": "{\"kilo/openai/gpt-6.2-sol\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-sol\", \"name\": \"OpenAI: GPT-6.2 Sol (new)\", \"description\": \"GPT-6.2 Sol is an upgrade to GPT-6.1 Sol from OpenAI, positioned below the flagship GPT-6.2 Astra in the GPT-6.2 series. It is an efficient, versatile model for everyday work, suited...\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 2, \"cache\": {\"read\": 0.1, \"write\": 2.5}}, \"output\": {\"price\": 10}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5008914af1b32e1ac860b442e13363ab43b0fccf/providers/kilo/models/openai/gpt-6.2-sol.toml",
+          "build": "5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "first_seen": "2026-11-18T18:29:18+00:00"
+        },
+        {
+          "id": "kilo/openai/gpt-6.2-sol-fast",
+          "family": "gpt-6.2-sol",
+          "file_path": "providers/kilo/models/openai/gpt-6.2-sol-fast.toml",
+          "file_sha256": "cdf221497b033c4d6caa37797286193e1eb9ec37adbbb084f353e63a63076311",
+          "excerpt": "{\"kilo/openai/gpt-6.2-sol-fast\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-sol\", \"name\": \"OpenAI: GPT-6.2 Sol (Fast)\", \"description\": \"GPT-6.2 Sol is OpenAI's reasoning model for text, images, and tool use. It accepts text and images, generates text, and supports a 1,050,000-token context window with up to 128,000 output tokens. Structured outputs, prompt caching, and Responses API tools such as web search and computer use support multi-step workflows.\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 4, \"cache\": {\"read\": 0.2, \"write\": 5}}, \"output\": {\"price\": 20, \"reasoning\": 0}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5008914af1b32e1ac860b442e13363ab43b0fccf/providers/kilo/models/openai/gpt-6.2-sol-fast.toml",
+          "build": "5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "first_seen": "2026-11-18T18:29:18+00:00"
+        },
+        {
+          "id": "kilo/openai/gpt-6.2-sol-pro",
+          "family": "gpt-6.2-sol-pro",
+          "file_path": "providers/kilo/models/openai/gpt-6.2-sol-pro.toml",
+          "file_sha256": "54af9c8cdb97e92067d73e991b1a73eb6bdeeb68a97b385f97e1e6e15faf7655",
+          "excerpt": "{\"kilo/openai/gpt-6.2-sol-pro\": {\"schema\": 2, \"name\": \"OpenAI: GPT-6.2 Sol Pro\", \"description\": \"GPT-6.2 Sol Pro is the same underlying model as [GPT-6.2 Sol](https://openrouter.ai/openai/gpt-6.2-sol), served with `reasoning.mode` set to `pro` for higher-quality responses on complex tasks. **Cost note:** pro mode spends far more...\", \"family\": \"gpt\", \"open_weights\": false, \"release_date\": \"2026-11-17\", \"modalities\": {\"input\": [\"application/pdf\", \"image\", \"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"temperature\": false}, \"limit\": {\"context\": 1050000, \"output\": 128000}, \"cost\": {\"text\": {\"input\": {\"price\": 2, \"cache\": {\"read\": 0.1, \"write\": 2.5}}, \"output\": {\"price\": 10}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5008914af1b32e1ac860b442e13363ab43b0fccf/providers/kilo/models/openai/gpt-6.2-sol-pro.toml",
+          "build": "5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "first_seen": "2026-11-18T18:29:18+00:00"
+        }
+      ],
       "x_post_text": "🟢 NEW MODEL: GPT 6.2 Sol by OpenAI\n\nFirst detected 17 Nov 18:31 UTC in npm SDK release\n📅 First released: 2026-11-17\n⏱ 10 h before it went live on Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire"
     },
     {
@@ -10420,6 +10634,808 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-4042fe54463c48765840",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-astra",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6.2-astra",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "kilo/openai/gpt-6.2-astra",
+          "name": "kilo/openai/gpt-6.2-astra",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        },
+        {
+          "id": "kilo/openai/gpt-6.2-astra-fast",
+          "name": "kilo/openai/gpt-6.2-astra-fast",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-18T18:30:17.258145+00:00",
+      "first_seen": "2026-11-18T18:29:18+00:00",
+      "observed_at": "2026-11-18T18:30:17.258145+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "4e85ae8852cca42103ddb3f5447263d2048cc6d4 -> 5008914af1b32e1ac860b442e13363ab43b0fccf",
+      "build": "5008914af1b32e1ac860b442e13363ab43b0fccf",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf",
+      "artifact_sha256": "fbf29a4786c76d7c54f1b3baf49908fe2b59ff803e573c1a858dcd0f16497b02",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/fbf29a4786c76d7c54f1b3baf49908fe2b59ff803e573c1a858dcd0f16497b02.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/fbf29a4786c76d7c54f1b3baf49908fe2b59ff803e573c1a858dcd0f16497b02.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/openai/gpt-6.2-astra",
+          "family": "gpt-6.2-astra",
+          "file_path": "providers/kilo/models/openai/gpt-6.2-astra.toml",
+          "file_sha256": "b1ddd0261fc203164a6b6048a40d08658e88ee3496cc11978a92058cb84abf09",
+          "excerpt": "{\"kilo/openai/gpt-6.2-astra\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-astra\", \"name\": \"OpenAI: GPT-6.2 Astra\", \"description\": \"GPT-6.2 Astra is the flagship model in the GPT-6.2 series from OpenAI, built for the hardest projects. It is suited for real-world engineering, professional work and scientific research, with stronger...\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 8, \"cache\": {\"read\": 0.4, \"write\": 10}}, \"output\": {\"price\": 40}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5008914af1b32e1ac860b442e13363ab43b0fccf/providers/kilo/models/openai/gpt-6.2-astra.toml",
+          "build": "5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "first_seen": "2026-11-18T18:29:18+00:00"
+        },
+        {
+          "id": "kilo/openai/gpt-6.2-astra-fast",
+          "family": "gpt-6.2-astra",
+          "file_path": "providers/kilo/models/openai/gpt-6.2-astra-fast.toml",
+          "file_sha256": "079f7ff5cb20edbbc3efd4249d7d76c3f62078f247e3fa44673d71c117cf672e",
+          "excerpt": "{\"kilo/openai/gpt-6.2-astra-fast\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-astra\", \"name\": \"OpenAI: GPT-6.2 Astra (Fast) ($$$$)\", \"description\": \"GPT-6.2 Astra is OpenAI's frontier reasoning model for coding and professional work. It can build and revise software, use a computer, and work with documents. It accepts text and images, generates text, and supports a 1,050,000-token context window with up to 128,000 output tokens, along with structured outputs, prompt caching, and Responses API tools such as web search.\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 16, \"cache\": {\"read\": 0.8, \"write\": 20}}, \"output\": {\"price\": 80, \"reasoning\": 0}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5008914af1b32e1ac860b442e13363ab43b0fccf/providers/kilo/models/openai/gpt-6.2-astra-fast.toml",
+          "build": "5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "first_seen": "2026-11-18T18:29:18+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-6.2-astra",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/77a6865cc31d1966cf6ace1e12b2b373b8cc4e64e8c612f45daf6122906f062f.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/5008914af1b32e1ac860b442e13363ab43b0fccf"
+        }
+      ],
+      "tracker_observed_at": "2026-11-18T18:30:26.687988+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 5008914af1b3: kilo/openai/gpt-6.2-astra\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf"
+    },
+    {
+      "id": "intel-8794a151e677e1224ee9",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-astra-pro",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6.2-astra-pro",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "kilo/openai/gpt-6.2-astra-pro",
+          "name": "kilo/openai/gpt-6.2-astra-pro",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-18T18:30:17.258145+00:00",
+      "first_seen": "2026-11-18T18:29:18+00:00",
+      "observed_at": "2026-11-18T18:30:17.258145+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "4e85ae8852cca42103ddb3f5447263d2048cc6d4 -> 5008914af1b32e1ac860b442e13363ab43b0fccf",
+      "build": "5008914af1b32e1ac860b442e13363ab43b0fccf",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf",
+      "artifact_sha256": "fbf29a4786c76d7c54f1b3baf49908fe2b59ff803e573c1a858dcd0f16497b02",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/fbf29a4786c76d7c54f1b3baf49908fe2b59ff803e573c1a858dcd0f16497b02.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/fbf29a4786c76d7c54f1b3baf49908fe2b59ff803e573c1a858dcd0f16497b02.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/openai/gpt-6.2-astra-pro",
+          "family": "gpt-6.2-astra-pro",
+          "file_path": "providers/kilo/models/openai/gpt-6.2-astra-pro.toml",
+          "file_sha256": "1d8bde84ff4ee47175c928f98b8cc4ba03e6da9586e39557a4fb92e4586acc28",
+          "excerpt": "{\"kilo/openai/gpt-6.2-astra-pro\": {\"schema\": 2, \"name\": \"OpenAI: GPT-6.2 Astra Pro\", \"description\": \"GPT-6.2 Astra Pro is the same underlying model as [GPT-6.2 Astra](https://openrouter.ai/openai/gpt-6.2-astra), served with `reasoning.mode` set to `pro` for higher-quality responses on complex tasks. **Cost note:** pro mode spends far more...\", \"family\": \"gpt\", \"open_weights\": false, \"release_date\": \"2026-11-17\", \"modalities\": {\"input\": [\"application/pdf\", \"image\", \"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"temperature\": false}, \"limit\": {\"context\": 1050000, \"output\": 128000}, \"cost\": {\"text\": {\"input\": {\"price\": 8, \"cache\": {\"read\": 0.4, \"write\": 10}}, \"output\": {\"price\": 40}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5008914af1b32e1ac860b442e13363ab43b0fccf/providers/kilo/models/openai/gpt-6.2-astra-pro.toml",
+          "build": "5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "first_seen": "2026-11-18T18:29:18+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/5008914af1b32e1ac860b442e13363ab43b0fccf"
+        }
+      ],
+      "tracker_observed_at": "2026-11-18T18:30:26.687988+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 5008914af1b3: kilo/openai/gpt-6.2-astra-pro\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf"
+    },
+    {
+      "id": "intel-2671f9650a35a76dc159",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-sol",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6.2-sol",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "kilo/openai/gpt-6.2-sol",
+          "name": "kilo/openai/gpt-6.2-sol",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        },
+        {
+          "id": "kilo/openai/gpt-6.2-sol-fast",
+          "name": "kilo/openai/gpt-6.2-sol-fast",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-18T18:30:17.258145+00:00",
+      "first_seen": "2026-11-18T18:29:18+00:00",
+      "observed_at": "2026-11-18T18:30:17.258145+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "4e85ae8852cca42103ddb3f5447263d2048cc6d4 -> 5008914af1b32e1ac860b442e13363ab43b0fccf",
+      "build": "5008914af1b32e1ac860b442e13363ab43b0fccf",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf",
+      "artifact_sha256": "fbf29a4786c76d7c54f1b3baf49908fe2b59ff803e573c1a858dcd0f16497b02",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/fbf29a4786c76d7c54f1b3baf49908fe2b59ff803e573c1a858dcd0f16497b02.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/fbf29a4786c76d7c54f1b3baf49908fe2b59ff803e573c1a858dcd0f16497b02.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/openai/gpt-6.2-sol",
+          "family": "gpt-6.2-sol",
+          "file_path": "providers/kilo/models/openai/gpt-6.2-sol.toml",
+          "file_sha256": "fd6f4ca4c3eef331df8dc7b65c19dbb984e6ee7f5497add7e4807c3456acc29a",
+          "excerpt": "{\"kilo/openai/gpt-6.2-sol\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-sol\", \"name\": \"OpenAI: GPT-6.2 Sol (new)\", \"description\": \"GPT-6.2 Sol is an upgrade to GPT-6.1 Sol from OpenAI, positioned below the flagship GPT-6.2 Astra in the GPT-6.2 series. It is an efficient, versatile model for everyday work, suited...\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 2, \"cache\": {\"read\": 0.1, \"write\": 2.5}}, \"output\": {\"price\": 10}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5008914af1b32e1ac860b442e13363ab43b0fccf/providers/kilo/models/openai/gpt-6.2-sol.toml",
+          "build": "5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "first_seen": "2026-11-18T18:29:18+00:00"
+        },
+        {
+          "id": "kilo/openai/gpt-6.2-sol-fast",
+          "family": "gpt-6.2-sol",
+          "file_path": "providers/kilo/models/openai/gpt-6.2-sol-fast.toml",
+          "file_sha256": "cdf221497b033c4d6caa37797286193e1eb9ec37adbbb084f353e63a63076311",
+          "excerpt": "{\"kilo/openai/gpt-6.2-sol-fast\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-sol\", \"name\": \"OpenAI: GPT-6.2 Sol (Fast)\", \"description\": \"GPT-6.2 Sol is OpenAI's reasoning model for text, images, and tool use. It accepts text and images, generates text, and supports a 1,050,000-token context window with up to 128,000 output tokens. Structured outputs, prompt caching, and Responses API tools such as web search and computer use support multi-step workflows.\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 4, \"cache\": {\"read\": 0.2, \"write\": 5}}, \"output\": {\"price\": 20, \"reasoning\": 0}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5008914af1b32e1ac860b442e13363ab43b0fccf/providers/kilo/models/openai/gpt-6.2-sol-fast.toml",
+          "build": "5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "first_seen": "2026-11-18T18:29:18+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-6.2-sol",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/77a6865cc31d1966cf6ace1e12b2b373b8cc4e64e8c612f45daf6122906f062f.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/5008914af1b32e1ac860b442e13363ab43b0fccf"
+        }
+      ],
+      "tracker_observed_at": "2026-11-18T18:30:26.687988+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 5008914af1b3: kilo/openai/gpt-6.2-sol\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf"
+    },
+    {
+      "id": "intel-9f21532e642cc8033a5f",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-sol-pro",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6.2-sol-pro",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "kilo/openai/gpt-6.2-sol-pro",
+          "name": "kilo/openai/gpt-6.2-sol-pro",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-18T18:30:17.258145+00:00",
+      "first_seen": "2026-11-18T18:29:18+00:00",
+      "observed_at": "2026-11-18T18:30:17.258145+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "4e85ae8852cca42103ddb3f5447263d2048cc6d4 -> 5008914af1b32e1ac860b442e13363ab43b0fccf",
+      "build": "5008914af1b32e1ac860b442e13363ab43b0fccf",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf",
+      "artifact_sha256": "fbf29a4786c76d7c54f1b3baf49908fe2b59ff803e573c1a858dcd0f16497b02",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/fbf29a4786c76d7c54f1b3baf49908fe2b59ff803e573c1a858dcd0f16497b02.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/fbf29a4786c76d7c54f1b3baf49908fe2b59ff803e573c1a858dcd0f16497b02.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/openai/gpt-6.2-sol-pro",
+          "family": "gpt-6.2-sol-pro",
+          "file_path": "providers/kilo/models/openai/gpt-6.2-sol-pro.toml",
+          "file_sha256": "54af9c8cdb97e92067d73e991b1a73eb6bdeeb68a97b385f97e1e6e15faf7655",
+          "excerpt": "{\"kilo/openai/gpt-6.2-sol-pro\": {\"schema\": 2, \"name\": \"OpenAI: GPT-6.2 Sol Pro\", \"description\": \"GPT-6.2 Sol Pro is the same underlying model as [GPT-6.2 Sol](https://openrouter.ai/openai/gpt-6.2-sol), served with `reasoning.mode` set to `pro` for higher-quality responses on complex tasks. **Cost note:** pro mode spends far more...\", \"family\": \"gpt\", \"open_weights\": false, \"release_date\": \"2026-11-17\", \"modalities\": {\"input\": [\"application/pdf\", \"image\", \"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"temperature\": false}, \"limit\": {\"context\": 1050000, \"output\": 128000}, \"cost\": {\"text\": {\"input\": {\"price\": 2, \"cache\": {\"read\": 0.1, \"write\": 2.5}}, \"output\": {\"price\": 10}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5008914af1b32e1ac860b442e13363ab43b0fccf/providers/kilo/models/openai/gpt-6.2-sol-pro.toml",
+          "build": "5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf",
+          "first_seen": "2026-11-18T18:29:18+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/5008914af1b32e1ac860b442e13363ab43b0fccf"
+        }
+      ],
+      "tracker_observed_at": "2026-11-18T18:30:26.687988+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 5008914af1b3: kilo/openai/gpt-6.2-sol-pro\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/5008914af1b32e1ac860b442e13363ab43b0fccf"
+    },
+    {
+      "id": "intel-5e5442eb1f3ebfae00c7",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-astra",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "gpt-6.2-astra",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "kilo/openai/gpt-6.2-astra",
+          "name": "kilo/openai/gpt-6.2-astra",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        },
+        {
+          "id": "kilo/openai/gpt-6.2-astra-fast",
+          "name": "kilo/openai/gpt-6.2-astra-fast",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-18T18:30:09.353075+00:00",
+      "first_seen": "2026-11-18T18:30:08.988984+00:00",
+      "observed_at": "2026-11-18T18:30:09.353075+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "f3703f9e4e41cde7ea3270bc3bad340d57f8f12476d31a6ee5cce23b711eb2f8 -> 2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+      "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/openai/gpt-6.2-astra",
+          "family": "gpt-6.2-astra",
+          "file_path": "api.json?type=all",
+          "file_sha256": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "excerpt": "{\"kilo/openai/gpt-6.2-astra\": {\"id\": \"openai/gpt-6.2-astra\", \"name\": \"OpenAI: GPT-6.2 Astra\", \"description\": \"GPT-6.2 Astra is the flagship model in the GPT-6.2 series from OpenAI, built for the hardest projects. It is suited for real-world engineering, professional work and scientific research, with stronger...\", \"family\": \"gpt-astra\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-05-18\", \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"cost\": {\"input\": 8, \"output\": 40, \"cache_read\": 0.4, \"cache_write\": 10}, \"canonical_model_id\": \"openai/gpt-6.2-astra\"}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T18:30:08.988984+00:00"
+        },
+        {
+          "id": "kilo/openai/gpt-6.2-astra-fast",
+          "family": "gpt-6.2-astra",
+          "file_path": "api.json?type=all",
+          "file_sha256": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "excerpt": "{\"kilo/openai/gpt-6.2-astra-fast\": {\"id\": \"openai/gpt-6.2-astra-fast\", \"name\": \"OpenAI: GPT-6.2 Astra (Fast) ($$$$)\", \"description\": \"GPT-6.2 Astra is OpenAI's frontier reasoning model for coding and professional work. It can build and revise software, use a computer, and work with documents. It accepts text and images, generates text, and supports a 1,050,000-token context window with up to 128,000 output tokens, along with structured outputs, prompt caching, and Responses API tools such as web search.\", \"family\": \"gpt-astra\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-05-18\", \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"cost\": {\"input\": 16, \"output\": 80, \"reasoning\": 0, \"cache_read\": 0.8, \"cache_write\": 20}, \"canonical_model_id\": \"openai/gpt-6.2-astra\"}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T18:30:08.988984+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-6.2-astra",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/77a6865cc31d1966cf6ace1e12b2b373b8cc4e64e8c612f45daf6122906f062f.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-18T18:30:12.004188+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 2e99ca2542ef: kilo/openai/gpt-6.2-astra, kilo/openai/gpt-6.2-astra-fast\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
+    {
+      "id": "intel-32bb25e2e0abccfca5ba",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-astra-pro",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "gpt-6.2-astra-pro",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "kilo/openai/gpt-6.2-astra-pro",
+          "name": "kilo/openai/gpt-6.2-astra-pro",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-18T18:30:09.353075+00:00",
+      "first_seen": "2026-11-18T18:30:08.988984+00:00",
+      "observed_at": "2026-11-18T18:30:09.353075+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "f3703f9e4e41cde7ea3270bc3bad340d57f8f12476d31a6ee5cce23b711eb2f8 -> 2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+      "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/openai/gpt-6.2-astra-pro",
+          "family": "gpt-6.2-astra-pro",
+          "file_path": "api.json?type=all",
+          "file_sha256": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "excerpt": "{\"kilo/openai/gpt-6.2-astra-pro\": {\"id\": \"openai/gpt-6.2-astra-pro\", \"name\": \"OpenAI: GPT-6.2 Astra Pro\", \"description\": \"GPT-6.2 Astra Pro is the same underlying model as [GPT-6.2 Astra](https://openrouter.ai/openai/gpt-6.2-astra), served with `reasoning.mode` set to `pro` for higher-quality responses on complex tasks. **Cost note:** pro mode spends far more...\", \"family\": \"gpt\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"pdf\", \"image\", \"text\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"output\": 128000}, \"cost\": {\"input\": 8, \"output\": 40, \"cache_read\": 0.4, \"cache_write\": 10}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T18:30:08.988984+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-18T18:30:12.004188+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 2e99ca2542ef: kilo/openai/gpt-6.2-astra-pro\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
+    {
+      "id": "intel-1e7f03878fcc735d9ff0",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-sol",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "gpt-6.2-sol",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "kilo/openai/gpt-6.2-sol",
+          "name": "kilo/openai/gpt-6.2-sol",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        },
+        {
+          "id": "kilo/openai/gpt-6.2-sol-fast",
+          "name": "kilo/openai/gpt-6.2-sol-fast",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-18T18:30:09.353075+00:00",
+      "first_seen": "2026-11-18T18:30:08.988984+00:00",
+      "observed_at": "2026-11-18T18:30:09.353075+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "f3703f9e4e41cde7ea3270bc3bad340d57f8f12476d31a6ee5cce23b711eb2f8 -> 2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+      "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/openai/gpt-6.2-sol",
+          "family": "gpt-6.2-sol",
+          "file_path": "api.json?type=all",
+          "file_sha256": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "excerpt": "{\"kilo/openai/gpt-6.2-sol\": {\"id\": \"openai/gpt-6.2-sol\", \"name\": \"OpenAI: GPT-6.2 Sol (new)\", \"description\": \"GPT-6.2 Sol is an upgrade to GPT-6.1 Sol from OpenAI, positioned below the flagship GPT-6.2 Astra in the GPT-6.2 series. It is an efficient, versatile model for everyday work, suited...\", \"family\": \"gpt-sol\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-06-01\", \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"cost\": {\"input\": 2, \"output\": 10, \"cache_read\": 0.1, \"cache_write\": 2.5}, \"canonical_model_id\": \"openai/gpt-6.2-sol\"}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T18:30:08.988984+00:00"
+        },
+        {
+          "id": "kilo/openai/gpt-6.2-sol-fast",
+          "family": "gpt-6.2-sol",
+          "file_path": "api.json?type=all",
+          "file_sha256": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "excerpt": "{\"kilo/openai/gpt-6.2-sol-fast\": {\"id\": \"openai/gpt-6.2-sol-fast\", \"name\": \"OpenAI: GPT-6.2 Sol (Fast)\", \"description\": \"GPT-6.2 Sol is OpenAI's reasoning model for text, images, and tool use. It accepts text and images, generates text, and supports a 1,050,000-token context window with up to 128,000 output tokens. Structured outputs, prompt caching, and Responses API tools such as web search and computer use support multi-step workflows.\", \"family\": \"gpt-sol\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-06-01\", \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"cost\": {\"input\": 4, \"output\": 20, \"reasoning\": 0, \"cache_read\": 0.2, \"cache_write\": 5}, \"canonical_model_id\": \"openai/gpt-6.2-sol\"}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T18:30:08.988984+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-6.2-sol",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/77a6865cc31d1966cf6ace1e12b2b373b8cc4e64e8c612f45daf6122906f062f.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-18T18:30:12.004188+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 2e99ca2542ef: kilo/openai/gpt-6.2-sol, kilo/openai/gpt-6.2-sol-fast\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
+    {
+      "id": "intel-5278a8c191ad3b0d8bf9",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-sol-pro",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "gpt-6.2-sol-pro",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "kilo/openai/gpt-6.2-sol-pro",
+          "name": "kilo/openai/gpt-6.2-sol-pro",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-18T18:30:09.353075+00:00",
+      "first_seen": "2026-11-18T18:30:08.988984+00:00",
+      "observed_at": "2026-11-18T18:30:09.353075+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "f3703f9e4e41cde7ea3270bc3bad340d57f8f12476d31a6ee5cce23b711eb2f8 -> 2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+      "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/openai/gpt-6.2-sol-pro",
+          "family": "gpt-6.2-sol-pro",
+          "file_path": "api.json?type=all",
+          "file_sha256": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "excerpt": "{\"kilo/openai/gpt-6.2-sol-pro\": {\"id\": \"openai/gpt-6.2-sol-pro\", \"name\": \"OpenAI: GPT-6.2 Sol Pro\", \"description\": \"GPT-6.2 Sol Pro is the same underlying model as [GPT-6.2 Sol](https://openrouter.ai/openai/gpt-6.2-sol), served with `reasoning.mode` set to `pro` for higher-quality responses on complex tasks. **Cost note:** pro mode spends far more...\", \"family\": \"gpt\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"release_date\": \"2026-11-17\", \"last_updated\": \"2026-11-17\", \"modalities\": {\"input\": [\"pdf\", \"image\", \"text\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"output\": 128000}, \"cost\": {\"input\": 2, \"output\": 10, \"cache_read\": 0.1, \"cache_write\": 2.5}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T18:30:08.988984+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-18T18:30:12.004188+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 2e99ca2542ef: kilo/openai/gpt-6.2-sol-pro\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "intel-99c20517c0bd75ef993a",
       "scanner": "models-dev-git",
@@ -24573,25 +25589,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T18:20:17.328779+00:00",
+      "last_attempt": "2026-11-18T18:30:07.247953+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T18:20:18.485509+00:00",
+      "last_success": "2026-11-18T18:30:12.004188+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.157,
-      "latest_build": "f3703f9e4e41cde7ea3270bc3bad340d57f8f12476d31a6ee5cce23b711eb2f8",
-      "builds_retained": 3,
-      "identifiers": 9583
+      "duration_seconds": 4.756,
+      "latest_build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+      "builds_retained": 4,
+      "identifiers": 9587
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-18T18:18:01.755641+00:00",
+      "last_attempt": "2026-11-18T18:30:12.168233+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T18:18:02.186881+00:00",
+      "last_success": "2026-11-18T18:30:12.773039+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.431,
+      "duration_seconds": 0.605,
       "latest_build": "65a926600a92b11f1464433a3a60a2c25cb93574",
       "builds_retained": 8,
       "identifiers": 6917
@@ -24599,24 +25615,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-18T18:20:18.645732+00:00",
+      "last_attempt": "2026-11-18T18:30:12.937697+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T18:20:25.901443+00:00",
+      "last_success": "2026-11-18T18:30:26.687988+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.256,
-      "latest_build": "4e85ae8852cca42103ddb3f5447263d2048cc6d4",
-      "builds_retained": 4,
-      "identifiers": 10700
+      "duration_seconds": 13.75,
+      "latest_build": "bd2148947d9fc48f4a0a582fd68a788ff58dd5a8",
+      "builds_retained": 6,
+      "identifiers": 10704
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-18T18:20:26.066769+00:00",
+      "last_attempt": "2026-11-18T18:30:26.848308+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 167,
-      "duration_seconds": 18.581
+      "consecutive_failures": 172,
+      "duration_seconds": 18.496
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -24636,61 +25652,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T18:19:20.378129+00:00",
+      "last_attempt": "2026-11-18T18:29:20.947000+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T18:19:22.642196+00:00",
+      "last_success": "2026-11-18T18:29:22.952419+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.264
+      "duration_seconds": 2.005
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T18:19:22.642270+00:00",
+      "last_attempt": "2026-11-18T18:29:22.952523+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T18:19:22.782760+00:00",
+      "last_success": "2026-11-18T18:29:23.089965+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.141
+      "duration_seconds": 0.137
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T18:19:22.782805+00:00",
+      "last_attempt": "2026-11-18T18:29:23.090016+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T18:19:30.108844+00:00",
+      "last_success": "2026-11-18T18:29:30.214865+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.326
+      "duration_seconds": 7.125
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T18:19:30.108957+00:00",
+      "last_attempt": "2026-11-18T18:29:30.214969+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T18:20:17.328701+00:00",
+      "last_success": "2026-11-18T18:30:07.247863+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 47.22,
+      "duration_seconds": 37.033,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-18T18:19:30.365836+00:00",
+          "checked_at": "2026-11-18T18:29:30.464721+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
-          "status": "ok",
-          "checked_at": "2026-11-18T18:19:40.669069+00:00",
-          "reason": ""
+          "status": "failed",
+          "checked_at": "2026-11-18T18:29:31.222485+00:00",
+          "reason": "HTTPError"
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-18T18:19:40.892077+00:00",
+          "checked_at": "2026-11-18T18:29:31.405015+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-18T18:19:40.892096+00:00",
+          "checked_at": "2026-11-18T18:29:31.405034+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -24698,25 +25714,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T18:20:17.328779+00:00",
+      "last_attempt": "2026-11-18T18:30:07.247953+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T18:20:18.485509+00:00",
+      "last_success": "2026-11-18T18:30:12.004188+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.157,
-      "latest_build": "f3703f9e4e41cde7ea3270bc3bad340d57f8f12476d31a6ee5cce23b711eb2f8",
-      "builds_retained": 3,
-      "identifiers": 9583
+      "duration_seconds": 4.756,
+      "latest_build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
+      "builds_retained": 4,
+      "identifiers": 9587
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-18T18:18:01.755641+00:00",
+      "last_attempt": "2026-11-18T18:30:12.168233+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T18:18:02.186881+00:00",
+      "last_success": "2026-11-18T18:30:12.773039+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.431,
+      "duration_seconds": 0.605,
       "latest_build": "65a926600a92b11f1464433a3a60a2c25cb93574",
       "builds_retained": 8,
       "identifiers": 6917
@@ -24724,24 +25740,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-18T18:20:18.645732+00:00",
+      "last_attempt": "2026-11-18T18:30:12.937697+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T18:20:25.901443+00:00",
+      "last_success": "2026-11-18T18:30:26.687988+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.256,
-      "latest_build": "4e85ae8852cca42103ddb3f5447263d2048cc6d4",
-      "builds_retained": 4,
-      "identifiers": 10700
+      "duration_seconds": 13.75,
+      "latest_build": "bd2148947d9fc48f4a0a582fd68a788ff58dd5a8",
+      "builds_retained": 6,
+      "identifiers": 10704
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-18T18:20:26.066769+00:00",
+      "last_attempt": "2026-11-18T18:30:26.848308+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 167,
-      "duration_seconds": 18.581
+      "consecutive_failures": 172,
+      "duration_seconds": 18.496
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -24759,64 +25775,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T18:20:44.991376+00:00",
+      "last_attempt": "2026-11-18T18:30:45.348813+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T18:20:53.502164+00:00",
+      "last_success": "2026-11-18T18:30:53.854621+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.511
+      "duration_seconds": 8.506
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T18:20:53.502243+00:00",
+      "last_attempt": "2026-11-18T18:30:53.854705+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T18:20:55.271650+00:00",
+      "last_success": "2026-11-18T18:30:55.990657+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.769
+      "duration_seconds": 2.136
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-18T18:20:55.271716+00:00",
+      "last_attempt": "2026-11-18T18:30:55.990720+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T18:21:08.363823+00:00",
+      "last_success": "2026-11-18T18:31:06.099952+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 13.092
+      "duration_seconds": 10.109
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T18:21:08.363907+00:00",
+      "last_attempt": "2026-11-18T18:31:06.100017+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T18:21:09.001487+00:00",
+      "last_success": "2026-11-18T18:31:06.685522+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.638
+      "duration_seconds": 0.586
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T18:21:09.001548+00:00",
+      "last_attempt": "2026-11-18T18:31:06.685584+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T18:21:09.103857+00:00",
+      "last_success": "2026-11-18T18:31:06.711229+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.102
+      "duration_seconds": 0.026
     }
   },
   "identities": {
-    "identifiers": 30530,
-    "declared_aliases": 17698,
+    "identifiers": 30538,
+    "declared_aliases": 17702,
     "pending_candidates": 0
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 38,
-      "seconds_mean": 175.6197202105263,
+      "samples": 42,
+      "seconds_mean": 164.53766542857142,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -24830,8 +25846,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 38,
-      "events": 38,
+      "complete": 46,
+      "events": 46,
       "rate": 1.0
     },
     "source_health": {
