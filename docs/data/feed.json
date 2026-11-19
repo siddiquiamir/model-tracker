@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-19T17:39:36.017004+00:00",
-  "scan_completed_at": "2026-11-19T17:41:12.088095+00:00",
+  "generated_at": "2026-11-19T18:11:36.153576+00:00",
+  "scan_completed_at": "2026-11-19T18:13:11.421765+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 216,
-    "leaks": 44,
-    "releases": 68,
+    "stories": 214,
+    "leaks": 43,
+    "releases": 67,
     "stories_24h": 76,
     "sources_ok": 15,
-    "total_cards": 449,
-    "new_in_this_scan": 1
+    "total_cards": 446,
+    "new_in_this_scan": 0
   },
   "stories": [
     {
@@ -16055,6 +16055,63 @@
       "x_post_text": "🔵 REGISTRY UPDATE: LiteLLM Model Registry Update — 2 Entries Detected\n\nFirst detected 05 Nov 20:13 UTC in LiteLLM registry\nIDs: jina-reranker-m0, jina-reranker-v3.5\n\nvia @StatsWire"
     },
     {
+      "id": "story-gpt-6-cyber",
+      "group": "gpt-6-cyber",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "GPT 6 Cyber",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "accent_color": "#10b981",
+      "detected_at": "2026-11-05T18:14:55.268Z",
+      "updated_at": "2026-11-05T20:13:31.531520+00:00",
+      "first_source": "npm SDK release",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gpt-6-cyber",
+          "name": "GPT 6 Cyber"
+        }
+      ],
+      "sources": [
+        {
+          "label": "npm SDK release",
+          "scanner": "npm",
+          "detected_at": "2026-11-05T18:14:55.268Z",
+          "title": "Openai (GPT 6 Cyber)",
+          "url": "https://www.npmjs.com/package/openai?activeTab=versions",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "LiteLLM registry",
+          "scanner": "litellm",
+          "detected_at": "2026-11-05T20:13:31.531520+00:00",
+          "title": "3 New Model(s) Added to LiteLLM",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 2,
+      "backfill": false,
+      "header": "LEAK · OPENAI",
+      "card_ids": [
+        "npm-openai-7.51.0-7.52.0",
+        "litellm-diff-abac7cca"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: GPT 6 Cyber by OpenAI\n\nFirst detected 05 Nov 18:14 UTC in npm SDK release\nConfirmed by LiteLLM registry\n\nvia @StatsWire"
+    },
+    {
       "id": "story-molmo-2-tb",
       "group": "molmo-2-tb",
       "kind": "release",
@@ -16099,173 +16156,6 @@
       "candidate_only": false,
       "registry_evidence": [],
       "x_post_text": "🟢 NEW MODEL: Molmo2 4B tb by Olmo / Molmo\n\nFirst detected 05 Nov 18:12 UTC in Hugging Face\n\nvia @StatsWire"
-    },
-    {
-      "id": "story-maniflow-tb",
-      "group": "maniflow-tb",
-      "kind": "release",
-      "open_weights": true,
-      "title": "maniflow tb",
-      "provider_slug": "opensource",
-      "provider_name": "Olmo / Molmo",
-      "accent_color": "#ec4899",
-      "detected_at": "2026-11-05T17:54:49.613262+00:00",
-      "updated_at": "2026-11-05T17:54:49.613262+00:00",
-      "first_source": "Hugging Face",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "maniflow-tb",
-          "name": "maniflow-tb"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Hugging Face",
-          "scanner": "huggingface",
-          "detected_at": "2026-11-05T17:54:49.613262+00:00",
-          "title": "maniflow tb",
-          "url": "https://huggingface.co/allenai/maniflow-tb",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "OPEN WEIGHTS · OLMO / MOLMO",
-      "card_ids": [
-        "hf-allenai_maniflow-tb"
-      ],
-      "event_label": "",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: maniflow tb by Olmo / Molmo\n\nFirst detected 05 Nov 17:54 UTC in Hugging Face\n\nvia @StatsWire"
-    },
-    {
-      "id": "story-gpt-6-cyber",
-      "group": "gpt-6-cyber",
-      "kind": "leak",
-      "open_weights": false,
-      "title": "GPT 6 Cyber",
-      "provider_slug": "openai",
-      "provider_name": "OpenAI",
-      "accent_color": "#10b981",
-      "detected_at": "2026-11-05T17:48:39.306676+00:00",
-      "updated_at": "2026-11-05T20:13:31.531520+00:00",
-      "first_source": "OpenAI SDK GitHub Master",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "gpt-6-cyber",
-          "name": "GPT 6 Cyber"
-        }
-      ],
-      "sources": [
-        {
-          "label": "OpenAI SDK GitHub Master",
-          "scanner": "docs-radar",
-          "detected_at": "2026-11-05T17:48:39.306676+00:00",
-          "title": "New OpenAI Model Merged to SDK Master: gpt-6-cyber",
-          "url": "https://github.com/openai/openai-node/commits/master/src/resources/shared.ts",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "npm SDK release",
-          "scanner": "npm",
-          "detected_at": "2026-11-05T18:14:55.268Z",
-          "title": "Openai (GPT 6 Cyber)",
-          "url": "https://www.npmjs.com/package/openai?activeTab=versions",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "LiteLLM registry",
-          "scanner": "litellm",
-          "detected_at": "2026-11-05T20:13:31.531520+00:00",
-          "title": "3 New Model(s) Added to LiteLLM",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        }
-      ],
-      "source_count": 3,
-      "backfill": false,
-      "header": "LEAK · OPENAI",
-      "card_ids": [
-        "pre-release-gh_openai_sdk_union-f9138464",
-        "npm-openai-7.51.0-7.52.0",
-        "litellm-diff-abac7cca"
-      ],
-      "event_label": "",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: GPT 6 Cyber by OpenAI\n\nFirst detected 05 Nov 17:48 UTC in OpenAI SDK GitHub Master\nConfirmed by npm SDK release, LiteLLM registry\n\nvia @StatsWire"
-    },
-    {
-      "id": "story-dflash-2ricursivedraftmodel",
-      "group": "dflash-2ricursivedraftmodel",
-      "kind": "leak",
-      "open_weights": false,
-      "title": "DFlash2RicursiveDraftModel",
-      "provider_slug": "opensource",
-      "provider_name": "Architecture Diff",
-      "accent_color": "#8b5cf6",
-      "detected_at": "2026-11-05T17:40:28.449270+00:00",
-      "updated_at": "2026-11-05T17:40:28.449270+00:00",
-      "first_source": "vLLM registry",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [
-        "dflash",
-        "ricursiveforcausallm"
-      ],
-      "models": [
-        {
-          "id": "RicursiveForCausalLM",
-          "name": "RicursiveForCausalLM"
-        },
-        {
-          "id": "DFlash2RicursiveDraftModel",
-          "name": "DFlash2RicursiveDraftModel"
-        }
-      ],
-      "sources": [
-        {
-          "label": "vLLM registry",
-          "scanner": "vllm-registry",
-          "detected_at": "2026-11-05T17:40:28.449270+00:00",
-          "title": "New Engine Architecture: DFlash2RicursiveDraftModel (+1 more)",
-          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "LEAK · ARCHITECTURE DIFF",
-      "card_ids": [
-        "vllm-arch-88206320f0"
-      ],
-      "event_label": "",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: DFlash2RicursiveDraftModel by Architecture Diff\n\nFirst detected 05 Nov 17:40 UTC in vLLM registry\nCodename: dflash, ricursiveforcausallm\nIDs: RicursiveForCausalLM, DFlash2RicursiveDraftModel\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-carbon",
@@ -45722,118 +45612,6 @@
       "pricing": null
     },
     {
-      "id": "hf-allenai_maniflow-tb",
-      "category": "open-source",
-      "scanner": "huggingface",
-      "header": "HUGGING FACE NEW REPO · ALLENAI · OLMO / MOLMO",
-      "title": "maniflow tb",
-      "subtitle": "Newly published public model repository (allenai)",
-      "build_label": "Repo",
-      "build_transition": "Created 2026-11-05 (robotics)",
-      "models": [
-        {
-          "id": "allenai/maniflow-tb",
-          "name": "maniflow-tb (robotics)"
-        }
-      ],
-      "evidence": "huggingface.co/api/models",
-      "source_text": "official allenai Hugging Face organization feed.",
-      "disclaimer_1": "Repository became publicly visible since the previous scan.",
-      "disclaimer_2": "Public weights / model cards published directly by the organization.",
-      "provider_name": "ALLENAI · OLMO / MOLMO",
-      "provider_slug": "opensource",
-      "accent_color": "#ec4899",
-      "links": [
-        {
-          "label": "Hugging Face Repo",
-          "url": "https://huggingface.co/allenai/maniflow-tb"
-        },
-        {
-          "label": "allenai Hub Feed",
-          "url": "https://huggingface.co/allenai"
-        }
-      ],
-      "detected_at": "2026-11-05T17:54:49.613262+00:00",
-      "x_post_text": "🚨 HUGGING FACE NEW REPO · ALLENAI · OLMO / MOLMO\nmaniflow tb spotted in Repo Created 2026-11-05 (robotics)!\n\n• maniflow-tb (robotics) (allenai/maniflow-tb)\n\nEvidence: huggingface.co/api/models\nSource: official allenai Hugging Face organization feed.\n\nTracked by @StatsWire",
-      "pricing": null
-    },
-    {
-      "id": "pre-release-gh_openai_sdk_union-f9138464",
-      "category": "cli-sdk-diff",
-      "scanner": "docs-radar",
-      "header": "OPENAI SDK GITHUB MASTER DIFF · OPENAI",
-      "title": "New OpenAI Model Merged to SDK Master: gpt-6-cyber",
-      "subtitle": "Detected in openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel) (+1 new)",
-      "build_label": "Pre-Release Scout",
-      "build_transition": "+1 unannounced identifier(s)",
-      "models": [
-        {
-          "id": "gpt-6-cyber",
-          "name": "GPT 6 Cyber"
-        }
-      ],
-      "evidence": "openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel)",
-      "source_text": "openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel)",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "OPENAI",
-      "provider_slug": "openai",
-      "accent_color": "#10b981",
-      "links": [
-        {
-          "label": "Source Feed",
-          "url": "https://github.com/openai/openai-node/commits/master/src/resources/shared.ts"
-        }
-      ],
-      "detected_at": "2026-11-05T17:48:39.306676+00:00",
-      "pricing": null,
-      "x_post_text": "🚨 OPENAI SDK GITHUB MASTER DIFF · OPENAI\nNew OpenAI Model Merged to SDK Master: gpt-6-cyber spotted in Pre-Release Scout +1 unannounced identifier(s)!\n\n• GPT 6 Cyber (gpt-6-cyber)\n\nEvidence: openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel)\nSource: openai/openai-node (src/resources/shared.ts ChatModel / ResponsesModel)\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "vllm-arch-88206320f0",
-      "category": "open-source",
-      "scanner": "vllm-registry",
-      "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
-      "title": "New Engine Architecture: DFlash2RicursiveDraftModel (+1 more)",
-      "subtitle": "New model_executor/models/registry.py architecture declarations",
-      "build_label": "Registry File",
-      "build_transition": "vllm/model_executor/models/registry.py",
-      "models": [
-        {
-          "id": "DFlash2RicursiveDraftModel",
-          "name": "DFlash2RicursiveDraftModel"
-        },
-        {
-          "id": "RicursiveForCausalLM",
-          "name": "RicursiveForCausalLM"
-        }
-      ],
-      "evidence": "vllm-project/vllm/main/vllm/model_executor/models/registry.py",
-      "source_text": "official vLLM model architecture registry.",
-      "disclaimer_1": "Tracks only model architecture class registrations in registry.py.",
-      "disclaimer_2": "Open-source labs register their architecture classes here prior to weight drops.",
-      "provider_name": "VLLM REGISTRY",
-      "provider_slug": "opensource",
-      "accent_color": "#8b5cf6",
-      "links": [
-        {
-          "label": "vLLM registry.py",
-          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py"
-        },
-        {
-          "label": "Supported Models Docs",
-          "url": "https://docs.vllm.ai/en/latest/models/supported_models.html"
-        }
-      ],
-      "detected_at": "2026-11-05T17:40:28.449270+00:00",
-      "codenames": [
-        "dflash",
-        "ricursiveforcausallm"
-      ],
-      "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: DFlash2RicursiveDraftModel (+1 more) spotted in Registry File vllm/model_executor/models/registry.py!\n\n• DFlash2RicursiveDraftModel (DFlash2RicursiveDraftModel)\n• RicursiveForCausalLM (RicursiveForCausalLM)\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM model architecture registry.\n\nTracked by @StatsWire",
-      "pricing": null
-    },
-    {
       "id": "ag-acp-1.4.3-revision-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
@@ -45997,12 +45775,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:40:39.672953+00:00",
+      "last_attempt": "2026-11-19T18:12:40.613503+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:40:40.156705+00:00",
+      "last_success": "2026-11-19T18:12:40.920769+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.484,
+      "duration_seconds": 0.307,
       "latest_build": "3daa0f95dbcdc7e053d50a9e2539f79cdcf3739a625fe64103edb341a8853a8e",
       "builds_retained": 25,
       "identifiers": 9647
@@ -46010,12 +45788,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T17:40:40.260041+00:00",
+      "last_attempt": "2026-11-19T18:12:41.020547+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:40:42.983595+00:00",
+      "last_success": "2026-11-19T18:12:41.514342+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.724,
+      "duration_seconds": 0.494,
       "latest_build": "f1a1f6f0a1234a2a4f1031d83264af2e01883d9c",
       "builds_retained": 27,
       "identifiers": 6937
@@ -46023,12 +45801,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T17:40:43.090816+00:00",
+      "last_attempt": "2026-11-19T18:12:41.623518+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:40:43.627235+00:00",
+      "last_success": "2026-11-19T18:12:42.193238+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.537,
+      "duration_seconds": 0.57,
       "latest_build": "ba846a56a8a2c486b92c82732a849fa474dc885b",
       "builds_retained": 28,
       "identifiers": 10768
@@ -46036,21 +45814,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T17:40:43.734276+00:00",
+      "last_attempt": "2026-11-19T18:12:42.299287+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 697,
-      "duration_seconds": 11.113
+      "consecutive_failures": 713,
+      "duration_seconds": 10.692
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T17:32:50.892585+00:00",
+      "last_attempt": "2026-11-19T18:05:07.609060+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:32:51.186594+00:00",
+      "last_success": "2026-11-19T18:05:07.837093+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.294,
+      "duration_seconds": 0.228,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -46060,61 +45838,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:39:36.017063+00:00",
+      "last_attempt": "2026-11-19T18:11:36.153651+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:39:38.389240+00:00",
+      "last_success": "2026-11-19T18:11:38.580083+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.372
+      "duration_seconds": 2.426
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:39:38.389301+00:00",
+      "last_attempt": "2026-11-19T18:11:38.580146+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:39:38.619379+00:00",
+      "last_success": "2026-11-19T18:11:38.859304+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.23
+      "duration_seconds": 0.279
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:39:38.619417+00:00",
+      "last_attempt": "2026-11-19T18:11:38.859342+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:39:47.334783+00:00",
+      "last_success": "2026-11-19T18:11:48.678790+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.715
+      "duration_seconds": 9.819
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:39:47.334864+00:00",
+      "last_attempt": "2026-11-19T18:11:48.678871+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:40:39.672889+00:00",
+      "last_success": "2026-11-19T18:12:40.613422+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 52.338,
+      "duration_seconds": 51.935,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T17:39:47.577192+00:00",
+          "checked_at": "2026-11-19T18:11:48.926779+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T17:40:01.963714+00:00",
+          "checked_at": "2026-11-19T18:12:02.812081+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T17:40:02.131015+00:00",
+          "checked_at": "2026-11-19T18:12:02.933046+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T17:40:02.131035+00:00",
+          "checked_at": "2026-11-19T18:12:02.933065+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -46122,12 +45900,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:40:39.672953+00:00",
+      "last_attempt": "2026-11-19T18:12:40.613503+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:40:40.156705+00:00",
+      "last_success": "2026-11-19T18:12:40.920769+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.484,
+      "duration_seconds": 0.307,
       "latest_build": "3daa0f95dbcdc7e053d50a9e2539f79cdcf3739a625fe64103edb341a8853a8e",
       "builds_retained": 25,
       "identifiers": 9647
@@ -46135,12 +45913,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T17:40:40.260041+00:00",
+      "last_attempt": "2026-11-19T18:12:41.020547+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:40:42.983595+00:00",
+      "last_success": "2026-11-19T18:12:41.514342+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.724,
+      "duration_seconds": 0.494,
       "latest_build": "f1a1f6f0a1234a2a4f1031d83264af2e01883d9c",
       "builds_retained": 27,
       "identifiers": 6937
@@ -46148,12 +45926,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T17:40:43.090816+00:00",
+      "last_attempt": "2026-11-19T18:12:41.623518+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:40:43.627235+00:00",
+      "last_success": "2026-11-19T18:12:42.193238+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.537,
+      "duration_seconds": 0.57,
       "latest_build": "ba846a56a8a2c486b92c82732a849fa474dc885b",
       "builds_retained": 28,
       "identifiers": 10768
@@ -46161,21 +45939,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T17:40:43.734276+00:00",
+      "last_attempt": "2026-11-19T18:12:42.299287+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 697,
-      "duration_seconds": 11.113
+      "consecutive_failures": 713,
+      "duration_seconds": 10.692
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T17:32:50.892585+00:00",
+      "last_attempt": "2026-11-19T18:05:07.609060+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:32:51.186594+00:00",
+      "last_success": "2026-11-19T18:05:07.837093+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.294,
+      "duration_seconds": 0.228,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -46183,52 +45961,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:40:54.852868+00:00",
+      "last_attempt": "2026-11-19T18:12:52.997246+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:40:59.769951+00:00",
+      "last_success": "2026-11-19T18:12:57.968903+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.917
+      "duration_seconds": 4.972
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:40:59.770019+00:00",
+      "last_attempt": "2026-11-19T18:12:57.968975+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:41:01.519369+00:00",
+      "last_success": "2026-11-19T18:12:59.791260+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.749
+      "duration_seconds": 1.822
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T17:41:01.519419+00:00",
+      "last_attempt": "2026-11-19T18:12:59.791321+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:41:09.001103+00:00",
+      "last_success": "2026-11-19T18:13:08.172960+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.482
+      "duration_seconds": 8.382
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:41:09.001153+00:00",
+      "last_attempt": "2026-11-19T18:13:08.173012+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:41:10.481540+00:00",
+      "last_success": "2026-11-19T18:13:09.643635+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.48
+      "duration_seconds": 1.471
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:41:10.481578+00:00",
+      "last_attempt": "2026-11-19T18:13:09.643673+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:41:10.596173+00:00",
+      "last_success": "2026-11-19T18:13:09.765085+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.115
+      "duration_seconds": 0.121
     }
   },
   "identities": {
