@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-19T16:42:39.858747+00:00",
-  "scan_completed_at": "2026-11-19T16:45:11.771988+00:00",
+  "generated_at": "2026-11-19T17:13:33.544060+00:00",
+  "scan_completed_at": "2026-11-19T17:15:14.882751+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 217,
     "leaks": 44,
     "releases": 69,
     "stories_24h": 77,
-    "sources_ok": 16,
-    "total_cards": 456,
-    "new_in_this_scan": 1
+    "sources_ok": 12,
+    "total_cards": 451,
+    "new_in_this_scan": 0
   },
   "stories": [
     {
@@ -16183,9 +16183,9 @@
       "provider_slug": "openai",
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
-      "detected_at": "2026-11-05T17:08:35.308954+00:00",
+      "detected_at": "2026-11-05T17:33:03.140082+00:00",
       "updated_at": "2026-11-05T20:13:31.531520+00:00",
-      "first_source": "OpenAI Docs Route",
+      "first_source": "OpenAI API spec",
       "lead": "",
       "released_on": "",
       "pricing": "",
@@ -16197,26 +16197,6 @@
         }
       ],
       "sources": [
-        {
-          "label": "OpenAI Docs Route",
-          "scanner": "docs-radar",
-          "detected_at": "2026-11-05T17:08:35.308954+00:00",
-          "title": "New Model Doc Page Staged on OpenAI: gpt-6-cyber",
-          "url": "https://developers.openai.com/api/docs/models/all",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "Official pricing page",
-          "scanner": "pricing-radar",
-          "detected_at": "2026-11-05T17:08:38.462614+00:00",
-          "title": "New Model Pricing Published on OpenAI: gpt-6-cyber ($20 / $100 per 1M tokens ($2 cached))",
-          "url": "https://developers.openai.com/api/docs/pricing",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
         {
           "label": "OpenAI API spec",
           "scanner": "openai-spec",
@@ -16258,12 +16238,10 @@
           "evidence_path": ""
         }
       ],
-      "source_count": 6,
+      "source_count": 4,
       "backfill": false,
       "header": "LEAK · OPENAI",
       "card_ids": [
-        "pre-release-openai_llms_model_routes-f9138464",
-        "pricing-radar-openai_pricing_md-f9138464",
         "openai-spec-ids-f9138464",
         "pre-release-gh_openai_sdk_union-f9138464",
         "npm-openai-7.51.0-7.52.0",
@@ -16273,7 +16251,7 @@
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: GPT 6 Cyber by OpenAI\n\nFirst detected 05 Nov 17:08 UTC in OpenAI Docs Route\nConfirmed by Official pricing page, OpenAI API spec, OpenAI SDK GitHub Master +2\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: GPT 6 Cyber by OpenAI\n\nFirst detected 05 Nov 17:33 UTC in OpenAI API spec\nConfirmed by OpenAI SDK GitHub Master, npm SDK release, LiteLLM registry\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-omni-1-2-flash",
@@ -16284,10 +16262,10 @@
       "provider_slug": "google",
       "provider_name": "Google",
       "accent_color": "#38bdf8",
-      "detected_at": "2026-11-05T16:58:34.695577+00:00",
+      "detected_at": "2026-11-05T17:24:28.602877+00:00",
       "updated_at": "2026-11-05T17:34:40.623776+00:00",
-      "first_source": "GCP Vertex AI Model Versions",
-      "lead": "8 min before it went live on Vercel AI Gateway Catalog",
+      "first_source": "OpenRouter",
+      "lead": "",
       "released_on": "2026-11-05",
       "pricing": "",
       "codenames": [],
@@ -16299,36 +16277,6 @@
         }
       ],
       "sources": [
-        {
-          "label": "GCP Vertex AI Model Versions",
-          "scanner": "docs-radar",
-          "detected_at": "2026-11-05T16:58:34.695577+00:00",
-          "title": "New Model Spotted in GCP Vertex AI Model Versions & Lifecycle",
-          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "Gemini API Docs",
-          "scanner": "docs-radar",
-          "detected_at": "2026-11-05T17:04:32.283255+00:00",
-          "title": "New Model Spotted in Gemini API Official Models Page",
-          "url": "https://ai.google.dev/gemini-api/docs/models",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "Vercel AI Gateway Catalog",
-          "scanner": "gateway-radar",
-          "detected_at": "2026-11-05T17:06:45.897433+00:00",
-          "title": "New Model on Vercel AI Gateway: Gemini Omni 1.2 Flash",
-          "url": "https://ai-gateway.vercel.sh/v1/models",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
         {
           "label": "OpenRouter",
           "scanner": "openrouter",
@@ -16350,13 +16298,10 @@
           "evidence_path": ""
         }
       ],
-      "source_count": 5,
+      "source_count": 2,
       "backfill": false,
       "header": "NEW MODEL · GOOGLE",
       "card_ids": [
-        "docs-diff-gcp-vertex-versions-001fe207",
-        "docs-diff-gemini-docs-001fe207",
-        "vercel-gateway-diff-73a1fc6a",
         "openrouter-model-google_gemini-omni-1.2-flash",
         "litellm-diff-0f824be4"
       ],
@@ -16364,7 +16309,7 @@
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Gemini Omni 1.2 Flash by Google\n\nFirst detected 05 Nov 16:58 UTC in GCP Vertex AI Model Versions\n📅 First released: 2026-11-05\n⏱ 8 min before it went live on Vercel AI Gateway Catalog\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Gemini Omni 1.2 Flash by Google\n\nFirst detected 05 Nov 17:24 UTC in OpenRouter\n📅 First released: 2026-11-05\nConfirmed by LiteLLM registry\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-carbon",
@@ -45955,181 +45900,6 @@
       "pricing": null
     },
     {
-      "id": "pricing-radar-openai_pricing_md-f9138464",
-      "category": "cli-sdk-diff",
-      "scanner": "pricing-radar",
-      "header": "OPENAI OFFICIAL PRICING RADAR · OPENAI",
-      "title": "New Model Pricing Published on OpenAI: gpt-6-cyber ($20 / $100 per 1M tokens ($2 cached))",
-      "subtitle": "Verified official token pricing in developers.openai.com/api/docs/pricing.md",
-      "build_label": "Official Pricing",
-      "build_transition": "gpt-6-cyber: $20 / $100 per 1M tokens ($2 cached)",
-      "pricing": null,
-      "models": [
-        {
-          "id": "gpt-6-cyber",
-          "name": "GPT 6 Cyber — $20 / $100 per 1M tokens ($2 cached)"
-        }
-      ],
-      "evidence": "developers.openai.com/api/docs/pricing.md",
-      "source_text": "official OpenAI API pricing page (developers.openai.com/api/docs/pricing.md).",
-      "disclaimer_1": "Extracted directly from official first-party API pricing tables.",
-      "disclaimer_2": "",
-      "provider_name": "OPENAI",
-      "provider_slug": "openai",
-      "accent_color": "#10b981",
-      "links": [
-        {
-          "label": "Official Pricing Page",
-          "url": "https://developers.openai.com/api/docs/pricing"
-        },
-        {
-          "label": "Raw Pricing Markdown",
-          "url": "https://developers.openai.com/api/docs/pricing.md"
-        }
-      ],
-      "detected_at": "2026-11-05T17:08:38.462614+00:00",
-      "x_post_text": "🚨 OPENAI OFFICIAL PRICING RADAR · OPENAI\nNew Model Pricing Published on OpenAI: gpt-6-cyber ($20 / $100 per 1M tokens ($2 cached)) spotted in Official Pricing gpt-6-cyber: $20 / $100 per 1M tokens ($2 cached)!\n\n• GPT 6 Cyber — $20 / $100 per 1M tokens ($2 cached) (gpt-6-cyber)\n\nEvidence: developers.openai.com/api/docs/pricing.md\nSource: official OpenAI API pricing page (developers.openai.com/api/docs/pricing.md).\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "pre-release-openai_llms_model_routes-f9138464",
-      "category": "cli-sdk-diff",
-      "scanner": "docs-radar",
-      "header": "OPENAI DOCS ROUTE SCOUT · OPENAI",
-      "title": "New Model Doc Page Staged on OpenAI: gpt-6-cyber",
-      "subtitle": "Detected in developers.openai.com/api/docs/models/*.md (+1 new)",
-      "build_label": "Pre-Release Scout",
-      "build_transition": "+1 unannounced identifier(s)",
-      "models": [
-        {
-          "id": "gpt-6-cyber",
-          "name": "GPT 6 Cyber"
-        }
-      ],
-      "evidence": "developers.openai.com/api/docs/models/*.md",
-      "source_text": "developers.openai.com/api/docs/models/*.md",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "OPENAI",
-      "provider_slug": "openai",
-      "accent_color": "#10b981",
-      "links": [
-        {
-          "label": "Source Feed",
-          "url": "https://developers.openai.com/api/docs/models/all"
-        }
-      ],
-      "detected_at": "2026-11-05T17:08:35.308954+00:00",
-      "x_post_text": "🚨 OPENAI DOCS ROUTE SCOUT · OPENAI\nNew Model Doc Page Staged on OpenAI: gpt-6-cyber spotted in Pre-Release Scout +1 unannounced identifier(s)!\n\n• GPT 6 Cyber (gpt-6-cyber)\n\nEvidence: developers.openai.com/api/docs/models/*.md\nSource: developers.openai.com/api/docs/models/*.md\n\nTracked by @StatsWire",
-      "pricing": null
-    },
-    {
-      "id": "vercel-gateway-diff-73a1fc6a",
-      "category": "cli-sdk-diff",
-      "scanner": "gateway-radar",
-      "header": "VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS",
-      "title": "New Model on Vercel AI Gateway: Gemini Omni 1.2 Flash",
-      "subtitle": "Detected in ai-gateway.vercel.sh/v1/models (+1 new)",
-      "build_label": "Gateway Diff",
-      "build_transition": "+1 new model(s)",
-      "models": [
-        {
-          "id": "google/gemini-omni-1.2-flash",
-          "name": "Gemini Omni 1.2 Flash",
-          "released_on": "2026-11-05"
-        }
-      ],
-      "evidence": "ai-gateway.vercel.sh/v1/models",
-      "source_text": "public Vercel AI Gateway /v1/models catalog.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "GOOGLE",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "Vercel AI Gateway Models",
-          "url": "https://ai-gateway.vercel.sh/v1/models"
-        }
-      ],
-      "detected_at": "2026-11-05T17:06:45.897433+00:00",
-      "x_post_text": "🚨 VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS\nNew Model on Vercel AI Gateway: Gemini Omni 1.2 Flash spotted in Gateway Diff +1 new model(s)!\n\n• Gemini Omni 1.2 Flash (google/gemini-omni-1.2-flash)\n\nEvidence: ai-gateway.vercel.sh/v1/models\nSource: public Vercel AI Gateway /v1/models catalog.\n\nTracked by @StatsWire",
-      "pricing": null
-    },
-    {
-      "id": "docs-diff-gemini-docs-001fe207",
-      "category": "cli-sdk-diff",
-      "scanner": "docs-radar",
-      "header": "GEMINI API DOCS RADAR · GOOGLE",
-      "title": "New Model Spotted in Gemini API Official Models Page",
-      "subtitle": "Verified live API documentation diff",
-      "build_label": "Docs Diff",
-      "build_transition": "+1 new identifier(s)",
-      "models": [
-        {
-          "id": "gemini-omni-1.2-flash",
-          "name": "Gemini Omni 1.2 Flash",
-          "released_on": "2026-11-05"
-        }
-      ],
-      "evidence": "ai.google.dev/gemini-api/docs/models",
-      "source_text": "official Google AI for Developers Gemini API documentation.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "GOOGLE",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "Official Docs Page",
-          "url": "https://ai.google.dev/gemini-api/docs/models"
-        },
-        {
-          "label": "Raw Docs Feed",
-          "url": "https://ai.google.dev/gemini-api/docs/models"
-        }
-      ],
-      "detected_at": "2026-11-05T17:04:32.283255+00:00",
-      "x_post_text": "🚨 GEMINI API DOCS RADAR · GOOGLE\nNew Model Spotted in Gemini API Official Models Page spotted in Docs Diff +1 new identifier(s)!\n\n• Gemini Omni 1.2 Flash (gemini-omni-1.2-flash)\n\nEvidence: ai.google.dev/gemini-api/docs/models\nSource: official Google AI for Developers Gemini API documentation.\n\nTracked by @StatsWire",
-      "pricing": null
-    },
-    {
-      "id": "docs-diff-gcp-vertex-versions-001fe207",
-      "category": "cli-sdk-diff",
-      "scanner": "docs-radar",
-      "header": "GCP VERTEX AI MODEL VERSIONS · GOOGLE CLOUD",
-      "title": "New Model Spotted in GCP Vertex AI Model Versions & Lifecycle",
-      "subtitle": "Verified live API documentation diff",
-      "build_label": "Docs Diff",
-      "build_transition": "+1 new identifier(s)",
-      "models": [
-        {
-          "id": "gemini-omni-1.2-flash",
-          "name": "Gemini Omni 1.2 Flash",
-          "released_on": "2026-11-05"
-        }
-      ],
-      "evidence": "cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions",
-      "source_text": "official Google Cloud Vertex AI model versions & endpoint table.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "GOOGLE CLOUD",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "Official Docs Page",
-          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions"
-        },
-        {
-          "label": "Raw Docs Feed",
-          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions"
-        }
-      ],
-      "detected_at": "2026-11-05T16:58:34.695577+00:00",
-      "x_post_text": "🚨 GCP VERTEX AI MODEL VERSIONS · GOOGLE CLOUD\nNew Model Spotted in GCP Vertex AI Model Versions & Lifecycle spotted in Docs Diff +1 new identifier(s)!\n\n• Gemini Omni 1.2 Flash (gemini-omni-1.2-flash)\n\nEvidence: cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions\nSource: official Google Cloud Vertex AI model versions & endpoint table.\n\nTracked by @StatsWire",
-      "pricing": null
-    },
-    {
       "id": "ag-acp-1.4.3-revision-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
@@ -46293,12 +46063,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T16:44:09.278565+00:00",
+      "last_attempt": "2026-11-19T17:14:54.099232+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T16:44:11.716198+00:00",
+      "last_success": "2026-11-19T17:14:54.505448+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.438,
+      "duration_seconds": 0.406,
       "latest_build": "3daa0f95dbcdc7e053d50a9e2539f79cdcf3739a625fe64103edb341a8853a8e",
       "builds_retained": 25,
       "identifiers": 9647
@@ -46306,12 +46076,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T16:44:11.823925+00:00",
+      "last_attempt": "2026-11-19T17:12:44.695643+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T16:44:13.933046+00:00",
+      "last_success": "2026-11-19T17:12:45.195572+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.109,
+      "duration_seconds": 0.5,
       "latest_build": "755762847f6eb356f4aeba1d15287c4a33ea79be",
       "builds_retained": 25,
       "identifiers": 6935
@@ -46319,12 +46089,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T16:44:14.037590+00:00",
+      "last_attempt": "2026-11-19T17:04:40.862317+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T16:44:25.509099+00:00",
+      "last_success": "2026-11-19T17:04:41.510905+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 11.472,
+      "duration_seconds": 0.649,
       "latest_build": "ba846a56a8a2c486b92c82732a849fa474dc885b",
       "builds_retained": 28,
       "identifiers": 10768
@@ -46332,21 +46102,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T16:44:25.613261+00:00",
+      "last_attempt": "2026-11-19T17:14:54.607760+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 669,
-      "duration_seconds": 11.01
+      "consecutive_failures": 684,
+      "duration_seconds": 10.969
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T16:44:36.630845+00:00",
+      "last_attempt": "2026-11-19T17:01:00.531176+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T16:44:36.947441+00:00",
+      "last_success": "2026-11-19T17:01:00.854260+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.317,
+      "duration_seconds": 0.323,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -46356,61 +46126,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T16:42:39.858824+00:00",
+      "last_attempt": "2026-11-19T17:13:33.544150+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T16:42:42.131867+00:00",
+      "last_success": "2026-11-19T17:13:35.896696+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.273
+      "duration_seconds": 2.353
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T16:42:42.131937+00:00",
+      "last_attempt": "2026-11-19T17:13:35.896758+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T16:42:42.469722+00:00",
+      "last_success": "2026-11-19T17:13:36.137621+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.338
+      "duration_seconds": 0.241
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T16:42:42.469761+00:00",
+      "last_attempt": "2026-11-19T17:13:36.137657+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T16:42:55.067663+00:00",
+      "last_success": "2026-11-19T17:13:44.617792+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 12.598
+      "duration_seconds": 8.48
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T16:42:55.067752+00:00",
+      "last_attempt": "2026-11-19T17:13:44.617877+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T16:44:09.278499+00:00",
+      "last_success": "2026-11-19T17:14:54.099171+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 74.211,
+      "duration_seconds": 69.481,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T16:42:55.328115+00:00",
+          "checked_at": "2026-11-19T17:13:44.871238+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T16:43:11.591662+00:00",
+          "checked_at": "2026-11-19T17:14:00.677292+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T16:43:11.732102+00:00",
+          "checked_at": "2026-11-19T17:14:00.822276+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T16:43:11.732122+00:00",
+          "checked_at": "2026-11-19T17:14:00.822295+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -46418,12 +46188,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T16:44:09.278565+00:00",
+      "last_attempt": "2026-11-19T17:14:54.099232+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T16:44:11.716198+00:00",
+      "last_success": "2026-11-19T17:14:54.505448+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.438,
+      "duration_seconds": 0.406,
       "latest_build": "3daa0f95dbcdc7e053d50a9e2539f79cdcf3739a625fe64103edb341a8853a8e",
       "builds_retained": 25,
       "identifiers": 9647
@@ -46431,12 +46201,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T16:44:11.823925+00:00",
+      "last_attempt": "2026-11-19T17:12:44.695643+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T16:44:13.933046+00:00",
+      "last_success": "2026-11-19T17:12:45.195572+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.109,
+      "duration_seconds": 0.5,
       "latest_build": "755762847f6eb356f4aeba1d15287c4a33ea79be",
       "builds_retained": 25,
       "identifiers": 6935
@@ -46444,12 +46214,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T16:44:14.037590+00:00",
+      "last_attempt": "2026-11-19T17:04:40.862317+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T16:44:25.509099+00:00",
+      "last_success": "2026-11-19T17:04:41.510905+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 11.472,
+      "duration_seconds": 0.649,
       "latest_build": "ba846a56a8a2c486b92c82732a849fa474dc885b",
       "builds_retained": 28,
       "identifiers": 10768
@@ -46457,21 +46227,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T16:44:25.613261+00:00",
+      "last_attempt": "2026-11-19T17:14:54.607760+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 669,
-      "duration_seconds": 11.01
+      "consecutive_failures": 684,
+      "duration_seconds": 10.969
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T16:44:36.630845+00:00",
+      "last_attempt": "2026-11-19T17:01:00.531176+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T16:44:36.947441+00:00",
+      "last_success": "2026-11-19T17:01:00.854260+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.317,
+      "duration_seconds": 0.323,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -46479,52 +46249,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T16:44:37.622347+00:00",
+      "last_attempt": "2026-11-19T17:15:05.582905+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T16:44:43.275345+00:00",
+      "last_success": "2026-11-19T17:15:10.522689+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.653
+      "duration_seconds": 4.94
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T16:44:43.275418+00:00",
+      "last_attempt": "2026-11-19T17:15:10.522760+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T16:44:45.158653+00:00",
+      "last_success": "2026-11-19T17:15:12.290535+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.883
+      "duration_seconds": 1.768
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T16:44:45.158708+00:00",
+      "last_attempt": "2026-11-19T17:04:59.164771+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T16:44:52.053527+00:00",
+      "last_success": "2026-11-19T17:05:08.218563+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.895
+      "duration_seconds": 9.054
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T16:44:52.053594+00:00",
+      "last_attempt": "2026-11-19T17:15:12.290601+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T16:44:53.518585+00:00",
+      "last_success": "2026-11-19T17:15:13.811601+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.465
+      "duration_seconds": 1.521
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T16:44:53.518640+00:00",
+      "last_attempt": "2026-11-19T17:15:13.811656+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T16:44:54.158111+00:00",
+      "last_success": "2026-11-19T17:15:14.666442+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.639
+      "duration_seconds": 0.855
     }
   },
   "identities": {
