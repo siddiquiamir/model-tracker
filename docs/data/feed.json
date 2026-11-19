@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-19T06:34:20.698703+00:00",
-  "scan_completed_at": "2026-11-19T06:35:57.161652+00:00",
+  "generated_at": "2026-11-19T06:36:20.536461+00:00",
+  "scan_completed_at": "2026-11-19T06:37:39.015111+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 215,
     "leaks": 44,
     "releases": 70,
     "stories_24h": 101,
-    "sources_ok": 14,
-    "total_cards": 444,
+    "sources_ok": 12,
+    "total_cards": 445,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -10132,7 +10132,7 @@
       "provider_name": "novita-ai",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-16T07:02:21.215900+00:00",
-      "updated_at": "2026-11-19T06:35:11.954459+00:00",
+      "updated_at": "2026-11-19T06:37:11.177278+00:00",
       "first_source": "models.dev",
       "lead": "2 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "2026-11-16",
@@ -10236,7 +10236,8 @@
         "intel-e5ea86a408a3d71cc72b",
         "intel-d76f4f01da57fc959f14",
         "intel-166179520570c3f0f56b",
-        "intel-4e39821e4406625dbdcf"
+        "intel-4e39821e4406625dbdcf",
+        "intel-42635e094c78310946f5"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -10314,6 +10315,20 @@
           "build": "0fc56182f4c32d8575dce2ff285a77b2b28459d3",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/0fc56182f4c32d8575dce2ff285a77b2b28459d3",
           "first_seen": "2026-11-19T06:34:40+00:00"
+        },
+        {
+          "id": "novita-ai/tencent/hy4-flash",
+          "family": "hy4-flash",
+          "file_path": "api.json?type=all",
+          "file_sha256": "d10786dac71e7ad08582d2e343c95d98dc8ac487d5724e12745c121c325ad00a",
+          "excerpt": "{\"novita-ai/tencent/hy4-flash\": {\"id\": \"tencent/hy4-flash\", \"name\": \"Hy4 flash\", \"description\": \"Tencent's lower-cost Hy4 tier for everyday agent and productivity tasks, with image understanding and a 1M-token context window.\", \"family\": \"Hy\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"high\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-16\", \"last_updated\": \"2026-11-16\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1000000, \"input\": 983040, \"output\": 64000}, \"cost\": {\"input\": 0.035, \"output\": 0.1405, \"cache_read\": 0.0015}, \"canonical_model_id\": \"tencent/hy4-flash\"}}",
+          "canonical_id": "tencent/hy4-flash",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "d10786dac71e7ad08582d2e343c95d98dc8ac487d5724e12745c121c325ad00a",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-19T06:37:10.885610+00:00"
         }
       ],
       "x_post_text": "🟢 NEW MODEL: Hy4 flash by novita-ai\n\nFirst detected 16 Nov 07:02 UTC in models.dev\n📅 First released: 2026-11-16\n⏱ 2 min before it went live on Vercel AI Gateway Catalog\nConfirmed by Vercel AI Gateway Catalog, Opencode Zen Stealth & Model Gateway, OpenRouter +2\n\nvia @StatsWire"
@@ -16319,6 +16334,92 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-42635e094c78310946f5",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "hy4-flash",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "hy4-flash",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "novita-ai/tencent/hy4-flash",
+          "name": "novita-ai/tencent/hy4-flash",
+          "registry_update": true,
+          "released_on": "2026-11-16"
+        }
+      ],
+      "detected_at": "2026-11-19T06:37:11.177278+00:00",
+      "first_seen": "2026-11-19T06:37:10.885610+00:00",
+      "observed_at": "2026-11-19T06:37:11.177278+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63 -> d10786dac71e7ad08582d2e343c95d98dc8ac487d5724e12745c121c325ad00a",
+      "build": "d10786dac71e7ad08582d2e343c95d98dc8ac487d5724e12745c121c325ad00a",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "d10786dac71e7ad08582d2e343c95d98dc8ac487d5724e12745c121c325ad00a",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/d10786dac71e7ad08582d2e343c95d98dc8ac487d5724e12745c121c325ad00a.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/d10786dac71e7ad08582d2e343c95d98dc8ac487d5724e12745c121c325ad00a.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "novita-ai/tencent/hy4-flash",
+          "family": "hy4-flash",
+          "file_path": "api.json?type=all",
+          "file_sha256": "d10786dac71e7ad08582d2e343c95d98dc8ac487d5724e12745c121c325ad00a",
+          "excerpt": "{\"novita-ai/tencent/hy4-flash\": {\"id\": \"tencent/hy4-flash\", \"name\": \"Hy4 flash\", \"description\": \"Tencent's lower-cost Hy4 tier for everyday agent and productivity tasks, with image understanding and a 1M-token context window.\", \"family\": \"Hy\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"high\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-16\", \"last_updated\": \"2026-11-16\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1000000, \"input\": 983040, \"output\": 64000}, \"cost\": {\"input\": 0.035, \"output\": 0.1405, \"cache_read\": 0.0015}, \"canonical_model_id\": \"tencent/hy4-flash\"}}",
+          "canonical_id": "tencent/hy4-flash",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "d10786dac71e7ad08582d2e343c95d98dc8ac487d5724e12745c121c325ad00a",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-19T06:37:10.885610+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T06:37:13.475098+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog d10786dac71e: novita-ai/tencent/hy4-flash\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "intel-4e39821e4406625dbdcf",
       "scanner": "models-dev-git",
@@ -44841,15 +44942,15 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T06:33:11.809590+00:00",
+      "last_attempt": "2026-11-19T06:37:10.323237+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T06:33:11.997653+00:00",
+      "last_success": "2026-11-19T06:37:13.475098+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.188,
-      "latest_build": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
-      "builds_retained": 21,
-      "identifiers": 9643
+      "duration_seconds": 3.152,
+      "latest_build": "d10786dac71e7ad08582d2e343c95d98dc8ac487d5724e12745c121c325ad00a",
+      "builds_retained": 22,
+      "identifiers": 9644
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
@@ -44880,11 +44981,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T06:35:20.646875+00:00",
+      "last_attempt": "2026-11-19T06:37:13.615657+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 532,
-      "duration_seconds": 15.211
+      "consecutive_failures": 533,
+      "duration_seconds": 15.346
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -44904,19 +45005,19 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T06:34:20.698756+00:00",
+      "last_attempt": "2026-11-19T06:36:20.536527+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T06:34:22.494575+00:00",
+      "last_success": "2026-11-19T06:36:22.097600+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.796
+      "duration_seconds": 1.561
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T06:34:22.494629+00:00",
+      "last_attempt": "2026-11-19T06:36:22.097656+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T06:34:22.579713+00:00",
+      "last_success": "2026-11-19T06:36:22.182606+00:00",
       "error_type": null,
       "consecutive_failures": 0,
       "duration_seconds": 0.085
@@ -44924,41 +45025,41 @@
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T06:34:22.579744+00:00",
+      "last_attempt": "2026-11-19T06:36:22.182640+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T06:34:26.434448+00:00",
+      "last_success": "2026-11-19T06:36:26.964243+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.855
+      "duration_seconds": 4.782
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T06:34:26.434507+00:00",
+      "last_attempt": "2026-11-19T06:36:26.964296+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T06:35:07.701415+00:00",
+      "last_success": "2026-11-19T06:37:10.323185+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 41.267,
+      "duration_seconds": 43.359,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T06:34:26.614160+00:00",
+          "checked_at": "2026-11-19T06:36:27.123345+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T06:34:37.068857+00:00",
+          "checked_at": "2026-11-19T06:36:36.800598+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T06:34:37.294724+00:00",
+          "checked_at": "2026-11-19T06:36:36.982071+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T06:34:37.294742+00:00",
+          "checked_at": "2026-11-19T06:36:36.982088+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -44966,15 +45067,15 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T06:33:11.809590+00:00",
+      "last_attempt": "2026-11-19T06:37:10.323237+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T06:33:11.997653+00:00",
+      "last_success": "2026-11-19T06:37:13.475098+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.188,
-      "latest_build": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
-      "builds_retained": 21,
-      "identifiers": 9643
+      "duration_seconds": 3.152,
+      "latest_build": "d10786dac71e7ad08582d2e343c95d98dc8ac487d5724e12745c121c325ad00a",
+      "builds_retained": 22,
+      "identifiers": 9644
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
@@ -45005,11 +45106,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T06:35:20.646875+00:00",
+      "last_attempt": "2026-11-19T06:37:13.615657+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 532,
-      "duration_seconds": 15.211
+      "consecutive_failures": 533,
+      "duration_seconds": 15.346
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -45027,22 +45128,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T06:35:35.864387+00:00",
+      "last_attempt": "2026-11-19T06:37:28.968667+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T06:35:43.094194+00:00",
+      "last_success": "2026-11-19T06:37:36.149644+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.23
+      "duration_seconds": 7.181
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T06:35:43.094268+00:00",
+      "last_attempt": "2026-11-19T06:37:36.149714+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T06:35:44.721038+00:00",
+      "last_success": "2026-11-19T06:37:38.308520+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.627
+      "duration_seconds": 2.159
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -45057,26 +45158,26 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T06:35:55.579225+00:00",
+      "last_attempt": "2026-11-19T06:37:38.308569+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T06:35:55.937528+00:00",
+      "last_success": "2026-11-19T06:37:38.681446+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.358
+      "duration_seconds": 0.373
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T06:35:55.937563+00:00",
+      "last_attempt": "2026-11-19T06:37:38.681480+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T06:35:55.987407+00:00",
+      "last_success": "2026-11-19T06:37:38.732267+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.05
+      "duration_seconds": 0.051
     }
   },
   "identities": {
-    "identifiers": 30672,
+    "identifiers": 30673,
     "declared_aliases": 17814,
     "pending_candidates": 0
   },
@@ -45098,8 +45199,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 181,
-      "events": 181,
+      "complete": 182,
+      "events": 182,
       "rate": 1.0
     },
     "source_health": {
