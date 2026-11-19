@@ -1,37 +1,37 @@
 {
-  "generated_at": "2026-11-19T19:55:55.301066+00:00",
-  "scan_completed_at": "2026-11-19T19:57:23.414285+00:00",
+  "generated_at": "2026-11-19T20:11:56.797510+00:00",
+  "scan_completed_at": "2026-11-19T20:13:25.561497+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 229,
-    "leaks": 43,
-    "releases": 66,
+    "leaks": 42,
+    "releases": 67,
     "stories_24h": 94,
     "sources_ok": 14,
-    "total_cards": 479,
-    "new_in_this_scan": 2
+    "total_cards": 480,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
       "id": "story-gpt-live-1-1",
       "group": "gpt-live-1-1",
-      "kind": "leak",
+      "kind": "release",
       "open_weights": false,
-      "title": "GPT Live 1.1",
+      "title": "GPT-Live 1.1",
       "provider_slug": "openai",
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-19T19:56:03.164169+00:00",
-      "updated_at": "2026-11-19T19:56:05.831311+00:00",
+      "updated_at": "2026-11-19T20:12:39.396296+00:00",
       "first_source": "OpenAI Docs Route",
-      "lead": "",
+      "lead": "16 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "",
       "pricing": "",
       "codenames": [],
       "models": [
         {
           "id": "gpt-live-1.1",
-          "name": "GPT Live 1.1"
+          "name": "GPT-Live 1.1"
         }
       ],
       "sources": [
@@ -54,21 +54,32 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Vercel AI Gateway Catalog",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-11-19T20:12:39.396296+00:00",
+          "title": "New Model on Vercel AI Gateway: GPT-Live 1.1",
+          "url": "https://ai-gateway.vercel.sh/v1/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 2,
+      "source_count": 3,
       "backfill": false,
-      "header": "LEAK · OPENAI",
+      "header": "NEW MODEL · OPENAI",
       "card_ids": [
         "pre-release-openai_llms_model_routes-6e623441",
-        "pricing-radar-openai_pricing_md-6e623441"
+        "pricing-radar-openai_pricing_md-6e623441",
+        "vercel-gateway-diff-04aaf73d"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: GPT Live 1.1 by OpenAI\n\nFirst detected 19 Nov 19:56 UTC in OpenAI Docs Route\nConfirmed by Official pricing page\n\nvia @StatsWire",
-      "discord_alerted_at": "2026-11-19T19:57:23.410082+00:00"
+      "discord_alerted_at": "2026-11-19T20:13:25.559899+00:00",
+      "x_post_text": "🟢 NEW MODEL: GPT-Live 1.1 by OpenAI\n\nFirst detected 19 Nov 19:56 UTC in OpenAI Docs Route\n⏱ 16 min before it went live on Vercel AI Gateway Catalog\nConfirmed by Official pricing page, Vercel AI Gateway Catalog\n\nvia @StatsWire"
     },
     {
       "id": "story-ai-21-jamba-1-5-mini-1",
@@ -17601,6 +17612,39 @@
     }
   ],
   "cards": [
+    {
+      "id": "vercel-gateway-diff-04aaf73d",
+      "category": "cli-sdk-diff",
+      "scanner": "gateway-radar",
+      "header": "VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS",
+      "title": "New Model on Vercel AI Gateway: GPT-Live 1.1",
+      "subtitle": "Detected in ai-gateway.vercel.sh/v1/models (+1 new)",
+      "build_label": "Gateway Diff",
+      "build_transition": "+1 new model(s)",
+      "models": [
+        {
+          "id": "openai/gpt-live-1.1",
+          "name": "GPT-Live 1.1"
+        }
+      ],
+      "evidence": "ai-gateway.vercel.sh/v1/models",
+      "source_text": "public Vercel AI Gateway /v1/models catalog.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "Vercel AI Gateway Models",
+          "url": "https://ai-gateway.vercel.sh/v1/models"
+        }
+      ],
+      "detected_at": "2026-11-19T20:12:39.396296+00:00",
+      "tracker_observed_at": "2026-11-19T20:13:04.037690+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS\nNew Model on Vercel AI Gateway: GPT-Live 1.1 spotted in Gateway Diff +1 new model(s)!\n\n• GPT-Live 1.1 (openai/gpt-live-1.1)\n\nEvidence: ai-gateway.vercel.sh/v1/models\nSource: public Vercel AI Gateway /v1/models catalog.\n\nTracked by @StatsWire"
+    },
     {
       "id": "pricing-radar-openai_pricing_md-6e623441",
       "category": "cli-sdk-diff",
@@ -49984,12 +50028,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:57:00.654565+00:00",
+      "last_attempt": "2026-11-19T20:13:04.037757+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:57:00.970011+00:00",
+      "last_success": "2026-11-19T20:13:04.325940+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.316,
+      "duration_seconds": 0.288,
       "latest_build": "f3011bb73eb76169c87faf1385e6d56472d8f92cc68ad45820892ea3c9e76556",
       "builds_retained": 27,
       "identifiers": 9649
@@ -49997,12 +50041,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T19:57:01.075190+00:00",
+      "last_attempt": "2026-11-19T20:13:04.424361+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:57:01.763625+00:00",
+      "last_success": "2026-11-19T20:13:04.952274+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.689,
+      "duration_seconds": 0.528,
       "latest_build": "245c31763c0fa763e2b930f5aa704892539080e3",
       "builds_retained": 28,
       "identifiers": 6937
@@ -50010,12 +50054,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T19:49:04.835188+00:00",
+      "last_attempt": "2026-11-19T20:11:05.577991+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:49:05.452728+00:00",
+      "last_success": "2026-11-19T20:11:06.126676+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.618,
+      "duration_seconds": 0.549,
       "latest_build": "f79c119282604e23e555c4e9fd61007c20c53347",
       "builds_retained": 30,
       "identifiers": 10770
@@ -50023,21 +50067,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T19:57:01.873598+00:00",
+      "last_attempt": "2026-11-19T20:13:05.058864+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 765,
-      "duration_seconds": 11.299
+      "consecutive_failures": 773,
+      "duration_seconds": 10.649
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T19:57:13.179372+00:00",
+      "last_attempt": "2026-11-19T20:13:15.715221+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:57:13.409879+00:00",
+      "last_success": "2026-11-19T20:13:15.961745+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.231,
+      "duration_seconds": 0.247,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -50047,61 +50091,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:55:55.301143+00:00",
+      "last_attempt": "2026-11-19T20:11:56.797581+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:55:57.351430+00:00",
+      "last_success": "2026-11-19T20:12:00.095573+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.05
+      "duration_seconds": 3.298
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:55:57.351519+00:00",
+      "last_attempt": "2026-11-19T20:12:00.095635+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:55:57.666415+00:00",
+      "last_success": "2026-11-19T20:12:00.258844+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.315
+      "duration_seconds": 0.163
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:55:57.666453+00:00",
+      "last_attempt": "2026-11-19T20:12:00.258882+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:56:06.419000+00:00",
+      "last_success": "2026-11-19T20:12:08.881436+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.753
+      "duration_seconds": 8.623
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:56:06.419103+00:00",
+      "last_attempt": "2026-11-19T20:12:08.881536+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:57:00.654492+00:00",
+      "last_success": "2026-11-19T20:13:04.037690+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 54.235,
+      "duration_seconds": 55.156,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T19:56:06.833204+00:00",
+          "checked_at": "2026-11-19T20:12:09.114566+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T19:56:22.352315+00:00",
+          "checked_at": "2026-11-19T20:12:24.416158+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T19:56:22.493711+00:00",
+          "checked_at": "2026-11-19T20:12:24.553556+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T19:56:22.493730+00:00",
+          "checked_at": "2026-11-19T20:12:24.553577+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -50109,12 +50153,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:57:00.654565+00:00",
+      "last_attempt": "2026-11-19T20:13:04.037757+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:57:00.970011+00:00",
+      "last_success": "2026-11-19T20:13:04.325940+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.316,
+      "duration_seconds": 0.288,
       "latest_build": "f3011bb73eb76169c87faf1385e6d56472d8f92cc68ad45820892ea3c9e76556",
       "builds_retained": 27,
       "identifiers": 9649
@@ -50122,12 +50166,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T19:57:01.075190+00:00",
+      "last_attempt": "2026-11-19T20:13:04.424361+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:57:01.763625+00:00",
+      "last_success": "2026-11-19T20:13:04.952274+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.689,
+      "duration_seconds": 0.528,
       "latest_build": "245c31763c0fa763e2b930f5aa704892539080e3",
       "builds_retained": 28,
       "identifiers": 6937
@@ -50135,12 +50179,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T19:49:04.835188+00:00",
+      "last_attempt": "2026-11-19T20:11:05.577991+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:49:05.452728+00:00",
+      "last_success": "2026-11-19T20:11:06.126676+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.618,
+      "duration_seconds": 0.549,
       "latest_build": "f79c119282604e23e555c4e9fd61007c20c53347",
       "builds_retained": 30,
       "identifiers": 10770
@@ -50148,21 +50192,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T19:57:01.873598+00:00",
+      "last_attempt": "2026-11-19T20:13:05.058864+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 765,
-      "duration_seconds": 11.299
+      "consecutive_failures": 773,
+      "duration_seconds": 10.649
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T19:57:13.179372+00:00",
+      "last_attempt": "2026-11-19T20:13:15.715221+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:57:13.409879+00:00",
+      "last_success": "2026-11-19T20:13:15.961745+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.231,
+      "duration_seconds": 0.247,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -50170,52 +50214,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:57:13.634872+00:00",
+      "last_attempt": "2026-11-19T20:13:16.163276+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:57:18.863545+00:00",
+      "last_success": "2026-11-19T20:13:21.089263+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.229
+      "duration_seconds": 4.926
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:57:18.863628+00:00",
+      "last_attempt": "2026-11-19T20:13:21.089338+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:57:20.763083+00:00",
+      "last_success": "2026-11-19T20:13:22.976659+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.899
+      "duration_seconds": 1.887
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T19:49:23.715511+00:00",
+      "last_attempt": "2026-11-19T20:11:23.558595+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:49:31.716192+00:00",
+      "last_success": "2026-11-19T20:11:31.595963+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.001
+      "duration_seconds": 8.037
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:57:20.763149+00:00",
+      "last_attempt": "2026-11-19T20:13:22.976719+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:57:22.254765+00:00",
+      "last_success": "2026-11-19T20:13:24.498354+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.492
+      "duration_seconds": 1.522
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:57:22.254822+00:00",
+      "last_attempt": "2026-11-19T20:13:24.498395+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:57:22.288820+00:00",
+      "last_success": "2026-11-19T20:13:24.652631+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.034
+      "duration_seconds": 0.154
     }
   },
   "identities": {
