@@ -1,17 +1,137 @@
 {
-  "generated_at": "2026-11-19T20:19:56.453184+00:00",
-  "scan_completed_at": "2026-11-19T20:21:32.991038+00:00",
+  "generated_at": "2026-11-19T20:27:57.970115+00:00",
+  "scan_completed_at": "2026-11-19T20:29:20.277874+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 229,
-    "leaks": 42,
+    "stories": 230,
+    "leaks": 41,
     "releases": 67,
-    "stories_24h": 95,
-    "sources_ok": 14,
-    "total_cards": 482,
+    "stories_24h": 97,
+    "sources_ok": 13,
+    "total_cards": 483,
     "new_in_this_scan": 2
   },
   "stories": [
+    {
+      "id": "story-4-6",
+      "group": "4-6",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "4.6",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-19T20:29:00.121889+00:00",
+      "updated_at": "2026-11-19T20:29:00.121889+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "v4.6",
+          "name": "fal_ai/ideogram/v4.6"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T20:29:00.121889+00:00",
+          "title": "v4.6",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/1e296fa244d4a2e3ee1fb67e4d68e607b375def6/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "1e296fa244d4a2e3ee1fb67e4d68e607b375def6",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/0ac9e9528a0831cddc728a6140b6f32b69f05dc282c52a2a9d213dda8ed18636.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-6b7dd4588d7f9a58f17d"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "fal_ai/ideogram/v4.6",
+          "family": "v4.6",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"fal_ai/ideogram/v4.6\": {\"litellm_provider\": \"fal_ai\", \"metadata\": {\"comment\": \"fal reports the charge for each request in the x-fal-billable-units response header, priced at output_cost_per_billable_unit dollars per unit. One image at 2K or below (up to 4,194,304 pixels) is 8 units at very low quality, 30 at low, 60 at the default medium and 100 at high, and above 2K it is 60 units at low, 120 at medium and 200 at high. The per-image price is the default medium quality at 2K or below, used when the header is absent\"}, \"mode\": \"image_generation\", \"output_cost_per_billable_unit\": 0.001, \"output_cost_per_image\": 0.06, \"source\": \"https://fal.ai/models/ideogram/v4.6\", \"supported_endpoints\": [\"/v1/images/generations\"]}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "0ac9e9528a0831cddc728a6140b6f32b69f05dc282c52a2a9d213dda8ed18636",
+          "method": "structured registry",
+          "build": "1e296fa244d4a2e3ee1fb67e4d68e607b375def6",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/1e296fa244d4a2e3ee1fb67e4d68e607b375def6/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T20:27:28+00:00"
+        }
+      ],
+      "x_post_text": "LiteLLM commit-pinned registry 1e296fa244d4: v4.6\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/1e296fa244d4a2e3ee1fb67e4d68e607b375def6/model_prices_and_context_window.json"
+    },
+    {
+      "id": "story-edit",
+      "group": "edit",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Edit",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-19T20:29:00.121889+00:00",
+      "updated_at": "2026-11-19T20:29:00.121889+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "edit",
+          "name": "fal_ai/ideogram/v4.6/edit"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T20:29:00.121889+00:00",
+          "title": "edit",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/1e296fa244d4a2e3ee1fb67e4d68e607b375def6/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "1e296fa244d4a2e3ee1fb67e4d68e607b375def6",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/0ac9e9528a0831cddc728a6140b6f32b69f05dc282c52a2a9d213dda8ed18636.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-ffd50e9840d039a6f753"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "fal_ai/ideogram/v4.6/edit",
+          "family": "edit",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"fal_ai/ideogram/v4.6/edit\": {\"litellm_provider\": \"fal_ai\", \"metadata\": {\"comment\": \"fal reports the charge for each request in the x-fal-billable-units response header, priced at output_cost_per_billable_unit dollars per unit. One image at 2K or below (up to 4,194,304 pixels) is 8 units at very low quality, 30 at low, 60 at the default medium and 220 at high, and above 2K it is 60 units at low, 200 at medium and 600 at high. The per-image price is the default medium quality at 2K or below, used when the header is absent\"}, \"mode\": \"image_generation\", \"output_cost_per_billable_unit\": 0.001, \"output_cost_per_image\": 0.06, \"source\": \"https://fal.ai/models/ideogram/v4.6/edit\", \"supported_endpoints\": [\"/v1/images/edits\", \"/v1/images/generations\"], \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "0ac9e9528a0831cddc728a6140b6f32b69f05dc282c52a2a9d213dda8ed18636",
+          "method": "structured registry",
+          "build": "1e296fa244d4a2e3ee1fb67e4d68e607b375def6",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/1e296fa244d4a2e3ee1fb67e4d68e607b375def6/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T20:27:28+00:00"
+        }
+      ],
+      "x_post_text": "LiteLLM commit-pinned registry 1e296fa244d4: edit\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/1e296fa244d4a2e3ee1fb67e4d68e607b375def6/model_prices_and_context_window.json"
+    },
     {
       "id": "story-spot-deepseek-4-flash",
       "group": "spot-deepseek-4-flash",
@@ -17345,54 +17465,6 @@
       "x_post_text": "🔵 REGISTRY UPDATE: LiteLLM xAI Registry Update — 1 Entry Detected\n\nFirst detected 05 Nov 23:09 UTC in LiteLLM registry\n📅 First released: 2026-09-21\n\nvia @StatsWire"
     },
     {
-      "id": "story-tensorrt-llm",
-      "group": "tensorrt-llm",
-      "kind": "leak",
-      "open_weights": true,
-      "title": "tensorrt llm",
-      "provider_slug": "nvidia",
-      "provider_name": "NVIDIA",
-      "accent_color": "#10b981",
-      "detected_at": "2026-11-05T20:26:54Z",
-      "updated_at": "2026-11-05T20:26:54Z",
-      "first_source": "Tensorrt-llm pull request",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [
-        "tensorrt"
-      ],
-      "models": [
-        {
-          "id": "tensorrt-llm",
-          "name": "tensorrt-llm"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Tensorrt-llm pull request",
-          "scanner": "engine-pr-leak",
-          "detected_at": "2026-11-05T20:26:54Z",
-          "title": "nvidia/tensorrt-llm (TensorRT-LLM PR #21737)",
-          "url": "https://github.com/NVIDIA/TensorRT-LLM/pull/21737",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "LEAK · NVIDIA",
-      "card_ids": [
-        "engine-pr-NVIDIA_TensorRT-LLM-21737"
-      ],
-      "event_label": "",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: tensorrt llm by NVIDIA\n\nFirst detected 05 Nov 20:26 UTC in Tensorrt-llm pull request\nCodename: tensorrt\n\nvia @StatsWire"
-    },
-    {
       "id": "story-gemini-4-carbon",
       "group": "gemini-4-carbon",
       "kind": "release",
@@ -17654,6 +17726,181 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-6b7dd4588d7f9a58f17d",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "v4.6",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "v4.6",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "fal_ai/ideogram/v4.6",
+          "name": "fal_ai/ideogram/v4.6",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T20:29:00.121889+00:00",
+      "first_seen": "2026-11-19T20:27:28+00:00",
+      "observed_at": "2026-11-19T20:29:00.121889+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "81cd728ce9083bab32441b07d3e3a3da74f35e53 -> 1e296fa244d4a2e3ee1fb67e4d68e607b375def6",
+      "build": "1e296fa244d4a2e3ee1fb67e4d68e607b375def6",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/1e296fa244d4a2e3ee1fb67e4d68e607b375def6/model_prices_and_context_window.json",
+      "artifact_sha256": "0ac9e9528a0831cddc728a6140b6f32b69f05dc282c52a2a9d213dda8ed18636",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/0ac9e9528a0831cddc728a6140b6f32b69f05dc282c52a2a9d213dda8ed18636.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/0ac9e9528a0831cddc728a6140b6f32b69f05dc282c52a2a9d213dda8ed18636.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "fal_ai/ideogram/v4.6",
+          "family": "v4.6",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"fal_ai/ideogram/v4.6\": {\"litellm_provider\": \"fal_ai\", \"metadata\": {\"comment\": \"fal reports the charge for each request in the x-fal-billable-units response header, priced at output_cost_per_billable_unit dollars per unit. One image at 2K or below (up to 4,194,304 pixels) is 8 units at very low quality, 30 at low, 60 at the default medium and 100 at high, and above 2K it is 60 units at low, 120 at medium and 200 at high. The per-image price is the default medium quality at 2K or below, used when the header is absent\"}, \"mode\": \"image_generation\", \"output_cost_per_billable_unit\": 0.001, \"output_cost_per_image\": 0.06, \"source\": \"https://fal.ai/models/ideogram/v4.6\", \"supported_endpoints\": [\"/v1/images/generations\"]}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "0ac9e9528a0831cddc728a6140b6f32b69f05dc282c52a2a9d213dda8ed18636",
+          "method": "structured registry",
+          "build": "1e296fa244d4a2e3ee1fb67e4d68e607b375def6",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/1e296fa244d4a2e3ee1fb67e4d68e607b375def6/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T20:27:28+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/1e296fa244d4a2e3ee1fb67e4d68e607b375def6/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/1e296fa244d4a2e3ee1fb67e4d68e607b375def6"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T20:29:01.396467+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: fal_ai/ideogram/v4.6\nhttps://raw.githubusercontent.com/BerriAI/litellm/1e296fa244d4a2e3ee1fb67e4d68e607b375def6/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-ffd50e9840d039a6f753",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "edit",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "edit",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "fal_ai/ideogram/v4.6/edit",
+          "name": "fal_ai/ideogram/v4.6/edit",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T20:29:00.121889+00:00",
+      "first_seen": "2026-11-19T20:27:28+00:00",
+      "observed_at": "2026-11-19T20:29:00.121889+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "81cd728ce9083bab32441b07d3e3a3da74f35e53 -> 1e296fa244d4a2e3ee1fb67e4d68e607b375def6",
+      "build": "1e296fa244d4a2e3ee1fb67e4d68e607b375def6",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/1e296fa244d4a2e3ee1fb67e4d68e607b375def6/model_prices_and_context_window.json",
+      "artifact_sha256": "0ac9e9528a0831cddc728a6140b6f32b69f05dc282c52a2a9d213dda8ed18636",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/0ac9e9528a0831cddc728a6140b6f32b69f05dc282c52a2a9d213dda8ed18636.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/0ac9e9528a0831cddc728a6140b6f32b69f05dc282c52a2a9d213dda8ed18636.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "fal_ai/ideogram/v4.6/edit",
+          "family": "edit",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"fal_ai/ideogram/v4.6/edit\": {\"litellm_provider\": \"fal_ai\", \"metadata\": {\"comment\": \"fal reports the charge for each request in the x-fal-billable-units response header, priced at output_cost_per_billable_unit dollars per unit. One image at 2K or below (up to 4,194,304 pixels) is 8 units at very low quality, 30 at low, 60 at the default medium and 220 at high, and above 2K it is 60 units at low, 200 at medium and 600 at high. The per-image price is the default medium quality at 2K or below, used when the header is absent\"}, \"mode\": \"image_generation\", \"output_cost_per_billable_unit\": 0.001, \"output_cost_per_image\": 0.06, \"source\": \"https://fal.ai/models/ideogram/v4.6/edit\", \"supported_endpoints\": [\"/v1/images/edits\", \"/v1/images/generations\"], \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "0ac9e9528a0831cddc728a6140b6f32b69f05dc282c52a2a9d213dda8ed18636",
+          "method": "structured registry",
+          "build": "1e296fa244d4a2e3ee1fb67e4d68e607b375def6",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/1e296fa244d4a2e3ee1fb67e4d68e607b375def6/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T20:27:28+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "devin-desktop",
+          "identifier": "edit",
+          "first_seen": "2026-05-27T00:00:00+00:00",
+          "evidence_path": "data/intelligence/evidence/devin-desktop/56f318f713d7d1090ca30b470df4a1a529a4a3d5f9fdde5251d6e6e727b443b8.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/1e296fa244d4a2e3ee1fb67e4d68e607b375def6/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/1e296fa244d4a2e3ee1fb67e4d68e607b375def6"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T20:29:01.396467+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: fal_ai/ideogram/v4.6/edit\nhttps://raw.githubusercontent.com/BerriAI/litellm/1e296fa244d4a2e3ee1fb67e4d68e607b375def6/model_prices_and_context_window.json"
+    },
     {
       "id": "intel-638a11e7a6425b01a94f",
       "scanner": "litellm-intelligence",
@@ -50029,41 +50276,6 @@
       "registry_update": true
     },
     {
-      "id": "engine-pr-NVIDIA_TensorRT-LLM-21737",
-      "category": "open-source",
-      "scanner": "engine-pr-leak",
-      "header": "TENSORRT-LLM PR DAY-0 MODEL ONBOARDING (OPEN)",
-      "title": "nvidia/tensorrt-llm (TensorRT-LLM PR #21737)",
-      "subtitle": "[None][doc] Point MiniMax-M3.1-Flash to its latest release container",
-      "build_label": "TensorRT-LLM PR",
-      "build_transition": "PR #21737 (open)",
-      "models": [
-        {
-          "id": "nvidia/tensorrt-llm",
-          "name": "tensorrt-llm"
-        }
-      ],
-      "evidence": "NVIDIA/TensorRT-LLM/pull/21737",
-      "source_text": "public GitHub pull request #21737 on NVIDIA/TensorRT-LLM.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "TENSORRT-LLM PR",
-      "provider_slug": "opensource",
-      "accent_color": "#10b981",
-      "links": [
-        {
-          "label": "NVIDIA/TensorRT-LLM PR #21737",
-          "url": "https://github.com/NVIDIA/TensorRT-LLM/pull/21737"
-        }
-      ],
-      "detected_at": "2026-11-05T20:26:54Z",
-      "codenames": [
-        "tensorrt"
-      ],
-      "x_post_text": "🚨 TENSORRT-LLM PR DAY-0 MODEL ONBOARDING (OPEN)\nnvidia/tensorrt-llm (TensorRT-LLM PR #21737) spotted in TensorRT-LLM PR PR #21737 (open)!\n\n• tensorrt-llm (nvidia/tensorrt-llm)\n\nEvidence: NVIDIA/TensorRT-LLM/pull/21737\nSource: public GitHub pull request #21737 on NVIDIA/TensorRT-LLM.\n\nTracked by @StatsWire",
-      "pricing": null
-    },
-    {
       "id": "ag-acp-1.4.3-revision-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
@@ -50227,12 +50439,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:19:05.152803+00:00",
+      "last_attempt": "2026-11-19T20:26:59.609291+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:19:05.474430+00:00",
+      "last_success": "2026-11-19T20:26:59.902336+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.322,
+      "duration_seconds": 0.293,
       "latest_build": "f3011bb73eb76169c87faf1385e6d56472d8f92cc68ad45820892ea3c9e76556",
       "builds_retained": 27,
       "identifiers": 9649
@@ -50240,15 +50452,15 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T20:21:00.596189+00:00",
+      "last_attempt": "2026-11-19T20:28:58.985197+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:21:04.853809+00:00",
+      "last_success": "2026-11-19T20:29:01.396467+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.258,
-      "latest_build": "81cd728ce9083bab32441b07d3e3a3da74f35e53",
-      "builds_retained": 30,
-      "identifiers": 6938
+      "duration_seconds": 2.412,
+      "latest_build": "1e296fa244d4a2e3ee1fb67e4d68e607b375def6",
+      "builds_retained": 31,
+      "identifiers": 6940
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
@@ -50266,21 +50478,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T20:21:05.622018+00:00",
+      "last_attempt": "2026-11-19T20:29:01.495895+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 777,
-      "duration_seconds": 10.994
+      "consecutive_failures": 781,
+      "duration_seconds": 10.31
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T20:13:15.715221+00:00",
+      "last_attempt": "2026-11-19T20:29:11.812347+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:13:15.961745+00:00",
+      "last_success": "2026-11-19T20:29:12.071120+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.247,
+      "duration_seconds": 0.259,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -50290,61 +50502,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:19:56.453252+00:00",
+      "last_attempt": "2026-11-19T20:27:57.970179+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:19:58.702959+00:00",
+      "last_success": "2026-11-19T20:28:00.411029+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.25
+      "duration_seconds": 2.441
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:19:58.703032+00:00",
+      "last_attempt": "2026-11-19T20:28:00.411092+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:19:58.929563+00:00",
+      "last_success": "2026-11-19T20:28:00.645652+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.227
+      "duration_seconds": 0.235
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:19:58.929598+00:00",
+      "last_attempt": "2026-11-19T20:28:00.645688+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:20:07.140755+00:00",
+      "last_success": "2026-11-19T20:28:08.596025+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.211
+      "duration_seconds": 7.95
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:20:07.140835+00:00",
+      "last_attempt": "2026-11-19T20:28:08.596103+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:21:00.596120+00:00",
+      "last_success": "2026-11-19T20:28:58.985136+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 53.455,
+      "duration_seconds": 50.389,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T20:20:07.576160+00:00",
+          "checked_at": "2026-11-19T20:28:08.879331+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T20:20:23.665382+00:00",
+          "checked_at": "2026-11-19T20:28:23.446636+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T20:20:23.830385+00:00",
+          "checked_at": "2026-11-19T20:28:23.580672+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T20:20:23.830407+00:00",
+          "checked_at": "2026-11-19T20:28:23.580691+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -50352,12 +50564,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:19:05.152803+00:00",
+      "last_attempt": "2026-11-19T20:26:59.609291+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:19:05.474430+00:00",
+      "last_success": "2026-11-19T20:26:59.902336+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.322,
+      "duration_seconds": 0.293,
       "latest_build": "f3011bb73eb76169c87faf1385e6d56472d8f92cc68ad45820892ea3c9e76556",
       "builds_retained": 27,
       "identifiers": 9649
@@ -50365,15 +50577,15 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T20:21:00.596189+00:00",
+      "last_attempt": "2026-11-19T20:28:58.985197+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:21:04.853809+00:00",
+      "last_success": "2026-11-19T20:29:01.396467+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.258,
-      "latest_build": "81cd728ce9083bab32441b07d3e3a3da74f35e53",
-      "builds_retained": 30,
-      "identifiers": 6938
+      "duration_seconds": 2.412,
+      "latest_build": "1e296fa244d4a2e3ee1fb67e4d68e607b375def6",
+      "builds_retained": 31,
+      "identifiers": 6940
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
@@ -50391,21 +50603,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T20:21:05.622018+00:00",
+      "last_attempt": "2026-11-19T20:29:01.495895+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 777,
-      "duration_seconds": 10.994
+      "consecutive_failures": 781,
+      "duration_seconds": 10.31
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T20:13:15.715221+00:00",
+      "last_attempt": "2026-11-19T20:29:11.812347+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:13:15.961745+00:00",
+      "last_success": "2026-11-19T20:29:12.071120+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.247,
+      "duration_seconds": 0.259,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -50413,22 +50625,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:21:16.622598+00:00",
+      "last_attempt": "2026-11-19T20:29:12.273987+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:21:21.438314+00:00",
+      "last_success": "2026-11-19T20:29:16.991857+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.816
+      "duration_seconds": 4.718
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:21:21.438391+00:00",
+      "last_attempt": "2026-11-19T20:29:16.991927+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:21:23.097274+00:00",
+      "last_success": "2026-11-19T20:29:18.600024+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.659
+      "duration_seconds": 1.608
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -50443,34 +50655,34 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:21:31.234156+00:00",
+      "last_attempt": "2026-11-19T20:29:18.600080+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:21:32.705793+00:00",
+      "last_success": "2026-11-19T20:29:20.103950+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.472
+      "duration_seconds": 1.504
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:21:32.705848+00:00",
+      "last_attempt": "2026-11-19T20:29:20.103989+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:21:32.743367+00:00",
+      "last_success": "2026-11-19T20:29:20.135508+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.038
+      "duration_seconds": 0.032
     }
   },
   "identities": {
-    "identifiers": 30687,
+    "identifiers": 30689,
     "declared_aliases": 17824,
     "pending_candidates": 0
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 185,
-      "seconds_mean": 5735.504053583784,
+      "samples": 187,
+      "seconds_mean": 5675.147025085561,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -50484,8 +50696,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 229,
-      "events": 229,
+      "complete": 231,
+      "events": 231,
       "rate": 1.0
     },
     "source_health": {
