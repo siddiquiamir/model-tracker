@@ -1,17 +1,75 @@
 {
-  "generated_at": "2026-11-19T19:51:55.581921+00:00",
-  "scan_completed_at": "2026-11-19T19:53:15.842395+00:00",
+  "generated_at": "2026-11-19T19:55:55.301066+00:00",
+  "scan_completed_at": "2026-11-19T19:57:23.414285+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 228,
-    "leaks": 42,
+    "stories": 229,
+    "leaks": 43,
     "releases": 66,
-    "stories_24h": 93,
-    "sources_ok": 13,
-    "total_cards": 477,
-    "new_in_this_scan": 0
+    "stories_24h": 94,
+    "sources_ok": 14,
+    "total_cards": 479,
+    "new_in_this_scan": 2
   },
   "stories": [
+    {
+      "id": "story-gpt-live-1-1",
+      "group": "gpt-live-1-1",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "GPT Live 1.1",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "accent_color": "#10b981",
+      "detected_at": "2026-11-19T19:56:03.164169+00:00",
+      "updated_at": "2026-11-19T19:56:05.831311+00:00",
+      "first_source": "OpenAI Docs Route",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gpt-live-1.1",
+          "name": "GPT Live 1.1"
+        }
+      ],
+      "sources": [
+        {
+          "label": "OpenAI Docs Route",
+          "scanner": "docs-radar",
+          "detected_at": "2026-11-19T19:56:03.164169+00:00",
+          "title": "New Model Doc Page Staged on OpenAI: gpt-live-1.1",
+          "url": "https://developers.openai.com/api/docs/models/all",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "Official pricing page",
+          "scanner": "pricing-radar",
+          "detected_at": "2026-11-19T19:56:05.831311+00:00",
+          "title": "New Model Pricing Published on OpenAI: gpt-live-1.1 ($0.05 / $0.02 per 1M tokens)",
+          "url": "https://developers.openai.com/api/docs/pricing",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 2,
+      "backfill": false,
+      "header": "LEAK · OPENAI",
+      "card_ids": [
+        "pre-release-openai_llms_model_routes-6e623441",
+        "pricing-radar-openai_pricing_md-6e623441"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: GPT Live 1.1 by OpenAI\n\nFirst detected 19 Nov 19:56 UTC in OpenAI Docs Route\nConfirmed by Official pricing page\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-19T19:57:23.410082+00:00"
+    },
     {
       "id": "story-ai-21-jamba-1-5-mini-1",
       "group": "ai-21-jamba-1-5-mini-1",
@@ -17543,6 +17601,76 @@
     }
   ],
   "cards": [
+    {
+      "id": "pricing-radar-openai_pricing_md-6e623441",
+      "category": "cli-sdk-diff",
+      "scanner": "pricing-radar",
+      "header": "OPENAI OFFICIAL PRICING RADAR · OPENAI",
+      "title": "New Model Pricing Published on OpenAI: gpt-live-1.1 ($0.05 / $0.02 per 1M tokens)",
+      "subtitle": "Verified official token pricing in developers.openai.com/api/docs/pricing.md",
+      "build_label": "Official Pricing",
+      "build_transition": "gpt-live-1.1: $0.05 / $0.02 per 1M tokens",
+      "pricing": null,
+      "models": [
+        {
+          "id": "gpt-live-1.1",
+          "name": "GPT Live 1.1 — $0.05 / $0.02 per 1M tokens"
+        }
+      ],
+      "evidence": "developers.openai.com/api/docs/pricing.md",
+      "source_text": "official OpenAI API pricing page (developers.openai.com/api/docs/pricing.md).",
+      "disclaimer_1": "Extracted directly from official first-party API pricing tables.",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "Official Pricing Page",
+          "url": "https://developers.openai.com/api/docs/pricing"
+        },
+        {
+          "label": "Raw Pricing Markdown",
+          "url": "https://developers.openai.com/api/docs/pricing.md"
+        }
+      ],
+      "detected_at": "2026-11-19T19:56:05.831311+00:00",
+      "tracker_observed_at": "2026-11-19T19:56:06.419000+00:00",
+      "x_post_text": "🚨 OPENAI OFFICIAL PRICING RADAR · OPENAI\nNew Model Pricing Published on OpenAI: gpt-live-1.1 ($0.05 / $0.02 per 1M tokens) spotted in Official Pricing gpt-live-1.1: $0.05 / $0.02 per 1M tokens!\n\n• GPT Live 1.1 — $0.05 / $0.02 per 1M tokens (gpt-live-1.1)\n\nEvidence: developers.openai.com/api/docs/pricing.md\nSource: official OpenAI API pricing page (developers.openai.com/api/docs/pricing.md).\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "pre-release-openai_llms_model_routes-6e623441",
+      "category": "cli-sdk-diff",
+      "scanner": "docs-radar",
+      "header": "OPENAI DOCS ROUTE SCOUT · OPENAI",
+      "title": "New Model Doc Page Staged on OpenAI: gpt-live-1.1",
+      "subtitle": "Detected in developers.openai.com/api/docs/models/*.md (+1 new)",
+      "build_label": "Pre-Release Scout",
+      "build_transition": "+1 unannounced identifier(s)",
+      "models": [
+        {
+          "id": "gpt-live-1.1",
+          "name": "GPT Live 1.1"
+        }
+      ],
+      "evidence": "developers.openai.com/api/docs/models/*.md",
+      "source_text": "developers.openai.com/api/docs/models/*.md",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "Source Feed",
+          "url": "https://developers.openai.com/api/docs/models/all"
+        }
+      ],
+      "detected_at": "2026-11-19T19:56:03.164169+00:00",
+      "tracker_observed_at": "2026-11-19T19:56:06.419000+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 OPENAI DOCS ROUTE SCOUT · OPENAI\nNew Model Doc Page Staged on OpenAI: gpt-live-1.1 spotted in Pre-Release Scout +1 unannounced identifier(s)!\n\n• GPT Live 1.1 (gpt-live-1.1)\n\nEvidence: developers.openai.com/api/docs/models/*.md\nSource: developers.openai.com/api/docs/models/*.md\n\nTracked by @StatsWire"
+    },
     {
       "id": "intel-0a0b966a3c82becada66",
       "scanner": "litellm-intelligence",
@@ -49856,12 +49984,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:52:55.501139+00:00",
+      "last_attempt": "2026-11-19T19:57:00.654565+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:52:55.792818+00:00",
+      "last_success": "2026-11-19T19:57:00.970011+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.292,
+      "duration_seconds": 0.316,
       "latest_build": "f3011bb73eb76169c87faf1385e6d56472d8f92cc68ad45820892ea3c9e76556",
       "builds_retained": 27,
       "identifiers": 9649
@@ -49869,12 +49997,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T19:52:55.893380+00:00",
+      "last_attempt": "2026-11-19T19:57:01.075190+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:52:56.344357+00:00",
+      "last_success": "2026-11-19T19:57:01.763625+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.451,
+      "duration_seconds": 0.689,
       "latest_build": "245c31763c0fa763e2b930f5aa704892539080e3",
       "builds_retained": 28,
       "identifiers": 6937
@@ -49895,21 +50023,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T19:52:56.450172+00:00",
+      "last_attempt": "2026-11-19T19:57:01.873598+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 763,
-      "duration_seconds": 11.046
+      "consecutive_failures": 765,
+      "duration_seconds": 11.299
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T19:41:03.447822+00:00",
+      "last_attempt": "2026-11-19T19:57:13.179372+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:41:03.704999+00:00",
+      "last_success": "2026-11-19T19:57:13.409879+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.257,
+      "duration_seconds": 0.231,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -49919,61 +50047,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:51:55.581988+00:00",
+      "last_attempt": "2026-11-19T19:55:55.301143+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:51:57.887414+00:00",
+      "last_success": "2026-11-19T19:55:57.351430+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.305
+      "duration_seconds": 2.05
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:51:57.887494+00:00",
+      "last_attempt": "2026-11-19T19:55:57.351519+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:51:58.082902+00:00",
+      "last_success": "2026-11-19T19:55:57.666415+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.195
+      "duration_seconds": 0.315
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:51:58.082940+00:00",
+      "last_attempt": "2026-11-19T19:55:57.666453+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:52:07.573269+00:00",
+      "last_success": "2026-11-19T19:56:06.419000+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.49
+      "duration_seconds": 8.753
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:52:07.573350+00:00",
+      "last_attempt": "2026-11-19T19:56:06.419103+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:52:55.501075+00:00",
+      "last_success": "2026-11-19T19:57:00.654492+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 47.928,
+      "duration_seconds": 54.235,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T19:52:07.804712+00:00",
+          "checked_at": "2026-11-19T19:56:06.833204+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T19:52:20.813519+00:00",
+          "checked_at": "2026-11-19T19:56:22.352315+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T19:52:20.959190+00:00",
+          "checked_at": "2026-11-19T19:56:22.493711+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T19:52:20.959210+00:00",
+          "checked_at": "2026-11-19T19:56:22.493730+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -49981,12 +50109,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:52:55.501139+00:00",
+      "last_attempt": "2026-11-19T19:57:00.654565+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:52:55.792818+00:00",
+      "last_success": "2026-11-19T19:57:00.970011+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.292,
+      "duration_seconds": 0.316,
       "latest_build": "f3011bb73eb76169c87faf1385e6d56472d8f92cc68ad45820892ea3c9e76556",
       "builds_retained": 27,
       "identifiers": 9649
@@ -49994,12 +50122,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T19:52:55.893380+00:00",
+      "last_attempt": "2026-11-19T19:57:01.075190+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:52:56.344357+00:00",
+      "last_success": "2026-11-19T19:57:01.763625+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.451,
+      "duration_seconds": 0.689,
       "latest_build": "245c31763c0fa763e2b930f5aa704892539080e3",
       "builds_retained": 28,
       "identifiers": 6937
@@ -50020,21 +50148,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T19:52:56.450172+00:00",
+      "last_attempt": "2026-11-19T19:57:01.873598+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 763,
-      "duration_seconds": 11.046
+      "consecutive_failures": 765,
+      "duration_seconds": 11.299
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T19:41:03.447822+00:00",
+      "last_attempt": "2026-11-19T19:57:13.179372+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:41:03.704999+00:00",
+      "last_success": "2026-11-19T19:57:13.409879+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.257,
+      "duration_seconds": 0.231,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -50042,22 +50170,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:53:07.502815+00:00",
+      "last_attempt": "2026-11-19T19:57:13.634872+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:53:12.290996+00:00",
+      "last_success": "2026-11-19T19:57:18.863545+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.788
+      "duration_seconds": 5.229
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:53:12.291069+00:00",
+      "last_attempt": "2026-11-19T19:57:18.863628+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:53:13.886297+00:00",
+      "last_success": "2026-11-19T19:57:20.763083+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.595
+      "duration_seconds": 1.899
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -50072,22 +50200,22 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:53:13.886351+00:00",
+      "last_attempt": "2026-11-19T19:57:20.763149+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:53:15.410345+00:00",
+      "last_success": "2026-11-19T19:57:22.254765+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.524
+      "duration_seconds": 1.492
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T19:53:15.410392+00:00",
+      "last_attempt": "2026-11-19T19:57:22.254822+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T19:53:15.571502+00:00",
+      "last_success": "2026-11-19T19:57:22.288820+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.161
+      "duration_seconds": 0.034
     }
   },
   "identities": {
