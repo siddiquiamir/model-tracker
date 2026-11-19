@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-19T12:31:36.582775+00:00",
-  "scan_completed_at": "2026-11-19T12:33:00.601813+00:00",
+  "generated_at": "2026-11-19T12:39:36.534039+00:00",
+  "scan_completed_at": "2026-11-19T12:41:15.143791+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 214,
     "leaks": 44,
     "releases": 69,
     "stories_24h": 103,
-    "sources_ok": 13,
-    "total_cards": 451,
+    "sources_ok": 15,
+    "total_cards": 452,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -9093,7 +9093,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-16T20:15:16.430197+00:00",
-      "updated_at": "2026-11-19T12:32:31.033604+00:00",
+      "updated_at": "2026-11-19T12:40:31.513034+00:00",
       "first_source": "Gemini Web App Config",
       "lead": "2 days before it went live on OpenRouter",
       "released_on": "2026-11-18",
@@ -9290,7 +9290,8 @@
         "lmarena-lb-diff-7e9a2868",
         "intel-df128bc4e900683c69fc",
         "intel-e222c9d7c403029294c0",
-        "intel-02856e3a8f4a535363e8"
+        "intel-02856e3a8f4a535363e8",
+        "intel-f9e42c90bb380346d59a"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -9725,6 +9726,21 @@
           "build": "39aa2dbdb6cba45b0029cbee6d0783cea384394307a6de542b88c92787da1901",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-19T12:32:30.717260+00:00"
+        },
+        {
+          "id": "crossmodel/gemini/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/crossmodel/models/gemini/gemini-4-neon.toml",
+          "file_sha256": "c006d523c6966de713591e64e0ed08635b437d227dd142fc82ee6f13df04ca4e",
+          "excerpt": "{\"crossmodel/gemini/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"modalities\": {\"input\": [\"text\", \"image\", \"audio\", \"video\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.15, \"write\": 3}}, \"output\": {\"price\": 15}}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/2039db46130db24f5340c3badb9630943f1165e8/providers/crossmodel/models/gemini/gemini-4-neon.toml",
+          "build": "2039db46130db24f5340c3badb9630943f1165e8",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/2039db46130db24f5340c3badb9630943f1165e8",
+          "first_seen": "2026-11-19T12:31:17+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-19T05:31:35.527382+00:00",
@@ -16401,6 +16417,100 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-f9e42c90bb380346d59a",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gemini-4-neon",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gemini-4-neon",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "crossmodel/gemini/gemini-4-neon",
+          "name": "crossmodel/gemini/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        }
+      ],
+      "detected_at": "2026-11-19T12:40:31.513034+00:00",
+      "first_seen": "2026-11-19T12:31:17+00:00",
+      "observed_at": "2026-11-19T12:40:31.513034+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "c4df2efecbbf6b56924af76189e58bf6b8729b38 -> 2039db46130db24f5340c3badb9630943f1165e8",
+      "build": "2039db46130db24f5340c3badb9630943f1165e8",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/2039db46130db24f5340c3badb9630943f1165e8",
+      "artifact_sha256": "413069f468040f1cfade35c3f1f4f833fb2a74cbfde8d47ef726ad8469f72c66",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/413069f468040f1cfade35c3f1f4f833fb2a74cbfde8d47ef726ad8469f72c66.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/413069f468040f1cfade35c3f1f4f833fb2a74cbfde8d47ef726ad8469f72c66.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "crossmodel/gemini/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/crossmodel/models/gemini/gemini-4-neon.toml",
+          "file_sha256": "c006d523c6966de713591e64e0ed08635b437d227dd142fc82ee6f13df04ca4e",
+          "excerpt": "{\"crossmodel/gemini/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"modalities\": {\"input\": [\"text\", \"image\", \"audio\", \"video\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.15, \"write\": 3}}, \"output\": {\"price\": 15}}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/2039db46130db24f5340c3badb9630943f1165e8/providers/crossmodel/models/gemini/gemini-4-neon.toml",
+          "build": "2039db46130db24f5340c3badb9630943f1165e8",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/2039db46130db24f5340c3badb9630943f1165e8",
+          "first_seen": "2026-11-19T12:31:17+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gemini/gemini-4-neon",
+          "first_seen": "2026-11-18T20:53:00+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/35324269521018afbbb23413133d2196b04bdd84a5a6fbf1d1964c8fb42e851d.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/2039db46130db24f5340c3badb9630943f1165e8"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/2039db46130db24f5340c3badb9630943f1165e8"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T12:40:41.896686+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 2039db46130d: crossmodel/gemini/gemini-4-neon\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/2039db46130db24f5340c3badb9630943f1165e8"
+    },
     {
       "id": "intel-02856e3a8f4a535363e8",
       "scanner": "models-dev-api",
@@ -45572,25 +45682,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T12:32:30.304097+00:00",
+      "last_attempt": "2026-11-19T12:40:26.552159+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T12:32:33.508509+00:00",
+      "last_success": "2026-11-19T12:40:26.842744+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.205,
-      "latest_build": "39aa2dbdb6cba45b0029cbee6d0783cea384394307a6de542b88c92787da1901",
-      "builds_retained": 27,
+      "duration_seconds": 0.291,
+      "latest_build": "3daa0f95dbcdc7e053d50a9e2539f79cdcf3739a625fe64103edb341a8853a8e",
+      "builds_retained": 28,
       "identifiers": 9647
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T12:32:33.653754+00:00",
+      "last_attempt": "2026-11-19T12:40:26.997747+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T12:32:34.037057+00:00",
+      "last_success": "2026-11-19T12:40:27.417929+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.384,
+      "duration_seconds": 0.421,
       "latest_build": "2f29a55a5102fbf23e406d313ea4b91a7257e48f",
       "builds_retained": 24,
       "identifiers": 6934
@@ -45598,34 +45708,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T12:28:25.243387+00:00",
+      "last_attempt": "2026-11-19T12:40:27.586969+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T12:28:25.672200+00:00",
+      "last_success": "2026-11-19T12:40:41.896686+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.429,
-      "latest_build": "c4df2efecbbf6b56924af76189e58bf6b8729b38",
-      "builds_retained": 28,
-      "identifiers": 10765
+      "duration_seconds": 14.31,
+      "latest_build": "ba846a56a8a2c486b92c82732a849fa474dc885b",
+      "builds_retained": 30,
+      "identifiers": 10768
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T12:32:34.184647+00:00",
+      "last_attempt": "2026-11-19T12:40:42.055953+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 710,
-      "duration_seconds": 15.35
+      "consecutive_failures": 714,
+      "duration_seconds": 16.179
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T12:18:39.815007+00:00",
+      "last_attempt": "2026-11-19T12:34:46.739376+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T12:18:40.008173+00:00",
+      "last_success": "2026-11-19T12:34:46.964856+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.193,
+      "duration_seconds": 0.226,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -45635,61 +45745,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T12:31:36.582851+00:00",
+      "last_attempt": "2026-11-19T12:39:36.534118+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T12:31:38.331142+00:00",
+      "last_success": "2026-11-19T12:39:38.408820+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.748
+      "duration_seconds": 1.875
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T12:31:38.331209+00:00",
+      "last_attempt": "2026-11-19T12:39:38.408896+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T12:31:38.425018+00:00",
+      "last_success": "2026-11-19T12:39:38.491006+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.094
+      "duration_seconds": 0.082
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T12:31:38.425057+00:00",
+      "last_attempt": "2026-11-19T12:39:38.491047+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T12:31:43.194041+00:00",
+      "last_success": "2026-11-19T12:39:44.331792+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.769
+      "duration_seconds": 5.841
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T12:31:43.194116+00:00",
+      "last_attempt": "2026-11-19T12:39:44.331875+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T12:32:30.304035+00:00",
+      "last_success": "2026-11-19T12:40:26.552090+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 47.11,
+      "duration_seconds": 42.22,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T12:31:43.432643+00:00",
+          "checked_at": "2026-11-19T12:39:44.530156+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T12:31:54.601182+00:00",
+          "checked_at": "2026-11-19T12:39:53.655308+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T12:31:54.759817+00:00",
+          "checked_at": "2026-11-19T12:39:53.796557+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T12:31:54.759836+00:00",
+          "checked_at": "2026-11-19T12:39:53.796577+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -45697,25 +45807,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T12:32:30.304097+00:00",
+      "last_attempt": "2026-11-19T12:40:26.552159+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T12:32:33.508509+00:00",
+      "last_success": "2026-11-19T12:40:26.842744+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.205,
-      "latest_build": "39aa2dbdb6cba45b0029cbee6d0783cea384394307a6de542b88c92787da1901",
-      "builds_retained": 27,
+      "duration_seconds": 0.291,
+      "latest_build": "3daa0f95dbcdc7e053d50a9e2539f79cdcf3739a625fe64103edb341a8853a8e",
+      "builds_retained": 28,
       "identifiers": 9647
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T12:32:33.653754+00:00",
+      "last_attempt": "2026-11-19T12:40:26.997747+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T12:32:34.037057+00:00",
+      "last_success": "2026-11-19T12:40:27.417929+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.384,
+      "duration_seconds": 0.421,
       "latest_build": "2f29a55a5102fbf23e406d313ea4b91a7257e48f",
       "builds_retained": 24,
       "identifiers": 6934
@@ -45723,34 +45833,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T12:28:25.243387+00:00",
+      "last_attempt": "2026-11-19T12:40:27.586969+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T12:28:25.672200+00:00",
+      "last_success": "2026-11-19T12:40:41.896686+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.429,
-      "latest_build": "c4df2efecbbf6b56924af76189e58bf6b8729b38",
-      "builds_retained": 28,
-      "identifiers": 10765
+      "duration_seconds": 14.31,
+      "latest_build": "ba846a56a8a2c486b92c82732a849fa474dc885b",
+      "builds_retained": 30,
+      "identifiers": 10768
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T12:32:34.184647+00:00",
+      "last_attempt": "2026-11-19T12:40:42.055953+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 710,
-      "duration_seconds": 15.35
+      "consecutive_failures": 714,
+      "duration_seconds": 16.179
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T12:18:39.815007+00:00",
+      "last_attempt": "2026-11-19T12:34:46.739376+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T12:18:40.008173+00:00",
+      "last_success": "2026-11-19T12:34:46.964856+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.193,
+      "duration_seconds": 0.226,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -45758,64 +45868,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T12:32:49.541753+00:00",
+      "last_attempt": "2026-11-19T12:40:58.241054+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T12:32:56.797285+00:00",
+      "last_success": "2026-11-19T12:41:06.003327+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.256
+      "duration_seconds": 7.762
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T12:32:56.797384+00:00",
+      "last_attempt": "2026-11-19T12:41:06.003410+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T12:32:59.843445+00:00",
+      "last_success": "2026-11-19T12:41:07.213678+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.046
+      "duration_seconds": 1.21
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T12:28:50.836290+00:00",
+      "last_attempt": "2026-11-19T12:41:07.213733+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T12:28:58.391920+00:00",
+      "last_success": "2026-11-19T12:41:14.363205+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.556
+      "duration_seconds": 7.149
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T12:32:59.843504+00:00",
+      "last_attempt": "2026-11-19T12:41:14.363256+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T12:33:00.259149+00:00",
+      "last_success": "2026-11-19T12:41:14.748811+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.416
+      "duration_seconds": 0.386
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T12:33:00.259201+00:00",
+      "last_attempt": "2026-11-19T12:41:14.748851+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T12:33:00.273061+00:00",
+      "last_success": "2026-11-19T12:41:14.769966+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.014
+      "duration_seconds": 0.021
     }
   },
   "identities": {
-    "identifiers": 30676,
-    "declared_aliases": 17817,
+    "identifiers": 30679,
+    "declared_aliases": 17820,
     "pending_candidates": 0
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 146,
-      "seconds_mean": 7095.228218541096,
+      "samples": 147,
+      "seconds_mean": 7050.733557421769,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -45829,8 +45939,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 188,
-      "events": 188,
+      "complete": 189,
+      "events": 189,
       "rate": 1.0
     },
     "source_health": {
