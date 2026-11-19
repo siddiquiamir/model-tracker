@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-19T00:22:53.786329+00:00",
-  "scan_completed_at": "2026-11-19T00:24:17.455278+00:00",
+  "generated_at": "2026-11-19T00:31:22.647753+00:00",
+  "scan_completed_at": "2026-11-19T00:32:55.124102+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 166,
@@ -8,8 +8,8 @@
     "releases": 69,
     "stories_24h": 57,
     "sources_ok": 13,
-    "total_cards": 360,
-    "new_in_this_scan": 1
+    "total_cards": 362,
+    "new_in_this_scan": 2
   },
   "stories": [
     {
@@ -3365,7 +3365,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-17T18:31:10.791Z",
-      "updated_at": "2026-11-18T23:21:30.384254+00:00",
+      "updated_at": "2026-11-19T00:32:26.556663+00:00",
       "first_source": "npm SDK release",
       "lead": "10 h before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "2026-11-17",
@@ -3378,7 +3378,7 @@
         },
         {
           "id": "gpt-6.2-astra",
-          "name": "azure/gpt-6.2-astra",
+          "name": "databricks/system.ai.gpt-6-2-astra",
           "released_on": "2026-11-17"
         },
         {
@@ -3496,9 +3496,19 @@
           "backfill": false,
           "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
           "evidence_path": "data/intelligence/evidence/models-dev-api/2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff.json.gz"
+        },
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T00:32:26.556663+00:00",
+          "title": "system.ai.gpt-6-2-astra",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/11f2a594eb1cac58491a1bde1e80c1d1b4563a27/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "11f2a594eb1cac58491a1bde1e80c1d1b4563a27",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/0a78222b4bb2847bbd28c71e51feb4ad2f6e31e0bd57317fcf3ae5f65eb3e6ac.json.gz"
         }
       ],
-      "source_count": 10,
+      "source_count": 11,
       "backfill": false,
       "header": "NEW MODEL · OPENAI",
       "card_ids": [
@@ -3533,7 +3543,8 @@
         "intel-bf85dbad9a31c07a440a",
         "intel-5fdd9adadee7d4df38b2",
         "intel-8910dfa60c80e43a7427",
-        "intel-8a68d5c336dc70edf66e"
+        "intel-8a68d5c336dc70edf66e",
+        "intel-b61927f60a3cc4bc4242"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -4031,6 +4042,19 @@
           "build": "32510229440b89dc84c50b31232f7f98c049ce76",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/32510229440b89dc84c50b31232f7f98c049ce76",
           "first_seen": "2026-11-18T23:18:32+00:00"
+        },
+        {
+          "id": "databricks/system.ai.gpt-6-2-astra",
+          "family": "system.ai.gpt-6-2-astra",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"databricks/system.ai.gpt-6-2-astra\": {\"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_272k_tokens\": 2e-05, \"cache_creation_input_token_cost_above_272k_tokens_priority\": 4e-05, \"cache_creation_input_token_cost_priority\": 2e-05, \"cache_read_input_token_cost\": 4e-07, \"cache_read_input_token_cost_above_272k_tokens\": 8e-07, \"cache_read_input_token_cost_above_272k_tokens_priority\": 1.6e-06, \"cache_read_input_token_cost_priority\": 8e-07, \"input_cost_per_token\": 8e-06, \"input_cost_per_token_above_272k_tokens\": 1.6e-05, \"input_cost_per_token_above_272k_tokens_priority\": 3.2e-05, \"input_cost_per_token_priority\": 1.6e-05, \"litellm_provider\": \"databricks\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"metadata\": {\"notes\": \"GPT-6.2 Astra on Databricks is available only through Unity Gateway with the model service name system.ai.gpt-6-2-astra. The Databricks pricing pages list no row for it yet, so prices are the Standard and Fast (priority) rates on the OpenAI pricing page for gpt-6.2-astra with OpenAI's 272K long context threshold, and no '*_dbu_cost_per_token' fields are published. Replace them with the Databricks DBU rates once Databricks publis",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "0a78222b4bb2847bbd28c71e51feb4ad2f6e31e0bd57317fcf3ae5f65eb3e6ac",
+          "method": "structured registry",
+          "build": "11f2a594eb1cac58491a1bde1e80c1d1b4563a27",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/11f2a594eb1cac58491a1bde1e80c1d1b4563a27/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T00:31:33+00:00"
         }
       ],
       "x_post_text": "🟢 NEW MODEL: GPT 6.2 Astra by OpenAI\n\nFirst detected 17 Nov 18:31 UTC in npm SDK release\n📅 First released: 2026-11-17\n⏱ 10 h before it went live on Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire"
@@ -4045,7 +4069,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-17T18:31:10.791Z",
-      "updated_at": "2026-11-18T23:21:30.384254+00:00",
+      "updated_at": "2026-11-19T00:32:26.556663+00:00",
       "first_source": "npm SDK release",
       "lead": "10 h before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "2026-11-17",
@@ -4054,7 +4078,7 @@
       "models": [
         {
           "id": "gpt-6.2-sol",
-          "name": "azure/gpt-6.2-sol",
+          "name": "databricks/system.ai.gpt-6-2-sol",
           "released_on": "2026-11-17"
         },
         {
@@ -4172,9 +4196,19 @@
           "backfill": false,
           "build": "2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff",
           "evidence_path": "data/intelligence/evidence/models-dev-api/2e99ca2542eff328c6ae34b1bee4f673be3229d45423bebdf30a06d4dc125bff.json.gz"
+        },
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T00:32:26.556663+00:00",
+          "title": "system.ai.gpt-6-2-sol",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/11f2a594eb1cac58491a1bde1e80c1d1b4563a27/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "11f2a594eb1cac58491a1bde1e80c1d1b4563a27",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/0a78222b4bb2847bbd28c71e51feb4ad2f6e31e0bd57317fcf3ae5f65eb3e6ac.json.gz"
         }
       ],
-      "source_count": 10,
+      "source_count": 11,
       "backfill": false,
       "header": "NEW MODEL · OPENAI",
       "card_ids": [
@@ -4210,7 +4244,8 @@
         "intel-995ba33a64c024c3ace6",
         "intel-0928399b57d6595eecd9",
         "intel-d1d23e643c45e8267031",
-        "intel-b6b8b77c78445556fb8b"
+        "intel-b6b8b77c78445556fb8b",
+        "intel-da56516d81c3e77e4b12"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -4723,6 +4758,19 @@
           "build": "32510229440b89dc84c50b31232f7f98c049ce76",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/32510229440b89dc84c50b31232f7f98c049ce76",
           "first_seen": "2026-11-18T23:18:32+00:00"
+        },
+        {
+          "id": "databricks/system.ai.gpt-6-2-sol",
+          "family": "system.ai.gpt-6-2-sol",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"databricks/system.ai.gpt-6-2-sol\": {\"cache_creation_input_token_cost\": 2.5e-06, \"cache_creation_input_token_cost_above_272k_tokens\": 5e-06, \"cache_creation_input_token_cost_above_272k_tokens_priority\": 1e-05, \"cache_creation_input_token_cost_priority\": 5e-06, \"cache_read_input_token_cost\": 1e-07, \"cache_read_input_token_cost_above_272k_tokens\": 2e-07, \"cache_read_input_token_cost_above_272k_tokens_priority\": 4e-07, \"cache_read_input_token_cost_priority\": 2e-07, \"input_cost_per_token\": 2e-06, \"input_cost_per_token_above_272k_tokens\": 4e-06, \"input_cost_per_token_above_272k_tokens_priority\": 8e-06, \"input_cost_per_token_priority\": 4e-06, \"litellm_provider\": \"databricks\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"metadata\": {\"notes\": \"GPT-6.2 Sol on Databricks is available only through Unity Gateway with the model service name system.ai.gpt-6-2-sol. The Databricks pricing pages list no row for it yet, so prices are the Standard and Fast (priority) rates on the OpenAI pricing page for gpt-6.2-sol with OpenAI's 272K long context threshold, and no '*_dbu_cost_per_token' fields are published. Replace them with the Databricks DBU rates once Databricks publishes them.\"}, \"",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "0a78222b4bb2847bbd28c71e51feb4ad2f6e31e0bd57317fcf3ae5f65eb3e6ac",
+          "method": "structured registry",
+          "build": "11f2a594eb1cac58491a1bde1e80c1d1b4563a27",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/11f2a594eb1cac58491a1bde1e80c1d1b4563a27/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T00:31:33+00:00"
         }
       ],
       "x_post_text": "🟢 NEW MODEL: GPT 6.2 Sol by OpenAI\n\nFirst detected 17 Nov 18:31 UTC in npm SDK release\n📅 First released: 2026-11-17\n⏱ 10 h before it went live on Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire"
@@ -12015,6 +12063,176 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-b61927f60a3cc4bc4242",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "system.ai.gpt-6-2-astra",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "system.ai.gpt-6-2-astra",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "databricks/system.ai.gpt-6-2-astra",
+          "name": "databricks/system.ai.gpt-6-2-astra",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-19T00:32:26.556663+00:00",
+      "first_seen": "2026-11-19T00:31:33+00:00",
+      "observed_at": "2026-11-19T00:32:26.556663+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "dadf28e192db5fc878071c00366581637f881fca -> 11f2a594eb1cac58491a1bde1e80c1d1b4563a27",
+      "build": "11f2a594eb1cac58491a1bde1e80c1d1b4563a27",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/11f2a594eb1cac58491a1bde1e80c1d1b4563a27/model_prices_and_context_window.json",
+      "artifact_sha256": "0a78222b4bb2847bbd28c71e51feb4ad2f6e31e0bd57317fcf3ae5f65eb3e6ac",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/0a78222b4bb2847bbd28c71e51feb4ad2f6e31e0bd57317fcf3ae5f65eb3e6ac.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/0a78222b4bb2847bbd28c71e51feb4ad2f6e31e0bd57317fcf3ae5f65eb3e6ac.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "databricks/system.ai.gpt-6-2-astra",
+          "family": "system.ai.gpt-6-2-astra",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"databricks/system.ai.gpt-6-2-astra\": {\"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_272k_tokens\": 2e-05, \"cache_creation_input_token_cost_above_272k_tokens_priority\": 4e-05, \"cache_creation_input_token_cost_priority\": 2e-05, \"cache_read_input_token_cost\": 4e-07, \"cache_read_input_token_cost_above_272k_tokens\": 8e-07, \"cache_read_input_token_cost_above_272k_tokens_priority\": 1.6e-06, \"cache_read_input_token_cost_priority\": 8e-07, \"input_cost_per_token\": 8e-06, \"input_cost_per_token_above_272k_tokens\": 1.6e-05, \"input_cost_per_token_above_272k_tokens_priority\": 3.2e-05, \"input_cost_per_token_priority\": 1.6e-05, \"litellm_provider\": \"databricks\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"metadata\": {\"notes\": \"GPT-6.2 Astra on Databricks is available only through Unity Gateway with the model service name system.ai.gpt-6-2-astra. The Databricks pricing pages list no row for it yet, so prices are the Standard and Fast (priority) rates on the OpenAI pricing page for gpt-6.2-astra with OpenAI's 272K long context threshold, and no '*_dbu_cost_per_token' fields are published. Replace them with the Databricks DBU rates once Databricks publis",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "0a78222b4bb2847bbd28c71e51feb4ad2f6e31e0bd57317fcf3ae5f65eb3e6ac",
+          "method": "structured registry",
+          "build": "11f2a594eb1cac58491a1bde1e80c1d1b4563a27",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/11f2a594eb1cac58491a1bde1e80c1d1b4563a27/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T00:31:33+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/11f2a594eb1cac58491a1bde1e80c1d1b4563a27/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/11f2a594eb1cac58491a1bde1e80c1d1b4563a27"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T00:32:28.173096+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: databricks/system.ai.gpt-6-2-astra\nhttps://raw.githubusercontent.com/BerriAI/litellm/11f2a594eb1cac58491a1bde1e80c1d1b4563a27/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-da56516d81c3e77e4b12",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "system.ai.gpt-6-2-sol",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "system.ai.gpt-6-2-sol",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "databricks/system.ai.gpt-6-2-sol",
+          "name": "databricks/system.ai.gpt-6-2-sol",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-19T00:32:26.556663+00:00",
+      "first_seen": "2026-11-19T00:31:33+00:00",
+      "observed_at": "2026-11-19T00:32:26.556663+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "dadf28e192db5fc878071c00366581637f881fca -> 11f2a594eb1cac58491a1bde1e80c1d1b4563a27",
+      "build": "11f2a594eb1cac58491a1bde1e80c1d1b4563a27",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/11f2a594eb1cac58491a1bde1e80c1d1b4563a27/model_prices_and_context_window.json",
+      "artifact_sha256": "0a78222b4bb2847bbd28c71e51feb4ad2f6e31e0bd57317fcf3ae5f65eb3e6ac",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/0a78222b4bb2847bbd28c71e51feb4ad2f6e31e0bd57317fcf3ae5f65eb3e6ac.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/0a78222b4bb2847bbd28c71e51feb4ad2f6e31e0bd57317fcf3ae5f65eb3e6ac.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "databricks/system.ai.gpt-6-2-sol",
+          "family": "system.ai.gpt-6-2-sol",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"databricks/system.ai.gpt-6-2-sol\": {\"cache_creation_input_token_cost\": 2.5e-06, \"cache_creation_input_token_cost_above_272k_tokens\": 5e-06, \"cache_creation_input_token_cost_above_272k_tokens_priority\": 1e-05, \"cache_creation_input_token_cost_priority\": 5e-06, \"cache_read_input_token_cost\": 1e-07, \"cache_read_input_token_cost_above_272k_tokens\": 2e-07, \"cache_read_input_token_cost_above_272k_tokens_priority\": 4e-07, \"cache_read_input_token_cost_priority\": 2e-07, \"input_cost_per_token\": 2e-06, \"input_cost_per_token_above_272k_tokens\": 4e-06, \"input_cost_per_token_above_272k_tokens_priority\": 8e-06, \"input_cost_per_token_priority\": 4e-06, \"litellm_provider\": \"databricks\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"metadata\": {\"notes\": \"GPT-6.2 Sol on Databricks is available only through Unity Gateway with the model service name system.ai.gpt-6-2-sol. The Databricks pricing pages list no row for it yet, so prices are the Standard and Fast (priority) rates on the OpenAI pricing page for gpt-6.2-sol with OpenAI's 272K long context threshold, and no '*_dbu_cost_per_token' fields are published. Replace them with the Databricks DBU rates once Databricks publishes them.\"}, \"",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "0a78222b4bb2847bbd28c71e51feb4ad2f6e31e0bd57317fcf3ae5f65eb3e6ac",
+          "method": "structured registry",
+          "build": "11f2a594eb1cac58491a1bde1e80c1d1b4563a27",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/11f2a594eb1cac58491a1bde1e80c1d1b4563a27/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T00:31:33+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/11f2a594eb1cac58491a1bde1e80c1d1b4563a27/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/11f2a594eb1cac58491a1bde1e80c1d1b4563a27"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T00:32:28.173096+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: databricks/system.ai.gpt-6-2-sol\nhttps://raw.githubusercontent.com/BerriAI/litellm/11f2a594eb1cac58491a1bde1e80c1d1b4563a27/model_prices_and_context_window.json"
+    },
     {
       "id": "intel-41927dff55d09f35234e",
       "scanner": "litellm-intelligence",
@@ -32335,12 +32553,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:23:46.232197+00:00",
+      "last_attempt": "2026-11-19T00:32:25.059504+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:23:46.909213+00:00",
+      "last_success": "2026-11-19T00:32:25.685719+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.677,
+      "duration_seconds": 0.626,
       "latest_build": "ed325e4e496cef3adf2f79909ebd14f8a4f546a331ddf78586157b4ea5f3e94f",
       "builds_retained": 17,
       "identifiers": 9624
@@ -32348,25 +32566,25 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T00:23:47.049987+00:00",
+      "last_attempt": "2026-11-19T00:32:25.824892+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:23:51.487656+00:00",
+      "last_success": "2026-11-19T00:32:28.173096+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.438,
-      "latest_build": "dadf28e192db5fc878071c00366581637f881fca",
-      "builds_retained": 15,
-      "identifiers": 6920
+      "duration_seconds": 2.348,
+      "latest_build": "11f2a594eb1cac58491a1bde1e80c1d1b4563a27",
+      "builds_retained": 16,
+      "identifiers": 6922
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T00:15:49.703678+00:00",
+      "last_attempt": "2026-11-19T00:25:49.396135+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:15:50.141077+00:00",
+      "last_success": "2026-11-19T00:25:49.802792+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.437,
+      "duration_seconds": 0.407,
       "latest_build": "32510229440b89dc84c50b31232f7f98c049ce76",
       "builds_retained": 16,
       "identifiers": 10741
@@ -32374,21 +32592,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T00:23:51.626512+00:00",
+      "last_attempt": "2026-11-19T00:32:28.309358+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 348,
-      "duration_seconds": 15.072
+      "consecutive_failures": 352,
+      "duration_seconds": 14.914
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T00:14:05.178608+00:00",
+      "last_attempt": "2026-11-19T00:30:33.440454+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:14:05.539710+00:00",
+      "last_success": "2026-11-19T00:30:33.666997+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.361,
+      "duration_seconds": 0.227,
       "latest_build": "3.14.30819",
       "builds_retained": 2,
       "identifiers": 3330
@@ -32398,61 +32616,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:22:53.786411+00:00",
+      "last_attempt": "2026-11-19T00:31:22.647815+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:22:55.318741+00:00",
+      "last_success": "2026-11-19T00:31:24.325227+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.532
+      "duration_seconds": 1.677
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:22:55.318795+00:00",
+      "last_attempt": "2026-11-19T00:31:24.325282+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:22:55.443459+00:00",
+      "last_success": "2026-11-19T00:31:24.447423+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.125
+      "duration_seconds": 0.122
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:22:55.443494+00:00",
+      "last_attempt": "2026-11-19T00:31:24.447456+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:23:01.833085+00:00",
+      "last_success": "2026-11-19T00:31:37.693633+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.39
+      "duration_seconds": 13.246
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:23:01.833157+00:00",
+      "last_attempt": "2026-11-19T00:31:37.693701+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:23:46.232142+00:00",
+      "last_success": "2026-11-19T00:32:25.059452+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 44.399,
+      "duration_seconds": 47.366,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T00:23:02.111018+00:00",
+          "checked_at": "2026-11-19T00:31:37.974241+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T00:23:11.276666+00:00",
+          "checked_at": "2026-11-19T00:31:49.251822+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T00:23:11.356066+00:00",
+          "checked_at": "2026-11-19T00:31:49.342767+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T00:23:11.356083+00:00",
+          "checked_at": "2026-11-19T00:31:49.342784+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -32460,12 +32678,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:23:46.232197+00:00",
+      "last_attempt": "2026-11-19T00:32:25.059504+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:23:46.909213+00:00",
+      "last_success": "2026-11-19T00:32:25.685719+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.677,
+      "duration_seconds": 0.626,
       "latest_build": "ed325e4e496cef3adf2f79909ebd14f8a4f546a331ddf78586157b4ea5f3e94f",
       "builds_retained": 17,
       "identifiers": 9624
@@ -32473,25 +32691,25 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T00:23:47.049987+00:00",
+      "last_attempt": "2026-11-19T00:32:25.824892+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:23:51.487656+00:00",
+      "last_success": "2026-11-19T00:32:28.173096+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.438,
-      "latest_build": "dadf28e192db5fc878071c00366581637f881fca",
-      "builds_retained": 15,
-      "identifiers": 6920
+      "duration_seconds": 2.348,
+      "latest_build": "11f2a594eb1cac58491a1bde1e80c1d1b4563a27",
+      "builds_retained": 16,
+      "identifiers": 6922
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T00:15:49.703678+00:00",
+      "last_attempt": "2026-11-19T00:25:49.396135+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:15:50.141077+00:00",
+      "last_success": "2026-11-19T00:25:49.802792+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.437,
+      "duration_seconds": 0.407,
       "latest_build": "32510229440b89dc84c50b31232f7f98c049ce76",
       "builds_retained": 16,
       "identifiers": 10741
@@ -32499,21 +32717,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T00:23:51.626512+00:00",
+      "last_attempt": "2026-11-19T00:32:28.309358+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 348,
-      "duration_seconds": 15.072
+      "consecutive_failures": 352,
+      "duration_seconds": 14.914
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T00:14:05.178608+00:00",
+      "last_attempt": "2026-11-19T00:30:33.440454+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:14:05.539710+00:00",
+      "last_success": "2026-11-19T00:30:33.666997+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.361,
+      "duration_seconds": 0.227,
       "latest_build": "3.14.30819",
       "builds_retained": 2,
       "identifiers": 3330
@@ -32521,64 +32739,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:24:06.704632+00:00",
+      "last_attempt": "2026-11-19T00:32:43.229178+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:24:13.949841+00:00",
+      "last_success": "2026-11-19T00:32:50.703661+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.245
+      "duration_seconds": 7.475
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:24:13.949908+00:00",
+      "last_attempt": "2026-11-19T00:32:50.703728+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:24:15.549391+00:00",
+      "last_success": "2026-11-19T00:32:52.627232+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.6
+      "duration_seconds": 1.924
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T00:16:14.668715+00:00",
+      "last_attempt": "2026-11-19T00:26:14.254369+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:16:23.041520+00:00",
+      "last_success": "2026-11-19T00:27:04.989067+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.373
+      "duration_seconds": 50.735
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:24:15.549449+00:00",
+      "last_attempt": "2026-11-19T00:32:52.627285+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:24:17.141558+00:00",
+      "last_success": "2026-11-19T00:32:54.288786+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.592
+      "duration_seconds": 1.662
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:24:17.141596+00:00",
+      "last_attempt": "2026-11-19T00:32:54.288826+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:24:17.171046+00:00",
+      "last_success": "2026-11-19T00:32:54.838836+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.029
+      "duration_seconds": 0.55
     }
   },
   "identities": {
-    "identifiers": 30615,
+    "identifiers": 30617,
     "declared_aliases": 17766,
     "pending_candidates": 0
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 69,
-      "seconds_mean": 166.1513744057971,
+      "samples": 71,
+      "seconds_mean": 162.9796923943662,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -32592,8 +32810,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 97,
-      "events": 97,
+      "complete": 99,
+      "events": 99,
       "rate": 1.0
     },
     "source_health": {
