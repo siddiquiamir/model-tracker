@@ -1,17 +1,68 @@
 {
-  "generated_at": "2026-11-19T03:43:31.997916+00:00",
-  "scan_completed_at": "2026-11-19T03:45:14.339539+00:00",
+  "generated_at": "2026-11-19T04:01:34.900903+00:00",
+  "scan_completed_at": "2026-11-19T04:02:54.846587+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 212,
-    "leaks": 43,
+    "stories": 213,
+    "leaks": 44,
     "releases": 69,
-    "stories_24h": 107,
-    "sources_ok": 15,
-    "total_cards": 431,
-    "new_in_this_scan": 0
+    "stories_24h": 108,
+    "sources_ok": 13,
+    "total_cards": 432,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-genie-4",
+      "group": "genie-4",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Genie 4",
+      "provider_slug": "multi",
+      "provider_name": "AI Model Identifiers",
+      "accent_color": "#6366f1",
+      "detected_at": "2026-11-19T04:02:03.849033+00:00",
+      "updated_at": "2026-11-19T04:02:03.849033+00:00",
+      "first_source": "Vertex AI Quotas registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "genie-4",
+          "name": "base_model:genie-4"
+        },
+        {
+          "id": "lyria-realtime",
+          "name": "base_model:lyria-realtime"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vertex AI Quotas registry",
+          "scanner": "vertex-ai-quotas",
+          "detected_at": "2026-11-19T04:02:03.849033+00:00",
+          "title": "New GOOGLE Model(s) on Google Gemini API: genie-4, lyria-realtime",
+          "url": "https://console.cloud.google.com/iam-admin/quotas",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · AI MODEL IDENTIFIERS",
+      "card_ids": [
+        "vertex-quota-google-8ee555ac"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: Genie 4 by AI Model Identifiers\n\nFirst detected 19 Nov 04:02 UTC in Vertex AI Quotas registry\nIDs: genie-4, lyria-realtime\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-19T04:02:54.844845+00:00"
+    },
     {
       "id": "story-gpt-realtime",
       "group": "gpt-realtime",
@@ -15806,6 +15857,47 @@
   ],
   "cards": [
     {
+      "id": "vertex-quota-google-8ee555ac",
+      "category": "cli-sdk-diff",
+      "scanner": "vertex-ai-quotas",
+      "header": "GOOGLE CLOUD QUOTA REGISTRY · GOOGLE",
+      "title": "New GOOGLE Model(s) on Google Gemini API: genie-4, lyria-realtime",
+      "subtitle": "Detected in `generativelanguage.googleapis.com` quota dimensions (2 new; not confirmation of public rollout)",
+      "build_label": "Gemini API Quotas",
+      "build_transition": "generativelanguage.googleapis.com (+2 model quota)",
+      "models": [
+        {
+          "id": "genie-4",
+          "name": "base_model:genie-4"
+        },
+        {
+          "id": "lyria-realtime",
+          "name": "base_model:lyria-realtime"
+        }
+      ],
+      "evidence": "console.cloud.google.com/iam-admin/quotas (generativelanguage.googleapis.com)",
+      "source_text": "Google Gemini API `generativelanguage.googleapis.com` quota dimension registry.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "GCP Quotas",
+          "url": "https://console.cloud.google.com/iam-admin/quotas"
+        },
+        {
+          "label": "Vertex AI Models",
+          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
+        }
+      ],
+      "detected_at": "2026-11-19T04:02:03.849033+00:00",
+      "tracker_observed_at": "2026-11-19T04:02:26.903940+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 GOOGLE CLOUD QUOTA REGISTRY · GOOGLE\nNew GOOGLE Model(s) on Google Gemini API: genie-4, lyria-realtime spotted in Gemini API Quotas generativelanguage.googleapis.com (+2 model quota)!\n\n• base_model:genie-4 (genie-4)\n• base_model:lyria-realtime (lyria-realtime)\n\nEvidence: console.cloud.google.com/iam-admin/quotas (generativelanguage.googleapis.com)\nSource: Google Gemini API `generativelanguage.googleapis.com` quota dimension registry.\n\nTracked by @StatsWire"
+    },
+    {
       "id": "intel-90a0e2fb9cb25edd7917",
       "scanner": "litellm-intelligence",
       "intelligence": true,
@@ -21042,7 +21134,7 @@
         }
       ],
       "detected_at": "2026-11-19T01:01:30Z",
-      "tracker_observed_at": "2026-11-19T03:44:56.820509+00:00",
+      "tracker_observed_at": "2026-11-19T04:02:50.602119+00:00",
       "pricing": null,
       "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini 4 Neon spotted in Build 2.33.0 -> 1.0.20261119010130 (Insiders)!\n\n• Gemini 4 Neon (gemini-4-neon)\n• Gemini 4 Neon (High) (gemini-4-neon-high)\n• Gemini 4 Neon (Low) (gemini-4-neon-low)\n• Gemini 4 Neon (Medium) (gemini-4-neon-medium)\n• Gemini 4 Neon XHigh (gemini-4-neon-xhigh)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
@@ -42961,12 +43053,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T03:44:32.621664+00:00",
+      "last_attempt": "2026-11-19T04:02:26.903994+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T03:44:33.293610+00:00",
+      "last_success": "2026-11-19T04:02:27.550182+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.672,
+      "duration_seconds": 0.646,
       "latest_build": "30f900db97ea60433430f676aeb05dc06c70808323caa8b302e9b4d2347a2983",
       "builds_retained": 18,
       "identifiers": 9635
@@ -42974,12 +43066,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T03:42:24.757370+00:00",
+      "last_attempt": "2026-11-19T04:02:27.688825+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T03:42:25.071533+00:00",
+      "last_success": "2026-11-19T04:02:28.043630+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.314,
+      "duration_seconds": 0.355,
       "latest_build": "ab76aa78c2337c69d95dac50222f31452d55b2ed",
       "builds_retained": 21,
       "identifiers": 6934
@@ -42987,12 +43079,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T03:44:33.432531+00:00",
+      "last_attempt": "2026-11-19T03:54:30.767480+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T03:44:33.816380+00:00",
+      "last_success": "2026-11-19T03:54:31.162135+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.384,
+      "duration_seconds": 0.395,
       "latest_build": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
       "builds_retained": 20,
       "identifiers": 10752
@@ -43000,21 +43092,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T03:44:33.959155+00:00",
+      "last_attempt": "2026-11-19T04:02:28.188717+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 447,
-      "duration_seconds": 14.984
+      "consecutive_failures": 456,
+      "duration_seconds": 15.203
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T03:44:48.949468+00:00",
+      "last_attempt": "2026-11-19T04:00:46.884505+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T03:44:49.265131+00:00",
+      "last_success": "2026-11-19T04:00:47.228131+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.316,
+      "duration_seconds": 0.344,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -43024,61 +43116,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T03:43:31.997973+00:00",
+      "last_attempt": "2026-11-19T04:01:34.900958+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T03:43:33.410380+00:00",
+      "last_success": "2026-11-19T04:01:36.446578+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.412
+      "duration_seconds": 1.546
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T03:43:33.410434+00:00",
+      "last_attempt": "2026-11-19T04:01:36.446632+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T03:43:33.535635+00:00",
+      "last_success": "2026-11-19T04:01:36.565597+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.125
+      "duration_seconds": 0.119
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T03:43:33.535668+00:00",
+      "last_attempt": "2026-11-19T04:01:36.565631+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T03:43:44.848588+00:00",
+      "last_success": "2026-11-19T04:01:45.009866+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 11.313
+      "duration_seconds": 8.444
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T03:43:44.848640+00:00",
+      "last_attempt": "2026-11-19T04:01:45.009922+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T03:44:32.621613+00:00",
+      "last_success": "2026-11-19T04:02:26.903940+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 47.773,
+      "duration_seconds": 41.894,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T03:43:45.313782+00:00",
+          "checked_at": "2026-11-19T04:01:45.238914+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T03:43:54.620808+00:00",
+          "checked_at": "2026-11-19T04:01:54.194321+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T03:43:54.711923+00:00",
+          "checked_at": "2026-11-19T04:01:54.287837+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T03:43:54.711940+00:00",
+          "checked_at": "2026-11-19T04:01:54.287855+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -43086,12 +43178,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T03:44:32.621664+00:00",
+      "last_attempt": "2026-11-19T04:02:26.903994+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T03:44:33.293610+00:00",
+      "last_success": "2026-11-19T04:02:27.550182+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.672,
+      "duration_seconds": 0.646,
       "latest_build": "30f900db97ea60433430f676aeb05dc06c70808323caa8b302e9b4d2347a2983",
       "builds_retained": 18,
       "identifiers": 9635
@@ -43099,12 +43191,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T03:42:24.757370+00:00",
+      "last_attempt": "2026-11-19T04:02:27.688825+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T03:42:25.071533+00:00",
+      "last_success": "2026-11-19T04:02:28.043630+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.314,
+      "duration_seconds": 0.355,
       "latest_build": "ab76aa78c2337c69d95dac50222f31452d55b2ed",
       "builds_retained": 21,
       "identifiers": 6934
@@ -43112,12 +43204,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T03:44:33.432531+00:00",
+      "last_attempt": "2026-11-19T03:54:30.767480+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T03:44:33.816380+00:00",
+      "last_success": "2026-11-19T03:54:31.162135+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.384,
+      "duration_seconds": 0.395,
       "latest_build": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
       "builds_retained": 20,
       "identifiers": 10752
@@ -43125,21 +43217,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T03:44:33.959155+00:00",
+      "last_attempt": "2026-11-19T04:02:28.188717+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 447,
-      "duration_seconds": 14.984
+      "consecutive_failures": 456,
+      "duration_seconds": 15.203
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T03:44:48.949468+00:00",
+      "last_attempt": "2026-11-19T04:00:46.884505+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T03:44:49.265131+00:00",
+      "last_success": "2026-11-19T04:00:47.228131+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.316,
+      "duration_seconds": 0.344,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -43147,52 +43239,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T03:44:49.556644+00:00",
+      "last_attempt": "2026-11-19T04:02:43.397726+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T03:44:56.820509+00:00",
+      "last_success": "2026-11-19T04:02:50.602119+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.264
+      "duration_seconds": 7.204
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T03:44:56.820576+00:00",
+      "last_attempt": "2026-11-19T04:02:50.602200+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T03:44:58.557919+00:00",
+      "last_success": "2026-11-19T04:02:52.593764+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.737
+      "duration_seconds": 1.992
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T03:44:58.557963+00:00",
+      "last_attempt": "2026-11-19T03:54:55.709876+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T03:45:11.018942+00:00",
+      "last_success": "2026-11-19T03:55:04.156311+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 12.461
+      "duration_seconds": 8.446
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T03:45:11.018994+00:00",
+      "last_attempt": "2026-11-19T04:02:52.593812+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T03:45:12.665557+00:00",
+      "last_success": "2026-11-19T04:02:54.249526+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.647
+      "duration_seconds": 1.656
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T03:45:12.665593+00:00",
+      "last_attempt": "2026-11-19T04:02:54.249563+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T03:45:12.693813+00:00",
+      "last_success": "2026-11-19T04:02:54.293263+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.028
+      "duration_seconds": 0.044
     }
   },
   "identities": {
