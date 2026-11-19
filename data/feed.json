@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-19T17:13:33.544060+00:00",
-  "scan_completed_at": "2026-11-19T17:15:14.882751+00:00",
+  "generated_at": "2026-11-19T17:39:36.017004+00:00",
+  "scan_completed_at": "2026-11-19T17:41:12.088095+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 217,
+    "stories": 216,
     "leaks": 44,
-    "releases": 69,
-    "stories_24h": 77,
-    "sources_ok": 12,
-    "total_cards": 451,
-    "new_in_this_scan": 0
+    "releases": 68,
+    "stories_24h": 76,
+    "sources_ok": 15,
+    "total_cards": 449,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -451,7 +451,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-19T04:02:03.849033+00:00",
-      "updated_at": "2026-11-19T04:02:03.849033+00:00",
+      "updated_at": "2026-11-19T17:40:41.628298+00:00",
       "first_source": "Vertex AI Quotas registry",
       "lead": "",
       "released_on": "",
@@ -460,7 +460,7 @@
       "models": [
         {
           "id": "genie-4",
-          "name": "base_model:genie-4"
+          "name": "gemini/genie-4"
         },
         {
           "id": "lyria-realtime",
@@ -477,20 +477,45 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T17:40:41.628298+00:00",
+          "title": "genie-4",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/f1a1f6f0a1234a2a4f1031d83264af2e01883d9c/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "f1a1f6f0a1234a2a4f1031d83264af2e01883d9c",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/0aac78ec24853ec21dd4f690cc2cfd104624500dae29bfd37dd394ee6bc5b719.json.gz"
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
       "header": "LEAK · GOOGLE",
       "card_ids": [
-        "vertex-quota-google-8ee555ac"
+        "vertex-quota-google-8ee555ac",
+        "intel-fccd1b781d043d35bc69"
       ],
-      "event_label": "",
+      "event_label": "Registry update",
       "intelligence_only": false,
       "candidate_only": false,
-      "registry_evidence": [],
+      "registry_evidence": [
+        {
+          "id": "gemini/genie-4",
+          "family": "genie-4",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gemini/genie-4\": {\"input_cost_per_image_token\": 1.5e-06, \"input_cost_per_token\": 1.5e-06, \"litellm_provider\": \"gemini\", \"max_input_tokens\": 1048576, \"max_output_tokens\": 65536, \"mode\": \"chat\", \"output_cost_per_token\": 9e-06, \"output_cost_per_video_token\": 1.75e-05, \"source\": \"https://ai.google.dev/gemini-api/docs/pricing\", \"supported_endpoints\": [\"/v1beta/interactions\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"video\", \"audio\"], \"supports_audio_input\": false, \"supports_audio_output\": true, \"supports_function_calling\": false, \"supports_prompt_caching\": false, \"supports_reasoning\": false, \"supports_response_schema\": false, \"supports_system_messages\": false, \"supports_url_context\": false, \"supports_video_input\": false, \"supports_vision\": true, \"supports_web_search\": false}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "0aac78ec24853ec21dd4f690cc2cfd104624500dae29bfd37dd394ee6bc5b719",
+          "method": "structured registry",
+          "build": "f1a1f6f0a1234a2a4f1031d83264af2e01883d9c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/f1a1f6f0a1234a2a4f1031d83264af2e01883d9c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T17:38:57+00:00"
+        }
+      ],
       "discord_alerted_at": "2026-11-19T04:02:54.844845+00:00",
-      "x_post_text": "🟠 LEAK: Genie 4 by Google\n\nFirst detected 19 Nov 04:02 UTC in Vertex AI Quotas registry\nIDs: genie-4, lyria-realtime\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: Genie 4 by Google\n\nFirst detected 19 Nov 04:02 UTC in Vertex AI Quotas registry\nConfirmed by LiteLLM commit-pinned registry\nIDs: genie-4, lyria-realtime\n\nvia @StatsWire"
     },
     {
       "id": "story-gpt-realtime",
@@ -16122,6 +16147,74 @@
       "x_post_text": "🟢 NEW MODEL: maniflow tb by Olmo / Molmo\n\nFirst detected 05 Nov 17:54 UTC in Hugging Face\n\nvia @StatsWire"
     },
     {
+      "id": "story-gpt-6-cyber",
+      "group": "gpt-6-cyber",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "GPT 6 Cyber",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "accent_color": "#10b981",
+      "detected_at": "2026-11-05T17:48:39.306676+00:00",
+      "updated_at": "2026-11-05T20:13:31.531520+00:00",
+      "first_source": "OpenAI SDK GitHub Master",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gpt-6-cyber",
+          "name": "GPT 6 Cyber"
+        }
+      ],
+      "sources": [
+        {
+          "label": "OpenAI SDK GitHub Master",
+          "scanner": "docs-radar",
+          "detected_at": "2026-11-05T17:48:39.306676+00:00",
+          "title": "New OpenAI Model Merged to SDK Master: gpt-6-cyber",
+          "url": "https://github.com/openai/openai-node/commits/master/src/resources/shared.ts",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "npm SDK release",
+          "scanner": "npm",
+          "detected_at": "2026-11-05T18:14:55.268Z",
+          "title": "Openai (GPT 6 Cyber)",
+          "url": "https://www.npmjs.com/package/openai?activeTab=versions",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "LiteLLM registry",
+          "scanner": "litellm",
+          "detected_at": "2026-11-05T20:13:31.531520+00:00",
+          "title": "3 New Model(s) Added to LiteLLM",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 3,
+      "backfill": false,
+      "header": "LEAK · OPENAI",
+      "card_ids": [
+        "pre-release-gh_openai_sdk_union-f9138464",
+        "npm-openai-7.51.0-7.52.0",
+        "litellm-diff-abac7cca"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: GPT 6 Cyber by OpenAI\n\nFirst detected 05 Nov 17:48 UTC in OpenAI SDK GitHub Master\nConfirmed by npm SDK release, LiteLLM registry\n\nvia @StatsWire"
+    },
+    {
       "id": "story-dflash-2ricursivedraftmodel",
       "group": "dflash-2ricursivedraftmodel",
       "kind": "leak",
@@ -16173,143 +16266,6 @@
       "candidate_only": false,
       "registry_evidence": [],
       "x_post_text": "🟠 LEAK: DFlash2RicursiveDraftModel by Architecture Diff\n\nFirst detected 05 Nov 17:40 UTC in vLLM registry\nCodename: dflash, ricursiveforcausallm\nIDs: RicursiveForCausalLM, DFlash2RicursiveDraftModel\n\nvia @StatsWire"
-    },
-    {
-      "id": "story-gpt-6-cyber",
-      "group": "gpt-6-cyber",
-      "kind": "leak",
-      "open_weights": false,
-      "title": "GPT 6 Cyber",
-      "provider_slug": "openai",
-      "provider_name": "OpenAI",
-      "accent_color": "#10b981",
-      "detected_at": "2026-11-05T17:33:03.140082+00:00",
-      "updated_at": "2026-11-05T20:13:31.531520+00:00",
-      "first_source": "OpenAI API spec",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "gpt-6-cyber",
-          "name": "GPT 6 Cyber"
-        }
-      ],
-      "sources": [
-        {
-          "label": "OpenAI API spec",
-          "scanner": "openai-spec",
-          "detected_at": "2026-11-05T17:33:03.140082+00:00",
-          "title": "New model ID in OpenAI's API spec: gpt-6-cyber",
-          "url": "https://github.com/openai/openai-openapi/blob/main/openapi.yaml",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "OpenAI SDK GitHub Master",
-          "scanner": "docs-radar",
-          "detected_at": "2026-11-05T17:48:39.306676+00:00",
-          "title": "New OpenAI Model Merged to SDK Master: gpt-6-cyber",
-          "url": "https://github.com/openai/openai-node/commits/master/src/resources/shared.ts",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "npm SDK release",
-          "scanner": "npm",
-          "detected_at": "2026-11-05T18:14:55.268Z",
-          "title": "Openai (GPT 6 Cyber)",
-          "url": "https://www.npmjs.com/package/openai?activeTab=versions",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "LiteLLM registry",
-          "scanner": "litellm",
-          "detected_at": "2026-11-05T20:13:31.531520+00:00",
-          "title": "3 New Model(s) Added to LiteLLM",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        }
-      ],
-      "source_count": 4,
-      "backfill": false,
-      "header": "LEAK · OPENAI",
-      "card_ids": [
-        "openai-spec-ids-f9138464",
-        "pre-release-gh_openai_sdk_union-f9138464",
-        "npm-openai-7.51.0-7.52.0",
-        "litellm-diff-abac7cca"
-      ],
-      "event_label": "",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: GPT 6 Cyber by OpenAI\n\nFirst detected 05 Nov 17:33 UTC in OpenAI API spec\nConfirmed by OpenAI SDK GitHub Master, npm SDK release, LiteLLM registry\n\nvia @StatsWire"
-    },
-    {
-      "id": "story-gemini-omni-1-2-flash",
-      "group": "gemini-omni-1-2-flash",
-      "kind": "release",
-      "open_weights": false,
-      "title": "Gemini Omni 1.2 Flash",
-      "provider_slug": "google",
-      "provider_name": "Google",
-      "accent_color": "#38bdf8",
-      "detected_at": "2026-11-05T17:24:28.602877+00:00",
-      "updated_at": "2026-11-05T17:34:40.623776+00:00",
-      "first_source": "OpenRouter",
-      "lead": "",
-      "released_on": "2026-11-05",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "gemini-omni-1.2-flash",
-          "name": "Gemini Omni 1.2 Flash",
-          "released_on": "2026-11-05"
-        }
-      ],
-      "sources": [
-        {
-          "label": "OpenRouter",
-          "scanner": "openrouter",
-          "detected_at": "2026-11-05T17:24:28.602877+00:00",
-          "title": "Google: Gemini Omni 1.2 Flash",
-          "url": "https://openrouter.ai/google/gemini-omni-1.2-flash",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "LiteLLM registry",
-          "scanner": "litellm",
-          "detected_at": "2026-11-05T17:34:40.623776+00:00",
-          "title": "1 New Model(s) Added to LiteLLM",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        }
-      ],
-      "source_count": 2,
-      "backfill": false,
-      "header": "NEW MODEL · GOOGLE",
-      "card_ids": [
-        "openrouter-model-google_gemini-omni-1.2-flash",
-        "litellm-diff-0f824be4"
-      ],
-      "event_label": "",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Gemini Omni 1.2 Flash by Google\n\nFirst detected 05 Nov 17:24 UTC in OpenRouter\n📅 First released: 2026-11-05\nConfirmed by LiteLLM registry\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-carbon",
@@ -16573,6 +16529,90 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-fccd1b781d043d35bc69",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "genie-4",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "genie-4",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "gemini/genie-4",
+          "name": "gemini/genie-4",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T17:40:41.628298+00:00",
+      "first_seen": "2026-11-19T17:38:57+00:00",
+      "observed_at": "2026-11-19T17:40:41.628298+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "3e00b708d12ebddfaff33e046d3cc647d3c1f012 -> f1a1f6f0a1234a2a4f1031d83264af2e01883d9c",
+      "build": "f1a1f6f0a1234a2a4f1031d83264af2e01883d9c",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/f1a1f6f0a1234a2a4f1031d83264af2e01883d9c/model_prices_and_context_window.json",
+      "artifact_sha256": "0aac78ec24853ec21dd4f690cc2cfd104624500dae29bfd37dd394ee6bc5b719",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/0aac78ec24853ec21dd4f690cc2cfd104624500dae29bfd37dd394ee6bc5b719.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/0aac78ec24853ec21dd4f690cc2cfd104624500dae29bfd37dd394ee6bc5b719.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "gemini/genie-4",
+          "family": "genie-4",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gemini/genie-4\": {\"input_cost_per_image_token\": 1.5e-06, \"input_cost_per_token\": 1.5e-06, \"litellm_provider\": \"gemini\", \"max_input_tokens\": 1048576, \"max_output_tokens\": 65536, \"mode\": \"chat\", \"output_cost_per_token\": 9e-06, \"output_cost_per_video_token\": 1.75e-05, \"source\": \"https://ai.google.dev/gemini-api/docs/pricing\", \"supported_endpoints\": [\"/v1beta/interactions\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"video\", \"audio\"], \"supports_audio_input\": false, \"supports_audio_output\": true, \"supports_function_calling\": false, \"supports_prompt_caching\": false, \"supports_reasoning\": false, \"supports_response_schema\": false, \"supports_system_messages\": false, \"supports_url_context\": false, \"supports_video_input\": false, \"supports_vision\": true, \"supports_web_search\": false}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "0aac78ec24853ec21dd4f690cc2cfd104624500dae29bfd37dd394ee6bc5b719",
+          "method": "structured registry",
+          "build": "f1a1f6f0a1234a2a4f1031d83264af2e01883d9c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/f1a1f6f0a1234a2a4f1031d83264af2e01883d9c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T17:38:57+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/f1a1f6f0a1234a2a4f1031d83264af2e01883d9c/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/f1a1f6f0a1234a2a4f1031d83264af2e01883d9c"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T17:40:42.983595+00:00",
+      "pricing": null,
+      "x_post_text": "LiteLLM model registry f1a1f6f0a123: gemini/genie-4\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/f1a1f6f0a1234a2a4f1031d83264af2e01883d9c/model_prices_and_context_window.json"
+    },
     {
       "id": "intel-bbf2871d990bd52eeb51",
       "scanner": "models-dev-api",
@@ -45794,112 +45834,6 @@
       "pricing": null
     },
     {
-      "id": "litellm-diff-0f824be4",
-      "category": "cli-sdk-diff",
-      "scanner": "litellm",
-      "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
-      "title": "1 New Model(s) Added to LiteLLM",
-      "subtitle": "Verified model_prices_and_context_window.json diff",
-      "build_label": "Registry Diff",
-      "build_transition": "+1 model keys",
-      "models": [
-        {
-          "id": "vertex_ai/gemini-omni-1.2-flash",
-          "name": "vertex_ai/gemini-omni-1.2-flash",
-          "released_on": "2026-11-05"
-        }
-      ],
-      "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
-      "source_text": "official LiteLLM master pricing & context window registry.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "LITELLM",
-      "provider_slug": "modelsdev",
-      "accent_color": "#10b981",
-      "links": [
-        {
-          "label": "LiteLLM JSON Registry",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
-        },
-        {
-          "label": "LiteLLM Commits",
-          "url": "https://github.com/BerriAI/litellm/commits/main"
-        }
-      ],
-      "detected_at": "2026-11-05T17:34:40.623776+00:00",
-      "pricing": null,
-      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 model keys!\n\n• vertex_ai/gemini-omni-1.2-flash (vertex_ai/gemini-omni-1.2-flash)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "openai-spec-ids-f9138464",
-      "category": "cli-sdk-diff",
-      "scanner": "openai-spec",
-      "header": "OPENAI API SPEC · OPENAI",
-      "title": "New model ID in OpenAI's API spec: gpt-6-cyber",
-      "subtitle": "+1 model ID(s) in openapi.yaml",
-      "build_label": "OpenAI API spec",
-      "build_transition": "openai/openai-openapi · main",
-      "models": [
-        {
-          "id": "gpt-6-cyber",
-          "name": "GPT 6 Cyber"
-        }
-      ],
-      "evidence": "github.com/openai/openai-openapi/blob/main/openapi.yaml",
-      "source_text": "OpenAI's published OpenAPI specification.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "OPENAI",
-      "provider_slug": "openai",
-      "accent_color": "#10a37f",
-      "links": [
-        {
-          "label": "openai-openapi spec",
-          "url": "https://github.com/openai/openai-openapi/blob/main/openapi.yaml"
-        }
-      ],
-      "detected_at": "2026-11-05T17:33:03.140082+00:00",
-      "pricing": null,
-      "x_post_text": "🚨 OPENAI API SPEC · OPENAI\nNew model ID in OpenAI's API spec: gpt-6-cyber spotted in OpenAI API spec openai/openai-openapi · main!\n\n• GPT 6 Cyber (gpt-6-cyber)\n\nEvidence: github.com/openai/openai-openapi/blob/main/openapi.yaml\nSource: OpenAI's published OpenAPI specification.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "openrouter-model-google_gemini-omni-1.2-flash",
-      "category": "cli-sdk-diff",
-      "scanner": "openrouter",
-      "header": "OPENROUTER LIVE REGISTRY · GOOGLE",
-      "title": "Google: Gemini Omni 1.2 Flash",
-      "subtitle": "Newly registered model endpoint on OpenRouter (/api/v1/models)",
-      "build_label": "Endpoint ID",
-      "build_transition": "google/gemini-omni-1.2-flash",
-      "models": [
-        {
-          "id": "google/gemini-omni-1.2-flash",
-          "name": "Google: Gemini Omni 1.2 Flash (131k context window)",
-          "released_on": "2026-11-05"
-        }
-      ],
-      "evidence": "openrouter.ai/api/v1/models",
-      "source_text": "official public OpenRouter /api/v1/models JSON registry.",
-      "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
-      "disclaimer_2": "Publicly listed API model identifier and context length specification.",
-      "provider_name": "GOOGLE",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "OpenRouter Model Page",
-          "url": "https://openrouter.ai/google/gemini-omni-1.2-flash"
-        },
-        {
-          "label": "OpenRouter Models API",
-          "url": "https://openrouter.ai/api/v1/models"
-        }
-      ],
-      "detected_at": "2026-11-05T17:24:28.602877+00:00",
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · GOOGLE\nGoogle: Gemini Omni 1.2 Flash spotted in Endpoint ID google/gemini-omni-1.2-flash!\n\n• Google: Gemini Omni 1.2 Flash (131k context window) (google/gemini-omni-1.2-flash)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire",
-      "pricing": null
-    },
-    {
       "id": "ag-acp-1.4.3-revision-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
@@ -46063,12 +45997,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:14:54.099232+00:00",
+      "last_attempt": "2026-11-19T17:40:39.672953+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:14:54.505448+00:00",
+      "last_success": "2026-11-19T17:40:40.156705+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.406,
+      "duration_seconds": 0.484,
       "latest_build": "3daa0f95dbcdc7e053d50a9e2539f79cdcf3739a625fe64103edb341a8853a8e",
       "builds_retained": 25,
       "identifiers": 9647
@@ -46076,25 +46010,25 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T17:12:44.695643+00:00",
+      "last_attempt": "2026-11-19T17:40:40.260041+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:12:45.195572+00:00",
+      "last_success": "2026-11-19T17:40:42.983595+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.5,
-      "latest_build": "755762847f6eb356f4aeba1d15287c4a33ea79be",
-      "builds_retained": 25,
-      "identifiers": 6935
+      "duration_seconds": 2.724,
+      "latest_build": "f1a1f6f0a1234a2a4f1031d83264af2e01883d9c",
+      "builds_retained": 27,
+      "identifiers": 6937
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T17:04:40.862317+00:00",
+      "last_attempt": "2026-11-19T17:40:43.090816+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:04:41.510905+00:00",
+      "last_success": "2026-11-19T17:40:43.627235+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.649,
+      "duration_seconds": 0.537,
       "latest_build": "ba846a56a8a2c486b92c82732a849fa474dc885b",
       "builds_retained": 28,
       "identifiers": 10768
@@ -46102,21 +46036,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T17:14:54.607760+00:00",
+      "last_attempt": "2026-11-19T17:40:43.734276+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 684,
-      "duration_seconds": 10.969
+      "consecutive_failures": 697,
+      "duration_seconds": 11.113
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T17:01:00.531176+00:00",
+      "last_attempt": "2026-11-19T17:32:50.892585+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:01:00.854260+00:00",
+      "last_success": "2026-11-19T17:32:51.186594+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.323,
+      "duration_seconds": 0.294,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -46126,61 +46060,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:13:33.544150+00:00",
+      "last_attempt": "2026-11-19T17:39:36.017063+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:13:35.896696+00:00",
+      "last_success": "2026-11-19T17:39:38.389240+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.353
+      "duration_seconds": 2.372
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:13:35.896758+00:00",
+      "last_attempt": "2026-11-19T17:39:38.389301+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:13:36.137621+00:00",
+      "last_success": "2026-11-19T17:39:38.619379+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.241
+      "duration_seconds": 0.23
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:13:36.137657+00:00",
+      "last_attempt": "2026-11-19T17:39:38.619417+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:13:44.617792+00:00",
+      "last_success": "2026-11-19T17:39:47.334783+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.48
+      "duration_seconds": 8.715
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:13:44.617877+00:00",
+      "last_attempt": "2026-11-19T17:39:47.334864+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:14:54.099171+00:00",
+      "last_success": "2026-11-19T17:40:39.672889+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 69.481,
+      "duration_seconds": 52.338,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T17:13:44.871238+00:00",
+          "checked_at": "2026-11-19T17:39:47.577192+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T17:14:00.677292+00:00",
+          "checked_at": "2026-11-19T17:40:01.963714+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T17:14:00.822276+00:00",
+          "checked_at": "2026-11-19T17:40:02.131015+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T17:14:00.822295+00:00",
+          "checked_at": "2026-11-19T17:40:02.131035+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -46188,12 +46122,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:14:54.099232+00:00",
+      "last_attempt": "2026-11-19T17:40:39.672953+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:14:54.505448+00:00",
+      "last_success": "2026-11-19T17:40:40.156705+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.406,
+      "duration_seconds": 0.484,
       "latest_build": "3daa0f95dbcdc7e053d50a9e2539f79cdcf3739a625fe64103edb341a8853a8e",
       "builds_retained": 25,
       "identifiers": 9647
@@ -46201,25 +46135,25 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T17:12:44.695643+00:00",
+      "last_attempt": "2026-11-19T17:40:40.260041+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:12:45.195572+00:00",
+      "last_success": "2026-11-19T17:40:42.983595+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.5,
-      "latest_build": "755762847f6eb356f4aeba1d15287c4a33ea79be",
-      "builds_retained": 25,
-      "identifiers": 6935
+      "duration_seconds": 2.724,
+      "latest_build": "f1a1f6f0a1234a2a4f1031d83264af2e01883d9c",
+      "builds_retained": 27,
+      "identifiers": 6937
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T17:04:40.862317+00:00",
+      "last_attempt": "2026-11-19T17:40:43.090816+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:04:41.510905+00:00",
+      "last_success": "2026-11-19T17:40:43.627235+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.649,
+      "duration_seconds": 0.537,
       "latest_build": "ba846a56a8a2c486b92c82732a849fa474dc885b",
       "builds_retained": 28,
       "identifiers": 10768
@@ -46227,21 +46161,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T17:14:54.607760+00:00",
+      "last_attempt": "2026-11-19T17:40:43.734276+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 684,
-      "duration_seconds": 10.969
+      "consecutive_failures": 697,
+      "duration_seconds": 11.113
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T17:01:00.531176+00:00",
+      "last_attempt": "2026-11-19T17:32:50.892585+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:01:00.854260+00:00",
+      "last_success": "2026-11-19T17:32:51.186594+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.323,
+      "duration_seconds": 0.294,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -46249,64 +46183,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:15:05.582905+00:00",
+      "last_attempt": "2026-11-19T17:40:54.852868+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:15:10.522689+00:00",
+      "last_success": "2026-11-19T17:40:59.769951+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.94
+      "duration_seconds": 4.917
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:15:10.522760+00:00",
+      "last_attempt": "2026-11-19T17:40:59.770019+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:15:12.290535+00:00",
+      "last_success": "2026-11-19T17:41:01.519369+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.768
+      "duration_seconds": 1.749
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T17:04:59.164771+00:00",
+      "last_attempt": "2026-11-19T17:41:01.519419+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:05:08.218563+00:00",
+      "last_success": "2026-11-19T17:41:09.001103+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.054
+      "duration_seconds": 7.482
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:15:12.290601+00:00",
+      "last_attempt": "2026-11-19T17:41:09.001153+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:15:13.811601+00:00",
+      "last_success": "2026-11-19T17:41:10.481540+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.521
+      "duration_seconds": 1.48
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T17:15:13.811656+00:00",
+      "last_attempt": "2026-11-19T17:41:10.481578+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T17:15:14.666442+00:00",
+      "last_success": "2026-11-19T17:41:10.596173+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.855
+      "duration_seconds": 0.115
     }
   },
   "identities": {
-    "identifiers": 30680,
+    "identifiers": 30682,
     "declared_aliases": 17820,
     "pending_candidates": 0
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 151,
-      "seconds_mean": 7001.421781410596,
+      "samples": 152,
+      "seconds_mean": 6956.048140072368,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -46320,8 +46254,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 193,
-      "events": 193,
+      "complete": 194,
+      "events": 194,
       "rate": 1.0
     },
     "source_health": {
