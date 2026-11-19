@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-19T08:18:50.530202+00:00",
-  "scan_completed_at": "2026-11-19T08:20:05.685636+00:00",
+  "generated_at": "2026-11-19T08:36:50.868571+00:00",
+  "scan_completed_at": "2026-11-19T08:38:15.483494+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 214,
     "leaks": 44,
     "releases": 69,
     "stories_24h": 103,
-    "sources_ok": 13,
-    "total_cards": 445,
-    "new_in_this_scan": 1
+    "sources_ok": 14,
+    "total_cards": 447,
+    "new_in_this_scan": 2
   },
   "stories": [
     {
@@ -7054,7 +7054,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-17T18:31:10.791Z",
-      "updated_at": "2026-11-19T05:30:47.003951+00:00",
+      "updated_at": "2026-11-19T08:37:41.672924+00:00",
       "first_source": "npm SDK release",
       "lead": "10 h before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "2026-11-17",
@@ -7067,7 +7067,7 @@
         },
         {
           "id": "gpt-6.2-astra",
-          "name": "vivgrid/gpt-6.2-astra",
+          "name": "opencode/gpt-6.2-astra",
           "released_on": "2026-11-17"
         },
         {
@@ -7247,7 +7247,8 @@
         "intel-54a39bdf5df2030dff94",
         "lmarena-lb-diff-7e9a2868",
         "intel-fe1737707f01487333b9",
-        "intel-74ee8b658c7e4c844d5f"
+        "intel-74ee8b658c7e4c844d5f",
+        "intel-54e525ef80854f12e2e6"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -7800,6 +7801,21 @@
           "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
           "first_seen": "2026-11-19T05:24:24+00:00"
+        },
+        {
+          "id": "opencode/gpt-6.2-astra",
+          "family": "gpt-6.2-astra",
+          "file_path": "providers/opencode/models/gpt-6.2-astra.toml",
+          "file_sha256": "20e8c61b919c549d57fbf2bf53bab109fa4771bb4cf5b4284af0adf3875111df",
+          "excerpt": "{\"opencode/gpt-6.2-astra\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-astra\", \"capabilities\": {\"tools\": {\"supported\": true, \"strict\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"], \"search\": true, \"freeform\": [\"text\", \"lark\", \"regex\"], \"updates\": [\"add\", \"remove\", \"replace\"]}, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}, \"system_updates\": true, \"effort_updates\": true, \"service_tier\": [\"priority\"]}, \"api\": {\"responses\": {\"base_url\": \"https://opencode.ai/inference/openai/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai/responses\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 8, \"cache\": {\"read\": 0.4, \"write\": {\"30m\": 10, \"12h\": 20}}, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 16, \"cache\": {\"read\": 0.8, \"write\": {\"30m\": 20, \"12h\": 40}}}]}, \"output\": {\"price\": 40, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 60}]}}, \"multipliers\": [{\"when\": {\"service_tier\": {\"equals\": \"priority\"}}, \"factor\": {\"text\": 2}}]}, \"experimental\": {\"modes\": {\"fast\": {\"service_tier\": \"priority\", \"body\": {\"service_tier\": \"priority\"}}}}}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/1022d3572c8ead5d11c1cf67e3020de90b3189f7/providers/opencode/models/gpt-6.2-astra.toml",
+          "build": "1022d3572c8ead5d11c1cf67e3020de90b3189f7",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/1022d3572c8ead5d11c1cf67e3020de90b3189f7",
+          "first_seen": "2026-11-19T08:36:46+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-19T05:31:35.527382+00:00",
@@ -7815,7 +7831,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-17T18:31:10.791Z",
-      "updated_at": "2026-11-19T05:30:47.003951+00:00",
+      "updated_at": "2026-11-19T08:37:41.672924+00:00",
       "first_source": "npm SDK release",
       "lead": "10 h before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "2026-11-17",
@@ -7824,7 +7840,7 @@
       "models": [
         {
           "id": "gpt-6.2-sol",
-          "name": "vivgrid/gpt-6.2-sol",
+          "name": "opencode/gpt-6.2-sol",
           "released_on": "2026-11-17"
         },
         {
@@ -8005,7 +8021,8 @@
         "intel-d1e66a66f86a9d9d15a5",
         "lmarena-lb-diff-7e9a2868",
         "intel-64e3becbb420f9dd3afe",
-        "intel-be0c1492d14e6fc2518b"
+        "intel-be0c1492d14e6fc2518b",
+        "intel-a95b35aa335e77f65fba"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -8573,6 +8590,21 @@
           "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
           "first_seen": "2026-11-19T05:24:24+00:00"
+        },
+        {
+          "id": "opencode/gpt-6.2-sol",
+          "family": "gpt-6.2-sol",
+          "file_path": "providers/opencode/models/gpt-6.2-sol.toml",
+          "file_sha256": "7132f6fd013eac96e881df93b392eaa95a6c3e21b2cbe63e1911ce98ebcb596c",
+          "excerpt": "{\"opencode/gpt-6.2-sol\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-sol\", \"capabilities\": {\"tools\": {\"supported\": true, \"strict\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"], \"search\": true, \"freeform\": [\"text\", \"lark\", \"regex\"], \"updates\": [\"add\", \"remove\", \"replace\"]}, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}, \"system_updates\": true, \"effort_updates\": true, \"service_tier\": [\"priority\"]}, \"api\": {\"responses\": {\"base_url\": \"https://opencode.ai/inference/openai/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai/responses\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 2, \"cache\": {\"read\": 0.1, \"write\": {\"30m\": 2.5, \"12h\": 5}}, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 4, \"cache\": {\"read\": 0.2, \"write\": {\"30m\": 5, \"12h\": 10}}}]}, \"output\": {\"price\": 10, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 15}]}}, \"multipliers\": [{\"when\": {\"service_tier\": {\"equals\": \"priority\"}}, \"factor\": {\"text\": 2}}]}, \"experimental\": {\"modes\": {\"fast\": {\"service_tier\": \"priority\", \"body\": {\"service_tier\": \"priority\"}}}}}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/1022d3572c8ead5d11c1cf67e3020de90b3189f7/providers/opencode/models/gpt-6.2-sol.toml",
+          "build": "1022d3572c8ead5d11c1cf67e3020de90b3189f7",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/1022d3572c8ead5d11c1cf67e3020de90b3189f7",
+          "first_seen": "2026-11-19T08:36:46+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-19T05:31:35.527382+00:00",
@@ -16314,6 +16346,194 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-54e525ef80854f12e2e6",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-astra",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6.2-astra",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "opencode/gpt-6.2-astra",
+          "name": "opencode/gpt-6.2-astra",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-19T08:37:41.672924+00:00",
+      "first_seen": "2026-11-19T08:36:46+00:00",
+      "observed_at": "2026-11-19T08:37:41.672924+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "cca439751cc0559abd8b39bf8a266d41f49e03f2 -> 1022d3572c8ead5d11c1cf67e3020de90b3189f7",
+      "build": "1022d3572c8ead5d11c1cf67e3020de90b3189f7",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/1022d3572c8ead5d11c1cf67e3020de90b3189f7",
+      "artifact_sha256": "2abc1c8e5c5f0a3cc2fc4de07803b86f5795ca68c5d1a9d7d201cc836068324d",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/2abc1c8e5c5f0a3cc2fc4de07803b86f5795ca68c5d1a9d7d201cc836068324d.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/2abc1c8e5c5f0a3cc2fc4de07803b86f5795ca68c5d1a9d7d201cc836068324d.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "opencode/gpt-6.2-astra",
+          "family": "gpt-6.2-astra",
+          "file_path": "providers/opencode/models/gpt-6.2-astra.toml",
+          "file_sha256": "20e8c61b919c549d57fbf2bf53bab109fa4771bb4cf5b4284af0adf3875111df",
+          "excerpt": "{\"opencode/gpt-6.2-astra\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-astra\", \"capabilities\": {\"tools\": {\"supported\": true, \"strict\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"], \"search\": true, \"freeform\": [\"text\", \"lark\", \"regex\"], \"updates\": [\"add\", \"remove\", \"replace\"]}, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}, \"system_updates\": true, \"effort_updates\": true, \"service_tier\": [\"priority\"]}, \"api\": {\"responses\": {\"base_url\": \"https://opencode.ai/inference/openai/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai/responses\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 8, \"cache\": {\"read\": 0.4, \"write\": {\"30m\": 10, \"12h\": 20}}, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 16, \"cache\": {\"read\": 0.8, \"write\": {\"30m\": 20, \"12h\": 40}}}]}, \"output\": {\"price\": 40, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 60}]}}, \"multipliers\": [{\"when\": {\"service_tier\": {\"equals\": \"priority\"}}, \"factor\": {\"text\": 2}}]}, \"experimental\": {\"modes\": {\"fast\": {\"service_tier\": \"priority\", \"body\": {\"service_tier\": \"priority\"}}}}}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/1022d3572c8ead5d11c1cf67e3020de90b3189f7/providers/opencode/models/gpt-6.2-astra.toml",
+          "build": "1022d3572c8ead5d11c1cf67e3020de90b3189f7",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/1022d3572c8ead5d11c1cf67e3020de90b3189f7",
+          "first_seen": "2026-11-19T08:36:46+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-6.2-astra",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/35324269521018afbbb23413133d2196b04bdd84a5a6fbf1d1964c8fb42e851d.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/1022d3572c8ead5d11c1cf67e3020de90b3189f7"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/1022d3572c8ead5d11c1cf67e3020de90b3189f7"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T08:37:44.419966+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 1022d3572c8e: opencode/gpt-6.2-astra\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/1022d3572c8ead5d11c1cf67e3020de90b3189f7"
+    },
+    {
+      "id": "intel-a95b35aa335e77f65fba",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-sol",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6.2-sol",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "opencode/gpt-6.2-sol",
+          "name": "opencode/gpt-6.2-sol",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-19T08:37:41.672924+00:00",
+      "first_seen": "2026-11-19T08:36:46+00:00",
+      "observed_at": "2026-11-19T08:37:41.672924+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "cca439751cc0559abd8b39bf8a266d41f49e03f2 -> 1022d3572c8ead5d11c1cf67e3020de90b3189f7",
+      "build": "1022d3572c8ead5d11c1cf67e3020de90b3189f7",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/1022d3572c8ead5d11c1cf67e3020de90b3189f7",
+      "artifact_sha256": "2abc1c8e5c5f0a3cc2fc4de07803b86f5795ca68c5d1a9d7d201cc836068324d",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/2abc1c8e5c5f0a3cc2fc4de07803b86f5795ca68c5d1a9d7d201cc836068324d.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/2abc1c8e5c5f0a3cc2fc4de07803b86f5795ca68c5d1a9d7d201cc836068324d.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "opencode/gpt-6.2-sol",
+          "family": "gpt-6.2-sol",
+          "file_path": "providers/opencode/models/gpt-6.2-sol.toml",
+          "file_sha256": "7132f6fd013eac96e881df93b392eaa95a6c3e21b2cbe63e1911ce98ebcb596c",
+          "excerpt": "{\"opencode/gpt-6.2-sol\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-sol\", \"capabilities\": {\"tools\": {\"supported\": true, \"strict\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"], \"search\": true, \"freeform\": [\"text\", \"lark\", \"regex\"], \"updates\": [\"add\", \"remove\", \"replace\"]}, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}, \"system_updates\": true, \"effort_updates\": true, \"service_tier\": [\"priority\"]}, \"api\": {\"responses\": {\"base_url\": \"https://opencode.ai/inference/openai/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai/responses\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 2, \"cache\": {\"read\": 0.1, \"write\": {\"30m\": 2.5, \"12h\": 5}}, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 4, \"cache\": {\"read\": 0.2, \"write\": {\"30m\": 5, \"12h\": 10}}}]}, \"output\": {\"price\": 10, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 15}]}}, \"multipliers\": [{\"when\": {\"service_tier\": {\"equals\": \"priority\"}}, \"factor\": {\"text\": 2}}]}, \"experimental\": {\"modes\": {\"fast\": {\"service_tier\": \"priority\", \"body\": {\"service_tier\": \"priority\"}}}}}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/1022d3572c8ead5d11c1cf67e3020de90b3189f7/providers/opencode/models/gpt-6.2-sol.toml",
+          "build": "1022d3572c8ead5d11c1cf67e3020de90b3189f7",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/1022d3572c8ead5d11c1cf67e3020de90b3189f7",
+          "first_seen": "2026-11-19T08:36:46+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-6.2-sol",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/35324269521018afbbb23413133d2196b04bdd84a5a6fbf1d1964c8fb42e851d.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/1022d3572c8ead5d11c1cf67e3020de90b3189f7"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/1022d3572c8ead5d11c1cf67e3020de90b3189f7"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T08:37:44.419966+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 1022d3572c8e: opencode/gpt-6.2-sol\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/1022d3572c8ead5d11c1cf67e3020de90b3189f7"
+    },
     {
       "id": "intel-9d06b0288352aa7b6043",
       "scanner": "litellm-intelligence",
@@ -44972,12 +45192,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:19:38.262789+00:00",
+      "last_attempt": "2026-11-19T08:37:37.779085+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:19:38.451882+00:00",
+      "last_success": "2026-11-19T08:37:37.974796+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.189,
+      "duration_seconds": 0.196,
       "latest_build": "b8ab37152cbf8494d696a7b2099ec66ce4dde70468c1ddbdde4d16e31186fa08",
       "builds_retained": 23,
       "identifiers": 9644
@@ -44985,12 +45205,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T08:19:38.590879+00:00",
+      "last_attempt": "2026-11-19T08:35:42.722760+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:19:40.632714+00:00",
+      "last_success": "2026-11-19T08:35:43.127886+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.042,
+      "duration_seconds": 0.405,
       "latest_build": "2f29a55a5102fbf23e406d313ea4b91a7257e48f",
       "builds_retained": 24,
       "identifiers": 6934
@@ -44998,34 +45218,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T08:15:38.678497+00:00",
+      "last_attempt": "2026-11-19T08:37:38.113904+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:15:39.081378+00:00",
+      "last_success": "2026-11-19T08:37:44.419966+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.403,
-      "latest_build": "cca439751cc0559abd8b39bf8a266d41f49e03f2",
-      "builds_retained": 25,
+      "duration_seconds": 6.306,
+      "latest_build": "1022d3572c8ead5d11c1cf67e3020de90b3189f7",
+      "builds_retained": 26,
       "identifiers": 10765
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T08:19:40.769838+00:00",
+      "last_attempt": "2026-11-19T08:37:44.556962+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 584,
-      "duration_seconds": 14.927
+      "consecutive_failures": 593,
+      "duration_seconds": 14.706
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T08:17:57.366384+00:00",
+      "last_attempt": "2026-11-19T08:33:59.105741+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:17:58.508629+00:00",
+      "last_success": "2026-11-19T08:33:59.307402+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.142,
+      "duration_seconds": 0.202,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -45035,61 +45255,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:18:50.530260+00:00",
+      "last_attempt": "2026-11-19T08:36:50.868628+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:18:55.358235+00:00",
+      "last_success": "2026-11-19T08:36:52.405131+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.828
+      "duration_seconds": 1.537
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:18:55.358293+00:00",
+      "last_attempt": "2026-11-19T08:36:52.405196+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:18:55.434843+00:00",
+      "last_success": "2026-11-19T08:36:52.489971+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.077
+      "duration_seconds": 0.085
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:18:55.434878+00:00",
+      "last_attempt": "2026-11-19T08:36:52.490006+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:18:59.490352+00:00",
+      "last_success": "2026-11-19T08:36:57.404465+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.055
+      "duration_seconds": 4.914
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:18:59.490410+00:00",
+      "last_attempt": "2026-11-19T08:36:57.404526+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:19:38.262740+00:00",
+      "last_success": "2026-11-19T08:37:37.779031+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 38.772,
+      "duration_seconds": 40.375,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T08:18:59.654244+00:00",
+          "checked_at": "2026-11-19T08:36:57.557880+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T08:19:07.582852+00:00",
+          "checked_at": "2026-11-19T08:37:06.740886+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T08:19:07.742370+00:00",
+          "checked_at": "2026-11-19T08:37:06.915670+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T08:19:07.742387+00:00",
+          "checked_at": "2026-11-19T08:37:06.915688+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -45097,12 +45317,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:19:38.262789+00:00",
+      "last_attempt": "2026-11-19T08:37:37.779085+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:19:38.451882+00:00",
+      "last_success": "2026-11-19T08:37:37.974796+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.189,
+      "duration_seconds": 0.196,
       "latest_build": "b8ab37152cbf8494d696a7b2099ec66ce4dde70468c1ddbdde4d16e31186fa08",
       "builds_retained": 23,
       "identifiers": 9644
@@ -45110,12 +45330,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T08:19:38.590879+00:00",
+      "last_attempt": "2026-11-19T08:35:42.722760+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:19:40.632714+00:00",
+      "last_success": "2026-11-19T08:35:43.127886+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.042,
+      "duration_seconds": 0.405,
       "latest_build": "2f29a55a5102fbf23e406d313ea4b91a7257e48f",
       "builds_retained": 24,
       "identifiers": 6934
@@ -45123,34 +45343,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T08:15:38.678497+00:00",
+      "last_attempt": "2026-11-19T08:37:38.113904+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:15:39.081378+00:00",
+      "last_success": "2026-11-19T08:37:44.419966+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.403,
-      "latest_build": "cca439751cc0559abd8b39bf8a266d41f49e03f2",
-      "builds_retained": 25,
+      "duration_seconds": 6.306,
+      "latest_build": "1022d3572c8ead5d11c1cf67e3020de90b3189f7",
+      "builds_retained": 26,
       "identifiers": 10765
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T08:19:40.769838+00:00",
+      "last_attempt": "2026-11-19T08:37:44.556962+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 584,
-      "duration_seconds": 14.927
+      "consecutive_failures": 593,
+      "duration_seconds": 14.706
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T08:17:57.366384+00:00",
+      "last_attempt": "2026-11-19T08:33:59.105741+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:17:58.508629+00:00",
+      "last_success": "2026-11-19T08:33:59.307402+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.142,
+      "duration_seconds": 0.202,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -45158,52 +45378,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:19:55.702494+00:00",
+      "last_attempt": "2026-11-19T08:37:59.269420+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:20:02.873751+00:00",
+      "last_success": "2026-11-19T08:38:06.479336+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.171
+      "duration_seconds": 7.21
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:20:02.873822+00:00",
+      "last_attempt": "2026-11-19T08:38:06.479406+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:20:04.972136+00:00",
+      "last_success": "2026-11-19T08:38:07.912788+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.098
+      "duration_seconds": 1.433
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T08:16:03.297593+00:00",
+      "last_attempt": "2026-11-19T08:38:07.912832+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:16:10.404608+00:00",
+      "last_success": "2026-11-19T08:38:14.783083+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.107
+      "duration_seconds": 6.87
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:20:04.972184+00:00",
+      "last_attempt": "2026-11-19T08:38:14.783130+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:20:05.349025+00:00",
+      "last_success": "2026-11-19T08:38:15.195605+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.377
+      "duration_seconds": 0.412
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:20:05.349064+00:00",
+      "last_attempt": "2026-11-19T08:38:15.195644+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:20:05.361683+00:00",
+      "last_success": "2026-11-19T08:38:15.207512+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.013
+      "duration_seconds": 0.012
     }
   },
   "identities": {
@@ -45214,8 +45434,8 @@
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 144,
-      "seconds_mean": 7192.999819854166,
+      "samples": 146,
+      "seconds_mean": 7095.228218541096,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -45229,8 +45449,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 183,
-      "events": 183,
+      "complete": 185,
+      "events": 185,
       "rate": 1.0
     },
     "source_health": {
