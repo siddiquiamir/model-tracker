@@ -1,17 +1,76 @@
 {
-  "generated_at": "2026-11-19T00:57:58.400114+00:00",
-  "scan_completed_at": "2026-11-19T00:59:41.880045+00:00",
+  "generated_at": "2026-11-19T01:23:58.874789+00:00",
+  "scan_completed_at": "2026-11-19T01:25:21.189017+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 170,
+    "stories": 171,
     "leaks": 42,
     "releases": 69,
-    "stories_24h": 62,
-    "sources_ok": 14,
+    "stories_24h": 63,
+    "sources_ok": 13,
     "total_cards": 376,
-    "new_in_this_scan": 6
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-hyv-4dflymodel",
+      "group": "hyv-4dflymodel",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "HYV4DFlyModel",
+      "provider_slug": "opensource",
+      "provider_name": "Architecture Diff",
+      "accent_color": "#8b5cf6",
+      "detected_at": "2026-11-19T01:25:17.208358+00:00",
+      "updated_at": "2026-11-19T01:25:17.208358+00:00",
+      "first_source": "vLLM registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "HYV4DFlyModel",
+          "name": "HYV4DFlyModel"
+        },
+        {
+          "id": "HYV4FlashForCausalLM",
+          "name": "HYV4FlashForCausalLM"
+        },
+        {
+          "id": "HYV4VLForConditionalGeneration",
+          "name": "HYV4VLForConditionalGeneration"
+        },
+        {
+          "id": "HYV4FlashVLForConditionalGeneration",
+          "name": "HYV4FlashVLForConditionalGeneration"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM registry",
+          "scanner": "vllm-registry",
+          "detected_at": "2026-11-19T01:25:17.208358+00:00",
+          "title": "New Engine Architecture: HYV4DFlyModel (+3 more)",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · ARCHITECTURE DIFF",
+      "card_ids": [
+        "vllm-arch-a48da79765"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: HYV4DFlyModel by Architecture Diff\n\nFirst detected 19 Nov 01:25 UTC in vLLM registry\nIDs: HYV4DFlyModel, HYV4FlashForCausalLM, HYV4VLForConditionalGeneration +1\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-19T01:25:21.187460+00:00"
+    },
     {
       "id": "story-kokoro",
       "group": "kokoro",
@@ -2885,6 +2944,66 @@
         }
       ],
       "x_post_text": "registry evidence, not a launch: parakeet-tdt-0.6b-v3\nhttps://raw.githubusercontent.com/BerriAI/litellm/d483f0b00af53591d2564a7ac49f0881b74047f9/model_prices_and_context_window.json"
+    },
+    {
+      "id": "story-gpt-6-rosalind",
+      "group": "gpt-6-rosalind",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "GPT 6 Rosalind",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-18T15:05:53.635506+00:00",
+      "updated_at": "2026-11-18T15:05:53.635506+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gpt-6-rosalind",
+          "name": "gpt-6-rosalind"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-18T15:05:53.635506+00:00",
+          "title": "gpt-6-rosalind",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/d483f0b00af53591d2564a7ac49f0881b74047f9/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "d483f0b00af53591d2564a7ac49f0881b74047f9",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/f629456967ee411ed5a344560c8c334142f071349647915f85759b23245c8e39.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-3ef1f35cf16aee33d810"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "gpt-6-rosalind",
+          "family": "gpt-6-rosalind",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gpt-6-rosalind\": {\"cache_creation_input_token_cost\": 1.875e-05, \"cache_creation_input_token_cost_above_12hr\": 3.75e-05, \"cache_creation_input_token_cost_above_12hr_above_272k_tokens\": 7.5e-05, \"cache_creation_input_token_cost_above_272k_tokens\": 3.75e-05, \"cache_read_input_token_cost\": 1e-06, \"cache_read_input_token_cost_above_272k_tokens\": 3e-06, \"input_cost_per_token\": 1e-05, \"input_cost_per_token_above_272k_tokens\": 3e-05, \"litellm_provider\": \"openai\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 5e-05, \"output_cost_per_token_above_272k_tokens\": 0.0001125, \"regional_processing_uplift_multiplier_eu\": 1.1, \"regional_processing_uplift_multiplier_us\": 1.1, \"source\": \"https://developers.openai.com/api/docs/pricing\", \"supports_computer_use\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_minimal_reasoning_effort\": false, \"supports_native_streaming\": true, \"supports_none_reasoning_effort\": false, \"supports_parallel_function_calling\": true, \"supports_pdf_input\": true, \"supports_prompt_cache_breakpoint\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_sc",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "f629456967ee411ed5a344560c8c334142f071349647915f85759b23245c8e39",
+          "method": "structured registry",
+          "build": "d483f0b00af53591d2564a7ac49f0881b74047f9",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/d483f0b00af53591d2564a7ac49f0881b74047f9/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T15:02:05+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: gpt-6-rosalind\nhttps://raw.githubusercontent.com/BerriAI/litellm/d483f0b00af53591d2564a7ac49f0881b74047f9/model_prices_and_context_window.json"
     },
     {
       "id": "story-voxtral-mini-transcribe-realtime",
@@ -12256,77 +12375,6 @@
       "x_post_text": "🟢 NEW MODEL: ERNIE-5.5-Flash-Preview by Baidu\n\nFirst detected 05 Nov 05:32 UTC in Hugging Face\n📅 First released: 2026-11-10\nConfirmed by OpenRouter, LMArena\nIDs: ERNIE-5.5-Flash-Base, ernie-5.5-flash-preview, ERNIE-5.5-Flash-Base-BF16\n\nvia @StatsWire"
     },
     {
-      "id": "story-gpt-6-rosalind",
-      "group": "gpt-6-rosalind",
-      "kind": "leak",
-      "open_weights": false,
-      "title": "GPT 6 Rosalind",
-      "provider_slug": "openai",
-      "provider_name": "OpenAI",
-      "accent_color": "#10b981",
-      "detected_at": "2026-11-05T01:05:02.540Z",
-      "updated_at": "2026-11-18T15:05:53.635506+00:00",
-      "first_source": "npm SDK release",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "gpt-6-rosalind",
-          "name": "gpt-6-rosalind"
-        }
-      ],
-      "sources": [
-        {
-          "label": "npm SDK release",
-          "scanner": "npm",
-          "detected_at": "2026-11-05T01:05:02.540Z",
-          "title": "Openai v7.51.0 (+3 Models)",
-          "url": "https://www.npmjs.com/package/openai?activeTab=versions",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "LiteLLM commit-pinned registry",
-          "scanner": "litellm-intelligence",
-          "detected_at": "2026-11-18T15:05:53.635506+00:00",
-          "title": "gpt-6-rosalind",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/d483f0b00af53591d2564a7ac49f0881b74047f9/model_prices_and_context_window.json",
-          "backfill": false,
-          "build": "d483f0b00af53591d2564a7ac49f0881b74047f9",
-          "evidence_path": "data/intelligence/evidence/litellm-intelligence/f629456967ee411ed5a344560c8c334142f071349647915f85759b23245c8e39.json.gz"
-        }
-      ],
-      "source_count": 2,
-      "backfill": false,
-      "header": "LEAK · OPENAI",
-      "card_ids": [
-        "npm-openai-7.50.0-7.51.0",
-        "intel-3ef1f35cf16aee33d810"
-      ],
-      "event_label": "Registry update",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [
-        {
-          "id": "gpt-6-rosalind",
-          "family": "gpt-6-rosalind",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"gpt-6-rosalind\": {\"cache_creation_input_token_cost\": 1.875e-05, \"cache_creation_input_token_cost_above_12hr\": 3.75e-05, \"cache_creation_input_token_cost_above_12hr_above_272k_tokens\": 7.5e-05, \"cache_creation_input_token_cost_above_272k_tokens\": 3.75e-05, \"cache_read_input_token_cost\": 1e-06, \"cache_read_input_token_cost_above_272k_tokens\": 3e-06, \"input_cost_per_token\": 1e-05, \"input_cost_per_token_above_272k_tokens\": 3e-05, \"litellm_provider\": \"openai\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 5e-05, \"output_cost_per_token_above_272k_tokens\": 0.0001125, \"regional_processing_uplift_multiplier_eu\": 1.1, \"regional_processing_uplift_multiplier_us\": 1.1, \"source\": \"https://developers.openai.com/api/docs/pricing\", \"supports_computer_use\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_minimal_reasoning_effort\": false, \"supports_native_streaming\": true, \"supports_none_reasoning_effort\": false, \"supports_parallel_function_calling\": true, \"supports_pdf_input\": true, \"supports_prompt_cache_breakpoint\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_sc",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "f629456967ee411ed5a344560c8c334142f071349647915f85759b23245c8e39",
-          "method": "structured registry",
-          "build": "d483f0b00af53591d2564a7ac49f0881b74047f9",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/d483f0b00af53591d2564a7ac49f0881b74047f9/model_prices_and_context_window.json",
-          "first_seen": "2026-11-18T15:02:05+00:00"
-        }
-      ],
-      "x_post_text": "🟠 LEAK: GPT 6 Rosalind by OpenAI\n\nFirst detected 05 Nov 01:05 UTC in npm SDK release\nConfirmed by LiteLLM commit-pinned registry\n\nvia @StatsWire"
-    },
-    {
       "id": "story-gemini-4-carbon",
       "group": "gemini-4-carbon",
       "kind": "release",
@@ -12588,6 +12636,55 @@
     }
   ],
   "cards": [
+    {
+      "id": "vllm-arch-a48da79765",
+      "category": "open-source",
+      "scanner": "vllm-registry",
+      "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
+      "title": "New Engine Architecture: HYV4DFlyModel (+3 more)",
+      "subtitle": "New model_executor/models/registry.py architecture declarations",
+      "build_label": "Registry File",
+      "build_transition": "vllm/model_executor/models/registry.py",
+      "models": [
+        {
+          "id": "HYV4DFlyModel",
+          "name": "HYV4DFlyModel"
+        },
+        {
+          "id": "HYV4FlashForCausalLM",
+          "name": "HYV4FlashForCausalLM"
+        },
+        {
+          "id": "HYV4FlashVLForConditionalGeneration",
+          "name": "HYV4FlashVLForConditionalGeneration"
+        },
+        {
+          "id": "HYV4VLForConditionalGeneration",
+          "name": "HYV4VLForConditionalGeneration"
+        }
+      ],
+      "evidence": "vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+      "source_text": "official vLLM model architecture registry.",
+      "disclaimer_1": "Tracks only model architecture class registrations in registry.py.",
+      "disclaimer_2": "Open-source labs register their architecture classes here prior to weight drops.",
+      "provider_name": "VLLM REGISTRY",
+      "provider_slug": "opensource",
+      "accent_color": "#8b5cf6",
+      "links": [
+        {
+          "label": "vLLM registry.py",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py"
+        },
+        {
+          "label": "Supported Models Docs",
+          "url": "https://docs.vllm.ai/en/latest/models/supported_models.html"
+        }
+      ],
+      "detected_at": "2026-11-19T01:25:17.208358+00:00",
+      "tracker_observed_at": "2026-11-19T01:25:19.085538+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: HYV4DFlyModel (+3 more) spotted in Registry File vllm/model_executor/models/registry.py!\n\n• HYV4DFlyModel (HYV4DFlyModel)\n• HYV4FlashForCausalLM (HYV4FlashForCausalLM)\n• HYV4FlashVLForConditionalGeneration (HYV4FlashVLForConditionalGeneration)\n• HYV4VLForConditionalGeneration (HYV4VLForConditionalGeneration)\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM model architecture registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "intel-05da8e1357f6c1292208",
       "scanner": "models-dev-git",
@@ -34340,45 +34437,6 @@
       "pricing": null
     },
     {
-      "id": "npm-openai-7.50.0-7.51.0",
-      "category": "cli-sdk-diff",
-      "scanner": "npm",
-      "header": "OPENAI OFFICIAL SDK DIFF · OPENAI",
-      "title": "Openai v7.51.0 (+3 Models)",
-      "subtitle": "Verified official TypeScript SDK model union comparison",
-      "build_label": "Package Diff",
-      "build_transition": "7.50.0 -> 7.51.0",
-      "old_version": "7.50.0",
-      "new_version": "7.51.0",
-      "models": [
-        {
-          "id": "gpt-6-rosalind",
-          "name": "GPT 6 Rosalind"
-        }
-      ],
-      "evidence": "resources/shared.d.ts / SDK bundle",
-      "source_text": "official public npm registry tarball (openai).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "OPENAI",
-      "provider_slug": "openai",
-      "accent_color": "#10b981",
-      "links": [
-        {
-          "label": "Public npm feed",
-          "url": "https://www.npmjs.com/package/openai?activeTab=versions"
-        },
-        {
-          "label": "Official tarball",
-          "url": "https://registry.npmjs.org/openai/-/openai-7.51.0.tgz"
-        }
-      ],
-      "detected_at": "2026-11-05T01:05:02.540Z",
-      "pricing": null,
-      "x_post_text": "🚨 OPENAI OFFICIAL SDK DIFF · OPENAI\nOpenai v7.51.0 (+3 Models) spotted in Package Diff 7.50.0 -> 7.51.0!\n\n• GPT 6 Rosalind (gpt-6-rosalind)\n\nEvidence: resources/shared.d.ts / SDK bundle\nSource: official public npm registry tarball (openai).\n\nTracked by @StatsWire",
-      "filtered_released": 2
-    },
-    {
       "id": "ag-acp-1.4.3-revision-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
@@ -34542,12 +34600,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:58:52.133219+00:00",
+      "last_attempt": "2026-11-19T01:24:53.128667+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:58:52.857776+00:00",
+      "last_success": "2026-11-19T01:24:53.818622+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.725,
+      "duration_seconds": 0.69,
       "latest_build": "30f900db97ea60433430f676aeb05dc06c70808323caa8b302e9b4d2347a2983",
       "builds_retained": 18,
       "identifiers": 9635
@@ -34555,12 +34613,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T00:57:14.895184+00:00",
+      "last_attempt": "2026-11-19T01:24:53.957531+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:57:17.008796+00:00",
+      "last_success": "2026-11-19T01:24:54.461960+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.114,
+      "duration_seconds": 0.505,
       "latest_build": "ced0919e4cf80880fe10fbbaf14b16558a1e2320",
       "builds_retained": 17,
       "identifiers": 6922
@@ -34568,12 +34626,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T00:58:52.996386+00:00",
+      "last_attempt": "2026-11-19T01:20:56.612862+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:59:06.183758+00:00",
+      "last_success": "2026-11-19T01:20:57.032136+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 13.187,
+      "duration_seconds": 0.419,
       "latest_build": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
       "builds_retained": 20,
       "identifiers": 10752
@@ -34581,21 +34639,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T00:59:06.320194+00:00",
+      "last_attempt": "2026-11-19T01:24:54.606301+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 365,
-      "duration_seconds": 15.344
+      "consecutive_failures": 378,
+      "duration_seconds": 15.301
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T00:46:46.012187+00:00",
+      "last_attempt": "2026-11-19T01:19:05.346428+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:46:46.249100+00:00",
+      "last_success": "2026-11-19T01:19:05.614291+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.237,
+      "duration_seconds": 0.268,
       "latest_build": "3.14.30819",
       "builds_retained": 2,
       "identifiers": 3330
@@ -34605,61 +34663,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:57:58.400169+00:00",
+      "last_attempt": "2026-11-19T01:23:58.874844+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:58:00.072771+00:00",
+      "last_success": "2026-11-19T01:24:00.655310+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.673
+      "duration_seconds": 1.78
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:58:00.072826+00:00",
+      "last_attempt": "2026-11-19T01:24:00.655383+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:58:00.192993+00:00",
+      "last_success": "2026-11-19T01:24:00.776469+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.12
+      "duration_seconds": 0.121
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:58:00.193028+00:00",
+      "last_attempt": "2026-11-19T01:24:00.776504+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:58:06.806151+00:00",
+      "last_success": "2026-11-19T01:24:07.583104+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.613
+      "duration_seconds": 6.807
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:58:06.806210+00:00",
+      "last_attempt": "2026-11-19T01:24:07.583157+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:58:52.133163+00:00",
+      "last_success": "2026-11-19T01:24:53.128615+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 45.327,
+      "duration_seconds": 45.545,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T00:58:07.035680+00:00",
+          "checked_at": "2026-11-19T01:24:07.845144+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T00:58:17.862903+00:00",
+          "checked_at": "2026-11-19T01:24:18.846072+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T00:58:17.955635+00:00",
+          "checked_at": "2026-11-19T01:24:18.942940+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T00:58:17.955652+00:00",
+          "checked_at": "2026-11-19T01:24:18.942957+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -34667,12 +34725,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:58:52.133219+00:00",
+      "last_attempt": "2026-11-19T01:24:53.128667+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:58:52.857776+00:00",
+      "last_success": "2026-11-19T01:24:53.818622+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.725,
+      "duration_seconds": 0.69,
       "latest_build": "30f900db97ea60433430f676aeb05dc06c70808323caa8b302e9b4d2347a2983",
       "builds_retained": 18,
       "identifiers": 9635
@@ -34680,12 +34738,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T00:57:14.895184+00:00",
+      "last_attempt": "2026-11-19T01:24:53.957531+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:57:17.008796+00:00",
+      "last_success": "2026-11-19T01:24:54.461960+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.114,
+      "duration_seconds": 0.505,
       "latest_build": "ced0919e4cf80880fe10fbbaf14b16558a1e2320",
       "builds_retained": 17,
       "identifiers": 6922
@@ -34693,12 +34751,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T00:58:52.996386+00:00",
+      "last_attempt": "2026-11-19T01:20:56.612862+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:59:06.183758+00:00",
+      "last_success": "2026-11-19T01:20:57.032136+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 13.187,
+      "duration_seconds": 0.419,
       "latest_build": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
       "builds_retained": 20,
       "identifiers": 10752
@@ -34706,21 +34764,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T00:59:06.320194+00:00",
+      "last_attempt": "2026-11-19T01:24:54.606301+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 365,
-      "duration_seconds": 15.344
+      "consecutive_failures": 378,
+      "duration_seconds": 15.301
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T00:46:46.012187+00:00",
+      "last_attempt": "2026-11-19T01:19:05.346428+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:46:46.249100+00:00",
+      "last_success": "2026-11-19T01:19:05.614291+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.237,
+      "duration_seconds": 0.268,
       "latest_build": "3.14.30819",
       "builds_retained": 2,
       "identifiers": 3330
@@ -34728,52 +34786,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:59:21.670604+00:00",
+      "last_attempt": "2026-11-19T01:25:09.912900+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:59:28.976367+00:00",
+      "last_success": "2026-11-19T01:25:17.204520+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.306
+      "duration_seconds": 7.292
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:59:28.976436+00:00",
+      "last_attempt": "2026-11-19T01:25:17.204585+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:59:30.512772+00:00",
+      "last_success": "2026-11-19T01:25:19.085538+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.536
+      "duration_seconds": 1.881
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T00:59:30.512820+00:00",
+      "last_attempt": "2026-11-19T01:21:21.143507+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:59:38.136178+00:00",
+      "last_success": "2026-11-19T01:21:30.020301+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.623
+      "duration_seconds": 8.877
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:59:38.136231+00:00",
+      "last_attempt": "2026-11-19T01:25:19.085588+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:59:39.685289+00:00",
+      "last_success": "2026-11-19T01:25:20.676915+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.549
+      "duration_seconds": 1.591
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:59:39.685328+00:00",
+      "last_attempt": "2026-11-19T01:25:20.676950+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:59:39.802936+00:00",
+      "last_success": "2026-11-19T01:25:20.711147+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.118
+      "duration_seconds": 0.034
     }
   },
   "identities": {
