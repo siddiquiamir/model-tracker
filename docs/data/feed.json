@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-18T23:58:53.511285+00:00",
-  "scan_completed_at": "2026-11-19T00:00:16.352211+00:00",
+  "generated_at": "2026-11-19T00:22:53.786329+00:00",
+  "scan_completed_at": "2026-11-19T00:24:17.455278+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 166,
@@ -8,7 +8,7 @@
     "releases": 69,
     "stories_24h": 57,
     "sources_ok": 13,
-    "total_cards": 359,
+    "total_cards": 360,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -5078,7 +5078,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-16T20:15:16.430197+00:00",
-      "updated_at": "2026-11-18T22:32:46.421835+00:00",
+      "updated_at": "2026-11-19T00:23:47.895093+00:00",
       "first_source": "Gemini Web App Config",
       "lead": "2 days before it went live on OpenRouter",
       "released_on": "2026-11-18",
@@ -5089,7 +5089,7 @@
       "models": [
         {
           "id": "gemini-4-neon",
-          "name": "Gemini 4 Neon",
+          "name": "github_copilot/gemini-4-neon",
           "released_on": "2026-11-18"
         }
       ],
@@ -5224,7 +5224,8 @@
         "intel-aa15601d74f54ff90408",
         "npm-_google_genai-3.6.0-3.6.1",
         "intel-713ce3dcf02dfa5ddcdb",
-        "opencode-zen-diff-4e194029"
+        "opencode-zen-diff-4e194029",
+        "intel-41927dff55d09f35234e"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -5342,6 +5343,19 @@
           "build": "df28b2f0fe5383547ead36a278b92a6846625b62",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/df28b2f0fe5383547ead36a278b92a6846625b62",
           "first_seen": "2026-11-18T22:18:05+00:00"
+        },
+        {
+          "id": "github_copilot/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"github_copilot/gemini-4-neon\": {\"cache_read_input_token_cost\": 1.5e-07, \"input_cost_per_token\": 3e-06, \"litellm_provider\": \"github_copilot\", \"max_input_tokens\": 200000, \"max_output_tokens\": 65536, \"mode\": \"chat\", \"output_cost_per_token\": 1.5e-05, \"source\": \"https://raw.githubusercontent.com/github/docs/main/data/tables/copilot/models-and-pricing.yml\", \"supported_endpoints\": [\"/v1/chat/completions\"], \"supports_function_calling\": true, \"supports_parallel_function_calling\": true, \"supports_reasoning\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "d661dc5f6d176742563b4e07bde5b217bde87058a74bcafdc22846dd924e839d",
+          "method": "structured registry",
+          "build": "8c2d783e2efb2f7f84ce9a9bf4584c3b18bd6c4f",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/8c2d783e2efb2f7f84ce9a9bf4584c3b18bd6c4f/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T00:21:04+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-18T22:33:40.477579+00:00",
@@ -12001,6 +12015,103 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-41927dff55d09f35234e",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gemini-4-neon",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gemini-4-neon",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "github_copilot/gemini-4-neon",
+          "name": "github_copilot/gemini-4-neon",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T00:23:47.895093+00:00",
+      "first_seen": "2026-11-19T00:21:04+00:00",
+      "observed_at": "2026-11-19T00:23:47.895093+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "b435dac805c4f197659a8cf7e654db883beb78f1 -> 8c2d783e2efb2f7f84ce9a9bf4584c3b18bd6c4f",
+      "build": "8c2d783e2efb2f7f84ce9a9bf4584c3b18bd6c4f",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/8c2d783e2efb2f7f84ce9a9bf4584c3b18bd6c4f/model_prices_and_context_window.json",
+      "artifact_sha256": "d661dc5f6d176742563b4e07bde5b217bde87058a74bcafdc22846dd924e839d",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/d661dc5f6d176742563b4e07bde5b217bde87058a74bcafdc22846dd924e839d.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/d661dc5f6d176742563b4e07bde5b217bde87058a74bcafdc22846dd924e839d.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "github_copilot/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"github_copilot/gemini-4-neon\": {\"cache_read_input_token_cost\": 1.5e-07, \"input_cost_per_token\": 3e-06, \"litellm_provider\": \"github_copilot\", \"max_input_tokens\": 200000, \"max_output_tokens\": 65536, \"mode\": \"chat\", \"output_cost_per_token\": 1.5e-05, \"source\": \"https://raw.githubusercontent.com/github/docs/main/data/tables/copilot/models-and-pricing.yml\", \"supported_endpoints\": [\"/v1/chat/completions\"], \"supports_function_calling\": true, \"supports_parallel_function_calling\": true, \"supports_reasoning\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "d661dc5f6d176742563b4e07bde5b217bde87058a74bcafdc22846dd924e839d",
+          "method": "structured registry",
+          "build": "8c2d783e2efb2f7f84ce9a9bf4584c3b18bd6c4f",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/8c2d783e2efb2f7f84ce9a9bf4584c3b18bd6c4f/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T00:21:04+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "models-dev-api",
+          "identifier": "google/gemini-4-neon",
+          "first_seen": "2026-11-18T22:11:09.542555+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/ed325e4e496cef3adf2f79909ebd14f8a4f546a331ddf78586157b4ea5f3e94f.json.gz"
+        },
+        {
+          "source": "models-dev-git",
+          "identifier": "google/gemini-4-neon",
+          "first_seen": "2026-11-18T22:06:46+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/5049fbffe20fd90263fff9d22a266f2a9de3ec0cbbf72d23cf39b3c81754d5bf.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/8c2d783e2efb2f7f84ce9a9bf4584c3b18bd6c4f/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/8c2d783e2efb2f7f84ce9a9bf4584c3b18bd6c4f"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T00:23:51.487656+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: github_copilot/gemini-4-neon\nhttps://raw.githubusercontent.com/BerriAI/litellm/8c2d783e2efb2f7f84ce9a9bf4584c3b18bd6c4f/model_prices_and_context_window.json"
+    },
     {
       "id": "intel-c1ca184d993c8cd587a5",
       "scanner": "litellm-intelligence",
@@ -32224,12 +32335,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T23:59:46.172644+00:00",
+      "last_attempt": "2026-11-19T00:23:46.232197+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:59:46.795687+00:00",
+      "last_success": "2026-11-19T00:23:46.909213+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.623,
+      "duration_seconds": 0.677,
       "latest_build": "ed325e4e496cef3adf2f79909ebd14f8a4f546a331ddf78586157b4ea5f3e94f",
       "builds_retained": 17,
       "identifiers": 9624
@@ -32237,25 +32348,25 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-18T23:59:46.933863+00:00",
+      "last_attempt": "2026-11-19T00:23:47.049987+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:59:49.251740+00:00",
+      "last_success": "2026-11-19T00:23:51.487656+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.318,
-      "latest_build": "b435dac805c4f197659a8cf7e654db883beb78f1",
-      "builds_retained": 13,
-      "identifiers": 6919
+      "duration_seconds": 4.438,
+      "latest_build": "dadf28e192db5fc878071c00366581637f881fca",
+      "builds_retained": 15,
+      "identifiers": 6920
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-18T23:53:21.494865+00:00",
+      "last_attempt": "2026-11-19T00:15:49.703678+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:53:21.955098+00:00",
+      "last_success": "2026-11-19T00:15:50.141077+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.46,
+      "duration_seconds": 0.437,
       "latest_build": "32510229440b89dc84c50b31232f7f98c049ce76",
       "builds_retained": 16,
       "identifiers": 10741
@@ -32263,21 +32374,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-18T23:59:49.389468+00:00",
+      "last_attempt": "2026-11-19T00:23:51.626512+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 336,
-      "duration_seconds": 15.602
+      "consecutive_failures": 348,
+      "duration_seconds": 15.072
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-18T23:58:03.906811+00:00",
+      "last_attempt": "2026-11-19T00:14:05.178608+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:58:04.248884+00:00",
+      "last_success": "2026-11-19T00:14:05.539710+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.342,
+      "duration_seconds": 0.361,
       "latest_build": "3.14.30819",
       "builds_retained": 2,
       "identifiers": 3330
@@ -32287,61 +32398,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T23:58:53.511335+00:00",
+      "last_attempt": "2026-11-19T00:22:53.786411+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:58:55.090510+00:00",
+      "last_success": "2026-11-19T00:22:55.318741+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.579
+      "duration_seconds": 1.532
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T23:58:55.090561+00:00",
+      "last_attempt": "2026-11-19T00:22:55.318795+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:58:55.208087+00:00",
+      "last_success": "2026-11-19T00:22:55.443459+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.118
+      "duration_seconds": 0.125
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T23:58:55.208122+00:00",
+      "last_attempt": "2026-11-19T00:22:55.443494+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:59:01.700039+00:00",
+      "last_success": "2026-11-19T00:23:01.833085+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.492
+      "duration_seconds": 6.39
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T23:59:01.700093+00:00",
+      "last_attempt": "2026-11-19T00:23:01.833157+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:59:46.172595+00:00",
+      "last_success": "2026-11-19T00:23:46.232142+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 44.473,
+      "duration_seconds": 44.399,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-18T23:59:01.931949+00:00",
+          "checked_at": "2026-11-19T00:23:02.111018+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-18T23:59:12.507726+00:00",
+          "checked_at": "2026-11-19T00:23:11.276666+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-18T23:59:12.594817+00:00",
+          "checked_at": "2026-11-19T00:23:11.356066+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-18T23:59:12.594833+00:00",
+          "checked_at": "2026-11-19T00:23:11.356083+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -32349,12 +32460,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T23:59:46.172644+00:00",
+      "last_attempt": "2026-11-19T00:23:46.232197+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:59:46.795687+00:00",
+      "last_success": "2026-11-19T00:23:46.909213+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.623,
+      "duration_seconds": 0.677,
       "latest_build": "ed325e4e496cef3adf2f79909ebd14f8a4f546a331ddf78586157b4ea5f3e94f",
       "builds_retained": 17,
       "identifiers": 9624
@@ -32362,25 +32473,25 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-18T23:59:46.933863+00:00",
+      "last_attempt": "2026-11-19T00:23:47.049987+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:59:49.251740+00:00",
+      "last_success": "2026-11-19T00:23:51.487656+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.318,
-      "latest_build": "b435dac805c4f197659a8cf7e654db883beb78f1",
-      "builds_retained": 13,
-      "identifiers": 6919
+      "duration_seconds": 4.438,
+      "latest_build": "dadf28e192db5fc878071c00366581637f881fca",
+      "builds_retained": 15,
+      "identifiers": 6920
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-18T23:53:21.494865+00:00",
+      "last_attempt": "2026-11-19T00:15:49.703678+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:53:21.955098+00:00",
+      "last_success": "2026-11-19T00:15:50.141077+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.46,
+      "duration_seconds": 0.437,
       "latest_build": "32510229440b89dc84c50b31232f7f98c049ce76",
       "builds_retained": 16,
       "identifiers": 10741
@@ -32388,21 +32499,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-18T23:59:49.389468+00:00",
+      "last_attempt": "2026-11-19T00:23:51.626512+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 336,
-      "duration_seconds": 15.602
+      "consecutive_failures": 348,
+      "duration_seconds": 15.072
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-18T23:58:03.906811+00:00",
+      "last_attempt": "2026-11-19T00:14:05.178608+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:58:04.248884+00:00",
+      "last_success": "2026-11-19T00:14:05.539710+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.342,
+      "duration_seconds": 0.361,
       "latest_build": "3.14.30819",
       "builds_retained": 2,
       "identifiers": 3330
@@ -32410,64 +32521,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:00:04.997097+00:00",
+      "last_attempt": "2026-11-19T00:24:06.704632+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:00:12.169528+00:00",
+      "last_success": "2026-11-19T00:24:13.949841+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.172
+      "duration_seconds": 7.245
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:00:12.169594+00:00",
+      "last_attempt": "2026-11-19T00:24:13.949908+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:00:13.786525+00:00",
+      "last_success": "2026-11-19T00:24:15.549391+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.617
+      "duration_seconds": 1.6
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-18T23:53:50.466561+00:00",
+      "last_attempt": "2026-11-19T00:16:14.668715+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:54:14.509222+00:00",
+      "last_success": "2026-11-19T00:16:23.041520+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 24.043
+      "duration_seconds": 8.373
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:00:13.786575+00:00",
+      "last_attempt": "2026-11-19T00:24:15.549449+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:00:16.041771+00:00",
+      "last_success": "2026-11-19T00:24:17.141558+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.255
+      "duration_seconds": 1.592
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:00:16.041809+00:00",
+      "last_attempt": "2026-11-19T00:24:17.141596+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:00:16.067824+00:00",
+      "last_success": "2026-11-19T00:24:17.171046+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.026
+      "duration_seconds": 0.029
     }
   },
   "identities": {
-    "identifiers": 30614,
+    "identifiers": 30615,
     "declared_aliases": 17766,
     "pending_candidates": 0
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 68,
-      "seconds_mean": 166.1845550147059,
+      "samples": 69,
+      "seconds_mean": 166.1513744057971,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -32481,8 +32592,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 96,
-      "events": 96,
+      "complete": 97,
+      "events": 97,
       "rate": 1.0
     },
     "source_health": {
