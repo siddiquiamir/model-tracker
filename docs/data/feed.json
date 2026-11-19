@@ -1,17 +1,77 @@
 {
-  "generated_at": "2026-11-19T20:15:56.821015+00:00",
-  "scan_completed_at": "2026-11-19T20:17:22.781539+00:00",
+  "generated_at": "2026-11-19T20:19:56.453184+00:00",
+  "scan_completed_at": "2026-11-19T20:21:32.991038+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 228,
+    "stories": 229,
     "leaks": 42,
     "releases": 67,
-    "stories_24h": 94,
-    "sources_ok": 12,
-    "total_cards": 480,
-    "new_in_this_scan": 1
+    "stories_24h": 95,
+    "sources_ok": 14,
+    "total_cards": 482,
+    "new_in_this_scan": 2
   },
   "stories": [
+    {
+      "id": "story-spot-deepseek-4-flash",
+      "group": "spot-deepseek-4-flash",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Spot DeepSeek 4 Flash",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-19T20:21:03.568407+00:00",
+      "updated_at": "2026-11-19T20:21:03.568407+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "spot-deepseek-v4-flash",
+          "name": "fireworks_ai/accounts/fireworks/routers/spot-deepseek-v4-flash"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T20:21:03.568407+00:00",
+          "title": "spot-deepseek-v4-flash",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/81cd728ce9083bab32441b07d3e3a3da74f35e53/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "81cd728ce9083bab32441b07d3e3a3da74f35e53",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/39c5627536a53900d1fa1f714f5e2a602cc76e6850700f9ca5a6111084c143ce.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-638a11e7a6425b01a94f"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "fireworks_ai/accounts/fireworks/routers/spot-deepseek-v4-flash",
+          "family": "spot-deepseek-v4-flash",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"fireworks_ai/accounts/fireworks/routers/spot-deepseek-v4-flash\": {\"cache_read_input_token_cost\": 1.4e-08, \"deprecation_date\": \"2026-08-14\", \"deprecation_source\": \"https://docs.fireworks.ai/api-reference/list-models.md\", \"input_cost_per_token\": 7e-08, \"litellm_provider\": \"fireworks_ai\", \"max_input_tokens\": 1048576, \"max_output_tokens\": 384000, \"mode\": \"chat\", \"output_cost_per_token\": 1.4e-07, \"source\": \"https://api.fireworks.ai/v1/serverless/models?format=nested\", \"successor_model\": \"fireworks_ai/accounts/fireworks/models/deepseek-v4p1-flash\", \"supports_function_calling\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_tool_choice\": true, \"supports_vision\": false}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "39c5627536a53900d1fa1f714f5e2a602cc76e6850700f9ca5a6111084c143ce",
+          "method": "structured registry",
+          "build": "81cd728ce9083bab32441b07d3e3a3da74f35e53",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/81cd728ce9083bab32441b07d3e3a3da74f35e53/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T20:19:04+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: spot-deepseek-v4-flash\nhttps://raw.githubusercontent.com/BerriAI/litellm/81cd728ce9083bab32441b07d3e3a3da74f35e53/model_prices_and_context_window.json"
+    },
     {
       "id": "story-gpt-live-1-1",
       "group": "gpt-live-1-1",
@@ -22,7 +82,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-19T19:56:03.164169+00:00",
-      "updated_at": "2026-11-19T20:17:21.498532+00:00",
+      "updated_at": "2026-11-19T20:21:01.505502+00:00",
       "first_source": "OpenAI Docs Route",
       "lead": "16 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "",
@@ -31,7 +91,7 @@
       "models": [
         {
           "id": "gpt-live-1.1",
-          "name": "GPT Live 1.1"
+          "name": "gpt-live-1.1"
         }
       ],
       "sources": [
@@ -74,23 +134,48 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T20:21:01.505502+00:00",
+          "title": "gpt-live-1.1",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/cd672e4c48f7592ca7ed97438ee0cf7302b6307b/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "cd672e4c48f7592ca7ed97438ee0cf7302b6307b",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/569649c3151e9e4ba781c64ae6e181cd72ddaca58fbcf34dfdee90a551d786a4.json.gz"
         }
       ],
-      "source_count": 4,
+      "source_count": 5,
       "backfill": false,
       "header": "NEW MODEL · OPENAI",
       "card_ids": [
         "pre-release-openai_llms_model_routes-6e623441",
         "pricing-radar-openai_pricing_md-6e623441",
         "vercel-gateway-diff-04aaf73d",
-        "openai-spec-ids-6e623441"
+        "openai-spec-ids-6e623441",
+        "intel-02c33eb274f333285cd8"
       ],
-      "event_label": "",
+      "event_label": "Released",
       "intelligence_only": false,
       "candidate_only": false,
-      "registry_evidence": [],
+      "registry_evidence": [
+        {
+          "id": "gpt-live-1.1",
+          "family": "gpt-live-1.1",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gpt-live-1.1\": {\"input_cost_per_second\": 0.000833333333333, \"litellm_provider\": \"openai\", \"mode\": \"realtime\", \"source\": \"https://developers.openai.com/api/docs/pricing\", \"supported_modalities\": [\"text\", \"audio\"], \"supported_output_modalities\": [\"text\", \"audio\"], \"supports_audio_input\": true, \"supports_audio_output\": true, \"supports_function_calling\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "569649c3151e9e4ba781c64ae6e181cd72ddaca58fbcf34dfdee90a551d786a4",
+          "method": "structured registry",
+          "build": "cd672e4c48f7592ca7ed97438ee0cf7302b6307b",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/cd672e4c48f7592ca7ed97438ee0cf7302b6307b/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T20:18:05+00:00"
+        }
+      ],
       "discord_alerted_at": "2026-11-19T20:17:22.779805+00:00",
-      "x_post_text": "🟢 NEW MODEL: GPT Live 1.1 by OpenAI\n\nFirst detected 19 Nov 19:56 UTC in OpenAI Docs Route\n⏱ 16 min before it went live on Vercel AI Gateway Catalog\nConfirmed by Official pricing page, Vercel AI Gateway Catalog, OpenAI API spec\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: GPT Live 1.1 by OpenAI\n\nFirst detected 19 Nov 19:56 UTC in OpenAI Docs Route\n⏱ 16 min before it went live on Vercel AI Gateway Catalog\nConfirmed by Official pricing page, Vercel AI Gateway Catalog, OpenAI API spec +1\n\nvia @StatsWire"
     },
     {
       "id": "story-ai-21-jamba-1-5-mini-1",
@@ -17569,6 +17654,174 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-638a11e7a6425b01a94f",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "spot-deepseek-v4-flash",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "spot-deepseek-v4-flash",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "fireworks_ai/accounts/fireworks/routers/spot-deepseek-v4-flash",
+          "name": "fireworks_ai/accounts/fireworks/routers/spot-deepseek-v4-flash",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T20:21:03.568407+00:00",
+      "first_seen": "2026-11-19T20:19:04+00:00",
+      "observed_at": "2026-11-19T20:21:03.568407+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "cd672e4c48f7592ca7ed97438ee0cf7302b6307b -> 81cd728ce9083bab32441b07d3e3a3da74f35e53",
+      "build": "81cd728ce9083bab32441b07d3e3a3da74f35e53",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/81cd728ce9083bab32441b07d3e3a3da74f35e53/model_prices_and_context_window.json",
+      "artifact_sha256": "39c5627536a53900d1fa1f714f5e2a602cc76e6850700f9ca5a6111084c143ce",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/39c5627536a53900d1fa1f714f5e2a602cc76e6850700f9ca5a6111084c143ce.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/39c5627536a53900d1fa1f714f5e2a602cc76e6850700f9ca5a6111084c143ce.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "fireworks_ai/accounts/fireworks/routers/spot-deepseek-v4-flash",
+          "family": "spot-deepseek-v4-flash",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"fireworks_ai/accounts/fireworks/routers/spot-deepseek-v4-flash\": {\"cache_read_input_token_cost\": 1.4e-08, \"deprecation_date\": \"2026-08-14\", \"deprecation_source\": \"https://docs.fireworks.ai/api-reference/list-models.md\", \"input_cost_per_token\": 7e-08, \"litellm_provider\": \"fireworks_ai\", \"max_input_tokens\": 1048576, \"max_output_tokens\": 384000, \"mode\": \"chat\", \"output_cost_per_token\": 1.4e-07, \"source\": \"https://api.fireworks.ai/v1/serverless/models?format=nested\", \"successor_model\": \"fireworks_ai/accounts/fireworks/models/deepseek-v4p1-flash\", \"supports_function_calling\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_tool_choice\": true, \"supports_vision\": false}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "39c5627536a53900d1fa1f714f5e2a602cc76e6850700f9ca5a6111084c143ce",
+          "method": "structured registry",
+          "build": "81cd728ce9083bab32441b07d3e3a3da74f35e53",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/81cd728ce9083bab32441b07d3e3a3da74f35e53/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T20:19:04+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/81cd728ce9083bab32441b07d3e3a3da74f35e53/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/81cd728ce9083bab32441b07d3e3a3da74f35e53"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T20:21:04.853809+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: fireworks_ai/accounts/fireworks/routers/spot-deepseek-v4-flash\nhttps://raw.githubusercontent.com/BerriAI/litellm/81cd728ce9083bab32441b07d3e3a3da74f35e53/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-02c33eb274f333285cd8",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-live-1.1",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-live-1.1",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "gpt-live-1.1",
+          "name": "gpt-live-1.1",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T20:21:01.505502+00:00",
+      "first_seen": "2026-11-19T20:18:05+00:00",
+      "observed_at": "2026-11-19T20:21:01.505502+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "245c31763c0fa763e2b930f5aa704892539080e3 -> cd672e4c48f7592ca7ed97438ee0cf7302b6307b",
+      "build": "cd672e4c48f7592ca7ed97438ee0cf7302b6307b",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/cd672e4c48f7592ca7ed97438ee0cf7302b6307b/model_prices_and_context_window.json",
+      "artifact_sha256": "569649c3151e9e4ba781c64ae6e181cd72ddaca58fbcf34dfdee90a551d786a4",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/569649c3151e9e4ba781c64ae6e181cd72ddaca58fbcf34dfdee90a551d786a4.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/569649c3151e9e4ba781c64ae6e181cd72ddaca58fbcf34dfdee90a551d786a4.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "gpt-live-1.1",
+          "family": "gpt-live-1.1",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gpt-live-1.1\": {\"input_cost_per_second\": 0.000833333333333, \"litellm_provider\": \"openai\", \"mode\": \"realtime\", \"source\": \"https://developers.openai.com/api/docs/pricing\", \"supported_modalities\": [\"text\", \"audio\"], \"supported_output_modalities\": [\"text\", \"audio\"], \"supports_audio_input\": true, \"supports_audio_output\": true, \"supports_function_calling\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "569649c3151e9e4ba781c64ae6e181cd72ddaca58fbcf34dfdee90a551d786a4",
+          "method": "structured registry",
+          "build": "cd672e4c48f7592ca7ed97438ee0cf7302b6307b",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/cd672e4c48f7592ca7ed97438ee0cf7302b6307b/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T20:18:05+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/cd672e4c48f7592ca7ed97438ee0cf7302b6307b/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/cd672e4c48f7592ca7ed97438ee0cf7302b6307b"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T20:21:04.853809+00:00",
+      "pricing": null,
+      "x_post_text": "LiteLLM model registry cd672e4c48f7: gpt-live-1.1\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/cd672e4c48f7592ca7ed97438ee0cf7302b6307b/model_prices_and_context_window.json"
+    },
     {
       "id": "openai-spec-ids-6e623441",
       "category": "cli-sdk-diff",
@@ -49974,12 +50227,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:14:58.658378+00:00",
+      "last_attempt": "2026-11-19T20:19:05.152803+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:14:58.924382+00:00",
+      "last_success": "2026-11-19T20:19:05.474430+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.266,
+      "duration_seconds": 0.322,
       "latest_build": "f3011bb73eb76169c87faf1385e6d56472d8f92cc68ad45820892ea3c9e76556",
       "builds_retained": 27,
       "identifiers": 9649
@@ -49987,25 +50240,25 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T20:17:01.385511+00:00",
+      "last_attempt": "2026-11-19T20:21:00.596189+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:17:01.868197+00:00",
+      "last_success": "2026-11-19T20:21:04.853809+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.483,
-      "latest_build": "245c31763c0fa763e2b930f5aa704892539080e3",
-      "builds_retained": 28,
-      "identifiers": 6937
+      "duration_seconds": 4.258,
+      "latest_build": "81cd728ce9083bab32441b07d3e3a3da74f35e53",
+      "builds_retained": 30,
+      "identifiers": 6938
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T20:11:05.577991+00:00",
+      "last_attempt": "2026-11-19T20:21:04.956744+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:11:06.126676+00:00",
+      "last_success": "2026-11-19T20:21:05.520607+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.549,
+      "duration_seconds": 0.564,
       "latest_build": "f79c119282604e23e555c4e9fd61007c20c53347",
       "builds_retained": 30,
       "identifiers": 10770
@@ -50013,11 +50266,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T20:17:01.974355+00:00",
+      "last_attempt": "2026-11-19T20:21:05.622018+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 775,
-      "duration_seconds": 10.568
+      "consecutive_failures": 777,
+      "duration_seconds": 10.994
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -50037,61 +50290,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:15:56.821094+00:00",
+      "last_attempt": "2026-11-19T20:19:56.453252+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:15:59.142253+00:00",
+      "last_success": "2026-11-19T20:19:58.702959+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.321
+      "duration_seconds": 2.25
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:15:59.142320+00:00",
+      "last_attempt": "2026-11-19T20:19:58.703032+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:15:59.533689+00:00",
+      "last_success": "2026-11-19T20:19:58.929563+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.391
+      "duration_seconds": 0.227
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:15:59.533725+00:00",
+      "last_attempt": "2026-11-19T20:19:58.929598+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:16:10.645127+00:00",
+      "last_success": "2026-11-19T20:20:07.140755+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 11.111
+      "duration_seconds": 8.211
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:16:10.645204+00:00",
+      "last_attempt": "2026-11-19T20:20:07.140835+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:17:01.385435+00:00",
+      "last_success": "2026-11-19T20:21:00.596120+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 50.74,
+      "duration_seconds": 53.455,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T20:16:11.060127+00:00",
+          "checked_at": "2026-11-19T20:20:07.576160+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T20:16:25.238162+00:00",
+          "checked_at": "2026-11-19T20:20:23.665382+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T20:16:25.390802+00:00",
+          "checked_at": "2026-11-19T20:20:23.830385+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T20:16:25.390818+00:00",
+          "checked_at": "2026-11-19T20:20:23.830407+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -50099,12 +50352,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:14:58.658378+00:00",
+      "last_attempt": "2026-11-19T20:19:05.152803+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:14:58.924382+00:00",
+      "last_success": "2026-11-19T20:19:05.474430+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.266,
+      "duration_seconds": 0.322,
       "latest_build": "f3011bb73eb76169c87faf1385e6d56472d8f92cc68ad45820892ea3c9e76556",
       "builds_retained": 27,
       "identifiers": 9649
@@ -50112,25 +50365,25 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T20:17:01.385511+00:00",
+      "last_attempt": "2026-11-19T20:21:00.596189+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:17:01.868197+00:00",
+      "last_success": "2026-11-19T20:21:04.853809+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.483,
-      "latest_build": "245c31763c0fa763e2b930f5aa704892539080e3",
-      "builds_retained": 28,
-      "identifiers": 6937
+      "duration_seconds": 4.258,
+      "latest_build": "81cd728ce9083bab32441b07d3e3a3da74f35e53",
+      "builds_retained": 30,
+      "identifiers": 6938
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T20:11:05.577991+00:00",
+      "last_attempt": "2026-11-19T20:21:04.956744+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:11:06.126676+00:00",
+      "last_success": "2026-11-19T20:21:05.520607+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.549,
+      "duration_seconds": 0.564,
       "latest_build": "f79c119282604e23e555c4e9fd61007c20c53347",
       "builds_retained": 30,
       "identifiers": 10770
@@ -50138,11 +50391,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T20:17:01.974355+00:00",
+      "last_attempt": "2026-11-19T20:21:05.622018+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 775,
-      "duration_seconds": 10.568
+      "consecutive_failures": 777,
+      "duration_seconds": 10.994
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -50160,64 +50413,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:17:12.549392+00:00",
+      "last_attempt": "2026-11-19T20:21:16.622598+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:17:17.579659+00:00",
+      "last_success": "2026-11-19T20:21:21.438314+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.03
+      "duration_seconds": 4.816
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:17:17.579733+00:00",
+      "last_attempt": "2026-11-19T20:21:21.438391+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:17:19.365711+00:00",
+      "last_success": "2026-11-19T20:21:23.097274+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.786
+      "duration_seconds": 1.659
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T20:11:23.558595+00:00",
+      "last_attempt": "2026-11-19T20:21:23.097333+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:11:31.595963+00:00",
+      "last_success": "2026-11-19T20:21:31.234095+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.037
+      "duration_seconds": 8.137
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:17:19.365771+00:00",
+      "last_attempt": "2026-11-19T20:21:31.234156+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:17:20.878874+00:00",
+      "last_success": "2026-11-19T20:21:32.705793+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.513
+      "duration_seconds": 1.472
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T20:17:20.878928+00:00",
+      "last_attempt": "2026-11-19T20:21:32.705848+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T20:17:21.506668+00:00",
+      "last_success": "2026-11-19T20:21:32.743367+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.628
+      "duration_seconds": 0.038
     }
   },
   "identities": {
-    "identifiers": 30686,
+    "identifiers": 30687,
     "declared_aliases": 17824,
     "pending_candidates": 0
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 183,
-      "seconds_mean": 5796.56926778142,
+      "samples": 185,
+      "seconds_mean": 5735.504053583784,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -50231,8 +50484,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 227,
-      "events": 227,
+      "complete": 229,
+      "events": 229,
       "rate": 1.0
     },
     "source_health": {
