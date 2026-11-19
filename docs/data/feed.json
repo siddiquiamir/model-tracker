@@ -1,17 +1,77 @@
 {
-  "generated_at": "2026-11-19T01:37:18.461281+00:00",
-  "scan_completed_at": "2026-11-19T01:38:49.753949+00:00",
+  "generated_at": "2026-11-19T01:45:18.460838+00:00",
+  "scan_completed_at": "2026-11-19T01:46:39.686702+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 189,
+    "stories": 190,
     "leaks": 43,
     "releases": 69,
-    "stories_24h": 83,
-    "sources_ok": 13,
-    "total_cards": 399,
-    "new_in_this_scan": 12
+    "stories_24h": 84,
+    "sources_ok": 12,
+    "total_cards": 400,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-codestral",
+      "group": "codestral",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "azure_ai/Codestral-2501",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-19T01:46:11.706362+00:00",
+      "updated_at": "2026-11-19T01:46:11.706362+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Codestral-2501",
+          "name": "azure_ai/Codestral-2501"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T01:46:11.706362+00:00",
+          "title": "codestral-2501",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/bfd2b7a2bfc0d1cf7c300bb15756818479ad0619/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "bfd2b7a2bfc0d1cf7c300bb15756818479ad0619",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/c63a3f6f58f38aa60c44b1d29f42aed9f5ed0fbb9163681142759c1bb0f0c413.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-7b87b943ba0c893de39a"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "azure_ai/Codestral-2501",
+          "family": "codestral-2501",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure_ai/Codestral-2501\": {\"deprecation_date\": \"2027-02-15\", \"deprecation_source\": \"https://learn.microsoft.com/en-us/azure/foundry/concepts/model-lifecycle-retirement\", \"input_cost_per_token\": 3e-07, \"litellm_provider\": \"azure_ai\", \"max_input_tokens\": 256000, \"max_output_tokens\": 4096, \"mode\": \"chat\", \"output_cost_per_token\": 9e-07, \"source\": \"https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'\", \"successor_model\": \"azure_ai/mistral-large-4-latest\", \"supported_endpoints\": [\"/v1/chat/completions\"], \"supported_modalities\": [\"text\"], \"supported_output_modalities\": [\"text\"], \"supports_native_streaming\": true, \"supports_pdf_input\": false}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "c63a3f6f58f38aa60c44b1d29f42aed9f5ed0fbb9163681142759c1bb0f0c413",
+          "method": "structured registry",
+          "build": "bfd2b7a2bfc0d1cf7c300bb15756818479ad0619",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/bfd2b7a2bfc0d1cf7c300bb15756818479ad0619/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:44:30+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: Codestral-2501\nhttps://raw.githubusercontent.com/BerriAI/litellm/bfd2b7a2bfc0d1cf7c300bb15756818479ad0619/model_prices_and_context_window.json"
+    },
     {
       "id": "story-iris-z",
       "group": "iris-z",
@@ -14187,6 +14247,90 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-7b87b943ba0c893de39a",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "codestral-2501",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "codestral-2501",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "azure_ai/Codestral-2501",
+          "name": "azure_ai/Codestral-2501",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T01:46:11.706362+00:00",
+      "first_seen": "2026-11-19T01:44:30+00:00",
+      "observed_at": "2026-11-19T01:46:11.706362+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "3c9dbf243ff24b46cc23e94ca6173222e0aa871d -> bfd2b7a2bfc0d1cf7c300bb15756818479ad0619",
+      "build": "bfd2b7a2bfc0d1cf7c300bb15756818479ad0619",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/bfd2b7a2bfc0d1cf7c300bb15756818479ad0619/model_prices_and_context_window.json",
+      "artifact_sha256": "c63a3f6f58f38aa60c44b1d29f42aed9f5ed0fbb9163681142759c1bb0f0c413",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/c63a3f6f58f38aa60c44b1d29f42aed9f5ed0fbb9163681142759c1bb0f0c413.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/c63a3f6f58f38aa60c44b1d29f42aed9f5ed0fbb9163681142759c1bb0f0c413.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "azure_ai/Codestral-2501",
+          "family": "codestral-2501",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure_ai/Codestral-2501\": {\"deprecation_date\": \"2027-02-15\", \"deprecation_source\": \"https://learn.microsoft.com/en-us/azure/foundry/concepts/model-lifecycle-retirement\", \"input_cost_per_token\": 3e-07, \"litellm_provider\": \"azure_ai\", \"max_input_tokens\": 256000, \"max_output_tokens\": 4096, \"mode\": \"chat\", \"output_cost_per_token\": 9e-07, \"source\": \"https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'\", \"successor_model\": \"azure_ai/mistral-large-4-latest\", \"supported_endpoints\": [\"/v1/chat/completions\"], \"supported_modalities\": [\"text\"], \"supported_output_modalities\": [\"text\"], \"supports_native_streaming\": true, \"supports_pdf_input\": false}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "c63a3f6f58f38aa60c44b1d29f42aed9f5ed0fbb9163681142759c1bb0f0c413",
+          "method": "structured registry",
+          "build": "bfd2b7a2bfc0d1cf7c300bb15756818479ad0619",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/bfd2b7a2bfc0d1cf7c300bb15756818479ad0619/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:44:30+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/bfd2b7a2bfc0d1cf7c300bb15756818479ad0619/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/bfd2b7a2bfc0d1cf7c300bb15756818479ad0619"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T01:46:13.231591+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: azure_ai/Codestral-2501\nhttps://raw.githubusercontent.com/BerriAI/litellm/bfd2b7a2bfc0d1cf7c300bb15756818479ad0619/model_prices_and_context_window.json"
+    },
     {
       "id": "intel-50f94d5bdbedb3adfc7f",
       "scanner": "litellm-intelligence",
@@ -38548,12 +38692,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:38:18.468959+00:00",
+      "last_attempt": "2026-11-19T01:44:18.573778+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:38:19.177497+00:00",
+      "last_success": "2026-11-19T01:44:19.180542+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.709,
+      "duration_seconds": 0.607,
       "latest_build": "30f900db97ea60433430f676aeb05dc06c70808323caa8b302e9b4d2347a2983",
       "builds_retained": 18,
       "identifiers": 9635
@@ -38561,25 +38705,25 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T01:38:19.315460+00:00",
+      "last_attempt": "2026-11-19T01:46:11.153643+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:38:24.067542+00:00",
+      "last_success": "2026-11-19T01:46:13.231591+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.752,
-      "latest_build": "3c9dbf243ff24b46cc23e94ca6173222e0aa871d",
-      "builds_retained": 19,
+      "duration_seconds": 2.078,
+      "latest_build": "bfd2b7a2bfc0d1cf7c300bb15756818479ad0619",
+      "builds_retained": 20,
       "identifiers": 6934
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T01:32:54.858580+00:00",
+      "last_attempt": "2026-11-19T01:44:19.319616+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:32:55.255550+00:00",
+      "last_success": "2026-11-19T01:44:19.762222+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.397,
+      "duration_seconds": 0.443,
       "latest_build": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
       "builds_retained": 20,
       "identifiers": 10752
@@ -38587,11 +38731,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T01:38:24.205760+00:00",
+      "last_attempt": "2026-11-19T01:46:13.369614+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 384,
-      "duration_seconds": 15.035
+      "consecutive_failures": 388,
+      "duration_seconds": 15.44
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -38611,61 +38755,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:37:18.461333+00:00",
+      "last_attempt": "2026-11-19T01:45:18.460896+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:37:20.358033+00:00",
+      "last_success": "2026-11-19T01:45:20.172732+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.897
+      "duration_seconds": 1.712
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:37:20.358084+00:00",
+      "last_attempt": "2026-11-19T01:45:20.172784+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:37:20.525226+00:00",
+      "last_success": "2026-11-19T01:45:20.335143+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.167
+      "duration_seconds": 0.162
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:37:20.525260+00:00",
+      "last_attempt": "2026-11-19T01:45:20.335178+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:37:28.952565+00:00",
+      "last_success": "2026-11-19T01:45:26.930219+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.427
+      "duration_seconds": 6.595
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:37:28.952621+00:00",
+      "last_attempt": "2026-11-19T01:45:26.930273+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:38:18.468908+00:00",
+      "last_success": "2026-11-19T01:46:11.153588+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 49.516,
+      "duration_seconds": 44.223,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T01:37:29.201618+00:00",
+          "checked_at": "2026-11-19T01:45:27.399167+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T01:37:40.021499+00:00",
+          "checked_at": "2026-11-19T01:45:38.035990+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T01:37:40.125705+00:00",
+          "checked_at": "2026-11-19T01:45:38.144274+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T01:37:40.125722+00:00",
+          "checked_at": "2026-11-19T01:45:38.144291+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -38673,12 +38817,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:38:18.468959+00:00",
+      "last_attempt": "2026-11-19T01:44:18.573778+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:38:19.177497+00:00",
+      "last_success": "2026-11-19T01:44:19.180542+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.709,
+      "duration_seconds": 0.607,
       "latest_build": "30f900db97ea60433430f676aeb05dc06c70808323caa8b302e9b4d2347a2983",
       "builds_retained": 18,
       "identifiers": 9635
@@ -38686,25 +38830,25 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T01:38:19.315460+00:00",
+      "last_attempt": "2026-11-19T01:46:11.153643+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:38:24.067542+00:00",
+      "last_success": "2026-11-19T01:46:13.231591+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.752,
-      "latest_build": "3c9dbf243ff24b46cc23e94ca6173222e0aa871d",
-      "builds_retained": 19,
+      "duration_seconds": 2.078,
+      "latest_build": "bfd2b7a2bfc0d1cf7c300bb15756818479ad0619",
+      "builds_retained": 20,
       "identifiers": 6934
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T01:32:54.858580+00:00",
+      "last_attempt": "2026-11-19T01:44:19.319616+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:32:55.255550+00:00",
+      "last_success": "2026-11-19T01:44:19.762222+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.397,
+      "duration_seconds": 0.443,
       "latest_build": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
       "builds_retained": 20,
       "identifiers": 10752
@@ -38712,11 +38856,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T01:38:24.205760+00:00",
+      "last_attempt": "2026-11-19T01:46:13.369614+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 384,
-      "duration_seconds": 15.035
+      "consecutive_failures": 388,
+      "duration_seconds": 15.44
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -38734,52 +38878,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:38:39.246749+00:00",
+      "last_attempt": "2026-11-19T01:46:28.815631+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:38:46.479482+00:00",
+      "last_success": "2026-11-19T01:46:36.062607+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.233
+      "duration_seconds": 7.247
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:38:46.479551+00:00",
+      "last_attempt": "2026-11-19T01:46:36.062673+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:38:47.794218+00:00",
+      "last_success": "2026-11-19T01:46:37.690585+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.315
+      "duration_seconds": 1.628
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T01:33:19.680079+00:00",
+      "last_attempt": "2026-11-19T01:44:45.269550+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:34:14.190657+00:00",
+      "last_success": "2026-11-19T01:44:54.249119+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 54.511
+      "duration_seconds": 8.98
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:38:47.794267+00:00",
+      "last_attempt": "2026-11-19T01:46:37.690632+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:38:49.383400+00:00",
+      "last_success": "2026-11-19T01:46:39.275799+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.589
+      "duration_seconds": 1.585
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:38:49.383439+00:00",
+      "last_attempt": "2026-11-19T01:46:39.275835+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:38:49.458045+00:00",
+      "last_success": "2026-11-19T01:46:39.390075+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.075
+      "duration_seconds": 0.114
     }
   },
   "identities": {
@@ -38790,8 +38934,8 @@
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 104,
-      "seconds_mean": 9898.041899759615,
+      "samples": 105,
+      "seconds_mean": 9804.743466066666,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -38805,8 +38949,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 137,
-      "events": 137,
+      "complete": 138,
+      "events": 138,
       "rate": 1.0
     },
     "source_health": {
