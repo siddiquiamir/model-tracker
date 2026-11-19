@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-19T05:25:44.069584+00:00",
-  "scan_completed_at": "2026-11-19T05:27:12.335787+00:00",
+  "generated_at": "2026-11-19T05:29:43.920690+00:00",
+  "scan_completed_at": "2026-11-19T05:31:35.529228+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 214,
+    "stories": 215,
     "leaks": 44,
-    "releases": 69,
-    "stories_24h": 109,
-    "sources_ok": 13,
-    "total_cards": 437,
-    "new_in_this_scan": 4
+    "releases": 70,
+    "stories_24h": 107,
+    "sources_ok": 15,
+    "total_cards": 445,
+    "new_in_this_scan": 8
   },
   "stories": [
     {
@@ -22,7 +22,7 @@
       "provider_name": "Unattributed",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-19T05:26:42.019012+00:00",
-      "updated_at": "2026-11-19T05:26:42.019012+00:00",
+      "updated_at": "2026-11-19T05:30:47.003951+00:00",
       "first_source": "Registry Update",
       "lead": "",
       "released_on": "2026-11-17",
@@ -31,7 +31,7 @@
       "models": [
         {
           "id": "microsoft-decision-1.1",
-          "name": "openrouter/microsoft/microsoft-decision-1.1",
+          "name": "microsoft/microsoft-decision-1.1",
           "released_on": "2026-11-17"
         }
       ],
@@ -51,7 +51,8 @@
       "backfill": false,
       "header": "REGISTRY UPDATE · UNATTRIBUTED",
       "card_ids": [
-        "intel-9ffa1d7e7eb041c8a673"
+        "intel-9ffa1d7e7eb041c8a673",
+        "intel-78493fde9a5155d2a105"
       ],
       "event_label": "Registry update",
       "intelligence_only": true,
@@ -70,6 +71,36 @@
           "build": "55f5c4ae992844a08b3511689c8e7b46e26f689c1737a813cfac1affe17e7e83",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-19T05:26:41.710617+00:00"
+        },
+        {
+          "id": "microsoft/microsoft-decision-1.1",
+          "family": "microsoft-decision-1.1",
+          "file_path": "models/microsoft/microsoft-decision-1.1.toml",
+          "file_sha256": "2429742d4eb155fbe8b9f1cedf9201165773acb68ef3658f3a0dac183822bcf3",
+          "excerpt": "{\"microsoft/microsoft-decision-1.1\": {\"schema\": 2, \"v2_only\": true, \"type\": \"decision\", \"name\": \"Microsoft-Decision-1.1\", \"description\": \"Microsoft decision model that returns calibrated probabilities for typed yes/no, choice and score questions about text, JSON and images\", \"open_weights\": false, \"release_date\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image/png\"], \"output\": [\"decision\"]}, \"capabilities\": {\"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}, \"temperature\": false, \"top_p\": false, \"top_k\": false}, \"limit\": {\"context\": 32768, \"output\": 0}, \"links\": [{\"label\": \"Announcement\", \"url\": \"https://commandline.microsoft.com/microsoft-decision-model-ga/\", \"type\": \"announcement\"}, {\"label\": \"Docs\", \"url\": \"https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/use-foundry-models-microsoft-decision\", \"type\": \"docs\"}]}}",
+          "canonical_id": "microsoft/microsoft-decision-1.1",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6e5e11a78e2667b7ea06c79590a64ada83066292/models/microsoft/microsoft-decision-1.1.toml",
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "first_seen": "2026-11-19T05:24:24+00:00"
+        },
+        {
+          "id": "openrouter/microsoft/microsoft-decision-1.1",
+          "family": "microsoft-decision-1.1",
+          "file_path": "providers/openrouter/models/microsoft/microsoft-decision-1.1.toml",
+          "file_sha256": "2a7943190cafa7692cd04288421833e0532fd65431c8af938aace8cc929d07b8",
+          "excerpt": "{\"openrouter/microsoft/microsoft-decision-1.1\": {\"schema\": 2, \"base_model\": \"microsoft/microsoft-decision-1.1\", \"description\": \"Decision model for typed evaluation of shared state\", \"capabilities\": {\"structured_output\": false}, \"api\": {\"systemone\": {\"sdk\": {\"aisdk\": \"@ai-sdk/typesafe-ai\", \"opencodeai\": \"@opencode/ai/providers/openrouter/decisions\"}, \"compatibility\": {\"media_input\": \"state\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.042}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "microsoft/microsoft-decision-1.1",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6e5e11a78e2667b7ea06c79590a64ada83066292/providers/openrouter/models/microsoft/microsoft-decision-1.1.toml",
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "first_seen": "2026-11-19T05:24:24+00:00"
         }
       ],
       "x_post_text": "Registry Update 55f5c4ae9928: microsoft-decision-1.1\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
@@ -6629,6 +6660,96 @@
       "x_post_text": "🟠 LEAK: NemotronLabsDiffusionForCausalLM by Architecture Diff\n\nFirst detected 18 Nov 05:31 UTC in vLLM registry\nCodename: nemotronlabsdiffusionforcausallm, nemotronlabsdiffusionmodel\nIDs: NemotronLabsDiffusionModel, NemotronLabsDiffusionForCausalLM\n\nvia @StatsWire"
     },
     {
+      "id": "story-mai-image-2-7-flash",
+      "group": "mai-image-2-7-flash",
+      "kind": "release",
+      "open_weights": false,
+      "title": "MAI-Image-2.7-Flash",
+      "provider_slug": "microsoft",
+      "provider_name": "Microsoft",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-18T05:27:14.993164+00:00",
+      "updated_at": "2026-11-19T05:30:47.003951+00:00",
+      "first_source": "Vercel AI Gateway Catalog",
+      "lead": "",
+      "released_on": "2026-11-17",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "mai-image-2.7-flash",
+          "name": "microsoft/mai-image-2.7-flash",
+          "released_on": "2026-11-17"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vercel AI Gateway Catalog",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-11-18T05:27:14.993164+00:00",
+          "title": "New Model on Vercel AI Gateway: Seedream 5.5",
+          "url": "https://ai-gateway.vercel.sh/v1/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-19T05:30:47.003951+00:00",
+          "title": "mai-image-2.7-flash",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "backfill": false,
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926.json.gz"
+        }
+      ],
+      "source_count": 2,
+      "backfill": false,
+      "header": "NEW MODEL · MICROSOFT",
+      "card_ids": [
+        "vercel-gateway-diff-f620c76d",
+        "intel-37e0cde77b919517a34b"
+      ],
+      "event_label": "Released",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "microsoft/mai-image-2.7-flash",
+          "family": "mai-image-2.7-flash",
+          "file_path": "models/microsoft/mai-image-2.7-flash.toml",
+          "file_sha256": "6e6cbc070caf39d8db61c2f090ff87b6a2b6b1fbc86bf5490ba05faf352c61fb",
+          "excerpt": "{\"microsoft/mai-image-2.7-flash\": {\"schema\": 2, \"v2_only\": true, \"type\": \"image\", \"name\": \"MAI-Image-2.7-Flash\", \"description\": \"Faster, lower-cost MAI-Image-2.7 for high-throughput generation and editing\", \"family\": \"mai\", \"open_weights\": false, \"release_date\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\"], \"output\": [\"image/png\"]}, \"capabilities\": {\"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}, \"temperature\": false, \"top_p\": false, \"top_k\": false}, \"limit\": {\"context\": 32000, \"output\": 0}, \"links\": [{\"label\": \"Model card\", \"url\": \"https://microsoft.ai/pdf/MAI-Image-2.7-Model-Card.pdf\", \"type\": \"model_card\"}, {\"label\": \"Announcement\", \"url\": \"https://microsoft.ai/news/introducing-mai-image-2-7/\", \"type\": \"announcement\"}]}}",
+          "canonical_id": "microsoft/mai-image-2.7-flash",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6e5e11a78e2667b7ea06c79590a64ada83066292/models/microsoft/mai-image-2.7-flash.toml",
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "first_seen": "2026-11-19T05:24:24+00:00"
+        },
+        {
+          "id": "openrouter/microsoft/mai-image-2.7-flash",
+          "family": "mai-image-2.7-flash",
+          "file_path": "providers/openrouter/models/microsoft/mai-image-2.7-flash.toml",
+          "file_sha256": "92d0d52e2b901caf00a0c78375e0db7467af5c335b856eb0be540d32bd83881f",
+          "excerpt": "{\"openrouter/microsoft/mai-image-2.7-flash\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"microsoft/mai-image-2.7-flash\", \"api\": {\"images\": {\"base_url\": \"https://openrouter.ai/api/v1\", \"sdk\": {\"aisdk\": \"@openrouter/ai-sdk-provider\", \"opencodeai\": \"@opencode/ai/providers/openrouter/images\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 1.75}}, \"image\": {\"input\": {\"price\": 2.5}, \"output\": {\"price\": 10}}}}}",
+          "canonical_id": "microsoft/mai-image-2.7-flash",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6e5e11a78e2667b7ea06c79590a64ada83066292/providers/openrouter/models/microsoft/mai-image-2.7-flash.toml",
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "first_seen": "2026-11-19T05:24:24+00:00"
+        }
+      ],
+      "x_post_text": "🟢 NEW MODEL: MAI-Image-2.7-Flash by Microsoft\n\nFirst detected 18 Nov 05:27 UTC in Vercel AI Gateway Catalog\n📅 First released: 2026-11-17\nConfirmed by Registry Update\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-19T05:31:35.527382+00:00"
+    },
+    {
       "id": "story-seedream-5-5",
       "group": "seedream-5-5",
       "kind": "unverified",
@@ -6776,20 +6897,17 @@
       "provider_name": "Microsoft",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-18T04:02:31.000Z",
-      "updated_at": "2026-11-18T05:31:18.392943+00:00",
+      "updated_at": "2026-11-19T05:30:47.003951+00:00",
       "first_source": "LMArena",
       "lead": "1 h before it went live on Vercel AI Gateway Catalog",
-      "released_on": "",
+      "released_on": "2026-11-17",
       "pricing": "",
       "codenames": [],
       "models": [
         {
           "id": "mai-image-2.7",
-          "name": "MAI-Image-2.7"
-        },
-        {
-          "id": "mai-image-2.7-flash",
-          "name": "MAI-Image-2.7-Flash"
+          "name": "microsoft/mai-image-2.7",
+          "released_on": "2026-11-17"
         },
         {
           "id": "mai-image-2.7-ckpt-01a1d8d4",
@@ -6821,21 +6939,63 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-19T05:30:47.003951+00:00",
+          "title": "mai-image-2.7",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "backfill": false,
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926.json.gz"
         }
       ],
-      "source_count": 2,
+      "source_count": 3,
       "backfill": false,
       "header": "NEW MODEL · MICROSOFT",
       "card_ids": [
         "lmarena-lb-diff-cc042282",
         "vercel-gateway-diff-f620c76d",
-        "arena-ckpt-swap-78c180caa2"
+        "arena-ckpt-swap-78c180caa2",
+        "intel-17dbc4dc9e29d0fa7ce9"
       ],
-      "event_label": "",
+      "event_label": "Released",
       "intelligence_only": false,
       "candidate_only": false,
-      "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: MAI-Image-2.7 by Microsoft\n\nFirst detected 18 Nov 04:02 UTC in LMArena\n🆔 UUID: 01a1d8d4-643c-7193-a7e7-2d496dcee97c\n⏱ 1 h before it went live on Vercel AI Gateway Catalog\nConfirmed by Vercel AI Gateway Catalog\n\nvia @StatsWire"
+      "registry_evidence": [
+        {
+          "id": "microsoft/mai-image-2.7",
+          "family": "mai-image-2.7",
+          "file_path": "models/microsoft/mai-image-2.7.toml",
+          "file_sha256": "785f0c0c36404282622b6529117d89d42daedab33f429cca3b54075774458077",
+          "excerpt": "{\"microsoft/mai-image-2.7\": {\"schema\": 2, \"v2_only\": true, \"type\": \"image\", \"name\": \"MAI-Image-2.7\", \"description\": \"Image generation and precise multi-reference editing model with transparent backgrounds\", \"family\": \"mai\", \"open_weights\": false, \"release_date\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\"], \"output\": [\"image/png\"]}, \"capabilities\": {\"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}, \"temperature\": false, \"top_p\": false, \"top_k\": false}, \"limit\": {\"context\": 32000, \"output\": 0}, \"links\": [{\"label\": \"Model card\", \"url\": \"https://microsoft.ai/pdf/MAI-Image-2.7-Model-Card.pdf\", \"type\": \"model_card\"}, {\"label\": \"Announcement\", \"url\": \"https://microsoft.ai/news/introducing-mai-image-2-7/\", \"type\": \"announcement\"}]}}",
+          "canonical_id": "microsoft/mai-image-2.7",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6e5e11a78e2667b7ea06c79590a64ada83066292/models/microsoft/mai-image-2.7.toml",
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "first_seen": "2026-11-19T05:24:24+00:00"
+        },
+        {
+          "id": "openrouter/microsoft/mai-image-2.7",
+          "family": "mai-image-2.7",
+          "file_path": "providers/openrouter/models/microsoft/mai-image-2.7.toml",
+          "file_sha256": "a25f8f99ce409bbd0a6281ebd44362777ccea48ff592de315f0196a02622dba5",
+          "excerpt": "{\"openrouter/microsoft/mai-image-2.7\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"microsoft/mai-image-2.7\", \"api\": {\"images\": {\"base_url\": \"https://openrouter.ai/api/v1\", \"sdk\": {\"aisdk\": \"@openrouter/ai-sdk-provider\", \"opencodeai\": \"@opencode/ai/providers/openrouter/images\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 5}}, \"image\": {\"input\": {\"price\": 8}, \"output\": {\"price\": 34}}}}}",
+          "canonical_id": "microsoft/mai-image-2.7",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6e5e11a78e2667b7ea06c79590a64ada83066292/providers/openrouter/models/microsoft/mai-image-2.7.toml",
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "first_seen": "2026-11-19T05:24:24+00:00"
+        }
+      ],
+      "x_post_text": "🟢 NEW MODEL: MAI-Image-2.7 by Microsoft\n\nFirst detected 18 Nov 04:02 UTC in LMArena\n📅 First released: 2026-11-17\n🆔 UUID: 01a1d8d4-643c-7193-a7e7-2d496dcee97c\n⏱ 1 h before it went live on Vercel AI Gateway Catalog\n\nvia @StatsWire"
     },
     {
       "id": "story-gpt-6-2-astra",
@@ -6847,7 +7007,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-17T18:31:10.791Z",
-      "updated_at": "2026-11-19T05:26:42.019012+00:00",
+      "updated_at": "2026-11-19T05:30:47.003951+00:00",
       "first_source": "npm SDK release",
       "lead": "10 h before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "2026-11-17",
@@ -7039,7 +7199,8 @@
         "intel-b61927f60a3cc4bc4242",
         "intel-54a39bdf5df2030dff94",
         "lmarena-lb-diff-7e9a2868",
-        "intel-fe1737707f01487333b9"
+        "intel-fe1737707f01487333b9",
+        "intel-74ee8b658c7e4c844d5f"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -7577,9 +7738,25 @@
           "build": "55f5c4ae992844a08b3511689c8e7b46e26f689c1737a813cfac1affe17e7e83",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-19T05:26:41.710617+00:00"
+        },
+        {
+          "id": "vivgrid/gpt-6.2-astra",
+          "family": "gpt-6.2-astra",
+          "file_path": "providers/vivgrid/models/gpt-6.2-astra.toml",
+          "file_sha256": "3076371a57bd17eb1ea7210669a304261bcbdc66621892c9b88709dd3b0be3a3",
+          "excerpt": "{\"vivgrid/gpt-6.2-astra\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-astra\", \"base_model_omit\": [\"limit.input\"], \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"limit\": {\"context\": 1000000}, \"api\": {\"responses\": {\"capabilities\": {\"tools\": {\"freeform\": [\"text\", \"lark\", \"regex\"]}}}, \"chat-completions\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai-compatible\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 8.8, \"cache\": {\"read\": 0.44, \"write\": 11}, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 17.6, \"cache\": {\"read\": 0.88, \"write\": 22}}]}, \"output\": {\"price\": 44, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 66}]}}}}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6e5e11a78e2667b7ea06c79590a64ada83066292/providers/vivgrid/models/gpt-6.2-astra.toml",
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "first_seen": "2026-11-19T05:24:24+00:00"
         }
       ],
-      "x_post_text": "🟢 NEW MODEL: GPT 6.2 Astra by OpenAI\n\nFirst detected 17 Nov 18:31 UTC in npm SDK release\n📅 First released: 2026-11-17\n⏱ 10 h before it went live on Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: GPT 6.2 Astra by OpenAI\n\nFirst detected 17 Nov 18:31 UTC in npm SDK release\n📅 First released: 2026-11-17\n⏱ 10 h before it went live on Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-19T05:31:35.527382+00:00"
     },
     {
       "id": "story-gpt-6-2-sol",
@@ -7591,7 +7768,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-17T18:31:10.791Z",
-      "updated_at": "2026-11-19T05:26:42.019012+00:00",
+      "updated_at": "2026-11-19T05:30:47.003951+00:00",
       "first_source": "npm SDK release",
       "lead": "10 h before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "2026-11-17",
@@ -7780,7 +7957,8 @@
         "intel-da56516d81c3e77e4b12",
         "intel-d1e66a66f86a9d9d15a5",
         "lmarena-lb-diff-7e9a2868",
-        "intel-64e3becbb420f9dd3afe"
+        "intel-64e3becbb420f9dd3afe",
+        "intel-be0c1492d14e6fc2518b"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -8333,9 +8511,25 @@
           "build": "55f5c4ae992844a08b3511689c8e7b46e26f689c1737a813cfac1affe17e7e83",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-19T05:26:41.710617+00:00"
+        },
+        {
+          "id": "vivgrid/gpt-6.2-sol",
+          "family": "gpt-6.2-sol",
+          "file_path": "providers/vivgrid/models/gpt-6.2-sol.toml",
+          "file_sha256": "cc30153eac2ead9cad9075c1ae68af92676b5f731f615ed44f24d4624d3e5689",
+          "excerpt": "{\"vivgrid/gpt-6.2-sol\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-sol\", \"base_model_omit\": [\"limit.input\"], \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"limit\": {\"context\": 1000000}, \"api\": {\"responses\": {\"capabilities\": {\"tools\": {\"freeform\": [\"text\", \"lark\", \"regex\"]}}}, \"chat-completions\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai-compatible\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 2.2, \"cache\": {\"read\": 0.11, \"write\": 2.75}, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 4.4, \"cache\": {\"read\": 0.22, \"write\": 5.5}}]}, \"output\": {\"price\": 11, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 16.5}]}}}}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6e5e11a78e2667b7ea06c79590a64ada83066292/providers/vivgrid/models/gpt-6.2-sol.toml",
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "first_seen": "2026-11-19T05:24:24+00:00"
         }
       ],
-      "x_post_text": "🟢 NEW MODEL: GPT 6.2 Sol by OpenAI\n\nFirst detected 17 Nov 18:31 UTC in npm SDK release\n📅 First released: 2026-11-17\n⏱ 10 h before it went live on Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: GPT 6.2 Sol by OpenAI\n\nFirst detected 17 Nov 18:31 UTC in npm SDK release\n📅 First released: 2026-11-17\n⏱ 10 h before it went live on Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-19T05:31:35.527382+00:00"
     },
     {
       "id": "story-gemma-4audiofeatureextractor",
@@ -8804,7 +8998,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-16T20:15:16.430197+00:00",
-      "updated_at": "2026-11-19T04:04:20.000Z",
+      "updated_at": "2026-11-19T05:30:53.092939+00:00",
       "first_source": "Gemini Web App Config",
       "lead": "2 days before it went live on OpenRouter",
       "released_on": "2026-11-18",
@@ -8815,7 +9009,7 @@
       "models": [
         {
           "id": "gemini-4-neon",
-          "name": "Gemini 4 Neon",
+          "name": "github-copilot/gemini-4-neon",
           "released_on": "2026-11-18"
         },
         {
@@ -8998,7 +9192,9 @@
         "intel-a4347e1f418d3f5ed980",
         "intel-05da8e1357f6c1292208",
         "ag-2.33.0-1.0.20261119010130__Insiders_-gemini-4-neon",
-        "lmarena-lb-diff-7e9a2868"
+        "lmarena-lb-diff-7e9a2868",
+        "intel-df128bc4e900683c69fc",
+        "intel-e222c9d7c403029294c0"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -9303,9 +9499,125 @@
           "build": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
           "first_seen": "2026-11-19T00:46:25+00:00"
+        },
+        {
+          "id": "github-copilot/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "api.json?type=all",
+          "file_sha256": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+          "excerpt": "{\"github-copilot/gemini-4-neon\": {\"id\": \"gemini-4-neon\", \"name\": \"Gemini 4 Neon\", \"description\": \"Google's Gemini 4 model for fast, frontier-level coding, knowledge work and science workflows, with four thinking levels and a 1M-token context window\", \"family\": \"gemini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-03\", \"release_date\": \"2026-11-18\", \"last_updated\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 3, \"output\": 15, \"cache_read\": 0.15}, \"canonical_model_id\": \"google/gemini-4-neon\"}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-19T05:30:39.920698+00:00"
+        },
+        {
+          "id": "llmgateway-providers/google-ai-studio/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "api.json?type=all",
+          "file_sha256": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+          "excerpt": "{\"llmgateway-providers/google-ai-studio/gemini-4-neon\": {\"id\": \"google-ai-studio/gemini-4-neon\", \"name\": \"Gemini 4 Neon (Google AI Studio)\", \"description\": \"Google's Gemini 4 model for fast, frontier-level coding, knowledge work and science workflows, with four thinking levels and a 1M-token context window\", \"family\": \"gemini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-03\", \"release_date\": \"2026-11-18\", \"last_updated\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\", \"audio\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 3, \"output\": 15, \"cache_read\": 0.15}, \"canonical_model_id\": \"google/gemini-4-neon\"}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-19T05:30:39.920698+00:00"
+        },
+        {
+          "id": "llmgateway-providers/google-vertex/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "api.json?type=all",
+          "file_sha256": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+          "excerpt": "{\"llmgateway-providers/google-vertex/gemini-4-neon\": {\"id\": \"google-vertex/gemini-4-neon\", \"name\": \"Gemini 4 Neon (Google Vertex AI)\", \"description\": \"Google's Gemini 4 model for fast, frontier-level coding, knowledge work and science workflows, with four thinking levels and a 1M-token context window\", \"family\": \"gemini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-03\", \"release_date\": \"2026-11-18\", \"last_updated\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\", \"audio\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 3, \"output\": 15, \"cache_read\": 0.15}, \"canonical_model_id\": \"google/gemini-4-neon\"}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-19T05:30:39.920698+00:00"
+        },
+        {
+          "id": "llmgateway/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "api.json?type=all",
+          "file_sha256": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+          "excerpt": "{\"llmgateway/gemini-4-neon\": {\"id\": \"gemini-4-neon\", \"name\": \"Gemini 4 Neon\", \"description\": \"Google's Gemini 4 model for fast, frontier-level coding, knowledge work and science workflows, with four thinking levels and a 1M-token context window\", \"family\": \"gemini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\"]}], \"tool_call\": true, \"temperature\": false, \"knowledge\": \"2026-03\", \"release_date\": \"2026-11-18\", \"last_updated\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\", \"audio\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 3, \"output\": 15, \"cache_read\": 0.15}, \"canonical_model_id\": \"google/gemini-4-neon\"}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-19T05:30:39.920698+00:00"
+        },
+        {
+          "id": "github-copilot/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/github-copilot/models/gemini-4-neon.toml",
+          "file_sha256": "449b7a7a8bc0dc84735e3868d09b4a04d35b50169c43a4f6dad81446a962358e",
+          "excerpt": "{\"github-copilot/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\", \"image/webp\", \"image/heic\", \"image/heif\", \"application/pdf\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.15}}, \"output\": {\"price\": 15}}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/408331dd7ae9a57d19f2f73c252a5ac5cd36e066/providers/github-copilot/models/gemini-4-neon.toml",
+          "build": "408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+          "first_seen": "2026-11-19T05:25:52+00:00"
+        },
+        {
+          "id": "llmgateway-providers/google-ai-studio/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/llmgateway-providers/models/google-ai-studio/gemini-4-neon.toml",
+          "file_sha256": "b275175424806b4f5b721b7d764cebd997954f0ba8a98a5910ea85e54eada320",
+          "excerpt": "{\"llmgateway-providers/google-ai-studio/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"name\": \"Gemini 4 Neon (Google AI Studio)\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.15}}, \"output\": {\"price\": 15}}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/408331dd7ae9a57d19f2f73c252a5ac5cd36e066/providers/llmgateway-providers/models/google-ai-studio/gemini-4-neon.toml",
+          "build": "408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+          "first_seen": "2026-11-19T05:25:52+00:00"
+        },
+        {
+          "id": "llmgateway-providers/google-vertex/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/llmgateway-providers/models/google-vertex/gemini-4-neon.toml",
+          "file_sha256": "c34d65b0b857a63124c5bd8d88826a92551de566af42db7a4e5a775556b6339c",
+          "excerpt": "{\"llmgateway-providers/google-vertex/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"name\": \"Gemini 4 Neon (Google Vertex AI)\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.15}}, \"output\": {\"price\": 15}}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/408331dd7ae9a57d19f2f73c252a5ac5cd36e066/providers/llmgateway-providers/models/google-vertex/gemini-4-neon.toml",
+          "build": "408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+          "first_seen": "2026-11-19T05:25:52+00:00"
+        },
+        {
+          "id": "llmgateway/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/llmgateway/models/gemini-4-neon.toml",
+          "file_sha256": "3abac6b05f3889d07d56a68d7e4fed45bf59f781ba5ca097558ccaeacb4fb88a",
+          "excerpt": "{\"llmgateway/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.15}}, \"output\": {\"price\": 15}}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/408331dd7ae9a57d19f2f73c252a5ac5cd36e066/providers/llmgateway/models/gemini-4-neon.toml",
+          "build": "408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+          "first_seen": "2026-11-19T05:25:52+00:00"
         }
       ],
-      "discord_alerted_at": "2026-11-19T03:14:44.255097+00:00",
+      "discord_alerted_at": "2026-11-19T05:31:35.527382+00:00",
       "x_post_text": "🟢 NEW MODEL: Gemini 4 Neon by Google\n\nFirst detected 16 Nov 20:15 UTC in Gemini Web App Config\n📅 First released: 2026-11-18\n⏱ 2 days before it went live on OpenRouter\nConfirmed by Google Cloud Billing catalog, Vertex AI Quotas registry, Gemini API Docs +9\n\nvia @StatsWire"
     },
     {
@@ -9820,7 +10132,7 @@
       "provider_name": "vivgrid",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-16T07:02:21.215900+00:00",
-      "updated_at": "2026-11-19T05:26:42.019012+00:00",
+      "updated_at": "2026-11-19T05:30:47.003951+00:00",
       "first_source": "models.dev",
       "lead": "2 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "2026-11-16",
@@ -9922,7 +10234,8 @@
         "hf-tencent_Hy4-flash",
         "intel-3e755d95783fe7167cba",
         "intel-e5ea86a408a3d71cc72b",
-        "intel-d76f4f01da57fc959f14"
+        "intel-d76f4f01da57fc959f14",
+        "intel-166179520570c3f0f56b"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -9970,6 +10283,21 @@
           "build": "55f5c4ae992844a08b3511689c8e7b46e26f689c1737a813cfac1affe17e7e83",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-19T05:26:41.710617+00:00"
+        },
+        {
+          "id": "vivgrid/hy4-flash",
+          "family": "hy4-flash",
+          "file_path": "providers/vivgrid/models/hy4-flash.toml",
+          "file_sha256": "57c1a0dd8a6e02e7c90c402d6e828e31eecd0434d6dad812d165f729a8ad2787",
+          "excerpt": "{\"vivgrid/hy4-flash\": {\"schema\": 2, \"base_model\": \"tencent/hy4-flash\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"high\"]}, \"structured_output\": true}, \"api\": {\"chat-completions\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai-compatible\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible\"}, \"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.07, \"cache\": {\"read\": 0.01}}, \"output\": {\"price\": 0.281}}}}}",
+          "canonical_id": "tencent/hy4-flash",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6e5e11a78e2667b7ea06c79590a64ada83066292/providers/vivgrid/models/hy4-flash.toml",
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "first_seen": "2026-11-19T05:24:24+00:00"
         }
       ],
       "x_post_text": "🟢 NEW MODEL: Hy4 flash by vivgrid\n\nFirst detected 16 Nov 07:02 UTC in models.dev\n📅 First released: 2026-11-16\n⏱ 2 min before it went live on Vercel AI Gateway Catalog\nConfirmed by Vercel AI Gateway Catalog, Opencode Zen Stealth & Model Gateway, OpenRouter +2\n\nvia @StatsWire"
@@ -15996,6 +16324,915 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-e222c9d7c403029294c0",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gemini-4-neon",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "4 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gemini-4-neon",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "github-copilot/gemini-4-neon",
+          "name": "github-copilot/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        },
+        {
+          "id": "llmgateway-providers/google-ai-studio/gemini-4-neon",
+          "name": "llmgateway-providers/google-ai-studio/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        },
+        {
+          "id": "llmgateway-providers/google-vertex/gemini-4-neon",
+          "name": "llmgateway-providers/google-vertex/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        },
+        {
+          "id": "llmgateway/gemini-4-neon",
+          "name": "llmgateway/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        }
+      ],
+      "detected_at": "2026-11-19T05:30:53.092939+00:00",
+      "first_seen": "2026-11-19T05:25:52+00:00",
+      "observed_at": "2026-11-19T05:30:53.092939+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "6e5e11a78e2667b7ea06c79590a64ada83066292 -> 408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+      "build": "408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+      "artifact_sha256": "b8dee3c55ba0b8ceec9b46988602cba0829cea5d5d921fea4f1efc636f1f5034",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/b8dee3c55ba0b8ceec9b46988602cba0829cea5d5d921fea4f1efc636f1f5034.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/b8dee3c55ba0b8ceec9b46988602cba0829cea5d5d921fea4f1efc636f1f5034.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "github-copilot/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/github-copilot/models/gemini-4-neon.toml",
+          "file_sha256": "449b7a7a8bc0dc84735e3868d09b4a04d35b50169c43a4f6dad81446a962358e",
+          "excerpt": "{\"github-copilot/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\", \"image/webp\", \"image/heic\", \"image/heif\", \"application/pdf\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.15}}, \"output\": {\"price\": 15}}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/408331dd7ae9a57d19f2f73c252a5ac5cd36e066/providers/github-copilot/models/gemini-4-neon.toml",
+          "build": "408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+          "first_seen": "2026-11-19T05:25:52+00:00"
+        },
+        {
+          "id": "llmgateway-providers/google-ai-studio/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/llmgateway-providers/models/google-ai-studio/gemini-4-neon.toml",
+          "file_sha256": "b275175424806b4f5b721b7d764cebd997954f0ba8a98a5910ea85e54eada320",
+          "excerpt": "{\"llmgateway-providers/google-ai-studio/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"name\": \"Gemini 4 Neon (Google AI Studio)\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.15}}, \"output\": {\"price\": 15}}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/408331dd7ae9a57d19f2f73c252a5ac5cd36e066/providers/llmgateway-providers/models/google-ai-studio/gemini-4-neon.toml",
+          "build": "408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+          "first_seen": "2026-11-19T05:25:52+00:00"
+        },
+        {
+          "id": "llmgateway-providers/google-vertex/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/llmgateway-providers/models/google-vertex/gemini-4-neon.toml",
+          "file_sha256": "c34d65b0b857a63124c5bd8d88826a92551de566af42db7a4e5a775556b6339c",
+          "excerpt": "{\"llmgateway-providers/google-vertex/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"name\": \"Gemini 4 Neon (Google Vertex AI)\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.15}}, \"output\": {\"price\": 15}}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/408331dd7ae9a57d19f2f73c252a5ac5cd36e066/providers/llmgateway-providers/models/google-vertex/gemini-4-neon.toml",
+          "build": "408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+          "first_seen": "2026-11-19T05:25:52+00:00"
+        },
+        {
+          "id": "llmgateway/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/llmgateway/models/gemini-4-neon.toml",
+          "file_sha256": "3abac6b05f3889d07d56a68d7e4fed45bf59f781ba5ca097558ccaeacb4fb88a",
+          "excerpt": "{\"llmgateway/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.15}}, \"output\": {\"price\": 15}}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/408331dd7ae9a57d19f2f73c252a5ac5cd36e066/providers/llmgateway/models/gemini-4-neon.toml",
+          "build": "408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+          "first_seen": "2026-11-19T05:25:52+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gemini/gemini-4-neon",
+          "first_seen": "2026-11-18T20:53:00+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/9acb32a918143d9a68d0c5644d5678f050792428907c895ed5ff2077bc5e722d.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/408331dd7ae9a57d19f2f73c252a5ac5cd36e066"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/408331dd7ae9a57d19f2f73c252a5ac5cd36e066"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T05:30:55.784380+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 408331dd7ae9: github-copilot/gemini-4-neon\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/408331dd7ae9a57d19f2f73c252a5ac5cd36e066"
+    },
+    {
+      "id": "intel-17dbc4dc9e29d0fa7ce9",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "mai-image-2.7",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "mai-image-2.7",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "microsoft/mai-image-2.7",
+          "name": "microsoft/mai-image-2.7",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        },
+        {
+          "id": "openrouter/microsoft/mai-image-2.7",
+          "name": "openrouter/microsoft/mai-image-2.7",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-19T05:30:47.003951+00:00",
+      "first_seen": "2026-11-19T05:24:24+00:00",
+      "observed_at": "2026-11-19T05:30:47.003951+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8 -> 6e5e11a78e2667b7ea06c79590a64ada83066292",
+      "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+      "artifact_sha256": "708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "microsoft/mai-image-2.7",
+          "family": "mai-image-2.7",
+          "file_path": "models/microsoft/mai-image-2.7.toml",
+          "file_sha256": "785f0c0c36404282622b6529117d89d42daedab33f429cca3b54075774458077",
+          "excerpt": "{\"microsoft/mai-image-2.7\": {\"schema\": 2, \"v2_only\": true, \"type\": \"image\", \"name\": \"MAI-Image-2.7\", \"description\": \"Image generation and precise multi-reference editing model with transparent backgrounds\", \"family\": \"mai\", \"open_weights\": false, \"release_date\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\"], \"output\": [\"image/png\"]}, \"capabilities\": {\"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}, \"temperature\": false, \"top_p\": false, \"top_k\": false}, \"limit\": {\"context\": 32000, \"output\": 0}, \"links\": [{\"label\": \"Model card\", \"url\": \"https://microsoft.ai/pdf/MAI-Image-2.7-Model-Card.pdf\", \"type\": \"model_card\"}, {\"label\": \"Announcement\", \"url\": \"https://microsoft.ai/news/introducing-mai-image-2-7/\", \"type\": \"announcement\"}]}}",
+          "canonical_id": "microsoft/mai-image-2.7",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6e5e11a78e2667b7ea06c79590a64ada83066292/models/microsoft/mai-image-2.7.toml",
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "first_seen": "2026-11-19T05:24:24+00:00"
+        },
+        {
+          "id": "openrouter/microsoft/mai-image-2.7",
+          "family": "mai-image-2.7",
+          "file_path": "providers/openrouter/models/microsoft/mai-image-2.7.toml",
+          "file_sha256": "a25f8f99ce409bbd0a6281ebd44362777ccea48ff592de315f0196a02622dba5",
+          "excerpt": "{\"openrouter/microsoft/mai-image-2.7\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"microsoft/mai-image-2.7\", \"api\": {\"images\": {\"base_url\": \"https://openrouter.ai/api/v1\", \"sdk\": {\"aisdk\": \"@openrouter/ai-sdk-provider\", \"opencodeai\": \"@opencode/ai/providers/openrouter/images\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 5}}, \"image\": {\"input\": {\"price\": 8}, \"output\": {\"price\": 34}}}}}",
+          "canonical_id": "microsoft/mai-image-2.7",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6e5e11a78e2667b7ea06c79590a64ada83066292/providers/openrouter/models/microsoft/mai-image-2.7.toml",
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "first_seen": "2026-11-19T05:24:24+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/6e5e11a78e2667b7ea06c79590a64ada83066292"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T05:30:55.784380+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 6e5e11a78e26: microsoft/mai-image-2.7\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292"
+    },
+    {
+      "id": "intel-37e0cde77b919517a34b",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "mai-image-2.7-flash",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "mai-image-2.7-flash",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "microsoft/mai-image-2.7-flash",
+          "name": "microsoft/mai-image-2.7-flash",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        },
+        {
+          "id": "openrouter/microsoft/mai-image-2.7-flash",
+          "name": "openrouter/microsoft/mai-image-2.7-flash",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-19T05:30:47.003951+00:00",
+      "first_seen": "2026-11-19T05:24:24+00:00",
+      "observed_at": "2026-11-19T05:30:47.003951+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8 -> 6e5e11a78e2667b7ea06c79590a64ada83066292",
+      "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+      "artifact_sha256": "708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "microsoft/mai-image-2.7-flash",
+          "family": "mai-image-2.7-flash",
+          "file_path": "models/microsoft/mai-image-2.7-flash.toml",
+          "file_sha256": "6e6cbc070caf39d8db61c2f090ff87b6a2b6b1fbc86bf5490ba05faf352c61fb",
+          "excerpt": "{\"microsoft/mai-image-2.7-flash\": {\"schema\": 2, \"v2_only\": true, \"type\": \"image\", \"name\": \"MAI-Image-2.7-Flash\", \"description\": \"Faster, lower-cost MAI-Image-2.7 for high-throughput generation and editing\", \"family\": \"mai\", \"open_weights\": false, \"release_date\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\"], \"output\": [\"image/png\"]}, \"capabilities\": {\"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}, \"temperature\": false, \"top_p\": false, \"top_k\": false}, \"limit\": {\"context\": 32000, \"output\": 0}, \"links\": [{\"label\": \"Model card\", \"url\": \"https://microsoft.ai/pdf/MAI-Image-2.7-Model-Card.pdf\", \"type\": \"model_card\"}, {\"label\": \"Announcement\", \"url\": \"https://microsoft.ai/news/introducing-mai-image-2-7/\", \"type\": \"announcement\"}]}}",
+          "canonical_id": "microsoft/mai-image-2.7-flash",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6e5e11a78e2667b7ea06c79590a64ada83066292/models/microsoft/mai-image-2.7-flash.toml",
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "first_seen": "2026-11-19T05:24:24+00:00"
+        },
+        {
+          "id": "openrouter/microsoft/mai-image-2.7-flash",
+          "family": "mai-image-2.7-flash",
+          "file_path": "providers/openrouter/models/microsoft/mai-image-2.7-flash.toml",
+          "file_sha256": "92d0d52e2b901caf00a0c78375e0db7467af5c335b856eb0be540d32bd83881f",
+          "excerpt": "{\"openrouter/microsoft/mai-image-2.7-flash\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"microsoft/mai-image-2.7-flash\", \"api\": {\"images\": {\"base_url\": \"https://openrouter.ai/api/v1\", \"sdk\": {\"aisdk\": \"@openrouter/ai-sdk-provider\", \"opencodeai\": \"@opencode/ai/providers/openrouter/images\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 1.75}}, \"image\": {\"input\": {\"price\": 2.5}, \"output\": {\"price\": 10}}}}}",
+          "canonical_id": "microsoft/mai-image-2.7-flash",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6e5e11a78e2667b7ea06c79590a64ada83066292/providers/openrouter/models/microsoft/mai-image-2.7-flash.toml",
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "first_seen": "2026-11-19T05:24:24+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/6e5e11a78e2667b7ea06c79590a64ada83066292"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T05:30:55.784380+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 6e5e11a78e26: microsoft/mai-image-2.7-flash\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292"
+    },
+    {
+      "id": "intel-78493fde9a5155d2a105",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "microsoft-decision-1.1",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "microsoft-decision-1.1",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "microsoft/microsoft-decision-1.1",
+          "name": "microsoft/microsoft-decision-1.1",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        },
+        {
+          "id": "openrouter/microsoft/microsoft-decision-1.1",
+          "name": "openrouter/microsoft/microsoft-decision-1.1",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-19T05:30:47.003951+00:00",
+      "first_seen": "2026-11-19T05:24:24+00:00",
+      "observed_at": "2026-11-19T05:30:47.003951+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8 -> 6e5e11a78e2667b7ea06c79590a64ada83066292",
+      "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+      "artifact_sha256": "708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "microsoft/microsoft-decision-1.1",
+          "family": "microsoft-decision-1.1",
+          "file_path": "models/microsoft/microsoft-decision-1.1.toml",
+          "file_sha256": "2429742d4eb155fbe8b9f1cedf9201165773acb68ef3658f3a0dac183822bcf3",
+          "excerpt": "{\"microsoft/microsoft-decision-1.1\": {\"schema\": 2, \"v2_only\": true, \"type\": \"decision\", \"name\": \"Microsoft-Decision-1.1\", \"description\": \"Microsoft decision model that returns calibrated probabilities for typed yes/no, choice and score questions about text, JSON and images\", \"open_weights\": false, \"release_date\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\", \"image/png\"], \"output\": [\"decision\"]}, \"capabilities\": {\"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}, \"temperature\": false, \"top_p\": false, \"top_k\": false}, \"limit\": {\"context\": 32768, \"output\": 0}, \"links\": [{\"label\": \"Announcement\", \"url\": \"https://commandline.microsoft.com/microsoft-decision-model-ga/\", \"type\": \"announcement\"}, {\"label\": \"Docs\", \"url\": \"https://learn.microsoft.com/en-us/azure/foundry/foundry-models/how-to/use-foundry-models-microsoft-decision\", \"type\": \"docs\"}]}}",
+          "canonical_id": "microsoft/microsoft-decision-1.1",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6e5e11a78e2667b7ea06c79590a64ada83066292/models/microsoft/microsoft-decision-1.1.toml",
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "first_seen": "2026-11-19T05:24:24+00:00"
+        },
+        {
+          "id": "openrouter/microsoft/microsoft-decision-1.1",
+          "family": "microsoft-decision-1.1",
+          "file_path": "providers/openrouter/models/microsoft/microsoft-decision-1.1.toml",
+          "file_sha256": "2a7943190cafa7692cd04288421833e0532fd65431c8af938aace8cc929d07b8",
+          "excerpt": "{\"openrouter/microsoft/microsoft-decision-1.1\": {\"schema\": 2, \"base_model\": \"microsoft/microsoft-decision-1.1\", \"description\": \"Decision model for typed evaluation of shared state\", \"capabilities\": {\"structured_output\": false}, \"api\": {\"systemone\": {\"sdk\": {\"aisdk\": \"@ai-sdk/typesafe-ai\", \"opencodeai\": \"@opencode/ai/providers/openrouter/decisions\"}, \"compatibility\": {\"media_input\": \"state\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.042}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "microsoft/microsoft-decision-1.1",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6e5e11a78e2667b7ea06c79590a64ada83066292/providers/openrouter/models/microsoft/microsoft-decision-1.1.toml",
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "first_seen": "2026-11-19T05:24:24+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/6e5e11a78e2667b7ea06c79590a64ada83066292"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T05:30:55.784380+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 6e5e11a78e26: microsoft/microsoft-decision-1.1\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292"
+    },
+    {
+      "id": "intel-74ee8b658c7e4c844d5f",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-astra",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6.2-astra",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "vivgrid/gpt-6.2-astra",
+          "name": "vivgrid/gpt-6.2-astra",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-19T05:30:47.003951+00:00",
+      "first_seen": "2026-11-19T05:24:24+00:00",
+      "observed_at": "2026-11-19T05:30:47.003951+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8 -> 6e5e11a78e2667b7ea06c79590a64ada83066292",
+      "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+      "artifact_sha256": "708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "vivgrid/gpt-6.2-astra",
+          "family": "gpt-6.2-astra",
+          "file_path": "providers/vivgrid/models/gpt-6.2-astra.toml",
+          "file_sha256": "3076371a57bd17eb1ea7210669a304261bcbdc66621892c9b88709dd3b0be3a3",
+          "excerpt": "{\"vivgrid/gpt-6.2-astra\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-astra\", \"base_model_omit\": [\"limit.input\"], \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"limit\": {\"context\": 1000000}, \"api\": {\"responses\": {\"capabilities\": {\"tools\": {\"freeform\": [\"text\", \"lark\", \"regex\"]}}}, \"chat-completions\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai-compatible\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 8.8, \"cache\": {\"read\": 0.44, \"write\": 11}, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 17.6, \"cache\": {\"read\": 0.88, \"write\": 22}}]}, \"output\": {\"price\": 44, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 66}]}}}}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6e5e11a78e2667b7ea06c79590a64ada83066292/providers/vivgrid/models/gpt-6.2-astra.toml",
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "first_seen": "2026-11-19T05:24:24+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-6.2-astra",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/9acb32a918143d9a68d0c5644d5678f050792428907c895ed5ff2077bc5e722d.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/6e5e11a78e2667b7ea06c79590a64ada83066292"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T05:30:55.784380+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 6e5e11a78e26: vivgrid/gpt-6.2-astra\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292"
+    },
+    {
+      "id": "intel-be0c1492d14e6fc2518b",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-sol",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6.2-sol",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "vivgrid/gpt-6.2-sol",
+          "name": "vivgrid/gpt-6.2-sol",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-19T05:30:47.003951+00:00",
+      "first_seen": "2026-11-19T05:24:24+00:00",
+      "observed_at": "2026-11-19T05:30:47.003951+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8 -> 6e5e11a78e2667b7ea06c79590a64ada83066292",
+      "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+      "artifact_sha256": "708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "vivgrid/gpt-6.2-sol",
+          "family": "gpt-6.2-sol",
+          "file_path": "providers/vivgrid/models/gpt-6.2-sol.toml",
+          "file_sha256": "cc30153eac2ead9cad9075c1ae68af92676b5f731f615ed44f24d4624d3e5689",
+          "excerpt": "{\"vivgrid/gpt-6.2-sol\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-sol\", \"base_model_omit\": [\"limit.input\"], \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"limit\": {\"context\": 1000000}, \"api\": {\"responses\": {\"capabilities\": {\"tools\": {\"freeform\": [\"text\", \"lark\", \"regex\"]}}}, \"chat-completions\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai-compatible\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 2.2, \"cache\": {\"read\": 0.11, \"write\": 2.75}, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 4.4, \"cache\": {\"read\": 0.22, \"write\": 5.5}}]}, \"output\": {\"price\": 11, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 16.5}]}}}}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6e5e11a78e2667b7ea06c79590a64ada83066292/providers/vivgrid/models/gpt-6.2-sol.toml",
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "first_seen": "2026-11-19T05:24:24+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-6.2-sol",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/9acb32a918143d9a68d0c5644d5678f050792428907c895ed5ff2077bc5e722d.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/6e5e11a78e2667b7ea06c79590a64ada83066292"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T05:30:55.784380+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 6e5e11a78e26: vivgrid/gpt-6.2-sol\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292"
+    },
+    {
+      "id": "intel-166179520570c3f0f56b",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "hy4-flash",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "hy4-flash",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "vivgrid/hy4-flash",
+          "name": "vivgrid/hy4-flash",
+          "registry_update": true,
+          "released_on": "2026-11-16"
+        }
+      ],
+      "detected_at": "2026-11-19T05:30:47.003951+00:00",
+      "first_seen": "2026-11-19T05:24:24+00:00",
+      "observed_at": "2026-11-19T05:30:47.003951+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8 -> 6e5e11a78e2667b7ea06c79590a64ada83066292",
+      "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+      "artifact_sha256": "708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/708e1d9d8077cb4b5c8ffec5a23f719060e3583a7d592a9a72a84dcb7c200926.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "vivgrid/hy4-flash",
+          "family": "hy4-flash",
+          "file_path": "providers/vivgrid/models/hy4-flash.toml",
+          "file_sha256": "57c1a0dd8a6e02e7c90c402d6e828e31eecd0434d6dad812d165f729a8ad2787",
+          "excerpt": "{\"vivgrid/hy4-flash\": {\"schema\": 2, \"base_model\": \"tencent/hy4-flash\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"high\"]}, \"structured_output\": true}, \"api\": {\"chat-completions\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai-compatible\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible\"}, \"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.07, \"cache\": {\"read\": 0.01}}, \"output\": {\"price\": 0.281}}}}}",
+          "canonical_id": "tencent/hy4-flash",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6e5e11a78e2667b7ea06c79590a64ada83066292/providers/vivgrid/models/hy4-flash.toml",
+          "build": "6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292",
+          "first_seen": "2026-11-19T05:24:24+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/6e5e11a78e2667b7ea06c79590a64ada83066292"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T05:30:55.784380+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 6e5e11a78e26: vivgrid/hy4-flash\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/6e5e11a78e2667b7ea06c79590a64ada83066292"
+    },
+    {
+      "id": "intel-df128bc4e900683c69fc",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gemini-4-neon",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "4 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "gemini-4-neon",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "github-copilot/gemini-4-neon",
+          "name": "github-copilot/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        },
+        {
+          "id": "llmgateway-providers/google-ai-studio/gemini-4-neon",
+          "name": "llmgateway-providers/google-ai-studio/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        },
+        {
+          "id": "llmgateway-providers/google-vertex/gemini-4-neon",
+          "name": "llmgateway-providers/google-vertex/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        },
+        {
+          "id": "llmgateway/gemini-4-neon",
+          "name": "llmgateway/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        }
+      ],
+      "detected_at": "2026-11-19T05:30:40.224716+00:00",
+      "first_seen": "2026-11-19T05:30:39.920698+00:00",
+      "observed_at": "2026-11-19T05:30:40.224716+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "55f5c4ae992844a08b3511689c8e7b46e26f689c1737a813cfac1affe17e7e83 -> 3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+      "build": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "github-copilot/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "api.json?type=all",
+          "file_sha256": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+          "excerpt": "{\"github-copilot/gemini-4-neon\": {\"id\": \"gemini-4-neon\", \"name\": \"Gemini 4 Neon\", \"description\": \"Google's Gemini 4 model for fast, frontier-level coding, knowledge work and science workflows, with four thinking levels and a 1M-token context window\", \"family\": \"gemini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-03\", \"release_date\": \"2026-11-18\", \"last_updated\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 3, \"output\": 15, \"cache_read\": 0.15}, \"canonical_model_id\": \"google/gemini-4-neon\"}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-19T05:30:39.920698+00:00"
+        },
+        {
+          "id": "llmgateway-providers/google-ai-studio/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "api.json?type=all",
+          "file_sha256": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+          "excerpt": "{\"llmgateway-providers/google-ai-studio/gemini-4-neon\": {\"id\": \"google-ai-studio/gemini-4-neon\", \"name\": \"Gemini 4 Neon (Google AI Studio)\", \"description\": \"Google's Gemini 4 model for fast, frontier-level coding, knowledge work and science workflows, with four thinking levels and a 1M-token context window\", \"family\": \"gemini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-03\", \"release_date\": \"2026-11-18\", \"last_updated\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\", \"audio\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 3, \"output\": 15, \"cache_read\": 0.15}, \"canonical_model_id\": \"google/gemini-4-neon\"}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-19T05:30:39.920698+00:00"
+        },
+        {
+          "id": "llmgateway-providers/google-vertex/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "api.json?type=all",
+          "file_sha256": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+          "excerpt": "{\"llmgateway-providers/google-vertex/gemini-4-neon\": {\"id\": \"google-vertex/gemini-4-neon\", \"name\": \"Gemini 4 Neon (Google Vertex AI)\", \"description\": \"Google's Gemini 4 model for fast, frontier-level coding, knowledge work and science workflows, with four thinking levels and a 1M-token context window\", \"family\": \"gemini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-03\", \"release_date\": \"2026-11-18\", \"last_updated\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\", \"audio\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 3, \"output\": 15, \"cache_read\": 0.15}, \"canonical_model_id\": \"google/gemini-4-neon\"}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-19T05:30:39.920698+00:00"
+        },
+        {
+          "id": "llmgateway/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "api.json?type=all",
+          "file_sha256": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+          "excerpt": "{\"llmgateway/gemini-4-neon\": {\"id\": \"gemini-4-neon\", \"name\": \"Gemini 4 Neon\", \"description\": \"Google's Gemini 4 model for fast, frontier-level coding, knowledge work and science workflows, with four thinking levels and a 1M-token context window\", \"family\": \"gemini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\"]}], \"tool_call\": true, \"temperature\": false, \"knowledge\": \"2026-03\", \"release_date\": \"2026-11-18\", \"last_updated\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\", \"audio\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 3, \"output\": 15, \"cache_read\": 0.15}, \"canonical_model_id\": \"google/gemini-4-neon\"}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-19T05:30:39.920698+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gemini/gemini-4-neon",
+          "first_seen": "2026-11-18T20:53:00+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/9acb32a918143d9a68d0c5644d5678f050792428907c895ed5ff2077bc5e722d.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T05:30:42.668891+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 3b3934d4cf37: github-copilot/gemini-4-neon, llmgateway-providers/google-ai-studio/gemini-4-neon\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "intel-fe1737707f01487333b9",
       "scanner": "models-dev-api",
@@ -43595,25 +44832,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T05:26:41.004687+00:00",
+      "last_attempt": "2026-11-19T05:30:39.466000+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T05:26:44.598516+00:00",
+      "last_success": "2026-11-19T05:30:42.668891+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.594,
-      "latest_build": "55f5c4ae992844a08b3511689c8e7b46e26f689c1737a813cfac1affe17e7e83",
-      "builds_retained": 20,
-      "identifiers": 9639
+      "duration_seconds": 3.203,
+      "latest_build": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+      "builds_retained": 21,
+      "identifiers": 9643
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T05:26:44.735996+00:00",
+      "last_attempt": "2026-11-19T05:30:42.810693+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T05:26:45.079850+00:00",
+      "last_success": "2026-11-19T05:30:43.132012+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.344,
+      "duration_seconds": 0.322,
       "latest_build": "274911986e64f29c2713b6f1a2ee4f5009546d21",
       "builds_retained": 22,
       "identifiers": 6934
@@ -43621,24 +44858,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T05:20:43.749947+00:00",
+      "last_attempt": "2026-11-19T05:30:43.279602+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T05:20:44.167110+00:00",
+      "last_success": "2026-11-19T05:30:55.784380+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.417,
-      "latest_build": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
-      "builds_retained": 20,
-      "identifiers": 10752
+      "duration_seconds": 12.505,
+      "latest_build": "408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+      "builds_retained": 22,
+      "identifiers": 10764
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T05:26:45.225922+00:00",
+      "last_attempt": "2026-11-19T05:30:55.923115+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 498,
-      "duration_seconds": 15.533
+      "consecutive_failures": 500,
+      "duration_seconds": 15.187
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -43658,61 +44895,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T05:25:44.069666+00:00",
+      "last_attempt": "2026-11-19T05:29:43.920757+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T05:25:45.672629+00:00",
+      "last_success": "2026-11-19T05:29:45.602638+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.603
+      "duration_seconds": 1.682
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T05:25:45.672689+00:00",
+      "last_attempt": "2026-11-19T05:29:45.602697+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T05:25:45.794977+00:00",
+      "last_success": "2026-11-19T05:29:45.723611+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.122
+      "duration_seconds": 0.121
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T05:25:45.795012+00:00",
+      "last_attempt": "2026-11-19T05:29:45.723647+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T05:25:56.275553+00:00",
+      "last_success": "2026-11-19T05:29:52.490045+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 10.481
+      "duration_seconds": 6.766
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T05:25:56.275630+00:00",
+      "last_attempt": "2026-11-19T05:29:52.490118+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T05:26:41.004628+00:00",
+      "last_success": "2026-11-19T05:30:39.465942+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 44.729,
+      "duration_seconds": 46.976,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T05:25:56.521456+00:00",
+          "checked_at": "2026-11-19T05:29:52.721064+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T05:26:05.831566+00:00",
+          "checked_at": "2026-11-19T05:30:02.202824+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T05:26:06.314977+00:00",
+          "checked_at": "2026-11-19T05:30:02.310859+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T05:26:06.314995+00:00",
+          "checked_at": "2026-11-19T05:30:02.310878+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -43720,25 +44957,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T05:26:41.004687+00:00",
+      "last_attempt": "2026-11-19T05:30:39.466000+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T05:26:44.598516+00:00",
+      "last_success": "2026-11-19T05:30:42.668891+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.594,
-      "latest_build": "55f5c4ae992844a08b3511689c8e7b46e26f689c1737a813cfac1affe17e7e83",
-      "builds_retained": 20,
-      "identifiers": 9639
+      "duration_seconds": 3.203,
+      "latest_build": "3b3934d4cf37b41a1846d8a6519bda75b848e220d36d7eaeb388e0a9eabf6d63",
+      "builds_retained": 21,
+      "identifiers": 9643
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T05:26:44.735996+00:00",
+      "last_attempt": "2026-11-19T05:30:42.810693+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T05:26:45.079850+00:00",
+      "last_success": "2026-11-19T05:30:43.132012+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.344,
+      "duration_seconds": 0.322,
       "latest_build": "274911986e64f29c2713b6f1a2ee4f5009546d21",
       "builds_retained": 22,
       "identifiers": 6934
@@ -43746,24 +44983,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T05:20:43.749947+00:00",
+      "last_attempt": "2026-11-19T05:30:43.279602+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T05:20:44.167110+00:00",
+      "last_success": "2026-11-19T05:30:55.784380+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.417,
-      "latest_build": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
-      "builds_retained": 20,
-      "identifiers": 10752
+      "duration_seconds": 12.505,
+      "latest_build": "408331dd7ae9a57d19f2f73c252a5ac5cd36e066",
+      "builds_retained": 22,
+      "identifiers": 10764
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T05:26:45.225922+00:00",
+      "last_attempt": "2026-11-19T05:30:55.923115+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 498,
-      "duration_seconds": 15.533
+      "consecutive_failures": 500,
+      "duration_seconds": 15.187
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -43781,64 +45018,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T05:27:00.764840+00:00",
+      "last_attempt": "2026-11-19T05:31:11.116405+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T05:27:07.959618+00:00",
+      "last_success": "2026-11-19T05:31:18.368086+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.195
+      "duration_seconds": 7.252
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T05:27:07.959691+00:00",
+      "last_attempt": "2026-11-19T05:31:18.368161+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T05:27:10.155663+00:00",
+      "last_success": "2026-11-19T05:31:20.200759+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.196
+      "duration_seconds": 1.833
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T05:21:08.807595+00:00",
+      "last_attempt": "2026-11-19T05:31:20.200810+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T05:21:22.038228+00:00",
+      "last_success": "2026-11-19T05:31:31.654808+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 13.231
+      "duration_seconds": 11.454
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T05:27:10.155715+00:00",
+      "last_attempt": "2026-11-19T05:31:31.654862+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T05:27:11.778837+00:00",
+      "last_success": "2026-11-19T05:31:33.337187+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.623
+      "duration_seconds": 1.682
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T05:27:11.778894+00:00",
+      "last_attempt": "2026-11-19T05:31:33.337233+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T05:27:11.816506+00:00",
+      "last_success": "2026-11-19T05:31:33.371250+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.038
+      "duration_seconds": 0.034
     }
   },
   "identities": {
-    "identifiers": 30655,
-    "declared_aliases": 17794,
+    "identifiers": 30671,
+    "declared_aliases": 17814,
     "pending_candidates": 0
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 135,
-      "seconds_mean": 7651.914970718518,
+      "samples": 142,
+      "seconds_mean": 7293.011533042253,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -43852,8 +45089,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 172,
-      "events": 172,
+      "complete": 180,
+      "events": 180,
       "rate": 1.0
     },
     "source_health": {
