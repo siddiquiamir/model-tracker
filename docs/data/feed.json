@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-11-19T08:08:50.920289+00:00",
-  "scan_completed_at": "2026-11-19T08:10:02.246207+00:00",
+  "generated_at": "2026-11-19T08:18:50.530202+00:00",
+  "scan_completed_at": "2026-11-19T08:20:05.685636+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 214,
     "leaks": 44,
     "releases": 69,
     "stories_24h": 103,
-    "sources_ok": 12,
+    "sources_ok": 13,
     "total_cards": 445,
     "new_in_this_scan": 1
   },
@@ -56,8 +56,8 @@
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: WeVisForensics by Tencent Hunyuan\n\nFirst detected 19 Nov 08:10 UTC in Hugging Face\n\nvia @StatsWire",
-      "discord_alerted_at": "2026-11-19T08:10:02.244458+00:00"
+      "discord_alerted_at": "2026-11-19T08:10:02.244458+00:00",
+      "x_post_text": "🟢 NEW MODEL: WeVisForensics by Tencent Hunyuan\n\nFirst detected 19 Nov 08:10 UTC in Hugging Face\n\nvia @StatsWire"
     },
     {
       "id": "story-microsoft-decision-1-1",
@@ -8816,10 +8816,10 @@
       "open_weights": false,
       "title": "together_ai/Qwen/Qwen4-Max",
       "provider_slug": "unknown",
-      "provider_name": "llmgateway",
+      "provider_name": "together_ai",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-16T23:37:28.528456+00:00",
-      "updated_at": "2026-11-18T12:33:19.135321+00:00",
+      "updated_at": "2026-11-19T08:19:39.079483+00:00",
       "first_source": "LiteLLM registry",
       "lead": "",
       "released_on": "2026-11-16",
@@ -8827,8 +8827,8 @@
       "codenames": [],
       "models": [
         {
-          "id": "qwen4-max",
-          "name": "llmgateway/qwen4-max",
+          "id": "Qwen4-Max",
+          "name": "together_ai/Qwen/Qwen4-Max",
           "released_on": "2026-11-16"
         }
       ],
@@ -8844,16 +8844,6 @@
           "evidence_path": ""
         },
         {
-          "label": "LiteLLM commit-pinned registry",
-          "scanner": "litellm-intelligence",
-          "detected_at": "2026-11-18T08:49:00.716336+00:00",
-          "title": "qwen4",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/910100c8b59e26d6905b350a706243847c6df037/model_prices_and_context_window.json",
-          "backfill": false,
-          "build": "910100c8b59e26d6905b350a706243847c6df037",
-          "evidence_path": "data/intelligence/evidence/litellm-intelligence/4a2767eef695b7bf22e415ba028cbc3fde264dd5cec179eb144fd4d9cb6f140d.json.gz"
-        },
-        {
           "label": "Registry Update",
           "scanner": "models-dev-git",
           "detected_at": "2026-11-18T12:33:13.320030+00:00",
@@ -8862,34 +8852,31 @@
           "backfill": false,
           "build": "be2cb68c26a0894579f565dca191ecd7ec2ae1c1",
           "evidence_path": "data/intelligence/evidence/models-dev-git/ec1077fcdebb7c1e8e994f0f3f4313602675707ec3a57b891750d4b5007c47f6.json.gz"
+        },
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T08:19:39.079483+00:00",
+          "title": "qwen4",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/2f29a55a5102fbf23e406d313ea4b91a7257e48f/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "2f29a55a5102fbf23e406d313ea4b91a7257e48f",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/35324269521018afbbb23413133d2196b04bdd84a5a6fbf1d1964c8fb42e851d.json.gz"
         }
       ],
       "source_count": 3,
       "backfill": false,
-      "header": "NEW MODEL · LLMGATEWAY",
+      "header": "NEW MODEL · TOGETHER_AI",
       "card_ids": [
         "litellm-diff-b6ed8142",
-        "intel-0168494f83bc205d16de",
         "intel-09f1c9870bb5430d9787",
-        "intel-a763abd916b3f1d5489a"
+        "intel-a763abd916b3f1d5489a",
+        "intel-9d06b0288352aa7b6043"
       ],
       "event_label": "Released",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [
-        {
-          "id": "together_ai/Qwen/Qwen4-Max",
-          "family": "qwen4",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"together_ai/Qwen/Qwen4-Max\": {\"cache_read_input_token_cost\": 7.125e-08, \"input_cost_per_token\": 1.425e-06, \"litellm_provider\": \"together_ai\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 1000000, \"mode\": \"chat\", \"output_cost_per_token\": 4.275e-06, \"source\": \"https://api.together.ai/v1/models\", \"supports_function_calling\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "4a2767eef695b7bf22e415ba028cbc3fde264dd5cec179eb144fd4d9cb6f140d",
-          "method": "structured registry",
-          "build": "910100c8b59e26d6905b350a706243847c6df037",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/910100c8b59e26d6905b350a706243847c6df037/model_prices_and_context_window.json",
-          "first_seen": "2026-11-18T08:47:11+00:00"
-        },
         {
           "id": "llmgateway-providers/scx-ai-gp/qwen4-max",
           "family": "qwen4",
@@ -8919,9 +8906,22 @@
           "build": "d893237face842c5a4c918009d50c8e33b7c6523",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/d893237face842c5a4c918009d50c8e33b7c6523",
           "first_seen": "2026-11-18T12:33:01+00:00"
+        },
+        {
+          "id": "together_ai/Qwen/Qwen4-Max",
+          "family": "qwen4",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"together_ai/Qwen/Qwen4-Max\": {\"cache_read_input_token_cost\": 5.25e-08, \"comment\": \"These are Together's promotional rates, valid until 2026-11-23. Update on 2026-11-24 when the promotion ends. List rates per 1M tokens on https://www.together.ai/pricing are $1.50 input, $0.075 cached input and $4.50 output.\", \"input_cost_per_token\": 1.05e-06, \"litellm_provider\": \"together_ai\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 1000000, \"mode\": \"chat\", \"output_cost_per_token\": 3.15e-06, \"source\": \"https://api.together.ai/v1/models\", \"supports_function_calling\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "35324269521018afbbb23413133d2196b04bdd84a5a6fbf1d1964c8fb42e851d",
+          "method": "structured registry",
+          "build": "2f29a55a5102fbf23e406d313ea4b91a7257e48f",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/2f29a55a5102fbf23e406d313ea4b91a7257e48f/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T08:16:25+00:00"
         }
       ],
-      "x_post_text": "🟢 NEW MODEL: together_ai/Qwen/Qwen4-Max by llmgateway\n\nFirst detected 16 Nov 23:37 UTC in LiteLLM registry\n📅 First released: 2026-11-16\nConfirmed by LiteLLM commit-pinned registry, Registry Update\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: together_ai/Qwen/Qwen4-Max by together_ai\n\nFirst detected 16 Nov 23:37 UTC in LiteLLM registry\n📅 First released: 2026-11-16\nConfirmed by Registry Update, LiteLLM commit-pinned registry\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-hydrogen-qcd",
@@ -16314,6 +16314,104 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-9d06b0288352aa7b6043",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "qwen4",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "qwen4",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "together_ai/Qwen/Qwen4-Max",
+          "name": "together_ai/Qwen/Qwen4-Max",
+          "registry_update": true,
+          "released_on": "2026-11-16"
+        }
+      ],
+      "detected_at": "2026-11-19T08:19:39.079483+00:00",
+      "first_seen": "2026-11-19T08:16:25+00:00",
+      "observed_at": "2026-11-19T08:19:39.079483+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "66fd00e7b03a6af09031e12dfd88db61d3c0481d -> 2f29a55a5102fbf23e406d313ea4b91a7257e48f",
+      "build": "2f29a55a5102fbf23e406d313ea4b91a7257e48f",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/2f29a55a5102fbf23e406d313ea4b91a7257e48f/model_prices_and_context_window.json",
+      "artifact_sha256": "35324269521018afbbb23413133d2196b04bdd84a5a6fbf1d1964c8fb42e851d",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/35324269521018afbbb23413133d2196b04bdd84a5a6fbf1d1964c8fb42e851d.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/35324269521018afbbb23413133d2196b04bdd84a5a6fbf1d1964c8fb42e851d.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "together_ai/Qwen/Qwen4-Max",
+          "family": "qwen4",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"together_ai/Qwen/Qwen4-Max\": {\"cache_read_input_token_cost\": 5.25e-08, \"comment\": \"These are Together's promotional rates, valid until 2026-11-23. Update on 2026-11-24 when the promotion ends. List rates per 1M tokens on https://www.together.ai/pricing are $1.50 input, $0.075 cached input and $4.50 output.\", \"input_cost_per_token\": 1.05e-06, \"litellm_provider\": \"together_ai\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 1000000, \"mode\": \"chat\", \"output_cost_per_token\": 3.15e-06, \"source\": \"https://api.together.ai/v1/models\", \"supports_function_calling\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "35324269521018afbbb23413133d2196b04bdd84a5a6fbf1d1964c8fb42e851d",
+          "method": "structured registry",
+          "build": "2f29a55a5102fbf23e406d313ea4b91a7257e48f",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/2f29a55a5102fbf23e406d313ea4b91a7257e48f/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T08:16:25+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "models-dev-api",
+          "identifier": "deepinfra/Qwen/Qwen4-Max",
+          "first_seen": "2026-11-18T12:44:53.499743+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/b8ab37152cbf8494d696a7b2099ec66ce4dde70468c1ddbdde4d16e31186fa08.json.gz"
+        },
+        {
+          "source": "models-dev-git",
+          "identifier": "deepinfra/Qwen/Qwen4-Max",
+          "first_seen": "2026-11-18T12:32:34+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/82829dc70239db885fba1303694b6f5cfe92562fbc4af098ab264b53e1536563.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/2f29a55a5102fbf23e406d313ea4b91a7257e48f/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/2f29a55a5102fbf23e406d313ea4b91a7257e48f"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T08:19:40.632714+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: together_ai/Qwen/Qwen4-Max\nhttps://raw.githubusercontent.com/BerriAI/litellm/2f29a55a5102fbf23e406d313ea4b91a7257e48f/model_prices_and_context_window.json"
+    },
     {
       "id": "hf-tencent_WeVisForensics",
       "category": "open-source",
@@ -35370,103 +35468,6 @@
       "x_post_text": "🚨 HUGGING FACE NEW REPO · STABILITY AI\nsdxl turbo amdnpu medusa spotted in Repo Created 2026-11-09 (text-to-image)!\n\n• sdxl-turbo-amdnpu-medusa (text-to-image) (stabilityai/sdxl-turbo-amdnpu-medusa)\n\nEvidence: huggingface.co/api/models\nSource: official stabilityai Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
-      "id": "intel-0168494f83bc205d16de",
-      "scanner": "litellm-intelligence",
-      "intelligence": true,
-      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
-      "title": "qwen4",
-      "event_label": "Registry update",
-      "registry_update": true,
-      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
-      "confidence": {
-        "existence": {
-          "level": "high",
-          "basis": "Identifier present in retained static evidence; not proof of a serving model"
-        },
-        "attribution": {
-          "level": "unknown",
-          "basis": "Explicit source metadata only; not independently verified lab ownership"
-        },
-        "availability": {
-          "level": "unknown",
-          "basis": "No authenticated inference or official launch verification performed"
-        },
-        "novelty": {
-          "level": "registry update",
-          "basis": "Never-forget source baseline; registry changes are not launches"
-        }
-      },
-      "candidate_only": false,
-      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
-      "family": "qwen4",
-      "provider_slug": "unknown",
-      "provider_name": "Unattributed",
-      "provider_evidence": "No lab attribution established",
-      "models": [
-        {
-          "id": "together_ai/Qwen/Qwen4-Max",
-          "name": "together_ai/Qwen/Qwen4-Max",
-          "registry_update": true,
-          "released_on": "2026-11-16"
-        }
-      ],
-      "detected_at": "2026-11-18T08:49:00.716336+00:00",
-      "first_seen": "2026-11-18T08:47:11+00:00",
-      "observed_at": "2026-11-18T08:49:00.716336+00:00",
-      "backfill": false,
-      "build_label": "LiteLLM model registry",
-      "build_transition": "736b05716593347fa51b92afa9526a2397af312c -> 910100c8b59e26d6905b350a706243847c6df037",
-      "build": "910100c8b59e26d6905b350a706243847c6df037",
-      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/910100c8b59e26d6905b350a706243847c6df037/model_prices_and_context_window.json",
-      "artifact_sha256": "4a2767eef695b7bf22e415ba028cbc3fde264dd5cec179eb144fd4d9cb6f140d",
-      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
-      "evidence": "data/intelligence/evidence/litellm-intelligence/4a2767eef695b7bf22e415ba028cbc3fde264dd5cec179eb144fd4d9cb6f140d.json.gz",
-      "evidence_path": "data/intelligence/evidence/litellm-intelligence/4a2767eef695b7bf22e415ba028cbc3fde264dd5cec179eb144fd4d9cb6f140d.json.gz",
-      "evidence_retained": true,
-      "registry_evidence": [
-        {
-          "id": "together_ai/Qwen/Qwen4-Max",
-          "family": "qwen4",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"together_ai/Qwen/Qwen4-Max\": {\"cache_read_input_token_cost\": 7.125e-08, \"input_cost_per_token\": 1.425e-06, \"litellm_provider\": \"together_ai\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 1000000, \"mode\": \"chat\", \"output_cost_per_token\": 4.275e-06, \"source\": \"https://api.together.ai/v1/models\", \"supports_function_calling\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "4a2767eef695b7bf22e415ba028cbc3fde264dd5cec179eb144fd4d9cb6f140d",
-          "method": "structured registry",
-          "build": "910100c8b59e26d6905b350a706243847c6df037",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/910100c8b59e26d6905b350a706243847c6df037/model_prices_and_context_window.json",
-          "first_seen": "2026-11-18T08:47:11+00:00"
-        }
-      ],
-      "sightings": [
-        {
-          "source": "models-dev-api",
-          "identifier": "deepinfra/Qwen/Qwen4-Max",
-          "first_seen": "2026-11-18T08:33:12.625207+00:00",
-          "evidence_path": "data/intelligence/evidence/models-dev-api/14afa3aac786359ccd7aac7090dbb95a35ff0cd08b2a44b5345623350d999da7.json.gz"
-        },
-        {
-          "source": "models-dev-git",
-          "identifier": "deepinfra/Qwen/Qwen4-Max",
-          "first_seen": "2026-11-18T06:35:29+00:00",
-          "evidence_path": "data/intelligence/evidence/models-dev-git/7dc43e916a5232b30363e28b138ee33017a1f808e385f30473e52e07df00b3db.json.gz"
-        }
-      ],
-      "accent_color": "#0891b2",
-      "links": [
-        {
-          "label": "LiteLLM model registry",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/910100c8b59e26d6905b350a706243847c6df037/model_prices_and_context_window.json"
-        },
-        {
-          "label": "Release metadata",
-          "url": "https://github.com/BerriAI/litellm/commit/910100c8b59e26d6905b350a706243847c6df037"
-        }
-      ],
-      "pricing": null,
-      "x_post_text": "registry evidence, not a launch: together_ai/Qwen/Qwen4-Max\nhttps://raw.githubusercontent.com/BerriAI/litellm/910100c8b59e26d6905b350a706243847c6df037/model_prices_and_context_window.json"
-    },
-    {
       "id": "cloud-billing-vertex-1dbcebe8",
       "category": "cli-sdk-diff",
       "scanner": "cloud-billing",
@@ -44971,12 +44972,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:09:37.305705+00:00",
+      "last_attempt": "2026-11-19T08:19:38.262789+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:09:37.524683+00:00",
+      "last_success": "2026-11-19T08:19:38.451882+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.219,
+      "duration_seconds": 0.189,
       "latest_build": "b8ab37152cbf8494d696a7b2099ec66ce4dde70468c1ddbdde4d16e31186fa08",
       "builds_retained": 23,
       "identifiers": 9644
@@ -44984,25 +44985,25 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T08:07:39.573208+00:00",
+      "last_attempt": "2026-11-19T08:19:38.590879+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:07:39.967015+00:00",
+      "last_success": "2026-11-19T08:19:40.632714+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.394,
-      "latest_build": "66fd00e7b03a6af09031e12dfd88db61d3c0481d",
-      "builds_retained": 23,
+      "duration_seconds": 2.042,
+      "latest_build": "2f29a55a5102fbf23e406d313ea4b91a7257e48f",
+      "builds_retained": 24,
       "identifiers": 6934
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T08:05:56.013733+00:00",
+      "last_attempt": "2026-11-19T08:15:38.678497+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:05:56.491366+00:00",
+      "last_success": "2026-11-19T08:15:39.081378+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.478,
+      "duration_seconds": 0.403,
       "latest_build": "cca439751cc0559abd8b39bf8a266d41f49e03f2",
       "builds_retained": 25,
       "identifiers": 10765
@@ -45010,21 +45011,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T08:09:37.664172+00:00",
+      "last_attempt": "2026-11-19T08:19:40.769838+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 579,
-      "duration_seconds": 15.05
+      "consecutive_failures": 584,
+      "duration_seconds": 14.927
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T08:02:01.754513+00:00",
+      "last_attempt": "2026-11-19T08:17:57.366384+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:02:01.886254+00:00",
+      "last_success": "2026-11-19T08:17:58.508629+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.132,
+      "duration_seconds": 1.142,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -45034,19 +45035,19 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:08:50.920348+00:00",
+      "last_attempt": "2026-11-19T08:18:50.530260+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:08:52.511345+00:00",
+      "last_success": "2026-11-19T08:18:55.358235+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.591
+      "duration_seconds": 4.828
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:08:52.511401+00:00",
+      "last_attempt": "2026-11-19T08:18:55.358293+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:08:52.588862+00:00",
+      "last_success": "2026-11-19T08:18:55.434843+00:00",
       "error_type": null,
       "consecutive_failures": 0,
       "duration_seconds": 0.077
@@ -45054,41 +45055,41 @@
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:08:52.588895+00:00",
+      "last_attempt": "2026-11-19T08:18:55.434878+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:08:58.040423+00:00",
+      "last_success": "2026-11-19T08:18:59.490352+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.452
+      "duration_seconds": 4.055
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:08:58.040483+00:00",
+      "last_attempt": "2026-11-19T08:18:59.490410+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:09:37.305651+00:00",
+      "last_success": "2026-11-19T08:19:38.262740+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 39.265,
+      "duration_seconds": 38.772,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T08:08:58.207235+00:00",
+          "checked_at": "2026-11-19T08:18:59.654244+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T08:09:06.541252+00:00",
+          "checked_at": "2026-11-19T08:19:07.582852+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T08:09:06.717740+00:00",
+          "checked_at": "2026-11-19T08:19:07.742370+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T08:09:06.717757+00:00",
+          "checked_at": "2026-11-19T08:19:07.742387+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -45096,12 +45097,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:09:37.305705+00:00",
+      "last_attempt": "2026-11-19T08:19:38.262789+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:09:37.524683+00:00",
+      "last_success": "2026-11-19T08:19:38.451882+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.219,
+      "duration_seconds": 0.189,
       "latest_build": "b8ab37152cbf8494d696a7b2099ec66ce4dde70468c1ddbdde4d16e31186fa08",
       "builds_retained": 23,
       "identifiers": 9644
@@ -45109,25 +45110,25 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T08:07:39.573208+00:00",
+      "last_attempt": "2026-11-19T08:19:38.590879+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:07:39.967015+00:00",
+      "last_success": "2026-11-19T08:19:40.632714+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.394,
-      "latest_build": "66fd00e7b03a6af09031e12dfd88db61d3c0481d",
-      "builds_retained": 23,
+      "duration_seconds": 2.042,
+      "latest_build": "2f29a55a5102fbf23e406d313ea4b91a7257e48f",
+      "builds_retained": 24,
       "identifiers": 6934
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T08:05:56.013733+00:00",
+      "last_attempt": "2026-11-19T08:15:38.678497+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:05:56.491366+00:00",
+      "last_success": "2026-11-19T08:15:39.081378+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.478,
+      "duration_seconds": 0.403,
       "latest_build": "cca439751cc0559abd8b39bf8a266d41f49e03f2",
       "builds_retained": 25,
       "identifiers": 10765
@@ -45135,21 +45136,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T08:09:37.664172+00:00",
+      "last_attempt": "2026-11-19T08:19:40.769838+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 579,
-      "duration_seconds": 15.05
+      "consecutive_failures": 584,
+      "duration_seconds": 14.927
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T08:02:01.754513+00:00",
+      "last_attempt": "2026-11-19T08:17:57.366384+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:02:01.886254+00:00",
+      "last_success": "2026-11-19T08:17:58.508629+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.132,
+      "duration_seconds": 1.142,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -45157,9 +45158,9 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:09:52.720267+00:00",
+      "last_attempt": "2026-11-19T08:19:55.702494+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:09:59.891537+00:00",
+      "last_success": "2026-11-19T08:20:02.873751+00:00",
       "error_type": null,
       "consecutive_failures": 0,
       "duration_seconds": 7.171
@@ -45167,42 +45168,42 @@
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:09:59.891606+00:00",
+      "last_attempt": "2026-11-19T08:20:02.873822+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:10:01.392001+00:00",
+      "last_success": "2026-11-19T08:20:04.972136+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.5
+      "duration_seconds": 2.098
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T08:06:19.909256+00:00",
+      "last_attempt": "2026-11-19T08:16:03.297593+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:06:28.687528+00:00",
+      "last_success": "2026-11-19T08:16:10.404608+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.778
+      "duration_seconds": 7.107
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:10:01.392048+00:00",
+      "last_attempt": "2026-11-19T08:20:04.972184+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:10:01.787463+00:00",
+      "last_success": "2026-11-19T08:20:05.349025+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.395
+      "duration_seconds": 0.377
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T08:10:01.787500+00:00",
+      "last_attempt": "2026-11-19T08:20:05.349064+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T08:10:01.836772+00:00",
+      "last_success": "2026-11-19T08:20:05.361683+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.049
+      "duration_seconds": 0.013
     }
   },
   "identities": {
@@ -45214,7 +45215,7 @@
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
       "samples": 144,
-      "seconds_mean": 7192.413964666666,
+      "seconds_mean": 7192.999819854166,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
