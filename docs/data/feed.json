@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-19T23:34:40.165267+00:00",
-  "scan_completed_at": "2026-11-19T23:36:02.842396+00:00",
+  "generated_at": "2026-11-19T23:40:40.695389+00:00",
+  "scan_completed_at": "2026-11-19T23:42:48.607118+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 237,
     "leaks": 41,
-    "releases": 74,
-    "stories_24h": 96,
-    "sources_ok": 12,
-    "total_cards": 509,
-    "new_in_this_scan": 2
+    "releases": 75,
+    "stories_24h": 97,
+    "sources_ok": 16,
+    "total_cards": 510,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -56,8 +56,8 @@
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: DepthPro2 S by Apple\n\nFirst detected 19 Nov 23:36 UTC in Hugging Face\n\nvia @StatsWire",
-      "discord_alerted_at": "2026-11-19T23:36:02.840393+00:00"
+      "discord_alerted_at": "2026-11-19T23:36:02.840393+00:00",
+      "x_post_text": "🟢 NEW MODEL: DepthPro2 S by Apple\n\nFirst detected 19 Nov 23:36 UTC in Hugging Face\n\nvia @StatsWire"
     },
     {
       "id": "story-depthpro-2",
@@ -103,8 +103,8 @@
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: DepthPro2 by Apple\n\nFirst detected 19 Nov 23:36 UTC in Hugging Face\n\nvia @StatsWire",
-      "discord_alerted_at": "2026-11-19T23:36:02.840393+00:00"
+      "discord_alerted_at": "2026-11-19T23:36:02.840393+00:00",
+      "x_post_text": "🟢 NEW MODEL: DepthPro2 by Apple\n\nFirst detected 19 Nov 23:36 UTC in Hugging Face\n\nvia @StatsWire"
     },
     {
       "id": "story-depthpro-2-focal",
@@ -8880,6 +8880,81 @@
       "x_post_text": "🟠 LEAK: NemotronLabsDiffusionForCausalLM by NVIDIA\n\nFirst detected 18 Nov 05:31 UTC in vLLM registry\nCodename: nemotronlabsdiffusionforcausallm, nemotronlabsdiffusionmodel\nIDs: NemotronLabsDiffusionModel, NemotronLabsDiffusionForCausalLM\n\nvia @StatsWire"
     },
     {
+      "id": "story-seedream-5-5",
+      "group": "seedream-5-5",
+      "kind": "release",
+      "open_weights": false,
+      "title": "Seedream 5.5",
+      "provider_slug": "unknown",
+      "provider_name": "vercel",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-18T05:27:14.993164+00:00",
+      "updated_at": "2026-11-19T23:41:46.978952+00:00",
+      "first_source": "Vercel AI Gateway Catalog",
+      "lead": "",
+      "released_on": "2026-11-17",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "seedream-5.5",
+          "name": "vercel/bytedance/seedream-5.5",
+          "released_on": "2026-11-17"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Vercel AI Gateway Catalog",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-11-18T05:27:14.993164+00:00",
+          "title": "New Model on Vercel AI Gateway: Seedream 5.5",
+          "url": "https://ai-gateway.vercel.sh/v1/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-19T23:41:46.978952+00:00",
+          "title": "seedream-5.5",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/d16b811c8370b4f3bdca38ce4c33771d9b718e19",
+          "backfill": false,
+          "build": "d16b811c8370b4f3bdca38ce4c33771d9b718e19",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/8bc19a6b21b37b71178c026d8e652bc7307bedd69a0a0ea3d4c0fa816c7253fc.json.gz"
+        }
+      ],
+      "source_count": 2,
+      "backfill": false,
+      "header": "NEW MODEL · VERCEL",
+      "card_ids": [
+        "vercel-gateway-diff-f620c76d",
+        "intel-ba5eeed228c18e9b5437"
+      ],
+      "event_label": "Released",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "vercel/bytedance/seedream-5.5",
+          "family": "seedream-5.5",
+          "file_path": "providers/vercel/models/bytedance/seedream-5.5.toml",
+          "file_sha256": "46c8d4d1a9491af4c456ad6021ab146f1dbf7f0ded94710c82a13a099276f816",
+          "excerpt": "{\"vercel/bytedance/seedream-5.5\": {\"schema\": 2, \"v2_only\": true, \"type\": \"image\", \"name\": \"Seedream 5.5\", \"description\": \"Image model for prompt-driven generation, editing, and visual design workflows\", \"open_weights\": false, \"release_date\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"image\"]}, \"capabilities\": {\"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}, \"temperature\": false, \"top_p\": false, \"top_k\": false}, \"limit\": {\"context\": 0, \"output\": 0}, \"api\": {\"images\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/images\"}}}, \"cost\": {\"image\": {\"output\": {\"unit\": \"image\", \"price\": 0.035, \"overrides\": [{\"when\": {\"megapixels\": {\"lte\": 2.601123}}, \"price\": 0.02}]}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/d16b811c8370b4f3bdca38ce4c33771d9b718e19/providers/vercel/models/bytedance/seedream-5.5.toml",
+          "build": "d16b811c8370b4f3bdca38ce4c33771d9b718e19",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/d16b811c8370b4f3bdca38ce4c33771d9b718e19",
+          "first_seen": "2026-11-19T23:37:02+00:00"
+        }
+      ],
+      "x_post_text": "🟢 NEW MODEL: Seedream 5.5 by vercel\n\nFirst detected 18 Nov 05:27 UTC in Vercel AI Gateway Catalog\n📅 First released: 2026-11-17\nConfirmed by Registry Update\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-19T23:42:48.604995+00:00"
+    },
+    {
       "id": "story-mai-image-2-7-flash",
       "group": "mai-image-2-7-flash",
       "kind": "release",
@@ -8968,52 +9043,6 @@
       ],
       "discord_alerted_at": "2026-11-19T05:31:35.527382+00:00",
       "x_post_text": "🟢 NEW MODEL: MAI-Image-2.7-Flash by Microsoft\n\nFirst detected 18 Nov 05:27 UTC in Vercel AI Gateway Catalog\n📅 First released: 2026-11-17\nConfirmed by Registry Update\n\nvia @StatsWire"
-    },
-    {
-      "id": "story-seedream-5-5",
-      "group": "seedream-5-5",
-      "kind": "unverified",
-      "open_weights": false,
-      "title": "Seedream 5.5",
-      "provider_slug": "openrouter",
-      "provider_name": "bytedance",
-      "accent_color": "#10b981",
-      "detected_at": "2026-11-18T05:27:14.993164+00:00",
-      "updated_at": "2026-11-18T05:27:14.993164+00:00",
-      "first_source": "Vercel AI Gateway Catalog",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "seedream-5.5",
-          "name": "Seedream 5.5"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Vercel AI Gateway Catalog",
-          "scanner": "gateway-radar",
-          "detected_at": "2026-11-18T05:27:14.993164+00:00",
-          "title": "New Model on Vercel AI Gateway: Seedream 5.5",
-          "url": "https://ai-gateway.vercel.sh/v1/models",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "UNVERIFIED · BYTEDANCE",
-      "card_ids": [
-        "vercel-gateway-diff-f620c76d"
-      ],
-      "event_label": "",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [],
-      "x_post_text": "⚪ UNVERIFIED: Seedream 5.5 by bytedance\n\nFirst detected 18 Nov 05:27 UTC in Vercel AI Gateway Catalog\n\nvia @StatsWire"
     },
     {
       "id": "story-gpt-6-2-astra-ultrafast",
@@ -18283,6 +18312,93 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-ba5eeed228c18e9b5437",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "seedream-5.5",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "seedream-5.5",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "vercel/bytedance/seedream-5.5",
+          "name": "vercel/bytedance/seedream-5.5",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-19T23:41:46.978952+00:00",
+      "first_seen": "2026-11-19T23:37:02+00:00",
+      "observed_at": "2026-11-19T23:41:46.978952+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "12d964ac66b14ff277232f55f8a7029d4f392653 -> d16b811c8370b4f3bdca38ce4c33771d9b718e19",
+      "build": "d16b811c8370b4f3bdca38ce4c33771d9b718e19",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/d16b811c8370b4f3bdca38ce4c33771d9b718e19",
+      "artifact_sha256": "8bc19a6b21b37b71178c026d8e652bc7307bedd69a0a0ea3d4c0fa816c7253fc",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/8bc19a6b21b37b71178c026d8e652bc7307bedd69a0a0ea3d4c0fa816c7253fc.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/8bc19a6b21b37b71178c026d8e652bc7307bedd69a0a0ea3d4c0fa816c7253fc.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "vercel/bytedance/seedream-5.5",
+          "family": "seedream-5.5",
+          "file_path": "providers/vercel/models/bytedance/seedream-5.5.toml",
+          "file_sha256": "46c8d4d1a9491af4c456ad6021ab146f1dbf7f0ded94710c82a13a099276f816",
+          "excerpt": "{\"vercel/bytedance/seedream-5.5\": {\"schema\": 2, \"v2_only\": true, \"type\": \"image\", \"name\": \"Seedream 5.5\", \"description\": \"Image model for prompt-driven generation, editing, and visual design workflows\", \"open_weights\": false, \"release_date\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"image\"]}, \"capabilities\": {\"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}, \"temperature\": false, \"top_p\": false, \"top_k\": false}, \"limit\": {\"context\": 0, \"output\": 0}, \"api\": {\"images\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/images\"}}}, \"cost\": {\"image\": {\"output\": {\"unit\": \"image\", \"price\": 0.035, \"overrides\": [{\"when\": {\"megapixels\": {\"lte\": 2.601123}}, \"price\": 0.02}]}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/d16b811c8370b4f3bdca38ce4c33771d9b718e19/providers/vercel/models/bytedance/seedream-5.5.toml",
+          "build": "d16b811c8370b4f3bdca38ce4c33771d9b718e19",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/d16b811c8370b4f3bdca38ce4c33771d9b718e19",
+          "first_seen": "2026-11-19T23:37:02+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/d16b811c8370b4f3bdca38ce4c33771d9b718e19"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/d16b811c8370b4f3bdca38ce4c33771d9b718e19"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T23:41:49.838991+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions d16b811c8370: vercel/bytedance/seedream-5.5\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/d16b811c8370b4f3bdca38ce4c33771d9b718e19"
+    },
     {
       "id": "hf-apple_DepthPro2-S",
       "category": "open-source",
@@ -53096,25 +53212,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:35:28.562957+00:00",
+      "last_attempt": "2026-11-19T23:41:31.269555+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:35:28.837029+00:00",
+      "last_success": "2026-11-19T23:41:34.347260+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.274,
-      "latest_build": "8bf5188be6e4dc2de1f96d44d75abf535dd4aef1176a3ccca7f0d2312234086c",
-      "builds_retained": 37,
+      "duration_seconds": 3.078,
+      "latest_build": "020147888d1ef70d3dccd30ceb79a0c19af148393ccd35e08c855669421f92ee",
+      "builds_retained": 38,
       "identifiers": 9659
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T23:33:30.146416+00:00",
+      "last_attempt": "2026-11-19T23:41:34.537559+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:33:30.496681+00:00",
+      "last_success": "2026-11-19T23:41:34.899313+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.351,
+      "duration_seconds": 0.362,
       "latest_build": "404bf8e7f5a87a1f19ea7c85e60f89f3d588fc3f",
       "builds_retained": 32,
       "identifiers": 6941
@@ -53122,34 +53238,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T23:31:07.995746+00:00",
+      "last_attempt": "2026-11-19T23:41:35.101862+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:31:23.422954+00:00",
+      "last_success": "2026-11-19T23:41:49.838991+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 15.427,
-      "latest_build": "d48113ea2dc212f8f656212bb81d11a9a900618c",
-      "builds_retained": 38,
+      "duration_seconds": 14.737,
+      "latest_build": "d16b811c8370b4f3bdca38ce4c33771d9b718e19",
+      "builds_retained": 40,
       "identifiers": 10782
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T23:35:29.029342+00:00",
+      "last_attempt": "2026-11-19T23:41:50.029256+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 873,
-      "duration_seconds": 21.644
+      "consecutive_failures": 876,
+      "duration_seconds": 21.366
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T23:25:24.559214+00:00",
+      "last_attempt": "2026-11-19T23:42:11.402228+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:25:24.793975+00:00",
+      "last_success": "2026-11-19T23:42:11.572967+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.235,
+      "duration_seconds": 0.171,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -53159,61 +53275,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:34:40.165341+00:00",
+      "last_attempt": "2026-11-19T23:40:40.695454+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:34:41.887494+00:00",
+      "last_success": "2026-11-19T23:40:42.651702+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.722
+      "duration_seconds": 1.956
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:34:41.887562+00:00",
+      "last_attempt": "2026-11-19T23:40:42.651755+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:34:41.992563+00:00",
+      "last_success": "2026-11-19T23:40:42.759999+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.105
+      "duration_seconds": 0.108
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:34:41.992601+00:00",
+      "last_attempt": "2026-11-19T23:40:42.760046+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:34:47.043372+00:00",
+      "last_success": "2026-11-19T23:40:48.062207+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.051
+      "duration_seconds": 5.302
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:34:47.043444+00:00",
+      "last_attempt": "2026-11-19T23:40:48.062271+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:35:28.562907+00:00",
+      "last_success": "2026-11-19T23:41:31.269486+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 41.519,
+      "duration_seconds": 43.207,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T23:34:47.221142+00:00",
+          "checked_at": "2026-11-19T23:40:48.266946+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T23:34:54.586175+00:00",
+          "checked_at": "2026-11-19T23:40:57.799989+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T23:34:54.728239+00:00",
+          "checked_at": "2026-11-19T23:40:57.943249+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T23:34:54.728256+00:00",
+          "checked_at": "2026-11-19T23:40:57.943263+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -53221,25 +53337,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:35:28.562957+00:00",
+      "last_attempt": "2026-11-19T23:41:31.269555+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:35:28.837029+00:00",
+      "last_success": "2026-11-19T23:41:34.347260+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.274,
-      "latest_build": "8bf5188be6e4dc2de1f96d44d75abf535dd4aef1176a3ccca7f0d2312234086c",
-      "builds_retained": 37,
+      "duration_seconds": 3.078,
+      "latest_build": "020147888d1ef70d3dccd30ceb79a0c19af148393ccd35e08c855669421f92ee",
+      "builds_retained": 38,
       "identifiers": 9659
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T23:33:30.146416+00:00",
+      "last_attempt": "2026-11-19T23:41:34.537559+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:33:30.496681+00:00",
+      "last_success": "2026-11-19T23:41:34.899313+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.351,
+      "duration_seconds": 0.362,
       "latest_build": "404bf8e7f5a87a1f19ea7c85e60f89f3d588fc3f",
       "builds_retained": 32,
       "identifiers": 6941
@@ -53247,34 +53363,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T23:31:07.995746+00:00",
+      "last_attempt": "2026-11-19T23:41:35.101862+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:31:23.422954+00:00",
+      "last_success": "2026-11-19T23:41:49.838991+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 15.427,
-      "latest_build": "d48113ea2dc212f8f656212bb81d11a9a900618c",
-      "builds_retained": 38,
+      "duration_seconds": 14.737,
+      "latest_build": "d16b811c8370b4f3bdca38ce4c33771d9b718e19",
+      "builds_retained": 40,
       "identifiers": 10782
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T23:35:29.029342+00:00",
+      "last_attempt": "2026-11-19T23:41:50.029256+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 873,
-      "duration_seconds": 21.644
+      "consecutive_failures": 876,
+      "duration_seconds": 21.366
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T23:25:24.559214+00:00",
+      "last_attempt": "2026-11-19T23:42:11.402228+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:25:24.793975+00:00",
+      "last_success": "2026-11-19T23:42:11.572967+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.235,
+      "duration_seconds": 0.171,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -53282,52 +53398,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:35:50.679995+00:00",
+      "last_attempt": "2026-11-19T23:42:11.973021+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:35:59.398595+00:00",
+      "last_success": "2026-11-19T23:42:20.646847+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.719
+      "duration_seconds": 8.674
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:35:59.398655+00:00",
+      "last_attempt": "2026-11-19T23:42:20.646905+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:36:00.464710+00:00",
+      "last_success": "2026-11-19T23:42:22.054602+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.066
+      "duration_seconds": 1.408
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T23:31:54.482071+00:00",
+      "last_attempt": "2026-11-19T23:42:22.054650+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:32:03.898288+00:00",
+      "last_success": "2026-11-19T23:42:47.207446+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.416
+      "duration_seconds": 25.153
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:36:00.464774+00:00",
+      "last_attempt": "2026-11-19T23:42:47.207492+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:36:00.874446+00:00",
+      "last_success": "2026-11-19T23:42:47.639595+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.41
+      "duration_seconds": 0.432
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:36:00.874486+00:00",
+      "last_attempt": "2026-11-19T23:42:47.639633+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:36:00.889443+00:00",
+      "last_success": "2026-11-19T23:42:47.664431+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.015
+      "duration_seconds": 0.025
     }
   },
   "identities": {
@@ -53338,8 +53454,8 @@
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 198,
-      "seconds_mean": 5368.163440707071,
+      "samples": 199,
+      "seconds_mean": 5342.619800060302,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -53353,8 +53469,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 250,
-      "events": 250,
+      "complete": 251,
+      "events": 251,
       "rate": 1.0
     },
     "source_health": {
