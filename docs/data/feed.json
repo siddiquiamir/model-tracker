@@ -1,17 +1,437 @@
 {
-  "generated_at": "2026-11-19T01:34:32.823725+00:00",
-  "scan_completed_at": "2026-11-19T01:37:01.896911+00:00",
+  "generated_at": "2026-11-19T01:37:18.461281+00:00",
+  "scan_completed_at": "2026-11-19T01:38:49.753949+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 182,
+    "stories": 189,
     "leaks": 43,
     "releases": 69,
-    "stories_24h": 74,
+    "stories_24h": 83,
     "sources_ok": 13,
-    "total_cards": 387,
-    "new_in_this_scan": 11
+    "total_cards": 399,
+    "new_in_this_scan": 12
   },
   "stories": [
+    {
+      "id": "story-iris-z",
+      "group": "iris-z",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Iris Z",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-19T01:38:22.585570+00:00",
+      "updated_at": "2026-11-19T01:38:22.585570+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "iris-z",
+          "name": "fal_ai/speridlabs/iris-z"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T01:38:22.585570+00:00",
+          "title": "iris-z",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/3c9dbf243ff24b46cc23e94ca6173222e0aa871d/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "3c9dbf243ff24b46cc23e94ca6173222e0aa871d",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/57926fd388e2ae940fed69e1387253ae49a6e2b5b93973962d4b10576733ba47.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-50f94d5bdbedb3adfc7f"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "fal_ai/speridlabs/iris-z",
+          "family": "iris-z",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"fal_ai/speridlabs/iris-z\": {\"litellm_provider\": \"fal_ai\", \"metadata\": {\"comment\": \"fal bills $0.01 per ensemble member, reported in the x-fal-billable-units response header. The per-image price covers the default ensemble_size of 1 when the header is absent\"}, \"mode\": \"image_generation\", \"output_cost_per_billable_unit\": 0.01, \"output_cost_per_image\": 0.01, \"source\": \"https://fal.ai/models/speridlabs/iris-z\", \"supported_endpoints\": [\"/v1/images/edits\", \"/v1/images/generations\"], \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "57926fd388e2ae940fed69e1387253ae49a6e2b5b93973962d4b10576733ba47",
+          "method": "structured registry",
+          "build": "3c9dbf243ff24b46cc23e94ca6173222e0aa871d",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/3c9dbf243ff24b46cc23e94ca6173222e0aa871d/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:37:45+00:00"
+        }
+      ],
+      "x_post_text": "LiteLLM commit-pinned registry 3c9dbf243ff2: iris-z\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/3c9dbf243ff24b46cc23e94ca6173222e0aa871d/model_prices_and_context_window.json"
+    },
+    {
+      "id": "story-small",
+      "group": "small",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Small",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-19T01:38:22.585570+00:00",
+      "updated_at": "2026-11-19T01:38:22.585570+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "small",
+          "name": "fal_ai/speridlabs/iris-z/small"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T01:38:22.585570+00:00",
+          "title": "small",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/3c9dbf243ff24b46cc23e94ca6173222e0aa871d/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "3c9dbf243ff24b46cc23e94ca6173222e0aa871d",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/57926fd388e2ae940fed69e1387253ae49a6e2b5b93973962d4b10576733ba47.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-cff6aa5d39eda074ec5b"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "fal_ai/speridlabs/iris-z/small",
+          "family": "small",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"fal_ai/speridlabs/iris-z/small\": {\"litellm_provider\": \"fal_ai\", \"metadata\": {\"comment\": \"fal bills $0.01 per ensemble member, reported in the x-fal-billable-units response header. The per-image price covers the default ensemble_size of 1 when the header is absent\"}, \"mode\": \"image_generation\", \"output_cost_per_billable_unit\": 0.01, \"output_cost_per_image\": 0.01, \"source\": \"https://fal.ai/models/speridlabs/iris-z/small\", \"supported_endpoints\": [\"/v1/images/edits\", \"/v1/images/generations\"], \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "57926fd388e2ae940fed69e1387253ae49a6e2b5b93973962d4b10576733ba47",
+          "method": "structured registry",
+          "build": "3c9dbf243ff24b46cc23e94ca6173222e0aa871d",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/3c9dbf243ff24b46cc23e94ca6173222e0aa871d/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:37:45+00:00"
+        }
+      ],
+      "x_post_text": "LiteLLM commit-pinned registry 3c9dbf243ff2: small\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/3c9dbf243ff24b46cc23e94ca6173222e0aa871d/model_prices_and_context_window.json"
+    },
+    {
+      "id": "story-jina-embeddings-5-omni-nano",
+      "group": "jina-embeddings-5-omni-nano",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Jina Embeddings 5 Omni Nano",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-19T01:38:20.495986+00:00",
+      "updated_at": "2026-11-19T01:38:20.495986+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "jina-embeddings-v5-omni-nano",
+          "name": "jina-embeddings-v5-omni-nano"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T01:38:20.495986+00:00",
+          "title": "jina-embeddings-v5-omni-nano",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-5ba03cf4a4d4e96349d0"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "jina-embeddings-v5-omni-nano",
+          "family": "jina-embeddings-v5-omni-nano",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"jina-embeddings-v5-omni-nano\": {\"input_cost_per_token\": 2e-08, \"litellm_provider\": \"jina_ai\", \"max_input_tokens\": 8192, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"source\": \"https://api.jina.ai/v1/models\", \"supports_embedding_image_input\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: jina-embeddings-v5-omni-nano\nhttps://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+    },
+    {
+      "id": "story-jina-embeddings-5-omni-small",
+      "group": "jina-embeddings-5-omni-small",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Jina Embeddings 5 Omni Small",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-19T01:38:20.495986+00:00",
+      "updated_at": "2026-11-19T01:38:20.495986+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "jina-embeddings-v5-omni-small",
+          "name": "jina-embeddings-v5-omni-small"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T01:38:20.495986+00:00",
+          "title": "jina-embeddings-v5-omni-small",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-2806997ba07fab0ccf3e"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "jina-embeddings-v5-omni-small",
+          "family": "jina-embeddings-v5-omni-small",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"jina-embeddings-v5-omni-small\": {\"input_cost_per_token\": 5e-08, \"litellm_provider\": \"jina_ai\", \"max_input_tokens\": 32768, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"source\": \"https://api.jina.ai/v1/models\", \"supports_embedding_image_input\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: jina-embeddings-v5-omni-small\nhttps://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+    },
+    {
+      "id": "story-jina-embeddings-5-text-nano",
+      "group": "jina-embeddings-5-text-nano",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Jina Embeddings 5 Text Nano",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-19T01:38:20.495986+00:00",
+      "updated_at": "2026-11-19T01:38:20.495986+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "jina-embeddings-v5-text-nano",
+          "name": "jina-embeddings-v5-text-nano"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T01:38:20.495986+00:00",
+          "title": "jina-embeddings-v5-text-nano",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-76083f0ac0d9c8af86d3"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "jina-embeddings-v5-text-nano",
+          "family": "jina-embeddings-v5-text-nano",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"jina-embeddings-v5-text-nano\": {\"input_cost_per_token\": 2e-08, \"litellm_provider\": \"jina_ai\", \"max_input_tokens\": 8192, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"source\": \"https://api.jina.ai/v1/models\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: jina-embeddings-v5-text-nano\nhttps://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+    },
+    {
+      "id": "story-jina-embeddings-5-text-small",
+      "group": "jina-embeddings-5-text-small",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Jina Embeddings 5 Text Small",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-19T01:38:20.495986+00:00",
+      "updated_at": "2026-11-19T01:38:20.495986+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "jina-embeddings-v5-text-small",
+          "name": "jina-embeddings-v5-text-small"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T01:38:20.495986+00:00",
+          "title": "jina-embeddings-v5-text-small",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-bf0958121e478cc3acc2"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "jina-embeddings-v5-text-small",
+          "family": "jina-embeddings-v5-text-small",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"jina-embeddings-v5-text-small\": {\"input_cost_per_token\": 5e-08, \"litellm_provider\": \"jina_ai\", \"max_input_tokens\": 32768, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"source\": \"https://api.jina.ai/v1/models\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: jina-embeddings-v5-text-small\nhttps://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+    },
+    {
+      "id": "story-ternary-bonsai",
+      "group": "ternary-bonsai",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "together_ai/Prism-ML/Ternary-Bonsai-27B",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-19T01:38:20.495986+00:00",
+      "updated_at": "2026-11-19T01:38:20.495986+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Ternary-Bonsai-27B",
+          "name": "together_ai/Prism-ML/Ternary-Bonsai-27B"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T01:38:20.495986+00:00",
+          "title": "ternary-bonsai-27b",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-c15c6563853663feaadc"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "together_ai/Prism-ML/Ternary-Bonsai-27B",
+          "family": "ternary-bonsai-27b",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"together_ai/Prism-ML/Ternary-Bonsai-27B\": {\"input_cost_per_token\": 0.0, \"litellm_provider\": \"together_ai\", \"max_input_tokens\": 262144, \"max_output_tokens\": 262144, \"mode\": \"chat\", \"output_cost_per_token\": 0.0, \"source\": \"https://docs.together.ai/docs/serverless-models\", \"supports_function_calling\": true, \"supports_response_schema\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: Ternary-Bonsai-27B\nhttps://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+    },
     {
       "id": "story-devin-swe-2",
       "group": "devin-swe-2",
@@ -4781,7 +5201,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-17T18:31:10.791Z",
-      "updated_at": "2026-11-19T00:32:26.556663+00:00",
+      "updated_at": "2026-11-19T01:38:20.495986+00:00",
       "first_source": "npm SDK release",
       "lead": "10 h before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "2026-11-17",
@@ -4794,7 +5214,7 @@
         },
         {
           "id": "gpt-6.2-astra",
-          "name": "databricks/system.ai.gpt-6-2-astra",
+          "name": "openrouter/openai/gpt-6.2-astra",
           "released_on": "2026-11-17"
         },
         {
@@ -4960,7 +5380,8 @@
         "intel-5fdd9adadee7d4df38b2",
         "intel-8910dfa60c80e43a7427",
         "intel-8a68d5c336dc70edf66e",
-        "intel-b61927f60a3cc4bc4242"
+        "intel-b61927f60a3cc4bc4242",
+        "intel-54a39bdf5df2030dff94"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -5471,6 +5892,19 @@
           "build": "11f2a594eb1cac58491a1bde1e80c1d1b4563a27",
           "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/11f2a594eb1cac58491a1bde1e80c1d1b4563a27/model_prices_and_context_window.json",
           "first_seen": "2026-11-19T00:31:33+00:00"
+        },
+        {
+          "id": "openrouter/openai/gpt-6.2-astra",
+          "family": "gpt-6.2-astra",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"openrouter/openai/gpt-6.2-astra\": {\"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_272k_tokens\": 2e-05, \"cache_read_input_token_cost\": 4e-07, \"cache_read_input_token_cost_above_272k_tokens\": 8e-07, \"input_cost_per_token\": 8e-06, \"input_cost_per_token_above_272k_tokens\": 1.6e-05, \"litellm_provider\": \"openrouter\", \"max_input_tokens\": 1050000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4e-05, \"output_cost_per_token_above_272k_tokens\": 6e-05, \"source\": \"https://openrouter.ai/api/v1/models\", \"supports_function_calling\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
         }
       ],
       "x_post_text": "🟢 NEW MODEL: GPT 6.2 Astra by OpenAI\n\nFirst detected 17 Nov 18:31 UTC in npm SDK release\n📅 First released: 2026-11-17\n⏱ 10 h before it went live on Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire"
@@ -5485,7 +5919,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-17T18:31:10.791Z",
-      "updated_at": "2026-11-19T00:32:26.556663+00:00",
+      "updated_at": "2026-11-19T01:38:20.495986+00:00",
       "first_source": "npm SDK release",
       "lead": "10 h before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "2026-11-17",
@@ -5494,7 +5928,7 @@
       "models": [
         {
           "id": "gpt-6.2-sol",
-          "name": "databricks/system.ai.gpt-6-2-sol",
+          "name": "openrouter/openai/gpt-6.2-sol",
           "released_on": "2026-11-17"
         },
         {
@@ -5661,7 +6095,8 @@
         "intel-0928399b57d6595eecd9",
         "intel-d1d23e643c45e8267031",
         "intel-b6b8b77c78445556fb8b",
-        "intel-da56516d81c3e77e4b12"
+        "intel-da56516d81c3e77e4b12",
+        "intel-d1e66a66f86a9d9d15a5"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -6187,6 +6622,19 @@
           "build": "11f2a594eb1cac58491a1bde1e80c1d1b4563a27",
           "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/11f2a594eb1cac58491a1bde1e80c1d1b4563a27/model_prices_and_context_window.json",
           "first_seen": "2026-11-19T00:31:33+00:00"
+        },
+        {
+          "id": "openrouter/openai/gpt-6.2-sol",
+          "family": "gpt-6.2-sol",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"openrouter/openai/gpt-6.2-sol\": {\"cache_creation_input_token_cost\": 2.5e-06, \"cache_creation_input_token_cost_above_272k_tokens\": 5e-06, \"cache_read_input_token_cost\": 1e-07, \"cache_read_input_token_cost_above_272k_tokens\": 2e-07, \"input_cost_per_token\": 2e-06, \"input_cost_per_token_above_272k_tokens\": 4e-06, \"litellm_provider\": \"openrouter\", \"max_input_tokens\": 1050000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 1e-05, \"output_cost_per_token_above_272k_tokens\": 1.5e-05, \"source\": \"https://openrouter.ai/api/v1/models\", \"supports_function_calling\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
         }
       ],
       "x_post_text": "🟢 NEW MODEL: GPT 6.2 Sol by OpenAI\n\nFirst detected 17 Nov 18:31 UTC in npm SDK release\n📅 First released: 2026-11-17\n⏱ 10 h before it went live on Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire"
@@ -8606,52 +9054,6 @@
       "x_post_text": "🟢 NEW MODEL: granite 4.1 llmon preview by IBM Granite\n\nFirst detected 12 Nov 17:59 UTC in Hugging Face\nIDs: granite-4.1-3b-llmon-preview, granite-4.1-8b-llmon-preview\n\nvia @StatsWire"
     },
     {
-      "id": "story-pplx-decider-1-3",
-      "group": "pplx-decider-1-3",
-      "kind": "release",
-      "open_weights": true,
-      "title": "pplx decider v1.3",
-      "provider_slug": "perplexity",
-      "provider_name": "Perplexity",
-      "accent_color": "#0ea5e9",
-      "detected_at": "2026-11-12T17:56:55.188013+00:00",
-      "updated_at": "2026-11-12T17:56:55.188013+00:00",
-      "first_source": "Hugging Face",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "pplx-decider-v1.3",
-          "name": "pplx-decider-v1.3"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Hugging Face",
-          "scanner": "huggingface",
-          "detected_at": "2026-11-12T17:56:55.188013+00:00",
-          "title": "pplx decider v1.3",
-          "url": "https://huggingface.co/perplexity-ai/pplx-decider-v1.3",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "OPEN WEIGHTS · PERPLEXITY",
-      "card_ids": [
-        "hf-perplexity-ai_pplx-decider-v1.3"
-      ],
-      "event_label": "",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: pplx decider v1.3 by Perplexity\n\nFirst detected 12 Nov 17:56 UTC in Hugging Face\n\nvia @StatsWire"
-    },
-    {
       "id": "story-pplx-decider-flash-1-3",
       "group": "pplx-decider-flash-1-3",
       "kind": "release",
@@ -8661,7 +9063,7 @@
       "provider_name": "Perplexity",
       "accent_color": "#0ea5e9",
       "detected_at": "2026-11-12T17:56:55.188013+00:00",
-      "updated_at": "2026-11-12T17:56:55.188013+00:00",
+      "updated_at": "2026-11-19T01:38:20.495986+00:00",
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
@@ -8670,7 +9072,7 @@
       "models": [
         {
           "id": "pplx-decider-flash-v1.3",
-          "name": "pplx-decider-flash-v1.3"
+          "name": "perplexity/pplx-decider-flash-v1.3"
         }
       ],
       "sources": [
@@ -8683,19 +9085,115 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T01:38:20.495986+00:00",
+          "title": "pplx-decider-flash-v1.3",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz"
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
       "header": "OPEN WEIGHTS · PERPLEXITY",
       "card_ids": [
-        "hf-perplexity-ai_pplx-decider-flash-v1.3"
+        "hf-perplexity-ai_pplx-decider-flash-v1.3",
+        "intel-3b4d930c3ae87fb2ea1b"
       ],
-      "event_label": "",
+      "event_label": "Released",
       "intelligence_only": false,
       "candidate_only": false,
-      "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: pplx decider flash v1.3 by Perplexity\n\nFirst detected 12 Nov 17:56 UTC in Hugging Face\n\nvia @StatsWire"
+      "registry_evidence": [
+        {
+          "id": "perplexity/pplx-decider-flash-v1.3",
+          "family": "pplx-decider-flash-v1.3",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"perplexity/pplx-decider-flash-v1.3\": {\"input_cost_per_token\": 1e-08, \"litellm_provider\": \"perplexity\", \"mode\": \"evaluation\", \"output_cost_per_token\": 0.0, \"source\": \"https://docs.perplexity.ai/docs/decisions/quickstart\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
+        }
+      ],
+      "x_post_text": "🟢 NEW MODEL: pplx decider flash v1.3 by Perplexity\n\nFirst detected 12 Nov 17:56 UTC in Hugging Face\nConfirmed by LiteLLM commit-pinned registry\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-pplx-decider-1-3",
+      "group": "pplx-decider-1-3",
+      "kind": "release",
+      "open_weights": true,
+      "title": "pplx decider v1.3",
+      "provider_slug": "perplexity",
+      "provider_name": "Perplexity",
+      "accent_color": "#0ea5e9",
+      "detected_at": "2026-11-12T17:56:55.188013+00:00",
+      "updated_at": "2026-11-19T01:38:20.495986+00:00",
+      "first_source": "Hugging Face",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "pplx-decider-v1.3",
+          "name": "perplexity/pplx-decider-v1.3"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-11-12T17:56:55.188013+00:00",
+          "title": "pplx decider v1.3",
+          "url": "https://huggingface.co/perplexity-ai/pplx-decider-v1.3",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T01:38:20.495986+00:00",
+          "title": "pplx-decider-v1.3",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz"
+        }
+      ],
+      "source_count": 2,
+      "backfill": false,
+      "header": "OPEN WEIGHTS · PERPLEXITY",
+      "card_ids": [
+        "hf-perplexity-ai_pplx-decider-v1.3",
+        "intel-560593e4e59069b86fac"
+      ],
+      "event_label": "Released",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "perplexity/pplx-decider-v1.3",
+          "family": "pplx-decider-v1.3",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"perplexity/pplx-decider-v1.3\": {\"input_cost_per_token\": 2e-08, \"litellm_provider\": \"perplexity\", \"mode\": \"evaluation\", \"output_cost_per_token\": 0.0, \"source\": \"https://docs.perplexity.ai/docs/decisions/quickstart\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
+        }
+      ],
+      "x_post_text": "🟢 NEW MODEL: pplx decider v1.3 by Perplexity\n\nFirst detected 12 Nov 17:56 UTC in Hugging Face\nConfirmed by LiteLLM commit-pinned registry\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-hydrogen",
@@ -8707,7 +9205,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-12T17:34:46.236178+00:00",
-      "updated_at": "2026-11-19T00:57:15.501836+00:00",
+      "updated_at": "2026-11-19T01:38:20.495986+00:00",
       "first_source": "Gemini API Docs",
       "lead": "26 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "2026-11-12",
@@ -8718,7 +9216,7 @@
       "models": [
         {
           "id": "gemini-4-hydrogen",
-          "name": "vertex_ai/gemini-4-hydrogen",
+          "name": "openrouter/google/gemini-4-hydrogen",
           "released_on": "2026-11-12"
         },
         {
@@ -8915,7 +9413,8 @@
         "ag-2.32.2-2.33.0-gemini-4-hydrogen",
         "intel-99c20517c0bd75ef993a",
         "intel-aca0be62ded4a83482a6",
-        "intel-d3efcf588ebbc830336d"
+        "intel-d3efcf588ebbc830336d",
+        "intel-293b1f1e05e4f1e3d906"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -8978,6 +9477,19 @@
           "build": "ced0919e4cf80880fe10fbbaf14b16558a1e2320",
           "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/ced0919e4cf80880fe10fbbaf14b16558a1e2320/model_prices_and_context_window.json",
           "first_seen": "2026-11-19T00:54:19+00:00"
+        },
+        {
+          "id": "openrouter/google/gemini-4-hydrogen",
+          "family": "gemini-4-hydrogen",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"openrouter/google/gemini-4-hydrogen\": {\"cache_creation_input_token_cost\": 8.33333333333333e-08, \"cache_read_input_audio_token_cost\": 7.5e-08, \"cache_read_input_token_cost\": 7.5e-08, \"input_cost_per_audio_token\": 1.5e-06, \"input_cost_per_token\": 1.5e-06, \"litellm_provider\": \"openrouter\", \"max_input_tokens\": 1048576, \"max_output_tokens\": 943718, \"mode\": \"chat\", \"output_cost_per_reasoning_token\": 7.5e-06, \"output_cost_per_token\": 7.5e-06, \"source\": \"https://openrouter.ai/api/v1/models\", \"supports_function_calling\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
         }
       ],
       "x_post_text": "🟢 NEW MODEL: Gemini 4 Hydrogen by Google\n\nFirst detected 12 Nov 17:34 UTC in Gemini API Docs\n📅 First released: 2026-11-12\n⏱ 26 min before it went live on Vercel AI Gateway Catalog\n\nvia @StatsWire"
@@ -13675,6 +14187,1101 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-50f94d5bdbedb3adfc7f",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "iris-z",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "iris-z",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "fal_ai/speridlabs/iris-z",
+          "name": "fal_ai/speridlabs/iris-z",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T01:38:22.585570+00:00",
+      "first_seen": "2026-11-19T01:37:45+00:00",
+      "observed_at": "2026-11-19T01:38:22.585570+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "c0beab6a2d3574773ff9be6009e3800de07ca1ce -> 3c9dbf243ff24b46cc23e94ca6173222e0aa871d",
+      "build": "3c9dbf243ff24b46cc23e94ca6173222e0aa871d",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/3c9dbf243ff24b46cc23e94ca6173222e0aa871d/model_prices_and_context_window.json",
+      "artifact_sha256": "57926fd388e2ae940fed69e1387253ae49a6e2b5b93973962d4b10576733ba47",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/57926fd388e2ae940fed69e1387253ae49a6e2b5b93973962d4b10576733ba47.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/57926fd388e2ae940fed69e1387253ae49a6e2b5b93973962d4b10576733ba47.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "fal_ai/speridlabs/iris-z",
+          "family": "iris-z",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"fal_ai/speridlabs/iris-z\": {\"litellm_provider\": \"fal_ai\", \"metadata\": {\"comment\": \"fal bills $0.01 per ensemble member, reported in the x-fal-billable-units response header. The per-image price covers the default ensemble_size of 1 when the header is absent\"}, \"mode\": \"image_generation\", \"output_cost_per_billable_unit\": 0.01, \"output_cost_per_image\": 0.01, \"source\": \"https://fal.ai/models/speridlabs/iris-z\", \"supported_endpoints\": [\"/v1/images/edits\", \"/v1/images/generations\"], \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "57926fd388e2ae940fed69e1387253ae49a6e2b5b93973962d4b10576733ba47",
+          "method": "structured registry",
+          "build": "3c9dbf243ff24b46cc23e94ca6173222e0aa871d",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/3c9dbf243ff24b46cc23e94ca6173222e0aa871d/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:37:45+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/3c9dbf243ff24b46cc23e94ca6173222e0aa871d/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/3c9dbf243ff24b46cc23e94ca6173222e0aa871d"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T01:38:24.067542+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: fal_ai/speridlabs/iris-z\nhttps://raw.githubusercontent.com/BerriAI/litellm/3c9dbf243ff24b46cc23e94ca6173222e0aa871d/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-cff6aa5d39eda074ec5b",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "small",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "small",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "fal_ai/speridlabs/iris-z/small",
+          "name": "fal_ai/speridlabs/iris-z/small",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T01:38:22.585570+00:00",
+      "first_seen": "2026-11-19T01:37:45+00:00",
+      "observed_at": "2026-11-19T01:38:22.585570+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "c0beab6a2d3574773ff9be6009e3800de07ca1ce -> 3c9dbf243ff24b46cc23e94ca6173222e0aa871d",
+      "build": "3c9dbf243ff24b46cc23e94ca6173222e0aa871d",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/3c9dbf243ff24b46cc23e94ca6173222e0aa871d/model_prices_and_context_window.json",
+      "artifact_sha256": "57926fd388e2ae940fed69e1387253ae49a6e2b5b93973962d4b10576733ba47",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/57926fd388e2ae940fed69e1387253ae49a6e2b5b93973962d4b10576733ba47.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/57926fd388e2ae940fed69e1387253ae49a6e2b5b93973962d4b10576733ba47.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "fal_ai/speridlabs/iris-z/small",
+          "family": "small",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"fal_ai/speridlabs/iris-z/small\": {\"litellm_provider\": \"fal_ai\", \"metadata\": {\"comment\": \"fal bills $0.01 per ensemble member, reported in the x-fal-billable-units response header. The per-image price covers the default ensemble_size of 1 when the header is absent\"}, \"mode\": \"image_generation\", \"output_cost_per_billable_unit\": 0.01, \"output_cost_per_image\": 0.01, \"source\": \"https://fal.ai/models/speridlabs/iris-z/small\", \"supported_endpoints\": [\"/v1/images/edits\", \"/v1/images/generations\"], \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "57926fd388e2ae940fed69e1387253ae49a6e2b5b93973962d4b10576733ba47",
+          "method": "structured registry",
+          "build": "3c9dbf243ff24b46cc23e94ca6173222e0aa871d",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/3c9dbf243ff24b46cc23e94ca6173222e0aa871d/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:37:45+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "models-dev-api",
+          "identifier": "ambient/ambient/small",
+          "first_seen": "2026-11-18T12:44:53.499743+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/30f900db97ea60433430f676aeb05dc06c70808323caa8b302e9b4d2347a2983.json.gz"
+        },
+        {
+          "source": "models-dev-git",
+          "identifier": "ambient/ambient/small",
+          "first_seen": "2026-11-18T12:32:34+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/7e8473b573a1ae5553e1dbb0e2a6b31568f8a60ba511464f2cc6827e55998f9f.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/3c9dbf243ff24b46cc23e94ca6173222e0aa871d/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/3c9dbf243ff24b46cc23e94ca6173222e0aa871d"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T01:38:24.067542+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: fal_ai/speridlabs/iris-z/small\nhttps://raw.githubusercontent.com/BerriAI/litellm/3c9dbf243ff24b46cc23e94ca6173222e0aa871d/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-5ba03cf4a4d4e96349d0",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "jina-embeddings-v5-omni-nano",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "jina-embeddings-v5-omni-nano",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "jina-embeddings-v5-omni-nano",
+          "name": "jina-embeddings-v5-omni-nano",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T01:38:20.495986+00:00",
+      "first_seen": "2026-11-19T01:36:35+00:00",
+      "observed_at": "2026-11-19T01:38:20.495986+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "ced0919e4cf80880fe10fbbaf14b16558a1e2320 -> c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+      "artifact_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "jina-embeddings-v5-omni-nano",
+          "family": "jina-embeddings-v5-omni-nano",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"jina-embeddings-v5-omni-nano\": {\"input_cost_per_token\": 2e-08, \"litellm_provider\": \"jina_ai\", \"max_input_tokens\": 8192, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"source\": \"https://api.jina.ai/v1/models\", \"supports_embedding_image_input\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/c0beab6a2d3574773ff9be6009e3800de07ca1ce"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T01:38:24.067542+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: jina-embeddings-v5-omni-nano\nhttps://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-2806997ba07fab0ccf3e",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "jina-embeddings-v5-omni-small",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "jina-embeddings-v5-omni-small",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "jina-embeddings-v5-omni-small",
+          "name": "jina-embeddings-v5-omni-small",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T01:38:20.495986+00:00",
+      "first_seen": "2026-11-19T01:36:35+00:00",
+      "observed_at": "2026-11-19T01:38:20.495986+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "ced0919e4cf80880fe10fbbaf14b16558a1e2320 -> c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+      "artifact_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "jina-embeddings-v5-omni-small",
+          "family": "jina-embeddings-v5-omni-small",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"jina-embeddings-v5-omni-small\": {\"input_cost_per_token\": 5e-08, \"litellm_provider\": \"jina_ai\", \"max_input_tokens\": 32768, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"source\": \"https://api.jina.ai/v1/models\", \"supports_embedding_image_input\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/c0beab6a2d3574773ff9be6009e3800de07ca1ce"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T01:38:24.067542+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: jina-embeddings-v5-omni-small\nhttps://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-76083f0ac0d9c8af86d3",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "jina-embeddings-v5-text-nano",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "jina-embeddings-v5-text-nano",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "jina-embeddings-v5-text-nano",
+          "name": "jina-embeddings-v5-text-nano",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T01:38:20.495986+00:00",
+      "first_seen": "2026-11-19T01:36:35+00:00",
+      "observed_at": "2026-11-19T01:38:20.495986+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "ced0919e4cf80880fe10fbbaf14b16558a1e2320 -> c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+      "artifact_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "jina-embeddings-v5-text-nano",
+          "family": "jina-embeddings-v5-text-nano",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"jina-embeddings-v5-text-nano\": {\"input_cost_per_token\": 2e-08, \"litellm_provider\": \"jina_ai\", \"max_input_tokens\": 8192, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"source\": \"https://api.jina.ai/v1/models\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/c0beab6a2d3574773ff9be6009e3800de07ca1ce"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T01:38:24.067542+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: jina-embeddings-v5-text-nano\nhttps://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-bf0958121e478cc3acc2",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "jina-embeddings-v5-text-small",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "jina-embeddings-v5-text-small",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "jina-embeddings-v5-text-small",
+          "name": "jina-embeddings-v5-text-small",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T01:38:20.495986+00:00",
+      "first_seen": "2026-11-19T01:36:35+00:00",
+      "observed_at": "2026-11-19T01:38:20.495986+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "ced0919e4cf80880fe10fbbaf14b16558a1e2320 -> c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+      "artifact_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "jina-embeddings-v5-text-small",
+          "family": "jina-embeddings-v5-text-small",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"jina-embeddings-v5-text-small\": {\"input_cost_per_token\": 5e-08, \"litellm_provider\": \"jina_ai\", \"max_input_tokens\": 32768, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"source\": \"https://api.jina.ai/v1/models\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/c0beab6a2d3574773ff9be6009e3800de07ca1ce"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T01:38:24.067542+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: jina-embeddings-v5-text-small\nhttps://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-293b1f1e05e4f1e3d906",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gemini-4-hydrogen",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gemini-4-hydrogen",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "openrouter/google/gemini-4-hydrogen",
+          "name": "openrouter/google/gemini-4-hydrogen",
+          "registry_update": true,
+          "released_on": "2026-11-12"
+        }
+      ],
+      "detected_at": "2026-11-19T01:38:20.495986+00:00",
+      "first_seen": "2026-11-19T01:36:35+00:00",
+      "observed_at": "2026-11-19T01:38:20.495986+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "ced0919e4cf80880fe10fbbaf14b16558a1e2320 -> c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+      "artifact_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "openrouter/google/gemini-4-hydrogen",
+          "family": "gemini-4-hydrogen",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"openrouter/google/gemini-4-hydrogen\": {\"cache_creation_input_token_cost\": 8.33333333333333e-08, \"cache_read_input_audio_token_cost\": 7.5e-08, \"cache_read_input_token_cost\": 7.5e-08, \"input_cost_per_audio_token\": 1.5e-06, \"input_cost_per_token\": 1.5e-06, \"litellm_provider\": \"openrouter\", \"max_input_tokens\": 1048576, \"max_output_tokens\": 943718, \"mode\": \"chat\", \"output_cost_per_reasoning_token\": 7.5e-06, \"output_cost_per_token\": 7.5e-06, \"source\": \"https://openrouter.ai/api/v1/models\", \"supports_function_calling\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "devin-desktop",
+          "identifier": "gemini-4-hydrogen",
+          "first_seen": "2026-11-17T00:00:00+00:00",
+          "evidence_path": "data/intelligence/evidence/devin-desktop/56f318f713d7d1090ca30b470df4a1a529a4a3d5f9fdde5251d6e6e727b443b8.json.gz"
+        },
+        {
+          "source": "models-dev-api",
+          "identifier": "llmgateway-providers/google-vertex/gemini-4-hydrogen",
+          "first_seen": "2026-11-18T12:44:53.499743+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/30f900db97ea60433430f676aeb05dc06c70808323caa8b302e9b4d2347a2983.json.gz"
+        },
+        {
+          "source": "models-dev-git",
+          "identifier": "google/gemini-4-hydrogen",
+          "first_seen": "2026-11-18T12:32:34+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/7e8473b573a1ae5553e1dbb0e2a6b31568f8a60ba511464f2cc6827e55998f9f.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/c0beab6a2d3574773ff9be6009e3800de07ca1ce"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T01:38:24.067542+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: openrouter/google/gemini-4-hydrogen\nhttps://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-54a39bdf5df2030dff94",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-astra",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6.2-astra",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "openrouter/openai/gpt-6.2-astra",
+          "name": "openrouter/openai/gpt-6.2-astra",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-19T01:38:20.495986+00:00",
+      "first_seen": "2026-11-19T01:36:35+00:00",
+      "observed_at": "2026-11-19T01:38:20.495986+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "ced0919e4cf80880fe10fbbaf14b16558a1e2320 -> c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+      "artifact_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "openrouter/openai/gpt-6.2-astra",
+          "family": "gpt-6.2-astra",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"openrouter/openai/gpt-6.2-astra\": {\"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_272k_tokens\": 2e-05, \"cache_read_input_token_cost\": 4e-07, \"cache_read_input_token_cost_above_272k_tokens\": 8e-07, \"input_cost_per_token\": 8e-06, \"input_cost_per_token_above_272k_tokens\": 1.6e-05, \"litellm_provider\": \"openrouter\", \"max_input_tokens\": 1050000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4e-05, \"output_cost_per_token_above_272k_tokens\": 6e-05, \"source\": \"https://openrouter.ai/api/v1/models\", \"supports_function_calling\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "models-dev-api",
+          "identifier": "llmgateway-providers/openai/gpt-6.2-astra",
+          "first_seen": "2026-11-18T12:44:53.499743+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/30f900db97ea60433430f676aeb05dc06c70808323caa8b302e9b4d2347a2983.json.gz"
+        },
+        {
+          "source": "models-dev-git",
+          "identifier": "openai/gpt-6.2-astra",
+          "first_seen": "2026-11-18T12:32:34+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/7e8473b573a1ae5553e1dbb0e2a6b31568f8a60ba511464f2cc6827e55998f9f.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/c0beab6a2d3574773ff9be6009e3800de07ca1ce"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T01:38:24.067542+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: openrouter/openai/gpt-6.2-astra\nhttps://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-d1e66a66f86a9d9d15a5",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-sol",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6.2-sol",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "openrouter/openai/gpt-6.2-sol",
+          "name": "openrouter/openai/gpt-6.2-sol",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-19T01:38:20.495986+00:00",
+      "first_seen": "2026-11-19T01:36:35+00:00",
+      "observed_at": "2026-11-19T01:38:20.495986+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "ced0919e4cf80880fe10fbbaf14b16558a1e2320 -> c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+      "artifact_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "openrouter/openai/gpt-6.2-sol",
+          "family": "gpt-6.2-sol",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"openrouter/openai/gpt-6.2-sol\": {\"cache_creation_input_token_cost\": 2.5e-06, \"cache_creation_input_token_cost_above_272k_tokens\": 5e-06, \"cache_read_input_token_cost\": 1e-07, \"cache_read_input_token_cost_above_272k_tokens\": 2e-07, \"input_cost_per_token\": 2e-06, \"input_cost_per_token_above_272k_tokens\": 4e-06, \"litellm_provider\": \"openrouter\", \"max_input_tokens\": 1050000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 1e-05, \"output_cost_per_token_above_272k_tokens\": 1.5e-05, \"source\": \"https://openrouter.ai/api/v1/models\", \"supports_function_calling\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "models-dev-api",
+          "identifier": "llmgateway-providers/openai/gpt-6.2-sol",
+          "first_seen": "2026-11-18T12:44:53.499743+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/30f900db97ea60433430f676aeb05dc06c70808323caa8b302e9b4d2347a2983.json.gz"
+        },
+        {
+          "source": "models-dev-git",
+          "identifier": "openai/gpt-6.2-sol",
+          "first_seen": "2026-11-18T12:32:34+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/7e8473b573a1ae5553e1dbb0e2a6b31568f8a60ba511464f2cc6827e55998f9f.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/c0beab6a2d3574773ff9be6009e3800de07ca1ce"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T01:38:24.067542+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: openrouter/openai/gpt-6.2-sol\nhttps://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-3b4d930c3ae87fb2ea1b",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "pplx-decider-flash-v1.3",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "pplx-decider-flash-v1.3",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "perplexity/pplx-decider-flash-v1.3",
+          "name": "perplexity/pplx-decider-flash-v1.3",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T01:38:20.495986+00:00",
+      "first_seen": "2026-11-19T01:36:35+00:00",
+      "observed_at": "2026-11-19T01:38:20.495986+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "ced0919e4cf80880fe10fbbaf14b16558a1e2320 -> c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+      "artifact_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "perplexity/pplx-decider-flash-v1.3",
+          "family": "pplx-decider-flash-v1.3",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"perplexity/pplx-decider-flash-v1.3\": {\"input_cost_per_token\": 1e-08, \"litellm_provider\": \"perplexity\", \"mode\": \"evaluation\", \"output_cost_per_token\": 0.0, \"source\": \"https://docs.perplexity.ai/docs/decisions/quickstart\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "models-dev-api",
+          "identifier": "vercel/perplexity/pplx-decider-flash-v1.3",
+          "first_seen": "2026-11-18T12:44:53.499743+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/30f900db97ea60433430f676aeb05dc06c70808323caa8b302e9b4d2347a2983.json.gz"
+        },
+        {
+          "source": "models-dev-git",
+          "identifier": "vercel/perplexity/pplx-decider-flash-v1.3",
+          "first_seen": "2026-11-18T12:32:34+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/7e8473b573a1ae5553e1dbb0e2a6b31568f8a60ba511464f2cc6827e55998f9f.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/c0beab6a2d3574773ff9be6009e3800de07ca1ce"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T01:38:24.067542+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: perplexity/pplx-decider-flash-v1.3\nhttps://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-560593e4e59069b86fac",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "pplx-decider-v1.3",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "pplx-decider-v1.3",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "perplexity/pplx-decider-v1.3",
+          "name": "perplexity/pplx-decider-v1.3",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T01:38:20.495986+00:00",
+      "first_seen": "2026-11-19T01:36:35+00:00",
+      "observed_at": "2026-11-19T01:38:20.495986+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "ced0919e4cf80880fe10fbbaf14b16558a1e2320 -> c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+      "artifact_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "perplexity/pplx-decider-v1.3",
+          "family": "pplx-decider-v1.3",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"perplexity/pplx-decider-v1.3\": {\"input_cost_per_token\": 2e-08, \"litellm_provider\": \"perplexity\", \"mode\": \"evaluation\", \"output_cost_per_token\": 0.0, \"source\": \"https://docs.perplexity.ai/docs/decisions/quickstart\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "models-dev-api",
+          "identifier": "vercel/perplexity/pplx-decider-v1.3",
+          "first_seen": "2026-11-18T12:44:53.499743+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/30f900db97ea60433430f676aeb05dc06c70808323caa8b302e9b4d2347a2983.json.gz"
+        },
+        {
+          "source": "models-dev-git",
+          "identifier": "vercel/perplexity/pplx-decider-v1.3",
+          "first_seen": "2026-11-18T12:32:34+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/7e8473b573a1ae5553e1dbb0e2a6b31568f8a60ba511464f2cc6827e55998f9f.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/c0beab6a2d3574773ff9be6009e3800de07ca1ce"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T01:38:24.067542+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: perplexity/pplx-decider-v1.3\nhttps://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-c15c6563853663feaadc",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "ternary-bonsai-27b",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "ternary-bonsai-27b",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "together_ai/Prism-ML/Ternary-Bonsai-27B",
+          "name": "together_ai/Prism-ML/Ternary-Bonsai-27B",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T01:38:20.495986+00:00",
+      "first_seen": "2026-11-19T01:36:35+00:00",
+      "observed_at": "2026-11-19T01:38:20.495986+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "ced0919e4cf80880fe10fbbaf14b16558a1e2320 -> c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+      "artifact_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "together_ai/Prism-ML/Ternary-Bonsai-27B",
+          "family": "ternary-bonsai-27b",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"together_ai/Prism-ML/Ternary-Bonsai-27B\": {\"input_cost_per_token\": 0.0, \"litellm_provider\": \"together_ai\", \"max_input_tokens\": 262144, \"max_output_tokens\": 262144, \"mode\": \"chat\", \"output_cost_per_token\": 0.0, \"source\": \"https://docs.together.ai/docs/serverless-models\", \"supports_function_calling\": true, \"supports_response_schema\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "3e647c25362ea38b095c364dd94eeab0e0d49292a5811946266d28f074456014",
+          "method": "structured registry",
+          "build": "c0beab6a2d3574773ff9be6009e3800de07ca1ce",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:36:35+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/c0beab6a2d3574773ff9be6009e3800de07ca1ce"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T01:38:24.067542+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: together_ai/Prism-ML/Ternary-Bonsai-27B\nhttps://raw.githubusercontent.com/BerriAI/litellm/c0beab6a2d3574773ff9be6009e3800de07ca1ce/model_prices_and_context_window.json"
+    },
     {
       "id": "intel-8bfe3513588de21e3275",
       "scanner": "devin-desktop",
@@ -36941,12 +38548,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:35:30.586275+00:00",
+      "last_attempt": "2026-11-19T01:38:18.468959+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:35:31.221727+00:00",
+      "last_success": "2026-11-19T01:38:19.177497+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.636,
+      "duration_seconds": 0.709,
       "latest_build": "30f900db97ea60433430f676aeb05dc06c70808323caa8b302e9b4d2347a2983",
       "builds_retained": 18,
       "identifiers": 9635
@@ -36954,15 +38561,15 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T01:32:54.397414+00:00",
+      "last_attempt": "2026-11-19T01:38:19.315460+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:32:54.714318+00:00",
+      "last_success": "2026-11-19T01:38:24.067542+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.317,
-      "latest_build": "ced0919e4cf80880fe10fbbaf14b16558a1e2320",
-      "builds_retained": 17,
-      "identifiers": 6922
+      "duration_seconds": 4.752,
+      "latest_build": "3c9dbf243ff24b46cc23e94ca6173222e0aa871d",
+      "builds_retained": 19,
+      "identifiers": 6934
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
@@ -36980,11 +38587,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T01:35:31.359817+00:00",
+      "last_attempt": "2026-11-19T01:38:24.205760+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 383,
-      "duration_seconds": 15.246
+      "consecutive_failures": 384,
+      "duration_seconds": 15.035
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -37004,61 +38611,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:34:32.823781+00:00",
+      "last_attempt": "2026-11-19T01:37:18.461333+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:34:34.614174+00:00",
+      "last_success": "2026-11-19T01:37:20.358033+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.79
+      "duration_seconds": 1.897
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:34:34.614226+00:00",
+      "last_attempt": "2026-11-19T01:37:20.358084+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:34:34.748726+00:00",
+      "last_success": "2026-11-19T01:37:20.525226+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.135
+      "duration_seconds": 0.167
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:34:34.748761+00:00",
+      "last_attempt": "2026-11-19T01:37:20.525260+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:34:42.296379+00:00",
+      "last_success": "2026-11-19T01:37:28.952565+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.548
+      "duration_seconds": 8.427
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:34:42.296433+00:00",
+      "last_attempt": "2026-11-19T01:37:28.952621+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:35:30.586223+00:00",
+      "last_success": "2026-11-19T01:38:18.468908+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 48.29,
+      "duration_seconds": 49.516,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T01:34:42.782592+00:00",
+          "checked_at": "2026-11-19T01:37:29.201618+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T01:34:54.716326+00:00",
+          "checked_at": "2026-11-19T01:37:40.021499+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T01:34:54.814302+00:00",
+          "checked_at": "2026-11-19T01:37:40.125705+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T01:34:54.814318+00:00",
+          "checked_at": "2026-11-19T01:37:40.125722+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -37066,12 +38673,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:35:30.586275+00:00",
+      "last_attempt": "2026-11-19T01:38:18.468959+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:35:31.221727+00:00",
+      "last_success": "2026-11-19T01:38:19.177497+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.636,
+      "duration_seconds": 0.709,
       "latest_build": "30f900db97ea60433430f676aeb05dc06c70808323caa8b302e9b4d2347a2983",
       "builds_retained": 18,
       "identifiers": 9635
@@ -37079,15 +38686,15 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T01:32:54.397414+00:00",
+      "last_attempt": "2026-11-19T01:38:19.315460+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:32:54.714318+00:00",
+      "last_success": "2026-11-19T01:38:24.067542+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.317,
-      "latest_build": "ced0919e4cf80880fe10fbbaf14b16558a1e2320",
-      "builds_retained": 17,
-      "identifiers": 6922
+      "duration_seconds": 4.752,
+      "latest_build": "3c9dbf243ff24b46cc23e94ca6173222e0aa871d",
+      "builds_retained": 19,
+      "identifiers": 6934
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
@@ -37105,11 +38712,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T01:35:31.359817+00:00",
+      "last_attempt": "2026-11-19T01:38:24.205760+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 383,
-      "duration_seconds": 15.246
+      "consecutive_failures": 384,
+      "duration_seconds": 15.035
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -37127,22 +38734,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:36:50.835362+00:00",
+      "last_attempt": "2026-11-19T01:38:39.246749+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:36:58.050783+00:00",
+      "last_success": "2026-11-19T01:38:46.479482+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.215
+      "duration_seconds": 7.233
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:36:58.050855+00:00",
+      "last_attempt": "2026-11-19T01:38:46.479551+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:37:00.139867+00:00",
+      "last_success": "2026-11-19T01:38:47.794218+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.089
+      "duration_seconds": 1.315
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -37157,34 +38764,34 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:37:00.139915+00:00",
+      "last_attempt": "2026-11-19T01:38:47.794267+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:37:01.738700+00:00",
+      "last_success": "2026-11-19T01:38:49.383400+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.599
+      "duration_seconds": 1.589
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T01:37:01.738736+00:00",
+      "last_attempt": "2026-11-19T01:38:49.383439+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T01:37:01.780761+00:00",
+      "last_success": "2026-11-19T01:38:49.458045+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.042
+      "duration_seconds": 0.075
     }
   },
   "identities": {
-    "identifiers": 30639,
+    "identifiers": 30651,
     "declared_aliases": 17788,
     "pending_candidates": 0
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 92,
-      "seconds_mean": 11176.806810597825,
+      "samples": 104,
+      "seconds_mean": 9898.041899759615,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -37198,8 +38805,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 125,
-      "events": 125,
+      "complete": 137,
+      "events": 137,
       "rate": 1.0
     },
     "source_health": {
