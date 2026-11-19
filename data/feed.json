@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-19T00:55:23.458479+00:00",
-  "scan_completed_at": "2026-11-19T00:57:43.158942+00:00",
+  "generated_at": "2026-11-19T00:57:58.400114+00:00",
+  "scan_completed_at": "2026-11-19T00:59:41.880045+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 170,
     "leaks": 42,
     "releases": 69,
     "stories_24h": 62,
-    "sources_ok": 12,
-    "total_cards": 370,
-    "new_in_this_scan": 1
+    "sources_ok": 14,
+    "total_cards": 376,
+    "new_in_this_scan": 6
   },
   "stories": [
     {
@@ -432,7 +432,7 @@
       "provider_slug": "unknown",
       "provider_name": "Unattributed",
       "accent_color": "#0891b2",
-      "detected_at": "2026-11-18T21:21:10.861608+00:00",
+      "detected_at": "2026-11-18T21:19:18.714490+00:00",
       "updated_at": "2026-11-18T21:21:10.861608+00:00",
       "first_source": "Registry Update",
       "lead": "",
@@ -449,25 +449,41 @@
       "sources": [
         {
           "label": "Registry Update",
-          "scanner": "models-dev-api",
-          "detected_at": "2026-11-18T21:21:10.861608+00:00",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-18T21:19:18.714490+00:00",
           "title": "orcacyber-glm-5.3",
-          "url": "https://models.dev/api.json?type=all",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/ae6a092832c0dca0e604ba75233db9d06c2b4268",
           "backfill": false,
-          "build": "f22a71b9fbd0f41989ea5cd05f9cdea8a32df307e108d0104bafb7f66ec2f4ef",
-          "evidence_path": "data/intelligence/evidence/models-dev-api/f22a71b9fbd0f41989ea5cd05f9cdea8a32df307e108d0104bafb7f66ec2f4ef.json.gz"
+          "build": "ae6a092832c0dca0e604ba75233db9d06c2b4268",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/f713af61e53ad361c05cbe0b27e00712d66c80615096ebe06cc6844fa7efda1b.json.gz"
         }
       ],
       "source_count": 1,
       "backfill": false,
       "header": "REGISTRY UPDATE · UNATTRIBUTED",
       "card_ids": [
+        "intel-9f7eee5e6139e31fc97f",
         "intel-2c5da2fed3b79b22472f"
       ],
       "event_label": "Registry update",
       "intelligence_only": true,
       "candidate_only": false,
       "registry_evidence": [
+        {
+          "id": "nano-gpt/orca/orcacyber-glm-5.3",
+          "family": "orcacyber-glm-5.3",
+          "file_path": "providers/nano-gpt/models/orca/orcacyber-glm-5.3.toml",
+          "file_sha256": "e369c58d9663fdccfcba1eb3e26cc55e4fdccad3800b5c716ef62a76617ea336",
+          "excerpt": "{\"nano-gpt/orca/orcacyber-glm-5.3\": {\"schema\": 2, \"name\": \"OrcaCyber GLM 5.3\", \"description\": \"An OrcaCyber model for authorized security research, vulnerability analysis, code auditing, and tool use. Accepts text input, with reasoning kept enabled. Supports a 1,000,000-token context window and up to 128,000 output tokens. Offensive work is permitted only within an authorized security engagement.\", \"family\": \"glm\", \"open_weights\": false, \"release_date\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"high\", \"max\"]}, \"structured_output\": true}, \"limit\": {\"context\": 999488, \"input\": 999488, \"output\": 128000}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.3}}, \"output\": {\"price\": 5}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/ae6a092832c0dca0e604ba75233db9d06c2b4268/providers/nano-gpt/models/orca/orcacyber-glm-5.3.toml",
+          "build": "ae6a092832c0dca0e604ba75233db9d06c2b4268",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/ae6a092832c0dca0e604ba75233db9d06c2b4268",
+          "first_seen": "2026-11-18T21:17:33+00:00"
+        },
         {
           "id": "nano-gpt/orca/orcacyber-glm-5.3",
           "family": "orcacyber-glm-5.3",
@@ -483,69 +499,7 @@
           "first_seen": "2026-11-18T21:21:10.523028+00:00"
         }
       ],
-      "x_post_text": "Registry Update f22a71b9fbd0: orcacyber-glm-5.3\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
-    },
-    {
-      "id": "story-orcacyber-zero-1",
-      "group": "orcacyber-zero-1",
-      "kind": "registry",
-      "open_weights": false,
-      "title": "Orcacyber Zero 1",
-      "provider_slug": "unknown",
-      "provider_name": "Unattributed",
-      "accent_color": "#0891b2",
-      "detected_at": "2026-11-18T21:21:10.861608+00:00",
-      "updated_at": "2026-11-18T21:21:10.861608+00:00",
-      "first_source": "Registry Update",
-      "lead": "",
-      "released_on": "2026-11-18",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "orcacyber-zero-1.0",
-          "name": "nano-gpt/orca/orcacyber-zero-1.0",
-          "released_on": "2026-11-18"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Registry Update",
-          "scanner": "models-dev-api",
-          "detected_at": "2026-11-18T21:21:10.861608+00:00",
-          "title": "orcacyber-zero-1.0",
-          "url": "https://models.dev/api.json?type=all",
-          "backfill": false,
-          "build": "f22a71b9fbd0f41989ea5cd05f9cdea8a32df307e108d0104bafb7f66ec2f4ef",
-          "evidence_path": "data/intelligence/evidence/models-dev-api/f22a71b9fbd0f41989ea5cd05f9cdea8a32df307e108d0104bafb7f66ec2f4ef.json.gz"
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "REGISTRY UPDATE · UNATTRIBUTED",
-      "card_ids": [
-        "intel-0010c27ba294aa734b06"
-      ],
-      "event_label": "Registry update",
-      "intelligence_only": true,
-      "candidate_only": false,
-      "registry_evidence": [
-        {
-          "id": "nano-gpt/orca/orcacyber-zero-1.0",
-          "family": "orcacyber-zero-1.0",
-          "file_path": "api.json?type=all",
-          "file_sha256": "f22a71b9fbd0f41989ea5cd05f9cdea8a32df307e108d0104bafb7f66ec2f4ef",
-          "excerpt": "{\"nano-gpt/orca/orcacyber-zero-1.0\": {\"id\": \"orca/orcacyber-zero-1.0\", \"name\": \"OrcaCyber Zero 1.0\", \"description\": \"An OrcaCyber model for authorized security research, vulnerability analysis, code auditing, and tool use. Accepts text input, with reasoning kept enabled. Supports a 1,000,000-token context window and up to 128,000 output tokens. Offensive work is permitted only within an authorized security engagement.\", \"attachment\": false, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"high\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"release_date\": \"2026-11-18\", \"last_updated\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 999488, \"input\": 999488, \"output\": 128000}, \"cost\": {\"input\": 3, \"output\": 7.5, \"cache_read\": 0.75}}}",
-          "canonical_id": "",
-          "provider": "unknown",
-          "provider_evidence": "Hosting route does not establish creator",
-          "method": "structured catalog definition",
-          "build": "f22a71b9fbd0f41989ea5cd05f9cdea8a32df307e108d0104bafb7f66ec2f4ef",
-          "source_url": "https://models.dev/api.json?type=all",
-          "first_seen": "2026-11-18T21:21:10.523028+00:00"
-        }
-      ],
-      "x_post_text": "Registry Update f22a71b9fbd0: orcacyber-zero-1.0\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+      "x_post_text": "Registry Update ae6a092832c0: orcacyber-glm-5.3\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/ae6a092832c0dca0e604ba75233db9d06c2b4268"
     },
     {
       "id": "story-orcacyber-hy-4",
@@ -704,6 +658,84 @@
       "x_post_text": "Registry Update ae6a092832c0: orcacyber-ultra-1.0\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/ae6a092832c0dca0e604ba75233db9d06c2b4268"
     },
     {
+      "id": "story-orcacyber-zero-1",
+      "group": "orcacyber-zero-1",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Orcacyber Zero 1",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-18T21:19:18.714490+00:00",
+      "updated_at": "2026-11-18T21:21:10.861608+00:00",
+      "first_source": "Registry Update",
+      "lead": "",
+      "released_on": "2026-11-18",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "orcacyber-zero-1.0",
+          "name": "nano-gpt/orca/orcacyber-zero-1.0",
+          "released_on": "2026-11-18"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-18T21:19:18.714490+00:00",
+          "title": "orcacyber-zero-1.0",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/ae6a092832c0dca0e604ba75233db9d06c2b4268",
+          "backfill": false,
+          "build": "ae6a092832c0dca0e604ba75233db9d06c2b4268",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/f713af61e53ad361c05cbe0b27e00712d66c80615096ebe06cc6844fa7efda1b.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-3173d57800185d585611",
+        "intel-0010c27ba294aa734b06"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "nano-gpt/orca/orcacyber-zero-1.0",
+          "family": "orcacyber-zero-1.0",
+          "file_path": "providers/nano-gpt/models/orca/orcacyber-zero-1.0.toml",
+          "file_sha256": "a458a3fa0ae004e891321bd597c17c0e94cdb7f459051413480855a506ca2544",
+          "excerpt": "{\"nano-gpt/orca/orcacyber-zero-1.0\": {\"schema\": 2, \"name\": \"OrcaCyber Zero 1.0\", \"description\": \"An OrcaCyber model for authorized security research, vulnerability analysis, code auditing, and tool use. Accepts text input, with reasoning kept enabled. Supports a 1,000,000-token context window and up to 128,000 output tokens. Offensive work is permitted only within an authorized security engagement.\", \"open_weights\": false, \"release_date\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"high\", \"max\"]}, \"structured_output\": true}, \"limit\": {\"context\": 999488, \"input\": 999488, \"output\": 128000}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.75}}, \"output\": {\"price\": 7.5}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/ae6a092832c0dca0e604ba75233db9d06c2b4268/providers/nano-gpt/models/orca/orcacyber-zero-1.0.toml",
+          "build": "ae6a092832c0dca0e604ba75233db9d06c2b4268",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/ae6a092832c0dca0e604ba75233db9d06c2b4268",
+          "first_seen": "2026-11-18T21:17:33+00:00"
+        },
+        {
+          "id": "nano-gpt/orca/orcacyber-zero-1.0",
+          "family": "orcacyber-zero-1.0",
+          "file_path": "api.json?type=all",
+          "file_sha256": "f22a71b9fbd0f41989ea5cd05f9cdea8a32df307e108d0104bafb7f66ec2f4ef",
+          "excerpt": "{\"nano-gpt/orca/orcacyber-zero-1.0\": {\"id\": \"orca/orcacyber-zero-1.0\", \"name\": \"OrcaCyber Zero 1.0\", \"description\": \"An OrcaCyber model for authorized security research, vulnerability analysis, code auditing, and tool use. Accepts text input, with reasoning kept enabled. Supports a 1,000,000-token context window and up to 128,000 output tokens. Offensive work is permitted only within an authorized security engagement.\", \"attachment\": false, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"high\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"release_date\": \"2026-11-18\", \"last_updated\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 999488, \"input\": 999488, \"output\": 128000}, \"cost\": {\"input\": 3, \"output\": 7.5, \"cache_read\": 0.75}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "f22a71b9fbd0f41989ea5cd05f9cdea8a32df307e108d0104bafb7f66ec2f4ef",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-18T21:21:10.523028+00:00"
+        }
+      ],
+      "x_post_text": "Registry Update ae6a092832c0: orcacyber-zero-1.0\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/ae6a092832c0dca0e604ba75233db9d06c2b4268"
+    },
+    {
       "id": "story-openai-gpt-6-2-astra",
       "group": "openai-gpt-6-2-astra",
       "kind": "registry",
@@ -713,7 +745,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-18T21:08:22.507399+00:00",
-      "updated_at": "2026-11-18T21:08:22.507399+00:00",
+      "updated_at": "2026-11-18T21:08:29.453608+00:00",
       "first_source": "Registry Update",
       "lead": "",
       "released_on": "2026-11-17",
@@ -742,7 +774,8 @@
       "backfill": false,
       "header": "REGISTRY UPDATE · OPENAI",
       "card_ids": [
-        "intel-4de0cba8c4721dc685ff"
+        "intel-4de0cba8c4721dc685ff",
+        "intel-1b3854b239146737dd4c"
       ],
       "event_label": "Registry update",
       "intelligence_only": true,
@@ -761,6 +794,21 @@
           "build": "ead80877b7c85fba409e0e3bfc60261c8ae4f5143983171a499391cccc12de10",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-18T21:08:22.169142+00:00"
+        },
+        {
+          "id": "digitalocean/openai-gpt-6.2-astra",
+          "family": "openai-gpt-6.2-astra",
+          "file_path": "providers/digitalocean/models/openai-gpt-6.2-astra.toml",
+          "file_sha256": "c738803c6cf02890f5280f9deccf022762e989631be8bc5f7b654723fa6c3815",
+          "excerpt": "{\"digitalocean/openai-gpt-6.2-astra\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-astra\", \"name\": \"OpenAI GPT-6.2 Astra\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"service_tier\": [\"priority\"]}, \"cost\": {\"text\": {\"input\": {\"price\": 8, \"cache\": {\"read\": 0.4}, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 16, \"cache\": {\"read\": 0.8}}, {\"when\": {\"service_tier\": {\"equals\": \"priority\"}}, \"price\": 16, \"cache\": {\"read\": 0.8}}, {\"when\": {\"service_tier\": {\"equals\": \"priority\"}, \"context\": {\"gt\": 272000}}, \"price\": 32, \"cache\": {\"read\": 1.6}}]}, \"output\": {\"price\": 40, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 60}, {\"when\": {\"service_tier\": {\"equals\": \"priority\"}}, \"price\": 80}, {\"when\": {\"service_tier\": {\"equals\": \"priority\"}, \"context\": {\"gt\": 272000}}, \"price\": 120}]}}}}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/4b14f2bc4069fcf9951bb159e4f13fd864bca3c0/providers/digitalocean/models/openai-gpt-6.2-astra.toml",
+          "build": "4b14f2bc4069fcf9951bb159e4f13fd864bca3c0",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/4b14f2bc4069fcf9951bb159e4f13fd864bca3c0",
+          "first_seen": "2026-11-18T21:05:03+00:00"
         }
       ],
       "x_post_text": "Registry Update ead80877b7c8: openai-gpt-6.2-astra\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
@@ -775,7 +823,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-18T21:08:22.507399+00:00",
-      "updated_at": "2026-11-18T21:08:22.507399+00:00",
+      "updated_at": "2026-11-18T21:08:29.453608+00:00",
       "first_source": "Registry Update",
       "lead": "",
       "released_on": "2026-11-17",
@@ -804,7 +852,8 @@
       "backfill": false,
       "header": "REGISTRY UPDATE · OPENAI",
       "card_ids": [
-        "intel-2b7e35767b5f260d0c5b"
+        "intel-2b7e35767b5f260d0c5b",
+        "intel-c3f6bf634b12028fa00d"
       ],
       "event_label": "Registry update",
       "intelligence_only": true,
@@ -823,6 +872,21 @@
           "build": "ead80877b7c85fba409e0e3bfc60261c8ae4f5143983171a499391cccc12de10",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-18T21:08:22.169142+00:00"
+        },
+        {
+          "id": "digitalocean/openai-gpt-6.2-sol",
+          "family": "openai-gpt-6.2-sol",
+          "file_path": "providers/digitalocean/models/openai-gpt-6.2-sol.toml",
+          "file_sha256": "66bdc68abd99ee830ca526029b695ad38799f81e3d4efaabb689fca30787884a",
+          "excerpt": "{\"digitalocean/openai-gpt-6.2-sol\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-sol\", \"name\": \"OpenAI GPT-6.2 Sol\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"service_tier\": [\"priority\"]}, \"cost\": {\"text\": {\"input\": {\"price\": 2, \"cache\": {\"read\": 0.1}, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 4, \"cache\": {\"read\": 0.2}}, {\"when\": {\"service_tier\": {\"equals\": \"priority\"}}, \"price\": 4, \"cache\": {\"read\": 0.2}}, {\"when\": {\"service_tier\": {\"equals\": \"priority\"}, \"context\": {\"gt\": 272000}}, \"price\": 8, \"cache\": {\"read\": 0.4}}]}, \"output\": {\"price\": 10, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 15}, {\"when\": {\"service_tier\": {\"equals\": \"priority\"}}, \"price\": 20}, {\"when\": {\"service_tier\": {\"equals\": \"priority\"}, \"context\": {\"gt\": 272000}}, \"price\": 30}]}}}}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/4b14f2bc4069fcf9951bb159e4f13fd864bca3c0/providers/digitalocean/models/openai-gpt-6.2-sol.toml",
+          "build": "4b14f2bc4069fcf9951bb159e4f13fd864bca3c0",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/4b14f2bc4069fcf9951bb159e4f13fd864bca3c0",
+          "first_seen": "2026-11-18T21:05:03+00:00"
         }
       ],
       "x_post_text": "Registry Update ead80877b7c8: openai-gpt-6.2-sol\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
@@ -5436,7 +5500,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-16T20:15:16.430197+00:00",
-      "updated_at": "2026-11-19T00:48:27.606656+00:00",
+      "updated_at": "2026-11-19T00:59:03.324909+00:00",
       "first_source": "Gemini Web App Config",
       "lead": "2 days before it went live on OpenRouter",
       "released_on": "2026-11-18",
@@ -5447,7 +5511,7 @@
       "models": [
         {
           "id": "gemini-4-neon",
-          "name": "edenai/google/gemini-4-neon",
+          "name": "vercel/google/gemini-4-neon",
           "released_on": "2026-11-18"
         }
       ],
@@ -5586,7 +5650,9 @@
         "intel-41927dff55d09f35234e",
         "intel-eafc55281e44a90e94b9",
         "intel-b81a84fd090761822d84",
-        "intel-6f7d3469f0fc6aa54272"
+        "intel-6f7d3469f0fc6aa54272",
+        "intel-a4347e1f418d3f5ed980",
+        "intel-05da8e1357f6c1292208"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -5861,6 +5927,36 @@
           "build": "30f900db97ea60433430f676aeb05dc06c70808323caa8b302e9b4d2347a2983",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-19T00:48:27.293128+00:00"
+        },
+        {
+          "id": "venice/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/venice/models/gemini-4-neon.toml",
+          "file_sha256": "66c18aab891314e40bc0424dcf97a1d9b30c54e2b60ebfd675cd856f0ffa2f7c",
+          "excerpt": "{\"venice/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"modalities\": {\"input\": [\"text\", \"image\", \"audio\", \"video\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true}, \"structured_output\": true}, \"limit\": {\"context\": 1000000}, \"api\": {\"chat-completions\": {}, \"responses\": {\"base_url\": \"https://api.venice.ai/api/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 3.75, \"cache\": {\"read\": 0.1875}}, \"output\": {\"price\": 18.75}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/1b7c68b906e08e2ced8b8d1c559d2cad0e565e10/providers/venice/models/gemini-4-neon.toml",
+          "build": "1b7c68b906e08e2ced8b8d1c559d2cad0e565e10",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/1b7c68b906e08e2ced8b8d1c559d2cad0e565e10",
+          "first_seen": "2026-11-19T00:46:21+00:00"
+        },
+        {
+          "id": "vercel/google/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/vercel/models/google/gemini-4-neon.toml",
+          "file_sha256": "69c7d6d3a77f95b8f4cc1236d6166991fcc6e8720fb83dce6ce5cb7439d91577",
+          "excerpt": "{\"vercel/google/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"modalities\": {\"input\": [\"text\", \"image\", \"application/pdf\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}, \"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"cache\": {\"implicit\": true}}, \"limit\": {\"context\": 1000000, \"output\": 1000000}, \"api\": {\"chat-completions\": {}, \"responses\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/open-responses\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/responses\"}}, \"messages\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/messages\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.15}}, \"output\": {\"price\": 15}}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8/providers/vercel/models/google/gemini-4-neon.toml",
+          "build": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
+          "first_seen": "2026-11-19T00:46:25+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-18T22:33:40.477579+00:00",
@@ -12493,6 +12589,194 @@
   ],
   "cards": [
     {
+      "id": "intel-05da8e1357f6c1292208",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gemini-4-neon",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gemini-4-neon",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "vercel/google/gemini-4-neon",
+          "name": "vercel/google/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        }
+      ],
+      "detected_at": "2026-11-19T00:59:03.324909+00:00",
+      "first_seen": "2026-11-19T00:46:25+00:00",
+      "observed_at": "2026-11-19T00:59:03.324909+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "1b7c68b906e08e2ced8b8d1c559d2cad0e565e10 -> fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
+      "build": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
+      "artifact_sha256": "7e8473b573a1ae5553e1dbb0e2a6b31568f8a60ba511464f2cc6827e55998f9f",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/7e8473b573a1ae5553e1dbb0e2a6b31568f8a60ba511464f2cc6827e55998f9f.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/7e8473b573a1ae5553e1dbb0e2a6b31568f8a60ba511464f2cc6827e55998f9f.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "vercel/google/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/vercel/models/google/gemini-4-neon.toml",
+          "file_sha256": "69c7d6d3a77f95b8f4cc1236d6166991fcc6e8720fb83dce6ce5cb7439d91577",
+          "excerpt": "{\"vercel/google/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"modalities\": {\"input\": [\"text\", \"image\", \"application/pdf\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}, \"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"cache\": {\"implicit\": true}}, \"limit\": {\"context\": 1000000, \"output\": 1000000}, \"api\": {\"chat-completions\": {}, \"responses\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/open-responses\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/responses\"}}, \"messages\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/messages\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.15}}, \"output\": {\"price\": 15}}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8/providers/vercel/models/google/gemini-4-neon.toml",
+          "build": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
+          "first_seen": "2026-11-19T00:46:25+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gemini/gemini-4-neon",
+          "first_seen": "2026-11-18T20:53:00+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/f109c708d92979bb6c61030161aa921cdc295438ed91f53b1cde4cbafdcda45f.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T00:59:06.183758+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions fcb75c2d2c17: vercel/google/gemini-4-neon\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8"
+    },
+    {
+      "id": "intel-a4347e1f418d3f5ed980",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gemini-4-neon",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gemini-4-neon",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "venice/gemini-4-neon",
+          "name": "venice/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        }
+      ],
+      "detected_at": "2026-11-19T00:58:56.906660+00:00",
+      "first_seen": "2026-11-19T00:46:21+00:00",
+      "observed_at": "2026-11-19T00:58:56.906660+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "892d0085917728d4c8c26729d13ac15c1f3ecca2 -> 1b7c68b906e08e2ced8b8d1c559d2cad0e565e10",
+      "build": "1b7c68b906e08e2ced8b8d1c559d2cad0e565e10",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/1b7c68b906e08e2ced8b8d1c559d2cad0e565e10",
+      "artifact_sha256": "7de50706ce0b3c414e07d97fdc8ee0763809fa9ab443fae922cbae2ec688865a",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/7de50706ce0b3c414e07d97fdc8ee0763809fa9ab443fae922cbae2ec688865a.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/7de50706ce0b3c414e07d97fdc8ee0763809fa9ab443fae922cbae2ec688865a.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "venice/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/venice/models/gemini-4-neon.toml",
+          "file_sha256": "66c18aab891314e40bc0424dcf97a1d9b30c54e2b60ebfd675cd856f0ffa2f7c",
+          "excerpt": "{\"venice/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"modalities\": {\"input\": [\"text\", \"image\", \"audio\", \"video\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true}, \"structured_output\": true}, \"limit\": {\"context\": 1000000}, \"api\": {\"chat-completions\": {}, \"responses\": {\"base_url\": \"https://api.venice.ai/api/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 3.75, \"cache\": {\"read\": 0.1875}}, \"output\": {\"price\": 18.75}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/1b7c68b906e08e2ced8b8d1c559d2cad0e565e10/providers/venice/models/gemini-4-neon.toml",
+          "build": "1b7c68b906e08e2ced8b8d1c559d2cad0e565e10",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/1b7c68b906e08e2ced8b8d1c559d2cad0e565e10",
+          "first_seen": "2026-11-19T00:46:21+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gemini/gemini-4-neon",
+          "first_seen": "2026-11-18T20:53:00+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/f109c708d92979bb6c61030161aa921cdc295438ed91f53b1cde4cbafdcda45f.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/1b7c68b906e08e2ced8b8d1c559d2cad0e565e10"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/1b7c68b906e08e2ced8b8d1c559d2cad0e565e10"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T00:59:06.183758+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 1b7c68b906e0: venice/gemini-4-neon\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/1b7c68b906e08e2ced8b8d1c559d2cad0e565e10"
+    },
+    {
       "id": "intel-d3efcf588ebbc830336d",
       "scanner": "litellm-intelligence",
       "intelligence": true,
@@ -15940,6 +16224,93 @@
       "x_post_text": "models.dev full catalog f22a71b9fbd0: nano-gpt/orca/orcacyber-zero-1.0\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
     },
     {
+      "id": "intel-9f7eee5e6139e31fc97f",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "orcacyber-glm-5.3",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "orcacyber-glm-5.3",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "nano-gpt/orca/orcacyber-glm-5.3",
+          "name": "nano-gpt/orca/orcacyber-glm-5.3",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        }
+      ],
+      "detected_at": "2026-11-18T21:19:18.714490+00:00",
+      "first_seen": "2026-11-18T21:17:33+00:00",
+      "observed_at": "2026-11-18T21:19:18.714490+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "97411d4bf19902e26f8a9f4be3bd87747143c497 -> ae6a092832c0dca0e604ba75233db9d06c2b4268",
+      "build": "ae6a092832c0dca0e604ba75233db9d06c2b4268",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/ae6a092832c0dca0e604ba75233db9d06c2b4268",
+      "artifact_sha256": "f713af61e53ad361c05cbe0b27e00712d66c80615096ebe06cc6844fa7efda1b",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/f713af61e53ad361c05cbe0b27e00712d66c80615096ebe06cc6844fa7efda1b.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/f713af61e53ad361c05cbe0b27e00712d66c80615096ebe06cc6844fa7efda1b.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "nano-gpt/orca/orcacyber-glm-5.3",
+          "family": "orcacyber-glm-5.3",
+          "file_path": "providers/nano-gpt/models/orca/orcacyber-glm-5.3.toml",
+          "file_sha256": "e369c58d9663fdccfcba1eb3e26cc55e4fdccad3800b5c716ef62a76617ea336",
+          "excerpt": "{\"nano-gpt/orca/orcacyber-glm-5.3\": {\"schema\": 2, \"name\": \"OrcaCyber GLM 5.3\", \"description\": \"An OrcaCyber model for authorized security research, vulnerability analysis, code auditing, and tool use. Accepts text input, with reasoning kept enabled. Supports a 1,000,000-token context window and up to 128,000 output tokens. Offensive work is permitted only within an authorized security engagement.\", \"family\": \"glm\", \"open_weights\": false, \"release_date\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"high\", \"max\"]}, \"structured_output\": true}, \"limit\": {\"context\": 999488, \"input\": 999488, \"output\": 128000}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.3}}, \"output\": {\"price\": 5}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/ae6a092832c0dca0e604ba75233db9d06c2b4268/providers/nano-gpt/models/orca/orcacyber-glm-5.3.toml",
+          "build": "ae6a092832c0dca0e604ba75233db9d06c2b4268",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/ae6a092832c0dca0e604ba75233db9d06c2b4268",
+          "first_seen": "2026-11-18T21:17:33+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/ae6a092832c0dca0e604ba75233db9d06c2b4268"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/ae6a092832c0dca0e604ba75233db9d06c2b4268"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T00:59:06.183758+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions ae6a092832c0: nano-gpt/orca/orcacyber-glm-5.3\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/ae6a092832c0dca0e604ba75233db9d06c2b4268"
+    },
+    {
       "id": "intel-8a3b3e7aa5fad075b132",
       "scanner": "models-dev-git",
       "intelligence": true,
@@ -16112,6 +16483,93 @@
       "tracker_observed_at": "2026-11-18T21:19:21.489785+00:00",
       "pricing": null,
       "x_post_text": "models.dev source definitions ae6a092832c0: nano-gpt/orca/orcacyber-ultra-1.0\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/ae6a092832c0dca0e604ba75233db9d06c2b4268"
+    },
+    {
+      "id": "intel-3173d57800185d585611",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "orcacyber-zero-1.0",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "orcacyber-zero-1.0",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "nano-gpt/orca/orcacyber-zero-1.0",
+          "name": "nano-gpt/orca/orcacyber-zero-1.0",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        }
+      ],
+      "detected_at": "2026-11-18T21:19:18.714490+00:00",
+      "first_seen": "2026-11-18T21:17:33+00:00",
+      "observed_at": "2026-11-18T21:19:18.714490+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "97411d4bf19902e26f8a9f4be3bd87747143c497 -> ae6a092832c0dca0e604ba75233db9d06c2b4268",
+      "build": "ae6a092832c0dca0e604ba75233db9d06c2b4268",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/ae6a092832c0dca0e604ba75233db9d06c2b4268",
+      "artifact_sha256": "f713af61e53ad361c05cbe0b27e00712d66c80615096ebe06cc6844fa7efda1b",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/f713af61e53ad361c05cbe0b27e00712d66c80615096ebe06cc6844fa7efda1b.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/f713af61e53ad361c05cbe0b27e00712d66c80615096ebe06cc6844fa7efda1b.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "nano-gpt/orca/orcacyber-zero-1.0",
+          "family": "orcacyber-zero-1.0",
+          "file_path": "providers/nano-gpt/models/orca/orcacyber-zero-1.0.toml",
+          "file_sha256": "a458a3fa0ae004e891321bd597c17c0e94cdb7f459051413480855a506ca2544",
+          "excerpt": "{\"nano-gpt/orca/orcacyber-zero-1.0\": {\"schema\": 2, \"name\": \"OrcaCyber Zero 1.0\", \"description\": \"An OrcaCyber model for authorized security research, vulnerability analysis, code auditing, and tool use. Accepts text input, with reasoning kept enabled. Supports a 1,000,000-token context window and up to 128,000 output tokens. Offensive work is permitted only within an authorized security engagement.\", \"open_weights\": false, \"release_date\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"high\", \"max\"]}, \"structured_output\": true}, \"limit\": {\"context\": 999488, \"input\": 999488, \"output\": 128000}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.75}}, \"output\": {\"price\": 7.5}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/ae6a092832c0dca0e604ba75233db9d06c2b4268/providers/nano-gpt/models/orca/orcacyber-zero-1.0.toml",
+          "build": "ae6a092832c0dca0e604ba75233db9d06c2b4268",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/ae6a092832c0dca0e604ba75233db9d06c2b4268",
+          "first_seen": "2026-11-18T21:17:33+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/ae6a092832c0dca0e604ba75233db9d06c2b4268"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/ae6a092832c0dca0e604ba75233db9d06c2b4268"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T00:59:06.183758+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions ae6a092832c0: nano-gpt/orca/orcacyber-zero-1.0\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/ae6a092832c0dca0e604ba75233db9d06c2b4268"
     },
     {
       "id": "intel-e5ea86a408a3d71cc72b",
@@ -18389,6 +18847,180 @@
       "tracker_observed_at": "2026-11-18T21:08:38.619724+00:00",
       "pricing": null,
       "x_post_text": "models.dev source definitions 4b14f2bc4069: azure/gpt-6.2-sol\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/4b14f2bc4069fcf9951bb159e4f13fd864bca3c0"
+    },
+    {
+      "id": "intel-1b3854b239146737dd4c",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "openai-gpt-6.2-astra",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "openai-gpt-6.2-astra",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "digitalocean/openai-gpt-6.2-astra",
+          "name": "digitalocean/openai-gpt-6.2-astra",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-18T21:08:29.453608+00:00",
+      "first_seen": "2026-11-18T21:05:03+00:00",
+      "observed_at": "2026-11-18T21:08:29.453608+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "d7ef5dd05d6cc23c611daab65e305b87888e0d3c -> 4b14f2bc4069fcf9951bb159e4f13fd864bca3c0",
+      "build": "4b14f2bc4069fcf9951bb159e4f13fd864bca3c0",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/4b14f2bc4069fcf9951bb159e4f13fd864bca3c0",
+      "artifact_sha256": "51fe33b958feafb022ab4cfa644164f7ff3facfd3f4797990153c2971a757f0b",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/51fe33b958feafb022ab4cfa644164f7ff3facfd3f4797990153c2971a757f0b.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/51fe33b958feafb022ab4cfa644164f7ff3facfd3f4797990153c2971a757f0b.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "digitalocean/openai-gpt-6.2-astra",
+          "family": "openai-gpt-6.2-astra",
+          "file_path": "providers/digitalocean/models/openai-gpt-6.2-astra.toml",
+          "file_sha256": "c738803c6cf02890f5280f9deccf022762e989631be8bc5f7b654723fa6c3815",
+          "excerpt": "{\"digitalocean/openai-gpt-6.2-astra\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-astra\", \"name\": \"OpenAI GPT-6.2 Astra\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"service_tier\": [\"priority\"]}, \"cost\": {\"text\": {\"input\": {\"price\": 8, \"cache\": {\"read\": 0.4}, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 16, \"cache\": {\"read\": 0.8}}, {\"when\": {\"service_tier\": {\"equals\": \"priority\"}}, \"price\": 16, \"cache\": {\"read\": 0.8}}, {\"when\": {\"service_tier\": {\"equals\": \"priority\"}, \"context\": {\"gt\": 272000}}, \"price\": 32, \"cache\": {\"read\": 1.6}}]}, \"output\": {\"price\": 40, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 60}, {\"when\": {\"service_tier\": {\"equals\": \"priority\"}}, \"price\": 80}, {\"when\": {\"service_tier\": {\"equals\": \"priority\"}, \"context\": {\"gt\": 272000}}, \"price\": 120}]}}}}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/4b14f2bc4069fcf9951bb159e4f13fd864bca3c0/providers/digitalocean/models/openai-gpt-6.2-astra.toml",
+          "build": "4b14f2bc4069fcf9951bb159e4f13fd864bca3c0",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/4b14f2bc4069fcf9951bb159e4f13fd864bca3c0",
+          "first_seen": "2026-11-18T21:05:03+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/4b14f2bc4069fcf9951bb159e4f13fd864bca3c0"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/4b14f2bc4069fcf9951bb159e4f13fd864bca3c0"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T00:59:06.183758+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 4b14f2bc4069: digitalocean/openai-gpt-6.2-astra\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/4b14f2bc4069fcf9951bb159e4f13fd864bca3c0"
+    },
+    {
+      "id": "intel-c3f6bf634b12028fa00d",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "openai-gpt-6.2-sol",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "openai-gpt-6.2-sol",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "digitalocean/openai-gpt-6.2-sol",
+          "name": "digitalocean/openai-gpt-6.2-sol",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-18T21:08:29.453608+00:00",
+      "first_seen": "2026-11-18T21:05:03+00:00",
+      "observed_at": "2026-11-18T21:08:29.453608+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "d7ef5dd05d6cc23c611daab65e305b87888e0d3c -> 4b14f2bc4069fcf9951bb159e4f13fd864bca3c0",
+      "build": "4b14f2bc4069fcf9951bb159e4f13fd864bca3c0",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/4b14f2bc4069fcf9951bb159e4f13fd864bca3c0",
+      "artifact_sha256": "51fe33b958feafb022ab4cfa644164f7ff3facfd3f4797990153c2971a757f0b",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/51fe33b958feafb022ab4cfa644164f7ff3facfd3f4797990153c2971a757f0b.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/51fe33b958feafb022ab4cfa644164f7ff3facfd3f4797990153c2971a757f0b.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "digitalocean/openai-gpt-6.2-sol",
+          "family": "openai-gpt-6.2-sol",
+          "file_path": "providers/digitalocean/models/openai-gpt-6.2-sol.toml",
+          "file_sha256": "66bdc68abd99ee830ca526029b695ad38799f81e3d4efaabb689fca30787884a",
+          "excerpt": "{\"digitalocean/openai-gpt-6.2-sol\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-sol\", \"name\": \"OpenAI GPT-6.2 Sol\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"service_tier\": [\"priority\"]}, \"cost\": {\"text\": {\"input\": {\"price\": 2, \"cache\": {\"read\": 0.1}, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 4, \"cache\": {\"read\": 0.2}}, {\"when\": {\"service_tier\": {\"equals\": \"priority\"}}, \"price\": 4, \"cache\": {\"read\": 0.2}}, {\"when\": {\"service_tier\": {\"equals\": \"priority\"}, \"context\": {\"gt\": 272000}}, \"price\": 8, \"cache\": {\"read\": 0.4}}]}, \"output\": {\"price\": 10, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272000}}, \"price\": 15}, {\"when\": {\"service_tier\": {\"equals\": \"priority\"}}, \"price\": 20}, {\"when\": {\"service_tier\": {\"equals\": \"priority\"}, \"context\": {\"gt\": 272000}}, \"price\": 30}]}}}}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/4b14f2bc4069fcf9951bb159e4f13fd864bca3c0/providers/digitalocean/models/openai-gpt-6.2-sol.toml",
+          "build": "4b14f2bc4069fcf9951bb159e4f13fd864bca3c0",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/4b14f2bc4069fcf9951bb159e4f13fd864bca3c0",
+          "first_seen": "2026-11-18T21:05:03+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/4b14f2bc4069fcf9951bb159e4f13fd864bca3c0"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/4b14f2bc4069fcf9951bb159e4f13fd864bca3c0"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T00:59:06.183758+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 4b14f2bc4069: digitalocean/openai-gpt-6.2-sol\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/4b14f2bc4069fcf9951bb159e4f13fd864bca3c0"
     },
     {
       "id": "intel-92435704eae9b4d8f2d8",
@@ -33910,12 +34542,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:54:26.224564+00:00",
+      "last_attempt": "2026-11-19T00:58:52.133219+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:54:26.854656+00:00",
+      "last_success": "2026-11-19T00:58:52.857776+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.63,
+      "duration_seconds": 0.725,
       "latest_build": "30f900db97ea60433430f676aeb05dc06c70808323caa8b302e9b4d2347a2983",
       "builds_retained": 18,
       "identifiers": 9635
@@ -33936,24 +34568,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T00:46:17.625107+00:00",
+      "last_attempt": "2026-11-19T00:58:52.996386+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:46:30.155614+00:00",
+      "last_success": "2026-11-19T00:59:06.183758+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 12.531,
-      "latest_build": "892d0085917728d4c8c26729d13ac15c1f3ecca2",
-      "builds_retained": 18,
-      "identifiers": 10750
+      "duration_seconds": 13.187,
+      "latest_build": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
+      "builds_retained": 20,
+      "identifiers": 10752
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T00:57:17.147853+00:00",
+      "last_attempt": "2026-11-19T00:59:06.320194+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 364,
-      "duration_seconds": 15.066
+      "consecutive_failures": 365,
+      "duration_seconds": 15.344
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -33973,19 +34605,19 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:55:23.458532+00:00",
+      "last_attempt": "2026-11-19T00:57:58.400169+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:55:25.035424+00:00",
+      "last_success": "2026-11-19T00:58:00.072771+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.577
+      "duration_seconds": 1.673
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:55:25.035480+00:00",
+      "last_attempt": "2026-11-19T00:58:00.072826+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:55:25.155103+00:00",
+      "last_success": "2026-11-19T00:58:00.192993+00:00",
       "error_type": null,
       "consecutive_failures": 0,
       "duration_seconds": 0.12
@@ -33993,41 +34625,41 @@
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:55:25.155136+00:00",
+      "last_attempt": "2026-11-19T00:58:00.193028+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:55:33.296824+00:00",
+      "last_success": "2026-11-19T00:58:06.806151+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.142
+      "duration_seconds": 6.613
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:55:33.296884+00:00",
+      "last_attempt": "2026-11-19T00:58:06.806210+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:57:14.895125+00:00",
+      "last_success": "2026-11-19T00:58:52.133163+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 101.598,
+      "duration_seconds": 45.327,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T00:55:33.580240+00:00",
+          "checked_at": "2026-11-19T00:58:07.035680+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T00:55:44.735999+00:00",
+          "checked_at": "2026-11-19T00:58:17.862903+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T00:55:44.836753+00:00",
+          "checked_at": "2026-11-19T00:58:17.955635+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T00:55:44.836769+00:00",
+          "checked_at": "2026-11-19T00:58:17.955652+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -34035,12 +34667,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:54:26.224564+00:00",
+      "last_attempt": "2026-11-19T00:58:52.133219+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:54:26.854656+00:00",
+      "last_success": "2026-11-19T00:58:52.857776+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.63,
+      "duration_seconds": 0.725,
       "latest_build": "30f900db97ea60433430f676aeb05dc06c70808323caa8b302e9b4d2347a2983",
       "builds_retained": 18,
       "identifiers": 9635
@@ -34061,24 +34693,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T00:46:17.625107+00:00",
+      "last_attempt": "2026-11-19T00:58:52.996386+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:46:30.155614+00:00",
+      "last_success": "2026-11-19T00:59:06.183758+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 12.531,
-      "latest_build": "892d0085917728d4c8c26729d13ac15c1f3ecca2",
-      "builds_retained": 18,
-      "identifiers": 10750
+      "duration_seconds": 13.187,
+      "latest_build": "fcb75c2d2c177ab3c8ba2af750b138b6610e4ef8",
+      "builds_retained": 20,
+      "identifiers": 10752
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T00:57:17.147853+00:00",
+      "last_attempt": "2026-11-19T00:59:06.320194+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 364,
-      "duration_seconds": 15.066
+      "consecutive_failures": 365,
+      "duration_seconds": 15.344
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -34096,64 +34728,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:57:32.219469+00:00",
+      "last_attempt": "2026-11-19T00:59:21.670604+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:57:39.489442+00:00",
+      "last_success": "2026-11-19T00:59:28.976367+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.27
+      "duration_seconds": 7.306
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:57:39.489508+00:00",
+      "last_attempt": "2026-11-19T00:59:28.976436+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:57:41.169568+00:00",
+      "last_success": "2026-11-19T00:59:30.512772+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.68
+      "duration_seconds": 1.536
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T00:46:55.333793+00:00",
+      "last_attempt": "2026-11-19T00:59:30.512820+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:47:03.826464+00:00",
+      "last_success": "2026-11-19T00:59:38.136178+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.493
+      "duration_seconds": 7.623
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:57:41.169619+00:00",
+      "last_attempt": "2026-11-19T00:59:38.136231+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:57:42.753355+00:00",
+      "last_success": "2026-11-19T00:59:39.685289+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.584
+      "duration_seconds": 1.549
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T00:57:42.753394+00:00",
+      "last_attempt": "2026-11-19T00:59:39.685328+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T00:57:42.871103+00:00",
+      "last_success": "2026-11-19T00:59:39.802936+00:00",
       "error_type": null,
       "consecutive_failures": 0,
       "duration_seconds": 0.118
     }
   },
   "identities": {
-    "identifiers": 30637,
-    "declared_aliases": 17786,
+    "identifiers": 30639,
+    "declared_aliases": 17788,
     "pending_candidates": 0
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 75,
-      "seconds_mean": 157.65440329333333,
+      "samples": 81,
+      "seconds_mean": 172.37837051851852,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -34167,8 +34799,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 108,
-      "events": 108,
+      "complete": 114,
+      "events": 114,
       "rate": 1.0
     },
     "source_health": {
