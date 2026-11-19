@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-19T23:13:59.622657+00:00",
-  "scan_completed_at": "2026-11-19T23:15:27.564623+00:00",
+  "generated_at": "2026-11-19T23:30:11.509566+00:00",
+  "scan_completed_at": "2026-11-19T23:32:04.744461+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 230,
     "leaks": 41,
     "releases": 67,
-    "stories_24h": 90,
-    "sources_ok": 12,
-    "total_cards": 500,
-    "new_in_this_scan": 0
+    "stories_24h": 89,
+    "sources_ok": 14,
+    "total_cards": 502,
+    "new_in_this_scan": 2
   },
   "stories": [
     {
@@ -10949,7 +10949,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-16T20:15:16.430197+00:00",
-      "updated_at": "2026-11-19T21:19:00.279254+00:00",
+      "updated_at": "2026-11-19T23:31:20.330061+00:00",
       "first_source": "Gemini Web App Config",
       "lead": "2 days before it went live on OpenRouter",
       "released_on": "2026-11-18",
@@ -10960,7 +10960,7 @@
       "models": [
         {
           "id": "gemini-4-neon",
-          "name": "cortecs/gemini-4-neon",
+          "name": "google-vertex/gemini-4-neon",
           "released_on": "2026-11-18"
         },
         {
@@ -11154,7 +11154,8 @@
         "intel-825cccdeba960a004848",
         "intel-aed4796887c209d9e886",
         "intel-9208edbd0ade1564748f",
-        "intel-79aac7741cda97c5b7c6"
+        "intel-79aac7741cda97c5b7c6",
+        "intel-7721e5c64d0c887607d2"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -13470,7 +13471,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-12T17:34:46.236178+00:00",
-      "updated_at": "2026-11-19T16:21:40.664758+00:00",
+      "updated_at": "2026-11-19T23:31:20.330061+00:00",
       "first_source": "Gemini API Docs",
       "lead": "26 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "2026-11-12",
@@ -13481,7 +13482,7 @@
       "models": [
         {
           "id": "gemini-4-hydrogen",
-          "name": "gmi/google/gemini-4-hydrogen",
+          "name": "google-vertex/gemini-4-hydrogen",
           "released_on": "2026-11-12"
         },
         {
@@ -13680,7 +13681,8 @@
         "intel-aca0be62ded4a83482a6",
         "intel-d3efcf588ebbc830336d",
         "intel-293b1f1e05e4f1e3d906",
-        "intel-187e4968b63b448c63e7"
+        "intel-187e4968b63b448c63e7",
+        "intel-4ba9b82451d19a45b670"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -13769,6 +13771,21 @@
           "build": "755762847f6eb356f4aeba1d15287c4a33ea79be",
           "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json",
           "first_seen": "2026-11-19T16:18:40+00:00"
+        },
+        {
+          "id": "google-vertex/gemini-4-hydrogen",
+          "family": "gemini-4-hydrogen",
+          "file_path": "providers/google-vertex/models/gemini-4-hydrogen.toml",
+          "file_sha256": "40cb4b6159bfc7b1bb3e7521d49f624b3fb6c89622dfaa72c7b4b02d3fb36cb4",
+          "excerpt": "{\"google-vertex/gemini-4-hydrogen\": {\"schema\": 2, \"base_model\": \"google/gemini-4-hydrogen\", \"recommended_api\": \"interactions\", \"modalities\": {\"input\": [\"text\", \"image/png\", \"image/jpeg\", \"image/webp\", \"image/heic\", \"image/heif\", \"video/x-flv\", \"video/quicktime\", \"video/mpeg\", \"video/mpegs\", \"video/mpg\", \"video/mp4\", \"video/webm\", \"video/wmv\", \"video/3gpp\", \"audio/x-aac\", \"audio/flac\", \"audio/mp3\", \"audio/m4a\", \"audio/mpeg\", \"audio/mpga\", \"audio/mp4\", \"audio/ogg\", \"audio/pcm\", \"audio/wav\", \"audio/webm\", \"application/pdf\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"strict\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"default\": {\"type\": \"effort\", \"value\": \"high\"}, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}, \"structured_output\": true, \"cache\": {\"implicit\": {\"min_tokens\": 4096}}, \"service_tier\": [\"priority\"]}, \"api\": {\"generate-content\": {}, \"interactions\": {\"base_url\": \"https://${GOOGLE_VERTEX_ENDPOINT}/v1beta1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}\", \"sdk\": {\"opencodeai\": \"@opencode/ai/providers/google-vertex/interactions\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 1.5, \"cache\": {\"re",
+          "canonical_id": "google/gemini-4-hydrogen",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/d48113ea2dc212f8f656212bb81d11a9a900618c/providers/google-vertex/models/gemini-4-hydrogen.toml",
+          "build": "d48113ea2dc212f8f656212bb81d11a9a900618c",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/d48113ea2dc212f8f656212bb81d11a9a900618c",
+          "first_seen": "2026-11-19T23:26:54+00:00"
         }
       ],
       "x_post_text": "🟢 NEW MODEL: Gemini 4 Hydrogen by Google\n\nFirst detected 12 Nov 17:34 UTC in Gemini API Docs\n📅 First released: 2026-11-12\n⏱ 26 min before it went live on Vercel AI Gateway Catalog\n\nvia @StatsWire"
@@ -17937,6 +17954,200 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-4ba9b82451d19a45b670",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gemini-4-hydrogen",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gemini-4-hydrogen",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "google-vertex/gemini-4-hydrogen",
+          "name": "google-vertex/gemini-4-hydrogen",
+          "registry_update": true,
+          "released_on": "2026-11-12"
+        }
+      ],
+      "detected_at": "2026-11-19T23:31:20.330061+00:00",
+      "first_seen": "2026-11-19T23:26:54+00:00",
+      "observed_at": "2026-11-19T23:31:20.330061+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "a688cac4d1f15de1a8f6d263b5bf269a19c96108 -> d48113ea2dc212f8f656212bb81d11a9a900618c",
+      "build": "d48113ea2dc212f8f656212bb81d11a9a900618c",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/d48113ea2dc212f8f656212bb81d11a9a900618c",
+      "artifact_sha256": "d29d1002d20647633e2565d3c55862d1992692cf3b14d7d96ab9e59d5e69dca9",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/d29d1002d20647633e2565d3c55862d1992692cf3b14d7d96ab9e59d5e69dca9.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/d29d1002d20647633e2565d3c55862d1992692cf3b14d7d96ab9e59d5e69dca9.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "google-vertex/gemini-4-hydrogen",
+          "family": "gemini-4-hydrogen",
+          "file_path": "providers/google-vertex/models/gemini-4-hydrogen.toml",
+          "file_sha256": "40cb4b6159bfc7b1bb3e7521d49f624b3fb6c89622dfaa72c7b4b02d3fb36cb4",
+          "excerpt": "{\"google-vertex/gemini-4-hydrogen\": {\"schema\": 2, \"base_model\": \"google/gemini-4-hydrogen\", \"recommended_api\": \"interactions\", \"modalities\": {\"input\": [\"text\", \"image/png\", \"image/jpeg\", \"image/webp\", \"image/heic\", \"image/heif\", \"video/x-flv\", \"video/quicktime\", \"video/mpeg\", \"video/mpegs\", \"video/mpg\", \"video/mp4\", \"video/webm\", \"video/wmv\", \"video/3gpp\", \"audio/x-aac\", \"audio/flac\", \"audio/mp3\", \"audio/m4a\", \"audio/mpeg\", \"audio/mpga\", \"audio/mp4\", \"audio/ogg\", \"audio/pcm\", \"audio/wav\", \"audio/webm\", \"application/pdf\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"strict\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"default\": {\"type\": \"effort\", \"value\": \"high\"}, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}, \"structured_output\": true, \"cache\": {\"implicit\": {\"min_tokens\": 4096}}, \"service_tier\": [\"priority\"]}, \"api\": {\"generate-content\": {}, \"interactions\": {\"base_url\": \"https://${GOOGLE_VERTEX_ENDPOINT}/v1beta1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}\", \"sdk\": {\"opencodeai\": \"@opencode/ai/providers/google-vertex/interactions\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 1.5, \"cache\": {\"re",
+          "canonical_id": "google/gemini-4-hydrogen",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/d48113ea2dc212f8f656212bb81d11a9a900618c/providers/google-vertex/models/gemini-4-hydrogen.toml",
+          "build": "d48113ea2dc212f8f656212bb81d11a9a900618c",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/d48113ea2dc212f8f656212bb81d11a9a900618c",
+          "first_seen": "2026-11-19T23:26:54+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "devin-desktop",
+          "identifier": "gemini-4-hydrogen",
+          "first_seen": "2026-11-17T00:00:00+00:00",
+          "evidence_path": "data/intelligence/evidence/devin-desktop/56f318f713d7d1090ca30b470df4a1a529a4a3d5f9fdde5251d6e6e727b443b8.json.gz"
+        },
+        {
+          "source": "litellm-intelligence",
+          "identifier": "perplexity/google/gemini-4-hydrogen",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/b36892c50b0a9d6c3927dd77240696a2e22941e0c4aa7b019beebe38cb04abca.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/d48113ea2dc212f8f656212bb81d11a9a900618c"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/d48113ea2dc212f8f656212bb81d11a9a900618c"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T23:31:23.422954+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions d48113ea2dc2: google-vertex/gemini-4-hydrogen\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/d48113ea2dc212f8f656212bb81d11a9a900618c"
+    },
+    {
+      "id": "intel-7721e5c64d0c887607d2",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gemini-4-neon",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gemini-4-neon",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "google-vertex/gemini-4-neon",
+          "name": "google-vertex/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        }
+      ],
+      "detected_at": "2026-11-19T23:31:20.330061+00:00",
+      "first_seen": "2026-11-19T23:26:54+00:00",
+      "observed_at": "2026-11-19T23:31:20.330061+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "a688cac4d1f15de1a8f6d263b5bf269a19c96108 -> d48113ea2dc212f8f656212bb81d11a9a900618c",
+      "build": "d48113ea2dc212f8f656212bb81d11a9a900618c",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/d48113ea2dc212f8f656212bb81d11a9a900618c",
+      "artifact_sha256": "d29d1002d20647633e2565d3c55862d1992692cf3b14d7d96ab9e59d5e69dca9",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/d29d1002d20647633e2565d3c55862d1992692cf3b14d7d96ab9e59d5e69dca9.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/d29d1002d20647633e2565d3c55862d1992692cf3b14d7d96ab9e59d5e69dca9.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "google-vertex/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/google-vertex/models/gemini-4-neon.toml",
+          "file_sha256": "6421ad7bc7a807a19172df02a307b6737fa413e716a42bcab6a431936aac435d",
+          "excerpt": "{\"google-vertex/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"recommended_api\": \"interactions\", \"modalities\": {\"input\": [\"text\", \"image/png\", \"image/jpeg\", \"image/webp\", \"image/heic\", \"image/heif\", \"video/x-flv\", \"video/quicktime\", \"video/mpeg\", \"video/mpegs\", \"video/mpg\", \"video/mp4\", \"video/webm\", \"video/wmv\", \"video/3gpp\", \"audio/x-aac\", \"audio/flac\", \"audio/mp3\", \"audio/m4a\", \"audio/mpeg\", \"audio/mpga\", \"audio/mp4\", \"audio/ogg\", \"audio/pcm\", \"audio/wav\", \"audio/webm\", \"application/pdf\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"strict\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"default\": {\"type\": \"effort\", \"value\": \"high\"}, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}, \"structured_output\": true, \"cache\": {\"implicit\": {\"min_tokens\": 4096}}, \"service_tier\": [\"priority\"]}, \"api\": {\"generate-content\": {}, \"interactions\": {\"base_url\": \"https://${GOOGLE_VERTEX_ENDPOINT}/v1beta1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}\", \"sdk\": {\"opencodeai\": \"@opencode/ai/providers/google-vertex/interactions\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.15}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/d48113ea2dc212f8f656212bb81d11a9a900618c/providers/google-vertex/models/gemini-4-neon.toml",
+          "build": "d48113ea2dc212f8f656212bb81d11a9a900618c",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/d48113ea2dc212f8f656212bb81d11a9a900618c",
+          "first_seen": "2026-11-19T23:26:54+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gemini/gemini-4-neon",
+          "first_seen": "2026-11-18T20:53:00+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/b36892c50b0a9d6c3927dd77240696a2e22941e0c4aa7b019beebe38cb04abca.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/d48113ea2dc212f8f656212bb81d11a9a900618c"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/d48113ea2dc212f8f656212bb81d11a9a900618c"
+        }
+      ],
+      "tracker_observed_at": "2026-11-19T23:31:23.422954+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions d48113ea2dc2: google-vertex/gemini-4-neon\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/d48113ea2dc212f8f656212bb81d11a9a900618c"
+    },
     {
       "id": "intel-a81affdb6d4b64dd9e43",
       "scanner": "litellm-intelligence",
@@ -52297,25 +52508,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:14:53.981980+00:00",
+      "last_attempt": "2026-11-19T23:31:07.267696+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:14:54.235296+00:00",
+      "last_success": "2026-11-19T23:31:07.797969+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.253,
-      "latest_build": "48881b0263ff05a26ddb17f58be558962e3a38c962b730f6771d1c41e43a1314",
-      "builds_retained": 34,
+      "duration_seconds": 0.53,
+      "latest_build": "a2f6d8a7897dc1b4a02f76c4854bb784dbf0a8f9e17e47a9f9006ec26b7c388f",
+      "builds_retained": 36,
       "identifiers": 9659
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T23:12:55.968379+00:00",
+      "last_attempt": "2026-11-19T23:29:05.766851+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:12:56.380859+00:00",
+      "last_success": "2026-11-19T23:29:06.097992+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.413,
+      "duration_seconds": 0.331,
       "latest_build": "404bf8e7f5a87a1f19ea7c85e60f89f3d588fc3f",
       "builds_retained": 32,
       "identifiers": 6941
@@ -52323,34 +52534,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T23:10:29.732086+00:00",
+      "last_attempt": "2026-11-19T23:31:07.995746+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:10:44.604924+00:00",
+      "last_success": "2026-11-19T23:31:23.422954+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 14.873,
-      "latest_build": "418ad74a399febc786d107ee9144da2b8ae0f233",
-      "builds_retained": 35,
+      "duration_seconds": 15.427,
+      "latest_build": "d48113ea2dc212f8f656212bb81d11a9a900618c",
+      "builds_retained": 38,
       "identifiers": 10782
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T23:14:54.428602+00:00",
+      "last_attempt": "2026-11-19T23:31:23.616986+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 863,
-      "duration_seconds": 20.86
+      "consecutive_failures": 871,
+      "duration_seconds": 20.99
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T23:08:49.904838+00:00",
+      "last_attempt": "2026-11-19T23:25:24.559214+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:08:50.110326+00:00",
+      "last_success": "2026-11-19T23:25:24.793975+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.206,
+      "duration_seconds": 0.235,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -52360,61 +52571,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:13:59.622727+00:00",
+      "last_attempt": "2026-11-19T23:30:11.509633+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:14:01.456845+00:00",
+      "last_success": "2026-11-19T23:30:13.574039+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.834
+      "duration_seconds": 2.064
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:14:01.456908+00:00",
+      "last_attempt": "2026-11-19T23:30:13.574093+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:14:01.609760+00:00",
+      "last_success": "2026-11-19T23:30:13.660811+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.153
+      "duration_seconds": 0.087
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:14:01.609798+00:00",
+      "last_attempt": "2026-11-19T23:30:13.660850+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:14:07.446573+00:00",
+      "last_success": "2026-11-19T23:30:19.884656+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.837
+      "duration_seconds": 6.224
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:14:07.446624+00:00",
+      "last_attempt": "2026-11-19T23:30:19.884725+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:14:53.981919+00:00",
+      "last_success": "2026-11-19T23:31:07.267644+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 46.535,
+      "duration_seconds": 47.383,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-19T23:14:07.651483+00:00",
+          "checked_at": "2026-11-19T23:30:20.077654+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-19T23:14:17.150426+00:00",
+          "checked_at": "2026-11-19T23:30:29.579978+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-19T23:14:17.296147+00:00",
+          "checked_at": "2026-11-19T23:30:29.714267+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-19T23:14:17.296164+00:00",
+          "checked_at": "2026-11-19T23:30:29.714284+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -52422,25 +52633,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:14:53.981980+00:00",
+      "last_attempt": "2026-11-19T23:31:07.267696+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:14:54.235296+00:00",
+      "last_success": "2026-11-19T23:31:07.797969+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.253,
-      "latest_build": "48881b0263ff05a26ddb17f58be558962e3a38c962b730f6771d1c41e43a1314",
-      "builds_retained": 34,
+      "duration_seconds": 0.53,
+      "latest_build": "a2f6d8a7897dc1b4a02f76c4854bb784dbf0a8f9e17e47a9f9006ec26b7c388f",
+      "builds_retained": 36,
       "identifiers": 9659
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-19T23:12:55.968379+00:00",
+      "last_attempt": "2026-11-19T23:29:05.766851+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:12:56.380859+00:00",
+      "last_success": "2026-11-19T23:29:06.097992+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.413,
+      "duration_seconds": 0.331,
       "latest_build": "404bf8e7f5a87a1f19ea7c85e60f89f3d588fc3f",
       "builds_retained": 32,
       "identifiers": 6941
@@ -52448,34 +52659,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T23:10:29.732086+00:00",
+      "last_attempt": "2026-11-19T23:31:07.995746+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:10:44.604924+00:00",
+      "last_success": "2026-11-19T23:31:23.422954+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 14.873,
-      "latest_build": "418ad74a399febc786d107ee9144da2b8ae0f233",
-      "builds_retained": 35,
+      "duration_seconds": 15.427,
+      "latest_build": "d48113ea2dc212f8f656212bb81d11a9a900618c",
+      "builds_retained": 38,
       "identifiers": 10782
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-19T23:14:54.428602+00:00",
+      "last_attempt": "2026-11-19T23:31:23.616986+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 863,
-      "duration_seconds": 20.86
+      "consecutive_failures": 871,
+      "duration_seconds": 20.99
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-19T23:08:49.904838+00:00",
+      "last_attempt": "2026-11-19T23:25:24.559214+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:08:50.110326+00:00",
+      "last_success": "2026-11-19T23:25:24.793975+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.206,
+      "duration_seconds": 0.235,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -52483,52 +52694,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:15:15.295691+00:00",
+      "last_attempt": "2026-11-19T23:31:44.614780+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:15:24.046380+00:00",
+      "last_success": "2026-11-19T23:31:53.242503+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.751
+      "duration_seconds": 8.628
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:15:24.046450+00:00",
+      "last_attempt": "2026-11-19T23:31:53.242567+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:15:26.384689+00:00",
+      "last_success": "2026-11-19T23:31:54.482027+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.338
+      "duration_seconds": 1.239
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-19T23:11:15.738404+00:00",
+      "last_attempt": "2026-11-19T23:31:54.482071+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:11:22.832247+00:00",
+      "last_success": "2026-11-19T23:32:03.898288+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.094
+      "duration_seconds": 9.416
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:15:26.384753+00:00",
+      "last_attempt": "2026-11-19T23:32:03.898331+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:15:26.796238+00:00",
+      "last_success": "2026-11-19T23:32:04.282756+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.412
+      "duration_seconds": 0.384
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-19T23:15:26.796285+00:00",
+      "last_attempt": "2026-11-19T23:32:04.282796+00:00",
       "status": "ok",
-      "last_success": "2026-11-19T23:15:27.148120+00:00",
+      "last_success": "2026-11-19T23:32:04.320266+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.352
+      "duration_seconds": 0.037
     }
   },
   "identities": {
@@ -52539,8 +52750,8 @@
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 196,
-      "seconds_mean": 5420.222964989796,
+      "samples": 198,
+      "seconds_mean": 5368.163440707071,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -52554,8 +52765,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 248,
-      "events": 248,
+      "complete": 250,
+      "events": 250,
       "rate": 1.0
     },
     "source_health": {
