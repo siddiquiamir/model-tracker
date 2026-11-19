@@ -474,14 +474,22 @@ def infer_family_title(model_ids: List[str]) -> str:
 def infer_provider(model_id: str) -> Dict[str, str]:
     """Return provider metadata (name, slug, accent color) for a model ID."""
     mid = model_id.lower()
-    if mid.startswith(("gemini", "lyria", "veo", "imagen", "gemma", "google/", "google-", "hydrogen-", "helix-", "carbon-", "barium-", "argon-", "hyperion-", "hyperion", "alphafold", "alphagenome", "medlm")):
+    if mid.startswith((
+        "gemini", "genie", "lyria", "veo", "imagen", "gemma", "google/", "google-",
+        "nano-banana", "hydrogen-", "helix-", "helium-", "neon-", "cobalt", "snowball",
+        "carbon-", "barium-", "argon-", "hyperion-", "hyperion", "alphafold", "alphagenome", "medlm",
+    )):
         return {"name": "GOOGLE", "slug": "google", "color": "#38bdf8"}
     if mid.startswith(("claude", "anthropic/", "anthropic-", "sonnet-", "opus-", "haiku-", "fable-", "mythos-", "silicon-", "silicon")):
         return {"name": "ANTHROPIC", "slug": "anthropic", "color": "#f97316"}
     if mid.startswith(("gpt", "codex", "openai/", "openai-", "astra-cyber", "cactus-", "kraken-", "cactus", "kraken")) or re.match(r"^o[1345](?:$|[-_./:])", mid):
         return {"name": "OPENAI", "slug": "openai", "color": "#10b981"}
-    if mid.startswith(("mai-", "microsoft/")):
-        return {"name": "MICROSOFT AI", "slug": "openai", "color": "#38bdf8"}
+    if mid.startswith(("mai-", "microsoft/", "microsoft-")):
+        return {"name": "MICROSOFT AI", "slug": "microsoft", "color": "#38bdf8"}
+    if mid.startswith(("amazon/", "amazon.", "nova-")):
+        return {"name": "AMAZON", "slug": "amazon", "color": "#f59e0b"}
+    if mid.startswith(("cohere/", "command-", "aya-")):
+        return {"name": "COHERE", "slug": "cohere", "color": "#39594d"}
     if mid.startswith(("composer-",)):
         return {"name": "CURSOR", "slug": "cursor", "color": "#94a3b8"}
     if mid.startswith(("qwen", "alibaba/")):

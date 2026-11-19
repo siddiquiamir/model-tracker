@@ -505,11 +505,19 @@ def _make_story(
         if intelligence_only:
             stage_word = event_label.upper()
 
-    model_providers = {infer_provider(v["id"])["name"] for v in variants if v.get("id")}
-    if len(model_providers) > 1 and not is_litellm_registry_group and not intelligence_only:
+    inferred = [infer_provider(v["id"]) for v in variants if v.get("id")]
+    specific_inferred = [p for p in inferred if p.get("slug") not in GENERIC_PROVIDERS]
+    specific_slugs = {p["slug"] for p in specific_inferred}
+    if len(specific_slugs) > 1 and not is_litellm_registry_group and not intelligence_only:
         provider_name = "AI Model Identifiers"
         provider_slug = "multi"
         story_accent = "#6366f1"
+    elif len(specific_slugs) == 1 and not is_litellm_registry_group and not intelligence_only:
+        only_p = specific_inferred[0]
+        if provider_slug in GENERIC_PROVIDERS or not provider_name:
+            provider_slug = only_p["slug"]
+            provider_name = PROVIDER_NAMES.get(provider_slug, only_p["name"].title())
+        story_accent = only_p.get("color") or lab.get("accent_color", "#38bdf8")
     else:
         story_accent = lab.get("accent_color", "#38bdf8")
 

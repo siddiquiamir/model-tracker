@@ -5,8 +5,11 @@ from __future__ import annotations
 from datetime import datetime, timezone
 import json
 import os
+import time
+import urllib.error
 import urllib.request
-from typing import Any, Callable, Dict, List, Optional
+import uuid
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 
 PROVIDER_LOGOS: Dict[str, str] = {
@@ -18,6 +21,14 @@ PROVIDER_LOGOS: Dict[str, str] = {
     "meta": "https://avatars.githubusercontent.com/u/69631?s=200&v=4",
     "mistral": "https://avatars.githubusercontent.com/u/132372032?s=200&v=4",
     "xai": "https://avatars.githubusercontent.com/u/139835814?s=200&v=4",
+    "microsoft": "https://avatars.githubusercontent.com/u/6154722?s=200&v=4",
+    "azure": "https://avatars.githubusercontent.com/u/6154722?s=200&v=4",
+    "nvidia": "https://avatars.githubusercontent.com/u/1728152?s=200&v=4",
+    "amazon": "https://avatars.githubusercontent.com/u/2232217?s=200&v=4",
+    "kimi": "https://avatars.githubusercontent.com/u/129152888?s=200&v=4",
+    "zai": "https://avatars.githubusercontent.com/u/61013429?s=200&v=4",
+    "minimax": "https://avatars.githubusercontent.com/u/105917313?s=200&v=4",
+    "cohere": "https://avatars.githubusercontent.com/u/54850923?s=200&v=4",
     "opensource": "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
 }
 
@@ -260,6 +271,9 @@ def build_story_embed(story: Dict[str, Any], github_user: str = "siddiquiamir") 
     first_url = next((s["url"] for s in story.get("sources", []) if s.get("url")), "")
     if first_url:
         embed["url"] = first_url
+    x_copy = str(story.get("x_post_text") or "").strip()
+    if x_copy:
+        embed["fields"] = [{"name": "Ready X Post Copy", "value": x_copy[:1024]}]
     return embed
 
 
@@ -271,14 +285,63 @@ def _epoch(iso: str) -> int:
         return 0
 
 
+def build_multipart_webhook_body(
+    payload: Dict[str, Any],
+    filename: str,
+    png_bytes: bytes,
+) -> Tuple[bytes, str]:
+    """Build a pure-stdlib multipart/form-data body for Discord webhook payload_json + files[0]."""
+    boundary = f"----ModelPulseBoundary{uuid.uuid4().hex}"
+    parts: List[bytes] = [
+        f"--{boundary}\r\n".encode("utf-8"),
+        b'Content-Disposition: form-data; name="payload_json"\r\n',
+        b"Content-Type: application/json\r\n\r\n",
+        json.dumps(payload).encode("utf-8"),
+        b"\r\n",
+        f"--{boundary}\r\n".encode("utf-8"),
+        f'Content-Disposition: form-data; name="files[0]"; filename="{filename}"\r\n'.encode("utf-8"),
+        b"Content-Type: image/png\r\n\r\n",
+        png_bytes,
+        b"\r\n",
+        f"--{boundary}--\r\n".encode("utf-8"),
+    ]
+    return b"".join(parts), f"multipart/form-data; boundary={boundary}"
+
+
+def _post_discord_request(url: str, data: bytes, content_type: str) -> bool:
+    for attempt in range(2):
+        req = urllib.request.Request(
+            url,
+            data=data,
+            headers={
+                "Content-Type": content_type,
+                "User-Agent": "ModelPulse-Tracker/2.0",
+            },
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                return resp.status in (200, 204)
+        except urllib.error.HTTPError as exc:
+            if exc.code == 429 and attempt == 0:
+                retry_after = float(exc.headers.get("Retry-After", "1.5") or "1.5")
+                time.sleep(min(max(retry_after, 0.5), 5.0))
+                continue
+            raise
+    return False
+
+
 def send_discord_webhook(
     cards: List[Dict[str, Any]],
     webhook_url: Optional[str] = None,
     github_user: str = "siddiquiamir",
     embed_builder: Callable[..., Dict[str, Any]] = build_discord_embed,
+    attach_card: bool = True,
 ) -> bool:
     """
-    Send 1 or more diff cards to a Discord Webhook URL.
+    Send 1 or more diff cards / stories to a Discord Webhook URL.
+    When attach_card=True and Pillow is available, renders and attaches a high-res
+    @StatsWire PNG card inline inside each Discord message.
     Reads DISCORD_WEBHOOK_URL from environment if not passed explicitly.
     Never logs or exposes the webhook URL.
     """
@@ -286,24 +349,53 @@ def send_discord_webhook(
     if not url or not cards:
         return False
 
-    # Discord allows up to 10 embeds per message
+    renderer = None
+    filename_fn = None
+    if attach_card:
+        try:
+            from tracker.card_renderer import card_filename, render_alert_card_png
+
+            renderer = render_alert_card_png
+            filename_fn = card_filename
+        except Exception:
+            renderer = None
+
+    if renderer is not None and filename_fn is not None:
+        all_ok = True
+        for idx, item in enumerate(cards):
+            embed = embed_builder(item, github_user=github_user)
+            png_bytes: Optional[bytes] = None
+            try:
+                png_bytes = renderer(item)
+            except Exception as exc:
+                print(f"[ModelPulse] Card render fallback (text-only embed): {exc}")
+            if png_bytes:
+                fname = filename_fn(item)
+                embed = dict(embed)
+                embed["image"] = {"url": f"attachment://{fname}"}
+                payload = {
+                    "username": "ModelPulse Tracker",
+                    "embeds": [embed],
+                    "attachments": [{"id": 0, "filename": fname}],
+                }
+                body, content_type = build_multipart_webhook_body(payload, fname, png_bytes)
+                if not _post_discord_request(url, body, content_type):
+                    all_ok = False
+            else:
+                payload = {"username": "ModelPulse Tracker", "embeds": [embed]}
+                if not _post_discord_request(url, json.dumps(payload).encode("utf-8"), "application/json"):
+                    all_ok = False
+            if idx + 1 < len(cards):
+                time.sleep(0.35)
+        return all_ok
+
+    # Fallback: Discord allows up to 10 JSON embeds per message
     for i in range(0, len(cards), 10):
         batch = cards[i : i + 10]
         payload = {
             "username": "ModelPulse Tracker",
             "embeds": [embed_builder(c, github_user=github_user) for c in batch],
         }
-        data = json.dumps(payload).encode("utf-8")
-        req = urllib.request.Request(
-            url,
-            data=data,
-            headers={
-                "Content-Type": "application/json",
-                "User-Agent": "ModelPulse-Tracker/1.0",
-            },
-            method="POST",
-        )
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            if resp.status not in (200, 204):
-                return False
+        if not _post_discord_request(url, json.dumps(payload).encode("utf-8"), "application/json"):
+            return False
     return True

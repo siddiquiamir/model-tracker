@@ -41,8 +41,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install optional TLS fingerprint client
-        run: pip install -q curl_cffi cryptography PyYAML 'tomli; python_version < "3.11"'
+      - name: Install optional TLS fingerprint & card renderer deps
+        run: pip install -q curl_cffi cryptography PyYAML Pillow 'tomli; python_version < "3.11"'
 
       - name: Cache binary .rodata slices, intelligence state & npm metadata
         uses: actions/cache@v4
@@ -54,8 +54,8 @@ jobs:
           restore-keys: |
             modelpulse-cache-
 
-      - name: Test binary and registry intelligence
-        run: python -m unittest discover -s tests -p test_intelligence.py -v
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
 
       - name: Historical binary and registry backfill
         if: inputs.intelligence_backfill == true
