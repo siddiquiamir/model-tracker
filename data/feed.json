@@ -1,17 +1,90 @@
 {
-  "generated_at": "2026-11-18T23:52:26.806081+00:00",
-  "scan_completed_at": "2026-11-18T23:54:16.471775+00:00",
+  "generated_at": "2026-11-18T23:58:53.511285+00:00",
+  "scan_completed_at": "2026-11-19T00:00:16.352211+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 165,
+    "stories": 166,
     "leaks": 42,
     "releases": 69,
-    "stories_24h": 56,
+    "stories_24h": 57,
     "sources_ok": 13,
-    "total_cards": 358,
-    "new_in_this_scan": 0
+    "total_cards": 359,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-kimi",
+      "group": "kimi",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Kimi",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-18T23:59:47.697799+00:00",
+      "updated_at": "2026-11-18T23:59:47.697799+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "kimi-latest",
+          "name": "fireworks_ai/accounts/fireworks/routers/kimi-latest"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-18T23:59:47.697799+00:00",
+          "title": "kimi-latest",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/b435dac805c4f197659a8cf7e654db883beb78f1/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "b435dac805c4f197659a8cf7e654db883beb78f1",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/2b0bc84efdd59b8c469fa317a54f77fbb8091a57f619bd75e899a3db67c9133c.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-c1ca184d993c8cd587a5"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "fireworks_ai/accounts/fireworks/routers/kimi-latest",
+          "family": "kimi-latest",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"fireworks_ai/accounts/fireworks/routers/kimi-latest\": {\"cache_read_input_token_cost\": 2e-07, \"cache_read_input_token_cost_priority\": 3e-07, \"input_cost_per_token\": 2e-06, \"input_cost_per_token_priority\": 3e-06, \"litellm_provider\": \"fireworks_ai\", \"max_input_tokens\": 1048576, \"max_output_tokens\": 131072, \"mode\": \"chat\", \"output_cost_per_token\": 1e-05, \"output_cost_per_token_priority\": 1.5e-05, \"reasoning_effort_levels\": [\"low\", \"high\", \"max\"], \"source\": \"https://api.fireworks.ai/v1/serverless/models?format=nested\", \"supports_function_calling\": true, \"supports_mid_conversation_system\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "2b0bc84efdd59b8c469fa317a54f77fbb8091a57f619bd75e899a3db67c9133c",
+          "method": "structured registry",
+          "build": "b435dac805c4f197659a8cf7e654db883beb78f1",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/b435dac805c4f197659a8cf7e654db883beb78f1/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T23:57:16+00:00"
+        },
+        {
+          "id": "fireworks_ai/kimi-latest",
+          "family": "kimi-latest",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"fireworks_ai/kimi-latest\": {\"alias_of\": \"fireworks_ai/accounts/fireworks/models/kimi-k3p1-pro\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "2b0bc84efdd59b8c469fa317a54f77fbb8091a57f619bd75e899a3db67c9133c",
+          "method": "structured registry",
+          "build": "b435dac805c4f197659a8cf7e654db883beb78f1",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/b435dac805c4f197659a8cf7e654db883beb78f1/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T23:57:16+00:00"
+        }
+      ],
+      "x_post_text": "LiteLLM commit-pinned registry b435dac805c4: kimi-latest\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/b435dac805c4f197659a8cf7e654db883beb78f1/model_prices_and_context_window.json"
+    },
     {
       "id": "story-tidepool",
       "group": "tidepool",
@@ -11928,6 +12001,121 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-c1ca184d993c8cd587a5",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "kimi-latest",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "kimi-latest",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "fireworks_ai/accounts/fireworks/routers/kimi-latest",
+          "name": "fireworks_ai/accounts/fireworks/routers/kimi-latest",
+          "registry_update": true
+        },
+        {
+          "id": "fireworks_ai/kimi-latest",
+          "name": "fireworks_ai/kimi-latest",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-18T23:59:47.697799+00:00",
+      "first_seen": "2026-11-18T23:57:16+00:00",
+      "observed_at": "2026-11-18T23:59:47.697799+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "554b562258a90d8f9cf504a7e0b5471797f2fea5 -> b435dac805c4f197659a8cf7e654db883beb78f1",
+      "build": "b435dac805c4f197659a8cf7e654db883beb78f1",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/b435dac805c4f197659a8cf7e654db883beb78f1/model_prices_and_context_window.json",
+      "artifact_sha256": "2b0bc84efdd59b8c469fa317a54f77fbb8091a57f619bd75e899a3db67c9133c",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/2b0bc84efdd59b8c469fa317a54f77fbb8091a57f619bd75e899a3db67c9133c.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/2b0bc84efdd59b8c469fa317a54f77fbb8091a57f619bd75e899a3db67c9133c.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "fireworks_ai/accounts/fireworks/routers/kimi-latest",
+          "family": "kimi-latest",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"fireworks_ai/accounts/fireworks/routers/kimi-latest\": {\"cache_read_input_token_cost\": 2e-07, \"cache_read_input_token_cost_priority\": 3e-07, \"input_cost_per_token\": 2e-06, \"input_cost_per_token_priority\": 3e-06, \"litellm_provider\": \"fireworks_ai\", \"max_input_tokens\": 1048576, \"max_output_tokens\": 131072, \"mode\": \"chat\", \"output_cost_per_token\": 1e-05, \"output_cost_per_token_priority\": 1.5e-05, \"reasoning_effort_levels\": [\"low\", \"high\", \"max\"], \"source\": \"https://api.fireworks.ai/v1/serverless/models?format=nested\", \"supports_function_calling\": true, \"supports_mid_conversation_system\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "2b0bc84efdd59b8c469fa317a54f77fbb8091a57f619bd75e899a3db67c9133c",
+          "method": "structured registry",
+          "build": "b435dac805c4f197659a8cf7e654db883beb78f1",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/b435dac805c4f197659a8cf7e654db883beb78f1/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T23:57:16+00:00"
+        },
+        {
+          "id": "fireworks_ai/kimi-latest",
+          "family": "kimi-latest",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"fireworks_ai/kimi-latest\": {\"alias_of\": \"fireworks_ai/accounts/fireworks/models/kimi-k3p1-pro\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "2b0bc84efdd59b8c469fa317a54f77fbb8091a57f619bd75e899a3db67c9133c",
+          "method": "structured registry",
+          "build": "b435dac805c4f197659a8cf7e654db883beb78f1",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/b435dac805c4f197659a8cf7e654db883beb78f1/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T23:57:16+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "models-dev-api",
+          "identifier": "privatemode-ai/kimi-latest",
+          "first_seen": "2026-11-18T12:44:53.499743+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/ed325e4e496cef3adf2f79909ebd14f8a4f546a331ddf78586157b4ea5f3e94f.json.gz"
+        },
+        {
+          "source": "models-dev-git",
+          "identifier": "fireworks-ai/accounts/fireworks/routers/kimi-latest",
+          "first_seen": "2026-11-18T12:32:34+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/5049fbffe20fd90263fff9d22a266f2a9de3ec0cbbf72d23cf39b3c81754d5bf.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/b435dac805c4f197659a8cf7e654db883beb78f1/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/b435dac805c4f197659a8cf7e654db883beb78f1"
+        }
+      ],
+      "tracker_observed_at": "2026-11-18T23:59:49.251740+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: fireworks_ai/accounts/fireworks/routers/kimi-latest\nhttps://raw.githubusercontent.com/BerriAI/litellm/b435dac805c4f197659a8cf7e654db883beb78f1/model_prices_and_context_window.json"
+    },
     {
       "id": "intel-8a68d5c336dc70edf66e",
       "scanner": "models-dev-git",
@@ -32036,12 +32224,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T23:51:19.294388+00:00",
+      "last_attempt": "2026-11-18T23:59:46.172644+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:51:19.600019+00:00",
+      "last_success": "2026-11-18T23:59:46.795687+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.306,
+      "duration_seconds": 0.623,
       "latest_build": "ed325e4e496cef3adf2f79909ebd14f8a4f546a331ddf78586157b4ea5f3e94f",
       "builds_retained": 17,
       "identifiers": 9624
@@ -32049,14 +32237,14 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-18T23:51:19.760928+00:00",
+      "last_attempt": "2026-11-18T23:59:46.933863+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:51:20.092583+00:00",
+      "last_success": "2026-11-18T23:59:49.251740+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.332,
-      "latest_build": "554b562258a90d8f9cf504a7e0b5471797f2fea5",
-      "builds_retained": 12,
+      "duration_seconds": 2.318,
+      "latest_build": "b435dac805c4f197659a8cf7e654db883beb78f1",
+      "builds_retained": 13,
       "identifiers": 6919
     },
     "models-dev-git": {
@@ -32075,21 +32263,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-18T23:53:22.115779+00:00",
+      "last_attempt": "2026-11-18T23:59:49.389468+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 333,
-      "duration_seconds": 18.585
+      "consecutive_failures": 336,
+      "duration_seconds": 15.602
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-18T23:41:40.259085+00:00",
+      "last_attempt": "2026-11-18T23:58:03.906811+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:41:40.458690+00:00",
+      "last_success": "2026-11-18T23:58:04.248884+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.2,
+      "duration_seconds": 0.342,
       "latest_build": "3.14.30819",
       "builds_retained": 2,
       "identifiers": 3330
@@ -32099,61 +32287,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T23:52:26.806149+00:00",
+      "last_attempt": "2026-11-18T23:58:53.511335+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:52:28.920589+00:00",
+      "last_success": "2026-11-18T23:58:55.090510+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.114
+      "duration_seconds": 1.579
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T23:52:28.920657+00:00",
+      "last_attempt": "2026-11-18T23:58:55.090561+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:52:29.040920+00:00",
+      "last_success": "2026-11-18T23:58:55.208087+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.12
+      "duration_seconds": 0.118
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T23:52:29.040970+00:00",
+      "last_attempt": "2026-11-18T23:58:55.208122+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:52:35.240093+00:00",
+      "last_success": "2026-11-18T23:59:01.700039+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.199
+      "duration_seconds": 6.492
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T23:52:35.240169+00:00",
+      "last_attempt": "2026-11-18T23:59:01.700093+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:53:21.494774+00:00",
+      "last_success": "2026-11-18T23:59:46.172595+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 46.255,
+      "duration_seconds": 44.473,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-18T23:52:35.440263+00:00",
+          "checked_at": "2026-11-18T23:59:01.931949+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-18T23:52:46.275550+00:00",
+          "checked_at": "2026-11-18T23:59:12.507726+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-18T23:52:46.454320+00:00",
+          "checked_at": "2026-11-18T23:59:12.594817+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-18T23:52:46.454336+00:00",
+          "checked_at": "2026-11-18T23:59:12.594833+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -32161,12 +32349,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T23:51:19.294388+00:00",
+      "last_attempt": "2026-11-18T23:59:46.172644+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:51:19.600019+00:00",
+      "last_success": "2026-11-18T23:59:46.795687+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.306,
+      "duration_seconds": 0.623,
       "latest_build": "ed325e4e496cef3adf2f79909ebd14f8a4f546a331ddf78586157b4ea5f3e94f",
       "builds_retained": 17,
       "identifiers": 9624
@@ -32174,14 +32362,14 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-18T23:51:19.760928+00:00",
+      "last_attempt": "2026-11-18T23:59:46.933863+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:51:20.092583+00:00",
+      "last_success": "2026-11-18T23:59:49.251740+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.332,
-      "latest_build": "554b562258a90d8f9cf504a7e0b5471797f2fea5",
-      "builds_retained": 12,
+      "duration_seconds": 2.318,
+      "latest_build": "b435dac805c4f197659a8cf7e654db883beb78f1",
+      "builds_retained": 13,
       "identifiers": 6919
     },
     "models-dev-git": {
@@ -32200,21 +32388,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-18T23:53:22.115779+00:00",
+      "last_attempt": "2026-11-18T23:59:49.389468+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 333,
-      "duration_seconds": 18.585
+      "consecutive_failures": 336,
+      "duration_seconds": 15.602
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-18T23:41:40.259085+00:00",
+      "last_attempt": "2026-11-18T23:58:03.906811+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:41:40.458690+00:00",
+      "last_success": "2026-11-18T23:58:04.248884+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.2,
+      "duration_seconds": 0.342,
       "latest_build": "3.14.30819",
       "builds_retained": 2,
       "identifiers": 3330
@@ -32222,22 +32410,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T23:53:40.706476+00:00",
+      "last_attempt": "2026-11-19T00:00:04.997097+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:53:49.201426+00:00",
+      "last_success": "2026-11-19T00:00:12.169528+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.495
+      "duration_seconds": 7.172
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T23:53:49.201504+00:00",
+      "last_attempt": "2026-11-19T00:00:12.169594+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:53:50.466494+00:00",
+      "last_success": "2026-11-19T00:00:13.786525+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.265
+      "duration_seconds": 1.617
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -32252,22 +32440,22 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T23:54:14.509290+00:00",
+      "last_attempt": "2026-11-19T00:00:13.786575+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:54:15.096440+00:00",
+      "last_success": "2026-11-19T00:00:16.041771+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.587
+      "duration_seconds": 2.255
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-18T23:54:15.096506+00:00",
+      "last_attempt": "2026-11-19T00:00:16.041809+00:00",
       "status": "ok",
-      "last_success": "2026-11-18T23:54:15.131738+00:00",
+      "last_success": "2026-11-19T00:00:16.067824+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.035
+      "duration_seconds": 0.026
     }
   },
   "identities": {
@@ -32278,8 +32466,8 @@
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 67,
-      "seconds_mean": 166.40077525373133,
+      "samples": 68,
+      "seconds_mean": 166.1845550147059,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -32293,8 +32481,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 95,
-      "events": 95,
+      "complete": 96,
+      "events": 96,
       "rate": 1.0
     },
     "source_health": {
