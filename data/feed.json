@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-20T05:03:37.427482+00:00",
-  "scan_completed_at": "2026-11-20T05:05:06.414885+00:00",
+  "generated_at": "2026-11-20T05:20:11.776654+00:00",
+  "scan_completed_at": "2026-11-20T05:21:51.215220+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 246,
     "leaks": 43,
     "releases": 79,
     "stories_24h": 59,
-    "sources_ok": 14,
-    "total_cards": 539,
-    "new_in_this_scan": 4
+    "sources_ok": 16,
+    "total_cards": 540,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -22,7 +22,7 @@
       "provider_name": "Tencent Hunyuan",
       "accent_color": "#3b82f6",
       "detected_at": "2026-11-20T04:44:28.315190+00:00",
-      "updated_at": "2026-11-20T05:05:05.206040+00:00",
+      "updated_at": "2026-11-20T05:21:49.063305+00:00",
       "first_source": "Hugging Face",
       "lead": "",
       "released_on": "",
@@ -36,6 +36,10 @@
         {
           "id": "WeMM-Video-4B",
           "name": "WeMM-Video-4B"
+        },
+        {
+          "id": "WeMM-Video-9B",
+          "name": "WeMM-Video-9B"
         },
         {
           "id": "WeMM-Video-2B-AWQ",
@@ -115,14 +119,15 @@
         "hf-tencent_WeMM-Video-9B-NVFP4",
         "hf-tencent_WeMM-Video-9B-GGUF",
         "hf-tencent_WeMM-Video-9B-AWQ",
-        "hf-tencent_WeMM-Video-9B-FP8"
+        "hf-tencent_WeMM-Video-9B-FP8",
+        "hf-tencent_WeMM-Video-9B"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "discord_alerted_at": "2026-11-20T05:05:06.412677+00:00",
-      "x_post_text": "🟢 NEW MODEL: WeMM Video by Tencent Hunyuan\n\nFirst detected 20 Nov 04:44 UTC in Hugging Face\nIDs: WeMM-Video-2B, WeMM-Video-4B, WeMM-Video-2B-AWQ +11\n\nvia @StatsWire"
+      "discord_alerted_at": "2026-11-20T05:21:51.213283+00:00",
+      "x_post_text": "🟢 NEW MODEL: WeMM Video by Tencent Hunyuan\n\nFirst detected 20 Nov 04:44 UTC in Hugging Face\nIDs: WeMM-Video-2B, WeMM-Video-4B, WeMM-Video-9B +12\n\nvia @StatsWire"
     },
     {
       "id": "story-wemm-video-35ba",
@@ -18973,6 +18978,43 @@
   ],
   "cards": [
     {
+      "id": "hf-tencent_WeMM-Video-9B",
+      "category": "open-source",
+      "scanner": "huggingface",
+      "header": "HUGGING FACE NEW REPO · TENCENT HUNYUAN",
+      "title": "WeMM Video 9B",
+      "subtitle": "Newly published public model repository (tencent)",
+      "build_label": "Repo",
+      "build_transition": "Created 2026-11-17 (image-text-to-text)",
+      "models": [
+        {
+          "id": "tencent/WeMM-Video-9B",
+          "name": "WeMM-Video-9B (image-text-to-text)"
+        }
+      ],
+      "evidence": "huggingface.co/api/models",
+      "source_text": "official tencent Hugging Face organization feed.",
+      "disclaimer_1": "Repository became publicly visible since the previous scan.",
+      "disclaimer_2": "Public weights / model cards published directly by the organization.",
+      "provider_name": "TENCENT HUNYUAN",
+      "provider_slug": "opensource",
+      "accent_color": "#3b82f6",
+      "links": [
+        {
+          "label": "Hugging Face Repo",
+          "url": "https://huggingface.co/tencent/WeMM-Video-9B"
+        },
+        {
+          "label": "tencent Hub Feed",
+          "url": "https://huggingface.co/tencent"
+        }
+      ],
+      "detected_at": "2026-11-20T05:21:49.063305+00:00",
+      "tracker_observed_at": "2026-11-20T05:21:49.070420+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 HUGGING FACE NEW REPO · TENCENT HUNYUAN\nWeMM Video 9B spotted in Repo Created 2026-11-17 (image-text-to-text)!\n\n• WeMM-Video-9B (image-text-to-text) (tencent/WeMM-Video-9B)\n\nEvidence: huggingface.co/api/models\nSource: official tencent Hugging Face organization feed.\n\nTracked by @StatsWire"
+    },
+    {
       "id": "hf-tencent_WeMM-Video-9B-NVFP4",
       "category": "open-source",
       "scanner": "huggingface",
@@ -19569,7 +19611,7 @@
       ],
       "detected_at": "2026-11-20T04:27:27.640442+00:00",
       "first_seen": "2026-11-20T04:26:27+00:00",
-      "observed_at": "2026-11-20T04:27:27.640442+00:00",
+      "observed_at": "2026-11-20T05:21:12.354942+00:00",
       "backfill": false,
       "build_label": "LiteLLM model registry",
       "build_transition": "0bd1f864816c80e223edd8079d28e8c41d27b17d -> 65d8137acf16d46dd56656e34ccca1e3e73739ee",
@@ -55364,12 +55406,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T05:04:31.659506+00:00",
+      "last_attempt": "2026-11-20T05:21:09.337347+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T05:04:31.937344+00:00",
+      "last_success": "2026-11-20T05:21:11.632352+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.278,
+      "duration_seconds": 2.295,
       "latest_build": "cc41a015f052cffce814ef5cda88224c8230b393468586c932677913d3b1cc37",
       "builds_retained": 48,
       "identifiers": 9661
@@ -55377,12 +55419,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T05:04:32.130664+00:00",
+      "last_attempt": "2026-11-20T05:21:11.734466+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T05:04:32.565936+00:00",
+      "last_success": "2026-11-20T05:21:13.560361+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.436,
+      "duration_seconds": 1.826,
       "latest_build": "65d8137acf16d46dd56656e34ccca1e3e73739ee",
       "builds_retained": 36,
       "identifiers": 6943
@@ -55390,12 +55432,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T04:58:21.888687+00:00",
+      "last_attempt": "2026-11-20T05:21:13.663167+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:58:22.354199+00:00",
+      "last_success": "2026-11-20T05:21:19.020355+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.466,
+      "duration_seconds": 5.357,
       "latest_build": "e65a41b64954fb307ff4d8c2a45612d391828a1c",
       "builds_retained": 52,
       "identifiers": 10785
@@ -55403,21 +55445,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T05:04:32.766658+00:00",
+      "last_attempt": "2026-11-20T05:21:19.123878+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1034,
-      "duration_seconds": 20.746
+      "consecutive_failures": 1001,
+      "duration_seconds": 10.598
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-20T05:04:53.519812+00:00",
+      "last_attempt": "2026-11-20T05:21:29.730014+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T05:04:53.715926+00:00",
+      "last_success": "2026-11-20T05:21:29.982219+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.196,
+      "duration_seconds": 0.252,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -55427,61 +55469,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T05:03:37.427562+00:00",
+      "last_attempt": "2026-11-20T05:20:11.776721+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T05:03:39.164311+00:00",
+      "last_success": "2026-11-20T05:20:13.437731+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.737
+      "duration_seconds": 1.661
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T05:03:39.164367+00:00",
+      "last_attempt": "2026-11-20T05:20:13.437798+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T05:03:39.699426+00:00",
+      "last_success": "2026-11-20T05:20:13.649429+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.535
+      "duration_seconds": 0.212
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T05:03:39.699467+00:00",
+      "last_attempt": "2026-11-20T05:20:13.649468+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T05:03:44.767244+00:00",
+      "last_success": "2026-11-20T05:20:23.374702+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.068
+      "duration_seconds": 9.725
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T05:03:44.767315+00:00",
+      "last_attempt": "2026-11-20T05:20:23.374783+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T05:04:31.659445+00:00",
+      "last_success": "2026-11-20T05:21:09.337286+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 46.892,
+      "duration_seconds": 45.963,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-20T05:03:44.999128+00:00",
+          "checked_at": "2026-11-20T05:20:23.655496+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-20T05:03:56.397172+00:00",
+          "checked_at": "2026-11-20T05:20:37.764349+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-20T05:03:56.519007+00:00",
+          "checked_at": "2026-11-20T05:20:37.889434+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-20T05:03:56.519026+00:00",
+          "checked_at": "2026-11-20T05:20:37.889453+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -55489,12 +55531,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T05:04:31.659506+00:00",
+      "last_attempt": "2026-11-20T05:21:09.337347+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T05:04:31.937344+00:00",
+      "last_success": "2026-11-20T05:21:11.632352+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.278,
+      "duration_seconds": 2.295,
       "latest_build": "cc41a015f052cffce814ef5cda88224c8230b393468586c932677913d3b1cc37",
       "builds_retained": 48,
       "identifiers": 9661
@@ -55502,12 +55544,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T05:04:32.130664+00:00",
+      "last_attempt": "2026-11-20T05:21:11.734466+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T05:04:32.565936+00:00",
+      "last_success": "2026-11-20T05:21:13.560361+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.436,
+      "duration_seconds": 1.826,
       "latest_build": "65d8137acf16d46dd56656e34ccca1e3e73739ee",
       "builds_retained": 36,
       "identifiers": 6943
@@ -55515,12 +55557,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T04:58:21.888687+00:00",
+      "last_attempt": "2026-11-20T05:21:13.663167+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:58:22.354199+00:00",
+      "last_success": "2026-11-20T05:21:19.020355+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.466,
+      "duration_seconds": 5.357,
       "latest_build": "e65a41b64954fb307ff4d8c2a45612d391828a1c",
       "builds_retained": 52,
       "identifiers": 10785
@@ -55528,21 +55570,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T05:04:32.766658+00:00",
+      "last_attempt": "2026-11-20T05:21:19.123878+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1034,
-      "duration_seconds": 20.746
+      "consecutive_failures": 1001,
+      "duration_seconds": 10.598
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-20T05:04:53.519812+00:00",
+      "last_attempt": "2026-11-20T05:21:29.730014+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T05:04:53.715926+00:00",
+      "last_success": "2026-11-20T05:21:29.982219+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.196,
+      "duration_seconds": 0.252,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -55550,52 +55592,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T05:04:54.127419+00:00",
+      "last_attempt": "2026-11-20T05:21:30.617748+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T05:05:02.841621+00:00",
+      "last_success": "2026-11-20T05:21:35.417741+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.714
+      "duration_seconds": 4.8
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T05:05:02.841705+00:00",
+      "last_attempt": "2026-11-20T05:21:35.417813+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T05:05:04.570888+00:00",
+      "last_success": "2026-11-20T05:21:37.959129+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.729
+      "duration_seconds": 2.541
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T04:58:54.373137+00:00",
+      "last_attempt": "2026-11-20T05:21:37.959184+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:59:02.567353+00:00",
+      "last_success": "2026-11-20T05:21:47.466606+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.194
+      "duration_seconds": 9.507
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T05:05:04.570949+00:00",
+      "last_attempt": "2026-11-20T05:21:47.466663+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T05:05:05.217075+00:00",
+      "last_success": "2026-11-20T05:21:49.070420+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.646
+      "duration_seconds": 1.604
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T05:05:05.217127+00:00",
+      "last_attempt": "2026-11-20T05:21:49.070462+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T05:05:05.290448+00:00",
+      "last_success": "2026-11-20T05:21:49.238038+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.073
+      "duration_seconds": 0.168
     }
   },
   "identities": {
@@ -55607,7 +55649,7 @@
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
       "samples": 204,
-      "seconds_mean": 5215.400598191177,
+      "seconds_mean": 5231.208022210784,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
