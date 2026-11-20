@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-20T09:33:56.281560+00:00",
-  "scan_completed_at": "2026-11-20T09:35:22.340840+00:00",
+  "generated_at": "2026-11-20T09:39:57.067195+00:00",
+  "scan_completed_at": "2026-11-20T09:41:07.656993+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 245,
     "leaks": 42,
-    "releases": 79,
+    "releases": 80,
     "stories_24h": 56,
-    "sources_ok": 15,
-    "total_cards": 546,
-    "new_in_this_scan": 2
+    "sources_ok": 12,
+    "total_cards": 547,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -1478,27 +1478,27 @@
     {
       "id": "story-cohere-embed-5",
       "group": "cohere-embed-5",
-      "kind": "registry",
+      "kind": "release",
       "open_weights": false,
-      "title": "azure_ai/Cohere-Embed-V5-Pro",
+      "title": "Cohere Embed V5 Pro",
       "provider_slug": "unknown",
-      "provider_name": "Unattributed",
+      "provider_name": "opencode",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-19T19:20:59.145273+00:00",
-      "updated_at": "2026-11-20T09:34:51.829499+00:00",
+      "updated_at": "2026-11-20T09:40:27.666197+00:00",
       "first_source": "LiteLLM commit-pinned registry",
-      "lead": "",
+      "lead": "14 h before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "",
       "pricing": "",
       "codenames": [],
       "models": [
         {
           "id": "cohere-embed-v5-pro",
-          "name": "opencode/cohere-embed-v5-pro"
+          "name": "Cohere Embed V5 Pro"
         },
         {
           "id": "cohere-embed-v5-fast",
-          "name": "opencode/cohere-embed-v5-fast"
+          "name": "Cohere Embed V5 Fast"
         }
       ],
       "sources": [
@@ -1521,19 +1521,30 @@
           "backfill": false,
           "build": "6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c",
           "evidence_path": "data/intelligence/evidence/models-dev-git/bc6374e3c3e7df419d19588b37e2c7fbe705b7a5f42e1b2fa211b8015fcf656b.json.gz"
+        },
+        {
+          "label": "Opencode Zen Stealth & Model Gateway",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-11-20T09:40:27.666197+00:00",
+          "title": "New Model on OpenCode Zen: cohere-embed-v5-fast",
+          "url": "https://opencode.ai/zen/v1/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 2,
+      "source_count": 3,
       "backfill": false,
-      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "header": "NEW MODEL · OPENCODE",
       "card_ids": [
         "intel-efb1718535faf9770f33",
         "intel-35efb976b3c81809bb79",
         "intel-fc6bc1e8729cd6b06c21",
-        "intel-03c8227ec16daf46e5d5"
+        "intel-03c8227ec16daf46e5d5",
+        "opencode-zen-diff-5ccc00f9"
       ],
-      "event_label": "Registry update",
-      "intelligence_only": true,
+      "event_label": "Released",
+      "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [
         {
@@ -1593,7 +1604,8 @@
           "first_seen": "2026-11-20T09:25:53+00:00"
         }
       ],
-      "x_post_text": "registry evidence, not a launch: cohere-embed-v5-pro\nhttps://raw.githubusercontent.com/BerriAI/litellm/245c31763c0fa763e2b930f5aa704892539080e3/model_prices_and_context_window.json"
+      "x_post_text": "🟢 NEW MODEL: Cohere Embed V5 Pro by opencode\n\nFirst detected 19 Nov 19:20 UTC in LiteLLM commit-pinned registry\n⏱ 14 h before it went live on Opencode Zen Stealth & Model Gateway\nConfirmed by Registry Update, Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-20T09:41:07.655181+00:00"
     },
     {
       "id": "story-ai-21-jamba-1-5-mini-1",
@@ -19009,6 +19021,44 @@
     }
   ],
   "cards": [
+    {
+      "id": "opencode-zen-diff-5ccc00f9",
+      "category": "cli-sdk-diff",
+      "scanner": "gateway-radar",
+      "header": "OPENCODE ZEN STEALTH & MODEL GATEWAY · LIVE DIFF",
+      "title": "New Model on OpenCode Zen: cohere-embed-v5-fast",
+      "subtitle": "Newly exposed model / stealth codename in opencode.ai/zen/v1/models (+10 new)",
+      "build_label": "Gateway Diff",
+      "build_transition": "+10 model(s) (103 active)",
+      "models": [
+        {
+          "id": "cohere-embed-v5-fast",
+          "name": "Cohere Embed V5 Fast"
+        },
+        {
+          "id": "cohere-embed-v5-pro",
+          "name": "Cohere Embed V5 Pro"
+        }
+      ],
+      "evidence": "opencode.ai/zen/v1/models",
+      "source_text": "public OpenCode Zen /v1/models catalog.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENCODE ZEN",
+      "provider_slug": "openrouter",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "OpenCode Zen Models JSON",
+          "url": "https://opencode.ai/zen/v1/models"
+        }
+      ],
+      "detected_at": "2026-11-20T09:40:27.666197+00:00",
+      "tracker_observed_at": "2026-11-20T09:40:46.118948+00:00",
+      "filtered_released": 6,
+      "pricing": null,
+      "x_post_text": "🚨 OPENCODE ZEN STEALTH & MODEL GATEWAY · LIVE DIFF\nNew Model on OpenCode Zen: cohere-embed-v5-fast spotted in Gateway Diff +10 model(s) (103 active)!\n\n• Cohere Embed V5 Fast (cohere-embed-v5-fast)\n• Cohere Embed V5 Pro (cohere-embed-v5-pro)\n\nEvidence: opencode.ai/zen/v1/models\nSource: public OpenCode Zen /v1/models catalog.\n\nTracked by @StatsWire"
+    },
     {
       "id": "intel-fc6bc1e8729cd6b06c21",
       "scanner": "models-dev-git",
@@ -55761,12 +55811,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T09:34:47.663638+00:00",
+      "last_attempt": "2026-11-20T09:40:46.119002+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T09:34:47.882358+00:00",
+      "last_success": "2026-11-20T09:40:46.329759+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.219,
+      "duration_seconds": 0.211,
       "latest_build": "ba6f95b0203c5407cf2200e57ad2c3f34d009be1100987dfc82ca768d7db4cdc",
       "builds_retained": 52,
       "identifiers": 9665
@@ -55774,12 +55824,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T09:34:47.987281+00:00",
+      "last_attempt": "2026-11-20T09:38:44.079966+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T09:34:48.498789+00:00",
+      "last_success": "2026-11-20T09:38:44.410903+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.512,
+      "duration_seconds": 0.331,
       "latest_build": "1b5047429d26b58cfd3e01a5cb9a2f129a1787b2",
       "builds_retained": 37,
       "identifiers": 6943
@@ -55800,21 +55850,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T09:34:54.200803+00:00",
+      "last_attempt": "2026-11-20T09:40:46.435583+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1127,
-      "duration_seconds": 10.738
+      "consecutive_failures": 1130,
+      "duration_seconds": 10.822
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-20T09:22:57.728730+00:00",
+      "last_attempt": "2026-11-20T09:38:55.348234+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T09:22:57.947322+00:00",
+      "last_success": "2026-11-20T09:38:55.613322+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.219,
+      "duration_seconds": 0.265,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -55824,61 +55874,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T09:33:56.281659+00:00",
+      "last_attempt": "2026-11-20T09:39:57.067243+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T09:33:57.969634+00:00",
+      "last_success": "2026-11-20T09:39:58.582912+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.688
+      "duration_seconds": 1.516
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T09:33:57.969711+00:00",
+      "last_attempt": "2026-11-20T09:39:58.582965+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T09:33:58.114621+00:00",
+      "last_success": "2026-11-20T09:39:58.707717+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.145
+      "duration_seconds": 0.125
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T09:33:58.114659+00:00",
+      "last_attempt": "2026-11-20T09:39:58.707747+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T09:34:05.514578+00:00",
+      "last_success": "2026-11-20T09:40:05.994932+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.4
+      "duration_seconds": 7.287
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T09:34:05.514676+00:00",
+      "last_attempt": "2026-11-20T09:40:05.994995+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T09:34:47.663565+00:00",
+      "last_success": "2026-11-20T09:40:46.118948+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 42.149,
+      "duration_seconds": 40.124,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-20T09:34:05.967561+00:00",
+          "checked_at": "2026-11-20T09:40:06.247450+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-20T09:34:15.484583+00:00",
+          "checked_at": "2026-11-20T09:40:15.892272+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-20T09:34:15.589093+00:00",
+          "checked_at": "2026-11-20T09:40:15.974441+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-20T09:34:15.589113+00:00",
+          "checked_at": "2026-11-20T09:40:15.974447+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -55886,12 +55936,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T09:34:47.663638+00:00",
+      "last_attempt": "2026-11-20T09:40:46.119002+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T09:34:47.882358+00:00",
+      "last_success": "2026-11-20T09:40:46.329759+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.219,
+      "duration_seconds": 0.211,
       "latest_build": "ba6f95b0203c5407cf2200e57ad2c3f34d009be1100987dfc82ca768d7db4cdc",
       "builds_retained": 52,
       "identifiers": 9665
@@ -55899,12 +55949,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T09:34:47.987281+00:00",
+      "last_attempt": "2026-11-20T09:38:44.079966+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T09:34:48.498789+00:00",
+      "last_success": "2026-11-20T09:38:44.410903+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.512,
+      "duration_seconds": 0.331,
       "latest_build": "1b5047429d26b58cfd3e01a5cb9a2f129a1787b2",
       "builds_retained": 37,
       "identifiers": 6943
@@ -55925,21 +55975,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T09:34:54.200803+00:00",
+      "last_attempt": "2026-11-20T09:40:46.435583+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1127,
-      "duration_seconds": 10.738
+      "consecutive_failures": 1130,
+      "duration_seconds": 10.822
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-20T09:22:57.728730+00:00",
+      "last_attempt": "2026-11-20T09:38:55.348234+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T09:22:57.947322+00:00",
+      "last_success": "2026-11-20T09:38:55.613322+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.219,
+      "duration_seconds": 0.265,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -55947,22 +55997,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T09:35:04.946121+00:00",
+      "last_attempt": "2026-11-20T09:40:57.264494+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T09:35:09.823110+00:00",
+      "last_success": "2026-11-20T09:41:02.300958+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.877
+      "duration_seconds": 5.037
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T09:35:09.823180+00:00",
+      "last_attempt": "2026-11-20T09:41:02.301034+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T09:35:11.608107+00:00",
+      "last_success": "2026-11-20T09:41:04.010418+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.785
+      "duration_seconds": 1.709
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -55977,22 +56027,22 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T09:35:20.306797+00:00",
+      "last_attempt": "2026-11-20T09:41:04.010471+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T09:35:21.963159+00:00",
+      "last_success": "2026-11-20T09:41:05.637625+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.656
+      "duration_seconds": 1.627
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T09:35:21.963200+00:00",
+      "last_attempt": "2026-11-20T09:41:05.637679+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T09:35:22.075064+00:00",
+      "last_success": "2026-11-20T09:41:05.737523+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.112
+      "duration_seconds": 0.1
     }
   },
   "identities": {
