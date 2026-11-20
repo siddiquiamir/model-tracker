@@ -1,17 +1,77 @@
 {
-  "generated_at": "2026-11-20T01:57:07.042092+00:00",
-  "scan_completed_at": "2026-11-20T01:58:24.596726+00:00",
+  "generated_at": "2026-11-20T02:07:06.786068+00:00",
+  "scan_completed_at": "2026-11-20T02:08:15.098826+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 239,
+    "stories": 240,
     "leaks": 41,
     "releases": 76,
-    "stories_24h": 52,
-    "sources_ok": 14,
-    "total_cards": 516,
-    "new_in_this_scan": 0
+    "stories_24h": 53,
+    "sources_ok": 12,
+    "total_cards": 517,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-databricks-gemini-4-carbon",
+      "group": "databricks-gemini-4-carbon",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Databricks Gemini 4 Carbon",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-20T02:07:40.559018+00:00",
+      "updated_at": "2026-11-20T02:07:40.559018+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "databricks-gemini-4-carbon",
+          "name": "databricks/databricks-gemini-4-carbon"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-20T02:07:40.559018+00:00",
+          "title": "databricks-gemini-4-carbon",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/0bd1f864816c80e223edd8079d28e8c41d27b17d/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "0bd1f864816c80e223edd8079d28e8c41d27b17d",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/dc9e789565bb5e776dbe0532d58fc1c4bc6e54ddddde43d0e13340459573fcaa.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-df10ef36b0de1a3336b0"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "databricks/databricks-gemini-4-carbon",
+          "family": "databricks-gemini-4-carbon",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"databricks/databricks-gemini-4-carbon\": {\"cache_creation_input_token_cost\": 2.49998e-06, \"cache_creation_input_token_cost_priority\": 4.50002e-06, \"cache_read_input_token_cost\": 1.2502e-07, \"cache_read_input_token_cost_priority\": 2.2498e-07, \"input_cost_per_token\": 2.49998e-06, \"input_cost_per_token_priority\": 4.50002e-06, \"input_dbu_cost_per_token\": 3.5714e-05, \"litellm_provider\": \"databricks\", \"max_input_tokens\": 1048576, \"max_output_tokens\": 1048576, \"metadata\": {\"notes\": \"Costs per token are the published Global DBU rates times $0.070 per DBU. The '*_dbu_cost_per_token' fields are provided for reference; cost calculation reads the dollar '*_cost_per_token' fields. The Databricks pricing page says these rates reflect a 50% promotion in effect through November 30, 2026, after which the standard rates are twice those shown. The page lists no cache write rate, so cache writes bill at the input rate. Gemini 4 Carbon is available only through Unity Gateway with the model service name system.ai.gemini-4-carbon.\"}, \"mode\": \"chat\", \"output_cost_per_token\": 1.249997e-05, \"output_cost_per_token_priority\": 2.250003e-05, \"output_dbu_cost_per_token\": 0.000178571, \"source\": \"https://www.data",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "dc9e789565bb5e776dbe0532d58fc1c4bc6e54ddddde43d0e13340459573fcaa",
+          "method": "structured registry",
+          "build": "0bd1f864816c80e223edd8079d28e8c41d27b17d",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/0bd1f864816c80e223edd8079d28e8c41d27b17d/model_prices_and_context_window.json",
+          "first_seen": "2026-11-20T02:05:11+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: databricks-gemini-4-carbon\nhttps://raw.githubusercontent.com/BerriAI/litellm/0bd1f864816c80e223edd8079d28e8c41d27b17d/model_prices_and_context_window.json"
+    },
     {
       "id": "story-mo",
       "group": "mo",
@@ -18476,6 +18536,90 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-df10ef36b0de1a3336b0",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "databricks-gemini-4-carbon",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "databricks-gemini-4-carbon",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "databricks/databricks-gemini-4-carbon",
+          "name": "databricks/databricks-gemini-4-carbon",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-20T02:07:40.559018+00:00",
+      "first_seen": "2026-11-20T02:05:11+00:00",
+      "observed_at": "2026-11-20T02:07:40.559018+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "33015210dedf6891d019456f3d742e03d0f27eed -> 0bd1f864816c80e223edd8079d28e8c41d27b17d",
+      "build": "0bd1f864816c80e223edd8079d28e8c41d27b17d",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/0bd1f864816c80e223edd8079d28e8c41d27b17d/model_prices_and_context_window.json",
+      "artifact_sha256": "dc9e789565bb5e776dbe0532d58fc1c4bc6e54ddddde43d0e13340459573fcaa",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/dc9e789565bb5e776dbe0532d58fc1c4bc6e54ddddde43d0e13340459573fcaa.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/dc9e789565bb5e776dbe0532d58fc1c4bc6e54ddddde43d0e13340459573fcaa.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "databricks/databricks-gemini-4-carbon",
+          "family": "databricks-gemini-4-carbon",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"databricks/databricks-gemini-4-carbon\": {\"cache_creation_input_token_cost\": 2.49998e-06, \"cache_creation_input_token_cost_priority\": 4.50002e-06, \"cache_read_input_token_cost\": 1.2502e-07, \"cache_read_input_token_cost_priority\": 2.2498e-07, \"input_cost_per_token\": 2.49998e-06, \"input_cost_per_token_priority\": 4.50002e-06, \"input_dbu_cost_per_token\": 3.5714e-05, \"litellm_provider\": \"databricks\", \"max_input_tokens\": 1048576, \"max_output_tokens\": 1048576, \"metadata\": {\"notes\": \"Costs per token are the published Global DBU rates times $0.070 per DBU. The '*_dbu_cost_per_token' fields are provided for reference; cost calculation reads the dollar '*_cost_per_token' fields. The Databricks pricing page says these rates reflect a 50% promotion in effect through November 30, 2026, after which the standard rates are twice those shown. The page lists no cache write rate, so cache writes bill at the input rate. Gemini 4 Carbon is available only through Unity Gateway with the model service name system.ai.gemini-4-carbon.\"}, \"mode\": \"chat\", \"output_cost_per_token\": 1.249997e-05, \"output_cost_per_token_priority\": 2.250003e-05, \"output_dbu_cost_per_token\": 0.000178571, \"source\": \"https://www.data",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "dc9e789565bb5e776dbe0532d58fc1c4bc6e54ddddde43d0e13340459573fcaa",
+          "method": "structured registry",
+          "build": "0bd1f864816c80e223edd8079d28e8c41d27b17d",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/0bd1f864816c80e223edd8079d28e8c41d27b17d/model_prices_and_context_window.json",
+          "first_seen": "2026-11-20T02:05:11+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/0bd1f864816c80e223edd8079d28e8c41d27b17d/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/0bd1f864816c80e223edd8079d28e8c41d27b17d"
+        }
+      ],
+      "tracker_observed_at": "2026-11-20T02:07:42.361301+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: databricks/databricks-gemini-4-carbon\nhttps://raw.githubusercontent.com/BerriAI/litellm/0bd1f864816c80e223edd8079d28e8c41d27b17d/model_prices_and_context_window.json"
+    },
     {
       "id": "intel-a3801f8f92e82b4d1077",
       "scanner": "models-dev-git",
@@ -53802,12 +53946,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T01:57:43.058417+00:00",
+      "last_attempt": "2026-11-20T02:05:40.174431+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T01:57:43.312084+00:00",
+      "last_success": "2026-11-20T02:05:40.399214+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.254,
+      "duration_seconds": 0.225,
       "latest_build": "da53b096f5cd3ab53178d82dc0a3fbe35852dc77c886ea17ed5192e1c60f3f23",
       "builds_retained": 45,
       "identifiers": 9660
@@ -53815,14 +53959,14 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T01:55:43.331997+00:00",
+      "last_attempt": "2026-11-20T02:07:39.885087+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T01:55:43.688508+00:00",
+      "last_success": "2026-11-20T02:07:42.361301+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.357,
-      "latest_build": "33015210dedf6891d019456f3d742e03d0f27eed",
-      "builds_retained": 34,
+      "duration_seconds": 2.477,
+      "latest_build": "0bd1f864816c80e223edd8079d28e8c41d27b17d",
+      "builds_retained": 35,
       "identifiers": 6942
     },
     "models-dev-git": {
@@ -53841,21 +53985,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T01:57:44.160975+00:00",
+      "last_attempt": "2026-11-20T02:07:42.554072+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 943,
-      "duration_seconds": 20.924
+      "consecutive_failures": 948,
+      "duration_seconds": 20.904
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-20T01:50:05.017941+00:00",
+      "last_attempt": "2026-11-20T02:06:01.575807+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T01:50:05.320433+00:00",
+      "last_success": "2026-11-20T02:06:01.782995+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.303,
+      "duration_seconds": 0.207,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -53865,61 +54009,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T01:57:07.042163+00:00",
+      "last_attempt": "2026-11-20T02:07:06.786135+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T01:57:08.711868+00:00",
+      "last_success": "2026-11-20T02:07:08.380941+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.67
+      "duration_seconds": 1.595
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T01:57:08.711921+00:00",
+      "last_attempt": "2026-11-20T02:07:08.380994+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T01:57:08.825054+00:00",
+      "last_success": "2026-11-20T02:07:08.472778+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.113
+      "duration_seconds": 0.092
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T01:57:08.825092+00:00",
+      "last_attempt": "2026-11-20T02:07:08.472817+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T01:57:15.020601+00:00",
+      "last_success": "2026-11-20T02:07:13.469287+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.196
+      "duration_seconds": 4.996
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T01:57:15.020669+00:00",
+      "last_attempt": "2026-11-20T02:07:13.469352+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T01:57:43.058367+00:00",
+      "last_success": "2026-11-20T02:07:39.885028+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 28.038,
+      "duration_seconds": 26.416,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-20T01:57:15.214883+00:00",
+          "checked_at": "2026-11-20T02:07:13.651595+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-20T01:57:25.633916+00:00",
+          "checked_at": "2026-11-20T02:07:22.441012+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-20T01:57:25.789887+00:00",
+          "checked_at": "2026-11-20T02:07:23.634206+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-20T01:57:25.789905+00:00",
+          "checked_at": "2026-11-20T02:07:23.634225+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -53927,12 +54071,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T01:57:43.058417+00:00",
+      "last_attempt": "2026-11-20T02:05:40.174431+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T01:57:43.312084+00:00",
+      "last_success": "2026-11-20T02:05:40.399214+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.254,
+      "duration_seconds": 0.225,
       "latest_build": "da53b096f5cd3ab53178d82dc0a3fbe35852dc77c886ea17ed5192e1c60f3f23",
       "builds_retained": 45,
       "identifiers": 9660
@@ -53940,14 +54084,14 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T01:55:43.331997+00:00",
+      "last_attempt": "2026-11-20T02:07:39.885087+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T01:55:43.688508+00:00",
+      "last_success": "2026-11-20T02:07:42.361301+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.357,
-      "latest_build": "33015210dedf6891d019456f3d742e03d0f27eed",
-      "builds_retained": 34,
+      "duration_seconds": 2.477,
+      "latest_build": "0bd1f864816c80e223edd8079d28e8c41d27b17d",
+      "builds_retained": 35,
       "identifiers": 6942
     },
     "models-dev-git": {
@@ -53966,21 +54110,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T01:57:44.160975+00:00",
+      "last_attempt": "2026-11-20T02:07:42.554072+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 943,
-      "duration_seconds": 20.924
+      "consecutive_failures": 948,
+      "duration_seconds": 20.904
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-20T01:50:05.017941+00:00",
+      "last_attempt": "2026-11-20T02:06:01.575807+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T01:50:05.320433+00:00",
+      "last_success": "2026-11-20T02:06:01.782995+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.303,
+      "duration_seconds": 0.207,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -53988,22 +54132,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T01:58:05.092072+00:00",
+      "last_attempt": "2026-11-20T02:08:03.465655+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T01:58:13.821056+00:00",
+      "last_success": "2026-11-20T02:08:12.332579+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.729
+      "duration_seconds": 8.867
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T01:58:13.821119+00:00",
+      "last_attempt": "2026-11-20T02:08:12.332654+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T01:58:15.707240+00:00",
+      "last_success": "2026-11-20T02:08:14.112177+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.886
+      "duration_seconds": 1.78
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -54018,22 +54162,22 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T01:58:23.712529+00:00",
+      "last_attempt": "2026-11-20T02:08:14.112226+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T01:58:24.153912+00:00",
+      "last_success": "2026-11-20T02:08:14.522391+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.441
+      "duration_seconds": 0.41
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T01:58:24.153951+00:00",
+      "last_attempt": "2026-11-20T02:08:14.522433+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T01:58:24.172057+00:00",
+      "last_success": "2026-11-20T02:08:14.599546+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.018
+      "duration_seconds": 0.077
     }
   },
   "identities": {
@@ -54044,8 +54188,8 @@
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 201,
-      "seconds_mean": 5291.709146706467,
+      "samples": 202,
+      "seconds_mean": 5266.252957950494,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -54059,8 +54203,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 255,
-      "events": 255,
+      "complete": 256,
+      "events": 256,
       "rate": 1.0
     },
     "source_health": {
