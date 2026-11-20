@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-20T06:15:02.518693+00:00",
-  "scan_completed_at": "2026-11-20T06:16:19.707827+00:00",
+  "generated_at": "2026-11-20T06:27:02.674582+00:00",
+  "scan_completed_at": "2026-11-20T06:28:11.876373+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 245,
     "leaks": 42,
     "releases": 79,
     "stories_24h": 56,
-    "sources_ok": 12,
-    "total_cards": 543,
+    "sources_ok": 11,
+    "total_cards": 544,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -392,16 +392,17 @@
       "provider_name": "Tencent Hunyuan",
       "accent_color": "#3b82f6",
       "detected_at": "2026-11-20T02:50:16.762586+00:00",
-      "updated_at": "2026-11-20T02:50:16.762586+00:00",
+      "updated_at": "2026-11-20T06:27:26Z",
       "first_source": "Hugging Face",
       "lead": "",
-      "released_on": "2026-08-28",
+      "released_on": "2026-11-18",
       "pricing": "",
       "codenames": [],
       "models": [
         {
           "id": "Hy4-FP8",
-          "name": "Hy4-FP8"
+          "name": "Hy4-FP8",
+          "released_on": "2026-11-18"
         }
       ],
       "sources": [
@@ -414,20 +415,31 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "vLLM pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-11-20T06:27:26Z",
+          "title": "tencent/Hy4-FP8 (vLLM PR #68875)",
+          "url": "https://github.com/vllm-project/vllm/pull/68875",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
       "header": "OPEN WEIGHTS · TENCENT HUNYUAN",
       "card_ids": [
-        "hf-tencent_Hy4-FP8"
+        "hf-tencent_Hy4-FP8",
+        "engine-pr-vllm-project_vllm-68875"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "discord_alerted_at": "2026-11-20T02:50:17.828053+00:00",
-      "x_post_text": "🟢 NEW MODEL: Hy4 by Tencent Hunyuan\n\nFirst detected 20 Nov 02:50 UTC in Hugging Face\n📅 First released: 2026-08-28\n\nvia @StatsWire"
+      "discord_alerted_at": "2026-11-20T06:28:11.874820+00:00",
+      "x_post_text": "🟢 NEW MODEL: Hy4 by Tencent Hunyuan\n\nFirst detected 20 Nov 02:50 UTC in Hugging Face\n📅 First released: 2026-11-18\nConfirmed by vLLM pull request\n\nvia @StatsWire"
     },
     {
       "id": "story-databricks-gemini-4-carbon",
@@ -18951,6 +18963,40 @@
     }
   ],
   "cards": [
+    {
+      "id": "engine-pr-vllm-project_vllm-68875",
+      "category": "open-source",
+      "scanner": "engine-pr-leak",
+      "header": "VLLM PR DAY-0 MODEL ONBOARDING (OPEN)",
+      "title": "tencent/Hy4-FP8 (vLLM PR #68875)",
+      "subtitle": "[Model] Register public HY4 checkpoint and update supported models",
+      "build_label": "vLLM PR",
+      "build_transition": "PR #68875 (open)",
+      "models": [
+        {
+          "id": "tencent/Hy4-FP8",
+          "name": "Hy4-FP8",
+          "released_on": "2026-11-18"
+        }
+      ],
+      "evidence": "vllm-project/vllm/pull/68875",
+      "source_text": "public GitHub pull request #68875 on vllm-project/vllm.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "VLLM PR",
+      "provider_slug": "opensource",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "vllm-project/vllm PR #68875",
+          "url": "https://github.com/vllm-project/vllm/pull/68875"
+        }
+      ],
+      "detected_at": "2026-11-20T06:27:26Z",
+      "tracker_observed_at": "2026-11-20T06:27:52.092153+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 VLLM PR DAY-0 MODEL ONBOARDING (OPEN)\ntencent/Hy4-FP8 (vLLM PR #68875) spotted in vLLM PR PR #68875 (open)!\n\n• Hy4-FP8 (tencent/Hy4-FP8)\n\nEvidence: vllm-project/vllm/pull/68875\nSource: public GitHub pull request #68875 on vllm-project/vllm.\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-tencent_WeMM-Video-35BA3B-FP8",
       "category": "open-source",
@@ -55492,12 +55538,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:15:58.174450+00:00",
+      "last_attempt": "2026-11-20T06:25:52.906008+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:15:58.426686+00:00",
+      "last_success": "2026-11-20T06:25:53.142289+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.252,
+      "duration_seconds": 0.236,
       "latest_build": "cc41a015f052cffce814ef5cda88224c8230b393468586c932677913d3b1cc37",
       "builds_retained": 48,
       "identifiers": 9661
@@ -55505,12 +55551,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T06:13:51.249186+00:00",
+      "last_attempt": "2026-11-20T06:25:53.242294+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:13:51.531122+00:00",
+      "last_success": "2026-11-20T06:25:53.556834+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.282,
+      "duration_seconds": 0.315,
       "latest_build": "65d8137acf16d46dd56656e34ccca1e3e73739ee",
       "builds_retained": 36,
       "identifiers": 6943
@@ -55518,12 +55564,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T06:13:51.635563+00:00",
+      "last_attempt": "2026-11-20T06:25:53.662136+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:13:52.040213+00:00",
+      "last_success": "2026-11-20T06:25:54.023822+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.405,
+      "duration_seconds": 0.362,
       "latest_build": "e65a41b64954fb307ff4d8c2a45612d391828a1c",
       "builds_retained": 52,
       "identifiers": 10785
@@ -55531,21 +55577,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T06:15:58.528929+00:00",
+      "last_attempt": "2026-11-20T06:27:52.092219+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1028,
-      "duration_seconds": 10.744
+      "consecutive_failures": 1034,
+      "duration_seconds": 10.473
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-20T06:10:03.913142+00:00",
+      "last_attempt": "2026-11-20T06:26:05.092118+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:10:04.165338+00:00",
+      "last_success": "2026-11-20T06:26:05.365251+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.252,
+      "duration_seconds": 0.273,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -55555,61 +55601,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:15:02.518745+00:00",
+      "last_attempt": "2026-11-20T06:27:02.674647+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:15:04.073270+00:00",
+      "last_success": "2026-11-20T06:27:04.243476+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.555
+      "duration_seconds": 1.569
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:15:04.073324+00:00",
+      "last_attempt": "2026-11-20T06:27:04.243534+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:15:09.246650+00:00",
+      "last_success": "2026-11-20T06:27:04.402224+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.173
+      "duration_seconds": 0.159
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:15:09.246684+00:00",
+      "last_attempt": "2026-11-20T06:27:04.402259+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:15:16.067224+00:00",
+      "last_success": "2026-11-20T06:27:11.349653+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.821
+      "duration_seconds": 6.947
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:15:16.067286+00:00",
+      "last_attempt": "2026-11-20T06:27:11.349726+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:15:58.174398+00:00",
+      "last_success": "2026-11-20T06:27:52.092153+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 42.107,
+      "duration_seconds": 40.742,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-20T06:15:16.305610+00:00",
+          "checked_at": "2026-11-20T06:27:11.811168+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-20T06:15:25.676581+00:00",
+          "checked_at": "2026-11-20T06:27:21.462125+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-20T06:15:25.777287+00:00",
+          "checked_at": "2026-11-20T06:27:21.567292+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-20T06:15:25.777298+00:00",
+          "checked_at": "2026-11-20T06:27:21.567303+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -55617,12 +55663,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:15:58.174450+00:00",
+      "last_attempt": "2026-11-20T06:25:52.906008+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:15:58.426686+00:00",
+      "last_success": "2026-11-20T06:25:53.142289+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.252,
+      "duration_seconds": 0.236,
       "latest_build": "cc41a015f052cffce814ef5cda88224c8230b393468586c932677913d3b1cc37",
       "builds_retained": 48,
       "identifiers": 9661
@@ -55630,12 +55676,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T06:13:51.249186+00:00",
+      "last_attempt": "2026-11-20T06:25:53.242294+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:13:51.531122+00:00",
+      "last_success": "2026-11-20T06:25:53.556834+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.282,
+      "duration_seconds": 0.315,
       "latest_build": "65d8137acf16d46dd56656e34ccca1e3e73739ee",
       "builds_retained": 36,
       "identifiers": 6943
@@ -55643,12 +55689,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T06:13:51.635563+00:00",
+      "last_attempt": "2026-11-20T06:25:53.662136+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:13:52.040213+00:00",
+      "last_success": "2026-11-20T06:25:54.023822+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.405,
+      "duration_seconds": 0.362,
       "latest_build": "e65a41b64954fb307ff4d8c2a45612d391828a1c",
       "builds_retained": 52,
       "identifiers": 10785
@@ -55656,21 +55702,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T06:15:58.528929+00:00",
+      "last_attempt": "2026-11-20T06:27:52.092219+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1028,
-      "duration_seconds": 10.744
+      "consecutive_failures": 1034,
+      "duration_seconds": 10.473
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-20T06:10:03.913142+00:00",
+      "last_attempt": "2026-11-20T06:26:05.092118+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:10:04.165338+00:00",
+      "last_success": "2026-11-20T06:26:05.365251+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.252,
+      "duration_seconds": 0.273,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -55678,52 +55724,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:16:09.278986+00:00",
+      "last_attempt": "2026-11-20T06:28:02.572001+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:16:14.122928+00:00",
+      "last_success": "2026-11-20T06:28:07.355172+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.844
+      "duration_seconds": 4.783
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:16:14.122986+00:00",
+      "last_attempt": "2026-11-20T06:28:07.355249+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:16:16.003329+00:00",
+      "last_success": "2026-11-20T06:28:09.240100+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.88
+      "duration_seconds": 1.885
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T06:14:08.864678+00:00",
+      "last_attempt": "2026-11-20T06:26:12.298135+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:14:16.718977+00:00",
+      "last_success": "2026-11-20T06:26:19.120314+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.854
+      "duration_seconds": 6.822
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:16:16.003377+00:00",
+      "last_attempt": "2026-11-20T06:28:09.240152+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:16:17.675884+00:00",
+      "last_success": "2026-11-20T06:28:10.856466+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.673
+      "duration_seconds": 1.616
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:16:17.675920+00:00",
+      "last_attempt": "2026-11-20T06:28:10.856504+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:16:17.799270+00:00",
+      "last_success": "2026-11-20T06:28:10.943064+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.123
+      "duration_seconds": 0.087
     }
   },
   "identities": {
