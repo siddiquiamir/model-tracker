@@ -1,17 +1,79 @@
 {
-  "generated_at": "2026-11-20T12:29:47.433571+00:00",
-  "scan_completed_at": "2026-11-20T12:31:28.785316+00:00",
+  "generated_at": "2026-11-20T12:32:03.932752+00:00",
+  "scan_completed_at": "2026-11-20T12:33:49.940861+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 246,
+    "stories": 247,
     "leaks": 43,
     "releases": 80,
-    "stories_24h": 57,
-    "sources_ok": 13,
-    "total_cards": 548,
-    "new_in_this_scan": 0
+    "stories_24h": 58,
+    "sources_ok": 12,
+    "total_cards": 549,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-daisyrose",
+      "group": "daisyrose",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Daisyrose",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-20T12:33:12.593049+00:00",
+      "updated_at": "2026-11-20T12:33:12.593049+00:00",
+      "first_source": "Registry Update",
+      "lead": "",
+      "released_on": "2026-11-20",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "daisyrose-27b",
+          "name": "nano-gpt/radixark/daisyrose-27b",
+          "released_on": "2026-11-20"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-api",
+          "detected_at": "2026-11-20T12:33:12.593049+00:00",
+          "title": "daisyrose-27b",
+          "url": "https://models.dev/api.json?type=all",
+          "backfill": false,
+          "build": "4bbf96a77df26ff5f6ac718347693933b51c111edd1e6b7edddd943effa61205",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/4bbf96a77df26ff5f6ac718347693933b51c111edd1e6b7edddd943effa61205.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-78eca1e1b0da5c179b48"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "nano-gpt/radixark/daisyrose-27b",
+          "family": "daisyrose-27b",
+          "file_path": "api.json?type=all",
+          "file_sha256": "4bbf96a77df26ff5f6ac718347693933b51c111edd1e6b7edddd943effa61205",
+          "excerpt": "{\"nano-gpt/radixark/daisyrose-27b\": {\"id\": \"radixark/daisyrose-27b\", \"name\": \"DaisyRose 27B\", \"description\": \"DaisyRose 27B is RadixArk\\u2019s multimodal reasoning model for coding, tool use and long-horizon agent tasks. Built from Qwen3.8-27B using reinforcement learning without supervised fine-tuning or distillation, it accepts text and images and returns text. It supports function calling, JSON-schema output and a 262,144-token context window, with up to 65,536 output tokens. Thinking is on by default; choose low, medium or high effort, or turn it off. The weights are released under Apache 2.0.\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"low\", \"medium\", \"high\"]}], \"tool_call\": true, \"structured_output\": true, \"release_date\": \"2026-11-20\", \"last_updated\": \"2026-11-20\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 262144, \"input\": 262144, \"output\": 65536}, \"cost\": {\"input\": 0.15, \"output\": 1.875, \"cache_read\": 0.0375}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "4bbf96a77df26ff5f6ac718347693933b51c111edd1e6b7edddd943effa61205",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-20T12:33:12.213161+00:00"
+        }
+      ],
+      "x_post_text": "Registry Update 4bbf96a77df2: daisyrose-27b\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "story-nvidia-nemotron-3-5-transcribe",
       "group": "nvidia-nemotron-3-5-transcribe",
@@ -19071,6 +19133,92 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-78eca1e1b0da5c179b48",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "daisyrose-27b",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "daisyrose-27b",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "nano-gpt/radixark/daisyrose-27b",
+          "name": "nano-gpt/radixark/daisyrose-27b",
+          "registry_update": true,
+          "released_on": "2026-11-20"
+        }
+      ],
+      "detected_at": "2026-11-20T12:33:12.593049+00:00",
+      "first_seen": "2026-11-20T12:33:12.213161+00:00",
+      "observed_at": "2026-11-20T12:33:12.593049+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "ba6f95b0203c5407cf2200e57ad2c3f34d009be1100987dfc82ca768d7db4cdc -> 4bbf96a77df26ff5f6ac718347693933b51c111edd1e6b7edddd943effa61205",
+      "build": "4bbf96a77df26ff5f6ac718347693933b51c111edd1e6b7edddd943effa61205",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "4bbf96a77df26ff5f6ac718347693933b51c111edd1e6b7edddd943effa61205",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/4bbf96a77df26ff5f6ac718347693933b51c111edd1e6b7edddd943effa61205.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/4bbf96a77df26ff5f6ac718347693933b51c111edd1e6b7edddd943effa61205.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "nano-gpt/radixark/daisyrose-27b",
+          "family": "daisyrose-27b",
+          "file_path": "api.json?type=all",
+          "file_sha256": "4bbf96a77df26ff5f6ac718347693933b51c111edd1e6b7edddd943effa61205",
+          "excerpt": "{\"nano-gpt/radixark/daisyrose-27b\": {\"id\": \"radixark/daisyrose-27b\", \"name\": \"DaisyRose 27B\", \"description\": \"DaisyRose 27B is RadixArk\\u2019s multimodal reasoning model for coding, tool use and long-horizon agent tasks. Built from Qwen3.8-27B using reinforcement learning without supervised fine-tuning or distillation, it accepts text and images and returns text. It supports function calling, JSON-schema output and a 262,144-token context window, with up to 65,536 output tokens. Thinking is on by default; choose low, medium or high effort, or turn it off. The weights are released under Apache 2.0.\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"low\", \"medium\", \"high\"]}], \"tool_call\": true, \"structured_output\": true, \"release_date\": \"2026-11-20\", \"last_updated\": \"2026-11-20\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 262144, \"input\": 262144, \"output\": 65536}, \"cost\": {\"input\": 0.15, \"output\": 1.875, \"cache_read\": 0.0375}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "4bbf96a77df26ff5f6ac718347693933b51c111edd1e6b7edddd943effa61205",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-20T12:33:12.213161+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-20T12:33:15.187936+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 4bbf96a77df2: nano-gpt/radixark/daisyrose-27b\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "hf-nvidia_NVIDIA-Nemotron-3.5-Transcribe-30B-A4B-GGUF",
       "category": "open-source",
@@ -55902,15 +56050,15 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:30:53.250199+00:00",
+      "last_attempt": "2026-11-20T12:33:11.728868+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:30:53.635991+00:00",
+      "last_success": "2026-11-20T12:33:15.187936+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.386,
-      "latest_build": "ba6f95b0203c5407cf2200e57ad2c3f34d009be1100987dfc82ca768d7db4cdc",
-      "builds_retained": 52,
-      "identifiers": 9665
+      "duration_seconds": 3.459,
+      "latest_build": "4bbf96a77df26ff5f6ac718347693933b51c111edd1e6b7edddd943effa61205",
+      "builds_retained": 53,
+      "identifiers": 9666
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
@@ -55941,11 +56089,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T12:30:54.518281+00:00",
+      "last_attempt": "2026-11-20T12:33:15.381545+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1209,
-      "duration_seconds": 20.952
+      "consecutive_failures": 1210,
+      "duration_seconds": 20.775
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -55965,61 +56113,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:29:47.433666+00:00",
+      "last_attempt": "2026-11-20T12:32:03.932828+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:29:50.294018+00:00",
+      "last_success": "2026-11-20T12:32:08.946561+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.86
+      "duration_seconds": 5.014
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:29:50.294080+00:00",
+      "last_attempt": "2026-11-20T12:32:08.946618+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:29:50.531609+00:00",
+      "last_success": "2026-11-20T12:32:09.183273+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.238
+      "duration_seconds": 0.237
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:29:50.531677+00:00",
+      "last_attempt": "2026-11-20T12:32:09.183312+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:29:58.863430+00:00",
+      "last_success": "2026-11-20T12:32:18.313216+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.332
+      "duration_seconds": 9.13
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:29:58.863501+00:00",
+      "last_attempt": "2026-11-20T12:32:18.313288+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:30:53.250138+00:00",
+      "last_success": "2026-11-20T12:33:11.728811+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 54.387,
+      "duration_seconds": 53.416,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-20T12:29:59.384106+00:00",
+          "checked_at": "2026-11-20T12:32:18.667758+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-20T12:30:10.763989+00:00",
+          "checked_at": "2026-11-20T12:32:30.586809+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-20T12:30:10.972472+00:00",
+          "checked_at": "2026-11-20T12:32:30.759587+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-20T12:30:10.972490+00:00",
+          "checked_at": "2026-11-20T12:32:30.759604+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -56027,15 +56175,15 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:30:53.250199+00:00",
+      "last_attempt": "2026-11-20T12:33:11.728868+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:30:53.635991+00:00",
+      "last_success": "2026-11-20T12:33:15.187936+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.386,
-      "latest_build": "ba6f95b0203c5407cf2200e57ad2c3f34d009be1100987dfc82ca768d7db4cdc",
-      "builds_retained": 52,
-      "identifiers": 9665
+      "duration_seconds": 3.459,
+      "latest_build": "4bbf96a77df26ff5f6ac718347693933b51c111edd1e6b7edddd943effa61205",
+      "builds_retained": 53,
+      "identifiers": 9666
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
@@ -56066,11 +56214,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T12:30:54.518281+00:00",
+      "last_attempt": "2026-11-20T12:33:15.381545+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1209,
-      "duration_seconds": 20.952
+      "consecutive_failures": 1210,
+      "duration_seconds": 20.775
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -56088,22 +56236,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:31:15.477621+00:00",
+      "last_attempt": "2026-11-20T12:33:36.163999+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:31:24.549317+00:00",
+      "last_success": "2026-11-20T12:33:44.956726+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.072
+      "duration_seconds": 8.793
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:31:24.549386+00:00",
+      "last_attempt": "2026-11-20T12:33:44.956784+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:31:26.747517+00:00",
+      "last_success": "2026-11-20T12:33:47.934227+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.198
+      "duration_seconds": 2.977
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -56118,26 +56266,26 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:31:26.747572+00:00",
+      "last_attempt": "2026-11-20T12:33:47.934275+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:31:28.214034+00:00",
+      "last_success": "2026-11-20T12:33:49.396128+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.466
+      "duration_seconds": 1.462
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:31:28.214084+00:00",
+      "last_attempt": "2026-11-20T12:33:49.396164+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:31:28.274535+00:00",
+      "last_success": "2026-11-20T12:33:49.517407+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.06
+      "duration_seconds": 0.121
     }
   },
   "identities": {
-    "identifiers": 30741,
+    "identifiers": 30742,
     "declared_aliases": 17871,
     "pending_candidates": 0
   },
@@ -56159,8 +56307,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 261,
-      "events": 261,
+      "complete": 262,
+      "events": 262,
       "rate": 1.0
     },
     "source_health": {
