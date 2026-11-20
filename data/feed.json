@@ -1,17 +1,66 @@
 {
-  "generated_at": "2026-11-20T06:27:02.674582+00:00",
-  "scan_completed_at": "2026-11-20T06:28:11.876373+00:00",
+  "generated_at": "2026-11-20T06:39:10.955364+00:00",
+  "scan_completed_at": "2026-11-20T06:40:27.031434+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 245,
-    "leaks": 42,
+    "stories": 246,
+    "leaks": 43,
     "releases": 79,
-    "stories_24h": 56,
-    "sources_ok": 11,
-    "total_cards": 544,
+    "stories_24h": 57,
+    "sources_ok": 12,
+    "total_cards": 545,
     "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-gteforsequenceclassification",
+      "group": "gteforsequenceclassification",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "GteForSequenceClassification",
+      "provider_slug": "opensource",
+      "provider_name": "Architecture Diff",
+      "accent_color": "#8b5cf6",
+      "detected_at": "2026-11-20T06:40:22.518219+00:00",
+      "updated_at": "2026-11-20T06:40:22.518219+00:00",
+      "first_source": "vLLM registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "gteforsequenceclassification"
+      ],
+      "models": [
+        {
+          "id": "GteForSequenceClassification",
+          "name": "GteForSequenceClassification"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM registry",
+          "scanner": "vllm-registry",
+          "detected_at": "2026-11-20T06:40:22.518219+00:00",
+          "title": "New Engine Architecture: GteForSequenceClassification",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · ARCHITECTURE DIFF",
+      "card_ids": [
+        "vllm-arch-cb8bb97ea8"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: GteForSequenceClassification by Architecture Diff\n\nFirst detected 20 Nov 06:40 UTC in vLLM registry\nCodename: gteforsequenceclassification\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-20T06:40:27.029818+00:00"
+    },
     {
       "id": "story-wemm-video",
       "group": "wemm-video",
@@ -18963,6 +19012,46 @@
     }
   ],
   "cards": [
+    {
+      "id": "vllm-arch-cb8bb97ea8",
+      "category": "open-source",
+      "scanner": "vllm-registry",
+      "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
+      "title": "New Engine Architecture: GteForSequenceClassification",
+      "subtitle": "New model_executor/models/registry.py architecture declarations",
+      "build_label": "Registry File",
+      "build_transition": "vllm/model_executor/models/registry.py",
+      "models": [
+        {
+          "id": "GteForSequenceClassification",
+          "name": "GteForSequenceClassification"
+        }
+      ],
+      "evidence": "vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+      "source_text": "official vLLM model architecture registry.",
+      "disclaimer_1": "Tracks only model architecture class registrations in registry.py.",
+      "disclaimer_2": "Open-source labs register their architecture classes here prior to weight drops.",
+      "provider_name": "VLLM REGISTRY",
+      "provider_slug": "opensource",
+      "accent_color": "#8b5cf6",
+      "links": [
+        {
+          "label": "vLLM registry.py",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py"
+        },
+        {
+          "label": "Supported Models Docs",
+          "url": "https://docs.vllm.ai/en/latest/models/supported_models.html"
+        }
+      ],
+      "detected_at": "2026-11-20T06:40:22.518219+00:00",
+      "tracker_observed_at": "2026-11-20T06:40:24.261684+00:00",
+      "codenames": [
+        "gteforsequenceclassification"
+      ],
+      "pricing": null,
+      "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: GteForSequenceClassification spotted in Registry File vllm/model_executor/models/registry.py!\n\n• GteForSequenceClassification (GteForSequenceClassification)\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM model architecture registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "engine-pr-vllm-project_vllm-68875",
       "category": "open-source",
@@ -55538,25 +55627,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:25:52.906008+00:00",
+      "last_attempt": "2026-11-20T06:40:04.919623+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:25:53.142289+00:00",
+      "last_success": "2026-11-20T06:40:07.169834+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.236,
-      "latest_build": "cc41a015f052cffce814ef5cda88224c8230b393468586c932677913d3b1cc37",
-      "builds_retained": 48,
-      "identifiers": 9661
+      "duration_seconds": 2.25,
+      "latest_build": "da1e9af668d06cbfc7d603f3800817681b4e2f92633cf134b45eec22066a170f",
+      "builds_retained": 50,
+      "identifiers": 9665
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T06:25:53.242294+00:00",
+      "last_attempt": "2026-11-20T06:38:00.289617+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:25:53.556834+00:00",
+      "last_success": "2026-11-20T06:38:00.588964+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.315,
+      "duration_seconds": 0.3,
       "latest_build": "65d8137acf16d46dd56656e34ccca1e3e73739ee",
       "builds_retained": 36,
       "identifiers": 6943
@@ -55564,24 +55653,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T06:25:53.662136+00:00",
+      "last_attempt": "2026-11-20T06:38:00.700982+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:25:54.023822+00:00",
+      "last_success": "2026-11-20T06:38:11.557943+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.362,
-      "latest_build": "e65a41b64954fb307ff4d8c2a45612d391828a1c",
-      "builds_retained": 52,
-      "identifiers": 10785
+      "duration_seconds": 10.857,
+      "latest_build": "9a9ecdd605f101d74fdc8159c69a542e23e97658",
+      "builds_retained": 54,
+      "identifiers": 10791
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T06:27:52.092219+00:00",
+      "last_attempt": "2026-11-20T06:40:07.272754+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1034,
-      "duration_seconds": 10.473
+      "consecutive_failures": 1040,
+      "duration_seconds": 10.48
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -55601,61 +55690,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:27:02.674647+00:00",
+      "last_attempt": "2026-11-20T06:39:10.955432+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:27:04.243476+00:00",
+      "last_success": "2026-11-20T06:39:12.682235+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.569
+      "duration_seconds": 1.727
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:27:04.243534+00:00",
+      "last_attempt": "2026-11-20T06:39:12.682295+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:27:04.402224+00:00",
+      "last_success": "2026-11-20T06:39:12.817341+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.159
+      "duration_seconds": 0.135
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:27:04.402259+00:00",
+      "last_attempt": "2026-11-20T06:39:12.817374+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:27:11.349653+00:00",
+      "last_success": "2026-11-20T06:39:21.401550+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.947
+      "duration_seconds": 8.584
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:27:11.349726+00:00",
+      "last_attempt": "2026-11-20T06:39:21.401649+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:27:52.092153+00:00",
+      "last_success": "2026-11-20T06:40:04.919547+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 40.742,
+      "duration_seconds": 43.518,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-20T06:27:11.811168+00:00",
+          "checked_at": "2026-11-20T06:39:21.848450+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-20T06:27:21.462125+00:00",
+          "checked_at": "2026-11-20T06:39:31.767215+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-20T06:27:21.567292+00:00",
+          "checked_at": "2026-11-20T06:39:31.856564+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-20T06:27:21.567303+00:00",
+          "checked_at": "2026-11-20T06:39:31.856584+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -55663,25 +55752,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:25:52.906008+00:00",
+      "last_attempt": "2026-11-20T06:40:04.919623+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:25:53.142289+00:00",
+      "last_success": "2026-11-20T06:40:07.169834+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.236,
-      "latest_build": "cc41a015f052cffce814ef5cda88224c8230b393468586c932677913d3b1cc37",
-      "builds_retained": 48,
-      "identifiers": 9661
+      "duration_seconds": 2.25,
+      "latest_build": "da1e9af668d06cbfc7d603f3800817681b4e2f92633cf134b45eec22066a170f",
+      "builds_retained": 50,
+      "identifiers": 9665
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T06:25:53.242294+00:00",
+      "last_attempt": "2026-11-20T06:38:00.289617+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:25:53.556834+00:00",
+      "last_success": "2026-11-20T06:38:00.588964+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.315,
+      "duration_seconds": 0.3,
       "latest_build": "65d8137acf16d46dd56656e34ccca1e3e73739ee",
       "builds_retained": 36,
       "identifiers": 6943
@@ -55689,24 +55778,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T06:25:53.662136+00:00",
+      "last_attempt": "2026-11-20T06:38:00.700982+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:25:54.023822+00:00",
+      "last_success": "2026-11-20T06:38:11.557943+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.362,
-      "latest_build": "e65a41b64954fb307ff4d8c2a45612d391828a1c",
-      "builds_retained": 52,
-      "identifiers": 10785
+      "duration_seconds": 10.857,
+      "latest_build": "9a9ecdd605f101d74fdc8159c69a542e23e97658",
+      "builds_retained": 54,
+      "identifiers": 10791
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T06:27:52.092219+00:00",
+      "last_attempt": "2026-11-20T06:40:07.272754+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1034,
-      "duration_seconds": 10.473
+      "consecutive_failures": 1040,
+      "duration_seconds": 10.48
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -55724,57 +55813,57 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:28:02.572001+00:00",
+      "last_attempt": "2026-11-20T06:40:17.758472+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:28:07.355172+00:00",
+      "last_success": "2026-11-20T06:40:22.514521+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.783
+      "duration_seconds": 4.756
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:28:07.355249+00:00",
+      "last_attempt": "2026-11-20T06:40:22.514609+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:28:09.240100+00:00",
+      "last_success": "2026-11-20T06:40:24.261684+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.885
+      "duration_seconds": 1.747
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T06:26:12.298135+00:00",
+      "last_attempt": "2026-11-20T06:38:29.787872+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:26:19.120314+00:00",
+      "last_success": "2026-11-20T06:38:42.440904+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.822
+      "duration_seconds": 12.653
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:28:09.240152+00:00",
+      "last_attempt": "2026-11-20T06:40:24.261732+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:28:10.856466+00:00",
+      "last_success": "2026-11-20T06:40:25.914638+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.616
+      "duration_seconds": 1.653
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T06:28:10.856504+00:00",
+      "last_attempt": "2026-11-20T06:40:25.914674+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T06:28:10.943064+00:00",
+      "last_success": "2026-11-20T06:40:26.038628+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.087
+      "duration_seconds": 0.124
     }
   },
   "identities": {
-    "identifiers": 30719,
-    "declared_aliases": 17849,
+    "identifiers": 30729,
+    "declared_aliases": 17859,
     "pending_candidates": 0
   },
   "intelligence_metrics": {
