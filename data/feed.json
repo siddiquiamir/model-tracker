@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-20T02:49:06.784264+00:00",
-  "scan_completed_at": "2026-11-20T02:50:17.830129+00:00",
+  "generated_at": "2026-11-20T02:53:07.109257+00:00",
+  "scan_completed_at": "2026-11-20T02:54:16.104971+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 241,
     "leaks": 41,
     "releases": 77,
     "stories_24h": 54,
-    "sources_ok": 11,
-    "total_cards": 518,
+    "sources_ok": 12,
+    "total_cards": 519,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -56,8 +56,8 @@
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Hy4 by Tencent Hunyuan\n\nFirst detected 20 Nov 02:50 UTC in Hugging Face\n📅 First released: 2026-08-28\n\nvia @StatsWire",
-      "discord_alerted_at": "2026-11-20T02:50:17.828053+00:00"
+      "discord_alerted_at": "2026-11-20T02:50:17.828053+00:00",
+      "x_post_text": "🟢 NEW MODEL: Hy4 by Tencent Hunyuan\n\nFirst detected 20 Nov 02:50 UTC in Hugging Face\n📅 First released: 2026-08-28\n\nvia @StatsWire"
     },
     {
       "id": "story-databricks-gemini-4-carbon",
@@ -11725,7 +11725,7 @@
         {
           "label": "Antigravity desktop build",
           "scanner": "antigravity",
-          "detected_at": "2026-11-20T00:09:27Z",
+          "detected_at": "2026-11-19T11:01:05Z",
           "title": "Gemini 4 Neon",
           "url": "https://storage.googleapis.com/antigravity-public/insiders/latest-x64-linux.yml",
           "backfill": false,
@@ -11772,6 +11772,7 @@
         "lmarena-lb-diff-7e9a2868",
         "intel-df128bc4e900683c69fc",
         "intel-e222c9d7c403029294c0",
+        "ag-2.33.0-1.0.20261119110105__Insiders_-gemini-4-neon",
         "intel-f9e42c90bb380346d59a",
         "intel-bbf2871d990bd52eeb51",
         "intel-0fbf3ed7e363f94fa4de",
@@ -11782,7 +11783,6 @@
         "intel-9208edbd0ade1564748f",
         "intel-79aac7741cda97c5b7c6",
         "intel-7721e5c64d0c887607d2",
-        "ag-2.33.0-1.0.20261120000927__Insiders_-gemini-4-neon",
         "ag-acp-1.5.0-1.5.2-diff",
         "intel-0340217fd4207873201c"
       ],
@@ -12879,10 +12879,10 @@
       "open_weights": true,
       "title": "Hy4 flash",
       "provider_slug": "unknown",
-      "provider_name": "nano-gpt",
+      "provider_name": "Tencent",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-16T07:02:21.215900+00:00",
-      "updated_at": "2026-11-19T21:15:05.484298+00:00",
+      "updated_at": "2026-11-20T02:53:11Z",
       "first_source": "models.dev",
       "lead": "2 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "2026-11-16",
@@ -12896,7 +12896,8 @@
         },
         {
           "id": "Hy4-flash-FP8",
-          "name": "Hy4-flash-FP8"
+          "name": "Hy4-flash-FP8",
+          "released_on": "2026-11-17"
         },
         {
           "id": "Hy4-flash-base",
@@ -12969,11 +12970,21 @@
           "backfill": false,
           "build": "9fd6c748b02f8d232e470dec557dfe8c1603a9d854b698b5db77b64f7594df9a",
           "evidence_path": "data/intelligence/evidence/models-dev-api/9fd6c748b02f8d232e470dec557dfe8c1603a9d854b698b5db77b64f7594df9a.json.gz"
+        },
+        {
+          "label": "vLLM pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-11-20T02:53:11Z",
+          "title": "tencent/Hy4-flash-FP8 (vLLM PR #68839)",
+          "url": "https://github.com/vllm-project/vllm/pull/68839",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 6,
+      "source_count": 7,
       "backfill": false,
-      "header": "OPEN WEIGHTS · NANO-GPT",
+      "header": "OPEN WEIGHTS · TENCENT",
       "card_ids": [
         "models-dev-diff-abdef707",
         "vercel-gateway-diff-a414101e",
@@ -12989,7 +13000,8 @@
         "intel-4e39821e4406625dbdcf",
         "intel-42635e094c78310946f5",
         "intel-e3b0d800751ba74fc262",
-        "intel-1a7bac926e235590c697"
+        "intel-1a7bac926e235590c697",
+        "engine-pr-vllm-project_vllm-68839"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -13112,7 +13124,8 @@
           "first_seen": "2026-11-19T21:15:05.179889+00:00"
         }
       ],
-      "x_post_text": "🟢 NEW MODEL: Hy4 flash by nano-gpt\n\nFirst detected 16 Nov 07:02 UTC in models.dev\n📅 First released: 2026-11-16\n⏱ 2 min before it went live on Vercel AI Gateway Catalog\nConfirmed by Vercel AI Gateway Catalog, Opencode Zen Stealth & Model Gateway, OpenRouter +2\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Hy4 flash by Tencent\n\nFirst detected 16 Nov 07:02 UTC in models.dev\n📅 First released: 2026-11-16\n⏱ 2 min before it went live on Vercel AI Gateway Catalog\nConfirmed by Vercel AI Gateway Catalog, Opencode Zen Stealth & Model Gateway, OpenRouter +3\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-20T02:54:16.102804+00:00"
     },
     {
       "id": "story-sage-s-2-1",
@@ -18584,6 +18597,40 @@
   ],
   "cards": [
     {
+      "id": "engine-pr-vllm-project_vllm-68839",
+      "category": "open-source",
+      "scanner": "engine-pr-leak",
+      "header": "VLLM PR DAY-0 MODEL ONBOARDING (OPEN)",
+      "title": "tencent/Hy4-flash-FP8 (vLLM PR #68839)",
+      "subtitle": "[Model][ROCm] Hy4-Flash Enablement and recipe",
+      "build_label": "vLLM PR",
+      "build_transition": "PR #68839 (open)",
+      "models": [
+        {
+          "id": "tencent/Hy4-flash-FP8",
+          "name": "Hy4-flash-FP8",
+          "released_on": "2026-11-17"
+        }
+      ],
+      "evidence": "vllm-project/vllm/pull/68839",
+      "source_text": "public GitHub pull request #68839 on vllm-project/vllm.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "VLLM PR",
+      "provider_slug": "opensource",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "vllm-project/vllm PR #68839",
+          "url": "https://github.com/vllm-project/vllm/pull/68839"
+        }
+      ],
+      "detected_at": "2026-11-20T02:53:11Z",
+      "tracker_observed_at": "2026-11-20T02:53:41.422014+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 VLLM PR DAY-0 MODEL ONBOARDING (OPEN)\ntencent/Hy4-flash-FP8 (vLLM PR #68839) spotted in vLLM PR PR #68839 (open)!\n\n• Hy4-flash-FP8 (tencent/Hy4-flash-FP8)\n\nEvidence: vllm-project/vllm/pull/68839\nSource: public GitHub pull request #68839 on vllm-project/vllm.\n\nTracked by @StatsWire"
+    },
+    {
       "id": "hf-tencent_Hy4-FP8",
       "category": "open-source",
       "scanner": "huggingface",
@@ -19010,66 +19057,6 @@
       "filtered_released": 1,
       "pricing": null,
       "x_post_text": "🚨 ANTIGRAVITY ACP (UNMANIFESTED DROP) · GOOGLE\nGemini 4 Neon (ACP v1.5.2 Discovery Doc) spotted in Discovery Doc Diff v1.5.0 -> v1.5.2 · 94,747,992 -> 94,651,536 bytes (-96,456)!\n\n• Gemini 4 Neon (gemini-4-neon)\n\nEvidence: agy_acp_server.par -> google3/google/internal/cloud/code/cloudcode-pa_prod_google_rest_v1internal.json\nSource: official Google Antigravity ACP Server release archives on dl.google.com.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "ag-2.33.0-1.0.20261120000927__Insiders_-gemini-4-neon",
-      "category": "desktop-diff",
-      "scanner": "antigravity",
-      "header": "ANTIGRAVITY DESKTOP DIFF · GOOGLE",
-      "title": "Gemini 4 Neon",
-      "subtitle": "Verified desktop build comparison",
-      "build_label": "Build",
-      "build_transition": "2.33.0 -> 1.0.20261120000927 (Insiders)",
-      "old_version": "2.33.0",
-      "new_version": "1.0.20261120000927 (Insiders)",
-      "models": [
-        {
-          "id": "gemini-4-neon",
-          "name": "Gemini 4 Neon",
-          "released_on": "2026-11-18"
-        },
-        {
-          "id": "gemini-4-neon-high",
-          "name": "Gemini 4 Neon (High)",
-          "released_on": "2026-11-18"
-        },
-        {
-          "id": "gemini-4-neon-low",
-          "name": "Gemini 4 Neon (Low)",
-          "released_on": "2026-11-18"
-        },
-        {
-          "id": "gemini-4-neon-medium",
-          "name": "Gemini 4 Neon (Medium)",
-          "released_on": "2026-11-18"
-        },
-        {
-          "id": "gemini-4-neon-xhigh",
-          "name": "Gemini 4 Neon XHigh",
-          "released_on": "2026-11-18"
-        }
-      ],
-      "evidence": "resources/bin/language_server",
-      "source_text": "official public Linux x64 release archives.",
-      "disclaimer_1": "Verified differences between existing builds; this is not a newly published release announcement.",
-      "disclaimer_2": "Compiled-in names and identifiers. This does not confirm model rollout or account access.",
-      "provider_name": "GOOGLE",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "Public release feed",
-          "url": "https://storage.googleapis.com/antigravity-public/insiders/latest-x64-linux.yml"
-        },
-        {
-          "label": "Official build",
-          "url": "https://storage.googleapis.com/antigravity-public/insiders/1.0.20261120000927/unsigned/language_server-linux-x64"
-        }
-      ],
-      "detected_at": "2026-11-20T00:09:27Z",
-      "tracker_observed_at": "2026-11-20T02:50:12.906470+00:00",
-      "pricing": null,
-      "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini 4 Neon spotted in Build 2.33.0 -> 1.0.20261120000927 (Insiders)!\n\n• Gemini 4 Neon (gemini-4-neon)\n• Gemini 4 Neon (High) (gemini-4-neon-high)\n• Gemini 4 Neon (Low) (gemini-4-neon-low)\n• Gemini 4 Neon (Medium) (gemini-4-neon-medium)\n• Gemini 4 Neon XHigh (gemini-4-neon-xhigh)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
     {
       "id": "vercel-gateway-diff-feb428b5",
@@ -25664,6 +25651,66 @@
       "tracker_observed_at": "2026-11-19T12:40:41.896686+00:00",
       "pricing": null,
       "x_post_text": "models.dev source definitions 2039db46130d: crossmodel/gemini/gemini-4-neon\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/2039db46130db24f5340c3badb9630943f1165e8"
+    },
+    {
+      "id": "ag-2.33.0-1.0.20261119110105__Insiders_-gemini-4-neon",
+      "category": "desktop-diff",
+      "scanner": "antigravity",
+      "header": "ANTIGRAVITY DESKTOP DIFF · GOOGLE",
+      "title": "Gemini 4 Neon",
+      "subtitle": "Verified desktop build comparison",
+      "build_label": "Build",
+      "build_transition": "2.33.0 -> 1.0.20261119110105 (Insiders)",
+      "old_version": "2.33.0",
+      "new_version": "1.0.20261119110105 (Insiders)",
+      "models": [
+        {
+          "id": "gemini-4-neon",
+          "name": "Gemini 4 Neon",
+          "released_on": "2026-11-18"
+        },
+        {
+          "id": "gemini-4-neon-high",
+          "name": "Gemini 4 Neon (High)",
+          "released_on": "2026-11-18"
+        },
+        {
+          "id": "gemini-4-neon-low",
+          "name": "Gemini 4 Neon (Low)",
+          "released_on": "2026-11-18"
+        },
+        {
+          "id": "gemini-4-neon-medium",
+          "name": "Gemini 4 Neon (Medium)",
+          "released_on": "2026-11-18"
+        },
+        {
+          "id": "gemini-4-neon-xhigh",
+          "name": "Gemini 4 Neon XHigh",
+          "released_on": "2026-11-18"
+        }
+      ],
+      "evidence": "resources/bin/language_server",
+      "source_text": "official public Linux x64 release archives.",
+      "disclaimer_1": "Verified differences between existing builds; this is not a newly published release announcement.",
+      "disclaimer_2": "Compiled-in names and identifiers. This does not confirm model rollout or account access.",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "Public release feed",
+          "url": "https://storage.googleapis.com/antigravity-public/insiders/latest-x64-linux.yml"
+        },
+        {
+          "label": "Official build",
+          "url": "https://storage.googleapis.com/antigravity-public/insiders/1.0.20261119110105/unsigned/language_server-linux-x64"
+        }
+      ],
+      "detected_at": "2026-11-19T11:01:05Z",
+      "tracker_observed_at": "2026-11-20T02:54:13.518635+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 ANTIGRAVITY DESKTOP DIFF · GOOGLE\nGemini 4 Neon spotted in Build 2.33.0 -> 1.0.20261119110105 (Insiders)!\n\n• Gemini 4 Neon (gemini-4-neon)\n• Gemini 4 Neon (High) (gemini-4-neon-high)\n• Gemini 4 Neon (Low) (gemini-4-neon-low)\n• Gemini 4 Neon (Medium) (gemini-4-neon-medium)\n• Gemini 4 Neon XHigh (gemini-4-neon-xhigh)\n\nEvidence: resources/bin/language_server\nSource: official public Linux x64 release archives.\n\nTracked by @StatsWire"
     },
     {
       "id": "opencode-zen-diff-af2962e2",
@@ -54030,12 +54077,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T02:47:42.813731+00:00",
+      "last_attempt": "2026-11-20T02:51:43.067369+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T02:47:43.040803+00:00",
+      "last_success": "2026-11-20T02:51:43.283353+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.227,
+      "duration_seconds": 0.216,
       "latest_build": "da53b096f5cd3ab53178d82dc0a3fbe35852dc77c886ea17ed5192e1c60f3f23",
       "builds_retained": 45,
       "identifiers": 9660
@@ -54043,12 +54090,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T02:47:43.233747+00:00",
+      "last_attempt": "2026-11-20T02:51:43.477399+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T02:47:43.556952+00:00",
+      "last_success": "2026-11-20T02:51:43.804616+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.324,
+      "duration_seconds": 0.328,
       "latest_build": "0bd1f864816c80e223edd8079d28e8c41d27b17d",
       "builds_retained": 35,
       "identifiers": 6942
@@ -54056,12 +54103,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T02:41:41.130710+00:00",
+      "last_attempt": "2026-11-20T02:51:44.008280+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T02:41:41.612730+00:00",
+      "last_success": "2026-11-20T02:51:44.434082+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.482,
+      "duration_seconds": 0.426,
       "latest_build": "f0eb553afd3ef6989b9da18c9e367bd1fb04a273",
       "builds_retained": 49,
       "identifiers": 10784
@@ -54069,21 +54116,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T02:49:43.281569+00:00",
+      "last_attempt": "2026-11-20T02:53:41.422084+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 969,
-      "duration_seconds": 20.894
+      "consecutive_failures": 971,
+      "duration_seconds": 22.177
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-20T02:38:01.027299+00:00",
+      "last_attempt": "2026-11-20T02:54:03.606483+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T02:38:01.198336+00:00",
+      "last_success": "2026-11-20T02:54:03.774677+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.171,
+      "duration_seconds": 0.168,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -54093,61 +54140,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T02:49:06.784332+00:00",
+      "last_attempt": "2026-11-20T02:53:07.109331+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T02:49:08.470306+00:00",
+      "last_success": "2026-11-20T02:53:08.704004+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.686
+      "duration_seconds": 1.595
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T02:49:08.470357+00:00",
+      "last_attempt": "2026-11-20T02:53:08.704060+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T02:49:08.561205+00:00",
+      "last_success": "2026-11-20T02:53:08.799904+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.091
+      "duration_seconds": 0.096
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T02:49:08.561239+00:00",
+      "last_attempt": "2026-11-20T02:53:08.799941+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T02:49:13.775148+00:00",
+      "last_success": "2026-11-20T02:53:15.844457+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.214
+      "duration_seconds": 7.045
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T02:49:13.775215+00:00",
+      "last_attempt": "2026-11-20T02:53:15.844550+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T02:49:43.281485+00:00",
+      "last_success": "2026-11-20T02:53:41.422014+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 29.506,
+      "duration_seconds": 25.577,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-20T02:49:13.982448+00:00",
+          "checked_at": "2026-11-20T02:53:16.039892+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-20T02:49:23.401800+00:00",
+          "checked_at": "2026-11-20T02:53:24.727880+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-20T02:49:23.558987+00:00",
+          "checked_at": "2026-11-20T02:53:24.876449+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-20T02:49:23.559004+00:00",
+          "checked_at": "2026-11-20T02:53:24.876466+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -54155,12 +54202,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T02:47:42.813731+00:00",
+      "last_attempt": "2026-11-20T02:51:43.067369+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T02:47:43.040803+00:00",
+      "last_success": "2026-11-20T02:51:43.283353+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.227,
+      "duration_seconds": 0.216,
       "latest_build": "da53b096f5cd3ab53178d82dc0a3fbe35852dc77c886ea17ed5192e1c60f3f23",
       "builds_retained": 45,
       "identifiers": 9660
@@ -54168,12 +54215,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T02:47:43.233747+00:00",
+      "last_attempt": "2026-11-20T02:51:43.477399+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T02:47:43.556952+00:00",
+      "last_success": "2026-11-20T02:51:43.804616+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.324,
+      "duration_seconds": 0.328,
       "latest_build": "0bd1f864816c80e223edd8079d28e8c41d27b17d",
       "builds_retained": 35,
       "identifiers": 6942
@@ -54181,12 +54228,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T02:41:41.130710+00:00",
+      "last_attempt": "2026-11-20T02:51:44.008280+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T02:41:41.612730+00:00",
+      "last_success": "2026-11-20T02:51:44.434082+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.482,
+      "duration_seconds": 0.426,
       "latest_build": "f0eb553afd3ef6989b9da18c9e367bd1fb04a273",
       "builds_retained": 49,
       "identifiers": 10784
@@ -54194,21 +54241,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T02:49:43.281569+00:00",
+      "last_attempt": "2026-11-20T02:53:41.422084+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 969,
-      "duration_seconds": 20.894
+      "consecutive_failures": 971,
+      "duration_seconds": 22.177
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-20T02:38:01.027299+00:00",
+      "last_attempt": "2026-11-20T02:54:03.606483+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T02:38:01.198336+00:00",
+      "last_success": "2026-11-20T02:54:03.774677+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.171,
+      "duration_seconds": 0.168,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -54216,52 +54263,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T02:50:04.182656+00:00",
+      "last_attempt": "2026-11-20T02:54:04.197789+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T02:50:12.906470+00:00",
+      "last_success": "2026-11-20T02:54:13.518635+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.724
+      "duration_seconds": 9.321
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T02:50:12.906544+00:00",
+      "last_attempt": "2026-11-20T02:54:13.518695+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T02:50:14.513836+00:00",
+      "last_success": "2026-11-20T02:54:14.746707+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.607
+      "duration_seconds": 1.228
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T02:42:13.779133+00:00",
+      "last_attempt": "2026-11-20T02:52:17.927660+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T02:42:21.950321+00:00",
+      "last_success": "2026-11-20T02:52:26.018291+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.171
+      "duration_seconds": 8.091
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T02:50:14.513885+00:00",
+      "last_attempt": "2026-11-20T02:54:14.746756+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T02:50:16.772675+00:00",
+      "last_success": "2026-11-20T02:54:15.127816+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.259
+      "duration_seconds": 0.381
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T02:50:16.772713+00:00",
+      "last_attempt": "2026-11-20T02:54:15.127855+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T02:50:16.787163+00:00",
+      "last_success": "2026-11-20T02:54:15.146853+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.014
+      "duration_seconds": 0.019
     }
   },
   "identities": {
