@@ -476,7 +476,8 @@ def infer_provider(model_id: str) -> Dict[str, str]:
     mid = model_id.lower()
     if mid.startswith((
         "gemini", "genie", "lyria", "veo", "imagen", "gemma", "google/", "google-",
-        "nano-banana", "hydrogen-", "helix-", "helium-", "neon-", "cobalt", "snowball",
+        "nano-banana", "paper-volcano", "paper_volcano", "beluga", "narwhal", "harbor-seal", "harbor_seal",
+        "gem-pix", "gem_pix", "gempix", "hydrogen-", "helix-", "helium-", "neon-", "cobalt", "snowball",
         "carbon-", "barium-", "argon-", "hyperion-", "hyperion", "alphafold", "alphagenome", "medlm",
     )):
         return {"name": "GOOGLE", "slug": "google", "color": "#38bdf8"}

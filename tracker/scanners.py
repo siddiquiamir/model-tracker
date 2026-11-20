@@ -4254,6 +4254,82 @@ class HighAlphaLeakChannelsScanner:
         except Exception as exc:
             print(f"[HighAlphaScanner] Gemini Web scan warning: {exc}")
 
+        # 6c. Google Flow (`labs.google/fx/tools/flow` -> `boq-labs-ai-sandbox` model enum)
+        try:
+            flow_req = urllib.request.Request("https://labs.google/fx/tools/flow", headers=browser_hdrs)
+            with urllib.request.urlopen(flow_req, timeout=15) as fresp:
+                flow_html = fresp.read().decode("utf-8", errors="replace").replace("\\/", "/")
+            flow_boq_urls: List[str] = []
+            for u in re.findall(
+                r"https://www\.gstatic\.com/_/mss/boq-labs-ai-sandbox/_/js/[A-Za-z0-9_./=;:,-]+",
+                flow_html,
+            ):
+                if u not in flow_boq_urls:
+                    flow_boq_urls.append(u)
+            if flow_boq_urls:
+                m_fkey = re.search(r"k=(boq-labs-ai-sandbox\.[^/]+)", flow_boq_urls[0])
+                flow_build_key = m_fkey.group(1) if m_fkey else flow_boq_urls[0][-48:]
+                prev_flow_key = wb_state.get("google_flow_build_key", "")
+                prev_flow_models = set(wb_state.get("google_flow_models", []))
+
+                if flow_build_key != prev_flow_key or not prev_flow_models:
+                    flow_found: Set[str] = set()
+                    # Prioritize smaller feature modules (e.g. m=GK5kFd) alongside m=_b
+                    ordered_flow_urls = sorted(flow_boq_urls, key=lambda s: ("m=_b" in s, s))
+                    for js_url in ordered_flow_urls[:4]:
+                        jreq = urllib.request.Request(js_url, headers=browser_hdrs)
+                        with urllib.request.urlopen(jreq, timeout=20) as jresp:
+                            blob = jresp.read().decode("utf-8", errors="replace")
+                        for m_case in re.findall(
+                            r'case\s+\d+\s*:\s*return\s*"([A-Z][A-Z0-9_]{2,48})"',
+                            blob,
+                        ):
+                            # Keep Flow model enum entries (Vertex/GemPix/Imagen/Veo/codenames)
+                            if any(
+                                tok in m_case
+                                for tok in (
+                                    "VERTEX", "GEM_PIX", "IMAGEN_", "VEO_", "LYRIA", "GENIE",
+                                    "BELUGA", "NARWHAL", "HARBOR_SEAL", "PAPER_VOLCANO", "R2I",
+                                )
+                            ):
+                                flow_found.add(m_case.lower().replace("_", "-"))
+
+                    curr_flow_models = sorted(flow_found)
+                    if curr_flow_models:
+                        if prev_flow_models:
+                            added_flow = [m for m in curr_flow_models if m not in prev_flow_models]
+                            if added_flow:
+                                old_fh = self._short_boq_hash(prev_flow_key) if prev_flow_key else "prev"
+                                new_fh = self._short_boq_hash(flow_build_key) if flow_build_key else "latest"
+                                sig = hashlib.sha256(",".join(added_flow[:8]).encode("utf-8")).hexdigest()[:8]
+                                cards.append(
+                                    {
+                                        "id": f"web-bundle-google-flow-{sig}",
+                                        "category": "cli-sdk-diff",
+                                        "scanner": "web-bundle-diff",
+                                        "header": "GOOGLE FLOW BUNDLE DIFF · GOOGLE",
+                                        "title": f"New Google Flow Model: {humanize_model_id(added_flow[0])}",
+                                        "subtitle": f"New model enum entry in labs.google/fx/tools/flow ({old_fh} -> {new_fh})",
+                                        "build_label": "AiSandbox Build",
+                                        "build_transition": f"{old_fh} -> {new_fh} (+{len(added_flow)} model)",
+                                        "models": [{"id": m, "name": humanize_model_id(m)} for m in added_flow[:10]],
+                                        "evidence": f"gstatic.com/_/mss/boq-labs-ai-sandbox ({new_fh})",
+                                        "source_text": "public Google Flow (labs.google/fx/tools/flow) Boq JavaScript model enum.",
+                                        "disclaimer_1": "Extracted from client-side Google Flow JS bundle.",
+                                        "disclaimer_2": "Presence in frontend enum does not confirm public rollout.",
+                                        "provider_name": "GOOGLE",
+                                        "provider_slug": "google",
+                                        "accent_color": "#38bdf8",
+                                        "links": [{"label": "Google Flow", "url": "https://labs.google/fx/tools/flow"}],
+                                        "detected_at": datetime.now(timezone.utc).isoformat(),
+                                    }
+                                )
+                        wb_state["google_flow_models"] = sorted(prev_flow_models | set(curr_flow_models))
+                        wb_state["google_flow_build_key"] = flow_build_key
+                        changed = True
+        except Exception as exc:
+            print(f"[HighAlphaScanner] Google Flow bundle scan warning: {exc}")
+
         if changed:
             baselines["web_bundles"] = wb_state
 
