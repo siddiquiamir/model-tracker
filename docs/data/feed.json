@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-20T04:26:16.007013+00:00",
-  "scan_completed_at": "2026-11-20T04:28:10.948965+00:00",
+  "generated_at": "2026-11-20T04:36:43.125032+00:00",
+  "scan_completed_at": "2026-11-20T04:38:30.984799+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 243,
-    "leaks": 42,
+    "stories": 244,
+    "leaks": 43,
     "releases": 77,
-    "stories_24h": 56,
-    "sources_ok": 15,
-    "total_cards": 523,
+    "stories_24h": 57,
+    "sources_ok": 14,
+    "total_cards": 524,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -71,6 +71,53 @@
         }
       ],
       "x_post_text": "registry evidence, not a launch: databricks-gemini-nano-banana-2-1\nhttps://raw.githubusercontent.com/BerriAI/litellm/65d8137acf16d46dd56656e34ccca1e3e73739ee/model_prices_and_context_window.json"
+    },
+    {
+      "id": "story-amazon-web-search-agent",
+      "group": "amazon-web-search-agent",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Amazon-Web-Search-Agent",
+      "provider_slug": "modelsdev",
+      "provider_name": "Lmarena",
+      "accent_color": "#10b981",
+      "detected_at": "2026-11-20T04:05:55.000Z",
+      "updated_at": "2026-11-20T04:05:55.000Z",
+      "first_source": "LMArena",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Amazon-Web-Search-Agent",
+          "name": "Amazon-Web-Search-Agent"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LMArena",
+          "scanner": "lmarena",
+          "detected_at": "2026-11-20T04:05:55.000Z",
+          "title": "New Model(s) Added to Arena (Amazon-Web-Search-Agent)",
+          "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · LMARENA",
+      "card_ids": [
+        "lmarena-lb-diff-6312bb55"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: Amazon-Web-Search-Agent by Lmarena\n\nFirst detected 20 Nov 04:05 UTC in LMArena\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-20T04:38:30.982673+00:00"
     },
     {
       "id": "story-gpt-5-1-codex-max-system-card",
@@ -18849,6 +18896,39 @@
       "tracker_observed_at": "2026-11-20T04:27:29.367808+00:00",
       "pricing": null,
       "x_post_text": "registry evidence, not a launch: databricks/databricks-gemini-nano-banana-2-1\nhttps://raw.githubusercontent.com/BerriAI/litellm/65d8137acf16d46dd56656e34ccca1e3e73739ee/model_prices_and_context_window.json"
+    },
+    {
+      "id": "lmarena-lb-diff-6312bb55",
+      "category": "cli-sdk-diff",
+      "scanner": "lmarena",
+      "header": "ARENA.AI NEW MODEL DIFF · LMARENA",
+      "title": "New Model(s) Added to Arena (Amazon-Web-Search-Agent)",
+      "subtitle": "Newly added models in official lmarena-ai/leaderboard-dataset",
+      "build_label": "Arena Diff",
+      "build_transition": "+1 new Arena models",
+      "models": [
+        {
+          "id": "Amazon-Web-Search-Agent",
+          "name": "Amazon-Web-Search-Agent (Search Arena)"
+        }
+      ],
+      "evidence": "huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+      "source_text": "official LMArena (arena.ai) Hugging Face dataset.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "ARENA.AI",
+      "provider_slug": "modelsdev",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "LMArena Dataset",
+          "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset"
+        }
+      ],
+      "detected_at": "2026-11-20T04:05:55.000Z",
+      "tracker_observed_at": "2026-11-20T04:38:29.178853+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 ARENA.AI NEW MODEL DIFF · LMARENA\nNew Model(s) Added to Arena (Amazon-Web-Search-Agent) spotted in Arena Diff +1 new Arena models!\n\n• Amazon-Web-Search-Agent (Search Arena) (Amazon-Web-Search-Agent)\n\nEvidence: huggingface.co/datasets/lmarena-ai/leaderboard-dataset\nSource: official LMArena (arena.ai) Hugging Face dataset.\n\nTracked by @StatsWire"
     },
     {
       "id": "pre-release-openai_sitemap_routes-f3fbe99c",
@@ -54570,25 +54650,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T04:27:26.291559+00:00",
+      "last_attempt": "2026-11-20T04:37:36.082148+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:27:26.586496+00:00",
+      "last_success": "2026-11-20T04:37:39.164143+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.295,
-      "latest_build": "7df46498183faf30aca407f15e5e6fde6549fc8d592464e4ae4d0b3b55259287",
-      "builds_retained": 47,
+      "duration_seconds": 3.082,
+      "latest_build": "cc41a015f052cffce814ef5cda88224c8230b393468586c932677913d3b1cc37",
+      "builds_retained": 48,
       "identifiers": 9661
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T04:27:26.779922+00:00",
+      "last_attempt": "2026-11-20T04:35:36.939447+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:27:29.367808+00:00",
+      "last_success": "2026-11-20T04:35:37.312713+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.588,
+      "duration_seconds": 0.374,
       "latest_build": "65d8137acf16d46dd56656e34ccca1e3e73739ee",
       "builds_retained": 36,
       "identifiers": 6943
@@ -54596,34 +54676,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T04:27:29.560334+00:00",
+      "last_attempt": "2026-11-20T04:37:39.357545+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:27:29.974683+00:00",
+      "last_success": "2026-11-20T04:37:46.773668+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.415,
-      "latest_build": "cfcc74db7522d057a217356aeab173ab4236bc5f",
-      "builds_retained": 51,
+      "duration_seconds": 7.416,
+      "latest_build": "e65a41b64954fb307ff4d8c2a45612d391828a1c",
+      "builds_retained": 52,
       "identifiers": 10785
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T04:27:30.167919+00:00",
+      "last_attempt": "2026-11-20T04:37:46.965902+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1016,
-      "duration_seconds": 21.068
+      "consecutive_failures": 1021,
+      "duration_seconds": 21.183
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-20T04:17:22.649117+00:00",
+      "last_attempt": "2026-11-20T04:31:57.094873+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:17:22.858238+00:00",
+      "last_success": "2026-11-20T04:31:57.267459+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.209,
+      "duration_seconds": 0.173,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -54633,61 +54713,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T04:26:16.007082+00:00",
+      "last_attempt": "2026-11-20T04:36:43.125091+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:26:17.731104+00:00",
+      "last_success": "2026-11-20T04:36:44.765393+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.724
+      "duration_seconds": 1.64
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T04:26:17.731155+00:00",
+      "last_attempt": "2026-11-20T04:36:44.765444+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:26:17.948037+00:00",
+      "last_success": "2026-11-20T04:36:44.994524+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.217
+      "duration_seconds": 0.229
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T04:26:17.948073+00:00",
+      "last_attempt": "2026-11-20T04:36:44.994558+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:26:23.690966+00:00",
+      "last_success": "2026-11-20T04:36:51.829036+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.743
+      "duration_seconds": 6.835
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T04:26:23.691028+00:00",
+      "last_attempt": "2026-11-20T04:36:51.829099+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:27:26.291505+00:00",
+      "last_success": "2026-11-20T04:37:36.082097+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 62.6,
+      "duration_seconds": 44.253,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-20T04:26:23.948002+00:00",
+          "checked_at": "2026-11-20T04:36:52.062617+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-20T04:26:34.186563+00:00",
+          "checked_at": "2026-11-20T04:37:01.715450+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-20T04:26:34.358672+00:00",
+          "checked_at": "2026-11-20T04:37:01.878210+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-20T04:26:34.358689+00:00",
+          "checked_at": "2026-11-20T04:37:01.878221+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -54695,25 +54775,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T04:27:26.291559+00:00",
+      "last_attempt": "2026-11-20T04:37:36.082148+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:27:26.586496+00:00",
+      "last_success": "2026-11-20T04:37:39.164143+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.295,
-      "latest_build": "7df46498183faf30aca407f15e5e6fde6549fc8d592464e4ae4d0b3b55259287",
-      "builds_retained": 47,
+      "duration_seconds": 3.082,
+      "latest_build": "cc41a015f052cffce814ef5cda88224c8230b393468586c932677913d3b1cc37",
+      "builds_retained": 48,
       "identifiers": 9661
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T04:27:26.779922+00:00",
+      "last_attempt": "2026-11-20T04:35:36.939447+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:27:29.367808+00:00",
+      "last_success": "2026-11-20T04:35:37.312713+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.588,
+      "duration_seconds": 0.374,
       "latest_build": "65d8137acf16d46dd56656e34ccca1e3e73739ee",
       "builds_retained": 36,
       "identifiers": 6943
@@ -54721,34 +54801,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T04:27:29.560334+00:00",
+      "last_attempt": "2026-11-20T04:37:39.357545+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:27:29.974683+00:00",
+      "last_success": "2026-11-20T04:37:46.773668+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.415,
-      "latest_build": "cfcc74db7522d057a217356aeab173ab4236bc5f",
-      "builds_retained": 51,
+      "duration_seconds": 7.416,
+      "latest_build": "e65a41b64954fb307ff4d8c2a45612d391828a1c",
+      "builds_retained": 52,
       "identifiers": 10785
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T04:27:30.167919+00:00",
+      "last_attempt": "2026-11-20T04:37:46.965902+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1016,
-      "duration_seconds": 21.068
+      "consecutive_failures": 1021,
+      "duration_seconds": 21.183
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-20T04:17:22.649117+00:00",
+      "last_attempt": "2026-11-20T04:31:57.094873+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:17:22.858238+00:00",
+      "last_success": "2026-11-20T04:31:57.267459+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.209,
+      "duration_seconds": 0.173,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -54756,52 +54836,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T04:27:51.243549+00:00",
+      "last_attempt": "2026-11-20T04:38:08.156541+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:27:59.920137+00:00",
+      "last_success": "2026-11-20T04:38:16.939074+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.677
+      "duration_seconds": 8.783
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T04:27:59.920198+00:00",
+      "last_attempt": "2026-11-20T04:38:16.939132+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:28:01.319341+00:00",
+      "last_success": "2026-11-20T04:38:18.151773+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.399
+      "duration_seconds": 1.213
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T04:28:01.319389+00:00",
+      "last_attempt": "2026-11-20T04:38:18.151817+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:28:09.731580+00:00",
+      "last_success": "2026-11-20T04:38:29.178853+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.412
+      "duration_seconds": 11.027
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T04:28:09.731624+00:00",
+      "last_attempt": "2026-11-20T04:38:29.178900+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:28:10.379322+00:00",
+      "last_success": "2026-11-20T04:38:29.819185+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.648
+      "duration_seconds": 0.64
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T04:28:10.379362+00:00",
+      "last_attempt": "2026-11-20T04:38:29.819225+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T04:28:10.441902+00:00",
+      "last_success": "2026-11-20T04:38:29.834201+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.063
+      "duration_seconds": 0.015
     }
   },
   "identities": {
