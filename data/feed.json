@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-20T00:48:49.787139+00:00",
-  "scan_completed_at": "2026-11-20T00:50:01.465859+00:00",
+  "generated_at": "2026-11-20T00:52:49.684942+00:00",
+  "scan_completed_at": "2026-11-20T00:54:29.561627+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 239,
     "leaks": 41,
     "releases": 76,
     "stories_24h": 97,
-    "sources_ok": 12,
-    "total_cards": 515,
-    "new_in_this_scan": 2
+    "sources_ok": 14,
+    "total_cards": 516,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -22,7 +22,7 @@
       "provider_name": "vercel",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-19T23:58:50.211097+00:00",
-      "updated_at": "2026-11-20T00:49:25.622405+00:00",
+      "updated_at": "2026-11-20T00:53:36.875849+00:00",
       "first_source": "Vercel AI Gateway Catalog",
       "lead": "",
       "released_on": "2026-11-19",
@@ -62,7 +62,8 @@
       "header": "NEW MODEL · VERCEL",
       "card_ids": [
         "vercel-gateway-diff-feb428b5",
-        "intel-a866b6840c62ad8ecbd3"
+        "intel-a866b6840c62ad8ecbd3",
+        "intel-a3801f8f92e82b4d1077"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -81,6 +82,21 @@
           "build": "b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-20T00:49:25.227849+00:00"
+        },
+        {
+          "id": "vercel/modaic/mo",
+          "family": "mo",
+          "file_path": "providers/vercel/models/modaic/mo.toml",
+          "file_sha256": "a5c4d67fcb932e22da61f4a6c30f7a869e9ef3dc9978d43644d0265746cfd3d8",
+          "excerpt": "{\"vercel/modaic/mo\": {\"schema\": 2, \"type\": \"decision\", \"name\": \"Mo\", \"description\": \"Mo is Modaic's System One decision model for zero-shot judgments over text, JSON, and images. It answers boolean, choice, and score questions with typed answers, per-option probabilities, and calibrated confidence, supporting classification, routing, rubric scoring, and review workflows. It reads a 262,144-token context and up to four images per request.\", \"open_weights\": false, \"release_date\": \"2026-11-19\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}}, \"limit\": {\"context\": 262144, \"output\": 0}, \"api\": {\"decisions\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/decisions\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.04}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/ee4bd1b4bea8ac3ff5062d2469ed3d0e2c18127e/providers/vercel/models/modaic/mo.toml",
+          "build": "ee4bd1b4bea8ac3ff5062d2469ed3d0e2c18127e",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/ee4bd1b4bea8ac3ff5062d2469ed3d0e2c18127e",
+          "first_seen": "2026-11-20T00:47:16+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-20T00:50:01.461900+00:00",
@@ -18460,6 +18476,93 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-a3801f8f92e82b4d1077",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "mo",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "mo",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "vercel/modaic/mo",
+          "name": "vercel/modaic/mo",
+          "registry_update": true,
+          "released_on": "2026-11-19"
+        }
+      ],
+      "detected_at": "2026-11-20T00:53:36.875849+00:00",
+      "first_seen": "2026-11-20T00:47:16+00:00",
+      "observed_at": "2026-11-20T00:53:36.875849+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "07eba4d154086c5ffefcd9a4221aaf1a32ba5a9d -> ee4bd1b4bea8ac3ff5062d2469ed3d0e2c18127e",
+      "build": "ee4bd1b4bea8ac3ff5062d2469ed3d0e2c18127e",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/ee4bd1b4bea8ac3ff5062d2469ed3d0e2c18127e",
+      "artifact_sha256": "921b9afcd846752dc81f8960b74209866b66be089845851991b7b1f7ce8b348f",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/921b9afcd846752dc81f8960b74209866b66be089845851991b7b1f7ce8b348f.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/921b9afcd846752dc81f8960b74209866b66be089845851991b7b1f7ce8b348f.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "vercel/modaic/mo",
+          "family": "mo",
+          "file_path": "providers/vercel/models/modaic/mo.toml",
+          "file_sha256": "a5c4d67fcb932e22da61f4a6c30f7a869e9ef3dc9978d43644d0265746cfd3d8",
+          "excerpt": "{\"vercel/modaic/mo\": {\"schema\": 2, \"type\": \"decision\", \"name\": \"Mo\", \"description\": \"Mo is Modaic's System One decision model for zero-shot judgments over text, JSON, and images. It answers boolean, choice, and score questions with typed answers, per-option probabilities, and calibrated confidence, supporting classification, routing, rubric scoring, and review workflows. It reads a 262,144-token context and up to four images per request.\", \"open_weights\": false, \"release_date\": \"2026-11-19\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}}, \"limit\": {\"context\": 262144, \"output\": 0}, \"api\": {\"decisions\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/decisions\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.04}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/ee4bd1b4bea8ac3ff5062d2469ed3d0e2c18127e/providers/vercel/models/modaic/mo.toml",
+          "build": "ee4bd1b4bea8ac3ff5062d2469ed3d0e2c18127e",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/ee4bd1b4bea8ac3ff5062d2469ed3d0e2c18127e",
+          "first_seen": "2026-11-20T00:47:16+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/ee4bd1b4bea8ac3ff5062d2469ed3d0e2c18127e"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/ee4bd1b4bea8ac3ff5062d2469ed3d0e2c18127e"
+        }
+      ],
+      "tracker_observed_at": "2026-11-20T00:53:46.959118+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions ee4bd1b4bea8: vercel/modaic/mo\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/ee4bd1b4bea8ac3ff5062d2469ed3d0e2c18127e"
+    },
     {
       "id": "intel-a866b6840c62ad8ecbd3",
       "scanner": "models-dev-api",
@@ -53699,25 +53802,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:49:24.831601+00:00",
+      "last_attempt": "2026-11-20T00:53:29.066775+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:49:28.220114+00:00",
+      "last_success": "2026-11-20T00:53:32.080863+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.389,
-      "latest_build": "b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba",
-      "builds_retained": 41,
+      "duration_seconds": 3.014,
+      "latest_build": "cfb3fbd82d2905aa58044fb5bc4399b4c13dfdfd8f74ce080ab87a528ce3a080",
+      "builds_retained": 42,
       "identifiers": 9660
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T00:47:24.056334+00:00",
+      "last_attempt": "2026-11-20T00:51:22.292005+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:47:24.386644+00:00",
+      "last_success": "2026-11-20T00:51:22.634398+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.331,
+      "duration_seconds": 0.343,
       "latest_build": "33015210dedf6891d019456f3d742e03d0f27eed",
       "builds_retained": 34,
       "identifiers": 6942
@@ -53725,24 +53828,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T00:43:19.691827+00:00",
+      "last_attempt": "2026-11-20T00:53:32.271732+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:43:34.493922+00:00",
+      "last_success": "2026-11-20T00:53:46.959118+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 14.802,
-      "latest_build": "07eba4d154086c5ffefcd9a4221aaf1a32ba5a9d",
-      "builds_retained": 43,
-      "identifiers": 10783
+      "duration_seconds": 14.688,
+      "latest_build": "9fc1108f0dfa3297a5ab05350db56825008d1fd4",
+      "builds_retained": 45,
+      "identifiers": 10784
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T00:49:28.417849+00:00",
+      "last_attempt": "2026-11-20T00:53:47.149901+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 909,
-      "duration_seconds": 21.331
+      "consecutive_failures": 911,
+      "duration_seconds": 21.385
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -53762,61 +53865,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:48:49.787211+00:00",
+      "last_attempt": "2026-11-20T00:52:49.685011+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:48:51.511829+00:00",
+      "last_success": "2026-11-20T00:52:51.716748+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.725
+      "duration_seconds": 2.032
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:48:51.511883+00:00",
+      "last_attempt": "2026-11-20T00:52:51.716799+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:48:51.594885+00:00",
+      "last_success": "2026-11-20T00:52:51.794198+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.083
+      "duration_seconds": 0.077
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:48:51.594923+00:00",
+      "last_attempt": "2026-11-20T00:52:51.794234+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:48:58.606264+00:00",
+      "last_success": "2026-11-20T00:53:02.715959+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.011
+      "duration_seconds": 10.922
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:48:58.606333+00:00",
+      "last_attempt": "2026-11-20T00:53:02.716025+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:49:24.831547+00:00",
+      "last_success": "2026-11-20T00:53:29.066712+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 26.225,
+      "duration_seconds": 26.351,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-20T00:48:58.799996+00:00",
+          "checked_at": "2026-11-20T00:53:02.904610+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-20T00:49:07.070447+00:00",
+          "checked_at": "2026-11-20T00:53:11.201932+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-20T00:49:07.220565+00:00",
+          "checked_at": "2026-11-20T00:53:11.395940+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-20T00:49:07.220583+00:00",
+          "checked_at": "2026-11-20T00:53:11.395956+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -53824,25 +53927,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:49:24.831601+00:00",
+      "last_attempt": "2026-11-20T00:53:29.066775+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:49:28.220114+00:00",
+      "last_success": "2026-11-20T00:53:32.080863+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.389,
-      "latest_build": "b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba",
-      "builds_retained": 41,
+      "duration_seconds": 3.014,
+      "latest_build": "cfb3fbd82d2905aa58044fb5bc4399b4c13dfdfd8f74ce080ab87a528ce3a080",
+      "builds_retained": 42,
       "identifiers": 9660
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T00:47:24.056334+00:00",
+      "last_attempt": "2026-11-20T00:51:22.292005+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:47:24.386644+00:00",
+      "last_success": "2026-11-20T00:51:22.634398+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.331,
+      "duration_seconds": 0.343,
       "latest_build": "33015210dedf6891d019456f3d742e03d0f27eed",
       "builds_retained": 34,
       "identifiers": 6942
@@ -53850,24 +53953,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T00:43:19.691827+00:00",
+      "last_attempt": "2026-11-20T00:53:32.271732+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:43:34.493922+00:00",
+      "last_success": "2026-11-20T00:53:46.959118+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 14.802,
-      "latest_build": "07eba4d154086c5ffefcd9a4221aaf1a32ba5a9d",
-      "builds_retained": 43,
-      "identifiers": 10783
+      "duration_seconds": 14.688,
+      "latest_build": "9fc1108f0dfa3297a5ab05350db56825008d1fd4",
+      "builds_retained": 45,
+      "identifiers": 10784
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T00:49:28.417849+00:00",
+      "last_attempt": "2026-11-20T00:53:47.149901+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 909,
-      "duration_seconds": 21.331
+      "consecutive_failures": 911,
+      "duration_seconds": 21.385
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -53885,64 +53988,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:49:49.755852+00:00",
+      "last_attempt": "2026-11-20T00:54:08.542977+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:49:58.458345+00:00",
+      "last_success": "2026-11-20T00:54:17.258026+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.703
+      "duration_seconds": 8.715
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:49:58.458406+00:00",
+      "last_attempt": "2026-11-20T00:54:17.258090+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:49:59.869280+00:00",
+      "last_success": "2026-11-20T00:54:19.697542+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.411
+      "duration_seconds": 2.439
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T00:44:05.903685+00:00",
+      "last_attempt": "2026-11-20T00:54:19.697587+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:44:15.232583+00:00",
+      "last_success": "2026-11-20T00:54:27.566000+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.329
+      "duration_seconds": 7.868
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:49:59.869329+00:00",
+      "last_attempt": "2026-11-20T00:54:27.566046+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:50:00.334771+00:00",
+      "last_success": "2026-11-20T00:54:27.961661+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.465
+      "duration_seconds": 0.396
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:50:00.334822+00:00",
+      "last_attempt": "2026-11-20T00:54:27.961702+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:50:00.349837+00:00",
+      "last_success": "2026-11-20T00:54:28.020982+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.015
+      "duration_seconds": 0.059
     }
   },
   "identities": {
-    "identifiers": 30715,
+    "identifiers": 30716,
     "declared_aliases": 17847,
     "pending_candidates": 0
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 200,
-      "seconds_mean": 5316.263313195,
+      "samples": 201,
+      "seconds_mean": 5291.709146706467,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -53956,8 +54059,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 254,
-      "events": 254,
+      "complete": 255,
+      "events": 255,
       "rate": 1.0
     },
     "source_health": {
