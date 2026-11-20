@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-20T12:32:03.932752+00:00",
-  "scan_completed_at": "2026-11-20T12:33:49.940861+00:00",
+  "generated_at": "2026-11-20T12:36:37.816778+00:00",
+  "scan_completed_at": "2026-11-20T12:38:40.756921+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 247,
     "leaks": 43,
     "releases": 80,
     "stories_24h": 58,
-    "sources_ok": 12,
-    "total_cards": 549,
+    "sources_ok": 14,
+    "total_cards": 550,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -22,7 +22,7 @@
       "provider_name": "Unattributed",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-20T12:33:12.593049+00:00",
-      "updated_at": "2026-11-20T12:33:12.593049+00:00",
+      "updated_at": "2026-11-20T12:37:45.769545+00:00",
       "first_source": "Registry Update",
       "lead": "",
       "released_on": "2026-11-20",
@@ -51,7 +51,8 @@
       "backfill": false,
       "header": "REGISTRY UPDATE · UNATTRIBUTED",
       "card_ids": [
-        "intel-78eca1e1b0da5c179b48"
+        "intel-78eca1e1b0da5c179b48",
+        "intel-821d7eb2b22fbffc4e2f"
       ],
       "event_label": "Registry update",
       "intelligence_only": true,
@@ -70,6 +71,21 @@
           "build": "4bbf96a77df26ff5f6ac718347693933b51c111edd1e6b7edddd943effa61205",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-20T12:33:12.213161+00:00"
+        },
+        {
+          "id": "nano-gpt/radixark/daisyrose-27b",
+          "family": "daisyrose-27b",
+          "file_path": "providers/nano-gpt/models/radixark/daisyrose-27b.toml",
+          "file_sha256": "e4e7fcb63c6cba6b7d9e9f3acdecf57493614a717c672670422804346e5c57bc",
+          "excerpt": "{\"nano-gpt/radixark/daisyrose-27b\": {\"schema\": 2, \"name\": \"DaisyRose 27B\", \"description\": \"DaisyRose 27B is RadixArk\\u2019s multimodal reasoning model for coding, tool use and long-horizon agent tasks. Built from Qwen3.8-27B using reinforcement learning without supervised fine-tuning or distillation, it accepts text and images and returns text. It supports function calling, JSON-schema output and a 262,144-token context window, with up to 65,536 output tokens. Thinking is on by default; choose low, medium or high effort, or turn it off. The weights are released under Apache 2.0.\", \"open_weights\": true, \"release_date\": \"2026-11-20\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"low\", \"medium\", \"high\"]}, \"structured_output\": true}, \"limit\": {\"context\": 262144, \"input\": 262144, \"output\": 65536}, \"cost\": {\"text\": {\"input\": {\"price\": 0.15, \"cache\": {\"read\": 0.0375}}, \"output\": {\"price\": 1.875}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/e8d3d6166bed1272305b4f96bbc6ca3e6c8711a7/providers/nano-gpt/models/radixark/daisyrose-27b.toml",
+          "build": "e8d3d6166bed1272305b4f96bbc6ca3e6c8711a7",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/e8d3d6166bed1272305b4f96bbc6ca3e6c8711a7",
+          "first_seen": "2026-11-20T12:31:16+00:00"
         }
       ],
       "x_post_text": "Registry Update 4bbf96a77df2: daisyrose-27b\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
@@ -19133,6 +19149,93 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-821d7eb2b22fbffc4e2f",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "daisyrose-27b",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "daisyrose-27b",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "nano-gpt/radixark/daisyrose-27b",
+          "name": "nano-gpt/radixark/daisyrose-27b",
+          "registry_update": true,
+          "released_on": "2026-11-20"
+        }
+      ],
+      "detected_at": "2026-11-20T12:37:45.769545+00:00",
+      "first_seen": "2026-11-20T12:31:16+00:00",
+      "observed_at": "2026-11-20T12:37:45.769545+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c -> e8d3d6166bed1272305b4f96bbc6ca3e6c8711a7",
+      "build": "e8d3d6166bed1272305b4f96bbc6ca3e6c8711a7",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/e8d3d6166bed1272305b4f96bbc6ca3e6c8711a7",
+      "artifact_sha256": "e25b6aad2dd451b315c7b873d9e93a35f17e48e09d1d19a080b85427034c780c",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/e25b6aad2dd451b315c7b873d9e93a35f17e48e09d1d19a080b85427034c780c.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/e25b6aad2dd451b315c7b873d9e93a35f17e48e09d1d19a080b85427034c780c.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "nano-gpt/radixark/daisyrose-27b",
+          "family": "daisyrose-27b",
+          "file_path": "providers/nano-gpt/models/radixark/daisyrose-27b.toml",
+          "file_sha256": "e4e7fcb63c6cba6b7d9e9f3acdecf57493614a717c672670422804346e5c57bc",
+          "excerpt": "{\"nano-gpt/radixark/daisyrose-27b\": {\"schema\": 2, \"name\": \"DaisyRose 27B\", \"description\": \"DaisyRose 27B is RadixArk\\u2019s multimodal reasoning model for coding, tool use and long-horizon agent tasks. Built from Qwen3.8-27B using reinforcement learning without supervised fine-tuning or distillation, it accepts text and images and returns text. It supports function calling, JSON-schema output and a 262,144-token context window, with up to 65,536 output tokens. Thinking is on by default; choose low, medium or high effort, or turn it off. The weights are released under Apache 2.0.\", \"open_weights\": true, \"release_date\": \"2026-11-20\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"low\", \"medium\", \"high\"]}, \"structured_output\": true}, \"limit\": {\"context\": 262144, \"input\": 262144, \"output\": 65536}, \"cost\": {\"text\": {\"input\": {\"price\": 0.15, \"cache\": {\"read\": 0.0375}}, \"output\": {\"price\": 1.875}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/e8d3d6166bed1272305b4f96bbc6ca3e6c8711a7/providers/nano-gpt/models/radixark/daisyrose-27b.toml",
+          "build": "e8d3d6166bed1272305b4f96bbc6ca3e6c8711a7",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/e8d3d6166bed1272305b4f96bbc6ca3e6c8711a7",
+          "first_seen": "2026-11-20T12:31:16+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/e8d3d6166bed1272305b4f96bbc6ca3e6c8711a7"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/e8d3d6166bed1272305b4f96bbc6ca3e6c8711a7"
+        }
+      ],
+      "tracker_observed_at": "2026-11-20T12:37:56.344048+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions e8d3d6166bed: nano-gpt/radixark/daisyrose-27b\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/e8d3d6166bed1272305b4f96bbc6ca3e6c8711a7"
+    },
     {
       "id": "intel-78eca1e1b0da5c179b48",
       "scanner": "models-dev-api",
@@ -56050,25 +56153,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:33:11.728868+00:00",
+      "last_attempt": "2026-11-20T12:37:40.155360+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:33:15.187936+00:00",
+      "last_success": "2026-11-20T12:37:40.584635+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.459,
-      "latest_build": "4bbf96a77df26ff5f6ac718347693933b51c111edd1e6b7edddd943effa61205",
-      "builds_retained": 53,
+      "duration_seconds": 0.429,
+      "latest_build": "c561737fe859abd8f53eb18e6a9c239853dc7b4e25d41d9402a93056b86d7245",
+      "builds_retained": 54,
       "identifiers": 9666
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T12:30:53.826708+00:00",
+      "last_attempt": "2026-11-20T12:35:29.480769+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:30:54.317120+00:00",
+      "last_success": "2026-11-20T12:35:29.966641+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.491,
+      "duration_seconds": 0.486,
       "latest_build": "1b5047429d26b58cfd3e01a5cb9a2f129a1787b2",
       "builds_retained": 37,
       "identifiers": 6943
@@ -56076,34 +56179,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T12:26:18.500063+00:00",
+      "last_attempt": "2026-11-20T12:37:40.776537+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:26:19.072502+00:00",
+      "last_success": "2026-11-20T12:37:56.344048+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.573,
-      "latest_build": "6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c",
-      "builds_retained": 56,
-      "identifiers": 10803
+      "duration_seconds": 15.568,
+      "latest_build": "e06a33eb4d68f2ad6b06fa0da13a847441ddf8c1",
+      "builds_retained": 58,
+      "identifiers": 10804
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T12:33:15.381545+00:00",
+      "last_attempt": "2026-11-20T12:37:56.535962+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1210,
-      "duration_seconds": 20.775
+      "consecutive_failures": 1212,
+      "duration_seconds": 20.645
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-20T12:20:04.155420+00:00",
+      "last_attempt": "2026-11-20T12:35:51.199416+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:20:04.506902+00:00",
+      "last_success": "2026-11-20T12:35:51.594490+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.352,
+      "duration_seconds": 0.395,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -56113,61 +56216,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:32:03.932828+00:00",
+      "last_attempt": "2026-11-20T12:36:37.816855+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:32:08.946561+00:00",
+      "last_success": "2026-11-20T12:36:40.741002+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.014
+      "duration_seconds": 2.924
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:32:08.946618+00:00",
+      "last_attempt": "2026-11-20T12:36:40.741067+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:32:09.183273+00:00",
+      "last_success": "2026-11-20T12:36:40.977181+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.237
+      "duration_seconds": 0.236
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:32:09.183312+00:00",
+      "last_attempt": "2026-11-20T12:36:40.977222+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:32:18.313216+00:00",
+      "last_success": "2026-11-20T12:36:48.959815+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.13
+      "duration_seconds": 7.983
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:32:18.313288+00:00",
+      "last_attempt": "2026-11-20T12:36:48.959886+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:33:11.728811+00:00",
+      "last_success": "2026-11-20T12:37:40.155298+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 53.416,
+      "duration_seconds": 51.195,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-20T12:32:18.667758+00:00",
+          "checked_at": "2026-11-20T12:36:49.269878+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-20T12:32:30.586809+00:00",
+          "checked_at": "2026-11-20T12:37:01.411757+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-20T12:32:30.759587+00:00",
+          "checked_at": "2026-11-20T12:37:01.603519+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-20T12:32:30.759604+00:00",
+          "checked_at": "2026-11-20T12:37:01.603537+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -56175,25 +56278,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:33:11.728868+00:00",
+      "last_attempt": "2026-11-20T12:37:40.155360+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:33:15.187936+00:00",
+      "last_success": "2026-11-20T12:37:40.584635+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.459,
-      "latest_build": "4bbf96a77df26ff5f6ac718347693933b51c111edd1e6b7edddd943effa61205",
-      "builds_retained": 53,
+      "duration_seconds": 0.429,
+      "latest_build": "c561737fe859abd8f53eb18e6a9c239853dc7b4e25d41d9402a93056b86d7245",
+      "builds_retained": 54,
       "identifiers": 9666
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T12:30:53.826708+00:00",
+      "last_attempt": "2026-11-20T12:35:29.480769+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:30:54.317120+00:00",
+      "last_success": "2026-11-20T12:35:29.966641+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.491,
+      "duration_seconds": 0.486,
       "latest_build": "1b5047429d26b58cfd3e01a5cb9a2f129a1787b2",
       "builds_retained": 37,
       "identifiers": 6943
@@ -56201,34 +56304,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T12:26:18.500063+00:00",
+      "last_attempt": "2026-11-20T12:37:40.776537+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:26:19.072502+00:00",
+      "last_success": "2026-11-20T12:37:56.344048+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.573,
-      "latest_build": "6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c",
-      "builds_retained": 56,
-      "identifiers": 10803
+      "duration_seconds": 15.568,
+      "latest_build": "e06a33eb4d68f2ad6b06fa0da13a847441ddf8c1",
+      "builds_retained": 58,
+      "identifiers": 10804
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T12:33:15.381545+00:00",
+      "last_attempt": "2026-11-20T12:37:56.535962+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1210,
-      "duration_seconds": 20.775
+      "consecutive_failures": 1212,
+      "duration_seconds": 20.645
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-20T12:20:04.155420+00:00",
+      "last_attempt": "2026-11-20T12:35:51.199416+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:20:04.506902+00:00",
+      "last_success": "2026-11-20T12:35:51.594490+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.352,
+      "duration_seconds": 0.395,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -56236,64 +56339,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:33:36.163999+00:00",
+      "last_attempt": "2026-11-20T12:38:17.188521+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:33:44.956726+00:00",
+      "last_success": "2026-11-20T12:38:25.942228+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.793
+      "duration_seconds": 8.754
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:33:44.956784+00:00",
+      "last_attempt": "2026-11-20T12:38:25.942294+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:33:47.934227+00:00",
+      "last_success": "2026-11-20T12:38:28.548092+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.977
+      "duration_seconds": 2.606
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T12:26:54.201140+00:00",
+      "last_attempt": "2026-11-20T12:38:28.548145+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:27:04.626796+00:00",
+      "last_success": "2026-11-20T12:38:38.829199+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 10.426
+      "duration_seconds": 10.281
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:33:47.934275+00:00",
+      "last_attempt": "2026-11-20T12:38:38.829258+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:33:49.396128+00:00",
+      "last_success": "2026-11-20T12:38:40.264094+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.462
+      "duration_seconds": 1.435
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T12:33:49.396164+00:00",
+      "last_attempt": "2026-11-20T12:38:40.264144+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T12:33:49.517407+00:00",
+      "last_success": "2026-11-20T12:38:40.326432+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.121
+      "duration_seconds": 0.062
     }
   },
   "identities": {
-    "identifiers": 30742,
+    "identifiers": 30743,
     "declared_aliases": 17871,
     "pending_candidates": 0
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 206,
-      "seconds_mean": 5185.6509491699035,
+      "samples": 207,
+      "seconds_mean": 5162.482439971014,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -56307,8 +56410,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 262,
-      "events": 262,
+      "complete": 263,
+      "events": 263,
       "rate": 1.0
     },
     "source_health": {
