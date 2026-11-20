@@ -1,37 +1,38 @@
 {
-  "generated_at": "2026-11-20T00:34:42.964050+00:00",
-  "scan_completed_at": "2026-11-20T00:36:01.586637+00:00",
+  "generated_at": "2026-11-20T00:48:49.787139+00:00",
+  "scan_completed_at": "2026-11-20T00:50:01.465859+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 239,
     "leaks": 41,
-    "releases": 75,
-    "stories_24h": 98,
-    "sources_ok": 13,
-    "total_cards": 513,
-    "new_in_this_scan": 1
+    "releases": 76,
+    "stories_24h": 97,
+    "sources_ok": 12,
+    "total_cards": 515,
+    "new_in_this_scan": 2
   },
   "stories": [
     {
       "id": "story-mo",
       "group": "mo",
-      "kind": "unverified",
+      "kind": "release",
       "open_weights": false,
       "title": "Mo",
-      "provider_slug": "openrouter",
-      "provider_name": "modaic",
-      "accent_color": "#10b981",
+      "provider_slug": "unknown",
+      "provider_name": "vercel",
+      "accent_color": "#0891b2",
       "detected_at": "2026-11-19T23:58:50.211097+00:00",
-      "updated_at": "2026-11-19T23:58:50.211097+00:00",
+      "updated_at": "2026-11-20T00:49:25.622405+00:00",
       "first_source": "Vercel AI Gateway Catalog",
       "lead": "",
-      "released_on": "",
+      "released_on": "2026-11-19",
       "pricing": "",
       "codenames": [],
       "models": [
         {
           "id": "mo",
-          "name": "Mo"
+          "name": "vercel/modaic/mo",
+          "released_on": "2026-11-19"
         }
       ],
       "sources": [
@@ -44,20 +45,46 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-api",
+          "detected_at": "2026-11-20T00:49:25.622405+00:00",
+          "title": "mo",
+          "url": "https://models.dev/api.json?type=all",
+          "backfill": false,
+          "build": "b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba.json.gz"
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
-      "header": "UNVERIFIED · MODAIC",
+      "header": "NEW MODEL · VERCEL",
       "card_ids": [
-        "vercel-gateway-diff-feb428b5"
+        "vercel-gateway-diff-feb428b5",
+        "intel-a866b6840c62ad8ecbd3"
       ],
-      "event_label": "",
+      "event_label": "Released",
       "intelligence_only": false,
       "candidate_only": false,
-      "registry_evidence": [],
-      "discord_alerted_at": "2026-11-19T23:59:50.348892+00:00",
-      "x_post_text": "⚪ UNVERIFIED: Mo by modaic\n\nFirst detected 19 Nov 23:58 UTC in Vercel AI Gateway Catalog\n\nvia @StatsWire"
+      "registry_evidence": [
+        {
+          "id": "vercel/modaic/mo",
+          "family": "mo",
+          "file_path": "api.json?type=all",
+          "file_sha256": "b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba",
+          "excerpt": "{\"vercel/modaic/mo\": {\"id\": \"modaic/mo\", \"type\": \"decision\", \"name\": \"Mo\", \"description\": \"Mo is Modaic's System One decision model for zero-shot judgments over text, JSON, and images. It answers boolean, choice, and score questions with typed answers, per-option probabilities, and calibrated confidence, supporting classification, routing, rubric scoring, and review workflows. It reads a 262,144-token context and up to four images per request.\", \"attachment\": true, \"reasoning\": false, \"tool_call\": false, \"release_date\": \"2026-11-19\", \"last_updated\": \"2026-11-19\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 262144, \"output\": 0}, \"provider\": {\"npm\": \"@ai-sdk/openai\", \"api\": \"https://ai-gateway.vercel.sh/v1\"}, \"cost\": {\"input\": 0.04, \"output\": 0}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-20T00:49:25.227849+00:00"
+        }
+      ],
+      "discord_alerted_at": "2026-11-20T00:50:01.461900+00:00",
+      "x_post_text": "🟢 NEW MODEL: Mo by vercel\n\nFirst detected 19 Nov 23:58 UTC in Vercel AI Gateway Catalog\n📅 First released: 2026-11-19\nConfirmed by Registry Update\n\nvia @StatsWire"
     },
     {
       "id": "story-minimax-h-3-video",
@@ -11416,7 +11443,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-16T20:15:16.430197+00:00",
-      "updated_at": "2026-11-20T00:33:31+00:00",
+      "updated_at": "2026-11-20T00:49:25.622405+00:00",
       "first_source": "Gemini Web App Config",
       "lead": "2 days before it went live on OpenRouter",
       "released_on": "2026-11-18",
@@ -11427,7 +11454,7 @@
       "models": [
         {
           "id": "gemini-4-neon",
-          "name": "Gemini 4 Neon",
+          "name": "venice/gemini-4-neon",
           "released_on": "2026-11-18"
         },
         {
@@ -11633,7 +11660,8 @@
         "intel-9208edbd0ade1564748f",
         "intel-79aac7741cda97c5b7c6",
         "intel-7721e5c64d0c887607d2",
-        "ag-acp-1.5.0-1.5.2-diff"
+        "ag-acp-1.5.0-1.5.2-diff",
+        "intel-0340217fd4207873201c"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -18432,6 +18460,185 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-a866b6840c62ad8ecbd3",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "mo",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "mo",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "vercel/modaic/mo",
+          "name": "vercel/modaic/mo",
+          "registry_update": true,
+          "released_on": "2026-11-19"
+        }
+      ],
+      "detected_at": "2026-11-20T00:49:25.622405+00:00",
+      "first_seen": "2026-11-20T00:49:25.227849+00:00",
+      "observed_at": "2026-11-20T00:49:25.622405+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "c69ded1b7edf788f0f73fd4f896592dc1c983fdf00467278d610201166230d0a -> b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba",
+      "build": "b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "vercel/modaic/mo",
+          "family": "mo",
+          "file_path": "api.json?type=all",
+          "file_sha256": "b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba",
+          "excerpt": "{\"vercel/modaic/mo\": {\"id\": \"modaic/mo\", \"type\": \"decision\", \"name\": \"Mo\", \"description\": \"Mo is Modaic's System One decision model for zero-shot judgments over text, JSON, and images. It answers boolean, choice, and score questions with typed answers, per-option probabilities, and calibrated confidence, supporting classification, routing, rubric scoring, and review workflows. It reads a 262,144-token context and up to four images per request.\", \"attachment\": true, \"reasoning\": false, \"tool_call\": false, \"release_date\": \"2026-11-19\", \"last_updated\": \"2026-11-19\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 262144, \"output\": 0}, \"provider\": {\"npm\": \"@ai-sdk/openai\", \"api\": \"https://ai-gateway.vercel.sh/v1\"}, \"cost\": {\"input\": 0.04, \"output\": 0}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-20T00:49:25.227849+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-20T00:49:28.220114+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog b6cab4a7c3ad: vercel/modaic/mo\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
+    {
+      "id": "intel-0340217fd4207873201c",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gemini-4-neon",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "gemini-4-neon",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "venice/gemini-4-neon",
+          "name": "venice/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        }
+      ],
+      "detected_at": "2026-11-20T00:49:25.622405+00:00",
+      "first_seen": "2026-11-20T00:49:25.227849+00:00",
+      "observed_at": "2026-11-20T00:49:25.622405+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "c69ded1b7edf788f0f73fd4f896592dc1c983fdf00467278d610201166230d0a -> b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba",
+      "build": "b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "venice/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "api.json?type=all",
+          "file_sha256": "b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba",
+          "excerpt": "{\"venice/gemini-4-neon\": {\"id\": \"gemini-4-neon\", \"name\": \"Gemini 4 Neon\", \"description\": \"Google's Gemini 4 model for fast, frontier-level coding, knowledge work and science workflows, with four thinking levels and a 1M-token context window\", \"family\": \"gemini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-03\", \"release_date\": \"2026-11-18\", \"last_updated\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\", \"image\", \"audio\", \"video\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1000000, \"output\": 65536}, \"cost\": {\"input\": 3.75, \"output\": 18.75, \"cache_read\": 0.1875}, \"canonical_model_id\": \"google/gemini-4-neon\"}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-20T00:49:25.227849+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gemini/gemini-4-neon",
+          "first_seen": "2026-11-18T20:53:00+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/621344d8ef188d036b6962b0f689fdeaedaf8d8ae805733902d72b6110a71473.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-20T00:49:28.220114+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog b6cab4a7c3ad: venice/gemini-4-neon\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "ag-acp-1.5.0-1.5.2-diff",
       "category": "desktop-diff",
@@ -53492,25 +53699,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:35:27.422236+00:00",
+      "last_attempt": "2026-11-20T00:49:24.831601+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:35:27.672045+00:00",
+      "last_success": "2026-11-20T00:49:28.220114+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.25,
-      "latest_build": "2bd371f22cdf15fcf84173a0501b75b4efdfdbac2df0345b25e1d140d872fb5d",
-      "builds_retained": 39,
-      "identifiers": 9659
+      "duration_seconds": 3.389,
+      "latest_build": "b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba",
+      "builds_retained": 41,
+      "identifiers": 9660
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T00:35:27.864368+00:00",
+      "last_attempt": "2026-11-20T00:47:24.056334+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:35:28.202879+00:00",
+      "last_success": "2026-11-20T00:47:24.386644+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.339,
+      "duration_seconds": 0.331,
       "latest_build": "33015210dedf6891d019456f3d742e03d0f27eed",
       "builds_retained": 34,
       "identifiers": 6942
@@ -53518,34 +53725,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T00:33:15.416389+00:00",
+      "last_attempt": "2026-11-20T00:43:19.691827+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:33:15.894730+00:00",
+      "last_success": "2026-11-20T00:43:34.493922+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.478,
-      "latest_build": "5c4a065637abce9ef2ede3151338dcbe7a935647",
-      "builds_retained": 41,
+      "duration_seconds": 14.802,
+      "latest_build": "07eba4d154086c5ffefcd9a4221aaf1a32ba5a9d",
+      "builds_retained": 43,
       "identifiers": 10783
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T00:35:28.403668+00:00",
+      "last_attempt": "2026-11-20T00:49:28.417849+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 902,
-      "duration_seconds": 20.986
+      "consecutive_failures": 909,
+      "duration_seconds": 21.331
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-20T00:29:37.070519+00:00",
+      "last_attempt": "2026-11-20T00:45:48.082594+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:29:37.304736+00:00",
+      "last_success": "2026-11-20T00:45:48.230163+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.234,
+      "duration_seconds": 0.148,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -53555,61 +53762,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:34:42.964116+00:00",
+      "last_attempt": "2026-11-20T00:48:49.787211+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:34:44.591357+00:00",
+      "last_success": "2026-11-20T00:48:51.511829+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.627
+      "duration_seconds": 1.725
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:34:44.591418+00:00",
+      "last_attempt": "2026-11-20T00:48:51.511883+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:34:55.766399+00:00",
+      "last_success": "2026-11-20T00:48:51.594885+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 11.175
+      "duration_seconds": 0.083
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:34:55.766439+00:00",
+      "last_attempt": "2026-11-20T00:48:51.594923+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:35:01.162718+00:00",
+      "last_success": "2026-11-20T00:48:58.606264+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.396
+      "duration_seconds": 7.011
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:35:01.162790+00:00",
+      "last_attempt": "2026-11-20T00:48:58.606333+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:35:27.422184+00:00",
+      "last_success": "2026-11-20T00:49:24.831547+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 26.259,
+      "duration_seconds": 26.225,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-20T00:35:01.359795+00:00",
+          "checked_at": "2026-11-20T00:48:58.799996+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-20T00:35:10.716194+00:00",
+          "checked_at": "2026-11-20T00:49:07.070447+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-20T00:35:10.865996+00:00",
+          "checked_at": "2026-11-20T00:49:07.220565+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-20T00:35:10.866008+00:00",
+          "checked_at": "2026-11-20T00:49:07.220583+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -53617,25 +53824,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:35:27.422236+00:00",
+      "last_attempt": "2026-11-20T00:49:24.831601+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:35:27.672045+00:00",
+      "last_success": "2026-11-20T00:49:28.220114+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.25,
-      "latest_build": "2bd371f22cdf15fcf84173a0501b75b4efdfdbac2df0345b25e1d140d872fb5d",
-      "builds_retained": 39,
-      "identifiers": 9659
+      "duration_seconds": 3.389,
+      "latest_build": "b6cab4a7c3adc5905de7bc823353810fa54f983200f6ddfe9979180278490dba",
+      "builds_retained": 41,
+      "identifiers": 9660
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-20T00:35:27.864368+00:00",
+      "last_attempt": "2026-11-20T00:47:24.056334+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:35:28.202879+00:00",
+      "last_success": "2026-11-20T00:47:24.386644+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.339,
+      "duration_seconds": 0.331,
       "latest_build": "33015210dedf6891d019456f3d742e03d0f27eed",
       "builds_retained": 34,
       "identifiers": 6942
@@ -53643,34 +53850,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T00:33:15.416389+00:00",
+      "last_attempt": "2026-11-20T00:43:19.691827+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:33:15.894730+00:00",
+      "last_success": "2026-11-20T00:43:34.493922+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.478,
-      "latest_build": "5c4a065637abce9ef2ede3151338dcbe7a935647",
-      "builds_retained": 41,
+      "duration_seconds": 14.802,
+      "latest_build": "07eba4d154086c5ffefcd9a4221aaf1a32ba5a9d",
+      "builds_retained": 43,
       "identifiers": 10783
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-20T00:35:28.403668+00:00",
+      "last_attempt": "2026-11-20T00:49:28.417849+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 902,
-      "duration_seconds": 20.986
+      "consecutive_failures": 909,
+      "duration_seconds": 21.331
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-20T00:29:37.070519+00:00",
+      "last_attempt": "2026-11-20T00:45:48.082594+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:29:37.304736+00:00",
+      "last_success": "2026-11-20T00:45:48.230163+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.234,
+      "duration_seconds": 0.148,
       "latest_build": "3.14.30825",
       "builds_retained": 3,
       "identifiers": 3330
@@ -53678,56 +53885,56 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:35:49.395903+00:00",
+      "last_attempt": "2026-11-20T00:49:49.755852+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:35:58.193841+00:00",
+      "last_success": "2026-11-20T00:49:58.458345+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.798
+      "duration_seconds": 8.703
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:35:58.193910+00:00",
+      "last_attempt": "2026-11-20T00:49:58.458406+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:35:59.665992+00:00",
+      "last_success": "2026-11-20T00:49:59.869280+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.472
+      "duration_seconds": 1.411
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-20T00:33:46.979919+00:00",
+      "last_attempt": "2026-11-20T00:44:05.903685+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:33:57.101414+00:00",
+      "last_success": "2026-11-20T00:44:15.232583+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 10.122
+      "duration_seconds": 9.329
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:35:59.666043+00:00",
+      "last_attempt": "2026-11-20T00:49:59.869329+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:36:00.112778+00:00",
+      "last_success": "2026-11-20T00:50:00.334771+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.447
+      "duration_seconds": 0.465
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-20T00:36:00.112823+00:00",
+      "last_attempt": "2026-11-20T00:50:00.334822+00:00",
       "status": "ok",
-      "last_success": "2026-11-20T00:36:00.157203+00:00",
+      "last_success": "2026-11-20T00:50:00.349837+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.044
+      "duration_seconds": 0.015
     }
   },
   "identities": {
-    "identifiers": 30714,
+    "identifiers": 30715,
     "declared_aliases": 17847,
     "pending_candidates": 0
   },
@@ -53749,8 +53956,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 252,
-      "events": 252,
+      "complete": 254,
+      "events": 254,
       "rate": 1.0
     },
     "source_health": {
