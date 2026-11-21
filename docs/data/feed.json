@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-21T12:21:53.588786+00:00",
-  "scan_completed_at": "2026-11-21T12:23:16.339948+00:00",
+  "generated_at": "2026-11-21T12:29:58.711231+00:00",
+  "scan_completed_at": "2026-11-21T12:32:12.898466+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 300,
-    "leaks": 40,
+    "stories": 299,
+    "leaks": 39,
     "releases": 79,
     "stories_24h": 87,
-    "sources_ok": 14,
-    "total_cards": 661,
-    "new_in_this_scan": 0
+    "sources_ok": 15,
+    "total_cards": 664,
+    "new_in_this_scan": 4
   },
   "stories": [
     {
@@ -262,7 +262,7 @@
       "provider_name": "kilo",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-21T03:05:45.893089+00:00",
-      "updated_at": "2026-11-21T06:36:22.804008+00:00",
+      "updated_at": "2026-11-21T12:30:59.323436+00:00",
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-11-21",
@@ -303,7 +303,9 @@
       "card_ids": [
         "openrouter-model-thinkingmachines_inkling-2-mini",
         "intel-f9fd718251adf9703144",
-        "intel-b7a51fe35cf196b1d298"
+        "intel-b7a51fe35cf196b1d298",
+        "intel-f76c26ca78dd2f49f395",
+        "intel-fdb735dfbb3145b06202"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -366,6 +368,35 @@
           "build": "20fe85412d34a83567565efc2071296052b488d8",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8",
           "first_seen": "2026-11-21T06:32:22+00:00"
+        },
+        {
+          "id": "kilo/thinkingmachines/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "api.json?type=all",
+          "file_sha256": "e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72",
+          "excerpt": "{\"kilo/thinkingmachines/inkling-2-mini\": {\"id\": \"thinkingmachines/inkling-2-mini\", \"name\": \"Thinking Machines: Inkling 2 Mini\", \"description\": \"Inkling 2 Mini is an open-weight multimodal looped transformer from Thinking Machines Lab, with 3.4B active parameters out of 26.4B total (MoE). Its middle layers run three times with shared...\", \"family\": \"inkling\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-21\", \"last_updated\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 0.08, \"output\": 0.35, \"cache_read\": 0.016}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-21T12:30:53.140047+00:00"
+        },
+        {
+          "id": "kilo/thinkingmachines/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/kilo/models/thinkingmachines/inkling-2-mini.toml",
+          "file_sha256": "b2bca237f449719f542c65ab730256acbecf5dfe7fe2ea668795b020ea1c83f3",
+          "excerpt": "{\"kilo/thinkingmachines/inkling-2-mini\": {\"schema\": 2, \"name\": \"Thinking Machines: Inkling 2 Mini\", \"description\": \"Inkling 2 Mini is an open-weight multimodal looped transformer from Thinking Machines Lab, with 3.4B active parameters out of 26.4B total (MoE). Its middle layers run three times with shared...\", \"family\": \"inkling\", \"open_weights\": false, \"release_date\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"text\": {\"input\": {\"price\": 0.08, \"cache\": {\"read\": 0.016}}, \"output\": {\"price\": 0.35}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/742808885371318e4b0a26539abffb6bc50efed4/providers/kilo/models/thinkingmachines/inkling-2-mini.toml",
+          "build": "742808885371318e4b0a26539abffb6bc50efed4",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/742808885371318e4b0a26539abffb6bc50efed4",
+          "first_seen": "2026-11-21T12:27:42+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-21T03:05:51.660834+00:00",
@@ -17195,10 +17226,10 @@
       "open_weights": false,
       "title": "deepinfra/Qwen/Qwen4-Max",
       "provider_slug": "unknown",
-      "provider_name": "alibaba",
+      "provider_name": "novita-ai",
       "accent_color": "#a855f7",
       "detected_at": "2026-11-16T23:37:28.528456+00:00",
-      "updated_at": "2026-11-21T00:27:54.860307+00:00",
+      "updated_at": "2026-11-21T12:30:59.323436+00:00",
       "first_source": "LiteLLM registry",
       "lead": "",
       "released_on": "2026-11-16",
@@ -17207,7 +17238,7 @@
       "models": [
         {
           "id": "qwen4-max",
-          "name": "alibaba/qwen4-max",
+          "name": "novita-ai/qwen/qwen4-max",
           "released_on": "2026-11-16"
         }
       ],
@@ -17245,7 +17276,7 @@
       ],
       "source_count": 3,
       "backfill": false,
-      "header": "NEW MODEL · ALIBABA",
+      "header": "NEW MODEL · NOVITA-AI",
       "card_ids": [
         "litellm-diff-b6ed8142",
         "intel-09f1c9870bb5430d9787",
@@ -17256,7 +17287,9 @@
         "intel-1ac517b7d854723a7fa0",
         "intel-6f6e8a48fbb3d4d356c4",
         "intel-9338ac96b41ad028b4a1",
-        "intel-ac0a43eeb1475522f8b2"
+        "intel-ac0a43eeb1475522f8b2",
+        "intel-167e01094ac3f07665e9",
+        "intel-7fa9e019e51fdc1e23a6"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -17601,9 +17634,38 @@
           "build": "b4d067ac4bb708774ee2a6c159d7548728f7c9d6",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/b4d067ac4bb708774ee2a6c159d7548728f7c9d6",
           "first_seen": "2026-11-21T00:19:10+00:00"
+        },
+        {
+          "id": "novita-ai/qwen/qwen4-max",
+          "family": "qwen4",
+          "file_path": "api.json?type=all",
+          "file_sha256": "e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72",
+          "excerpt": "{\"novita-ai/qwen/qwen4-max\": {\"id\": \"qwen/qwen4-max\", \"name\": \"Qwen4 Max\", \"description\": \"Flagship multimodal model for coding, office productivity, frontend design, and complex agentic tasks\", \"family\": \"qwen-max\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"low\", \"high\", \"xhigh\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-16\", \"last_updated\": \"2026-11-16\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1000000, \"output\": 262000}, \"cost\": {\"input\": 1.413, \"output\": 4.24, \"cache_read\": 0.071, \"cache_write\": 1.767}, \"canonical_model_id\": \"alibaba/qwen4-max\"}}",
+          "canonical_id": "alibaba/qwen4-max",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-21T12:30:53.140047+00:00"
+        },
+        {
+          "id": "novita-ai/qwen/qwen4-max",
+          "family": "qwen4",
+          "file_path": "providers/novita-ai/models/qwen/qwen4-max.toml",
+          "file_sha256": "8439ce5a3ed38ac43641540ee8c82ce7cd99ca8cef925be368983053cf972e2c",
+          "excerpt": "{\"novita-ai/qwen/qwen4-max\": {\"schema\": 2, \"base_model\": \"alibaba/qwen4-max\", \"modalities\": {\"input\": [\"text\", \"image/bmp\", \"image/jpeg\", \"image/png\", \"image/tiff\", \"image/webp\", \"image/heic\", \"video/mp4\", \"video/x-msvideo\", \"video/x-matroska\", \"video/quicktime\", \"video/x-flv\", \"video/x-ms-wmv\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"low\", \"high\", \"xhigh\"]}, \"cache\": {\"implicit\": true}, \"structured_output\": true}, \"limit\": {\"output\": 262000}, \"api\": {\"chat-completions\": {\"compatibility\": {\"reasoning_field\": \"reasoning_content\"}, \"capabilities\": {\"system_updates\": true}}, \"messages\": {\"base_url\": \"https://api.novita.ai/anthropic/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic-compatible\"}}, \"responses\": {\"base_url\": \"https://api.novita.ai/openai/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 1.413, \"cache\": {\"read\": 0.071, \"write\": 1.767}}, \"output\": {\"price\": 4.24}}}}}",
+          "canonical_id": "alibaba/qwen4-max",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/742808885371318e4b0a26539abffb6bc50efed4/providers/novita-ai/models/qwen/qwen4-max.toml",
+          "build": "742808885371318e4b0a26539abffb6bc50efed4",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/742808885371318e4b0a26539abffb6bc50efed4",
+          "first_seen": "2026-11-21T12:27:42+00:00"
         }
       ],
-      "x_post_text": "🟢 NEW MODEL: deepinfra/Qwen/Qwen4-Max by alibaba\n\nFirst detected 16 Nov 23:37 UTC in LiteLLM registry\n📅 First released: 2026-11-16\nConfirmed by Registry Update, LiteLLM commit-pinned registry\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: deepinfra/Qwen/Qwen4-Max by novita-ai\n\nFirst detected 16 Nov 23:37 UTC in LiteLLM registry\n📅 First released: 2026-11-16\nConfirmed by Registry Update, LiteLLM commit-pinned registry\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-hydrogen-qcd",
@@ -23655,91 +23717,6 @@
       "x_post_text": "🔵 REGISTRY UPDATE: LiteLLM Moonshot Registry Update — 1 Entry Detected\n\nFirst detected 07 Nov 18:37 UTC in LiteLLM registry\n📅 First released: 2026-10-23\n\nvia @StatsWire"
     },
     {
-      "id": "story-cactus",
-      "group": "cactus",
-      "kind": "leak",
-      "open_weights": false,
-      "title": "Cactus & Kraken",
-      "provider_slug": "openai",
-      "provider_name": "OpenAI",
-      "accent_color": "#10b981",
-      "detected_at": "2026-11-07T12:25:00+00:00",
-      "updated_at": "2026-11-07T12:25:00+00:00",
-      "first_source": "Devin CLI Official Binary",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [
-        "cactus",
-        "kraken"
-      ],
-      "models": [
-        {
-          "id": "cactus-low",
-          "name": "Cactus Low"
-        },
-        {
-          "id": "cactus-max",
-          "name": "Cactus Max"
-        },
-        {
-          "id": "kraken-low",
-          "name": "Kraken Low"
-        },
-        {
-          "id": "kraken-max",
-          "name": "Kraken Max"
-        },
-        {
-          "id": "cactus-high",
-          "name": "Cactus High"
-        },
-        {
-          "id": "kraken-high",
-          "name": "Kraken High"
-        },
-        {
-          "id": "cactus-xhigh",
-          "name": "Cactus XHigh"
-        },
-        {
-          "id": "kraken-xhigh",
-          "name": "Kraken XHigh"
-        },
-        {
-          "id": "cactus-medium",
-          "name": "Cactus Medium"
-        },
-        {
-          "id": "kraken-medium",
-          "name": "Kraken Medium"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Devin CLI Official Binary",
-          "scanner": "ide-build-diff",
-          "detected_at": "2026-11-07T12:25:00+00:00",
-          "title": "Devin CLI 3000.12.17: OpenAI Cactus & Kraken",
-          "url": "https://static.devin.ai/cli/current/manifest.json",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "LEAK · OPENAI",
-      "card_ids": [
-        "devin-cli-3000.11.239-3000.12.17-openai"
-      ],
-      "event_label": "",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: Cactus & Kraken by OpenAI\n\nFirst detected 07 Nov 12:25 UTC in Devin CLI Official Binary\nCodename: cactus, kraken\nIDs: cactus-low, cactus-max, kraken-low +7\n\nvia @StatsWire"
-    },
-    {
       "id": "story-gemini-4-carbon",
       "group": "gemini-4-carbon",
       "kind": "release",
@@ -24001,6 +23978,366 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-fdb735dfbb3145b06202",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "inkling-2-mini",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "inkling-2-mini",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "kilo/thinkingmachines/inkling-2-mini",
+          "name": "kilo/thinkingmachines/inkling-2-mini",
+          "registry_update": true,
+          "released_on": "2026-11-21"
+        }
+      ],
+      "detected_at": "2026-11-21T12:30:59.323436+00:00",
+      "first_seen": "2026-11-21T12:27:42+00:00",
+      "observed_at": "2026-11-21T12:30:59.323436+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "80aacae4596cdd508ca1640cc9b5b9632c880274 -> 742808885371318e4b0a26539abffb6bc50efed4",
+      "build": "742808885371318e4b0a26539abffb6bc50efed4",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/742808885371318e4b0a26539abffb6bc50efed4",
+      "artifact_sha256": "b12d0597719c779a9405ee5770cc1e88debaa07d6c46ae63ce52bae4fccbaaa2",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/b12d0597719c779a9405ee5770cc1e88debaa07d6c46ae63ce52bae4fccbaaa2.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/b12d0597719c779a9405ee5770cc1e88debaa07d6c46ae63ce52bae4fccbaaa2.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/thinkingmachines/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/kilo/models/thinkingmachines/inkling-2-mini.toml",
+          "file_sha256": "b2bca237f449719f542c65ab730256acbecf5dfe7fe2ea668795b020ea1c83f3",
+          "excerpt": "{\"kilo/thinkingmachines/inkling-2-mini\": {\"schema\": 2, \"name\": \"Thinking Machines: Inkling 2 Mini\", \"description\": \"Inkling 2 Mini is an open-weight multimodal looped transformer from Thinking Machines Lab, with 3.4B active parameters out of 26.4B total (MoE). Its middle layers run three times with shared...\", \"family\": \"inkling\", \"open_weights\": false, \"release_date\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"text\": {\"input\": {\"price\": 0.08, \"cache\": {\"read\": 0.016}}, \"output\": {\"price\": 0.35}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/742808885371318e4b0a26539abffb6bc50efed4/providers/kilo/models/thinkingmachines/inkling-2-mini.toml",
+          "build": "742808885371318e4b0a26539abffb6bc50efed4",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/742808885371318e4b0a26539abffb6bc50efed4",
+          "first_seen": "2026-11-21T12:27:42+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/742808885371318e4b0a26539abffb6bc50efed4"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/742808885371318e4b0a26539abffb6bc50efed4"
+        }
+      ],
+      "tracker_observed_at": "2026-11-21T12:31:06.541475+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 742808885371: kilo/thinkingmachines/inkling-2-mini\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/742808885371318e4b0a26539abffb6bc50efed4"
+    },
+    {
+      "id": "intel-7fa9e019e51fdc1e23a6",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "qwen4",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "qwen4",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "novita-ai/qwen/qwen4-max",
+          "name": "novita-ai/qwen/qwen4-max",
+          "registry_update": true,
+          "released_on": "2026-11-16"
+        }
+      ],
+      "detected_at": "2026-11-21T12:30:59.323436+00:00",
+      "first_seen": "2026-11-21T12:27:42+00:00",
+      "observed_at": "2026-11-21T12:30:59.323436+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "80aacae4596cdd508ca1640cc9b5b9632c880274 -> 742808885371318e4b0a26539abffb6bc50efed4",
+      "build": "742808885371318e4b0a26539abffb6bc50efed4",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/742808885371318e4b0a26539abffb6bc50efed4",
+      "artifact_sha256": "b12d0597719c779a9405ee5770cc1e88debaa07d6c46ae63ce52bae4fccbaaa2",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/b12d0597719c779a9405ee5770cc1e88debaa07d6c46ae63ce52bae4fccbaaa2.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/b12d0597719c779a9405ee5770cc1e88debaa07d6c46ae63ce52bae4fccbaaa2.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "novita-ai/qwen/qwen4-max",
+          "family": "qwen4",
+          "file_path": "providers/novita-ai/models/qwen/qwen4-max.toml",
+          "file_sha256": "8439ce5a3ed38ac43641540ee8c82ce7cd99ca8cef925be368983053cf972e2c",
+          "excerpt": "{\"novita-ai/qwen/qwen4-max\": {\"schema\": 2, \"base_model\": \"alibaba/qwen4-max\", \"modalities\": {\"input\": [\"text\", \"image/bmp\", \"image/jpeg\", \"image/png\", \"image/tiff\", \"image/webp\", \"image/heic\", \"video/mp4\", \"video/x-msvideo\", \"video/x-matroska\", \"video/quicktime\", \"video/x-flv\", \"video/x-ms-wmv\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"low\", \"high\", \"xhigh\"]}, \"cache\": {\"implicit\": true}, \"structured_output\": true}, \"limit\": {\"output\": 262000}, \"api\": {\"chat-completions\": {\"compatibility\": {\"reasoning_field\": \"reasoning_content\"}, \"capabilities\": {\"system_updates\": true}}, \"messages\": {\"base_url\": \"https://api.novita.ai/anthropic/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic-compatible\"}}, \"responses\": {\"base_url\": \"https://api.novita.ai/openai/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 1.413, \"cache\": {\"read\": 0.071, \"write\": 1.767}}, \"output\": {\"price\": 4.24}}}}}",
+          "canonical_id": "alibaba/qwen4-max",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/742808885371318e4b0a26539abffb6bc50efed4/providers/novita-ai/models/qwen/qwen4-max.toml",
+          "build": "742808885371318e4b0a26539abffb6bc50efed4",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/742808885371318e4b0a26539abffb6bc50efed4",
+          "first_seen": "2026-11-21T12:27:42+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "dashscope/qwen4-max",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/f410a08e6d566829e3a858b00e8b23f5a796fd2360f056a69cab43526f908864.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/742808885371318e4b0a26539abffb6bc50efed4"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/742808885371318e4b0a26539abffb6bc50efed4"
+        }
+      ],
+      "tracker_observed_at": "2026-11-21T12:31:06.541475+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 742808885371: novita-ai/qwen/qwen4-max\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/742808885371318e4b0a26539abffb6bc50efed4"
+    },
+    {
+      "id": "intel-f76c26ca78dd2f49f395",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "inkling-2-mini",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "inkling-2-mini",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "kilo/thinkingmachines/inkling-2-mini",
+          "name": "kilo/thinkingmachines/inkling-2-mini",
+          "registry_update": true,
+          "released_on": "2026-11-21"
+        }
+      ],
+      "detected_at": "2026-11-21T12:30:53.408698+00:00",
+      "first_seen": "2026-11-21T12:30:53.140047+00:00",
+      "observed_at": "2026-11-21T12:30:53.408698+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "06a52e987553ff0dcbeb2c2b6fd3dc34a18f5df0033076f2337b2d1aa5c23a85 -> e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72",
+      "build": "e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/thinkingmachines/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "api.json?type=all",
+          "file_sha256": "e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72",
+          "excerpt": "{\"kilo/thinkingmachines/inkling-2-mini\": {\"id\": \"thinkingmachines/inkling-2-mini\", \"name\": \"Thinking Machines: Inkling 2 Mini\", \"description\": \"Inkling 2 Mini is an open-weight multimodal looped transformer from Thinking Machines Lab, with 3.4B active parameters out of 26.4B total (MoE). Its middle layers run three times with shared...\", \"family\": \"inkling\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-21\", \"last_updated\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 0.08, \"output\": 0.35, \"cache_read\": 0.016}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-21T12:30:53.140047+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-21T12:30:55.270765+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog e3fbb506069c: kilo/thinkingmachines/inkling-2-mini\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
+    {
+      "id": "intel-167e01094ac3f07665e9",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "qwen4",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "qwen4",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "novita-ai/qwen/qwen4-max",
+          "name": "novita-ai/qwen/qwen4-max",
+          "registry_update": true,
+          "released_on": "2026-11-16"
+        }
+      ],
+      "detected_at": "2026-11-21T12:30:53.408698+00:00",
+      "first_seen": "2026-11-21T12:30:53.140047+00:00",
+      "observed_at": "2026-11-21T12:30:53.408698+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "06a52e987553ff0dcbeb2c2b6fd3dc34a18f5df0033076f2337b2d1aa5c23a85 -> e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72",
+      "build": "e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "novita-ai/qwen/qwen4-max",
+          "family": "qwen4",
+          "file_path": "api.json?type=all",
+          "file_sha256": "e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72",
+          "excerpt": "{\"novita-ai/qwen/qwen4-max\": {\"id\": \"qwen/qwen4-max\", \"name\": \"Qwen4 Max\", \"description\": \"Flagship multimodal model for coding, office productivity, frontend design, and complex agentic tasks\", \"family\": \"qwen-max\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"low\", \"high\", \"xhigh\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-16\", \"last_updated\": \"2026-11-16\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1000000, \"output\": 262000}, \"cost\": {\"input\": 1.413, \"output\": 4.24, \"cache_read\": 0.071, \"cache_write\": 1.767}, \"canonical_model_id\": \"alibaba/qwen4-max\"}}",
+          "canonical_id": "alibaba/qwen4-max",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-21T12:30:53.140047+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "dashscope/qwen4-max",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/f410a08e6d566829e3a858b00e8b23f5a796fd2360f056a69cab43526f908864.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-21T12:30:55.270765+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog e3fbb506069c: novita-ai/qwen/qwen4-max\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "intel-5c15bcf2ef7c3209b1a6",
       "scanner": "models-dev-git",
@@ -72312,78 +72649,6 @@
       "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 model keys!\n\n• moonshot/kimi-k3.1-pro-highspeed (moonshot/kimi-k3.1-pro-highspeed)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
     },
     {
-      "id": "devin-cli-3000.11.239-3000.12.17-openai",
-      "category": "desktop-diff",
-      "scanner": "ide-build-diff",
-      "header": "DEVIN CLI OFFICIAL BINARY DIFF · OPENAI",
-      "title": "Devin CLI 3000.12.17: OpenAI Cactus & Kraken",
-      "subtitle": "Verified Devin CLI (bin/devin) compiled model table diff",
-      "build_label": "Devin CLI",
-      "build_transition": "3000.11.239 -> 3000.12.17",
-      "models": [
-        {
-          "id": "cactus-low",
-          "name": "Cactus Low"
-        },
-        {
-          "id": "cactus-medium",
-          "name": "Cactus Medium"
-        },
-        {
-          "id": "cactus-high",
-          "name": "Cactus High"
-        },
-        {
-          "id": "cactus-xhigh",
-          "name": "Cactus XHigh"
-        },
-        {
-          "id": "cactus-max",
-          "name": "Cactus Max"
-        },
-        {
-          "id": "kraken-low",
-          "name": "Kraken Low"
-        },
-        {
-          "id": "kraken-medium",
-          "name": "Kraken Medium"
-        },
-        {
-          "id": "kraken-high",
-          "name": "Kraken High"
-        },
-        {
-          "id": "kraken-xhigh",
-          "name": "Kraken XHigh"
-        },
-        {
-          "id": "kraken-max",
-          "name": "Kraken Max"
-        }
-      ],
-      "codenames": [
-        "cactus",
-        "kraken"
-      ],
-      "evidence": "static.devin.ai/cli/3000.12.17 (bin/devin)",
-      "source_text": "official Devin CLI Linux x64 binary release archive.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "OPENAI",
-      "provider_slug": "openai",
-      "accent_color": "#10b981",
-      "links": [
-        {
-          "label": "Devin CLI Manifest",
-          "url": "https://static.devin.ai/cli/current/manifest.json"
-        }
-      ],
-      "detected_at": "2026-11-07T12:25:00+00:00",
-      "x_post_text": "🚨 DEVIN CLI OFFICIAL BINARY DIFF · OPENAI\nDevin CLI 3000.12.17: OpenAI Cactus & Kraken spotted in Devin CLI 3000.11.239 -> 3000.12.17!\n\n• Cactus Low (cactus-low)\n• Cactus Medium (cactus-medium)\n• Cactus High (cactus-high)\n• Cactus XHigh (cactus-xhigh)\n• Cactus Max (cactus-max)\n• Kraken Low (kraken-low)\n• +4 more variants\n\nEvidence: static.devin.ai/cli/3000.12.17 (bin/devin)\nSource: official Devin CLI Linux x64 binary release archive.\n\nTracked by @StatsWire",
-      "pricing": null
-    },
-    {
       "id": "ag-acp-1.4.3-revision-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
@@ -72547,25 +72812,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T12:22:45.675852+00:00",
+      "last_attempt": "2026-11-21T12:30:52.919635+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T12:22:45.965082+00:00",
+      "last_success": "2026-11-21T12:30:55.270765+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.289,
-      "latest_build": "b8d06ce9049eaa2336731ce065fbbe0377629fe9f11f9b88e781f9333ad26e80",
-      "builds_retained": 70,
+      "duration_seconds": 2.351,
+      "latest_build": "e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72",
+      "builds_retained": 72,
       "identifiers": 9683
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-21T12:22:46.083423+00:00",
+      "last_attempt": "2026-11-21T12:30:55.392846+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T12:22:46.427171+00:00",
+      "last_success": "2026-11-21T12:30:55.751102+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.344,
+      "duration_seconds": 0.359,
       "latest_build": "ac7674625ceed298d6c411cc964f23aded63989d",
       "builds_retained": 47,
       "identifiers": 6997
@@ -72573,24 +72838,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-21T12:20:38.749671+00:00",
+      "last_attempt": "2026-11-21T12:30:55.876972+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T12:20:39.178737+00:00",
+      "last_success": "2026-11-21T12:31:06.541475+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.429,
-      "latest_build": "80aacae4596cdd508ca1640cc9b5b9632c880274",
-      "builds_retained": 75,
+      "duration_seconds": 10.665,
+      "latest_build": "99ba9eca9881a86b5ec16f3bd6521092afb30294",
+      "builds_retained": 77,
       "identifiers": 10826
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-21T12:22:46.550956+00:00",
+      "last_attempt": "2026-11-21T12:31:06.662096+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1866,
-      "duration_seconds": 14.214
+      "consecutive_failures": 1870,
+      "duration_seconds": 14.075
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -72610,19 +72875,19 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T12:21:53.588837+00:00",
+      "last_attempt": "2026-11-21T12:29:58.711282+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T12:21:55.250158+00:00",
+      "last_success": "2026-11-21T12:30:00.434427+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.661
+      "duration_seconds": 1.723
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T12:21:55.250224+00:00",
+      "last_attempt": "2026-11-21T12:30:00.434497+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T12:21:55.363034+00:00",
+      "last_success": "2026-11-21T12:30:00.547877+00:00",
       "error_type": null,
       "consecutive_failures": 0,
       "duration_seconds": 0.113
@@ -72630,41 +72895,41 @@
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T12:21:55.363071+00:00",
+      "last_attempt": "2026-11-21T12:30:00.547923+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T12:22:01.939778+00:00",
+      "last_success": "2026-11-21T12:30:07.660858+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.577
+      "duration_seconds": 7.113
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T12:22:01.939831+00:00",
+      "last_attempt": "2026-11-21T12:30:07.660914+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T12:22:45.675790+00:00",
+      "last_success": "2026-11-21T12:30:52.919547+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 43.736,
+      "duration_seconds": 45.259,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-21T12:22:02.163007+00:00",
+          "checked_at": "2026-11-21T12:30:07.885267+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-21T12:22:11.368483+00:00",
+          "checked_at": "2026-11-21T12:30:19.135224+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-21T12:22:11.475588+00:00",
+          "checked_at": "2026-11-21T12:30:19.217408+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-21T12:22:11.475638+00:00",
+          "checked_at": "2026-11-21T12:30:19.217428+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -72672,25 +72937,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T12:22:45.675852+00:00",
+      "last_attempt": "2026-11-21T12:30:52.919635+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T12:22:45.965082+00:00",
+      "last_success": "2026-11-21T12:30:55.270765+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.289,
-      "latest_build": "b8d06ce9049eaa2336731ce065fbbe0377629fe9f11f9b88e781f9333ad26e80",
-      "builds_retained": 70,
+      "duration_seconds": 2.351,
+      "latest_build": "e3fbb506069c7223c951544f92f26adcf0974350c7486531975be834817a5f72",
+      "builds_retained": 72,
       "identifiers": 9683
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-21T12:22:46.083423+00:00",
+      "last_attempt": "2026-11-21T12:30:55.392846+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T12:22:46.427171+00:00",
+      "last_success": "2026-11-21T12:30:55.751102+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.344,
+      "duration_seconds": 0.359,
       "latest_build": "ac7674625ceed298d6c411cc964f23aded63989d",
       "builds_retained": 47,
       "identifiers": 6997
@@ -72698,24 +72963,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-21T12:20:38.749671+00:00",
+      "last_attempt": "2026-11-21T12:30:55.876972+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T12:20:39.178737+00:00",
+      "last_success": "2026-11-21T12:31:06.541475+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.429,
-      "latest_build": "80aacae4596cdd508ca1640cc9b5b9632c880274",
-      "builds_retained": 75,
+      "duration_seconds": 10.665,
+      "latest_build": "99ba9eca9881a86b5ec16f3bd6521092afb30294",
+      "builds_retained": 77,
       "identifiers": 10826
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-21T12:22:46.550956+00:00",
+      "last_attempt": "2026-11-21T12:31:06.662096+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1866,
-      "duration_seconds": 14.214
+      "consecutive_failures": 1870,
+      "duration_seconds": 14.075
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -72733,52 +72998,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T12:23:01.185281+00:00",
+      "last_attempt": "2026-11-21T12:31:20.740385+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T12:23:09.277089+00:00",
+      "last_success": "2026-11-21T12:31:28.871340+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.092
+      "duration_seconds": 8.131
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T12:23:09.277146+00:00",
+      "last_attempt": "2026-11-21T12:31:28.871401+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T12:23:14.579943+00:00",
+      "last_success": "2026-11-21T12:31:31.603747+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.303
+      "duration_seconds": 2.732
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-21T12:21:03.835461+00:00",
+      "last_attempt": "2026-11-21T12:31:31.603803+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T12:21:12.355557+00:00",
+      "last_success": "2026-11-21T12:32:10.949469+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.52
+      "duration_seconds": 39.346
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T12:23:14.580005+00:00",
+      "last_attempt": "2026-11-21T12:32:10.949532+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T12:23:16.091668+00:00",
+      "last_success": "2026-11-21T12:32:12.427054+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.512
+      "duration_seconds": 1.478
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T12:23:16.091723+00:00",
+      "last_attempt": "2026-11-21T12:32:12.427112+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T12:23:16.119196+00:00",
+      "last_success": "2026-11-21T12:32:12.541395+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.027
+      "duration_seconds": 0.114
     }
   },
   "identities": {
@@ -72789,8 +73054,8 @@
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 305,
-      "seconds_mean": 4322.012040039344,
+      "samples": 307,
+      "seconds_mean": 4295.141104508143,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -72804,8 +73069,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 390,
-      "events": 390,
+      "complete": 394,
+      "events": 394,
       "rate": 1.0
     },
     "source_health": {
