@@ -1,17 +1,155 @@
 {
-  "generated_at": "2026-11-21T23:47:44.156152+00:00",
-  "scan_completed_at": "2026-11-21T23:49:17.146098+00:00",
+  "generated_at": "2026-11-21T23:54:58.370611+00:00",
+  "scan_completed_at": "2026-11-21T23:56:44.000768+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 301,
+    "stories": 303,
     "leaks": 40,
     "releases": 78,
-    "stories_24h": 56,
-    "sources_ok": 12,
-    "total_cards": 678,
-    "new_in_this_scan": 0
+    "stories_24h": 58,
+    "sources_ok": 15,
+    "total_cards": 681,
+    "new_in_this_scan": 3
   },
   "stories": [
+    {
+      "id": "story-default",
+      "group": "default",
+      "kind": "unverified",
+      "open_weights": false,
+      "title": "Default",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-21T23:55:56.117226+00:00",
+      "updated_at": "2026-11-21T23:55:56.117226+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "default",
+          "name": "gradium/default"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-21T23:55:56.117226+00:00",
+          "title": "default",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "0946b7416c5bb13f04f692bc3604b91b897d5e43",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/8335a7bdfaeece5e4347caa54e9ccd64ff9a4544bbdb6d4c41369b7d51c421e0.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "MULTIPLE SIGHTINGS · UNATTRIBUTED",
+      "card_ids": [
+        "intel-15cf4fc5f52ee304fa67"
+      ],
+      "event_label": "Multiple sightings",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "gradium/default",
+          "family": "default",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gradium/default\": {\"input_cost_per_character\": 7e-05, \"litellm_provider\": \"gradium\", \"metadata\": {\"calculation\": \"1 credit per character synthesized; $7 per 100k add-on credits (XS plan) = $0.00007/char. Larger plans are cheaper (down to $3.8/100k on L), and Pro Voice Clone voices bill 1.2 credits per character.\", \"notes\": \"Gradium TTS bills per character of input text, not per second of audio.\"}, \"mode\": \"audio_speech\", \"output_cost_per_character\": 0.0, \"source\": \"https://gradium.ai/pricing\", \"supported_endpoints\": [\"/v1/audio/speech\"]}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "8335a7bdfaeece5e4347caa54e9ccd64ff9a4544bbdb6d4c41369b7d51c421e0",
+          "method": "structured registry",
+          "build": "0946b7416c5bb13f04f692bc3604b91b897d5e43",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json",
+          "first_seen": "2026-11-21T23:51:27+00:00"
+        }
+      ],
+      "x_post_text": "LiteLLM commit-pinned registry 0946b7416c5b: default\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json"
+    },
+    {
+      "id": "story-gradium-tts",
+      "group": "gradium-tts",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Gradium Tts",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-21T23:55:56.117226+00:00",
+      "updated_at": "2026-11-21T23:55:56.117226+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gradium-tts-beta",
+          "name": "gradium/gradium-tts-beta"
+        },
+        {
+          "id": "gradium-tts-202602",
+          "name": "gradium/gradium-tts-202602"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-21T23:55:56.117226+00:00",
+          "title": "gradium-tts-202602",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "0946b7416c5bb13f04f692bc3604b91b897d5e43",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/8335a7bdfaeece5e4347caa54e9ccd64ff9a4544bbdb6d4c41369b7d51c421e0.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-24bc687d7c1d8fcffe42",
+        "intel-67e5d607f026a671adff"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "gradium/gradium-tts-202602",
+          "family": "gradium-tts-202602",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gradium/gradium-tts-202602\": {\"input_cost_per_character\": 7e-05, \"litellm_provider\": \"gradium\", \"metadata\": {\"calculation\": \"1 credit per character synthesized; $7 per 100k add-on credits (XS plan) = $0.00007/char. Larger plans are cheaper (down to $3.8/100k on L), and Pro Voice Clone voices bill 1.2 credits per character.\", \"notes\": \"Gradium TTS bills per character of input text, not per second of audio.\"}, \"mode\": \"audio_speech\", \"output_cost_per_character\": 0.0, \"source\": \"https://gradium.ai/pricing\", \"supported_endpoints\": [\"/v1/audio/speech\"]}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "8335a7bdfaeece5e4347caa54e9ccd64ff9a4544bbdb6d4c41369b7d51c421e0",
+          "method": "structured registry",
+          "build": "0946b7416c5bb13f04f692bc3604b91b897d5e43",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json",
+          "first_seen": "2026-11-21T23:51:27+00:00"
+        },
+        {
+          "id": "gradium/gradium-tts-beta",
+          "family": "gradium-tts-beta",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gradium/gradium-tts-beta\": {\"input_cost_per_character\": 7e-05, \"litellm_provider\": \"gradium\", \"metadata\": {\"calculation\": \"1 credit per character synthesized; $7 per 100k add-on credits (XS plan) = $0.00007/char. Larger plans are cheaper (down to $3.8/100k on L), and Pro Voice Clone voices bill 1.2 credits per character.\", \"notes\": \"Gradium TTS bills per character of input text, not per second of audio.\"}, \"mode\": \"audio_speech\", \"output_cost_per_character\": 0.0, \"source\": \"https://gradium.ai/pricing\", \"supported_endpoints\": [\"/v1/audio/speech\"]}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "8335a7bdfaeece5e4347caa54e9ccd64ff9a4544bbdb6d4c41369b7d51c421e0",
+          "method": "structured registry",
+          "build": "0946b7416c5bb13f04f692bc3604b91b897d5e43",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json",
+          "first_seen": "2026-11-21T23:51:27+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: gradium-tts-beta\nhttps://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json"
+    },
     {
       "id": "story-deepseek-v-4p-1-flash-us",
       "group": "deepseek-v-4p-1-flash-us",
@@ -24164,6 +24302,266 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-15cf4fc5f52ee304fa67",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "MULTIPLE SIGHTINGS · MULTI-PROVIDER",
+      "title": "default",
+      "event_label": "Multiple sightings",
+      "registry_update": false,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "multiple sightings",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "default",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "gradium/default",
+          "name": "gradium/default",
+          "registry_update": false
+        }
+      ],
+      "detected_at": "2026-11-21T23:55:56.117226+00:00",
+      "first_seen": "2026-11-21T23:51:27+00:00",
+      "observed_at": "2026-11-21T23:55:56.117226+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "29c56bbec582bee342aee2e4fb228d1c75848261 -> 0946b7416c5bb13f04f692bc3604b91b897d5e43",
+      "build": "0946b7416c5bb13f04f692bc3604b91b897d5e43",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json",
+      "artifact_sha256": "8335a7bdfaeece5e4347caa54e9ccd64ff9a4544bbdb6d4c41369b7d51c421e0",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/8335a7bdfaeece5e4347caa54e9ccd64ff9a4544bbdb6d4c41369b7d51c421e0.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/8335a7bdfaeece5e4347caa54e9ccd64ff9a4544bbdb6d4c41369b7d51c421e0.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "gradium/default",
+          "family": "default",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gradium/default\": {\"input_cost_per_character\": 7e-05, \"litellm_provider\": \"gradium\", \"metadata\": {\"calculation\": \"1 credit per character synthesized; $7 per 100k add-on credits (XS plan) = $0.00007/char. Larger plans are cheaper (down to $3.8/100k on L), and Pro Voice Clone voices bill 1.2 credits per character.\", \"notes\": \"Gradium TTS bills per character of input text, not per second of audio.\"}, \"mode\": \"audio_speech\", \"output_cost_per_character\": 0.0, \"source\": \"https://gradium.ai/pricing\", \"supported_endpoints\": [\"/v1/audio/speech\"]}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "8335a7bdfaeece5e4347caa54e9ccd64ff9a4544bbdb6d4c41369b7d51c421e0",
+          "method": "structured registry",
+          "build": "0946b7416c5bb13f04f692bc3604b91b897d5e43",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json",
+          "first_seen": "2026-11-21T23:51:27+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "devin-desktop",
+          "identifier": "default",
+          "first_seen": "2026-05-27T00:00:00+00:00",
+          "evidence_path": "data/intelligence/evidence/devin-desktop/735f80f9a7851c043b7a19595a396a3f9352629aae388b1af5aa868064a93c6a.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/0946b7416c5bb13f04f692bc3604b91b897d5e43"
+        }
+      ],
+      "tracker_observed_at": "2026-11-21T23:55:57.889005+00:00",
+      "discord_alerted_at": "2026-11-21T23:56:43.810653+00:00",
+      "pricing": null,
+      "x_post_text": "LiteLLM model registry 0946b7416c5b: gradium/default\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-24bc687d7c1d8fcffe42",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gradium-tts-202602",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gradium-tts-202602",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "gradium/gradium-tts-202602",
+          "name": "gradium/gradium-tts-202602",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-21T23:55:56.117226+00:00",
+      "first_seen": "2026-11-21T23:51:27+00:00",
+      "observed_at": "2026-11-21T23:55:56.117226+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "29c56bbec582bee342aee2e4fb228d1c75848261 -> 0946b7416c5bb13f04f692bc3604b91b897d5e43",
+      "build": "0946b7416c5bb13f04f692bc3604b91b897d5e43",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json",
+      "artifact_sha256": "8335a7bdfaeece5e4347caa54e9ccd64ff9a4544bbdb6d4c41369b7d51c421e0",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/8335a7bdfaeece5e4347caa54e9ccd64ff9a4544bbdb6d4c41369b7d51c421e0.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/8335a7bdfaeece5e4347caa54e9ccd64ff9a4544bbdb6d4c41369b7d51c421e0.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "gradium/gradium-tts-202602",
+          "family": "gradium-tts-202602",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gradium/gradium-tts-202602\": {\"input_cost_per_character\": 7e-05, \"litellm_provider\": \"gradium\", \"metadata\": {\"calculation\": \"1 credit per character synthesized; $7 per 100k add-on credits (XS plan) = $0.00007/char. Larger plans are cheaper (down to $3.8/100k on L), and Pro Voice Clone voices bill 1.2 credits per character.\", \"notes\": \"Gradium TTS bills per character of input text, not per second of audio.\"}, \"mode\": \"audio_speech\", \"output_cost_per_character\": 0.0, \"source\": \"https://gradium.ai/pricing\", \"supported_endpoints\": [\"/v1/audio/speech\"]}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "8335a7bdfaeece5e4347caa54e9ccd64ff9a4544bbdb6d4c41369b7d51c421e0",
+          "method": "structured registry",
+          "build": "0946b7416c5bb13f04f692bc3604b91b897d5e43",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json",
+          "first_seen": "2026-11-21T23:51:27+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/0946b7416c5bb13f04f692bc3604b91b897d5e43"
+        }
+      ],
+      "tracker_observed_at": "2026-11-21T23:55:57.889005+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: gradium/gradium-tts-202602\nhttps://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-67e5d607f026a671adff",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gradium-tts-beta",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gradium-tts-beta",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "gradium/gradium-tts-beta",
+          "name": "gradium/gradium-tts-beta",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-21T23:55:56.117226+00:00",
+      "first_seen": "2026-11-21T23:51:27+00:00",
+      "observed_at": "2026-11-21T23:55:56.117226+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "29c56bbec582bee342aee2e4fb228d1c75848261 -> 0946b7416c5bb13f04f692bc3604b91b897d5e43",
+      "build": "0946b7416c5bb13f04f692bc3604b91b897d5e43",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json",
+      "artifact_sha256": "8335a7bdfaeece5e4347caa54e9ccd64ff9a4544bbdb6d4c41369b7d51c421e0",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/8335a7bdfaeece5e4347caa54e9ccd64ff9a4544bbdb6d4c41369b7d51c421e0.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/8335a7bdfaeece5e4347caa54e9ccd64ff9a4544bbdb6d4c41369b7d51c421e0.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "gradium/gradium-tts-beta",
+          "family": "gradium-tts-beta",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gradium/gradium-tts-beta\": {\"input_cost_per_character\": 7e-05, \"litellm_provider\": \"gradium\", \"metadata\": {\"calculation\": \"1 credit per character synthesized; $7 per 100k add-on credits (XS plan) = $0.00007/char. Larger plans are cheaper (down to $3.8/100k on L), and Pro Voice Clone voices bill 1.2 credits per character.\", \"notes\": \"Gradium TTS bills per character of input text, not per second of audio.\"}, \"mode\": \"audio_speech\", \"output_cost_per_character\": 0.0, \"source\": \"https://gradium.ai/pricing\", \"supported_endpoints\": [\"/v1/audio/speech\"]}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "8335a7bdfaeece5e4347caa54e9ccd64ff9a4544bbdb6d4c41369b7d51c421e0",
+          "method": "structured registry",
+          "build": "0946b7416c5bb13f04f692bc3604b91b897d5e43",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json",
+          "first_seen": "2026-11-21T23:51:27+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/0946b7416c5bb13f04f692bc3604b91b897d5e43"
+        }
+      ],
+      "tracker_observed_at": "2026-11-21T23:55:57.889005+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: gradium/gradium-tts-beta\nhttps://raw.githubusercontent.com/BerriAI/litellm/0946b7416c5bb13f04f692bc3604b91b897d5e43/model_prices_and_context_window.json"
+    },
     {
       "id": "intel-06b8a94c6100621ba9d8",
       "scanner": "litellm-intelligence",
@@ -74329,12 +74727,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T23:48:42.199150+00:00",
+      "last_attempt": "2026-11-21T23:55:54.958995+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T23:48:42.468175+00:00",
+      "last_success": "2026-11-21T23:55:55.209701+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.269,
+      "duration_seconds": 0.251,
       "latest_build": "fd168d7d4410b95ed584a65fc0fee094319af30c009c57fdcb1a91be3cdeafaf",
       "builds_retained": 78,
       "identifiers": 9686
@@ -74342,25 +74740,25 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-21T23:46:16.504653+00:00",
+      "last_attempt": "2026-11-21T23:55:55.401472+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T23:46:17.011593+00:00",
+      "last_success": "2026-11-21T23:55:57.889005+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.507,
-      "latest_build": "29c56bbec582bee342aee2e4fb228d1c75848261",
-      "builds_retained": 51,
-      "identifiers": 7002
+      "duration_seconds": 2.488,
+      "latest_build": "0946b7416c5bb13f04f692bc3604b91b897d5e43",
+      "builds_retained": 52,
+      "identifiers": 7005
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-21T23:43:45.278386+00:00",
+      "last_attempt": "2026-11-21T23:55:58.082022+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T23:43:45.736885+00:00",
+      "last_success": "2026-11-21T23:55:58.483755+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.459,
+      "duration_seconds": 0.402,
       "latest_build": "bf4cb1bc09891103fcbff7a28369349ff946b4d5",
       "builds_retained": 83,
       "identifiers": 10829
@@ -74368,21 +74766,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-21T23:48:42.671494+00:00",
+      "last_attempt": "2026-11-21T23:55:58.676788+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2164,
-      "duration_seconds": 21.715
+      "consecutive_failures": 2167,
+      "duration_seconds": 21.723
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-21T23:34:34.288392+00:00",
+      "last_attempt": "2026-11-21T23:51:30.820296+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T23:34:34.545032+00:00",
+      "last_success": "2026-11-21T23:51:31.083367+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.257,
+      "duration_seconds": 0.263,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -74392,61 +74790,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T23:47:44.156227+00:00",
+      "last_attempt": "2026-11-21T23:54:58.370681+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T23:47:45.840448+00:00",
+      "last_success": "2026-11-21T23:55:00.095640+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.684
+      "duration_seconds": 1.725
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T23:47:45.840504+00:00",
+      "last_attempt": "2026-11-21T23:55:00.095694+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T23:47:45.969875+00:00",
+      "last_success": "2026-11-21T23:55:00.219671+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.129
+      "duration_seconds": 0.124
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T23:47:45.969916+00:00",
+      "last_attempt": "2026-11-21T23:55:00.219708+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T23:47:52.256731+00:00",
+      "last_success": "2026-11-21T23:55:06.324664+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.287
+      "duration_seconds": 6.105
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T23:47:52.256817+00:00",
+      "last_attempt": "2026-11-21T23:55:06.324733+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T23:48:42.199094+00:00",
+      "last_success": "2026-11-21T23:55:54.958942+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 49.942,
+      "duration_seconds": 48.634,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-21T23:47:52.556628+00:00",
+          "checked_at": "2026-11-21T23:55:06.784935+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-21T23:48:02.690361+00:00",
+          "checked_at": "2026-11-21T23:55:16.287350+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-21T23:48:02.804284+00:00",
+          "checked_at": "2026-11-21T23:55:16.395735+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-21T23:48:02.804303+00:00",
+          "checked_at": "2026-11-21T23:55:16.395751+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -74454,12 +74852,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T23:48:42.199150+00:00",
+      "last_attempt": "2026-11-21T23:55:54.958995+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T23:48:42.468175+00:00",
+      "last_success": "2026-11-21T23:55:55.209701+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.269,
+      "duration_seconds": 0.251,
       "latest_build": "fd168d7d4410b95ed584a65fc0fee094319af30c009c57fdcb1a91be3cdeafaf",
       "builds_retained": 78,
       "identifiers": 9686
@@ -74467,25 +74865,25 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-21T23:46:16.504653+00:00",
+      "last_attempt": "2026-11-21T23:55:55.401472+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T23:46:17.011593+00:00",
+      "last_success": "2026-11-21T23:55:57.889005+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.507,
-      "latest_build": "29c56bbec582bee342aee2e4fb228d1c75848261",
-      "builds_retained": 51,
-      "identifiers": 7002
+      "duration_seconds": 2.488,
+      "latest_build": "0946b7416c5bb13f04f692bc3604b91b897d5e43",
+      "builds_retained": 52,
+      "identifiers": 7005
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-21T23:43:45.278386+00:00",
+      "last_attempt": "2026-11-21T23:55:58.082022+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T23:43:45.736885+00:00",
+      "last_success": "2026-11-21T23:55:58.483755+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.459,
+      "duration_seconds": 0.402,
       "latest_build": "bf4cb1bc09891103fcbff7a28369349ff946b4d5",
       "builds_retained": 83,
       "identifiers": 10829
@@ -74493,21 +74891,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-21T23:48:42.671494+00:00",
+      "last_attempt": "2026-11-21T23:55:58.676788+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2164,
-      "duration_seconds": 21.715
+      "consecutive_failures": 2167,
+      "duration_seconds": 21.723
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-21T23:34:34.288392+00:00",
+      "last_attempt": "2026-11-21T23:51:30.820296+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T23:34:34.545032+00:00",
+      "last_success": "2026-11-21T23:51:31.083367+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.257,
+      "duration_seconds": 0.263,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -74515,64 +74913,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T23:49:04.393001+00:00",
+      "last_attempt": "2026-11-21T23:56:20.406456+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T23:49:13.083036+00:00",
+      "last_success": "2026-11-21T23:56:29.157737+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.69
+      "duration_seconds": 8.751
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T23:49:13.083089+00:00",
+      "last_attempt": "2026-11-21T23:56:29.157791+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T23:49:14.987934+00:00",
+      "last_success": "2026-11-21T23:56:31.174253+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.905
+      "duration_seconds": 2.016
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-21T23:44:17.312065+00:00",
+      "last_attempt": "2026-11-21T23:56:31.174298+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T23:44:26.583693+00:00",
+      "last_success": "2026-11-21T23:56:40.675213+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.272
+      "duration_seconds": 9.501
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T23:49:14.987982+00:00",
+      "last_attempt": "2026-11-21T23:56:40.675258+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T23:49:16.635291+00:00",
+      "last_success": "2026-11-21T23:56:42.303081+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.647
+      "duration_seconds": 1.628
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T23:49:16.635329+00:00",
+      "last_attempt": "2026-11-21T23:56:42.303121+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T23:49:16.663171+00:00",
+      "last_success": "2026-11-21T23:56:42.328337+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.028
+      "duration_seconds": 0.025
     }
   },
   "identities": {
-    "identifiers": 30847,
+    "identifiers": 30850,
     "declared_aliases": 17895,
     "pending_candidates": 2
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 322,
-      "seconds_mean": 4102.284069695653,
+      "samples": 325,
+      "seconds_mean": 4066.9009911384614,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -74586,8 +74984,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 410,
-      "events": 410,
+      "complete": 413,
+      "events": 413,
       "rate": 1.0
     },
     "source_health": {
