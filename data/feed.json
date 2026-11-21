@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-21T06:24:47.539066+00:00",
-  "scan_completed_at": "2026-11-21T06:26:20.361894+00:00",
+  "generated_at": "2026-11-21T06:33:13.837026+00:00",
+  "scan_completed_at": "2026-11-21T06:34:36.407719+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 301,
     "leaks": 40,
     "releases": 80,
     "stories_24h": 92,
-    "sources_ok": 14,
-    "total_cards": 656,
-    "new_in_this_scan": 0
+    "sources_ok": 12,
+    "total_cards": 659,
+    "new_in_this_scan": 3
   },
   "stories": [
     {
@@ -258,20 +258,21 @@
       "kind": "release",
       "open_weights": false,
       "title": "Inkling 2 Mini",
-      "provider_slug": "openrouter",
-      "provider_name": "Thinkingmachines",
-      "accent_color": "#10b981",
+      "provider_slug": "unknown",
+      "provider_name": "kilo",
+      "accent_color": "#0891b2",
       "detected_at": "2026-11-21T03:05:45.893089+00:00",
-      "updated_at": "2026-11-21T03:05:45.893089+00:00",
+      "updated_at": "2026-11-21T06:34:06.485093+00:00",
       "first_source": "OpenRouter",
       "lead": "",
-      "released_on": "",
+      "released_on": "2026-11-21",
       "pricing": "",
       "codenames": [],
       "models": [
         {
           "id": "inkling-2-mini",
-          "name": "Inkling 2 Mini"
+          "name": "kilo/thinkingmachines/inkling-2-mini",
+          "released_on": "2026-11-21"
         }
       ],
       "sources": [
@@ -284,20 +285,60 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-api",
+          "detected_at": "2026-11-21T06:34:06.485093+00:00",
+          "title": "inkling-2-mini",
+          "url": "https://models.dev/api.json?type=all",
+          "backfill": false,
+          "build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f.json.gz"
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
-      "header": "NEW MODEL · THINKINGMACHINES",
+      "header": "NEW MODEL · KILO",
       "card_ids": [
-        "openrouter-model-thinkingmachines_inkling-2-mini"
+        "openrouter-model-thinkingmachines_inkling-2-mini",
+        "intel-f9fd718251adf9703144"
       ],
-      "event_label": "",
+      "event_label": "Released",
       "intelligence_only": false,
       "candidate_only": false,
-      "registry_evidence": [],
+      "registry_evidence": [
+        {
+          "id": "kilo/thinkingmachines/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "api.json?type=all",
+          "file_sha256": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "excerpt": "{\"kilo/thinkingmachines/inkling-2-mini\": {\"id\": \"thinkingmachines/inkling-2-mini\", \"name\": \"Thinking Machines: Inkling 2 Mini\", \"description\": \"Inkling 2 Mini is an open-weight multimodal looped transformer from Thinking Machines Lab, with 3.4B active parameters out of 26.4B total (MoE). Its middle layers run three times with shared...\", \"family\": \"inkling\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-21\", \"last_updated\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 0.1, \"output\": 0.4, \"cache_read\": 0.02}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-21T06:34:06.185308+00:00"
+        },
+        {
+          "id": "openrouter/thinkingmachines/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "api.json?type=all",
+          "file_sha256": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "excerpt": "{\"openrouter/thinkingmachines/inkling-2-mini\": {\"id\": \"thinkingmachines/inkling-2-mini\", \"name\": \"Inkling 2 Mini\", \"description\": \"Multimodal reasoning model for visual analysis, planning, and tool use\", \"family\": \"inkling\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-21\", \"last_updated\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 0.1, \"output\": 0.4, \"cache_read\": 0.02}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-21T06:34:06.185308+00:00"
+        }
+      ],
       "discord_alerted_at": "2026-11-21T03:05:51.660834+00:00",
-      "x_post_text": "🟢 NEW MODEL: Inkling 2 Mini by Thinkingmachines\n\nFirst detected 21 Nov 03:05 UTC in OpenRouter\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Inkling 2 Mini by kilo\n\nFirst detected 21 Nov 03:05 UTC in OpenRouter\n📅 First released: 2026-11-21\nConfirmed by Registry Update\n\nvia @StatsWire"
     },
     {
       "id": "story-sonar",
@@ -4574,11 +4615,11 @@
       "kind": "release",
       "open_weights": false,
       "title": "DaisyRose 27B",
-      "provider_slug": "openrouter",
-      "provider_name": "OpenRouter",
+      "provider_slug": "unknown",
+      "provider_name": "kilo",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-20T12:33:12.593049+00:00",
-      "updated_at": "2026-11-21T00:48:46.964580+00:00",
+      "updated_at": "2026-11-21T06:34:06.485093+00:00",
       "first_source": "Registry Update",
       "lead": "12 h before it went live on OpenRouter",
       "released_on": "2026-11-20",
@@ -4587,8 +4628,8 @@
       "models": [
         {
           "id": "daisyrose-27b",
-          "name": "openrouter/radixark/daisyrose-27b",
-          "released_on": "2026-11-20"
+          "name": "kilo/radixark/daisyrose-27b",
+          "released_on": "2026-11-21"
         }
       ],
       "sources": [
@@ -4615,13 +4656,14 @@
       ],
       "source_count": 2,
       "backfill": false,
-      "header": "NEW MODEL · OPENROUTER",
+      "header": "NEW MODEL · KILO",
       "card_ids": [
         "intel-78eca1e1b0da5c179b48",
         "intel-821d7eb2b22fbffc4e2f",
         "openrouter-model-radixark_daisyrose-27b",
         "intel-989c65ef57aab97a4670",
-        "intel-ded5113ee56ea87cafa1"
+        "intel-ded5113ee56ea87cafa1",
+        "intel-670cc43d9ab5f4abdb4b"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -4684,10 +4726,38 @@
           "build": "e8c4cb641a1ecdf0b7ec268ff415f7aa599bfa6c",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/e8c4cb641a1ecdf0b7ec268ff415f7aa599bfa6c",
           "first_seen": "2026-11-21T00:45:00+00:00"
+        },
+        {
+          "id": "kilo/radixark/daisyrose-27b",
+          "family": "daisyrose-27b",
+          "file_path": "api.json?type=all",
+          "file_sha256": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "excerpt": "{\"kilo/radixark/daisyrose-27b\": {\"id\": \"radixark/daisyrose-27b\", \"name\": \"RadixArk: DaisyRose 27B\", \"description\": \"DaisyRose 27B is an open-weight multimodal reasoning model from RadixArk, trained from [Qwen3.8 27B](https://openrouter.ai/qwen/qwen3.8-27b) using reinforcement learning only on long-horizon agent tasks, with no supervised fine-tuning or distillation. It is...\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"low\", \"medium\", \"xhigh\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-21\", \"last_updated\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 262144, \"output\": 235929}, \"cost\": {\"input\": 0.2, \"output\": 2.5, \"cache_read\": 0.05}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-21T06:34:06.185308+00:00"
+        },
+        {
+          "id": "openrouter/radixark/daisyrose-27b",
+          "family": "daisyrose-27b",
+          "file_path": "api.json?type=all",
+          "file_sha256": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "excerpt": "{\"openrouter/radixark/daisyrose-27b\": {\"id\": \"radixark/daisyrose-27b\", \"name\": \"DaisyRose 27B\", \"description\": \"Multimodal reasoning model for visual analysis, planning, and tool use\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"low\", \"medium\", \"xhigh\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-21\", \"last_updated\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 262144, \"output\": 235929}, \"cost\": {\"input\": 0.15, \"output\": 1.875, \"cache_read\": 0.0375}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-21T06:34:06.185308+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-21T00:47:04.158760+00:00",
-      "x_post_text": "🟢 NEW MODEL: DaisyRose 27B by OpenRouter\n\nFirst detected 20 Nov 12:33 UTC in Registry Update\n📅 First released: 2026-11-20\n⏱ 12 h before it went live on OpenRouter\nConfirmed by OpenRouter\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: DaisyRose 27B by kilo\n\nFirst detected 20 Nov 12:33 UTC in Registry Update\n📅 First released: 2026-11-20\n⏱ 12 h before it went live on OpenRouter\nConfirmed by OpenRouter\n\nvia @StatsWire"
     },
     {
       "id": "story-nvidia-nemotron-3-5-transcribe",
@@ -17595,7 +17665,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-16T20:15:16.430197+00:00",
-      "updated_at": "2026-11-20T01:40:08+00:00",
+      "updated_at": "2026-11-21T06:34:06.485093+00:00",
       "first_source": "Gemini Web App Config",
       "lead": "2 days before it went live on OpenRouter",
       "released_on": "2026-11-18",
@@ -17606,7 +17676,7 @@
       "models": [
         {
           "id": "gemini-4-neon",
-          "name": "Gemini 4 Neon",
+          "name": "nano-gpt/google/gemini-4-neon",
           "released_on": "2026-11-18"
         },
         {
@@ -17813,7 +17883,8 @@
         "intel-7721e5c64d0c887607d2",
         "ag-acp-1.5.0-1.5.2-diff",
         "intel-0340217fd4207873201c",
-        "ag-2.33.0-2.33.1-gemini-4-neon"
+        "ag-2.33.0-2.33.1-gemini-4-neon",
+        "intel-a917421cd056d59f7e63"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -23913,6 +23984,311 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-670cc43d9ab5f4abdb4b",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "daisyrose-27b",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "daisyrose-27b",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "kilo/radixark/daisyrose-27b",
+          "name": "kilo/radixark/daisyrose-27b",
+          "registry_update": true,
+          "released_on": "2026-11-21"
+        },
+        {
+          "id": "openrouter/radixark/daisyrose-27b",
+          "name": "openrouter/radixark/daisyrose-27b",
+          "registry_update": true,
+          "released_on": "2026-11-21"
+        }
+      ],
+      "detected_at": "2026-11-21T06:34:06.485093+00:00",
+      "first_seen": "2026-11-21T06:34:06.185308+00:00",
+      "observed_at": "2026-11-21T06:34:06.485093+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "823b897007444ebcbbef1cc02cf3618277d585a3d74fe1ad514559c011c226cd -> 185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+      "build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/radixark/daisyrose-27b",
+          "family": "daisyrose-27b",
+          "file_path": "api.json?type=all",
+          "file_sha256": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "excerpt": "{\"kilo/radixark/daisyrose-27b\": {\"id\": \"radixark/daisyrose-27b\", \"name\": \"RadixArk: DaisyRose 27B\", \"description\": \"DaisyRose 27B is an open-weight multimodal reasoning model from RadixArk, trained from [Qwen3.8 27B](https://openrouter.ai/qwen/qwen3.8-27b) using reinforcement learning only on long-horizon agent tasks, with no supervised fine-tuning or distillation. It is...\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"low\", \"medium\", \"xhigh\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-21\", \"last_updated\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 262144, \"output\": 235929}, \"cost\": {\"input\": 0.2, \"output\": 2.5, \"cache_read\": 0.05}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-21T06:34:06.185308+00:00"
+        },
+        {
+          "id": "openrouter/radixark/daisyrose-27b",
+          "family": "daisyrose-27b",
+          "file_path": "api.json?type=all",
+          "file_sha256": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "excerpt": "{\"openrouter/radixark/daisyrose-27b\": {\"id\": \"radixark/daisyrose-27b\", \"name\": \"DaisyRose 27B\", \"description\": \"Multimodal reasoning model for visual analysis, planning, and tool use\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"low\", \"medium\", \"xhigh\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-21\", \"last_updated\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 262144, \"output\": 235929}, \"cost\": {\"input\": 0.15, \"output\": 1.875, \"cache_read\": 0.0375}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-21T06:34:06.185308+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-21T06:34:08.858271+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 185d384cb0e9: kilo/radixark/daisyrose-27b, openrouter/radixark/daisyrose-27b\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
+    {
+      "id": "intel-f9fd718251adf9703144",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "inkling-2-mini",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "inkling-2-mini",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "kilo/thinkingmachines/inkling-2-mini",
+          "name": "kilo/thinkingmachines/inkling-2-mini",
+          "registry_update": true,
+          "released_on": "2026-11-21"
+        },
+        {
+          "id": "openrouter/thinkingmachines/inkling-2-mini",
+          "name": "openrouter/thinkingmachines/inkling-2-mini",
+          "registry_update": true,
+          "released_on": "2026-11-21"
+        }
+      ],
+      "detected_at": "2026-11-21T06:34:06.485093+00:00",
+      "first_seen": "2026-11-21T06:34:06.185308+00:00",
+      "observed_at": "2026-11-21T06:34:06.485093+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "823b897007444ebcbbef1cc02cf3618277d585a3d74fe1ad514559c011c226cd -> 185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+      "build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/thinkingmachines/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "api.json?type=all",
+          "file_sha256": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "excerpt": "{\"kilo/thinkingmachines/inkling-2-mini\": {\"id\": \"thinkingmachines/inkling-2-mini\", \"name\": \"Thinking Machines: Inkling 2 Mini\", \"description\": \"Inkling 2 Mini is an open-weight multimodal looped transformer from Thinking Machines Lab, with 3.4B active parameters out of 26.4B total (MoE). Its middle layers run three times with shared...\", \"family\": \"inkling\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-21\", \"last_updated\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 0.1, \"output\": 0.4, \"cache_read\": 0.02}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-21T06:34:06.185308+00:00"
+        },
+        {
+          "id": "openrouter/thinkingmachines/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "api.json?type=all",
+          "file_sha256": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "excerpt": "{\"openrouter/thinkingmachines/inkling-2-mini\": {\"id\": \"thinkingmachines/inkling-2-mini\", \"name\": \"Inkling 2 Mini\", \"description\": \"Multimodal reasoning model for visual analysis, planning, and tool use\", \"family\": \"inkling\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-21\", \"last_updated\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 0.1, \"output\": 0.4, \"cache_read\": 0.02}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-21T06:34:06.185308+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-21T06:34:08.858271+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 185d384cb0e9: kilo/thinkingmachines/inkling-2-mini, openrouter/thinkingmachines/inkling-2-mini\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
+    {
+      "id": "intel-a917421cd056d59f7e63",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gemini-4-neon",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "gemini-4-neon",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "nano-gpt/google/gemini-4-neon",
+          "name": "nano-gpt/google/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        }
+      ],
+      "detected_at": "2026-11-21T06:34:06.485093+00:00",
+      "first_seen": "2026-11-21T06:34:06.185308+00:00",
+      "observed_at": "2026-11-21T06:34:06.485093+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "823b897007444ebcbbef1cc02cf3618277d585a3d74fe1ad514559c011c226cd -> 185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+      "build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "nano-gpt/google/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "api.json?type=all",
+          "file_sha256": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "excerpt": "{\"nano-gpt/google/gemini-4-neon\": {\"id\": \"google/gemini-4-neon\", \"name\": \"Gemini 4 Neon\", \"description\": \"Google's Gemini 4 model for fast, frontier-level coding, knowledge work and science workflows, with four thinking levels and a 1M-token context window\", \"family\": \"gemini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-03\", \"release_date\": \"2026-11-18\", \"last_updated\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 983040, \"input\": 983040, \"output\": 65536}, \"cost\": {\"input\": 3, \"output\": 15, \"cache_read\": 0.15}, \"canonical_model_id\": \"google/gemini-4-neon\"}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-21T06:34:06.185308+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gemini/gemini-4-neon",
+          "first_seen": "2026-11-18T20:53:00+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/f410a08e6d566829e3a858b00e8b23f5a796fd2360f056a69cab43526f908864.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-21T06:34:08.858271+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 185d384cb0e9: nano-gpt/google/gemini-4-neon\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "intel-594eea7cb17b879720bb",
       "scanner": "litellm-intelligence",
@@ -71879,25 +72255,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:25:42.192488+00:00",
+      "last_attempt": "2026-11-21T06:34:05.724391+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:25:42.476329+00:00",
+      "last_success": "2026-11-21T06:34:08.858271+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.284,
-      "latest_build": "823b897007444ebcbbef1cc02cf3618277d585a3d74fe1ad514559c011c226cd",
-      "builds_retained": 68,
-      "identifiers": 9677
+      "duration_seconds": 3.134,
+      "latest_build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+      "builds_retained": 69,
+      "identifiers": 9683
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-21T06:23:32.886558+00:00",
+      "last_attempt": "2026-11-21T06:31:57.435992+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:23:35.213532+00:00",
+      "last_success": "2026-11-21T06:31:57.801876+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.327,
+      "duration_seconds": 0.366,
       "latest_build": "ac7674625ceed298d6c411cc964f23aded63989d",
       "builds_retained": 47,
       "identifiers": 6997
@@ -71918,11 +72294,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-21T06:25:43.193227+00:00",
+      "last_attempt": "2026-11-21T06:34:08.997998+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1695,
-      "duration_seconds": 15.452
+      "consecutive_failures": 1699,
+      "duration_seconds": 15.198
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -71942,61 +72318,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:24:47.539132+00:00",
+      "last_attempt": "2026-11-21T06:33:13.837091+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:24:49.214832+00:00",
+      "last_success": "2026-11-21T06:33:15.354837+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.676
+      "duration_seconds": 1.518
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:24:49.214895+00:00",
+      "last_attempt": "2026-11-21T06:33:15.354893+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:24:49.337181+00:00",
+      "last_success": "2026-11-21T06:33:15.478918+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.122
+      "duration_seconds": 0.124
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:24:49.337216+00:00",
+      "last_attempt": "2026-11-21T06:33:15.478954+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:24:56.058055+00:00",
+      "last_success": "2026-11-21T06:33:22.954482+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.721
+      "duration_seconds": 7.476
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:24:56.058126+00:00",
+      "last_attempt": "2026-11-21T06:33:22.954558+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:25:42.192435+00:00",
+      "last_success": "2026-11-21T06:34:05.724342+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 46.134,
+      "duration_seconds": 42.77,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-21T06:24:56.311852+00:00",
+          "checked_at": "2026-11-21T06:33:23.237252+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-21T06:25:05.967094+00:00",
+          "checked_at": "2026-11-21T06:33:32.070443+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-21T06:25:06.047487+00:00",
+          "checked_at": "2026-11-21T06:33:32.163391+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-21T06:25:06.047504+00:00",
+          "checked_at": "2026-11-21T06:33:32.163407+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -72004,25 +72380,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:25:42.192488+00:00",
+      "last_attempt": "2026-11-21T06:34:05.724391+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:25:42.476329+00:00",
+      "last_success": "2026-11-21T06:34:08.858271+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.284,
-      "latest_build": "823b897007444ebcbbef1cc02cf3618277d585a3d74fe1ad514559c011c226cd",
-      "builds_retained": 68,
-      "identifiers": 9677
+      "duration_seconds": 3.134,
+      "latest_build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
+      "builds_retained": 69,
+      "identifiers": 9683
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-21T06:23:32.886558+00:00",
+      "last_attempt": "2026-11-21T06:31:57.435992+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:23:35.213532+00:00",
+      "last_success": "2026-11-21T06:31:57.801876+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.327,
+      "duration_seconds": 0.366,
       "latest_build": "ac7674625ceed298d6c411cc964f23aded63989d",
       "builds_retained": 47,
       "identifiers": 6997
@@ -72043,11 +72419,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-21T06:25:43.193227+00:00",
+      "last_attempt": "2026-11-21T06:34:08.997998+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1695,
-      "duration_seconds": 15.452
+      "consecutive_failures": 1699,
+      "duration_seconds": 15.198
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -72065,22 +72441,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:25:58.651585+00:00",
+      "last_attempt": "2026-11-21T06:34:24.202605+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:26:05.884035+00:00",
+      "last_success": "2026-11-21T06:34:31.398544+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.232
+      "duration_seconds": 7.196
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:26:05.884090+00:00",
+      "last_attempt": "2026-11-21T06:34:31.398600+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:26:09.716940+00:00",
+      "last_success": "2026-11-21T06:34:33.225358+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.833
+      "duration_seconds": 1.827
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -72095,27 +72471,27 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:26:18.253590+00:00",
+      "last_attempt": "2026-11-21T06:34:33.225408+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:26:19.992459+00:00",
+      "last_success": "2026-11-21T06:34:34.837778+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.739
+      "duration_seconds": 1.612
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:26:19.992505+00:00",
+      "last_attempt": "2026-11-21T06:34:34.837816+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:26:20.017931+00:00",
+      "last_success": "2026-11-21T06:34:34.865359+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.025
+      "duration_seconds": 0.028
     }
   },
   "identities": {
-    "identifiers": 30824,
-    "declared_aliases": 17883,
+    "identifiers": 30830,
+    "declared_aliases": 17886,
     "pending_candidates": 2
   },
   "intelligence_metrics": {
@@ -72136,8 +72512,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 384,
-      "events": 384,
+      "complete": 387,
+      "events": 387,
       "rate": 1.0
     },
     "source_health": {
