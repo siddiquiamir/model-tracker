@@ -1,17 +1,78 @@
 {
-  "generated_at": "2026-11-21T00:27:10.154481+00:00",
-  "scan_completed_at": "2026-11-21T00:28:43.878156+00:00",
+  "generated_at": "2026-11-21T00:29:26.928147+00:00",
+  "scan_completed_at": "2026-11-21T00:30:38.368698+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 289,
+    "stories": 290,
     "leaks": 40,
     "releases": 80,
-    "stories_24h": 78,
-    "sources_ok": 15,
-    "total_cards": 627,
-    "new_in_this_scan": 14
+    "stories_24h": 79,
+    "sources_ok": 12,
+    "total_cards": 628,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-e-5-large-2",
+      "group": "e-5-large-2",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "E 5 Large 2",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-21T00:30:06.772914+00:00",
+      "updated_at": "2026-11-21T00:30:06.772914+00:00",
+      "first_source": "Registry Update",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "e5-large-v2",
+          "name": "digitalocean/e5-large-v2"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-api",
+          "detected_at": "2026-11-21T00:30:06.772914+00:00",
+          "title": "e5-large-v2",
+          "url": "https://models.dev/api.json?type=all",
+          "backfill": false,
+          "build": "c94d9fec1f4910466e9c7c2151c72938701160f5f04fba74ee10c6a51c8a812d",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/c94d9fec1f4910466e9c7c2151c72938701160f5f04fba74ee10c6a51c8a812d.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-999cdec44b4d039936dd"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "digitalocean/e5-large-v2",
+          "family": "e5-large-v2",
+          "file_path": "api.json?type=all",
+          "file_sha256": "c94d9fec1f4910466e9c7c2151c72938701160f5f04fba74ee10c6a51c8a812d",
+          "excerpt": "{\"digitalocean/e5-large-v2\": {\"id\": \"e5-large-v2\", \"type\": \"embedding\", \"name\": \"E5 Large v2\", \"description\": \"Embedding model for semantic search, retrieval, clustering, and ranking pipelines\", \"family\": \"e5-large\", \"attachment\": false, \"reasoning\": false, \"tool_call\": false, \"temperature\": false, \"release_date\": \"2023-05\", \"last_updated\": \"2023-05\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 512, \"output\": 1024}, \"cost\": {\"input\": 0.02, \"output\": 0}, \"canonical_model_id\": \"intfloat/e5-large-v2\"}}",
+          "canonical_id": "intfloat/e5-large-v2",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "c94d9fec1f4910466e9c7c2151c72938701160f5f04fba74ee10c6a51c8a812d",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-21T00:30:06.419621+00:00"
+        }
+      ],
+      "x_post_text": "Registry Update c94d9fec1f49: e5-large-v2\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "story-qwen-audio-3-asr-flash",
       "group": "qwen-audio-3-asr-flash",
@@ -22756,6 +22817,91 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-999cdec44b4d039936dd",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "e5-large-v2",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "e5-large-v2",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "digitalocean/e5-large-v2",
+          "name": "digitalocean/e5-large-v2",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-21T00:30:06.772914+00:00",
+      "first_seen": "2026-11-21T00:30:06.419621+00:00",
+      "observed_at": "2026-11-21T00:30:06.772914+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "14b05bfb568231e19da0e6c75e7abfb52721642386e84e353bf5af8611437585 -> c94d9fec1f4910466e9c7c2151c72938701160f5f04fba74ee10c6a51c8a812d",
+      "build": "c94d9fec1f4910466e9c7c2151c72938701160f5f04fba74ee10c6a51c8a812d",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "c94d9fec1f4910466e9c7c2151c72938701160f5f04fba74ee10c6a51c8a812d",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/c94d9fec1f4910466e9c7c2151c72938701160f5f04fba74ee10c6a51c8a812d.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/c94d9fec1f4910466e9c7c2151c72938701160f5f04fba74ee10c6a51c8a812d.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "digitalocean/e5-large-v2",
+          "family": "e5-large-v2",
+          "file_path": "api.json?type=all",
+          "file_sha256": "c94d9fec1f4910466e9c7c2151c72938701160f5f04fba74ee10c6a51c8a812d",
+          "excerpt": "{\"digitalocean/e5-large-v2\": {\"id\": \"e5-large-v2\", \"type\": \"embedding\", \"name\": \"E5 Large v2\", \"description\": \"Embedding model for semantic search, retrieval, clustering, and ranking pipelines\", \"family\": \"e5-large\", \"attachment\": false, \"reasoning\": false, \"tool_call\": false, \"temperature\": false, \"release_date\": \"2023-05\", \"last_updated\": \"2023-05\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 512, \"output\": 1024}, \"cost\": {\"input\": 0.02, \"output\": 0}, \"canonical_model_id\": \"intfloat/e5-large-v2\"}}",
+          "canonical_id": "intfloat/e5-large-v2",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "c94d9fec1f4910466e9c7c2151c72938701160f5f04fba74ee10c6a51c8a812d",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-21T00:30:06.419621+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-21T00:30:09.317009+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog c94d9fec1f49: digitalocean/e5-large-v2\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "intel-99dc6222806963f562a3",
       "scanner": "models-dev-git",
@@ -67803,14 +67949,14 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:27:49.738003+00:00",
+      "last_attempt": "2026-11-21T00:30:06.206401+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:27:50.033706+00:00",
+      "last_success": "2026-11-21T00:30:09.317009+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.296,
-      "latest_build": "14b05bfb568231e19da0e6c75e7abfb52721642386e84e353bf5af8611437585",
-      "builds_retained": 64,
+      "duration_seconds": 3.111,
+      "latest_build": "c94d9fec1f4910466e9c7c2151c72938701160f5f04fba74ee10c6a51c8a812d",
+      "builds_retained": 65,
       "identifiers": 9674
     },
     "litellm-intelligence": {
@@ -67842,11 +67988,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-21T00:27:57.864447+00:00",
+      "last_attempt": "2026-11-21T00:30:09.475229+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1526,
-      "duration_seconds": 17.98
+      "consecutive_failures": 1527,
+      "duration_seconds": 18.192
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -67866,61 +68012,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:27:10.154556+00:00",
+      "last_attempt": "2026-11-21T00:29:26.928222+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:27:11.786956+00:00",
+      "last_success": "2026-11-21T00:29:28.580229+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.632
+      "duration_seconds": 1.652
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:27:11.787027+00:00",
+      "last_attempt": "2026-11-21T00:29:28.580297+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:27:12.018304+00:00",
+      "last_success": "2026-11-21T00:29:28.834664+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.231
+      "duration_seconds": 0.254
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:27:12.018355+00:00",
+      "last_attempt": "2026-11-21T00:29:28.834711+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:27:17.832805+00:00",
+      "last_success": "2026-11-21T00:29:35.063511+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.814
+      "duration_seconds": 6.229
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:27:17.832872+00:00",
+      "last_attempt": "2026-11-21T00:29:35.063572+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:27:49.737934+00:00",
+      "last_success": "2026-11-21T00:30:06.206335+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 31.905,
+      "duration_seconds": 31.143,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-21T00:27:18.147656+00:00",
+          "checked_at": "2026-11-21T00:29:35.325467+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-21T00:27:31.030879+00:00",
+          "checked_at": "2026-11-21T00:29:48.497027+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-21T00:27:31.158526+00:00",
+          "checked_at": "2026-11-21T00:29:48.624476+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-21T00:27:31.158546+00:00",
+          "checked_at": "2026-11-21T00:29:48.624492+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -67928,14 +68074,14 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:27:49.738003+00:00",
+      "last_attempt": "2026-11-21T00:30:06.206401+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:27:50.033706+00:00",
+      "last_success": "2026-11-21T00:30:09.317009+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.296,
-      "latest_build": "14b05bfb568231e19da0e6c75e7abfb52721642386e84e353bf5af8611437585",
-      "builds_retained": 64,
+      "duration_seconds": 3.111,
+      "latest_build": "c94d9fec1f4910466e9c7c2151c72938701160f5f04fba74ee10c6a51c8a812d",
+      "builds_retained": 65,
       "identifiers": 9674
     },
     "litellm-intelligence": {
@@ -67967,11 +68113,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-21T00:27:57.864447+00:00",
+      "last_attempt": "2026-11-21T00:30:09.475229+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1526,
-      "duration_seconds": 17.98
+      "consecutive_failures": 1527,
+      "duration_seconds": 18.192
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -67989,22 +68135,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:28:15.849161+00:00",
+      "last_attempt": "2026-11-21T00:30:27.672558+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:28:24.219030+00:00",
+      "last_success": "2026-11-21T00:30:35.960302+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.37
+      "duration_seconds": 8.288
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:28:24.219094+00:00",
+      "last_attempt": "2026-11-21T00:30:35.960364+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:28:25.914750+00:00",
+      "last_success": "2026-11-21T00:30:37.268037+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.696
+      "duration_seconds": 1.308
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -68019,22 +68165,22 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:28:42.634395+00:00",
+      "last_attempt": "2026-11-21T00:30:37.268103+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:28:43.342974+00:00",
+      "last_success": "2026-11-21T00:30:37.971602+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.709
+      "duration_seconds": 0.704
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:28:43.343026+00:00",
+      "last_attempt": "2026-11-21T00:30:37.971654+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:28:43.424404+00:00",
+      "last_success": "2026-11-21T00:30:37.987867+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.081
+      "duration_seconds": 0.016
     }
   },
   "identities": {
@@ -68060,8 +68206,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 350,
-      "events": 350,
+      "complete": 351,
+      "events": 351,
       "rate": 1.0
     },
     "source_health": {
