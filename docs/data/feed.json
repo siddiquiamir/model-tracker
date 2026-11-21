@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-21T00:37:26.807247+00:00",
-  "scan_completed_at": "2026-11-21T00:39:10.232329+00:00",
+  "generated_at": "2026-11-21T00:45:54.449442+00:00",
+  "scan_completed_at": "2026-11-21T00:47:04.161269+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 294,
     "leaks": 40,
-    "releases": 79,
+    "releases": 80,
     "stories_24h": 89,
-    "sources_ok": 14,
-    "total_cards": 639,
-    "new_in_this_scan": 13
+    "sources_ok": 11,
+    "total_cards": 640,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -3935,23 +3935,23 @@
     {
       "id": "story-daisyrose",
       "group": "daisyrose",
-      "kind": "registry",
+      "kind": "release",
       "open_weights": false,
-      "title": "Daisyrose",
+      "title": "DaisyRose 27B",
       "provider_slug": "unknown",
-      "provider_name": "Unattributed",
+      "provider_name": "radixark",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-20T12:33:12.593049+00:00",
-      "updated_at": "2026-11-20T12:37:45.769545+00:00",
+      "updated_at": "2026-11-21T00:47:00.572028+00:00",
       "first_source": "Registry Update",
-      "lead": "",
+      "lead": "12 h before it went live on OpenRouter",
       "released_on": "2026-11-20",
       "pricing": "",
       "codenames": [],
       "models": [
         {
           "id": "daisyrose-27b",
-          "name": "nano-gpt/radixark/daisyrose-27b",
+          "name": "DaisyRose 27B",
           "released_on": "2026-11-20"
         }
       ],
@@ -3965,17 +3965,28 @@
           "backfill": false,
           "build": "4bbf96a77df26ff5f6ac718347693933b51c111edd1e6b7edddd943effa61205",
           "evidence_path": "data/intelligence/evidence/models-dev-api/4bbf96a77df26ff5f6ac718347693933b51c111edd1e6b7edddd943effa61205.json.gz"
+        },
+        {
+          "label": "OpenRouter",
+          "scanner": "openrouter",
+          "detected_at": "2026-11-21T00:47:00.572028+00:00",
+          "title": "RadixArk: DaisyRose 27B",
+          "url": "https://openrouter.ai/radixark/daisyrose-27b",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
-      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "header": "NEW MODEL · RADIXARK",
       "card_ids": [
         "intel-78eca1e1b0da5c179b48",
-        "intel-821d7eb2b22fbffc4e2f"
+        "intel-821d7eb2b22fbffc4e2f",
+        "openrouter-model-radixark_daisyrose-27b"
       ],
-      "event_label": "Registry update",
-      "intelligence_only": true,
+      "event_label": "Released",
+      "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [
         {
@@ -4008,7 +4019,8 @@
           "first_seen": "2026-11-20T12:31:16+00:00"
         }
       ],
-      "x_post_text": "Registry Update 4bbf96a77df2: daisyrose-27b\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+      "x_post_text": "🟢 NEW MODEL: DaisyRose 27B by radixark\n\nFirst detected 20 Nov 12:33 UTC in Registry Update\n📅 First released: 2026-11-20\n⏱ 12 h before it went live on OpenRouter\nConfirmed by OpenRouter\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-21T00:47:04.158760+00:00"
     },
     {
       "id": "story-nvidia-nemotron-3-5-transcribe",
@@ -23247,6 +23259,44 @@
     }
   ],
   "cards": [
+    {
+      "id": "openrouter-model-radixark_daisyrose-27b",
+      "category": "cli-sdk-diff",
+      "scanner": "openrouter",
+      "header": "OPENROUTER LIVE REGISTRY · RADIXARK",
+      "title": "RadixArk: DaisyRose 27B",
+      "subtitle": "Newly registered model endpoint on OpenRouter (/api/v1/models)",
+      "build_label": "Endpoint ID",
+      "build_transition": "radixark/daisyrose-27b",
+      "models": [
+        {
+          "id": "radixark/daisyrose-27b",
+          "name": "RadixArk: DaisyRose 27B (262k context window)",
+          "released_on": "2026-11-20"
+        }
+      ],
+      "evidence": "openrouter.ai/api/v1/models",
+      "source_text": "official public OpenRouter /api/v1/models JSON registry.",
+      "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
+      "disclaimer_2": "Publicly listed API model identifier and context length specification.",
+      "provider_name": "RADIXARK",
+      "provider_slug": "openrouter",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "OpenRouter Model Page",
+          "url": "https://openrouter.ai/radixark/daisyrose-27b"
+        },
+        {
+          "label": "OpenRouter Models API",
+          "url": "https://openrouter.ai/api/v1/models"
+        }
+      ],
+      "detected_at": "2026-11-21T00:47:00.572028+00:00",
+      "tracker_observed_at": "2026-11-21T00:47:02.126126+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · RADIXARK\nRadixArk: DaisyRose 27B spotted in Endpoint ID radixark/daisyrose-27b!\n\n• RadixArk: DaisyRose 27B (262k context window) (radixark/daisyrose-27b)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "intel-13e9cde6080149d960d2",
       "scanner": "models-dev-git",
@@ -69505,12 +69555,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:38:08.929997+00:00",
+      "last_attempt": "2026-11-21T00:44:30.132670+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:38:11.832760+00:00",
+      "last_success": "2026-11-21T00:44:30.384577+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.903,
+      "duration_seconds": 0.252,
       "latest_build": "a657293e5e718e36372933e4193b25cc8396112120c7fabcf906f5fc40fc347f",
       "builds_retained": 66,
       "identifiers": 9674
@@ -69518,12 +69568,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-21T00:36:02.035012+00:00",
+      "last_attempt": "2026-11-21T00:44:30.543771+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:36:02.442325+00:00",
+      "last_success": "2026-11-21T00:44:30.931426+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.408,
+      "duration_seconds": 0.388,
       "latest_build": "254d65ab701326f90152a969edafec965850fa73",
       "builds_retained": 44,
       "identifiers": 6983
@@ -69544,11 +69594,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-21T00:38:25.367982+00:00",
+      "last_attempt": "2026-11-21T00:46:34.301972+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1531,
-      "duration_seconds": 18.04
+      "consecutive_failures": 1535,
+      "duration_seconds": 18.023
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -69568,61 +69618,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:37:26.807315+00:00",
+      "last_attempt": "2026-11-21T00:45:54.449516+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:37:28.575317+00:00",
+      "last_success": "2026-11-21T00:45:56.017349+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.768
+      "duration_seconds": 1.568
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:37:28.575387+00:00",
+      "last_attempt": "2026-11-21T00:45:56.017420+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:37:28.825458+00:00",
+      "last_success": "2026-11-21T00:45:56.260649+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.25
+      "duration_seconds": 0.243
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:37:28.825504+00:00",
+      "last_attempt": "2026-11-21T00:45:56.260695+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:37:37.116682+00:00",
+      "last_success": "2026-11-21T00:46:02.373299+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.291
+      "duration_seconds": 6.113
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:37:37.116741+00:00",
+      "last_attempt": "2026-11-21T00:46:02.373366+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:38:08.929932+00:00",
+      "last_success": "2026-11-21T00:46:34.301874+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 31.813,
+      "duration_seconds": 31.929,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-21T00:37:37.357973+00:00",
+          "checked_at": "2026-11-21T00:46:02.628642+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-21T00:37:48.738119+00:00",
+          "checked_at": "2026-11-21T00:46:14.619516+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-21T00:37:48.865540+00:00",
+          "checked_at": "2026-11-21T00:46:14.765662+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-21T00:37:48.865557+00:00",
+          "checked_at": "2026-11-21T00:46:14.765682+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -69630,12 +69680,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:38:08.929997+00:00",
+      "last_attempt": "2026-11-21T00:44:30.132670+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:38:11.832760+00:00",
+      "last_success": "2026-11-21T00:44:30.384577+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.903,
+      "duration_seconds": 0.252,
       "latest_build": "a657293e5e718e36372933e4193b25cc8396112120c7fabcf906f5fc40fc347f",
       "builds_retained": 66,
       "identifiers": 9674
@@ -69643,12 +69693,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-21T00:36:02.035012+00:00",
+      "last_attempt": "2026-11-21T00:44:30.543771+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:36:02.442325+00:00",
+      "last_success": "2026-11-21T00:44:30.931426+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.408,
+      "duration_seconds": 0.388,
       "latest_build": "254d65ab701326f90152a969edafec965850fa73",
       "builds_retained": 44,
       "identifiers": 6983
@@ -69669,11 +69719,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-21T00:38:25.367982+00:00",
+      "last_attempt": "2026-11-21T00:46:34.301972+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1531,
-      "duration_seconds": 18.04
+      "consecutive_failures": 1535,
+      "duration_seconds": 18.023
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -69691,22 +69741,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:38:43.412637+00:00",
+      "last_attempt": "2026-11-21T00:46:52.328873+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:38:51.788628+00:00",
+      "last_success": "2026-11-21T00:47:00.568056+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.376
+      "duration_seconds": 8.239
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:38:51.788685+00:00",
+      "last_attempt": "2026-11-21T00:47:00.568132+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:38:53.274533+00:00",
+      "last_success": "2026-11-21T00:47:02.126126+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.486
+      "duration_seconds": 1.558
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -69721,22 +69771,22 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:39:09.142824+00:00",
+      "last_attempt": "2026-11-21T00:47:02.126189+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:39:09.827576+00:00",
+      "last_success": "2026-11-21T00:47:02.855582+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.685
+      "duration_seconds": 0.729
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T00:39:09.827628+00:00",
+      "last_attempt": "2026-11-21T00:47:02.855637+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T00:39:09.847087+00:00",
+      "last_success": "2026-11-21T00:47:02.928941+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.019
+      "duration_seconds": 0.073
     }
   },
   "identities": {
