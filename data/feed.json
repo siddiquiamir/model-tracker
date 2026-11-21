@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-21T06:33:13.837026+00:00",
-  "scan_completed_at": "2026-11-21T06:34:36.407719+00:00",
+  "generated_at": "2026-11-21T06:35:21.823566+00:00",
+  "scan_completed_at": "2026-11-21T06:37:07.854021+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 301,
     "leaks": 40,
     "releases": 80,
     "stories_24h": 92,
-    "sources_ok": 12,
-    "total_cards": 659,
+    "sources_ok": 15,
+    "total_cards": 662,
     "new_in_this_scan": 3
   },
   "stories": [
@@ -262,7 +262,7 @@
       "provider_name": "kilo",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-21T03:05:45.893089+00:00",
-      "updated_at": "2026-11-21T06:34:06.485093+00:00",
+      "updated_at": "2026-11-21T06:36:22.804008+00:00",
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-11-21",
@@ -302,7 +302,8 @@
       "header": "NEW MODEL · KILO",
       "card_ids": [
         "openrouter-model-thinkingmachines_inkling-2-mini",
-        "intel-f9fd718251adf9703144"
+        "intel-f9fd718251adf9703144",
+        "intel-b7a51fe35cf196b1d298"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -335,6 +336,36 @@
           "build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-21T06:34:06.185308+00:00"
+        },
+        {
+          "id": "kilo/thinkingmachines/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/kilo/models/thinkingmachines/inkling-2-mini.toml",
+          "file_sha256": "4653484cbf9d95ff5cf4d5a8e95c0d30c2c90b2021f5353c9698357319df5682",
+          "excerpt": "{\"kilo/thinkingmachines/inkling-2-mini\": {\"schema\": 2, \"name\": \"Thinking Machines: Inkling 2 Mini\", \"description\": \"Inkling 2 Mini is an open-weight multimodal looped transformer from Thinking Machines Lab, with 3.4B active parameters out of 26.4B total (MoE). Its middle layers run three times with shared...\", \"family\": \"inkling\", \"open_weights\": false, \"release_date\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"text\": {\"input\": {\"price\": 0.1, \"cache\": {\"read\": 0.02}}, \"output\": {\"price\": 0.4}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/20fe85412d34a83567565efc2071296052b488d8/providers/kilo/models/thinkingmachines/inkling-2-mini.toml",
+          "build": "20fe85412d34a83567565efc2071296052b488d8",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8",
+          "first_seen": "2026-11-21T06:32:22+00:00"
+        },
+        {
+          "id": "openrouter/thinkingmachines/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/openrouter/models/thinkingmachines/inkling-2-mini.toml",
+          "file_sha256": "bd056ea0f8250527732adfd8e68c3c9ec31e149bb03d5d7707ef9c3e24e18710",
+          "excerpt": "{\"openrouter/thinkingmachines/inkling-2-mini\": {\"schema\": 2, \"name\": \"Inkling 2 Mini\", \"description\": \"Multimodal reasoning model for visual analysis, planning, and tool use\", \"family\": \"inkling\", \"open_weights\": true, \"release_date\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"api\": {\"chat-completions\": {}, \"responses\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}, \"messages\": {\"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.1, \"cache\": {\"read\": 0.02}}, \"output\": {\"price\": 0.4}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/20fe85412d34a83567565efc2071296052b488d8/providers/openrouter/models/thinkingmachines/inkling-2-mini.toml",
+          "build": "20fe85412d34a83567565efc2071296052b488d8",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8",
+          "first_seen": "2026-11-21T06:32:22+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-21T03:05:51.660834+00:00",
@@ -4619,7 +4650,7 @@
       "provider_name": "kilo",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-20T12:33:12.593049+00:00",
-      "updated_at": "2026-11-21T06:34:06.485093+00:00",
+      "updated_at": "2026-11-21T06:36:22.804008+00:00",
       "first_source": "Registry Update",
       "lead": "12 h before it went live on OpenRouter",
       "released_on": "2026-11-20",
@@ -4663,7 +4694,8 @@
         "openrouter-model-radixark_daisyrose-27b",
         "intel-989c65ef57aab97a4670",
         "intel-ded5113ee56ea87cafa1",
-        "intel-670cc43d9ab5f4abdb4b"
+        "intel-670cc43d9ab5f4abdb4b",
+        "intel-5c15bcf2ef7c3209b1a6"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -4754,6 +4786,36 @@
           "build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-21T06:34:06.185308+00:00"
+        },
+        {
+          "id": "kilo/radixark/daisyrose-27b",
+          "family": "daisyrose-27b",
+          "file_path": "providers/kilo/models/radixark/daisyrose-27b.toml",
+          "file_sha256": "64b31d9e48ee97146a2a099678fad01e4f983865873a9f7e113ac11bdc5a87aa",
+          "excerpt": "{\"kilo/radixark/daisyrose-27b\": {\"schema\": 2, \"name\": \"RadixArk: DaisyRose 27B\", \"description\": \"DaisyRose 27B is an open-weight multimodal reasoning model from RadixArk, trained from [Qwen3.8 27B](https://openrouter.ai/qwen/qwen3.8-27b) using reinforcement learning only on long-horizon agent tasks, with no supervised fine-tuning or distillation. It is...\", \"open_weights\": false, \"release_date\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"low\", \"medium\", \"xhigh\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 262144, \"output\": 235929}, \"cost\": {\"text\": {\"input\": {\"price\": 0.2, \"cache\": {\"read\": 0.05}}, \"output\": {\"price\": 2.5}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/20fe85412d34a83567565efc2071296052b488d8/providers/kilo/models/radixark/daisyrose-27b.toml",
+          "build": "20fe85412d34a83567565efc2071296052b488d8",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8",
+          "first_seen": "2026-11-21T06:32:22+00:00"
+        },
+        {
+          "id": "openrouter/radixark/daisyrose-27b",
+          "family": "daisyrose-27b",
+          "file_path": "providers/openrouter/models/radixark/daisyrose-27b.toml",
+          "file_sha256": "bde4c19d4c11727c96f9366a6cf89d41d2e2cb4615617aac9c1e7fcb64e56375",
+          "excerpt": "{\"openrouter/radixark/daisyrose-27b\": {\"schema\": 2, \"name\": \"DaisyRose 27B\", \"description\": \"Multimodal reasoning model for visual analysis, planning, and tool use\", \"open_weights\": true, \"release_date\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"low\", \"medium\", \"xhigh\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 262144, \"output\": 235929}, \"api\": {\"chat-completions\": {}, \"responses\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}, \"messages\": {\"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.15, \"cache\": {\"read\": 0.0375}}, \"output\": {\"price\": 1.875}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/20fe85412d34a83567565efc2071296052b488d8/providers/openrouter/models/radixark/daisyrose-27b.toml",
+          "build": "20fe85412d34a83567565efc2071296052b488d8",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8",
+          "first_seen": "2026-11-21T06:32:22+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-21T00:47:04.158760+00:00",
@@ -17665,7 +17727,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-16T20:15:16.430197+00:00",
-      "updated_at": "2026-11-21T06:34:06.485093+00:00",
+      "updated_at": "2026-11-21T06:36:22.804008+00:00",
       "first_source": "Gemini Web App Config",
       "lead": "2 days before it went live on OpenRouter",
       "released_on": "2026-11-18",
@@ -17884,7 +17946,8 @@
         "ag-acp-1.5.0-1.5.2-diff",
         "intel-0340217fd4207873201c",
         "ag-2.33.0-2.33.1-gemini-4-neon",
-        "intel-a917421cd056d59f7e63"
+        "intel-a917421cd056d59f7e63",
+        "intel-1eb532c1c4d910bc9ba4"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -23984,6 +24047,316 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-5c15bcf2ef7c3209b1a6",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "daisyrose-27b",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "daisyrose-27b",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "kilo/radixark/daisyrose-27b",
+          "name": "kilo/radixark/daisyrose-27b",
+          "registry_update": true,
+          "released_on": "2026-11-21"
+        },
+        {
+          "id": "openrouter/radixark/daisyrose-27b",
+          "name": "openrouter/radixark/daisyrose-27b",
+          "registry_update": true,
+          "released_on": "2026-11-21"
+        }
+      ],
+      "detected_at": "2026-11-21T06:36:22.804008+00:00",
+      "first_seen": "2026-11-21T06:32:22+00:00",
+      "observed_at": "2026-11-21T06:36:22.804008+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "d204e701c4446a0d60885696b6b4664a0e55b3ec -> 20fe85412d34a83567565efc2071296052b488d8",
+      "build": "20fe85412d34a83567565efc2071296052b488d8",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8",
+      "artifact_sha256": "abc22ea4b090b3ab6397a07baada4c840f02df39c61905bce691cf0b7801e951",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/abc22ea4b090b3ab6397a07baada4c840f02df39c61905bce691cf0b7801e951.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/abc22ea4b090b3ab6397a07baada4c840f02df39c61905bce691cf0b7801e951.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/radixark/daisyrose-27b",
+          "family": "daisyrose-27b",
+          "file_path": "providers/kilo/models/radixark/daisyrose-27b.toml",
+          "file_sha256": "64b31d9e48ee97146a2a099678fad01e4f983865873a9f7e113ac11bdc5a87aa",
+          "excerpt": "{\"kilo/radixark/daisyrose-27b\": {\"schema\": 2, \"name\": \"RadixArk: DaisyRose 27B\", \"description\": \"DaisyRose 27B is an open-weight multimodal reasoning model from RadixArk, trained from [Qwen3.8 27B](https://openrouter.ai/qwen/qwen3.8-27b) using reinforcement learning only on long-horizon agent tasks, with no supervised fine-tuning or distillation. It is...\", \"open_weights\": false, \"release_date\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"low\", \"medium\", \"xhigh\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 262144, \"output\": 235929}, \"cost\": {\"text\": {\"input\": {\"price\": 0.2, \"cache\": {\"read\": 0.05}}, \"output\": {\"price\": 2.5}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/20fe85412d34a83567565efc2071296052b488d8/providers/kilo/models/radixark/daisyrose-27b.toml",
+          "build": "20fe85412d34a83567565efc2071296052b488d8",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8",
+          "first_seen": "2026-11-21T06:32:22+00:00"
+        },
+        {
+          "id": "openrouter/radixark/daisyrose-27b",
+          "family": "daisyrose-27b",
+          "file_path": "providers/openrouter/models/radixark/daisyrose-27b.toml",
+          "file_sha256": "bde4c19d4c11727c96f9366a6cf89d41d2e2cb4615617aac9c1e7fcb64e56375",
+          "excerpt": "{\"openrouter/radixark/daisyrose-27b\": {\"schema\": 2, \"name\": \"DaisyRose 27B\", \"description\": \"Multimodal reasoning model for visual analysis, planning, and tool use\", \"open_weights\": true, \"release_date\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"low\", \"medium\", \"xhigh\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 262144, \"output\": 235929}, \"api\": {\"chat-completions\": {}, \"responses\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}, \"messages\": {\"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.15, \"cache\": {\"read\": 0.0375}}, \"output\": {\"price\": 1.875}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/20fe85412d34a83567565efc2071296052b488d8/providers/openrouter/models/radixark/daisyrose-27b.toml",
+          "build": "20fe85412d34a83567565efc2071296052b488d8",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8",
+          "first_seen": "2026-11-21T06:32:22+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/20fe85412d34a83567565efc2071296052b488d8"
+        }
+      ],
+      "tracker_observed_at": "2026-11-21T06:36:31.569546+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 20fe85412d34: kilo/radixark/daisyrose-27b\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8"
+    },
+    {
+      "id": "intel-b7a51fe35cf196b1d298",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "inkling-2-mini",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "inkling-2-mini",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "kilo/thinkingmachines/inkling-2-mini",
+          "name": "kilo/thinkingmachines/inkling-2-mini",
+          "registry_update": true,
+          "released_on": "2026-11-21"
+        },
+        {
+          "id": "openrouter/thinkingmachines/inkling-2-mini",
+          "name": "openrouter/thinkingmachines/inkling-2-mini",
+          "registry_update": true,
+          "released_on": "2026-11-21"
+        }
+      ],
+      "detected_at": "2026-11-21T06:36:22.804008+00:00",
+      "first_seen": "2026-11-21T06:32:22+00:00",
+      "observed_at": "2026-11-21T06:36:22.804008+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "d204e701c4446a0d60885696b6b4664a0e55b3ec -> 20fe85412d34a83567565efc2071296052b488d8",
+      "build": "20fe85412d34a83567565efc2071296052b488d8",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8",
+      "artifact_sha256": "abc22ea4b090b3ab6397a07baada4c840f02df39c61905bce691cf0b7801e951",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/abc22ea4b090b3ab6397a07baada4c840f02df39c61905bce691cf0b7801e951.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/abc22ea4b090b3ab6397a07baada4c840f02df39c61905bce691cf0b7801e951.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/thinkingmachines/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/kilo/models/thinkingmachines/inkling-2-mini.toml",
+          "file_sha256": "4653484cbf9d95ff5cf4d5a8e95c0d30c2c90b2021f5353c9698357319df5682",
+          "excerpt": "{\"kilo/thinkingmachines/inkling-2-mini\": {\"schema\": 2, \"name\": \"Thinking Machines: Inkling 2 Mini\", \"description\": \"Inkling 2 Mini is an open-weight multimodal looped transformer from Thinking Machines Lab, with 3.4B active parameters out of 26.4B total (MoE). Its middle layers run three times with shared...\", \"family\": \"inkling\", \"open_weights\": false, \"release_date\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"text\": {\"input\": {\"price\": 0.1, \"cache\": {\"read\": 0.02}}, \"output\": {\"price\": 0.4}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/20fe85412d34a83567565efc2071296052b488d8/providers/kilo/models/thinkingmachines/inkling-2-mini.toml",
+          "build": "20fe85412d34a83567565efc2071296052b488d8",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8",
+          "first_seen": "2026-11-21T06:32:22+00:00"
+        },
+        {
+          "id": "openrouter/thinkingmachines/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/openrouter/models/thinkingmachines/inkling-2-mini.toml",
+          "file_sha256": "bd056ea0f8250527732adfd8e68c3c9ec31e149bb03d5d7707ef9c3e24e18710",
+          "excerpt": "{\"openrouter/thinkingmachines/inkling-2-mini\": {\"schema\": 2, \"name\": \"Inkling 2 Mini\", \"description\": \"Multimodal reasoning model for visual analysis, planning, and tool use\", \"family\": \"inkling\", \"open_weights\": true, \"release_date\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"api\": {\"chat-completions\": {}, \"responses\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}, \"messages\": {\"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.1, \"cache\": {\"read\": 0.02}}, \"output\": {\"price\": 0.4}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/20fe85412d34a83567565efc2071296052b488d8/providers/openrouter/models/thinkingmachines/inkling-2-mini.toml",
+          "build": "20fe85412d34a83567565efc2071296052b488d8",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8",
+          "first_seen": "2026-11-21T06:32:22+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/20fe85412d34a83567565efc2071296052b488d8"
+        }
+      ],
+      "tracker_observed_at": "2026-11-21T06:36:31.569546+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 20fe85412d34: kilo/thinkingmachines/inkling-2-mini\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8"
+    },
+    {
+      "id": "intel-1eb532c1c4d910bc9ba4",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gemini-4-neon",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gemini-4-neon",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "nano-gpt/google/gemini-4-neon",
+          "name": "nano-gpt/google/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        }
+      ],
+      "detected_at": "2026-11-21T06:36:22.804008+00:00",
+      "first_seen": "2026-11-21T06:32:22+00:00",
+      "observed_at": "2026-11-21T06:36:22.804008+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "d204e701c4446a0d60885696b6b4664a0e55b3ec -> 20fe85412d34a83567565efc2071296052b488d8",
+      "build": "20fe85412d34a83567565efc2071296052b488d8",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8",
+      "artifact_sha256": "abc22ea4b090b3ab6397a07baada4c840f02df39c61905bce691cf0b7801e951",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/abc22ea4b090b3ab6397a07baada4c840f02df39c61905bce691cf0b7801e951.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/abc22ea4b090b3ab6397a07baada4c840f02df39c61905bce691cf0b7801e951.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "nano-gpt/google/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/nano-gpt/models/google/gemini-4-neon.toml",
+          "file_sha256": "f5424ffefb3d96703c42324bd169f9691a869a6eb150d746ecd6a075755d24d9",
+          "excerpt": "{\"nano-gpt/google/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}, \"structured_output\": true}, \"limit\": {\"context\": 983040, \"input\": 983040}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.15}}, \"output\": {\"price\": 15}}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/20fe85412d34a83567565efc2071296052b488d8/providers/nano-gpt/models/google/gemini-4-neon.toml",
+          "build": "20fe85412d34a83567565efc2071296052b488d8",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8",
+          "first_seen": "2026-11-21T06:32:22+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gemini/gemini-4-neon",
+          "first_seen": "2026-11-18T20:53:00+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/f410a08e6d566829e3a858b00e8b23f5a796fd2360f056a69cab43526f908864.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/20fe85412d34a83567565efc2071296052b488d8"
+        }
+      ],
+      "tracker_observed_at": "2026-11-21T06:36:31.569546+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 20fe85412d34: nano-gpt/google/gemini-4-neon\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/20fe85412d34a83567565efc2071296052b488d8"
+    },
     {
       "id": "intel-670cc43d9ab5f4abdb4b",
       "scanner": "models-dev-api",
@@ -72255,25 +72628,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:34:05.724391+00:00",
+      "last_attempt": "2026-11-21T06:36:15.576972+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:34:08.858271+00:00",
+      "last_success": "2026-11-21T06:36:18.529596+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.134,
-      "latest_build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
-      "builds_retained": 69,
+      "duration_seconds": 2.953,
+      "latest_build": "b8d06ce9049eaa2336731ce065fbbe0377629fe9f11f9b88e781f9333ad26e80",
+      "builds_retained": 70,
       "identifiers": 9683
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-21T06:31:57.435992+00:00",
+      "last_attempt": "2026-11-21T06:36:18.667034+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:31:57.801876+00:00",
+      "last_success": "2026-11-21T06:36:18.981039+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.366,
+      "duration_seconds": 0.314,
       "latest_build": "ac7674625ceed298d6c411cc964f23aded63989d",
       "builds_retained": 47,
       "identifiers": 6997
@@ -72281,24 +72654,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-21T06:25:42.615960+00:00",
+      "last_attempt": "2026-11-21T06:36:19.128067+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:25:43.050403+00:00",
+      "last_success": "2026-11-21T06:36:31.569546+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.435,
-      "latest_build": "d204e701c4446a0d60885696b6b4664a0e55b3ec",
-      "builds_retained": 73,
-      "identifiers": 10820
+      "duration_seconds": 12.442,
+      "latest_build": "80aacae4596cdd508ca1640cc9b5b9632c880274",
+      "builds_retained": 75,
+      "identifiers": 10826
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-21T06:34:08.997998+00:00",
+      "last_attempt": "2026-11-21T06:36:31.707234+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1699,
-      "duration_seconds": 15.198
+      "consecutive_failures": 1700,
+      "duration_seconds": 15.548
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -72318,61 +72691,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:33:13.837091+00:00",
+      "last_attempt": "2026-11-21T06:35:21.823631+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:33:15.354837+00:00",
+      "last_success": "2026-11-21T06:35:23.558328+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.518
+      "duration_seconds": 1.735
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:33:15.354893+00:00",
+      "last_attempt": "2026-11-21T06:35:23.558381+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:33:15.478918+00:00",
+      "last_success": "2026-11-21T06:35:23.689375+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.124
+      "duration_seconds": 0.131
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:33:15.478954+00:00",
+      "last_attempt": "2026-11-21T06:35:23.689409+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:33:22.954482+00:00",
+      "last_success": "2026-11-21T06:35:31.143490+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.476
+      "duration_seconds": 7.454
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:33:22.954558+00:00",
+      "last_attempt": "2026-11-21T06:35:31.143580+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:34:05.724342+00:00",
+      "last_success": "2026-11-21T06:36:15.576921+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 42.77,
+      "duration_seconds": 44.433,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-21T06:33:23.237252+00:00",
+          "checked_at": "2026-11-21T06:35:31.576410+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-21T06:33:32.070443+00:00",
+          "checked_at": "2026-11-21T06:35:40.433701+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-21T06:33:32.163391+00:00",
+          "checked_at": "2026-11-21T06:35:40.546755+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-21T06:33:32.163407+00:00",
+          "checked_at": "2026-11-21T06:35:40.546772+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -72380,25 +72753,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:34:05.724391+00:00",
+      "last_attempt": "2026-11-21T06:36:15.576972+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:34:08.858271+00:00",
+      "last_success": "2026-11-21T06:36:18.529596+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.134,
-      "latest_build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
-      "builds_retained": 69,
+      "duration_seconds": 2.953,
+      "latest_build": "b8d06ce9049eaa2336731ce065fbbe0377629fe9f11f9b88e781f9333ad26e80",
+      "builds_retained": 70,
       "identifiers": 9683
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-21T06:31:57.435992+00:00",
+      "last_attempt": "2026-11-21T06:36:18.667034+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:31:57.801876+00:00",
+      "last_success": "2026-11-21T06:36:18.981039+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.366,
+      "duration_seconds": 0.314,
       "latest_build": "ac7674625ceed298d6c411cc964f23aded63989d",
       "builds_retained": 47,
       "identifiers": 6997
@@ -72406,24 +72779,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-21T06:25:42.615960+00:00",
+      "last_attempt": "2026-11-21T06:36:19.128067+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:25:43.050403+00:00",
+      "last_success": "2026-11-21T06:36:31.569546+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.435,
-      "latest_build": "d204e701c4446a0d60885696b6b4664a0e55b3ec",
-      "builds_retained": 73,
-      "identifiers": 10820
+      "duration_seconds": 12.442,
+      "latest_build": "80aacae4596cdd508ca1640cc9b5b9632c880274",
+      "builds_retained": 75,
+      "identifiers": 10826
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-21T06:34:08.997998+00:00",
+      "last_attempt": "2026-11-21T06:36:31.707234+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 1699,
-      "duration_seconds": 15.198
+      "consecutive_failures": 1700,
+      "duration_seconds": 15.548
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -72441,64 +72814,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:34:24.202605+00:00",
+      "last_attempt": "2026-11-21T06:36:47.261866+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:34:31.398544+00:00",
+      "last_success": "2026-11-21T06:36:54.513861+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.196
+      "duration_seconds": 7.252
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:34:31.398600+00:00",
+      "last_attempt": "2026-11-21T06:36:54.513919+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:34:33.225358+00:00",
+      "last_success": "2026-11-21T06:36:56.702613+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.827
+      "duration_seconds": 2.189
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-21T06:26:09.716997+00:00",
+      "last_attempt": "2026-11-21T06:36:56.702666+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:26:18.253539+00:00",
+      "last_success": "2026-11-21T06:37:05.721005+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.537
+      "duration_seconds": 9.018
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:34:33.225408+00:00",
+      "last_attempt": "2026-11-21T06:37:05.721056+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:34:34.837778+00:00",
+      "last_success": "2026-11-21T06:37:07.341209+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.612
+      "duration_seconds": 1.62
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T06:34:34.837816+00:00",
+      "last_attempt": "2026-11-21T06:37:07.341248+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T06:34:34.865359+00:00",
+      "last_success": "2026-11-21T06:37:07.445349+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.028
+      "duration_seconds": 0.104
     }
   },
   "identities": {
-    "identifiers": 30830,
-    "declared_aliases": 17886,
+    "identifiers": 30836,
+    "declared_aliases": 17889,
     "pending_candidates": 2
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 302,
-      "seconds_mean": 4362.553841682119,
+      "samples": 305,
+      "seconds_mean": 4322.012040039344,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -72512,8 +72885,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 387,
-      "events": 387,
+      "complete": 390,
+      "events": 390,
       "rate": 1.0
     },
     "source_health": {
