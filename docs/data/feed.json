@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-21T17:58:20.823211+00:00",
-  "scan_completed_at": "2026-11-21T17:59:48.188200+00:00",
+  "generated_at": "2026-11-21T18:23:46.005810+00:00",
+  "scan_completed_at": "2026-11-21T18:25:34.116790+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 300,
     "leaks": 40,
     "releases": 79,
     "stories_24h": 61,
-    "sources_ok": 12,
-    "total_cards": 667,
-    "new_in_this_scan": 0
+    "sources_ok": 15,
+    "total_cards": 668,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -305,11 +305,11 @@
       "kind": "release",
       "open_weights": false,
       "title": "Inkling 2 Mini",
-      "provider_slug": "unknown",
-      "provider_name": "kilo",
+      "provider_slug": "openrouter",
+      "provider_name": "OpenRouter",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-21T03:05:45.893089+00:00",
-      "updated_at": "2026-11-21T12:30:59.323436+00:00",
+      "updated_at": "2026-11-21T18:24:48.532911+00:00",
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-11-21",
@@ -318,7 +318,7 @@
       "models": [
         {
           "id": "inkling-2-mini",
-          "name": "kilo/thinkingmachines/inkling-2-mini",
+          "name": "openrouter/thinkingmachines/inkling-2-mini",
           "released_on": "2026-11-21"
         }
       ],
@@ -346,13 +346,14 @@
       ],
       "source_count": 2,
       "backfill": false,
-      "header": "NEW MODEL · KILO",
+      "header": "NEW MODEL · OPENROUTER",
       "card_ids": [
         "openrouter-model-thinkingmachines_inkling-2-mini",
         "intel-f9fd718251adf9703144",
         "intel-b7a51fe35cf196b1d298",
         "intel-f76c26ca78dd2f49f395",
-        "intel-fdb735dfbb3145b06202"
+        "intel-fdb735dfbb3145b06202",
+        "intel-40d02e59a999e776f109"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -444,10 +445,25 @@
           "build": "742808885371318e4b0a26539abffb6bc50efed4",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/742808885371318e4b0a26539abffb6bc50efed4",
           "first_seen": "2026-11-21T12:27:42+00:00"
+        },
+        {
+          "id": "openrouter/thinkingmachines/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/openrouter/models/thinkingmachines/inkling-2-mini.toml",
+          "file_sha256": "491768924bb537551820d948717bf3ff248ca340a6b6d104185989b7203bf786",
+          "excerpt": "{\"openrouter/thinkingmachines/inkling-2-mini\": {\"schema\": 2, \"name\": \"Inkling 2 Mini\", \"description\": \"Multimodal reasoning model for visual analysis, planning, and tool use\", \"family\": \"inkling\", \"open_weights\": true, \"release_date\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"api\": {\"chat-completions\": {}, \"responses\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}, \"messages\": {\"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.075, \"cache\": {\"read\": 0.015}}, \"output\": {\"price\": 0.3}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/ba52719c2ac8be33ebf28e0780cf2d4f4da78877/providers/openrouter/models/thinkingmachines/inkling-2-mini.toml",
+          "build": "ba52719c2ac8be33ebf28e0780cf2d4f4da78877",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/ba52719c2ac8be33ebf28e0780cf2d4f4da78877",
+          "first_seen": "2026-11-21T18:24:29+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-21T03:05:51.660834+00:00",
-      "x_post_text": "🟢 NEW MODEL: Inkling 2 Mini by kilo\n\nFirst detected 21 Nov 03:05 UTC in OpenRouter\n📅 First released: 2026-11-21\nConfirmed by Registry Update\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Inkling 2 Mini by OpenRouter\n\nFirst detected 21 Nov 03:05 UTC in OpenRouter\n📅 First released: 2026-11-21\nConfirmed by Registry Update\n\nvia @StatsWire"
     },
     {
       "id": "story-sonar",
@@ -24027,6 +24043,93 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-40d02e59a999e776f109",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "inkling-2-mini",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "inkling-2-mini",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "openrouter/thinkingmachines/inkling-2-mini",
+          "name": "openrouter/thinkingmachines/inkling-2-mini",
+          "registry_update": true,
+          "released_on": "2026-11-21"
+        }
+      ],
+      "detected_at": "2026-11-21T18:24:48.532911+00:00",
+      "first_seen": "2026-11-21T18:24:29+00:00",
+      "observed_at": "2026-11-21T18:24:48.532911+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "4dff399f86b6e5a06ea81930494b89b7b24c5f12 -> ba52719c2ac8be33ebf28e0780cf2d4f4da78877",
+      "build": "ba52719c2ac8be33ebf28e0780cf2d4f4da78877",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/ba52719c2ac8be33ebf28e0780cf2d4f4da78877",
+      "artifact_sha256": "cebb334d7be273aaddc503c8d1eb51f0caa4b88a8913db20f1521c67af061bde",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/cebb334d7be273aaddc503c8d1eb51f0caa4b88a8913db20f1521c67af061bde.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/cebb334d7be273aaddc503c8d1eb51f0caa4b88a8913db20f1521c67af061bde.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "openrouter/thinkingmachines/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/openrouter/models/thinkingmachines/inkling-2-mini.toml",
+          "file_sha256": "491768924bb537551820d948717bf3ff248ca340a6b6d104185989b7203bf786",
+          "excerpt": "{\"openrouter/thinkingmachines/inkling-2-mini\": {\"schema\": 2, \"name\": \"Inkling 2 Mini\", \"description\": \"Multimodal reasoning model for visual analysis, planning, and tool use\", \"family\": \"inkling\", \"open_weights\": true, \"release_date\": \"2026-11-21\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"api\": {\"chat-completions\": {}, \"responses\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}, \"messages\": {\"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.075, \"cache\": {\"read\": 0.015}}, \"output\": {\"price\": 0.3}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/ba52719c2ac8be33ebf28e0780cf2d4f4da78877/providers/openrouter/models/thinkingmachines/inkling-2-mini.toml",
+          "build": "ba52719c2ac8be33ebf28e0780cf2d4f4da78877",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/ba52719c2ac8be33ebf28e0780cf2d4f4da78877",
+          "first_seen": "2026-11-21T18:24:29+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/ba52719c2ac8be33ebf28e0780cf2d4f4da78877"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/ba52719c2ac8be33ebf28e0780cf2d4f4da78877"
+        }
+      ],
+      "tracker_observed_at": "2026-11-21T18:24:51.648765+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions ba52719c2ac8: openrouter/thinkingmachines/inkling-2-mini\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/ba52719c2ac8be33ebf28e0780cf2d4f4da78877"
+    },
     {
       "id": "intel-3abc13dce22b263e5ec9",
       "scanner": "models-dev-git",
@@ -73085,12 +73188,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T17:59:15.226212+00:00",
+      "last_attempt": "2026-11-21T18:24:35.708590+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T17:59:15.459249+00:00",
+      "last_success": "2026-11-21T18:24:35.924302+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.233,
+      "duration_seconds": 0.216,
       "latest_build": "16a1b03fd987e546fb4eb2a2413f6f021dedba29c19021715891ead7c9787f37",
       "builds_retained": 76,
       "identifiers": 9686
@@ -73098,12 +73201,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-21T17:56:57.670103+00:00",
+      "last_attempt": "2026-11-21T18:24:36.116819+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T17:56:58.056139+00:00",
+      "last_success": "2026-11-21T18:24:36.466490+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.386,
+      "duration_seconds": 0.35,
       "latest_build": "ac7674625ceed298d6c411cc964f23aded63989d",
       "builds_retained": 47,
       "identifiers": 6997
@@ -73111,34 +73214,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-21T17:50:04.552328+00:00",
+      "last_attempt": "2026-11-21T18:24:36.666928+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T17:50:05.274856+00:00",
+      "last_success": "2026-11-21T18:24:51.648765+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.723,
-      "latest_build": "ed4c011d6a7cec05b7f2344e8e6db959384f463e",
-      "builds_retained": 80,
+      "duration_seconds": 14.982,
+      "latest_build": "ba52719c2ac8be33ebf28e0780cf2d4f4da78877",
+      "builds_retained": 82,
       "identifiers": 10829
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-21T17:59:15.651863+00:00",
+      "last_attempt": "2026-11-21T18:24:51.846040+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2018,
-      "duration_seconds": 20.793
+      "consecutive_failures": 2029,
+      "duration_seconds": 20.936
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-21T17:48:10.400734+00:00",
+      "last_attempt": "2026-11-21T18:20:25.895345+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T17:48:10.614541+00:00",
+      "last_success": "2026-11-21T18:20:26.069517+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.214,
+      "duration_seconds": 0.174,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -73148,61 +73251,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T17:58:20.823280+00:00",
+      "last_attempt": "2026-11-21T18:23:46.005878+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T17:58:22.506755+00:00",
+      "last_success": "2026-11-21T18:23:47.789832+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.683
+      "duration_seconds": 1.784
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T17:58:22.506815+00:00",
+      "last_attempt": "2026-11-21T18:23:47.789886+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T17:58:22.639940+00:00",
+      "last_success": "2026-11-21T18:23:47.894905+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.133
+      "duration_seconds": 0.105
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T17:58:22.639978+00:00",
+      "last_attempt": "2026-11-21T18:23:47.894945+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T17:58:29.829450+00:00",
+      "last_success": "2026-11-21T18:23:52.510633+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.19
+      "duration_seconds": 4.616
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T17:58:29.829537+00:00",
+      "last_attempt": "2026-11-21T18:23:52.510699+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T17:59:15.226158+00:00",
+      "last_success": "2026-11-21T18:24:35.708539+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 45.397,
+      "duration_seconds": 43.198,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-21T17:58:30.015844+00:00",
+          "checked_at": "2026-11-21T18:23:52.690503+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-21T17:58:41.032008+00:00",
+          "checked_at": "2026-11-21T18:24:01.889629+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-21T17:58:41.246624+00:00",
+          "checked_at": "2026-11-21T18:24:02.031639+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-21T17:58:41.246642+00:00",
+          "checked_at": "2026-11-21T18:24:02.031656+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -73210,12 +73313,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T17:59:15.226212+00:00",
+      "last_attempt": "2026-11-21T18:24:35.708590+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T17:59:15.459249+00:00",
+      "last_success": "2026-11-21T18:24:35.924302+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.233,
+      "duration_seconds": 0.216,
       "latest_build": "16a1b03fd987e546fb4eb2a2413f6f021dedba29c19021715891ead7c9787f37",
       "builds_retained": 76,
       "identifiers": 9686
@@ -73223,12 +73326,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-21T17:56:57.670103+00:00",
+      "last_attempt": "2026-11-21T18:24:36.116819+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T17:56:58.056139+00:00",
+      "last_success": "2026-11-21T18:24:36.466490+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.386,
+      "duration_seconds": 0.35,
       "latest_build": "ac7674625ceed298d6c411cc964f23aded63989d",
       "builds_retained": 47,
       "identifiers": 6997
@@ -73236,34 +73339,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-21T17:50:04.552328+00:00",
+      "last_attempt": "2026-11-21T18:24:36.666928+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T17:50:05.274856+00:00",
+      "last_success": "2026-11-21T18:24:51.648765+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.723,
-      "latest_build": "ed4c011d6a7cec05b7f2344e8e6db959384f463e",
-      "builds_retained": 80,
+      "duration_seconds": 14.982,
+      "latest_build": "ba52719c2ac8be33ebf28e0780cf2d4f4da78877",
+      "builds_retained": 82,
       "identifiers": 10829
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-21T17:59:15.651863+00:00",
+      "last_attempt": "2026-11-21T18:24:51.846040+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2018,
-      "duration_seconds": 20.793
+      "consecutive_failures": 2029,
+      "duration_seconds": 20.936
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-21T17:48:10.400734+00:00",
+      "last_attempt": "2026-11-21T18:20:25.895345+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T17:48:10.614541+00:00",
+      "last_success": "2026-11-21T18:20:26.069517+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.214,
+      "duration_seconds": 0.174,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -73271,52 +73374,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T17:59:36.451787+00:00",
+      "last_attempt": "2026-11-21T18:25:12.790034+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T17:59:45.105877+00:00",
+      "last_success": "2026-11-21T18:25:21.538690+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.654
+      "duration_seconds": 8.749
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T17:59:45.105925+00:00",
+      "last_attempt": "2026-11-21T18:25:21.538747+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T17:59:46.296125+00:00",
+      "last_success": "2026-11-21T18:25:23.756953+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.19
+      "duration_seconds": 2.218
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-21T17:50:36.679619+00:00",
+      "last_attempt": "2026-11-21T18:25:23.756999+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T17:50:45.064060+00:00",
+      "last_success": "2026-11-21T18:25:33.131170+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.384
+      "duration_seconds": 9.374
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T17:59:46.296174+00:00",
+      "last_attempt": "2026-11-21T18:25:33.131213+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T17:59:46.689845+00:00",
+      "last_success": "2026-11-21T18:25:33.530566+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.394
+      "duration_seconds": 0.399
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-21T17:59:46.689883+00:00",
+      "last_attempt": "2026-11-21T18:25:33.530611+00:00",
       "status": "ok",
-      "last_success": "2026-11-21T17:59:46.717389+00:00",
+      "last_success": "2026-11-21T18:25:33.546089+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.028
+      "duration_seconds": 0.015
     }
   },
   "identities": {
@@ -73327,8 +73430,8 @@
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 308,
-      "seconds_mean": 4282.501295503247,
+      "samples": 309,
+      "seconds_mean": 4268.705281313915,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -73342,8 +73445,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 396,
-      "events": 396,
+      "complete": 397,
+      "events": 397,
       "rate": 1.0
     },
     "source_health": {
