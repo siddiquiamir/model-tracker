@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-22T00:26:37.995883+00:00",
-  "scan_completed_at": "2026-11-22T00:28:07.642032+00:00",
+  "generated_at": "2026-11-22T00:56:51.038488+00:00",
+  "scan_completed_at": "2026-11-22T00:58:30.701296+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 303,
     "leaks": 40,
     "releases": 78,
-    "stories_24h": 55,
-    "sources_ok": 12,
-    "total_cards": 681,
-    "new_in_this_scan": 0
+    "stories_24h": 22,
+    "sources_ok": 13,
+    "total_cards": 682,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -6765,7 +6765,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-19T19:56:03.164169+00:00",
-      "updated_at": "2026-11-19T21:13:07.191144+00:00",
+      "updated_at": "2026-11-22T00:57:28.910692+00:00",
       "first_source": "OpenAI Docs Route",
       "lead": "16 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "",
@@ -6774,7 +6774,7 @@
       "models": [
         {
           "id": "gpt-live-1.1",
-          "name": "openai/gpt-live-1.1"
+          "name": "GPT Live 1.1"
         }
       ],
       "sources": [
@@ -6847,9 +6847,19 @@
           "backfill": false,
           "build": "31b419f899b9d46afc2e2e7cabcfdcc8aed83c0e",
           "evidence_path": "data/intelligence/evidence/models-dev-git/aa0a1ee3e07a2e3af10545ce29b8f43f1f8a2a4ea1905c645ad0e1305953535c.json.gz"
+        },
+        {
+          "label": "Opencode Zen Stealth & Model Gateway",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-11-22T00:57:28.910692+00:00",
+          "title": "New Model on OpenCode Zen: gpt-live-1.1",
+          "url": "https://opencode.ai/zen/v1/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 7,
+      "source_count": 8,
       "backfill": false,
       "header": "NEW MODEL · OPENAI",
       "card_ids": [
@@ -6859,7 +6869,8 @@
         "openai-spec-ids-6e623441",
         "intel-02c33eb274f333285cd8",
         "npm-openai-7.60.0-7.61.0",
-        "intel-9e5aed315702ddb51a5c"
+        "intel-9e5aed315702ddb51a5c",
+        "opencode-zen-diff-6e623441"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -6909,8 +6920,8 @@
           "first_seen": "2026-11-19T21:10:32+00:00"
         }
       ],
-      "discord_alerted_at": "2026-11-19T21:15:27.654889+00:00",
-      "x_post_text": "🟢 NEW MODEL: GPT Live 1.1 by OpenAI\n\nFirst detected 19 Nov 19:56 UTC in OpenAI Docs Route\n⏱ 16 min before it went live on Vercel AI Gateway Catalog\nConfirmed by Official pricing page, Vercel AI Gateway Catalog, OpenAI API spec +3\n\nvia @StatsWire"
+      "discord_alerted_at": "2026-11-22T00:58:30.698691+00:00",
+      "x_post_text": "🟢 NEW MODEL: GPT Live 1.1 by OpenAI\n\nFirst detected 19 Nov 19:56 UTC in OpenAI Docs Route\n⏱ 16 min before it went live on Vercel AI Gateway Catalog\nConfirmed by Official pricing page, Vercel AI Gateway Catalog, OpenAI API spec +4\n\nvia @StatsWire"
     },
     {
       "id": "story-mai-image-2-5",
@@ -24302,6 +24313,39 @@
     }
   ],
   "cards": [
+    {
+      "id": "opencode-zen-diff-6e623441",
+      "category": "cli-sdk-diff",
+      "scanner": "gateway-radar",
+      "header": "OPENCODE ZEN STEALTH & MODEL GATEWAY · LIVE DIFF",
+      "title": "New Model on OpenCode Zen: gpt-live-1.1",
+      "subtitle": "Newly exposed model / stealth codename in opencode.ai/zen/v1/models (+1 new)",
+      "build_label": "Gateway Diff",
+      "build_transition": "+1 model(s) (105 active)",
+      "models": [
+        {
+          "id": "gpt-live-1.1",
+          "name": "GPT Live 1.1"
+        }
+      ],
+      "evidence": "opencode.ai/zen/v1/models",
+      "source_text": "public OpenCode Zen /v1/models catalog.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENAI",
+      "provider_slug": "openai",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "OpenCode Zen Models JSON",
+          "url": "https://opencode.ai/zen/v1/models"
+        }
+      ],
+      "detected_at": "2026-11-22T00:57:28.910692+00:00",
+      "tracker_observed_at": "2026-11-22T00:57:54.784913+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 OPENCODE ZEN STEALTH & MODEL GATEWAY · LIVE DIFF\nNew Model on OpenCode Zen: gpt-live-1.1 spotted in Gateway Diff +1 model(s) (105 active)!\n\n• GPT Live 1.1 (gpt-live-1.1)\n\nEvidence: opencode.ai/zen/v1/models\nSource: public OpenCode Zen /v1/models catalog.\n\nTracked by @StatsWire"
+    },
     {
       "id": "intel-15cf4fc5f52ee304fa67",
       "scanner": "litellm-intelligence",
@@ -74727,25 +74771,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:27:33.504857+00:00",
+      "last_attempt": "2026-11-22T00:57:54.784977+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:27:33.792929+00:00",
+      "last_success": "2026-11-22T00:57:55.119186+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.288,
-      "latest_build": "fd168d7d4410b95ed584a65fc0fee094319af30c009c57fdcb1a91be3cdeafaf",
-      "builds_retained": 78,
-      "identifiers": 9686
+      "duration_seconds": 0.334,
+      "latest_build": "5e476733fd9a0db3660d86362c62baaaad33f03ef11ee72eb79fddda0c0f1a09",
+      "builds_retained": 80,
+      "identifiers": 9687
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-22T00:25:11.063961+00:00",
+      "last_attempt": "2026-11-22T00:55:23.469621+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:25:11.441269+00:00",
+      "last_success": "2026-11-22T00:55:23.796232+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.378,
+      "duration_seconds": 0.327,
       "latest_build": "0946b7416c5bb13f04f692bc3604b91b897d5e43",
       "builds_retained": 52,
       "identifiers": 7005
@@ -74753,12 +74797,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-22T00:20:13.398753+00:00",
+      "last_attempt": "2026-11-22T00:47:57.494403+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:20:13.869376+00:00",
+      "last_success": "2026-11-22T00:47:57.900992+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.471,
+      "duration_seconds": 0.407,
       "latest_build": "bf4cb1bc09891103fcbff7a28369349ff946b4d5",
       "builds_retained": 83,
       "identifiers": 10829
@@ -74766,21 +74810,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-22T00:27:33.990525+00:00",
+      "last_attempt": "2026-11-22T00:57:55.311595+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2180,
-      "duration_seconds": 20.995
+      "consecutive_failures": 2191,
+      "duration_seconds": 21.021
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-22T00:25:32.993870+00:00",
+      "last_attempt": "2026-11-22T00:58:16.340022+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:25:33.367356+00:00",
+      "last_success": "2026-11-22T00:58:16.571762+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.374,
+      "duration_seconds": 0.232,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -74790,61 +74834,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:26:37.995951+00:00",
+      "last_attempt": "2026-11-22T00:56:51.038557+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:26:39.511380+00:00",
+      "last_success": "2026-11-22T00:56:52.700423+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.515
+      "duration_seconds": 1.662
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:26:39.511442+00:00",
+      "last_attempt": "2026-11-22T00:56:52.700476+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:26:39.634480+00:00",
+      "last_success": "2026-11-22T00:56:52.827362+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.123
+      "duration_seconds": 0.127
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:26:39.634521+00:00",
+      "last_attempt": "2026-11-22T00:56:52.827401+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:26:46.973983+00:00",
+      "last_success": "2026-11-22T00:57:02.054740+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.339
+      "duration_seconds": 9.227
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:26:46.974054+00:00",
+      "last_attempt": "2026-11-22T00:57:02.054823+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:27:33.504776+00:00",
+      "last_success": "2026-11-22T00:57:54.784913+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 46.531,
+      "duration_seconds": 52.73,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-22T00:26:47.234601+00:00",
+          "checked_at": "2026-11-22T00:57:02.518086+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-22T00:26:56.410709+00:00",
+          "checked_at": "2026-11-22T00:57:11.362962+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-22T00:26:56.513668+00:00",
+          "checked_at": "2026-11-22T00:57:11.454941+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-22T00:26:56.513683+00:00",
+          "checked_at": "2026-11-22T00:57:11.454958+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -74852,25 +74896,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:27:33.504857+00:00",
+      "last_attempt": "2026-11-22T00:57:54.784977+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:27:33.792929+00:00",
+      "last_success": "2026-11-22T00:57:55.119186+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.288,
-      "latest_build": "fd168d7d4410b95ed584a65fc0fee094319af30c009c57fdcb1a91be3cdeafaf",
-      "builds_retained": 78,
-      "identifiers": 9686
+      "duration_seconds": 0.334,
+      "latest_build": "5e476733fd9a0db3660d86362c62baaaad33f03ef11ee72eb79fddda0c0f1a09",
+      "builds_retained": 80,
+      "identifiers": 9687
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-22T00:25:11.063961+00:00",
+      "last_attempt": "2026-11-22T00:55:23.469621+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:25:11.441269+00:00",
+      "last_success": "2026-11-22T00:55:23.796232+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.378,
+      "duration_seconds": 0.327,
       "latest_build": "0946b7416c5bb13f04f692bc3604b91b897d5e43",
       "builds_retained": 52,
       "identifiers": 7005
@@ -74878,12 +74922,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-22T00:20:13.398753+00:00",
+      "last_attempt": "2026-11-22T00:47:57.494403+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:20:13.869376+00:00",
+      "last_success": "2026-11-22T00:47:57.900992+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.471,
+      "duration_seconds": 0.407,
       "latest_build": "bf4cb1bc09891103fcbff7a28369349ff946b4d5",
       "builds_retained": 83,
       "identifiers": 10829
@@ -74891,21 +74935,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-22T00:27:33.990525+00:00",
+      "last_attempt": "2026-11-22T00:57:55.311595+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2180,
-      "duration_seconds": 20.995
+      "consecutive_failures": 2191,
+      "duration_seconds": 21.021
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-22T00:25:32.993870+00:00",
+      "last_attempt": "2026-11-22T00:58:16.340022+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:25:33.367356+00:00",
+      "last_success": "2026-11-22T00:58:16.571762+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.374,
+      "duration_seconds": 0.232,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -74913,57 +74957,57 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:27:54.992361+00:00",
+      "last_attempt": "2026-11-22T00:58:16.977211+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:28:03.847283+00:00",
+      "last_success": "2026-11-22T00:58:25.791009+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.855
+      "duration_seconds": 8.814
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:28:03.847339+00:00",
+      "last_attempt": "2026-11-22T00:58:25.791062+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:28:05.478694+00:00",
+      "last_success": "2026-11-22T00:58:27.646192+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.631
+      "duration_seconds": 1.855
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-22T00:20:45.627666+00:00",
+      "last_attempt": "2026-11-22T00:48:29.960450+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:20:55.703836+00:00",
+      "last_success": "2026-11-22T00:48:38.266692+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 10.076
+      "duration_seconds": 8.306
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:28:05.478743+00:00",
+      "last_attempt": "2026-11-22T00:58:27.646243+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:28:07.138250+00:00",
+      "last_success": "2026-11-22T00:58:29.274161+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.66
+      "duration_seconds": 1.628
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:28:07.138289+00:00",
+      "last_attempt": "2026-11-22T00:58:29.274200+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:28:07.165048+00:00",
+      "last_success": "2026-11-22T00:58:29.371990+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.027
+      "duration_seconds": 0.098
     }
   },
   "identities": {
-    "identifiers": 30850,
-    "declared_aliases": 17895,
+    "identifiers": 30851,
+    "declared_aliases": 17896,
     "pending_candidates": 2
   },
   "intelligence_metrics": {
