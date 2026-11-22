@@ -1,37 +1,37 @@
 {
-  "generated_at": "2026-11-22T18:03:29.015711+00:00",
-  "scan_completed_at": "2026-11-22T18:04:56.405369+00:00",
+  "generated_at": "2026-11-22T18:07:36.389794+00:00",
+  "scan_completed_at": "2026-11-22T18:08:48.297266+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 305,
     "leaks": 39,
-    "releases": 80,
+    "releases": 81,
     "stories_24h": 19,
-    "sources_ok": 15,
-    "total_cards": 690,
+    "sources_ok": 12,
+    "total_cards": 691,
     "new_in_this_scan": 1
   },
   "stories": [
     {
       "id": "story-jev-1-14",
       "group": "jev-1-14",
-      "kind": "registry",
+      "kind": "release",
       "open_weights": false,
       "title": "Jev 1.14",
       "provider_slug": "unknown",
-      "provider_name": "Unattributed",
+      "provider_name": "opencode",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-22T18:04:21.361546+00:00",
-      "updated_at": "2026-11-22T18:04:21.361546+00:00",
+      "updated_at": "2026-11-22T18:08:03.985015+00:00",
       "first_source": "Registry Update",
-      "lead": "",
+      "lead": "3 min before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "",
       "pricing": "",
       "codenames": [],
       "models": [
         {
           "id": "jev-1.14",
-          "name": "opencode/jev-1.14"
+          "name": "Jev 1.14"
         }
       ],
       "sources": [
@@ -44,16 +44,27 @@
           "backfill": false,
           "build": "bc5e3390022942e87ae54954e66fe48bc9a5ddca",
           "evidence_path": "data/intelligence/evidence/models-dev-git/e0c73b08ff3a9d207cc8050c00d1a0aa252e2f91c3f59e9641a91dd2fe5e2f14.json.gz"
+        },
+        {
+          "label": "Opencode Zen Stealth & Model Gateway",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-11-22T18:08:03.985015+00:00",
+          "title": "New Model on OpenCode Zen: jev-1.14",
+          "url": "https://opencode.ai/zen/v1/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
-      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "header": "NEW MODEL · OPENCODE",
       "card_ids": [
-        "intel-eb7e72c0ccaa13f9ffbe"
+        "intel-eb7e72c0ccaa13f9ffbe",
+        "opencode-zen-diff-0700cbe5"
       ],
-      "event_label": "Registry update",
-      "intelligence_only": true,
+      "event_label": "Released",
+      "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [
         {
@@ -72,7 +83,8 @@
           "first_seen": "2026-11-22T18:03:08+00:00"
         }
       ],
-      "x_post_text": "Registry Update bc5e33900229: jev-1.14\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/bc5e3390022942e87ae54954e66fe48bc9a5ddca"
+      "x_post_text": "🟢 NEW MODEL: Jev 1.14 by opencode\n\nFirst detected 22 Nov 18:04 UTC in Registry Update\n⏱ 3 min before it went live on Opencode Zen Stealth & Model Gateway\nConfirmed by Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-22T18:08:48.295207+00:00"
     },
     {
       "id": "story-lingsante-3-1-air-vl",
@@ -24465,6 +24477,39 @@
     }
   ],
   "cards": [
+    {
+      "id": "opencode-zen-diff-0700cbe5",
+      "category": "cli-sdk-diff",
+      "scanner": "gateway-radar",
+      "header": "OPENCODE ZEN STEALTH & MODEL GATEWAY · LIVE DIFF",
+      "title": "New Model on OpenCode Zen: jev-1.14",
+      "subtitle": "Newly exposed model / stealth codename in opencode.ai/zen/v1/models (+1 new)",
+      "build_label": "Gateway Diff",
+      "build_transition": "+1 model(s) (105 active)",
+      "models": [
+        {
+          "id": "jev-1.14",
+          "name": "Jev 1.14"
+        }
+      ],
+      "evidence": "opencode.ai/zen/v1/models",
+      "source_text": "public OpenCode Zen /v1/models catalog.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENCODE ZEN",
+      "provider_slug": "openrouter",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "OpenCode Zen Models JSON",
+          "url": "https://opencode.ai/zen/v1/models"
+        }
+      ],
+      "detected_at": "2026-11-22T18:08:03.985015+00:00",
+      "tracker_observed_at": "2026-11-22T18:08:23.148371+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 OPENCODE ZEN STEALTH & MODEL GATEWAY · LIVE DIFF\nNew Model on OpenCode Zen: jev-1.14 spotted in Gateway Diff +1 model(s) (105 active)!\n\n• Jev 1.14 (jev-1.14)\n\nEvidence: opencode.ai/zen/v1/models\nSource: public OpenCode Zen /v1/models catalog.\n\nTracked by @StatsWire"
+    },
     {
       "id": "intel-eb7e72c0ccaa13f9ffbe",
       "scanner": "models-dev-git",
@@ -75633,12 +75678,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T18:04:15.141509+00:00",
+      "last_attempt": "2026-11-22T18:06:22.938783+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T18:04:17.539056+00:00",
+      "last_success": "2026-11-22T18:06:23.134473+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.398,
+      "duration_seconds": 0.196,
       "latest_build": "833fd112b76dd6ae513eb12b39d5430422b7463a57af7ff504b475b95e762a60",
       "builds_retained": 94,
       "identifiers": 9693
@@ -75646,12 +75691,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-22T18:04:17.655835+00:00",
+      "last_attempt": "2026-11-22T18:08:23.148437+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T18:04:17.929649+00:00",
+      "last_success": "2026-11-22T18:08:23.466060+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.274,
+      "duration_seconds": 0.318,
       "latest_build": "18fe30f31d0b94683efa3b494e8da920f6b02f47",
       "builds_retained": 53,
       "identifiers": 7005
@@ -75672,11 +75717,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-22T18:04:23.460775+00:00",
+      "last_attempt": "2026-11-22T18:08:23.591513+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2659,
-      "duration_seconds": 14.057
+      "consecutive_failures": 2661,
+      "duration_seconds": 14.198
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -75696,61 +75741,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T18:03:29.015786+00:00",
+      "last_attempt": "2026-11-22T18:07:36.389851+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T18:03:30.929728+00:00",
+      "last_success": "2026-11-22T18:07:37.935437+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.914
+      "duration_seconds": 1.546
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T18:03:30.929818+00:00",
+      "last_attempt": "2026-11-22T18:07:37.935505+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T18:03:31.010178+00:00",
+      "last_success": "2026-11-22T18:07:38.016214+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.08
+      "duration_seconds": 0.081
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T18:03:31.010215+00:00",
+      "last_attempt": "2026-11-22T18:07:38.016252+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T18:03:36.387288+00:00",
+      "last_success": "2026-11-22T18:07:41.858971+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.377
+      "duration_seconds": 3.843
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T18:03:36.387341+00:00",
+      "last_attempt": "2026-11-22T18:07:41.859025+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T18:04:15.141450+00:00",
+      "last_success": "2026-11-22T18:08:23.148371+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 38.754,
+      "duration_seconds": 41.289,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-22T18:03:36.530430+00:00",
+          "checked_at": "2026-11-22T18:07:42.007712+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-22T18:03:46.070002+00:00",
+          "checked_at": "2026-11-22T18:07:52.357944+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-22T18:03:46.214839+00:00",
+          "checked_at": "2026-11-22T18:07:52.478036+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-22T18:03:46.214853+00:00",
+          "checked_at": "2026-11-22T18:07:52.478050+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -75758,12 +75803,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T18:04:15.141509+00:00",
+      "last_attempt": "2026-11-22T18:06:22.938783+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T18:04:17.539056+00:00",
+      "last_success": "2026-11-22T18:06:23.134473+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.398,
+      "duration_seconds": 0.196,
       "latest_build": "833fd112b76dd6ae513eb12b39d5430422b7463a57af7ff504b475b95e762a60",
       "builds_retained": 94,
       "identifiers": 9693
@@ -75771,12 +75816,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-22T18:04:17.655835+00:00",
+      "last_attempt": "2026-11-22T18:08:23.148437+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T18:04:17.929649+00:00",
+      "last_success": "2026-11-22T18:08:23.466060+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.274,
+      "duration_seconds": 0.318,
       "latest_build": "18fe30f31d0b94683efa3b494e8da920f6b02f47",
       "builds_retained": 53,
       "identifiers": 7005
@@ -75797,11 +75842,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-22T18:04:23.460775+00:00",
+      "last_attempt": "2026-11-22T18:08:23.591513+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2659,
-      "duration_seconds": 14.057
+      "consecutive_failures": 2661,
+      "duration_seconds": 14.198
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -75819,22 +75864,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T18:04:37.522262+00:00",
+      "last_attempt": "2026-11-22T18:08:37.793146+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T18:04:45.580978+00:00",
+      "last_success": "2026-11-22T18:08:45.845550+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.059
+      "duration_seconds": 8.052
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T18:04:45.581037+00:00",
+      "last_attempt": "2026-11-22T18:08:45.845608+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T18:04:47.121275+00:00",
+      "last_success": "2026-11-22T18:08:46.900458+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.54
+      "duration_seconds": 1.055
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -75849,22 +75894,22 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T18:04:55.702188+00:00",
+      "last_attempt": "2026-11-22T18:08:46.900512+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T18:04:56.030889+00:00",
+      "last_success": "2026-11-22T18:08:47.308296+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.329
+      "duration_seconds": 0.408
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T18:04:56.030933+00:00",
+      "last_attempt": "2026-11-22T18:08:47.308344+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T18:04:56.048864+00:00",
+      "last_success": "2026-11-22T18:08:47.322521+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.018
+      "duration_seconds": 0.014
     }
   },
   "identities": {
