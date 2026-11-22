@@ -1,17 +1,79 @@
 {
-  "generated_at": "2026-11-22T17:45:28.946463+00:00",
-  "scan_completed_at": "2026-11-22T17:46:40.009615+00:00",
+  "generated_at": "2026-11-22T18:03:29.015711+00:00",
+  "scan_completed_at": "2026-11-22T18:04:56.405369+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 304,
+    "stories": 305,
     "leaks": 39,
     "releases": 80,
-    "stories_24h": 18,
-    "sources_ok": 12,
+    "stories_24h": 19,
+    "sources_ok": 15,
     "total_cards": 690,
-    "new_in_this_scan": 0
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-jev-1-14",
+      "group": "jev-1-14",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Jev 1.14",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-22T18:04:21.361546+00:00",
+      "updated_at": "2026-11-22T18:04:21.361546+00:00",
+      "first_source": "Registry Update",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "jev-1.14",
+          "name": "opencode/jev-1.14"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-22T18:04:21.361546+00:00",
+          "title": "jev-1.14",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/bc5e3390022942e87ae54954e66fe48bc9a5ddca",
+          "backfill": false,
+          "build": "bc5e3390022942e87ae54954e66fe48bc9a5ddca",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/e0c73b08ff3a9d207cc8050c00d1a0aa252e2f91c3f59e9641a91dd2fe5e2f14.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-eb7e72c0ccaa13f9ffbe"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "opencode/jev-1.14",
+          "family": "jev-1.14",
+          "file_path": "providers/opencode/models/jev-1.14.toml",
+          "file_sha256": "c1bb2c91cc4073db340bbc3d7688d858eb694ad757af1ab62f2ffedb94f40957",
+          "excerpt": "{\"opencode/jev-1.14\": {\"schema\": 2, \"base_model\": \"typesafe/jev-1.14.0\", \"capabilities\": {\"structured_output\": true}, \"api\": {\"systemone\": {\"base_url\": \"https://opencode.ai/inference/systemone/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/typesafe-ai\", \"opencodeai\": \"@opencode/ai/providers/opencode/decisions\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.042}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "typesafe/jev-1.14.0",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/bc5e3390022942e87ae54954e66fe48bc9a5ddca/providers/opencode/models/jev-1.14.toml",
+          "build": "bc5e3390022942e87ae54954e66fe48bc9a5ddca",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/bc5e3390022942e87ae54954e66fe48bc9a5ddca",
+          "first_seen": "2026-11-22T18:03:08+00:00"
+        }
+      ],
+      "x_post_text": "Registry Update bc5e33900229: jev-1.14\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/bc5e3390022942e87ae54954e66fe48bc9a5ddca"
+    },
     {
       "id": "story-lingsante-3-1-air-vl",
       "group": "lingsante-3-1-air-vl",
@@ -21085,6 +21147,54 @@
       "x_post_text": "🟢 NEW MODEL: Ultramarine 1 Flash by paperinstruments\n\nFirst detected 13 Nov 01:37 UTC in Vercel AI Gateway Catalog\n📅 First released: 2026-11-12\n\nvia @StatsWire"
     },
     {
+      "id": "story-hyperion",
+      "group": "hyperion",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Hyperion",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "accent_color": "#38bdf8",
+      "detected_at": "2026-11-12T22:23:52.153580+00:00",
+      "updated_at": "2026-11-12T22:23:52.153580+00:00",
+      "first_source": "Devin CLI Official Binary",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "hyperion"
+      ],
+      "models": [
+        {
+          "id": "hyperion-minimal",
+          "name": "Hyperion Minimal"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Devin CLI Official Binary",
+          "scanner": "ide-build-diff",
+          "detected_at": "2026-11-12T22:23:52.153580+00:00",
+          "title": "Devin CLI 3000.12.57: Hyperion Minimal",
+          "url": "https://static.devin.ai/cli/current/manifest.json",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · GOOGLE",
+      "card_ids": [
+        "devin-cli-3000.12.43-3000.12.57-google"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: Hyperion by Google\n\nFirst detected 12 Nov 22:23 UTC in Devin CLI Official Binary\nCodename: hyperion\n\nvia @StatsWire"
+    },
+    {
       "id": "story-diffusiongemmaencodermodel",
       "group": "diffusiongemmaencodermodel",
       "kind": "leak",
@@ -24094,71 +24204,6 @@
       "x_post_text": "⚪ UNVERIFIED: Frantic Ferret Free by Opencode / Sst\n\nFirst detected 08 Nov 18:56 UTC in models.dev\nConfirmed by Opencode Zen Stealth & Model Gateway\nCodename: ferret, frantic\n\nvia @StatsWire"
     },
     {
-      "id": "story-hyperion",
-      "group": "hyperion",
-      "kind": "leak",
-      "open_weights": false,
-      "title": "Hyperion",
-      "provider_slug": "google",
-      "provider_name": "Google",
-      "accent_color": "#38bdf8",
-      "detected_at": "2026-11-08T17:55:00+00:00",
-      "updated_at": "2026-11-12T22:23:52.153580+00:00",
-      "first_source": "Devin CLI Official Binary",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [
-        "hyperion"
-      ],
-      "models": [
-        {
-          "id": "hyperion",
-          "name": "Hyperion"
-        },
-        {
-          "id": "hyperion-low",
-          "name": "Hyperion Low"
-        },
-        {
-          "id": "hyperion-high",
-          "name": "Hyperion High"
-        },
-        {
-          "id": "hyperion-medium",
-          "name": "Hyperion Medium"
-        },
-        {
-          "id": "hyperion-minimal",
-          "name": "Hyperion Minimal"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Devin CLI Official Binary",
-          "scanner": "ide-build-diff",
-          "detected_at": "2026-11-08T17:55:00+00:00",
-          "title": "Devin CLI 3000.12.17: Google Hyperion",
-          "url": "https://static.devin.ai/cli/current/manifest.json",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "LEAK · GOOGLE",
-      "card_ids": [
-        "devin-cli-3000.11.239-3000.12.17-google",
-        "devin-cli-3000.12.43-3000.12.57-google"
-      ],
-      "event_label": "",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: Hyperion by Google\n\nFirst detected 08 Nov 17:55 UTC in Devin CLI Official Binary\nCodename: hyperion\nIDs: hyperion, hyperion-low, hyperion-high +2\n\nvia @StatsWire"
-    },
-    {
       "id": "story-gemini-4-carbon",
       "group": "gemini-4-carbon",
       "kind": "release",
@@ -24420,6 +24465,92 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-eb7e72c0ccaa13f9ffbe",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "jev-1.14",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "jev-1.14",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "opencode/jev-1.14",
+          "name": "opencode/jev-1.14",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-22T18:04:21.361546+00:00",
+      "first_seen": "2026-11-22T18:03:08+00:00",
+      "observed_at": "2026-11-22T18:04:21.361546+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "b0f848113e0da1996c5e10453f8c32399f2521cd -> bc5e3390022942e87ae54954e66fe48bc9a5ddca",
+      "build": "bc5e3390022942e87ae54954e66fe48bc9a5ddca",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/bc5e3390022942e87ae54954e66fe48bc9a5ddca",
+      "artifact_sha256": "e0c73b08ff3a9d207cc8050c00d1a0aa252e2f91c3f59e9641a91dd2fe5e2f14",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/e0c73b08ff3a9d207cc8050c00d1a0aa252e2f91c3f59e9641a91dd2fe5e2f14.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/e0c73b08ff3a9d207cc8050c00d1a0aa252e2f91c3f59e9641a91dd2fe5e2f14.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "opencode/jev-1.14",
+          "family": "jev-1.14",
+          "file_path": "providers/opencode/models/jev-1.14.toml",
+          "file_sha256": "c1bb2c91cc4073db340bbc3d7688d858eb694ad757af1ab62f2ffedb94f40957",
+          "excerpt": "{\"opencode/jev-1.14\": {\"schema\": 2, \"base_model\": \"typesafe/jev-1.14.0\", \"capabilities\": {\"structured_output\": true}, \"api\": {\"systemone\": {\"base_url\": \"https://opencode.ai/inference/systemone/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/typesafe-ai\", \"opencodeai\": \"@opencode/ai/providers/opencode/decisions\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.042}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "typesafe/jev-1.14.0",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/bc5e3390022942e87ae54954e66fe48bc9a5ddca/providers/opencode/models/jev-1.14.toml",
+          "build": "bc5e3390022942e87ae54954e66fe48bc9a5ddca",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/bc5e3390022942e87ae54954e66fe48bc9a5ddca",
+          "first_seen": "2026-11-22T18:03:08+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/bc5e3390022942e87ae54954e66fe48bc9a5ddca"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/bc5e3390022942e87ae54954e66fe48bc9a5ddca"
+        }
+      ],
+      "tracker_observed_at": "2026-11-22T18:04:23.343104+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions bc5e33900229: opencode/jev-1.14\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/bc5e3390022942e87ae54954e66fe48bc9a5ddca"
+    },
     {
       "id": "hf-inclusionAI_LingSante-3.1-air-VL",
       "category": "open-source",
@@ -75339,57 +75470,6 @@
       "x_post_text": "🚨 MODELS.DEV GLOBAL REGISTRY DIFF · OPENCODE / SST\n1 New Model(s) Added to models.dev spotted in Registry Diff +1 new canonical model(s)!\n\n• Frantic Ferret Free (OpenCode · release: 2026-11-08) (opencode/frantic-ferret-free)\n\nEvidence: models.dev/api.json\nSource: official models.dev global AI coding model registry.\n\nTracked by @StatsWire"
     },
     {
-      "id": "devin-cli-3000.11.239-3000.12.17-google",
-      "category": "desktop-diff",
-      "scanner": "ide-build-diff",
-      "header": "DEVIN CLI OFFICIAL BINARY DIFF · GOOGLE",
-      "title": "Devin CLI 3000.12.17: Google Hyperion",
-      "subtitle": "Verified Devin CLI (bin/devin) compiled model table diff",
-      "build_label": "Devin CLI",
-      "build_transition": "3000.11.239 -> 3000.12.17",
-      "models": [
-        {
-          "id": "hyperion",
-          "name": "Hyperion"
-        },
-        {
-          "id": "hyperion-minimal",
-          "name": "Hyperion Minimal"
-        },
-        {
-          "id": "hyperion-low",
-          "name": "Hyperion Low"
-        },
-        {
-          "id": "hyperion-medium",
-          "name": "Hyperion Medium"
-        },
-        {
-          "id": "hyperion-high",
-          "name": "Hyperion High"
-        }
-      ],
-      "codenames": [
-        "hyperion"
-      ],
-      "evidence": "static.devin.ai/cli/3000.12.17 (bin/devin)",
-      "source_text": "official Devin CLI Linux x64 binary release archive.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "GOOGLE",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "Devin CLI Manifest",
-          "url": "https://static.devin.ai/cli/current/manifest.json"
-        }
-      ],
-      "detected_at": "2026-11-08T17:55:00+00:00",
-      "x_post_text": "🚨 DEVIN CLI OFFICIAL BINARY DIFF · GOOGLE\nDevin CLI 3000.12.17: Google Hyperion spotted in Devin CLI 3000.11.239 -> 3000.12.17!\n\n• Hyperion (hyperion)\n• Hyperion Minimal (hyperion-minimal)\n• Hyperion Low (hyperion-low)\n• Hyperion Medium (hyperion-medium)\n• Hyperion High (hyperion-high)\n\nEvidence: static.devin.ai/cli/3000.12.17 (bin/devin)\nSource: official Devin CLI Linux x64 binary release archive.\n\nTracked by @StatsWire",
-      "pricing": null
-    },
-    {
       "id": "ag-acp-1.4.3-revision-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
@@ -75553,22 +75633,22 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T17:46:15.522635+00:00",
+      "last_attempt": "2026-11-22T18:04:15.141509+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T17:46:15.708170+00:00",
+      "last_success": "2026-11-22T18:04:17.539056+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.186,
-      "latest_build": "604aa619ba98c888afc86931314f4ec367dd74cbd507f9e2d46fab949c58881c",
-      "builds_retained": 93,
-      "identifiers": 9692
+      "duration_seconds": 2.398,
+      "latest_build": "833fd112b76dd6ae513eb12b39d5430422b7463a57af7ff504b475b95e762a60",
+      "builds_retained": 94,
+      "identifiers": 9693
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-22T17:44:09.790604+00:00",
+      "last_attempt": "2026-11-22T18:04:17.655835+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T17:44:10.064234+00:00",
+      "last_success": "2026-11-22T18:04:17.929649+00:00",
       "error_type": null,
       "consecutive_failures": 0,
       "duration_seconds": 0.274,
@@ -75579,34 +75659,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-22T17:44:10.188573+00:00",
+      "last_attempt": "2026-11-22T18:04:18.052481+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T17:44:15.573936+00:00",
+      "last_success": "2026-11-22T18:04:23.343104+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.386,
-      "latest_build": "b0f848113e0da1996c5e10453f8c32399f2521cd",
-      "builds_retained": 100,
-      "identifiers": 10856
+      "duration_seconds": 5.291,
+      "latest_build": "bc5e3390022942e87ae54954e66fe48bc9a5ddca",
+      "builds_retained": 101,
+      "identifiers": 10857
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-22T17:46:15.826720+00:00",
+      "last_attempt": "2026-11-22T18:04:23.460775+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2650,
-      "duration_seconds": 14.135
+      "consecutive_failures": 2659,
+      "duration_seconds": 14.057
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-22T17:42:23.954079+00:00",
+      "last_attempt": "2026-11-22T17:58:31.359155+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T17:42:24.065394+00:00",
+      "last_success": "2026-11-22T17:58:31.470650+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.111,
+      "duration_seconds": 0.112,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -75616,61 +75696,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T17:45:28.946520+00:00",
+      "last_attempt": "2026-11-22T18:03:29.015786+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T17:45:30.456897+00:00",
+      "last_success": "2026-11-22T18:03:30.929728+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.51
+      "duration_seconds": 1.914
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T17:45:30.456961+00:00",
+      "last_attempt": "2026-11-22T18:03:30.929818+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T17:45:30.533141+00:00",
+      "last_success": "2026-11-22T18:03:31.010178+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.076
+      "duration_seconds": 0.08
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T17:45:30.533184+00:00",
+      "last_attempt": "2026-11-22T18:03:31.010215+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T17:45:35.336291+00:00",
+      "last_success": "2026-11-22T18:03:36.387288+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.803
+      "duration_seconds": 5.377
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T17:45:35.336351+00:00",
+      "last_attempt": "2026-11-22T18:03:36.387341+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T17:46:15.522571+00:00",
+      "last_success": "2026-11-22T18:04:15.141450+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 40.186,
+      "duration_seconds": 38.754,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-22T17:45:35.492007+00:00",
+          "checked_at": "2026-11-22T18:03:36.530430+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-22T17:45:45.148306+00:00",
+          "checked_at": "2026-11-22T18:03:46.070002+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-22T17:45:45.295115+00:00",
+          "checked_at": "2026-11-22T18:03:46.214839+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-22T17:45:45.295133+00:00",
+          "checked_at": "2026-11-22T18:03:46.214853+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -75678,22 +75758,22 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T17:46:15.522635+00:00",
+      "last_attempt": "2026-11-22T18:04:15.141509+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T17:46:15.708170+00:00",
+      "last_success": "2026-11-22T18:04:17.539056+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.186,
-      "latest_build": "604aa619ba98c888afc86931314f4ec367dd74cbd507f9e2d46fab949c58881c",
-      "builds_retained": 93,
-      "identifiers": 9692
+      "duration_seconds": 2.398,
+      "latest_build": "833fd112b76dd6ae513eb12b39d5430422b7463a57af7ff504b475b95e762a60",
+      "builds_retained": 94,
+      "identifiers": 9693
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-22T17:44:09.790604+00:00",
+      "last_attempt": "2026-11-22T18:04:17.655835+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T17:44:10.064234+00:00",
+      "last_success": "2026-11-22T18:04:17.929649+00:00",
       "error_type": null,
       "consecutive_failures": 0,
       "duration_seconds": 0.274,
@@ -75704,34 +75784,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-22T17:44:10.188573+00:00",
+      "last_attempt": "2026-11-22T18:04:18.052481+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T17:44:15.573936+00:00",
+      "last_success": "2026-11-22T18:04:23.343104+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.386,
-      "latest_build": "b0f848113e0da1996c5e10453f8c32399f2521cd",
-      "builds_retained": 100,
-      "identifiers": 10856
+      "duration_seconds": 5.291,
+      "latest_build": "bc5e3390022942e87ae54954e66fe48bc9a5ddca",
+      "builds_retained": 101,
+      "identifiers": 10857
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-22T17:46:15.826720+00:00",
+      "last_attempt": "2026-11-22T18:04:23.460775+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2650,
-      "duration_seconds": 14.135
+      "consecutive_failures": 2659,
+      "duration_seconds": 14.057
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-22T17:42:23.954079+00:00",
+      "last_attempt": "2026-11-22T17:58:31.359155+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T17:42:24.065394+00:00",
+      "last_success": "2026-11-22T17:58:31.470650+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.111,
+      "duration_seconds": 0.112,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -75739,64 +75819,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T17:46:29.965473+00:00",
+      "last_attempt": "2026-11-22T18:04:37.522262+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T17:46:38.051898+00:00",
+      "last_success": "2026-11-22T18:04:45.580978+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.086
+      "duration_seconds": 8.059
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T17:46:38.051957+00:00",
+      "last_attempt": "2026-11-22T18:04:45.581037+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T17:46:39.349388+00:00",
+      "last_success": "2026-11-22T18:04:47.121275+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.297
+      "duration_seconds": 1.54
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-22T17:44:39.447446+00:00",
+      "last_attempt": "2026-11-22T18:04:47.121331+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T17:44:47.570817+00:00",
+      "last_success": "2026-11-22T18:04:55.702138+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.123
+      "duration_seconds": 8.581
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T17:46:39.349444+00:00",
+      "last_attempt": "2026-11-22T18:04:55.702188+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T17:46:39.672304+00:00",
+      "last_success": "2026-11-22T18:04:56.030889+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.323
+      "duration_seconds": 0.329
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T17:46:39.672351+00:00",
+      "last_attempt": "2026-11-22T18:04:56.030933+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T17:46:39.711207+00:00",
+      "last_success": "2026-11-22T18:04:56.048864+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.039
+      "duration_seconds": 0.018
     }
   },
   "identities": {
-    "identifiers": 30883,
-    "declared_aliases": 17930,
+    "identifiers": 30885,
+    "declared_aliases": 17932,
     "pending_candidates": 2
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 330,
-      "seconds_mean": 4009.0024271121215,
+      "samples": 331,
+      "seconds_mean": 3997.1122733927496,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -75810,8 +75890,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 419,
-      "events": 419,
+      "complete": 420,
+      "events": 420,
       "rate": 1.0
     },
     "source_health": {
