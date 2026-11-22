@@ -1,17 +1,70 @@
 {
-  "generated_at": "2026-11-22T20:36:33.263493+00:00",
-  "scan_completed_at": "2026-11-22T20:38:20.359102+00:00",
+  "generated_at": "2026-11-22T21:06:58.326165+00:00",
+  "scan_completed_at": "2026-11-22T21:09:07.335282+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 304,
-    "leaks": 39,
+    "stories": 305,
+    "leaks": 40,
     "releases": 81,
-    "stories_24h": 17,
+    "stories_24h": 18,
     "sources_ok": 14,
-    "total_cards": 689,
-    "new_in_this_scan": 0
+    "total_cards": 690,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-nemotron-4forconditionalgeneration",
+      "group": "nemotron-4forconditionalgeneration",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "Nemotron4ForConditionalGeneration",
+      "provider_slug": "nvidia",
+      "provider_name": "NVIDIA",
+      "accent_color": "#84cc16",
+      "detected_at": "2026-11-22T21:08:36.997153+00:00",
+      "updated_at": "2026-11-22T21:08:36.997153+00:00",
+      "first_source": "vLLM registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "nemotronshortcutmtpmodel"
+      ],
+      "models": [
+        {
+          "id": "NemotronShortcutMTPModel",
+          "name": "NemotronShortcutMTPModel"
+        },
+        {
+          "id": "Nemotron4ForConditionalGeneration",
+          "name": "Nemotron4ForConditionalGeneration"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM registry",
+          "scanner": "vllm-registry",
+          "detected_at": "2026-11-22T21:08:36.997153+00:00",
+          "title": "New Engine Architecture: Nemotron4ForConditionalGeneration (+1 more)",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · NVIDIA",
+      "card_ids": [
+        "vllm-arch-dfb17aa0c9"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: Nemotron4ForConditionalGeneration by NVIDIA\n\nFirst detected 22 Nov 21:08 UTC in vLLM registry\nCodename: nemotronshortcutmtpmodel\nIDs: NemotronShortcutMTPModel, Nemotron4ForConditionalGeneration\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-22T21:09:07.332677+00:00"
+    },
     {
       "id": "story-jev-1-14",
       "group": "jev-1-14",
@@ -24417,6 +24470,50 @@
     }
   ],
   "cards": [
+    {
+      "id": "vllm-arch-dfb17aa0c9",
+      "category": "open-source",
+      "scanner": "vllm-registry",
+      "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
+      "title": "New Engine Architecture: Nemotron4ForConditionalGeneration (+1 more)",
+      "subtitle": "New model_executor/models/registry.py architecture declarations",
+      "build_label": "Registry File",
+      "build_transition": "vllm/model_executor/models/registry.py",
+      "models": [
+        {
+          "id": "Nemotron4ForConditionalGeneration",
+          "name": "Nemotron4ForConditionalGeneration"
+        },
+        {
+          "id": "NemotronShortcutMTPModel",
+          "name": "NemotronShortcutMTPModel"
+        }
+      ],
+      "evidence": "vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+      "source_text": "official vLLM model architecture registry.",
+      "disclaimer_1": "Tracks only model architecture class registrations in registry.py.",
+      "disclaimer_2": "Open-source labs register their architecture classes here prior to weight drops.",
+      "provider_name": "VLLM REGISTRY",
+      "provider_slug": "opensource",
+      "accent_color": "#8b5cf6",
+      "links": [
+        {
+          "label": "vLLM registry.py",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py"
+        },
+        {
+          "label": "Supported Models Docs",
+          "url": "https://docs.vllm.ai/en/latest/models/supported_models.html"
+        }
+      ],
+      "detected_at": "2026-11-22T21:08:36.997153+00:00",
+      "tracker_observed_at": "2026-11-22T21:08:38.712122+00:00",
+      "codenames": [
+        "nemotronshortcutmtpmodel"
+      ],
+      "pricing": null,
+      "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: Nemotron4ForConditionalGeneration (+1 more) spotted in Registry File vllm/model_executor/models/registry.py!\n\n• Nemotron4ForConditionalGeneration (Nemotron4ForConditionalGeneration)\n• NemotronShortcutMTPModel (NemotronShortcutMTPModel)\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM model architecture registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "opencode-zen-diff-0700cbe5",
       "category": "cli-sdk-diff",
@@ -75542,12 +75639,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T20:37:41.669197+00:00",
+      "last_attempt": "2026-11-22T21:08:08.830231+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T20:37:41.952862+00:00",
+      "last_success": "2026-11-22T21:08:09.146125+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.284,
+      "duration_seconds": 0.316,
       "latest_build": "f9e933dbaa23e3ea5d07f9014a5f51a6e2fc3ccc62a9449f42f77b2f1ee474c5",
       "builds_retained": 95,
       "identifiers": 9693
@@ -75555,12 +75652,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-22T20:35:11.059183+00:00",
+      "last_attempt": "2026-11-22T21:05:37.216999+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T20:35:11.572604+00:00",
+      "last_success": "2026-11-22T21:05:37.737030+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.514,
+      "duration_seconds": 0.52,
       "latest_build": "18fe30f31d0b94683efa3b494e8da920f6b02f47",
       "builds_retained": 53,
       "identifiers": 7005
@@ -75568,12 +75665,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-22T20:37:42.114560+00:00",
+      "last_attempt": "2026-11-22T21:08:09.309685+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T20:37:42.678803+00:00",
+      "last_success": "2026-11-22T21:08:09.946640+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.565,
+      "duration_seconds": 0.637,
       "latest_build": "0c0b39cd554fd177b4dfe9c9c0fa6ef2d0f9d4c3",
       "builds_retained": 103,
       "identifiers": 10857
@@ -75581,21 +75678,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-22T20:37:42.843670+00:00",
+      "last_attempt": "2026-11-22T21:08:10.109868+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2726,
-      "duration_seconds": 18.668
+      "consecutive_failures": 2738,
+      "duration_seconds": 18.468
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-22T20:25:17.946673+00:00",
+      "last_attempt": "2026-11-22T20:55:51.775048+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T20:25:18.209614+00:00",
+      "last_success": "2026-11-22T20:55:52.042307+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.263,
+      "duration_seconds": 0.267,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -75605,61 +75702,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T20:36:33.263559+00:00",
+      "last_attempt": "2026-11-22T21:06:58.326232+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T20:36:35.190340+00:00",
+      "last_success": "2026-11-22T21:07:00.527033+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.927
+      "duration_seconds": 2.201
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T20:36:35.190410+00:00",
+      "last_attempt": "2026-11-22T21:07:00.527106+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T20:36:35.367413+00:00",
+      "last_success": "2026-11-22T21:07:00.697738+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.177
+      "duration_seconds": 0.171
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T20:36:35.367458+00:00",
+      "last_attempt": "2026-11-22T21:07:00.697825+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T20:36:43.520376+00:00",
+      "last_success": "2026-11-22T21:07:08.936919+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.153
+      "duration_seconds": 8.239
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T20:36:43.520446+00:00",
+      "last_attempt": "2026-11-22T21:07:08.936984+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T20:37:41.669125+00:00",
+      "last_success": "2026-11-22T21:08:08.830162+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 58.149,
+      "duration_seconds": 59.893,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-22T20:36:43.757208+00:00",
+          "checked_at": "2026-11-22T21:07:09.224050+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-22T20:37:00.393902+00:00",
+          "checked_at": "2026-11-22T21:07:24.404736+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-22T20:37:00.524595+00:00",
+          "checked_at": "2026-11-22T21:07:24.545427+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-22T20:37:00.524614+00:00",
+          "checked_at": "2026-11-22T21:07:24.545444+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -75667,12 +75764,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T20:37:41.669197+00:00",
+      "last_attempt": "2026-11-22T21:08:08.830231+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T20:37:41.952862+00:00",
+      "last_success": "2026-11-22T21:08:09.146125+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.284,
+      "duration_seconds": 0.316,
       "latest_build": "f9e933dbaa23e3ea5d07f9014a5f51a6e2fc3ccc62a9449f42f77b2f1ee474c5",
       "builds_retained": 95,
       "identifiers": 9693
@@ -75680,12 +75777,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-22T20:35:11.059183+00:00",
+      "last_attempt": "2026-11-22T21:05:37.216999+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T20:35:11.572604+00:00",
+      "last_success": "2026-11-22T21:05:37.737030+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.514,
+      "duration_seconds": 0.52,
       "latest_build": "18fe30f31d0b94683efa3b494e8da920f6b02f47",
       "builds_retained": 53,
       "identifiers": 7005
@@ -75693,12 +75790,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-22T20:37:42.114560+00:00",
+      "last_attempt": "2026-11-22T21:08:09.309685+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T20:37:42.678803+00:00",
+      "last_success": "2026-11-22T21:08:09.946640+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.565,
+      "duration_seconds": 0.637,
       "latest_build": "0c0b39cd554fd177b4dfe9c9c0fa6ef2d0f9d4c3",
       "builds_retained": 103,
       "identifiers": 10857
@@ -75706,21 +75803,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-22T20:37:42.843670+00:00",
+      "last_attempt": "2026-11-22T21:08:10.109868+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2726,
-      "duration_seconds": 18.668
+      "consecutive_failures": 2738,
+      "duration_seconds": 18.468
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-22T20:25:17.946673+00:00",
+      "last_attempt": "2026-11-22T20:55:51.775048+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T20:25:18.209614+00:00",
+      "last_success": "2026-11-22T20:55:52.042307+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.263,
+      "duration_seconds": 0.267,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -75728,52 +75825,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T20:38:01.516326+00:00",
+      "last_attempt": "2026-11-22T21:08:28.582783+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T20:38:10.085502+00:00",
+      "last_success": "2026-11-22T21:08:36.992959+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.569
+      "duration_seconds": 8.41
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T20:38:10.085564+00:00",
+      "last_attempt": "2026-11-22T21:08:36.993025+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T20:38:12.001801+00:00",
+      "last_success": "2026-11-22T21:08:38.712122+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.916
+      "duration_seconds": 1.719
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-22T20:38:12.001861+00:00",
+      "last_attempt": "2026-11-22T21:08:38.712179+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T20:38:18.665830+00:00",
+      "last_success": "2026-11-22T21:09:03.754980+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.664
+      "duration_seconds": 25.043
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T20:38:18.665893+00:00",
+      "last_attempt": "2026-11-22T21:09:03.755040+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T20:38:19.828471+00:00",
+      "last_success": "2026-11-22T21:09:04.908528+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.163
+      "duration_seconds": 1.154
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T20:38:19.828526+00:00",
+      "last_attempt": "2026-11-22T21:09:04.908590+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T20:38:19.945801+00:00",
+      "last_success": "2026-11-22T21:09:05.927600+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.117
+      "duration_seconds": 1.019
     }
   },
   "identities": {
