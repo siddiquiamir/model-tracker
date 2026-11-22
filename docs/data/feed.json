@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-22T00:56:51.038488+00:00",
-  "scan_completed_at": "2026-11-22T00:58:30.701296+00:00",
+  "generated_at": "2026-11-22T00:59:24.299303+00:00",
+  "scan_completed_at": "2026-11-22T01:01:22.122582+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 303,
     "leaks": 40,
     "releases": 78,
     "stories_24h": 22,
-    "sources_ok": 13,
-    "total_cards": 682,
+    "sources_ok": 15,
+    "total_cards": 683,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -6765,7 +6765,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-19T19:56:03.164169+00:00",
-      "updated_at": "2026-11-22T00:57:28.910692+00:00",
+      "updated_at": "2026-11-22T01:00:36.061065+00:00",
       "first_source": "OpenAI Docs Route",
       "lead": "16 min before it went live on Vercel AI Gateway Catalog",
       "released_on": "",
@@ -6774,7 +6774,7 @@
       "models": [
         {
           "id": "gpt-live-1.1",
-          "name": "GPT Live 1.1"
+          "name": "opencode/gpt-live-1.1"
         }
       ],
       "sources": [
@@ -6870,7 +6870,8 @@
         "intel-02c33eb274f333285cd8",
         "npm-openai-7.60.0-7.61.0",
         "intel-9e5aed315702ddb51a5c",
-        "opencode-zen-diff-6e623441"
+        "opencode-zen-diff-6e623441",
+        "intel-e5cf66acf47dc2be40dc"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -6918,6 +6919,21 @@
           "build": "31b419f899b9d46afc2e2e7cabcfdcc8aed83c0e",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/31b419f899b9d46afc2e2e7cabcfdcc8aed83c0e",
           "first_seen": "2026-11-19T21:10:32+00:00"
+        },
+        {
+          "id": "opencode/gpt-live-1.1",
+          "family": "gpt-live-1.1",
+          "file_path": "providers/opencode/models/gpt-live-1.1.toml",
+          "file_sha256": "345d5d12ea8b44099c357ebca8a1cc89390292979dc9adc7c4f682b05f3b3154",
+          "excerpt": "{\"opencode/gpt-live-1.1\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"openai/gpt-live-1.1\", \"api\": {\"live\": {\"base_url\": \"https://opencode.ai/inference/openai/v1\", \"sdk\": {\"aisdk\": \"none\", \"opencodeai\": \"none\"}}}, \"cost\": {\"audio\": {\"input\": {\"unit\": \"minute\", \"price\": 0.05}}}}}",
+          "canonical_id": "openai/gpt-live-1.1",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/19c36b920ebce836bf23a5f28013506d25506ccf/providers/opencode/models/gpt-live-1.1.toml",
+          "build": "19c36b920ebce836bf23a5f28013506d25506ccf",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/19c36b920ebce836bf23a5f28013506d25506ccf",
+          "first_seen": "2026-11-22T00:52:47+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-22T00:58:30.698691+00:00",
@@ -24313,6 +24329,99 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-e5cf66acf47dc2be40dc",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-live-1.1",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-live-1.1",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "opencode/gpt-live-1.1",
+          "name": "opencode/gpt-live-1.1",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-22T01:00:36.061065+00:00",
+      "first_seen": "2026-11-22T00:52:47+00:00",
+      "observed_at": "2026-11-22T01:00:36.061065+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "cec96bab5b8cdea8a9f3e29d999cc9e1160308d3 -> 19c36b920ebce836bf23a5f28013506d25506ccf",
+      "build": "19c36b920ebce836bf23a5f28013506d25506ccf",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/19c36b920ebce836bf23a5f28013506d25506ccf",
+      "artifact_sha256": "f18f82e5adfd4346813f633402305ac5716024db02c9cb04f2b264380dd6681e",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/f18f82e5adfd4346813f633402305ac5716024db02c9cb04f2b264380dd6681e.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/f18f82e5adfd4346813f633402305ac5716024db02c9cb04f2b264380dd6681e.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "opencode/gpt-live-1.1",
+          "family": "gpt-live-1.1",
+          "file_path": "providers/opencode/models/gpt-live-1.1.toml",
+          "file_sha256": "345d5d12ea8b44099c357ebca8a1cc89390292979dc9adc7c4f682b05f3b3154",
+          "excerpt": "{\"opencode/gpt-live-1.1\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"openai/gpt-live-1.1\", \"api\": {\"live\": {\"base_url\": \"https://opencode.ai/inference/openai/v1\", \"sdk\": {\"aisdk\": \"none\", \"opencodeai\": \"none\"}}}, \"cost\": {\"audio\": {\"input\": {\"unit\": \"minute\", \"price\": 0.05}}}}}",
+          "canonical_id": "openai/gpt-live-1.1",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/19c36b920ebce836bf23a5f28013506d25506ccf/providers/opencode/models/gpt-live-1.1.toml",
+          "build": "19c36b920ebce836bf23a5f28013506d25506ccf",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/19c36b920ebce836bf23a5f28013506d25506ccf",
+          "first_seen": "2026-11-22T00:52:47+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-live-1.1",
+          "first_seen": "2026-11-19T20:18:05+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/8335a7bdfaeece5e4347caa54e9ccd64ff9a4544bbdb6d4c41369b7d51c421e0.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/19c36b920ebce836bf23a5f28013506d25506ccf"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/19c36b920ebce836bf23a5f28013506d25506ccf"
+        }
+      ],
+      "tracker_observed_at": "2026-11-22T01:00:39.177401+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 19c36b920ebc: opencode/gpt-live-1.1\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/19c36b920ebce836bf23a5f28013506d25506ccf"
+    },
     {
       "id": "opencode-zen-diff-6e623441",
       "category": "cli-sdk-diff",
@@ -74771,12 +74880,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:57:54.784977+00:00",
+      "last_attempt": "2026-11-22T01:00:22.353470+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:57:55.119186+00:00",
+      "last_success": "2026-11-22T01:00:22.622120+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.334,
+      "duration_seconds": 0.269,
       "latest_build": "5e476733fd9a0db3660d86362c62baaaad33f03ef11ee72eb79fddda0c0f1a09",
       "builds_retained": 80,
       "identifiers": 9687
@@ -74784,12 +74893,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-22T00:55:23.469621+00:00",
+      "last_attempt": "2026-11-22T01:00:22.814471+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:55:23.796232+00:00",
+      "last_success": "2026-11-22T01:00:23.138231+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.327,
+      "duration_seconds": 0.324,
       "latest_build": "0946b7416c5bb13f04f692bc3604b91b897d5e43",
       "builds_retained": 52,
       "identifiers": 7005
@@ -74797,24 +74906,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-22T00:47:57.494403+00:00",
+      "last_attempt": "2026-11-22T01:00:23.338591+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:47:57.900992+00:00",
+      "last_success": "2026-11-22T01:00:39.177401+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.407,
-      "latest_build": "bf4cb1bc09891103fcbff7a28369349ff946b4d5",
-      "builds_retained": 83,
-      "identifiers": 10829
+      "duration_seconds": 15.839,
+      "latest_build": "19c36b920ebce836bf23a5f28013506d25506ccf",
+      "builds_retained": 85,
+      "identifiers": 10831
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-22T00:57:55.311595+00:00",
+      "last_attempt": "2026-11-22T01:00:39.375499+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2191,
-      "duration_seconds": 21.021
+      "consecutive_failures": 2192,
+      "duration_seconds": 21.231
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -74834,61 +74943,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:56:51.038557+00:00",
+      "last_attempt": "2026-11-22T00:59:24.299373+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:56:52.700423+00:00",
+      "last_success": "2026-11-22T00:59:25.940644+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.662
+      "duration_seconds": 1.641
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:56:52.700476+00:00",
+      "last_attempt": "2026-11-22T00:59:25.940700+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:56:52.827362+00:00",
+      "last_success": "2026-11-22T00:59:26.070324+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.127
+      "duration_seconds": 0.13
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:56:52.827401+00:00",
+      "last_attempt": "2026-11-22T00:59:26.070362+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:57:02.054740+00:00",
+      "last_success": "2026-11-22T00:59:32.592980+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.227
+      "duration_seconds": 6.523
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:57:02.054823+00:00",
+      "last_attempt": "2026-11-22T00:59:32.593060+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:57:54.784913+00:00",
+      "last_success": "2026-11-22T01:00:22.353419+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 52.73,
+      "duration_seconds": 49.76,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-22T00:57:02.518086+00:00",
+          "checked_at": "2026-11-22T00:59:32.889955+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-22T00:57:11.362962+00:00",
+          "checked_at": "2026-11-22T00:59:41.846843+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-22T00:57:11.454941+00:00",
+          "checked_at": "2026-11-22T00:59:41.949240+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-22T00:57:11.454958+00:00",
+          "checked_at": "2026-11-22T00:59:41.949258+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -74896,12 +75005,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:57:54.784977+00:00",
+      "last_attempt": "2026-11-22T01:00:22.353470+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:57:55.119186+00:00",
+      "last_success": "2026-11-22T01:00:22.622120+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.334,
+      "duration_seconds": 0.269,
       "latest_build": "5e476733fd9a0db3660d86362c62baaaad33f03ef11ee72eb79fddda0c0f1a09",
       "builds_retained": 80,
       "identifiers": 9687
@@ -74909,12 +75018,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-22T00:55:23.469621+00:00",
+      "last_attempt": "2026-11-22T01:00:22.814471+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:55:23.796232+00:00",
+      "last_success": "2026-11-22T01:00:23.138231+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.327,
+      "duration_seconds": 0.324,
       "latest_build": "0946b7416c5bb13f04f692bc3604b91b897d5e43",
       "builds_retained": 52,
       "identifiers": 7005
@@ -74922,24 +75031,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-22T00:47:57.494403+00:00",
+      "last_attempt": "2026-11-22T01:00:23.338591+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:47:57.900992+00:00",
+      "last_success": "2026-11-22T01:00:39.177401+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.407,
-      "latest_build": "bf4cb1bc09891103fcbff7a28369349ff946b4d5",
-      "builds_retained": 83,
-      "identifiers": 10829
+      "duration_seconds": 15.839,
+      "latest_build": "19c36b920ebce836bf23a5f28013506d25506ccf",
+      "builds_retained": 85,
+      "identifiers": 10831
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-22T00:57:55.311595+00:00",
+      "last_attempt": "2026-11-22T01:00:39.375499+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2191,
-      "duration_seconds": 21.021
+      "consecutive_failures": 2192,
+      "duration_seconds": 21.231
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -74957,64 +75066,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:58:16.977211+00:00",
+      "last_attempt": "2026-11-22T01:01:00.613538+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:58:25.791009+00:00",
+      "last_success": "2026-11-22T01:01:09.430898+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.814
+      "duration_seconds": 8.817
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:58:25.791062+00:00",
+      "last_attempt": "2026-11-22T01:01:09.430953+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:58:27.646192+00:00",
+      "last_success": "2026-11-22T01:01:11.395944+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.855
+      "duration_seconds": 1.965
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-22T00:48:29.960450+00:00",
+      "last_attempt": "2026-11-22T01:01:11.395991+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:48:38.266692+00:00",
+      "last_success": "2026-11-22T01:01:19.838777+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.306
+      "duration_seconds": 8.443
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:58:27.646243+00:00",
+      "last_attempt": "2026-11-22T01:01:19.838843+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:58:29.274161+00:00",
+      "last_success": "2026-11-22T01:01:21.505187+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.628
+      "duration_seconds": 1.666
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-22T00:58:29.274200+00:00",
+      "last_attempt": "2026-11-22T01:01:21.505226+00:00",
       "status": "ok",
-      "last_success": "2026-11-22T00:58:29.371990+00:00",
+      "last_success": "2026-11-22T01:01:21.543980+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.098
+      "duration_seconds": 0.039
     }
   },
   "identities": {
-    "identifiers": 30851,
-    "declared_aliases": 17896,
+    "identifiers": 30853,
+    "declared_aliases": 17898,
     "pending_candidates": 2
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 325,
-      "seconds_mean": 4066.9009911384614,
+      "samples": 326,
+      "seconds_mean": 4055.8646723466254,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -75028,8 +75137,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 413,
-      "events": 413,
+      "complete": 414,
+      "events": 414,
       "rate": 1.0
     },
     "source_health": {
