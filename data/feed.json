@@ -1,17 +1,79 @@
 {
-  "generated_at": "2026-11-23T16:14:00.123582+00:00",
-  "scan_completed_at": "2026-11-23T16:15:28.162121+00:00",
+  "generated_at": "2026-11-23T16:16:31.109066+00:00",
+  "scan_completed_at": "2026-11-23T16:18:03.452254+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 314,
+    "stories": 315,
     "leaks": 39,
     "releases": 87,
-    "stories_24h": 30,
-    "sources_ok": 13,
-    "total_cards": 753,
+    "stories_24h": 31,
+    "sources_ok": 12,
+    "total_cards": 754,
     "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-hungerg",
+      "group": "hungerg",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Hungerg",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-23T16:17:27.342761+00:00",
+      "updated_at": "2026-11-23T16:17:27.342761+00:00",
+      "first_source": "Registry Update",
+      "lead": "",
+      "released_on": "2026-11-23",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "hungerg-free",
+          "name": "opencode-go/hungerg-free",
+          "released_on": "2026-11-23"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-api",
+          "detected_at": "2026-11-23T16:17:27.342761+00:00",
+          "title": "hungerg-free",
+          "url": "https://models.dev/api.json?type=all",
+          "backfill": false,
+          "build": "880445027b5d0e530a7fd4573078fcbcb424170929e5abb36306c3ac8e52fe0d",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/880445027b5d0e530a7fd4573078fcbcb424170929e5abb36306c3ac8e52fe0d.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-3879f30e65f3071d56b8"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "opencode-go/hungerg-free",
+          "family": "hungerg-free",
+          "file_path": "api.json?type=all",
+          "file_sha256": "880445027b5d0e530a7fd4573078fcbcb424170929e5abb36306c3ac8e52fe0d",
+          "excerpt": "{\"opencode-go/hungerg-free\": {\"id\": \"hungerg-free\", \"name\": \"HungerG Free\", \"description\": \"Stealth reasoning model, free for a limited time\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [], \"tool_call\": true, \"release_date\": \"2026-11-23\", \"last_updated\": \"2026-11-23\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1000000, \"input\": 1000000, \"output\": 65536}, \"provider\": {\"api\": \"https://opencode.ai/inference/go/openai/v1\"}, \"cost\": {\"input\": 0, \"output\": 0, \"cache_read\": 0}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "880445027b5d0e530a7fd4573078fcbcb424170929e5abb36306c3ac8e52fe0d",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-23T16:17:26.957361+00:00"
+        }
+      ],
+      "x_post_text": "Registry Update 880445027b5d: hungerg-free\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "story-robotracker-warp",
       "group": "robotracker-warp",
@@ -56,8 +118,8 @@
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: RoboTracker Warp by Olmo / Molmo\n\nFirst detected 23 Nov 16:15 UTC in Hugging Face\n\nvia @StatsWire",
-      "discord_alerted_at": "2026-11-23T16:15:28.159384+00:00"
+      "discord_alerted_at": "2026-11-23T16:15:28.159384+00:00",
+      "x_post_text": "🟢 NEW MODEL: RoboTracker Warp by Olmo / Molmo\n\nFirst detected 23 Nov 16:15 UTC in Hugging Face\n\nvia @StatsWire"
     },
     {
       "id": "story-ling-3-2-air",
@@ -25282,6 +25344,92 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-3879f30e65f3071d56b8",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "hungerg-free",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "hungerg-free",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "opencode-go/hungerg-free",
+          "name": "opencode-go/hungerg-free",
+          "registry_update": true,
+          "released_on": "2026-11-23"
+        }
+      ],
+      "detected_at": "2026-11-23T16:17:27.342761+00:00",
+      "first_seen": "2026-11-23T16:17:26.957361+00:00",
+      "observed_at": "2026-11-23T16:17:27.342761+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "a2bc2e63963484ef0543b0a0e4aba6c849504be93674cb47a64e9ebbc6cc5e1f -> 880445027b5d0e530a7fd4573078fcbcb424170929e5abb36306c3ac8e52fe0d",
+      "build": "880445027b5d0e530a7fd4573078fcbcb424170929e5abb36306c3ac8e52fe0d",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "880445027b5d0e530a7fd4573078fcbcb424170929e5abb36306c3ac8e52fe0d",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/880445027b5d0e530a7fd4573078fcbcb424170929e5abb36306c3ac8e52fe0d.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/880445027b5d0e530a7fd4573078fcbcb424170929e5abb36306c3ac8e52fe0d.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "opencode-go/hungerg-free",
+          "family": "hungerg-free",
+          "file_path": "api.json?type=all",
+          "file_sha256": "880445027b5d0e530a7fd4573078fcbcb424170929e5abb36306c3ac8e52fe0d",
+          "excerpt": "{\"opencode-go/hungerg-free\": {\"id\": \"hungerg-free\", \"name\": \"HungerG Free\", \"description\": \"Stealth reasoning model, free for a limited time\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [], \"tool_call\": true, \"release_date\": \"2026-11-23\", \"last_updated\": \"2026-11-23\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1000000, \"input\": 1000000, \"output\": 65536}, \"provider\": {\"api\": \"https://opencode.ai/inference/go/openai/v1\"}, \"cost\": {\"input\": 0, \"output\": 0, \"cache_read\": 0}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "880445027b5d0e530a7fd4573078fcbcb424170929e5abb36306c3ac8e52fe0d",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-23T16:17:26.957361+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-23T16:17:30.005233+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 880445027b5d: opencode-go/hungerg-free\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "hf-allenai_RoboTracker-Warp",
       "category": "open-source",
@@ -80529,15 +80677,15 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:14:54.225796+00:00",
+      "last_attempt": "2026-11-23T16:17:26.356292+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:14:54.628033+00:00",
+      "last_success": "2026-11-23T16:17:30.005233+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.402,
-      "latest_build": "a2bc2e63963484ef0543b0a0e4aba6c849504be93674cb47a64e9ebbc6cc5e1f",
-      "builds_retained": 108,
-      "identifiers": 9893
+      "duration_seconds": 3.649,
+      "latest_build": "880445027b5d0e530a7fd4573078fcbcb424170929e5abb36306c3ac8e52fe0d",
+      "builds_retained": 109,
+      "identifiers": 9894
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
@@ -80568,11 +80716,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-23T16:14:55.383845+00:00",
+      "last_attempt": "2026-11-23T16:17:30.196041+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3112,
-      "duration_seconds": 21.168
+      "consecutive_failures": 3113,
+      "duration_seconds": 21.037
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -80592,61 +80740,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:14:00.123651+00:00",
+      "last_attempt": "2026-11-23T16:16:31.109140+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:14:02.741139+00:00",
+      "last_success": "2026-11-23T16:16:33.141866+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.618
+      "duration_seconds": 2.033
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:14:02.741203+00:00",
+      "last_attempt": "2026-11-23T16:16:33.141938+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:14:02.845280+00:00",
+      "last_success": "2026-11-23T16:16:33.244246+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.104
+      "duration_seconds": 0.102
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:14:02.845321+00:00",
+      "last_attempt": "2026-11-23T16:16:33.244287+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:14:09.403099+00:00",
+      "last_success": "2026-11-23T16:16:38.605392+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.558
+      "duration_seconds": 5.361
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:14:09.403173+00:00",
+      "last_attempt": "2026-11-23T16:16:38.605442+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:14:54.225724+00:00",
+      "last_success": "2026-11-23T16:17:26.356237+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 44.823,
+      "duration_seconds": 47.751,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-23T16:14:09.601291+00:00",
+          "checked_at": "2026-11-23T16:16:38.821306+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-23T16:14:19.032640+00:00",
+          "checked_at": "2026-11-23T16:16:48.082284+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-23T16:14:19.283644+00:00",
+          "checked_at": "2026-11-23T16:16:48.217344+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-23T16:14:19.283661+00:00",
+          "checked_at": "2026-11-23T16:16:48.217362+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -80654,15 +80802,15 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:14:54.225796+00:00",
+      "last_attempt": "2026-11-23T16:17:26.356292+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:14:54.628033+00:00",
+      "last_success": "2026-11-23T16:17:30.005233+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.402,
-      "latest_build": "a2bc2e63963484ef0543b0a0e4aba6c849504be93674cb47a64e9ebbc6cc5e1f",
-      "builds_retained": 108,
-      "identifiers": 9893
+      "duration_seconds": 3.649,
+      "latest_build": "880445027b5d0e530a7fd4573078fcbcb424170929e5abb36306c3ac8e52fe0d",
+      "builds_retained": 109,
+      "identifiers": 9894
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
@@ -80693,11 +80841,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-23T16:14:55.383845+00:00",
+      "last_attempt": "2026-11-23T16:17:30.196041+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3112,
-      "duration_seconds": 21.168
+      "consecutive_failures": 3113,
+      "duration_seconds": 21.037
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -80715,22 +80863,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:15:16.558557+00:00",
+      "last_attempt": "2026-11-23T16:17:51.240108+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:15:25.285437+00:00",
+      "last_success": "2026-11-23T16:17:59.962099+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.727
+      "duration_seconds": 8.722
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:15:25.285504+00:00",
+      "last_attempt": "2026-11-23T16:17:59.962156+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:15:26.548406+00:00",
+      "last_success": "2026-11-23T16:18:02.390083+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.263
+      "duration_seconds": 2.428
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -80745,26 +80893,26 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:15:26.548468+00:00",
+      "last_attempt": "2026-11-23T16:18:02.390136+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:15:26.962116+00:00",
+      "last_success": "2026-11-23T16:18:02.891613+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.414
+      "duration_seconds": 0.501
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:15:26.962155+00:00",
+      "last_attempt": "2026-11-23T16:18:02.891664+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:15:26.975050+00:00",
+      "last_success": "2026-11-23T16:18:02.969117+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.013
+      "duration_seconds": 0.077
     }
   },
   "identities": {
-    "identifiers": 31343,
+    "identifiers": 31344,
     "declared_aliases": 18346,
     "pending_candidates": 2
   },
@@ -80786,8 +80934,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 455,
-      "events": 455,
+      "complete": 456,
+      "events": 456,
       "rate": 1.0
     },
     "source_health": {
