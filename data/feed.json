@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-23T16:16:31.109066+00:00",
-  "scan_completed_at": "2026-11-23T16:18:03.452254+00:00",
+  "generated_at": "2026-11-23T16:21:36.003504+00:00",
+  "scan_completed_at": "2026-11-23T16:23:48.486680+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 315,
     "leaks": 39,
     "releases": 87,
     "stories_24h": 31,
-    "sources_ok": 12,
-    "total_cards": 754,
-    "new_in_this_scan": 1
+    "sources_ok": 15,
+    "total_cards": 757,
+    "new_in_this_scan": 3
   },
   "stories": [
     {
@@ -22,7 +22,7 @@
       "provider_name": "Unattributed",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-23T16:17:27.342761+00:00",
-      "updated_at": "2026-11-23T16:17:27.342761+00:00",
+      "updated_at": "2026-11-23T16:22:39.566030+00:00",
       "first_source": "Registry Update",
       "lead": "",
       "released_on": "2026-11-23",
@@ -51,7 +51,8 @@
       "backfill": false,
       "header": "REGISTRY UPDATE · UNATTRIBUTED",
       "card_ids": [
-        "intel-3879f30e65f3071d56b8"
+        "intel-3879f30e65f3071d56b8",
+        "intel-faa1171e5be6da9b3937"
       ],
       "event_label": "Registry update",
       "intelligence_only": true,
@@ -70,6 +71,21 @@
           "build": "880445027b5d0e530a7fd4573078fcbcb424170929e5abb36306c3ac8e52fe0d",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-23T16:17:26.957361+00:00"
+        },
+        {
+          "id": "opencode-go/hungerg-free",
+          "family": "hungerg-free",
+          "file_path": "providers/opencode-go/models/hungerg-free.toml",
+          "file_sha256": "b186131dab5fb74fa7354909bea7ebb750e891e3c67463513c66823fd942d1f8",
+          "excerpt": "{\"opencode-go/hungerg-free\": {\"schema\": 2, \"name\": \"HungerG Free\", \"description\": \"Stealth reasoning model, free for a limited time\", \"open_weights\": false, \"release_date\": \"2026-11-23\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\", \"image/gif\", \"image/webp\", \"video/mp4\", \"video/quicktime\", \"video/x-matroska\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true}}, \"limit\": {\"context\": 1000000, \"input\": 1000000, \"output\": 65536}, \"api\": {\"chat-completions\": {\"base_url\": \"https://opencode.ai/inference/go/openai/v1\"}}, \"cost\": {\"text\": {\"input\": {\"price\": 0, \"cache\": {\"read\": 0}}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/0f7007f85fd96ab6c9c5f871853ab38cf3bee968/providers/opencode-go/models/hungerg-free.toml",
+          "build": "0f7007f85fd96ab6c9c5f871853ab38cf3bee968",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/0f7007f85fd96ab6c9c5f871853ab38cf3bee968",
+          "first_seen": "2026-11-23T16:15:11+00:00"
         }
       ],
       "x_post_text": "Registry Update 880445027b5d: hungerg-free\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
@@ -19594,7 +19610,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-16T20:15:16.430197+00:00",
-      "updated_at": "2026-11-23T07:31:06.210684+00:00",
+      "updated_at": "2026-11-23T16:22:47.001547+00:00",
       "first_source": "Gemini Web App Config",
       "lead": "2 days before it went live on OpenRouter",
       "released_on": "2026-11-18",
@@ -19605,7 +19621,7 @@
       "models": [
         {
           "id": "gemini-4-neon",
-          "name": "gemini/gemini-4-neon",
+          "name": "llmgateway/gemini-4-neon",
           "released_on": "2026-11-18"
         },
         {
@@ -19819,7 +19835,9 @@
         "intel-3abc13dce22b263e5ec9",
         "intel-41f3bb707c10671cb0c8",
         "intel-3b872cbef76dab7c047c",
-        "intel-8347a0c6c3e3fa501a1f"
+        "intel-8347a0c6c3e3fa501a1f",
+        "intel-0ca070054066c9ee206a",
+        "intel-3f95ebbc7d0983651c28"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -25344,6 +25362,321 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-3f95ebbc7d0983651c28",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gemini-4-neon",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gemini-4-neon",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "llmgateway/gemini-4-neon",
+          "name": "llmgateway/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        },
+        {
+          "id": "vercel/google/gemini-4-neon",
+          "name": "vercel/google/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        }
+      ],
+      "detected_at": "2026-11-23T16:22:47.001547+00:00",
+      "first_seen": "2026-11-23T16:19:20+00:00",
+      "observed_at": "2026-11-23T16:22:47.001547+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "0f7007f85fd96ab6c9c5f871853ab38cf3bee968 -> be3583f47a6ecce38cf31be298f61b4b9f020856",
+      "build": "be3583f47a6ecce38cf31be298f61b4b9f020856",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/be3583f47a6ecce38cf31be298f61b4b9f020856",
+      "artifact_sha256": "5eeb7882bc0289be21be005691058ddf1afde620cee934f1ba25fd46689a25f6",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/5eeb7882bc0289be21be005691058ddf1afde620cee934f1ba25fd46689a25f6.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/5eeb7882bc0289be21be005691058ddf1afde620cee934f1ba25fd46689a25f6.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "llmgateway/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/llmgateway/models/gemini-4-neon.toml",
+          "file_sha256": "9ac7081a07221dd836b188017336e19792ed04806eb8545bc5c7bf6780fe6bbd",
+          "excerpt": "{\"llmgateway/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"capabilities\": {\"system_updates\": true, \"structured_output\": true, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.15}}, \"output\": {\"price\": 15}}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/be3583f47a6ecce38cf31be298f61b4b9f020856/providers/llmgateway/models/gemini-4-neon.toml",
+          "build": "be3583f47a6ecce38cf31be298f61b4b9f020856",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/be3583f47a6ecce38cf31be298f61b4b9f020856",
+          "first_seen": "2026-11-23T16:19:20+00:00"
+        },
+        {
+          "id": "vercel/google/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/vercel/models/google/gemini-4-neon.toml",
+          "file_sha256": "effc519e72893f0ea10eefaa84970a4a4dbff567174def4f2b9afea35668bda9",
+          "excerpt": "{\"vercel/google/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"modalities\": {\"input\": [\"text\", \"image\", \"application/pdf\"], \"output\": [\"text\"]}, \"capabilities\": {\"structured_output\": true, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}, \"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"cache\": {\"implicit\": true}}, \"limit\": {\"context\": 1000000, \"output\": 1000000}, \"api\": {\"chat-completions\": {}, \"responses\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/open-responses\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/responses\"}}, \"messages\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/messages\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.15}}, \"output\": {\"price\": 15}}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/be3583f47a6ecce38cf31be298f61b4b9f020856/providers/vercel/models/google/gemini-4-neon.toml",
+          "build": "be3583f47a6ecce38cf31be298f61b4b9f020856",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/be3583f47a6ecce38cf31be298f61b4b9f020856",
+          "first_seen": "2026-11-23T16:19:20+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gemini/gemini-4-neon",
+          "first_seen": "2026-11-18T20:53:00+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/6cfdb6a682b13c1d64b7163829160370a74de10536b22378a644c93d599bc0a6.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/be3583f47a6ecce38cf31be298f61b4b9f020856"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/be3583f47a6ecce38cf31be298f61b4b9f020856"
+        }
+      ],
+      "tracker_observed_at": "2026-11-23T16:22:49.979177+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions be3583f47a6e: llmgateway/gemini-4-neon\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/be3583f47a6ecce38cf31be298f61b4b9f020856"
+    },
+    {
+      "id": "intel-faa1171e5be6da9b3937",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "hungerg-free",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "hungerg-free",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "opencode-go/hungerg-free",
+          "name": "opencode-go/hungerg-free",
+          "registry_update": true,
+          "released_on": "2026-11-23"
+        }
+      ],
+      "detected_at": "2026-11-23T16:22:39.566030+00:00",
+      "first_seen": "2026-11-23T16:15:11+00:00",
+      "observed_at": "2026-11-23T16:22:39.566030+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "6af966bb7aee0bf97a59bac9b422cc05b7c9ffe4 -> 0f7007f85fd96ab6c9c5f871853ab38cf3bee968",
+      "build": "0f7007f85fd96ab6c9c5f871853ab38cf3bee968",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/0f7007f85fd96ab6c9c5f871853ab38cf3bee968",
+      "artifact_sha256": "94c513ce133e09072b579a7f0216016fe2f87ca8d83638367a2f858540ceb1af",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/94c513ce133e09072b579a7f0216016fe2f87ca8d83638367a2f858540ceb1af.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/94c513ce133e09072b579a7f0216016fe2f87ca8d83638367a2f858540ceb1af.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "opencode-go/hungerg-free",
+          "family": "hungerg-free",
+          "file_path": "providers/opencode-go/models/hungerg-free.toml",
+          "file_sha256": "b186131dab5fb74fa7354909bea7ebb750e891e3c67463513c66823fd942d1f8",
+          "excerpt": "{\"opencode-go/hungerg-free\": {\"schema\": 2, \"name\": \"HungerG Free\", \"description\": \"Stealth reasoning model, free for a limited time\", \"open_weights\": false, \"release_date\": \"2026-11-23\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\", \"image/gif\", \"image/webp\", \"video/mp4\", \"video/quicktime\", \"video/x-matroska\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true}}, \"limit\": {\"context\": 1000000, \"input\": 1000000, \"output\": 65536}, \"api\": {\"chat-completions\": {\"base_url\": \"https://opencode.ai/inference/go/openai/v1\"}}, \"cost\": {\"text\": {\"input\": {\"price\": 0, \"cache\": {\"read\": 0}}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/0f7007f85fd96ab6c9c5f871853ab38cf3bee968/providers/opencode-go/models/hungerg-free.toml",
+          "build": "0f7007f85fd96ab6c9c5f871853ab38cf3bee968",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/0f7007f85fd96ab6c9c5f871853ab38cf3bee968",
+          "first_seen": "2026-11-23T16:15:11+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/0f7007f85fd96ab6c9c5f871853ab38cf3bee968"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/0f7007f85fd96ab6c9c5f871853ab38cf3bee968"
+        }
+      ],
+      "tracker_observed_at": "2026-11-23T16:22:49.979177+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 0f7007f85fd9: opencode-go/hungerg-free\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/0f7007f85fd96ab6c9c5f871853ab38cf3bee968"
+    },
+    {
+      "id": "intel-0ca070054066c9ee206a",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gemini-4-neon",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "gemini-4-neon",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "llmgateway/gemini-4-neon",
+          "name": "llmgateway/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        },
+        {
+          "id": "vercel/google/gemini-4-neon",
+          "name": "vercel/google/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        }
+      ],
+      "detected_at": "2026-11-23T16:22:31.646518+00:00",
+      "first_seen": "2026-11-23T16:22:31.258939+00:00",
+      "observed_at": "2026-11-23T16:22:31.646518+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "880445027b5d0e530a7fd4573078fcbcb424170929e5abb36306c3ac8e52fe0d -> 4d91b4081da067eef0efa94386950cd8ecb1b081379be8cab886cea03e117b2a",
+      "build": "4d91b4081da067eef0efa94386950cd8ecb1b081379be8cab886cea03e117b2a",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "4d91b4081da067eef0efa94386950cd8ecb1b081379be8cab886cea03e117b2a",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/4d91b4081da067eef0efa94386950cd8ecb1b081379be8cab886cea03e117b2a.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/4d91b4081da067eef0efa94386950cd8ecb1b081379be8cab886cea03e117b2a.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "llmgateway/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "api.json?type=all",
+          "file_sha256": "4d91b4081da067eef0efa94386950cd8ecb1b081379be8cab886cea03e117b2a",
+          "excerpt": "{\"llmgateway/gemini-4-neon\": {\"id\": \"gemini-4-neon\", \"name\": \"Gemini 4 Neon\", \"description\": \"Google's Gemini 4 model for fast, frontier-level coding, knowledge work and science workflows, with four thinking levels and a 1M-token context window\", \"family\": \"gemini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-03\", \"release_date\": \"2026-11-18\", \"last_updated\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\", \"audio\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 3, \"output\": 15, \"cache_read\": 0.15}, \"canonical_model_id\": \"google/gemini-4-neon\"}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "4d91b4081da067eef0efa94386950cd8ecb1b081379be8cab886cea03e117b2a",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-23T16:22:31.258939+00:00"
+        },
+        {
+          "id": "vercel/google/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "api.json?type=all",
+          "file_sha256": "4d91b4081da067eef0efa94386950cd8ecb1b081379be8cab886cea03e117b2a",
+          "excerpt": "{\"vercel/google/gemini-4-neon\": {\"id\": \"google/gemini-4-neon\", \"name\": \"Gemini 4 Neon\", \"description\": \"Google's Gemini 4 model for fast, frontier-level coding, knowledge work and science workflows, with four thinking levels and a 1M-token context window\", \"family\": \"gemini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-03\", \"release_date\": \"2026-11-18\", \"last_updated\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1000000, \"output\": 1000000}, \"cost\": {\"input\": 3, \"output\": 15, \"cache_read\": 0.15}, \"canonical_model_id\": \"google/gemini-4-neon\"}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "4d91b4081da067eef0efa94386950cd8ecb1b081379be8cab886cea03e117b2a",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-23T16:22:31.258939+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gemini/gemini-4-neon",
+          "first_seen": "2026-11-18T20:53:00+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/6cfdb6a682b13c1d64b7163829160370a74de10536b22378a644c93d599bc0a6.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-23T16:22:34.335840+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 4d91b4081da0: llmgateway/gemini-4-neon, vercel/google/gemini-4-neon\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "intel-3879f30e65f3071d56b8",
       "scanner": "models-dev-api",
@@ -80677,25 +81010,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:17:26.356292+00:00",
+      "last_attempt": "2026-11-23T16:22:29.602915+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:17:30.005233+00:00",
+      "last_success": "2026-11-23T16:22:34.335840+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.649,
-      "latest_build": "880445027b5d0e530a7fd4573078fcbcb424170929e5abb36306c3ac8e52fe0d",
-      "builds_retained": 109,
+      "duration_seconds": 4.733,
+      "latest_build": "4d91b4081da067eef0efa94386950cd8ecb1b081379be8cab886cea03e117b2a",
+      "builds_retained": 110,
       "identifiers": 9894
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-23T16:14:54.825499+00:00",
+      "last_attempt": "2026-11-23T16:20:04.333207+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:14:55.182671+00:00",
+      "last_success": "2026-11-23T16:20:04.709451+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.358,
+      "duration_seconds": 0.377,
       "latest_build": "e6573ba350d4893d0578279c0780e0e2ea25f3ed",
       "builds_retained": 59,
       "identifiers": 7054
@@ -80703,34 +81036,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-23T16:11:59.933137+00:00",
+      "last_attempt": "2026-11-23T16:22:34.526793+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:12:15.370135+00:00",
+      "last_success": "2026-11-23T16:22:49.979177+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 15.437,
-      "latest_build": "6af966bb7aee0bf97a59bac9b422cc05b7c9ffe4",
-      "builds_retained": 116,
-      "identifiers": 11066
+      "duration_seconds": 15.453,
+      "latest_build": "be3583f47a6ecce38cf31be298f61b4b9f020856",
+      "builds_retained": 118,
+      "identifiers": 11067
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-23T16:17:30.196041+00:00",
+      "last_attempt": "2026-11-23T16:22:50.169204+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3113,
-      "duration_seconds": 21.037
+      "consecutive_failures": 3115,
+      "duration_seconds": 20.853
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-23T16:07:21.549984+00:00",
+      "last_attempt": "2026-11-23T16:23:11.029954+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:07:21.881331+00:00",
+      "last_success": "2026-11-23T16:23:11.389323+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.331,
+      "duration_seconds": 0.359,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -80740,61 +81073,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:16:31.109140+00:00",
+      "last_attempt": "2026-11-23T16:21:36.003570+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:16:33.141866+00:00",
+      "last_success": "2026-11-23T16:21:38.025032+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.033
+      "duration_seconds": 2.021
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:16:33.141938+00:00",
+      "last_attempt": "2026-11-23T16:21:38.025086+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:16:33.244246+00:00",
+      "last_success": "2026-11-23T16:21:38.118698+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.102
+      "duration_seconds": 0.094
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:16:33.244287+00:00",
+      "last_attempt": "2026-11-23T16:21:38.118737+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:16:38.605392+00:00",
+      "last_success": "2026-11-23T16:21:42.777700+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.361
+      "duration_seconds": 4.659
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:16:38.605442+00:00",
+      "last_attempt": "2026-11-23T16:21:42.777766+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:17:26.356237+00:00",
+      "last_success": "2026-11-23T16:22:29.602857+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 47.751,
+      "duration_seconds": 46.825,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-23T16:16:38.821306+00:00",
+          "checked_at": "2026-11-23T16:21:42.977301+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-23T16:16:48.082284+00:00",
+          "checked_at": "2026-11-23T16:21:53.060787+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-23T16:16:48.217344+00:00",
+          "checked_at": "2026-11-23T16:21:53.252922+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-23T16:16:48.217362+00:00",
+          "checked_at": "2026-11-23T16:21:53.252937+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -80802,25 +81135,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:17:26.356292+00:00",
+      "last_attempt": "2026-11-23T16:22:29.602915+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:17:30.005233+00:00",
+      "last_success": "2026-11-23T16:22:34.335840+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.649,
-      "latest_build": "880445027b5d0e530a7fd4573078fcbcb424170929e5abb36306c3ac8e52fe0d",
-      "builds_retained": 109,
+      "duration_seconds": 4.733,
+      "latest_build": "4d91b4081da067eef0efa94386950cd8ecb1b081379be8cab886cea03e117b2a",
+      "builds_retained": 110,
       "identifiers": 9894
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-23T16:14:54.825499+00:00",
+      "last_attempt": "2026-11-23T16:20:04.333207+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:14:55.182671+00:00",
+      "last_success": "2026-11-23T16:20:04.709451+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.358,
+      "duration_seconds": 0.377,
       "latest_build": "e6573ba350d4893d0578279c0780e0e2ea25f3ed",
       "builds_retained": 59,
       "identifiers": 7054
@@ -80828,34 +81161,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-23T16:11:59.933137+00:00",
+      "last_attempt": "2026-11-23T16:22:34.526793+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:12:15.370135+00:00",
+      "last_success": "2026-11-23T16:22:49.979177+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 15.437,
-      "latest_build": "6af966bb7aee0bf97a59bac9b422cc05b7c9ffe4",
-      "builds_retained": 116,
-      "identifiers": 11066
+      "duration_seconds": 15.453,
+      "latest_build": "be3583f47a6ecce38cf31be298f61b4b9f020856",
+      "builds_retained": 118,
+      "identifiers": 11067
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-23T16:17:30.196041+00:00",
+      "last_attempt": "2026-11-23T16:22:50.169204+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3113,
-      "duration_seconds": 21.037
+      "consecutive_failures": 3115,
+      "duration_seconds": 20.853
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-23T16:07:21.549984+00:00",
+      "last_attempt": "2026-11-23T16:23:11.029954+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:07:21.881331+00:00",
+      "last_success": "2026-11-23T16:23:11.389323+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.331,
+      "duration_seconds": 0.359,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -80863,64 +81196,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:17:51.240108+00:00",
+      "last_attempt": "2026-11-23T16:23:11.794354+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:17:59.962099+00:00",
+      "last_success": "2026-11-23T16:23:20.470985+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.722
+      "duration_seconds": 8.677
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:17:59.962156+00:00",
+      "last_attempt": "2026-11-23T16:23:20.471036+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:18:02.390083+00:00",
+      "last_success": "2026-11-23T16:23:22.000176+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.428
+      "duration_seconds": 1.529
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-23T16:12:47.405841+00:00",
+      "last_attempt": "2026-11-23T16:23:22.000223+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:12:57.328699+00:00",
+      "last_success": "2026-11-23T16:23:45.460312+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.923
+      "duration_seconds": 23.46
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:18:02.390136+00:00",
+      "last_attempt": "2026-11-23T16:23:45.460365+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:18:02.891613+00:00",
+      "last_success": "2026-11-23T16:23:45.905550+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.501
+      "duration_seconds": 0.445
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T16:18:02.891664+00:00",
+      "last_attempt": "2026-11-23T16:23:45.905590+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T16:18:02.969117+00:00",
+      "last_success": "2026-11-23T16:23:45.994659+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.077
+      "duration_seconds": 0.089
     }
   },
   "identities": {
-    "identifiers": 31344,
+    "identifiers": 31345,
     "declared_aliases": 18346,
     "pending_candidates": 2
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 356,
-      "seconds_mean": 3792.4583264438197,
+      "samples": 358,
+      "seconds_mean": 3773.102602768156,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -80934,8 +81267,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 456,
-      "events": 456,
+      "complete": 459,
+      "events": 459,
       "rate": 1.0
     },
     "source_health": {
