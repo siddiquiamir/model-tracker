@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-23T04:02:49.037531+00:00",
-  "scan_completed_at": "2026-11-23T04:04:03.433685+00:00",
+  "generated_at": "2026-11-23T04:19:43.291816+00:00",
+  "scan_completed_at": "2026-11-23T04:22:07.429588+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 310,
     "leaks": 40,
     "releases": 82,
-    "stories_24h": 19,
-    "sources_ok": 12,
-    "total_cards": 712,
-    "new_in_this_scan": 0
+    "stories_24h": 20,
+    "sources_ok": 16,
+    "total_cards": 713,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -1338,7 +1338,7 @@
       "provider_name": "OpenRouter",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-21T03:05:45.893089+00:00",
-      "updated_at": "2026-11-21T18:24:48.532911+00:00",
+      "updated_at": "2026-11-23T04:09:12.000Z",
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-11-21",
@@ -1346,8 +1346,8 @@
       "codenames": [],
       "models": [
         {
-          "id": "inkling-2-mini",
-          "name": "openrouter/thinkingmachines/inkling-2-mini",
+          "id": "Inkling 2 Mini",
+          "name": "Inkling 2 Mini",
           "released_on": "2026-11-21"
         }
       ],
@@ -1371,9 +1371,19 @@
           "backfill": false,
           "build": "185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f",
           "evidence_path": "data/intelligence/evidence/models-dev-api/185d384cb0e913cdd125e087c5c13a0b5562fb278cb4a959f27b64d6064cb84f.json.gz"
+        },
+        {
+          "label": "LMArena",
+          "scanner": "lmarena",
+          "detected_at": "2026-11-23T04:09:12.000Z",
+          "title": "New Model(s) Added to Arena (Inkling 2 Mini)",
+          "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 2,
+      "source_count": 3,
       "backfill": false,
       "header": "NEW MODEL · OPENROUTER",
       "card_ids": [
@@ -1382,7 +1392,8 @@
         "intel-b7a51fe35cf196b1d298",
         "intel-f76c26ca78dd2f49f395",
         "intel-fdb735dfbb3145b06202",
-        "intel-40d02e59a999e776f109"
+        "intel-40d02e59a999e776f109",
+        "lmarena-lb-diff-1ca22d56"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -1491,8 +1502,8 @@
           "first_seen": "2026-11-21T18:24:29+00:00"
         }
       ],
-      "discord_alerted_at": "2026-11-21T03:05:51.660834+00:00",
-      "x_post_text": "🟢 NEW MODEL: Inkling 2 Mini by OpenRouter\n\nFirst detected 21 Nov 03:05 UTC in OpenRouter\n📅 First released: 2026-11-21\nConfirmed by Registry Update\n\nvia @StatsWire"
+      "discord_alerted_at": "2026-11-23T04:22:07.426340+00:00",
+      "x_post_text": "🟢 NEW MODEL: Inkling 2 Mini by OpenRouter\n\nFirst detected 21 Nov 03:05 UTC in OpenRouter\n📅 First released: 2026-11-21\nConfirmed by Registry Update, LMArena\n\nvia @StatsWire"
     },
     {
       "id": "story-sonar",
@@ -24935,6 +24946,40 @@
   ],
   "cards": [
     {
+      "id": "lmarena-lb-diff-1ca22d56",
+      "category": "cli-sdk-diff",
+      "scanner": "lmarena",
+      "header": "ARENA.AI NEW MODEL DIFF · LMARENA",
+      "title": "New Model(s) Added to Arena (Inkling 2 Mini)",
+      "subtitle": "Newly added models in official lmarena-ai/leaderboard-dataset",
+      "build_label": "Arena Diff",
+      "build_transition": "+1 new Arena models",
+      "models": [
+        {
+          "id": "Inkling 2 Mini",
+          "name": "Inkling 2 Mini (WebDev Arena)",
+          "released_on": "2026-11-21"
+        }
+      ],
+      "evidence": "huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+      "source_text": "official LMArena (arena.ai) Hugging Face dataset.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "ARENA.AI",
+      "provider_slug": "modelsdev",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "LMArena Dataset",
+          "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset"
+        }
+      ],
+      "detected_at": "2026-11-23T04:09:12.000Z",
+      "tracker_observed_at": "2026-11-23T04:22:02.844661+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 ARENA.AI NEW MODEL DIFF · LMARENA\nNew Model(s) Added to Arena (Inkling 2 Mini) spotted in Arena Diff +1 new Arena models!\n\n• Inkling 2 Mini (WebDev Arena) (Inkling 2 Mini)\n\nEvidence: huggingface.co/datasets/lmarena-ai/leaderboard-dataset\nSource: official LMArena (arena.ai) Hugging Face dataset.\n\nTracked by @StatsWire"
+    },
+    {
       "id": "intel-75d40595faa801e081c1",
       "scanner": "litellm-intelligence",
       "intelligence": true,
@@ -24976,7 +25021,7 @@
       ],
       "detected_at": "2026-11-23T03:02:34.704473+00:00",
       "first_seen": "2026-11-23T03:01:32+00:00",
-      "observed_at": "2026-11-23T03:02:34.704473+00:00",
+      "observed_at": "2026-11-23T04:21:00.380712+00:00",
       "backfill": false,
       "build_label": "LiteLLM model registry",
       "build_transition": "ad4075d32a09a09039b910ea192deee72510442f -> 846ffe0f3882d1aede5657a0f43d178dddc3aabb",
@@ -25060,7 +25105,7 @@
       ],
       "detected_at": "2026-11-23T03:02:34.704473+00:00",
       "first_seen": "2026-11-23T03:01:32+00:00",
-      "observed_at": "2026-11-23T03:02:34.704473+00:00",
+      "observed_at": "2026-11-23T04:21:00.380712+00:00",
       "backfill": false,
       "build_label": "LiteLLM model registry",
       "build_transition": "ad4075d32a09a09039b910ea192deee72510442f -> 846ffe0f3882d1aede5657a0f43d178dddc3aabb",
@@ -77884,25 +77929,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:01:40.743111+00:00",
+      "last_attempt": "2026-11-23T04:20:53.110653+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:01:41.040944+00:00",
+      "last_success": "2026-11-23T04:20:56.415987+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.298,
-      "latest_build": "b6188eb373cc2fd01a9e171513ab4fe10fb6dd76ed5a2924860f41436f2cbef3",
-      "builds_retained": 101,
-      "identifiers": 9868
+      "duration_seconds": 3.305,
+      "latest_build": "ee91bc035de3193aa60665ebff55e707b3f68c6f300b68c6a85009cd7a9bfef5",
+      "builds_retained": 97,
+      "identifiers": 9870
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-23T04:03:40.830484+00:00",
+      "last_attempt": "2026-11-23T04:20:56.607585+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:03:41.290593+00:00",
+      "last_success": "2026-11-23T04:21:02.135165+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.461,
+      "duration_seconds": 5.528,
       "latest_build": "846ffe0f3882d1aede5657a0f43d178dddc3aabb",
       "builds_retained": 57,
       "identifiers": 7007
@@ -77910,34 +77955,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-23T03:59:38.707150+00:00",
+      "last_attempt": "2026-11-23T04:21:02.329470+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T03:59:39.121026+00:00",
+      "last_success": "2026-11-23T04:21:17.906713+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.414,
-      "latest_build": "759af3eccc0a29c8e672f0b03687a164588ac5e4",
-      "builds_retained": 110,
-      "identifiers": 11037
+      "duration_seconds": 15.578,
+      "latest_build": "b4d864d8186c539819328e6d42438eac46ad493c",
+      "builds_retained": 106,
+      "identifiers": 11040
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-23T04:03:41.404432+00:00",
+      "last_attempt": "2026-11-23T04:21:18.100332+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2920,
-      "duration_seconds": 10.919
+      "consecutive_failures": 2824,
+      "duration_seconds": 21.306
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-23T03:59:50.167138+00:00",
+      "last_attempt": "2026-11-23T04:21:39.414200+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T03:59:50.404643+00:00",
+      "last_success": "2026-11-23T04:21:39.815268+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.238,
+      "duration_seconds": 0.401,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -77947,61 +77992,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:02:49.037612+00:00",
+      "last_attempt": "2026-11-23T04:19:43.291888+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:02:51.303424+00:00",
+      "last_success": "2026-11-23T04:19:49.502070+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.266
+      "duration_seconds": 6.21
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:02:51.303494+00:00",
+      "last_attempt": "2026-11-23T04:19:49.502136+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:02:51.563733+00:00",
+      "last_success": "2026-11-23T04:19:49.748330+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.26
+      "duration_seconds": 0.246
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:02:51.563775+00:00",
+      "last_attempt": "2026-11-23T04:19:49.748370+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:02:59.388500+00:00",
+      "last_success": "2026-11-23T04:19:58.765029+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.825
+      "duration_seconds": 9.017
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:02:59.388597+00:00",
+      "last_attempt": "2026-11-23T04:19:58.765100+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:03:40.830407+00:00",
+      "last_success": "2026-11-23T04:20:53.110594+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 41.442,
+      "duration_seconds": 54.346,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-23T04:02:59.644671+00:00",
+          "checked_at": "2026-11-23T04:19:59.311933+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-23T04:03:08.354925+00:00",
+          "checked_at": "2026-11-23T04:20:10.949681+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-23T04:03:08.519151+00:00",
+          "checked_at": "2026-11-23T04:20:11.136197+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-23T04:03:08.519171+00:00",
+          "checked_at": "2026-11-23T04:20:11.136237+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -78009,25 +78054,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:01:40.743111+00:00",
+      "last_attempt": "2026-11-23T04:20:53.110653+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:01:41.040944+00:00",
+      "last_success": "2026-11-23T04:20:56.415987+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.298,
-      "latest_build": "b6188eb373cc2fd01a9e171513ab4fe10fb6dd76ed5a2924860f41436f2cbef3",
-      "builds_retained": 101,
-      "identifiers": 9868
+      "duration_seconds": 3.305,
+      "latest_build": "ee91bc035de3193aa60665ebff55e707b3f68c6f300b68c6a85009cd7a9bfef5",
+      "builds_retained": 97,
+      "identifiers": 9870
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-23T04:03:40.830484+00:00",
+      "last_attempt": "2026-11-23T04:20:56.607585+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:03:41.290593+00:00",
+      "last_success": "2026-11-23T04:21:02.135165+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.461,
+      "duration_seconds": 5.528,
       "latest_build": "846ffe0f3882d1aede5657a0f43d178dddc3aabb",
       "builds_retained": 57,
       "identifiers": 7007
@@ -78035,34 +78080,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-23T03:59:38.707150+00:00",
+      "last_attempt": "2026-11-23T04:21:02.329470+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T03:59:39.121026+00:00",
+      "last_success": "2026-11-23T04:21:17.906713+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.414,
-      "latest_build": "759af3eccc0a29c8e672f0b03687a164588ac5e4",
-      "builds_retained": 110,
-      "identifiers": 11037
+      "duration_seconds": 15.578,
+      "latest_build": "b4d864d8186c539819328e6d42438eac46ad493c",
+      "builds_retained": 106,
+      "identifiers": 11040
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-23T04:03:41.404432+00:00",
+      "last_attempt": "2026-11-23T04:21:18.100332+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2920,
-      "duration_seconds": 10.919
+      "consecutive_failures": 2824,
+      "duration_seconds": 21.306
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-23T03:59:50.167138+00:00",
+      "last_attempt": "2026-11-23T04:21:39.414200+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T03:59:50.404643+00:00",
+      "last_success": "2026-11-23T04:21:39.815268+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.238,
+      "duration_seconds": 0.401,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -78070,64 +78115,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:03:52.330004+00:00",
+      "last_attempt": "2026-11-23T04:21:40.217177+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:03:57.324360+00:00",
+      "last_success": "2026-11-23T04:21:49.226232+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.994
+      "duration_seconds": 9.009
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:03:57.324422+00:00",
+      "last_attempt": "2026-11-23T04:21:49.226279+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:04:00.816832+00:00",
+      "last_success": "2026-11-23T04:21:52.604709+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.492
+      "duration_seconds": 3.378
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-23T03:59:57.390751+00:00",
+      "last_attempt": "2026-11-23T04:21:52.604754+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:00:06.665415+00:00",
+      "last_success": "2026-11-23T04:22:02.844661+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.275
+      "duration_seconds": 10.24
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:04:00.816900+00:00",
+      "last_attempt": "2026-11-23T04:22:02.844704+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:04:01.963483+00:00",
+      "last_success": "2026-11-23T04:22:04.287996+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.147
+      "duration_seconds": 1.443
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:04:01.963543+00:00",
+      "last_attempt": "2026-11-23T04:22:04.288035+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:04:02.014516+00:00",
+      "last_success": "2026-11-23T04:22:04.424194+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.051
+      "duration_seconds": 0.136
     }
   },
   "identities": {
-    "identifiers": 31242,
-    "declared_aliases": 18287,
+    "identifiers": 31247,
+    "declared_aliases": 18297,
     "pending_candidates": 2
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
       "samples": 345,
-      "seconds_mean": 3847.0509316173916,
+      "seconds_mean": 3874.3302141623185,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
