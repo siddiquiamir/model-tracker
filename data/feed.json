@@ -1,17 +1,79 @@
 {
-  "generated_at": "2026-11-23T04:19:43.291816+00:00",
-  "scan_completed_at": "2026-11-23T04:22:07.429588+00:00",
+  "generated_at": "2026-11-23T04:41:27.844952+00:00",
+  "scan_completed_at": "2026-11-23T04:43:26.230333+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 310,
+    "stories": 311,
     "leaks": 40,
     "releases": 82,
-    "stories_24h": 20,
-    "sources_ok": 16,
-    "total_cards": 713,
-    "new_in_this_scan": 1
+    "stories_24h": 22,
+    "sources_ok": 14,
+    "total_cards": 715,
+    "new_in_this_scan": 2
   },
   "stories": [
+    {
+      "id": "story-sarvam-prism",
+      "group": "sarvam-prism",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Sarvam Prism",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-23T04:42:36.585596+00:00",
+      "updated_at": "2026-11-23T04:42:36.585596+00:00",
+      "first_source": "Registry Update",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "sarvam-prism",
+          "name": "sarvam/sarvam-prism"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-23T04:42:36.585596+00:00",
+          "title": "sarvam-prism",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/5ac63b800ba60984514632ae15bc1b52349e0fd6",
+          "backfill": false,
+          "build": "5ac63b800ba60984514632ae15bc1b52349e0fd6",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/f8ab01f36534046a264f9f33da00065e4957a80cc478d821687c52df7c2cc313.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-553a95c7ae74b1bba02d"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "sarvam/sarvam-prism",
+          "family": "sarvam-prism",
+          "file_path": "providers/sarvam/models/sarvam-prism.toml",
+          "file_sha256": "701285fcc558c943d3336213c647a0ffe7bd1e3e95ee6d861423bc2511bdbc23",
+          "excerpt": "{\"sarvam/sarvam-prism\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"sarvam/sarvam-prism\", \"limit\": {\"context\": 32768}, \"api\": {\"systemone\": {\"sdk\": {\"aisdk\": \"@ai-sdk/typesafe-ai\", \"opencodeai\": \"@opencode/ai/providers/typesafe-ai/decisions\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.04255319}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "sarvam/sarvam-prism",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5ac63b800ba60984514632ae15bc1b52349e0fd6/providers/sarvam/models/sarvam-prism.toml",
+          "build": "5ac63b800ba60984514632ae15bc1b52349e0fd6",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5ac63b800ba60984514632ae15bc1b52349e0fd6",
+          "first_seen": "2026-11-23T04:42:22+00:00"
+        }
+      ],
+      "x_post_text": "Registry Update 5ac63b800ba6: sarvam-prism\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/5ac63b800ba60984514632ae15bc1b52349e0fd6"
+    },
     {
       "id": "story-prisma-2-5",
       "group": "prisma-2-5",
@@ -15551,6 +15613,92 @@
       "x_post_text": "registry evidence, not a launch: gpt-6-rosalind\nhttps://raw.githubusercontent.com/BerriAI/litellm/d483f0b00af53591d2564a7ac49f0881b74047f9/model_prices_and_context_window.json"
     },
     {
+      "id": "story-sarvam-conversations",
+      "group": "sarvam-conversations",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Sarvam Conversations",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-18T13:21:37.171783+00:00",
+      "updated_at": "2026-11-23T04:42:36.585596+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "sarvam-105b-conversations",
+          "name": "sarvam/sarvam-105b-conversations"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-18T13:21:37.171783+00:00",
+          "title": "sarvam-105b-conversations",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c030ffb6b9c7a1b49072dceca1c2224cdfc21bcc/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "c030ffb6b9c7a1b49072dceca1c2224cdfc21bcc",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/52822518622432b9304b719698854abe6c7fdf5fdc678301bc5758067237a062.json.gz"
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-23T04:42:36.585596+00:00",
+          "title": "sarvam-105b-conversations",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/5ac63b800ba60984514632ae15bc1b52349e0fd6",
+          "backfill": false,
+          "build": "5ac63b800ba60984514632ae15bc1b52349e0fd6",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/f8ab01f36534046a264f9f33da00065e4957a80cc478d821687c52df7c2cc313.json.gz"
+        }
+      ],
+      "source_count": 2,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-541ed08b0bf2eae1b66d",
+        "intel-f3be9e6d49625175c5a1"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "sarvam/sarvam-105b-conversations",
+          "family": "sarvam-105b-conversations",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"sarvam/sarvam-105b-conversations\": {\"cache_read_input_token_cost\": 2.659574468e-09, \"comment\": \"These are Sarvam's introductory rates, billed through the end of 2026. Update on 2026-12-31 when the promotion ends. The last published list rates per 1M tokens are INR 15 input, INR 5 cached input and INR 60 output (https://docs.sarvam.ai/changelog/2026/10/10.md).\", \"input_cost_per_token\": 1.063829787e-07, \"litellm_provider\": \"sarvam\", \"max_input_tokens\": 32000, \"max_output_tokens\": 8192, \"mode\": \"chat\", \"output_cost_per_token\": 2.659574468e-07, \"source\": \"https://www.sarvam.ai/token-factory/pricing\", \"supports_audio_input\": false, \"supports_function_calling\": true, \"supports_parallel_function_calling\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": false, \"supports_response_schema\": true, \"supports_system_messages\": true, \"supports_tool_choice\": true, \"supports_video_input\": false, \"supports_vision\": false}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "52822518622432b9304b719698854abe6c7fdf5fdc678301bc5758067237a062",
+          "method": "structured registry",
+          "build": "c030ffb6b9c7a1b49072dceca1c2224cdfc21bcc",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c030ffb6b9c7a1b49072dceca1c2224cdfc21bcc/model_prices_and_context_window.json",
+          "first_seen": "2026-11-18T13:19:05+00:00"
+        },
+        {
+          "id": "sarvam/sarvam-105b-conversations",
+          "family": "sarvam-105b-conversations",
+          "file_path": "providers/sarvam/models/sarvam-105b-conversations.toml",
+          "file_sha256": "f0b62428795b72f2bfa8bdaecbb5c4b72b39f5df4094b4c6e92f9bfaa7a96016",
+          "excerpt": "{\"sarvam/sarvam-105b-conversations\": {\"schema\": 2, \"base_model\": \"sarvam/sarvam-105b\", \"name\": \"Sarvam-105B Conversations\", \"capabilities\": {\"reasoning\": {\"supported\": false}, \"cache\": {\"implicit\": true}}, \"limit\": {\"context\": 32000, \"output\": 32000}, \"cost\": {\"text\": {\"input\": {\"price\": 0.10638298, \"cache\": {\"read\": 0.00265957}}, \"output\": {\"price\": 0.26595745}}}}}",
+          "canonical_id": "sarvam/sarvam-105b",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5ac63b800ba60984514632ae15bc1b52349e0fd6/providers/sarvam/models/sarvam-105b-conversations.toml",
+          "build": "5ac63b800ba60984514632ae15bc1b52349e0fd6",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5ac63b800ba60984514632ae15bc1b52349e0fd6",
+          "first_seen": "2026-11-23T04:42:22+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: sarvam-105b-conversations\nhttps://raw.githubusercontent.com/BerriAI/litellm/c030ffb6b9c7a1b49072dceca1c2224cdfc21bcc/model_prices_and_context_window.json"
+    },
+    {
       "id": "story-deepseekv-4-1-flash",
       "group": "deepseekv-4-1-flash",
       "kind": "registry",
@@ -15669,66 +15817,6 @@
         }
       ],
       "x_post_text": "registry evidence, not a launch: deepseekv4.1-flash-1017-interactive\nhttps://raw.githubusercontent.com/BerriAI/litellm/c030ffb6b9c7a1b49072dceca1c2224cdfc21bcc/model_prices_and_context_window.json"
-    },
-    {
-      "id": "story-sarvam-conversations",
-      "group": "sarvam-conversations",
-      "kind": "registry",
-      "open_weights": false,
-      "title": "Sarvam Conversations",
-      "provider_slug": "unknown",
-      "provider_name": "Unattributed",
-      "accent_color": "#0891b2",
-      "detected_at": "2026-11-18T13:21:37.171783+00:00",
-      "updated_at": "2026-11-18T13:21:37.171783+00:00",
-      "first_source": "LiteLLM commit-pinned registry",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "sarvam-105b-conversations",
-          "name": "sarvam/sarvam-105b-conversations"
-        }
-      ],
-      "sources": [
-        {
-          "label": "LiteLLM commit-pinned registry",
-          "scanner": "litellm-intelligence",
-          "detected_at": "2026-11-18T13:21:37.171783+00:00",
-          "title": "sarvam-105b-conversations",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/c030ffb6b9c7a1b49072dceca1c2224cdfc21bcc/model_prices_and_context_window.json",
-          "backfill": false,
-          "build": "c030ffb6b9c7a1b49072dceca1c2224cdfc21bcc",
-          "evidence_path": "data/intelligence/evidence/litellm-intelligence/52822518622432b9304b719698854abe6c7fdf5fdc678301bc5758067237a062.json.gz"
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "REGISTRY UPDATE · UNATTRIBUTED",
-      "card_ids": [
-        "intel-541ed08b0bf2eae1b66d"
-      ],
-      "event_label": "Registry update",
-      "intelligence_only": true,
-      "candidate_only": false,
-      "registry_evidence": [
-        {
-          "id": "sarvam/sarvam-105b-conversations",
-          "family": "sarvam-105b-conversations",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"sarvam/sarvam-105b-conversations\": {\"cache_read_input_token_cost\": 2.659574468e-09, \"comment\": \"These are Sarvam's introductory rates, billed through the end of 2026. Update on 2026-12-31 when the promotion ends. The last published list rates per 1M tokens are INR 15 input, INR 5 cached input and INR 60 output (https://docs.sarvam.ai/changelog/2026/10/10.md).\", \"input_cost_per_token\": 1.063829787e-07, \"litellm_provider\": \"sarvam\", \"max_input_tokens\": 32000, \"max_output_tokens\": 8192, \"mode\": \"chat\", \"output_cost_per_token\": 2.659574468e-07, \"source\": \"https://www.sarvam.ai/token-factory/pricing\", \"supports_audio_input\": false, \"supports_function_calling\": true, \"supports_parallel_function_calling\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": false, \"supports_response_schema\": true, \"supports_system_messages\": true, \"supports_tool_choice\": true, \"supports_video_input\": false, \"supports_vision\": false}}",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "52822518622432b9304b719698854abe6c7fdf5fdc678301bc5758067237a062",
-          "method": "structured registry",
-          "build": "c030ffb6b9c7a1b49072dceca1c2224cdfc21bcc",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/c030ffb6b9c7a1b49072dceca1c2224cdfc21bcc/model_prices_and_context_window.json",
-          "first_seen": "2026-11-18T13:19:05+00:00"
-        }
-      ],
-      "x_post_text": "registry evidence, not a launch: sarvam-105b-conversations\nhttps://raw.githubusercontent.com/BerriAI/litellm/c030ffb6b9c7a1b49072dceca1c2224cdfc21bcc/model_prices_and_context_window.json"
     },
     {
       "id": "story-sarvam-m",
@@ -24945,6 +25033,185 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-f3be9e6d49625175c5a1",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "sarvam-105b-conversations",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "sarvam-105b-conversations",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "sarvam/sarvam-105b-conversations",
+          "name": "sarvam/sarvam-105b-conversations",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-23T04:42:36.585596+00:00",
+      "first_seen": "2026-11-23T04:42:22+00:00",
+      "observed_at": "2026-11-23T04:42:36.585596+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "b4d864d8186c539819328e6d42438eac46ad493c -> 5ac63b800ba60984514632ae15bc1b52349e0fd6",
+      "build": "5ac63b800ba60984514632ae15bc1b52349e0fd6",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/5ac63b800ba60984514632ae15bc1b52349e0fd6",
+      "artifact_sha256": "f8ab01f36534046a264f9f33da00065e4957a80cc478d821687c52df7c2cc313",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/f8ab01f36534046a264f9f33da00065e4957a80cc478d821687c52df7c2cc313.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/f8ab01f36534046a264f9f33da00065e4957a80cc478d821687c52df7c2cc313.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "sarvam/sarvam-105b-conversations",
+          "family": "sarvam-105b-conversations",
+          "file_path": "providers/sarvam/models/sarvam-105b-conversations.toml",
+          "file_sha256": "f0b62428795b72f2bfa8bdaecbb5c4b72b39f5df4094b4c6e92f9bfaa7a96016",
+          "excerpt": "{\"sarvam/sarvam-105b-conversations\": {\"schema\": 2, \"base_model\": \"sarvam/sarvam-105b\", \"name\": \"Sarvam-105B Conversations\", \"capabilities\": {\"reasoning\": {\"supported\": false}, \"cache\": {\"implicit\": true}}, \"limit\": {\"context\": 32000, \"output\": 32000}, \"cost\": {\"text\": {\"input\": {\"price\": 0.10638298, \"cache\": {\"read\": 0.00265957}}, \"output\": {\"price\": 0.26595745}}}}}",
+          "canonical_id": "sarvam/sarvam-105b",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5ac63b800ba60984514632ae15bc1b52349e0fd6/providers/sarvam/models/sarvam-105b-conversations.toml",
+          "build": "5ac63b800ba60984514632ae15bc1b52349e0fd6",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5ac63b800ba60984514632ae15bc1b52349e0fd6",
+          "first_seen": "2026-11-23T04:42:22+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "sarvam/sarvam-105b-conversations",
+          "first_seen": "2026-11-18T13:19:05+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/c65786396d671fd9959af6bb94e15c6a21bc9dd53e8be9d1fca0236df952b739.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/5ac63b800ba60984514632ae15bc1b52349e0fd6"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/5ac63b800ba60984514632ae15bc1b52349e0fd6"
+        }
+      ],
+      "tracker_observed_at": "2026-11-23T04:42:39.697282+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 5ac63b800ba6: sarvam/sarvam-105b-conversations\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/5ac63b800ba60984514632ae15bc1b52349e0fd6"
+    },
+    {
+      "id": "intel-553a95c7ae74b1bba02d",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "sarvam-prism",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "sarvam-prism",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "sarvam/sarvam-prism",
+          "name": "sarvam/sarvam-prism",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-23T04:42:36.585596+00:00",
+      "first_seen": "2026-11-23T04:42:22+00:00",
+      "observed_at": "2026-11-23T04:42:36.585596+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "b4d864d8186c539819328e6d42438eac46ad493c -> 5ac63b800ba60984514632ae15bc1b52349e0fd6",
+      "build": "5ac63b800ba60984514632ae15bc1b52349e0fd6",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/5ac63b800ba60984514632ae15bc1b52349e0fd6",
+      "artifact_sha256": "f8ab01f36534046a264f9f33da00065e4957a80cc478d821687c52df7c2cc313",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/f8ab01f36534046a264f9f33da00065e4957a80cc478d821687c52df7c2cc313.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/f8ab01f36534046a264f9f33da00065e4957a80cc478d821687c52df7c2cc313.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "sarvam/sarvam-prism",
+          "family": "sarvam-prism",
+          "file_path": "providers/sarvam/models/sarvam-prism.toml",
+          "file_sha256": "701285fcc558c943d3336213c647a0ffe7bd1e3e95ee6d861423bc2511bdbc23",
+          "excerpt": "{\"sarvam/sarvam-prism\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"sarvam/sarvam-prism\", \"limit\": {\"context\": 32768}, \"api\": {\"systemone\": {\"sdk\": {\"aisdk\": \"@ai-sdk/typesafe-ai\", \"opencodeai\": \"@opencode/ai/providers/typesafe-ai/decisions\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.04255319}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "sarvam/sarvam-prism",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5ac63b800ba60984514632ae15bc1b52349e0fd6/providers/sarvam/models/sarvam-prism.toml",
+          "build": "5ac63b800ba60984514632ae15bc1b52349e0fd6",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5ac63b800ba60984514632ae15bc1b52349e0fd6",
+          "first_seen": "2026-11-23T04:42:22+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/5ac63b800ba60984514632ae15bc1b52349e0fd6"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/5ac63b800ba60984514632ae15bc1b52349e0fd6"
+        }
+      ],
+      "tracker_observed_at": "2026-11-23T04:42:39.697282+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 5ac63b800ba6: sarvam/sarvam-prism\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/5ac63b800ba60984514632ae15bc1b52349e0fd6"
+    },
     {
       "id": "lmarena-lb-diff-1ca22d56",
       "category": "cli-sdk-diff",
@@ -77929,12 +78196,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:20:53.110653+00:00",
+      "last_attempt": "2026-11-23T04:42:30.961798+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:20:56.415987+00:00",
+      "last_success": "2026-11-23T04:42:31.363776+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.305,
+      "duration_seconds": 0.402,
       "latest_build": "ee91bc035de3193aa60665ebff55e707b3f68c6f300b68c6a85009cd7a9bfef5",
       "builds_retained": 97,
       "identifiers": 9870
@@ -77942,12 +78209,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-23T04:20:56.607585+00:00",
+      "last_attempt": "2026-11-23T04:39:57.424577+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:21:02.135165+00:00",
+      "last_success": "2026-11-23T04:39:57.887616+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.528,
+      "duration_seconds": 0.463,
       "latest_build": "846ffe0f3882d1aede5657a0f43d178dddc3aabb",
       "builds_retained": 57,
       "identifiers": 7007
@@ -77955,34 +78222,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-23T04:21:02.329470+00:00",
+      "last_attempt": "2026-11-23T04:42:31.558636+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:21:17.906713+00:00",
+      "last_success": "2026-11-23T04:42:39.697282+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 15.578,
-      "latest_build": "b4d864d8186c539819328e6d42438eac46ad493c",
-      "builds_retained": 106,
-      "identifiers": 11040
+      "duration_seconds": 8.139,
+      "latest_build": "5ac63b800ba60984514632ae15bc1b52349e0fd6",
+      "builds_retained": 107,
+      "identifiers": 11047
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-23T04:21:18.100332+00:00",
+      "last_attempt": "2026-11-23T04:42:39.890593+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2824,
-      "duration_seconds": 21.306
+      "consecutive_failures": 2832,
+      "duration_seconds": 20.979
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-23T04:21:39.414200+00:00",
+      "last_attempt": "2026-11-23T04:37:45.174918+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:21:39.815268+00:00",
+      "last_success": "2026-11-23T04:37:45.564494+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.401,
+      "duration_seconds": 0.39,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -77992,61 +78259,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:19:43.291888+00:00",
+      "last_attempt": "2026-11-23T04:41:27.845017+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:19:49.502070+00:00",
+      "last_success": "2026-11-23T04:41:30.707912+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.21
+      "duration_seconds": 2.863
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:19:49.502136+00:00",
+      "last_attempt": "2026-11-23T04:41:30.707963+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:19:49.748330+00:00",
+      "last_success": "2026-11-23T04:41:30.959817+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.246
+      "duration_seconds": 0.252
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:19:49.748370+00:00",
+      "last_attempt": "2026-11-23T04:41:30.959851+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:19:58.765029+00:00",
+      "last_success": "2026-11-23T04:41:39.948397+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.017
+      "duration_seconds": 8.989
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:19:58.765100+00:00",
+      "last_attempt": "2026-11-23T04:41:39.948455+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:20:53.110594+00:00",
+      "last_success": "2026-11-23T04:42:30.961742+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 54.346,
+      "duration_seconds": 51.013,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-23T04:19:59.311933+00:00",
+          "checked_at": "2026-11-23T04:41:40.295500+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-23T04:20:10.949681+00:00",
+          "checked_at": "2026-11-23T04:41:52.049615+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-23T04:20:11.136197+00:00",
+          "checked_at": "2026-11-23T04:41:52.238632+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-23T04:20:11.136237+00:00",
+          "checked_at": "2026-11-23T04:41:52.238649+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -78054,12 +78321,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:20:53.110653+00:00",
+      "last_attempt": "2026-11-23T04:42:30.961798+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:20:56.415987+00:00",
+      "last_success": "2026-11-23T04:42:31.363776+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.305,
+      "duration_seconds": 0.402,
       "latest_build": "ee91bc035de3193aa60665ebff55e707b3f68c6f300b68c6a85009cd7a9bfef5",
       "builds_retained": 97,
       "identifiers": 9870
@@ -78067,12 +78334,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-23T04:20:56.607585+00:00",
+      "last_attempt": "2026-11-23T04:39:57.424577+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:21:02.135165+00:00",
+      "last_success": "2026-11-23T04:39:57.887616+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.528,
+      "duration_seconds": 0.463,
       "latest_build": "846ffe0f3882d1aede5657a0f43d178dddc3aabb",
       "builds_retained": 57,
       "identifiers": 7007
@@ -78080,34 +78347,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-23T04:21:02.329470+00:00",
+      "last_attempt": "2026-11-23T04:42:31.558636+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:21:17.906713+00:00",
+      "last_success": "2026-11-23T04:42:39.697282+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 15.578,
-      "latest_build": "b4d864d8186c539819328e6d42438eac46ad493c",
-      "builds_retained": 106,
-      "identifiers": 11040
+      "duration_seconds": 8.139,
+      "latest_build": "5ac63b800ba60984514632ae15bc1b52349e0fd6",
+      "builds_retained": 107,
+      "identifiers": 11047
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-23T04:21:18.100332+00:00",
+      "last_attempt": "2026-11-23T04:42:39.890593+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2824,
-      "duration_seconds": 21.306
+      "consecutive_failures": 2832,
+      "duration_seconds": 20.979
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-23T04:21:39.414200+00:00",
+      "last_attempt": "2026-11-23T04:37:45.174918+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:21:39.815268+00:00",
+      "last_success": "2026-11-23T04:37:45.564494+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.401,
+      "duration_seconds": 0.39,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -78115,64 +78382,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:21:40.217177+00:00",
+      "last_attempt": "2026-11-23T04:43:00.876060+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:21:49.226232+00:00",
+      "last_success": "2026-11-23T04:43:09.696948+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.009
+      "duration_seconds": 8.821
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:21:49.226279+00:00",
+      "last_attempt": "2026-11-23T04:43:09.696995+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:21:52.604709+00:00",
+      "last_success": "2026-11-23T04:43:11.799043+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.378
+      "duration_seconds": 2.102
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-23T04:21:52.604754+00:00",
+      "last_attempt": "2026-11-23T04:43:11.799087+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:22:02.844661+00:00",
+      "last_success": "2026-11-23T04:43:22.593122+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 10.24
+      "duration_seconds": 10.794
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:22:02.844704+00:00",
+      "last_attempt": "2026-11-23T04:43:22.593163+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:22:04.287996+00:00",
+      "last_success": "2026-11-23T04:43:24.047488+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.443
+      "duration_seconds": 1.454
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T04:22:04.288035+00:00",
+      "last_attempt": "2026-11-23T04:43:24.047525+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T04:22:04.424194+00:00",
+      "last_success": "2026-11-23T04:43:24.178320+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.136
+      "duration_seconds": 0.131
     }
   },
   "identities": {
-    "identifiers": 31247,
-    "declared_aliases": 18297,
+    "identifiers": 31254,
+    "declared_aliases": 18304,
     "pending_candidates": 2
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 345,
-      "seconds_mean": 3874.3302141623185,
+      "samples": 347,
+      "seconds_mean": 3852.083847487031,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -78186,8 +78453,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 438,
-      "events": 438,
+      "complete": 440,
+      "events": 440,
       "rate": 1.0
     },
     "source_health": {
