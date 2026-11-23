@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-23T08:43:37.275729+00:00",
-  "scan_completed_at": "2026-11-23T08:45:02.831486+00:00",
+  "generated_at": "2026-11-23T08:51:49.399141+00:00",
+  "scan_completed_at": "2026-11-23T08:53:02.836413+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 313,
     "leaks": 41,
     "releases": 84,
     "stories_24h": 27,
-    "sources_ok": 15,
-    "total_cards": 721,
-    "new_in_this_scan": 0
+    "sources_ok": 14,
+    "total_cards": 722,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -18435,10 +18435,10 @@
       "open_weights": false,
       "title": "chutes/Qwen/Qwen4-Max",
       "provider_slug": "unknown",
-      "provider_name": "concentrate",
+      "provider_name": "opencode",
       "accent_color": "#a855f7",
       "detected_at": "2026-11-16T23:37:28.528456+00:00",
-      "updated_at": "2026-11-23T00:33:06.923115+00:00",
+      "updated_at": "2026-11-23T08:52:41.021267+00:00",
       "first_source": "LiteLLM registry",
       "lead": "",
       "released_on": "2026-11-16",
@@ -18448,6 +18448,11 @@
         {
           "id": "qwen4-max",
           "name": "concentrate/qwen4-max",
+          "released_on": "2026-11-16"
+        },
+        {
+          "id": "qwen4-max-free",
+          "name": "opencode/qwen4-max-free",
           "released_on": "2026-11-16"
         }
       ],
@@ -18485,7 +18490,7 @@
       ],
       "source_count": 3,
       "backfill": false,
-      "header": "NEW MODEL · CONCENTRATE",
+      "header": "NEW MODEL · OPENCODE",
       "card_ids": [
         "litellm-diff-b6ed8142",
         "intel-09f1c9870bb5430d9787",
@@ -18502,7 +18507,8 @@
         "intel-922b1e83524922d1ae03",
         "intel-51bcd6ba84215f3f45c1",
         "intel-e91fc21cd52cb92d3184",
-        "intel-ae73b6e1b60c4175bf10"
+        "intel-ae73b6e1b60c4175bf10",
+        "intel-442f2a57224ba1171a05"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -18934,9 +18940,23 @@
           "build": "c20ef95c70a6ff85ae44d63b054dbb1b36f12b16",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/c20ef95c70a6ff85ae44d63b054dbb1b36f12b16",
           "first_seen": "2026-11-23T00:25:50+00:00"
+        },
+        {
+          "id": "opencode/qwen4-max-free",
+          "family": "qwen4-max-free",
+          "file_path": "api.json?type=all",
+          "file_sha256": "a3addc0e48f8ed67d6ac497cd568d6b9388ce1bbe4a9f89f153d16854e8e459c",
+          "excerpt": "{\"opencode/qwen4-max-free\": {\"id\": \"qwen4-max-free\", \"name\": \"Qwen4 Max Free\", \"description\": \"Flagship multimodal model for coding, office productivity, frontend design, and complex agentic tasks\", \"family\": \"qwen-max-free\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"toggle\"}, {\"type\": \"effort\", \"values\": [\"low\", \"high\", \"xhigh\"]}, {\"type\": \"budget_tokens\", \"max\": 262144}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-16\", \"last_updated\": \"2026-11-16\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1000000, \"output\": 262144}, \"provider\": {\"npm\": \"@ai-sdk/anthropic\", \"api\": \"https://opencode.ai/inference/anthropic/v1\"}, \"cost\": {\"input\": 0, \"output\": 0, \"cache_read\": 0, \"cache_write\": 0}, \"canonical_model_id\": \"alibaba/qwen4-max\"}}",
+          "canonical_id": "alibaba/qwen4-max",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "a3addc0e48f8ed67d6ac497cd568d6b9388ce1bbe4a9f89f153d16854e8e459c",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-23T08:52:40.774938+00:00"
         }
       ],
-      "x_post_text": "🟢 NEW MODEL: chutes/Qwen/Qwen4-Max by concentrate\n\nFirst detected 16 Nov 23:37 UTC in LiteLLM registry\n📅 First released: 2026-11-16\nConfirmed by Registry Update, LiteLLM commit-pinned registry\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: chutes/Qwen/Qwen4-Max by opencode\n\nFirst detected 16 Nov 23:37 UTC in LiteLLM registry\n📅 First released: 2026-11-16\nConfirmed by Registry Update, LiteLLM commit-pinned registry\nIDs: qwen4-max, qwen4-max-free\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-hydrogen-qcd",
@@ -24968,6 +24988,92 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-442f2a57224ba1171a05",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "qwen4-max-free",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "qwen4-max-free",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "opencode/qwen4-max-free",
+          "name": "opencode/qwen4-max-free",
+          "registry_update": true,
+          "released_on": "2026-11-16"
+        }
+      ],
+      "detected_at": "2026-11-23T08:52:41.021267+00:00",
+      "first_seen": "2026-11-23T08:52:40.774938+00:00",
+      "observed_at": "2026-11-23T08:52:41.021267+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "73e5427dca0f888eb2c0df0bdaa549dd1b3f9fee95f3348420c62f2703839592 -> a3addc0e48f8ed67d6ac497cd568d6b9388ce1bbe4a9f89f153d16854e8e459c",
+      "build": "a3addc0e48f8ed67d6ac497cd568d6b9388ce1bbe4a9f89f153d16854e8e459c",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "a3addc0e48f8ed67d6ac497cd568d6b9388ce1bbe4a9f89f153d16854e8e459c",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/a3addc0e48f8ed67d6ac497cd568d6b9388ce1bbe4a9f89f153d16854e8e459c.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/a3addc0e48f8ed67d6ac497cd568d6b9388ce1bbe4a9f89f153d16854e8e459c.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "opencode/qwen4-max-free",
+          "family": "qwen4-max-free",
+          "file_path": "api.json?type=all",
+          "file_sha256": "a3addc0e48f8ed67d6ac497cd568d6b9388ce1bbe4a9f89f153d16854e8e459c",
+          "excerpt": "{\"opencode/qwen4-max-free\": {\"id\": \"qwen4-max-free\", \"name\": \"Qwen4 Max Free\", \"description\": \"Flagship multimodal model for coding, office productivity, frontend design, and complex agentic tasks\", \"family\": \"qwen-max-free\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"toggle\"}, {\"type\": \"effort\", \"values\": [\"low\", \"high\", \"xhigh\"]}, {\"type\": \"budget_tokens\", \"max\": 262144}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-16\", \"last_updated\": \"2026-11-16\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1000000, \"output\": 262144}, \"provider\": {\"npm\": \"@ai-sdk/anthropic\", \"api\": \"https://opencode.ai/inference/anthropic/v1\"}, \"cost\": {\"input\": 0, \"output\": 0, \"cache_read\": 0, \"cache_write\": 0}, \"canonical_model_id\": \"alibaba/qwen4-max\"}}",
+          "canonical_id": "alibaba/qwen4-max",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "a3addc0e48f8ed67d6ac497cd568d6b9388ce1bbe4a9f89f153d16854e8e459c",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-23T08:52:40.774938+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-23T08:52:42.971458+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog a3addc0e48f8: opencode/qwen4-max-free\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "hf-openbmb_MiniCPM5-15B-A2.5B-1113-Dspark",
       "category": "open-source",
@@ -78343,25 +78449,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:44:30.778931+00:00",
+      "last_attempt": "2026-11-23T08:52:40.540121+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:44:31.012487+00:00",
+      "last_success": "2026-11-23T08:52:42.971458+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.234,
-      "latest_build": "73e5427dca0f888eb2c0df0bdaa549dd1b3f9fee95f3348420c62f2703839592",
-      "builds_retained": 99,
-      "identifiers": 9882
+      "duration_seconds": 2.432,
+      "latest_build": "a3addc0e48f8ed67d6ac497cd568d6b9388ce1bbe4a9f89f153d16854e8e459c",
+      "builds_retained": 100,
+      "identifiers": 9883
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-23T08:44:31.119702+00:00",
+      "last_attempt": "2026-11-23T08:52:43.072722+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:44:31.544854+00:00",
+      "last_success": "2026-11-23T08:52:43.515160+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.426,
+      "duration_seconds": 0.443,
       "latest_build": "e6573ba350d4893d0578279c0780e0e2ea25f3ed",
       "builds_retained": 59,
       "identifiers": 7054
@@ -78382,21 +78488,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-23T08:44:32.223725+00:00",
+      "last_attempt": "2026-11-23T08:52:43.621303+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2924,
-      "duration_seconds": 11.192
+      "consecutive_failures": 2928,
+      "duration_seconds": 10.676
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-23T08:36:36.457279+00:00",
+      "last_attempt": "2026-11-23T08:52:54.305154+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:36:36.700269+00:00",
+      "last_success": "2026-11-23T08:52:54.550155+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.243,
+      "duration_seconds": 0.245,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -78406,61 +78512,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:43:37.275802+00:00",
+      "last_attempt": "2026-11-23T08:51:49.399217+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:43:39.543964+00:00",
+      "last_success": "2026-11-23T08:51:51.708375+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.268
+      "duration_seconds": 2.309
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:43:39.544030+00:00",
+      "last_attempt": "2026-11-23T08:51:51.708444+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:43:39.797476+00:00",
+      "last_success": "2026-11-23T08:51:52.028155+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.253
+      "duration_seconds": 0.32
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:43:39.797517+00:00",
+      "last_attempt": "2026-11-23T08:51:52.028193+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:43:47.159130+00:00",
+      "last_success": "2026-11-23T08:51:59.328300+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.362
+      "duration_seconds": 7.3
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:43:47.159208+00:00",
+      "last_attempt": "2026-11-23T08:51:59.328375+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:44:30.778867+00:00",
+      "last_success": "2026-11-23T08:52:40.540045+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 43.62,
+      "duration_seconds": 41.212,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-23T08:43:47.424987+00:00",
+          "checked_at": "2026-11-23T08:51:59.595460+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-23T08:43:56.003608+00:00",
+          "checked_at": "2026-11-23T08:52:08.165537+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-23T08:43:56.152485+00:00",
+          "checked_at": "2026-11-23T08:52:08.590946+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-23T08:43:56.152506+00:00",
+          "checked_at": "2026-11-23T08:52:08.590966+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -78468,25 +78574,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:44:30.778931+00:00",
+      "last_attempt": "2026-11-23T08:52:40.540121+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:44:31.012487+00:00",
+      "last_success": "2026-11-23T08:52:42.971458+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.234,
-      "latest_build": "73e5427dca0f888eb2c0df0bdaa549dd1b3f9fee95f3348420c62f2703839592",
-      "builds_retained": 99,
-      "identifiers": 9882
+      "duration_seconds": 2.432,
+      "latest_build": "a3addc0e48f8ed67d6ac497cd568d6b9388ce1bbe4a9f89f153d16854e8e459c",
+      "builds_retained": 100,
+      "identifiers": 9883
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-23T08:44:31.119702+00:00",
+      "last_attempt": "2026-11-23T08:52:43.072722+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:44:31.544854+00:00",
+      "last_success": "2026-11-23T08:52:43.515160+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.426,
+      "duration_seconds": 0.443,
       "latest_build": "e6573ba350d4893d0578279c0780e0e2ea25f3ed",
       "builds_retained": 59,
       "identifiers": 7054
@@ -78507,21 +78613,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-23T08:44:32.223725+00:00",
+      "last_attempt": "2026-11-23T08:52:43.621303+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2924,
-      "duration_seconds": 11.192
+      "consecutive_failures": 2928,
+      "duration_seconds": 10.676
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-23T08:36:36.457279+00:00",
+      "last_attempt": "2026-11-23T08:52:54.305154+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:36:36.700269+00:00",
+      "last_success": "2026-11-23T08:52:54.550155+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.243,
+      "duration_seconds": 0.245,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -78529,22 +78635,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:44:43.422364+00:00",
+      "last_attempt": "2026-11-23T08:52:54.754533+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:44:48.463845+00:00",
+      "last_success": "2026-11-23T08:52:59.546441+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.042
+      "duration_seconds": 4.792
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:44:48.463905+00:00",
+      "last_attempt": "2026-11-23T08:52:59.546501+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:44:50.088016+00:00",
+      "last_success": "2026-11-23T08:53:01.481147+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.624
+      "duration_seconds": 1.935
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -78559,27 +78665,27 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:45:00.290457+00:00",
+      "last_attempt": "2026-11-23T08:53:01.481198+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:45:01.358935+00:00",
+      "last_success": "2026-11-23T08:53:02.556269+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.068
+      "duration_seconds": 1.075
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:45:01.358978+00:00",
+      "last_attempt": "2026-11-23T08:53:02.556317+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:45:01.401684+00:00",
+      "last_success": "2026-11-23T08:53:02.601452+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.043
+      "duration_seconds": 0.045
     }
   },
   "identities": {
-    "identifiers": 31320,
-    "declared_aliases": 18323,
+    "identifiers": 31321,
+    "declared_aliases": 18324,
     "pending_candidates": 2
   },
   "intelligence_metrics": {
@@ -78600,8 +78706,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 444,
-      "events": 444,
+      "complete": 445,
+      "events": 445,
       "rate": 1.0
     },
     "source_health": {
