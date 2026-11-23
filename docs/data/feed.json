@@ -1,17 +1,79 @@
 {
-  "generated_at": "2026-11-23T19:52:14.525564+00:00",
-  "scan_completed_at": "2026-11-23T19:53:37.871121+00:00",
+  "generated_at": "2026-11-23T19:56:34.558360+00:00",
+  "scan_completed_at": "2026-11-23T19:58:17.387957+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 320,
-    "leaks": 39,
+    "leaks": 38,
     "releases": 86,
-    "stories_24h": 40,
-    "sources_ok": 13,
+    "stories_24h": 41,
+    "sources_ok": 15,
     "total_cards": 752,
     "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-mistral",
+      "group": "mistral",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Mistral",
+      "provider_slug": "mistral",
+      "provider_name": "Mistral",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-23T19:57:35.712816+00:00",
+      "updated_at": "2026-11-23T19:57:35.712816+00:00",
+      "first_source": "Registry Update",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "mistral-medium-latest",
+          "name": "mistral/mistral-medium-latest"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-23T19:57:35.712816+00:00",
+          "title": "mistral-medium-latest",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/5cc5aae07c228b523b3554998df2721fe8e92982",
+          "backfill": false,
+          "build": "5cc5aae07c228b523b3554998df2721fe8e92982",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/119525d7a0f01b94358210702f44cb9d341aeeab184744b3bfd3d5813510464d.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · MISTRAL",
+      "card_ids": [
+        "intel-3f447851332a6c87a30f"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": true,
+      "registry_evidence": [
+        {
+          "id": "mistral/mistral-medium-latest",
+          "family": "mistral-medium-latest",
+          "file_path": "providers/mistral/models/mistral-medium-latest.toml",
+          "file_sha256": "0638922630160762de3aff32cc80ec2ccc6aa0c422e7d9dfe9aafcec71b79a8c",
+          "excerpt": "{\"mistral/mistral-medium-latest\": {\"schema\": 2, \"base_model\": \"mistral/mistral-medium-latest\", \"status\": \"deprecated\", \"modalities\": {\"input\": [\"text\", \"image/png\", \"image/jpeg\", \"image/webp\", \"image/gif\", \"application/pdf\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"strict\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"default\": {\"type\": \"effort\", \"value\": \"none\"}, \"effort\": [\"none\", \"high\"]}, \"structured_output\": true, \"top_k\": false, \"system_updates\": true, \"stream_usage\": true, \"prompt_cache_key\": true, \"cache\": {\"implicit\": {\"min_tokens\": 64}}}, \"cost\": {\"text\": {\"input\": {\"price\": 1.5, \"cache\": {\"read\": 0.15}}, \"output\": {\"price\": 7.5}}}}}",
+          "canonical_id": "mistral/mistral-medium-latest",
+          "provider": "mistral",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5cc5aae07c228b523b3554998df2721fe8e92982/providers/mistral/models/mistral-medium-latest.toml",
+          "build": "5cc5aae07c228b523b3554998df2721fe8e92982",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5cc5aae07c228b523b3554998df2721fe8e92982",
+          "first_seen": "2026-11-23T19:54:45+00:00"
+        }
+      ],
+      "x_post_text": "Registry Update 5cc5aae07c22: mistral-medium-latest\n\nunverified candidate, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/5cc5aae07c228b523b3554998df2721fe8e92982"
+    },
     {
       "id": "story-gemini-4-neon-cyber-permissive",
       "group": "gemini-4-neon-cyber-permissive",
@@ -25273,54 +25335,6 @@
       "x_post_text": "🟠 LEAK: Claude Mythos 5.2 Fast by Anthropic\n\nFirst detected 09 Nov 19:57 UTC in LiteLLM registry\nConfirmed by Azure AI Foundry Partner Models, LiteLLM commit-pinned registry\nIDs: claude-mythos-5-2, claude-mythos-5-2-fast\n\nvia @StatsWire"
     },
     {
-      "id": "story-muse-ember-nonprod",
-      "group": "muse-ember-nonprod",
-      "kind": "leak",
-      "open_weights": false,
-      "title": "Muse Ember Nonprod",
-      "provider_slug": "meta",
-      "provider_name": "Meta",
-      "accent_color": "#3b82f6",
-      "detected_at": "2026-11-09T19:54:05.184839+00:00",
-      "updated_at": "2026-11-09T19:54:05.184839+00:00",
-      "first_source": "Vertex AI Quotas registry",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [
-        "nonprod"
-      ],
-      "models": [
-        {
-          "id": "muse-ember-nonprod",
-          "name": "base_model:muse-ember-nonprod"
-        }
-      ],
-      "sources": [
-        {
-          "label": "Vertex AI Quotas registry",
-          "scanner": "vertex-ai-quotas",
-          "detected_at": "2026-11-09T19:54:05.184839+00:00",
-          "title": "New META Model(s) on Google Cloud Vertex AI: muse-ember-nonprod",
-          "url": "https://console.cloud.google.com/iam-admin/quotas",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "LEAK · META",
-      "card_ids": [
-        "vertex-quota-meta-f083bf91"
-      ],
-      "event_label": "",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [],
-      "x_post_text": "🟠 LEAK: Muse Ember Nonprod by Meta\n\nFirst detected 09 Nov 19:54 UTC in Vertex AI Quotas registry\nCodename: nonprod\n\nvia @StatsWire"
-    },
-    {
       "id": "story-gemini-4-carbon",
       "group": "gemini-4-carbon",
       "kind": "release",
@@ -25653,6 +25667,95 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-3f447851332a6c87a30f",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "mistral-medium-latest",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "unverified"
+        },
+        "attribution": {
+          "level": "unknown"
+        },
+        "availability": {
+          "level": "unknown"
+        },
+        "novelty": {
+          "level": "candidate"
+        }
+      },
+      "candidate_only": true,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "mistral-medium-latest",
+      "provider_slug": "mistral",
+      "provider_name": "Mistral",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "mistral/mistral-medium-latest",
+          "name": "mistral/mistral-medium-latest",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-23T19:57:35.712816+00:00",
+      "first_seen": "2026-11-23T19:54:45+00:00",
+      "observed_at": "2026-11-23T19:57:35.712816+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "b55f4ee20cd55b7ad6386812d99462875cbba044 -> 5cc5aae07c228b523b3554998df2721fe8e92982",
+      "build": "5cc5aae07c228b523b3554998df2721fe8e92982",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/5cc5aae07c228b523b3554998df2721fe8e92982",
+      "artifact_sha256": "119525d7a0f01b94358210702f44cb9d341aeeab184744b3bfd3d5813510464d",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/119525d7a0f01b94358210702f44cb9d341aeeab184744b3bfd3d5813510464d.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/119525d7a0f01b94358210702f44cb9d341aeeab184744b3bfd3d5813510464d.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "mistral/mistral-medium-latest",
+          "family": "mistral-medium-latest",
+          "file_path": "providers/mistral/models/mistral-medium-latest.toml",
+          "file_sha256": "0638922630160762de3aff32cc80ec2ccc6aa0c422e7d9dfe9aafcec71b79a8c",
+          "excerpt": "{\"mistral/mistral-medium-latest\": {\"schema\": 2, \"base_model\": \"mistral/mistral-medium-latest\", \"status\": \"deprecated\", \"modalities\": {\"input\": [\"text\", \"image/png\", \"image/jpeg\", \"image/webp\", \"image/gif\", \"application/pdf\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"strict\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"default\": {\"type\": \"effort\", \"value\": \"none\"}, \"effort\": [\"none\", \"high\"]}, \"structured_output\": true, \"top_k\": false, \"system_updates\": true, \"stream_usage\": true, \"prompt_cache_key\": true, \"cache\": {\"implicit\": {\"min_tokens\": 64}}}, \"cost\": {\"text\": {\"input\": {\"price\": 1.5, \"cache\": {\"read\": 0.15}}, \"output\": {\"price\": 7.5}}}}}",
+          "canonical_id": "mistral/mistral-medium-latest",
+          "provider": "mistral",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5cc5aae07c228b523b3554998df2721fe8e92982/providers/mistral/models/mistral-medium-latest.toml",
+          "build": "5cc5aae07c228b523b3554998df2721fe8e92982",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5cc5aae07c228b523b3554998df2721fe8e92982",
+          "first_seen": "2026-11-23T19:54:45+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "mistral/mistral-medium-latest",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/21523c8f267eac4c915855af42a70d00b2c878e13b8a85547fd8855b49c69dec.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/5cc5aae07c228b523b3554998df2721fe8e92982"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/5cc5aae07c228b523b3554998df2721fe8e92982"
+        }
+      ],
+      "tracker_observed_at": "2026-11-23T19:57:43.419369+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 5cc5aae07c22: mistral/mistral-medium-latest\n\nunverified candidate, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/5cc5aae07c228b523b3554998df2721fe8e92982"
+    },
     {
       "id": "intel-cc8a53fb601f54d452d3",
       "scanner": "litellm-intelligence",
@@ -81737,45 +81840,6 @@
       "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 model keys!\n\n• anthropic.claude-mythos-5-2 (anthropic.claude-mythos-5-2)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
     },
     {
-      "id": "vertex-quota-meta-f083bf91",
-      "category": "cli-sdk-diff",
-      "scanner": "vertex-ai-quotas",
-      "header": "GOOGLE CLOUD VERTEX AI QUOTA REGISTRY · META",
-      "title": "New META Model(s) on Google Cloud Vertex AI: muse-ember-nonprod",
-      "subtitle": "Detected in Google Cloud Vertex AI `base_model:` quota dimensions (1 new)",
-      "build_label": "Vertex AI Quotas",
-      "build_transition": "aiplatform.googleapis.com (+1 base_model)",
-      "models": [
-        {
-          "id": "muse-ember-nonprod",
-          "name": "base_model:muse-ember-nonprod"
-        }
-      ],
-      "evidence": "console.cloud.google.com/iam-admin/quotas (aiplatform.googleapis.com)",
-      "source_text": "Google Cloud Vertex AI `base_model` quota dimension registry.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "META",
-      "provider_slug": "meta",
-      "accent_color": "#3b82f6",
-      "links": [
-        {
-          "label": "GCP Vertex AI Quotas",
-          "url": "https://console.cloud.google.com/iam-admin/quotas"
-        },
-        {
-          "label": "Vertex AI Models",
-          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
-        }
-      ],
-      "detected_at": "2026-11-09T19:54:05.184839+00:00",
-      "codenames": [
-        "nonprod"
-      ],
-      "pricing": null,
-      "x_post_text": "🚨 GOOGLE CLOUD VERTEX AI QUOTA REGISTRY · META\nNew META Model(s) on Google Cloud Vertex AI: muse-ember-nonprod spotted in Vertex AI Quotas aiplatform.googleapis.com (+1 base_model)!\n\n• base_model:muse-ember-nonprod (muse-ember-nonprod)\n\nEvidence: console.cloud.google.com/iam-admin/quotas (aiplatform.googleapis.com)\nSource: Google Cloud Vertex AI `base_model` quota dimension registry.\n\nTracked by @StatsWire"
-    },
-    {
       "id": "ag-acp-1.4.3-revision-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
@@ -81939,25 +82003,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T19:53:08.047927+00:00",
+      "last_attempt": "2026-11-23T19:57:28.972598+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T19:53:08.445461+00:00",
+      "last_success": "2026-11-23T19:57:31.536275+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.398,
-      "latest_build": "1a2ce0ec99f1e0d7b3aa0e27888819f540f4230bcbbb3e7ca513b22fb3ad0002",
-      "builds_retained": 120,
+      "duration_seconds": 2.564,
+      "latest_build": "4abf6dd59a90ca6c196f2d80a282725ef429c741031f57503b8c3c69dec339d9",
+      "builds_retained": 121,
       "identifiers": 9899
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-23T19:53:08.556366+00:00",
+      "last_attempt": "2026-11-23T19:57:31.648604+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T19:53:11.483321+00:00",
+      "last_success": "2026-11-23T19:57:32.089028+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.927,
+      "duration_seconds": 0.441,
       "latest_build": "9bf9d88111b27f9978de80a3149e381849da83ba",
       "builds_retained": 61,
       "identifiers": 7055
@@ -81965,24 +82029,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-23T19:46:32.720535+00:00",
+      "last_attempt": "2026-11-23T19:57:32.203928+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T19:46:33.236687+00:00",
+      "last_success": "2026-11-23T19:57:43.419369+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.517,
-      "latest_build": "b55f4ee20cd55b7ad6386812d99462875cbba044",
-      "builds_retained": 128,
+      "duration_seconds": 11.216,
+      "latest_build": "9ec5ef270de65b398b52b3f32099ef356e2fab6f",
+      "builds_retained": 130,
       "identifiers": 11082
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-23T19:53:11.594113+00:00",
+      "last_attempt": "2026-11-23T19:57:43.530548+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3206,
-      "duration_seconds": 13.97
+      "consecutive_failures": 3208,
+      "duration_seconds": 13.264
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -82002,61 +82066,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T19:52:14.525617+00:00",
+      "last_attempt": "2026-11-23T19:56:34.558412+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T19:52:17.210526+00:00",
+      "last_success": "2026-11-23T19:56:36.828796+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.685
+      "duration_seconds": 2.27
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T19:52:17.210597+00:00",
+      "last_attempt": "2026-11-23T19:56:36.828861+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T19:52:17.451077+00:00",
+      "last_success": "2026-11-23T19:56:37.109016+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.24
+      "duration_seconds": 0.28
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T19:52:17.451126+00:00",
+      "last_attempt": "2026-11-23T19:56:37.109064+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T19:52:25.979324+00:00",
+      "last_success": "2026-11-23T19:56:45.284608+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.528
+      "duration_seconds": 8.176
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T19:52:25.979381+00:00",
+      "last_attempt": "2026-11-23T19:56:45.284660+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T19:53:08.047864+00:00",
+      "last_success": "2026-11-23T19:57:28.972539+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 42.069,
+      "duration_seconds": 43.688,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-23T19:52:26.220198+00:00",
+          "checked_at": "2026-11-23T19:56:45.533133+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-23T19:52:34.803281+00:00",
+          "checked_at": "2026-11-23T19:56:54.630947+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-23T19:52:34.973404+00:00",
+          "checked_at": "2026-11-23T19:56:54.829561+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-23T19:52:34.973421+00:00",
+          "checked_at": "2026-11-23T19:56:54.829579+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -82064,25 +82128,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T19:53:08.047927+00:00",
+      "last_attempt": "2026-11-23T19:57:28.972598+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T19:53:08.445461+00:00",
+      "last_success": "2026-11-23T19:57:31.536275+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.398,
-      "latest_build": "1a2ce0ec99f1e0d7b3aa0e27888819f540f4230bcbbb3e7ca513b22fb3ad0002",
-      "builds_retained": 120,
+      "duration_seconds": 2.564,
+      "latest_build": "4abf6dd59a90ca6c196f2d80a282725ef429c741031f57503b8c3c69dec339d9",
+      "builds_retained": 121,
       "identifiers": 9899
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-23T19:53:08.556366+00:00",
+      "last_attempt": "2026-11-23T19:57:31.648604+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T19:53:11.483321+00:00",
+      "last_success": "2026-11-23T19:57:32.089028+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.927,
+      "duration_seconds": 0.441,
       "latest_build": "9bf9d88111b27f9978de80a3149e381849da83ba",
       "builds_retained": 61,
       "identifiers": 7055
@@ -82090,24 +82154,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-23T19:46:32.720535+00:00",
+      "last_attempt": "2026-11-23T19:57:32.203928+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T19:46:33.236687+00:00",
+      "last_success": "2026-11-23T19:57:43.419369+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.517,
-      "latest_build": "b55f4ee20cd55b7ad6386812d99462875cbba044",
-      "builds_retained": 128,
+      "duration_seconds": 11.216,
+      "latest_build": "9ec5ef270de65b398b52b3f32099ef356e2fab6f",
+      "builds_retained": 130,
       "identifiers": 11082
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-23T19:53:11.594113+00:00",
+      "last_attempt": "2026-11-23T19:57:43.530548+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3206,
-      "duration_seconds": 13.97
+      "consecutive_failures": 3208,
+      "duration_seconds": 13.264
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -82125,64 +82189,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T19:53:25.567099+00:00",
+      "last_attempt": "2026-11-23T19:57:56.797955+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T19:53:33.473533+00:00",
+      "last_success": "2026-11-23T19:58:04.797462+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.906
+      "duration_seconds": 8.0
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T19:53:33.473597+00:00",
+      "last_attempt": "2026-11-23T19:58:04.797524+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T19:53:35.418956+00:00",
+      "last_success": "2026-11-23T19:58:06.327779+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.945
+      "duration_seconds": 1.53
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-23T19:46:55.802799+00:00",
+      "last_attempt": "2026-11-23T19:58:06.327835+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T19:47:05.266135+00:00",
+      "last_success": "2026-11-23T19:58:15.902240+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.463
+      "duration_seconds": 9.574
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T19:53:35.419026+00:00",
+      "last_attempt": "2026-11-23T19:58:15.902293+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T19:53:37.497865+00:00",
+      "last_success": "2026-11-23T19:58:16.925109+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.079
+      "duration_seconds": 1.023
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T19:53:37.497911+00:00",
+      "last_attempt": "2026-11-23T19:58:16.925151+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T19:53:37.533323+00:00",
+      "last_success": "2026-11-23T19:58:17.030252+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.035
+      "duration_seconds": 0.105
     }
   },
   "identities": {
     "identifiers": 31366,
     "declared_aliases": 18370,
-    "pending_candidates": 3
+    "pending_candidates": 4
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 370,
-      "seconds_mean": 3664.7571587405405,
+      "samples": 371,
+      "seconds_mean": 3655.3392494609166,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -82196,8 +82260,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 475,
-      "events": 475,
+      "complete": 476,
+      "events": 476,
       "rate": 1.0
     },
     "source_health": {
