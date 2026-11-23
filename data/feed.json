@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-23T08:51:49.399141+00:00",
-  "scan_completed_at": "2026-11-23T08:53:02.836413+00:00",
+  "generated_at": "2026-11-23T08:53:49.886584+00:00",
+  "scan_completed_at": "2026-11-23T08:55:20.512329+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 313,
@@ -8,8 +8,8 @@
     "releases": 84,
     "stories_24h": 27,
     "sources_ok": 14,
-    "total_cards": 722,
-    "new_in_this_scan": 1
+    "total_cards": 724,
+    "new_in_this_scan": 2
   },
   "stories": [
     {
@@ -18433,14 +18433,14 @@
       "group": "qwen-4",
       "kind": "release",
       "open_weights": false,
-      "title": "chutes/Qwen/Qwen4-Max",
+      "title": "Qwen4 Max Free",
       "provider_slug": "unknown",
       "provider_name": "opencode",
       "accent_color": "#a855f7",
       "detected_at": "2026-11-16T23:37:28.528456+00:00",
-      "updated_at": "2026-11-23T08:52:41.021267+00:00",
+      "updated_at": "2026-11-23T08:54:47.434072+00:00",
       "first_source": "LiteLLM registry",
-      "lead": "",
+      "lead": "6 days before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "2026-11-16",
       "pricing": "",
       "codenames": [],
@@ -18486,9 +18486,19 @@
           "backfill": false,
           "build": "2f29a55a5102fbf23e406d313ea4b91a7257e48f",
           "evidence_path": "data/intelligence/evidence/litellm-intelligence/35324269521018afbbb23413133d2196b04bdd84a5a6fbf1d1964c8fb42e851d.json.gz"
+        },
+        {
+          "label": "Opencode Zen Stealth & Model Gateway",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-11-23T08:54:22.282341+00:00",
+          "title": "New Model on OpenCode Zen: qwen4-max-free",
+          "url": "https://opencode.ai/zen/v1/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 3,
+      "source_count": 4,
       "backfill": false,
       "header": "NEW MODEL · OPENCODE",
       "card_ids": [
@@ -18508,7 +18518,9 @@
         "intel-51bcd6ba84215f3f45c1",
         "intel-e91fc21cd52cb92d3184",
         "intel-ae73b6e1b60c4175bf10",
-        "intel-442f2a57224ba1171a05"
+        "intel-442f2a57224ba1171a05",
+        "opencode-zen-diff-cd2c1235",
+        "intel-f728fbf35cf65a6206cd"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -18954,9 +18966,25 @@
           "build": "a3addc0e48f8ed67d6ac497cd568d6b9388ce1bbe4a9f89f153d16854e8e459c",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-23T08:52:40.774938+00:00"
+        },
+        {
+          "id": "opencode/qwen4-max-free",
+          "family": "qwen4-max-free",
+          "file_path": "providers/opencode/models/qwen4-max-free.toml",
+          "file_sha256": "bf6e70832728358db98485228e13a98c0ce4b587671f7fb914a596dfb09412d4",
+          "excerpt": "{\"opencode/qwen4-max-free\": {\"schema\": 2, \"base_model\": \"alibaba/qwen4-max\", \"family\": \"qwen-max-free\", \"name\": \"Qwen4 Max Free\", \"modalities\": {\"input\": [\"text\", \"image/bmp\", \"image/jpeg\", \"image/png\", \"image/tiff\", \"image/webp\", \"image/heic\", \"video/mp4\", \"video/x-msvideo\", \"video/x-matroska\", \"video/quicktime\", \"video/x-flv\", \"video/x-ms-wmv\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"toggle\": true, \"effort\": [\"low\", \"high\", \"xhigh\"], \"budget\": {\"max\": 262144}}, \"structured_output\": true, \"system_updates\": true, \"cache\": {\"implicit\": true, \"explicit\": {\"ttl\": [\"5m\", \"1h\"]}}}, \"api\": {\"messages\": {\"base_url\": \"https://opencode.ai/inference/anthropic/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0, \"cache\": {\"read\": 0, \"write\": 0}}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "alibaba/qwen4-max",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6b6e7e8aee569f104691d4ccabd1577ebb2ac239/providers/opencode/models/qwen4-max-free.toml",
+          "build": "6b6e7e8aee569f104691d4ccabd1577ebb2ac239",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6b6e7e8aee569f104691d4ccabd1577ebb2ac239",
+          "first_seen": "2026-11-23T08:47:56+00:00"
         }
       ],
-      "x_post_text": "🟢 NEW MODEL: chutes/Qwen/Qwen4-Max by opencode\n\nFirst detected 16 Nov 23:37 UTC in LiteLLM registry\n📅 First released: 2026-11-16\nConfirmed by Registry Update, LiteLLM commit-pinned registry\nIDs: qwen4-max, qwen4-max-free\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Qwen4 Max Free by opencode\n\nFirst detected 16 Nov 23:37 UTC in LiteLLM registry\n📅 First released: 2026-11-16\n⏱ 6 days before it went live on Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-23T08:55:20.510260+00:00"
     },
     {
       "id": "story-gemini-4-hydrogen-qcd",
@@ -24988,6 +25016,127 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-f728fbf35cf65a6206cd",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "qwen4-max-free",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "qwen4-max-free",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "opencode/qwen4-max-free",
+          "name": "opencode/qwen4-max-free",
+          "registry_update": true,
+          "released_on": "2026-11-16"
+        }
+      ],
+      "detected_at": "2026-11-23T08:54:47.434072+00:00",
+      "first_seen": "2026-11-23T08:47:56+00:00",
+      "observed_at": "2026-11-23T08:54:47.434072+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "b53eb09d1ef8296252deba01e78bfd81c85d36d7 -> 6b6e7e8aee569f104691d4ccabd1577ebb2ac239",
+      "build": "6b6e7e8aee569f104691d4ccabd1577ebb2ac239",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/6b6e7e8aee569f104691d4ccabd1577ebb2ac239",
+      "artifact_sha256": "33e7e2b124e3bb8ff9a27490ad8004e6eb33a6a608a6ff32eab04966ca674299",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/33e7e2b124e3bb8ff9a27490ad8004e6eb33a6a608a6ff32eab04966ca674299.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/33e7e2b124e3bb8ff9a27490ad8004e6eb33a6a608a6ff32eab04966ca674299.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "opencode/qwen4-max-free",
+          "family": "qwen4-max-free",
+          "file_path": "providers/opencode/models/qwen4-max-free.toml",
+          "file_sha256": "bf6e70832728358db98485228e13a98c0ce4b587671f7fb914a596dfb09412d4",
+          "excerpt": "{\"opencode/qwen4-max-free\": {\"schema\": 2, \"base_model\": \"alibaba/qwen4-max\", \"family\": \"qwen-max-free\", \"name\": \"Qwen4 Max Free\", \"modalities\": {\"input\": [\"text\", \"image/bmp\", \"image/jpeg\", \"image/png\", \"image/tiff\", \"image/webp\", \"image/heic\", \"video/mp4\", \"video/x-msvideo\", \"video/x-matroska\", \"video/quicktime\", \"video/x-flv\", \"video/x-ms-wmv\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"toggle\": true, \"effort\": [\"low\", \"high\", \"xhigh\"], \"budget\": {\"max\": 262144}}, \"structured_output\": true, \"system_updates\": true, \"cache\": {\"implicit\": true, \"explicit\": {\"ttl\": [\"5m\", \"1h\"]}}}, \"api\": {\"messages\": {\"base_url\": \"https://opencode.ai/inference/anthropic/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0, \"cache\": {\"read\": 0, \"write\": 0}}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "alibaba/qwen4-max",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6b6e7e8aee569f104691d4ccabd1577ebb2ac239/providers/opencode/models/qwen4-max-free.toml",
+          "build": "6b6e7e8aee569f104691d4ccabd1577ebb2ac239",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6b6e7e8aee569f104691d4ccabd1577ebb2ac239",
+          "first_seen": "2026-11-23T08:47:56+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/6b6e7e8aee569f104691d4ccabd1577ebb2ac239"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/6b6e7e8aee569f104691d4ccabd1577ebb2ac239"
+        }
+      ],
+      "tracker_observed_at": "2026-11-23T08:54:49.743713+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 6b6e7e8aee56: opencode/qwen4-max-free\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/6b6e7e8aee569f104691d4ccabd1577ebb2ac239"
+    },
+    {
+      "id": "opencode-zen-diff-cd2c1235",
+      "category": "cli-sdk-diff",
+      "scanner": "gateway-radar",
+      "header": "OPENCODE ZEN STEALTH & MODEL GATEWAY · LIVE DIFF",
+      "title": "New Model on OpenCode Zen: qwen4-max-free",
+      "subtitle": "Newly exposed model / stealth codename in opencode.ai/zen/v1/models (+1 new)",
+      "build_label": "Gateway Diff",
+      "build_transition": "+1 model(s) (106 active)",
+      "models": [
+        {
+          "id": "qwen4-max-free",
+          "name": "Qwen4 Max Free",
+          "released_on": "2026-11-16"
+        }
+      ],
+      "evidence": "opencode.ai/zen/v1/models",
+      "source_text": "public OpenCode Zen /v1/models catalog.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "QWEN · ALIBABA",
+      "provider_slug": "qwen",
+      "accent_color": "#a855f7",
+      "links": [
+        {
+          "label": "OpenCode Zen Models JSON",
+          "url": "https://opencode.ai/zen/v1/models"
+        }
+      ],
+      "detected_at": "2026-11-23T08:54:22.282341+00:00",
+      "tracker_observed_at": "2026-11-23T08:54:43.793042+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 OPENCODE ZEN STEALTH & MODEL GATEWAY · LIVE DIFF\nNew Model on OpenCode Zen: qwen4-max-free spotted in Gateway Diff +1 model(s) (106 active)!\n\n• Qwen4 Max Free (qwen4-max-free)\n\nEvidence: opencode.ai/zen/v1/models\nSource: public OpenCode Zen /v1/models catalog.\n\nTracked by @StatsWire"
+    },
     {
       "id": "intel-442f2a57224ba1171a05",
       "scanner": "models-dev-api",
@@ -78449,12 +78598,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:52:40.540121+00:00",
+      "last_attempt": "2026-11-23T08:54:43.793098+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:52:42.971458+00:00",
+      "last_success": "2026-11-23T08:54:44.039720+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.432,
+      "duration_seconds": 0.247,
       "latest_build": "a3addc0e48f8ed67d6ac497cd568d6b9388ce1bbe4a9f89f153d16854e8e459c",
       "builds_retained": 100,
       "identifiers": 9883
@@ -78475,24 +78624,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-23T08:44:31.657457+00:00",
+      "last_attempt": "2026-11-23T08:54:44.144030+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:44:32.113047+00:00",
+      "last_success": "2026-11-23T08:54:49.743713+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.456,
-      "latest_build": "b53eb09d1ef8296252deba01e78bfd81c85d36d7",
-      "builds_retained": 108,
-      "identifiers": 11054
+      "duration_seconds": 5.6,
+      "latest_build": "6b6e7e8aee569f104691d4ccabd1577ebb2ac239",
+      "builds_retained": 109,
+      "identifiers": 11055
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-23T08:52:43.621303+00:00",
+      "last_attempt": "2026-11-23T08:54:49.846967+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2928,
-      "duration_seconds": 10.676
+      "consecutive_failures": 2929,
+      "duration_seconds": 10.653
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -78512,61 +78661,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:51:49.399217+00:00",
+      "last_attempt": "2026-11-23T08:53:49.886652+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:51:51.708375+00:00",
+      "last_success": "2026-11-23T08:53:52.185200+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.309
+      "duration_seconds": 2.299
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:51:51.708444+00:00",
+      "last_attempt": "2026-11-23T08:53:52.185263+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:51:52.028155+00:00",
+      "last_success": "2026-11-23T08:53:52.439284+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.32
+      "duration_seconds": 0.254
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:51:52.028193+00:00",
+      "last_attempt": "2026-11-23T08:53:52.439321+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:51:59.328300+00:00",
+      "last_success": "2026-11-23T08:54:00.541944+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.3
+      "duration_seconds": 8.103
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:51:59.328375+00:00",
+      "last_attempt": "2026-11-23T08:54:00.542009+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:52:40.540045+00:00",
+      "last_success": "2026-11-23T08:54:43.793042+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 41.212,
+      "duration_seconds": 43.251,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-23T08:51:59.595460+00:00",
+          "checked_at": "2026-11-23T08:54:00.762765+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-23T08:52:08.165537+00:00",
+          "checked_at": "2026-11-23T08:54:09.397010+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-23T08:52:08.590946+00:00",
+          "checked_at": "2026-11-23T08:54:09.554791+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-23T08:52:08.590966+00:00",
+          "checked_at": "2026-11-23T08:54:09.554810+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -78574,12 +78723,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:52:40.540121+00:00",
+      "last_attempt": "2026-11-23T08:54:43.793098+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:52:42.971458+00:00",
+      "last_success": "2026-11-23T08:54:44.039720+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.432,
+      "duration_seconds": 0.247,
       "latest_build": "a3addc0e48f8ed67d6ac497cd568d6b9388ce1bbe4a9f89f153d16854e8e459c",
       "builds_retained": 100,
       "identifiers": 9883
@@ -78600,24 +78749,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-23T08:44:31.657457+00:00",
+      "last_attempt": "2026-11-23T08:54:44.144030+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:44:32.113047+00:00",
+      "last_success": "2026-11-23T08:54:49.743713+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.456,
-      "latest_build": "b53eb09d1ef8296252deba01e78bfd81c85d36d7",
-      "builds_retained": 108,
-      "identifiers": 11054
+      "duration_seconds": 5.6,
+      "latest_build": "6b6e7e8aee569f104691d4ccabd1577ebb2ac239",
+      "builds_retained": 109,
+      "identifiers": 11055
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-23T08:52:43.621303+00:00",
+      "last_attempt": "2026-11-23T08:54:49.846967+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 2928,
-      "duration_seconds": 10.676
+      "consecutive_failures": 2929,
+      "duration_seconds": 10.653
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -78635,64 +78784,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:52:54.754533+00:00",
+      "last_attempt": "2026-11-23T08:55:00.505729+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:52:59.546441+00:00",
+      "last_success": "2026-11-23T08:55:05.611206+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.792
+      "duration_seconds": 5.106
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:52:59.546501+00:00",
+      "last_attempt": "2026-11-23T08:55:05.611266+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:53:01.481147+00:00",
+      "last_success": "2026-11-23T08:55:07.015356+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.935
+      "duration_seconds": 1.404
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-23T08:44:50.088074+00:00",
+      "last_attempt": "2026-11-23T08:55:07.015416+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:45:00.290394+00:00",
+      "last_success": "2026-11-23T08:55:17.189327+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 10.202
+      "duration_seconds": 10.174
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:53:01.481198+00:00",
+      "last_attempt": "2026-11-23T08:55:17.189374+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:53:02.556269+00:00",
+      "last_success": "2026-11-23T08:55:18.526338+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.075
+      "duration_seconds": 1.337
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-23T08:53:02.556317+00:00",
+      "last_attempt": "2026-11-23T08:55:18.526382+00:00",
       "status": "ok",
-      "last_success": "2026-11-23T08:53:02.601452+00:00",
+      "last_success": "2026-11-23T08:55:18.576786+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.045
+      "duration_seconds": 0.05
     }
   },
   "identities": {
-    "identifiers": 31321,
-    "declared_aliases": 18324,
+    "identifiers": 31322,
+    "declared_aliases": 18325,
     "pending_candidates": 2
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 350,
-      "seconds_mean": 3850.1039708942853,
+      "samples": 351,
+      "seconds_mean": 3840.3071905555557,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -78706,8 +78855,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 445,
-      "events": 445,
+      "complete": 446,
+      "events": 446,
       "rate": 1.0
     },
     "source_health": {
