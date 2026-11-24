@@ -1,17 +1,77 @@
 {
-  "generated_at": "2026-11-24T03:09:24.103242+00:00",
-  "scan_completed_at": "2026-11-24T03:10:52.507292+00:00",
+  "generated_at": "2026-11-24T03:11:42.144086+00:00",
+  "scan_completed_at": "2026-11-24T03:13:12.143694+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 322,
+    "stories": 323,
     "leaks": 37,
     "releases": 87,
-    "stories_24h": 34,
-    "sources_ok": 12,
-    "total_cards": 746,
-    "new_in_this_scan": 2
+    "stories_24h": 35,
+    "sources_ok": 14,
+    "total_cards": 747,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-fallback-generalizations",
+      "group": "fallback-generalizations",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Fallback Generalizations",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-24T03:12:43.437886+00:00",
+      "updated_at": "2026-11-24T03:12:43.437886+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "fallback_generalizations",
+          "name": "fallback_generalizations"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-24T03:12:43.437886+00:00",
+          "title": "fallback_generalizations",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/ea8285796787367ae925c12d1903a1ba7f5b23cd/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "ea8285796787367ae925c12d1903a1ba7f5b23cd",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/0fe20f61e962a4a297e10d566f74dbef963daa6164feb14f76017b0a4a346427.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-993a631a21bd2acaac20"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "fallback_generalizations",
+          "family": "fallback_generalizations",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"fallback_generalizations\": {\"rules\": [{\"name\": \"bedrock-claude-ids\", \"pattern\": \"^(?:[a-z-]+\\\\.)?anthropic\\\\.claude-\", \"description\": \"A Bedrock-syntax Claude id, for every version: anthropic.claude- at the start of the name, optionally behind a single dotted geo segment (us./eu./au./jp./apac./global./us-gov.). Anchored to the start because routing rules see the raw request string and provider inference feeds the proxy's provider/* wildcard access checks: an id under an unrecognized namespace such as bedrockz/anthropic.claude-... must stay unroutable rather than resolve to bedrock and slip through a bedrock/* key. Routes to bedrock before the bare-id Anthropic rule is consulted.\", \"model_info\": {\"litellm_provider\": \"bedrock\"}}, {\"name\": \"anthropic-claude-ids\", \"pattern\": \"^claude-[a-z]+-\\\\d+(?:[-.]\\\\d+)?(?:-\\\\d{8})?$\", \"description\": \"A bare Claude family-major id with an optional minor and an optional 8-digit date suffix, anchored to the whole name, so claude-newfamily-5 routes like claude-newfamily-5-1 does. Routes an unmapped Claude id that carries no provider namespace to the Anthropic API.\", \"model_info\": {\"litellm_provider\": \"anthropic\"}}, {\"name\": \"typesafe-jev-ids\", \"patt",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "0fe20f61e962a4a297e10d566f74dbef963daa6164feb14f76017b0a4a346427",
+          "method": "structured registry",
+          "build": "ea8285796787367ae925c12d1903a1ba7f5b23cd",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/ea8285796787367ae925c12d1903a1ba7f5b23cd/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T03:09:16+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: fallback_generalizations\nhttps://raw.githubusercontent.com/BerriAI/litellm/ea8285796787367ae925c12d1903a1ba7f5b23cd/model_prices_and_context_window.json"
+    },
     {
       "id": "story-armorocr",
       "group": "armorocr",
@@ -24578,8 +24638,8 @@
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: ERNIE-5.5-Flash-Preview by Baidu\n\nFirst detected 10 Nov 19:20 UTC in OpenRouter\n📅 First released: 2026-11-10\nConfirmed by LMArena, Hugging Face\nIDs: ernie-5.5-flash-preview, ERNIE-5.5-Flash-Preview-FP8, ERNIE-5.5-Flash-Preview-BF16\n\nvia @StatsWire",
-      "discord_alerted_at": "2026-11-24T03:10:52.505214+00:00"
+      "discord_alerted_at": "2026-11-24T03:10:52.505214+00:00",
+      "x_post_text": "🟢 NEW MODEL: ERNIE-5.5-Flash-Preview by Baidu\n\nFirst detected 10 Nov 19:20 UTC in OpenRouter\n📅 First released: 2026-11-10\nConfirmed by LMArena, Hugging Face\nIDs: ernie-5.5-flash-preview, ERNIE-5.5-Flash-Preview-FP8, ERNIE-5.5-Flash-Preview-BF16\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-carbon-cyber-permissive",
@@ -25694,6 +25754,90 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-993a631a21bd2acaac20",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "fallback_generalizations",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "fallback_generalizations",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "fallback_generalizations",
+          "name": "fallback_generalizations",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-24T03:12:43.437886+00:00",
+      "first_seen": "2026-11-24T03:09:16+00:00",
+      "observed_at": "2026-11-24T03:12:43.437886+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "986554827f3d79d6eb659f480d8eaf9b57142778 -> ea8285796787367ae925c12d1903a1ba7f5b23cd",
+      "build": "ea8285796787367ae925c12d1903a1ba7f5b23cd",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/ea8285796787367ae925c12d1903a1ba7f5b23cd/model_prices_and_context_window.json",
+      "artifact_sha256": "0fe20f61e962a4a297e10d566f74dbef963daa6164feb14f76017b0a4a346427",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/0fe20f61e962a4a297e10d566f74dbef963daa6164feb14f76017b0a4a346427.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/0fe20f61e962a4a297e10d566f74dbef963daa6164feb14f76017b0a4a346427.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "fallback_generalizations",
+          "family": "fallback_generalizations",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"fallback_generalizations\": {\"rules\": [{\"name\": \"bedrock-claude-ids\", \"pattern\": \"^(?:[a-z-]+\\\\.)?anthropic\\\\.claude-\", \"description\": \"A Bedrock-syntax Claude id, for every version: anthropic.claude- at the start of the name, optionally behind a single dotted geo segment (us./eu./au./jp./apac./global./us-gov.). Anchored to the start because routing rules see the raw request string and provider inference feeds the proxy's provider/* wildcard access checks: an id under an unrecognized namespace such as bedrockz/anthropic.claude-... must stay unroutable rather than resolve to bedrock and slip through a bedrock/* key. Routes to bedrock before the bare-id Anthropic rule is consulted.\", \"model_info\": {\"litellm_provider\": \"bedrock\"}}, {\"name\": \"anthropic-claude-ids\", \"pattern\": \"^claude-[a-z]+-\\\\d+(?:[-.]\\\\d+)?(?:-\\\\d{8})?$\", \"description\": \"A bare Claude family-major id with an optional minor and an optional 8-digit date suffix, anchored to the whole name, so claude-newfamily-5 routes like claude-newfamily-5-1 does. Routes an unmapped Claude id that carries no provider namespace to the Anthropic API.\", \"model_info\": {\"litellm_provider\": \"anthropic\"}}, {\"name\": \"typesafe-jev-ids\", \"patt",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "0fe20f61e962a4a297e10d566f74dbef963daa6164feb14f76017b0a4a346427",
+          "method": "structured registry",
+          "build": "ea8285796787367ae925c12d1903a1ba7f5b23cd",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/ea8285796787367ae925c12d1903a1ba7f5b23cd/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T03:09:16+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/ea8285796787367ae925c12d1903a1ba7f5b23cd/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/ea8285796787367ae925c12d1903a1ba7f5b23cd"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T03:12:44.998534+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: fallback_generalizations\nhttps://raw.githubusercontent.com/BerriAI/litellm/ea8285796787367ae925c12d1903a1ba7f5b23cd/model_prices_and_context_window.json"
+    },
     {
       "id": "hf-baidu_ERNIE-5.5-Flash-Preview-BF16",
       "category": "open-source",
@@ -81807,12 +81951,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:10:23.689039+00:00",
+      "last_attempt": "2026-11-24T03:12:41.621171+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:10:24.111504+00:00",
+      "last_success": "2026-11-24T03:12:41.989330+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.423,
+      "duration_seconds": 0.368,
       "latest_build": "5dcc9b3ad8cbfe7a313db3bcb837f25f2e55f58361b7b4aeda36bc5328a44a64",
       "builds_retained": 128,
       "identifiers": 9899
@@ -81820,14 +81964,14 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T03:07:58.936349+00:00",
+      "last_attempt": "2026-11-24T03:12:42.126290+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:07:59.329105+00:00",
+      "last_success": "2026-11-24T03:12:44.998534+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.393,
-      "latest_build": "986554827f3d79d6eb659f480d8eaf9b57142778",
-      "builds_retained": 66,
+      "duration_seconds": 2.873,
+      "latest_build": "ea8285796787367ae925c12d1903a1ba7f5b23cd",
+      "builds_retained": 67,
       "identifiers": 7057
     },
     "models-dev-git": {
@@ -81846,21 +81990,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T03:10:24.249285+00:00",
+      "last_attempt": "2026-11-24T03:12:45.137660+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3399,
-      "duration_seconds": 15.704
+      "consecutive_failures": 3400,
+      "duration_seconds": 15.588
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T02:56:44.493163+00:00",
+      "last_attempt": "2026-11-24T03:13:00.729086+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T02:56:44.781123+00:00",
+      "last_success": "2026-11-24T03:13:01.004067+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.288,
+      "duration_seconds": 0.275,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -81870,61 +82014,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:09:24.103293+00:00",
+      "last_attempt": "2026-11-24T03:11:42.144137+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:09:26.452312+00:00",
+      "last_success": "2026-11-24T03:11:44.325593+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.349
+      "duration_seconds": 2.181
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:09:26.452368+00:00",
+      "last_attempt": "2026-11-24T03:11:44.325648+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:09:26.706435+00:00",
+      "last_success": "2026-11-24T03:11:44.583660+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.254
+      "duration_seconds": 0.258
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:09:26.706490+00:00",
+      "last_attempt": "2026-11-24T03:11:44.583691+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:09:33.746774+00:00",
+      "last_success": "2026-11-24T03:11:51.918799+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.04
+      "duration_seconds": 7.335
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:09:33.746825+00:00",
+      "last_attempt": "2026-11-24T03:11:51.918849+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:10:23.688982+00:00",
+      "last_success": "2026-11-24T03:12:41.621116+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 49.942,
+      "duration_seconds": 49.702,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-24T03:09:33.993280+00:00",
+          "checked_at": "2026-11-24T03:11:52.224056+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-24T03:09:42.378322+00:00",
+          "checked_at": "2026-11-24T03:12:00.946061+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-24T03:09:42.559673+00:00",
+          "checked_at": "2026-11-24T03:12:01.109131+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-24T03:09:42.559687+00:00",
+          "checked_at": "2026-11-24T03:12:01.109144+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -81932,12 +82076,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:10:23.689039+00:00",
+      "last_attempt": "2026-11-24T03:12:41.621171+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:10:24.111504+00:00",
+      "last_success": "2026-11-24T03:12:41.989330+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.423,
+      "duration_seconds": 0.368,
       "latest_build": "5dcc9b3ad8cbfe7a313db3bcb837f25f2e55f58361b7b4aeda36bc5328a44a64",
       "builds_retained": 128,
       "identifiers": 9899
@@ -81945,14 +82089,14 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T03:07:58.936349+00:00",
+      "last_attempt": "2026-11-24T03:12:42.126290+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:07:59.329105+00:00",
+      "last_success": "2026-11-24T03:12:44.998534+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.393,
-      "latest_build": "986554827f3d79d6eb659f480d8eaf9b57142778",
-      "builds_retained": 66,
+      "duration_seconds": 2.873,
+      "latest_build": "ea8285796787367ae925c12d1903a1ba7f5b23cd",
+      "builds_retained": 67,
       "identifiers": 7057
     },
     "models-dev-git": {
@@ -81971,21 +82115,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T03:10:24.249285+00:00",
+      "last_attempt": "2026-11-24T03:12:45.137660+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3399,
-      "duration_seconds": 15.704
+      "consecutive_failures": 3400,
+      "duration_seconds": 15.588
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T02:56:44.493163+00:00",
+      "last_attempt": "2026-11-24T03:13:00.729086+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T02:56:44.781123+00:00",
+      "last_success": "2026-11-24T03:13:01.004067+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.288,
+      "duration_seconds": 0.275,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -81993,22 +82137,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:10:39.957520+00:00",
+      "last_attempt": "2026-11-24T03:13:01.293506+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:10:47.137677+00:00",
+      "last_success": "2026-11-24T03:13:08.450839+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.18
+      "duration_seconds": 7.157
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:10:47.137731+00:00",
+      "last_attempt": "2026-11-24T03:13:08.450902+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:10:48.795955+00:00",
+      "last_success": "2026-11-24T03:13:10.574832+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.658
+      "duration_seconds": 2.124
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -82023,22 +82167,22 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:10:48.796003+00:00",
+      "last_attempt": "2026-11-24T03:13:10.574897+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:10:49.916904+00:00",
+      "last_success": "2026-11-24T03:13:11.741436+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.121
+      "duration_seconds": 1.167
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:10:49.916944+00:00",
+      "last_attempt": "2026-11-24T03:13:11.741480+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:10:49.983752+00:00",
+      "last_success": "2026-11-24T03:13:11.879942+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.067
+      "duration_seconds": 0.138
     }
   },
   "identities": {
@@ -82049,8 +82193,8 @@
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 372,
-      "seconds_mean": 3646.0704069301073,
+      "samples": 373,
+      "seconds_mean": 3636.851552986595,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -82064,8 +82208,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 477,
-      "events": 477,
+      "complete": 478,
+      "events": 478,
       "rate": 1.0
     },
     "source_health": {
