@@ -1,17 +1,79 @@
 {
-  "generated_at": "2026-11-24T17:52:15.228070+00:00",
-  "scan_completed_at": "2026-11-24T17:54:13.970054+00:00",
+  "generated_at": "2026-11-24T18:03:59.921986+00:00",
+  "scan_completed_at": "2026-11-24T18:05:53.634923+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 337,
+    "stories": 338,
     "leaks": 33,
     "releases": 92,
-    "stories_24h": 52,
-    "sources_ok": 15,
-    "total_cards": 799,
+    "stories_24h": 54,
+    "sources_ok": 14,
+    "total_cards": 805,
     "new_in_this_scan": 6
   },
   "stories": [
+    {
+      "id": "story-namazu",
+      "group": "namazu",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Namazu",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-24T18:05:10.174760+00:00",
+      "updated_at": "2026-11-24T18:05:10.174760+00:00",
+      "first_source": "Registry Update",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "namazu",
+          "name": "vercel/sakana/namazu"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-24T18:05:10.174760+00:00",
+          "title": "namazu",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "backfill": false,
+          "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-3b03780a2e98ba261ae1"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "vercel/sakana/namazu",
+          "family": "namazu",
+          "file_path": "providers/vercel/models/sakana/namazu.toml",
+          "file_sha256": "050028829217f52aaa4f03d3fde2a34d9abcc9b8d153c9c4d90f0852053f6321",
+          "excerpt": "{\"vercel/sakana/namazu\": {\"schema\": 2, \"base_model\": \"sakana/sakana-namazu\", \"description\": \"Multi-agent model for routing expert agents across complex analytical tasks\", \"capabilities\": {\"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}}, \"limit\": {\"context\": 256000}, \"api\": {\"chat-completions\": {\"capabilities\": {\"system_updates\": true}}, \"responses\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/open-responses\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/responses\"}}, \"messages\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/messages\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.95, \"cache\": {\"read\": 0.15}}, \"output\": {\"price\": 4}}, \"web_search\": {\"price\": 7}}}}",
+          "canonical_id": "sakana/sakana-namazu",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed/providers/vercel/models/sakana/namazu.toml",
+          "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "first_seen": "2026-11-24T18:04:12+00:00"
+        }
+      ],
+      "x_post_text": "Registry Update b1cd59dd94d6: namazu\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+    },
     {
       "id": "story-glm-5p-3-us",
       "group": "glm-5p-3-us",
@@ -4776,10 +4838,10 @@
       "open_weights": false,
       "title": "deepinfra/thinkingmachines/Inkling-2-Mini",
       "provider_slug": "unknown",
-      "provider_name": "deepinfra",
+      "provider_name": "vercel",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-21T03:05:45.893089+00:00",
-      "updated_at": "2026-11-24T17:29:52.881431+00:00",
+      "updated_at": "2026-11-24T18:05:10.174760+00:00",
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-11-20",
@@ -4787,8 +4849,8 @@
       "codenames": [],
       "models": [
         {
-          "id": "Inkling-2-Mini",
-          "name": "deepinfra/thinkingmachines/Inkling-2-Mini",
+          "id": "inkling-2-mini",
+          "name": "vercel/thinkingmachines/inkling-2-mini",
           "released_on": "2026-11-20"
         }
       ],
@@ -4826,7 +4888,7 @@
       ],
       "source_count": 3,
       "backfill": false,
-      "header": "NEW MODEL · DEEPINFRA",
+      "header": "NEW MODEL · VERCEL",
       "card_ids": [
         "openrouter-model-thinkingmachines_inkling-2-mini",
         "intel-f9fd718251adf9703144",
@@ -4843,7 +4905,8 @@
         "intel-4ceb161d3e93ea7bfe53",
         "intel-2b3ea7830e2d6fd027ec",
         "intel-1aada09173faf3c748f4",
-        "intel-fd1141b80c9372e38f3c"
+        "intel-fd1141b80c9372e38f3c",
+        "intel-5bb9c347618a0dc587e6"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -5110,10 +5173,25 @@
           "build": "25f07b155853dc72b2d1774da438ec1df1910798",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/25f07b155853dc72b2d1774da438ec1df1910798",
           "first_seen": "2026-11-24T17:28:02+00:00"
+        },
+        {
+          "id": "vercel/thinkingmachines/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/vercel/models/thinkingmachines/inkling-2-mini.toml",
+          "file_sha256": "38aa3d22581762479791868ce4bc2d90afc21ec114aa816daaf586eedcf7e656",
+          "excerpt": "{\"vercel/thinkingmachines/inkling-2-mini\": {\"schema\": 2, \"base_model\": \"thinkingmachines/inkling-2-mini\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"cache\": {\"implicit\": true}}, \"api\": {\"chat-completions\": {\"capabilities\": {\"system_updates\": true}, \"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}, \"responses\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/open-responses\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/responses\"}}, \"messages\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/messages\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.075, \"cache\": {\"read\": 0.015}}, \"output\": {\"price\": 0.3}}}}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed/providers/vercel/models/thinkingmachines/inkling-2-mini.toml",
+          "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "first_seen": "2026-11-24T18:04:12+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-23T04:22:07.426340+00:00",
-      "x_post_text": "🟢 NEW MODEL: deepinfra/thinkingmachines/Inkling-2-Mini by deepinfra\n\nFirst detected 21 Nov 03:05 UTC in OpenRouter\n📅 First released: 2026-11-20\nConfirmed by Registry Update, LMArena\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: deepinfra/thinkingmachines/Inkling-2-Mini by vercel\n\nFirst detected 21 Nov 03:05 UTC in OpenRouter\n📅 First released: 2026-11-20\nConfirmed by Registry Update, LMArena\n\nvia @StatsWire"
     },
     {
       "id": "story-sonar",
@@ -11083,7 +11161,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-19T19:56:03.164169+00:00",
-      "updated_at": "2026-11-22T01:00:36.061065+00:00",
+      "updated_at": "2026-11-24T18:05:10.174760+00:00",
       "first_source": "OpenAI Docs Route",
       "lead": "",
       "released_on": "",
@@ -11092,7 +11170,7 @@
       "models": [
         {
           "id": "gpt-live-1.1",
-          "name": "opencode/gpt-live-1.1"
+          "name": "vercel/openai/gpt-live-1.1"
         }
       ],
       "sources": [
@@ -11189,7 +11267,8 @@
         "npm-openai-7.60.0-7.61.0",
         "intel-9e5aed315702ddb51a5c",
         "opencode-zen-diff-6e623441",
-        "intel-e5cf66acf47dc2be40dc"
+        "intel-e5cf66acf47dc2be40dc",
+        "intel-888d84952918732380f5"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -11252,6 +11331,21 @@
           "build": "19c36b920ebce836bf23a5f28013506d25506ccf",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/19c36b920ebce836bf23a5f28013506d25506ccf",
           "first_seen": "2026-11-22T00:52:47+00:00"
+        },
+        {
+          "id": "vercel/openai/gpt-live-1.1",
+          "family": "gpt-live-1.1",
+          "file_path": "providers/vercel/models/openai/gpt-live-1.1.toml",
+          "file_sha256": "20fdd224ed287a7a846d6b609ea87e52e13854cded028790de37f0370b39aba8",
+          "excerpt": "{\"vercel/openai/gpt-live-1.1\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"openai/gpt-live-1.1\", \"capabilities\": {\"temperature\": true}, \"api\": {\"live\": {\"base_url\": \"https://ai-gateway.vercel.sh/v4/ai\", \"sdk\": {\"aisdk\": \"none\", \"opencodeai\": \"none\"}}}, \"cost\": {\"audio\": {\"input\": {\"unit\": \"second\", \"price\": 0.0008334}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "openai/gpt-live-1.1",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed/providers/vercel/models/openai/gpt-live-1.1.toml",
+          "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "first_seen": "2026-11-24T18:04:12+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-22T00:58:30.698691+00:00",
@@ -20372,7 +20466,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-17T18:31:10.791Z",
-      "updated_at": "2026-11-24T17:41:00.312264+00:00",
+      "updated_at": "2026-11-24T18:05:10.174760+00:00",
       "first_source": "npm SDK release",
       "lead": "10 h before it went live on Official pricing page",
       "released_on": "2026-11-17",
@@ -20385,7 +20479,7 @@
         },
         {
           "id": "gpt-6.2-astra",
-          "name": "databricks/system.ai.gpt-6-2-astra",
+          "name": "vercel/openai/gpt-6.2-astra",
           "released_on": "2026-11-17"
         },
         {
@@ -20399,7 +20493,7 @@
         },
         {
           "id": "gpt-6.2-astra-fast",
-          "name": "kilo/openai/gpt-6.2-astra-fast",
+          "name": "vercel/openai/gpt-6.2-astra-fast",
           "released_on": "2026-11-17"
         }
       ],
@@ -20592,7 +20686,8 @@
         "intel-85bc8b8cda86d1849863",
         "intel-6ef71254a1add744e0d2",
         "intel-b98d2ee0f6968cd7323d",
-        "intel-36b01d0aa1036e9b3007"
+        "intel-36b01d0aa1036e9b3007",
+        "intel-34244a86437000cef216"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -21189,7 +21284,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-17T18:31:10.791Z",
-      "updated_at": "2026-11-24T17:41:00.312264+00:00",
+      "updated_at": "2026-11-24T18:05:10.174760+00:00",
       "first_source": "npm SDK release",
       "lead": "10 h before it went live on Official pricing page",
       "released_on": "2026-11-17",
@@ -21198,7 +21293,7 @@
       "models": [
         {
           "id": "gpt-6.2-sol",
-          "name": "databricks/system.ai.gpt-6-2-sol",
+          "name": "vercel/openai/gpt-6.2-sol",
           "released_on": "2026-11-17"
         },
         {
@@ -21404,7 +21499,8 @@
         "intel-13a8245eb540d3c7563d",
         "intel-740cc3af8a74df99e058",
         "intel-85e044b3e4e42e7c983c",
-        "intel-f85c9819dcb15591cb22"
+        "intel-f85c9819dcb15591cb22",
+        "intel-a450f5b7665be75f3c3f"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -23024,7 +23120,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-16T20:15:16.430197+00:00",
-      "updated_at": "2026-11-24T17:34:42.267307+00:00",
+      "updated_at": "2026-11-24T18:05:10.174760+00:00",
       "first_source": "Gemini Web App Config",
       "lead": "2 days before it went live on OpenRouter",
       "released_on": "2026-11-18",
@@ -23039,7 +23135,7 @@
         },
         {
           "id": "gemini-4-neon",
-          "name": "openrouter/google/gemini-4-neon",
+          "name": "vercel/google/gemini-4-neon",
           "released_on": "2026-11-18"
         },
         {
@@ -23049,7 +23145,7 @@
         },
         {
           "id": "gemini-4-neon-fast",
-          "name": "Gemini 4 Neon",
+          "name": "vercel/google/gemini-4-neon-fast",
           "released_on": "2026-11-18"
         },
         {
@@ -23284,7 +23380,8 @@
         "lmarena-lb-diff-02b546ed",
         "vercel-gateway-diff-da9cca73",
         "web-bundle-aistudio-models-57cb6792",
-        "intel-36d72624a52e47c8c184"
+        "intel-36d72624a52e47c8c184",
+        "intel-85b3a529c9c628c39736"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -27515,6 +27612,617 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-85b3a529c9c628c39736",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gemini-4-neon",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gemini-4-neon",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "vercel/google/gemini-4-neon-fast",
+          "name": "vercel/google/gemini-4-neon-fast",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        },
+        {
+          "id": "vercel/google/gemini-4-neon",
+          "name": "vercel/google/gemini-4-neon",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        }
+      ],
+      "detected_at": "2026-11-24T18:05:10.174760+00:00",
+      "first_seen": "2026-11-24T18:04:12+00:00",
+      "observed_at": "2026-11-24T18:05:10.174760+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "e944b38c326f343ed68b8b4dc2a5fd7691121523 -> b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "artifact_sha256": "4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "vercel/google/gemini-4-neon-fast",
+          "family": "gemini-4-neon",
+          "file_path": "providers/vercel/models/google/gemini-4-neon-fast.toml",
+          "file_sha256": "a8fd6dca86339ea1118c91f02b3b4ca1ee8f331a1124407fefa1f12aa0d976e3",
+          "excerpt": "{\"vercel/google/gemini-4-neon-fast\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"name\": \"Gemini 4 Neon (Fast)\", \"modalities\": {\"input\": [\"text\", \"image\", \"application/pdf\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}, \"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"cache\": {\"implicit\": true}, \"structured_output\": true}, \"limit\": {\"context\": 1000000}, \"api\": {\"chat-completions\": {}, \"responses\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/open-responses\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/responses\"}}, \"messages\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/messages\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 5.4, \"cache\": {\"read\": 0.27}}, \"output\": {\"price\": 27}}, \"web_search\": {\"price\": 14}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed/providers/vercel/models/google/gemini-4-neon-fast.toml",
+          "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "first_seen": "2026-11-24T18:04:12+00:00"
+        },
+        {
+          "id": "vercel/google/gemini-4-neon",
+          "family": "gemini-4-neon",
+          "file_path": "providers/vercel/models/google/gemini-4-neon.toml",
+          "file_sha256": "ce97832d3c58e573d88572c09775614d66e3dc82d54907f4ddabe30a5ca795b3",
+          "excerpt": "{\"vercel/google/gemini-4-neon\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"modalities\": {\"input\": [\"text\", \"image\", \"application/pdf\"], \"output\": [\"text\"]}, \"capabilities\": {\"structured_output\": true, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}, \"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"cache\": {\"implicit\": true}, \"service_tier\": [\"priority\"]}, \"limit\": {\"context\": 1000000}, \"api\": {\"chat-completions\": {}, \"responses\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/open-responses\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/responses\"}}, \"messages\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/messages\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.15}}, \"output\": {\"price\": 15}}, \"web_search\": {\"price\": 14}, \"multipliers\": [{\"when\": {\"service_tier\": {\"equals\": \"priority\"}}, \"factor\": {\"text\": 1.8}}]}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed/providers/vercel/models/google/gemini-4-neon.toml",
+          "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "first_seen": "2026-11-24T18:04:12+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gemini/gemini-4-neon",
+          "first_seen": "2026-11-18T20:53:00+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T18:05:13.379402+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions b1cd59dd94d6: vercel/google/gemini-4-neon-fast\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+    },
+    {
+      "id": "intel-5bb9c347618a0dc587e6",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "inkling-2-mini",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "inkling-2-mini",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "vercel/thinkingmachines/inkling-2-mini",
+          "name": "vercel/thinkingmachines/inkling-2-mini",
+          "registry_update": true,
+          "released_on": "2026-11-20"
+        }
+      ],
+      "detected_at": "2026-11-24T18:05:10.174760+00:00",
+      "first_seen": "2026-11-24T18:04:12+00:00",
+      "observed_at": "2026-11-24T18:05:10.174760+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "e944b38c326f343ed68b8b4dc2a5fd7691121523 -> b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "artifact_sha256": "4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "vercel/thinkingmachines/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/vercel/models/thinkingmachines/inkling-2-mini.toml",
+          "file_sha256": "38aa3d22581762479791868ce4bc2d90afc21ec114aa816daaf586eedcf7e656",
+          "excerpt": "{\"vercel/thinkingmachines/inkling-2-mini\": {\"schema\": 2, \"base_model\": \"thinkingmachines/inkling-2-mini\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"cache\": {\"implicit\": true}}, \"api\": {\"chat-completions\": {\"capabilities\": {\"system_updates\": true}, \"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}, \"responses\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/open-responses\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/responses\"}}, \"messages\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/messages\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.075, \"cache\": {\"read\": 0.015}}, \"output\": {\"price\": 0.3}}}}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed/providers/vercel/models/thinkingmachines/inkling-2-mini.toml",
+          "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "first_seen": "2026-11-24T18:04:12+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T18:05:13.379402+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions b1cd59dd94d6: vercel/thinkingmachines/inkling-2-mini\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+    },
+    {
+      "id": "intel-34244a86437000cef216",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-astra",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6.2-astra",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "vercel/openai/gpt-6.2-astra",
+          "name": "vercel/openai/gpt-6.2-astra",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        },
+        {
+          "id": "vercel/openai/gpt-6.2-astra-fast",
+          "name": "vercel/openai/gpt-6.2-astra-fast",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-24T18:05:10.174760+00:00",
+      "first_seen": "2026-11-24T18:04:12+00:00",
+      "observed_at": "2026-11-24T18:05:10.174760+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "e944b38c326f343ed68b8b4dc2a5fd7691121523 -> b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "artifact_sha256": "4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "vercel/openai/gpt-6.2-astra",
+          "family": "gpt-6.2-astra",
+          "file_path": "providers/vercel/models/openai/gpt-6.2-astra.toml",
+          "file_sha256": "f1ba8aeae8f119ecb8a21f7fa0550090ab12406a90daaed7e61709b806902b74",
+          "excerpt": "{\"vercel/openai/gpt-6.2-astra\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-astra\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"cache\": {\"implicit\": true, \"explicit\": true}, \"structured_output\": true, \"system_updates\": true, \"service_tier\": [\"priority\", \"ultrafast\"]}, \"api\": {\"chat-completions\": {\"capabilities\": {\"effort_updates\": true, \"tools\": {\"freeform\": [\"text\", \"lark\", \"regex\"], \"updates\": [\"add\"]}}}, \"responses\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/open-responses\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/responses\"}, \"capabilities\": {\"tools\": {\"freeform\": [\"text\", \"lark\", \"regex\"], \"updates\": [\"add\", \"remove\"]}}}, \"messages\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/messages\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 8, \"cache\": {\"read\": 0.4, \"write\": 10}, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272001}}, \"price\": 16, \"cache\": {\"read\": 0.8, \"write\": 20}}]}, \"output\": {\"price\": 40, \"ove",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed/providers/vercel/models/openai/gpt-6.2-astra.toml",
+          "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "first_seen": "2026-11-24T18:04:12+00:00"
+        },
+        {
+          "id": "vercel/openai/gpt-6.2-astra-fast",
+          "family": "gpt-6.2-astra",
+          "file_path": "providers/vercel/models/openai/gpt-6.2-astra-fast.toml",
+          "file_sha256": "b13b02fa257a2f232afb5b1bd55c4e7457a40b86e3ca9fce5b060991e8ff4a62",
+          "excerpt": "{\"vercel/openai/gpt-6.2-astra-fast\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-astra\", \"name\": \"GPT-6.2 Astra (Fast)\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"cache\": {\"implicit\": true, \"explicit\": true}, \"structured_output\": true, \"system_updates\": true}, \"api\": {\"chat-completions\": {\"capabilities\": {\"effort_updates\": true, \"tools\": {\"freeform\": [\"text\", \"lark\", \"regex\"], \"updates\": [\"add\"]}}}, \"responses\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/open-responses\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/responses\"}, \"capabilities\": {\"tools\": {\"freeform\": [\"text\", \"lark\", \"regex\"], \"updates\": [\"add\", \"remove\"]}}}, \"messages\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/messages\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 16, \"cache\": {\"read\": 0.8, \"write\": 20}, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272001}}, \"price\": 32, \"cache\": {\"read\": 1.6, \"write\": 40}}]}, \"output\": {\"price\": 80, \"override",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed/providers/vercel/models/openai/gpt-6.2-astra-fast.toml",
+          "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "first_seen": "2026-11-24T18:04:12+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-6.2-astra",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T18:05:13.379402+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions b1cd59dd94d6: vercel/openai/gpt-6.2-astra\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+    },
+    {
+      "id": "intel-a450f5b7665be75f3c3f",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-sol",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6.2-sol",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "vercel/openai/gpt-6.2-sol",
+          "name": "vercel/openai/gpt-6.2-sol",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        },
+        {
+          "id": "vercel/openai/gpt-6.2-sol-fast",
+          "name": "vercel/openai/gpt-6.2-sol-fast",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-24T18:05:10.174760+00:00",
+      "first_seen": "2026-11-24T18:04:12+00:00",
+      "observed_at": "2026-11-24T18:05:10.174760+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "e944b38c326f343ed68b8b4dc2a5fd7691121523 -> b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "artifact_sha256": "4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "vercel/openai/gpt-6.2-sol",
+          "family": "gpt-6.2-sol",
+          "file_path": "providers/vercel/models/openai/gpt-6.2-sol.toml",
+          "file_sha256": "f47bad3cadd8b659b38ad2feaa77e2d062d8fbedc0615d7c82c4d9aaa4b6f766",
+          "excerpt": "{\"vercel/openai/gpt-6.2-sol\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-sol\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"cache\": {\"implicit\": true, \"explicit\": true}, \"structured_output\": true, \"system_updates\": true, \"service_tier\": [\"priority\", \"ultrafast\"]}, \"api\": {\"chat-completions\": {\"capabilities\": {\"effort_updates\": true, \"tools\": {\"freeform\": [\"text\", \"lark\", \"regex\"], \"updates\": [\"add\"]}}}, \"responses\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/open-responses\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/responses\"}, \"capabilities\": {\"tools\": {\"freeform\": [\"text\", \"lark\", \"regex\"], \"updates\": [\"add\", \"remove\"]}}}, \"messages\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/messages\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 2, \"cache\": {\"read\": 0.1, \"write\": 2.5}, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272001}}, \"price\": 4, \"cache\": {\"read\": 0.2, \"write\": 5}}]}, \"output\": {\"price\": 10, \"override",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed/providers/vercel/models/openai/gpt-6.2-sol.toml",
+          "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "first_seen": "2026-11-24T18:04:12+00:00"
+        },
+        {
+          "id": "vercel/openai/gpt-6.2-sol-fast",
+          "family": "gpt-6.2-sol",
+          "file_path": "providers/vercel/models/openai/gpt-6.2-sol-fast.toml",
+          "file_sha256": "5edaf8c4710c557e261e49d741c148e99ded5b2512fead39c6f0888a11c94a85",
+          "excerpt": "{\"vercel/openai/gpt-6.2-sol-fast\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-sol\", \"name\": \"GPT-6.2 Sol (Fast)\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"cache\": {\"implicit\": true, \"explicit\": true}, \"structured_output\": true, \"system_updates\": true}, \"api\": {\"chat-completions\": {\"capabilities\": {\"effort_updates\": true, \"tools\": {\"freeform\": [\"text\", \"lark\", \"regex\"], \"updates\": [\"add\"]}}}, \"responses\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/open-responses\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/responses\"}, \"capabilities\": {\"tools\": {\"freeform\": [\"text\", \"lark\", \"regex\"], \"updates\": [\"add\", \"remove\"]}}}, \"messages\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/messages\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 4, \"cache\": {\"read\": 0.2, \"write\": 5}, \"overrides\": [{\"when\": {\"context\": {\"gt\": 272001}}, \"price\": 8, \"cache\": {\"read\": 0.4, \"write\": 10}}]}, \"output\": {\"price\": 20, \"overrides\": [{\"wh",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed/providers/vercel/models/openai/gpt-6.2-sol-fast.toml",
+          "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "first_seen": "2026-11-24T18:04:12+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-6.2-sol",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T18:05:13.379402+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions b1cd59dd94d6: vercel/openai/gpt-6.2-sol\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+    },
+    {
+      "id": "intel-888d84952918732380f5",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-live-1.1",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-live-1.1",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "vercel/openai/gpt-live-1.1",
+          "name": "vercel/openai/gpt-live-1.1",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-24T18:05:10.174760+00:00",
+      "first_seen": "2026-11-24T18:04:12+00:00",
+      "observed_at": "2026-11-24T18:05:10.174760+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "e944b38c326f343ed68b8b4dc2a5fd7691121523 -> b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "artifact_sha256": "4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "vercel/openai/gpt-live-1.1",
+          "family": "gpt-live-1.1",
+          "file_path": "providers/vercel/models/openai/gpt-live-1.1.toml",
+          "file_sha256": "20fdd224ed287a7a846d6b609ea87e52e13854cded028790de37f0370b39aba8",
+          "excerpt": "{\"vercel/openai/gpt-live-1.1\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"openai/gpt-live-1.1\", \"capabilities\": {\"temperature\": true}, \"api\": {\"live\": {\"base_url\": \"https://ai-gateway.vercel.sh/v4/ai\", \"sdk\": {\"aisdk\": \"none\", \"opencodeai\": \"none\"}}}, \"cost\": {\"audio\": {\"input\": {\"unit\": \"second\", \"price\": 0.0008334}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "openai/gpt-live-1.1",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed/providers/vercel/models/openai/gpt-live-1.1.toml",
+          "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "first_seen": "2026-11-24T18:04:12+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-live-1.1",
+          "first_seen": "2026-11-19T20:18:05+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T18:05:13.379402+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions b1cd59dd94d6: vercel/openai/gpt-live-1.1\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+    },
+    {
+      "id": "intel-3b03780a2e98ba261ae1",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "namazu",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "namazu",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "vercel/sakana/namazu",
+          "name": "vercel/sakana/namazu",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-24T18:05:10.174760+00:00",
+      "first_seen": "2026-11-24T18:04:12+00:00",
+      "observed_at": "2026-11-24T18:05:10.174760+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "e944b38c326f343ed68b8b4dc2a5fd7691121523 -> b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "artifact_sha256": "4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/4f687834aa18c5b76b12f247e2b2d712217ccbd52944707980aaa13b806b2ee9.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "vercel/sakana/namazu",
+          "family": "namazu",
+          "file_path": "providers/vercel/models/sakana/namazu.toml",
+          "file_sha256": "050028829217f52aaa4f03d3fde2a34d9abcc9b8d153c9c4d90f0852053f6321",
+          "excerpt": "{\"vercel/sakana/namazu\": {\"schema\": 2, \"base_model\": \"sakana/sakana-namazu\", \"description\": \"Multi-agent model for routing expert agents across complex analytical tasks\", \"capabilities\": {\"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}}, \"limit\": {\"context\": 256000}, \"api\": {\"chat-completions\": {\"capabilities\": {\"system_updates\": true}}, \"responses\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/open-responses\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/responses\"}}, \"messages\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/messages\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.95, \"cache\": {\"read\": 0.15}}, \"output\": {\"price\": 4}}, \"web_search\": {\"price\": 7}}}}",
+          "canonical_id": "sakana/sakana-namazu",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed/providers/vercel/models/sakana/namazu.toml",
+          "build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+          "first_seen": "2026-11-24T18:04:12+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T18:05:13.379402+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions b1cd59dd94d6: vercel/sakana/namazu\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed"
+    },
     {
       "id": "intel-a8f9d3eec1e2d5029444",
       "scanner": "models-dev-git",
@@ -89265,12 +89973,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:53:16.665657+00:00",
+      "last_attempt": "2026-11-24T18:05:02.759293+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:53:16.929650+00:00",
+      "last_success": "2026-11-24T18:05:04.866195+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.264,
+      "duration_seconds": 2.107,
       "latest_build": "3bdc463536a76bf0842527acb76674bd6a0fc88bee3ff4437171dc21fc5541d1",
       "builds_retained": 145,
       "identifiers": 10055
@@ -89278,12 +89986,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T17:53:17.126353+00:00",
+      "last_attempt": "2026-11-24T18:02:15.596177+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:53:17.585963+00:00",
+      "last_success": "2026-11-24T18:02:16.076095+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.46,
+      "duration_seconds": 0.48,
       "latest_build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
       "builds_retained": 78,
       "identifiers": 7067
@@ -89291,34 +89999,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T17:53:17.787715+00:00",
+      "last_attempt": "2026-11-24T18:05:05.062718+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:53:33.586420+00:00",
+      "last_success": "2026-11-24T18:05:13.379402+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 15.799,
-      "latest_build": "e944b38c326f343ed68b8b4dc2a5fd7691121523",
-      "builds_retained": 152,
-      "identifiers": 11270
+      "duration_seconds": 8.317,
+      "latest_build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "builds_retained": 153,
+      "identifiers": 11272
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T17:53:33.781823+00:00",
+      "last_attempt": "2026-11-24T18:05:13.575574+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3571,
-      "duration_seconds": 21.239
+      "consecutive_failures": 3575,
+      "duration_seconds": 20.832
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T17:47:46.238065+00:00",
+      "last_attempt": "2026-11-24T18:02:36.877801+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:47:46.372824+00:00",
+      "last_success": "2026-11-24T18:02:37.065236+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.135,
+      "duration_seconds": 0.187,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -89328,61 +90036,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:52:15.228138+00:00",
+      "last_attempt": "2026-11-24T18:03:59.922058+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:52:16.725649+00:00",
+      "last_success": "2026-11-24T18:04:01.619912+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.498
+      "duration_seconds": 1.698
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:52:16.725700+00:00",
+      "last_attempt": "2026-11-24T18:04:01.619967+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:52:17.218294+00:00",
+      "last_success": "2026-11-24T18:04:02.011790+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.493
+      "duration_seconds": 0.392
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:52:17.218329+00:00",
+      "last_attempt": "2026-11-24T18:04:02.011828+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:52:24.469343+00:00",
+      "last_success": "2026-11-24T18:04:13.555674+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.251
+      "duration_seconds": 11.544
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:52:24.469406+00:00",
+      "last_attempt": "2026-11-24T18:04:13.555759+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:53:16.665609+00:00",
+      "last_success": "2026-11-24T18:05:02.759241+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 52.196,
+      "duration_seconds": 49.203,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-24T17:52:24.852677+00:00",
+          "checked_at": "2026-11-24T18:04:13.890485+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-24T17:52:36.854600+00:00",
+          "checked_at": "2026-11-24T18:04:24.679176+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-24T17:52:36.947507+00:00",
+          "checked_at": "2026-11-24T18:04:24.788981+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-24T17:52:36.947517+00:00",
+          "checked_at": "2026-11-24T18:04:24.788992+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -89390,12 +90098,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:53:16.665657+00:00",
+      "last_attempt": "2026-11-24T18:05:02.759293+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:53:16.929650+00:00",
+      "last_success": "2026-11-24T18:05:04.866195+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.264,
+      "duration_seconds": 2.107,
       "latest_build": "3bdc463536a76bf0842527acb76674bd6a0fc88bee3ff4437171dc21fc5541d1",
       "builds_retained": 145,
       "identifiers": 10055
@@ -89403,12 +90111,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T17:53:17.126353+00:00",
+      "last_attempt": "2026-11-24T18:02:15.596177+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:53:17.585963+00:00",
+      "last_success": "2026-11-24T18:02:16.076095+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.46,
+      "duration_seconds": 0.48,
       "latest_build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
       "builds_retained": 78,
       "identifiers": 7067
@@ -89416,34 +90124,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T17:53:17.787715+00:00",
+      "last_attempt": "2026-11-24T18:05:05.062718+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:53:33.586420+00:00",
+      "last_success": "2026-11-24T18:05:13.379402+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 15.799,
-      "latest_build": "e944b38c326f343ed68b8b4dc2a5fd7691121523",
-      "builds_retained": 152,
-      "identifiers": 11270
+      "duration_seconds": 8.317,
+      "latest_build": "b1cd59dd94d68f5caaaad01ae8b74bdc8a5044ed",
+      "builds_retained": 153,
+      "identifiers": 11272
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T17:53:33.781823+00:00",
+      "last_attempt": "2026-11-24T18:05:13.575574+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3571,
-      "duration_seconds": 21.239
+      "consecutive_failures": 3575,
+      "duration_seconds": 20.832
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T17:47:46.238065+00:00",
+      "last_attempt": "2026-11-24T18:02:36.877801+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:47:46.372824+00:00",
+      "last_success": "2026-11-24T18:02:37.065236+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.135,
+      "duration_seconds": 0.187,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -89451,64 +90159,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:53:55.028330+00:00",
+      "last_attempt": "2026-11-24T18:05:34.414651+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:54:03.825768+00:00",
+      "last_success": "2026-11-24T18:05:43.111645+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.797
+      "duration_seconds": 8.697
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:54:03.825824+00:00",
+      "last_attempt": "2026-11-24T18:05:43.111696+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:54:05.352232+00:00",
+      "last_success": "2026-11-24T18:05:44.665042+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.526
+      "duration_seconds": 1.553
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T17:54:05.352280+00:00",
+      "last_attempt": "2026-11-24T18:05:44.665086+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:54:11.885809+00:00",
+      "last_success": "2026-11-24T18:05:51.770894+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.534
+      "duration_seconds": 7.106
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:54:11.885862+00:00",
+      "last_attempt": "2026-11-24T18:05:51.770942+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:54:13.104294+00:00",
+      "last_success": "2026-11-24T18:05:52.995205+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.218
+      "duration_seconds": 1.224
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:54:13.104336+00:00",
+      "last_attempt": "2026-11-24T18:05:52.995243+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:54:13.309037+00:00",
+      "last_success": "2026-11-24T18:05:53.101257+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.205
+      "duration_seconds": 0.106
     }
   },
   "identities": {
-    "identifiers": 31722,
-    "declared_aliases": 18725,
+    "identifiers": 31724,
+    "declared_aliases": 18729,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 423,
-      "seconds_mean": 3673.641726929078,
+      "samples": 429,
+      "seconds_mean": 3623.0757553636363,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -89522,9 +90230,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 539,
-      "events": 541,
-      "rate": 0.9963031423290203
+      "complete": 545,
+      "events": 547,
+      "rate": 0.9963436928702011
     },
     "source_health": {
       "sources": 14,
