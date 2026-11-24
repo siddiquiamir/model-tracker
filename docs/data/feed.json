@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-24T06:39:02.942667+00:00",
-  "scan_completed_at": "2026-11-24T06:40:25.276242+00:00",
+  "generated_at": "2026-11-24T06:41:20.541409+00:00",
+  "scan_completed_at": "2026-11-24T06:42:58.771461+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 327,
     "leaks": 36,
     "releases": 87,
     "stories_24h": 44,
-    "sources_ok": 12,
-    "total_cards": 761,
+    "sources_ok": 15,
+    "total_cards": 763,
     "new_in_this_scan": 2
   },
   "stories": [
@@ -22,7 +22,7 @@
       "provider_name": "Unattributed",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-24T06:39:56.144896+00:00",
-      "updated_at": "2026-11-24T06:39:56.144896+00:00",
+      "updated_at": "2026-11-24T06:42:16.068675+00:00",
       "first_source": "Registry Update",
       "lead": "",
       "released_on": "2026-11-17",
@@ -52,7 +52,9 @@
       "header": "REGISTRY UPDATE · UNATTRIBUTED",
       "card_ids": [
         "intel-e3a6c95addfb2df5f5e8",
-        "intel-c35a370a87a74be19af2"
+        "intel-c35a370a87a74be19af2",
+        "intel-34c40b4413e7a03dd7ff",
+        "intel-8219c39b4f19c93edde0"
       ],
       "event_label": "Registry update",
       "intelligence_only": true,
@@ -85,6 +87,36 @@
           "build": "a6e17cc873b1646a22863211d02a9d4da83f5940e4c99df758115ea82568df68",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-24T06:39:55.870711+00:00"
+        },
+        {
+          "id": "nano-gpt/kitani/clover-2",
+          "family": "clover-2",
+          "file_path": "providers/nano-gpt/models/kitani/clover-2.toml",
+          "file_sha256": "6d96f895e6b43d11f98edb18e1f1db0b904b96e4c811f4533f112c8c128e26e3",
+          "excerpt": "{\"nano-gpt/kitani/clover-2\": {\"schema\": 2, \"name\": \"Clover 2\", \"description\": \"Clover 2 is Kitani's MoLE (Mixture of LoRA Experts) model: a base model with seven LoRA experts and trained per-token routing between them. Text chat with reasoning off by default (Clover 2 Thinking turns it on). It supports function calling and a 200,000-token context window shared by input and output, with up to 8,192 output tokens.\", \"open_weights\": false, \"release_date\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true}, \"structured_output\": false}, \"limit\": {\"context\": 200000, \"input\": 200000, \"output\": 8192}, \"cost\": {\"text\": {\"input\": {\"price\": 0.75, \"cache\": {\"read\": 0.1}}, \"output\": {\"price\": 1.5}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/9e300217e762b7915cd0ed14960650386b0f7cdc/providers/nano-gpt/models/kitani/clover-2.toml",
+          "build": "9e300217e762b7915cd0ed14960650386b0f7cdc",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/9e300217e762b7915cd0ed14960650386b0f7cdc",
+          "first_seen": "2026-11-24T06:36:38+00:00"
+        },
+        {
+          "id": "nano-gpt/kitani/clover-2:thinking",
+          "family": "clover-2:thinking",
+          "file_path": "providers/nano-gpt/models/kitani/clover-2:thinking.toml",
+          "file_sha256": "b2b736846ba9eec1c04506e321fe0fa8537c3d7876fb175e31658d7aaace28e3",
+          "excerpt": "{\"nano-gpt/kitani/clover-2:thinking\": {\"schema\": 2, \"name\": \"Clover 2 Thinking\", \"description\": \"Clover 2 is Kitani's MoLE (Mixture of LoRA Experts) model: a base model with seven LoRA experts and trained per-token routing between them. This variant thinks before answering. It supports function calling and a 200,000-token context window shared by input and output, with up to 8,192 output tokens.\", \"open_weights\": false, \"release_date\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true}, \"structured_output\": false}, \"limit\": {\"context\": 200000, \"input\": 200000, \"output\": 8192}, \"cost\": {\"text\": {\"input\": {\"price\": 0.75, \"cache\": {\"read\": 0.1}}, \"output\": {\"price\": 1.5}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/9e300217e762b7915cd0ed14960650386b0f7cdc/providers/nano-gpt/models/kitani/clover-2:thinking.toml",
+          "build": "9e300217e762b7915cd0ed14960650386b0f7cdc",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/9e300217e762b7915cd0ed14960650386b0f7cdc",
+          "first_seen": "2026-11-24T06:36:38+00:00"
         }
       ],
       "x_post_text": "Registry Update a6e17cc873b1: clover-2\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
@@ -26186,6 +26218,180 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-34c40b4413e7a03dd7ff",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "clover-2",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "clover-2",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "nano-gpt/kitani/clover-2",
+          "name": "nano-gpt/kitani/clover-2",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-24T06:42:16.068675+00:00",
+      "first_seen": "2026-11-24T06:36:38+00:00",
+      "observed_at": "2026-11-24T06:42:16.068675+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "2548b4583cce12f2bb3ec91f008472680310ff2e -> 9e300217e762b7915cd0ed14960650386b0f7cdc",
+      "build": "9e300217e762b7915cd0ed14960650386b0f7cdc",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/9e300217e762b7915cd0ed14960650386b0f7cdc",
+      "artifact_sha256": "63bbeda35830fd2b77914d659832cd80d9b7a20da0a20f057af1ce2b161b6197",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/63bbeda35830fd2b77914d659832cd80d9b7a20da0a20f057af1ce2b161b6197.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/63bbeda35830fd2b77914d659832cd80d9b7a20da0a20f057af1ce2b161b6197.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "nano-gpt/kitani/clover-2",
+          "family": "clover-2",
+          "file_path": "providers/nano-gpt/models/kitani/clover-2.toml",
+          "file_sha256": "6d96f895e6b43d11f98edb18e1f1db0b904b96e4c811f4533f112c8c128e26e3",
+          "excerpt": "{\"nano-gpt/kitani/clover-2\": {\"schema\": 2, \"name\": \"Clover 2\", \"description\": \"Clover 2 is Kitani's MoLE (Mixture of LoRA Experts) model: a base model with seven LoRA experts and trained per-token routing between them. Text chat with reasoning off by default (Clover 2 Thinking turns it on). It supports function calling and a 200,000-token context window shared by input and output, with up to 8,192 output tokens.\", \"open_weights\": false, \"release_date\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true}, \"structured_output\": false}, \"limit\": {\"context\": 200000, \"input\": 200000, \"output\": 8192}, \"cost\": {\"text\": {\"input\": {\"price\": 0.75, \"cache\": {\"read\": 0.1}}, \"output\": {\"price\": 1.5}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/9e300217e762b7915cd0ed14960650386b0f7cdc/providers/nano-gpt/models/kitani/clover-2.toml",
+          "build": "9e300217e762b7915cd0ed14960650386b0f7cdc",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/9e300217e762b7915cd0ed14960650386b0f7cdc",
+          "first_seen": "2026-11-24T06:36:38+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/9e300217e762b7915cd0ed14960650386b0f7cdc"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/9e300217e762b7915cd0ed14960650386b0f7cdc"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T06:42:23.663031+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 9e300217e762: nano-gpt/kitani/clover-2\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/9e300217e762b7915cd0ed14960650386b0f7cdc"
+    },
+    {
+      "id": "intel-8219c39b4f19c93edde0",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "clover-2:thinking",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "clover-2:thinking",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "nano-gpt/kitani/clover-2:thinking",
+          "name": "nano-gpt/kitani/clover-2:thinking",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-24T06:42:16.068675+00:00",
+      "first_seen": "2026-11-24T06:36:38+00:00",
+      "observed_at": "2026-11-24T06:42:16.068675+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "2548b4583cce12f2bb3ec91f008472680310ff2e -> 9e300217e762b7915cd0ed14960650386b0f7cdc",
+      "build": "9e300217e762b7915cd0ed14960650386b0f7cdc",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/9e300217e762b7915cd0ed14960650386b0f7cdc",
+      "artifact_sha256": "63bbeda35830fd2b77914d659832cd80d9b7a20da0a20f057af1ce2b161b6197",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/63bbeda35830fd2b77914d659832cd80d9b7a20da0a20f057af1ce2b161b6197.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/63bbeda35830fd2b77914d659832cd80d9b7a20da0a20f057af1ce2b161b6197.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "nano-gpt/kitani/clover-2:thinking",
+          "family": "clover-2:thinking",
+          "file_path": "providers/nano-gpt/models/kitani/clover-2:thinking.toml",
+          "file_sha256": "b2b736846ba9eec1c04506e321fe0fa8537c3d7876fb175e31658d7aaace28e3",
+          "excerpt": "{\"nano-gpt/kitani/clover-2:thinking\": {\"schema\": 2, \"name\": \"Clover 2 Thinking\", \"description\": \"Clover 2 is Kitani's MoLE (Mixture of LoRA Experts) model: a base model with seven LoRA experts and trained per-token routing between them. This variant thinks before answering. It supports function calling and a 200,000-token context window shared by input and output, with up to 8,192 output tokens.\", \"open_weights\": false, \"release_date\": \"2026-11-17\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true}, \"structured_output\": false}, \"limit\": {\"context\": 200000, \"input\": 200000, \"output\": 8192}, \"cost\": {\"text\": {\"input\": {\"price\": 0.75, \"cache\": {\"read\": 0.1}}, \"output\": {\"price\": 1.5}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/9e300217e762b7915cd0ed14960650386b0f7cdc/providers/nano-gpt/models/kitani/clover-2:thinking.toml",
+          "build": "9e300217e762b7915cd0ed14960650386b0f7cdc",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/9e300217e762b7915cd0ed14960650386b0f7cdc",
+          "first_seen": "2026-11-24T06:36:38+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/9e300217e762b7915cd0ed14960650386b0f7cdc"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/9e300217e762b7915cd0ed14960650386b0f7cdc"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T06:42:23.663031+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 9e300217e762: nano-gpt/kitani/clover-2:thinking\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/9e300217e762b7915cd0ed14960650386b0f7cdc"
+    },
     {
       "id": "intel-e3a6c95addfb2df5f5e8",
       "scanner": "models-dev-api",
@@ -83587,12 +83793,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T06:39:55.637030+00:00",
+      "last_attempt": "2026-11-24T06:42:11.296651+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T06:39:58.041292+00:00",
+      "last_success": "2026-11-24T06:42:11.522861+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.404,
+      "duration_seconds": 0.226,
       "latest_build": "a6e17cc873b1646a22863211d02a9d4da83f5940e4c99df758115ea82568df68",
       "builds_retained": 137,
       "identifiers": 9909
@@ -83600,12 +83806,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T06:37:47.459138+00:00",
+      "last_attempt": "2026-11-24T06:42:11.643752+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T06:37:47.819909+00:00",
+      "last_success": "2026-11-24T06:42:12.029449+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.361,
+      "duration_seconds": 0.386,
       "latest_build": "88240a6d9d17c1a1eec162f707a849bb4064e69f",
       "builds_retained": 74,
       "identifiers": 7063
@@ -83613,24 +83819,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T06:31:05.161471+00:00",
+      "last_attempt": "2026-11-24T06:42:12.155048+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T06:31:05.629808+00:00",
+      "last_success": "2026-11-24T06:42:23.663031+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.469,
-      "latest_build": "2548b4583cce12f2bb3ec91f008472680310ff2e",
-      "builds_retained": 143,
+      "duration_seconds": 11.508,
+      "latest_build": "d43f0a24289c13545a2f71ecd47d39027d5f6e30",
+      "builds_retained": 145,
       "identifiers": 11094
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T06:39:58.160213+00:00",
+      "last_attempt": "2026-11-24T06:42:23.787594+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3492,
-      "duration_seconds": 14.067
+      "consecutive_failures": 3493,
+      "duration_seconds": 14.113
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -83650,61 +83856,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T06:39:02.942728+00:00",
+      "last_attempt": "2026-11-24T06:41:20.541475+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T06:39:04.668806+00:00",
+      "last_success": "2026-11-24T06:41:22.169024+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.726
+      "duration_seconds": 1.628
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T06:39:04.668872+00:00",
+      "last_attempt": "2026-11-24T06:41:22.169094+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T06:39:04.804136+00:00",
+      "last_success": "2026-11-24T06:41:22.305887+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.135
+      "duration_seconds": 0.137
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T06:39:04.804178+00:00",
+      "last_attempt": "2026-11-24T06:41:22.305931+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T06:39:10.411103+00:00",
+      "last_success": "2026-11-24T06:41:29.331544+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.607
+      "duration_seconds": 7.026
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T06:39:10.411163+00:00",
+      "last_attempt": "2026-11-24T06:41:29.331608+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T06:39:55.636961+00:00",
+      "last_success": "2026-11-24T06:42:11.296571+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 45.226,
+      "duration_seconds": 41.965,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-24T06:39:10.632540+00:00",
+          "checked_at": "2026-11-24T06:41:29.588666+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-24T06:39:19.704256+00:00",
+          "checked_at": "2026-11-24T06:41:38.821939+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-24T06:39:19.811466+00:00",
+          "checked_at": "2026-11-24T06:41:38.918243+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-24T06:39:19.811484+00:00",
+          "checked_at": "2026-11-24T06:41:38.918262+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -83712,12 +83918,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T06:39:55.637030+00:00",
+      "last_attempt": "2026-11-24T06:42:11.296651+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T06:39:58.041292+00:00",
+      "last_success": "2026-11-24T06:42:11.522861+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.404,
+      "duration_seconds": 0.226,
       "latest_build": "a6e17cc873b1646a22863211d02a9d4da83f5940e4c99df758115ea82568df68",
       "builds_retained": 137,
       "identifiers": 9909
@@ -83725,12 +83931,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T06:37:47.459138+00:00",
+      "last_attempt": "2026-11-24T06:42:11.643752+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T06:37:47.819909+00:00",
+      "last_success": "2026-11-24T06:42:12.029449+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.361,
+      "duration_seconds": 0.386,
       "latest_build": "88240a6d9d17c1a1eec162f707a849bb4064e69f",
       "builds_retained": 74,
       "identifiers": 7063
@@ -83738,24 +83944,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T06:31:05.161471+00:00",
+      "last_attempt": "2026-11-24T06:42:12.155048+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T06:31:05.629808+00:00",
+      "last_success": "2026-11-24T06:42:23.663031+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.469,
-      "latest_build": "2548b4583cce12f2bb3ec91f008472680310ff2e",
-      "builds_retained": 143,
+      "duration_seconds": 11.508,
+      "latest_build": "d43f0a24289c13545a2f71ecd47d39027d5f6e30",
+      "builds_retained": 145,
       "identifiers": 11094
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T06:39:58.160213+00:00",
+      "last_attempt": "2026-11-24T06:42:23.787594+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3492,
-      "duration_seconds": 14.067
+      "consecutive_failures": 3493,
+      "duration_seconds": 14.113
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -83773,52 +83979,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T06:40:12.231069+00:00",
+      "last_attempt": "2026-11-24T06:42:37.904007+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T06:40:20.303653+00:00",
+      "last_success": "2026-11-24T06:42:45.982700+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.073
+      "duration_seconds": 8.079
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T06:40:20.303710+00:00",
+      "last_attempt": "2026-11-24T06:42:45.982762+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T06:40:23.309971+00:00",
+      "last_success": "2026-11-24T06:42:47.831176+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.006
+      "duration_seconds": 1.848
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T06:31:30.259363+00:00",
+      "last_attempt": "2026-11-24T06:42:47.831231+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T06:31:39.257041+00:00",
+      "last_success": "2026-11-24T06:42:56.788645+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.998
+      "duration_seconds": 8.957
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T06:40:23.310035+00:00",
+      "last_attempt": "2026-11-24T06:42:56.788709+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T06:40:24.862308+00:00",
+      "last_success": "2026-11-24T06:42:58.324842+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.552
+      "duration_seconds": 1.536
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T06:40:24.862393+00:00",
+      "last_attempt": "2026-11-24T06:42:58.324897+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T06:40:24.971097+00:00",
+      "last_success": "2026-11-24T06:42:58.381840+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.109
+      "duration_seconds": 0.057
     }
   },
   "identities": {
@@ -83829,8 +84035,8 @@
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 381,
-      "seconds_mean": 3562.4189051312333,
+      "samples": 383,
+      "seconds_mean": 3545.581567114882,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -83844,8 +84050,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 491,
-      "events": 491,
+      "complete": 493,
+      "events": 493,
       "rate": 1.0
     },
     "source_health": {
