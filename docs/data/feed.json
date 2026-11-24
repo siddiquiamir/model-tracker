@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-24T12:06:16.902429+00:00",
-  "scan_completed_at": "2026-11-24T12:08:00.772826+00:00",
+  "generated_at": "2026-11-24T12:37:06.080678+00:00",
+  "scan_completed_at": "2026-11-24T12:38:59.704410+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 328,
@@ -8,8 +8,8 @@
     "releases": 87,
     "stories_24h": 39,
     "sources_ok": 16,
-    "total_cards": 766,
-    "new_in_this_scan": 1
+    "total_cards": 764,
+    "new_in_this_scan": 0
   },
   "stories": [
     {
@@ -25719,6 +25719,99 @@
       "x_post_text": "🟠 LEAK: Carbon by Google\n\nFirst detected 10 Nov 15:18 UTC in Google AI Studio Js Bundle\n\nvia @StatsWire"
     },
     {
+      "id": "story-minimax-h-3-image",
+      "group": "minimax-h-3-image",
+      "kind": "release",
+      "open_weights": true,
+      "title": "MiniMax H3 Image",
+      "provider_slug": "minimax",
+      "provider_name": "MiniMax",
+      "accent_color": "#ec4899",
+      "detected_at": "2026-11-10T14:58:18.855065+00:00",
+      "updated_at": "2026-11-24T05:57:50.610760+00:00",
+      "first_source": "Hugging Face",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "MiniMax-H3-Image",
+          "name": "minimax/MiniMax-H3-Image"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-11-10T14:58:18.855065+00:00",
+          "title": "MiniMax H3 Image",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "Vercel AI Gateway Catalog",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-11-10T23:10:57.311216+00:00",
+          "title": "New Model on Vercel AI Gateway: MiniMax H3 Image",
+          "url": "https://ai-gateway.vercel.sh/v1/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "LMArena",
+          "scanner": "lmarena",
+          "detected_at": "2026-11-13T04:04:05.000Z",
+          "title": "New Model(s) Added to Arena (Gemini 4 Hydrogen (High))",
+          "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-24T05:57:50.610760+00:00",
+          "title": "minimax-h3-image",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/dfcb9e7b21fa7d712fbcb91146d1fc6fe00a901c/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "dfcb9e7b21fa7d712fbcb91146d1fc6fe00a901c",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/33baa155f99426fa03f06b8d5e74f333685d55957559fdac0cab3d4545afd136.json.gz"
+        }
+      ],
+      "source_count": 4,
+      "backfill": false,
+      "header": "OPEN WEIGHTS · MINIMAX",
+      "card_ids": [
+        "hf-MiniMaxAI_MiniMax-H3-Image",
+        "vercel-gateway-diff-f90b102a",
+        "lmarena-lb-diff-8076212c",
+        "intel-83e8b80634d8e9c156b9"
+      ],
+      "event_label": "Released",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "minimax/MiniMax-H3-Image",
+          "family": "minimax-h3-image",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"minimax/MiniMax-H3-Image\": {\"litellm_provider\": \"minimax\", \"mode\": \"image_generation\", \"source\": \"https://platform.minimax.io/docs/guides/image-generation\", \"input_cost_per_token\": 2.3e-06, \"input_cost_per_image_token\": 1.5e-06, \"output_cost_per_image_token\": 3.8e-06, \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"image\"], \"supported_endpoints\": [\"/v1/images/generations\", \"/v1/images/edits\"]}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "33baa155f99426fa03f06b8d5e74f333685d55957559fdac0cab3d4545afd136",
+          "method": "structured registry",
+          "build": "dfcb9e7b21fa7d712fbcb91146d1fc6fe00a901c",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/dfcb9e7b21fa7d712fbcb91146d1fc6fe00a901c/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T05:54:43+00:00"
+        }
+      ],
+      "x_post_text": "🟢 NEW MODEL: MiniMax H3 Image by MiniMax\n\nFirst detected 10 Nov 14:58 UTC in Hugging Face\nConfirmed by Vercel AI Gateway Catalog, LMArena, LiteLLM commit-pinned registry\n\nvia @StatsWire"
+    },
+    {
       "id": "story-minimax-h-3-image-pe",
       "group": "minimax-h-3-image-pe",
       "kind": "release",
@@ -25882,111 +25975,6 @@
       "x_post_text": "🔵 REGISTRY UPDATE: Claude Mythos 5.2\n\nFirst detected 10 Nov 13:33 UTC in LiteLLM registry\nConfirmed by LiteLLM commit-pinned registry\nIDs: claude-mythos-5-2, claude-mythos-5-2-fast\n\nvia @StatsWire"
     },
     {
-      "id": "story-minimax-h-3-image",
-      "group": "minimax-h-3-image",
-      "kind": "release",
-      "open_weights": true,
-      "title": "MiniMax H3 Image",
-      "provider_slug": "minimax",
-      "provider_name": "MiniMax",
-      "accent_color": "#ec4899",
-      "detected_at": "2026-11-10T12:34:38Z",
-      "updated_at": "2026-11-24T05:57:50.610760+00:00",
-      "first_source": "SGLang pull request",
-      "lead": "2 h before it went live on Hugging Face",
-      "released_on": "2026-11-03",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "MiniMax-H3-Image",
-          "name": "minimax/MiniMax-H3-Image",
-          "released_on": "2026-11-03"
-        }
-      ],
-      "sources": [
-        {
-          "label": "SGLang pull request",
-          "scanner": "engine-pr-leak",
-          "detected_at": "2026-11-10T12:34:38Z",
-          "title": "MiniMaxAI/MiniMax-H3-Image (SGLang PR #49552)",
-          "url": "https://github.com/sgl-project/sglang/pull/49552",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "Hugging Face",
-          "scanner": "huggingface",
-          "detected_at": "2026-11-10T14:58:18.855065+00:00",
-          "title": "MiniMax H3 Image",
-          "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "Vercel AI Gateway Catalog",
-          "scanner": "gateway-radar",
-          "detected_at": "2026-11-10T23:10:57.311216+00:00",
-          "title": "New Model on Vercel AI Gateway: MiniMax H3 Image",
-          "url": "https://ai-gateway.vercel.sh/v1/models",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "LMArena",
-          "scanner": "lmarena",
-          "detected_at": "2026-11-13T04:04:05.000Z",
-          "title": "New Model(s) Added to Arena (Gemini 4 Hydrogen (High))",
-          "url": "https://huggingface.co/datasets/lmarena-ai/leaderboard-dataset",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "LiteLLM commit-pinned registry",
-          "scanner": "litellm-intelligence",
-          "detected_at": "2026-11-24T05:57:50.610760+00:00",
-          "title": "minimax-h3-image",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/dfcb9e7b21fa7d712fbcb91146d1fc6fe00a901c/model_prices_and_context_window.json",
-          "backfill": false,
-          "build": "dfcb9e7b21fa7d712fbcb91146d1fc6fe00a901c",
-          "evidence_path": "data/intelligence/evidence/litellm-intelligence/33baa155f99426fa03f06b8d5e74f333685d55957559fdac0cab3d4545afd136.json.gz"
-        }
-      ],
-      "source_count": 5,
-      "backfill": false,
-      "header": "OPEN WEIGHTS · MINIMAX",
-      "card_ids": [
-        "engine-pr-sgl-project_sglang-49552",
-        "hf-MiniMaxAI_MiniMax-H3-Image",
-        "vercel-gateway-diff-f90b102a",
-        "lmarena-lb-diff-8076212c",
-        "intel-83e8b80634d8e9c156b9"
-      ],
-      "event_label": "Released",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [
-        {
-          "id": "minimax/MiniMax-H3-Image",
-          "family": "minimax-h3-image",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"minimax/MiniMax-H3-Image\": {\"litellm_provider\": \"minimax\", \"mode\": \"image_generation\", \"source\": \"https://platform.minimax.io/docs/guides/image-generation\", \"input_cost_per_token\": 2.3e-06, \"input_cost_per_image_token\": 1.5e-06, \"output_cost_per_image_token\": 3.8e-06, \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"image\"], \"supported_endpoints\": [\"/v1/images/generations\", \"/v1/images/edits\"]}}",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "33baa155f99426fa03f06b8d5e74f333685d55957559fdac0cab3d4545afd136",
-          "method": "structured registry",
-          "build": "dfcb9e7b21fa7d712fbcb91146d1fc6fe00a901c",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/dfcb9e7b21fa7d712fbcb91146d1fc6fe00a901c/model_prices_and_context_window.json",
-          "first_seen": "2026-11-24T05:54:43+00:00"
-        }
-      ],
-      "x_post_text": "🟢 NEW MODEL: MiniMax H3 Image by MiniMax\n\nFirst detected 10 Nov 12:34 UTC in SGLang pull request\n📅 First released: 2026-11-03\n⏱ 2 h before it went live on Hugging Face\nConfirmed by Hugging Face, Vercel AI Gateway Catalog, LMArena +1\n\nvia @StatsWire"
-    },
-    {
       "id": "story-gemini-4-carbon",
       "group": "gemini-4-carbon",
       "kind": "release",
@@ -26055,16 +26043,6 @@
           "detected_at": "2026-10-23T19:51:16+00:00",
           "title": "Gemini 4 Carbon (ACP v1.4.3 Revision)",
           "url": "https://dl.google.com/agy-extensions/releases/macos/agy-acp-server-1.4.3-darwin-arm64.zip",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "npm SDK release",
-          "scanner": "npm",
-          "detected_at": "2026-11-10T12:32:17Z",
-          "title": "Factory Droid CLI v1.7.1 (gemini-4-carbon)",
-          "url": "https://www.npmjs.com/package/@factory/cli?activeTab=versions",
           "backfill": false,
           "build": "",
           "evidence_path": ""
@@ -26170,6 +26148,16 @@
           "evidence_path": ""
         },
         {
+          "label": "npm SDK release",
+          "scanner": "npm",
+          "detected_at": "2026-11-10T20:47:12.461Z",
+          "title": "Genai (Gemini 4 Carbon)",
+          "url": "https://www.npmjs.com/package/@google/genai?activeTab=versions",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
           "label": "LMArena",
           "scanner": "lmarena",
           "detected_at": "2026-11-12T05:59:55.615618+00:00",
@@ -26185,7 +26173,6 @@
       "header": "NEW MODEL · GOOGLE",
       "card_ids": [
         "ag-acp-1.4.3-revision-diff",
-        "cli-factory-droid-1.7.0-1.7.1",
         "web-bundle-aistudio-models-336aaf20",
         "docs-diff-gemini-docs-06dfe89e",
         "docs-diff-gcp-vertex-models-06dfe89e",
@@ -26206,7 +26193,7 @@
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Gemini 4 Carbon by Google\n\nFirst detected 23 Oct 19:51 UTC in Antigravity ACP config\n📅 First released: 2026-11-10\n⏱ 17 days before it went live on Vercel AI Gateway Catalog\nConfirmed by npm SDK release, Google AI Studio Js Bundle, Gemini API Docs +9\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Gemini 4 Carbon by Google\n\nFirst detected 23 Oct 19:51 UTC in Antigravity ACP config\n📅 First released: 2026-11-10\n⏱ 17 days before it went live on Vercel AI Gateway Catalog\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-argon-cyber-permissive",
@@ -83794,82 +83781,6 @@
       "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 model keys!\n\n• azure_ai/claude-mythos-5-2-fast (azure_ai/claude-mythos-5-2-fast)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
     },
     {
-      "id": "engine-pr-sgl-project_sglang-49552",
-      "category": "open-source",
-      "scanner": "engine-pr-leak",
-      "header": "SGLANG PR DAY-0 MODEL ONBOARDING (OPEN)",
-      "title": "MiniMaxAI/MiniMax-H3-Image (SGLang PR #49552)",
-      "subtitle": "[Feat] diffusion/model: Support MiniMaxAI/MiniMax-H3-Image",
-      "build_label": "SGLang PR",
-      "build_transition": "PR #49552 (open)",
-      "models": [
-        {
-          "id": "MiniMaxAI/MiniMax-H3-Image",
-          "name": "MiniMax-H3-Image",
-          "released_on": "2026-11-03"
-        }
-      ],
-      "evidence": "sgl-project/sglang/pull/49552",
-      "source_text": "public GitHub pull request #49552 on sgl-project/sglang.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "MINIMAX",
-      "provider_slug": "minimax",
-      "accent_color": "#ec4899",
-      "links": [
-        {
-          "label": "sgl-project/sglang PR #49552",
-          "url": "https://github.com/sgl-project/sglang/pull/49552"
-        }
-      ],
-      "detected_at": "2026-11-10T12:34:38Z",
-      "pricing": null,
-      "x_post_text": "🚨 SGLANG PR DAY-0 MODEL ONBOARDING (OPEN)\nMiniMaxAI/MiniMax-H3-Image (SGLang PR #49552) spotted in SGLang PR PR #49552 (open)!\n\n• MiniMax-H3-Image (MiniMaxAI/MiniMax-H3-Image)\n\nEvidence: sgl-project/sglang/pull/49552\nSource: public GitHub pull request #49552 on sgl-project/sglang.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "cli-factory-droid-1.7.0-1.7.1",
-      "category": "cli-sdk-diff",
-      "scanner": "npm",
-      "header": "CLI BINARY DIFF · FACTORY DROID · GOOGLE",
-      "title": "Factory Droid CLI v1.7.1 (gemini-4-carbon)",
-      "subtitle": "Added to Factory Droid CLI (@factory/cli v1.7.0 -> v1.7.1) built-in model registry.",
-      "build_label": "Droid CLI Diff",
-      "build_transition": "1.7.0 -> 1.7.1",
-      "old_version": "1.7.0",
-      "new_version": "1.7.1",
-      "models": [
-        {
-          "id": "gemini-4-carbon",
-          "name": "Gemini 4 Carbon",
-          "released_on": "2026-11-10"
-        }
-      ],
-      "evidence": "@factory/cli v1.7.1 (.bun ELF section in downloads.factory.ai/factory-cli/releases/1.7.1/linux/x64/droid)",
-      "source_text": "Factory Droid CLI standalone binary (.bun ELF section).",
-      "disclaimer_1": "Spotted in Factory Droid CLI v1.7.1 built-in model catalog alongside 90 Vertex AI billing SKUs ($4/$20) and Gemini Web App config.",
-      "disclaimer_2": "",
-      "provider_name": "GOOGLE",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "npm (@factory/cli)",
-          "url": "https://www.npmjs.com/package/@factory/cli?activeTab=versions"
-        },
-        {
-          "label": "Factory Docs",
-          "url": "https://docs.factory.ai"
-        }
-      ],
-      "detected_at": "2026-11-10T12:32:17Z",
-      "story_id": "story-gemini-4-carbon",
-      "confidence_tier": "confirmed",
-      "confidence_label": "Confirmed · 3 sources",
-      "corroboration_count": 3,
-      "pricing": null,
-      "x_post_text": "🚨 CLI BINARY DIFF · FACTORY DROID · GOOGLE\nFactory Droid CLI v1.7.1 (gemini-4-carbon) spotted in Droid CLI Diff 1.7.0 -> 1.7.1!\n\n• Gemini 4 Carbon (gemini-4-carbon)\n\nEvidence: @factory/cli v1.7.1 (.bun ELF section in downloads.factory.ai/factory-cli/releases/1.7.1/linux/x64/droid)\nSource: Factory Droid CLI standalone binary (.bun ELF section).\n\nTracked by @StatsWire"
-    },
-    {
       "id": "ag-acp-1.4.3-revision-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
@@ -84033,25 +83944,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T12:07:22.074738+00:00",
+      "last_attempt": "2026-11-24T12:38:09.099103+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T12:07:22.398071+00:00",
+      "last_success": "2026-11-24T12:38:12.126712+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.324,
-      "latest_build": "ba16908720b76713260133fe7b1439b95eeaf764923705f90b15c7b61c0e65c2",
-      "builds_retained": 138,
-      "identifiers": 9910
+      "duration_seconds": 3.028,
+      "latest_build": "fa19fc3c64eff69a18f6a90efbb546687a36851936a9f0257640d252e58e4fa3",
+      "builds_retained": 140,
+      "identifiers": 9911
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T12:07:22.540293+00:00",
+      "last_attempt": "2026-11-24T12:38:12.266723+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T12:07:25.971942+00:00",
+      "last_success": "2026-11-24T12:38:12.974856+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.432,
+      "duration_seconds": 0.709,
       "latest_build": "a7055376926e0e1edee431b33222c8fd59439fbf",
       "builds_retained": 75,
       "identifiers": 7063
@@ -84059,34 +83970,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T12:07:26.113920+00:00",
+      "last_attempt": "2026-11-24T12:38:13.122653+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T12:07:26.695713+00:00",
+      "last_success": "2026-11-24T12:38:25.957393+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.582,
-      "latest_build": "8eb615a0f56d912a991e3b5bf2181c2994d02b6c",
-      "builds_retained": 146,
-      "identifiers": 11095
+      "duration_seconds": 12.835,
+      "latest_build": "6e1fdc3970250bedb034bcacfa6d92451063a504",
+      "builds_retained": 148,
+      "identifiers": 11096
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T12:07:26.838551+00:00",
+      "last_attempt": "2026-11-24T12:38:26.097201+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3627,
-      "duration_seconds": 15.176
+      "consecutive_failures": 3639,
+      "duration_seconds": 15.469
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T12:07:42.020348+00:00",
+      "last_attempt": "2026-11-24T12:38:41.572607+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T12:07:42.252153+00:00",
+      "last_success": "2026-11-24T12:38:41.836661+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.232,
+      "duration_seconds": 0.264,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -84096,61 +84007,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T12:06:16.902504+00:00",
+      "last_attempt": "2026-11-24T12:37:06.080744+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T12:06:19.299654+00:00",
+      "last_success": "2026-11-24T12:37:08.507927+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.397
+      "duration_seconds": 2.427
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T12:06:19.299719+00:00",
+      "last_attempt": "2026-11-24T12:37:08.507983+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T12:06:19.499623+00:00",
+      "last_success": "2026-11-24T12:37:08.770073+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.2
+      "duration_seconds": 0.262
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T12:06:19.499661+00:00",
+      "last_attempt": "2026-11-24T12:37:08.770110+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T12:06:28.685184+00:00",
+      "last_success": "2026-11-24T12:37:16.730743+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.186
+      "duration_seconds": 7.961
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T12:06:28.685265+00:00",
+      "last_attempt": "2026-11-24T12:37:16.730812+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T12:07:22.074677+00:00",
+      "last_success": "2026-11-24T12:38:09.099048+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 53.389,
+      "duration_seconds": 52.368,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-24T12:06:28.927746+00:00",
+          "checked_at": "2026-11-24T12:37:16.994262+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-24T12:06:43.956486+00:00",
+          "checked_at": "2026-11-24T12:37:30.898643+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-24T12:06:44.089948+00:00",
+          "checked_at": "2026-11-24T12:37:31.043229+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-24T12:06:44.089966+00:00",
+          "checked_at": "2026-11-24T12:37:31.043246+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -84158,25 +84069,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T12:07:22.074738+00:00",
+      "last_attempt": "2026-11-24T12:38:09.099103+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T12:07:22.398071+00:00",
+      "last_success": "2026-11-24T12:38:12.126712+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.324,
-      "latest_build": "ba16908720b76713260133fe7b1439b95eeaf764923705f90b15c7b61c0e65c2",
-      "builds_retained": 138,
-      "identifiers": 9910
+      "duration_seconds": 3.028,
+      "latest_build": "fa19fc3c64eff69a18f6a90efbb546687a36851936a9f0257640d252e58e4fa3",
+      "builds_retained": 140,
+      "identifiers": 9911
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T12:07:22.540293+00:00",
+      "last_attempt": "2026-11-24T12:38:12.266723+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T12:07:25.971942+00:00",
+      "last_success": "2026-11-24T12:38:12.974856+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.432,
+      "duration_seconds": 0.709,
       "latest_build": "a7055376926e0e1edee431b33222c8fd59439fbf",
       "builds_retained": 75,
       "identifiers": 7063
@@ -84184,34 +84095,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T12:07:26.113920+00:00",
+      "last_attempt": "2026-11-24T12:38:13.122653+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T12:07:26.695713+00:00",
+      "last_success": "2026-11-24T12:38:25.957393+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.582,
-      "latest_build": "8eb615a0f56d912a991e3b5bf2181c2994d02b6c",
-      "builds_retained": 146,
-      "identifiers": 11095
+      "duration_seconds": 12.835,
+      "latest_build": "6e1fdc3970250bedb034bcacfa6d92451063a504",
+      "builds_retained": 148,
+      "identifiers": 11096
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T12:07:26.838551+00:00",
+      "last_attempt": "2026-11-24T12:38:26.097201+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3627,
-      "duration_seconds": 15.176
+      "consecutive_failures": 3639,
+      "duration_seconds": 15.469
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T12:07:42.020348+00:00",
+      "last_attempt": "2026-11-24T12:38:41.572607+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T12:07:42.252153+00:00",
+      "last_success": "2026-11-24T12:38:41.836661+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.232,
+      "duration_seconds": 0.264,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -84219,57 +84130,57 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T12:07:42.548612+00:00",
+      "last_attempt": "2026-11-24T12:38:42.128955+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T12:07:49.817252+00:00",
+      "last_success": "2026-11-24T12:38:49.336723+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.269
+      "duration_seconds": 7.208
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T12:07:49.817307+00:00",
+      "last_attempt": "2026-11-24T12:38:49.336777+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T12:07:52.583914+00:00",
+      "last_success": "2026-11-24T12:38:50.994993+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.767
+      "duration_seconds": 1.658
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T12:07:52.583964+00:00",
+      "last_attempt": "2026-11-24T12:38:50.995041+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T12:07:59.269356+00:00",
+      "last_success": "2026-11-24T12:38:58.216270+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.685
+      "duration_seconds": 7.221
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T12:07:59.269401+00:00",
+      "last_attempt": "2026-11-24T12:38:58.216319+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T12:08:00.371556+00:00",
+      "last_success": "2026-11-24T12:38:59.336111+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.102
+      "duration_seconds": 1.12
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T12:08:00.371593+00:00",
+      "last_attempt": "2026-11-24T12:38:59.336147+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T12:08:00.488390+00:00",
+      "last_success": "2026-11-24T12:38:59.423398+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.117
+      "duration_seconds": 0.087
     }
   },
   "identities": {
-    "identifiers": 31398,
-    "declared_aliases": 18388,
+    "identifiers": 31400,
+    "declared_aliases": 18390,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
