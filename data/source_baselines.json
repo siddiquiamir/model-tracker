@@ -24063,8 +24063,8 @@
     "pika-v2.2": {
       "org": "pika",
       "provider": "fal",
-      "caps": "in:text, out:video",
-      "model_id": "86de5aea-fc0c-4c36-b65a-7afc443a32d2",
+      "caps": "in:text, in:image, out:video",
+      "model_id": "f9b9f030-9ebc-4765-bf76-c64a82a72dfd",
       "route": "code"
     },
     "mochi-v1": {
@@ -24712,21 +24712,6 @@
       "claude-sonnet-5",
       "claude-sonnet-5-5"
     ],
-    "@openai/codex@0.172.0-alpha.2-linux-x64": [
-      "gpt-5.5",
-      "gpt-5.6-luna",
-      "gpt-5.6-sol",
-      "gpt-5.6-terra",
-      "gpt-6-astra",
-      "gpt-6-luna",
-      "gpt-6-sol",
-      "gpt-6.1-sol",
-      "gpt-6.1-terra",
-      "gpt-6.2-astra",
-      "gpt-6.2-sol",
-      "gpt-daybreak-blue-latest",
-      "gpt-daybreak-red-latest"
-    ],
     "@openai/codex@0.172.0-linux-x64": [
       "gpt-5.5",
       "gpt-5.6-luna",
@@ -24788,6 +24773,21 @@
       "gpt-daybreak-red-latest"
     ],
     "@openai/codex@0.173.0-alpha.4-linux-x64": [
+      "gpt-5.5",
+      "gpt-5.6-luna",
+      "gpt-5.6-sol",
+      "gpt-5.6-terra",
+      "gpt-6-astra",
+      "gpt-6-luna",
+      "gpt-6-sol",
+      "gpt-6.1-sol",
+      "gpt-6.1-terra",
+      "gpt-6.2-astra",
+      "gpt-6.2-sol",
+      "gpt-daybreak-blue-latest",
+      "gpt-daybreak-red-latest"
+    ],
+    "@openai/codex@0.174.0-alpha.1-linux-x64": [
       "gpt-5.5",
       "gpt-5.6-luna",
       "gpt-5.6-sol",
@@ -26635,12 +26635,6 @@
   "copilot_cli_release_models": [],
   "engine_seen_prs": {
     "vllm-project/vllm": [
-      69278,
-      69282,
-      69284,
-      69285,
-      69286,
-      69287,
       69288,
       69290,
       69293,
@@ -26834,11 +26828,15 @@
       69512,
       69513,
       69514,
-      69515
+      69515,
+      69516,
+      69517,
+      69518,
+      69519,
+      69520,
+      69521
     ],
     "sgl-project/sglang": [
-      52487,
-      52488,
       52490,
       52491,
       52492,
@@ -27036,7 +27034,9 @@
       52705,
       52706,
       52707,
-      52708
+      52708,
+      52709,
+      52710
     ],
     "NVIDIA/TensorRT-LLM": [
       22607,
@@ -27241,7 +27241,6 @@
       22823
     ],
     "huggingface/transformers": [
-      50895,
       50896,
       50897,
       50898,
@@ -27440,7 +27439,8 @@
       51149,
       51150,
       51152,
-      51153
+      51153,
+      51154
     ],
     "ggml-org/llama.cpp": [
       32615,
@@ -27956,7 +27956,7 @@
       "veo-3.0-fast-generate-001",
       "veo-3.1-generate-preview"
     ],
-    "aistudio_build_key": "boq-makersuite.MakerSuite.en_US.ytqbjSKxEdo.2018.O",
+    "aistudio_build_key": "boq-makersuite.MakerSuite.en_US.rWUj1ypxxEE.2018.O",
     "gemini_web_models": [
       "gemini-2.0-flash",
       "gemini-2.5-flash",
@@ -28640,7 +28640,6 @@
     "grok-4.5",
     "grok-4.6",
     "grok-4.7",
-    "grok-build-0.1",
     "grok-imagine-image-2.0",
     "grok-imagine-video-1.5",
     "grok-imagine-video-1.5-lite",
@@ -31362,7 +31361,7 @@
     "voxtral-small-24b-2507"
   ],
   "openai_api_spec": {
-    "etag": "\"2c1c0676137499fd7ef93352807b0466f147ed633bc01b3a55af112e66bacf66\"",
+    "etag": "\"aa1606194a51bf39c0723a003be02645e303c43f20f1e68a3bbac186c8af4c7d\"",
     "ids": [
       "chatgpt",
       "chatgpt-4o-latest",
@@ -31621,7 +31620,6 @@
       "grok-4.3": "$1.25 / $2.50 per 1M tokens ($0.20 cached)",
       "grok-4.20-0309-reasoning": "$1.25 / $2.50 per 1M tokens ($0.20 cached)",
       "grok-4.20-0309-non-reasoning": "$1.25 / $2.50 per 1M tokens ($0.20 cached)",
-      "grok-build-0.1": "$1 / $2 per 1M tokens ($0.20 cached)",
       "grok-4.20-multi-agent-0309": "$1.25 / $2.50 per 1M tokens ($0.20 cached)",
       "grok-imagine-image": "$0.02 / image",
       "grok-imagine-image-2.0": "$0.04 / image",
@@ -32603,7 +32601,7 @@
       ]
     },
     "@openai/codex": {
-      "version": "0.172.0-linux-x64",
+      "version": "0.174.0-alpha.1-linux-x64",
       "models": [
         "gpt-5.5",
         "gpt-5.6-luna",
