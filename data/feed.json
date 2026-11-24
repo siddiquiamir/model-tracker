@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-24T13:13:23.549192+00:00",
-  "scan_completed_at": "2026-11-24T13:14:57.978599+00:00",
+  "generated_at": "2026-11-24T13:44:26.905282+00:00",
+  "scan_completed_at": "2026-11-24T13:46:00.913316+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 329,
     "leaks": 37,
     "releases": 87,
-    "stories_24h": 43,
+    "stories_24h": 45,
     "sources_ok": 13,
-    "total_cards": 776,
-    "new_in_this_scan": 0
+    "total_cards": 777,
+    "new_in_this_scan": 2
   },
   "stories": [
     {
@@ -3425,6 +3425,154 @@
       "x_post_text": "🟠 LEAK: Inkling2LoopForConditionalGeneration by Architecture Diff\n\nFirst detected 21 Nov 16:20 UTC in vLLM registry\n\nvia @StatsWire"
     },
     {
+      "id": "story-embed-english-3",
+      "group": "embed-english-3",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Embed English 3",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-21T04:19:48.708215+00:00",
+      "updated_at": "2026-11-24T13:45:31.935354+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "embed-english-v3.0",
+          "name": "cohere.embed-english-v3"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-21T04:19:48.708215+00:00",
+          "title": "embed-english-v3.0",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/3886fe31dc9718081f5a8f8f11406ad514d4ade2/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "3886fe31dc9718081f5a8f8f11406ad514d4ade2",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/111434b8f0f50fd6e2ec7cae4789a26ce2dad87a5d57484095d4c41bbc3df6bf.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-4b6105a3ae3232beaaaa",
+        "intel-f20927c2972383a1bac6"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "embed-english-v3.0",
+          "family": "embed-english-v3.0",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"embed-english-v3.0\": {\"input_cost_per_image\": 0.0001, \"input_cost_per_token\": 1e-07, \"litellm_provider\": \"cohere\", \"max_input_tokens\": 512, \"metadata\": {\"notes\": \"'supports_image_input' is a deprecated field. Use 'supports_embedding_image_input' instead.\"}, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"output_vector_size\": 1024, \"supports_embedding_image_input\": true, \"supports_image_input\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "111434b8f0f50fd6e2ec7cae4789a26ce2dad87a5d57484095d4c41bbc3df6bf",
+          "method": "structured registry",
+          "build": "3886fe31dc9718081f5a8f8f11406ad514d4ade2",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/3886fe31dc9718081f5a8f8f11406ad514d4ade2/model_prices_and_context_window.json",
+          "first_seen": "2026-11-21T04:16:52+00:00"
+        },
+        {
+          "id": "cohere.embed-english-v3",
+          "family": "cohere.embed-english-v3",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"cohere.embed-english-v3\": {\"input_cost_per_token\": 1e-07, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 512, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"output_vector_size\": 1024, \"source\": \"https://aws.amazon.com/bedrock/pricing/\", \"supports_embedding_image_input\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
+          "method": "structured registry",
+          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T13:42:08+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: embed-english-v3.0\nhttps://raw.githubusercontent.com/BerriAI/litellm/3886fe31dc9718081f5a8f8f11406ad514d4ade2/model_prices_and_context_window.json"
+    },
+    {
+      "id": "story-embed-multilingual-3",
+      "group": "embed-multilingual-3",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Embed Multilingual 3",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-21T04:19:48.708215+00:00",
+      "updated_at": "2026-11-24T13:45:31.935354+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "embed-multilingual-v3.0",
+          "name": "cohere.embed-multilingual-v3"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-21T04:19:48.708215+00:00",
+          "title": "embed-multilingual-v3.0",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/3886fe31dc9718081f5a8f8f11406ad514d4ade2/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "3886fe31dc9718081f5a8f8f11406ad514d4ade2",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/111434b8f0f50fd6e2ec7cae4789a26ce2dad87a5d57484095d4c41bbc3df6bf.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-80f8fdcbf99e21861704",
+        "intel-ab98428ad98209c16bd9"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "embed-multilingual-v3.0",
+          "family": "embed-multilingual-v3.0",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"embed-multilingual-v3.0\": {\"input_cost_per_token\": 1e-07, \"litellm_provider\": \"cohere\", \"max_input_tokens\": 512, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"output_vector_size\": 1024, \"supports_embedding_image_input\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "111434b8f0f50fd6e2ec7cae4789a26ce2dad87a5d57484095d4c41bbc3df6bf",
+          "method": "structured registry",
+          "build": "3886fe31dc9718081f5a8f8f11406ad514d4ade2",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/3886fe31dc9718081f5a8f8f11406ad514d4ade2/model_prices_and_context_window.json",
+          "first_seen": "2026-11-21T04:16:52+00:00"
+        },
+        {
+          "id": "cohere.embed-multilingual-v3",
+          "family": "cohere.embed-multilingual-v3",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"cohere.embed-multilingual-v3\": {\"input_cost_per_token\": 1e-07, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 512, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"output_vector_size\": 1024, \"source\": \"https://aws.amazon.com/bedrock/pricing/\", \"supports_embedding_image_input\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
+          "method": "structured registry",
+          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T13:42:08+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: embed-multilingual-v3.0\nhttps://raw.githubusercontent.com/BerriAI/litellm/3886fe31dc9718081f5a8f8f11406ad514d4ade2/model_prices_and_context_window.json"
+    },
+    {
       "id": "story-embed-english-light-3",
       "group": "embed-english-light-3",
       "kind": "registry",
@@ -3485,66 +3633,6 @@
       "x_post_text": "registry evidence, not a launch: embed-english-light-v3.0\nhttps://raw.githubusercontent.com/BerriAI/litellm/3886fe31dc9718081f5a8f8f11406ad514d4ade2/model_prices_and_context_window.json"
     },
     {
-      "id": "story-embed-english-3",
-      "group": "embed-english-3",
-      "kind": "registry",
-      "open_weights": false,
-      "title": "Embed English 3",
-      "provider_slug": "unknown",
-      "provider_name": "Unattributed",
-      "accent_color": "#0891b2",
-      "detected_at": "2026-11-21T04:19:48.708215+00:00",
-      "updated_at": "2026-11-21T04:19:48.708215+00:00",
-      "first_source": "LiteLLM commit-pinned registry",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "embed-english-v3.0",
-          "name": "embed-english-v3.0"
-        }
-      ],
-      "sources": [
-        {
-          "label": "LiteLLM commit-pinned registry",
-          "scanner": "litellm-intelligence",
-          "detected_at": "2026-11-21T04:19:48.708215+00:00",
-          "title": "embed-english-v3.0",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/3886fe31dc9718081f5a8f8f11406ad514d4ade2/model_prices_and_context_window.json",
-          "backfill": false,
-          "build": "3886fe31dc9718081f5a8f8f11406ad514d4ade2",
-          "evidence_path": "data/intelligence/evidence/litellm-intelligence/111434b8f0f50fd6e2ec7cae4789a26ce2dad87a5d57484095d4c41bbc3df6bf.json.gz"
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "REGISTRY UPDATE · UNATTRIBUTED",
-      "card_ids": [
-        "intel-4b6105a3ae3232beaaaa"
-      ],
-      "event_label": "Registry update",
-      "intelligence_only": true,
-      "candidate_only": false,
-      "registry_evidence": [
-        {
-          "id": "embed-english-v3.0",
-          "family": "embed-english-v3.0",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"embed-english-v3.0\": {\"input_cost_per_image\": 0.0001, \"input_cost_per_token\": 1e-07, \"litellm_provider\": \"cohere\", \"max_input_tokens\": 512, \"metadata\": {\"notes\": \"'supports_image_input' is a deprecated field. Use 'supports_embedding_image_input' instead.\"}, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"output_vector_size\": 1024, \"supports_embedding_image_input\": true, \"supports_image_input\": true}}",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "111434b8f0f50fd6e2ec7cae4789a26ce2dad87a5d57484095d4c41bbc3df6bf",
-          "method": "structured registry",
-          "build": "3886fe31dc9718081f5a8f8f11406ad514d4ade2",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/3886fe31dc9718081f5a8f8f11406ad514d4ade2/model_prices_and_context_window.json",
-          "first_seen": "2026-11-21T04:16:52+00:00"
-        }
-      ],
-      "x_post_text": "registry evidence, not a launch: embed-english-v3.0\nhttps://raw.githubusercontent.com/BerriAI/litellm/3886fe31dc9718081f5a8f8f11406ad514d4ade2/model_prices_and_context_window.json"
-    },
-    {
       "id": "story-embed-multilingual-light-3",
       "group": "embed-multilingual-light-3",
       "kind": "registry",
@@ -3603,66 +3691,6 @@
         }
       ],
       "x_post_text": "registry evidence, not a launch: embed-multilingual-light-v3.0\nhttps://raw.githubusercontent.com/BerriAI/litellm/3886fe31dc9718081f5a8f8f11406ad514d4ade2/model_prices_and_context_window.json"
-    },
-    {
-      "id": "story-embed-multilingual-3",
-      "group": "embed-multilingual-3",
-      "kind": "registry",
-      "open_weights": false,
-      "title": "Embed Multilingual 3",
-      "provider_slug": "unknown",
-      "provider_name": "Unattributed",
-      "accent_color": "#0891b2",
-      "detected_at": "2026-11-21T04:19:48.708215+00:00",
-      "updated_at": "2026-11-21T04:19:48.708215+00:00",
-      "first_source": "LiteLLM commit-pinned registry",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "embed-multilingual-v3.0",
-          "name": "embed-multilingual-v3.0"
-        }
-      ],
-      "sources": [
-        {
-          "label": "LiteLLM commit-pinned registry",
-          "scanner": "litellm-intelligence",
-          "detected_at": "2026-11-21T04:19:48.708215+00:00",
-          "title": "embed-multilingual-v3.0",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/3886fe31dc9718081f5a8f8f11406ad514d4ade2/model_prices_and_context_window.json",
-          "backfill": false,
-          "build": "3886fe31dc9718081f5a8f8f11406ad514d4ade2",
-          "evidence_path": "data/intelligence/evidence/litellm-intelligence/111434b8f0f50fd6e2ec7cae4789a26ce2dad87a5d57484095d4c41bbc3df6bf.json.gz"
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "REGISTRY UPDATE · UNATTRIBUTED",
-      "card_ids": [
-        "intel-80f8fdcbf99e21861704"
-      ],
-      "event_label": "Registry update",
-      "intelligence_only": true,
-      "candidate_only": false,
-      "registry_evidence": [
-        {
-          "id": "embed-multilingual-v3.0",
-          "family": "embed-multilingual-v3.0",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"embed-multilingual-v3.0\": {\"input_cost_per_token\": 1e-07, \"litellm_provider\": \"cohere\", \"max_input_tokens\": 512, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"output_vector_size\": 1024, \"supports_embedding_image_input\": true}}",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "111434b8f0f50fd6e2ec7cae4789a26ce2dad87a5d57484095d4c41bbc3df6bf",
-          "method": "structured registry",
-          "build": "3886fe31dc9718081f5a8f8f11406ad514d4ade2",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/3886fe31dc9718081f5a8f8f11406ad514d4ade2/model_prices_and_context_window.json",
-          "first_seen": "2026-11-21T04:16:52+00:00"
-        }
-      ],
-      "x_post_text": "registry evidence, not a launch: embed-multilingual-v3.0\nhttps://raw.githubusercontent.com/BerriAI/litellm/3886fe31dc9718081f5a8f8f11406ad514d4ade2/model_prices_and_context_window.json"
     },
     {
       "id": "story-inkling-2-mini",
@@ -25890,6 +25918,200 @@
       "x_post_text": "🟢 NEW MODEL: ERNIE-5.5-Flash-Preview by Baidu\n\nFirst detected 10 Nov 19:20 UTC in OpenRouter\n📅 First released: 2026-11-10\nConfirmed by LMArena, Hugging Face\nIDs: ernie-5.5-flash-preview, ERNIE-5.5-Flash-Preview-FP8, ERNIE-5.5-Flash-Preview-BF16\n\nvia @StatsWire"
     },
     {
+      "id": "story-claude-mythos-5-2",
+      "group": "claude-mythos-5-2",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Claude Mythos 5.2",
+      "provider_slug": "amazon",
+      "provider_name": "AWS Bedrock",
+      "accent_color": "#f97316",
+      "detected_at": "2026-11-10T17:40:17.273840+00:00",
+      "updated_at": "2026-11-24T12:43:32.164629+00:00",
+      "first_source": "LiteLLM registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "claude-mythos-5-2",
+          "name": "anthropic.claude-mythos-5-2"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM registry",
+          "scanner": "litellm",
+          "detected_at": "2026-11-10T17:40:17.273840+00:00",
+          "title": "1 New Model(s) Added to LiteLLM",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T06:43:07.018761+00:00",
+          "title": "claude-mythos-5-2",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/66fd00e7b03a6af09031e12dfd88db61d3c0481d/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "66fd00e7b03a6af09031e12dfd88db61d3c0481d",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/6b0dfa21f85fe2ea1d4a7931ab16b0cf56d993455b6d13799f8b1228d7a8253f.json.gz"
+        }
+      ],
+      "source_count": 2,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · AWS BEDROCK",
+      "card_ids": [
+        "litellm-diff-782b2563",
+        "intel-ad6d9ab937f52b6988ee",
+        "intel-d533d2ae12ffd9fdca57",
+        "intel-5a77dde9996935d03610",
+        "intel-47d277d32ba4934c6fd1",
+        "intel-a25cbc065fd29ad424b0",
+        "intel-c0df2e00c16b22e95f07",
+        "intel-2d46e4feb4342e5615db"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "vertex_ai/claude-mythos-5-2",
+          "family": "claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"vertex_ai/claude-mythos-5-2\": {\"regional_endpoint_uplift_multiplier\": 1.1, \"supports_mid_conversation_system\": true, \"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.6e-05, \"cache_creation_input_token_cost_batches\": 5e-06, \"cache_read_input_token_cost\": 2e-07, \"cache_read_input_token_cost_batches\": 1e-07, \"input_cost_per_token\": 8e-06, \"litellm_provider\": \"vertex_ai-anthropic_models\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4e-05, \"search_context_cost_per_query\": {\"search_context_size_high\": 0.01, \"search_context_size_low\": 0.01, \"search_context_size_medium\": 0.01}, \"supports_adaptive_thinking\": true, \"thinking_always_on\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_native_structured_output\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"supports_max_reasoning_eff",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "6b0dfa21f85fe2ea1d4a7931ab16b0cf56d993455b6d13799f8b1228d7a8253f",
+          "method": "structured registry",
+          "build": "66fd00e7b03a6af09031e12dfd88db61d3c0481d",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/66fd00e7b03a6af09031e12dfd88db61d3c0481d/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T06:41:59+00:00"
+        },
+        {
+          "id": "bedrock/us-gov-east-1/anthropic.claude-mythos-5-2",
+          "family": "anthropic.claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"bedrock/us-gov-east-1/anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": tr",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "c436a6e5121c438a20b0c014d46129acfe41d2d1b23725bfda733dd901141210",
+          "method": "structured registry",
+          "build": "254d65ab701326f90152a969edafec965850fa73",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/254d65ab701326f90152a969edafec965850fa73/model_prices_and_context_window.json",
+          "first_seen": "2026-11-21T00:00:49+00:00"
+        },
+        {
+          "id": "bedrock/us-gov-west-1/anthropic.claude-mythos-5-2",
+          "family": "anthropic.claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"bedrock/us-gov-west-1/anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": tr",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "c436a6e5121c438a20b0c014d46129acfe41d2d1b23725bfda733dd901141210",
+          "method": "structured registry",
+          "build": "254d65ab701326f90152a969edafec965850fa73",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/254d65ab701326f90152a969edafec965850fa73/model_prices_and_context_window.json",
+          "first_seen": "2026-11-21T00:00:49+00:00"
+        },
+        {
+          "id": "us-gov.anthropic.claude-mythos-5-2",
+          "family": "us-gov.anthropic.claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"us-gov.anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"s",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "c436a6e5121c438a20b0c014d46129acfe41d2d1b23725bfda733dd901141210",
+          "method": "structured registry",
+          "build": "254d65ab701326f90152a969edafec965850fa73",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/254d65ab701326f90152a969edafec965850fa73/model_prices_and_context_window.json",
+          "first_seen": "2026-11-21T00:00:49+00:00"
+        },
+        {
+          "id": "anthropic.claude-mythos-5-2",
+          "family": "anthropic.claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.6e-05, \"cache_read_input_token_cost\": 2e-07, \"input_cost_per_token\": 8e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"thinking_always_on\": true, \"supports_tool_schema_defs\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "56792da5932f98d4b2aeab2b49d7059021f3a105f74a1ba11877f2918be7731e",
+          "method": "structured registry",
+          "build": "b484c877e1f232240ca2576c5e9e14c1bcedb483",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/b484c877e1f232240ca2576c5e9e14c1bcedb483/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T12:42:19+00:00"
+        },
+        {
+          "id": "bedrock/us-gov-east-1/anthropic.claude-mythos-5-2",
+          "family": "anthropic.claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"bedrock/us-gov-east-1/anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": tr",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "56792da5932f98d4b2aeab2b49d7059021f3a105f74a1ba11877f2918be7731e",
+          "method": "structured registry",
+          "build": "b484c877e1f232240ca2576c5e9e14c1bcedb483",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/b484c877e1f232240ca2576c5e9e14c1bcedb483/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T12:42:19+00:00"
+        },
+        {
+          "id": "bedrock/us-gov-west-1/anthropic.claude-mythos-5-2",
+          "family": "anthropic.claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"bedrock/us-gov-west-1/anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": tr",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "56792da5932f98d4b2aeab2b49d7059021f3a105f74a1ba11877f2918be7731e",
+          "method": "structured registry",
+          "build": "b484c877e1f232240ca2576c5e9e14c1bcedb483",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/b484c877e1f232240ca2576c5e9e14c1bcedb483/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T12:42:19+00:00"
+        },
+        {
+          "id": "eu.anthropic.claude-mythos-5-2",
+          "family": "eu.anthropic.claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"eu.anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.76e-05, \"cache_read_input_token_cost\": 2.2e-07, \"input_cost_per_token\": 8.8e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.4e-05, \"prompt_cache_min_tokens\": 512.0, \"search_context_cost_per_query\": {\"search_context_size_high\": 0.01, \"search_context_size_low\": 0.01, \"search_context_size_medium\": 0.01}, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "56792da5932f98d4b2aeab2b49d7059021f3a105f74a1ba11877f2918be7731e",
+          "method": "structured registry",
+          "build": "b484c877e1f232240ca2576c5e9e14c1bcedb483",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/b484c877e1f232240ca2576c5e9e14c1bcedb483/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T12:42:19+00:00"
+        },
+        {
+          "id": "global.anthropic.claude-mythos-5-2",
+          "family": "global.anthropic.claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"global.anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.6e-05, \"cache_read_input_token_cost\": 2e-07, \"input_cost_per_token\": 8e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"thinking_always_on\": true, \"supports_tool_schema_defs\":",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "56792da5932f98d4b2aeab2b49d7059021f3a105f74a1ba11877f2918be7731e",
+          "method": "structured registry",
+          "build": "b484c877e1f232240ca2576c5e9e14c1bcedb483",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/b484c877e1f232240ca2576c5e9e14c1bcedb483/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T12:42:19+00:00"
+        },
+        {
+          "id": "us.anthropic.claude-mythos-5-2",
+          "family": "us.anthropic.claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"us.anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.76e-05, \"cache_read_input_token_cost\": 2.2e-07, \"input_cost_per_token\": 8.8e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.4e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"thinking_always_on\": true, \"supports_tool_schema_d",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "56792da5932f98d4b2aeab2b49d7059021f3a105f74a1ba11877f2918be7731e",
+          "method": "structured registry",
+          "build": "b484c877e1f232240ca2576c5e9e14c1bcedb483",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/b484c877e1f232240ca2576c5e9e14c1bcedb483/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T12:42:19+00:00"
+        }
+      ],
+      "x_post_text": "🔵 REGISTRY UPDATE: Claude Mythos 5.2\n\nFirst detected 10 Nov 17:40 UTC in LiteLLM registry\nConfirmed by LiteLLM commit-pinned registry\n\nvia @StatsWire"
+    },
+    {
       "id": "story-gemini-4-carbon-cyber-permissive",
       "group": "gemini-4-carbon-cyber-permissive",
       "kind": "leak",
@@ -26170,205 +26392,6 @@
       "candidate_only": false,
       "registry_evidence": [],
       "x_post_text": "🟢 NEW MODEL: MiniMax H3 Image PE by MiniMax\n\nFirst detected 10 Nov 14:58 UTC in Hugging Face\n\nvia @StatsWire"
-    },
-    {
-      "id": "story-claude-mythos-5-2",
-      "group": "claude-mythos-5-2",
-      "kind": "registry",
-      "open_weights": false,
-      "title": "Claude Mythos 5.2",
-      "provider_slug": "amazon",
-      "provider_name": "AWS Bedrock",
-      "accent_color": "#f97316",
-      "detected_at": "2026-11-10T13:33:50.216740+00:00",
-      "updated_at": "2026-11-24T12:43:32.164629+00:00",
-      "first_source": "LiteLLM registry",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "claude-mythos-5-2",
-          "name": "anthropic.claude-mythos-5-2"
-        },
-        {
-          "id": "claude-mythos-5-2-fast",
-          "name": "azure_ai/claude-mythos-5-2-fast"
-        }
-      ],
-      "sources": [
-        {
-          "label": "LiteLLM registry",
-          "scanner": "litellm",
-          "detected_at": "2026-11-10T13:33:50.216740+00:00",
-          "title": "1 New Model(s) Added to LiteLLM",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "LiteLLM commit-pinned registry",
-          "scanner": "litellm-intelligence",
-          "detected_at": "2026-11-19T06:43:07.018761+00:00",
-          "title": "claude-mythos-5-2",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/66fd00e7b03a6af09031e12dfd88db61d3c0481d/model_prices_and_context_window.json",
-          "backfill": false,
-          "build": "66fd00e7b03a6af09031e12dfd88db61d3c0481d",
-          "evidence_path": "data/intelligence/evidence/litellm-intelligence/6b0dfa21f85fe2ea1d4a7931ab16b0cf56d993455b6d13799f8b1228d7a8253f.json.gz"
-        }
-      ],
-      "source_count": 2,
-      "backfill": false,
-      "header": "REGISTRY UPDATE · AWS BEDROCK",
-      "card_ids": [
-        "litellm-diff-ddf4c4a6",
-        "litellm-diff-782b2563",
-        "intel-ad6d9ab937f52b6988ee",
-        "intel-d533d2ae12ffd9fdca57",
-        "intel-5a77dde9996935d03610",
-        "intel-47d277d32ba4934c6fd1",
-        "intel-a25cbc065fd29ad424b0",
-        "intel-c0df2e00c16b22e95f07",
-        "intel-2d46e4feb4342e5615db"
-      ],
-      "event_label": "Registry update",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [
-        {
-          "id": "vertex_ai/claude-mythos-5-2",
-          "family": "claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"vertex_ai/claude-mythos-5-2\": {\"regional_endpoint_uplift_multiplier\": 1.1, \"supports_mid_conversation_system\": true, \"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.6e-05, \"cache_creation_input_token_cost_batches\": 5e-06, \"cache_read_input_token_cost\": 2e-07, \"cache_read_input_token_cost_batches\": 1e-07, \"input_cost_per_token\": 8e-06, \"litellm_provider\": \"vertex_ai-anthropic_models\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4e-05, \"search_context_cost_per_query\": {\"search_context_size_high\": 0.01, \"search_context_size_low\": 0.01, \"search_context_size_medium\": 0.01}, \"supports_adaptive_thinking\": true, \"thinking_always_on\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_native_structured_output\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"supports_max_reasoning_eff",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "6b0dfa21f85fe2ea1d4a7931ab16b0cf56d993455b6d13799f8b1228d7a8253f",
-          "method": "structured registry",
-          "build": "66fd00e7b03a6af09031e12dfd88db61d3c0481d",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/66fd00e7b03a6af09031e12dfd88db61d3c0481d/model_prices_and_context_window.json",
-          "first_seen": "2026-11-19T06:41:59+00:00"
-        },
-        {
-          "id": "bedrock/us-gov-east-1/anthropic.claude-mythos-5-2",
-          "family": "anthropic.claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"bedrock/us-gov-east-1/anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": tr",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "c436a6e5121c438a20b0c014d46129acfe41d2d1b23725bfda733dd901141210",
-          "method": "structured registry",
-          "build": "254d65ab701326f90152a969edafec965850fa73",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/254d65ab701326f90152a969edafec965850fa73/model_prices_and_context_window.json",
-          "first_seen": "2026-11-21T00:00:49+00:00"
-        },
-        {
-          "id": "bedrock/us-gov-west-1/anthropic.claude-mythos-5-2",
-          "family": "anthropic.claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"bedrock/us-gov-west-1/anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": tr",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "c436a6e5121c438a20b0c014d46129acfe41d2d1b23725bfda733dd901141210",
-          "method": "structured registry",
-          "build": "254d65ab701326f90152a969edafec965850fa73",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/254d65ab701326f90152a969edafec965850fa73/model_prices_and_context_window.json",
-          "first_seen": "2026-11-21T00:00:49+00:00"
-        },
-        {
-          "id": "us-gov.anthropic.claude-mythos-5-2",
-          "family": "us-gov.anthropic.claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"us-gov.anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"s",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "c436a6e5121c438a20b0c014d46129acfe41d2d1b23725bfda733dd901141210",
-          "method": "structured registry",
-          "build": "254d65ab701326f90152a969edafec965850fa73",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/254d65ab701326f90152a969edafec965850fa73/model_prices_and_context_window.json",
-          "first_seen": "2026-11-21T00:00:49+00:00"
-        },
-        {
-          "id": "anthropic.claude-mythos-5-2",
-          "family": "anthropic.claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.6e-05, \"cache_read_input_token_cost\": 2e-07, \"input_cost_per_token\": 8e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"thinking_always_on\": true, \"supports_tool_schema_defs\": true}}",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "56792da5932f98d4b2aeab2b49d7059021f3a105f74a1ba11877f2918be7731e",
-          "method": "structured registry",
-          "build": "b484c877e1f232240ca2576c5e9e14c1bcedb483",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/b484c877e1f232240ca2576c5e9e14c1bcedb483/model_prices_and_context_window.json",
-          "first_seen": "2026-11-24T12:42:19+00:00"
-        },
-        {
-          "id": "bedrock/us-gov-east-1/anthropic.claude-mythos-5-2",
-          "family": "anthropic.claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"bedrock/us-gov-east-1/anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": tr",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "56792da5932f98d4b2aeab2b49d7059021f3a105f74a1ba11877f2918be7731e",
-          "method": "structured registry",
-          "build": "b484c877e1f232240ca2576c5e9e14c1bcedb483",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/b484c877e1f232240ca2576c5e9e14c1bcedb483/model_prices_and_context_window.json",
-          "first_seen": "2026-11-24T12:42:19+00:00"
-        },
-        {
-          "id": "bedrock/us-gov-west-1/anthropic.claude-mythos-5-2",
-          "family": "anthropic.claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"bedrock/us-gov-west-1/anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": tr",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "56792da5932f98d4b2aeab2b49d7059021f3a105f74a1ba11877f2918be7731e",
-          "method": "structured registry",
-          "build": "b484c877e1f232240ca2576c5e9e14c1bcedb483",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/b484c877e1f232240ca2576c5e9e14c1bcedb483/model_prices_and_context_window.json",
-          "first_seen": "2026-11-24T12:42:19+00:00"
-        },
-        {
-          "id": "eu.anthropic.claude-mythos-5-2",
-          "family": "eu.anthropic.claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"eu.anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.76e-05, \"cache_read_input_token_cost\": 2.2e-07, \"input_cost_per_token\": 8.8e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.4e-05, \"prompt_cache_min_tokens\": 512.0, \"search_context_cost_per_query\": {\"search_context_size_high\": 0.01, \"search_context_size_low\": 0.01, \"search_context_size_medium\": 0.01}, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "56792da5932f98d4b2aeab2b49d7059021f3a105f74a1ba11877f2918be7731e",
-          "method": "structured registry",
-          "build": "b484c877e1f232240ca2576c5e9e14c1bcedb483",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/b484c877e1f232240ca2576c5e9e14c1bcedb483/model_prices_and_context_window.json",
-          "first_seen": "2026-11-24T12:42:19+00:00"
-        },
-        {
-          "id": "global.anthropic.claude-mythos-5-2",
-          "family": "global.anthropic.claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"global.anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.6e-05, \"cache_read_input_token_cost\": 2e-07, \"input_cost_per_token\": 8e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"thinking_always_on\": true, \"supports_tool_schema_defs\":",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "56792da5932f98d4b2aeab2b49d7059021f3a105f74a1ba11877f2918be7731e",
-          "method": "structured registry",
-          "build": "b484c877e1f232240ca2576c5e9e14c1bcedb483",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/b484c877e1f232240ca2576c5e9e14c1bcedb483/model_prices_and_context_window.json",
-          "first_seen": "2026-11-24T12:42:19+00:00"
-        },
-        {
-          "id": "us.anthropic.claude-mythos-5-2",
-          "family": "us.anthropic.claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"us.anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.76e-05, \"cache_read_input_token_cost\": 2.2e-07, \"input_cost_per_token\": 8.8e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.4e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"thinking_always_on\": true, \"supports_tool_schema_d",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "56792da5932f98d4b2aeab2b49d7059021f3a105f74a1ba11877f2918be7731e",
-          "method": "structured registry",
-          "build": "b484c877e1f232240ca2576c5e9e14c1bcedb483",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/b484c877e1f232240ca2576c5e9e14c1bcedb483/model_prices_and_context_window.json",
-          "first_seen": "2026-11-24T12:42:19+00:00"
-        }
-      ],
-      "x_post_text": "🔵 REGISTRY UPDATE: Claude Mythos 5.2\n\nFirst detected 10 Nov 13:33 UTC in LiteLLM registry\nConfirmed by LiteLLM commit-pinned registry\nIDs: claude-mythos-5-2, claude-mythos-5-2-fast\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-carbon",
@@ -26664,6 +26687,174 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-f20927c2972383a1bac6",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "cohere.embed-english-v3",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "cohere.embed-english-v3",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "cohere.embed-english-v3",
+          "name": "cohere.embed-english-v3",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-24T13:45:31.935354+00:00",
+      "first_seen": "2026-11-24T13:42:08+00:00",
+      "observed_at": "2026-11-24T13:45:31.935354+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "b484c877e1f232240ca2576c5e9e14c1bcedb483 -> 85ba26ff5f0a566026c5cd172341c6c64322e16e",
+      "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+      "artifact_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "cohere.embed-english-v3",
+          "family": "cohere.embed-english-v3",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"cohere.embed-english-v3\": {\"input_cost_per_token\": 1e-07, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 512, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"output_vector_size\": 1024, \"source\": \"https://aws.amazon.com/bedrock/pricing/\", \"supports_embedding_image_input\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
+          "method": "structured registry",
+          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T13:42:08+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/85ba26ff5f0a566026c5cd172341c6c64322e16e"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T13:45:33.674647+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: cohere.embed-english-v3\nhttps://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-ab98428ad98209c16bd9",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "cohere.embed-multilingual-v3",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "cohere.embed-multilingual-v3",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "cohere.embed-multilingual-v3",
+          "name": "cohere.embed-multilingual-v3",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-24T13:45:31.935354+00:00",
+      "first_seen": "2026-11-24T13:42:08+00:00",
+      "observed_at": "2026-11-24T13:45:31.935354+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "b484c877e1f232240ca2576c5e9e14c1bcedb483 -> 85ba26ff5f0a566026c5cd172341c6c64322e16e",
+      "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+      "artifact_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "cohere.embed-multilingual-v3",
+          "family": "cohere.embed-multilingual-v3",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"cohere.embed-multilingual-v3\": {\"input_cost_per_token\": 1e-07, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 512, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"output_vector_size\": 1024, \"source\": \"https://aws.amazon.com/bedrock/pricing/\", \"supports_embedding_image_input\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
+          "method": "structured registry",
+          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T13:42:08+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/85ba26ff5f0a566026c5cd172341c6c64322e16e"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T13:45:33.674647+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: cohere.embed-multilingual-v3\nhttps://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json"
+    },
     {
       "id": "intel-31ed8a9066dcd8ea4dd5",
       "scanner": "litellm-intelligence",
@@ -85401,42 +85592,6 @@
       "x_post_text": "🚨 HUGGING FACE NEW REPO · MINIMAX\nMiniMax H3 Image spotted in Repo Created 2026-11-03 (text-to-image)!\n\n• MiniMax-H3-Image (text-to-image) (MiniMaxAI/MiniMax-H3-Image)\n\nEvidence: huggingface.co/api/models\nSource: official MiniMaxAI Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
-      "id": "litellm-diff-ddf4c4a6",
-      "category": "cli-sdk-diff",
-      "scanner": "litellm",
-      "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
-      "title": "1 New Model(s) Added to LiteLLM",
-      "subtitle": "Verified model_prices_and_context_window.json diff",
-      "build_label": "Registry Diff",
-      "build_transition": "+1 model keys",
-      "models": [
-        {
-          "id": "azure_ai/claude-mythos-5-2-fast",
-          "name": "azure_ai/claude-mythos-5-2-fast"
-        }
-      ],
-      "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
-      "source_text": "official LiteLLM master pricing & context window registry.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "LITELLM",
-      "provider_slug": "modelsdev",
-      "accent_color": "#10b981",
-      "links": [
-        {
-          "label": "LiteLLM JSON Registry",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
-        },
-        {
-          "label": "LiteLLM Commits",
-          "url": "https://github.com/BerriAI/litellm/commits/main"
-        }
-      ],
-      "detected_at": "2026-11-10T13:33:50.216740+00:00",
-      "pricing": null,
-      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 model keys!\n\n• azure_ai/claude-mythos-5-2-fast (azure_ai/claude-mythos-5-2-fast)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
-    },
-    {
       "id": "ag-acp-1.4.3-revision-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
@@ -85600,12 +85755,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T13:14:29.191637+00:00",
+      "last_attempt": "2026-11-24T13:45:30.718344+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T13:14:29.474317+00:00",
+      "last_success": "2026-11-24T13:45:30.996876+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.283,
+      "duration_seconds": 0.279,
       "latest_build": "fa19fc3c64eff69a18f6a90efbb546687a36851936a9f0257640d252e58e4fa3",
       "builds_retained": 140,
       "identifiers": 9911
@@ -85613,25 +85768,25 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T13:14:29.615635+00:00",
+      "last_attempt": "2026-11-24T13:45:31.137208+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T13:14:30.190084+00:00",
+      "last_success": "2026-11-24T13:45:33.674647+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.575,
-      "latest_build": "b484c877e1f232240ca2576c5e9e14c1bcedb483",
-      "builds_retained": 76,
+      "duration_seconds": 2.538,
+      "latest_build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+      "builds_retained": 77,
       "identifiers": 7063
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T13:09:19.022488+00:00",
+      "last_attempt": "2026-11-24T13:40:19.413104+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T13:09:19.659715+00:00",
+      "last_success": "2026-11-24T13:40:20.286658+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.638,
+      "duration_seconds": 0.874,
       "latest_build": "6e1fdc3970250bedb034bcacfa6d92451063a504",
       "builds_retained": 148,
       "identifiers": 11096
@@ -85639,21 +85794,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T13:14:30.338248+00:00",
+      "last_attempt": "2026-11-24T13:45:33.815915+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3653,
-      "duration_seconds": 15.242
+      "consecutive_failures": 3665,
+      "duration_seconds": 15.172
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T13:09:35.034172+00:00",
+      "last_attempt": "2026-11-24T13:40:36.088304+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T13:09:35.270091+00:00",
+      "last_success": "2026-11-24T13:40:36.367425+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.236,
+      "duration_seconds": 0.279,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -85663,61 +85818,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T13:13:23.549266+00:00",
+      "last_attempt": "2026-11-24T13:44:26.905350+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T13:13:25.758205+00:00",
+      "last_success": "2026-11-24T13:44:29.148919+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.209
+      "duration_seconds": 2.244
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T13:13:25.758268+00:00",
+      "last_attempt": "2026-11-24T13:44:29.148977+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T13:13:25.965059+00:00",
+      "last_success": "2026-11-24T13:44:29.352350+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.207
+      "duration_seconds": 0.203
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T13:13:25.965097+00:00",
+      "last_attempt": "2026-11-24T13:44:29.352386+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T13:13:34.242507+00:00",
+      "last_success": "2026-11-24T13:44:36.601446+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.277
+      "duration_seconds": 7.249
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T13:13:34.242579+00:00",
+      "last_attempt": "2026-11-24T13:44:36.601515+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T13:14:29.191584+00:00",
+      "last_success": "2026-11-24T13:45:30.718290+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 54.949,
+      "duration_seconds": 54.117,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-24T13:13:34.458604+00:00",
+          "checked_at": "2026-11-24T13:44:36.826760+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-24T13:13:49.006722+00:00",
+          "checked_at": "2026-11-24T13:44:50.385968+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-24T13:13:49.173020+00:00",
+          "checked_at": "2026-11-24T13:44:50.581705+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-24T13:13:49.173037+00:00",
+          "checked_at": "2026-11-24T13:44:50.581720+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -85725,12 +85880,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T13:14:29.191637+00:00",
+      "last_attempt": "2026-11-24T13:45:30.718344+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T13:14:29.474317+00:00",
+      "last_success": "2026-11-24T13:45:30.996876+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.283,
+      "duration_seconds": 0.279,
       "latest_build": "fa19fc3c64eff69a18f6a90efbb546687a36851936a9f0257640d252e58e4fa3",
       "builds_retained": 140,
       "identifiers": 9911
@@ -85738,25 +85893,25 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T13:14:29.615635+00:00",
+      "last_attempt": "2026-11-24T13:45:31.137208+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T13:14:30.190084+00:00",
+      "last_success": "2026-11-24T13:45:33.674647+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.575,
-      "latest_build": "b484c877e1f232240ca2576c5e9e14c1bcedb483",
-      "builds_retained": 76,
+      "duration_seconds": 2.538,
+      "latest_build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+      "builds_retained": 77,
       "identifiers": 7063
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T13:09:19.022488+00:00",
+      "last_attempt": "2026-11-24T13:40:19.413104+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T13:09:19.659715+00:00",
+      "last_success": "2026-11-24T13:40:20.286658+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.638,
+      "duration_seconds": 0.874,
       "latest_build": "6e1fdc3970250bedb034bcacfa6d92451063a504",
       "builds_retained": 148,
       "identifiers": 11096
@@ -85764,21 +85919,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T13:14:30.338248+00:00",
+      "last_attempt": "2026-11-24T13:45:33.815915+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3653,
-      "duration_seconds": 15.242
+      "consecutive_failures": 3665,
+      "duration_seconds": 15.172
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T13:09:35.034172+00:00",
+      "last_attempt": "2026-11-24T13:40:36.088304+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T13:09:35.270091+00:00",
+      "last_success": "2026-11-24T13:40:36.367425+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.236,
+      "duration_seconds": 0.279,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -85786,52 +85941,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T13:14:45.585841+00:00",
+      "last_attempt": "2026-11-24T13:45:48.994172+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T13:14:52.827946+00:00",
+      "last_success": "2026-11-24T13:45:56.517292+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.242
+      "duration_seconds": 7.523
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T13:14:52.827999+00:00",
+      "last_attempt": "2026-11-24T13:45:56.517347+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T13:14:56.202062+00:00",
+      "last_success": "2026-11-24T13:45:59.234221+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.374
+      "duration_seconds": 2.717
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T13:09:44.903113+00:00",
+      "last_attempt": "2026-11-24T13:40:45.443968+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T13:09:52.321551+00:00",
+      "last_success": "2026-11-24T13:40:54.215992+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.418
+      "duration_seconds": 8.772
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T13:14:56.202116+00:00",
+      "last_attempt": "2026-11-24T13:45:59.234269+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T13:14:57.355801+00:00",
+      "last_success": "2026-11-24T13:46:00.400405+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.154
+      "duration_seconds": 1.166
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T13:14:57.355856+00:00",
+      "last_attempt": "2026-11-24T13:46:00.400444+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T13:14:57.534933+00:00",
+      "last_success": "2026-11-24T13:46:00.485639+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.179
+      "duration_seconds": 0.085
     }
   },
   "identities": {
@@ -85842,8 +85997,8 @@
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 396,
-      "seconds_mean": 3432.0929749570705,
+      "samples": 398,
+      "seconds_mean": 3415.8710773643215,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -85857,8 +86012,8 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 506,
-      "events": 506,
+      "complete": 508,
+      "events": 508,
       "rate": 1.0
     },
     "source_health": {
