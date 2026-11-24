@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-24T03:02:18.804044+00:00",
-  "scan_completed_at": "2026-11-24T03:03:42.397504+00:00",
+  "generated_at": "2026-11-24T03:09:24.103242+00:00",
+  "scan_completed_at": "2026-11-24T03:10:52.507292+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 322,
     "leaks": 37,
     "releases": 87,
-    "stories_24h": 35,
-    "sources_ok": 13,
-    "total_cards": 744,
-    "new_in_this_scan": 1
+    "stories_24h": 34,
+    "sources_ok": 12,
+    "total_cards": 746,
+    "new_in_this_scan": 2
   },
   "stories": [
     {
@@ -56,8 +56,8 @@
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: ArmorOCR by Ant Group\n\nFirst detected 24 Nov 03:03 UTC in Hugging Face\n\nvia @StatsWire",
-      "discord_alerted_at": "2026-11-24T03:03:42.395453+00:00"
+      "discord_alerted_at": "2026-11-24T03:03:42.395453+00:00",
+      "x_post_text": "🟢 NEW MODEL: ArmorOCR by Ant Group\n\nFirst detected 24 Nov 03:03 UTC in Hugging Face\n\nvia @StatsWire"
     },
     {
       "id": "story-pro",
@@ -24504,13 +24504,13 @@
       "id": "story-ernie-5-5-flash",
       "group": "ernie-5-5-flash",
       "kind": "release",
-      "open_weights": false,
+      "open_weights": true,
       "title": "ERNIE-5.5-Flash-Preview",
       "provider_slug": "openrouter",
       "provider_name": "Baidu",
       "accent_color": "#10b981",
       "detected_at": "2026-11-10T19:20:28.481392+00:00",
-      "updated_at": "2026-11-11T18:17:20.370053+00:00",
+      "updated_at": "2026-11-24T03:10:49.908499+00:00",
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-11-10",
@@ -24522,6 +24522,14 @@
           "name": "ernie-5.5-flash-preview",
           "released_on": "2026-11-10",
           "org": "baidu"
+        },
+        {
+          "id": "ERNIE-5.5-Flash-Preview-FP8",
+          "name": "ERNIE-5.5-Flash-Preview-FP8"
+        },
+        {
+          "id": "ERNIE-5.5-Flash-Preview-BF16",
+          "name": "ERNIE-5.5-Flash-Preview-BF16"
         }
       ],
       "sources": [
@@ -24544,21 +24552,34 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-11-24T03:10:49.908499+00:00",
+          "title": "ERNIE 5.5 Flash Preview BF16",
+          "url": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Preview-BF16",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 2,
+      "source_count": 3,
       "backfill": false,
-      "header": "NEW MODEL · BAIDU",
+      "header": "OPEN WEIGHTS · BAIDU",
       "card_ids": [
         "openrouter-model-baidu_ernie-5.5-flash-preview",
         "openrouter-model-baidu_ernie-5.5-flash-preview_free",
-        "arena-scout-diff-ac077d8f"
+        "arena-scout-diff-ac077d8f",
+        "hf-baidu_ERNIE-5.5-Flash-Preview-BF16",
+        "hf-baidu_ERNIE-5.5-Flash-Preview-FP8"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: ERNIE-5.5-Flash-Preview by Baidu\n\nFirst detected 10 Nov 19:20 UTC in OpenRouter\n📅 First released: 2026-11-10\nConfirmed by LMArena\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: ERNIE-5.5-Flash-Preview by Baidu\n\nFirst detected 10 Nov 19:20 UTC in OpenRouter\n📅 First released: 2026-11-10\nConfirmed by LMArena, Hugging Face\nIDs: ernie-5.5-flash-preview, ERNIE-5.5-Flash-Preview-FP8, ERNIE-5.5-Flash-Preview-BF16\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-24T03:10:52.505214+00:00"
     },
     {
       "id": "story-gemini-4-carbon-cyber-permissive",
@@ -25673,6 +25694,80 @@
     }
   ],
   "cards": [
+    {
+      "id": "hf-baidu_ERNIE-5.5-Flash-Preview-BF16",
+      "category": "open-source",
+      "scanner": "huggingface",
+      "header": "HUGGING FACE NEW REPO · BAIDU",
+      "title": "ERNIE 5.5 Flash Preview BF16",
+      "subtitle": "Newly published public model repository (baidu)",
+      "build_label": "Repo",
+      "build_transition": "Created 2026-11-23 (text-generation)",
+      "models": [
+        {
+          "id": "baidu/ERNIE-5.5-Flash-Preview-BF16",
+          "name": "ERNIE-5.5-Flash-Preview-BF16 (text-generation)"
+        }
+      ],
+      "evidence": "huggingface.co/api/models",
+      "source_text": "official baidu Hugging Face organization feed.",
+      "disclaimer_1": "Repository became publicly visible since the previous scan.",
+      "disclaimer_2": "Public weights / model cards published directly by the organization.",
+      "provider_name": "BAIDU",
+      "provider_slug": "opensource",
+      "accent_color": "#2932e1",
+      "links": [
+        {
+          "label": "Hugging Face Repo",
+          "url": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Preview-BF16"
+        },
+        {
+          "label": "baidu Hub Feed",
+          "url": "https://huggingface.co/baidu"
+        }
+      ],
+      "detected_at": "2026-11-24T03:10:49.908499+00:00",
+      "tracker_observed_at": "2026-11-24T03:10:49.916904+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 HUGGING FACE NEW REPO · BAIDU\nERNIE 5.5 Flash Preview BF16 spotted in Repo Created 2026-11-23 (text-generation)!\n\n• ERNIE-5.5-Flash-Preview-BF16 (text-generation) (baidu/ERNIE-5.5-Flash-Preview-BF16)\n\nEvidence: huggingface.co/api/models\nSource: official baidu Hugging Face organization feed.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "hf-baidu_ERNIE-5.5-Flash-Preview-FP8",
+      "category": "open-source",
+      "scanner": "huggingface",
+      "header": "HUGGING FACE NEW REPO · BAIDU",
+      "title": "ERNIE 5.5 Flash Preview FP8",
+      "subtitle": "Newly published public model repository (baidu)",
+      "build_label": "Repo",
+      "build_transition": "Created 2026-11-23 (text-generation)",
+      "models": [
+        {
+          "id": "baidu/ERNIE-5.5-Flash-Preview-FP8",
+          "name": "ERNIE-5.5-Flash-Preview-FP8 (text-generation)"
+        }
+      ],
+      "evidence": "huggingface.co/api/models",
+      "source_text": "official baidu Hugging Face organization feed.",
+      "disclaimer_1": "Repository became publicly visible since the previous scan.",
+      "disclaimer_2": "Public weights / model cards published directly by the organization.",
+      "provider_name": "BAIDU",
+      "provider_slug": "opensource",
+      "accent_color": "#2932e1",
+      "links": [
+        {
+          "label": "Hugging Face Repo",
+          "url": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Preview-FP8"
+        },
+        {
+          "label": "baidu Hub Feed",
+          "url": "https://huggingface.co/baidu"
+        }
+      ],
+      "detected_at": "2026-11-24T03:10:49.908499+00:00",
+      "tracker_observed_at": "2026-11-24T03:10:49.916904+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 HUGGING FACE NEW REPO · BAIDU\nERNIE 5.5 Flash Preview FP8 spotted in Repo Created 2026-11-23 (text-generation)!\n\n• ERNIE-5.5-Flash-Preview-FP8 (text-generation) (baidu/ERNIE-5.5-Flash-Preview-FP8)\n\nEvidence: huggingface.co/api/models\nSource: official baidu Hugging Face organization feed.\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-inclusionAI_ArmorOCR-GGUF",
       "category": "open-source",
@@ -81712,12 +81807,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:03:14.262754+00:00",
+      "last_attempt": "2026-11-24T03:10:23.689039+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:03:14.636241+00:00",
+      "last_success": "2026-11-24T03:10:24.111504+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.374,
+      "duration_seconds": 0.423,
       "latest_build": "5dcc9b3ad8cbfe7a313db3bcb837f25f2e55f58361b7b4aeda36bc5328a44a64",
       "builds_retained": 128,
       "identifiers": 9899
@@ -81725,12 +81820,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T03:03:14.774410+00:00",
+      "last_attempt": "2026-11-24T03:07:58.936349+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:03:15.173489+00:00",
+      "last_success": "2026-11-24T03:07:59.329105+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.399,
+      "duration_seconds": 0.393,
       "latest_build": "986554827f3d79d6eb659f480d8eaf9b57142778",
       "builds_retained": 66,
       "identifiers": 7057
@@ -81738,12 +81833,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T02:56:22.480097+00:00",
+      "last_attempt": "2026-11-24T03:07:59.472260+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T02:56:28.683426+00:00",
+      "last_success": "2026-11-24T03:08:01.290899+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.204,
+      "duration_seconds": 1.819,
       "latest_build": "dfdaf5d50cdb44c81d153187a2091ab696c1be05",
       "builds_retained": 136,
       "identifiers": 11082
@@ -81751,11 +81846,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T03:03:15.315303+00:00",
+      "last_attempt": "2026-11-24T03:10:24.249285+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3396,
-      "duration_seconds": 15.648
+      "consecutive_failures": 3399,
+      "duration_seconds": 15.704
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -81775,61 +81870,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:02:18.804096+00:00",
+      "last_attempt": "2026-11-24T03:09:24.103293+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:02:21.262482+00:00",
+      "last_success": "2026-11-24T03:09:26.452312+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.458
+      "duration_seconds": 2.349
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:02:21.262537+00:00",
+      "last_attempt": "2026-11-24T03:09:26.452368+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:02:21.547067+00:00",
+      "last_success": "2026-11-24T03:09:26.706435+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.285
+      "duration_seconds": 0.254
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:02:21.547105+00:00",
+      "last_attempt": "2026-11-24T03:09:26.706490+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:02:29.188947+00:00",
+      "last_success": "2026-11-24T03:09:33.746774+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.642
+      "duration_seconds": 7.04
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:02:29.188999+00:00",
+      "last_attempt": "2026-11-24T03:09:33.746825+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:03:14.262700+00:00",
+      "last_success": "2026-11-24T03:10:23.688982+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 45.074,
+      "duration_seconds": 49.942,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-24T03:02:29.440598+00:00",
+          "checked_at": "2026-11-24T03:09:33.993280+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-24T03:02:38.267503+00:00",
+          "checked_at": "2026-11-24T03:09:42.378322+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-24T03:02:38.420809+00:00",
+          "checked_at": "2026-11-24T03:09:42.559673+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-24T03:02:38.420824+00:00",
+          "checked_at": "2026-11-24T03:09:42.559687+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -81837,12 +81932,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:03:14.262754+00:00",
+      "last_attempt": "2026-11-24T03:10:23.689039+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:03:14.636241+00:00",
+      "last_success": "2026-11-24T03:10:24.111504+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.374,
+      "duration_seconds": 0.423,
       "latest_build": "5dcc9b3ad8cbfe7a313db3bcb837f25f2e55f58361b7b4aeda36bc5328a44a64",
       "builds_retained": 128,
       "identifiers": 9899
@@ -81850,12 +81945,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T03:03:14.774410+00:00",
+      "last_attempt": "2026-11-24T03:07:58.936349+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:03:15.173489+00:00",
+      "last_success": "2026-11-24T03:07:59.329105+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.399,
+      "duration_seconds": 0.393,
       "latest_build": "986554827f3d79d6eb659f480d8eaf9b57142778",
       "builds_retained": 66,
       "identifiers": 7057
@@ -81863,12 +81958,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T02:56:22.480097+00:00",
+      "last_attempt": "2026-11-24T03:07:59.472260+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T02:56:28.683426+00:00",
+      "last_success": "2026-11-24T03:08:01.290899+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.204,
+      "duration_seconds": 1.819,
       "latest_build": "dfdaf5d50cdb44c81d153187a2091ab696c1be05",
       "builds_retained": 136,
       "identifiers": 11082
@@ -81876,11 +81971,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T03:03:15.315303+00:00",
+      "last_attempt": "2026-11-24T03:10:24.249285+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3396,
-      "duration_seconds": 15.648
+      "consecutive_failures": 3399,
+      "duration_seconds": 15.704
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -81898,52 +81993,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:03:30.967684+00:00",
+      "last_attempt": "2026-11-24T03:10:39.957520+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:03:38.374220+00:00",
+      "last_success": "2026-11-24T03:10:47.137677+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.407
+      "duration_seconds": 7.18
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:03:38.374271+00:00",
+      "last_attempt": "2026-11-24T03:10:47.137731+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:03:40.055370+00:00",
+      "last_success": "2026-11-24T03:10:48.795955+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.681
+      "duration_seconds": 1.658
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T02:56:54.116081+00:00",
+      "last_attempt": "2026-11-24T03:08:26.340426+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T02:57:04.221683+00:00",
+      "last_success": "2026-11-24T03:08:36.616891+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 10.106
+      "duration_seconds": 10.276
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:03:40.055415+00:00",
+      "last_attempt": "2026-11-24T03:10:48.796003+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:03:41.186653+00:00",
+      "last_success": "2026-11-24T03:10:49.916904+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.131
+      "duration_seconds": 1.121
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T03:03:41.186691+00:00",
+      "last_attempt": "2026-11-24T03:10:49.916944+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T03:03:41.292375+00:00",
+      "last_success": "2026-11-24T03:10:49.983752+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.106
+      "duration_seconds": 0.067
     }
   },
   "identities": {
