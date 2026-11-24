@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-24T17:39:41.965280+00:00",
-  "scan_completed_at": "2026-11-24T17:41:54.384415+00:00",
+  "generated_at": "2026-11-24T17:49:08.820627+00:00",
+  "scan_completed_at": "2026-11-24T17:51:04.039854+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 332,
+    "stories": 334,
     "leaks": 33,
-    "releases": 90,
+    "releases": 92,
     "stories_24h": 46,
-    "sources_ok": 15,
-    "total_cards": 790,
+    "sources_ok": 13,
+    "total_cards": 793,
     "new_in_this_scan": 4
   },
   "stories": [
@@ -392,7 +392,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-24T17:11:09.834653+00:00",
-      "updated_at": "2026-11-24T17:19:58.722524+00:00",
+      "updated_at": "2026-11-24T17:50:26.652035+00:00",
       "first_source": "Official pricing page",
       "lead": "",
       "released_on": "",
@@ -403,11 +403,7 @@
       "models": [
         {
           "id": "gpt-6-astra-healthcare",
-          "name": "GPT 6 Astra Healthcare"
-        },
-        {
-          "id": "gpt-6.1-sol-healthcare",
-          "name": "GPT 6.1 Sol Healthcare"
+          "name": "gpt-6-astra-healthcare"
         }
       ],
       "sources": [
@@ -430,21 +426,131 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-24T17:50:26.652035+00:00",
+          "title": "gpt-6-astra-healthcare",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz"
         }
       ],
-      "source_count": 2,
+      "source_count": 3,
       "backfill": false,
       "header": "NEW MODEL · OPENAI",
       "card_ids": [
         "pricing-radar-openai_pricing_md-59d94b95",
-        "openai-spec-ids-0ce04d87"
+        "openai-spec-ids-0ce04d87",
+        "intel-4bfb1b512d7a1d7d71a4"
       ],
-      "event_label": "",
+      "event_label": "Released",
       "intelligence_only": false,
       "candidate_only": false,
-      "registry_evidence": [],
+      "registry_evidence": [
+        {
+          "id": "gpt-6-astra-healthcare",
+          "family": "gpt-6-astra-healthcare",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gpt-6-astra-healthcare\": {\"cache_read_input_token_cost\": 1e-06, \"cache_read_input_token_cost_above_272k_tokens\": 2e-06, \"cache_read_input_token_cost_above_272k_tokens_priority\": 4e-06, \"cache_read_input_token_cost_priority\": 2e-06, \"fedramp_uplift_multiplier\": 1.1, \"input_cost_per_token\": 1e-05, \"input_cost_per_token_above_272k_tokens\": 2e-05, \"input_cost_per_token_above_272k_tokens_priority\": 4e-05, \"input_cost_per_token_priority\": 2e-05, \"litellm_provider\": \"openai\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"responses\", \"output_cost_per_token\": 5e-05, \"output_cost_per_token_above_272k_tokens\": 7.5e-05, \"output_cost_per_token_above_272k_tokens_priority\": 0.00015, \"output_cost_per_token_priority\": 0.0001, \"reasoning_contexts\": [\"auto\", \"current_turn\", \"all_turns\"], \"reasoning_modes\": [\"standard\", \"pro\"], \"regional_processing_uplift_multiplier_eu\": 1.1, \"regional_processing_uplift_multiplier_us\": 1.1, \"search_context_cost_per_query\": {\"search_context_size_high\": 0.01, \"search_context_size_low\": 0.01, \"search_context_size_medium\": 0.01}, \"source\": \"https://developers.openai.com/api/docs/pricing\", \"supported_endpoints\": [\"/v1/responses\"], \"supported_modalitie",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85",
+          "method": "structured registry",
+          "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T17:47:58+00:00"
+        }
+      ],
       "discord_alerted_at": "2026-11-24T17:32:21.810914+00:00",
-      "x_post_text": "🟢 NEW MODEL: GPT 6 Astra Healthcare by OpenAI\n\nFirst detected 24 Nov 17:11 UTC in Official pricing page\nConfirmed by OpenAI API spec\nCodename: healthcare\nIDs: gpt-6-astra-healthcare, gpt-6.1-sol-healthcare\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: GPT 6 Astra Healthcare by OpenAI\n\nFirst detected 24 Nov 17:11 UTC in Official pricing page\nConfirmed by OpenAI API spec, LiteLLM commit-pinned registry\nCodename: healthcare\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-gpt-6-1-sol-healthcare",
+      "group": "gpt-6-1-sol-healthcare",
+      "kind": "release",
+      "open_weights": false,
+      "title": "GPT 6.1 Sol Healthcare",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "accent_color": "#10b981",
+      "detected_at": "2026-11-24T17:11:09.834653+00:00",
+      "updated_at": "2026-11-24T17:50:26.652035+00:00",
+      "first_source": "Official pricing page",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "healthcare"
+      ],
+      "models": [
+        {
+          "id": "gpt-6.1-sol-healthcare",
+          "name": "gpt-6.1-sol-healthcare"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Official pricing page",
+          "scanner": "pricing-radar",
+          "detected_at": "2026-11-24T17:11:09.834653+00:00",
+          "title": "New Model Pricing Published on OpenAI: gpt-6.2-astra-healthcare ($8 / $40 per 1M tokens ($0.40 cached))",
+          "url": "https://developers.openai.com/api/docs/pricing",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "OpenAI API spec",
+          "scanner": "openai-spec",
+          "detected_at": "2026-11-24T17:19:58.722524+00:00",
+          "title": "New model ID in OpenAI's API spec: gpt-6-astra-healthcare",
+          "url": "https://github.com/openai/openai-openapi/blob/main/openapi.yaml",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-24T17:50:26.652035+00:00",
+          "title": "gpt-6.1-sol-healthcare",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz"
+        }
+      ],
+      "source_count": 3,
+      "backfill": false,
+      "header": "NEW MODEL · OPENAI",
+      "card_ids": [
+        "pricing-radar-openai_pricing_md-59d94b95",
+        "openai-spec-ids-0ce04d87",
+        "intel-d784623bebf23d0750e2"
+      ],
+      "event_label": "Released",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "gpt-6.1-sol-healthcare",
+          "family": "gpt-6.1-sol-healthcare",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gpt-6.1-sol-healthcare\": {\"cache_read_input_token_cost\": 1e-07, \"cache_read_input_token_cost_above_272k_tokens\": 2e-07, \"cache_read_input_token_cost_above_272k_tokens_priority\": 4e-07, \"cache_read_input_token_cost_priority\": 2e-07, \"fedramp_uplift_multiplier\": 1.1, \"input_cost_per_token\": 2e-06, \"input_cost_per_token_above_272k_tokens\": 4e-06, \"input_cost_per_token_above_272k_tokens_priority\": 8e-06, \"input_cost_per_token_priority\": 4e-06, \"litellm_provider\": \"openai\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"responses\", \"output_cost_per_token\": 1e-05, \"output_cost_per_token_above_272k_tokens\": 1.5e-05, \"output_cost_per_token_above_272k_tokens_priority\": 3e-05, \"output_cost_per_token_priority\": 2e-05, \"reasoning_contexts\": [\"auto\", \"current_turn\", \"all_turns\"], \"reasoning_modes\": [\"standard\", \"pro\"], \"regional_processing_uplift_multiplier_eu\": 1.1, \"regional_processing_uplift_multiplier_us\": 1.1, \"search_context_cost_per_query\": {\"search_context_size_high\": 0.01, \"search_context_size_low\": 0.01, \"search_context_size_medium\": 0.01}, \"source\": \"https://developers.openai.com/api/docs/pricing\", \"supported_endpoints\": [\"/v1/responses\"], \"supported_modalities\":",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85",
+          "method": "structured registry",
+          "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T17:47:58+00:00"
+        }
+      ],
+      "x_post_text": "🟢 NEW MODEL: GPT 6.1 Sol Healthcare by OpenAI\n\nFirst detected 24 Nov 17:11 UTC in Official pricing page\nConfirmed by OpenAI API spec, LiteLLM commit-pinned registry\nCodename: healthcare\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-24T17:51:04.036854+00:00"
     },
     {
       "id": "story-gpt-6-2-astra-healthcare",
@@ -456,7 +562,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-24T17:11:09.834653+00:00",
-      "updated_at": "2026-11-24T17:19:58.722524+00:00",
+      "updated_at": "2026-11-24T17:50:26.652035+00:00",
       "first_source": "Official pricing page",
       "lead": "",
       "released_on": "",
@@ -466,12 +572,8 @@
       ],
       "models": [
         {
-          "id": "gpt-6.1-sol-healthcare",
-          "name": "GPT 6.1 Sol Healthcare"
-        },
-        {
           "id": "gpt-6.2-astra-healthcare",
-          "name": "GPT 6.2 Astra Healthcare"
+          "name": "gpt-6.2-astra-healthcare"
         }
       ],
       "sources": [
@@ -494,21 +596,131 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-24T17:50:26.652035+00:00",
+          "title": "gpt-6.2-astra-healthcare",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz"
         }
       ],
-      "source_count": 2,
+      "source_count": 3,
       "backfill": false,
       "header": "NEW MODEL · OPENAI",
       "card_ids": [
         "pricing-radar-openai_pricing_md-59d94b95",
-        "openai-spec-ids-0ce04d87"
+        "openai-spec-ids-0ce04d87",
+        "intel-eafdba1b27d241b05dd6"
       ],
-      "event_label": "",
+      "event_label": "Released",
       "intelligence_only": false,
       "candidate_only": false,
-      "registry_evidence": [],
+      "registry_evidence": [
+        {
+          "id": "gpt-6.2-astra-healthcare",
+          "family": "gpt-6.2-astra-healthcare",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gpt-6.2-astra-healthcare\": {\"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_12hr\": 2e-05, \"cache_creation_input_token_cost_above_12hr_above_272k_tokens\": 4e-05, \"cache_creation_input_token_cost_above_272k_tokens\": 2e-05, \"cache_read_input_token_cost\": 4e-07, \"cache_read_input_token_cost_above_272k_tokens\": 8e-07, \"cache_read_input_token_cost_above_272k_tokens_priority\": 1.6e-06, \"cache_read_input_token_cost_priority\": 8e-07, \"fedramp_uplift_multiplier\": 1.1, \"input_cost_per_token\": 8e-06, \"input_cost_per_token_above_272k_tokens\": 1.6e-05, \"input_cost_per_token_above_272k_tokens_priority\": 3.2e-05, \"input_cost_per_token_priority\": 1.6e-05, \"litellm_provider\": \"openai\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"responses\", \"output_cost_per_token\": 4e-05, \"output_cost_per_token_above_272k_tokens\": 6e-05, \"output_cost_per_token_above_272k_tokens_priority\": 0.00012, \"output_cost_per_token_priority\": 8e-05, \"reasoning_contexts\": [\"auto\", \"current_turn\", \"all_turns\"], \"reasoning_modes\": [\"standard\", \"pro\"], \"regional_processing_uplift_multiplier_eu\": 1.1, \"regional_processing_uplift_multiplier_us\": 1.1, \"search_context_cost_per_qu",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85",
+          "method": "structured registry",
+          "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T17:47:58+00:00"
+        }
+      ],
       "discord_alerted_at": "2026-11-24T17:32:21.810914+00:00",
-      "x_post_text": "🟢 NEW MODEL: GPT 6.2 Astra Healthcare by OpenAI\n\nFirst detected 24 Nov 17:11 UTC in Official pricing page\nConfirmed by OpenAI API spec\nCodename: healthcare\nIDs: gpt-6.1-sol-healthcare, gpt-6.2-astra-healthcare\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: GPT 6.2 Astra Healthcare by OpenAI\n\nFirst detected 24 Nov 17:11 UTC in Official pricing page\nConfirmed by OpenAI API spec, LiteLLM commit-pinned registry\nCodename: healthcare\n\nvia @StatsWire"
+    },
+    {
+      "id": "story-gpt-6-2-sol-healthcare",
+      "group": "gpt-6-2-sol-healthcare",
+      "kind": "release",
+      "open_weights": false,
+      "title": "GPT 6.2 Sol Healthcare",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "accent_color": "#10b981",
+      "detected_at": "2026-11-24T17:11:09.834653+00:00",
+      "updated_at": "2026-11-24T17:50:26.652035+00:00",
+      "first_source": "Official pricing page",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "healthcare"
+      ],
+      "models": [
+        {
+          "id": "gpt-6.2-sol-healthcare",
+          "name": "gpt-6.2-sol-healthcare"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Official pricing page",
+          "scanner": "pricing-radar",
+          "detected_at": "2026-11-24T17:11:09.834653+00:00",
+          "title": "New Model Pricing Published on OpenAI: gpt-6.2-astra-healthcare ($8 / $40 per 1M tokens ($0.40 cached))",
+          "url": "https://developers.openai.com/api/docs/pricing",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "OpenAI API spec",
+          "scanner": "openai-spec",
+          "detected_at": "2026-11-24T17:19:58.722524+00:00",
+          "title": "New model ID in OpenAI's API spec: gpt-6-astra-healthcare",
+          "url": "https://github.com/openai/openai-openapi/blob/main/openapi.yaml",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-24T17:50:26.652035+00:00",
+          "title": "gpt-6.2-sol-healthcare",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz"
+        }
+      ],
+      "source_count": 3,
+      "backfill": false,
+      "header": "NEW MODEL · OPENAI",
+      "card_ids": [
+        "pricing-radar-openai_pricing_md-59d94b95",
+        "openai-spec-ids-0ce04d87",
+        "intel-2a3881842dc8e86962c1"
+      ],
+      "event_label": "Released",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "gpt-6.2-sol-healthcare",
+          "family": "gpt-6.2-sol-healthcare",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gpt-6.2-sol-healthcare\": {\"cache_creation_input_token_cost\": 2.5e-06, \"cache_creation_input_token_cost_above_12hr\": 5e-06, \"cache_creation_input_token_cost_above_12hr_above_272k_tokens\": 1e-05, \"cache_creation_input_token_cost_above_272k_tokens\": 5e-06, \"cache_read_input_token_cost\": 1e-07, \"cache_read_input_token_cost_above_272k_tokens\": 2e-07, \"cache_read_input_token_cost_above_272k_tokens_priority\": 4e-07, \"cache_read_input_token_cost_priority\": 2e-07, \"fedramp_uplift_multiplier\": 1.1, \"input_cost_per_token\": 2e-06, \"input_cost_per_token_above_272k_tokens\": 4e-06, \"input_cost_per_token_above_272k_tokens_priority\": 8e-06, \"input_cost_per_token_priority\": 4e-06, \"litellm_provider\": \"openai\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"responses\", \"output_cost_per_token\": 1e-05, \"output_cost_per_token_above_272k_tokens\": 1.5e-05, \"output_cost_per_token_above_272k_tokens_priority\": 3e-05, \"output_cost_per_token_priority\": 2e-05, \"reasoning_contexts\": [\"auto\", \"current_turn\", \"all_turns\"], \"reasoning_modes\": [\"standard\", \"pro\"], \"regional_processing_uplift_multiplier_eu\": 1.1, \"regional_processing_uplift_multiplier_us\": 1.1, \"search_context_cost_per_query\": {\"",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85",
+          "method": "structured registry",
+          "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T17:47:58+00:00"
+        }
+      ],
+      "x_post_text": "🟢 NEW MODEL: GPT 6.2 Sol Healthcare by OpenAI\n\nFirst detected 24 Nov 17:11 UTC in Official pricing page\nConfirmed by OpenAI API spec, LiteLLM commit-pinned registry\nCodename: healthcare\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-24T17:51:04.036854+00:00"
     },
     {
       "id": "story-bioreason-pro-2-rl",
@@ -12447,6 +12659,189 @@
       "x_post_text": "🟢 NEW MODEL: WeVisForensics by Tencent Hunyuan\n\nFirst detected 19 Nov 08:10 UTC in Hugging Face\n\nvia @StatsWire"
     },
     {
+      "id": "story-claude-mythos-5-2",
+      "group": "claude-mythos-5-2",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Claude Mythos 5.2",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-19T06:43:07.018761+00:00",
+      "updated_at": "2026-11-24T14:51:40.430763+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "claude-mythos-5-2",
+          "name": "anthropic.claude-mythos-5-2"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T06:43:07.018761+00:00",
+          "title": "claude-mythos-5-2",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/66fd00e7b03a6af09031e12dfd88db61d3c0481d/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "66fd00e7b03a6af09031e12dfd88db61d3c0481d",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/6b0dfa21f85fe2ea1d4a7931ab16b0cf56d993455b6d13799f8b1228d7a8253f.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-ad6d9ab937f52b6988ee",
+        "intel-d533d2ae12ffd9fdca57",
+        "intel-5a77dde9996935d03610",
+        "intel-245426ceb86f55d8940a",
+        "intel-c78969cce0e83d95bce2",
+        "intel-21e32f91f3dbd508926e",
+        "intel-a7699384d75a6f3d3a18"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "vertex_ai/claude-mythos-5-2",
+          "family": "claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"vertex_ai/claude-mythos-5-2\": {\"regional_endpoint_uplift_multiplier\": 1.1, \"supports_mid_conversation_system\": true, \"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.6e-05, \"cache_creation_input_token_cost_batches\": 5e-06, \"cache_read_input_token_cost\": 2e-07, \"cache_read_input_token_cost_batches\": 1e-07, \"input_cost_per_token\": 8e-06, \"litellm_provider\": \"vertex_ai-anthropic_models\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4e-05, \"search_context_cost_per_query\": {\"search_context_size_high\": 0.01, \"search_context_size_low\": 0.01, \"search_context_size_medium\": 0.01}, \"supports_adaptive_thinking\": true, \"thinking_always_on\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_native_structured_output\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"supports_max_reasoning_eff",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "6b0dfa21f85fe2ea1d4a7931ab16b0cf56d993455b6d13799f8b1228d7a8253f",
+          "method": "structured registry",
+          "build": "66fd00e7b03a6af09031e12dfd88db61d3c0481d",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/66fd00e7b03a6af09031e12dfd88db61d3c0481d/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T06:41:59+00:00"
+        },
+        {
+          "id": "bedrock/us-gov-east-1/anthropic.claude-mythos-5-2",
+          "family": "anthropic.claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"bedrock/us-gov-east-1/anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": tr",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "c436a6e5121c438a20b0c014d46129acfe41d2d1b23725bfda733dd901141210",
+          "method": "structured registry",
+          "build": "254d65ab701326f90152a969edafec965850fa73",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/254d65ab701326f90152a969edafec965850fa73/model_prices_and_context_window.json",
+          "first_seen": "2026-11-21T00:00:49+00:00"
+        },
+        {
+          "id": "bedrock/us-gov-west-1/anthropic.claude-mythos-5-2",
+          "family": "anthropic.claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"bedrock/us-gov-west-1/anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": tr",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "c436a6e5121c438a20b0c014d46129acfe41d2d1b23725bfda733dd901141210",
+          "method": "structured registry",
+          "build": "254d65ab701326f90152a969edafec965850fa73",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/254d65ab701326f90152a969edafec965850fa73/model_prices_and_context_window.json",
+          "first_seen": "2026-11-21T00:00:49+00:00"
+        },
+        {
+          "id": "us-gov.anthropic.claude-mythos-5-2",
+          "family": "us-gov.anthropic.claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"us-gov.anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"s",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "c436a6e5121c438a20b0c014d46129acfe41d2d1b23725bfda733dd901141210",
+          "method": "structured registry",
+          "build": "254d65ab701326f90152a969edafec965850fa73",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/254d65ab701326f90152a969edafec965850fa73/model_prices_and_context_window.json",
+          "first_seen": "2026-11-21T00:00:49+00:00"
+        },
+        {
+          "id": "anthropic.claude-mythos-5-2",
+          "family": "anthropic.claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.6e-05, \"cache_read_input_token_cost\": 2e-07, \"input_cost_per_token\": 8e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"thinking_always_on\": true, \"supports_tool_schema_defs\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
+          "method": "structured registry",
+          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T13:42:08+00:00"
+        },
+        {
+          "id": "bedrock/us-gov-east-1/anthropic.claude-mythos-5-2",
+          "family": "anthropic.claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"bedrock/us-gov-east-1/anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": tr",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
+          "method": "structured registry",
+          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T13:42:08+00:00"
+        },
+        {
+          "id": "bedrock/us-gov-west-1/anthropic.claude-mythos-5-2",
+          "family": "anthropic.claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"bedrock/us-gov-west-1/anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": tr",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
+          "method": "structured registry",
+          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T13:42:08+00:00"
+        },
+        {
+          "id": "eu.anthropic.claude-mythos-5-2",
+          "family": "eu.anthropic.claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"eu.anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.76e-05, \"cache_read_input_token_cost\": 2.2e-07, \"input_cost_per_token\": 8.8e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.4e-05, \"prompt_cache_min_tokens\": 512.0, \"search_context_cost_per_query\": {\"search_context_size_high\": 0.01, \"search_context_size_low\": 0.01, \"search_context_size_medium\": 0.01}, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
+          "method": "structured registry",
+          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T13:42:08+00:00"
+        },
+        {
+          "id": "global.anthropic.claude-mythos-5-2",
+          "family": "global.anthropic.claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"global.anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.6e-05, \"cache_read_input_token_cost\": 2e-07, \"input_cost_per_token\": 8e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"thinking_always_on\": true, \"supports_tool_schema_defs\":",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
+          "method": "structured registry",
+          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T13:42:08+00:00"
+        },
+        {
+          "id": "us.anthropic.claude-mythos-5-2",
+          "family": "us.anthropic.claude-mythos-5-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"us.anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.76e-05, \"cache_read_input_token_cost\": 2.2e-07, \"input_cost_per_token\": 8.8e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.4e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"thinking_always_on\": true, \"supports_tool_schema_d",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
+          "method": "structured registry",
+          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T13:42:08+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: claude-mythos-5-2\nhttps://raw.githubusercontent.com/BerriAI/litellm/66fd00e7b03a6af09031e12dfd88db61d3c0481d/model_prices_and_context_window.json"
+    },
+    {
       "id": "story-microsoft-decision-1-1",
       "group": "microsoft-decision-1-1",
       "kind": "registry",
@@ -20515,9 +20910,7 @@
       "lead": "10 h before it went live on Official pricing page",
       "released_on": "2026-11-17",
       "pricing": "",
-      "codenames": [
-        "healthcare"
-      ],
+      "codenames": [],
       "models": [
         {
           "id": "gpt-6.2-sol",
@@ -20537,10 +20930,6 @@
         {
           "id": "gpt-6.2-sol-ultrafast",
           "name": "GPT 6.2 Sol Ultrafast"
-        },
-        {
-          "id": "gpt-6.2-sol-healthcare",
-          "name": "GPT 6.2 Sol Healthcare"
         }
       ],
       "sources": [
@@ -20728,8 +21117,6 @@
         "intel-7ab3edc8ab417ab3a718",
         "intel-f7c42231bf3af5ce1e16",
         "intel-68822d3e2b8d8d1f27ae",
-        "pricing-radar-openai_pricing_md-59d94b95",
-        "openai-spec-ids-0ce04d87",
         "intel-13a8245eb540d3c7563d",
         "intel-740cc3af8a74df99e058",
         "intel-85e044b3e4e42e7c983c",
@@ -26732,200 +27119,6 @@
       "x_post_text": "🟢 NEW MODEL: ERNIE-5.5-Flash-Preview by Baidu\n\nFirst detected 10 Nov 19:20 UTC in OpenRouter\n📅 First released: 2026-11-10\nConfirmed by LMArena, Hugging Face\nIDs: ernie-5.5-flash-preview, ERNIE-5.5-Flash-Preview-FP8, ERNIE-5.5-Flash-Preview-BF16\n\nvia @StatsWire"
     },
     {
-      "id": "story-claude-mythos-5-2",
-      "group": "claude-mythos-5-2",
-      "kind": "registry",
-      "open_weights": false,
-      "title": "Claude Mythos 5.2",
-      "provider_slug": "anthropic",
-      "provider_name": "Anthropic",
-      "accent_color": "#f97316",
-      "detected_at": "2026-11-10T17:40:17.273840+00:00",
-      "updated_at": "2026-11-24T14:51:40.430763+00:00",
-      "first_source": "LiteLLM registry",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "claude-mythos-5-2",
-          "name": "anthropic.claude-mythos-5-2"
-        }
-      ],
-      "sources": [
-        {
-          "label": "LiteLLM registry",
-          "scanner": "litellm",
-          "detected_at": "2026-11-10T17:40:17.273840+00:00",
-          "title": "1 New Model(s) Added to LiteLLM",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "LiteLLM commit-pinned registry",
-          "scanner": "litellm-intelligence",
-          "detected_at": "2026-11-19T06:43:07.018761+00:00",
-          "title": "claude-mythos-5-2",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/66fd00e7b03a6af09031e12dfd88db61d3c0481d/model_prices_and_context_window.json",
-          "backfill": false,
-          "build": "66fd00e7b03a6af09031e12dfd88db61d3c0481d",
-          "evidence_path": "data/intelligence/evidence/litellm-intelligence/6b0dfa21f85fe2ea1d4a7931ab16b0cf56d993455b6d13799f8b1228d7a8253f.json.gz"
-        }
-      ],
-      "source_count": 2,
-      "backfill": false,
-      "header": "REGISTRY UPDATE · ANTHROPIC",
-      "card_ids": [
-        "litellm-diff-782b2563",
-        "intel-ad6d9ab937f52b6988ee",
-        "intel-d533d2ae12ffd9fdca57",
-        "intel-5a77dde9996935d03610",
-        "intel-245426ceb86f55d8940a",
-        "intel-c78969cce0e83d95bce2",
-        "intel-21e32f91f3dbd508926e",
-        "intel-a7699384d75a6f3d3a18"
-      ],
-      "event_label": "Registry update",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [
-        {
-          "id": "vertex_ai/claude-mythos-5-2",
-          "family": "claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"vertex_ai/claude-mythos-5-2\": {\"regional_endpoint_uplift_multiplier\": 1.1, \"supports_mid_conversation_system\": true, \"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.6e-05, \"cache_creation_input_token_cost_batches\": 5e-06, \"cache_read_input_token_cost\": 2e-07, \"cache_read_input_token_cost_batches\": 1e-07, \"input_cost_per_token\": 8e-06, \"litellm_provider\": \"vertex_ai-anthropic_models\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4e-05, \"search_context_cost_per_query\": {\"search_context_size_high\": 0.01, \"search_context_size_low\": 0.01, \"search_context_size_medium\": 0.01}, \"supports_adaptive_thinking\": true, \"thinking_always_on\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_native_structured_output\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"supports_max_reasoning_eff",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "6b0dfa21f85fe2ea1d4a7931ab16b0cf56d993455b6d13799f8b1228d7a8253f",
-          "method": "structured registry",
-          "build": "66fd00e7b03a6af09031e12dfd88db61d3c0481d",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/66fd00e7b03a6af09031e12dfd88db61d3c0481d/model_prices_and_context_window.json",
-          "first_seen": "2026-11-19T06:41:59+00:00"
-        },
-        {
-          "id": "bedrock/us-gov-east-1/anthropic.claude-mythos-5-2",
-          "family": "anthropic.claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"bedrock/us-gov-east-1/anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": tr",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "c436a6e5121c438a20b0c014d46129acfe41d2d1b23725bfda733dd901141210",
-          "method": "structured registry",
-          "build": "254d65ab701326f90152a969edafec965850fa73",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/254d65ab701326f90152a969edafec965850fa73/model_prices_and_context_window.json",
-          "first_seen": "2026-11-21T00:00:49+00:00"
-        },
-        {
-          "id": "bedrock/us-gov-west-1/anthropic.claude-mythos-5-2",
-          "family": "anthropic.claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"bedrock/us-gov-west-1/anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": tr",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "c436a6e5121c438a20b0c014d46129acfe41d2d1b23725bfda733dd901141210",
-          "method": "structured registry",
-          "build": "254d65ab701326f90152a969edafec965850fa73",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/254d65ab701326f90152a969edafec965850fa73/model_prices_and_context_window.json",
-          "first_seen": "2026-11-21T00:00:49+00:00"
-        },
-        {
-          "id": "us-gov.anthropic.claude-mythos-5-2",
-          "family": "us-gov.anthropic.claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"us-gov.anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"s",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "c436a6e5121c438a20b0c014d46129acfe41d2d1b23725bfda733dd901141210",
-          "method": "structured registry",
-          "build": "254d65ab701326f90152a969edafec965850fa73",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/254d65ab701326f90152a969edafec965850fa73/model_prices_and_context_window.json",
-          "first_seen": "2026-11-21T00:00:49+00:00"
-        },
-        {
-          "id": "anthropic.claude-mythos-5-2",
-          "family": "anthropic.claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.6e-05, \"cache_read_input_token_cost\": 2e-07, \"input_cost_per_token\": 8e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"thinking_always_on\": true, \"supports_tool_schema_defs\": true}}",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
-          "method": "structured registry",
-          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
-          "first_seen": "2026-11-24T13:42:08+00:00"
-        },
-        {
-          "id": "bedrock/us-gov-east-1/anthropic.claude-mythos-5-2",
-          "family": "anthropic.claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"bedrock/us-gov-east-1/anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": tr",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
-          "method": "structured registry",
-          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
-          "first_seen": "2026-11-24T13:42:08+00:00"
-        },
-        {
-          "id": "bedrock/us-gov-west-1/anthropic.claude-mythos-5-2",
-          "family": "anthropic.claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"bedrock/us-gov-west-1/anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.2e-05, \"cache_creation_input_token_cost_above_1hr\": 1.92e-05, \"cache_read_input_token_cost\": 2.4e-07, \"input_cost_per_token\": 9.6e-06, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.8e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_bedrock_native_structured_output\": true, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": tr",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
-          "method": "structured registry",
-          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
-          "first_seen": "2026-11-24T13:42:08+00:00"
-        },
-        {
-          "id": "eu.anthropic.claude-mythos-5-2",
-          "family": "eu.anthropic.claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"eu.anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.76e-05, \"cache_read_input_token_cost\": 2.2e-07, \"input_cost_per_token\": 8.8e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.4e-05, \"prompt_cache_min_tokens\": 512.0, \"search_context_cost_per_query\": {\"search_context_size_high\": 0.01, \"search_context_size_low\": 0.01, \"search_context_size_medium\": 0.01}, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_forced_tool_use\": false, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
-          "method": "structured registry",
-          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
-          "first_seen": "2026-11-24T13:42:08+00:00"
-        },
-        {
-          "id": "global.anthropic.claude-mythos-5-2",
-          "family": "global.anthropic.claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"global.anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.6e-05, \"cache_read_input_token_cost\": 2e-07, \"input_cost_per_token\": 8e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"thinking_always_on\": true, \"supports_tool_schema_defs\":",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
-          "method": "structured registry",
-          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
-          "first_seen": "2026-11-24T13:42:08+00:00"
-        },
-        {
-          "id": "us.anthropic.claude-mythos-5-2",
-          "family": "us.anthropic.claude-mythos-5-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"us.anthropic.claude-mythos-5-2\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.1e-05, \"cache_creation_input_token_cost_above_1hr\": 1.76e-05, \"cache_read_input_token_cost\": 2.2e-07, \"input_cost_per_token\": 8.8e-06, \"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 4.4e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"thinking_always_on\": true, \"supports_tool_schema_d",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
-          "method": "structured registry",
-          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
-          "first_seen": "2026-11-24T13:42:08+00:00"
-        }
-      ],
-      "x_post_text": "🔵 REGISTRY UPDATE: Claude Mythos 5.2\n\nFirst detected 10 Nov 17:40 UTC in LiteLLM registry\nConfirmed by LiteLLM commit-pinned registry\n\nvia @StatsWire"
-    },
-    {
       "id": "story-gemini-4-carbon",
       "group": "gemini-4-carbon",
       "kind": "release",
@@ -27038,6 +27231,342 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-4bfb1b512d7a1d7d71a4",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6-astra-healthcare",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6-astra-healthcare",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "gpt-6-astra-healthcare",
+          "name": "gpt-6-astra-healthcare",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-24T17:50:26.652035+00:00",
+      "first_seen": "2026-11-24T17:47:58+00:00",
+      "observed_at": "2026-11-24T17:50:26.652035+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "5ddca1e1578cecb2e67d3733d5fc16198b9a1c1b -> bad883561c70618d0506c109c86aa50d3bac6bb3",
+      "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
+      "artifact_sha256": "46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "gpt-6-astra-healthcare",
+          "family": "gpt-6-astra-healthcare",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gpt-6-astra-healthcare\": {\"cache_read_input_token_cost\": 1e-06, \"cache_read_input_token_cost_above_272k_tokens\": 2e-06, \"cache_read_input_token_cost_above_272k_tokens_priority\": 4e-06, \"cache_read_input_token_cost_priority\": 2e-06, \"fedramp_uplift_multiplier\": 1.1, \"input_cost_per_token\": 1e-05, \"input_cost_per_token_above_272k_tokens\": 2e-05, \"input_cost_per_token_above_272k_tokens_priority\": 4e-05, \"input_cost_per_token_priority\": 2e-05, \"litellm_provider\": \"openai\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"responses\", \"output_cost_per_token\": 5e-05, \"output_cost_per_token_above_272k_tokens\": 7.5e-05, \"output_cost_per_token_above_272k_tokens_priority\": 0.00015, \"output_cost_per_token_priority\": 0.0001, \"reasoning_contexts\": [\"auto\", \"current_turn\", \"all_turns\"], \"reasoning_modes\": [\"standard\", \"pro\"], \"regional_processing_uplift_multiplier_eu\": 1.1, \"regional_processing_uplift_multiplier_us\": 1.1, \"search_context_cost_per_query\": {\"search_context_size_high\": 0.01, \"search_context_size_low\": 0.01, \"search_context_size_medium\": 0.01}, \"source\": \"https://developers.openai.com/api/docs/pricing\", \"supported_endpoints\": [\"/v1/responses\"], \"supported_modalitie",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85",
+          "method": "structured registry",
+          "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T17:47:58+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/bad883561c70618d0506c109c86aa50d3bac6bb3"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T17:50:28.448664+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: gpt-6-astra-healthcare\nhttps://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-d784623bebf23d0750e2",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.1-sol-healthcare",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6.1-sol-healthcare",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "gpt-6.1-sol-healthcare",
+          "name": "gpt-6.1-sol-healthcare",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-24T17:50:26.652035+00:00",
+      "first_seen": "2026-11-24T17:47:58+00:00",
+      "observed_at": "2026-11-24T17:50:26.652035+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "5ddca1e1578cecb2e67d3733d5fc16198b9a1c1b -> bad883561c70618d0506c109c86aa50d3bac6bb3",
+      "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
+      "artifact_sha256": "46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "gpt-6.1-sol-healthcare",
+          "family": "gpt-6.1-sol-healthcare",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gpt-6.1-sol-healthcare\": {\"cache_read_input_token_cost\": 1e-07, \"cache_read_input_token_cost_above_272k_tokens\": 2e-07, \"cache_read_input_token_cost_above_272k_tokens_priority\": 4e-07, \"cache_read_input_token_cost_priority\": 2e-07, \"fedramp_uplift_multiplier\": 1.1, \"input_cost_per_token\": 2e-06, \"input_cost_per_token_above_272k_tokens\": 4e-06, \"input_cost_per_token_above_272k_tokens_priority\": 8e-06, \"input_cost_per_token_priority\": 4e-06, \"litellm_provider\": \"openai\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"responses\", \"output_cost_per_token\": 1e-05, \"output_cost_per_token_above_272k_tokens\": 1.5e-05, \"output_cost_per_token_above_272k_tokens_priority\": 3e-05, \"output_cost_per_token_priority\": 2e-05, \"reasoning_contexts\": [\"auto\", \"current_turn\", \"all_turns\"], \"reasoning_modes\": [\"standard\", \"pro\"], \"regional_processing_uplift_multiplier_eu\": 1.1, \"regional_processing_uplift_multiplier_us\": 1.1, \"search_context_cost_per_query\": {\"search_context_size_high\": 0.01, \"search_context_size_low\": 0.01, \"search_context_size_medium\": 0.01}, \"source\": \"https://developers.openai.com/api/docs/pricing\", \"supported_endpoints\": [\"/v1/responses\"], \"supported_modalities\":",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85",
+          "method": "structured registry",
+          "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T17:47:58+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/bad883561c70618d0506c109c86aa50d3bac6bb3"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T17:50:28.448664+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: gpt-6.1-sol-healthcare\nhttps://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-eafdba1b27d241b05dd6",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-astra-healthcare",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6.2-astra-healthcare",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "gpt-6.2-astra-healthcare",
+          "name": "gpt-6.2-astra-healthcare",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-24T17:50:26.652035+00:00",
+      "first_seen": "2026-11-24T17:47:58+00:00",
+      "observed_at": "2026-11-24T17:50:26.652035+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "5ddca1e1578cecb2e67d3733d5fc16198b9a1c1b -> bad883561c70618d0506c109c86aa50d3bac6bb3",
+      "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
+      "artifact_sha256": "46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "gpt-6.2-astra-healthcare",
+          "family": "gpt-6.2-astra-healthcare",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gpt-6.2-astra-healthcare\": {\"cache_creation_input_token_cost\": 1e-05, \"cache_creation_input_token_cost_above_12hr\": 2e-05, \"cache_creation_input_token_cost_above_12hr_above_272k_tokens\": 4e-05, \"cache_creation_input_token_cost_above_272k_tokens\": 2e-05, \"cache_read_input_token_cost\": 4e-07, \"cache_read_input_token_cost_above_272k_tokens\": 8e-07, \"cache_read_input_token_cost_above_272k_tokens_priority\": 1.6e-06, \"cache_read_input_token_cost_priority\": 8e-07, \"fedramp_uplift_multiplier\": 1.1, \"input_cost_per_token\": 8e-06, \"input_cost_per_token_above_272k_tokens\": 1.6e-05, \"input_cost_per_token_above_272k_tokens_priority\": 3.2e-05, \"input_cost_per_token_priority\": 1.6e-05, \"litellm_provider\": \"openai\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"responses\", \"output_cost_per_token\": 4e-05, \"output_cost_per_token_above_272k_tokens\": 6e-05, \"output_cost_per_token_above_272k_tokens_priority\": 0.00012, \"output_cost_per_token_priority\": 8e-05, \"reasoning_contexts\": [\"auto\", \"current_turn\", \"all_turns\"], \"reasoning_modes\": [\"standard\", \"pro\"], \"regional_processing_uplift_multiplier_eu\": 1.1, \"regional_processing_uplift_multiplier_us\": 1.1, \"search_context_cost_per_qu",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85",
+          "method": "structured registry",
+          "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T17:47:58+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/bad883561c70618d0506c109c86aa50d3bac6bb3"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T17:50:28.448664+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: gpt-6.2-astra-healthcare\nhttps://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-2a3881842dc8e86962c1",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-sol-healthcare",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6.2-sol-healthcare",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "gpt-6.2-sol-healthcare",
+          "name": "gpt-6.2-sol-healthcare",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-24T17:50:26.652035+00:00",
+      "first_seen": "2026-11-24T17:47:58+00:00",
+      "observed_at": "2026-11-24T17:50:26.652035+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "5ddca1e1578cecb2e67d3733d5fc16198b9a1c1b -> bad883561c70618d0506c109c86aa50d3bac6bb3",
+      "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
+      "artifact_sha256": "46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "gpt-6.2-sol-healthcare",
+          "family": "gpt-6.2-sol-healthcare",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"gpt-6.2-sol-healthcare\": {\"cache_creation_input_token_cost\": 2.5e-06, \"cache_creation_input_token_cost_above_12hr\": 5e-06, \"cache_creation_input_token_cost_above_12hr_above_272k_tokens\": 1e-05, \"cache_creation_input_token_cost_above_272k_tokens\": 5e-06, \"cache_read_input_token_cost\": 1e-07, \"cache_read_input_token_cost_above_272k_tokens\": 2e-07, \"cache_read_input_token_cost_above_272k_tokens_priority\": 4e-07, \"cache_read_input_token_cost_priority\": 2e-07, \"fedramp_uplift_multiplier\": 1.1, \"input_cost_per_token\": 2e-06, \"input_cost_per_token_above_272k_tokens\": 4e-06, \"input_cost_per_token_above_272k_tokens_priority\": 8e-06, \"input_cost_per_token_priority\": 4e-06, \"litellm_provider\": \"openai\", \"max_input_tokens\": 922000, \"max_output_tokens\": 128000, \"mode\": \"responses\", \"output_cost_per_token\": 1e-05, \"output_cost_per_token_above_272k_tokens\": 1.5e-05, \"output_cost_per_token_above_272k_tokens_priority\": 3e-05, \"output_cost_per_token_priority\": 2e-05, \"reasoning_contexts\": [\"auto\", \"current_turn\", \"all_turns\"], \"reasoning_modes\": [\"standard\", \"pro\"], \"regional_processing_uplift_multiplier_eu\": 1.1, \"regional_processing_uplift_multiplier_us\": 1.1, \"search_context_cost_per_query\": {\"",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85",
+          "method": "structured registry",
+          "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T17:47:58+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/bad883561c70618d0506c109c86aa50d3bac6bb3"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T17:50:28.448664+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: gpt-6.2-sol-healthcare\nhttps://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json"
+    },
     {
       "id": "intel-11a6190d60cf5b89b783",
       "scanner": "models-dev-git",
@@ -87703,42 +88232,6 @@
       "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · BAIDU\nBaidu Qianfan: ERNIE-5.5-Flash-Preview spotted in Endpoint ID baidu/ernie-5.5-flash-preview!\n\n• Baidu Qianfan: ERNIE-5.5-Flash-Preview (1024k context window) (baidu/ernie-5.5-flash-preview)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
     },
     {
-      "id": "litellm-diff-782b2563",
-      "category": "cli-sdk-diff",
-      "scanner": "litellm",
-      "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
-      "title": "1 New Model(s) Added to LiteLLM",
-      "subtitle": "Verified model_prices_and_context_window.json diff",
-      "build_label": "Registry Diff",
-      "build_transition": "+1 model keys",
-      "models": [
-        {
-          "id": "vertex_ai/claude-mythos-5-2@default",
-          "name": "vertex_ai/claude-mythos-5-2@default"
-        }
-      ],
-      "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
-      "source_text": "official LiteLLM master pricing & context window registry.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "LITELLM",
-      "provider_slug": "modelsdev",
-      "accent_color": "#10b981",
-      "links": [
-        {
-          "label": "LiteLLM JSON Registry",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
-        },
-        {
-          "label": "LiteLLM Commits",
-          "url": "https://github.com/BerriAI/litellm/commits/main"
-        }
-      ],
-      "detected_at": "2026-11-10T17:40:17.273840+00:00",
-      "pricing": null,
-      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 model keys!\n\n• vertex_ai/claude-mythos-5-2@default (vertex_ai/claude-mythos-5-2@default)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
-    },
-    {
       "id": "ag-acp-1.4.3-revision-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
@@ -87902,28 +88395,28 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:40:48.294638+00:00",
+      "last_attempt": "2026-11-24T17:50:22.346553+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:40:51.634474+00:00",
+      "last_success": "2026-11-24T17:50:25.488613+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.34,
-      "latest_build": "b5e28fb76ccd292c4379ae2fcb469fc635abe56a53365a544a559bf08015786f",
-      "builds_retained": 142,
-      "identifiers": 9995
+      "duration_seconds": 3.142,
+      "latest_build": "3bdc463536a76bf0842527acb76674bd6a0fc88bee3ff4437171dc21fc5541d1",
+      "builds_retained": 145,
+      "identifiers": 10055
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T17:40:51.829819+00:00",
+      "last_attempt": "2026-11-24T17:50:25.680829+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:40:54.799982+00:00",
+      "last_success": "2026-11-24T17:50:28.448664+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.971,
-      "latest_build": "5ddca1e1578cecb2e67d3733d5fc16198b9a1c1b",
-      "builds_retained": 77,
-      "identifiers": 7063
+      "duration_seconds": 2.768,
+      "latest_build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
+      "builds_retained": 78,
+      "identifiers": 7067
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
@@ -87941,21 +88434,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T17:41:11.585034+00:00",
+      "last_attempt": "2026-11-24T17:50:28.643451+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3567,
-      "duration_seconds": 20.331
+      "consecutive_failures": 3570,
+      "duration_seconds": 21.137
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T17:30:25.174083+00:00",
+      "last_attempt": "2026-11-24T17:47:46.238065+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:30:25.398457+00:00",
+      "last_success": "2026-11-24T17:47:46.372824+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.224,
+      "duration_seconds": 0.135,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -87965,61 +88458,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:39:41.965348+00:00",
+      "last_attempt": "2026-11-24T17:49:08.820692+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:39:43.722203+00:00",
+      "last_success": "2026-11-24T17:49:10.501201+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.757
+      "duration_seconds": 1.681
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:39:43.722259+00:00",
+      "last_attempt": "2026-11-24T17:49:10.501253+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:39:44.113910+00:00",
+      "last_success": "2026-11-24T17:49:10.878446+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.392
+      "duration_seconds": 0.377
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:39:44.113950+00:00",
+      "last_attempt": "2026-11-24T17:49:10.878482+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:39:50.756540+00:00",
+      "last_success": "2026-11-24T17:49:27.754970+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.643
+      "duration_seconds": 16.877
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:39:50.756605+00:00",
+      "last_attempt": "2026-11-24T17:49:27.755033+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:40:48.294586+00:00",
+      "last_success": "2026-11-24T17:50:22.346503+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 57.538,
+      "duration_seconds": 54.591,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-24T17:39:51.104972+00:00",
+          "checked_at": "2026-11-24T17:49:28.139815+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-24T17:40:03.246837+00:00",
+          "checked_at": "2026-11-24T17:49:40.216825+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-24T17:40:03.362573+00:00",
+          "checked_at": "2026-11-24T17:49:40.324176+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-24T17:40:03.362589+00:00",
+          "checked_at": "2026-11-24T17:49:40.324190+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -88027,28 +88520,28 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:40:48.294638+00:00",
+      "last_attempt": "2026-11-24T17:50:22.346553+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:40:51.634474+00:00",
+      "last_success": "2026-11-24T17:50:25.488613+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.34,
-      "latest_build": "b5e28fb76ccd292c4379ae2fcb469fc635abe56a53365a544a559bf08015786f",
-      "builds_retained": 142,
-      "identifiers": 9995
+      "duration_seconds": 3.142,
+      "latest_build": "3bdc463536a76bf0842527acb76674bd6a0fc88bee3ff4437171dc21fc5541d1",
+      "builds_retained": 145,
+      "identifiers": 10055
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T17:40:51.829819+00:00",
+      "last_attempt": "2026-11-24T17:50:25.680829+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:40:54.799982+00:00",
+      "last_success": "2026-11-24T17:50:28.448664+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.971,
-      "latest_build": "5ddca1e1578cecb2e67d3733d5fc16198b9a1c1b",
-      "builds_retained": 77,
-      "identifiers": 7063
+      "duration_seconds": 2.768,
+      "latest_build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
+      "builds_retained": 78,
+      "identifiers": 7067
     },
     "models-dev-git": {
       "poll_interval_seconds": 600,
@@ -88066,21 +88559,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T17:41:11.585034+00:00",
+      "last_attempt": "2026-11-24T17:50:28.643451+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3567,
-      "duration_seconds": 20.331
+      "consecutive_failures": 3570,
+      "duration_seconds": 21.137
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T17:30:25.174083+00:00",
+      "last_attempt": "2026-11-24T17:47:46.238065+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:30:25.398457+00:00",
+      "last_success": "2026-11-24T17:47:46.372824+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.224,
+      "duration_seconds": 0.135,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -88088,22 +88581,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:41:31.922954+00:00",
+      "last_attempt": "2026-11-24T17:50:49.787931+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:41:40.843870+00:00",
+      "last_success": "2026-11-24T17:50:58.552216+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.921
+      "duration_seconds": 8.764
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:41:40.843920+00:00",
+      "last_attempt": "2026-11-24T17:50:58.552276+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:41:43.556017+00:00",
+      "last_success": "2026-11-24T17:51:00.298945+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.712
+      "duration_seconds": 1.747
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -88118,34 +88611,34 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:41:52.396444+00:00",
+      "last_attempt": "2026-11-24T17:51:00.298997+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:41:53.591298+00:00",
+      "last_success": "2026-11-24T17:51:01.510765+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.195
+      "duration_seconds": 1.212
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T17:41:53.591339+00:00",
+      "last_attempt": "2026-11-24T17:51:01.510803+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T17:41:53.702289+00:00",
+      "last_success": "2026-11-24T17:51:01.607618+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.111
+      "duration_seconds": 0.097
     }
   },
   "identities": {
-    "identifiers": 31589,
-    "declared_aliases": 18603,
+    "identifiers": 31653,
+    "declared_aliases": 18664,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 413,
-      "seconds_mean": 3756.1264305157383,
+      "samples": 417,
+      "seconds_mean": 3721.5223595755397,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -88159,9 +88652,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 529,
-      "events": 531,
-      "rate": 0.9962335216572504
+      "complete": 533,
+      "events": 535,
+      "rate": 0.9962616822429906
     },
     "source_health": {
       "sources": 14,
