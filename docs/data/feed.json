@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-24T18:36:21.688674+00:00",
-  "scan_completed_at": "2026-11-24T18:38:06.748860+00:00",
+  "generated_at": "2026-11-24T18:39:21.440433+00:00",
+  "scan_completed_at": "2026-11-24T18:41:24.612727+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 338,
@@ -8,8 +8,8 @@
     "releases": 92,
     "stories_24h": 54,
     "sources_ok": 14,
-    "total_cards": 813,
-    "new_in_this_scan": 1
+    "total_cards": 819,
+    "new_in_this_scan": 6
   },
   "stories": [
     {
@@ -4841,7 +4841,7 @@
       "provider_name": "venice",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-21T03:05:45.893089+00:00",
-      "updated_at": "2026-11-24T18:37:29.696199+00:00",
+      "updated_at": "2026-11-24T18:40:40.957535+00:00",
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-11-20",
@@ -4909,7 +4909,9 @@
         "intel-5bb9c347618a0dc587e6",
         "intel-7c1ea42f1b0328276fd5",
         "intel-0dfc6824099b105efe51",
-        "intel-fec59f9e228d13f1afc2"
+        "intel-fec59f9e228d13f1afc2",
+        "intel-ccfe06dc1b22fbc446e5",
+        "intel-0291550522049ffcdd60"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -5233,6 +5235,36 @@
           "build": "e30d70517d24d3abcb2f403e61a8f787a283cced9a235ebe73c9aeb879c7ba09",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-24T18:37:29.313963+00:00"
+        },
+        {
+          "id": "edenai/deepinfra/thinkingmachines/Inkling-2-Mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/edenai/models/deepinfra/thinkingmachines/Inkling-2-Mini.toml",
+          "file_sha256": "d486b038a7f8bb07b598b299b94bc9a753ed0730991b2917d70d709f2fdeaf7e",
+          "excerpt": "{\"edenai/deepinfra/thinkingmachines/Inkling-2-Mini\": {\"schema\": 2, \"base_model\": \"thinkingmachines/inkling-2-mini\", \"name\": \"Inkling 2 Mini (Deep Infra)\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 0.075, \"cache\": {\"read\": 0.015}}, \"output\": {\"price\": 0.3}}}}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/eb7c22778db4facd346289ccb1932996df4c02fc/providers/edenai/models/deepinfra/thinkingmachines/Inkling-2-Mini.toml",
+          "build": "eb7c22778db4facd346289ccb1932996df4c02fc",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc",
+          "first_seen": "2026-11-24T18:32:55+00:00"
+        },
+        {
+          "id": "venice/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/venice/models/inkling-2-mini.toml",
+          "file_sha256": "4cf60fc7f314aa97c817371c91dd92711fda4199ff700b9d9f3f20d3e101405b",
+          "excerpt": "{\"venice/inkling-2-mini\": {\"schema\": 2, \"base_model\": \"thinkingmachines/inkling-2-mini\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"limit\": {\"context\": 524288, \"output\": 131072}, \"api\": {\"chat-completions\": {}, \"responses\": {\"base_url\": \"https://api.venice.ai/api/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.12, \"cache\": {\"read\": 0.024}}, \"output\": {\"price\": 0.5}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/05868006a4ef9652eafd385675623ce76b7080e9/providers/venice/models/inkling-2-mini.toml",
+          "build": "05868006a4ef9652eafd385675623ce76b7080e9",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/05868006a4ef9652eafd385675623ce76b7080e9",
+          "first_seen": "2026-11-24T18:33:24+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-23T04:22:07.426340+00:00",
@@ -20511,7 +20543,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-17T18:31:10.791Z",
-      "updated_at": "2026-11-24T18:34:27.805511+00:00",
+      "updated_at": "2026-11-24T18:40:33.111593+00:00",
       "first_source": "npm SDK release",
       "lead": "10 h before it went live on Official pricing page",
       "released_on": "2026-11-17",
@@ -20733,7 +20765,8 @@
         "intel-b98d2ee0f6968cd7323d",
         "intel-36b01d0aa1036e9b3007",
         "intel-34244a86437000cef216",
-        "intel-3cc66acde37221ddcafb"
+        "intel-3cc66acde37221ddcafb",
+        "intel-f3595c6518b115be549b"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -21330,7 +21363,7 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-17T18:31:10.791Z",
-      "updated_at": "2026-11-24T18:34:27.805511+00:00",
+      "updated_at": "2026-11-24T18:40:33.111593+00:00",
       "first_source": "npm SDK release",
       "lead": "10 h before it went live on Official pricing page",
       "released_on": "2026-11-17",
@@ -21548,7 +21581,9 @@
         "intel-f85c9819dcb15591cb22",
         "intel-a450f5b7665be75f3c3f",
         "intel-67c888e16a80d6b4fab9",
-        "intel-8dd0630d43994d309214"
+        "intel-8dd0630d43994d309214",
+        "intel-29cc46005dc613b28866",
+        "intel-117fe0e0ca9fa1970acf"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -23168,7 +23203,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-11-16T20:15:16.430197+00:00",
-      "updated_at": "2026-11-24T18:34:27.805511+00:00",
+      "updated_at": "2026-11-24T18:40:33.111593+00:00",
       "first_source": "Gemini Web App Config",
       "lead": "2 days before it went live on OpenRouter",
       "released_on": "2026-11-18",
@@ -23431,7 +23466,8 @@
         "intel-36d72624a52e47c8c184",
         "intel-85b3a529c9c628c39736",
         "intel-bcf458fa7bb80c0c3208",
-        "intel-1b1b43d859d5f07c48c8"
+        "intel-1b1b43d859d5f07c48c8",
+        "intel-3d1fb072b693128110b8"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -27662,6 +27698,577 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-0291550522049ffcdd60",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "inkling-2-mini",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "inkling-2-mini",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "venice/inkling-2-mini",
+          "name": "venice/inkling-2-mini",
+          "registry_update": true,
+          "released_on": "2026-11-20"
+        }
+      ],
+      "detected_at": "2026-11-24T18:40:40.957535+00:00",
+      "first_seen": "2026-11-24T18:33:24+00:00",
+      "observed_at": "2026-11-24T18:40:40.957535+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "eb7c22778db4facd346289ccb1932996df4c02fc -> 05868006a4ef9652eafd385675623ce76b7080e9",
+      "build": "05868006a4ef9652eafd385675623ce76b7080e9",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/05868006a4ef9652eafd385675623ce76b7080e9",
+      "artifact_sha256": "722cd17e44e8a972b134460626cac040404a68c657d0c28da885ab615d5b3b6d",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/722cd17e44e8a972b134460626cac040404a68c657d0c28da885ab615d5b3b6d.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/722cd17e44e8a972b134460626cac040404a68c657d0c28da885ab615d5b3b6d.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "venice/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/venice/models/inkling-2-mini.toml",
+          "file_sha256": "4cf60fc7f314aa97c817371c91dd92711fda4199ff700b9d9f3f20d3e101405b",
+          "excerpt": "{\"venice/inkling-2-mini\": {\"schema\": 2, \"base_model\": \"thinkingmachines/inkling-2-mini\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"limit\": {\"context\": 524288, \"output\": 131072}, \"api\": {\"chat-completions\": {}, \"responses\": {\"base_url\": \"https://api.venice.ai/api/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.12, \"cache\": {\"read\": 0.024}}, \"output\": {\"price\": 0.5}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/05868006a4ef9652eafd385675623ce76b7080e9/providers/venice/models/inkling-2-mini.toml",
+          "build": "05868006a4ef9652eafd385675623ce76b7080e9",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/05868006a4ef9652eafd385675623ce76b7080e9",
+          "first_seen": "2026-11-24T18:33:24+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/05868006a4ef9652eafd385675623ce76b7080e9"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/05868006a4ef9652eafd385675623ce76b7080e9"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T18:40:44.027281+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 05868006a4ef: venice/inkling-2-mini\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/05868006a4ef9652eafd385675623ce76b7080e9"
+    },
+    {
+      "id": "intel-ccfe06dc1b22fbc446e5",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "inkling-2-mini",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "inkling-2-mini",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "edenai/deepinfra/thinkingmachines/Inkling-2-Mini",
+          "name": "edenai/deepinfra/thinkingmachines/Inkling-2-Mini",
+          "registry_update": true,
+          "released_on": "2026-11-20"
+        }
+      ],
+      "detected_at": "2026-11-24T18:40:33.111593+00:00",
+      "first_seen": "2026-11-24T18:32:55+00:00",
+      "observed_at": "2026-11-24T18:40:33.111593+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "e3ea4fe268ed4fbd136c18b904a6fdbf900a4c18 -> eb7c22778db4facd346289ccb1932996df4c02fc",
+      "build": "eb7c22778db4facd346289ccb1932996df4c02fc",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc",
+      "artifact_sha256": "a3909c3e641a3fe4f9ce451fc147a965ec7b690c477769c7d7fa44ed9d6479f1",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/a3909c3e641a3fe4f9ce451fc147a965ec7b690c477769c7d7fa44ed9d6479f1.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/a3909c3e641a3fe4f9ce451fc147a965ec7b690c477769c7d7fa44ed9d6479f1.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "edenai/deepinfra/thinkingmachines/Inkling-2-Mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/edenai/models/deepinfra/thinkingmachines/Inkling-2-Mini.toml",
+          "file_sha256": "d486b038a7f8bb07b598b299b94bc9a753ed0730991b2917d70d709f2fdeaf7e",
+          "excerpt": "{\"edenai/deepinfra/thinkingmachines/Inkling-2-Mini\": {\"schema\": 2, \"base_model\": \"thinkingmachines/inkling-2-mini\", \"name\": \"Inkling 2 Mini (Deep Infra)\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 0.075, \"cache\": {\"read\": 0.015}}, \"output\": {\"price\": 0.3}}}}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/eb7c22778db4facd346289ccb1932996df4c02fc/providers/edenai/models/deepinfra/thinkingmachines/Inkling-2-Mini.toml",
+          "build": "eb7c22778db4facd346289ccb1932996df4c02fc",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc",
+          "first_seen": "2026-11-24T18:32:55+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/eb7c22778db4facd346289ccb1932996df4c02fc"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T18:40:44.027281+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: edenai/deepinfra/thinkingmachines/Inkling-2-Mini\nhttps://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc"
+    },
+    {
+      "id": "intel-3d1fb072b693128110b8",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gemini-4-neon",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gemini-4-neon",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "kilo/google/gemini-4-neon-fast",
+          "name": "kilo/google/gemini-4-neon-fast",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        }
+      ],
+      "detected_at": "2026-11-24T18:40:33.111593+00:00",
+      "first_seen": "2026-11-24T18:32:55+00:00",
+      "observed_at": "2026-11-24T18:40:33.111593+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "e3ea4fe268ed4fbd136c18b904a6fdbf900a4c18 -> eb7c22778db4facd346289ccb1932996df4c02fc",
+      "build": "eb7c22778db4facd346289ccb1932996df4c02fc",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc",
+      "artifact_sha256": "a3909c3e641a3fe4f9ce451fc147a965ec7b690c477769c7d7fa44ed9d6479f1",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/a3909c3e641a3fe4f9ce451fc147a965ec7b690c477769c7d7fa44ed9d6479f1.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/a3909c3e641a3fe4f9ce451fc147a965ec7b690c477769c7d7fa44ed9d6479f1.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/google/gemini-4-neon-fast",
+          "family": "gemini-4-neon",
+          "file_path": "providers/kilo/models/google/gemini-4-neon-fast.toml",
+          "file_sha256": "b4d917b6ade57728b310f37d8ff898fd46be9827e38270e2d1f9389af40016f2",
+          "excerpt": "{\"kilo/google/gemini-4-neon-fast\": {\"schema\": 2, \"base_model\": \"google/gemini-4-neon\", \"name\": \"Google: Gemini 4 Neon (Fast)\", \"description\": \"Gemini 4 Neon is Google's fast multimodal reasoning model for coding, agentic workflows, and complex tasks, delivering high-quality results with low latency. It accepts text, images, video, and documents, with tool calling and structured outputs for building responsive applications.\", \"modalities\": {\"input\": [\"text\", \"image\", \"application/pdf\", \"video\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 1000000, \"output\": 1000000}, \"cost\": {\"text\": {\"input\": {\"price\": 5.4, \"cache\": {\"read\": 0.27}}, \"output\": {\"price\": 27, \"reasoning\": 0}}, \"web_search\": {\"price\": 14}}}}",
+          "canonical_id": "google/gemini-4-neon",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/eb7c22778db4facd346289ccb1932996df4c02fc/providers/kilo/models/google/gemini-4-neon-fast.toml",
+          "build": "eb7c22778db4facd346289ccb1932996df4c02fc",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc",
+          "first_seen": "2026-11-24T18:32:55+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/eb7c22778db4facd346289ccb1932996df4c02fc"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T18:40:44.027281+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions eb7c22778db4: kilo/google/gemini-4-neon-fast\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc"
+    },
+    {
+      "id": "intel-f3595c6518b115be549b",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-astra-pro",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6.2-astra-pro",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "kilo/openai/gpt-6.2-astra-pro",
+          "name": "kilo/openai/gpt-6.2-astra-pro",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        },
+        {
+          "id": "nano-gpt/openai/gpt-6.2-astra-pro",
+          "name": "nano-gpt/openai/gpt-6.2-astra-pro",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-24T18:40:33.111593+00:00",
+      "first_seen": "2026-11-24T18:32:55+00:00",
+      "observed_at": "2026-11-24T18:40:33.111593+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "e3ea4fe268ed4fbd136c18b904a6fdbf900a4c18 -> eb7c22778db4facd346289ccb1932996df4c02fc",
+      "build": "eb7c22778db4facd346289ccb1932996df4c02fc",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc",
+      "artifact_sha256": "a3909c3e641a3fe4f9ce451fc147a965ec7b690c477769c7d7fa44ed9d6479f1",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/a3909c3e641a3fe4f9ce451fc147a965ec7b690c477769c7d7fa44ed9d6479f1.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/a3909c3e641a3fe4f9ce451fc147a965ec7b690c477769c7d7fa44ed9d6479f1.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/openai/gpt-6.2-astra-pro",
+          "family": "gpt-6.2-astra-pro",
+          "file_path": "providers/kilo/models/openai/gpt-6.2-astra-pro.toml",
+          "file_sha256": "c3950a20645f2594205f59288592729243f5f0a33b1f7e7081934927579bf988",
+          "excerpt": "{\"kilo/openai/gpt-6.2-astra-pro\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-astra\", \"name\": \"OpenAI: GPT-6.2 Astra Pro\", \"description\": \"GPT-6.2 Astra Pro is the same underlying model as [GPT-6.2 Astra](https://openrouter.ai/openai/gpt-6.2-astra), served with `reasoning.mode` set to `pro` for higher-quality responses on complex tasks. **Cost note:** pro mode spends far more...\", \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 8, \"cache\": {\"read\": 0.4, \"write\": 10}}, \"output\": {\"price\": 40}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/eb7c22778db4facd346289ccb1932996df4c02fc/providers/kilo/models/openai/gpt-6.2-astra-pro.toml",
+          "build": "eb7c22778db4facd346289ccb1932996df4c02fc",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc",
+          "first_seen": "2026-11-24T18:32:55+00:00"
+        },
+        {
+          "id": "nano-gpt/openai/gpt-6.2-astra-pro",
+          "family": "gpt-6.2-astra-pro",
+          "file_path": "providers/nano-gpt/models/openai/gpt-6.2-astra-pro.toml",
+          "file_sha256": "c5a916b187407a2d7d6a7cd2ad3176fdf32088e83442bcc71a770f3080838b2c",
+          "excerpt": "{\"nano-gpt/openai/gpt-6.2-astra-pro\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-astra\", \"name\": \"GPT 6.2 Astra Pro\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"limit\": {\"context\": 922000}, \"cost\": {\"text\": {\"input\": {\"price\": 8, \"cache\": {\"read\": 0.4, \"write\": 10}}, \"output\": {\"price\": 40}}}}}",
+          "canonical_id": "openai/gpt-6.2-astra",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/eb7c22778db4facd346289ccb1932996df4c02fc/providers/nano-gpt/models/openai/gpt-6.2-astra-pro.toml",
+          "build": "eb7c22778db4facd346289ccb1932996df4c02fc",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc",
+          "first_seen": "2026-11-24T18:32:55+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/eb7c22778db4facd346289ccb1932996df4c02fc"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T18:40:44.027281+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions eb7c22778db4: kilo/openai/gpt-6.2-astra-pro\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc"
+    },
+    {
+      "id": "intel-29cc46005dc613b28866",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-sol",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6.2-sol",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "kilo/openai/gpt-6.2-sol",
+          "name": "kilo/openai/gpt-6.2-sol",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-24T18:40:33.111593+00:00",
+      "first_seen": "2026-11-24T18:32:55+00:00",
+      "observed_at": "2026-11-24T18:40:33.111593+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "e3ea4fe268ed4fbd136c18b904a6fdbf900a4c18 -> eb7c22778db4facd346289ccb1932996df4c02fc",
+      "build": "eb7c22778db4facd346289ccb1932996df4c02fc",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc",
+      "artifact_sha256": "a3909c3e641a3fe4f9ce451fc147a965ec7b690c477769c7d7fa44ed9d6479f1",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/a3909c3e641a3fe4f9ce451fc147a965ec7b690c477769c7d7fa44ed9d6479f1.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/a3909c3e641a3fe4f9ce451fc147a965ec7b690c477769c7d7fa44ed9d6479f1.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/openai/gpt-6.2-sol",
+          "family": "gpt-6.2-sol",
+          "file_path": "providers/kilo/models/openai/gpt-6.2-sol.toml",
+          "file_sha256": "f49a86f888ab91b646e35a8515bafe4631aea6f02476ab911031853bf058503f",
+          "excerpt": "{\"kilo/openai/gpt-6.2-sol\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-sol\", \"name\": \"OpenAI: GPT-6.2 Sol\", \"description\": \"GPT-6.2 Sol is an upgrade to GPT-6.1 Sol from OpenAI, positioned below the flagship GPT-6.2 Astra in the GPT-6.2 series. It is an efficient, versatile model for everyday work, suited...\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 2, \"cache\": {\"read\": 0.1, \"write\": 2.5}}, \"output\": {\"price\": 10}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/eb7c22778db4facd346289ccb1932996df4c02fc/providers/kilo/models/openai/gpt-6.2-sol.toml",
+          "build": "eb7c22778db4facd346289ccb1932996df4c02fc",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc",
+          "first_seen": "2026-11-24T18:32:55+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-6.2-sol",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/eb7c22778db4facd346289ccb1932996df4c02fc"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T18:40:44.027281+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions eb7c22778db4: kilo/openai/gpt-6.2-sol\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc"
+    },
+    {
+      "id": "intel-117fe0e0ca9fa1970acf",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-sol-pro",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6.2-sol-pro",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "kilo/openai/gpt-6.2-sol-pro",
+          "name": "kilo/openai/gpt-6.2-sol-pro",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        },
+        {
+          "id": "nano-gpt/openai/gpt-6.2-sol-pro",
+          "name": "nano-gpt/openai/gpt-6.2-sol-pro",
+          "registry_update": true,
+          "released_on": "2026-11-17"
+        }
+      ],
+      "detected_at": "2026-11-24T18:40:33.111593+00:00",
+      "first_seen": "2026-11-24T18:32:55+00:00",
+      "observed_at": "2026-11-24T18:40:33.111593+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "e3ea4fe268ed4fbd136c18b904a6fdbf900a4c18 -> eb7c22778db4facd346289ccb1932996df4c02fc",
+      "build": "eb7c22778db4facd346289ccb1932996df4c02fc",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc",
+      "artifact_sha256": "a3909c3e641a3fe4f9ce451fc147a965ec7b690c477769c7d7fa44ed9d6479f1",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/a3909c3e641a3fe4f9ce451fc147a965ec7b690c477769c7d7fa44ed9d6479f1.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/a3909c3e641a3fe4f9ce451fc147a965ec7b690c477769c7d7fa44ed9d6479f1.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/openai/gpt-6.2-sol-pro",
+          "family": "gpt-6.2-sol-pro",
+          "file_path": "providers/kilo/models/openai/gpt-6.2-sol-pro.toml",
+          "file_sha256": "5ec0fb3cc536dd241b428e41ed884eb2d73c1f46f02bc4d005aa4d779fe4aa29",
+          "excerpt": "{\"kilo/openai/gpt-6.2-sol-pro\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-sol\", \"name\": \"OpenAI: GPT-6.2 Sol Pro\", \"description\": \"GPT-6.2 Sol Pro is the same underlying model as [GPT-6.2 Sol](https://openrouter.ai/openai/gpt-6.2-sol), served with `reasoning.mode` set to `pro` for higher-quality responses on complex tasks. **Cost note:** pro mode spends far more...\", \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 2, \"cache\": {\"read\": 0.1, \"write\": 2.5}}, \"output\": {\"price\": 10}}, \"web_search\": {\"price\": 10}}}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/eb7c22778db4facd346289ccb1932996df4c02fc/providers/kilo/models/openai/gpt-6.2-sol-pro.toml",
+          "build": "eb7c22778db4facd346289ccb1932996df4c02fc",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc",
+          "first_seen": "2026-11-24T18:32:55+00:00"
+        },
+        {
+          "id": "nano-gpt/openai/gpt-6.2-sol-pro",
+          "family": "gpt-6.2-sol-pro",
+          "file_path": "providers/nano-gpt/models/openai/gpt-6.2-sol-pro.toml",
+          "file_sha256": "a6e50cb9bda22c3afa90410bbb88d210764611243cd83d120e0e33b59a132f00",
+          "excerpt": "{\"nano-gpt/openai/gpt-6.2-sol-pro\": {\"schema\": 2, \"base_model\": \"openai/gpt-6.2-sol\", \"name\": \"GPT 6.2 Sol Pro\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"limit\": {\"context\": 922000}, \"cost\": {\"text\": {\"input\": {\"price\": 2, \"cache\": {\"read\": 0.1, \"write\": 2.5}}, \"output\": {\"price\": 10}}}}}",
+          "canonical_id": "openai/gpt-6.2-sol",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/eb7c22778db4facd346289ccb1932996df4c02fc/providers/nano-gpt/models/openai/gpt-6.2-sol-pro.toml",
+          "build": "eb7c22778db4facd346289ccb1932996df4c02fc",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc",
+          "first_seen": "2026-11-24T18:32:55+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/eb7c22778db4facd346289ccb1932996df4c02fc"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T18:40:44.027281+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions eb7c22778db4: kilo/openai/gpt-6.2-sol-pro\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/eb7c22778db4facd346289ccb1932996df4c02fc"
+    },
     {
       "id": "intel-fec59f9e228d13f1afc2",
       "scanner": "models-dev-api",
@@ -90785,12 +91392,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:37:28.980493+00:00",
+      "last_attempt": "2026-11-24T18:40:27.106406+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:37:32.390257+00:00",
+      "last_success": "2026-11-24T18:40:27.400054+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.41,
+      "duration_seconds": 0.294,
       "latest_build": "e30d70517d24d3abcb2f403e61a8f787a283cced9a235ebe73c9aeb879c7ba09",
       "builds_retained": 150,
       "identifiers": 10061
@@ -90811,24 +91418,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T18:28:19.503633+00:00",
+      "last_attempt": "2026-11-24T18:40:27.594277+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:28:28.409948+00:00",
+      "last_success": "2026-11-24T18:40:44.027281+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.907,
-      "latest_build": "e3ea4fe268ed4fbd136c18b904a6fdbf900a4c18",
-      "builds_retained": 154,
-      "identifiers": 11272
+      "duration_seconds": 16.434,
+      "latest_build": "05868006a4ef9652eafd385675623ce76b7080e9",
+      "builds_retained": 156,
+      "identifiers": 11276
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T18:37:33.214236+00:00",
+      "last_attempt": "2026-11-24T18:40:44.222763+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3586,
-      "duration_seconds": 20.832
+      "consecutive_failures": 3587,
+      "duration_seconds": 21.077
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -90848,61 +91455,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:36:21.688750+00:00",
+      "last_attempt": "2026-11-24T18:39:21.440499+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:36:23.698468+00:00",
+      "last_success": "2026-11-24T18:39:23.151393+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.01
+      "duration_seconds": 1.711
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:36:23.698518+00:00",
+      "last_attempt": "2026-11-24T18:39:23.151443+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:36:24.095634+00:00",
+      "last_success": "2026-11-24T18:39:23.535544+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.397
+      "duration_seconds": 0.384
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:36:24.095672+00:00",
+      "last_attempt": "2026-11-24T18:39:23.535582+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:36:31.305545+00:00",
+      "last_success": "2026-11-24T18:39:30.018690+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.21
+      "duration_seconds": 6.483
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:36:31.305612+00:00",
+      "last_attempt": "2026-11-24T18:39:30.018769+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:37:28.980446+00:00",
+      "last_success": "2026-11-24T18:40:27.106354+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 57.675,
+      "duration_seconds": 57.088,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-24T18:36:31.628943+00:00",
+          "checked_at": "2026-11-24T18:39:30.523106+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-24T18:36:43.555096+00:00",
+          "checked_at": "2026-11-24T18:39:42.569061+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-24T18:36:43.665410+00:00",
+          "checked_at": "2026-11-24T18:39:42.700823+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-24T18:36:43.665420+00:00",
+          "checked_at": "2026-11-24T18:39:42.700835+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -90910,12 +91517,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:37:28.980493+00:00",
+      "last_attempt": "2026-11-24T18:40:27.106406+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:37:32.390257+00:00",
+      "last_success": "2026-11-24T18:40:27.400054+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.41,
+      "duration_seconds": 0.294,
       "latest_build": "e30d70517d24d3abcb2f403e61a8f787a283cced9a235ebe73c9aeb879c7ba09",
       "builds_retained": 150,
       "identifiers": 10061
@@ -90936,24 +91543,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T18:28:19.503633+00:00",
+      "last_attempt": "2026-11-24T18:40:27.594277+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:28:28.409948+00:00",
+      "last_success": "2026-11-24T18:40:44.027281+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.907,
-      "latest_build": "e3ea4fe268ed4fbd136c18b904a6fdbf900a4c18",
-      "builds_retained": 154,
-      "identifiers": 11272
+      "duration_seconds": 16.434,
+      "latest_build": "05868006a4ef9652eafd385675623ce76b7080e9",
+      "builds_retained": 156,
+      "identifiers": 11276
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T18:37:33.214236+00:00",
+      "last_attempt": "2026-11-24T18:40:44.222763+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3586,
-      "duration_seconds": 20.832
+      "consecutive_failures": 3587,
+      "duration_seconds": 21.077
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -90971,64 +91578,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:37:54.637786+00:00",
+      "last_attempt": "2026-11-24T18:41:05.307429+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:38:03.509449+00:00",
+      "last_success": "2026-11-24T18:41:14.284913+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.872
+      "duration_seconds": 8.978
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:38:03.509501+00:00",
+      "last_attempt": "2026-11-24T18:41:14.284964+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:38:04.966291+00:00",
+      "last_success": "2026-11-24T18:41:16.112020+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.457
+      "duration_seconds": 1.827
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T18:28:59.707424+00:00",
+      "last_attempt": "2026-11-24T18:41:16.112064+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:29:08.042019+00:00",
+      "last_success": "2026-11-24T18:41:22.839369+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.335
+      "duration_seconds": 6.727
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:38:04.966349+00:00",
+      "last_attempt": "2026-11-24T18:41:22.839410+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:38:06.214243+00:00",
+      "last_success": "2026-11-24T18:41:24.049470+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.248
+      "duration_seconds": 1.21
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:38:06.214282+00:00",
+      "last_attempt": "2026-11-24T18:41:24.049506+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:38:06.342903+00:00",
+      "last_success": "2026-11-24T18:41:24.061703+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.129
+      "duration_seconds": 0.012
     }
   },
   "identities": {
-    "identifiers": 31730,
-    "declared_aliases": 18758,
+    "identifiers": 31734,
+    "declared_aliases": 18783,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 429,
-      "seconds_mean": 3623.0757553636363,
+      "samples": 435,
+      "seconds_mean": 3579.372447243678,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -91042,9 +91649,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 553,
-      "events": 555,
-      "rate": 0.9963963963963964
+      "complete": 559,
+      "events": 561,
+      "rate": 0.9964349376114082
     },
     "source_health": {
       "sources": 14,
