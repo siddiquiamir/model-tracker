@@ -257,7 +257,6 @@
         <button class="tab active" data-tab="all">All</button>
         <button class="tab" data-tab="leak">🟠 Leaks</button>
         <button class="tab" data-tab="release">🟢 New Models</button>
-        <button class="tab" data-tab="registry">🔵 Registry Updates</button>
         <button class="tab" data-tab="unverified">⚪ Unverified</button>
         <button class="tab" data-tab="open">Open weights</button>
         <button class="tab" data-tab="unread" id="tab-unread">Unread</button>
@@ -368,12 +367,13 @@
 
     // Older feeds (before story grouping) only have cards: show one story per card
     function storiesFromFeed(feed) {
-      if (Array.isArray(feed.stories)) return feed.stories.filter(s => !String(s.id || "").startsWith("story-ct-")).map(s => {
+      if (Array.isArray(feed.stories)) return feed.stories.filter(s => {
+        if (String(s.id || "").startsWith("story-ct-")) return false;
+        if (s.kind === "registry" || s.event_label === "Registry update") return false;
         const sources = s.sources || [];
         const liteLlmOnly = sources.length && sources.every(src => ["litellm", "litellm-intelligence"].includes(src.scanner));
-        return liteLlmOnly && ["release", "leak"].includes(s.kind)
-          ? { ...s, kind: "registry", open_weights: false, codenames: [] }
-          : s;
+        if (liteLlmOnly) return false;
+        return true;
       });
       return (feed.cards || []).filter(c => c.scanner !== "cert-transparency" && c.scanner !== "cert-transparency-snapshot" && c.category !== "subdomain-ct").map(c => ({
         id: "story-" + c.id, kind: "leak", open_weights: c.category === "open-source", title: c.title,
@@ -569,12 +569,11 @@
     function renderChrome() {
       const leaks = STORIES.filter(s => s.kind === "leak").length;
       const releases = STORIES.filter(s => s.kind === "release").length;
-      const regUpdates = STORIES.filter(s => s.kind === "registry").length;
       const unverified = STORIES.filter(s => s.kind === "unverified").length;
-      const day = STORIES.filter(s => s.kind !== "registry" && isRecent(s, 24)).length;
+      const day = STORIES.filter(s => isRecent(s, 24)).length;
       const srcCount = STORIES.reduce((n, s) => n + (s.sources || []).length, 0);
       document.getElementById("summary").innerHTML =
-        `<b>${STORIES.length}</b> alerts tracked (last 21 days) · <b>${leaks}</b> leaks · <b>${releases}</b> new models · <b>${regUpdates}</b> registry updates · <b>${unverified}</b> unverified · <b>${day}</b> recent non-registry alerts (24h) · ${srcCount} source sightings merged`;
+        `<b>${STORIES.length}</b> alerts tracked (last 21 days) · <b>${leaks}</b> leaks · <b>${releases}</b> new models · <b>${unverified}</b> unverified · <b>${day}</b> recent (24h) · ${srcCount} source sightings merged`;
       const counts = {};
       STORIES.forEach(s => { const p = s.provider_name || "Other"; counts[p] = (counts[p] || 0) + 1; });
       const sel = document.getElementById("provider");

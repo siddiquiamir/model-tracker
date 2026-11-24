@@ -234,7 +234,8 @@ class TrackerEngine:
                 det = novelty._parse_dt(card.get("detected_at") or card.get("first_seen") or "")
                 cutoff = (det - novelty.RELEASE_GRACE).strftime("%Y-%m-%d")
                 if all(
-                    novelty.is_old_model(novelty._model_label(m), det, catalog)
+                    is_legacy_model_id(novelty._model_label(m))
+                    or novelty.is_old_model(novelty._model_label(m), det, catalog)
                     or (
                         re.match(r"^\d{4}-\d{2}-\d{2}$", str(m.get("released_on") or "")[:10])
                         and str(m.get("released_on"))[:10] < cutoff
