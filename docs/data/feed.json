@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-24T18:33:17.739780+00:00",
-  "scan_completed_at": "2026-11-24T18:35:04.477270+00:00",
+  "generated_at": "2026-11-24T18:36:21.688674+00:00",
+  "scan_completed_at": "2026-11-24T18:38:06.748860+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 338,
     "leaks": 33,
     "releases": 92,
     "stories_24h": 54,
-    "sources_ok": 12,
-    "total_cards": 812,
-    "new_in_this_scan": 5
+    "sources_ok": 14,
+    "total_cards": 813,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -4838,10 +4838,10 @@
       "open_weights": false,
       "title": "deepinfra/thinkingmachines/Inkling-2-Mini",
       "provider_slug": "unknown",
-      "provider_name": "edenai",
+      "provider_name": "venice",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-21T03:05:45.893089+00:00",
-      "updated_at": "2026-11-24T18:34:27.805511+00:00",
+      "updated_at": "2026-11-24T18:37:29.696199+00:00",
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-11-20",
@@ -4849,8 +4849,8 @@
       "codenames": [],
       "models": [
         {
-          "id": "Inkling-2-Mini",
-          "name": "edenai/deepinfra/thinkingmachines/Inkling-2-Mini",
+          "id": "inkling-2-mini",
+          "name": "venice/inkling-2-mini",
           "released_on": "2026-11-20"
         }
       ],
@@ -4888,7 +4888,7 @@
       ],
       "source_count": 3,
       "backfill": false,
-      "header": "NEW MODEL · EDENAI",
+      "header": "NEW MODEL · VENICE",
       "card_ids": [
         "openrouter-model-thinkingmachines_inkling-2-mini",
         "intel-f9fd718251adf9703144",
@@ -4908,7 +4908,8 @@
         "intel-fd1141b80c9372e38f3c",
         "intel-5bb9c347618a0dc587e6",
         "intel-7c1ea42f1b0328276fd5",
-        "intel-0dfc6824099b105efe51"
+        "intel-0dfc6824099b105efe51",
+        "intel-fec59f9e228d13f1afc2"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -5218,10 +5219,24 @@
           "build": "8d37ba7059a1889b283beafec52e4540dcd5e9f4441e896085e79a1fc06bd282",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-24T18:34:27.421515+00:00"
+        },
+        {
+          "id": "venice/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "api.json?type=all",
+          "file_sha256": "e30d70517d24d3abcb2f403e61a8f787a283cced9a235ebe73c9aeb879c7ba09",
+          "excerpt": "{\"venice/inkling-2-mini\": {\"id\": \"inkling-2-mini\", \"name\": \"Inkling 2 Mini\", \"description\": \"Looped MoE reasoning model (26.4B total, 3.4B active) for agentic coding, vision, and knowledge work\", \"family\": \"inkling-mini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-20\", \"last_updated\": \"2026-11-20\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 524288, \"output\": 131072}, \"cost\": {\"input\": 0.12, \"output\": 0.5, \"cache_read\": 0.024}, \"canonical_model_id\": \"thinkingmachines/inkling-2-mini\"}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "e30d70517d24d3abcb2f403e61a8f787a283cced9a235ebe73c9aeb879c7ba09",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-24T18:37:29.313963+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-23T04:22:07.426340+00:00",
-      "x_post_text": "🟢 NEW MODEL: deepinfra/thinkingmachines/Inkling-2-Mini by edenai\n\nFirst detected 21 Nov 03:05 UTC in OpenRouter\n📅 First released: 2026-11-20\nConfirmed by Registry Update, LMArena\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: deepinfra/thinkingmachines/Inkling-2-Mini by venice\n\nFirst detected 21 Nov 03:05 UTC in OpenRouter\n📅 First released: 2026-11-20\nConfirmed by Registry Update, LMArena\n\nvia @StatsWire"
     },
     {
       "id": "story-sonar",
@@ -27647,6 +27662,92 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-fec59f9e228d13f1afc2",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "inkling-2-mini",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "inkling-2-mini",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "venice/inkling-2-mini",
+          "name": "venice/inkling-2-mini",
+          "registry_update": true,
+          "released_on": "2026-11-20"
+        }
+      ],
+      "detected_at": "2026-11-24T18:37:29.696199+00:00",
+      "first_seen": "2026-11-24T18:37:29.313963+00:00",
+      "observed_at": "2026-11-24T18:37:29.696199+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "8d37ba7059a1889b283beafec52e4540dcd5e9f4441e896085e79a1fc06bd282 -> e30d70517d24d3abcb2f403e61a8f787a283cced9a235ebe73c9aeb879c7ba09",
+      "build": "e30d70517d24d3abcb2f403e61a8f787a283cced9a235ebe73c9aeb879c7ba09",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "e30d70517d24d3abcb2f403e61a8f787a283cced9a235ebe73c9aeb879c7ba09",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/e30d70517d24d3abcb2f403e61a8f787a283cced9a235ebe73c9aeb879c7ba09.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/e30d70517d24d3abcb2f403e61a8f787a283cced9a235ebe73c9aeb879c7ba09.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "venice/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "api.json?type=all",
+          "file_sha256": "e30d70517d24d3abcb2f403e61a8f787a283cced9a235ebe73c9aeb879c7ba09",
+          "excerpt": "{\"venice/inkling-2-mini\": {\"id\": \"inkling-2-mini\", \"name\": \"Inkling 2 Mini\", \"description\": \"Looped MoE reasoning model (26.4B total, 3.4B active) for agentic coding, vision, and knowledge work\", \"family\": \"inkling-mini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-20\", \"last_updated\": \"2026-11-20\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 524288, \"output\": 131072}, \"cost\": {\"input\": 0.12, \"output\": 0.5, \"cache_read\": 0.024}, \"canonical_model_id\": \"thinkingmachines/inkling-2-mini\"}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "e30d70517d24d3abcb2f403e61a8f787a283cced9a235ebe73c9aeb879c7ba09",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-24T18:37:29.313963+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T18:37:32.390257+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog e30d70517d24: venice/inkling-2-mini\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "intel-0dfc6824099b105efe51",
       "scanner": "models-dev-api",
@@ -90684,25 +90785,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:34:25.427763+00:00",
+      "last_attempt": "2026-11-24T18:37:28.980493+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:34:30.492728+00:00",
+      "last_success": "2026-11-24T18:37:32.390257+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.065,
-      "latest_build": "8d37ba7059a1889b283beafec52e4540dcd5e9f4441e896085e79a1fc06bd282",
-      "builds_retained": 149,
-      "identifiers": 10060
+      "duration_seconds": 3.41,
+      "latest_build": "e30d70517d24d3abcb2f403e61a8f787a283cced9a235ebe73c9aeb879c7ba09",
+      "builds_retained": 150,
+      "identifiers": 10061
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T18:31:29.473617+00:00",
+      "last_attempt": "2026-11-24T18:37:32.584476+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:31:29.974242+00:00",
+      "last_success": "2026-11-24T18:37:33.013479+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.501,
+      "duration_seconds": 0.43,
       "latest_build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
       "builds_retained": 78,
       "identifiers": 7067
@@ -90723,21 +90824,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T18:34:30.693969+00:00",
+      "last_attempt": "2026-11-24T18:37:33.214236+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3585,
-      "duration_seconds": 21.301
+      "consecutive_failures": 3586,
+      "duration_seconds": 20.832
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T18:20:13.560759+00:00",
+      "last_attempt": "2026-11-24T18:37:54.053997+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:20:13.710562+00:00",
+      "last_success": "2026-11-24T18:37:54.235540+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.15,
+      "duration_seconds": 0.182,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -90747,61 +90848,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:33:17.739850+00:00",
+      "last_attempt": "2026-11-24T18:36:21.688750+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:33:19.788870+00:00",
+      "last_success": "2026-11-24T18:36:23.698468+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.049
+      "duration_seconds": 2.01
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:33:19.788935+00:00",
+      "last_attempt": "2026-11-24T18:36:23.698518+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:33:20.160755+00:00",
+      "last_success": "2026-11-24T18:36:24.095634+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.372
+      "duration_seconds": 0.397
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:33:20.160793+00:00",
+      "last_attempt": "2026-11-24T18:36:24.095672+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:33:33.319430+00:00",
+      "last_success": "2026-11-24T18:36:31.305545+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 13.159
+      "duration_seconds": 7.21
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:33:33.319492+00:00",
+      "last_attempt": "2026-11-24T18:36:31.305612+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:34:25.427693+00:00",
+      "last_success": "2026-11-24T18:37:28.980446+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 52.108,
+      "duration_seconds": 57.675,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-24T18:33:33.636429+00:00",
+          "checked_at": "2026-11-24T18:36:31.628943+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-24T18:33:44.956705+00:00",
+          "checked_at": "2026-11-24T18:36:43.555096+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-24T18:33:45.091317+00:00",
+          "checked_at": "2026-11-24T18:36:43.665410+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-24T18:33:45.091333+00:00",
+          "checked_at": "2026-11-24T18:36:43.665420+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -90809,25 +90910,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:34:25.427763+00:00",
+      "last_attempt": "2026-11-24T18:37:28.980493+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:34:30.492728+00:00",
+      "last_success": "2026-11-24T18:37:32.390257+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.065,
-      "latest_build": "8d37ba7059a1889b283beafec52e4540dcd5e9f4441e896085e79a1fc06bd282",
-      "builds_retained": 149,
-      "identifiers": 10060
+      "duration_seconds": 3.41,
+      "latest_build": "e30d70517d24d3abcb2f403e61a8f787a283cced9a235ebe73c9aeb879c7ba09",
+      "builds_retained": 150,
+      "identifiers": 10061
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T18:31:29.473617+00:00",
+      "last_attempt": "2026-11-24T18:37:32.584476+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:31:29.974242+00:00",
+      "last_success": "2026-11-24T18:37:33.013479+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.501,
+      "duration_seconds": 0.43,
       "latest_build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
       "builds_retained": 78,
       "identifiers": 7067
@@ -90848,21 +90949,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T18:34:30.693969+00:00",
+      "last_attempt": "2026-11-24T18:37:33.214236+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3585,
-      "duration_seconds": 21.301
+      "consecutive_failures": 3586,
+      "duration_seconds": 20.832
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T18:20:13.560759+00:00",
+      "last_attempt": "2026-11-24T18:37:54.053997+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:20:13.710562+00:00",
+      "last_success": "2026-11-24T18:37:54.235540+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.15,
+      "duration_seconds": 0.182,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -90870,22 +90971,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:34:52.002164+00:00",
+      "last_attempt": "2026-11-24T18:37:54.637786+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:35:00.724943+00:00",
+      "last_success": "2026-11-24T18:38:03.509449+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.723
+      "duration_seconds": 8.872
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:35:00.724994+00:00",
+      "last_attempt": "2026-11-24T18:38:03.509501+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:35:02.621355+00:00",
+      "last_success": "2026-11-24T18:38:04.966291+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.896
+      "duration_seconds": 1.457
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -90900,27 +91001,27 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:35:02.621404+00:00",
+      "last_attempt": "2026-11-24T18:38:04.966349+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:35:03.843982+00:00",
+      "last_success": "2026-11-24T18:38:06.214243+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.223
+      "duration_seconds": 1.248
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T18:35:03.844018+00:00",
+      "last_attempt": "2026-11-24T18:38:06.214282+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T18:35:03.968240+00:00",
+      "last_success": "2026-11-24T18:38:06.342903+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.124
+      "duration_seconds": 0.129
     }
   },
   "identities": {
-    "identifiers": 31729,
-    "declared_aliases": 18756,
+    "identifiers": 31730,
+    "declared_aliases": 18758,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
@@ -90941,9 +91042,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 552,
-      "events": 554,
-      "rate": 0.9963898916967509
+      "complete": 553,
+      "events": 555,
+      "rate": 0.9963963963963964
     },
     "source_health": {
       "sources": 14,
