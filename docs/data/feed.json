@@ -1,17 +1,66 @@
 {
-  "generated_at": "2026-11-24T11:19:12.569145+00:00",
-  "scan_completed_at": "2026-11-24T11:21:02.035514+00:00",
+  "generated_at": "2026-11-24T11:43:09.389770+00:00",
+  "scan_completed_at": "2026-11-24T11:44:41.777856+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 327,
-    "leaks": 36,
+    "stories": 328,
+    "leaks": 37,
     "releases": 87,
-    "stories_24h": 39,
-    "sources_ok": 14,
+    "stories_24h": 38,
+    "sources_ok": 12,
     "total_cards": 766,
-    "new_in_this_scan": 0
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-granitedoclingforconditionalgeneration",
+      "group": "granitedoclingforconditionalgeneration",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "GraniteDoclingForConditionalGeneration",
+      "provider_slug": "opensource",
+      "provider_name": "Architecture Diff",
+      "accent_color": "#8b5cf6",
+      "detected_at": "2026-11-24T11:44:36.889094+00:00",
+      "updated_at": "2026-11-24T11:44:36.889094+00:00",
+      "first_source": "vLLM registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "granitedoclingforconditionalgeneration"
+      ],
+      "models": [
+        {
+          "id": "GraniteDoclingForConditionalGeneration",
+          "name": "GraniteDoclingForConditionalGeneration"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM registry",
+          "scanner": "vllm-registry",
+          "detected_at": "2026-11-24T11:44:36.889094+00:00",
+          "title": "New Engine Architecture: GraniteDoclingForConditionalGeneration",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · ARCHITECTURE DIFF",
+      "card_ids": [
+        "vllm-arch-37ecb474c8"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: GraniteDoclingForConditionalGeneration by Architecture Diff\n\nFirst detected 24 Nov 11:44 UTC in vLLM registry\nCodename: granitedoclingforconditionalgeneration\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-24T11:44:41.775300+00:00"
+    },
     {
       "id": "story-hy-mt-3-1",
       "group": "hy-mt-3-1",
@@ -25881,7 +25930,7 @@
       "provider_slug": "opensource",
       "provider_name": "Ant Group",
       "accent_color": "#1677ff",
-      "detected_at": "2026-11-10T11:40:33.706631+00:00",
+      "detected_at": "2026-11-10T11:43:55.869375+00:00",
       "updated_at": "2026-11-11T03:17:02.823583+00:00",
       "first_source": "Hugging Face",
       "lead": "",
@@ -25889,10 +25938,6 @@
       "pricing": "",
       "codenames": [],
       "models": [
-        {
-          "id": "ZoomGain-4B",
-          "name": "ZoomGain-4B"
-        },
         {
           "id": "ZoomGain-9B",
           "name": "ZoomGain-9B"
@@ -25910,9 +25955,9 @@
         {
           "label": "Hugging Face",
           "scanner": "huggingface",
-          "detected_at": "2026-11-10T11:40:33.706631+00:00",
-          "title": "ZoomGain 4B",
-          "url": "https://huggingface.co/inclusionAI/ZoomGain-4B",
+          "detected_at": "2026-11-10T11:43:55.869375+00:00",
+          "title": "ZoomGain 9B",
+          "url": "https://huggingface.co/inclusionAI/ZoomGain-9B",
           "backfill": false,
           "build": "",
           "evidence_path": ""
@@ -25922,7 +25967,6 @@
       "backfill": false,
       "header": "OPEN WEIGHTS · ANT GROUP",
       "card_ids": [
-        "hf-inclusionAI_ZoomGain-4B",
         "hf-inclusionAI_ZoomGain-9B",
         "hf-inclusionAI_ZoomGain-4B-GGUF",
         "hf-inclusionAI_ZoomGain-9B-GGUF"
@@ -25931,7 +25975,7 @@
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: ZoomGain by Ant Group\n\nFirst detected 10 Nov 11:40 UTC in Hugging Face\nIDs: ZoomGain-4B, ZoomGain-9B, ZoomGain-4B-GGUF +1\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: ZoomGain by Ant Group\n\nFirst detected 10 Nov 11:43 UTC in Hugging Face\nIDs: ZoomGain-9B, ZoomGain-4B-GGUF, ZoomGain-9B-GGUF\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-carbon",
@@ -26228,6 +26272,46 @@
     }
   ],
   "cards": [
+    {
+      "id": "vllm-arch-37ecb474c8",
+      "category": "open-source",
+      "scanner": "vllm-registry",
+      "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
+      "title": "New Engine Architecture: GraniteDoclingForConditionalGeneration",
+      "subtitle": "New model_executor/models/registry.py architecture declarations",
+      "build_label": "Registry File",
+      "build_transition": "vllm/model_executor/models/registry.py",
+      "models": [
+        {
+          "id": "GraniteDoclingForConditionalGeneration",
+          "name": "GraniteDoclingForConditionalGeneration"
+        }
+      ],
+      "evidence": "vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+      "source_text": "official vLLM model architecture registry.",
+      "disclaimer_1": "Tracks only model architecture class registrations in registry.py.",
+      "disclaimer_2": "Open-source labs register their architecture classes here prior to weight drops.",
+      "provider_name": "VLLM REGISTRY",
+      "provider_slug": "opensource",
+      "accent_color": "#8b5cf6",
+      "links": [
+        {
+          "label": "vLLM registry.py",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py"
+        },
+        {
+          "label": "Supported Models Docs",
+          "url": "https://docs.vllm.ai/en/latest/models/supported_models.html"
+        }
+      ],
+      "detected_at": "2026-11-24T11:44:36.889094+00:00",
+      "tracker_observed_at": "2026-11-24T11:44:38.962576+00:00",
+      "codenames": [
+        "granitedoclingforconditionalgeneration"
+      ],
+      "pricing": null,
+      "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: GraniteDoclingForConditionalGeneration spotted in Registry File vllm/model_executor/models/registry.py!\n\n• GraniteDoclingForConditionalGeneration (GraniteDoclingForConditionalGeneration)\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM model architecture registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-tencent_Hy-MT3-1.8B-GGUF",
       "category": "open-source",
@@ -83716,42 +83800,6 @@
       "x_post_text": "🚨 HUGGING FACE NEW REPO · ANT GROUP\nZoomGain 9B spotted in Repo Created 2026-11-10 (model)!\n\n• ZoomGain-9B (model) (inclusionAI/ZoomGain-9B)\n\nEvidence: huggingface.co/api/models\nSource: official inclusionAI Hugging Face organization feed.\n\nTracked by @StatsWire"
     },
     {
-      "id": "hf-inclusionAI_ZoomGain-4B",
-      "category": "open-source",
-      "scanner": "huggingface",
-      "header": "HUGGING FACE NEW REPO · ANT GROUP",
-      "title": "ZoomGain 4B",
-      "subtitle": "Newly published public model repository (inclusionAI)",
-      "build_label": "Repo",
-      "build_transition": "Created 2026-11-10 (model)",
-      "models": [
-        {
-          "id": "inclusionAI/ZoomGain-4B",
-          "name": "ZoomGain-4B (model)"
-        }
-      ],
-      "evidence": "huggingface.co/api/models",
-      "source_text": "official inclusionAI Hugging Face organization feed.",
-      "disclaimer_1": "Repository became publicly visible since the previous scan.",
-      "disclaimer_2": "Public weights / model cards published directly by the organization.",
-      "provider_name": "ANT GROUP",
-      "provider_slug": "opensource",
-      "accent_color": "#1677ff",
-      "links": [
-        {
-          "label": "Hugging Face Repo",
-          "url": "https://huggingface.co/inclusionAI/ZoomGain-4B"
-        },
-        {
-          "label": "inclusionAI Hub Feed",
-          "url": "https://huggingface.co/inclusionAI"
-        }
-      ],
-      "detected_at": "2026-11-10T11:40:33.706631+00:00",
-      "pricing": null,
-      "x_post_text": "🚨 HUGGING FACE NEW REPO · ANT GROUP\nZoomGain 4B spotted in Repo Created 2026-11-10 (model)!\n\n• ZoomGain-4B (model) (inclusionAI/ZoomGain-4B)\n\nEvidence: huggingface.co/api/models\nSource: official inclusionAI Hugging Face organization feed.\n\nTracked by @StatsWire"
-    },
-    {
       "id": "ag-acp-1.4.3-revision-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
@@ -83915,12 +83963,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T11:20:26.434292+00:00",
+      "last_attempt": "2026-11-24T11:44:13.663285+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T11:20:26.699175+00:00",
+      "last_success": "2026-11-24T11:44:13.921787+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.265,
+      "duration_seconds": 0.259,
       "latest_build": "ba16908720b76713260133fe7b1439b95eeaf764923705f90b15c7b61c0e65c2",
       "builds_retained": 138,
       "identifiers": 9910
@@ -83928,12 +83976,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T11:20:26.840431+00:00",
+      "last_attempt": "2026-11-24T11:41:42.034818+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T11:20:27.475536+00:00",
+      "last_success": "2026-11-24T11:41:42.581985+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.636,
+      "duration_seconds": 0.548,
       "latest_build": "88240a6d9d17c1a1eec162f707a849bb4064e69f",
       "builds_retained": 74,
       "identifiers": 7063
@@ -83941,12 +83989,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T11:15:07.447725+00:00",
+      "last_attempt": "2026-11-24T11:36:24.561742+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T11:15:08.094804+00:00",
+      "last_success": "2026-11-24T11:36:25.314377+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.648,
+      "duration_seconds": 0.753,
       "latest_build": "8eb615a0f56d912a991e3b5bf2181c2994d02b6c",
       "builds_retained": 146,
       "identifiers": 11095
@@ -83954,21 +84002,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T11:20:27.624085+00:00",
+      "last_attempt": "2026-11-24T11:44:14.063373+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3609,
-      "duration_seconds": 15.089
+      "consecutive_failures": 3618,
+      "duration_seconds": 15.419
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T11:20:42.718667+00:00",
+      "last_attempt": "2026-11-24T11:36:40.623202+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T11:20:42.975300+00:00",
+      "last_success": "2026-11-24T11:36:40.877521+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.257,
+      "duration_seconds": 0.254,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -83978,61 +84026,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T11:19:12.569214+00:00",
+      "last_attempt": "2026-11-24T11:43:09.389836+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T11:19:14.673085+00:00",
+      "last_success": "2026-11-24T11:43:11.581664+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.104
+      "duration_seconds": 2.192
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T11:19:14.673145+00:00",
+      "last_attempt": "2026-11-24T11:43:11.581718+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T11:19:14.891649+00:00",
+      "last_success": "2026-11-24T11:43:11.788847+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.219
+      "duration_seconds": 0.207
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T11:19:14.891688+00:00",
+      "last_attempt": "2026-11-24T11:43:11.788882+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T11:19:30.445273+00:00",
+      "last_success": "2026-11-24T11:43:20.970124+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 15.554
+      "duration_seconds": 9.181
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T11:19:30.445336+00:00",
+      "last_attempt": "2026-11-24T11:43:20.970186+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T11:20:26.434236+00:00",
+      "last_success": "2026-11-24T11:44:13.663233+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 55.989,
+      "duration_seconds": 52.693,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-24T11:19:30.858066+00:00",
+          "checked_at": "2026-11-24T11:43:21.178921+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-24T11:19:45.461623+00:00",
+          "checked_at": "2026-11-24T11:43:35.384375+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-24T11:19:45.588442+00:00",
+          "checked_at": "2026-11-24T11:43:35.518354+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-24T11:19:45.588459+00:00",
+          "checked_at": "2026-11-24T11:43:35.518369+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -84040,12 +84088,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T11:20:26.434292+00:00",
+      "last_attempt": "2026-11-24T11:44:13.663285+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T11:20:26.699175+00:00",
+      "last_success": "2026-11-24T11:44:13.921787+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.265,
+      "duration_seconds": 0.259,
       "latest_build": "ba16908720b76713260133fe7b1439b95eeaf764923705f90b15c7b61c0e65c2",
       "builds_retained": 138,
       "identifiers": 9910
@@ -84053,12 +84101,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T11:20:26.840431+00:00",
+      "last_attempt": "2026-11-24T11:41:42.034818+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T11:20:27.475536+00:00",
+      "last_success": "2026-11-24T11:41:42.581985+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.636,
+      "duration_seconds": 0.548,
       "latest_build": "88240a6d9d17c1a1eec162f707a849bb4064e69f",
       "builds_retained": 74,
       "identifiers": 7063
@@ -84066,12 +84114,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T11:15:07.447725+00:00",
+      "last_attempt": "2026-11-24T11:36:24.561742+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T11:15:08.094804+00:00",
+      "last_success": "2026-11-24T11:36:25.314377+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.648,
+      "duration_seconds": 0.753,
       "latest_build": "8eb615a0f56d912a991e3b5bf2181c2994d02b6c",
       "builds_retained": 146,
       "identifiers": 11095
@@ -84079,21 +84127,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T11:20:27.624085+00:00",
+      "last_attempt": "2026-11-24T11:44:14.063373+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3609,
-      "duration_seconds": 15.089
+      "consecutive_failures": 3618,
+      "duration_seconds": 15.419
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T11:20:42.718667+00:00",
+      "last_attempt": "2026-11-24T11:36:40.623202+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T11:20:42.975300+00:00",
+      "last_success": "2026-11-24T11:36:40.877521+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.257,
+      "duration_seconds": 0.254,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -84101,52 +84149,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T11:20:43.281422+00:00",
+      "last_attempt": "2026-11-24T11:44:29.488898+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T11:20:50.500870+00:00",
+      "last_success": "2026-11-24T11:44:36.885196+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.219
+      "duration_seconds": 7.396
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T11:20:50.500940+00:00",
+      "last_attempt": "2026-11-24T11:44:36.885250+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T11:21:00.523007+00:00",
+      "last_success": "2026-11-24T11:44:38.962576+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 10.022
+      "duration_seconds": 2.077
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T11:15:33.454077+00:00",
+      "last_attempt": "2026-11-24T11:36:50.064787+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T11:15:41.748712+00:00",
+      "last_success": "2026-11-24T11:36:57.461136+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.295
+      "duration_seconds": 7.396
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T11:21:00.523059+00:00",
+      "last_attempt": "2026-11-24T11:44:38.962630+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T11:21:01.658659+00:00",
+      "last_success": "2026-11-24T11:44:40.083200+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.136
+      "duration_seconds": 1.121
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T11:21:01.658694+00:00",
+      "last_attempt": "2026-11-24T11:44:40.083239+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T11:21:01.769211+00:00",
+      "last_success": "2026-11-24T11:44:40.223474+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.111
+      "duration_seconds": 0.14
     }
   },
   "identities": {
