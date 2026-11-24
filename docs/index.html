@@ -716,6 +716,43 @@
         remaining = remaining.slice(length).trimStart();
       }
     }
+    function roundRectPath(ctx, x, y, w, h, r) {
+      const rr = Math.min(r, w / 2, h / 2);
+      ctx.beginPath();
+      ctx.moveTo(x + rr, y);
+      ctx.arcTo(x + w, y, x + w, y + h, rr);
+      ctx.arcTo(x + w, y + h, x, y + h, rr);
+      ctx.arcTo(x, y + h, x, y, rr);
+      ctx.arcTo(x, y, x + w, y, rr);
+      ctx.closePath();
+    }
+    function truncateCanvasText(ctx, text, maxWidth) {
+      let s = String(text || "").trim();
+      if (ctx.measureText(s).width <= maxWidth) return s;
+      while (s.length > 4 && ctx.measureText(s + "…").width > maxWidth) s = s.slice(0, -1);
+      return s.replace(/[ .,\-_/]+$/, "") + "…";
+    }
+    function drawCanvasPill(ctx, x, y, text, opts) {
+      const padX = opts.padX ?? 20;
+      const h = opts.height ?? 50;
+      const radius = opts.radius ?? 12;
+      const maxW = opts.maxWidth ?? 900;
+      ctx.font = opts.font;
+      const label = truncateCanvasText(ctx, text, Math.max(40, maxW - padX * 2));
+      const tw = ctx.measureText(label).width;
+      const w = Math.round(tw + padX * 2);
+      roundRectPath(ctx, x, y, w, h, radius);
+      ctx.fillStyle = opts.bg;
+      ctx.fill();
+      ctx.lineWidth = opts.borderWidth ?? 2;
+      ctx.strokeStyle = opts.border;
+      ctx.stroke();
+      ctx.fillStyle = opts.color;
+      ctx.textBaseline = "middle";
+      ctx.fillText(label, x + padX, y + h / 2 + 1);
+      ctx.textBaseline = "alphabetic";
+      return w;
+    }
     async function openShare(idx) {
       if (sharePending) return;
       const story = STORIES_VIEW[idx];
@@ -729,52 +766,185 @@
           shareImage(STATSWIRE_LOGO_URI)
         ]);
         const canvas = document.getElementById("share-canvas");
-        canvas.width = 1200; canvas.height = 675;
+        const W = 1200, H = 675, lx = 68, rx = W - 68, contentW = rx - lx;
+        canvas.width = W; canvas.height = H;
         const ctx = canvas.getContext("2d");
         const stage = stageOf(story);
-        const accent = { leak: "#f6ce77", release: "#85dfa8", open: "#85dfa8", registry: "#83cfff", unverified: "#b3bfce" }[stage];
-        ctx.fillStyle = "#080a0d";
-        ctx.fillRect(0, 0, 1200, 675);
+        const stageStyle = {
+          leak: { accent: "#f6ce77", fg: "#f5c860", bg: "#221b0d", bd: "#705824" },
+          release: { accent: "#34d399", fg: "#4ade80", bg: "#0d2216", bd: "#286c42" },
+          open: { accent: "#2dd4bf", fg: "#2dd4bf", bg: "#0c2020", bd: "#266864" },
+          registry: { accent: "#7dd3fc", fg: "#7dd3fc", bg: "#0e1c2c", bd: "#306090" },
+          unverified: { accent: "#bac4d4", fg: "#bac4d4", bg: "#141822", bd: "#424c5e" },
+        }[stage] || { accent: "#34d399", fg: "#4ade80", bg: "#0d2216", bd: "#286c42" };
+        const accent = story.accent_color || stageStyle.accent;
+
+        // Outer black frame + rounded dark card
+        ctx.fillStyle = "#000000";
+        ctx.fillRect(0, 0, W, H);
+        roundRectPath(ctx, 8, 8, W - 16, H - 16, 32);
+        ctx.fillStyle = "#07090e";
+        ctx.fill();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "#2c323e";
+        ctx.stroke();
+
+        // Top accent bar clipped inside card
         ctx.save();
-        ctx.rotate(-0.15);
-        ctx.fillStyle = "#0b0e12";
-        ctx.font = '700 22px "Segoe UI", sans-serif';
-        for (let top = 170; top < 820; top += 150) {
-          for (let left = -60; left < 1320; left += 280) ctx.fillText("@StatsWire", left, top);
+        roundRectPath(ctx, 9, 9, W - 18, H - 18, 31);
+        ctx.clip();
+        ctx.fillStyle = accent;
+        ctx.globalAlpha = 0.85;
+        ctx.fillRect(8, 8, W - 16, 5);
+        ctx.globalAlpha = 1;
+
+        // Subtle diagonal @StatsWire watermark
+        ctx.save();
+        ctx.rotate(-0.22);
+        ctx.fillStyle = "rgba(255,255,255,0.032)";
+        ctx.font = '700 24px "Segoe UI", sans-serif';
+        for (let top = 120; top < 860; top += 175) {
+          for (let left = -140; left < 1340; left += 330) ctx.fillText("@StatsWire", left, top);
         }
         ctx.restore();
-        ctx.strokeStyle = "#303946";
-        ctx.strokeRect(20.5, 20.5, 1159, 634);
+        ctx.restore();
+
+        // Provider icon top-right
+        ctx.drawImage(provider, rx - 120, 56, 120, 120);
+
+        const maxLeftW = contentW - 156;
+
+        // Eyebrow: provider dot + provider name + stage pill
+        const eyebrowY = 66;
+        ctx.beginPath();
+        ctx.arc(lx + 8, eyebrowY + 15, 8, 0, Math.PI * 2);
         ctx.fillStyle = accent;
-        ctx.fillRect(68, 61, 43, 4);
-        ctx.font = '700 23px "Segoe UI", sans-serif';
-        ctx.fillText(STAGE_LABEL[stage], 68, 104);
-        ctx.drawImage(provider, 1018, 63, 100, 100);
-        ctx.fillStyle = "#f5f7fa";
-        ctx.font = '700 68px "Segoe UI", sans-serif';
-        drawShareText(ctx, story.title, 68, 213, 925, 76, 2);
+        ctx.fill();
+        const provLabel = String(story.provider_name || story.provider_slug || "AI MODEL").toUpperCase();
+        ctx.font = '700 24px "Segoe UI", sans-serif';
+        ctx.fillStyle = accent;
+        ctx.textBaseline = "middle";
+        const provTrunc = truncateCanvasText(ctx, provLabel, maxLeftW - 210);
+        ctx.fillText(provTrunc, lx + 28, eyebrowY + 16);
+        const provW = ctx.measureText(provTrunc).width;
+        ctx.textBaseline = "alphabetic";
+        drawCanvasPill(ctx, lx + 28 + provW + 18, eyebrowY - 1, STAGE_LABEL[stage] || "NEW MODEL", {
+          font: '700 18px "Segoe UI", sans-serif',
+          color: stageStyle.fg,
+          bg: stageStyle.bg,
+          border: stageStyle.bd,
+          padX: 15,
+          height: 34,
+          radius: 10,
+          borderWidth: 1.5,
+          maxWidth: 210,
+        });
+
+        // Big crisp title (auto-scaled)
+        let titleText = String(story.title || "New Model Detected").trim();
+        let titleSize = 62;
+        for (const sz of [62, 54, 46, 38]) {
+          ctx.font = `700 ${sz}px "Segoe UI", sans-serif`;
+          if (ctx.measureText(titleText).width <= maxLeftW) {
+            titleSize = sz;
+            break;
+          }
+          titleSize = sz;
+        }
+        ctx.font = `700 ${titleSize}px "Segoe UI", sans-serif`;
+        titleText = truncateCanvasText(ctx, titleText, maxLeftW);
+        ctx.fillStyle = "#ffffff";
+        ctx.fillText(titleText, lx, 176);
+
+        // One crisp subtitle line
         ctx.fillStyle = "#aebaca";
-        ctx.font = '500 29px "Segoe UI", sans-serif';
+        ctx.font = '500 26px "Segoe UI", sans-serif';
         const source = story.sources?.[0];
         const proof = evidenceFor(story).find(card => card.scanner === source?.scanner);
         const transition = String(proof?.build_transition || "");
         const build = source?.build || (transition.includes("->") ? transition.replace(/\s*->\s*/g, " → ") : "");
         const sourceLine = [story.first_source || source?.label, build].filter(Boolean).join(" · ");
-        drawShareText(ctx, sourceLine, 68, 349, 1050, 36, 1);
-        const identifiers = (story.models || []).map(model => model.id).filter(Boolean).slice(0, 2);
-        ctx.fillStyle = accent;
-        ctx.font = '500 24px Consolas, monospace';
-        drawShareText(ctx, identifiers.join("  /  "), 68, 421, 1050, 30, 2);
-        ctx.fillStyle = "#aebaca";
-        ctx.font = '400 22px "Segoe UI", sans-serif';
-        const timing = timingFor(story);
-        drawShareText(ctx, timing.find(line => line.startsWith("Observed ")) || (story.detected_at ? `Tracker record: ${fmtUTC(story.detected_at, true)}` : ""), 68, 525, 1050, 28, 1);
-        ctx.fillStyle = "#303946";
-        ctx.fillRect(68, 560, 1064, 1);
-        ctx.drawImage(statsWire, 68, 581, 42, 42);
-        ctx.fillStyle = "#f5f7fa";
-        ctx.font = '700 25px "Segoe UI", sans-serif';
-        ctx.fillText("Developed by @StatsWire on X", 124, 610);
+        ctx.fillText(truncateCanvasText(ctx, sourceLine, maxLeftW), lx, 224);
+
+        // Horizontal divider
+        ctx.fillStyle = "#20252e";
+        ctx.fillRect(lx, 256, contentW, 2);
+
+        // Stacked highlighted model ID pills (up to 4 rows, each on its own line)
+        const allIds = (story.models || []).map(model => {
+          const rawId = String(model.id || "").trim();
+          return (rawId.startsWith("org:") || rawId.includes(" · ")) ? String(model.name || rawId) : rawId;
+        }).filter(Boolean);
+        const maxRows = 4;
+        const shownIds = allIds.slice(0, maxRows);
+        const extraCount = allIds.length - shownIds.length;
+        const pillH = shownIds.length >= 4 ? 50 : 54;
+        const rowGap = shownIds.length >= 4 ? 14 : 18;
+        let py = shownIds.length >= 4 ? 284 : 298;
+
+        shownIds.forEach((mid, i) => {
+          const isFirst = i === 0;
+          const cy = py + pillH / 2;
+          ctx.beginPath();
+          ctx.arc(lx + 6, cy, 6, 0, Math.PI * 2);
+          ctx.fillStyle = isFirst ? accent : "#8e98a8";
+          ctx.fill();
+
+          const isLastWithExtra = (i === shownIds.length - 1) && extraCount > 0;
+          const pillW = drawCanvasPill(ctx, lx + 28, py, mid, {
+            font: '700 24px Consolas, "Courier New", monospace',
+            color: isFirst ? "#ffffff" : "#e2eaf4",
+            bg: isFirst ? "#0d1f1c" : "#0e121b",
+            border: isFirst ? accent : "#343c4a",
+            padX: 20,
+            height: pillH,
+            radius: 12,
+            borderWidth: 2,
+            maxWidth: isLastWithExtra ? contentW - 190 : contentW - 32,
+          });
+          if (isLastWithExtra) {
+            drawCanvasPill(ctx, lx + 28 + pillW + 14, py + Math.round((pillH - 38) / 2), `+${extraCount} more`, {
+              font: '700 18px "Segoe UI", sans-serif',
+              color: "#aab4c4",
+              bg: "#10141c",
+              border: "#343c4a",
+              padX: 14,
+              height: 38,
+              radius: 10,
+              borderWidth: 1.5,
+              maxWidth: 150,
+            });
+          }
+          py += pillH + rowGap;
+        });
+
+        // Bottom divider + clean @StatsWire footer + right-aligned UTC timestamp
+        ctx.fillStyle = "#20252e";
+        ctx.fillRect(lx, H - 108, contentW, 2);
+        const fy = H - 82;
+        ctx.drawImage(statsWire, lx, fy, 42, 42);
+        ctx.textBaseline = "middle";
+        ctx.font = '700 24px "Segoe UI", sans-serif';
+        let fx = lx + 56;
+        ctx.fillStyle = "#ffffff";
+        ctx.fillText("Developed by ", fx, fy + 22);
+        fx += ctx.measureText("Developed by ").width;
+        ctx.fillStyle = "#8ab4f8";
+        ctx.fillText("@StatsWire", fx, fy + 22);
+        fx += ctx.measureText("@StatsWire").width;
+        ctx.fillStyle = "#ffffff";
+        ctx.fillText(" on X", fx, fy + 22);
+
+        const tsRaw = story.updated_at || story.detected_at || "";
+        const tsLabel = tsRaw ? fmtUTC(tsRaw, true) : "";
+        if (tsLabel) {
+          ctx.font = '400 21px "Segoe UI", sans-serif';
+          ctx.fillStyle = "#8c96a6";
+          const tw = ctx.measureText(tsLabel).width;
+          ctx.fillText(tsLabel, rx - tw, fy + 22);
+        }
+        ctx.textBaseline = "alphabetic";
+
         canvas.style.maxWidth = "800px";
         canvas.style.margin = "0 auto";
         SHARE_STORY = story;

@@ -12,7 +12,7 @@ from tracker.novelty import RELEASE_GRACE, ReleasedCatalog, extract_embedded_dat
 from tracker.pricing import PricingCatalog, get_pricing_catalog
 
 # Scanners whose sighting means the model is publicly usable (a release, not a leak)
-RELEASE_SCANNERS: Set[str] = {"openrouter", "huggingface", "gateway-radar", "provider-openapi"}
+RELEASE_SCANNERS: Set[str] = {"openrouter", "huggingface", "gateway-radar", "provider-openapi", "pricing-radar"}
 UNVERIFIED_SCANNERS: Set[str] = {"github-code-leak"}
 OPEN_WEIGHT_SCANNERS: Set[str] = {"huggingface", "engine-pr-leak"}
 EXCLUDED_SCANNERS: Set[str] = {"cert-transparency", "cert-transparency-snapshot"}
@@ -173,6 +173,8 @@ def _humanize(key: str) -> str:
     for t in key.split("-"):
         if t.isdigit() and out and out[-1][-1:].isdigit():
             out[-1] += "." + t
+        elif t.isdigit() and out and out[-1] in ("GPT", "GLM"):
+            out[-1] += "-" + t
         elif t.isdigit() or len(t) <= 3 and not t.isalpha():
             out.append(t.upper())
         else:
