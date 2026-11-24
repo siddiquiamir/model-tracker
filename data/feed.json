@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-24T15:39:24.001839+00:00",
-  "scan_completed_at": "2026-11-24T15:40:43.197888+00:00",
+  "generated_at": "2026-11-24T16:10:33.467884+00:00",
+  "scan_completed_at": "2026-11-24T16:11:56.871517+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 323,
     "leaks": 32,
     "releases": 86,
     "stories_24h": 41,
-    "sources_ok": 13,
-    "total_cards": 770,
+    "sources_ok": 12,
+    "total_cards": 765,
     "new_in_this_scan": 0
   },
   "stories": [
@@ -25996,9 +25996,9 @@
       "provider_slug": "google",
       "provider_name": "Google",
       "accent_color": "#38bdf8",
-      "detected_at": "2026-11-10T15:50:16.177666+00:00",
+      "detected_at": "2026-11-10T16:46:22.745361+00:00",
       "updated_at": "2026-11-10T20:08:50.441763+00:00",
-      "first_source": "GCP Vertex AI Model Versions",
+      "first_source": "LiteLLM registry",
       "lead": "",
       "released_on": "",
       "pricing": "",
@@ -26014,16 +26014,6 @@
         }
       ],
       "sources": [
-        {
-          "label": "GCP Vertex AI Model Versions",
-          "scanner": "docs-radar",
-          "detected_at": "2026-11-10T15:50:16.177666+00:00",
-          "title": "New Model Spotted in GCP Vertex AI Model Versions & Lifecycle",
-          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
         {
           "label": "LiteLLM registry",
           "scanner": "litellm",
@@ -26055,11 +26045,10 @@
           "evidence_path": "data/intelligence/evidence/litellm-intelligence/6cfdb6a682b13c1d64b7163829160370a74de10536b22378a644c93d599bc0a6.json.gz"
         }
       ],
-      "source_count": 4,
+      "source_count": 3,
       "backfill": false,
       "header": "LEAK · GOOGLE",
       "card_ids": [
-        "docs-diff-gcp-vertex-versions-b375ff7f",
         "litellm-diff-91d2c4d7",
         "vertex-quota-google-304c1f2e",
         "intel-e67d39631d7a39693d51"
@@ -26082,7 +26071,7 @@
           "first_seen": "2026-11-23T07:29:54+00:00"
         }
       ],
-      "x_post_text": "🟠 LEAK: Gemini 4 Carbon Cyber Permissive by Google\n\nFirst detected 10 Nov 15:50 UTC in GCP Vertex AI Model Versions\nConfirmed by LiteLLM registry, Vertex AI Quotas registry, LiteLLM commit-pinned registry\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: Gemini 4 Carbon Cyber Permissive by Google\n\nFirst detected 10 Nov 16:46 UTC in LiteLLM registry\nConfirmed by Vertex AI Quotas registry, LiteLLM commit-pinned registry\nIDs: gemini-4-carbon-cyber-permissive, gemini-4-carbon-cyber-permissive-qcd\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-carbon",
@@ -26096,7 +26085,7 @@
       "detected_at": "2026-10-23T19:51:16+00:00",
       "updated_at": "2026-11-12T05:59:55.615618+00:00",
       "first_source": "Antigravity ACP config",
-      "lead": "17 days before it went live on Vercel AI Gateway Catalog",
+      "lead": "17 days before it went live on OpenRouter",
       "released_on": "2026-11-10",
       "pricing": "",
       "codenames": [
@@ -26149,56 +26138,6 @@
           "evidence_path": ""
         },
         {
-          "label": "GCP Vertex AI Models Docs",
-          "scanner": "docs-radar",
-          "detected_at": "2026-11-10T15:50:15.519790+00:00",
-          "title": "New Model Spotted in GCP Vertex AI Generative Models",
-          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "GCP Vertex AI Model Versions",
-          "scanner": "docs-radar",
-          "detected_at": "2026-11-10T15:50:16.177666+00:00",
-          "title": "New Model Spotted in GCP Vertex AI Model Versions & Lifecycle",
-          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "Vertex AI Quotas registry",
-          "scanner": "vertex-ai-quotas",
-          "detected_at": "2026-11-10T15:50:31.886108+00:00",
-          "title": "New GOOGLE Model(s) on Google Cloud Vertex AI: gemini-4-carbon",
-          "url": "https://console.cloud.google.com/iam-admin/quotas",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "Vercel AI Gateway Catalog",
-          "scanner": "gateway-radar",
-          "detected_at": "2026-11-10T16:00:33.694404+00:00",
-          "title": "New Model on Vercel AI Gateway: Gemini 4 Carbon",
-          "url": "https://ai-gateway.vercel.sh/v1/models",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "LiteLLM registry",
-          "scanner": "litellm",
-          "detected_at": "2026-11-10T16:10:22.813445+00:00",
-          "title": "1 New Model(s) Added to LiteLLM",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
           "label": "OpenRouter",
           "scanner": "openrouter",
           "detected_at": "2026-11-10T16:12:09.927476+00:00",
@@ -26229,6 +26168,16 @@
           "evidence_path": ""
         },
         {
+          "label": "Vertex AI Quotas registry",
+          "scanner": "vertex-ai-quotas",
+          "detected_at": "2026-11-10T20:08:50.441763+00:00",
+          "title": "New GOOGLE Model(s) on Google Cloud Vertex AI: clipper, galleon",
+          "url": "https://console.cloud.google.com/iam-admin/quotas",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
           "label": "npm SDK release",
           "scanner": "npm",
           "detected_at": "2026-11-10T20:47:12.461Z",
@@ -26249,16 +26198,11 @@
           "evidence_path": ""
         }
       ],
-      "source_count": 11,
+      "source_count": 7,
       "backfill": false,
       "header": "NEW MODEL · GOOGLE",
       "card_ids": [
         "ag-acp-1.4.3-revision-diff",
-        "docs-diff-gcp-vertex-models-06dfe89e",
-        "docs-diff-gcp-vertex-versions-b375ff7f",
-        "vertex-quota-google-9187a17f",
-        "vercel-gateway-diff-e1cd38a6",
-        "litellm-diff-734cf7b2",
         "openrouter-model-google_gemini-4-carbon",
         "openrouter-model-google_gemini-4-carbon_batch",
         "models-dev-diff-f20a35d0",
@@ -26272,7 +26216,7 @@
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Gemini 4 Carbon by Google\n\nFirst detected 23 Oct 19:51 UTC in Antigravity ACP config\n📅 First released: 2026-11-10\n⏱ 17 days before it went live on Vercel AI Gateway Catalog\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Gemini 4 Carbon by Google\n\nFirst detected 23 Oct 19:51 UTC in Antigravity ACP config\n📅 First released: 2026-11-10\n⏱ 17 days before it went live on OpenRouter\nConfirmed by OpenRouter, models.dev, Opencode Zen Stealth & Model Gateway +3\nCodename: carbon\n\nvia @StatsWire"
     }
   ],
   "cards": [
@@ -84645,191 +84589,6 @@
       "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · GOOGLE\nGoogle: Gemini 4 Carbon spotted in Endpoint ID google/gemini-4-carbon!\n\n• Google: Gemini 4 Carbon (1048k context window) (google/gemini-4-carbon)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
     },
     {
-      "id": "litellm-diff-734cf7b2",
-      "category": "cli-sdk-diff",
-      "scanner": "litellm",
-      "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
-      "title": "1 New Model(s) Added to LiteLLM",
-      "subtitle": "Verified model_prices_and_context_window.json diff",
-      "build_label": "Registry Diff",
-      "build_transition": "+1 model keys",
-      "models": [
-        {
-          "id": "gemini/gemini-4-carbon",
-          "name": "gemini/gemini-4-carbon",
-          "released_on": "2026-11-10"
-        }
-      ],
-      "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
-      "source_text": "official LiteLLM master pricing & context window registry.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "LITELLM",
-      "provider_slug": "modelsdev",
-      "accent_color": "#10b981",
-      "links": [
-        {
-          "label": "LiteLLM JSON Registry",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
-        },
-        {
-          "label": "LiteLLM Commits",
-          "url": "https://github.com/BerriAI/litellm/commits/main"
-        }
-      ],
-      "detected_at": "2026-11-10T16:10:22.813445+00:00",
-      "pricing": null,
-      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 model keys!\n\n• gemini/gemini-4-carbon (gemini/gemini-4-carbon)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "vercel-gateway-diff-e1cd38a6",
-      "category": "cli-sdk-diff",
-      "scanner": "gateway-radar",
-      "header": "VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS",
-      "title": "New Model on Vercel AI Gateway: Gemini 4 Carbon",
-      "subtitle": "Detected in ai-gateway.vercel.sh/v1/models (+1 new)",
-      "build_label": "Gateway Diff",
-      "build_transition": "+1 new model(s)",
-      "models": [
-        {
-          "id": "google/gemini-4-carbon",
-          "name": "Gemini 4 Carbon",
-          "released_on": "2026-11-10"
-        }
-      ],
-      "evidence": "ai-gateway.vercel.sh/v1/models",
-      "source_text": "public Vercel AI Gateway /v1/models catalog.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "GOOGLE",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "Vercel AI Gateway Models",
-          "url": "https://ai-gateway.vercel.sh/v1/models"
-        }
-      ],
-      "detected_at": "2026-11-10T16:00:33.694404+00:00",
-      "pricing": null,
-      "x_post_text": "🚨 VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS\nNew Model on Vercel AI Gateway: Gemini 4 Carbon spotted in Gateway Diff +1 new model(s)!\n\n• Gemini 4 Carbon (google/gemini-4-carbon)\n\nEvidence: ai-gateway.vercel.sh/v1/models\nSource: public Vercel AI Gateway /v1/models catalog.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "vertex-quota-google-9187a17f",
-      "category": "cli-sdk-diff",
-      "scanner": "vertex-ai-quotas",
-      "header": "GOOGLE CLOUD VERTEX AI QUOTA REGISTRY · GOOGLE",
-      "title": "New GOOGLE Model(s) on Google Cloud Vertex AI: gemini-4-carbon",
-      "subtitle": "Detected in Google Cloud Vertex AI `base_model:` quota dimensions (1 new)",
-      "build_label": "Vertex AI Quotas",
-      "build_transition": "aiplatform.googleapis.com (+1 base_model)",
-      "models": [
-        {
-          "id": "gemini-4-carbon",
-          "name": "base_model:gemini-4-carbon",
-          "released_on": "2026-11-10"
-        }
-      ],
-      "evidence": "console.cloud.google.com/iam-admin/quotas (aiplatform.googleapis.com)",
-      "source_text": "Google Cloud Vertex AI `base_model` quota dimension registry.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "GOOGLE",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "GCP Vertex AI Quotas",
-          "url": "https://console.cloud.google.com/iam-admin/quotas"
-        },
-        {
-          "label": "Vertex AI Models",
-          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
-        }
-      ],
-      "detected_at": "2026-11-10T15:50:31.886108+00:00",
-      "pricing": null,
-      "x_post_text": "🚨 GOOGLE CLOUD VERTEX AI QUOTA REGISTRY · GOOGLE\nNew GOOGLE Model(s) on Google Cloud Vertex AI: gemini-4-carbon spotted in Vertex AI Quotas aiplatform.googleapis.com (+1 base_model)!\n\n• base_model:gemini-4-carbon (gemini-4-carbon)\n\nEvidence: console.cloud.google.com/iam-admin/quotas (aiplatform.googleapis.com)\nSource: Google Cloud Vertex AI `base_model` quota dimension registry.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "docs-diff-gcp-vertex-versions-b375ff7f",
-      "category": "cli-sdk-diff",
-      "scanner": "docs-radar",
-      "header": "GCP VERTEX AI MODEL VERSIONS · GOOGLE CLOUD",
-      "title": "New Model Spotted in GCP Vertex AI Model Versions & Lifecycle",
-      "subtitle": "Verified live API documentation diff",
-      "build_label": "Docs Diff",
-      "build_transition": "+2 new identifier(s)",
-      "models": [
-        {
-          "id": "gemini-4-carbon",
-          "name": "Gemini 4 Carbon",
-          "released_on": "2026-11-10"
-        },
-        {
-          "id": "gemini-4-carbon-cyber-permissive",
-          "name": "Gemini 4 Carbon Cyber Permissive"
-        }
-      ],
-      "evidence": "cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions",
-      "source_text": "official Google Cloud Vertex AI model versions & endpoint table.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "GOOGLE CLOUD",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "Official Docs Page",
-          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions"
-        },
-        {
-          "label": "Raw Docs Feed",
-          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions"
-        }
-      ],
-      "detected_at": "2026-11-10T15:50:16.177666+00:00",
-      "pricing": null,
-      "x_post_text": "🚨 GCP VERTEX AI MODEL VERSIONS · GOOGLE CLOUD\nNew Model Spotted in GCP Vertex AI Model Versions & Lifecycle spotted in Docs Diff +2 new identifier(s)!\n\n• Gemini 4 Carbon (gemini-4-carbon)\n• Gemini 4 Carbon Cyber Permissive (gemini-4-carbon-cyber-permissive)\n\nEvidence: cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions\nSource: official Google Cloud Vertex AI model versions & endpoint table.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "docs-diff-gcp-vertex-models-06dfe89e",
-      "category": "cli-sdk-diff",
-      "scanner": "docs-radar",
-      "header": "GCP VERTEX AI MODELS DOCS · GOOGLE CLOUD",
-      "title": "New Model Spotted in GCP Vertex AI Generative Models",
-      "subtitle": "Verified live API documentation diff",
-      "build_label": "Docs Diff",
-      "build_transition": "+1 new identifier(s)",
-      "models": [
-        {
-          "id": "gemini-4-carbon",
-          "name": "Gemini 4 Carbon",
-          "released_on": "2026-11-10"
-        }
-      ],
-      "evidence": "cloud.google.com/vertex-ai/generative-ai/docs/learn/models",
-      "source_text": "official Google Cloud Vertex AI Models documentation (Gemini, Imagen, Veo, Claude, Llama).",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "GOOGLE CLOUD",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "Official Docs Page",
-          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
-        },
-        {
-          "label": "Raw Docs Feed",
-          "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models"
-        }
-      ],
-      "detected_at": "2026-11-10T15:50:15.519790+00:00",
-      "pricing": null,
-      "x_post_text": "🚨 GCP VERTEX AI MODELS DOCS · GOOGLE CLOUD\nNew Model Spotted in GCP Vertex AI Generative Models spotted in Docs Diff +1 new identifier(s)!\n\n• Gemini 4 Carbon (gemini-4-carbon)\n\nEvidence: cloud.google.com/vertex-ai/generative-ai/docs/learn/models\nSource: official Google Cloud Vertex AI Models documentation (Gemini, Imagen, Veo, Claude, Llama).\n\nTracked by @StatsWire"
-    },
-    {
       "id": "ag-acp-1.4.3-revision-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
@@ -84993,25 +84752,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T15:40:16.782574+00:00",
+      "last_attempt": "2026-11-24T16:11:30.255269+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T15:40:17.182418+00:00",
+      "last_success": "2026-11-24T16:11:30.706551+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.4,
-      "latest_build": "f882f61aa220238e5393fba5fdd6ae556e479ee2c47de9b0b01830482198772d",
-      "builds_retained": 141,
+      "duration_seconds": 0.451,
+      "latest_build": "eb0d52c44bef0d1616fc11946d0d372cfea63f2694f40dc8c44f01a565a8d4d8",
+      "builds_retained": 144,
       "identifiers": 9912
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T15:40:17.322688+00:00",
+      "last_attempt": "2026-11-24T16:08:58.982089+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T15:40:17.752030+00:00",
+      "last_success": "2026-11-24T16:08:59.380894+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.43,
+      "duration_seconds": 0.399,
       "latest_build": "9a384a563a8600b65bda905c25c7c017c63e652a",
       "builds_retained": 76,
       "identifiers": 7063
@@ -85019,34 +84778,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T15:33:08.981904+00:00",
+      "last_attempt": "2026-11-24T16:08:59.528728+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T15:33:09.458236+00:00",
+      "last_success": "2026-11-24T16:08:59.997534+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.477,
-      "latest_build": "90224710da56dc5472b3941475882887b139bc1a",
-      "builds_retained": 150,
+      "duration_seconds": 0.469,
+      "latest_build": "e4b5dd537982bdf9f60cd67338211eb62c5a028a",
+      "builds_retained": 152,
       "identifiers": 11097
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T15:40:17.901531+00:00",
+      "last_attempt": "2026-11-24T16:11:30.848547+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3582,
-      "duration_seconds": 15.219
+      "consecutive_failures": 3595,
+      "duration_seconds": 15.48
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T15:28:40.117992+00:00",
+      "last_attempt": "2026-11-24T16:02:13.997342+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T15:28:40.299767+00:00",
+      "last_success": "2026-11-24T16:02:14.218245+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.182,
+      "duration_seconds": 0.221,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -85056,61 +84815,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T15:39:24.001910+00:00",
+      "last_attempt": "2026-11-24T16:10:33.467947+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T15:39:26.027411+00:00",
+      "last_success": "2026-11-24T16:10:36.236266+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.026
+      "duration_seconds": 2.768
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T15:39:26.027477+00:00",
+      "last_attempt": "2026-11-24T16:10:36.236321+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T15:39:26.141771+00:00",
+      "last_success": "2026-11-24T16:10:36.471673+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.114
+      "duration_seconds": 0.235
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T15:39:26.141821+00:00",
+      "last_attempt": "2026-11-24T16:10:36.471710+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T15:39:32.096271+00:00",
+      "last_success": "2026-11-24T16:10:43.366839+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.954
+      "duration_seconds": 6.895
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T15:39:32.096340+00:00",
+      "last_attempt": "2026-11-24T16:10:43.366912+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T15:40:16.782520+00:00",
+      "last_success": "2026-11-24T16:11:30.255214+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 44.686,
+      "duration_seconds": 46.888,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-24T15:39:32.308934+00:00",
+          "checked_at": "2026-11-24T16:10:43.561155+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-24T15:39:43.048221+00:00",
+          "checked_at": "2026-11-24T16:10:53.975453+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-24T15:39:43.225824+00:00",
+          "checked_at": "2026-11-24T16:10:54.159840+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-24T15:39:43.225844+00:00",
+          "checked_at": "2026-11-24T16:10:54.159858+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -85118,25 +84877,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T15:40:16.782574+00:00",
+      "last_attempt": "2026-11-24T16:11:30.255269+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T15:40:17.182418+00:00",
+      "last_success": "2026-11-24T16:11:30.706551+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.4,
-      "latest_build": "f882f61aa220238e5393fba5fdd6ae556e479ee2c47de9b0b01830482198772d",
-      "builds_retained": 141,
+      "duration_seconds": 0.451,
+      "latest_build": "eb0d52c44bef0d1616fc11946d0d372cfea63f2694f40dc8c44f01a565a8d4d8",
+      "builds_retained": 144,
       "identifiers": 9912
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T15:40:17.322688+00:00",
+      "last_attempt": "2026-11-24T16:08:58.982089+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T15:40:17.752030+00:00",
+      "last_success": "2026-11-24T16:08:59.380894+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.43,
+      "duration_seconds": 0.399,
       "latest_build": "9a384a563a8600b65bda905c25c7c017c63e652a",
       "builds_retained": 76,
       "identifiers": 7063
@@ -85144,34 +84903,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T15:33:08.981904+00:00",
+      "last_attempt": "2026-11-24T16:08:59.528728+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T15:33:09.458236+00:00",
+      "last_success": "2026-11-24T16:08:59.997534+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.477,
-      "latest_build": "90224710da56dc5472b3941475882887b139bc1a",
-      "builds_retained": 150,
+      "duration_seconds": 0.469,
+      "latest_build": "e4b5dd537982bdf9f60cd67338211eb62c5a028a",
+      "builds_retained": 152,
       "identifiers": 11097
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T15:40:17.901531+00:00",
+      "last_attempt": "2026-11-24T16:11:30.848547+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3582,
-      "duration_seconds": 15.219
+      "consecutive_failures": 3595,
+      "duration_seconds": 15.48
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T15:28:40.117992+00:00",
+      "last_attempt": "2026-11-24T16:02:13.997342+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T15:28:40.299767+00:00",
+      "last_success": "2026-11-24T16:02:14.218245+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.182,
+      "duration_seconds": 0.221,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -85179,52 +84938,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T15:40:33.127284+00:00",
+      "last_attempt": "2026-11-24T16:11:46.334263+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T15:40:40.334476+00:00",
+      "last_success": "2026-11-24T16:11:53.517323+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.207
+      "duration_seconds": 7.183
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T15:40:40.334528+00:00",
+      "last_attempt": "2026-11-24T16:11:53.517375+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T15:40:42.168639+00:00",
+      "last_success": "2026-11-24T16:11:55.946141+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.834
+      "duration_seconds": 2.429
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T15:33:34.253009+00:00",
+      "last_attempt": "2026-11-24T16:09:24.187013+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T15:33:45.625328+00:00",
+      "last_success": "2026-11-24T16:09:32.409069+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 11.372
+      "duration_seconds": 8.222
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T15:40:42.168693+00:00",
+      "last_attempt": "2026-11-24T16:11:55.946199+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T15:40:42.739663+00:00",
+      "last_success": "2026-11-24T16:11:56.495266+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.571
+      "duration_seconds": 0.549
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T15:40:42.739701+00:00",
+      "last_attempt": "2026-11-24T16:11:56.495305+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T15:40:42.769099+00:00",
+      "last_success": "2026-11-24T16:11:56.519367+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.029
+      "duration_seconds": 0.024
     }
   },
   "identities": {
