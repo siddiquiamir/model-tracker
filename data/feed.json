@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-24T21:43:20.813703+00:00",
-  "scan_completed_at": "2026-11-24T21:44:56.640898+00:00",
+  "generated_at": "2026-11-24T22:00:58.508195+00:00",
+  "scan_completed_at": "2026-11-24T22:02:55.786970+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 339,
     "leaks": 34,
     "releases": 91,
     "stories_24h": 52,
-    "sources_ok": 12,
-    "total_cards": 818,
-    "new_in_this_scan": 0
+    "sources_ok": 14,
+    "total_cards": 820,
+    "new_in_this_scan": 2
   },
   "stories": [
     {
@@ -4783,7 +4783,7 @@
       "provider_name": "Unattributed",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-21T04:19:48.708215+00:00",
-      "updated_at": "2026-11-24T13:45:31.935354+00:00",
+      "updated_at": "2026-11-24T22:02:12.796422+00:00",
       "first_source": "LiteLLM commit-pinned registry",
       "lead": "",
       "released_on": "",
@@ -4792,7 +4792,7 @@
       "models": [
         {
           "id": "embed-english-v3.0",
-          "name": "cohere.embed-english-v3"
+          "name": "amazon-bedrock/cohere.embed-english-v3"
         }
       ],
       "sources": [
@@ -4805,14 +4805,25 @@
           "backfill": false,
           "build": "3886fe31dc9718081f5a8f8f11406ad514d4ade2",
           "evidence_path": "data/intelligence/evidence/litellm-intelligence/111434b8f0f50fd6e2ec7cae4789a26ce2dad87a5d57484095d4c41bbc3df6bf.json.gz"
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-24T22:02:12.796422+00:00",
+          "title": "cohere.embed-english-v3",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+          "backfill": false,
+          "build": "464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/ec7e76b44509d8be5c4b61a7022389cba2192a4b8d497acc2e3311c6d22832bc.json.gz"
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
       "header": "REGISTRY UPDATE · UNATTRIBUTED",
       "card_ids": [
         "intel-4b6105a3ae3232beaaaa",
-        "intel-f20927c2972383a1bac6"
+        "intel-f20927c2972383a1bac6",
+        "intel-868f625e1830c56590cd"
       ],
       "event_label": "Registry update",
       "intelligence_only": true,
@@ -4843,6 +4854,21 @@
           "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
           "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
           "first_seen": "2026-11-24T13:42:08+00:00"
+        },
+        {
+          "id": "amazon-bedrock/cohere.embed-english-v3",
+          "family": "cohere.embed-english-v3",
+          "file_path": "providers/amazon-bedrock/models/cohere.embed-english-v3.toml",
+          "file_sha256": "c507aac01dca298be8d524cbc7332b82c09fef6192ca3d64c5093fcb507dbb6e",
+          "excerpt": "{\"amazon-bedrock/cohere.embed-english-v3\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"cohere/embed-english-v3.0\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\"], \"output\": [\"embedding\"]}, \"api\": {\"invoke-model\": {\"sdk\": {\"opencodeai\": \"none\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.1}}, \"image\": {\"input\": {\"unit\": \"image\", \"price\": 0.0001}}}}}",
+          "canonical_id": "cohere/embed-english-v3.0",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/464b5409f68a4bf99b81f9bf296bdeb0736950a3/providers/amazon-bedrock/models/cohere.embed-english-v3.toml",
+          "build": "464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+          "first_seen": "2026-11-24T21:52:33+00:00"
         }
       ],
       "x_post_text": "registry evidence, not a launch: embed-english-v3.0\nhttps://raw.githubusercontent.com/BerriAI/litellm/3886fe31dc9718081f5a8f8f11406ad514d4ade2/model_prices_and_context_window.json"
@@ -4857,7 +4883,7 @@
       "provider_name": "Unattributed",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-21T04:19:48.708215+00:00",
-      "updated_at": "2026-11-24T13:45:31.935354+00:00",
+      "updated_at": "2026-11-24T22:02:12.796422+00:00",
       "first_source": "LiteLLM commit-pinned registry",
       "lead": "",
       "released_on": "",
@@ -4866,7 +4892,7 @@
       "models": [
         {
           "id": "embed-multilingual-v3.0",
-          "name": "cohere.embed-multilingual-v3"
+          "name": "amazon-bedrock/cohere.embed-multilingual-v3"
         }
       ],
       "sources": [
@@ -4879,14 +4905,25 @@
           "backfill": false,
           "build": "3886fe31dc9718081f5a8f8f11406ad514d4ade2",
           "evidence_path": "data/intelligence/evidence/litellm-intelligence/111434b8f0f50fd6e2ec7cae4789a26ce2dad87a5d57484095d4c41bbc3df6bf.json.gz"
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-24T22:02:12.796422+00:00",
+          "title": "cohere.embed-multilingual-v3",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+          "backfill": false,
+          "build": "464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/ec7e76b44509d8be5c4b61a7022389cba2192a4b8d497acc2e3311c6d22832bc.json.gz"
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
       "header": "REGISTRY UPDATE · UNATTRIBUTED",
       "card_ids": [
         "intel-80f8fdcbf99e21861704",
-        "intel-ab98428ad98209c16bd9"
+        "intel-ab98428ad98209c16bd9",
+        "intel-6671841d10f9531f4955"
       ],
       "event_label": "Registry update",
       "intelligence_only": true,
@@ -4917,6 +4954,21 @@
           "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
           "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
           "first_seen": "2026-11-24T13:42:08+00:00"
+        },
+        {
+          "id": "amazon-bedrock/cohere.embed-multilingual-v3",
+          "family": "cohere.embed-multilingual-v3",
+          "file_path": "providers/amazon-bedrock/models/cohere.embed-multilingual-v3.toml",
+          "file_sha256": "53e8e259109e1f40136b6df090ee22d1fd51a6cb9df70eda2825bb1022c521ad",
+          "excerpt": "{\"amazon-bedrock/cohere.embed-multilingual-v3\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"cohere/embed-multilingual-v3.0\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\"], \"output\": [\"embedding\"]}, \"api\": {\"invoke-model\": {\"sdk\": {\"opencodeai\": \"none\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.1}}, \"image\": {\"input\": {\"unit\": \"image\", \"price\": 0.0001}}}}}",
+          "canonical_id": "cohere/embed-multilingual-v3.0",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/464b5409f68a4bf99b81f9bf296bdeb0736950a3/providers/amazon-bedrock/models/cohere.embed-multilingual-v3.toml",
+          "build": "464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+          "first_seen": "2026-11-24T21:52:33+00:00"
         }
       ],
       "x_post_text": "registry evidence, not a launch: embed-multilingual-v3.0\nhttps://raw.githubusercontent.com/BerriAI/litellm/3886fe31dc9718081f5a8f8f11406ad514d4ade2/model_prices_and_context_window.json"
@@ -27687,6 +27739,192 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-868f625e1830c56590cd",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "cohere.embed-english-v3",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "cohere.embed-english-v3",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "amazon-bedrock/cohere.embed-english-v3",
+          "name": "amazon-bedrock/cohere.embed-english-v3",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-24T22:02:12.796422+00:00",
+      "first_seen": "2026-11-24T21:52:33+00:00",
+      "observed_at": "2026-11-24T22:02:12.796422+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "b1164fe84779828b6499070e7c7924807f4bcdbb -> 464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+      "build": "464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+      "artifact_sha256": "ec7e76b44509d8be5c4b61a7022389cba2192a4b8d497acc2e3311c6d22832bc",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/ec7e76b44509d8be5c4b61a7022389cba2192a4b8d497acc2e3311c6d22832bc.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/ec7e76b44509d8be5c4b61a7022389cba2192a4b8d497acc2e3311c6d22832bc.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "amazon-bedrock/cohere.embed-english-v3",
+          "family": "cohere.embed-english-v3",
+          "file_path": "providers/amazon-bedrock/models/cohere.embed-english-v3.toml",
+          "file_sha256": "c507aac01dca298be8d524cbc7332b82c09fef6192ca3d64c5093fcb507dbb6e",
+          "excerpt": "{\"amazon-bedrock/cohere.embed-english-v3\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"cohere/embed-english-v3.0\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\"], \"output\": [\"embedding\"]}, \"api\": {\"invoke-model\": {\"sdk\": {\"opencodeai\": \"none\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.1}}, \"image\": {\"input\": {\"unit\": \"image\", \"price\": 0.0001}}}}}",
+          "canonical_id": "cohere/embed-english-v3.0",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/464b5409f68a4bf99b81f9bf296bdeb0736950a3/providers/amazon-bedrock/models/cohere.embed-english-v3.toml",
+          "build": "464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+          "first_seen": "2026-11-24T21:52:33+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "cohere.embed-english-v3",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/db398058a2100b95e76604f8c3cf2986de639d2f23a1d4e7f629d431d91bd3a8.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/464b5409f68a4bf99b81f9bf296bdeb0736950a3"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/464b5409f68a4bf99b81f9bf296bdeb0736950a3"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T22:02:15.949235+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 464b5409f68a: amazon-bedrock/cohere.embed-english-v3\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/464b5409f68a4bf99b81f9bf296bdeb0736950a3"
+    },
+    {
+      "id": "intel-6671841d10f9531f4955",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "cohere.embed-multilingual-v3",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "cohere.embed-multilingual-v3",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "amazon-bedrock/cohere.embed-multilingual-v3",
+          "name": "amazon-bedrock/cohere.embed-multilingual-v3",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-24T22:02:12.796422+00:00",
+      "first_seen": "2026-11-24T21:52:33+00:00",
+      "observed_at": "2026-11-24T22:02:12.796422+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "b1164fe84779828b6499070e7c7924807f4bcdbb -> 464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+      "build": "464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+      "artifact_sha256": "ec7e76b44509d8be5c4b61a7022389cba2192a4b8d497acc2e3311c6d22832bc",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/ec7e76b44509d8be5c4b61a7022389cba2192a4b8d497acc2e3311c6d22832bc.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/ec7e76b44509d8be5c4b61a7022389cba2192a4b8d497acc2e3311c6d22832bc.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "amazon-bedrock/cohere.embed-multilingual-v3",
+          "family": "cohere.embed-multilingual-v3",
+          "file_path": "providers/amazon-bedrock/models/cohere.embed-multilingual-v3.toml",
+          "file_sha256": "53e8e259109e1f40136b6df090ee22d1fd51a6cb9df70eda2825bb1022c521ad",
+          "excerpt": "{\"amazon-bedrock/cohere.embed-multilingual-v3\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"cohere/embed-multilingual-v3.0\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\"], \"output\": [\"embedding\"]}, \"api\": {\"invoke-model\": {\"sdk\": {\"opencodeai\": \"none\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.1}}, \"image\": {\"input\": {\"unit\": \"image\", \"price\": 0.0001}}}}}",
+          "canonical_id": "cohere/embed-multilingual-v3.0",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/464b5409f68a4bf99b81f9bf296bdeb0736950a3/providers/amazon-bedrock/models/cohere.embed-multilingual-v3.toml",
+          "build": "464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+          "first_seen": "2026-11-24T21:52:33+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "cohere.embed-multilingual-v3",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/db398058a2100b95e76604f8c3cf2986de639d2f23a1d4e7f629d431d91bd3a8.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/464b5409f68a4bf99b81f9bf296bdeb0736950a3"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/464b5409f68a4bf99b81f9bf296bdeb0736950a3"
+        }
+      ],
+      "tracker_observed_at": "2026-11-24T22:02:15.949235+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 464b5409f68a: amazon-bedrock/cohere.embed-multilingual-v3\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/464b5409f68a4bf99b81f9bf296bdeb0736950a3"
+    },
     {
       "id": "vllm-arch-818ae709a6",
       "category": "open-source",
@@ -91311,25 +91549,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T21:44:23.360653+00:00",
+      "last_attempt": "2026-11-24T22:01:58.713537+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T21:44:23.606828+00:00",
+      "last_success": "2026-11-24T22:01:59.038685+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.246,
-      "latest_build": "32de7ef2e987de80c90f2d1e0d6a1ea5e38e07abed0b3707428fe1ab0a1f4a7f",
-      "builds_retained": 155,
+      "duration_seconds": 0.325,
+      "latest_build": "fc0d6590c1a2173f6fdda8352f4d5a51f1a39de3fd5a665ead7fb6b515cfa199",
+      "builds_retained": 156,
       "identifiers": 10061
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T21:41:30.632226+00:00",
+      "last_attempt": "2026-11-24T21:59:08.534091+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T21:41:31.044862+00:00",
+      "last_success": "2026-11-24T21:59:08.944492+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.413,
+      "duration_seconds": 0.411,
       "latest_build": "1affad95a3c1f3ac6faf7024d6d5e2877273687b",
       "builds_retained": 79,
       "identifiers": 7069
@@ -91337,34 +91575,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T21:38:29.570960+00:00",
+      "last_attempt": "2026-11-24T22:01:59.236544+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T21:38:30.111958+00:00",
+      "last_success": "2026-11-24T22:02:15.949235+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.542,
-      "latest_build": "03c5c9ecd1c935ff6ed938ae849c21f68484b2b2",
-      "builds_retained": 161,
-      "identifiers": 11276
+      "duration_seconds": 16.713,
+      "latest_build": "464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+      "builds_retained": 163,
+      "identifiers": 11299
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T21:44:23.804329+00:00",
+      "last_attempt": "2026-11-24T22:02:16.152107+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3649,
-      "duration_seconds": 20.535
+      "consecutive_failures": 3655,
+      "duration_seconds": 20.533
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T21:30:08.341393+00:00",
+      "last_attempt": "2026-11-24T21:47:35.641880+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T21:30:08.657406+00:00",
+      "last_success": "2026-11-24T21:47:35.877882+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.316,
+      "duration_seconds": 0.236,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -91374,61 +91612,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T21:43:20.813782+00:00",
+      "last_attempt": "2026-11-24T22:00:58.508260+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T21:43:22.747080+00:00",
+      "last_success": "2026-11-24T22:01:00.810561+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.933
+      "duration_seconds": 2.302
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T21:43:22.747134+00:00",
+      "last_attempt": "2026-11-24T22:01:00.810615+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T21:43:23.090094+00:00",
+      "last_success": "2026-11-24T22:01:01.137920+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.343
+      "duration_seconds": 0.327
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T21:43:23.090132+00:00",
+      "last_attempt": "2026-11-24T22:01:01.137958+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T21:43:30.700480+00:00",
+      "last_success": "2026-11-24T22:01:09.570460+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.61
+      "duration_seconds": 8.433
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T21:43:30.700558+00:00",
+      "last_attempt": "2026-11-24T22:01:09.570529+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T21:44:23.360603+00:00",
+      "last_success": "2026-11-24T22:01:58.713471+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 52.66,
+      "duration_seconds": 49.143,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-24T21:43:31.196194+00:00",
+          "checked_at": "2026-11-24T22:01:10.137099+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-24T21:43:42.737829+00:00",
+          "checked_at": "2026-11-24T22:01:19.810719+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-24T21:43:42.837814+00:00",
+          "checked_at": "2026-11-24T22:01:19.899316+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-24T21:43:42.837832+00:00",
+          "checked_at": "2026-11-24T22:01:19.899326+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -91436,25 +91674,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T21:44:23.360653+00:00",
+      "last_attempt": "2026-11-24T22:01:58.713537+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T21:44:23.606828+00:00",
+      "last_success": "2026-11-24T22:01:59.038685+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.246,
-      "latest_build": "32de7ef2e987de80c90f2d1e0d6a1ea5e38e07abed0b3707428fe1ab0a1f4a7f",
-      "builds_retained": 155,
+      "duration_seconds": 0.325,
+      "latest_build": "fc0d6590c1a2173f6fdda8352f4d5a51f1a39de3fd5a665ead7fb6b515cfa199",
+      "builds_retained": 156,
       "identifiers": 10061
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T21:41:30.632226+00:00",
+      "last_attempt": "2026-11-24T21:59:08.534091+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T21:41:31.044862+00:00",
+      "last_success": "2026-11-24T21:59:08.944492+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.413,
+      "duration_seconds": 0.411,
       "latest_build": "1affad95a3c1f3ac6faf7024d6d5e2877273687b",
       "builds_retained": 79,
       "identifiers": 7069
@@ -91462,34 +91700,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T21:38:29.570960+00:00",
+      "last_attempt": "2026-11-24T22:01:59.236544+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T21:38:30.111958+00:00",
+      "last_success": "2026-11-24T22:02:15.949235+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.542,
-      "latest_build": "03c5c9ecd1c935ff6ed938ae849c21f68484b2b2",
-      "builds_retained": 161,
-      "identifiers": 11276
+      "duration_seconds": 16.713,
+      "latest_build": "464b5409f68a4bf99b81f9bf296bdeb0736950a3",
+      "builds_retained": 163,
+      "identifiers": 11299
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T21:44:23.804329+00:00",
+      "last_attempt": "2026-11-24T22:02:16.152107+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3649,
-      "duration_seconds": 20.535
+      "consecutive_failures": 3655,
+      "duration_seconds": 20.533
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T21:30:08.341393+00:00",
+      "last_attempt": "2026-11-24T21:47:35.641880+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T21:30:08.657406+00:00",
+      "last_success": "2026-11-24T21:47:35.877882+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.316,
+      "duration_seconds": 0.236,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -91497,64 +91735,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T21:44:44.346334+00:00",
+      "last_attempt": "2026-11-24T22:02:36.692664+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T21:44:53.077671+00:00",
+      "last_success": "2026-11-24T22:02:45.521758+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.731
+      "duration_seconds": 8.829
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T21:44:53.077722+00:00",
+      "last_attempt": "2026-11-24T22:02:45.521808+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T21:44:54.753259+00:00",
+      "last_success": "2026-11-24T22:02:47.125829+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.676
+      "duration_seconds": 1.604
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T21:39:01.715675+00:00",
+      "last_attempt": "2026-11-24T22:02:47.125887+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T21:39:09.670278+00:00",
+      "last_success": "2026-11-24T22:02:54.015933+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.955
+      "duration_seconds": 6.89
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T21:44:54.753306+00:00",
+      "last_attempt": "2026-11-24T22:02:54.015983+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T21:44:55.959437+00:00",
+      "last_success": "2026-11-24T22:02:55.226341+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.206
+      "duration_seconds": 1.21
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T21:44:55.959473+00:00",
+      "last_attempt": "2026-11-24T22:02:55.226388+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T21:44:56.126726+00:00",
+      "last_success": "2026-11-24T22:02:55.241344+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.167
+      "duration_seconds": 0.015
     }
   },
   "identities": {
-    "identifiers": 31736,
-    "declared_aliases": 18783,
+    "identifiers": 31759,
+    "declared_aliases": 18806,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 435,
-      "seconds_mean": 3579.372447243678,
+      "samples": 437,
+      "seconds_mean": 3565.6444105148744,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -91568,9 +91806,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 559,
-      "events": 561,
-      "rate": 0.9964349376114082
+      "complete": 561,
+      "events": 563,
+      "rate": 0.9964476021314387
     },
     "source_health": {
       "sources": 14,
