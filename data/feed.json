@@ -1,17 +1,66 @@
 {
-  "generated_at": "2026-11-24T16:10:33.467884+00:00",
-  "scan_completed_at": "2026-11-24T16:11:56.871517+00:00",
+  "generated_at": "2026-11-24T16:34:10.301571+00:00",
+  "scan_completed_at": "2026-11-24T16:35:28.517360+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 323,
-    "leaks": 32,
+    "stories": 324,
+    "leaks": 33,
     "releases": 86,
-    "stories_24h": 41,
-    "sources_ok": 12,
-    "total_cards": 765,
-    "new_in_this_scan": 0
+    "stories_24h": 37,
+    "sources_ok": 13,
+    "total_cards": 764,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-youtuforcausallm",
+      "group": "youtuforcausallm",
+      "kind": "leak",
+      "open_weights": false,
+      "title": "YoutuForCausalLM",
+      "provider_slug": "opensource",
+      "provider_name": "Architecture Diff",
+      "accent_color": "#8b5cf6",
+      "detected_at": "2026-11-24T16:35:24.856056+00:00",
+      "updated_at": "2026-11-24T16:35:24.856056+00:00",
+      "first_source": "vLLM registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [
+        "youtuforcausallm"
+      ],
+      "models": [
+        {
+          "id": "YoutuForCausalLM",
+          "name": "YoutuForCausalLM"
+        }
+      ],
+      "sources": [
+        {
+          "label": "vLLM registry",
+          "scanner": "vllm-registry",
+          "detected_at": "2026-11-24T16:35:24.856056+00:00",
+          "title": "New Engine Architecture: YoutuForCausalLM",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · ARCHITECTURE DIFF",
+      "card_ids": [
+        "vllm-arch-82f514a59b"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: YoutuForCausalLM by Architecture Diff\n\nFirst detected 24 Nov 16:35 UTC in vLLM registry\nCodename: youtuforcausallm\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-24T16:35:28.514835+00:00"
+    },
     {
       "id": "story-claude-instant-1",
       "group": "claude-instant-1",
@@ -26085,7 +26134,7 @@
       "detected_at": "2026-10-23T19:51:16+00:00",
       "updated_at": "2026-11-12T05:59:55.615618+00:00",
       "first_source": "Antigravity ACP config",
-      "lead": "17 days before it went live on OpenRouter",
+      "lead": "17 days before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "2026-11-10",
       "pricing": "",
       "codenames": [
@@ -26133,16 +26182,6 @@
           "detected_at": "2026-10-23T19:51:16+00:00",
           "title": "Gemini 4 Carbon (ACP v1.4.3 Revision)",
           "url": "https://dl.google.com/agy-extensions/releases/macos/agy-acp-server-1.4.3-darwin-arm64.zip",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "OpenRouter",
-          "scanner": "openrouter",
-          "detected_at": "2026-11-10T16:12:09.927476+00:00",
-          "title": "Google: Gemini 4 Carbon",
-          "url": "https://openrouter.ai/google/gemini-4-carbon",
           "backfill": false,
           "build": "",
           "evidence_path": ""
@@ -26198,13 +26237,11 @@
           "evidence_path": ""
         }
       ],
-      "source_count": 7,
+      "source_count": 6,
       "backfill": false,
       "header": "NEW MODEL · GOOGLE",
       "card_ids": [
         "ag-acp-1.4.3-revision-diff",
-        "openrouter-model-google_gemini-4-carbon",
-        "openrouter-model-google_gemini-4-carbon_batch",
         "models-dev-diff-f20a35d0",
         "opencode-zen-diff-06dfe89e",
         "vertex-quota-google-304c1f2e",
@@ -26216,10 +26253,50 @@
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Gemini 4 Carbon by Google\n\nFirst detected 23 Oct 19:51 UTC in Antigravity ACP config\n📅 First released: 2026-11-10\n⏱ 17 days before it went live on OpenRouter\nConfirmed by OpenRouter, models.dev, Opencode Zen Stealth & Model Gateway +3\nCodename: carbon\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Gemini 4 Carbon by Google\n\nFirst detected 23 Oct 19:51 UTC in Antigravity ACP config\n📅 First released: 2026-11-10\n⏱ 17 days before it went live on Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire"
     }
   ],
   "cards": [
+    {
+      "id": "vllm-arch-82f514a59b",
+      "category": "open-source",
+      "scanner": "vllm-registry",
+      "header": "VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF",
+      "title": "New Engine Architecture: YoutuForCausalLM",
+      "subtitle": "New model_executor/models/registry.py architecture declarations",
+      "build_label": "Registry File",
+      "build_transition": "vllm/model_executor/models/registry.py",
+      "models": [
+        {
+          "id": "YoutuForCausalLM",
+          "name": "YoutuForCausalLM"
+        }
+      ],
+      "evidence": "vllm-project/vllm/main/vllm/model_executor/models/registry.py",
+      "source_text": "official vLLM model architecture registry.",
+      "disclaimer_1": "Tracks only model architecture class registrations in registry.py.",
+      "disclaimer_2": "Open-source labs register their architecture classes here prior to weight drops.",
+      "provider_name": "VLLM REGISTRY",
+      "provider_slug": "opensource",
+      "accent_color": "#8b5cf6",
+      "links": [
+        {
+          "label": "vLLM registry.py",
+          "url": "https://raw.githubusercontent.com/vllm-project/vllm/main/vllm/model_executor/models/registry.py"
+        },
+        {
+          "label": "Supported Models Docs",
+          "url": "https://docs.vllm.ai/en/latest/models/supported_models.html"
+        }
+      ],
+      "detected_at": "2026-11-24T16:35:24.856056+00:00",
+      "tracker_observed_at": "2026-11-24T16:35:26.342512+00:00",
+      "codenames": [
+        "youtuforcausallm"
+      ],
+      "pricing": null,
+      "x_post_text": "🚨 VLLM OFFICIAL MODEL REGISTRY · ARCHITECTURE DIFF\nNew Engine Architecture: YoutuForCausalLM spotted in Registry File vllm/model_executor/models/registry.py!\n\n• YoutuForCausalLM (YoutuForCausalLM)\n\nEvidence: vllm-project/vllm/main/vllm/model_executor/models/registry.py\nSource: official vLLM model architecture registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "intel-75fcecee9e2c30eefc89",
       "scanner": "models-dev-git",
@@ -84515,80 +84592,6 @@
       "x_post_text": "🚨 MODELS.DEV GLOBAL REGISTRY DIFF · OPENCODE / SST\n1 New Model(s) Added to models.dev spotted in Registry Diff +1 new canonical model(s)!\n\n• Gemini 4 Carbon (OpenCode · release: 2026-11-10) (opencode/gemini-4-carbon)\n\nEvidence: models.dev/api.json\nSource: official models.dev global AI coding model registry.\n\nTracked by @StatsWire"
     },
     {
-      "id": "openrouter-model-google_gemini-4-carbon_batch",
-      "category": "cli-sdk-diff",
-      "scanner": "openrouter",
-      "header": "OPENROUTER LIVE REGISTRY · GOOGLE",
-      "title": "Google: Gemini 4 Carbon (batch)",
-      "subtitle": "Newly registered model endpoint on OpenRouter (/api/v1/models)",
-      "build_label": "Endpoint ID",
-      "build_transition": "google/gemini-4-carbon:batch",
-      "models": [
-        {
-          "id": "google/gemini-4-carbon:batch",
-          "name": "Google: Gemini 4 Carbon (batch) (1048k context window)",
-          "released_on": "2026-11-10"
-        }
-      ],
-      "evidence": "openrouter.ai/api/v1/models",
-      "source_text": "official public OpenRouter /api/v1/models JSON registry.",
-      "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
-      "disclaimer_2": "Publicly listed API model identifier and context length specification.",
-      "provider_name": "GOOGLE",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "OpenRouter Model Page",
-          "url": "https://openrouter.ai/google/gemini-4-carbon:batch"
-        },
-        {
-          "label": "OpenRouter Models API",
-          "url": "https://openrouter.ai/api/v1/models"
-        }
-      ],
-      "detected_at": "2026-11-10T16:22:09.910887+00:00",
-      "pricing": null,
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · GOOGLE\nGoogle: Gemini 4 Carbon (batch) spotted in Endpoint ID google/gemini-4-carbon:batch!\n\n• Google: Gemini 4 Carbon (batch) (1048k context window) (google/gemini-4-carbon:batch)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "openrouter-model-google_gemini-4-carbon",
-      "category": "cli-sdk-diff",
-      "scanner": "openrouter",
-      "header": "OPENROUTER LIVE REGISTRY · GOOGLE",
-      "title": "Google: Gemini 4 Carbon",
-      "subtitle": "Newly registered model endpoint on OpenRouter (/api/v1/models)",
-      "build_label": "Endpoint ID",
-      "build_transition": "google/gemini-4-carbon",
-      "models": [
-        {
-          "id": "google/gemini-4-carbon",
-          "name": "Google: Gemini 4 Carbon (1048k context window)",
-          "released_on": "2026-11-10"
-        }
-      ],
-      "evidence": "openrouter.ai/api/v1/models",
-      "source_text": "official public OpenRouter /api/v1/models JSON registry.",
-      "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
-      "disclaimer_2": "Publicly listed API model identifier and context length specification.",
-      "provider_name": "GOOGLE",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "OpenRouter Model Page",
-          "url": "https://openrouter.ai/google/gemini-4-carbon"
-        },
-        {
-          "label": "OpenRouter Models API",
-          "url": "https://openrouter.ai/api/v1/models"
-        }
-      ],
-      "detected_at": "2026-11-10T16:12:09.927476+00:00",
-      "pricing": null,
-      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · GOOGLE\nGoogle: Gemini 4 Carbon spotted in Endpoint ID google/gemini-4-carbon!\n\n• Google: Gemini 4 Carbon (1048k context window) (google/gemini-4-carbon)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
-    },
-    {
       "id": "ag-acp-1.4.3-revision-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
@@ -84752,12 +84755,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T16:11:30.255269+00:00",
+      "last_attempt": "2026-11-24T16:35:00.895269+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T16:11:30.706551+00:00",
+      "last_success": "2026-11-24T16:35:01.361679+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.451,
+      "duration_seconds": 0.467,
       "latest_build": "eb0d52c44bef0d1616fc11946d0d372cfea63f2694f40dc8c44f01a565a8d4d8",
       "builds_retained": 144,
       "identifiers": 9912
@@ -84765,12 +84768,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T16:08:58.982089+00:00",
+      "last_attempt": "2026-11-24T16:32:33.685534+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T16:08:59.380894+00:00",
+      "last_success": "2026-11-24T16:32:34.037223+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.399,
+      "duration_seconds": 0.352,
       "latest_build": "9a384a563a8600b65bda905c25c7c017c63e652a",
       "builds_retained": 76,
       "identifiers": 7063
@@ -84778,12 +84781,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T16:08:59.528728+00:00",
+      "last_attempt": "2026-11-24T16:32:34.185434+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T16:08:59.997534+00:00",
+      "last_success": "2026-11-24T16:32:34.671037+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.469,
+      "duration_seconds": 0.486,
       "latest_build": "e4b5dd537982bdf9f60cd67338211eb62c5a028a",
       "builds_retained": 152,
       "identifiers": 11097
@@ -84791,21 +84794,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T16:11:30.848547+00:00",
+      "last_attempt": "2026-11-24T16:35:01.502126+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3595,
-      "duration_seconds": 15.48
+      "consecutive_failures": 3605,
+      "duration_seconds": 15.561
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T16:02:13.997342+00:00",
+      "last_attempt": "2026-11-24T16:35:17.068915+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T16:02:14.218245+00:00",
+      "last_success": "2026-11-24T16:35:17.263716+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.221,
+      "duration_seconds": 0.195,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -84815,61 +84818,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T16:10:33.467947+00:00",
+      "last_attempt": "2026-11-24T16:34:10.301637+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T16:10:36.236266+00:00",
+      "last_success": "2026-11-24T16:34:12.449055+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.768
+      "duration_seconds": 2.147
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T16:10:36.236321+00:00",
+      "last_attempt": "2026-11-24T16:34:12.449111+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T16:10:36.471673+00:00",
+      "last_success": "2026-11-24T16:34:12.668108+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.235
+      "duration_seconds": 0.219
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T16:10:36.471710+00:00",
+      "last_attempt": "2026-11-24T16:34:12.668146+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T16:10:43.366839+00:00",
+      "last_success": "2026-11-24T16:34:18.313546+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.895
+      "duration_seconds": 5.645
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T16:10:43.366912+00:00",
+      "last_attempt": "2026-11-24T16:34:18.313623+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T16:11:30.255214+00:00",
+      "last_success": "2026-11-24T16:35:00.895209+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 46.888,
+      "duration_seconds": 42.582,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-24T16:10:43.561155+00:00",
+          "checked_at": "2026-11-24T16:34:18.528211+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-24T16:10:53.975453+00:00",
+          "checked_at": "2026-11-24T16:34:27.727771+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-24T16:10:54.159840+00:00",
+          "checked_at": "2026-11-24T16:34:27.899002+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-24T16:10:54.159858+00:00",
+          "checked_at": "2026-11-24T16:34:27.899018+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -84877,12 +84880,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T16:11:30.255269+00:00",
+      "last_attempt": "2026-11-24T16:35:00.895269+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T16:11:30.706551+00:00",
+      "last_success": "2026-11-24T16:35:01.361679+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.451,
+      "duration_seconds": 0.467,
       "latest_build": "eb0d52c44bef0d1616fc11946d0d372cfea63f2694f40dc8c44f01a565a8d4d8",
       "builds_retained": 144,
       "identifiers": 9912
@@ -84890,12 +84893,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-24T16:08:58.982089+00:00",
+      "last_attempt": "2026-11-24T16:32:33.685534+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T16:08:59.380894+00:00",
+      "last_success": "2026-11-24T16:32:34.037223+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.399,
+      "duration_seconds": 0.352,
       "latest_build": "9a384a563a8600b65bda905c25c7c017c63e652a",
       "builds_retained": 76,
       "identifiers": 7063
@@ -84903,12 +84906,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T16:08:59.528728+00:00",
+      "last_attempt": "2026-11-24T16:32:34.185434+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T16:08:59.997534+00:00",
+      "last_success": "2026-11-24T16:32:34.671037+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.469,
+      "duration_seconds": 0.486,
       "latest_build": "e4b5dd537982bdf9f60cd67338211eb62c5a028a",
       "builds_retained": 152,
       "identifiers": 11097
@@ -84916,21 +84919,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-24T16:11:30.848547+00:00",
+      "last_attempt": "2026-11-24T16:35:01.502126+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3595,
-      "duration_seconds": 15.48
+      "consecutive_failures": 3605,
+      "duration_seconds": 15.561
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-24T16:02:13.997342+00:00",
+      "last_attempt": "2026-11-24T16:35:17.068915+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T16:02:14.218245+00:00",
+      "last_success": "2026-11-24T16:35:17.263716+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.221,
+      "duration_seconds": 0.195,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -84938,52 +84941,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T16:11:46.334263+00:00",
+      "last_attempt": "2026-11-24T16:35:17.559058+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T16:11:53.517323+00:00",
+      "last_success": "2026-11-24T16:35:24.852447+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.183
+      "duration_seconds": 7.293
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T16:11:53.517375+00:00",
+      "last_attempt": "2026-11-24T16:35:24.852495+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T16:11:55.946141+00:00",
+      "last_success": "2026-11-24T16:35:26.342512+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.429
+      "duration_seconds": 1.49
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-24T16:09:24.187013+00:00",
+      "last_attempt": "2026-11-24T16:32:58.906829+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T16:09:32.409069+00:00",
+      "last_success": "2026-11-24T16:33:09.455959+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.222
+      "duration_seconds": 10.549
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T16:11:55.946199+00:00",
+      "last_attempt": "2026-11-24T16:35:26.342566+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T16:11:56.495266+00:00",
+      "last_success": "2026-11-24T16:35:26.961376+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.549
+      "duration_seconds": 0.619
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-24T16:11:56.495305+00:00",
+      "last_attempt": "2026-11-24T16:35:26.961425+00:00",
       "status": "ok",
-      "last_success": "2026-11-24T16:11:56.519367+00:00",
+      "last_success": "2026-11-24T16:35:27.052919+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.024
+      "duration_seconds": 0.092
     }
   },
   "identities": {
