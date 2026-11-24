@@ -7,10 +7,10 @@ import unittest
 from unittest.mock import patch
 
 from tracker.card_renderer import card_filename, render_alert_card_png
-from tracker.extractor import infer_provider
+from tracker.extractor import infer_provider, is_legacy_model_id
 from tracker.notifiers import build_multipart_webhook_body, build_story_embed, send_discord_webhook
 from tracker.pricing import PricingCatalog
-from tracker.stories import build_stories
+from tracker.stories import build_stories, story_key
 
 
 class TestProviderAttributionAndCards(unittest.TestCase):
@@ -170,6 +170,32 @@ class TestProviderAttributionAndCards(unittest.TestCase):
         self.assertIn("multipart/form-data; boundary=", ctype)
         self.assertIn(b'"username": "Test"', body)
         self.assertIn(b"\x89PNGtest", body)
+
+    def test_false_flag_guards_prevent_bare_gpt_merge_and_azure_claude_badge(self) -> None:
+        # Bare family collisions must not merge gpt-default and gpt-chat-latest into "gpt"
+        self.assertNotEqual(story_key("gpt-default"), "gpt")
+        self.assertNotEqual(story_key("gpt-chat-latest"), "gpt")
+        self.assertNotEqual(story_key("gpt-default"), story_key("gpt-chat-latest"))
+
+        # Legacy / placeholder IDs are blocked from firing false leaks
+        for bad in ("gpt-default", "gpt-chat-latest", "mistral-common", "gpt-5-1-codex-max-system-card", "imagen-4.0-generate"):
+            self.assertTrue(is_legacy_model_id(bad), f"Expected legacy/placeholder: {bad}")
+
+        # Host reseller (Azure) must not override Anthropic attribution on Claude models
+        card = {
+            "id": "ide-claude-mythos",
+            "scanner": "ide-build-diff",
+            "header": "IDE DIFF · AZURE",
+            "title": "Claude Mythos 5.3",
+            "models": [{"id": "claude-mythos-5-3", "name": "Claude Mythos 5.3"}],
+            "provider_name": "Azure",
+            "provider_slug": "azure",
+            "accent_color": "#38bdf8",
+            "detected_at": "2026-11-24T01:00:00+00:00",
+        }
+        stories = build_stories([card], pricing_catalog=PricingCatalog({}))
+        self.assertEqual(stories[0]["provider_slug"], "anthropic")
+        self.assertEqual(stories[0]["provider_name"], "Anthropic")
 
 
 if __name__ == "__main__":

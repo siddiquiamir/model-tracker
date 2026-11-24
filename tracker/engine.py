@@ -14,6 +14,7 @@ from typing import Any, Dict, List, Set
 from tracker import novelty, pricing as pricing_mod, stories as story_mod
 from tracker.extractor import is_legacy_model_id
 from tracker.intelligence import DevinCliScanner, DevinDesktopScanner, LiteLlmRegistryScanner, ModelsDevApiScanner, ModelsDevGitScanner, IdentityLedger, classify_known, intelligence_metrics, reconcile_identities
+from tracker.extractor import is_legacy_model_id
 from tracker.notifiers import build_intelligence_embed, build_story_embed, build_x_post_text, send_discord_webhook
 from tracker.scanners import (
     BASELINES_FILE,
@@ -510,7 +511,8 @@ class TrackerEngine:
                 s_det = novelty._parse_dt(s.get("detected_at") or "")
                 s_cutoff = (s_det - novelty.RELEASE_GRACE).strftime("%Y-%m-%d")
                 if all(
-                    novelty.is_old_model(str(m.get("id") or ""), s_det, catalog)
+                    is_legacy_model_id(str(m.get("id") or ""))
+                    or novelty.is_old_model(str(m.get("id") or ""), s_det, catalog)
                     or (
                         re.match(r"^\d{4}-\d{2}-\d{2}$", str(m.get("released_on") or "")[:10])
                         and str(m.get("released_on"))[:10] < s_cutoff

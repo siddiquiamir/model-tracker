@@ -94,12 +94,20 @@ def is_legacy_model_id(model_id: str) -> bool:
         "gemini-1.", "gemini-1-", "gemini-2.0", "gemini-2-0", "gemini-2.5", "gemini-2-5",
         "gemini-3.0", "gemini-3-0", "gemini-3.1", "gemini-3-1", "gemini-3-pro", "gemini-3-flash",
         "gemini-pro", "gemini-for",
+        "imagen-3", "imagen-4.0", "imagen-4-0",
         "claude-2", "claude-3", "claude-sonnet-4", "claude-opus-4", "claude-haiku-4",
-        "gpt-3", "gpt-4", "gpt-5p0", "gpt-5p1", "gpt-5p2", "gpt-5p3", "gpt-5p4",
+        "gpt-3", "gpt-4",
+        "gpt-5p0", "gpt-5p1", "gpt-5p2", "gpt-5p3", "gpt-5p4",
+        "gpt-5.0", "gpt-5-0", "gpt-5.1", "gpt-5-1", "gpt-5.2", "gpt-5-2", "gpt-5.3", "gpt-5-3", "gpt-5.4", "gpt-5-4",
         "o1", "o3", "o4-mini",
         "grok-1", "grok-2", "grok-3", "llama-2", "llama-3", "llama3", "dall-e", "dalle",
     )
+    placeholder_exact = {
+        "gpt-default", "gpt-chat-latest", "mistral-common", "gemini-default", "claude-default",
+    }
     for cand in (m, tail):
+        if cand in placeholder_exact or cand.endswith("-default"):
+            return True
         if cand.startswith(legacy_prefixes) or re.match(r"^gemini-3-[a-z]", cand):
             return True
     return False

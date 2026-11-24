@@ -96,9 +96,17 @@ _DISPLAY_NOISE = re.compile(r"[-_\s](?:NVFP4|MXFP4|FP8|FP4|BF16|FP16|GGUF|AWQ|GP
 _DISPLAY_SIZE = re.compile(r"[-_\s](?:[AE]?\d+(?:\.\d+)?[MBK])\b", re.I)
 
 
+_BARE_FAMILY_KEYS: Set[str] = {
+    "gpt", "gemini", "claude", "grok", "llama", "mistral", "deepseek",
+    "qwen", "kimi", "minimax", "glm", "nova", "imagen", "veo", "lyria", "genie", "gemma",
+}
+_HOST_ONLY_PROVIDERS: Set[str] = {"azure", "amazon", "openrouter", "modelsdev", "opensource", ""}
+
+
 def story_key(raw: str) -> str:
     """'openai/gpt-6.1-terra-pro:batch' -> 'gpt-6-1-terra'; 'tencent/Hy-SimulMT-30B-A3B-FP8' -> 'hy-simulmt'."""
-    toks = normalize(raw).split("-")
+    norm_full = normalize(raw)
+    toks = norm_full.split("-")
     if toks and toks[0] == "introducing":
         toks = toks[1:]
     out: List[str] = []
@@ -122,6 +130,9 @@ def story_key(raw: str) -> str:
         toks.pop()
         key = strip_variants("-".join(toks))
         toks = key.split("-")
+    # Never collapse unrelated aliases (e.g. gpt-default, gpt-chat-latest) into a bare 1-word family key
+    if key in _BARE_FAMILY_KEYS and norm_full and norm_full != key:
+        return norm_full
     return key
 
 
@@ -514,12 +525,17 @@ def _make_story(
         story_accent = "#6366f1"
     elif len(specific_slugs) == 1 and not is_litellm_registry_group and not intelligence_only:
         only_p = specific_inferred[0]
-        if provider_slug in GENERIC_PROVIDERS or not provider_name:
+        # Prefer the actual model creator (e.g. Anthropic for claude-mythos) over cloud host resellers (e.g. Azure)
+        if provider_slug in _HOST_ONLY_PROVIDERS or not provider_name:
             provider_slug = only_p["slug"]
             provider_name = PROVIDER_NAMES.get(provider_slug, only_p["name"].title())
         story_accent = only_p.get("color") or lab.get("accent_color", "#38bdf8")
     else:
         story_accent = lab.get("accent_color", "#38bdf8")
+
+    # Don't let routine registry-update / LiteLLM-intelligence cards re-bump an older LEAK story's updated_at
+    non_reg_cards = [c for c in cards if not c.get("registry_update") and c.get("scanner") != "litellm-intelligence"]
+    updated_at_src = non_reg_cards[-1] if (kind == "leak" and non_reg_cards) else cards[-1]
 
     return {
         "id": f"story-{key}",
@@ -531,7 +547,7 @@ def _make_story(
         "provider_name": provider_name,
         "accent_color": story_accent,
         "detected_at": first.get("detected_at", ""),
-        "updated_at": cards[-1].get("detected_at", ""),
+        "updated_at": updated_at_src.get("detected_at", ""),
         "first_source": sources[0]["label"] if sources else "",
         "lead": lead,
         "released_on": released_on_str,
