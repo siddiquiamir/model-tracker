@@ -9141,6 +9141,7 @@
     "toapis/gpt-5.6-sol",
     "toapis/gpt-5.6-terra",
     "togetherai/MiniMaxAI/MiniMax-M3.1-Flash",
+    "togetherai/Prism-ML/Ternary-Bonsai-27B",
     "togetherai/Qwen/Qwen3.5-9B",
     "togetherai/Qwen/Qwen3.6-Plus",
     "togetherai/Qwen/Qwen3.7-Max",
@@ -18669,6 +18670,7 @@
     "prism",
     "prism-core",
     "prism-flash",
+    "prism-ml/ternary-bonsai-27b",
     "proteus",
     "pulse-alpha-free",
     "quiverai/arrow-2",
@@ -24009,8 +24011,8 @@
     "ray2": {
       "org": "luma-ai",
       "provider": "fal",
-      "caps": "in:text, out:video",
-      "model_id": "217158f9-793e-4ffe-a197-6de9448432fc",
+      "caps": "in:text, in:image, out:video",
+      "model_id": "5b3383a9-6bca-4f71-8210-78895c9d84d5",
       "route": "code"
     },
     "pika-v2.2": {
@@ -24116,8 +24118,8 @@
     "minimax-h3-max": {
       "org": "minimax",
       "provider": "fal",
-      "caps": "in:text, out:video",
-      "model_id": "01a04421-8705-7ac3-b814-0b4750bf2ea3",
+      "caps": "in:text, in:image, out:video",
+      "model_id": "01a04423-3cd2-767a-9f26-0593ff09d518",
       "route": "code",
       "seen_ids": [
         "01a04421-8705-7ac3-b814-0b4750bf2ea3",
@@ -24562,19 +24564,6 @@
     "claude-sonnet-5-5"
   ],
   "npm_binary_models": {
-    "@anthropic-ai/claude-code-linux-x64@2.1.326": [
-      "claude-fable-5",
-      "claude-fable-5-1",
-      "claude-fable-5-2",
-      "claude-haiku-5-5",
-      "claude-mythos-5",
-      "claude-mythos-5-1",
-      "claude-mythos-5-2",
-      "claude-opus-5",
-      "claude-opus-5-5",
-      "claude-sonnet-5",
-      "claude-sonnet-5-5"
-    ],
     "@anthropic-ai/claude-code-linux-x64@2.1.327": [
       "claude-fable-5",
       "claude-fable-5-1",
@@ -24628,6 +24617,19 @@
       "claude-sonnet-5-5"
     ],
     "@anthropic-ai/claude-code-linux-x64@2.1.331": [
+      "claude-fable-5",
+      "claude-fable-5-1",
+      "claude-fable-5-2",
+      "claude-haiku-5-5",
+      "claude-mythos-5",
+      "claude-mythos-5-1",
+      "claude-mythos-5-2",
+      "claude-opus-5",
+      "claude-opus-5-5",
+      "claude-sonnet-5",
+      "claude-sonnet-5-5"
+    ],
+    "@anthropic-ai/claude-code-linux-x64@2.1.332": [
       "claude-fable-5",
       "claude-fable-5-1",
       "claude-fable-5-2",
@@ -26552,12 +26554,6 @@
   "copilot_cli_release_models": [],
   "engine_seen_prs": {
     "vllm-project/vllm": [
-      69531,
-      69532,
-      69533,
-      69534,
-      69535,
-      69536,
       69537,
       69538,
       69539,
@@ -26751,11 +26747,15 @@
       69749,
       69750,
       69751,
-      69752
+      69752,
+      69753,
+      69754,
+      69755,
+      69756,
+      69757,
+      69758
     ],
     "sgl-project/sglang": [
-      52706,
-      52707,
       52708,
       52709,
       52710,
@@ -26953,10 +26953,11 @@
       52920,
       52921,
       52922,
-      52923
+      52923,
+      52924,
+      52925
     ],
     "NVIDIA/TensorRT-LLM": [
-      22647,
       22648,
       22649,
       22650,
@@ -27155,13 +27156,10 @@
       22858,
       22859,
       22860,
-      22861
+      22861,
+      22862
     ],
     "huggingface/transformers": [
-      50944,
-      50945,
-      50947,
-      50949,
       50950,
       50951,
       50952,
@@ -27357,13 +27355,13 @@
       51191,
       51192,
       51194,
-      51196
+      51196,
+      51197,
+      51199,
+      51200,
+      51201
     ],
     "ggml-org/llama.cpp": [
-      32693,
-      32694,
-      32695,
-      32697,
       32698,
       32699,
       32700,
@@ -27559,7 +27557,11 @@
       32979,
       32980,
       32981,
-      32982
+      32982,
+      32983,
+      32984,
+      32985,
+      32986
     ],
     "ollama/ollama": [
       19600,
@@ -29141,6 +29143,7 @@
     "xiaomi/mimo-v2.5",
     "xiaomi/mimo-v2.5-pro",
     "xiaomi/mimo-v2.6-flash",
+    "xiaomi/mimo-v2.6-flash-mopd",
     "xiaomi/mimo-v2.6-pro",
     "xiaomi/mimo-v2.6-pro-ultraspeed",
     "xingchen-agi/xing4.0-29b-a4b:free",
@@ -31287,7 +31290,7 @@
     "voxtral-small-24b-2507"
   ],
   "openai_api_spec": {
-    "etag": "\"b7ce53c3952faea06cc4d8247faeb934499b0bedeb08f1fe8b14786b16462f2d\"",
+    "etag": "\"349bbc610afd29dd9b52873f4589a0be428d0c790a94bfc5a8b9a179f1bcefd3\"",
     "ids": [
       "chatgpt",
       "chatgpt-4o-latest",
@@ -32511,7 +32514,7 @@
   ],
   "npm_observed_models": {
     "@anthropic-ai/claude-code-linux-x64": {
-      "version": "2.1.331",
+      "version": "2.1.332",
       "models": [
         "claude-fable-5",
         "claude-fable-5-1",
