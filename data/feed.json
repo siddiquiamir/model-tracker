@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-25T06:40:31.060871+00:00",
-  "scan_completed_at": "2026-11-25T06:41:45.660785+00:00",
+  "generated_at": "2026-11-25T06:45:50.000419+00:00",
+  "scan_completed_at": "2026-11-25T06:47:25.571873+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 335,
     "leaks": 35,
     "releases": 90,
-    "stories_24h": 46,
-    "sources_ok": 13,
-    "total_cards": 830,
-    "new_in_this_scan": 2
+    "stories_24h": 45,
+    "sources_ok": 14,
+    "total_cards": 831,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -220,7 +220,7 @@
       "provider_name": "Unattributed",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-25T00:55:21.475049+00:00",
-      "updated_at": "2026-11-25T06:41:07.921085+00:00",
+      "updated_at": "2026-11-25T06:46:40.113832+00:00",
       "first_source": "Registry Update",
       "lead": "",
       "released_on": "2026-11-23",
@@ -229,7 +229,7 @@
       "models": [
         {
           "id": "mimo-v2.6-flash-mopd",
-          "name": "kilo/xiaomi/mimo-v2.6-flash-mopd",
+          "name": "openrouter/xiaomi/mimo-v2.6-flash-mopd",
           "released_on": "2026-11-23"
         }
       ],
@@ -253,7 +253,8 @@
         "intel-dd1f8d3002a04e48c09d",
         "intel-a061375e6021790592dc",
         "intel-83699c34c7ec21a6e798",
-        "intel-076ef8eb0f633db513e2"
+        "intel-076ef8eb0f633db513e2",
+        "intel-f0a0acdc9217d69118ef"
       ],
       "event_label": "Registry update",
       "intelligence_only": true,
@@ -373,6 +374,21 @@
           "build": "94ac20b035a16e99e6976b24c9c5c6337bfa56fdfea6349e909c6ec83acd2df0",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-25T06:41:07.500386+00:00"
+        },
+        {
+          "id": "openrouter/xiaomi/mimo-v2.6-flash-mopd",
+          "family": "mimo-v2.6-flash-mopd",
+          "file_path": "providers/openrouter/models/xiaomi/mimo-v2.6-flash-mopd.toml",
+          "file_sha256": "4fbf23873288ae22eb8902d06182ae6d9a82d0bb34b6aeee78aeb52442ad25bb",
+          "excerpt": "{\"openrouter/xiaomi/mimo-v2.6-flash-mopd\": {\"schema\": 2, \"name\": \"MiMo-V2.6-Flash-MOPD\", \"description\": \"MiMo flash model for fast multimodal assistance and agent workflows\", \"family\": \"mimo\", \"open_weights\": true, \"release_date\": \"2026-11-23\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\", \"audio\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"toggle\": true}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 1048576, \"output\": 32768}, \"api\": {\"chat-completions\": {}, \"responses\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}, \"messages\": {\"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.15, \"cache\": {\"read\": 0.02}}, \"output\": {\"price\": 0.42}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/066eb88a4dbbe15d5274ad5528070ce5112bbe18/providers/openrouter/models/xiaomi/mimo-v2.6-flash-mopd.toml",
+          "build": "066eb88a4dbbe15d5274ad5528070ce5112bbe18",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/066eb88a4dbbe15d5274ad5528070ce5112bbe18",
+          "first_seen": "2026-11-25T06:37:34+00:00"
         }
       ],
       "x_post_text": "Registry Update f5ddc837d5bc: mimo-v2.6-flash-mopd\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e"
@@ -27724,6 +27740,93 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-f0a0acdc9217d69118ef",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "mimo-v2.6-flash-mopd",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "mimo-v2.6-flash-mopd",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "openrouter/xiaomi/mimo-v2.6-flash-mopd",
+          "name": "openrouter/xiaomi/mimo-v2.6-flash-mopd",
+          "registry_update": true,
+          "released_on": "2026-11-23"
+        }
+      ],
+      "detected_at": "2026-11-25T06:46:40.113832+00:00",
+      "first_seen": "2026-11-25T06:37:34+00:00",
+      "observed_at": "2026-11-25T06:46:40.113832+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "1b398b289ae8d9393810b610012b8d3b1fececa7 -> 066eb88a4dbbe15d5274ad5528070ce5112bbe18",
+      "build": "066eb88a4dbbe15d5274ad5528070ce5112bbe18",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/066eb88a4dbbe15d5274ad5528070ce5112bbe18",
+      "artifact_sha256": "1e81dfd19600283b71f867d1c6f3220f8beb4f85e9e8fd8960fbabff69a663bc",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/1e81dfd19600283b71f867d1c6f3220f8beb4f85e9e8fd8960fbabff69a663bc.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/1e81dfd19600283b71f867d1c6f3220f8beb4f85e9e8fd8960fbabff69a663bc.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "openrouter/xiaomi/mimo-v2.6-flash-mopd",
+          "family": "mimo-v2.6-flash-mopd",
+          "file_path": "providers/openrouter/models/xiaomi/mimo-v2.6-flash-mopd.toml",
+          "file_sha256": "4fbf23873288ae22eb8902d06182ae6d9a82d0bb34b6aeee78aeb52442ad25bb",
+          "excerpt": "{\"openrouter/xiaomi/mimo-v2.6-flash-mopd\": {\"schema\": 2, \"name\": \"MiMo-V2.6-Flash-MOPD\", \"description\": \"MiMo flash model for fast multimodal assistance and agent workflows\", \"family\": \"mimo\", \"open_weights\": true, \"release_date\": \"2026-11-23\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\", \"audio\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"toggle\": true}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 1048576, \"output\": 32768}, \"api\": {\"chat-completions\": {}, \"responses\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}, \"messages\": {\"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.15, \"cache\": {\"read\": 0.02}}, \"output\": {\"price\": 0.42}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/066eb88a4dbbe15d5274ad5528070ce5112bbe18/providers/openrouter/models/xiaomi/mimo-v2.6-flash-mopd.toml",
+          "build": "066eb88a4dbbe15d5274ad5528070ce5112bbe18",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/066eb88a4dbbe15d5274ad5528070ce5112bbe18",
+          "first_seen": "2026-11-25T06:37:34+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/066eb88a4dbbe15d5274ad5528070ce5112bbe18"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/066eb88a4dbbe15d5274ad5528070ce5112bbe18"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T06:46:43.445273+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 066eb88a4dbb: openrouter/xiaomi/mimo-v2.6-flash-mopd\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/066eb88a4dbbe15d5274ad5528070ce5112bbe18"
+    },
     {
       "id": "intel-54a60c4ed749a408bd10",
       "scanner": "models-dev-api",
@@ -92521,12 +92624,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T06:41:07.255675+00:00",
+      "last_attempt": "2026-11-25T06:46:26.380344+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T06:41:10.661705+00:00",
+      "last_success": "2026-11-25T06:46:26.635457+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.406,
+      "duration_seconds": 0.255,
       "latest_build": "94ac20b035a16e99e6976b24c9c5c6337bfa56fdfea6349e909c6ec83acd2df0",
       "builds_retained": 171,
       "identifiers": 10095
@@ -92534,12 +92637,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-25T06:38:34.696976+00:00",
+      "last_attempt": "2026-11-25T06:43:51.998747+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T06:38:35.040058+00:00",
+      "last_success": "2026-11-25T06:43:52.325105+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.344,
+      "duration_seconds": 0.327,
       "latest_build": "4cb8bbf480d54117b8a751602cc61dbed377c127",
       "builds_retained": 86,
       "identifiers": 7076
@@ -92547,24 +92650,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-25T06:35:43.986254+00:00",
+      "last_attempt": "2026-11-25T06:46:26.827919+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T06:35:44.492397+00:00",
+      "last_success": "2026-11-25T06:46:43.445273+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.507,
-      "latest_build": "46b5a64978483d28b92ad1eeafaef89b4a141fd0",
-      "builds_retained": 175,
-      "identifiers": 11334
+      "duration_seconds": 16.618,
+      "latest_build": "066eb88a4dbbe15d5274ad5528070ce5112bbe18",
+      "builds_retained": 177,
+      "identifiers": 11335
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T06:41:10.859675+00:00",
+      "last_attempt": "2026-11-25T06:46:43.643659+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3869,
-      "duration_seconds": 20.661
+      "consecutive_failures": 3871,
+      "duration_seconds": 20.608
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -92584,61 +92687,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T06:40:31.060947+00:00",
+      "last_attempt": "2026-11-25T06:45:50.000496+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T06:40:32.612823+00:00",
+      "last_success": "2026-11-25T06:45:51.527725+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.552
+      "duration_seconds": 1.527
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T06:40:32.612892+00:00",
+      "last_attempt": "2026-11-25T06:45:51.527796+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T06:40:32.741457+00:00",
+      "last_success": "2026-11-25T06:45:51.654129+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.129
+      "duration_seconds": 0.126
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T06:40:32.741500+00:00",
+      "last_attempt": "2026-11-25T06:45:51.654173+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T06:40:38.508586+00:00",
+      "last_success": "2026-11-25T06:45:57.635285+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.767
+      "duration_seconds": 5.981
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T06:40:38.508657+00:00",
+      "last_attempt": "2026-11-25T06:45:57.635359+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T06:41:07.255621+00:00",
+      "last_success": "2026-11-25T06:46:26.380292+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 28.747,
+      "duration_seconds": 28.745,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-25T06:40:38.758571+00:00",
+          "checked_at": "2026-11-25T06:45:57.896050+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-25T06:40:48.275236+00:00",
+          "checked_at": "2026-11-25T06:46:07.276144+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-25T06:40:48.387773+00:00",
+          "checked_at": "2026-11-25T06:46:07.381310+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-25T06:40:48.387800+00:00",
+          "checked_at": "2026-11-25T06:46:07.381328+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -92646,12 +92749,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T06:41:07.255675+00:00",
+      "last_attempt": "2026-11-25T06:46:26.380344+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T06:41:10.661705+00:00",
+      "last_success": "2026-11-25T06:46:26.635457+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.406,
+      "duration_seconds": 0.255,
       "latest_build": "94ac20b035a16e99e6976b24c9c5c6337bfa56fdfea6349e909c6ec83acd2df0",
       "builds_retained": 171,
       "identifiers": 10095
@@ -92659,12 +92762,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-25T06:38:34.696976+00:00",
+      "last_attempt": "2026-11-25T06:43:51.998747+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T06:38:35.040058+00:00",
+      "last_success": "2026-11-25T06:43:52.325105+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.344,
+      "duration_seconds": 0.327,
       "latest_build": "4cb8bbf480d54117b8a751602cc61dbed377c127",
       "builds_retained": 86,
       "identifiers": 7076
@@ -92672,24 +92775,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-25T06:35:43.986254+00:00",
+      "last_attempt": "2026-11-25T06:46:26.827919+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T06:35:44.492397+00:00",
+      "last_success": "2026-11-25T06:46:43.445273+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.507,
-      "latest_build": "46b5a64978483d28b92ad1eeafaef89b4a141fd0",
-      "builds_retained": 175,
-      "identifiers": 11334
+      "duration_seconds": 16.618,
+      "latest_build": "066eb88a4dbbe15d5274ad5528070ce5112bbe18",
+      "builds_retained": 177,
+      "identifiers": 11335
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T06:41:10.859675+00:00",
+      "last_attempt": "2026-11-25T06:46:43.643659+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3869,
-      "duration_seconds": 20.661
+      "consecutive_failures": 3871,
+      "duration_seconds": 20.608
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -92707,64 +92810,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T06:41:32.174066+00:00",
+      "last_attempt": "2026-11-25T06:47:04.259505+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T06:41:40.900001+00:00",
+      "last_success": "2026-11-25T06:47:12.976405+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.726
+      "duration_seconds": 8.717
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T06:41:40.900055+00:00",
+      "last_attempt": "2026-11-25T06:47:12.976463+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T06:41:42.448466+00:00",
+      "last_success": "2026-11-25T06:47:14.681132+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.548
+      "duration_seconds": 1.705
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-25T06:36:17.361605+00:00",
+      "last_attempt": "2026-11-25T06:47:14.681194+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T06:36:27.490857+00:00",
+      "last_success": "2026-11-25T06:47:23.379198+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 10.129
+      "duration_seconds": 8.698
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T06:41:42.448520+00:00",
+      "last_attempt": "2026-11-25T06:47:23.379258+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T06:41:44.090379+00:00",
+      "last_success": "2026-11-25T06:47:24.979130+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.642
+      "duration_seconds": 1.6
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T06:41:44.090432+00:00",
+      "last_attempt": "2026-11-25T06:47:24.979198+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T06:41:44.117970+00:00",
+      "last_success": "2026-11-25T06:47:25.006047+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.028
+      "duration_seconds": 0.027
     }
   },
   "identities": {
-    "identifiers": 31835,
-    "declared_aliases": 18862,
+    "identifiers": 31836,
+    "declared_aliases": 18863,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 440,
-      "seconds_mean": 3544.357820956818,
+      "samples": 441,
+      "seconds_mean": 3537.559081752834,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -92778,9 +92881,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 573,
-      "events": 575,
-      "rate": 0.9965217391304347
+      "complete": 574,
+      "events": 576,
+      "rate": 0.9965277777777778
     },
     "source_health": {
       "sources": 14,
