@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-25T20:31:40.777170+00:00",
-  "scan_completed_at": "2026-11-25T20:32:43.028953+00:00",
+  "generated_at": "2026-11-25T20:34:06.257301+00:00",
+  "scan_completed_at": "2026-11-25T20:35:09.669234+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 351,
     "leaks": 34,
-    "releases": 93,
+    "releases": 94,
     "stories_24h": 41,
-    "sources_ok": 12,
-    "total_cards": 897,
+    "sources_ok": 13,
+    "total_cards": 898,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -56,8 +56,8 @@
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Nemotron 3.5 Rerank 1B by NVIDIA\n\nFirst detected 25 Nov 20:32 UTC in Hugging Face\n\nvia @StatsWire",
-      "discord_alerted_at": "2026-11-25T20:32:43.026089+00:00"
+      "discord_alerted_at": "2026-11-25T20:32:43.026089+00:00",
+      "x_post_text": "🟢 NEW MODEL: Nemotron 3.5 Rerank 1B by NVIDIA\n\nFirst detected 25 Nov 20:32 UTC in Hugging Face\n\nvia @StatsWire"
     },
     {
       "id": "story-muse-image",
@@ -17847,23 +17847,23 @@
     {
       "id": "story-codestral",
       "group": "codestral",
-      "kind": "registry",
+      "kind": "release",
       "open_weights": false,
-      "title": "azure_ai/Codestral-2501",
+      "title": "Codestral 2508",
       "provider_slug": "mistral",
       "provider_name": "Mistral",
-      "accent_color": "#0891b2",
+      "accent_color": "#f59e0b",
       "detected_at": "2026-11-19T01:46:11.706362+00:00",
-      "updated_at": "2026-11-25T18:50:07.877990+00:00",
+      "updated_at": "2026-11-25T20:35:06.527177+00:00",
       "first_source": "LiteLLM commit-pinned registry",
-      "lead": "",
+      "lead": "6 days before it went live on OpenRouter",
       "released_on": "",
       "pricing": "",
       "codenames": [],
       "models": [
         {
           "id": "codestral",
-          "name": "edenai/codestral-2508"
+          "name": "Codestral 2508"
         }
       ],
       "sources": [
@@ -17886,19 +17886,30 @@
           "backfill": false,
           "build": "c20ef95c70a6ff85ae44d63b054dbb1b36f12b16",
           "evidence_path": "data/intelligence/evidence/models-dev-git/6bdbece94889c37f9d1c8c9d4044862e657855cbe4cbd8ad50c286f0f530b0cd.json.gz"
+        },
+        {
+          "label": "OpenRouter",
+          "scanner": "openrouter",
+          "detected_at": "2026-11-25T20:35:06.527177+00:00",
+          "title": "Mistral: Codestral 2508 (batch)",
+          "url": "https://openrouter.ai/mistralai/codestral-2508:batch",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 2,
+      "source_count": 3,
       "backfill": false,
-      "header": "REGISTRY UPDATE · MISTRAL",
+      "header": "NEW MODEL · MISTRAL",
       "card_ids": [
         "intel-7b87b943ba0c893de39a",
         "intel-66a75f56a2826652e168",
         "intel-136cd4e664ed69b479c5",
-        "intel-73f4edfd19ab4ea8f907"
+        "intel-73f4edfd19ab4ea8f907",
+        "openrouter-model-mistralai_codestral-2508_batch"
       ],
-      "event_label": "Registry update",
-      "intelligence_only": true,
+      "event_label": "Released",
+      "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [
         {
@@ -17971,7 +17982,8 @@
           "first_seen": "2026-11-25T18:44:52+00:00"
         }
       ],
-      "x_post_text": "LiteLLM commit-pinned registry bfd2b7a2bfc0: codestral\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/bfd2b7a2bfc0d1cf7c300bb15756818479ad0619/model_prices_and_context_window.json"
+      "x_post_text": "🟢 NEW MODEL: Codestral 2508 by Mistral\n\nFirst detected 19 Nov 01:46 UTC in LiteLLM commit-pinned registry\n⏱ 6 days before it went live on OpenRouter\nConfirmed by Registry Update, OpenRouter\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-25T20:35:09.666337+00:00"
     },
     {
       "id": "story-iris-z",
@@ -29745,6 +29757,43 @@
     }
   ],
   "cards": [
+    {
+      "id": "openrouter-model-mistralai_codestral-2508_batch",
+      "category": "cli-sdk-diff",
+      "scanner": "openrouter",
+      "header": "OPENROUTER LIVE REGISTRY · MISTRALAI",
+      "title": "Mistral: Codestral 2508 (batch)",
+      "subtitle": "Newly registered model endpoint on OpenRouter (/api/v1/models)",
+      "build_label": "Endpoint ID",
+      "build_transition": "mistralai/codestral-2508:batch",
+      "models": [
+        {
+          "id": "mistralai/codestral-2508:batch",
+          "name": "Mistral: Codestral 2508 (batch) (256k context window)"
+        }
+      ],
+      "evidence": "openrouter.ai/api/v1/models",
+      "source_text": "official public OpenRouter /api/v1/models JSON registry.",
+      "disclaimer_1": "New model IDs frequently appear in router registries hours before public announcements.",
+      "disclaimer_2": "Publicly listed API model identifier and context length specification.",
+      "provider_name": "MISTRALAI",
+      "provider_slug": "mistral",
+      "accent_color": "#f59e0b",
+      "links": [
+        {
+          "label": "OpenRouter Model Page",
+          "url": "https://openrouter.ai/mistralai/codestral-2508:batch"
+        },
+        {
+          "label": "OpenRouter Models API",
+          "url": "https://openrouter.ai/api/v1/models"
+        }
+      ],
+      "detected_at": "2026-11-25T20:35:06.527177+00:00",
+      "tracker_observed_at": "2026-11-25T20:35:08.108553+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 OPENROUTER LIVE REGISTRY · MISTRALAI\nMistral: Codestral 2508 (batch) spotted in Endpoint ID mistralai/codestral-2508:batch!\n\n• Mistral: Codestral 2508 (batch) (256k context window) (mistralai/codestral-2508:batch)\n\nEvidence: openrouter.ai/api/v1/models\nSource: official public OpenRouter /api/v1/models JSON registry.\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-nvidia_Nemotron-3.5-Rerank-1B-BF16",
       "category": "open-source",
@@ -101075,12 +101124,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T20:32:16.990810+00:00",
+      "last_attempt": "2026-11-25T20:34:43.146158+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T20:32:17.386015+00:00",
+      "last_success": "2026-11-25T20:34:43.627007+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.395,
+      "duration_seconds": 0.481,
       "latest_build": "f613faca1e2349aa7efc5488adfd669339176de0f043d391eb13a3585225322c",
       "builds_retained": 195,
       "identifiers": 10385
@@ -101088,12 +101137,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-25T20:29:52.144419+00:00",
+      "last_attempt": "2026-11-25T20:34:43.765998+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T20:29:52.506275+00:00",
+      "last_success": "2026-11-25T20:34:44.139170+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.363,
+      "duration_seconds": 0.374,
       "latest_build": "2166b5b332ffe04ec8da9383ac1ba43cc09cf35f",
       "builds_retained": 93,
       "identifiers": 7081
@@ -101114,11 +101163,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T20:32:17.526600+00:00",
+      "last_attempt": "2026-11-25T20:34:44.286329+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4223,
-      "duration_seconds": 15.505
+      "consecutive_failures": 4224,
+      "duration_seconds": 15.042
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -101138,61 +101187,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T20:31:40.777245+00:00",
+      "last_attempt": "2026-11-25T20:34:06.257373+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T20:31:42.555857+00:00",
+      "last_success": "2026-11-25T20:34:07.794607+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.779
+      "duration_seconds": 1.537
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T20:31:42.555911+00:00",
+      "last_attempt": "2026-11-25T20:34:07.794659+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T20:31:42.647108+00:00",
+      "last_success": "2026-11-25T20:34:07.906166+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.091
+      "duration_seconds": 0.112
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T20:31:42.647148+00:00",
+      "last_attempt": "2026-11-25T20:34:07.906200+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T20:31:48.187614+00:00",
+      "last_success": "2026-11-25T20:34:12.952329+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.54
+      "duration_seconds": 5.046
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T20:31:48.187693+00:00",
+      "last_attempt": "2026-11-25T20:34:12.952404+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T20:32:16.990758+00:00",
+      "last_success": "2026-11-25T20:34:43.146103+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 28.803,
+      "duration_seconds": 30.194,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-25T20:31:48.348743+00:00",
+          "checked_at": "2026-11-25T20:34:13.133748+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-25T20:31:57.887655+00:00",
+          "checked_at": "2026-11-25T20:34:23.995453+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-25T20:31:58.041507+00:00",
+          "checked_at": "2026-11-25T20:34:24.148351+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-25T20:31:58.041525+00:00",
+          "checked_at": "2026-11-25T20:34:24.148368+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -101200,12 +101249,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T20:32:16.990810+00:00",
+      "last_attempt": "2026-11-25T20:34:43.146158+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T20:32:17.386015+00:00",
+      "last_success": "2026-11-25T20:34:43.627007+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.395,
+      "duration_seconds": 0.481,
       "latest_build": "f613faca1e2349aa7efc5488adfd669339176de0f043d391eb13a3585225322c",
       "builds_retained": 195,
       "identifiers": 10385
@@ -101213,12 +101262,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-25T20:29:52.144419+00:00",
+      "last_attempt": "2026-11-25T20:34:43.765998+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T20:29:52.506275+00:00",
+      "last_success": "2026-11-25T20:34:44.139170+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.363,
+      "duration_seconds": 0.374,
       "latest_build": "2166b5b332ffe04ec8da9383ac1ba43cc09cf35f",
       "builds_retained": 93,
       "identifiers": 7081
@@ -101239,11 +101288,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T20:32:17.526600+00:00",
+      "last_attempt": "2026-11-25T20:34:44.286329+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4223,
-      "duration_seconds": 15.505
+      "consecutive_failures": 4224,
+      "duration_seconds": 15.042
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -101261,22 +101310,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T20:32:33.037399+00:00",
+      "last_attempt": "2026-11-25T20:34:59.335127+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T20:32:40.209591+00:00",
+      "last_success": "2026-11-25T20:35:06.522434+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.172
+      "duration_seconds": 7.187
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T20:32:40.209666+00:00",
+      "last_attempt": "2026-11-25T20:35:06.522512+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T20:32:41.378963+00:00",
+      "last_success": "2026-11-25T20:35:08.108553+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.169
+      "duration_seconds": 1.586
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -101291,22 +101340,22 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T20:32:41.379012+00:00",
+      "last_attempt": "2026-11-25T20:35:08.108620+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T20:32:41.783258+00:00",
+      "last_success": "2026-11-25T20:35:08.494337+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.404
+      "duration_seconds": 0.386
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T20:32:41.783296+00:00",
+      "last_attempt": "2026-11-25T20:35:08.494376+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T20:32:41.795641+00:00",
+      "last_success": "2026-11-25T20:35:08.544627+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.012
+      "duration_seconds": 0.05
     }
   },
   "identities": {
