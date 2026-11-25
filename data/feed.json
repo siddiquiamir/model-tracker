@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-25T14:11:05.987797+00:00",
-  "scan_completed_at": "2026-11-25T14:12:28.746607+00:00",
+  "generated_at": "2026-11-25T14:17:41.543898+00:00",
+  "scan_completed_at": "2026-11-25T14:18:52.370879+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 337,
     "leaks": 34,
     "releases": 91,
     "stories_24h": 45,
-    "sources_ok": 15,
-    "total_cards": 841,
-    "new_in_this_scan": 0
+    "sources_ok": 12,
+    "total_cards": 845,
+    "new_in_this_scan": 4
   },
   "stories": [
     {
@@ -1625,10 +1625,10 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-24T17:11:09.834653+00:00",
-      "updated_at": "2026-11-24T17:50:26.652035+00:00",
+      "updated_at": "2026-11-25T14:18:28.733210+00:00",
       "first_source": "Official pricing page",
       "lead": "",
-      "released_on": "",
+      "released_on": "2026-11-24",
       "pricing": "",
       "codenames": [
         "healthcare"
@@ -1636,7 +1636,8 @@
       "models": [
         {
           "id": "gpt-6-astra-healthcare",
-          "name": "gpt-6-astra-healthcare"
+          "name": "openai/gpt-6-astra-healthcare",
+          "released_on": "2026-11-24"
         }
       ],
       "sources": [
@@ -1669,15 +1670,26 @@
           "backfill": false,
           "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
           "evidence_path": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz"
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-api",
+          "detected_at": "2026-11-25T14:18:28.733210+00:00",
+          "title": "gpt-6-astra-healthcare",
+          "url": "https://models.dev/api.json?type=all",
+          "backfill": false,
+          "build": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af.json.gz"
         }
       ],
-      "source_count": 3,
+      "source_count": 4,
       "backfill": false,
       "header": "NEW MODEL · OPENAI",
       "card_ids": [
         "pricing-radar-openai_pricing_md-59d94b95",
         "openai-spec-ids-0ce04d87",
-        "intel-4bfb1b512d7a1d7d71a4"
+        "intel-4bfb1b512d7a1d7d71a4",
+        "intel-36fa2012913ae9ac4f89"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -1695,10 +1707,24 @@
           "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
           "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
           "first_seen": "2026-11-24T17:47:58+00:00"
+        },
+        {
+          "id": "openai/gpt-6-astra-healthcare",
+          "family": "gpt-6-astra-healthcare",
+          "file_path": "api.json?type=all",
+          "file_sha256": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "excerpt": "{\"openai/gpt-6-astra-healthcare\": {\"id\": \"gpt-6-astra-healthcare\", \"name\": \"GPT-6 Astra Healthcare\", \"description\": \"GPT-6 Astra paired with a harness tailored to clinical questions; its web search uses a dedicated index of medical sources.\", \"family\": \"gpt-astra\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-04-30\", \"release_date\": \"2026-11-24\", \"last_updated\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"experimental\": {\"modes\": {\"fast\": {\"cost\": {\"input\": 20, \"output\": 100, \"cache_read\": 2}, \"provider\": {\"body\": {\"service_tier\": \"priority\"}}}}}, \"cost\": {\"input\": 10, \"output\": 50, \"cache_read\": 1, \"tiers\": [{\"input\": 20, \"output\": 75, \"cache_read\": 2, \"tier\": {\"type\": \"context\", \"size\": 272000}}], \"context_over_200k\": {\"input\": 20, \"output\": 75, \"cache_read\": 2}}, \"canonical_model_id\": \"openai/gpt-6-astra-healthcare\"}}",
+          "canonical_id": "openai/gpt-6-astra-healthcare",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T14:18:28.455976+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-24T17:32:21.810914+00:00",
-      "x_post_text": "🟢 NEW MODEL: GPT 6 Astra Healthcare by OpenAI\n\nFirst detected 24 Nov 17:11 UTC in Official pricing page\nConfirmed by OpenAI API spec, LiteLLM commit-pinned registry\nCodename: healthcare\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: GPT 6 Astra Healthcare by OpenAI\n\nFirst detected 24 Nov 17:11 UTC in Official pricing page\n📅 First released: 2026-11-24\nConfirmed by OpenAI API spec, LiteLLM commit-pinned registry, Registry Update\nCodename: healthcare\n\nvia @StatsWire"
     },
     {
       "id": "story-gpt-6-1-sol-healthcare",
@@ -1710,10 +1736,10 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-24T17:11:09.834653+00:00",
-      "updated_at": "2026-11-24T17:50:26.652035+00:00",
+      "updated_at": "2026-11-25T14:18:28.733210+00:00",
       "first_source": "Official pricing page",
       "lead": "",
-      "released_on": "",
+      "released_on": "2026-11-24",
       "pricing": "",
       "codenames": [
         "healthcare"
@@ -1721,7 +1747,8 @@
       "models": [
         {
           "id": "gpt-6.1-sol-healthcare",
-          "name": "gpt-6.1-sol-healthcare"
+          "name": "openai/gpt-6.1-sol-healthcare",
+          "released_on": "2026-11-24"
         }
       ],
       "sources": [
@@ -1754,15 +1781,26 @@
           "backfill": false,
           "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
           "evidence_path": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz"
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-api",
+          "detected_at": "2026-11-25T14:18:28.733210+00:00",
+          "title": "gpt-6.1-sol-healthcare",
+          "url": "https://models.dev/api.json?type=all",
+          "backfill": false,
+          "build": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af.json.gz"
         }
       ],
-      "source_count": 3,
+      "source_count": 4,
       "backfill": false,
       "header": "NEW MODEL · OPENAI",
       "card_ids": [
         "pricing-radar-openai_pricing_md-59d94b95",
         "openai-spec-ids-0ce04d87",
-        "intel-d784623bebf23d0750e2"
+        "intel-d784623bebf23d0750e2",
+        "intel-af2d9a6d4d86a9d19bb6"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -1780,10 +1818,24 @@
           "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
           "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
           "first_seen": "2026-11-24T17:47:58+00:00"
+        },
+        {
+          "id": "openai/gpt-6.1-sol-healthcare",
+          "family": "gpt-6.1-sol-healthcare",
+          "file_path": "api.json?type=all",
+          "file_sha256": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "excerpt": "{\"openai/gpt-6.1-sol-healthcare\": {\"id\": \"gpt-6.1-sol-healthcare\", \"name\": \"GPT-6.1 Sol Healthcare\", \"description\": \"GPT-6.1 Sol paired with a harness tailored to clinical questions; its web search uses a dedicated index of medical sources.\", \"family\": \"gpt-sol\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-04-30\", \"release_date\": \"2026-11-24\", \"last_updated\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"experimental\": {\"modes\": {\"fast\": {\"cost\": {\"input\": 4, \"output\": 20, \"cache_read\": 0.2}, \"provider\": {\"body\": {\"service_tier\": \"priority\"}}}}}, \"cost\": {\"input\": 2, \"output\": 10, \"cache_read\": 0.1, \"tiers\": [{\"input\": 4, \"output\": 15, \"cache_read\": 0.2, \"tier\": {\"type\": \"context\", \"size\": 272000}}], \"context_over_200k\": {\"input\": 4, \"output\": 15, \"cache_read\": 0.2}}, \"canonical_model_id\": \"openai/gpt-6.1-sol-healthcare\"}}",
+          "canonical_id": "openai/gpt-6.1-sol-healthcare",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T14:18:28.455976+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-24T17:51:04.036854+00:00",
-      "x_post_text": "🟢 NEW MODEL: GPT 6.1 Sol Healthcare by OpenAI\n\nFirst detected 24 Nov 17:11 UTC in Official pricing page\nConfirmed by OpenAI API spec, LiteLLM commit-pinned registry\nCodename: healthcare\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: GPT 6.1 Sol Healthcare by OpenAI\n\nFirst detected 24 Nov 17:11 UTC in Official pricing page\n📅 First released: 2026-11-24\nConfirmed by OpenAI API spec, LiteLLM commit-pinned registry, Registry Update\nCodename: healthcare\n\nvia @StatsWire"
     },
     {
       "id": "story-gpt-6-2-astra-healthcare",
@@ -1795,10 +1847,10 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-24T17:11:09.834653+00:00",
-      "updated_at": "2026-11-24T17:50:26.652035+00:00",
+      "updated_at": "2026-11-25T14:18:28.733210+00:00",
       "first_source": "Official pricing page",
       "lead": "",
-      "released_on": "",
+      "released_on": "2026-11-24",
       "pricing": "",
       "codenames": [
         "healthcare"
@@ -1806,7 +1858,8 @@
       "models": [
         {
           "id": "gpt-6.2-astra-healthcare",
-          "name": "gpt-6.2-astra-healthcare"
+          "name": "openai/gpt-6.2-astra-healthcare",
+          "released_on": "2026-11-24"
         }
       ],
       "sources": [
@@ -1839,15 +1892,26 @@
           "backfill": false,
           "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
           "evidence_path": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz"
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-api",
+          "detected_at": "2026-11-25T14:18:28.733210+00:00",
+          "title": "gpt-6.2-astra-healthcare",
+          "url": "https://models.dev/api.json?type=all",
+          "backfill": false,
+          "build": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af.json.gz"
         }
       ],
-      "source_count": 3,
+      "source_count": 4,
       "backfill": false,
       "header": "NEW MODEL · OPENAI",
       "card_ids": [
         "pricing-radar-openai_pricing_md-59d94b95",
         "openai-spec-ids-0ce04d87",
-        "intel-eafdba1b27d241b05dd6"
+        "intel-eafdba1b27d241b05dd6",
+        "intel-f9bc2676a8f56f7e3fa4"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -1865,10 +1929,24 @@
           "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
           "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
           "first_seen": "2026-11-24T17:47:58+00:00"
+        },
+        {
+          "id": "openai/gpt-6.2-astra-healthcare",
+          "family": "gpt-6.2-astra-healthcare",
+          "file_path": "api.json?type=all",
+          "file_sha256": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "excerpt": "{\"openai/gpt-6.2-astra-healthcare\": {\"id\": \"gpt-6.2-astra-healthcare\", \"name\": \"GPT-6.2 Astra Healthcare\", \"description\": \"GPT-6.2 Astra paired with a harness tailored to clinical questions; its web search uses a dedicated index of medical sources.\", \"family\": \"gpt-astra\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-05-18\", \"release_date\": \"2026-11-24\", \"last_updated\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"experimental\": {\"modes\": {\"fast\": {\"cost\": {\"input\": 16, \"output\": 80, \"cache_read\": 0.8, \"cache_write\": 20}, \"provider\": {\"body\": {\"service_tier\": \"priority\"}}}}}, \"cost\": {\"input\": 8, \"output\": 40, \"cache_read\": 0.4, \"cache_write\": 10, \"tiers\": [{\"input\": 16, \"output\": 60, \"cache_read\": 0.8, \"cache_write\": 20, \"tier\": {\"type\": \"context\", \"size\": 272000}}], \"context_over_200k\": {\"input\": 16, \"output\": 60, \"cache_read\": 0.8, \"cache_write\": 20}}, \"canonical_model_id\": \"op",
+          "canonical_id": "openai/gpt-6.2-astra-healthcare",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T14:18:28.455976+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-24T17:32:21.810914+00:00",
-      "x_post_text": "🟢 NEW MODEL: GPT 6.2 Astra Healthcare by OpenAI\n\nFirst detected 24 Nov 17:11 UTC in Official pricing page\nConfirmed by OpenAI API spec, LiteLLM commit-pinned registry\nCodename: healthcare\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: GPT 6.2 Astra Healthcare by OpenAI\n\nFirst detected 24 Nov 17:11 UTC in Official pricing page\n📅 First released: 2026-11-24\nConfirmed by OpenAI API spec, LiteLLM commit-pinned registry, Registry Update\nCodename: healthcare\n\nvia @StatsWire"
     },
     {
       "id": "story-gpt-6-2-sol-healthcare",
@@ -1880,10 +1958,10 @@
       "provider_name": "OpenAI",
       "accent_color": "#10b981",
       "detected_at": "2026-11-24T17:11:09.834653+00:00",
-      "updated_at": "2026-11-24T17:50:26.652035+00:00",
+      "updated_at": "2026-11-25T14:18:28.733210+00:00",
       "first_source": "Official pricing page",
       "lead": "",
-      "released_on": "",
+      "released_on": "2026-11-24",
       "pricing": "",
       "codenames": [
         "healthcare"
@@ -1891,7 +1969,8 @@
       "models": [
         {
           "id": "gpt-6.2-sol-healthcare",
-          "name": "gpt-6.2-sol-healthcare"
+          "name": "openai/gpt-6.2-sol-healthcare",
+          "released_on": "2026-11-24"
         }
       ],
       "sources": [
@@ -1924,15 +2003,26 @@
           "backfill": false,
           "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
           "evidence_path": "data/intelligence/evidence/litellm-intelligence/46370165ded7de8b6a2688eaf685ccc8d5c94ce8b34f91287ebf7c736b164b85.json.gz"
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-api",
+          "detected_at": "2026-11-25T14:18:28.733210+00:00",
+          "title": "gpt-6.2-sol-healthcare",
+          "url": "https://models.dev/api.json?type=all",
+          "backfill": false,
+          "build": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af.json.gz"
         }
       ],
-      "source_count": 3,
+      "source_count": 4,
       "backfill": false,
       "header": "NEW MODEL · OPENAI",
       "card_ids": [
         "pricing-radar-openai_pricing_md-59d94b95",
         "openai-spec-ids-0ce04d87",
-        "intel-2a3881842dc8e86962c1"
+        "intel-2a3881842dc8e86962c1",
+        "intel-8d2d26b10f8e9aa2b04a"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -1950,10 +2040,24 @@
           "build": "bad883561c70618d0506c109c86aa50d3bac6bb3",
           "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/bad883561c70618d0506c109c86aa50d3bac6bb3/model_prices_and_context_window.json",
           "first_seen": "2026-11-24T17:47:58+00:00"
+        },
+        {
+          "id": "openai/gpt-6.2-sol-healthcare",
+          "family": "gpt-6.2-sol-healthcare",
+          "file_path": "api.json?type=all",
+          "file_sha256": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "excerpt": "{\"openai/gpt-6.2-sol-healthcare\": {\"id\": \"gpt-6.2-sol-healthcare\", \"name\": \"GPT-6.2 Sol Healthcare\", \"description\": \"GPT-6.2 Sol paired with a harness tailored to clinical questions; its web search uses a dedicated index of medical sources.\", \"family\": \"gpt-sol\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-06-01\", \"release_date\": \"2026-11-24\", \"last_updated\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"experimental\": {\"modes\": {\"fast\": {\"cost\": {\"input\": 4, \"output\": 20, \"cache_read\": 0.2, \"cache_write\": 5}, \"provider\": {\"body\": {\"service_tier\": \"priority\"}}}}}, \"cost\": {\"input\": 2, \"output\": 10, \"cache_read\": 0.1, \"cache_write\": 2.5, \"tiers\": [{\"input\": 4, \"output\": 15, \"cache_read\": 0.2, \"cache_write\": 5, \"tier\": {\"type\": \"context\", \"size\": 272000}}], \"context_over_200k\": {\"input\": 4, \"output\": 15, \"cache_read\": 0.2, \"cache_write\": 5}}, \"canonical_model_id\": \"openai/gpt-6.2-so",
+          "canonical_id": "openai/gpt-6.2-sol-healthcare",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T14:18:28.455976+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-24T17:51:04.036854+00:00",
-      "x_post_text": "🟢 NEW MODEL: GPT 6.2 Sol Healthcare by OpenAI\n\nFirst detected 24 Nov 17:11 UTC in Official pricing page\nConfirmed by OpenAI API spec, LiteLLM commit-pinned registry\nCodename: healthcare\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: GPT 6.2 Sol Healthcare by OpenAI\n\nFirst detected 24 Nov 17:11 UTC in Official pricing page\n📅 First released: 2026-11-24\nConfirmed by OpenAI API spec, LiteLLM commit-pinned registry, Registry Update\nCodename: healthcare\n\nvia @StatsWire"
     },
     {
       "id": "story-bioreason-pro-2-rl",
@@ -28005,6 +28109,378 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-36fa2012913ae9ac4f89",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6-astra-healthcare",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "gpt-6-astra-healthcare",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "openai/gpt-6-astra-healthcare",
+          "name": "openai/gpt-6-astra-healthcare",
+          "registry_update": true,
+          "released_on": "2026-11-24"
+        }
+      ],
+      "detected_at": "2026-11-25T14:18:28.733210+00:00",
+      "first_seen": "2026-11-25T14:18:28.455976+00:00",
+      "observed_at": "2026-11-25T14:18:28.733210+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "03cdafc38af05e2cfcdd3a49f48f90258dd28a8d5b471d8e820f4e668c148388 -> 9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+      "build": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "openai/gpt-6-astra-healthcare",
+          "family": "gpt-6-astra-healthcare",
+          "file_path": "api.json?type=all",
+          "file_sha256": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "excerpt": "{\"openai/gpt-6-astra-healthcare\": {\"id\": \"gpt-6-astra-healthcare\", \"name\": \"GPT-6 Astra Healthcare\", \"description\": \"GPT-6 Astra paired with a harness tailored to clinical questions; its web search uses a dedicated index of medical sources.\", \"family\": \"gpt-astra\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-04-30\", \"release_date\": \"2026-11-24\", \"last_updated\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"experimental\": {\"modes\": {\"fast\": {\"cost\": {\"input\": 20, \"output\": 100, \"cache_read\": 2}, \"provider\": {\"body\": {\"service_tier\": \"priority\"}}}}}, \"cost\": {\"input\": 10, \"output\": 50, \"cache_read\": 1, \"tiers\": [{\"input\": 20, \"output\": 75, \"cache_read\": 2, \"tier\": {\"type\": \"context\", \"size\": 272000}}], \"context_over_200k\": {\"input\": 20, \"output\": 75, \"cache_read\": 2}}, \"canonical_model_id\": \"openai/gpt-6-astra-healthcare\"}}",
+          "canonical_id": "openai/gpt-6-astra-healthcare",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T14:18:28.455976+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-6-astra-healthcare",
+          "first_seen": "2026-11-24T17:47:58+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/4126c04c038c5829004eb0c8fb22d2cd46d74bcba06b88bc130d1d93c1a51e75.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T14:18:30.746827+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 9a42b7f84fac: openai/gpt-6-astra-healthcare\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
+    {
+      "id": "intel-af2d9a6d4d86a9d19bb6",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.1-sol-healthcare",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "gpt-6.1-sol-healthcare",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "openai/gpt-6.1-sol-healthcare",
+          "name": "openai/gpt-6.1-sol-healthcare",
+          "registry_update": true,
+          "released_on": "2026-11-24"
+        }
+      ],
+      "detected_at": "2026-11-25T14:18:28.733210+00:00",
+      "first_seen": "2026-11-25T14:18:28.455976+00:00",
+      "observed_at": "2026-11-25T14:18:28.733210+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "03cdafc38af05e2cfcdd3a49f48f90258dd28a8d5b471d8e820f4e668c148388 -> 9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+      "build": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "openai/gpt-6.1-sol-healthcare",
+          "family": "gpt-6.1-sol-healthcare",
+          "file_path": "api.json?type=all",
+          "file_sha256": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "excerpt": "{\"openai/gpt-6.1-sol-healthcare\": {\"id\": \"gpt-6.1-sol-healthcare\", \"name\": \"GPT-6.1 Sol Healthcare\", \"description\": \"GPT-6.1 Sol paired with a harness tailored to clinical questions; its web search uses a dedicated index of medical sources.\", \"family\": \"gpt-sol\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-04-30\", \"release_date\": \"2026-11-24\", \"last_updated\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"experimental\": {\"modes\": {\"fast\": {\"cost\": {\"input\": 4, \"output\": 20, \"cache_read\": 0.2}, \"provider\": {\"body\": {\"service_tier\": \"priority\"}}}}}, \"cost\": {\"input\": 2, \"output\": 10, \"cache_read\": 0.1, \"tiers\": [{\"input\": 4, \"output\": 15, \"cache_read\": 0.2, \"tier\": {\"type\": \"context\", \"size\": 272000}}], \"context_over_200k\": {\"input\": 4, \"output\": 15, \"cache_read\": 0.2}}, \"canonical_model_id\": \"openai/gpt-6.1-sol-healthcare\"}}",
+          "canonical_id": "openai/gpt-6.1-sol-healthcare",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T14:18:28.455976+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-6.1-sol-healthcare",
+          "first_seen": "2026-11-24T17:47:58+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/4126c04c038c5829004eb0c8fb22d2cd46d74bcba06b88bc130d1d93c1a51e75.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T14:18:30.746827+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 9a42b7f84fac: openai/gpt-6.1-sol-healthcare\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
+    {
+      "id": "intel-f9bc2676a8f56f7e3fa4",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-astra-healthcare",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "gpt-6.2-astra-healthcare",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "openai/gpt-6.2-astra-healthcare",
+          "name": "openai/gpt-6.2-astra-healthcare",
+          "registry_update": true,
+          "released_on": "2026-11-24"
+        }
+      ],
+      "detected_at": "2026-11-25T14:18:28.733210+00:00",
+      "first_seen": "2026-11-25T14:18:28.455976+00:00",
+      "observed_at": "2026-11-25T14:18:28.733210+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "03cdafc38af05e2cfcdd3a49f48f90258dd28a8d5b471d8e820f4e668c148388 -> 9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+      "build": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "openai/gpt-6.2-astra-healthcare",
+          "family": "gpt-6.2-astra-healthcare",
+          "file_path": "api.json?type=all",
+          "file_sha256": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "excerpt": "{\"openai/gpt-6.2-astra-healthcare\": {\"id\": \"gpt-6.2-astra-healthcare\", \"name\": \"GPT-6.2 Astra Healthcare\", \"description\": \"GPT-6.2 Astra paired with a harness tailored to clinical questions; its web search uses a dedicated index of medical sources.\", \"family\": \"gpt-astra\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-05-18\", \"release_date\": \"2026-11-24\", \"last_updated\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"experimental\": {\"modes\": {\"fast\": {\"cost\": {\"input\": 16, \"output\": 80, \"cache_read\": 0.8, \"cache_write\": 20}, \"provider\": {\"body\": {\"service_tier\": \"priority\"}}}}}, \"cost\": {\"input\": 8, \"output\": 40, \"cache_read\": 0.4, \"cache_write\": 10, \"tiers\": [{\"input\": 16, \"output\": 60, \"cache_read\": 0.8, \"cache_write\": 20, \"tier\": {\"type\": \"context\", \"size\": 272000}}], \"context_over_200k\": {\"input\": 16, \"output\": 60, \"cache_read\": 0.8, \"cache_write\": 20}}, \"canonical_model_id\": \"op",
+          "canonical_id": "openai/gpt-6.2-astra-healthcare",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T14:18:28.455976+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-6.2-astra-healthcare",
+          "first_seen": "2026-11-24T17:47:58+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/4126c04c038c5829004eb0c8fb22d2cd46d74bcba06b88bc130d1d93c1a51e75.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T14:18:30.746827+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 9a42b7f84fac: openai/gpt-6.2-astra-healthcare\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
+    {
+      "id": "intel-8d2d26b10f8e9aa2b04a",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6.2-sol-healthcare",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "gpt-6.2-sol-healthcare",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "openai/gpt-6.2-sol-healthcare",
+          "name": "openai/gpt-6.2-sol-healthcare",
+          "registry_update": true,
+          "released_on": "2026-11-24"
+        }
+      ],
+      "detected_at": "2026-11-25T14:18:28.733210+00:00",
+      "first_seen": "2026-11-25T14:18:28.455976+00:00",
+      "observed_at": "2026-11-25T14:18:28.733210+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "03cdafc38af05e2cfcdd3a49f48f90258dd28a8d5b471d8e820f4e668c148388 -> 9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+      "build": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "openai/gpt-6.2-sol-healthcare",
+          "family": "gpt-6.2-sol-healthcare",
+          "file_path": "api.json?type=all",
+          "file_sha256": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "excerpt": "{\"openai/gpt-6.2-sol-healthcare\": {\"id\": \"gpt-6.2-sol-healthcare\", \"name\": \"GPT-6.2 Sol Healthcare\", \"description\": \"GPT-6.2 Sol paired with a harness tailored to clinical questions; its web search uses a dedicated index of medical sources.\", \"family\": \"gpt-sol\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": false, \"knowledge\": \"2026-06-01\", \"release_date\": \"2026-11-24\", \"last_updated\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\", \"image\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1050000, \"input\": 922000, \"output\": 128000}, \"experimental\": {\"modes\": {\"fast\": {\"cost\": {\"input\": 4, \"output\": 20, \"cache_read\": 0.2, \"cache_write\": 5}, \"provider\": {\"body\": {\"service_tier\": \"priority\"}}}}}, \"cost\": {\"input\": 2, \"output\": 10, \"cache_read\": 0.1, \"cache_write\": 2.5, \"tiers\": [{\"input\": 4, \"output\": 15, \"cache_read\": 0.2, \"cache_write\": 5, \"tier\": {\"type\": \"context\", \"size\": 272000}}], \"context_over_200k\": {\"input\": 4, \"output\": 15, \"cache_read\": 0.2, \"cache_write\": 5}}, \"canonical_model_id\": \"openai/gpt-6.2-so",
+          "canonical_id": "openai/gpt-6.2-sol-healthcare",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "build": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T14:18:28.455976+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "gpt-6.2-sol-healthcare",
+          "first_seen": "2026-11-24T17:47:58+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/4126c04c038c5829004eb0c8fb22d2cd46d74bcba06b88bc130d1d93c1a51e75.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T14:18:30.746827+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 9a42b7f84fac: openai/gpt-6.2-sol-healthcare\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "intel-b4c1c7cea88b0c4f9f7e",
       "scanner": "models-dev-api",
@@ -93824,25 +94300,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T14:11:49.265760+00:00",
+      "last_attempt": "2026-11-25T14:18:28.211868+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T14:11:51.687251+00:00",
+      "last_success": "2026-11-25T14:18:30.746827+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.422,
-      "latest_build": "03cdafc38af05e2cfcdd3a49f48f90258dd28a8d5b471d8e820f4e668c148388",
-      "builds_retained": 174,
-      "identifiers": 10100
+      "duration_seconds": 2.536,
+      "latest_build": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+      "builds_retained": 175,
+      "identifiers": 10104
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-25T14:11:51.796663+00:00",
+      "last_attempt": "2026-11-25T14:16:22.145981+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T14:11:52.305114+00:00",
+      "last_success": "2026-11-25T14:16:22.629247+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.509,
+      "duration_seconds": 0.484,
       "latest_build": "b4589fc7d1ca66e8f87e46c6ee9876b438934bb9",
       "builds_retained": 90,
       "identifiers": 7080
@@ -93863,21 +94339,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T14:11:58.363598+00:00",
+      "last_attempt": "2026-11-25T14:18:30.875179+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4061,
-      "duration_seconds": 10.658
+      "consecutive_failures": 4064,
+      "duration_seconds": 11.144
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-25T13:59:17.031356+00:00",
+      "last_attempt": "2026-11-25T14:14:30.019798+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T13:59:17.339787+00:00",
+      "last_success": "2026-11-25T14:14:30.260001+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.308,
+      "duration_seconds": 0.24,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -93887,61 +94363,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T14:11:05.987884+00:00",
+      "last_attempt": "2026-11-25T14:17:41.543970+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T14:11:08.334180+00:00",
+      "last_success": "2026-11-25T14:17:45.339906+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.346
+      "duration_seconds": 3.796
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T14:11:08.334241+00:00",
+      "last_attempt": "2026-11-25T14:17:45.339966+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T14:11:08.645833+00:00",
+      "last_success": "2026-11-25T14:17:45.596250+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.312
+      "duration_seconds": 0.256
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T14:11:08.645889+00:00",
+      "last_attempt": "2026-11-25T14:17:45.596290+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T14:11:17.113038+00:00",
+      "last_success": "2026-11-25T14:17:55.151315+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.467
+      "duration_seconds": 9.555
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T14:11:17.113112+00:00",
+      "last_attempt": "2026-11-25T14:17:55.151508+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T14:11:49.265698+00:00",
+      "last_success": "2026-11-25T14:18:28.211799+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 32.153,
+      "duration_seconds": 33.06,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-25T14:11:17.407858+00:00",
+          "checked_at": "2026-11-25T14:17:55.431823+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-25T14:11:26.551033+00:00",
+          "checked_at": "2026-11-25T14:18:04.150245+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-25T14:11:26.809952+00:00",
+          "checked_at": "2026-11-25T14:18:04.344158+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-25T14:11:26.809974+00:00",
+          "checked_at": "2026-11-25T14:18:04.344179+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -93949,25 +94425,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T14:11:49.265760+00:00",
+      "last_attempt": "2026-11-25T14:18:28.211868+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T14:11:51.687251+00:00",
+      "last_success": "2026-11-25T14:18:30.746827+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.422,
-      "latest_build": "03cdafc38af05e2cfcdd3a49f48f90258dd28a8d5b471d8e820f4e668c148388",
-      "builds_retained": 174,
-      "identifiers": 10100
+      "duration_seconds": 2.536,
+      "latest_build": "9a42b7f84facd82d1c01bed8c6485fa52ca4ef2453785e2722c40c95598733af",
+      "builds_retained": 175,
+      "identifiers": 10104
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-25T14:11:51.796663+00:00",
+      "last_attempt": "2026-11-25T14:16:22.145981+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T14:11:52.305114+00:00",
+      "last_success": "2026-11-25T14:16:22.629247+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.509,
+      "duration_seconds": 0.484,
       "latest_build": "b4589fc7d1ca66e8f87e46c6ee9876b438934bb9",
       "builds_retained": 90,
       "identifiers": 7080
@@ -93988,21 +94464,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T14:11:58.363598+00:00",
+      "last_attempt": "2026-11-25T14:18:30.875179+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4061,
-      "duration_seconds": 10.658
+      "consecutive_failures": 4064,
+      "duration_seconds": 11.144
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-25T13:59:17.031356+00:00",
+      "last_attempt": "2026-11-25T14:14:30.019798+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T13:59:17.339787+00:00",
+      "last_success": "2026-11-25T14:14:30.260001+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.308,
+      "duration_seconds": 0.24,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -94010,22 +94486,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T14:12:09.028440+00:00",
+      "last_attempt": "2026-11-25T14:18:42.026708+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T14:12:13.920866+00:00",
+      "last_success": "2026-11-25T14:18:46.948611+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.892
+      "duration_seconds": 4.922
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T14:12:13.920931+00:00",
+      "last_attempt": "2026-11-25T14:18:46.948668+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T14:12:15.595748+00:00",
+      "last_success": "2026-11-25T14:18:49.640478+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.675
+      "duration_seconds": 2.692
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -94040,27 +94516,27 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T14:12:27.206958+00:00",
+      "last_attempt": "2026-11-25T14:18:49.640531+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T14:12:28.290866+00:00",
+      "last_success": "2026-11-25T14:18:50.761504+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.084
+      "duration_seconds": 1.121
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T14:12:28.290913+00:00",
+      "last_attempt": "2026-11-25T14:18:50.761546+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T14:12:28.384122+00:00",
+      "last_success": "2026-11-25T14:18:50.810731+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.093
+      "duration_seconds": 0.049
     }
   },
   "identities": {
-    "identifiers": 31850,
-    "declared_aliases": 18863,
+    "identifiers": 31854,
+    "declared_aliases": 18867,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
@@ -94081,9 +94557,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 585,
-      "events": 587,
-      "rate": 0.9965928449744463
+      "complete": 589,
+      "events": 591,
+      "rate": 0.9966159052453468
     },
     "source_health": {
       "sources": 14,
