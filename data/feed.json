@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-25T00:52:02.712803+00:00",
-  "scan_completed_at": "2026-11-25T00:53:16.439615+00:00",
+  "generated_at": "2026-11-25T00:54:13.812980+00:00",
+  "scan_completed_at": "2026-11-25T00:55:54.238635+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 333,
     "leaks": 35,
     "releases": 91,
     "stories_24h": 49,
-    "sources_ok": 13,
-    "total_cards": 811,
-    "new_in_this_scan": 1
+    "sources_ok": 14,
+    "total_cards": 814,
+    "new_in_this_scan": 3
   },
   "stories": [
     {
@@ -56,8 +56,8 @@
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Nemotron Labs Image 30B A3B by NVIDIA\n\nFirst detected 25 Nov 00:53 UTC in Hugging Face\n\nvia @StatsWire",
-      "discord_alerted_at": "2026-11-25T00:53:16.437325+00:00"
+      "discord_alerted_at": "2026-11-25T00:53:16.437325+00:00",
+      "x_post_text": "🟢 NEW MODEL: Nemotron Labs Image 30B A3B by NVIDIA\n\nFirst detected 25 Nov 00:53 UTC in Hugging Face\n\nvia @StatsWire"
     },
     {
       "id": "story-solar-mini-4-5",
@@ -65,20 +65,21 @@
       "kind": "release",
       "open_weights": false,
       "title": "Solar Mini 4.5",
-      "provider_slug": "openrouter",
-      "provider_name": "Upstage",
-      "accent_color": "#10b981",
+      "provider_slug": "unknown",
+      "provider_name": "kilo",
+      "accent_color": "#0891b2",
       "detected_at": "2026-11-25T00:21:12.878500+00:00",
-      "updated_at": "2026-11-25T00:21:12.878500+00:00",
+      "updated_at": "2026-11-25T00:55:21.475049+00:00",
       "first_source": "OpenRouter",
       "lead": "",
-      "released_on": "",
+      "released_on": "2026-11-24",
       "pricing": "",
       "codenames": [],
       "models": [
         {
           "id": "solar-mini-4-5",
-          "name": "Solar Mini 4.5"
+          "name": "kilo/upstage/solar-mini-4-5",
+          "released_on": "2026-11-24"
         }
       ],
       "sources": [
@@ -91,20 +92,47 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-25T00:55:21.475049+00:00",
+          "title": "solar-mini-4-5",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+          "backfill": false,
+          "build": "f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/c64fb73271ce8a35d179f1a5a019411edfd9ac0df3e622d11892fdf5f15decc3.json.gz"
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
-      "header": "NEW MODEL · UPSTAGE",
+      "header": "NEW MODEL · KILO",
       "card_ids": [
-        "openrouter-model-upstage_solar-mini-4-5"
+        "openrouter-model-upstage_solar-mini-4-5",
+        "intel-b0e978a6a6959da68091"
       ],
-      "event_label": "",
+      "event_label": "Released",
       "intelligence_only": false,
       "candidate_only": false,
-      "registry_evidence": [],
+      "registry_evidence": [
+        {
+          "id": "kilo/upstage/solar-mini-4-5",
+          "family": "solar-mini-4-5",
+          "file_path": "providers/kilo/models/upstage/solar-mini-4-5.toml",
+          "file_sha256": "1ce009f3c5c3d43fcc6b130b34b9294c66f72c40d420ac29b7b9dc8c4d6dd3d9",
+          "excerpt": "{\"kilo/upstage/solar-mini-4-5\": {\"schema\": 2, \"name\": \"Upstage: Solar Mini 4.5 (Preview)\", \"description\": \"Solar Mini 4.5 is Upstage's compact language model, built on a proprietary mixture-of-experts architecture with 35B total and 3B active parameters and a 524K context window. It is a step...\", \"family\": \"solar-mini\", \"open_weights\": false, \"release_date\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 524288, \"output\": 131072}, \"cost\": {\"text\": {\"input\": {\"price\": 0.1, \"cache\": {\"read\": 0.01}}, \"output\": {\"price\": 0.4}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e/providers/kilo/models/upstage/solar-mini-4-5.toml",
+          "build": "f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+          "first_seen": "2026-11-25T00:55:08+00:00"
+        }
+      ],
       "discord_alerted_at": "2026-11-25T00:21:32.938161+00:00",
-      "x_post_text": "🟢 NEW MODEL: Solar Mini 4.5 by Upstage\n\nFirst detected 25 Nov 00:21 UTC in OpenRouter\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Solar Mini 4.5 by kilo\n\nFirst detected 25 Nov 00:21 UTC in OpenRouter\n📅 First released: 2026-11-24\nConfirmed by Registry Update\n\nvia @StatsWire"
     },
     {
       "id": "story-solar-pro-4-contributor",
@@ -112,20 +140,21 @@
       "kind": "release",
       "open_weights": false,
       "title": "Solar Pro 4 Contributor",
-      "provider_slug": "openrouter",
-      "provider_name": "Upstage",
-      "accent_color": "#10b981",
+      "provider_slug": "unknown",
+      "provider_name": "kilo",
+      "accent_color": "#0891b2",
       "detected_at": "2026-11-25T00:21:12.878500+00:00",
-      "updated_at": "2026-11-25T00:21:12.878500+00:00",
+      "updated_at": "2026-11-25T00:55:21.475049+00:00",
       "first_source": "OpenRouter",
       "lead": "",
-      "released_on": "",
+      "released_on": "2026-11-24",
       "pricing": "",
       "codenames": [],
       "models": [
         {
           "id": "solar-pro-4-contributor",
-          "name": "Solar Pro 4 Contributor"
+          "name": "kilo/upstage/solar-pro-4-contributor",
+          "released_on": "2026-11-24"
         }
       ],
       "sources": [
@@ -138,20 +167,47 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-25T00:55:21.475049+00:00",
+          "title": "solar-pro-4-contributor",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+          "backfill": false,
+          "build": "f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/c64fb73271ce8a35d179f1a5a019411edfd9ac0df3e622d11892fdf5f15decc3.json.gz"
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
-      "header": "NEW MODEL · UPSTAGE",
+      "header": "NEW MODEL · KILO",
       "card_ids": [
-        "openrouter-model-upstage_solar-pro-4-contributor"
+        "openrouter-model-upstage_solar-pro-4-contributor",
+        "intel-5ab6ca6348bea3100bb1"
       ],
-      "event_label": "",
+      "event_label": "Released",
       "intelligence_only": false,
       "candidate_only": false,
-      "registry_evidence": [],
+      "registry_evidence": [
+        {
+          "id": "kilo/upstage/solar-pro-4-contributor",
+          "family": "solar-pro-4-contributor",
+          "file_path": "providers/kilo/models/upstage/solar-pro-4-contributor.toml",
+          "file_sha256": "dfec01d5e8f62c912b1a68655c84917e0ebd594a87a072ed07c4f2bc41be6b69",
+          "excerpt": "{\"kilo/upstage/solar-pro-4-contributor\": {\"schema\": 2, \"name\": \"Upstage: Solar Pro 4 Contributor\", \"description\": \"Solar Pro 4 Contributor is the same Solar Pro 4 model from Upstage, offered at a lower rate in exchange for allowing Upstage to use interaction data to improve its...\", \"family\": \"solar-pro\", \"open_weights\": false, \"release_date\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 524288, \"output\": 131072}, \"cost\": {\"text\": {\"input\": {\"price\": 0.3, \"cache\": {\"read\": 0.03}}, \"output\": {\"price\": 1.2}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e/providers/kilo/models/upstage/solar-pro-4-contributor.toml",
+          "build": "f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+          "first_seen": "2026-11-25T00:55:08+00:00"
+        }
+      ],
       "discord_alerted_at": "2026-11-25T00:21:32.938161+00:00",
-      "x_post_text": "🟢 NEW MODEL: Solar Pro 4 Contributor by Upstage\n\nFirst detected 25 Nov 00:21 UTC in OpenRouter\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Solar Pro 4 Contributor by kilo\n\nFirst detected 25 Nov 00:21 UTC in OpenRouter\n📅 First released: 2026-11-24\nConfirmed by Registry Update\n\nvia @StatsWire"
     },
     {
       "id": "story-omniasrforconditionalgeneration",
@@ -4955,10 +5011,10 @@
       "open_weights": false,
       "title": "deepinfra/thinkingmachines/Inkling-2-Mini",
       "provider_slug": "unknown",
-      "provider_name": "venice",
+      "provider_name": "llmgateway-providers",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-21T03:05:45.893089+00:00",
-      "updated_at": "2026-11-24T18:40:40.957535+00:00",
+      "updated_at": "2026-11-25T00:55:16.219563+00:00",
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-11-20",
@@ -4967,7 +5023,7 @@
       "models": [
         {
           "id": "inkling-2-mini",
-          "name": "venice/inkling-2-mini",
+          "name": "llmgateway-providers/deepinfra/inkling-2-mini",
           "released_on": "2026-11-20"
         }
       ],
@@ -5005,7 +5061,7 @@
       ],
       "source_count": 3,
       "backfill": false,
-      "header": "NEW MODEL · VENICE",
+      "header": "NEW MODEL · LLMGATEWAY-PROVIDERS",
       "card_ids": [
         "openrouter-model-thinkingmachines_inkling-2-mini",
         "intel-f9fd718251adf9703144",
@@ -5028,7 +5084,8 @@
         "intel-0dfc6824099b105efe51",
         "intel-fec59f9e228d13f1afc2",
         "intel-ccfe06dc1b22fbc446e5",
-        "intel-0291550522049ffcdd60"
+        "intel-0291550522049ffcdd60",
+        "intel-3692abfddd54ce53c183"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -5382,10 +5439,25 @@
           "build": "05868006a4ef9652eafd385675623ce76b7080e9",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/05868006a4ef9652eafd385675623ce76b7080e9",
           "first_seen": "2026-11-24T18:33:24+00:00"
+        },
+        {
+          "id": "llmgateway-providers/deepinfra/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/llmgateway-providers/models/deepinfra/inkling-2-mini.toml",
+          "file_sha256": "66bc598e06f2797efe35c58613b7572f6e554307e37c40a7fcb675a38841f374",
+          "excerpt": "{\"llmgateway-providers/deepinfra/inkling-2-mini\": {\"schema\": 2, \"base_model\": \"thinkingmachines/inkling-2-mini\", \"name\": \"Inkling 2 Mini (DeepInfra)\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"limit\": {\"output\": 1048576}, \"cost\": {\"text\": {\"input\": {\"price\": 0.075, \"cache\": {\"read\": 0.015}}, \"output\": {\"price\": 0.3}}}}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/80b8ecd1bd8681f2c6ed62d9c0097a8148417aaa/providers/llmgateway-providers/models/deepinfra/inkling-2-mini.toml",
+          "build": "80b8ecd1bd8681f2c6ed62d9c0097a8148417aaa",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/80b8ecd1bd8681f2c6ed62d9c0097a8148417aaa",
+          "first_seen": "2026-11-25T00:55:04+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-23T04:22:07.426340+00:00",
-      "x_post_text": "🟢 NEW MODEL: deepinfra/thinkingmachines/Inkling-2-Mini by venice\n\nFirst detected 21 Nov 03:05 UTC in OpenRouter\n📅 First released: 2026-11-20\nConfirmed by Registry Update, LMArena\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: deepinfra/thinkingmachines/Inkling-2-Mini by llmgateway-providers\n\nFirst detected 21 Nov 03:05 UTC in OpenRouter\n📅 First released: 2026-11-20\nConfirmed by Registry Update, LMArena\n\nvia @StatsWire"
     },
     {
       "id": "story-sonar",
@@ -27218,6 +27290,267 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-b0e978a6a6959da68091",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "solar-mini-4-5",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "solar-mini-4-5",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "kilo/upstage/solar-mini-4-5",
+          "name": "kilo/upstage/solar-mini-4-5",
+          "registry_update": true,
+          "released_on": "2026-11-24"
+        }
+      ],
+      "detected_at": "2026-11-25T00:55:21.475049+00:00",
+      "first_seen": "2026-11-25T00:55:08+00:00",
+      "observed_at": "2026-11-25T00:55:21.475049+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "80b8ecd1bd8681f2c6ed62d9c0097a8148417aaa -> f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+      "build": "f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+      "artifact_sha256": "c64fb73271ce8a35d179f1a5a019411edfd9ac0df3e622d11892fdf5f15decc3",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/c64fb73271ce8a35d179f1a5a019411edfd9ac0df3e622d11892fdf5f15decc3.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/c64fb73271ce8a35d179f1a5a019411edfd9ac0df3e622d11892fdf5f15decc3.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/upstage/solar-mini-4-5",
+          "family": "solar-mini-4-5",
+          "file_path": "providers/kilo/models/upstage/solar-mini-4-5.toml",
+          "file_sha256": "1ce009f3c5c3d43fcc6b130b34b9294c66f72c40d420ac29b7b9dc8c4d6dd3d9",
+          "excerpt": "{\"kilo/upstage/solar-mini-4-5\": {\"schema\": 2, \"name\": \"Upstage: Solar Mini 4.5 (Preview)\", \"description\": \"Solar Mini 4.5 is Upstage's compact language model, built on a proprietary mixture-of-experts architecture with 35B total and 3B active parameters and a 524K context window. It is a step...\", \"family\": \"solar-mini\", \"open_weights\": false, \"release_date\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 524288, \"output\": 131072}, \"cost\": {\"text\": {\"input\": {\"price\": 0.1, \"cache\": {\"read\": 0.01}}, \"output\": {\"price\": 0.4}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e/providers/kilo/models/upstage/solar-mini-4-5.toml",
+          "build": "f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+          "first_seen": "2026-11-25T00:55:08+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T00:55:23.800249+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions f5ddc837d5bc: kilo/upstage/solar-mini-4-5\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e"
+    },
+    {
+      "id": "intel-5ab6ca6348bea3100bb1",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "solar-pro-4-contributor",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "solar-pro-4-contributor",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "kilo/upstage/solar-pro-4-contributor",
+          "name": "kilo/upstage/solar-pro-4-contributor",
+          "registry_update": true,
+          "released_on": "2026-11-24"
+        }
+      ],
+      "detected_at": "2026-11-25T00:55:21.475049+00:00",
+      "first_seen": "2026-11-25T00:55:08+00:00",
+      "observed_at": "2026-11-25T00:55:21.475049+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "80b8ecd1bd8681f2c6ed62d9c0097a8148417aaa -> f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+      "build": "f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+      "artifact_sha256": "c64fb73271ce8a35d179f1a5a019411edfd9ac0df3e622d11892fdf5f15decc3",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/c64fb73271ce8a35d179f1a5a019411edfd9ac0df3e622d11892fdf5f15decc3.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/c64fb73271ce8a35d179f1a5a019411edfd9ac0df3e622d11892fdf5f15decc3.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/upstage/solar-pro-4-contributor",
+          "family": "solar-pro-4-contributor",
+          "file_path": "providers/kilo/models/upstage/solar-pro-4-contributor.toml",
+          "file_sha256": "dfec01d5e8f62c912b1a68655c84917e0ebd594a87a072ed07c4f2bc41be6b69",
+          "excerpt": "{\"kilo/upstage/solar-pro-4-contributor\": {\"schema\": 2, \"name\": \"Upstage: Solar Pro 4 Contributor\", \"description\": \"Solar Pro 4 Contributor is the same Solar Pro 4 model from Upstage, offered at a lower rate in exchange for allowing Upstage to use interaction data to improve its...\", \"family\": \"solar-pro\", \"open_weights\": false, \"release_date\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 524288, \"output\": 131072}, \"cost\": {\"text\": {\"input\": {\"price\": 0.3, \"cache\": {\"read\": 0.03}}, \"output\": {\"price\": 1.2}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e/providers/kilo/models/upstage/solar-pro-4-contributor.toml",
+          "build": "f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+          "first_seen": "2026-11-25T00:55:08+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T00:55:23.800249+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions f5ddc837d5bc: kilo/upstage/solar-pro-4-contributor\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e"
+    },
+    {
+      "id": "intel-3692abfddd54ce53c183",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "inkling-2-mini",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "inkling-2-mini",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "llmgateway-providers/deepinfra/inkling-2-mini",
+          "name": "llmgateway-providers/deepinfra/inkling-2-mini",
+          "registry_update": true,
+          "released_on": "2026-11-20"
+        }
+      ],
+      "detected_at": "2026-11-25T00:55:16.219563+00:00",
+      "first_seen": "2026-11-25T00:55:04+00:00",
+      "observed_at": "2026-11-25T00:55:16.219563+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "da91ad2da97bbd82a124cdd58c9e4d946ec16abc -> 80b8ecd1bd8681f2c6ed62d9c0097a8148417aaa",
+      "build": "80b8ecd1bd8681f2c6ed62d9c0097a8148417aaa",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/80b8ecd1bd8681f2c6ed62d9c0097a8148417aaa",
+      "artifact_sha256": "d1bdb4676709f92d4f56539b98d0b15f0e715334d9b71b9e7f7c2e27ce59594b",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/d1bdb4676709f92d4f56539b98d0b15f0e715334d9b71b9e7f7c2e27ce59594b.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/d1bdb4676709f92d4f56539b98d0b15f0e715334d9b71b9e7f7c2e27ce59594b.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "llmgateway-providers/deepinfra/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/llmgateway-providers/models/deepinfra/inkling-2-mini.toml",
+          "file_sha256": "66bc598e06f2797efe35c58613b7572f6e554307e37c40a7fcb675a38841f374",
+          "excerpt": "{\"llmgateway-providers/deepinfra/inkling-2-mini\": {\"schema\": 2, \"base_model\": \"thinkingmachines/inkling-2-mini\", \"name\": \"Inkling 2 Mini (DeepInfra)\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true}, \"limit\": {\"output\": 1048576}, \"cost\": {\"text\": {\"input\": {\"price\": 0.075, \"cache\": {\"read\": 0.015}}, \"output\": {\"price\": 0.3}}}}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/80b8ecd1bd8681f2c6ed62d9c0097a8148417aaa/providers/llmgateway-providers/models/deepinfra/inkling-2-mini.toml",
+          "build": "80b8ecd1bd8681f2c6ed62d9c0097a8148417aaa",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/80b8ecd1bd8681f2c6ed62d9c0097a8148417aaa",
+          "first_seen": "2026-11-25T00:55:04+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/80b8ecd1bd8681f2c6ed62d9c0097a8148417aaa"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/80b8ecd1bd8681f2c6ed62d9c0097a8148417aaa"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T00:55:23.800249+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 80b8ecd1bd86: llmgateway-providers/deepinfra/inkling-2-mini\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/80b8ecd1bd8681f2c6ed62d9c0097a8148417aaa"
+    },
     {
       "id": "hf-nvidia_Nemotron-Labs-Image-30B-A3B",
       "category": "open-source",
@@ -90117,12 +90450,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:52:55.259447+00:00",
+      "last_attempt": "2026-11-25T00:55:12.101090+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:52:55.665394+00:00",
+      "last_success": "2026-11-25T00:55:12.474987+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.406,
+      "duration_seconds": 0.374,
       "latest_build": "612c62704a1b33e125ccbb99124f7a1687fd553117ad67513af01ab2e80b17da",
       "builds_retained": 158,
       "identifiers": 10062
@@ -90143,24 +90476,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-25T00:43:55.592882+00:00",
+      "last_attempt": "2026-11-25T00:55:12.578026+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:43:56.105726+00:00",
+      "last_success": "2026-11-25T00:55:23.800249+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.513,
-      "latest_build": "da91ad2da97bbd82a124cdd58c9e4d946ec16abc",
-      "builds_retained": 165,
-      "identifiers": 11302
+      "duration_seconds": 11.223,
+      "latest_build": "f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+      "builds_retained": 167,
+      "identifiers": 11306
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T00:52:56.403953+00:00",
+      "last_attempt": "2026-11-25T00:55:23.911830+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3722,
-      "duration_seconds": 11.207
+      "consecutive_failures": 3723,
+      "duration_seconds": 11.399
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -90180,61 +90513,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:52:02.712886+00:00",
+      "last_attempt": "2026-11-25T00:54:13.813088+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:52:05.155812+00:00",
+      "last_success": "2026-11-25T00:54:16.159554+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.443
+      "duration_seconds": 2.346
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:52:05.155875+00:00",
+      "last_attempt": "2026-11-25T00:54:16.159614+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:52:05.383121+00:00",
+      "last_success": "2026-11-25T00:54:16.336915+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.227
+      "duration_seconds": 0.177
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:52:05.383161+00:00",
+      "last_attempt": "2026-11-25T00:54:16.336951+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:52:12.612731+00:00",
+      "last_success": "2026-11-25T00:54:28.973183+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.23
+      "duration_seconds": 12.636
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:52:12.612808+00:00",
+      "last_attempt": "2026-11-25T00:54:28.973262+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:52:55.259382+00:00",
+      "last_success": "2026-11-25T00:55:12.101027+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 42.647,
+      "duration_seconds": 43.128,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-25T00:52:12.831250+00:00",
+          "checked_at": "2026-11-25T00:54:29.193677+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-25T00:52:23.780357+00:00",
+          "checked_at": "2026-11-25T00:54:39.519580+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-25T00:52:23.941322+00:00",
+          "checked_at": "2026-11-25T00:54:39.680884+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-25T00:52:23.941341+00:00",
+          "checked_at": "2026-11-25T00:54:39.680904+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -90242,12 +90575,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:52:55.259447+00:00",
+      "last_attempt": "2026-11-25T00:55:12.101090+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:52:55.665394+00:00",
+      "last_success": "2026-11-25T00:55:12.474987+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.406,
+      "duration_seconds": 0.374,
       "latest_build": "612c62704a1b33e125ccbb99124f7a1687fd553117ad67513af01ab2e80b17da",
       "builds_retained": 158,
       "identifiers": 10062
@@ -90268,24 +90601,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-25T00:43:55.592882+00:00",
+      "last_attempt": "2026-11-25T00:55:12.578026+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:43:56.105726+00:00",
+      "last_success": "2026-11-25T00:55:23.800249+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.513,
-      "latest_build": "da91ad2da97bbd82a124cdd58c9e4d946ec16abc",
-      "builds_retained": 165,
-      "identifiers": 11302
+      "duration_seconds": 11.223,
+      "latest_build": "f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
+      "builds_retained": 167,
+      "identifiers": 11306
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T00:52:56.403953+00:00",
+      "last_attempt": "2026-11-25T00:55:23.911830+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3722,
-      "duration_seconds": 11.207
+      "consecutive_failures": 3723,
+      "duration_seconds": 11.399
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -90303,64 +90636,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:53:07.617489+00:00",
+      "last_attempt": "2026-11-25T00:55:35.317497+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:53:12.495450+00:00",
+      "last_success": "2026-11-25T00:55:40.430791+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.878
+      "duration_seconds": 5.113
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:53:12.495508+00:00",
+      "last_attempt": "2026-11-25T00:55:40.430854+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:53:14.066336+00:00",
+      "last_success": "2026-11-25T00:55:42.479953+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.571
+      "duration_seconds": 2.049
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-25T00:44:13.539849+00:00",
+      "last_attempt": "2026-11-25T00:55:42.480024+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:44:24.372862+00:00",
+      "last_success": "2026-11-25T00:55:52.613894+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 10.833
+      "duration_seconds": 10.134
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:53:14.066395+00:00",
+      "last_attempt": "2026-11-25T00:55:52.613943+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:53:15.287520+00:00",
+      "last_success": "2026-11-25T00:55:53.794487+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.221
+      "duration_seconds": 1.181
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:53:15.287564+00:00",
+      "last_attempt": "2026-11-25T00:55:53.794532+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:53:15.332566+00:00",
+      "last_success": "2026-11-25T00:55:53.933309+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.045
+      "duration_seconds": 0.139
     }
   },
   "identities": {
-    "identifiers": 31764,
-    "declared_aliases": 18810,
+    "identifiers": 31768,
+    "declared_aliases": 18811,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 428,
-      "seconds_mean": 3635.230103761682,
+      "samples": 431,
+      "seconds_mean": 3610.017758865429,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -90374,9 +90707,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 551,
-      "events": 553,
-      "rate": 0.9963833634719711
+      "complete": 554,
+      "events": 556,
+      "rate": 0.9964028776978417
     },
     "source_health": {
       "sources": 14,
