@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-25T17:10:14.007837+00:00",
-  "scan_completed_at": "2026-11-25T17:11:22.845956+00:00",
+  "generated_at": "2026-11-25T17:19:54.730896+00:00",
+  "scan_completed_at": "2026-11-25T17:21:03.077700+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 337,
     "leaks": 34,
     "releases": 91,
-    "stories_24h": 40,
+    "stories_24h": 41,
     "sources_ok": 13,
-    "total_cards": 848,
-    "new_in_this_scan": 0
+    "total_cards": 849,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -4572,7 +4572,7 @@
       "provider_name": "Unattributed",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-23T04:53:18.430240+00:00",
-      "updated_at": "2026-11-23T04:53:26.339955+00:00",
+      "updated_at": "2026-11-25T17:20:31.633599+00:00",
       "first_source": "Registry Update",
       "lead": "",
       "released_on": "2026-11-23",
@@ -4581,7 +4581,7 @@
       "models": [
         {
           "id": "glm-5.4",
-          "name": "zai-coding-plan/glm-5.4",
+          "name": "tencent-token-plan/glm-5.4",
           "released_on": "2026-11-23"
         }
       ],
@@ -4602,7 +4602,8 @@
       "header": "REGISTRY UPDATE · UNATTRIBUTED",
       "card_ids": [
         "intel-0bbca7073833f38c68ba",
-        "intel-b59d36b3824a81c0a65d"
+        "intel-b59d36b3824a81c0a65d",
+        "intel-fc317de726189e9a9f46"
       ],
       "event_label": "Registry update",
       "intelligence_only": true,
@@ -4680,6 +4681,20 @@
           "build": "a734c58c63cb08df0cf9c47dc42a0b1dc7cfd38e",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/a734c58c63cb08df0cf9c47dc42a0b1dc7cfd38e",
           "first_seen": "2026-11-23T04:50:35+00:00"
+        },
+        {
+          "id": "tencent-token-plan/glm-5.4",
+          "family": "glm-5.4",
+          "file_path": "api.json?type=all",
+          "file_sha256": "0ff435018fe037fbf5fc0786e631d017446fdf6fc8ba6dfeaba3407540b71fab",
+          "excerpt": "{\"tencent-token-plan/glm-5.4\": {\"id\": \"glm-5.4\", \"name\": \"GLM-5.4\", \"description\": \"Multimodal GLM flagship model for coding, agents, and complex project delivery\", \"family\": \"glm\", \"attachment\": false, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"high\", \"max\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-23\", \"last_updated\": \"2026-11-23\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1000000, \"output\": 131072}, \"cost\": {\"input\": 1.19773, \"output\": 4.192057, \"cache_read\": 0.299433}, \"canonical_model_id\": \"zhipuai/glm-5.4\"}}",
+          "canonical_id": "zhipuai/glm-5.4",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "0ff435018fe037fbf5fc0786e631d017446fdf6fc8ba6dfeaba3407540b71fab",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T17:20:31.260783+00:00"
         }
       ],
       "x_post_text": "Registry Update 12787245219a: glm-5.4\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
@@ -28163,6 +28178,92 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-fc317de726189e9a9f46",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "glm-5.4",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "glm-5.4",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "tencent-token-plan/glm-5.4",
+          "name": "tencent-token-plan/glm-5.4",
+          "registry_update": true,
+          "released_on": "2026-11-23"
+        }
+      ],
+      "detected_at": "2026-11-25T17:20:31.633599+00:00",
+      "first_seen": "2026-11-25T17:20:31.260783+00:00",
+      "observed_at": "2026-11-25T17:20:31.633599+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "f3203287db2010ddf2c3ccce9524e35401761bf4e3021c8ddc15685e56263934 -> 0ff435018fe037fbf5fc0786e631d017446fdf6fc8ba6dfeaba3407540b71fab",
+      "build": "0ff435018fe037fbf5fc0786e631d017446fdf6fc8ba6dfeaba3407540b71fab",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "0ff435018fe037fbf5fc0786e631d017446fdf6fc8ba6dfeaba3407540b71fab",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/0ff435018fe037fbf5fc0786e631d017446fdf6fc8ba6dfeaba3407540b71fab.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/0ff435018fe037fbf5fc0786e631d017446fdf6fc8ba6dfeaba3407540b71fab.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "tencent-token-plan/glm-5.4",
+          "family": "glm-5.4",
+          "file_path": "api.json?type=all",
+          "file_sha256": "0ff435018fe037fbf5fc0786e631d017446fdf6fc8ba6dfeaba3407540b71fab",
+          "excerpt": "{\"tencent-token-plan/glm-5.4\": {\"id\": \"glm-5.4\", \"name\": \"GLM-5.4\", \"description\": \"Multimodal GLM flagship model for coding, agents, and complex project delivery\", \"family\": \"glm\", \"attachment\": false, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"high\", \"max\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-23\", \"last_updated\": \"2026-11-23\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1000000, \"output\": 131072}, \"cost\": {\"input\": 1.19773, \"output\": 4.192057, \"cache_read\": 0.299433}, \"canonical_model_id\": \"zhipuai/glm-5.4\"}}",
+          "canonical_id": "zhipuai/glm-5.4",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "0ff435018fe037fbf5fc0786e631d017446fdf6fc8ba6dfeaba3407540b71fab",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T17:20:31.260783+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T17:20:34.187486+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 0ff435018fe0: tencent-token-plan/glm-5.4\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "hf-nvidia_NV-Reason-PathWSI",
       "category": "open-source",
@@ -94695,25 +94796,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:10:54.557648+00:00",
+      "last_attempt": "2026-11-25T17:20:30.671655+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:10:57.481810+00:00",
+      "last_success": "2026-11-25T17:20:34.187486+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.924,
-      "latest_build": "38415baf7a827eebbfe2623c54205144006e0e46efdf27d73e8125098910ef97",
-      "builds_retained": 178,
-      "identifiers": 10105
+      "duration_seconds": 3.516,
+      "latest_build": "0ff435018fe037fbf5fc0786e631d017446fdf6fc8ba6dfeaba3407540b71fab",
+      "builds_retained": 182,
+      "identifiers": 10108
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-25T17:10:57.621904+00:00",
+      "last_attempt": "2026-11-25T17:20:34.328612+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:10:58.004335+00:00",
+      "last_success": "2026-11-25T17:20:35.553821+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.383,
+      "duration_seconds": 1.226,
       "latest_build": "ffdcb69690bea6b5cf5fb2938af63ae45818bb5f",
       "builds_retained": 91,
       "identifiers": 7080
@@ -94721,24 +94822,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-25T17:01:39.106948+00:00",
+      "last_attempt": "2026-11-25T17:13:17.610713+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:01:39.619131+00:00",
+      "last_success": "2026-11-25T17:13:30.610235+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.513,
-      "latest_build": "c0e0acef4a3d6840acaa457221186ae8ad81375f",
-      "builds_retained": 183,
+      "duration_seconds": 13.0,
+      "latest_build": "88abe916a66f3d7f40cc0d7c4fafdb58c755357b",
+      "builds_retained": 185,
       "identifiers": 11345
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T17:10:58.154552+00:00",
+      "last_attempt": "2026-11-25T17:20:35.706507+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4139,
-      "duration_seconds": 15.398
+      "consecutive_failures": 4143,
+      "duration_seconds": 15.574
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -94758,61 +94859,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:10:14.007904+00:00",
+      "last_attempt": "2026-11-25T17:19:54.730969+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:10:15.695359+00:00",
+      "last_success": "2026-11-25T17:19:56.532288+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.687
+      "duration_seconds": 1.801
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:10:15.695415+00:00",
+      "last_attempt": "2026-11-25T17:19:56.532354+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:10:15.828174+00:00",
+      "last_success": "2026-11-25T17:19:56.696641+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.133
+      "duration_seconds": 0.164
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:10:15.828210+00:00",
+      "last_attempt": "2026-11-25T17:19:56.696681+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:10:22.725406+00:00",
+      "last_success": "2026-11-25T17:20:01.646762+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.897
+      "duration_seconds": 4.95
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:10:22.725466+00:00",
+      "last_attempt": "2026-11-25T17:20:01.646840+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:10:54.557596+00:00",
+      "last_success": "2026-11-25T17:20:30.671591+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 31.832,
+      "duration_seconds": 29.025,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-25T17:10:22.946272+00:00",
+          "checked_at": "2026-11-25T17:20:01.852476+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-25T17:10:32.670783+00:00",
+          "checked_at": "2026-11-25T17:20:10.152650+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-25T17:10:32.814829+00:00",
+          "checked_at": "2026-11-25T17:20:10.323093+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-25T17:10:32.814845+00:00",
+          "checked_at": "2026-11-25T17:20:10.323110+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -94820,25 +94921,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:10:54.557648+00:00",
+      "last_attempt": "2026-11-25T17:20:30.671655+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:10:57.481810+00:00",
+      "last_success": "2026-11-25T17:20:34.187486+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.924,
-      "latest_build": "38415baf7a827eebbfe2623c54205144006e0e46efdf27d73e8125098910ef97",
-      "builds_retained": 178,
-      "identifiers": 10105
+      "duration_seconds": 3.516,
+      "latest_build": "0ff435018fe037fbf5fc0786e631d017446fdf6fc8ba6dfeaba3407540b71fab",
+      "builds_retained": 182,
+      "identifiers": 10108
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-25T17:10:57.621904+00:00",
+      "last_attempt": "2026-11-25T17:20:34.328612+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:10:58.004335+00:00",
+      "last_success": "2026-11-25T17:20:35.553821+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.383,
+      "duration_seconds": 1.226,
       "latest_build": "ffdcb69690bea6b5cf5fb2938af63ae45818bb5f",
       "builds_retained": 91,
       "identifiers": 7080
@@ -94846,24 +94947,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-25T17:01:39.106948+00:00",
+      "last_attempt": "2026-11-25T17:13:17.610713+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:01:39.619131+00:00",
+      "last_success": "2026-11-25T17:13:30.610235+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.513,
-      "latest_build": "c0e0acef4a3d6840acaa457221186ae8ad81375f",
-      "builds_retained": 183,
+      "duration_seconds": 13.0,
+      "latest_build": "88abe916a66f3d7f40cc0d7c4fafdb58c755357b",
+      "builds_retained": 185,
       "identifiers": 11345
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T17:10:58.154552+00:00",
+      "last_attempt": "2026-11-25T17:20:35.706507+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4139,
-      "duration_seconds": 15.398
+      "consecutive_failures": 4143,
+      "duration_seconds": 15.574
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -94881,57 +94982,57 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:11:13.558863+00:00",
+      "last_attempt": "2026-11-25T17:20:51.287159+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:11:20.800133+00:00",
+      "last_success": "2026-11-25T17:20:58.448256+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.241
+      "duration_seconds": 7.161
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:11:20.800186+00:00",
+      "last_attempt": "2026-11-25T17:20:58.448308+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:11:21.925244+00:00",
+      "last_success": "2026-11-25T17:21:01.007340+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.125
+      "duration_seconds": 2.559
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-25T17:02:03.781101+00:00",
+      "last_attempt": "2026-11-25T17:13:55.378228+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:02:12.397778+00:00",
+      "last_success": "2026-11-25T17:14:04.726444+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.617
+      "duration_seconds": 9.348
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:11:21.925293+00:00",
+      "last_attempt": "2026-11-25T17:21:01.007396+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:11:22.366415+00:00",
+      "last_success": "2026-11-25T17:21:01.459915+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.441
+      "duration_seconds": 0.453
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:11:22.366454+00:00",
+      "last_attempt": "2026-11-25T17:21:01.459960+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:11:22.404401+00:00",
+      "last_success": "2026-11-25T17:21:01.479553+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.038
+      "duration_seconds": 0.02
     }
   },
   "identities": {
-    "identifiers": 31860,
-    "declared_aliases": 18873,
+    "identifiers": 31863,
+    "declared_aliases": 18876,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
@@ -94952,9 +95053,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 593,
-      "events": 595,
-      "rate": 0.9966386554621849
+      "complete": 594,
+      "events": 596,
+      "rate": 0.9966442953020134
     },
     "source_health": {
       "sources": 14,
