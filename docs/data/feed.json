@@ -1,17 +1,265 @@
 {
-  "generated_at": "2026-11-25T17:52:54.287901+00:00",
-  "scan_completed_at": "2026-11-25T17:53:57.845537+00:00",
+  "generated_at": "2026-11-25T18:02:03.017139+00:00",
+  "scan_completed_at": "2026-11-25T18:03:22.878340+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 344,
+    "stories": 348,
     "leaks": 34,
     "releases": 92,
-    "stories_24h": 37,
-    "sources_ok": 13,
-    "total_cards": 866,
-    "new_in_this_scan": 1
+    "stories_24h": 40,
+    "sources_ok": 15,
+    "total_cards": 870,
+    "new_in_this_scan": 4
   },
   "stories": [
+    {
+      "id": "story-fw-glm-5-3",
+      "group": "fw-glm-5-3",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Fw GLM-5.3",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-25T18:02:44.363158+00:00",
+      "updated_at": "2026-11-25T18:02:44.363158+00:00",
+      "first_source": "Registry Update",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "fw-glm-5.3",
+          "name": "azure/fw-glm-5.3"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-25T18:02:44.363158+00:00",
+          "title": "fw-glm-5.3",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "backfill": false,
+          "build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/5ce99a3b1e249bd854327cc3a15babd656193101837ced7c73e61f5568af723f.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-d1dbb6c05c2be7c19cc1"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "azure/fw-glm-5.3",
+          "family": "fw-glm-5.3",
+          "file_path": "providers/azure/models/fw-glm-5.3.toml",
+          "file_sha256": "d3b383c367d7a714a09067361423a7a98c085b2751c92303860d13d79b7725c8",
+          "excerpt": "{\"azure/fw-glm-5.3\": {\"schema\": 2, \"base_model\": \"zhipuai/glm-5.3\", \"name\": \"FW-GLM-5.3\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"high\", \"max\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}}, \"limit\": {\"context\": 1048576}, \"api\": {\"chat-completions\": {\"sdk\": {\"opencodeai\": \"@opencode/ai/providers/azure/chat\"}, \"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}, \"responses\": {}}, \"cost\": {\"text\": {\"input\": {\"price\": 1.75, \"cache\": {\"read\": 0.325}}, \"output\": {\"price\": 5.5}}, \"multipliers\": [{\"when\": {\"region\": {\"equals\": \"us\"}}, \"factor\": {\"text\": 1.2}}]}}}",
+          "canonical_id": "zhipuai/glm-5.3",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/51e27133f70eb99ea65a78c96b01360e67c2c636/providers/azure/models/fw-glm-5.3.toml",
+          "build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "first_seen": "2026-11-25T17:56:16+00:00"
+        }
+      ],
+      "x_post_text": "Registry Update 51e27133f70e: fw-glm-5.3\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636"
+    },
+    {
+      "id": "story-fw-glm-5-3-flash",
+      "group": "fw-glm-5-3-flash",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Fw GLM-5.3 Flash",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-25T18:02:44.363158+00:00",
+      "updated_at": "2026-11-25T18:02:44.363158+00:00",
+      "first_source": "Registry Update",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "fw-glm-5.3-flash",
+          "name": "azure/fw-glm-5.3-flash"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-25T18:02:44.363158+00:00",
+          "title": "fw-glm-5.3-flash",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "backfill": false,
+          "build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/5ce99a3b1e249bd854327cc3a15babd656193101837ced7c73e61f5568af723f.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-908db46f572eb0b2c964"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "azure/fw-glm-5.3-flash",
+          "family": "fw-glm-5.3-flash",
+          "file_path": "providers/azure/models/fw-glm-5.3-flash.toml",
+          "file_sha256": "ff8818b8b2524d56838b8d26308d5152e205294276869f35336e146a1964524d",
+          "excerpt": "{\"azure/fw-glm-5.3-flash\": {\"schema\": 2, \"base_model\": \"zhipuai/glm-5.3-flash\", \"name\": \"FW-GLM-5.3-Flash\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"high\", \"max\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}}, \"limit\": {\"context\": 1048576}, \"api\": {\"chat-completions\": {\"sdk\": {\"opencodeai\": \"@opencode/ai/providers/azure/chat\"}, \"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}, \"responses\": {}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.188, \"cache\": {\"read\": 0.038}}, \"output\": {\"price\": 0.625}}}}}",
+          "canonical_id": "zhipuai/glm-5.3-flash",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/51e27133f70eb99ea65a78c96b01360e67c2c636/providers/azure/models/fw-glm-5.3-flash.toml",
+          "build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "first_seen": "2026-11-25T17:56:16+00:00"
+        }
+      ],
+      "x_post_text": "Registry Update 51e27133f70e: fw-glm-5.3-flash\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636"
+    },
+    {
+      "id": "story-fw-kimi-k-3",
+      "group": "fw-kimi-k-3",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Fw Kimi K 3",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-25T18:02:44.363158+00:00",
+      "updated_at": "2026-11-25T18:02:44.363158+00:00",
+      "first_source": "Registry Update",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "fw-kimi-k3",
+          "name": "azure/fw-kimi-k3"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-25T18:02:44.363158+00:00",
+          "title": "fw-kimi-k3",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "backfill": false,
+          "build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/5ce99a3b1e249bd854327cc3a15babd656193101837ced7c73e61f5568af723f.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-a6644fd4f708431d8be7"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "azure/fw-kimi-k3",
+          "family": "fw-kimi-k3",
+          "file_path": "providers/azure/models/fw-kimi-k3.toml",
+          "file_sha256": "1541016d42c5e7ec6f22556052868a58efa818835b1c409d7e36f922e3c98ec7",
+          "excerpt": "{\"azure/fw-kimi-k3\": {\"schema\": 2, \"base_model\": \"moonshotai/kimi-k3\", \"name\": \"FW-Kimi-K3\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\", \"image/gif\", \"image/webp\", \"image/bmp\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"toggle\": true, \"effort\": [\"low\", \"medium\", \"high\", \"max\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}}, \"api\": {\"chat-completions\": {\"sdk\": {\"opencodeai\": \"@opencode/ai/providers/azure/chat\"}, \"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}, \"responses\": {}}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.3}}, \"output\": {\"price\": 15}}, \"multipliers\": [{\"when\": {\"region\": {\"equals\": \"us\"}}, \"factor\": {\"text\": 1.1}}]}}}",
+          "canonical_id": "moonshotai/kimi-k3",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/51e27133f70eb99ea65a78c96b01360e67c2c636/providers/azure/models/fw-kimi-k3.toml",
+          "build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "first_seen": "2026-11-25T17:56:16+00:00"
+        }
+      ],
+      "x_post_text": "Registry Update 51e27133f70e: fw-kimi-k3\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636"
+    },
+    {
+      "id": "story-fw-kimi-k-3-1",
+      "group": "fw-kimi-k-3-1",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Fw Kimi K 3.1",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-25T18:02:44.363158+00:00",
+      "updated_at": "2026-11-25T18:02:44.363158+00:00",
+      "first_source": "Registry Update",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "fw-kimi-k3.1-pro",
+          "name": "azure/fw-kimi-k3.1-pro"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-25T18:02:44.363158+00:00",
+          "title": "fw-kimi-k3.1-pro",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "backfill": false,
+          "build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/5ce99a3b1e249bd854327cc3a15babd656193101837ced7c73e61f5568af723f.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-a44229f850249daaa587"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "azure/fw-kimi-k3.1-pro",
+          "family": "fw-kimi-k3.1-pro",
+          "file_path": "providers/azure/models/fw-kimi-k3.1-pro.toml",
+          "file_sha256": "33fa9779c4280d3bc03db77baa4424dd0916fe95f4684752c6f2a932f8aed860",
+          "excerpt": "{\"azure/fw-kimi-k3.1-pro\": {\"schema\": 2, \"base_model\": \"moonshotai/kimi-k3.1-pro\", \"name\": \"FW-Kimi-K3.1-Pro\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\", \"image/gif\", \"image/webp\", \"image/bmp\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"toggle\": true, \"effort\": [\"low\", \"medium\", \"high\", \"max\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}}, \"api\": {\"chat-completions\": {\"sdk\": {\"opencodeai\": \"@opencode/ai/providers/azure/chat\"}, \"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}, \"responses\": {}}, \"cost\": {\"text\": {\"input\": {\"price\": 2.5, \"cache\": {\"read\": 0.25}}, \"output\": {\"price\": 12.5}}}}}",
+          "canonical_id": "moonshotai/kimi-k3.1-pro",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/51e27133f70eb99ea65a78c96b01360e67c2c636/providers/azure/models/fw-kimi-k3.1-pro.toml",
+          "build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "first_seen": "2026-11-25T17:56:16+00:00"
+        }
+      ],
+      "x_post_text": "Registry Update 51e27133f70e: fw-kimi-k3.1-pro\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636"
+    },
     {
       "id": "story-deepseek-r-2-chimera",
       "group": "deepseek-r-2-chimera",
@@ -56,8 +304,8 @@
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: DeepSeek R1T2 Chimera by DeepSeek\n\nFirst detected 25 Nov 17:53 UTC in OpenRouter\n\nvia @StatsWire",
-      "discord_alerted_at": "2026-11-25T17:53:57.842791+00:00"
+      "discord_alerted_at": "2026-11-25T17:53:57.842791+00:00",
+      "x_post_text": "🟢 NEW MODEL: DeepSeek R1T2 Chimera by DeepSeek\n\nFirst detected 25 Nov 17:53 UTC in OpenRouter\n\nvia @StatsWire"
     },
     {
       "id": "story-qwen-image-2-1",
@@ -28979,6 +29227,350 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-d1dbb6c05c2be7c19cc1",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "fw-glm-5.3",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "fw-glm-5.3",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "azure/fw-glm-5.3",
+          "name": "azure/fw-glm-5.3",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-25T18:02:44.363158+00:00",
+      "first_seen": "2026-11-25T17:56:16+00:00",
+      "observed_at": "2026-11-25T18:02:44.363158+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "397db8d2592b27aaba09fcbfdadf3e3ad5c45095 -> 51e27133f70eb99ea65a78c96b01360e67c2c636",
+      "build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636",
+      "artifact_sha256": "5ce99a3b1e249bd854327cc3a15babd656193101837ced7c73e61f5568af723f",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/5ce99a3b1e249bd854327cc3a15babd656193101837ced7c73e61f5568af723f.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/5ce99a3b1e249bd854327cc3a15babd656193101837ced7c73e61f5568af723f.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "azure/fw-glm-5.3",
+          "family": "fw-glm-5.3",
+          "file_path": "providers/azure/models/fw-glm-5.3.toml",
+          "file_sha256": "d3b383c367d7a714a09067361423a7a98c085b2751c92303860d13d79b7725c8",
+          "excerpt": "{\"azure/fw-glm-5.3\": {\"schema\": 2, \"base_model\": \"zhipuai/glm-5.3\", \"name\": \"FW-GLM-5.3\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"high\", \"max\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}}, \"limit\": {\"context\": 1048576}, \"api\": {\"chat-completions\": {\"sdk\": {\"opencodeai\": \"@opencode/ai/providers/azure/chat\"}, \"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}, \"responses\": {}}, \"cost\": {\"text\": {\"input\": {\"price\": 1.75, \"cache\": {\"read\": 0.325}}, \"output\": {\"price\": 5.5}}, \"multipliers\": [{\"when\": {\"region\": {\"equals\": \"us\"}}, \"factor\": {\"text\": 1.2}}]}}}",
+          "canonical_id": "zhipuai/glm-5.3",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/51e27133f70eb99ea65a78c96b01360e67c2c636/providers/azure/models/fw-glm-5.3.toml",
+          "build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "first_seen": "2026-11-25T17:56:16+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/51e27133f70eb99ea65a78c96b01360e67c2c636"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T18:02:47.375738+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 51e27133f70e: azure/fw-glm-5.3\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636"
+    },
+    {
+      "id": "intel-908db46f572eb0b2c964",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "fw-glm-5.3-flash",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "fw-glm-5.3-flash",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "azure/fw-glm-5.3-flash",
+          "name": "azure/fw-glm-5.3-flash",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-25T18:02:44.363158+00:00",
+      "first_seen": "2026-11-25T17:56:16+00:00",
+      "observed_at": "2026-11-25T18:02:44.363158+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "397db8d2592b27aaba09fcbfdadf3e3ad5c45095 -> 51e27133f70eb99ea65a78c96b01360e67c2c636",
+      "build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636",
+      "artifact_sha256": "5ce99a3b1e249bd854327cc3a15babd656193101837ced7c73e61f5568af723f",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/5ce99a3b1e249bd854327cc3a15babd656193101837ced7c73e61f5568af723f.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/5ce99a3b1e249bd854327cc3a15babd656193101837ced7c73e61f5568af723f.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "azure/fw-glm-5.3-flash",
+          "family": "fw-glm-5.3-flash",
+          "file_path": "providers/azure/models/fw-glm-5.3-flash.toml",
+          "file_sha256": "ff8818b8b2524d56838b8d26308d5152e205294276869f35336e146a1964524d",
+          "excerpt": "{\"azure/fw-glm-5.3-flash\": {\"schema\": 2, \"base_model\": \"zhipuai/glm-5.3-flash\", \"name\": \"FW-GLM-5.3-Flash\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"high\", \"max\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}}, \"limit\": {\"context\": 1048576}, \"api\": {\"chat-completions\": {\"sdk\": {\"opencodeai\": \"@opencode/ai/providers/azure/chat\"}, \"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}, \"responses\": {}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.188, \"cache\": {\"read\": 0.038}}, \"output\": {\"price\": 0.625}}}}}",
+          "canonical_id": "zhipuai/glm-5.3-flash",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/51e27133f70eb99ea65a78c96b01360e67c2c636/providers/azure/models/fw-glm-5.3-flash.toml",
+          "build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "first_seen": "2026-11-25T17:56:16+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/51e27133f70eb99ea65a78c96b01360e67c2c636"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T18:02:47.375738+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 51e27133f70e: azure/fw-glm-5.3-flash\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636"
+    },
+    {
+      "id": "intel-a6644fd4f708431d8be7",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "fw-kimi-k3",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "fw-kimi-k3",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "azure/fw-kimi-k3",
+          "name": "azure/fw-kimi-k3",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-25T18:02:44.363158+00:00",
+      "first_seen": "2026-11-25T17:56:16+00:00",
+      "observed_at": "2026-11-25T18:02:44.363158+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "397db8d2592b27aaba09fcbfdadf3e3ad5c45095 -> 51e27133f70eb99ea65a78c96b01360e67c2c636",
+      "build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636",
+      "artifact_sha256": "5ce99a3b1e249bd854327cc3a15babd656193101837ced7c73e61f5568af723f",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/5ce99a3b1e249bd854327cc3a15babd656193101837ced7c73e61f5568af723f.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/5ce99a3b1e249bd854327cc3a15babd656193101837ced7c73e61f5568af723f.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "azure/fw-kimi-k3",
+          "family": "fw-kimi-k3",
+          "file_path": "providers/azure/models/fw-kimi-k3.toml",
+          "file_sha256": "1541016d42c5e7ec6f22556052868a58efa818835b1c409d7e36f922e3c98ec7",
+          "excerpt": "{\"azure/fw-kimi-k3\": {\"schema\": 2, \"base_model\": \"moonshotai/kimi-k3\", \"name\": \"FW-Kimi-K3\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\", \"image/gif\", \"image/webp\", \"image/bmp\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"toggle\": true, \"effort\": [\"low\", \"medium\", \"high\", \"max\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}}, \"api\": {\"chat-completions\": {\"sdk\": {\"opencodeai\": \"@opencode/ai/providers/azure/chat\"}, \"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}, \"responses\": {}}, \"cost\": {\"text\": {\"input\": {\"price\": 3, \"cache\": {\"read\": 0.3}}, \"output\": {\"price\": 15}}, \"multipliers\": [{\"when\": {\"region\": {\"equals\": \"us\"}}, \"factor\": {\"text\": 1.1}}]}}}",
+          "canonical_id": "moonshotai/kimi-k3",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/51e27133f70eb99ea65a78c96b01360e67c2c636/providers/azure/models/fw-kimi-k3.toml",
+          "build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "first_seen": "2026-11-25T17:56:16+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/51e27133f70eb99ea65a78c96b01360e67c2c636"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T18:02:47.375738+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 51e27133f70e: azure/fw-kimi-k3\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636"
+    },
+    {
+      "id": "intel-a44229f850249daaa587",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "fw-kimi-k3.1-pro",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "fw-kimi-k3.1-pro",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "azure/fw-kimi-k3.1-pro",
+          "name": "azure/fw-kimi-k3.1-pro",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-25T18:02:44.363158+00:00",
+      "first_seen": "2026-11-25T17:56:16+00:00",
+      "observed_at": "2026-11-25T18:02:44.363158+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "397db8d2592b27aaba09fcbfdadf3e3ad5c45095 -> 51e27133f70eb99ea65a78c96b01360e67c2c636",
+      "build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636",
+      "artifact_sha256": "5ce99a3b1e249bd854327cc3a15babd656193101837ced7c73e61f5568af723f",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/5ce99a3b1e249bd854327cc3a15babd656193101837ced7c73e61f5568af723f.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/5ce99a3b1e249bd854327cc3a15babd656193101837ced7c73e61f5568af723f.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "azure/fw-kimi-k3.1-pro",
+          "family": "fw-kimi-k3.1-pro",
+          "file_path": "providers/azure/models/fw-kimi-k3.1-pro.toml",
+          "file_sha256": "33fa9779c4280d3bc03db77baa4424dd0916fe95f4684752c6f2a932f8aed860",
+          "excerpt": "{\"azure/fw-kimi-k3.1-pro\": {\"schema\": 2, \"base_model\": \"moonshotai/kimi-k3.1-pro\", \"name\": \"FW-Kimi-K3.1-Pro\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\", \"image/gif\", \"image/webp\", \"image/bmp\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"toggle\": true, \"effort\": [\"low\", \"medium\", \"high\", \"max\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}}, \"api\": {\"chat-completions\": {\"sdk\": {\"opencodeai\": \"@opencode/ai/providers/azure/chat\"}, \"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}, \"responses\": {}}, \"cost\": {\"text\": {\"input\": {\"price\": 2.5, \"cache\": {\"read\": 0.25}}, \"output\": {\"price\": 12.5}}}}}",
+          "canonical_id": "moonshotai/kimi-k3.1-pro",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/51e27133f70eb99ea65a78c96b01360e67c2c636/providers/azure/models/fw-kimi-k3.1-pro.toml",
+          "build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636",
+          "first_seen": "2026-11-25T17:56:16+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/51e27133f70eb99ea65a78c96b01360e67c2c636"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T18:02:47.375738+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 51e27133f70e: azure/fw-kimi-k3.1-pro\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/51e27133f70eb99ea65a78c96b01360e67c2c636"
+    },
     {
       "id": "openrouter-model-tngtech_deepseek-r1t2-chimera",
       "category": "cli-sdk-diff",
@@ -97392,25 +97984,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:53:30.352864+00:00",
+      "last_attempt": "2026-11-25T18:02:39.094199+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:53:30.731612+00:00",
+      "last_success": "2026-11-25T18:02:39.598624+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.379,
-      "latest_build": "ec96475f4bc20c1a0d0f1140e07f2f4831837b6d75c31a7d3301f0c7db463a2b",
-      "builds_retained": 189,
-      "identifiers": 10114
+      "duration_seconds": 0.505,
+      "latest_build": "fe175d9a528684b481f66b2c22a6981a1a1ac1287c91899b0027c2e6fb9540d0",
+      "builds_retained": 190,
+      "identifiers": 10134
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-25T17:53:30.878898+00:00",
+      "last_attempt": "2026-11-25T18:02:39.743990+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:53:31.246468+00:00",
+      "last_success": "2026-11-25T18:02:40.317332+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.368,
+      "duration_seconds": 0.574,
       "latest_build": "34d39facdee00d63deff4a87d2ecf5ae8d15f1cf",
       "builds_retained": 92,
       "identifiers": 7080
@@ -97418,34 +98010,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-25T17:51:03.151300+00:00",
+      "last_attempt": "2026-11-25T18:02:40.463735+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:51:09.793600+00:00",
+      "last_success": "2026-11-25T18:02:47.375738+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.643,
-      "latest_build": "397db8d2592b27aaba09fcbfdadf3e3ad5c45095",
-      "builds_retained": 190,
-      "identifiers": 11368
+      "duration_seconds": 6.913,
+      "latest_build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
+      "builds_retained": 191,
+      "identifiers": 11381
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T17:53:31.399653+00:00",
+      "last_attempt": "2026-11-25T18:02:47.517982+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4156,
-      "duration_seconds": 15.332
+      "consecutive_failures": 4160,
+      "duration_seconds": 15.513
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-25T17:42:18.758329+00:00",
+      "last_attempt": "2026-11-25T17:58:28.728904+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:42:18.973502+00:00",
+      "last_success": "2026-11-25T17:58:28.874618+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.215,
+      "duration_seconds": 0.146,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -97455,61 +98047,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:52:54.287971+00:00",
+      "last_attempt": "2026-11-25T18:02:03.017209+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:52:56.172715+00:00",
+      "last_success": "2026-11-25T18:02:04.745907+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.885
+      "duration_seconds": 1.729
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:52:56.172771+00:00",
+      "last_attempt": "2026-11-25T18:02:04.745960+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:52:56.290600+00:00",
+      "last_success": "2026-11-25T18:02:04.829892+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.118
+      "duration_seconds": 0.084
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:52:56.290633+00:00",
+      "last_attempt": "2026-11-25T18:02:04.829925+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:53:01.290039+00:00",
+      "last_success": "2026-11-25T18:02:10.149165+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.999
+      "duration_seconds": 5.319
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:53:01.290105+00:00",
+      "last_attempt": "2026-11-25T18:02:10.149220+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:53:30.352813+00:00",
+      "last_success": "2026-11-25T18:02:39.094140+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 29.063,
+      "duration_seconds": 28.945,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-25T17:53:01.529868+00:00",
+          "checked_at": "2026-11-25T18:02:10.325226+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-25T17:53:11.227654+00:00",
+          "checked_at": "2026-11-25T18:02:20.263779+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-25T17:53:11.388148+00:00",
+          "checked_at": "2026-11-25T18:02:20.406612+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-25T17:53:11.388164+00:00",
+          "checked_at": "2026-11-25T18:02:20.406630+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -97517,25 +98109,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:53:30.352864+00:00",
+      "last_attempt": "2026-11-25T18:02:39.094199+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:53:30.731612+00:00",
+      "last_success": "2026-11-25T18:02:39.598624+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.379,
-      "latest_build": "ec96475f4bc20c1a0d0f1140e07f2f4831837b6d75c31a7d3301f0c7db463a2b",
-      "builds_retained": 189,
-      "identifiers": 10114
+      "duration_seconds": 0.505,
+      "latest_build": "fe175d9a528684b481f66b2c22a6981a1a1ac1287c91899b0027c2e6fb9540d0",
+      "builds_retained": 190,
+      "identifiers": 10134
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-25T17:53:30.878898+00:00",
+      "last_attempt": "2026-11-25T18:02:39.743990+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:53:31.246468+00:00",
+      "last_success": "2026-11-25T18:02:40.317332+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.368,
+      "duration_seconds": 0.574,
       "latest_build": "34d39facdee00d63deff4a87d2ecf5ae8d15f1cf",
       "builds_retained": 92,
       "identifiers": 7080
@@ -97543,34 +98135,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-25T17:51:03.151300+00:00",
+      "last_attempt": "2026-11-25T18:02:40.463735+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:51:09.793600+00:00",
+      "last_success": "2026-11-25T18:02:47.375738+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.643,
-      "latest_build": "397db8d2592b27aaba09fcbfdadf3e3ad5c45095",
-      "builds_retained": 190,
-      "identifiers": 11368
+      "duration_seconds": 6.913,
+      "latest_build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
+      "builds_retained": 191,
+      "identifiers": 11381
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T17:53:31.399653+00:00",
+      "last_attempt": "2026-11-25T18:02:47.517982+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4156,
-      "duration_seconds": 15.332
+      "consecutive_failures": 4160,
+      "duration_seconds": 15.513
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-25T17:42:18.758329+00:00",
+      "last_attempt": "2026-11-25T17:58:28.728904+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:42:18.973502+00:00",
+      "last_success": "2026-11-25T17:58:28.874618+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.215,
+      "duration_seconds": 0.146,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -97578,64 +98170,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:53:46.737715+00:00",
+      "last_attempt": "2026-11-25T18:03:03.038066+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:53:54.136790+00:00",
+      "last_success": "2026-11-25T18:03:10.296444+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.399
+      "duration_seconds": 7.258
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:53:54.136841+00:00",
+      "last_attempt": "2026-11-25T18:03:10.296502+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:53:56.052302+00:00",
+      "last_success": "2026-11-25T18:03:11.515567+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.915
+      "duration_seconds": 1.219
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-25T17:51:33.710749+00:00",
+      "last_attempt": "2026-11-25T18:03:11.515613+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:51:41.525652+00:00",
+      "last_success": "2026-11-25T18:03:22.003747+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.815
+      "duration_seconds": 10.488
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:53:56.052351+00:00",
+      "last_attempt": "2026-11-25T18:03:22.003800+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:53:56.453248+00:00",
+      "last_success": "2026-11-25T18:03:22.377127+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.401
+      "duration_seconds": 0.373
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:53:56.453285+00:00",
+      "last_attempt": "2026-11-25T18:03:22.377172+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:53:56.465377+00:00",
+      "last_success": "2026-11-25T18:03:22.392887+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.012
+      "duration_seconds": 0.016
     }
   },
   "identities": {
-    "identifiers": 31892,
-    "declared_aliases": 18908,
+    "identifiers": 31925,
+    "declared_aliases": 18941,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 467,
-      "seconds_mean": 3416.6136600877944,
+      "samples": 471,
+      "seconds_mean": 3390.8960337431,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -97649,9 +98241,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 610,
-      "events": 612,
-      "rate": 0.9967320261437909
+      "complete": 614,
+      "events": 616,
+      "rate": 0.9967532467532467
     },
     "source_health": {
       "sources": 14,
