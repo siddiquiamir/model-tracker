@@ -1,17 +1,79 @@
 {
-  "generated_at": "2026-11-25T18:02:03.017139+00:00",
-  "scan_completed_at": "2026-11-25T18:03:22.878340+00:00",
+  "generated_at": "2026-11-25T18:25:25.214978+00:00",
+  "scan_completed_at": "2026-11-25T18:26:53.060357+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 348,
+    "stories": 349,
     "leaks": 34,
     "releases": 92,
-    "stories_24h": 40,
+    "stories_24h": 39,
     "sources_ok": 15,
-    "total_cards": 870,
-    "new_in_this_scan": 4
+    "total_cards": 871,
+    "new_in_this_scan": 3
   },
   "stories": [
+    {
+      "id": "story-grok-latest",
+      "group": "grok-latest",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Grok Latest",
+      "provider_slug": "xai",
+      "provider_name": "xAI",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-25T18:26:09.009168+00:00",
+      "updated_at": "2026-11-25T18:26:09.009168+00:00",
+      "first_source": "Registry Update",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "grok-latest",
+          "name": "edenai/xai/grok-latest"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-25T18:26:09.009168+00:00",
+          "title": "grok-latest",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/259e3b29b757a8f49e8c23c24efc988bb6d07aa4",
+          "backfill": false,
+          "build": "259e3b29b757a8f49e8c23c24efc988bb6d07aa4",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/371b01a70a9c676e723e553d8f98e60fa1a81af861d3134fb59cf9a24d42f3f2.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · XAI",
+      "card_ids": [
+        "intel-c490c6c4982aced87f5e"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "edenai/xai/grok-latest",
+          "family": "grok-latest",
+          "file_path": "providers/edenai/models/xai/grok-latest.toml",
+          "file_sha256": "155a3a40db4df153f7ffcd57a6436110c78bbe6eed1aeb28f02d42dca7848f07",
+          "excerpt": "{\"edenai/xai/grok-latest\": {\"schema\": 2, \"base_model\": \"xai/grok-4.7\", \"name\": \"Grok Latest (Grok 4.7)\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\", \"application/pdf\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 2, \"cache\": {\"read\": 0.5}, \"overrides\": [{\"when\": {\"context\": {\"gt\": 200000}}, \"price\": 4, \"cache\": {\"read\": 1}}]}, \"output\": {\"price\": 6, \"overrides\": [{\"when\": {\"context\": {\"gt\": 200000}}, \"price\": 12}]}}}}}",
+          "canonical_id": "xai/grok-4.7",
+          "provider": "xai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/259e3b29b757a8f49e8c23c24efc988bb6d07aa4/providers/edenai/models/xai/grok-latest.toml",
+          "build": "259e3b29b757a8f49e8c23c24efc988bb6d07aa4",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/259e3b29b757a8f49e8c23c24efc988bb6d07aa4",
+          "first_seen": "2026-11-25T18:22:30+00:00"
+        }
+      ],
+      "x_post_text": "Registry Update 259e3b29b757: grok-latest\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/259e3b29b757a8f49e8c23c24efc988bb6d07aa4"
+    },
     {
       "id": "story-fw-glm-5-3",
       "group": "fw-glm-5-3",
@@ -3928,6 +3990,58 @@
       "x_post_text": "registry evidence, not a launch: fallback_generalizations\nhttps://raw.githubusercontent.com/BerriAI/litellm/ea8285796787367ae925c12d1903a1ba7f5b23cd/model_prices_and_context_window.json"
     },
     {
+      "id": "story-ernie-5-5-flash",
+      "group": "ernie-5-5-flash",
+      "kind": "release",
+      "open_weights": true,
+      "title": "ERNIE 5.5 Flash Preview",
+      "provider_slug": "opensource",
+      "provider_name": "Baidu",
+      "accent_color": "#2932e1",
+      "detected_at": "2026-11-24T03:10:49.908499+00:00",
+      "updated_at": "2026-11-24T03:10:49.908499+00:00",
+      "first_source": "Hugging Face",
+      "lead": "",
+      "released_on": "2026-11-10",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "ERNIE-5.5-Flash-Preview-FP8",
+          "name": "ERNIE-5.5-Flash-Preview-FP8"
+        },
+        {
+          "id": "ERNIE-5.5-Flash-Preview-BF16",
+          "name": "ERNIE-5.5-Flash-Preview-BF16"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Hugging Face",
+          "scanner": "huggingface",
+          "detected_at": "2026-11-24T03:10:49.908499+00:00",
+          "title": "ERNIE 5.5 Flash Preview BF16",
+          "url": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Preview-BF16",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "OPEN WEIGHTS · BAIDU",
+      "card_ids": [
+        "hf-baidu_ERNIE-5.5-Flash-Preview-BF16",
+        "hf-baidu_ERNIE-5.5-Flash-Preview-FP8"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "discord_alerted_at": "2026-11-24T03:10:52.505214+00:00",
+      "x_post_text": "🟢 NEW MODEL: ERNIE 5.5 Flash Preview by Baidu\n\nFirst detected 24 Nov 03:10 UTC in Hugging Face\n📅 First released: 2026-11-10\nIDs: ERNIE-5.5-Flash-Preview-FP8, ERNIE-5.5-Flash-Preview-BF16\n\nvia @StatsWire"
+    },
+    {
       "id": "story-armorocr",
       "group": "armorocr",
       "kind": "release",
@@ -5314,7 +5428,7 @@
       "provider_name": "Unattributed",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-23T04:53:18.430240+00:00",
-      "updated_at": "2026-11-25T17:25:28.244546+00:00",
+      "updated_at": "2026-11-25T18:26:15.403335+00:00",
       "first_source": "Registry Update",
       "lead": "",
       "released_on": "2026-11-23",
@@ -5323,7 +5437,7 @@
       "models": [
         {
           "id": "glm-5.4",
-          "name": "tencent-token-plan/glm-5.4",
+          "name": "volcengine-coding-plan/glm-5.4",
           "released_on": "2026-11-23"
         }
       ],
@@ -5346,7 +5460,9 @@
         "intel-0bbca7073833f38c68ba",
         "intel-b59d36b3824a81c0a65d",
         "intel-fc317de726189e9a9f46",
-        "intel-9ccf34ae79ecb25b4877"
+        "intel-9ccf34ae79ecb25b4877",
+        "intel-42be0477c5d2d122c728",
+        "intel-3c9df37b9c013f116f85"
       ],
       "event_label": "Registry update",
       "intelligence_only": true,
@@ -5453,6 +5569,35 @@
           "build": "8e75f2ad9d6c7a7d91d24bbed9c0cca19efcea89",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/8e75f2ad9d6c7a7d91d24bbed9c0cca19efcea89",
           "first_seen": "2026-11-25T17:20:49+00:00"
+        },
+        {
+          "id": "volcengine-coding-plan/glm-5.4",
+          "family": "glm-5.4",
+          "file_path": "api.json?type=all",
+          "file_sha256": "1b271db727d7edc1f2973c0a5505d9d89f30f8bb348461dd2c979555958c5122",
+          "excerpt": "{\"volcengine-coding-plan/glm-5.4\": {\"id\": \"glm-5.4\", \"name\": \"GLM-5.4\", \"description\": \"Multimodal GLM flagship model for coding, agents, and complex project delivery\", \"family\": \"glm\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"high\", \"max\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-23\", \"last_updated\": \"2026-11-23\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1000000, \"output\": 131072}, \"cost\": {\"input\": 0, \"output\": 0, \"cache_read\": 0}, \"canonical_model_id\": \"zhipuai/glm-5.4\"}}",
+          "canonical_id": "zhipuai/glm-5.4",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "1b271db727d7edc1f2973c0a5505d9d89f30f8bb348461dd2c979555958c5122",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T18:26:01.675120+00:00"
+        },
+        {
+          "id": "volcengine-coding-plan/glm-5.4",
+          "family": "glm-5.4",
+          "file_path": "providers/volcengine-coding-plan/models/glm-5.4.toml",
+          "file_sha256": "ce2805259d3910c71e2f2d8de2d505c1d42dfaf202e9b85d9c3bedc0ae527f48",
+          "excerpt": "{\"volcengine-coding-plan/glm-5.4\": {\"schema\": 2, \"base_model\": \"zhipuai/glm-5.4\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"high\", \"max\"]}, \"structured_output\": true}, \"api\": {\"chat-completions\": {\"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0, \"cache\": {\"read\": 0}}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "zhipuai/glm-5.4",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/74ecb6acb2ed7633def30973184f4e3cb6034522/providers/volcengine-coding-plan/models/glm-5.4.toml",
+          "build": "74ecb6acb2ed7633def30973184f4e3cb6034522",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/74ecb6acb2ed7633def30973184f4e3cb6034522",
+          "first_seen": "2026-11-25T18:22:52+00:00"
         }
       ],
       "x_post_text": "Registry Update 12787245219a: glm-5.4\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
@@ -28960,75 +29105,6 @@
       "x_post_text": "🟢 NEW MODEL: Claude Fable 5.2 by Anthropic\n\nFirst detected 12 Nov 04:02 UTC in LMArena\n📅 First released: 2026-11-09\nConfirmed by Devin CLI Official Binary\nCodename: unbudgeted\nIDs: claude-opus-5-5mid, claude-fable-5-2-low, claude-fable-5-2-max +10\n\nvia @StatsWire"
     },
     {
-      "id": "story-ernie-5-5-flash",
-      "group": "ernie-5-5-flash",
-      "kind": "release",
-      "open_weights": true,
-      "title": "ERNIE 5.5 Flash Preview",
-      "provider_slug": "modelsdev",
-      "provider_name": "Baidu",
-      "accent_color": "#10b981",
-      "detected_at": "2026-11-11T18:17:20.370053+00:00",
-      "updated_at": "2026-11-24T03:10:49.908499+00:00",
-      "first_source": "LMArena",
-      "lead": "12 days before it went live on Hugging Face",
-      "released_on": "2026-11-10",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "ernie-5.5-flash-preview",
-          "name": "ernie-5.5-flash-preview",
-          "released_on": "2026-11-10",
-          "org": "baidu"
-        },
-        {
-          "id": "ERNIE-5.5-Flash-Preview-FP8",
-          "name": "ERNIE-5.5-Flash-Preview-FP8"
-        },
-        {
-          "id": "ERNIE-5.5-Flash-Preview-BF16",
-          "name": "ERNIE-5.5-Flash-Preview-BF16"
-        }
-      ],
-      "sources": [
-        {
-          "label": "LMArena",
-          "scanner": "lmarena",
-          "detected_at": "2026-11-11T18:17:20.370053+00:00",
-          "title": "New Model Found on Arena: ernie-5.5-flash-preview",
-          "url": "https://arena.ai/code?mode=direct&model=ernie-5.5-flash-preview",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "Hugging Face",
-          "scanner": "huggingface",
-          "detected_at": "2026-11-24T03:10:49.908499+00:00",
-          "title": "ERNIE 5.5 Flash Preview BF16",
-          "url": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Preview-BF16",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        }
-      ],
-      "source_count": 2,
-      "backfill": false,
-      "header": "OPEN WEIGHTS · BAIDU",
-      "card_ids": [
-        "arena-scout-diff-ac077d8f",
-        "hf-baidu_ERNIE-5.5-Flash-Preview-BF16",
-        "hf-baidu_ERNIE-5.5-Flash-Preview-FP8"
-      ],
-      "event_label": "",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [],
-      "discord_alerted_at": "2026-11-24T03:10:52.505214+00:00",
-      "x_post_text": "🟢 NEW MODEL: ERNIE 5.5 Flash Preview by Baidu\n\nFirst detected 11 Nov 18:17 UTC in LMArena\n📅 First released: 2026-11-10\n⏱ 12 days before it went live on Hugging Face\nConfirmed by Hugging Face\n\nvia @StatsWire"
-    },
-    {
       "id": "story-gemini-decision-1",
       "group": "gemini-decision-1",
       "kind": "release",
@@ -29037,9 +29113,9 @@
       "provider_slug": "google",
       "provider_name": "Google",
       "accent_color": "#38bdf8",
-      "detected_at": "2026-11-11T18:05:15.851395+00:00",
+      "detected_at": "2026-11-12T02:15:48.842510+00:00",
       "updated_at": "2026-11-23T17:30:56.547719+00:00",
-      "first_source": "Gemini API Docs",
+      "first_source": "LiteLLM registry",
       "lead": "7 days before it went live on Opencode Zen Stealth & Model Gateway",
       "released_on": "",
       "pricing": "",
@@ -29051,16 +29127,6 @@
         }
       ],
       "sources": [
-        {
-          "label": "Gemini API Docs",
-          "scanner": "docs-radar",
-          "detected_at": "2026-11-11T18:05:15.851395+00:00",
-          "title": "New Model Spotted in Gemini API Official Models Page",
-          "url": "https://ai.google.dev/gemini-api/docs/models",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
         {
           "label": "LiteLLM registry",
           "scanner": "litellm",
@@ -29092,11 +29158,10 @@
           "evidence_path": "data/intelligence/evidence/models-dev-git/6bdbece94889c37f9d1c8c9d4044862e657855cbe4cbd8ad50c286f0f530b0cd.json.gz"
         }
       ],
-      "source_count": 4,
+      "source_count": 3,
       "backfill": false,
       "header": "NEW MODEL · GOOGLE",
       "card_ids": [
-        "docs-diff-gemini-docs-477abdda",
         "litellm-diff-12222df2",
         "opencode-zen-diff-af2962e2",
         "intel-c02a9ce9fb4e927b3065",
@@ -29138,7 +29203,7 @@
         }
       ],
       "discord_alerted_at": "2026-11-19T10:40:23.086093+00:00",
-      "x_post_text": "🟢 NEW MODEL: Gemini Decision 1 by Google\n\nFirst detected 11 Nov 18:05 UTC in Gemini API Docs\n⏱ 7 days before it went live on Opencode Zen Stealth & Model Gateway\nConfirmed by LiteLLM registry, Opencode Zen Stealth & Model Gateway, Registry Update\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Gemini Decision 1 by Google\n\nFirst detected 12 Nov 02:15 UTC in LiteLLM registry\n⏱ 7 days before it went live on Opencode Zen Stealth & Model Gateway\nConfirmed by Opencode Zen Stealth & Model Gateway, Registry Update\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-carbon",
@@ -29227,6 +29292,272 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-3c9df37b9c013f116f85",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "glm-5.4",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "glm-5.4",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "volcengine-coding-plan/glm-5.4",
+          "name": "volcengine-coding-plan/glm-5.4",
+          "registry_update": true,
+          "released_on": "2026-11-23"
+        }
+      ],
+      "detected_at": "2026-11-25T18:26:15.403335+00:00",
+      "first_seen": "2026-11-25T18:22:52+00:00",
+      "observed_at": "2026-11-25T18:26:15.403335+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "259e3b29b757a8f49e8c23c24efc988bb6d07aa4 -> 74ecb6acb2ed7633def30973184f4e3cb6034522",
+      "build": "74ecb6acb2ed7633def30973184f4e3cb6034522",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/74ecb6acb2ed7633def30973184f4e3cb6034522",
+      "artifact_sha256": "0147bd7b7951d20fb8fccd90a6ad89f12b51ddce8cefc1133d78ca0902e92795",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/0147bd7b7951d20fb8fccd90a6ad89f12b51ddce8cefc1133d78ca0902e92795.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/0147bd7b7951d20fb8fccd90a6ad89f12b51ddce8cefc1133d78ca0902e92795.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "volcengine-coding-plan/glm-5.4",
+          "family": "glm-5.4",
+          "file_path": "providers/volcengine-coding-plan/models/glm-5.4.toml",
+          "file_sha256": "ce2805259d3910c71e2f2d8de2d505c1d42dfaf202e9b85d9c3bedc0ae527f48",
+          "excerpt": "{\"volcengine-coding-plan/glm-5.4\": {\"schema\": 2, \"base_model\": \"zhipuai/glm-5.4\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"high\", \"max\"]}, \"structured_output\": true}, \"api\": {\"chat-completions\": {\"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0, \"cache\": {\"read\": 0}}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "zhipuai/glm-5.4",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/74ecb6acb2ed7633def30973184f4e3cb6034522/providers/volcengine-coding-plan/models/glm-5.4.toml",
+          "build": "74ecb6acb2ed7633def30973184f4e3cb6034522",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/74ecb6acb2ed7633def30973184f4e3cb6034522",
+          "first_seen": "2026-11-25T18:22:52+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/74ecb6acb2ed7633def30973184f4e3cb6034522"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/74ecb6acb2ed7633def30973184f4e3cb6034522"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T18:26:18.357914+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 74ecb6acb2ed: volcengine-coding-plan/glm-5.4\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/74ecb6acb2ed7633def30973184f4e3cb6034522"
+    },
+    {
+      "id": "intel-c490c6c4982aced87f5e",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "grok-latest",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "grok-latest",
+      "provider_slug": "xai",
+      "provider_name": "xAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "edenai/xai/grok-latest",
+          "name": "edenai/xai/grok-latest",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-25T18:26:09.009168+00:00",
+      "first_seen": "2026-11-25T18:22:30+00:00",
+      "observed_at": "2026-11-25T18:26:09.009168+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "51e27133f70eb99ea65a78c96b01360e67c2c636 -> 259e3b29b757a8f49e8c23c24efc988bb6d07aa4",
+      "build": "259e3b29b757a8f49e8c23c24efc988bb6d07aa4",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/259e3b29b757a8f49e8c23c24efc988bb6d07aa4",
+      "artifact_sha256": "371b01a70a9c676e723e553d8f98e60fa1a81af861d3134fb59cf9a24d42f3f2",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/371b01a70a9c676e723e553d8f98e60fa1a81af861d3134fb59cf9a24d42f3f2.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/371b01a70a9c676e723e553d8f98e60fa1a81af861d3134fb59cf9a24d42f3f2.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "edenai/xai/grok-latest",
+          "family": "grok-latest",
+          "file_path": "providers/edenai/models/xai/grok-latest.toml",
+          "file_sha256": "155a3a40db4df153f7ffcd57a6436110c78bbe6eed1aeb28f02d42dca7848f07",
+          "excerpt": "{\"edenai/xai/grok-latest\": {\"schema\": 2, \"base_model\": \"xai/grok-4.7\", \"name\": \"Grok Latest (Grok 4.7)\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\", \"application/pdf\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"medium\", \"high\", \"xhigh\"]}, \"structured_output\": true}, \"cost\": {\"text\": {\"input\": {\"price\": 2, \"cache\": {\"read\": 0.5}, \"overrides\": [{\"when\": {\"context\": {\"gt\": 200000}}, \"price\": 4, \"cache\": {\"read\": 1}}]}, \"output\": {\"price\": 6, \"overrides\": [{\"when\": {\"context\": {\"gt\": 200000}}, \"price\": 12}]}}}}}",
+          "canonical_id": "xai/grok-4.7",
+          "provider": "xai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/259e3b29b757a8f49e8c23c24efc988bb6d07aa4/providers/edenai/models/xai/grok-latest.toml",
+          "build": "259e3b29b757a8f49e8c23c24efc988bb6d07aa4",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/259e3b29b757a8f49e8c23c24efc988bb6d07aa4",
+          "first_seen": "2026-11-25T18:22:30+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "xai/grok-latest",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/32d4d54ea1bb755acda691a25cb5cd8c709d8a4df9f0693daf4ad0da9be16881.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/259e3b29b757a8f49e8c23c24efc988bb6d07aa4"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/259e3b29b757a8f49e8c23c24efc988bb6d07aa4"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T18:26:18.357914+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 259e3b29b757: edenai/xai/grok-latest\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/259e3b29b757a8f49e8c23c24efc988bb6d07aa4"
+    },
+    {
+      "id": "intel-42be0477c5d2d122c728",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "glm-5.4",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "glm-5.4",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "volcengine-coding-plan/glm-5.4",
+          "name": "volcengine-coding-plan/glm-5.4",
+          "registry_update": true,
+          "released_on": "2026-11-23"
+        }
+      ],
+      "detected_at": "2026-11-25T18:26:02.033238+00:00",
+      "first_seen": "2026-11-25T18:26:01.675120+00:00",
+      "observed_at": "2026-11-25T18:26:02.033238+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "fe175d9a528684b481f66b2c22a6981a1a1ac1287c91899b0027c2e6fb9540d0 -> 1b271db727d7edc1f2973c0a5505d9d89f30f8bb348461dd2c979555958c5122",
+      "build": "1b271db727d7edc1f2973c0a5505d9d89f30f8bb348461dd2c979555958c5122",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "1b271db727d7edc1f2973c0a5505d9d89f30f8bb348461dd2c979555958c5122",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/1b271db727d7edc1f2973c0a5505d9d89f30f8bb348461dd2c979555958c5122.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/1b271db727d7edc1f2973c0a5505d9d89f30f8bb348461dd2c979555958c5122.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "volcengine-coding-plan/glm-5.4",
+          "family": "glm-5.4",
+          "file_path": "api.json?type=all",
+          "file_sha256": "1b271db727d7edc1f2973c0a5505d9d89f30f8bb348461dd2c979555958c5122",
+          "excerpt": "{\"volcengine-coding-plan/glm-5.4\": {\"id\": \"glm-5.4\", \"name\": \"GLM-5.4\", \"description\": \"Multimodal GLM flagship model for coding, agents, and complex project delivery\", \"family\": \"glm\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"low\", \"high\", \"max\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-23\", \"last_updated\": \"2026-11-23\", \"modalities\": {\"input\": [\"text\", \"image\", \"video\", \"pdf\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1000000, \"output\": 131072}, \"cost\": {\"input\": 0, \"output\": 0, \"cache_read\": 0}, \"canonical_model_id\": \"zhipuai/glm-5.4\"}}",
+          "canonical_id": "zhipuai/glm-5.4",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "1b271db727d7edc1f2973c0a5505d9d89f30f8bb348461dd2c979555958c5122",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T18:26:01.675120+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T18:26:04.542066+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 1b271db727d7: volcengine-coding-plan/glm-5.4\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "intel-d1dbb6c05c2be7c19cc1",
       "scanner": "models-dev-git",
@@ -97712,76 +98043,6 @@
       "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 model keys!\n\n• gemini/gemini-decision-1 (gemini/gemini-decision-1)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
     },
     {
-      "id": "arena-scout-diff-ac077d8f",
-      "category": "cli-sdk-diff",
-      "scanner": "lmarena",
-      "header": "ARENA.AI LIVE MODEL SCOUT · NEXT.JS RSC STREAM",
-      "title": "New Model Found on Arena: ernie-5.5-flash-preview",
-      "subtitle": "Detected in Arena Code (/code) initialModels RSC stream (in:text, out:web)",
-      "build_label": "Arena Metadata",
-      "build_transition": "Org: baidu · Provider: baiduyiyanApi · ID: 01a1bc5c-e389-7e59-a728-9939461d4a62 · DB minted 2026-11-08 18:12:46 UTC",
-      "models": [
-        {
-          "id": "org:baidu · baiduyiyanApi",
-          "name": "ernie-5.5-flash-preview",
-          "org": "baidu",
-          "released_on": "2026-11-10"
-        }
-      ],
-      "evidence": "arena.ai/code -> self.__next_f.push (initialModels)",
-      "source_text": "live Arena (arena.ai) Next.js RSC model config.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "ARENA.AI",
-      "provider_slug": "modelsdev",
-      "accent_color": "#10b981",
-      "links": [
-        {
-          "label": "Open on Arena.ai",
-          "url": "https://arena.ai/code?mode=direct&model=ernie-5.5-flash-preview"
-        }
-      ],
-      "detected_at": "2026-11-11T18:17:20.370053+00:00",
-      "pricing": null,
-      "x_post_text": "🚨 ARENA.AI LIVE MODEL SCOUT · NEXT.JS RSC STREAM\nNew Model Found on Arena: ernie-5.5-flash-preview spotted in Arena Metadata Org: baidu · Provider: baiduyiyanApi · ID: 01a1bc5c-e389-7e59-a728-9939461d4a62 · DB minted 2026-11-08 18:12:46 UTC!\n\n• ernie-5.5-flash-preview (org:baidu · baiduyiyanApi)\n\nEvidence: arena.ai/code -> self.__next_f.push (initialModels)\nSource: live Arena (arena.ai) Next.js RSC model config.\n\nTracked by @StatsWire"
-    },
-    {
-      "id": "docs-diff-gemini-docs-477abdda",
-      "category": "cli-sdk-diff",
-      "scanner": "docs-radar",
-      "header": "GEMINI API DOCS RADAR · GOOGLE",
-      "title": "New Model Spotted in Gemini API Official Models Page",
-      "subtitle": "Verified live API documentation diff",
-      "build_label": "Docs Diff",
-      "build_transition": "+1 new identifier(s)",
-      "models": [
-        {
-          "id": "gemini-decision-1",
-          "name": "Gemini Decision 1"
-        }
-      ],
-      "evidence": "ai.google.dev/gemini-api/docs/models",
-      "source_text": "official Google AI for Developers Gemini API documentation.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "GOOGLE",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "Official Docs Page",
-          "url": "https://ai.google.dev/gemini-api/docs/models"
-        },
-        {
-          "label": "Raw Docs Feed",
-          "url": "https://ai.google.dev/gemini-api/docs/models"
-        }
-      ],
-      "detected_at": "2026-11-11T18:05:15.851395+00:00",
-      "pricing": null,
-      "x_post_text": "🚨 GEMINI API DOCS RADAR · GOOGLE\nNew Model Spotted in Gemini API Official Models Page spotted in Docs Diff +1 new identifier(s)!\n\n• Gemini Decision 1 (gemini-decision-1)\n\nEvidence: ai.google.dev/gemini-api/docs/models\nSource: official Google AI for Developers Gemini API documentation.\n\nTracked by @StatsWire"
-    },
-    {
       "id": "ag-acp-1.4.5-1.5.0-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
@@ -97984,25 +98245,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T18:02:39.094199+00:00",
+      "last_attempt": "2026-11-25T18:26:00.998608+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T18:02:39.598624+00:00",
+      "last_success": "2026-11-25T18:26:04.542066+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.505,
-      "latest_build": "fe175d9a528684b481f66b2c22a6981a1a1ac1287c91899b0027c2e6fb9540d0",
-      "builds_retained": 190,
-      "identifiers": 10134
+      "duration_seconds": 3.544,
+      "latest_build": "1b271db727d7edc1f2973c0a5505d9d89f30f8bb348461dd2c979555958c5122",
+      "builds_retained": 191,
+      "identifiers": 10135
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-25T18:02:39.743990+00:00",
+      "last_attempt": "2026-11-25T18:26:04.684341+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T18:02:40.317332+00:00",
+      "last_success": "2026-11-25T18:26:05.046345+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.574,
+      "duration_seconds": 0.363,
       "latest_build": "34d39facdee00d63deff4a87d2ecf5ae8d15f1cf",
       "builds_retained": 92,
       "identifiers": 7080
@@ -98010,34 +98271,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-25T18:02:40.463735+00:00",
+      "last_attempt": "2026-11-25T18:26:05.196467+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T18:02:47.375738+00:00",
+      "last_success": "2026-11-25T18:26:18.357914+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.913,
-      "latest_build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
-      "builds_retained": 191,
-      "identifiers": 11381
+      "duration_seconds": 13.162,
+      "latest_build": "74ecb6acb2ed7633def30973184f4e3cb6034522",
+      "builds_retained": 193,
+      "identifiers": 11384
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T18:02:47.517982+00:00",
+      "last_attempt": "2026-11-25T18:26:18.503025+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4160,
-      "duration_seconds": 15.513
+      "consecutive_failures": 4170,
+      "duration_seconds": 15.328
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-25T17:58:28.728904+00:00",
+      "last_attempt": "2026-11-25T18:14:49.212719+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:58:28.874618+00:00",
+      "last_success": "2026-11-25T18:14:49.585280+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.146,
+      "duration_seconds": 0.373,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -98047,61 +98308,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T18:02:03.017209+00:00",
+      "last_attempt": "2026-11-25T18:25:25.215051+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T18:02:04.745907+00:00",
+      "last_success": "2026-11-25T18:25:27.204786+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.729
+      "duration_seconds": 1.99
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T18:02:04.745960+00:00",
+      "last_attempt": "2026-11-25T18:25:27.204855+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T18:02:04.829892+00:00",
+      "last_success": "2026-11-25T18:25:27.300272+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.084
+      "duration_seconds": 0.095
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T18:02:04.829925+00:00",
+      "last_attempt": "2026-11-25T18:25:27.300308+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T18:02:10.149165+00:00",
+      "last_success": "2026-11-25T18:25:33.079893+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.319
+      "duration_seconds": 5.78
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T18:02:10.149220+00:00",
+      "last_attempt": "2026-11-25T18:25:33.079976+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T18:02:39.094140+00:00",
+      "last_success": "2026-11-25T18:26:00.998541+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 28.945,
+      "duration_seconds": 27.919,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-25T18:02:10.325226+00:00",
+          "checked_at": "2026-11-25T18:25:33.253105+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-25T18:02:20.263779+00:00",
+          "checked_at": "2026-11-25T18:25:44.258500+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-25T18:02:20.406612+00:00",
+          "checked_at": "2026-11-25T18:25:44.420752+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-25T18:02:20.406630+00:00",
+          "checked_at": "2026-11-25T18:25:44.420769+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -98109,25 +98370,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T18:02:39.094199+00:00",
+      "last_attempt": "2026-11-25T18:26:00.998608+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T18:02:39.598624+00:00",
+      "last_success": "2026-11-25T18:26:04.542066+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.505,
-      "latest_build": "fe175d9a528684b481f66b2c22a6981a1a1ac1287c91899b0027c2e6fb9540d0",
-      "builds_retained": 190,
-      "identifiers": 10134
+      "duration_seconds": 3.544,
+      "latest_build": "1b271db727d7edc1f2973c0a5505d9d89f30f8bb348461dd2c979555958c5122",
+      "builds_retained": 191,
+      "identifiers": 10135
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-25T18:02:39.743990+00:00",
+      "last_attempt": "2026-11-25T18:26:04.684341+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T18:02:40.317332+00:00",
+      "last_success": "2026-11-25T18:26:05.046345+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.574,
+      "duration_seconds": 0.363,
       "latest_build": "34d39facdee00d63deff4a87d2ecf5ae8d15f1cf",
       "builds_retained": 92,
       "identifiers": 7080
@@ -98135,34 +98396,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-25T18:02:40.463735+00:00",
+      "last_attempt": "2026-11-25T18:26:05.196467+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T18:02:47.375738+00:00",
+      "last_success": "2026-11-25T18:26:18.357914+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.913,
-      "latest_build": "51e27133f70eb99ea65a78c96b01360e67c2c636",
-      "builds_retained": 191,
-      "identifiers": 11381
+      "duration_seconds": 13.162,
+      "latest_build": "74ecb6acb2ed7633def30973184f4e3cb6034522",
+      "builds_retained": 193,
+      "identifiers": 11384
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T18:02:47.517982+00:00",
+      "last_attempt": "2026-11-25T18:26:18.503025+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4160,
-      "duration_seconds": 15.513
+      "consecutive_failures": 4170,
+      "duration_seconds": 15.328
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-25T17:58:28.728904+00:00",
+      "last_attempt": "2026-11-25T18:14:49.212719+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:58:28.874618+00:00",
+      "last_success": "2026-11-25T18:14:49.585280+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.146,
+      "duration_seconds": 0.373,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -98170,64 +98431,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T18:03:03.038066+00:00",
+      "last_attempt": "2026-11-25T18:26:33.838512+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T18:03:10.296444+00:00",
+      "last_success": "2026-11-25T18:26:41.169609+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.258
+      "duration_seconds": 7.331
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T18:03:10.296502+00:00",
+      "last_attempt": "2026-11-25T18:26:41.169663+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T18:03:11.515567+00:00",
+      "last_success": "2026-11-25T18:26:42.645143+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.219
+      "duration_seconds": 1.475
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-25T18:03:11.515613+00:00",
+      "last_attempt": "2026-11-25T18:26:42.645196+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T18:03:22.003747+00:00",
+      "last_success": "2026-11-25T18:26:52.086989+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 10.488
+      "duration_seconds": 9.442
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T18:03:22.003800+00:00",
+      "last_attempt": "2026-11-25T18:26:52.087041+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T18:03:22.377127+00:00",
+      "last_success": "2026-11-25T18:26:52.464321+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.373
+      "duration_seconds": 0.377
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T18:03:22.377172+00:00",
+      "last_attempt": "2026-11-25T18:26:52.464359+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T18:03:22.392887+00:00",
+      "last_success": "2026-11-25T18:26:52.539689+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.016
+      "duration_seconds": 0.075
     }
   },
   "identities": {
-    "identifiers": 31925,
-    "declared_aliases": 18941,
+    "identifiers": 31929,
+    "declared_aliases": 18947,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 471,
-      "seconds_mean": 3390.8960337431,
+      "samples": 473,
+      "seconds_mean": 3377.4512566511626,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -98241,9 +98502,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 614,
-      "events": 616,
-      "rate": 0.9967532467532467
+      "complete": 617,
+      "events": 619,
+      "rate": 0.9967689822294022
     },
     "source_health": {
       "sources": 14,
