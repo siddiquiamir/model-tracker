@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-25T17:24:41.164583+00:00",
-  "scan_completed_at": "2026-11-25T17:26:12.946864+00:00",
+  "generated_at": "2026-11-25T17:34:19.102356+00:00",
+  "scan_completed_at": "2026-11-25T17:37:23.507394+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 340,
+    "stories": 343,
     "leaks": 34,
     "releases": 91,
-    "stories_24h": 47,
-    "sources_ok": 16,
-    "total_cards": 859,
-    "new_in_this_scan": 10
+    "stories_24h": 38,
+    "sources_ok": 13,
+    "total_cards": 865,
+    "new_in_this_scan": 6
   },
   "stories": [
     {
@@ -2034,6 +2034,80 @@
         }
       ],
       "x_post_text": "Registry Update 25f07b155853: image-01-live\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/25f07b155853dc72b2d1774da438ec1df1910798"
+    },
+    {
+      "id": "story-claude-mythos-5",
+      "group": "claude-mythos-5",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Claude Mythos 5",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-24T17:29:43.713682+00:00",
+      "updated_at": "2026-11-24T17:29:43.713682+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "claude-mythos-5",
+          "name": "bedrock/mantle/anthropic.claude-mythos-5"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-24T17:29:43.713682+00:00",
+          "title": "anthropic.claude-mythos-5",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-e56f26ea638cca9314b0",
+        "intel-e13afe2b53a6affdd743"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "bedrock/mantle/anthropic.claude-mythos-5",
+          "family": "anthropic.claude-mythos-5",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"bedrock/mantle/anthropic.claude-mythos-5\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.375e-05, \"cache_creation_input_token_cost_above_1hr\": 2.2e-05, \"cache_read_input_token_cost\": 1.1e-06, \"input_cost_per_token\": 1.1e-05, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 5.5e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"thinking_always_on\": true, \"token_count_model\": ",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
+          "method": "structured registry",
+          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T13:42:08+00:00"
+        },
+        {
+          "id": "us.anthropic.claude-mythos-5",
+          "family": "us.anthropic.claude-mythos-5",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"us.anthropic.claude-mythos-5\": {\"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"supports_adaptive_thinking\": true, \"thinking_always_on\": true, \"supports_mid_conversation_system\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_function_calling\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"supports_native_structured_output\": true, \"supports_max_reasoning_effort\": true, \"supports_output_config\": true, \"bedrock_output_config_effort_ceiling\": \"xhigh\", \"supports_parallel_tool_use_config\": true, \"prompt_cache_min_tokens\": 512, \"cache_creation_input_token_cost\": 1.375e-05, \"input_cost_per_token\": 1.1e-05, \"cache_read_input_token_cost\": 1.1e-06, \"output_cost_per_token\": 5.5e-05, \"cache_creation_input_token_cost_above_1hr\": 2.2e-05, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"token_count_model\": {\"mod",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
+          "method": "structured registry",
+          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T13:42:08+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: claude-mythos-5\nhttps://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json"
     },
     {
       "id": "story-gpt-6-astra-healthcare",
@@ -14187,6 +14261,66 @@
       "x_post_text": "registry evidence, not a launch: GLM-4.5-Air-FP8\nhttps://raw.githubusercontent.com/BerriAI/litellm/245c31763c0fa763e2b930f5aa704892539080e3/model_prices_and_context_window.json"
     },
     {
+      "id": "story-mistral-instruct-0-3",
+      "group": "mistral-instruct-0-3",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "together_ai/mistralai/Mistral-7B-Instruct-v0.3",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-19T16:44:12.659822+00:00",
+      "updated_at": "2026-11-19T16:44:12.659822+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Mistral-7B-Instruct-v0.3",
+          "name": "together_ai/mistralai/Mistral-7B-Instruct-v0.3"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T16:44:12.659822+00:00",
+          "title": "mistral-7b-instruct-v0.3",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "755762847f6eb356f4aeba1d15287c4a33ea79be",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/a9e6cf434fdb4dcee94e5a993bc43c75062752d35da7e394ceac8d1cced5fa5b.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-a34ea8057fed90978723"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "together_ai/mistralai/Mistral-7B-Instruct-v0.3",
+          "family": "mistral-7b-instruct-v0.3",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"together_ai/mistralai/Mistral-7B-Instruct-v0.3\": {\"deprecation_date\": \"2026-01-29\", \"deprecation_source\": \"https://docs.together.ai/docs/changelog\", \"input_cost_per_token\": 2e-07, \"output_cost_per_token\": 2e-07, \"litellm_provider\": \"together_ai\", \"max_input_tokens\": 32768, \"mode\": \"chat\", \"source\": \"https://api.together.ai/v1/models\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "a9e6cf434fdb4dcee94e5a993bc43c75062752d35da7e394ceac8d1cced5fa5b",
+          "method": "structured registry",
+          "build": "755762847f6eb356f4aeba1d15287c4a33ea79be",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T16:18:40+00:00"
+        }
+      ],
+      "x_post_text": "registry evidence, not a launch: Mistral-7B-Instruct-v0.3\nhttps://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json"
+    },
+    {
       "id": "story-gpt-realtime-translate",
       "group": "gpt-realtime-translate",
       "kind": "registry",
@@ -15149,6 +15283,159 @@
         }
       ],
       "x_post_text": "registry evidence, not a launch: mistral-ocr-4\nhttps://raw.githubusercontent.com/BerriAI/litellm/ab76aa78c2337c69d95dac50222f31452d55b2ed/model_prices_and_context_window.json"
+    },
+    {
+      "id": "story-codex-mini",
+      "group": "codex-mini",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Codex Mini",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-19T01:50:20.015237+00:00",
+      "updated_at": "2026-11-19T19:20:59.145273+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "codex-mini",
+          "name": "azure_ai/codex-mini"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T01:50:20.015237+00:00",
+          "title": "codex-mini",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/ab76aa78c2337c69d95dac50222f31452d55b2ed/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "ab76aa78c2337c69d95dac50222f31452d55b2ed",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/f66b01471916ec37beb106bffb4e6be32f2c5915f5d661304336248d58cdeea1.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-2f209203940d6e60ef22",
+        "intel-e58649b1806c9b2a2f1f",
+        "intel-0d358b316030449b6821"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "azure/codex-mini",
+          "family": "codex-mini",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure/codex-mini\": {\"cache_read_input_token_cost\": 3.75e-07, \"successor_model\": \"azure/gpt-5.1-codex-mini\", \"deprecation_date\": \"2026-11-15\", \"deprecation_source\": \"https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule\", \"input_cost_per_token\": 1.5e-06, \"litellm_provider\": \"azure\", \"max_input_tokens\": 200000, \"max_output_tokens\": 100000, \"mode\": \"responses\", \"output_cost_per_token\": 6e-06, \"source\": \"https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'\", \"supported_endpoints\": [\"/v1/responses\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"text\"], \"supports_function_calling\": true, \"supports_parallel_function_calling\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_system_messages\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "f66b01471916ec37beb106bffb4e6be32f2c5915f5d661304336248d58cdeea1",
+          "method": "structured registry",
+          "build": "ab76aa78c2337c69d95dac50222f31452d55b2ed",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/ab76aa78c2337c69d95dac50222f31452d55b2ed/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:48:23+00:00"
+        },
+        {
+          "id": "azure/eu/codex-mini",
+          "family": "codex-mini",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure/eu/codex-mini\": {\"successor_model\": \"azure/eu/gpt-5.1-codex-mini\", \"deprecation_date\": \"2026-11-15\", \"deprecation_source\": \"https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule\", \"cache_read_input_token_cost\": 4.13e-07, \"input_cost_per_token\": 1.65e-06, \"litellm_provider\": \"azure\", \"mode\": \"responses\", \"output_cost_per_token\": 6.6e-06, \"source\": \"https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "f66b01471916ec37beb106bffb4e6be32f2c5915f5d661304336248d58cdeea1",
+          "method": "structured registry",
+          "build": "ab76aa78c2337c69d95dac50222f31452d55b2ed",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/ab76aa78c2337c69d95dac50222f31452d55b2ed/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:48:23+00:00"
+        },
+        {
+          "id": "azure/us/codex-mini",
+          "family": "codex-mini",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure/us/codex-mini\": {\"successor_model\": \"azure/us/gpt-5.1-codex-mini\", \"deprecation_date\": \"2026-11-15\", \"deprecation_source\": \"https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule\", \"cache_read_input_token_cost\": 4.13e-07, \"input_cost_per_token\": 1.65e-06, \"litellm_provider\": \"azure\", \"mode\": \"responses\", \"output_cost_per_token\": 6.6e-06, \"source\": \"https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "f66b01471916ec37beb106bffb4e6be32f2c5915f5d661304336248d58cdeea1",
+          "method": "structured registry",
+          "build": "ab76aa78c2337c69d95dac50222f31452d55b2ed",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/ab76aa78c2337c69d95dac50222f31452d55b2ed/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:48:23+00:00"
+        },
+        {
+          "id": "azure/codex-mini",
+          "family": "codex-mini",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure/codex-mini\": {\"cache_read_input_token_cost\": 3.75e-07, \"successor_model\": \"azure/gpt-5.1-codex-mini\", \"deprecation_date\": \"2026-11-17\", \"deprecation_source\": \"https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule\", \"input_cost_per_token\": 1.5e-06, \"litellm_provider\": \"azure\", \"max_input_tokens\": 200000, \"max_output_tokens\": 100000, \"mode\": \"responses\", \"output_cost_per_token\": 6e-06, \"source\": \"https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'\", \"supported_endpoints\": [\"/v1/responses\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"text\"], \"supports_function_calling\": true, \"supports_parallel_function_calling\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_system_messages\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "a9e6cf434fdb4dcee94e5a993bc43c75062752d35da7e394ceac8d1cced5fa5b",
+          "method": "structured registry",
+          "build": "755762847f6eb356f4aeba1d15287c4a33ea79be",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T16:18:40+00:00"
+        },
+        {
+          "id": "azure/eu/codex-mini",
+          "family": "codex-mini",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure/eu/codex-mini\": {\"successor_model\": \"azure/eu/gpt-5.1-codex-mini\", \"deprecation_date\": \"2026-11-17\", \"deprecation_source\": \"https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule\", \"cache_read_input_token_cost\": 4.13e-07, \"input_cost_per_token\": 1.65e-06, \"litellm_provider\": \"azure\", \"mode\": \"responses\", \"output_cost_per_token\": 6.6e-06, \"source\": \"https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "a9e6cf434fdb4dcee94e5a993bc43c75062752d35da7e394ceac8d1cced5fa5b",
+          "method": "structured registry",
+          "build": "755762847f6eb356f4aeba1d15287c4a33ea79be",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T16:18:40+00:00"
+        },
+        {
+          "id": "azure/us/codex-mini",
+          "family": "codex-mini",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure/us/codex-mini\": {\"successor_model\": \"azure/us/gpt-5.1-codex-mini\", \"deprecation_date\": \"2026-11-17\", \"deprecation_source\": \"https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule\", \"cache_read_input_token_cost\": 4.13e-07, \"input_cost_per_token\": 1.65e-06, \"litellm_provider\": \"azure\", \"mode\": \"responses\", \"output_cost_per_token\": 6.6e-06, \"source\": \"https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "a9e6cf434fdb4dcee94e5a993bc43c75062752d35da7e394ceac8d1cced5fa5b",
+          "method": "structured registry",
+          "build": "755762847f6eb356f4aeba1d15287c4a33ea79be",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T16:18:40+00:00"
+        },
+        {
+          "id": "azure_ai/codex-mini",
+          "family": "codex-mini",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure_ai/codex-mini\": {\"cache_read_input_token_cost\": 3.75e-07, \"deprecation_date\": \"2026-11-17\", \"deprecation_source\": \"https://learn.microsoft.com/en-us/azure/foundry/concepts/model-lifecycle-retirement\", \"input_cost_per_token\": 1.5e-06, \"litellm_provider\": \"azure_ai\", \"max_input_tokens\": 200000, \"max_output_tokens\": 100000, \"mode\": \"responses\", \"output_cost_per_token\": 6e-06, \"source\": \"https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/\", \"supported_endpoints\": [\"/v1/responses\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"text\"], \"supports_function_calling\": true, \"supports_parallel_function_calling\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_system_messages\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "a9e6cf434fdb4dcee94e5a993bc43c75062752d35da7e394ceac8d1cced5fa5b",
+          "method": "structured registry",
+          "build": "755762847f6eb356f4aeba1d15287c4a33ea79be",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T16:18:40+00:00"
+        },
+        {
+          "id": "azure_ai/codex-mini",
+          "family": "codex-mini",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure_ai/codex-mini\": {\"cache_read_input_token_cost\": 3.75e-07, \"successor_model\": \"azure/gpt-5.1-codex-mini\", \"deprecation_date\": \"2026-11-17\", \"deprecation_source\": \"https://learn.microsoft.com/en-us/azure/foundry/concepts/model-lifecycle-retirement\", \"input_cost_per_token\": 1.5e-06, \"litellm_provider\": \"azure_ai\", \"max_input_tokens\": 200000, \"max_output_tokens\": 100000, \"mode\": \"responses\", \"output_cost_per_token\": 6e-06, \"source\": \"https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/\", \"supported_endpoints\": [\"/v1/responses\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"text\"], \"supports_function_calling\": true, \"supports_parallel_function_calling\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_system_messages\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "307642e156a19a23d264583e6101651d373f281dc3c059409e9059827ffb853c",
+          "method": "structured registry",
+          "build": "245c31763c0fa763e2b930f5aa704892539080e3",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/245c31763c0fa763e2b930f5aa704892539080e3/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T19:19:20+00:00"
+        }
+      ],
+      "x_post_text": "LiteLLM commit-pinned registry ab76aa78c233: codex-mini\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/ab76aa78c2337c69d95dac50222f31452d55b2ed/model_prices_and_context_window.json"
     },
     {
       "id": "story-whisper",
@@ -29914,7 +30201,8 @@
         {
           "id": "openai/gpt-6-astra-healthcare",
           "name": "openai/gpt-6-astra-healthcare",
-          "registry_update": true
+          "registry_update": true,
+          "released_on": "2026-11-24"
         }
       ],
       "detected_at": "2026-11-25T14:22:48.526576+00:00",
@@ -30007,7 +30295,8 @@
         {
           "id": "openai/gpt-6.1-sol-healthcare",
           "name": "openai/gpt-6.1-sol-healthcare",
-          "registry_update": true
+          "registry_update": true,
+          "released_on": "2026-11-24"
         }
       ],
       "detected_at": "2026-11-25T14:22:48.526576+00:00",
@@ -30100,7 +30389,8 @@
         {
           "id": "openai/gpt-6.2-astra-healthcare",
           "name": "openai/gpt-6.2-astra-healthcare",
-          "registry_update": true
+          "registry_update": true,
+          "released_on": "2026-11-24"
         }
       ],
       "detected_at": "2026-11-25T14:22:48.526576+00:00",
@@ -30193,7 +30483,8 @@
         {
           "id": "openai/gpt-6.2-sol-healthcare",
           "name": "openai/gpt-6.2-sol-healthcare",
-          "registry_update": true
+          "registry_update": true,
+          "released_on": "2026-11-24"
         }
       ],
       "detected_at": "2026-11-25T14:22:48.526576+00:00",
@@ -36377,7 +36668,8 @@
         {
           "id": "gpt-6-astra-healthcare",
           "name": "gpt-6-astra-healthcare",
-          "registry_update": true
+          "registry_update": true,
+          "released_on": "2026-11-24"
         }
       ],
       "detected_at": "2026-11-24T17:50:26.652035+00:00",
@@ -36461,7 +36753,8 @@
         {
           "id": "gpt-6.1-sol-healthcare",
           "name": "gpt-6.1-sol-healthcare",
-          "registry_update": true
+          "registry_update": true,
+          "released_on": "2026-11-24"
         }
       ],
       "detected_at": "2026-11-24T17:50:26.652035+00:00",
@@ -36545,7 +36838,8 @@
         {
           "id": "gpt-6.2-astra-healthcare",
           "name": "gpt-6.2-astra-healthcare",
-          "registry_update": true
+          "registry_update": true,
+          "released_on": "2026-11-24"
         }
       ],
       "detected_at": "2026-11-24T17:50:26.652035+00:00",
@@ -36629,7 +36923,8 @@
         {
           "id": "gpt-6.2-sol-healthcare",
           "name": "gpt-6.2-sol-healthcare",
-          "registry_update": true
+          "registry_update": true,
+          "released_on": "2026-11-24"
         }
       ],
       "detected_at": "2026-11-24T17:50:26.652035+00:00",
@@ -38605,6 +38900,174 @@
       "x_post_text": "models.dev source definitions 25f07b155853: minimax/image-01-live\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/25f07b155853dc72b2d1774da438ec1df1910798"
     },
     {
+      "id": "intel-e56f26ea638cca9314b0",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "anthropic.claude-mythos-5",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "anthropic.claude-mythos-5",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "bedrock/mantle/anthropic.claude-mythos-5",
+          "name": "bedrock/mantle/anthropic.claude-mythos-5",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-24T17:29:43.713682+00:00",
+      "first_seen": "2026-11-24T13:42:08+00:00",
+      "observed_at": "2026-11-24T17:29:43.713682+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "88240a6d9d17c1a1eec162f707a849bb4064e69f -> 85ba26ff5f0a566026c5cd172341c6c64322e16e",
+      "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+      "artifact_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "bedrock/mantle/anthropic.claude-mythos-5",
+          "family": "anthropic.claude-mythos-5",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"bedrock/mantle/anthropic.claude-mythos-5\": {\"bedrock_output_config_effort_ceiling\": \"xhigh\", \"cache_creation_input_token_cost\": 1.375e-05, \"cache_creation_input_token_cost_above_1hr\": 2.2e-05, \"cache_read_input_token_cost\": 1.1e-06, \"input_cost_per_token\": 1.1e-05, \"litellm_provider\": \"bedrock\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"output_cost_per_token\": 5.5e-05, \"prompt_cache_min_tokens\": 512.0, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"supports_adaptive_thinking\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_function_calling\": true, \"supports_max_reasoning_effort\": true, \"supports_mid_conversation_system\": true, \"supports_native_structured_output\": true, \"supports_output_config\": true, \"supports_parallel_tool_use_config\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"thinking_always_on\": true, \"token_count_model\": ",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
+          "method": "structured registry",
+          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T13:42:08+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/85ba26ff5f0a566026c5cd172341c6c64322e16e"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T17:35:02.302385+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: bedrock/mantle/anthropic.claude-mythos-5\nhttps://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-e13afe2b53a6affdd743",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "us.anthropic.claude-mythos-5",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "us.anthropic.claude-mythos-5",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "us.anthropic.claude-mythos-5",
+          "name": "us.anthropic.claude-mythos-5",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-24T17:29:43.713682+00:00",
+      "first_seen": "2026-11-24T13:42:08+00:00",
+      "observed_at": "2026-11-24T17:29:43.713682+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "88240a6d9d17c1a1eec162f707a849bb4064e69f -> 85ba26ff5f0a566026c5cd172341c6c64322e16e",
+      "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+      "artifact_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "us.anthropic.claude-mythos-5",
+          "family": "us.anthropic.claude-mythos-5",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"us.anthropic.claude-mythos-5\": {\"litellm_provider\": \"bedrock_converse\", \"max_input_tokens\": 1000000, \"max_output_tokens\": 128000, \"mode\": \"chat\", \"supports_adaptive_thinking\": true, \"thinking_always_on\": true, \"supports_mid_conversation_system\": true, \"supports_assistant_prefill\": false, \"supports_computer_use\": true, \"supports_function_calling\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_sampling_params\": false, \"supports_tool_choice\": true, \"supports_vision\": true, \"supports_xhigh_reasoning_effort\": true, \"supports_native_structured_output\": true, \"supports_max_reasoning_effort\": true, \"supports_output_config\": true, \"bedrock_output_config_effort_ceiling\": \"xhigh\", \"supports_parallel_tool_use_config\": true, \"prompt_cache_min_tokens\": 512, \"cache_creation_input_token_cost\": 1.375e-05, \"input_cost_per_token\": 1.1e-05, \"cache_read_input_token_cost\": 1.1e-06, \"output_cost_per_token\": 5.5e-05, \"cache_creation_input_token_cost_above_1hr\": 2.2e-05, \"source\": \"https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrockFoundationModels/current/index.json\", \"token_count_model\": {\"mod",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "651c081a7e6410c25717d65a9d77c920759eec2c3cc66cd2933edafd31bee0db",
+          "method": "structured registry",
+          "build": "85ba26ff5f0a566026c5cd172341c6c64322e16e",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json",
+          "first_seen": "2026-11-24T13:42:08+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/85ba26ff5f0a566026c5cd172341c6c64322e16e"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T17:35:02.302385+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: us.anthropic.claude-mythos-5\nhttps://raw.githubusercontent.com/BerriAI/litellm/85ba26ff5f0a566026c5cd172341c6c64322e16e/model_prices_and_context_window.json"
+    },
+    {
       "id": "intel-85bc8b8cda86d1849863",
       "scanner": "models-dev-api",
       "intelligence": true,
@@ -39036,19 +39499,23 @@
       "models": [
         {
           "id": "gpt-6-astra-healthcare",
-          "name": "GPT 6 Astra Healthcare"
+          "name": "GPT 6 Astra Healthcare",
+          "released_on": "2026-11-24"
         },
         {
           "id": "gpt-6.1-sol-healthcare",
-          "name": "GPT 6.1 Sol Healthcare"
+          "name": "GPT 6.1 Sol Healthcare",
+          "released_on": "2026-11-24"
         },
         {
           "id": "gpt-6.2-astra-healthcare",
-          "name": "GPT 6.2 Astra Healthcare"
+          "name": "GPT 6.2 Astra Healthcare",
+          "released_on": "2026-11-24"
         },
         {
           "id": "gpt-6.2-sol-healthcare",
-          "name": "GPT 6.2 Sol Healthcare"
+          "name": "GPT 6.2 Sol Healthcare",
+          "released_on": "2026-11-24"
         }
       ],
       "evidence": "github.com/openai/openai-openapi/blob/main/openapi.yaml",
@@ -39085,19 +39552,23 @@
       "models": [
         {
           "id": "gpt-6.2-astra-healthcare",
-          "name": "GPT 6.2 Astra Healthcare — $8 / $40 per 1M tokens ($0.40 cached)"
+          "name": "GPT 6.2 Astra Healthcare — $8 / $40 per 1M tokens ($0.40 cached)",
+          "released_on": "2026-11-24"
         },
         {
           "id": "gpt-6.2-sol-healthcare",
-          "name": "GPT 6.2 Sol Healthcare — $2 / $10 per 1M tokens ($0.10 cached)"
+          "name": "GPT 6.2 Sol Healthcare — $2 / $10 per 1M tokens ($0.10 cached)",
+          "released_on": "2026-11-24"
         },
         {
           "id": "gpt-6-astra-healthcare",
-          "name": "GPT 6 Astra Healthcare — $10 / $50 per 1M tokens ($1 cached)"
+          "name": "GPT 6 Astra Healthcare — $10 / $50 per 1M tokens ($1 cached)",
+          "released_on": "2026-11-24"
         },
         {
           "id": "gpt-6.1-sol-healthcare",
-          "name": "GPT 6.1 Sol Healthcare — $2 / $10 per 1M tokens ($0.10 cached)"
+          "name": "GPT 6.1 Sol Healthcare — $2 / $10 per 1M tokens ($0.10 cached)",
+          "released_on": "2026-11-24"
         }
       ],
       "evidence": "developers.openai.com/api/docs/pricing.md",
@@ -70812,6 +71283,103 @@
       "x_post_text": "registry evidence, not a launch: azure_ai/MAI-Image-2.5-Pro\nhttps://raw.githubusercontent.com/BerriAI/litellm/245c31763c0fa763e2b930f5aa704892539080e3/model_prices_and_context_window.json"
     },
     {
+      "id": "intel-0d358b316030449b6821",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "codex-mini",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "codex-mini",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "azure_ai/codex-mini",
+          "name": "azure_ai/codex-mini",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T19:20:59.145273+00:00",
+      "first_seen": "2026-11-19T19:19:20+00:00",
+      "observed_at": "2026-11-19T19:20:59.145273+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "f1a1f6f0a1234a2a4f1031d83264af2e01883d9c -> 245c31763c0fa763e2b930f5aa704892539080e3",
+      "build": "245c31763c0fa763e2b930f5aa704892539080e3",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/245c31763c0fa763e2b930f5aa704892539080e3/model_prices_and_context_window.json",
+      "artifact_sha256": "307642e156a19a23d264583e6101651d373f281dc3c059409e9059827ffb853c",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/307642e156a19a23d264583e6101651d373f281dc3c059409e9059827ffb853c.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/307642e156a19a23d264583e6101651d373f281dc3c059409e9059827ffb853c.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "azure_ai/codex-mini",
+          "family": "codex-mini",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure_ai/codex-mini\": {\"cache_read_input_token_cost\": 3.75e-07, \"successor_model\": \"azure/gpt-5.1-codex-mini\", \"deprecation_date\": \"2026-11-17\", \"deprecation_source\": \"https://learn.microsoft.com/en-us/azure/foundry/concepts/model-lifecycle-retirement\", \"input_cost_per_token\": 1.5e-06, \"litellm_provider\": \"azure_ai\", \"max_input_tokens\": 200000, \"max_output_tokens\": 100000, \"mode\": \"responses\", \"output_cost_per_token\": 6e-06, \"source\": \"https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/\", \"supported_endpoints\": [\"/v1/responses\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"text\"], \"supports_function_calling\": true, \"supports_parallel_function_calling\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_system_messages\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "307642e156a19a23d264583e6101651d373f281dc3c059409e9059827ffb853c",
+          "method": "structured registry",
+          "build": "245c31763c0fa763e2b930f5aa704892539080e3",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/245c31763c0fa763e2b930f5aa704892539080e3/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T19:19:20+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "models-dev-api",
+          "identifier": "azure-cognitive-services/codex-mini",
+          "first_seen": "2026-11-18T12:44:53.499743+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/f3011bb73eb76169c87faf1385e6d56472d8f92cc68ad45820892ea3c9e76556.json.gz"
+        },
+        {
+          "source": "models-dev-git",
+          "identifier": "azure/codex-mini",
+          "first_seen": "2026-11-18T12:32:34+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/8a97b45cf34409c69dd7b816a4a8ee91a816344b3bb3f026bf4765e707763275.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/245c31763c0fa763e2b930f5aa704892539080e3/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/245c31763c0fa763e2b930f5aa704892539080e3"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T17:35:02.302385+00:00",
+      "pricing": null,
+      "x_post_text": "LiteLLM model registry 245c31763c0f: azure_ai/codex-mini\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/245c31763c0fa763e2b930f5aa704892539080e3/model_prices_and_context_window.json"
+    },
+    {
       "id": "intel-d70eb6f87246d049b346",
       "scanner": "litellm-intelligence",
       "intelligence": true,
@@ -72514,6 +73082,241 @@
       "tracker_observed_at": "2026-11-19T17:40:42.983595+00:00",
       "pricing": null,
       "x_post_text": "LiteLLM model registry f1a1f6f0a123: gemini/genie-4\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/f1a1f6f0a1234a2a4f1031d83264af2e01883d9c/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-e58649b1806c9b2a2f1f",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "codex-mini",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "4 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "codex-mini",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "azure/codex-mini",
+          "name": "azure/codex-mini",
+          "registry_update": true
+        },
+        {
+          "id": "azure/eu/codex-mini",
+          "name": "azure/eu/codex-mini",
+          "registry_update": true
+        },
+        {
+          "id": "azure/us/codex-mini",
+          "name": "azure/us/codex-mini",
+          "registry_update": true
+        },
+        {
+          "id": "azure_ai/codex-mini",
+          "name": "azure_ai/codex-mini",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T16:44:12.659822+00:00",
+      "first_seen": "2026-11-19T16:18:40+00:00",
+      "observed_at": "2026-11-19T16:44:12.659822+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "2f29a55a5102fbf23e406d313ea4b91a7257e48f -> 755762847f6eb356f4aeba1d15287c4a33ea79be",
+      "build": "755762847f6eb356f4aeba1d15287c4a33ea79be",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json",
+      "artifact_sha256": "a9e6cf434fdb4dcee94e5a993bc43c75062752d35da7e394ceac8d1cced5fa5b",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/a9e6cf434fdb4dcee94e5a993bc43c75062752d35da7e394ceac8d1cced5fa5b.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/a9e6cf434fdb4dcee94e5a993bc43c75062752d35da7e394ceac8d1cced5fa5b.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "azure/codex-mini",
+          "family": "codex-mini",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure/codex-mini\": {\"cache_read_input_token_cost\": 3.75e-07, \"successor_model\": \"azure/gpt-5.1-codex-mini\", \"deprecation_date\": \"2026-11-17\", \"deprecation_source\": \"https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule\", \"input_cost_per_token\": 1.5e-06, \"litellm_provider\": \"azure\", \"max_input_tokens\": 200000, \"max_output_tokens\": 100000, \"mode\": \"responses\", \"output_cost_per_token\": 6e-06, \"source\": \"https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'\", \"supported_endpoints\": [\"/v1/responses\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"text\"], \"supports_function_calling\": true, \"supports_parallel_function_calling\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_system_messages\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "a9e6cf434fdb4dcee94e5a993bc43c75062752d35da7e394ceac8d1cced5fa5b",
+          "method": "structured registry",
+          "build": "755762847f6eb356f4aeba1d15287c4a33ea79be",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T16:18:40+00:00"
+        },
+        {
+          "id": "azure/eu/codex-mini",
+          "family": "codex-mini",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure/eu/codex-mini\": {\"successor_model\": \"azure/eu/gpt-5.1-codex-mini\", \"deprecation_date\": \"2026-11-17\", \"deprecation_source\": \"https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule\", \"cache_read_input_token_cost\": 4.13e-07, \"input_cost_per_token\": 1.65e-06, \"litellm_provider\": \"azure\", \"mode\": \"responses\", \"output_cost_per_token\": 6.6e-06, \"source\": \"https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "a9e6cf434fdb4dcee94e5a993bc43c75062752d35da7e394ceac8d1cced5fa5b",
+          "method": "structured registry",
+          "build": "755762847f6eb356f4aeba1d15287c4a33ea79be",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T16:18:40+00:00"
+        },
+        {
+          "id": "azure/us/codex-mini",
+          "family": "codex-mini",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure/us/codex-mini\": {\"successor_model\": \"azure/us/gpt-5.1-codex-mini\", \"deprecation_date\": \"2026-11-17\", \"deprecation_source\": \"https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule\", \"cache_read_input_token_cost\": 4.13e-07, \"input_cost_per_token\": 1.65e-06, \"litellm_provider\": \"azure\", \"mode\": \"responses\", \"output_cost_per_token\": 6.6e-06, \"source\": \"https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "a9e6cf434fdb4dcee94e5a993bc43c75062752d35da7e394ceac8d1cced5fa5b",
+          "method": "structured registry",
+          "build": "755762847f6eb356f4aeba1d15287c4a33ea79be",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T16:18:40+00:00"
+        },
+        {
+          "id": "azure_ai/codex-mini",
+          "family": "codex-mini",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure_ai/codex-mini\": {\"cache_read_input_token_cost\": 3.75e-07, \"deprecation_date\": \"2026-11-17\", \"deprecation_source\": \"https://learn.microsoft.com/en-us/azure/foundry/concepts/model-lifecycle-retirement\", \"input_cost_per_token\": 1.5e-06, \"litellm_provider\": \"azure_ai\", \"max_input_tokens\": 200000, \"max_output_tokens\": 100000, \"mode\": \"responses\", \"output_cost_per_token\": 6e-06, \"source\": \"https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/\", \"supported_endpoints\": [\"/v1/responses\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"text\"], \"supports_function_calling\": true, \"supports_parallel_function_calling\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_system_messages\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "a9e6cf434fdb4dcee94e5a993bc43c75062752d35da7e394ceac8d1cced5fa5b",
+          "method": "structured registry",
+          "build": "755762847f6eb356f4aeba1d15287c4a33ea79be",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T16:18:40+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "models-dev-api",
+          "identifier": "azure-cognitive-services/codex-mini",
+          "first_seen": "2026-11-18T12:44:53.499743+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/3daa0f95dbcdc7e053d50a9e2539f79cdcf3739a625fe64103edb341a8853a8e.json.gz"
+        },
+        {
+          "source": "models-dev-git",
+          "identifier": "azure/codex-mini",
+          "first_seen": "2026-11-18T12:32:34+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/2abc1c8e5c5f0a3cc2fc4de07803b86f5795ca68c5d1a9d7d201cc836068324d.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/755762847f6eb356f4aeba1d15287c4a33ea79be"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T17:35:02.302385+00:00",
+      "pricing": null,
+      "x_post_text": "LiteLLM model registry 755762847f6e: azure/codex-mini\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json"
+    },
+    {
+      "id": "intel-a34ea8057fed90978723",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "mistral-7b-instruct-v0.3",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "mistral-7b-instruct-v0.3",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "together_ai/mistralai/Mistral-7B-Instruct-v0.3",
+          "name": "together_ai/mistralai/Mistral-7B-Instruct-v0.3",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T16:44:12.659822+00:00",
+      "first_seen": "2026-11-19T16:18:40+00:00",
+      "observed_at": "2026-11-19T16:44:12.659822+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "2f29a55a5102fbf23e406d313ea4b91a7257e48f -> 755762847f6eb356f4aeba1d15287c4a33ea79be",
+      "build": "755762847f6eb356f4aeba1d15287c4a33ea79be",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json",
+      "artifact_sha256": "a9e6cf434fdb4dcee94e5a993bc43c75062752d35da7e394ceac8d1cced5fa5b",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/a9e6cf434fdb4dcee94e5a993bc43c75062752d35da7e394ceac8d1cced5fa5b.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/a9e6cf434fdb4dcee94e5a993bc43c75062752d35da7e394ceac8d1cced5fa5b.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "together_ai/mistralai/Mistral-7B-Instruct-v0.3",
+          "family": "mistral-7b-instruct-v0.3",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"together_ai/mistralai/Mistral-7B-Instruct-v0.3\": {\"deprecation_date\": \"2026-01-29\", \"deprecation_source\": \"https://docs.together.ai/docs/changelog\", \"input_cost_per_token\": 2e-07, \"output_cost_per_token\": 2e-07, \"litellm_provider\": \"together_ai\", \"max_input_tokens\": 32768, \"mode\": \"chat\", \"source\": \"https://api.together.ai/v1/models\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "a9e6cf434fdb4dcee94e5a993bc43c75062752d35da7e394ceac8d1cced5fa5b",
+          "method": "structured registry",
+          "build": "755762847f6eb356f4aeba1d15287c4a33ea79be",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T16:18:40+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/755762847f6eb356f4aeba1d15287c4a33ea79be"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T17:35:02.302385+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: together_ai/mistralai/Mistral-7B-Instruct-v0.3\nhttps://raw.githubusercontent.com/BerriAI/litellm/755762847f6eb356f4aeba1d15287c4a33ea79be/model_prices_and_context_window.json"
     },
     {
       "id": "intel-bbf2871d990bd52eeb51",
@@ -75297,6 +76100,139 @@
       "tracker_observed_at": "2026-11-19T04:02:26.903940+00:00",
       "pricing": null,
       "x_post_text": "🚨 GOOGLE CLOUD QUOTA REGISTRY · GOOGLE\nNew GOOGLE Model(s) on Google Gemini API: genie-4, lyria-realtime spotted in Gemini API Quotas generativelanguage.googleapis.com (+2 model quota)!\n\n• base_model:genie-4 (genie-4)\n• base_model:lyria-realtime (lyria-realtime)\n\nEvidence: console.cloud.google.com/iam-admin/quotas (generativelanguage.googleapis.com)\nSource: Google Gemini API `generativelanguage.googleapis.com` quota dimension registry.\n\nTracked by @StatsWire"
+    },
+    {
+      "id": "intel-2f209203940d6e60ef22",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "codex-mini",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "3 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "codex-mini",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "azure/codex-mini",
+          "name": "azure/codex-mini",
+          "registry_update": true
+        },
+        {
+          "id": "azure/eu/codex-mini",
+          "name": "azure/eu/codex-mini",
+          "registry_update": true
+        },
+        {
+          "id": "azure/us/codex-mini",
+          "name": "azure/us/codex-mini",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-19T01:50:20.015237+00:00",
+      "first_seen": "2026-11-19T01:48:23+00:00",
+      "observed_at": "2026-11-19T01:50:20.015237+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "bfd2b7a2bfc0d1cf7c300bb15756818479ad0619 -> ab76aa78c2337c69d95dac50222f31452d55b2ed",
+      "build": "ab76aa78c2337c69d95dac50222f31452d55b2ed",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/ab76aa78c2337c69d95dac50222f31452d55b2ed/model_prices_and_context_window.json",
+      "artifact_sha256": "f66b01471916ec37beb106bffb4e6be32f2c5915f5d661304336248d58cdeea1",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/f66b01471916ec37beb106bffb4e6be32f2c5915f5d661304336248d58cdeea1.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/f66b01471916ec37beb106bffb4e6be32f2c5915f5d661304336248d58cdeea1.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "azure/codex-mini",
+          "family": "codex-mini",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure/codex-mini\": {\"cache_read_input_token_cost\": 3.75e-07, \"successor_model\": \"azure/gpt-5.1-codex-mini\", \"deprecation_date\": \"2026-11-15\", \"deprecation_source\": \"https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule\", \"input_cost_per_token\": 1.5e-06, \"litellm_provider\": \"azure\", \"max_input_tokens\": 200000, \"max_output_tokens\": 100000, \"mode\": \"responses\", \"output_cost_per_token\": 6e-06, \"source\": \"https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'\", \"supported_endpoints\": [\"/v1/responses\"], \"supported_modalities\": [\"text\", \"image\"], \"supported_output_modalities\": [\"text\"], \"supports_function_calling\": true, \"supports_parallel_function_calling\": true, \"supports_pdf_input\": true, \"supports_prompt_caching\": true, \"supports_reasoning\": true, \"supports_response_schema\": true, \"supports_system_messages\": true, \"supports_tool_choice\": true, \"supports_vision\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "f66b01471916ec37beb106bffb4e6be32f2c5915f5d661304336248d58cdeea1",
+          "method": "structured registry",
+          "build": "ab76aa78c2337c69d95dac50222f31452d55b2ed",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/ab76aa78c2337c69d95dac50222f31452d55b2ed/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:48:23+00:00"
+        },
+        {
+          "id": "azure/eu/codex-mini",
+          "family": "codex-mini",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure/eu/codex-mini\": {\"successor_model\": \"azure/eu/gpt-5.1-codex-mini\", \"deprecation_date\": \"2026-11-15\", \"deprecation_source\": \"https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule\", \"cache_read_input_token_cost\": 4.13e-07, \"input_cost_per_token\": 1.65e-06, \"litellm_provider\": \"azure\", \"mode\": \"responses\", \"output_cost_per_token\": 6.6e-06, \"source\": \"https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "f66b01471916ec37beb106bffb4e6be32f2c5915f5d661304336248d58cdeea1",
+          "method": "structured registry",
+          "build": "ab76aa78c2337c69d95dac50222f31452d55b2ed",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/ab76aa78c2337c69d95dac50222f31452d55b2ed/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:48:23+00:00"
+        },
+        {
+          "id": "azure/us/codex-mini",
+          "family": "codex-mini",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure/us/codex-mini\": {\"successor_model\": \"azure/us/gpt-5.1-codex-mini\", \"deprecation_date\": \"2026-11-15\", \"deprecation_source\": \"https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule\", \"cache_read_input_token_cost\": 4.13e-07, \"input_cost_per_token\": 1.65e-06, \"litellm_provider\": \"azure\", \"mode\": \"responses\", \"output_cost_per_token\": 6.6e-06, \"source\": \"https://prices.azure.com/api/retail/prices?$filter=serviceName%20eq%20'Foundry%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "f66b01471916ec37beb106bffb4e6be32f2c5915f5d661304336248d58cdeea1",
+          "method": "structured registry",
+          "build": "ab76aa78c2337c69d95dac50222f31452d55b2ed",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/ab76aa78c2337c69d95dac50222f31452d55b2ed/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T01:48:23+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "models-dev-api",
+          "identifier": "azure-cognitive-services/codex-mini",
+          "first_seen": "2026-11-18T12:44:53.499743+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/30f900db97ea60433430f676aeb05dc06c70808323caa8b302e9b4d2347a2983.json.gz"
+        },
+        {
+          "source": "models-dev-git",
+          "identifier": "azure/codex-mini",
+          "first_seen": "2026-11-18T12:32:34+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/7e8473b573a1ae5553e1dbb0e2a6b31568f8a60ba511464f2cc6827e55998f9f.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/ab76aa78c2337c69d95dac50222f31452d55b2ed/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/ab76aa78c2337c69d95dac50222f31452d55b2ed"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T17:35:02.302385+00:00",
+      "pricing": null,
+      "x_post_text": "LiteLLM model registry ab76aa78c233: azure/codex-mini\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/ab76aa78c2337c69d95dac50222f31452d55b2ed/model_prices_and_context_window.json"
     },
     {
       "id": "intel-90a0e2fb9cb25edd7917",
@@ -96372,25 +97308,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:25:17.985997+00:00",
+      "last_attempt": "2026-11-25T17:34:58.394766+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:25:21.591252+00:00",
+      "last_success": "2026-11-25T17:35:01.830264+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.606,
-      "latest_build": "a2fd873ffaf381dc874037b7ad21bbecc8c97f2e4259d2b7c918904f3975aa27",
-      "builds_retained": 184,
-      "identifiers": 10110
+      "duration_seconds": 3.436,
+      "latest_build": "fe8086d9a5684519c2fb402986036666b12c000981baeee558e047622886923e",
+      "builds_retained": 187,
+      "identifiers": 10114
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-25T17:25:21.729904+00:00",
+      "last_attempt": "2026-11-25T17:35:01.969611+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:25:24.013045+00:00",
+      "last_success": "2026-11-25T17:35:02.302385+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.284,
+      "duration_seconds": 0.333,
       "latest_build": "34d39facdee00d63deff4a87d2ecf5ae8d15f1cf",
       "builds_retained": 92,
       "identifiers": 7080
@@ -96411,11 +97347,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T17:25:38.185028+00:00",
+      "last_attempt": "2026-11-25T17:35:02.452609+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4145,
-      "duration_seconds": 15.457
+      "consecutive_failures": 4149,
+      "duration_seconds": 15.456
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -96435,61 +97371,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:24:41.164660+00:00",
+      "last_attempt": "2026-11-25T17:34:19.102431+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:24:42.896920+00:00",
+      "last_success": "2026-11-25T17:34:21.586203+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.732
+      "duration_seconds": 2.484
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:24:42.896987+00:00",
+      "last_attempt": "2026-11-25T17:34:21.586259+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:24:43.090984+00:00",
+      "last_success": "2026-11-25T17:34:21.711630+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.194
+      "duration_seconds": 0.125
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:24:43.091026+00:00",
+      "last_attempt": "2026-11-25T17:34:21.711668+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:24:48.853605+00:00",
+      "last_success": "2026-11-25T17:34:28.435210+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.763
+      "duration_seconds": 6.724
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:24:48.853683+00:00",
+      "last_attempt": "2026-11-25T17:34:28.435291+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:25:17.985947+00:00",
+      "last_success": "2026-11-25T17:34:58.394708+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 29.132,
+      "duration_seconds": 29.959,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-25T17:24:49.035391+00:00",
+          "checked_at": "2026-11-25T17:34:28.599096+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-25T17:24:58.837297+00:00",
+          "checked_at": "2026-11-25T17:34:36.146054+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-25T17:24:58.991585+00:00",
+          "checked_at": "2026-11-25T17:34:36.296358+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-25T17:24:58.991607+00:00",
+          "checked_at": "2026-11-25T17:34:36.296375+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -96497,25 +97433,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:25:17.985997+00:00",
+      "last_attempt": "2026-11-25T17:34:58.394766+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:25:21.591252+00:00",
+      "last_success": "2026-11-25T17:35:01.830264+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.606,
-      "latest_build": "a2fd873ffaf381dc874037b7ad21bbecc8c97f2e4259d2b7c918904f3975aa27",
-      "builds_retained": 184,
-      "identifiers": 10110
+      "duration_seconds": 3.436,
+      "latest_build": "fe8086d9a5684519c2fb402986036666b12c000981baeee558e047622886923e",
+      "builds_retained": 187,
+      "identifiers": 10114
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-25T17:25:21.729904+00:00",
+      "last_attempt": "2026-11-25T17:35:01.969611+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:25:24.013045+00:00",
+      "last_success": "2026-11-25T17:35:02.302385+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.284,
+      "duration_seconds": 0.333,
       "latest_build": "34d39facdee00d63deff4a87d2ecf5ae8d15f1cf",
       "builds_retained": 92,
       "identifiers": 7080
@@ -96536,11 +97472,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T17:25:38.185028+00:00",
+      "last_attempt": "2026-11-25T17:35:02.452609+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4145,
-      "duration_seconds": 15.457
+      "consecutive_failures": 4149,
+      "duration_seconds": 15.456
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -96558,22 +97494,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:25:54.184268+00:00",
+      "last_attempt": "2026-11-25T17:35:17.915019+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:26:01.403970+00:00",
+      "last_success": "2026-11-25T17:35:25.105715+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.22
+      "duration_seconds": 7.191
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:26:01.404023+00:00",
+      "last_attempt": "2026-11-25T17:35:25.105772+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:26:03.408058+00:00",
+      "last_success": "2026-11-25T17:35:28.485424+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.004
+      "duration_seconds": 3.38
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -96588,34 +97524,34 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:26:12.194900+00:00",
+      "last_attempt": "2026-11-25T17:35:28.485476+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:26:12.578399+00:00",
+      "last_success": "2026-11-25T17:35:28.903846+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.384
+      "duration_seconds": 0.418
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T17:26:12.578438+00:00",
+      "last_attempt": "2026-11-25T17:35:28.903890+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T17:26:12.625214+00:00",
+      "last_success": "2026-11-25T17:35:28.974003+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.047
+      "duration_seconds": 0.07
     }
   },
   "identities": {
-    "identifiers": 31880,
-    "declared_aliases": 18895,
+    "identifiers": 31884,
+    "declared_aliases": 18899,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 461,
-      "seconds_mean": 3394.7194614815617,
+      "samples": 467,
+      "seconds_mean": 3416.6136600877944,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -96629,9 +97565,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 604,
-      "events": 606,
-      "rate": 0.9966996699669967
+      "complete": 610,
+      "events": 612,
+      "rate": 0.9967320261437909
     },
     "source_health": {
       "sources": 14,
