@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-25T00:59:08.903159+00:00",
-  "scan_completed_at": "2026-11-25T01:00:27.988675+00:00",
+  "generated_at": "2026-11-25T01:05:55.711859+00:00",
+  "scan_completed_at": "2026-11-25T01:07:32.435240+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 334,
     "leaks": 35,
     "releases": 91,
     "stories_24h": 50,
-    "sources_ok": 12,
-    "total_cards": 820,
-    "new_in_this_scan": 2
+    "sources_ok": 16,
+    "total_cards": 824,
+    "new_in_this_scan": 4
   },
   "stories": [
     {
@@ -22,7 +22,7 @@
       "provider_name": "Unattributed",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-25T00:57:47.582634+00:00",
-      "updated_at": "2026-11-25T00:57:47.582634+00:00",
+      "updated_at": "2026-11-25T01:06:54.303549+00:00",
       "first_source": "Registry Update",
       "lead": "",
       "released_on": "2026-11-18",
@@ -51,7 +51,8 @@
       "backfill": false,
       "header": "REGISTRY UPDATE · UNATTRIBUTED",
       "card_ids": [
-        "intel-7a49d660c7b6a76ea16b"
+        "intel-7a49d660c7b6a76ea16b",
+        "intel-f55aa820ce45ad981ad9"
       ],
       "event_label": "Registry update",
       "intelligence_only": true,
@@ -70,6 +71,21 @@
           "build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-25T00:57:47.321974+00:00"
+        },
+        {
+          "id": "ovhcloud/olala-v1.0-translate",
+          "family": "olala-v1.0-translate",
+          "file_path": "providers/ovhcloud/models/olala-v1.0-translate.toml",
+          "file_sha256": "5df7e9107b6f963b5d76a8330adf97632320e9200b8bd700f5756bb5856bc8ea",
+          "excerpt": "{\"ovhcloud/olala-v1.0-translate\": {\"schema\": 2, \"name\": \"Olala-v1.0-translate\", \"description\": \"Translation model for multilingual conversion, localization, and cross-language workflows\", \"open_weights\": true, \"release_date\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}, \"temperature\": true}, \"limit\": {\"context\": 8192, \"output\": 8192}, \"cost\": {\"text\": {\"input\": {\"price\": 0}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/bab7849f51ac40bf6e0b82e20ec9b536056a7d56/providers/ovhcloud/models/olala-v1.0-translate.toml",
+          "build": "bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+          "first_seen": "2026-11-25T00:55:56+00:00"
         }
       ],
       "x_post_text": "Registry Update 47206904b178: olala-v1.0-translate\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
@@ -131,7 +147,7 @@
       "provider_name": "OpenRouter",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-25T00:21:12.878500+00:00",
-      "updated_at": "2026-11-25T01:00:04.759526+00:00",
+      "updated_at": "2026-11-25T01:06:54.303549+00:00",
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-11-24",
@@ -173,7 +189,8 @@
         "openrouter-model-upstage_solar-mini-4-5",
         "intel-b0e978a6a6959da68091",
         "intel-df6088d8c7b9a81523e9",
-        "intel-b50135fa7c5b2496ac42"
+        "intel-b50135fa7c5b2496ac42",
+        "intel-6daeb9f1c1d9a819a0e6"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -221,6 +238,21 @@
           "build": "117e2738fc95eb561bf8f83150923907db7b0409c3629103137338d667e4831b",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-25T01:00:04.514359+00:00"
+        },
+        {
+          "id": "openrouter/upstage/solar-mini-4-5",
+          "family": "solar-mini-4-5",
+          "file_path": "providers/openrouter/models/upstage/solar-mini-4-5.toml",
+          "file_sha256": "52368f37e61d2532788d8e815d727b8184f06482f1f61605e0510c9512866cd8",
+          "excerpt": "{\"openrouter/upstage/solar-mini-4-5\": {\"schema\": 2, \"name\": \"Solar Mini 4.5 (Preview)\", \"description\": \"Efficient model for low-latency assistance, extraction, and routine automation\", \"family\": \"solar-mini\", \"open_weights\": false, \"release_date\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 524288, \"output\": 131072}, \"api\": {\"chat-completions\": {}, \"responses\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}, \"messages\": {\"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.01, \"cache\": {\"read\": 0.001}}, \"output\": {\"price\": 0.04}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/bab7849f51ac40bf6e0b82e20ec9b536056a7d56/providers/openrouter/models/upstage/solar-mini-4-5.toml",
+          "build": "bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+          "first_seen": "2026-11-25T00:55:56+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-25T00:21:32.938161+00:00",
@@ -236,7 +268,7 @@
       "provider_name": "OpenRouter",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-25T00:21:12.878500+00:00",
-      "updated_at": "2026-11-25T01:00:04.759526+00:00",
+      "updated_at": "2026-11-25T01:06:54.303549+00:00",
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-11-24",
@@ -278,7 +310,8 @@
         "openrouter-model-upstage_solar-pro-4-contributor",
         "intel-5ab6ca6348bea3100bb1",
         "intel-11bcdf96231c743dbb01",
-        "intel-326fcc4e64e3b4968357"
+        "intel-326fcc4e64e3b4968357",
+        "intel-35965b21acde9dc932ed"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -326,6 +359,21 @@
           "build": "117e2738fc95eb561bf8f83150923907db7b0409c3629103137338d667e4831b",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-25T01:00:04.514359+00:00"
+        },
+        {
+          "id": "openrouter/upstage/solar-pro-4-contributor",
+          "family": "solar-pro-4-contributor",
+          "file_path": "providers/openrouter/models/upstage/solar-pro-4-contributor.toml",
+          "file_sha256": "4547e6bd20c34f849ed36adde80cbb97a3b79bb2348de30710690e8c95d619f1",
+          "excerpt": "{\"openrouter/upstage/solar-pro-4-contributor\": {\"schema\": 2, \"name\": \"Solar Pro 4 Contributor\", \"description\": \"Flagship model for demanding analysis, coding, and production agent workflows\", \"family\": \"solar-pro\", \"open_weights\": false, \"release_date\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 524288, \"output\": 131072}, \"api\": {\"chat-completions\": {}, \"responses\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}, \"messages\": {\"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.09, \"cache\": {\"read\": 0.009}}, \"output\": {\"price\": 0.36}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/bab7849f51ac40bf6e0b82e20ec9b536056a7d56/providers/openrouter/models/upstage/solar-pro-4-contributor.toml",
+          "build": "bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+          "first_seen": "2026-11-25T00:55:56+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-25T00:21:32.938161+00:00",
@@ -5133,10 +5181,10 @@
       "open_weights": false,
       "title": "deepinfra/thinkingmachines/Inkling-2-Mini",
       "provider_slug": "unknown",
-      "provider_name": "llmgateway-providers",
+      "provider_name": "llmgateway",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-21T03:05:45.893089+00:00",
-      "updated_at": "2026-11-25T00:57:47.582634+00:00",
+      "updated_at": "2026-11-25T01:06:54.303549+00:00",
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-11-20",
@@ -5145,7 +5193,7 @@
       "models": [
         {
           "id": "inkling-2-mini",
-          "name": "llmgateway-providers/deepinfra/inkling-2-mini",
+          "name": "llmgateway/inkling-2-mini",
           "released_on": "2026-11-20"
         }
       ],
@@ -5183,7 +5231,7 @@
       ],
       "source_count": 3,
       "backfill": false,
-      "header": "NEW MODEL · LLMGATEWAY-PROVIDERS",
+      "header": "NEW MODEL · LLMGATEWAY",
       "card_ids": [
         "openrouter-model-thinkingmachines_inkling-2-mini",
         "intel-f9fd718251adf9703144",
@@ -5208,7 +5256,8 @@
         "intel-ccfe06dc1b22fbc446e5",
         "intel-0291550522049ffcdd60",
         "intel-3692abfddd54ce53c183",
-        "intel-8512fd5c9efc07b34466"
+        "intel-8512fd5c9efc07b34466",
+        "intel-d5bc8d1886593e62555d"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -5605,10 +5654,25 @@
           "build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-25T00:57:47.321974+00:00"
+        },
+        {
+          "id": "llmgateway/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/llmgateway/models/inkling-2-mini.toml",
+          "file_sha256": "c1646730f46830c84c5952872c278fb062d9abac30ffcc32852741ab6221fd05",
+          "excerpt": "{\"llmgateway/inkling-2-mini\": {\"schema\": 2, \"base_model\": \"thinkingmachines/inkling-2-mini\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.075, \"cache\": {\"read\": 0.015}}, \"output\": {\"price\": 0.3}}}}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/bab7849f51ac40bf6e0b82e20ec9b536056a7d56/providers/llmgateway/models/inkling-2-mini.toml",
+          "build": "bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+          "first_seen": "2026-11-25T00:55:56+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-23T04:22:07.426340+00:00",
-      "x_post_text": "🟢 NEW MODEL: deepinfra/thinkingmachines/Inkling-2-Mini by llmgateway-providers\n\nFirst detected 21 Nov 03:05 UTC in OpenRouter\n📅 First released: 2026-11-20\nConfirmed by Registry Update, LMArena\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: deepinfra/thinkingmachines/Inkling-2-Mini by llmgateway\n\nFirst detected 21 Nov 03:05 UTC in OpenRouter\n📅 First released: 2026-11-20\nConfirmed by Registry Update, LMArena\n\nvia @StatsWire"
     },
     {
       "id": "story-sonar",
@@ -27441,6 +27505,354 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-d5bc8d1886593e62555d",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "inkling-2-mini",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "inkling-2-mini",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "llmgateway/inkling-2-mini",
+          "name": "llmgateway/inkling-2-mini",
+          "registry_update": true,
+          "released_on": "2026-11-20"
+        }
+      ],
+      "detected_at": "2026-11-25T01:06:54.303549+00:00",
+      "first_seen": "2026-11-25T00:55:56+00:00",
+      "observed_at": "2026-11-25T01:06:54.303549+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "f5ddc837d5bcac644c33da5e9f4975f90c80cf6e -> bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+      "build": "bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+      "artifact_sha256": "7fb95002f546864247f0ac3b9e1268fe996b29a6fba36aaf1cb75c5f785ce496",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/7fb95002f546864247f0ac3b9e1268fe996b29a6fba36aaf1cb75c5f785ce496.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/7fb95002f546864247f0ac3b9e1268fe996b29a6fba36aaf1cb75c5f785ce496.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "llmgateway/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/llmgateway/models/inkling-2-mini.toml",
+          "file_sha256": "c1646730f46830c84c5952872c278fb062d9abac30ffcc32852741ab6221fd05",
+          "excerpt": "{\"llmgateway/inkling-2-mini\": {\"schema\": 2, \"base_model\": \"thinkingmachines/inkling-2-mini\", \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.075, \"cache\": {\"read\": 0.015}}, \"output\": {\"price\": 0.3}}}}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/bab7849f51ac40bf6e0b82e20ec9b536056a7d56/providers/llmgateway/models/inkling-2-mini.toml",
+          "build": "bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+          "first_seen": "2026-11-25T00:55:56+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/bab7849f51ac40bf6e0b82e20ec9b536056a7d56"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T01:07:02.171919+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions bab7849f51ac: llmgateway/inkling-2-mini\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56"
+    },
+    {
+      "id": "intel-6daeb9f1c1d9a819a0e6",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "solar-mini-4-5",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "solar-mini-4-5",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "openrouter/upstage/solar-mini-4-5",
+          "name": "openrouter/upstage/solar-mini-4-5",
+          "registry_update": true,
+          "released_on": "2026-11-24"
+        }
+      ],
+      "detected_at": "2026-11-25T01:06:54.303549+00:00",
+      "first_seen": "2026-11-25T00:55:56+00:00",
+      "observed_at": "2026-11-25T01:06:54.303549+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "f5ddc837d5bcac644c33da5e9f4975f90c80cf6e -> bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+      "build": "bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+      "artifact_sha256": "7fb95002f546864247f0ac3b9e1268fe996b29a6fba36aaf1cb75c5f785ce496",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/7fb95002f546864247f0ac3b9e1268fe996b29a6fba36aaf1cb75c5f785ce496.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/7fb95002f546864247f0ac3b9e1268fe996b29a6fba36aaf1cb75c5f785ce496.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "openrouter/upstage/solar-mini-4-5",
+          "family": "solar-mini-4-5",
+          "file_path": "providers/openrouter/models/upstage/solar-mini-4-5.toml",
+          "file_sha256": "52368f37e61d2532788d8e815d727b8184f06482f1f61605e0510c9512866cd8",
+          "excerpt": "{\"openrouter/upstage/solar-mini-4-5\": {\"schema\": 2, \"name\": \"Solar Mini 4.5 (Preview)\", \"description\": \"Efficient model for low-latency assistance, extraction, and routine automation\", \"family\": \"solar-mini\", \"open_weights\": false, \"release_date\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 524288, \"output\": 131072}, \"api\": {\"chat-completions\": {}, \"responses\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}, \"messages\": {\"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.01, \"cache\": {\"read\": 0.001}}, \"output\": {\"price\": 0.04}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/bab7849f51ac40bf6e0b82e20ec9b536056a7d56/providers/openrouter/models/upstage/solar-mini-4-5.toml",
+          "build": "bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+          "first_seen": "2026-11-25T00:55:56+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/bab7849f51ac40bf6e0b82e20ec9b536056a7d56"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T01:07:02.171919+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions bab7849f51ac: openrouter/upstage/solar-mini-4-5\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56"
+    },
+    {
+      "id": "intel-35965b21acde9dc932ed",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "solar-pro-4-contributor",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "solar-pro-4-contributor",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "openrouter/upstage/solar-pro-4-contributor",
+          "name": "openrouter/upstage/solar-pro-4-contributor",
+          "registry_update": true,
+          "released_on": "2026-11-24"
+        }
+      ],
+      "detected_at": "2026-11-25T01:06:54.303549+00:00",
+      "first_seen": "2026-11-25T00:55:56+00:00",
+      "observed_at": "2026-11-25T01:06:54.303549+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "f5ddc837d5bcac644c33da5e9f4975f90c80cf6e -> bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+      "build": "bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+      "artifact_sha256": "7fb95002f546864247f0ac3b9e1268fe996b29a6fba36aaf1cb75c5f785ce496",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/7fb95002f546864247f0ac3b9e1268fe996b29a6fba36aaf1cb75c5f785ce496.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/7fb95002f546864247f0ac3b9e1268fe996b29a6fba36aaf1cb75c5f785ce496.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "openrouter/upstage/solar-pro-4-contributor",
+          "family": "solar-pro-4-contributor",
+          "file_path": "providers/openrouter/models/upstage/solar-pro-4-contributor.toml",
+          "file_sha256": "4547e6bd20c34f849ed36adde80cbb97a3b79bb2348de30710690e8c95d619f1",
+          "excerpt": "{\"openrouter/upstage/solar-pro-4-contributor\": {\"schema\": 2, \"name\": \"Solar Pro 4 Contributor\", \"description\": \"Flagship model for demanding analysis, coding, and production agent workflows\", \"family\": \"solar-pro\", \"open_weights\": false, \"release_date\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true, \"choice\": [\"auto\", \"none\", \"required\", \"tool\"]}, \"reasoning\": {\"supported\": true, \"effort\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"temperature\": true}, \"limit\": {\"context\": 524288, \"output\": 131072}, \"api\": {\"chat-completions\": {}, \"responses\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}, \"messages\": {\"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.09, \"cache\": {\"read\": 0.009}}, \"output\": {\"price\": 0.36}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/bab7849f51ac40bf6e0b82e20ec9b536056a7d56/providers/openrouter/models/upstage/solar-pro-4-contributor.toml",
+          "build": "bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+          "first_seen": "2026-11-25T00:55:56+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/bab7849f51ac40bf6e0b82e20ec9b536056a7d56"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T01:07:02.171919+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions bab7849f51ac: openrouter/upstage/solar-pro-4-contributor\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56"
+    },
+    {
+      "id": "intel-f55aa820ce45ad981ad9",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "olala-v1.0-translate",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "olala-v1.0-translate",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "ovhcloud/olala-v1.0-translate",
+          "name": "ovhcloud/olala-v1.0-translate",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        }
+      ],
+      "detected_at": "2026-11-25T01:06:54.303549+00:00",
+      "first_seen": "2026-11-25T00:55:56+00:00",
+      "observed_at": "2026-11-25T01:06:54.303549+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "f5ddc837d5bcac644c33da5e9f4975f90c80cf6e -> bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+      "build": "bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+      "artifact_sha256": "7fb95002f546864247f0ac3b9e1268fe996b29a6fba36aaf1cb75c5f785ce496",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/7fb95002f546864247f0ac3b9e1268fe996b29a6fba36aaf1cb75c5f785ce496.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/7fb95002f546864247f0ac3b9e1268fe996b29a6fba36aaf1cb75c5f785ce496.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "ovhcloud/olala-v1.0-translate",
+          "family": "olala-v1.0-translate",
+          "file_path": "providers/ovhcloud/models/olala-v1.0-translate.toml",
+          "file_sha256": "5df7e9107b6f963b5d76a8330adf97632320e9200b8bd700f5756bb5856bc8ea",
+          "excerpt": "{\"ovhcloud/olala-v1.0-translate\": {\"schema\": 2, \"name\": \"Olala-v1.0-translate\", \"description\": \"Translation model for multilingual conversion, localization, and cross-language workflows\", \"open_weights\": true, \"release_date\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}, \"temperature\": true}, \"limit\": {\"context\": 8192, \"output\": 8192}, \"cost\": {\"text\": {\"input\": {\"price\": 0}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/bab7849f51ac40bf6e0b82e20ec9b536056a7d56/providers/ovhcloud/models/olala-v1.0-translate.toml",
+          "build": "bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56",
+          "first_seen": "2026-11-25T00:55:56+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/bab7849f51ac40bf6e0b82e20ec9b536056a7d56"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T01:07:02.171919+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions bab7849f51ac: ovhcloud/olala-v1.0-translate\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/bab7849f51ac40bf6e0b82e20ec9b536056a7d56"
+    },
     {
       "id": "intel-b50135fa7c5b2496ac42",
       "scanner": "models-dev-api",
@@ -91137,12 +91549,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T01:00:04.243702+00:00",
+      "last_attempt": "2026-11-25T01:06:49.770504+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T01:00:06.772023+00:00",
+      "last_success": "2026-11-25T01:06:50.021456+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.529,
+      "duration_seconds": 0.251,
       "latest_build": "117e2738fc95eb561bf8f83150923907db7b0409c3629103137338d667e4831b",
       "builds_retained": 160,
       "identifiers": 10073
@@ -91150,12 +91562,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-25T00:57:49.807632+00:00",
+      "last_attempt": "2026-11-25T01:06:50.129246+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:57:50.244810+00:00",
+      "last_success": "2026-11-25T01:06:50.531337+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.438,
+      "duration_seconds": 0.403,
       "latest_build": "ebbf0b0070086213d78d90be9196bcccacd95452",
       "builds_retained": 82,
       "identifiers": 7070
@@ -91163,34 +91575,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-25T00:55:12.578026+00:00",
+      "last_attempt": "2026-11-25T01:06:50.647310+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:55:23.800249+00:00",
+      "last_success": "2026-11-25T01:07:02.171919+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 11.223,
-      "latest_build": "f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
-      "builds_retained": 167,
-      "identifiers": 11306
+      "duration_seconds": 11.525,
+      "latest_build": "4c25e3865497648d566cfa5ad5855faa9568dcfb",
+      "builds_retained": 169,
+      "identifiers": 11313
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T01:00:06.873601+00:00",
+      "last_attempt": "2026-11-25T01:07:02.286003+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3725,
-      "duration_seconds": 10.731
+      "consecutive_failures": 3728,
+      "duration_seconds": 11.256
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-25T00:50:56.080361+00:00",
+      "last_attempt": "2026-11-25T01:07:13.548944+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:50:56.395509+00:00",
+      "last_success": "2026-11-25T01:07:13.984685+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.315,
+      "duration_seconds": 0.436,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -91200,61 +91612,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:59:08.903227+00:00",
+      "last_attempt": "2026-11-25T01:05:55.711924+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:59:11.221635+00:00",
+      "last_success": "2026-11-25T01:05:58.005568+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.318
+      "duration_seconds": 2.294
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:59:11.221697+00:00",
+      "last_attempt": "2026-11-25T01:05:58.005628+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:59:11.411327+00:00",
+      "last_success": "2026-11-25T01:05:58.236390+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.19
+      "duration_seconds": 0.231
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:59:11.411365+00:00",
+      "last_attempt": "2026-11-25T01:05:58.236425+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:59:19.299519+00:00",
+      "last_success": "2026-11-25T01:06:05.719940+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.888
+      "duration_seconds": 7.484
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:59:19.299605+00:00",
+      "last_attempt": "2026-11-25T01:06:05.720023+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T01:00:04.243644+00:00",
+      "last_success": "2026-11-25T01:06:49.770450+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 44.944,
+      "duration_seconds": 44.05,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-25T00:59:19.486099+00:00",
+          "checked_at": "2026-11-25T01:06:05.923644+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-25T00:59:31.907579+00:00",
+          "checked_at": "2026-11-25T01:06:16.951517+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-25T00:59:32.081433+00:00",
+          "checked_at": "2026-11-25T01:06:17.139499+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-25T00:59:32.081453+00:00",
+          "checked_at": "2026-11-25T01:06:17.139508+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -91262,12 +91674,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T01:00:04.243702+00:00",
+      "last_attempt": "2026-11-25T01:06:49.770504+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T01:00:06.772023+00:00",
+      "last_success": "2026-11-25T01:06:50.021456+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.529,
+      "duration_seconds": 0.251,
       "latest_build": "117e2738fc95eb561bf8f83150923907db7b0409c3629103137338d667e4831b",
       "builds_retained": 160,
       "identifiers": 10073
@@ -91275,12 +91687,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-25T00:57:49.807632+00:00",
+      "last_attempt": "2026-11-25T01:06:50.129246+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:57:50.244810+00:00",
+      "last_success": "2026-11-25T01:06:50.531337+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.438,
+      "duration_seconds": 0.403,
       "latest_build": "ebbf0b0070086213d78d90be9196bcccacd95452",
       "builds_retained": 82,
       "identifiers": 7070
@@ -91288,34 +91700,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-25T00:55:12.578026+00:00",
+      "last_attempt": "2026-11-25T01:06:50.647310+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:55:23.800249+00:00",
+      "last_success": "2026-11-25T01:07:02.171919+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 11.223,
-      "latest_build": "f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
-      "builds_retained": 167,
-      "identifiers": 11306
+      "duration_seconds": 11.525,
+      "latest_build": "4c25e3865497648d566cfa5ad5855faa9568dcfb",
+      "builds_retained": 169,
+      "identifiers": 11313
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T01:00:06.873601+00:00",
+      "last_attempt": "2026-11-25T01:07:02.286003+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3725,
-      "duration_seconds": 10.731
+      "consecutive_failures": 3728,
+      "duration_seconds": 11.256
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-25T00:50:56.080361+00:00",
+      "last_attempt": "2026-11-25T01:07:13.548944+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:50:56.395509+00:00",
+      "last_success": "2026-11-25T01:07:13.984685+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.315,
+      "duration_seconds": 0.436,
       "latest_build": "3.14.30833",
       "builds_retained": 4,
       "identifiers": 3330
@@ -91323,64 +91735,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T01:00:17.610420+00:00",
+      "last_attempt": "2026-11-25T01:07:14.205743+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T01:00:22.609508+00:00",
+      "last_success": "2026-11-25T01:07:19.347843+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.999
+      "duration_seconds": 5.142
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T01:00:22.609566+00:00",
+      "last_attempt": "2026-11-25T01:07:19.347899+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T01:00:24.606505+00:00",
+      "last_success": "2026-11-25T01:07:21.080105+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.997
+      "duration_seconds": 1.732
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-25T00:55:42.480024+00:00",
+      "last_attempt": "2026-11-25T01:07:21.080165+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:55:52.613894+00:00",
+      "last_success": "2026-11-25T01:07:30.925349+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 10.134
+      "duration_seconds": 9.845
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T01:00:24.606564+00:00",
+      "last_attempt": "2026-11-25T01:07:30.925406+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T01:00:25.790768+00:00",
+      "last_success": "2026-11-25T01:07:32.117752+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.184
+      "duration_seconds": 1.192
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T01:00:25.790813+00:00",
+      "last_attempt": "2026-11-25T01:07:32.117797+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T01:00:25.837658+00:00",
+      "last_success": "2026-11-25T01:07:32.185336+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.047
+      "duration_seconds": 0.068
     }
   },
   "identities": {
-    "identifiers": 31779,
-    "declared_aliases": 18814,
+    "identifiers": 31786,
+    "declared_aliases": 18819,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 431,
-      "seconds_mean": 3610.017758865429,
+      "samples": 435,
+      "seconds_mean": 3582.875559234483,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -91394,9 +91806,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 560,
-      "events": 562,
-      "rate": 0.99644128113879
+      "complete": 564,
+      "events": 566,
+      "rate": 0.9964664310954063
     },
     "source_health": {
       "sources": 14,
