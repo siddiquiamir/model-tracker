@@ -1,17 +1,79 @@
 {
-  "generated_at": "2026-11-25T00:54:13.812980+00:00",
-  "scan_completed_at": "2026-11-25T00:55:54.238635+00:00",
+  "generated_at": "2026-11-25T00:56:53.567269+00:00",
+  "scan_completed_at": "2026-11-25T00:58:09.881712+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 333,
+    "stories": 334,
     "leaks": 35,
     "releases": 91,
-    "stories_24h": 49,
-    "sources_ok": 14,
-    "total_cards": 814,
-    "new_in_this_scan": 3
+    "stories_24h": 50,
+    "sources_ok": 13,
+    "total_cards": 818,
+    "new_in_this_scan": 4
   },
   "stories": [
+    {
+      "id": "story-olala-1-translate",
+      "group": "olala-1-translate",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Olala 1 Translate",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-25T00:57:47.582634+00:00",
+      "updated_at": "2026-11-25T00:57:47.582634+00:00",
+      "first_source": "Registry Update",
+      "lead": "",
+      "released_on": "2026-11-18",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "olala-v1.0-translate",
+          "name": "ovhcloud/olala-v1.0-translate",
+          "released_on": "2026-11-18"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-api",
+          "detected_at": "2026-11-25T00:57:47.582634+00:00",
+          "title": "olala-v1.0-translate",
+          "url": "https://models.dev/api.json?type=all",
+          "backfill": false,
+          "build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-7a49d660c7b6a76ea16b"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "ovhcloud/olala-v1.0-translate",
+          "family": "olala-v1.0-translate",
+          "file_path": "api.json?type=all",
+          "file_sha256": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "excerpt": "{\"ovhcloud/olala-v1.0-translate\": {\"id\": \"olala-v1.0-translate\", \"name\": \"Olala-v1.0-translate\", \"description\": \"Translation model for multilingual conversion, localization, and cross-language workflows\", \"attachment\": false, \"reasoning\": false, \"tool_call\": false, \"temperature\": true, \"release_date\": \"2026-11-18\", \"last_updated\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 8192, \"output\": 8192}, \"cost\": {\"input\": 0, \"output\": 0}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T00:57:47.321974+00:00"
+        }
+      ],
+      "x_post_text": "Registry Update 47206904b178: olala-v1.0-translate\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "story-nemotron-labs-image",
       "group": "nemotron-labs-image",
@@ -69,7 +131,7 @@
       "provider_name": "kilo",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-25T00:21:12.878500+00:00",
-      "updated_at": "2026-11-25T00:55:21.475049+00:00",
+      "updated_at": "2026-11-25T00:57:47.582634+00:00",
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-11-24",
@@ -109,7 +171,8 @@
       "header": "NEW MODEL · KILO",
       "card_ids": [
         "openrouter-model-upstage_solar-mini-4-5",
-        "intel-b0e978a6a6959da68091"
+        "intel-b0e978a6a6959da68091",
+        "intel-df6088d8c7b9a81523e9"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -129,6 +192,20 @@
           "build": "f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
           "first_seen": "2026-11-25T00:55:08+00:00"
+        },
+        {
+          "id": "kilo/upstage/solar-mini-4-5",
+          "family": "solar-mini-4-5",
+          "file_path": "api.json?type=all",
+          "file_sha256": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "excerpt": "{\"kilo/upstage/solar-mini-4-5\": {\"id\": \"upstage/solar-mini-4-5\", \"name\": \"Upstage: Solar Mini 4.5 (Preview)\", \"description\": \"Solar Mini 4.5 is Upstage's compact language model, built on a proprietary mixture-of-experts architecture with 35B total and 3B active parameters and a 524K context window. It is a step...\", \"family\": \"solar-mini\", \"attachment\": false, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-24\", \"last_updated\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 524288, \"output\": 131072}, \"cost\": {\"input\": 0.1, \"output\": 0.4, \"cache_read\": 0.01}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T00:57:47.321974+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-25T00:21:32.938161+00:00",
@@ -144,7 +221,7 @@
       "provider_name": "kilo",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-25T00:21:12.878500+00:00",
-      "updated_at": "2026-11-25T00:55:21.475049+00:00",
+      "updated_at": "2026-11-25T00:57:47.582634+00:00",
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-11-24",
@@ -184,7 +261,8 @@
       "header": "NEW MODEL · KILO",
       "card_ids": [
         "openrouter-model-upstage_solar-pro-4-contributor",
-        "intel-5ab6ca6348bea3100bb1"
+        "intel-5ab6ca6348bea3100bb1",
+        "intel-11bcdf96231c743dbb01"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -204,6 +282,20 @@
           "build": "f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/f5ddc837d5bcac644c33da5e9f4975f90c80cf6e",
           "first_seen": "2026-11-25T00:55:08+00:00"
+        },
+        {
+          "id": "kilo/upstage/solar-pro-4-contributor",
+          "family": "solar-pro-4-contributor",
+          "file_path": "api.json?type=all",
+          "file_sha256": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "excerpt": "{\"kilo/upstage/solar-pro-4-contributor\": {\"id\": \"upstage/solar-pro-4-contributor\", \"name\": \"Upstage: Solar Pro 4 Contributor\", \"description\": \"Solar Pro 4 Contributor is the same Solar Pro 4 model from Upstage, offered at a lower rate in exchange for allowing Upstage to use interaction data to improve its...\", \"family\": \"solar-pro\", \"attachment\": false, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-24\", \"last_updated\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 524288, \"output\": 131072}, \"cost\": {\"input\": 0.3, \"output\": 1.2, \"cache_read\": 0.03}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T00:57:47.321974+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-25T00:21:32.938161+00:00",
@@ -5014,7 +5106,7 @@
       "provider_name": "llmgateway-providers",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-21T03:05:45.893089+00:00",
-      "updated_at": "2026-11-25T00:55:16.219563+00:00",
+      "updated_at": "2026-11-25T00:57:47.582634+00:00",
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-11-20",
@@ -5085,7 +5177,8 @@
         "intel-fec59f9e228d13f1afc2",
         "intel-ccfe06dc1b22fbc446e5",
         "intel-0291550522049ffcdd60",
-        "intel-3692abfddd54ce53c183"
+        "intel-3692abfddd54ce53c183",
+        "intel-8512fd5c9efc07b34466"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -5454,6 +5547,34 @@
           "build": "80b8ecd1bd8681f2c6ed62d9c0097a8148417aaa",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/80b8ecd1bd8681f2c6ed62d9c0097a8148417aaa",
           "first_seen": "2026-11-25T00:55:04+00:00"
+        },
+        {
+          "id": "llmgateway-providers/deepinfra/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "api.json?type=all",
+          "file_sha256": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "excerpt": "{\"llmgateway-providers/deepinfra/inkling-2-mini\": {\"id\": \"deepinfra/inkling-2-mini\", \"name\": \"Inkling 2 Mini (DeepInfra)\", \"description\": \"Looped MoE reasoning model (26.4B total, 3.4B active) for agentic coding, vision, and knowledge work\", \"family\": \"inkling-mini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-20\", \"last_updated\": \"2026-11-20\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 1048576, \"output\": 1048576}, \"cost\": {\"input\": 0.075, \"output\": 0.3, \"cache_read\": 0.015}, \"canonical_model_id\": \"thinkingmachines/inkling-2-mini\"}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T00:57:47.321974+00:00"
+        },
+        {
+          "id": "llmgateway/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "api.json?type=all",
+          "file_sha256": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "excerpt": "{\"llmgateway/inkling-2-mini\": {\"id\": \"inkling-2-mini\", \"name\": \"Inkling 2 Mini\", \"description\": \"Looped MoE reasoning model (26.4B total, 3.4B active) for agentic coding, vision, and knowledge work\", \"family\": \"inkling-mini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"temperature\": true, \"release_date\": \"2026-11-20\", \"last_updated\": \"2026-11-20\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 0.075, \"output\": 0.3, \"cache_read\": 0.015}, \"canonical_model_id\": \"thinkingmachines/inkling-2-mini\"}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T00:57:47.321974+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-23T04:22:07.426340+00:00",
@@ -27290,6 +27411,370 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-df6088d8c7b9a81523e9",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "solar-mini-4-5",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "solar-mini-4-5",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "kilo/upstage/solar-mini-4-5",
+          "name": "kilo/upstage/solar-mini-4-5",
+          "registry_update": true,
+          "released_on": "2026-11-24"
+        }
+      ],
+      "detected_at": "2026-11-25T00:57:47.582634+00:00",
+      "first_seen": "2026-11-25T00:57:47.321974+00:00",
+      "observed_at": "2026-11-25T00:57:47.582634+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "612c62704a1b33e125ccbb99124f7a1687fd553117ad67513af01ab2e80b17da -> 47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+      "build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/upstage/solar-mini-4-5",
+          "family": "solar-mini-4-5",
+          "file_path": "api.json?type=all",
+          "file_sha256": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "excerpt": "{\"kilo/upstage/solar-mini-4-5\": {\"id\": \"upstage/solar-mini-4-5\", \"name\": \"Upstage: Solar Mini 4.5 (Preview)\", \"description\": \"Solar Mini 4.5 is Upstage's compact language model, built on a proprietary mixture-of-experts architecture with 35B total and 3B active parameters and a 524K context window. It is a step...\", \"family\": \"solar-mini\", \"attachment\": false, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-24\", \"last_updated\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 524288, \"output\": 131072}, \"cost\": {\"input\": 0.1, \"output\": 0.4, \"cache_read\": 0.01}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T00:57:47.321974+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T00:57:49.700450+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 47206904b178: kilo/upstage/solar-mini-4-5\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
+    {
+      "id": "intel-11bcdf96231c743dbb01",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "solar-pro-4-contributor",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "solar-pro-4-contributor",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "kilo/upstage/solar-pro-4-contributor",
+          "name": "kilo/upstage/solar-pro-4-contributor",
+          "registry_update": true,
+          "released_on": "2026-11-24"
+        }
+      ],
+      "detected_at": "2026-11-25T00:57:47.582634+00:00",
+      "first_seen": "2026-11-25T00:57:47.321974+00:00",
+      "observed_at": "2026-11-25T00:57:47.582634+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "612c62704a1b33e125ccbb99124f7a1687fd553117ad67513af01ab2e80b17da -> 47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+      "build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "kilo/upstage/solar-pro-4-contributor",
+          "family": "solar-pro-4-contributor",
+          "file_path": "api.json?type=all",
+          "file_sha256": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "excerpt": "{\"kilo/upstage/solar-pro-4-contributor\": {\"id\": \"upstage/solar-pro-4-contributor\", \"name\": \"Upstage: Solar Pro 4 Contributor\", \"description\": \"Solar Pro 4 Contributor is the same Solar Pro 4 model from Upstage, offered at a lower rate in exchange for allowing Upstage to use interaction data to improve its...\", \"family\": \"solar-pro\", \"attachment\": false, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-24\", \"last_updated\": \"2026-11-24\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 524288, \"output\": 131072}, \"cost\": {\"input\": 0.3, \"output\": 1.2, \"cache_read\": 0.03}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T00:57:47.321974+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T00:57:49.700450+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 47206904b178: kilo/upstage/solar-pro-4-contributor\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
+    {
+      "id": "intel-8512fd5c9efc07b34466",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "inkling-2-mini",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "inkling-2-mini",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "llmgateway-providers/deepinfra/inkling-2-mini",
+          "name": "llmgateway-providers/deepinfra/inkling-2-mini",
+          "registry_update": true,
+          "released_on": "2026-11-20"
+        },
+        {
+          "id": "llmgateway/inkling-2-mini",
+          "name": "llmgateway/inkling-2-mini",
+          "registry_update": true,
+          "released_on": "2026-11-20"
+        }
+      ],
+      "detected_at": "2026-11-25T00:57:47.582634+00:00",
+      "first_seen": "2026-11-25T00:57:47.321974+00:00",
+      "observed_at": "2026-11-25T00:57:47.582634+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "612c62704a1b33e125ccbb99124f7a1687fd553117ad67513af01ab2e80b17da -> 47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+      "build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "llmgateway-providers/deepinfra/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "api.json?type=all",
+          "file_sha256": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "excerpt": "{\"llmgateway-providers/deepinfra/inkling-2-mini\": {\"id\": \"deepinfra/inkling-2-mini\", \"name\": \"Inkling 2 Mini (DeepInfra)\", \"description\": \"Looped MoE reasoning model (26.4B total, 3.4B active) for agentic coding, vision, and knowledge work\", \"family\": \"inkling-mini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-20\", \"last_updated\": \"2026-11-20\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 1048576, \"output\": 1048576}, \"cost\": {\"input\": 0.075, \"output\": 0.3, \"cache_read\": 0.015}, \"canonical_model_id\": \"thinkingmachines/inkling-2-mini\"}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T00:57:47.321974+00:00"
+        },
+        {
+          "id": "llmgateway/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "api.json?type=all",
+          "file_sha256": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "excerpt": "{\"llmgateway/inkling-2-mini\": {\"id\": \"inkling-2-mini\", \"name\": \"Inkling 2 Mini\", \"description\": \"Looped MoE reasoning model (26.4B total, 3.4B active) for agentic coding, vision, and knowledge work\", \"family\": \"inkling-mini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"temperature\": true, \"release_date\": \"2026-11-20\", \"last_updated\": \"2026-11-20\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 0.075, \"output\": 0.3, \"cache_read\": 0.015}, \"canonical_model_id\": \"thinkingmachines/inkling-2-mini\"}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T00:57:47.321974+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T00:57:49.700450+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 47206904b178: llmgateway-providers/deepinfra/inkling-2-mini, llmgateway/inkling-2-mini\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
+    {
+      "id": "intel-7a49d660c7b6a76ea16b",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "olala-v1.0-translate",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "olala-v1.0-translate",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "ovhcloud/olala-v1.0-translate",
+          "name": "ovhcloud/olala-v1.0-translate",
+          "registry_update": true,
+          "released_on": "2026-11-18"
+        }
+      ],
+      "detected_at": "2026-11-25T00:57:47.582634+00:00",
+      "first_seen": "2026-11-25T00:57:47.321974+00:00",
+      "observed_at": "2026-11-25T00:57:47.582634+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "612c62704a1b33e125ccbb99124f7a1687fd553117ad67513af01ab2e80b17da -> 47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+      "build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "ovhcloud/olala-v1.0-translate",
+          "family": "olala-v1.0-translate",
+          "file_path": "api.json?type=all",
+          "file_sha256": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "excerpt": "{\"ovhcloud/olala-v1.0-translate\": {\"id\": \"olala-v1.0-translate\", \"name\": \"Olala-v1.0-translate\", \"description\": \"Translation model for multilingual conversion, localization, and cross-language workflows\", \"attachment\": false, \"reasoning\": false, \"tool_call\": false, \"temperature\": true, \"release_date\": \"2026-11-18\", \"last_updated\": \"2026-11-18\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 8192, \"output\": 8192}, \"cost\": {\"input\": 0, \"output\": 0}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-25T00:57:47.321974+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-25T00:57:49.700450+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 47206904b178: ovhcloud/olala-v1.0-translate\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "intel-b0e978a6a6959da68091",
       "scanner": "models-dev-git",
@@ -90450,25 +90935,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:55:12.101090+00:00",
+      "last_attempt": "2026-11-25T00:57:46.966189+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:55:12.474987+00:00",
+      "last_success": "2026-11-25T00:57:49.700450+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.374,
-      "latest_build": "612c62704a1b33e125ccbb99124f7a1687fd553117ad67513af01ab2e80b17da",
-      "builds_retained": 158,
-      "identifiers": 10062
+      "duration_seconds": 2.735,
+      "latest_build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+      "builds_retained": 159,
+      "identifiers": 10070
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-25T00:52:55.767089+00:00",
+      "last_attempt": "2026-11-25T00:57:49.807632+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:52:56.291700+00:00",
+      "last_success": "2026-11-25T00:57:50.244810+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.525,
+      "duration_seconds": 0.438,
       "latest_build": "ebbf0b0070086213d78d90be9196bcccacd95452",
       "builds_retained": 82,
       "identifiers": 7070
@@ -90489,11 +90974,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T00:55:23.911830+00:00",
+      "last_attempt": "2026-11-25T00:57:50.357868+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3723,
-      "duration_seconds": 11.399
+      "consecutive_failures": 3724,
+      "duration_seconds": 11.143
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -90513,61 +90998,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:54:13.813088+00:00",
+      "last_attempt": "2026-11-25T00:56:53.567341+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:54:16.159554+00:00",
+      "last_success": "2026-11-25T00:56:55.925663+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.346
+      "duration_seconds": 2.358
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:54:16.159614+00:00",
+      "last_attempt": "2026-11-25T00:56:55.925723+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:54:16.336915+00:00",
+      "last_success": "2026-11-25T00:56:56.104798+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.177
+      "duration_seconds": 0.179
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:54:16.336951+00:00",
+      "last_attempt": "2026-11-25T00:56:56.104836+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:54:28.973183+00:00",
+      "last_success": "2026-11-25T00:57:03.414020+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 12.636
+      "duration_seconds": 7.309
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:54:28.973262+00:00",
+      "last_attempt": "2026-11-25T00:57:03.414104+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:55:12.101027+00:00",
+      "last_success": "2026-11-25T00:57:46.966125+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 43.128,
+      "duration_seconds": 43.552,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-25T00:54:29.193677+00:00",
+          "checked_at": "2026-11-25T00:57:03.605202+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-25T00:54:39.519580+00:00",
+          "checked_at": "2026-11-25T00:57:13.794166+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-25T00:54:39.680884+00:00",
+          "checked_at": "2026-11-25T00:57:13.969467+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-25T00:54:39.680904+00:00",
+          "checked_at": "2026-11-25T00:57:13.969476+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -90575,25 +91060,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:55:12.101090+00:00",
+      "last_attempt": "2026-11-25T00:57:46.966189+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:55:12.474987+00:00",
+      "last_success": "2026-11-25T00:57:49.700450+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.374,
-      "latest_build": "612c62704a1b33e125ccbb99124f7a1687fd553117ad67513af01ab2e80b17da",
-      "builds_retained": 158,
-      "identifiers": 10062
+      "duration_seconds": 2.735,
+      "latest_build": "47206904b178a1bcf64238536ff9a46a0714567893829eaf697f30a4a3b71fdb",
+      "builds_retained": 159,
+      "identifiers": 10070
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-25T00:52:55.767089+00:00",
+      "last_attempt": "2026-11-25T00:57:49.807632+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:52:56.291700+00:00",
+      "last_success": "2026-11-25T00:57:50.244810+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.525,
+      "duration_seconds": 0.438,
       "latest_build": "ebbf0b0070086213d78d90be9196bcccacd95452",
       "builds_retained": 82,
       "identifiers": 7070
@@ -90614,11 +91099,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-25T00:55:23.911830+00:00",
+      "last_attempt": "2026-11-25T00:57:50.357868+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 3723,
-      "duration_seconds": 11.399
+      "consecutive_failures": 3724,
+      "duration_seconds": 11.143
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -90636,22 +91121,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:55:35.317497+00:00",
+      "last_attempt": "2026-11-25T00:58:01.506839+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:55:40.430791+00:00",
+      "last_success": "2026-11-25T00:58:06.550394+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.113
+      "duration_seconds": 5.044
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:55:40.430854+00:00",
+      "last_attempt": "2026-11-25T00:58:06.550454+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:55:42.479953+00:00",
+      "last_success": "2026-11-25T00:58:08.279210+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.049
+      "duration_seconds": 1.729
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -90666,27 +91151,27 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:55:52.613943+00:00",
+      "last_attempt": "2026-11-25T00:58:08.279268+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:55:53.794487+00:00",
+      "last_success": "2026-11-25T00:58:09.484584+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.181
+      "duration_seconds": 1.205
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-25T00:55:53.794532+00:00",
+      "last_attempt": "2026-11-25T00:58:09.484630+00:00",
       "status": "ok",
-      "last_success": "2026-11-25T00:55:53.933309+00:00",
+      "last_success": "2026-11-25T00:58:09.532580+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.139
+      "duration_seconds": 0.048
     }
   },
   "identities": {
-    "identifiers": 31768,
-    "declared_aliases": 18811,
+    "identifiers": 31776,
+    "declared_aliases": 18814,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
@@ -90707,9 +91192,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 554,
-      "events": 556,
-      "rate": 0.9964028776978417
+      "complete": 558,
+      "events": 560,
+      "rate": 0.9964285714285714
     },
     "source_health": {
       "sources": 14,
