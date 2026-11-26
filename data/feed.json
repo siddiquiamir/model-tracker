@@ -1,17 +1,79 @@
 {
-  "generated_at": "2026-11-26T00:55:12.686497+00:00",
-  "scan_completed_at": "2026-11-26T00:57:03.446936+00:00",
+  "generated_at": "2026-11-26T01:25:24.933302+00:00",
+  "scan_completed_at": "2026-11-26T01:26:47.398639+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 357,
+    "stories": 358,
     "leaks": 34,
     "releases": 93,
     "stories_24h": 46,
-    "sources_ok": 14,
-    "total_cards": 909,
-    "new_in_this_scan": 2
+    "sources_ok": 12,
+    "total_cards": 910,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-seaglass",
+      "group": "seaglass",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Seaglass",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-26T01:26:10.358239+00:00",
+      "updated_at": "2026-11-26T01:26:10.358239+00:00",
+      "first_source": "Registry Update",
+      "lead": "",
+      "released_on": "2026-11-26",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "seaglass-alpha-free",
+          "name": "opencode/seaglass-alpha-free",
+          "released_on": "2026-11-26"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-api",
+          "detected_at": "2026-11-26T01:26:10.358239+00:00",
+          "title": "seaglass-alpha-free",
+          "url": "https://models.dev/api.json?type=all",
+          "backfill": false,
+          "build": "5bef7bed873e1dc14499146567ecb753f8a2958fb39510a5c1ff8180624f3e8c",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/5bef7bed873e1dc14499146567ecb753f8a2958fb39510a5c1ff8180624f3e8c.json.gz"
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-188fe32b60bd11ca265a"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "opencode/seaglass-alpha-free",
+          "family": "seaglass-alpha-free",
+          "file_path": "api.json?type=all",
+          "file_sha256": "5bef7bed873e1dc14499146567ecb753f8a2958fb39510a5c1ff8180624f3e8c",
+          "excerpt": "{\"opencode/seaglass-alpha-free\": {\"id\": \"seaglass-alpha-free\", \"name\": \"Seaglass Alpha Free\", \"description\": \"Stealth reasoning model, free for a limited time\", \"attachment\": false, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"temperature\": true, \"release_date\": \"2026-11-26\", \"last_updated\": \"2026-11-26\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1048576, \"output\": 131072}, \"provider\": {\"api\": \"https://opencode.ai/inference/openai/v1\"}, \"cost\": {\"input\": 0, \"output\": 0, \"cache_read\": 0}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "5bef7bed873e1dc14499146567ecb753f8a2958fb39510a5c1ff8180624f3e8c",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-26T01:26:09.915004+00:00"
+        }
+      ],
+      "x_post_text": "Registry Update 5bef7bed873e: seaglass-alpha-free\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "story-seed-tts-3",
       "group": "seed-tts-3",
@@ -30461,6 +30523,92 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-188fe32b60bd11ca265a",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "seaglass-alpha-free",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "seaglass-alpha-free",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "opencode/seaglass-alpha-free",
+          "name": "opencode/seaglass-alpha-free",
+          "registry_update": true,
+          "released_on": "2026-11-26"
+        }
+      ],
+      "detected_at": "2026-11-26T01:26:10.358239+00:00",
+      "first_seen": "2026-11-26T01:26:09.915004+00:00",
+      "observed_at": "2026-11-26T01:26:10.358239+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "850879f359c742eb78593fea71765a1837cd83faa36b3d52aeb316504cc6db95 -> 5bef7bed873e1dc14499146567ecb753f8a2958fb39510a5c1ff8180624f3e8c",
+      "build": "5bef7bed873e1dc14499146567ecb753f8a2958fb39510a5c1ff8180624f3e8c",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "5bef7bed873e1dc14499146567ecb753f8a2958fb39510a5c1ff8180624f3e8c",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/5bef7bed873e1dc14499146567ecb753f8a2958fb39510a5c1ff8180624f3e8c.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/5bef7bed873e1dc14499146567ecb753f8a2958fb39510a5c1ff8180624f3e8c.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "opencode/seaglass-alpha-free",
+          "family": "seaglass-alpha-free",
+          "file_path": "api.json?type=all",
+          "file_sha256": "5bef7bed873e1dc14499146567ecb753f8a2958fb39510a5c1ff8180624f3e8c",
+          "excerpt": "{\"opencode/seaglass-alpha-free\": {\"id\": \"seaglass-alpha-free\", \"name\": \"Seaglass Alpha Free\", \"description\": \"Stealth reasoning model, free for a limited time\", \"attachment\": false, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"temperature\": true, \"release_date\": \"2026-11-26\", \"last_updated\": \"2026-11-26\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"open_weights\": false, \"limit\": {\"context\": 1048576, \"output\": 131072}, \"provider\": {\"api\": \"https://opencode.ai/inference/openai/v1\"}, \"cost\": {\"input\": 0, \"output\": 0, \"cache_read\": 0}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "5bef7bed873e1dc14499146567ecb753f8a2958fb39510a5c1ff8180624f3e8c",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-26T01:26:09.915004+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-26T01:26:13.142177+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 5bef7bed873e: opencode/seaglass-alpha-free\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "intel-f323086c16ad4438fbdb",
       "scanner": "models-dev-git",
@@ -103108,25 +103256,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T00:56:00.834668+00:00",
+      "last_attempt": "2026-11-26T01:26:09.469804+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T00:56:01.261862+00:00",
+      "last_success": "2026-11-26T01:26:13.142177+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.427,
-      "latest_build": "850879f359c742eb78593fea71765a1837cd83faa36b3d52aeb316504cc6db95",
-      "builds_retained": 198,
-      "identifiers": 10385
+      "duration_seconds": 3.673,
+      "latest_build": "5bef7bed873e1dc14499146567ecb753f8a2958fb39510a5c1ff8180624f3e8c",
+      "builds_retained": 199,
+      "identifiers": 10386
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T00:53:04.697533+00:00",
+      "last_attempt": "2026-11-26T01:23:17.015206+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T00:53:05.255987+00:00",
+      "last_success": "2026-11-26T01:23:17.500187+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.559,
+      "duration_seconds": 0.486,
       "latest_build": "ee6575d34839351820c3f334af2c9de01b5e6479",
       "builds_retained": 95,
       "identifiers": 7084
@@ -103134,12 +103282,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T00:56:01.459730+00:00",
+      "last_attempt": "2026-11-26T01:20:12.115439+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T00:56:18.110873+00:00",
+      "last_success": "2026-11-26T01:20:12.750654+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 16.652,
+      "duration_seconds": 0.636,
       "latest_build": "caf577e4acc1bc1e968b486514d183bb982280c5",
       "builds_retained": 199,
       "identifiers": 11635
@@ -103147,21 +103295,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T00:56:18.308199+00:00",
+      "last_attempt": "2026-11-26T01:26:13.337157+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4315,
-      "duration_seconds": 20.973
+      "consecutive_failures": 4325,
+      "duration_seconds": 21.442
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-26T00:53:26.935130+00:00",
+      "last_attempt": "2026-11-26T01:23:38.734034+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T00:53:27.240159+00:00",
+      "last_success": "2026-11-26T01:23:39.072210+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.305,
+      "duration_seconds": 0.338,
       "latest_build": "3.15.14",
       "builds_retained": 5,
       "identifiers": 3340
@@ -103171,61 +103319,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T00:55:12.686568+00:00",
+      "last_attempt": "2026-11-26T01:25:24.933378+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T00:55:15.646357+00:00",
+      "last_success": "2026-11-26T01:25:27.872893+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.96
+      "duration_seconds": 2.94
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T00:55:15.646415+00:00",
+      "last_attempt": "2026-11-26T01:25:27.872956+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T00:55:15.892576+00:00",
+      "last_success": "2026-11-26T01:25:28.119887+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.246
+      "duration_seconds": 0.247
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T00:55:15.892617+00:00",
+      "last_attempt": "2026-11-26T01:25:28.119929+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T00:55:24.216814+00:00",
+      "last_success": "2026-11-26T01:25:36.229246+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.324
+      "duration_seconds": 8.109
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T00:55:24.216885+00:00",
+      "last_attempt": "2026-11-26T01:25:36.229325+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T00:56:00.834602+00:00",
+      "last_success": "2026-11-26T01:26:09.469739+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 36.618,
+      "duration_seconds": 33.24,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-26T00:55:24.730485+00:00",
+          "checked_at": "2026-11-26T01:25:36.751678+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-26T00:55:36.413501+00:00",
+          "checked_at": "2026-11-26T01:25:46.359911+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-26T00:55:36.601780+00:00",
+          "checked_at": "2026-11-26T01:25:46.549225+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-26T00:55:36.601794+00:00",
+          "checked_at": "2026-11-26T01:25:46.549241+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -103233,25 +103381,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T00:56:00.834668+00:00",
+      "last_attempt": "2026-11-26T01:26:09.469804+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T00:56:01.261862+00:00",
+      "last_success": "2026-11-26T01:26:13.142177+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.427,
-      "latest_build": "850879f359c742eb78593fea71765a1837cd83faa36b3d52aeb316504cc6db95",
-      "builds_retained": 198,
-      "identifiers": 10385
+      "duration_seconds": 3.673,
+      "latest_build": "5bef7bed873e1dc14499146567ecb753f8a2958fb39510a5c1ff8180624f3e8c",
+      "builds_retained": 199,
+      "identifiers": 10386
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T00:53:04.697533+00:00",
+      "last_attempt": "2026-11-26T01:23:17.015206+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T00:53:05.255987+00:00",
+      "last_success": "2026-11-26T01:23:17.500187+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.559,
+      "duration_seconds": 0.486,
       "latest_build": "ee6575d34839351820c3f334af2c9de01b5e6479",
       "builds_retained": 95,
       "identifiers": 7084
@@ -103259,12 +103407,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T00:56:01.459730+00:00",
+      "last_attempt": "2026-11-26T01:20:12.115439+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T00:56:18.110873+00:00",
+      "last_success": "2026-11-26T01:20:12.750654+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 16.652,
+      "duration_seconds": 0.636,
       "latest_build": "caf577e4acc1bc1e968b486514d183bb982280c5",
       "builds_retained": 199,
       "identifiers": 11635
@@ -103272,21 +103420,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T00:56:18.308199+00:00",
+      "last_attempt": "2026-11-26T01:26:13.337157+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4315,
-      "duration_seconds": 20.973
+      "consecutive_failures": 4325,
+      "duration_seconds": 21.442
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-26T00:53:26.935130+00:00",
+      "last_attempt": "2026-11-26T01:23:38.734034+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T00:53:27.240159+00:00",
+      "last_success": "2026-11-26T01:23:39.072210+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.305,
+      "duration_seconds": 0.338,
       "latest_build": "3.15.14",
       "builds_retained": 5,
       "identifiers": 3340
@@ -103294,56 +103442,56 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T00:56:39.288738+00:00",
+      "last_attempt": "2026-11-26T01:26:34.786477+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T00:56:48.027740+00:00",
+      "last_success": "2026-11-26T01:26:43.616322+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.739
+      "duration_seconds": 8.83
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T00:56:48.027811+00:00",
+      "last_attempt": "2026-11-26T01:26:43.616389+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T00:56:49.800580+00:00",
+      "last_success": "2026-11-26T01:26:45.326472+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.773
+      "duration_seconds": 1.71
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T00:56:49.800642+00:00",
+      "last_attempt": "2026-11-26T01:20:45.121698+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T00:57:01.333379+00:00",
+      "last_success": "2026-11-26T01:20:55.643604+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 11.533
+      "duration_seconds": 10.522
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T00:57:01.333454+00:00",
+      "last_attempt": "2026-11-26T01:26:45.326526+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T00:57:02.767606+00:00",
+      "last_success": "2026-11-26T01:26:46.791139+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.434
+      "duration_seconds": 1.465
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T00:57:02.767664+00:00",
+      "last_attempt": "2026-11-26T01:26:46.791185+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T00:57:02.836330+00:00",
+      "last_success": "2026-11-26T01:26:46.854774+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.069
+      "duration_seconds": 0.064
     }
   },
   "identities": {
-    "identifiers": 32444,
+    "identifiers": 32445,
     "declared_aliases": 19451,
     "pending_candidates": 4
   },
@@ -103365,9 +103513,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 655,
-      "events": 657,
-      "rate": 0.9969558599695586
+      "complete": 656,
+      "events": 658,
+      "rate": 0.9969604863221885
     },
     "source_health": {
       "sources": 14,
