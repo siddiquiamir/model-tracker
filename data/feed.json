@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-26T17:08:39.479230+00:00",
-  "scan_completed_at": "2026-11-26T17:10:06.357652+00:00",
+  "generated_at": "2026-11-26T17:21:50.054130+00:00",
+  "scan_completed_at": "2026-11-26T17:23:25.315887+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 368,
-    "leaks": 35,
-    "releases": 96,
-    "stories_24h": 52,
-    "sources_ok": 13,
-    "total_cards": 931,
-    "new_in_this_scan": 0
+    "leaks": 34,
+    "releases": 97,
+    "stories_24h": 53,
+    "sources_ok": 14,
+    "total_cards": 932,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -8044,22 +8044,22 @@
     {
       "id": "story-recraft-4-1-flash-2",
       "group": "recraft-4-1-flash-2",
-      "kind": "leak",
+      "kind": "release",
       "open_weights": false,
       "title": "Recraft V4.1 Flash V2",
       "provider_slug": "modelsdev",
       "provider_name": "Lmarena",
       "accent_color": "#10b981",
       "detected_at": "2026-11-22T04:02:06.000Z",
-      "updated_at": "2026-11-22T04:02:06.000Z",
+      "updated_at": "2026-11-26T17:22:22.842335+00:00",
       "first_source": "LMArena",
-      "lead": "",
+      "lead": "4 days before it went live on Vercel AI Gateway Catalog",
       "released_on": "",
       "pricing": "",
       "codenames": [],
       "models": [
         {
-          "id": "Recraft V4.1 Flash V2",
+          "id": "recraft-v4.1-flash-v2",
           "name": "Recraft V4.1 Flash V2"
         }
       ],
@@ -8073,20 +8073,31 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Vercel AI Gateway Catalog",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-11-26T17:22:22.842335+00:00",
+          "title": "New Model on Vercel AI Gateway: Recraft V4.1 Flash V2",
+          "url": "https://ai-gateway.vercel.sh/v1/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
-      "header": "LEAK · LMARENA",
+      "header": "NEW MODEL · LMARENA",
       "card_ids": [
-        "lmarena-lb-diff-f927719a"
+        "lmarena-lb-diff-f927719a",
+        "vercel-gateway-diff-ee1ce180"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "discord_alerted_at": "2026-11-22T04:34:02.371028+00:00",
-      "x_post_text": "🟠 LEAK: Recraft V4.1 Flash V2 by Lmarena\n\nFirst detected 22 Nov 04:02 UTC in LMArena\n\nvia @StatsWire"
+      "discord_alerted_at": "2026-11-26T17:23:25.312329+00:00",
+      "x_post_text": "🟢 NEW MODEL: Recraft V4.1 Flash V2 by Lmarena\n\nFirst detected 22 Nov 04:02 UTC in LMArena\n⏱ 4 days before it went live on Vercel AI Gateway Catalog\nConfirmed by Vercel AI Gateway Catalog\n\nvia @StatsWire"
     },
     {
       "id": "story-default",
@@ -31313,6 +31324,39 @@
     }
   ],
   "cards": [
+    {
+      "id": "vercel-gateway-diff-ee1ce180",
+      "category": "cli-sdk-diff",
+      "scanner": "gateway-radar",
+      "header": "VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS",
+      "title": "New Model on Vercel AI Gateway: Recraft V4.1 Flash V2",
+      "subtitle": "Detected in ai-gateway.vercel.sh/v1/models (+1 new)",
+      "build_label": "Gateway Diff",
+      "build_transition": "+1 new model(s)",
+      "models": [
+        {
+          "id": "recraft/recraft-v4.1-flash-v2",
+          "name": "Recraft V4.1 Flash V2"
+        }
+      ],
+      "evidence": "ai-gateway.vercel.sh/v1/models",
+      "source_text": "public Vercel AI Gateway /v1/models catalog.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "OPENROUTER",
+      "provider_slug": "openrouter",
+      "accent_color": "#10b981",
+      "links": [
+        {
+          "label": "Vercel AI Gateway Models",
+          "url": "https://ai-gateway.vercel.sh/v1/models"
+        }
+      ],
+      "detected_at": "2026-11-26T17:22:22.842335+00:00",
+      "tracker_observed_at": "2026-11-26T17:22:48.643823+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 VERCEL AI GATEWAY CATALOG DIFF · LIVE MODELS\nNew Model on Vercel AI Gateway: Recraft V4.1 Flash V2 spotted in Gateway Diff +1 new model(s)!\n\n• Recraft V4.1 Flash V2 (recraft/recraft-v4.1-flash-v2)\n\nEvidence: ai-gateway.vercel.sh/v1/models\nSource: public Vercel AI Gateway /v1/models catalog.\n\nTracked by @StatsWire"
+    },
     {
       "id": "openrouter-model-inclusionai_lingsante-3.1-air-vl",
       "category": "cli-sdk-diff",
@@ -105904,25 +105948,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:09:33.813162+00:00",
+      "last_attempt": "2026-11-26T17:22:48.643891+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:09:34.134990+00:00",
+      "last_success": "2026-11-26T17:22:52.103091+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.322,
-      "latest_build": "555d260812bdedd282163181d5f809171d9cef448b1fbf1cedec06d3bb158776",
-      "builds_retained": 209,
-      "identifiers": 10401
+      "duration_seconds": 3.46,
+      "latest_build": "cdcf399678200f68d729141a381869ca2cd5cf10673bea70507210d22f152c1f",
+      "builds_retained": 211,
+      "identifiers": 10403
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T17:09:34.316584+00:00",
+      "last_attempt": "2026-11-26T17:22:52.283096+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:09:34.707836+00:00",
+      "last_success": "2026-11-26T17:22:52.744903+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.392,
+      "duration_seconds": 0.463,
       "latest_build": "306b73d11341eb6e5b90b5e4d2fd03d0e8bf5775",
       "builds_retained": 102,
       "identifiers": 7096
@@ -105930,34 +105974,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T17:06:15.176967+00:00",
+      "last_attempt": "2026-11-26T17:19:20.824480+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:06:15.740421+00:00",
+      "last_success": "2026-11-26T17:19:28.694422+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.564,
-      "latest_build": "a27ea03cca533a0461eea262a053116eef6b7d5d",
-      "builds_retained": 210,
+      "duration_seconds": 7.871,
+      "latest_build": "cd46e6748db0c6ffcd30c491090f81ad818c78f8",
+      "builds_retained": 211,
       "identifiers": 11676
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T17:09:34.895902+00:00",
+      "last_attempt": "2026-11-26T17:22:52.937530+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4676,
-      "duration_seconds": 19.707
+      "consecutive_failures": 4680,
+      "duration_seconds": 19.281
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-26T17:06:35.602295+00:00",
+      "last_attempt": "2026-11-26T17:23:12.226875+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:06:35.801996+00:00",
+      "last_success": "2026-11-26T17:23:12.464522+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.2,
+      "duration_seconds": 0.238,
       "latest_build": "3.15.14",
       "builds_retained": 5,
       "identifiers": 3340
@@ -105967,61 +106011,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:08:39.479306+00:00",
+      "last_attempt": "2026-11-26T17:21:50.054221+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:08:41.911060+00:00",
+      "last_success": "2026-11-26T17:21:52.171778+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.432
+      "duration_seconds": 2.118
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:08:41.911125+00:00",
+      "last_attempt": "2026-11-26T17:21:52.171861+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:08:42.087208+00:00",
+      "last_success": "2026-11-26T17:21:52.303528+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.176
+      "duration_seconds": 0.132
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:08:42.087251+00:00",
+      "last_attempt": "2026-11-26T17:21:52.303574+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:08:48.028131+00:00",
+      "last_success": "2026-11-26T17:22:01.415326+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.941
+      "duration_seconds": 9.112
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:08:48.028213+00:00",
+      "last_attempt": "2026-11-26T17:22:01.415413+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:09:33.813100+00:00",
+      "last_success": "2026-11-26T17:22:48.643823+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 45.785,
+      "duration_seconds": 47.228,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-26T17:08:48.248469+00:00",
+          "checked_at": "2026-11-26T17:22:01.643020+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-26T17:08:57.924140+00:00",
+          "checked_at": "2026-11-26T17:22:12.025457+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-26T17:08:58.090098+00:00",
+          "checked_at": "2026-11-26T17:22:12.232923+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-26T17:08:58.090118+00:00",
+          "checked_at": "2026-11-26T17:22:12.232941+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -106029,25 +106073,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:09:33.813162+00:00",
+      "last_attempt": "2026-11-26T17:22:48.643891+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:09:34.134990+00:00",
+      "last_success": "2026-11-26T17:22:52.103091+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.322,
-      "latest_build": "555d260812bdedd282163181d5f809171d9cef448b1fbf1cedec06d3bb158776",
-      "builds_retained": 209,
-      "identifiers": 10401
+      "duration_seconds": 3.46,
+      "latest_build": "cdcf399678200f68d729141a381869ca2cd5cf10673bea70507210d22f152c1f",
+      "builds_retained": 211,
+      "identifiers": 10403
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T17:09:34.316584+00:00",
+      "last_attempt": "2026-11-26T17:22:52.283096+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:09:34.707836+00:00",
+      "last_success": "2026-11-26T17:22:52.744903+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.392,
+      "duration_seconds": 0.463,
       "latest_build": "306b73d11341eb6e5b90b5e4d2fd03d0e8bf5775",
       "builds_retained": 102,
       "identifiers": 7096
@@ -106055,34 +106099,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T17:06:15.176967+00:00",
+      "last_attempt": "2026-11-26T17:19:20.824480+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:06:15.740421+00:00",
+      "last_success": "2026-11-26T17:19:28.694422+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.564,
-      "latest_build": "a27ea03cca533a0461eea262a053116eef6b7d5d",
-      "builds_retained": 210,
+      "duration_seconds": 7.871,
+      "latest_build": "cd46e6748db0c6ffcd30c491090f81ad818c78f8",
+      "builds_retained": 211,
       "identifiers": 11676
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T17:09:34.895902+00:00",
+      "last_attempt": "2026-11-26T17:22:52.937530+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4676,
-      "duration_seconds": 19.707
+      "consecutive_failures": 4680,
+      "duration_seconds": 19.281
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-26T17:06:35.602295+00:00",
+      "last_attempt": "2026-11-26T17:23:12.226875+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:06:35.801996+00:00",
+      "last_success": "2026-11-26T17:23:12.464522+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.2,
+      "duration_seconds": 0.238,
       "latest_build": "3.15.14",
       "builds_retained": 5,
       "identifiers": 3340
@@ -106090,57 +106134,57 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:09:54.610230+00:00",
+      "last_attempt": "2026-11-26T17:23:12.851807+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:10:03.951595+00:00",
+      "last_success": "2026-11-26T17:23:22.106694+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.341
+      "duration_seconds": 9.255
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:10:03.951656+00:00",
+      "last_attempt": "2026-11-26T17:23:22.106759+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:10:05.163651+00:00",
+      "last_success": "2026-11-26T17:23:23.499035+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.212
+      "duration_seconds": 1.392
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T17:06:47.261381+00:00",
+      "last_attempt": "2026-11-26T17:19:58.874668+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:06:56.318050+00:00",
+      "last_success": "2026-11-26T17:20:07.683888+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.057
+      "duration_seconds": 8.809
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:10:05.163710+00:00",
+      "last_attempt": "2026-11-26T17:23:23.499100+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:10:05.728464+00:00",
+      "last_success": "2026-11-26T17:23:24.079563+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.565
+      "duration_seconds": 0.58
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:10:05.728511+00:00",
+      "last_attempt": "2026-11-26T17:23:24.079613+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:10:05.756303+00:00",
+      "last_success": "2026-11-26T17:23:24.138405+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.028
+      "duration_seconds": 0.059
     }
   },
   "identities": {
-    "identifiers": 32513,
-    "declared_aliases": 19506,
+    "identifiers": 32515,
+    "declared_aliases": 19508,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
