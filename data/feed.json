@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-26T13:32:25.693488+00:00",
-  "scan_completed_at": "2026-11-26T13:33:37.563692+00:00",
+  "generated_at": "2026-11-26T13:41:49.877517+00:00",
+  "scan_completed_at": "2026-11-26T13:43:05.674403+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 369,
     "leaks": 34,
     "releases": 96,
     "stories_24h": 52,
-    "sources_ok": 15,
-    "total_cards": 926,
-    "new_in_this_scan": 0
+    "sources_ok": 13,
+    "total_cards": 927,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -21993,7 +21993,7 @@
       "provider_name": "Unattributed",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-18T16:29:57.741772+00:00",
-      "updated_at": "2026-11-26T00:23:42.650454+00:00",
+      "updated_at": "2026-11-26T13:42:36.285192+00:00",
       "first_source": "LiteLLM commit-pinned registry",
       "lead": "",
       "released_on": "",
@@ -22001,8 +22001,8 @@
       "codenames": [],
       "models": [
         {
-          "id": "Inkling",
-          "name": "together_ai/thinkingmachines/Inkling"
+          "id": "inkling",
+          "name": "together_ai/thinkingmachines/inkling"
         }
       ],
       "sources": [
@@ -22023,7 +22023,8 @@
       "card_ids": [
         "intel-8c1871420df2048382e8",
         "intel-594eea7cb17b879720bb",
-        "intel-7b6417ccd67daca22420"
+        "intel-7b6417ccd67daca22420",
+        "intel-b3cbb8e4839973122a4e"
       ],
       "event_label": "Registry update",
       "intelligence_only": true,
@@ -22080,9 +22081,22 @@
           "build": "ee6575d34839351820c3f334af2c9de01b5e6479",
           "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/ee6575d34839351820c3f334af2c9de01b5e6479/model_prices_and_context_window.json",
           "first_seen": "2026-11-26T00:23:25+00:00"
+        },
+        {
+          "id": "together_ai/thinkingmachines/inkling",
+          "family": "inkling",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"together_ai/thinkingmachines/inkling\": {\"cache_read_input_token_cost\": 1.7e-07, \"deprecation_date\": \"2026-12-09\", \"deprecation_source\": \"https://docs.together.ai/docs/deprecations\", \"input_cost_per_token\": 1e-06, \"litellm_provider\": \"together_ai\", \"max_input_tokens\": 524288, \"max_output_tokens\": 524288, \"mode\": \"chat\", \"output_cost_per_token\": 4.05e-06, \"source\": \"https://api.together.ai/v1/models\", \"successor_model\": \"together_ai/thinkingmachines/Inkling-2-Small\", \"supports_function_calling\": true, \"supports_parallel_function_calling\": true, \"supports_prompt_caching\": true, \"supports_response_schema\": true, \"supports_tool_choice\": true, \"supports_audio_input\": true, \"supports_reasoning\": true, \"supports_vision\": true, \"metadata\": {\"notes\": \"Audio input, vision and variable reasoning effort documented at https://www.together.ai/models/inkling, read 2026-11-17.\"}}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "83d9e0a8887766256ead5a65761cc09974ec21aae87ea2b9ce649bc957b7faac",
+          "method": "structured registry",
+          "build": "82af66e3403be291b71b8a58fa790f1754443992",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/82af66e3403be291b71b8a58fa790f1754443992/model_prices_and_context_window.json",
+          "first_seen": "2026-11-26T13:39:18+00:00"
         }
       ],
-      "x_post_text": "LiteLLM commit-pinned registry 65a926600a92: Inkling\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/65a926600a92b11f1464433a3a60a2c25cb93574/model_prices_and_context_window.json"
+      "x_post_text": "LiteLLM commit-pinned registry 65a926600a92: inkling\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/65a926600a92b11f1464433a3a60a2c25cb93574/model_prices_and_context_window.json"
     },
     {
       "id": "story-claude-mythos",
@@ -31252,6 +31266,109 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-b3cbb8e4839973122a4e",
+      "scanner": "litellm-intelligence",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "inkling",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in LiteLLM model registry; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "inkling",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "together_ai/thinkingmachines/inkling",
+          "name": "together_ai/thinkingmachines/inkling",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-26T13:42:36.285192+00:00",
+      "first_seen": "2026-11-26T13:39:18+00:00",
+      "observed_at": "2026-11-26T13:42:36.285192+00:00",
+      "backfill": false,
+      "build_label": "LiteLLM model registry",
+      "build_transition": "b464a413221ea73ec1e0ddf73c3852a6585f42ce -> 82af66e3403be291b71b8a58fa790f1754443992",
+      "build": "82af66e3403be291b71b8a58fa790f1754443992",
+      "source_text": "https://raw.githubusercontent.com/BerriAI/litellm/82af66e3403be291b71b8a58fa790f1754443992/model_prices_and_context_window.json",
+      "artifact_sha256": "83d9e0a8887766256ead5a65761cc09974ec21aae87ea2b9ce649bc957b7faac",
+      "verification": "Commit-pinned upstream registry; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/litellm-intelligence/83d9e0a8887766256ead5a65761cc09974ec21aae87ea2b9ce649bc957b7faac.json.gz",
+      "evidence_path": "data/intelligence/evidence/litellm-intelligence/83d9e0a8887766256ead5a65761cc09974ec21aae87ea2b9ce649bc957b7faac.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "together_ai/thinkingmachines/inkling",
+          "family": "inkling",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"together_ai/thinkingmachines/inkling\": {\"cache_read_input_token_cost\": 1.7e-07, \"deprecation_date\": \"2026-12-09\", \"deprecation_source\": \"https://docs.together.ai/docs/deprecations\", \"input_cost_per_token\": 1e-06, \"litellm_provider\": \"together_ai\", \"max_input_tokens\": 524288, \"max_output_tokens\": 524288, \"mode\": \"chat\", \"output_cost_per_token\": 4.05e-06, \"source\": \"https://api.together.ai/v1/models\", \"successor_model\": \"together_ai/thinkingmachines/Inkling-2-Small\", \"supports_function_calling\": true, \"supports_parallel_function_calling\": true, \"supports_prompt_caching\": true, \"supports_response_schema\": true, \"supports_tool_choice\": true, \"supports_audio_input\": true, \"supports_reasoning\": true, \"supports_vision\": true, \"metadata\": {\"notes\": \"Audio input, vision and variable reasoning effort documented at https://www.together.ai/models/inkling, read 2026-11-17.\"}}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "83d9e0a8887766256ead5a65761cc09974ec21aae87ea2b9ce649bc957b7faac",
+          "method": "structured registry",
+          "build": "82af66e3403be291b71b8a58fa790f1754443992",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/82af66e3403be291b71b8a58fa790f1754443992/model_prices_and_context_window.json",
+          "first_seen": "2026-11-26T13:39:18+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "devin-desktop",
+          "identifier": "inkling",
+          "first_seen": "2026-11-17T00:00:00+00:00",
+          "evidence_path": "data/intelligence/evidence/devin-desktop/56f318f713d7d1090ca30b470df4a1a529a4a3d5f9fdde5251d6e6e727b443b8.json.gz"
+        },
+        {
+          "source": "models-dev-api",
+          "identifier": "llmtr/thinkingmachines/inkling",
+          "first_seen": "2026-11-18T12:44:53.499743+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-api/ba4ded4cbe19cf0e09cdd4433244dbefb50413197d3eb7fec156aaa2f389549c.json.gz"
+        },
+        {
+          "source": "models-dev-git",
+          "identifier": "thinkingmachines/inkling",
+          "first_seen": "2026-11-18T12:32:34+00:00",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/e5b0376b85e299d5bc9fb497f1a5151d9cb74cb66c02048b71abf8fc4f4e198b.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "LiteLLM model registry",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/82af66e3403be291b71b8a58fa790f1754443992/model_prices_and_context_window.json"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/BerriAI/litellm/commit/82af66e3403be291b71b8a58fa790f1754443992"
+        }
+      ],
+      "tracker_observed_at": "2026-11-26T13:42:37.655128+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: together_ai/thinkingmachines/inkling\nhttps://raw.githubusercontent.com/BerriAI/litellm/82af66e3403be291b71b8a58fa790f1754443992/model_prices_and_context_window.json"
+    },
     {
       "id": "hf-inclusionAI_Ming-Image-0.2-Design",
       "category": "open-source",
@@ -105377,12 +105494,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T13:33:03.313580+00:00",
+      "last_attempt": "2026-11-26T13:42:35.114442+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T13:33:03.563969+00:00",
+      "last_success": "2026-11-26T13:42:35.350240+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.251,
+      "duration_seconds": 0.236,
       "latest_build": "ba4ded4cbe19cf0e09cdd4433244dbefb50413197d3eb7fec156aaa2f389549c",
       "builds_retained": 206,
       "identifiers": 10392
@@ -105390,14 +105507,14 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T13:33:03.683368+00:00",
+      "last_attempt": "2026-11-26T13:42:35.468525+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T13:33:04.090880+00:00",
+      "last_success": "2026-11-26T13:42:37.655128+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.408,
-      "latest_build": "b464a413221ea73ec1e0ddf73c3852a6585f42ce",
-      "builds_retained": 100,
+      "duration_seconds": 2.187,
+      "latest_build": "82af66e3403be291b71b8a58fa790f1754443992",
+      "builds_retained": 101,
       "identifiers": 7096
     },
     "models-dev-git": {
@@ -105416,11 +105533,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T13:33:04.874461+00:00",
+      "last_attempt": "2026-11-26T13:42:37.775526+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4623,
-      "duration_seconds": 14.01
+      "consecutive_failures": 4627,
+      "duration_seconds": 13.972
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -105440,61 +105557,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T13:32:25.693554+00:00",
+      "last_attempt": "2026-11-26T13:41:49.877564+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T13:32:27.613043+00:00",
+      "last_success": "2026-11-26T13:41:51.444513+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.92
+      "duration_seconds": 1.567
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T13:32:27.613112+00:00",
+      "last_attempt": "2026-11-26T13:41:51.444573+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T13:32:27.728295+00:00",
+      "last_success": "2026-11-26T13:41:51.562435+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.115
+      "duration_seconds": 0.118
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T13:32:27.728333+00:00",
+      "last_attempt": "2026-11-26T13:41:51.562467+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T13:32:33.567955+00:00",
+      "last_success": "2026-11-26T13:42:04.215764+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.84
+      "duration_seconds": 12.653
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T13:32:33.568025+00:00",
+      "last_attempt": "2026-11-26T13:42:04.215818+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T13:33:03.313517+00:00",
+      "last_success": "2026-11-26T13:42:35.114384+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 29.746,
+      "duration_seconds": 30.899,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-26T13:32:33.807056+00:00",
+          "checked_at": "2026-11-26T13:42:04.671202+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-26T13:32:43.913910+00:00",
+          "checked_at": "2026-11-26T13:42:16.909912+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-26T13:32:44.006315+00:00",
+          "checked_at": "2026-11-26T13:42:17.012126+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-26T13:32:44.006331+00:00",
+          "checked_at": "2026-11-26T13:42:17.012141+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -105502,12 +105619,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T13:33:03.313580+00:00",
+      "last_attempt": "2026-11-26T13:42:35.114442+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T13:33:03.563969+00:00",
+      "last_success": "2026-11-26T13:42:35.350240+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.251,
+      "duration_seconds": 0.236,
       "latest_build": "ba4ded4cbe19cf0e09cdd4433244dbefb50413197d3eb7fec156aaa2f389549c",
       "builds_retained": 206,
       "identifiers": 10392
@@ -105515,14 +105632,14 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T13:33:03.683368+00:00",
+      "last_attempt": "2026-11-26T13:42:35.468525+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T13:33:04.090880+00:00",
+      "last_success": "2026-11-26T13:42:37.655128+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.408,
-      "latest_build": "b464a413221ea73ec1e0ddf73c3852a6585f42ce",
-      "builds_retained": 100,
+      "duration_seconds": 2.187,
+      "latest_build": "82af66e3403be291b71b8a58fa790f1754443992",
+      "builds_retained": 101,
       "identifiers": 7096
     },
     "models-dev-git": {
@@ -105541,11 +105658,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T13:33:04.874461+00:00",
+      "last_attempt": "2026-11-26T13:42:37.775526+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4623,
-      "duration_seconds": 14.01
+      "consecutive_failures": 4627,
+      "duration_seconds": 13.972
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -105563,22 +105680,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T13:33:18.888319+00:00",
+      "last_attempt": "2026-11-26T13:42:51.750426+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T13:33:26.934640+00:00",
+      "last_success": "2026-11-26T13:42:59.776841+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.046
+      "duration_seconds": 8.026
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T13:33:26.934730+00:00",
+      "last_attempt": "2026-11-26T13:42:59.776909+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T13:33:28.481014+00:00",
+      "last_success": "2026-11-26T13:43:03.691265+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.546
+      "duration_seconds": 3.914
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -105593,22 +105710,22 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T13:33:35.647674+00:00",
+      "last_attempt": "2026-11-26T13:43:03.691322+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T13:33:37.098353+00:00",
+      "last_success": "2026-11-26T13:43:05.168801+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.451
+      "duration_seconds": 1.477
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T13:33:37.098403+00:00",
+      "last_attempt": "2026-11-26T13:43:05.168848+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T13:33:37.125628+00:00",
+      "last_success": "2026-11-26T13:43:05.273546+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.027
+      "duration_seconds": 0.105
     }
   },
   "identities": {
@@ -105619,8 +105736,8 @@
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 515,
-      "seconds_mean": 4663.53651787767,
+      "samples": 516,
+      "seconds_mean": 4654.882930036822,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -105634,9 +105751,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 672,
-      "events": 674,
-      "rate": 0.9970326409495549
+      "complete": 673,
+      "events": 675,
+      "rate": 0.997037037037037
     },
     "source_health": {
       "sources": 14,
