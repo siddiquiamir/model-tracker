@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-26T15:20:21.423145+00:00",
-  "scan_completed_at": "2026-11-26T15:21:31.229268+00:00",
+  "generated_at": "2026-11-26T15:26:11.882170+00:00",
+  "scan_completed_at": "2026-11-26T15:28:33.738689+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 369,
-    "leaks": 34,
+    "leaks": 35,
     "releases": 96,
     "stories_24h": 52,
-    "sources_ok": 13,
-    "total_cards": 928,
-    "new_in_this_scan": 1
+    "sources_ok": 16,
+    "total_cards": 931,
+    "new_in_this_scan": 3
   },
   "stories": [
     {
@@ -489,7 +489,7 @@
       "provider_name": "Unattributed",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-26T04:25:04.908364+00:00",
-      "updated_at": "2026-11-26T04:25:04.908364+00:00",
+      "updated_at": "2026-11-26T15:27:30.882366+00:00",
       "first_source": "LiteLLM commit-pinned registry",
       "lead": "",
       "released_on": "",
@@ -498,7 +498,7 @@
       "models": [
         {
           "id": "kimi-k3p1-pro-ultrafast",
-          "name": "fireworks_ai/accounts/fireworks/routers/kimi-k3p1-pro-ultrafast"
+          "name": "fireworks-ai/accounts/fireworks/routers/kimi-k3p1-pro-ultrafast"
         }
       ],
       "sources": [
@@ -511,13 +511,24 @@
           "backfill": false,
           "build": "3c18ad5c0f5c607359737390d6aded832969b288",
           "evidence_path": "data/intelligence/evidence/litellm-intelligence/95db9a426a2b0c66d322d2a42ee2d9a15378ec14e6b70bb8d79e713c1e907a1c.json.gz"
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-26T15:27:30.882366+00:00",
+          "title": "kimi-k3p1-pro-ultrafast",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/717250079f97da093437db28a3f324ce6836ca13",
+          "backfill": false,
+          "build": "717250079f97da093437db28a3f324ce6836ca13",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/a2bf04f63bb4db9f5bcf27310e93de7041c551d101735fe9e8bbc96606d1dbeb.json.gz"
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
       "header": "REGISTRY UPDATE · UNATTRIBUTED",
       "card_ids": [
-        "intel-0f7892cd0927ed784cc2"
+        "intel-0f7892cd0927ed784cc2",
+        "intel-004e6662b23e91ac0334"
       ],
       "event_label": "Registry update",
       "intelligence_only": true,
@@ -535,6 +546,21 @@
           "build": "3c18ad5c0f5c607359737390d6aded832969b288",
           "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/3c18ad5c0f5c607359737390d6aded832969b288/model_prices_and_context_window.json",
           "first_seen": "2026-11-26T04:23:07+00:00"
+        },
+        {
+          "id": "fireworks-ai/accounts/fireworks/routers/kimi-k3p1-pro-ultrafast",
+          "family": "kimi-k3p1-pro-ultrafast",
+          "file_path": "providers/fireworks-ai/models/accounts/fireworks/routers/kimi-k3p1-pro-ultrafast.toml",
+          "file_sha256": "8cbc9021763ad18744fb296642976e64d5728ac6701b3076a5bb2d7a624cbfed",
+          "excerpt": "{\"fireworks-ai/accounts/fireworks/routers/kimi-k3p1-pro-ultrafast\": {\"schema\": 2, \"base_model\": \"moonshotai/kimi-k3.1-pro\", \"name\": \"Kimi K3.1 Pro Ultra-fast\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\", \"image/gif\", \"image/webp\", \"image/bmp\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"toggle\": true, \"effort\": [\"low\", \"medium\", \"high\", \"max\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}}, \"api\": {\"chat-completions\": {\"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}, \"responses\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}, \"messages\": {\"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 5, \"cache\": {\"read\": 0.5}}, \"output\": {\"price\": 25}}}}}",
+          "canonical_id": "moonshotai/kimi-k3.1-pro",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/717250079f97da093437db28a3f324ce6836ca13/providers/fireworks-ai/models/accounts/fireworks/routers/kimi-k3p1-pro-ultrafast.toml",
+          "build": "717250079f97da093437db28a3f324ce6836ca13",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/717250079f97da093437db28a3f324ce6836ca13",
+          "first_seen": "2026-11-26T15:17:12+00:00"
         }
       ],
       "x_post_text": "registry evidence, not a launch: kimi-k3p1-pro-ultrafast\nhttps://raw.githubusercontent.com/BerriAI/litellm/3c18ad5c0f5c607359737390d6aded832969b288/model_prices_and_context_window.json"
@@ -8746,7 +8772,7 @@
       "provider_name": "fireworks-ai",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-21T03:05:45.893089+00:00",
-      "updated_at": "2026-11-26T15:21:02.922998+00:00",
+      "updated_at": "2026-11-26T15:27:30.882366+00:00",
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-11-20",
@@ -8824,7 +8850,8 @@
         "intel-15e34906de6d26a47034",
         "intel-b4149a7c2caf7af9da38",
         "intel-6acc8c43f00cbd28f994",
-        "intel-8f2ea7980b6b544e8157"
+        "intel-8f2ea7980b6b544e8157",
+        "intel-7adb5e8c93d33294a6a1"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -9307,7 +9334,22 @@
           "method": "structured catalog definition",
           "build": "ff8d10aa254110a304e5c9c0e8eef038986f954f2adc3de1c219db1ad8678851",
           "source_url": "https://models.dev/api.json?type=all",
-          "first_seen": "2026-11-26T15:21:02.589874+00:00"
+          "first_seen": "2026-11-26T15:27:14.738355+00:00"
+        },
+        {
+          "id": "fireworks-ai/accounts/fireworks/models/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/fireworks-ai/models/accounts/fireworks/models/inkling-2-mini.toml",
+          "file_sha256": "a95231232b13572ed8a00988b1a4358106784fb32403772f169448cb8f3c87be",
+          "excerpt": "{\"fireworks-ai/accounts/fireworks/models/inkling-2-mini\": {\"schema\": 2, \"base_model\": \"thinkingmachines/inkling-2-mini\", \"modalities\": {\"input\": [\"text\", \"image/png\", \"image/jpeg\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}}, \"api\": {\"chat-completions\": {\"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}, \"responses\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}, \"messages\": {\"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.15, \"cache\": {\"read\": 0.015}}, \"output\": {\"price\": 0.5}}, \"multipliers\": [{\"when\": {\"service_tier\": {\"equals\": \"priority\"}}, \"factor\": 1.25}]}, \"experimental\": {\"modes\": {\"priority\": {\"body\": {\"service_tier\": \"priority\"}}}}}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/717250079f97da093437db28a3f324ce6836ca13/providers/fireworks-ai/models/accounts/fireworks/models/inkling-2-mini.toml",
+          "build": "717250079f97da093437db28a3f324ce6836ca13",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/717250079f97da093437db28a3f324ce6836ca13",
+          "first_seen": "2026-11-26T15:17:12+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-23T04:22:07.426340+00:00",
@@ -29666,14 +29708,14 @@
     {
       "id": "story-gpt-6-luna-decisions",
       "group": "gpt-6-luna-decisions",
-      "kind": "registry",
+      "kind": "leak",
       "open_weights": false,
       "title": "GPT-6 Luna Decisions",
-      "provider_slug": "openai",
-      "provider_name": "OpenAI",
+      "provider_slug": "unknown",
+      "provider_name": "concentrate",
       "accent_color": "#10b981",
       "detected_at": "2026-11-14T14:45:31.782160+00:00",
-      "updated_at": "2026-11-18T15:49:48.742354+00:00",
+      "updated_at": "2026-11-14T14:45:31.782160+00:00",
       "first_source": "LiteLLM registry",
       "lead": "",
       "released_on": "",
@@ -29682,7 +29724,7 @@
       "models": [
         {
           "id": "gpt-6-luna-decisions",
-          "name": "openrouter/openai/gpt-6-luna-decisions"
+          "name": "concentrate/gpt-6-luna-decisions"
         }
       ],
       "sources": [
@@ -29705,14 +29747,25 @@
           "backfill": false,
           "build": "197afe4e4b470ccc49293df885e29aa2956f62f9",
           "evidence_path": "data/intelligence/evidence/litellm-intelligence/c7ca39cbdfdbf84a690248edbea18ea9f16bdb20bccad3ca9f3c1e10f70fd544.json.gz"
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-26T15:27:23.455064+00:00",
+          "title": "gpt-6-luna-decisions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/a5443e4e38579b5f94c103cf5cd710d43f1a1571",
+          "backfill": false,
+          "build": "a5443e4e38579b5f94c103cf5cd710d43f1a1571",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/d311e7e1f36a58ff8ce5cf9e7580e84073d3f0f825170e1c49015bd219df4ae0.json.gz"
         }
       ],
-      "source_count": 2,
+      "source_count": 3,
       "backfill": false,
-      "header": "REGISTRY UPDATE · OPENAI",
+      "header": "LEAK · CONCENTRATE",
       "card_ids": [
         "litellm-diff-9093411f",
-        "intel-b378405442982efbefc8"
+        "intel-b378405442982efbefc8",
+        "intel-41f51a6fec6650e9e415"
       ],
       "event_label": "Registry update",
       "intelligence_only": false,
@@ -29730,9 +29783,24 @@
           "build": "197afe4e4b470ccc49293df885e29aa2956f62f9",
           "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/197afe4e4b470ccc49293df885e29aa2956f62f9/model_prices_and_context_window.json",
           "first_seen": "2026-11-18T15:47:20+00:00"
+        },
+        {
+          "id": "concentrate/gpt-6-luna-decisions",
+          "family": "gpt-6-luna-decisions",
+          "file_path": "providers/concentrate/models/gpt-6-luna-decisions.toml",
+          "file_sha256": "757d3f23c37511f6aa56217d19b49deb0103ed36e206fc44c202882570710e0e",
+          "excerpt": "{\"concentrate/gpt-6-luna-decisions\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"openai/gpt-6-luna\", \"base_model_omit\": [\"limit.input\"], \"type\": \"decision\", \"name\": \"GPT-6 Luna Decisions\", \"modalities\": {\"input\": [\"text\", \"image/png\", \"image/jpeg\", \"image/webp\", \"image/gif\"], \"output\": [\"decision\"]}, \"capabilities\": {\"structured_output\": true, \"temperature\": false, \"top_p\": false, \"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}, \"cache\": {\"implicit\": {\"min_tokens\": 1024}}}, \"limit\": {\"context\": 600000, \"output\": 0}, \"api\": {\"systemone\": {\"sdk\": {\"aisdk\": \"@ai-sdk/typesafe-ai\", \"opencodeai\": \"@opencode/ai/providers/typesafe-ai/decisions\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.1, \"cache\": {\"read\": 0.01, \"write\": {\"30m\": 0.125}}, \"overrides\": [{\"when\": {\"context\": {\"gte\": 272000}}, \"price\": 0.2, \"cache\": {\"read\": 0.02, \"write\": {\"30m\": 0.25}}}]}, \"output\": {\"price\": 0, \"overrides\": [{\"when\": {\"context\": {\"gte\": 272000}}, \"price\": 0}]}}}}}",
+          "canonical_id": "openai/gpt-6-luna",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/a5443e4e38579b5f94c103cf5cd710d43f1a1571/providers/concentrate/models/gpt-6-luna-decisions.toml",
+          "build": "a5443e4e38579b5f94c103cf5cd710d43f1a1571",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/a5443e4e38579b5f94c103cf5cd710d43f1a1571",
+          "first_seen": "2026-11-26T15:17:06+00:00"
         }
       ],
-      "x_post_text": "🔵 REGISTRY UPDATE: GPT-6 Luna Decisions\n\nFirst detected 14 Nov 14:45 UTC in LiteLLM registry\nConfirmed by LiteLLM commit-pinned registry\n\nvia @StatsWire"
+      "x_post_text": "🟠 LEAK: GPT-6 Luna Decisions by concentrate\n\nFirst detected 14 Nov 14:45 UTC in LiteLLM registry\nConfirmed by LiteLLM commit-pinned registry, Registry Update\n\nvia @StatsWire"
     },
     {
       "id": "story-litellm-registry-vercel_ai_gateway-9093411f",
@@ -31282,6 +31350,285 @@
   ],
   "cards": [
     {
+      "id": "intel-7adb5e8c93d33294a6a1",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "inkling-2-mini",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "inkling-2-mini",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "fireworks-ai/accounts/fireworks/models/inkling-2-mini",
+          "name": "fireworks-ai/accounts/fireworks/models/inkling-2-mini",
+          "registry_update": true,
+          "released_on": "2026-11-20"
+        }
+      ],
+      "detected_at": "2026-11-26T15:27:30.882366+00:00",
+      "first_seen": "2026-11-26T15:17:12+00:00",
+      "observed_at": "2026-11-26T15:27:30.882366+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "a5443e4e38579b5f94c103cf5cd710d43f1a1571 -> 717250079f97da093437db28a3f324ce6836ca13",
+      "build": "717250079f97da093437db28a3f324ce6836ca13",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/717250079f97da093437db28a3f324ce6836ca13",
+      "artifact_sha256": "a2bf04f63bb4db9f5bcf27310e93de7041c551d101735fe9e8bbc96606d1dbeb",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/a2bf04f63bb4db9f5bcf27310e93de7041c551d101735fe9e8bbc96606d1dbeb.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/a2bf04f63bb4db9f5bcf27310e93de7041c551d101735fe9e8bbc96606d1dbeb.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "fireworks-ai/accounts/fireworks/models/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "providers/fireworks-ai/models/accounts/fireworks/models/inkling-2-mini.toml",
+          "file_sha256": "a95231232b13572ed8a00988b1a4358106784fb32403772f169448cb8f3c87be",
+          "excerpt": "{\"fireworks-ai/accounts/fireworks/models/inkling-2-mini\": {\"schema\": 2, \"base_model\": \"thinkingmachines/inkling-2-mini\", \"modalities\": {\"input\": [\"text\", \"image/png\", \"image/jpeg\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}}, \"api\": {\"chat-completions\": {\"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}, \"responses\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}, \"messages\": {\"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.15, \"cache\": {\"read\": 0.015}}, \"output\": {\"price\": 0.5}}, \"multipliers\": [{\"when\": {\"service_tier\": {\"equals\": \"priority\"}}, \"factor\": 1.25}]}, \"experimental\": {\"modes\": {\"priority\": {\"body\": {\"service_tier\": \"priority\"}}}}}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/717250079f97da093437db28a3f324ce6836ca13/providers/fireworks-ai/models/accounts/fireworks/models/inkling-2-mini.toml",
+          "build": "717250079f97da093437db28a3f324ce6836ca13",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/717250079f97da093437db28a3f324ce6836ca13",
+          "first_seen": "2026-11-26T15:17:12+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/717250079f97da093437db28a3f324ce6836ca13"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/717250079f97da093437db28a3f324ce6836ca13"
+        }
+      ],
+      "tracker_observed_at": "2026-11-26T15:27:34.233550+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: fireworks-ai/accounts/fireworks/models/inkling-2-mini\nhttps://codeload.github.com/anomalyco/models.dev/zip/717250079f97da093437db28a3f324ce6836ca13"
+    },
+    {
+      "id": "intel-004e6662b23e91ac0334",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "kimi-k3p1-pro-ultrafast",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "kimi-k3p1-pro-ultrafast",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "fireworks-ai/accounts/fireworks/routers/kimi-k3p1-pro-ultrafast",
+          "name": "fireworks-ai/accounts/fireworks/routers/kimi-k3p1-pro-ultrafast",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-26T15:27:30.882366+00:00",
+      "first_seen": "2026-11-26T15:17:12+00:00",
+      "observed_at": "2026-11-26T15:27:30.882366+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "a5443e4e38579b5f94c103cf5cd710d43f1a1571 -> 717250079f97da093437db28a3f324ce6836ca13",
+      "build": "717250079f97da093437db28a3f324ce6836ca13",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/717250079f97da093437db28a3f324ce6836ca13",
+      "artifact_sha256": "a2bf04f63bb4db9f5bcf27310e93de7041c551d101735fe9e8bbc96606d1dbeb",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/a2bf04f63bb4db9f5bcf27310e93de7041c551d101735fe9e8bbc96606d1dbeb.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/a2bf04f63bb4db9f5bcf27310e93de7041c551d101735fe9e8bbc96606d1dbeb.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "fireworks-ai/accounts/fireworks/routers/kimi-k3p1-pro-ultrafast",
+          "family": "kimi-k3p1-pro-ultrafast",
+          "file_path": "providers/fireworks-ai/models/accounts/fireworks/routers/kimi-k3p1-pro-ultrafast.toml",
+          "file_sha256": "8cbc9021763ad18744fb296642976e64d5728ac6701b3076a5bb2d7a624cbfed",
+          "excerpt": "{\"fireworks-ai/accounts/fireworks/routers/kimi-k3p1-pro-ultrafast\": {\"schema\": 2, \"base_model\": \"moonshotai/kimi-k3.1-pro\", \"name\": \"Kimi K3.1 Pro Ultra-fast\", \"modalities\": {\"input\": [\"text\", \"image/jpeg\", \"image/png\", \"image/gif\", \"image/webp\", \"image/bmp\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"toggle\": true, \"effort\": [\"low\", \"medium\", \"high\", \"max\"]}, \"structured_output\": true, \"cache\": {\"implicit\": true}}, \"api\": {\"chat-completions\": {\"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}, \"responses\": {\"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/responses\"}}, \"messages\": {\"sdk\": {\"aisdk\": \"@ai-sdk/anthropic\", \"opencodeai\": \"@opencode/ai/providers/anthropic-compatible\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 5, \"cache\": {\"read\": 0.5}}, \"output\": {\"price\": 25}}}}}",
+          "canonical_id": "moonshotai/kimi-k3.1-pro",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/717250079f97da093437db28a3f324ce6836ca13/providers/fireworks-ai/models/accounts/fireworks/routers/kimi-k3p1-pro-ultrafast.toml",
+          "build": "717250079f97da093437db28a3f324ce6836ca13",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/717250079f97da093437db28a3f324ce6836ca13",
+          "first_seen": "2026-11-26T15:17:12+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "fireworks_ai/accounts/fireworks/routers/kimi-k3p1-pro-ultrafast",
+          "first_seen": "2026-11-26T04:23:07+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/83d9e0a8887766256ead5a65761cc09974ec21aae87ea2b9ce649bc957b7faac.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/717250079f97da093437db28a3f324ce6836ca13"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/717250079f97da093437db28a3f324ce6836ca13"
+        }
+      ],
+      "tracker_observed_at": "2026-11-26T15:27:34.233550+00:00",
+      "pricing": null,
+      "x_post_text": "registry evidence, not a launch: fireworks-ai/accounts/fireworks/routers/kimi-k3p1-pro-ultrafast\nhttps://codeload.github.com/anomalyco/models.dev/zip/717250079f97da093437db28a3f324ce6836ca13"
+    },
+    {
+      "id": "intel-41f51a6fec6650e9e415",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "gpt-6-luna-decisions",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "medium",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "gpt-6-luna-decisions",
+      "provider_slug": "openai",
+      "provider_name": "OpenAI",
+      "provider_evidence": "Registry metadata",
+      "models": [
+        {
+          "id": "concentrate/gpt-6-luna-decisions",
+          "name": "concentrate/gpt-6-luna-decisions",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-26T15:27:23.455064+00:00",
+      "first_seen": "2026-11-26T15:17:06+00:00",
+      "observed_at": "2026-11-26T15:27:23.455064+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "a4ab87c6be4922d607551a571c2a8704d068af43 -> a5443e4e38579b5f94c103cf5cd710d43f1a1571",
+      "build": "a5443e4e38579b5f94c103cf5cd710d43f1a1571",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/a5443e4e38579b5f94c103cf5cd710d43f1a1571",
+      "artifact_sha256": "d311e7e1f36a58ff8ce5cf9e7580e84073d3f0f825170e1c49015bd219df4ae0",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/d311e7e1f36a58ff8ce5cf9e7580e84073d3f0f825170e1c49015bd219df4ae0.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/d311e7e1f36a58ff8ce5cf9e7580e84073d3f0f825170e1c49015bd219df4ae0.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "concentrate/gpt-6-luna-decisions",
+          "family": "gpt-6-luna-decisions",
+          "file_path": "providers/concentrate/models/gpt-6-luna-decisions.toml",
+          "file_sha256": "757d3f23c37511f6aa56217d19b49deb0103ed36e206fc44c202882570710e0e",
+          "excerpt": "{\"concentrate/gpt-6-luna-decisions\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"openai/gpt-6-luna\", \"base_model_omit\": [\"limit.input\"], \"type\": \"decision\", \"name\": \"GPT-6 Luna Decisions\", \"modalities\": {\"input\": [\"text\", \"image/png\", \"image/jpeg\", \"image/webp\", \"image/gif\"], \"output\": [\"decision\"]}, \"capabilities\": {\"structured_output\": true, \"temperature\": false, \"top_p\": false, \"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}, \"cache\": {\"implicit\": {\"min_tokens\": 1024}}}, \"limit\": {\"context\": 600000, \"output\": 0}, \"api\": {\"systemone\": {\"sdk\": {\"aisdk\": \"@ai-sdk/typesafe-ai\", \"opencodeai\": \"@opencode/ai/providers/typesafe-ai/decisions\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.1, \"cache\": {\"read\": 0.01, \"write\": {\"30m\": 0.125}}, \"overrides\": [{\"when\": {\"context\": {\"gte\": 272000}}, \"price\": 0.2, \"cache\": {\"read\": 0.02, \"write\": {\"30m\": 0.25}}}]}, \"output\": {\"price\": 0, \"overrides\": [{\"when\": {\"context\": {\"gte\": 272000}}, \"price\": 0}]}}}}}",
+          "canonical_id": "openai/gpt-6-luna",
+          "provider": "openai",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/a5443e4e38579b5f94c103cf5cd710d43f1a1571/providers/concentrate/models/gpt-6-luna-decisions.toml",
+          "build": "a5443e4e38579b5f94c103cf5cd710d43f1a1571",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/a5443e4e38579b5f94c103cf5cd710d43f1a1571",
+          "first_seen": "2026-11-26T15:17:06+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "devin-desktop",
+          "identifier": "gpt-6-luna-decisions",
+          "first_seen": "2026-11-17T00:00:00+00:00",
+          "evidence_path": "data/intelligence/evidence/devin-desktop/56f318f713d7d1090ca30b470df4a1a529a4a3d5f9fdde5251d6e6e727b443b8.json.gz"
+        },
+        {
+          "source": "litellm-intelligence",
+          "identifier": "vercel_ai_gateway/openai/gpt-6-luna-decisions",
+          "first_seen": "2026-11-18T06:03:29+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/83d9e0a8887766256ead5a65761cc09974ec21aae87ea2b9ce649bc957b7faac.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/a5443e4e38579b5f94c103cf5cd710d43f1a1571"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/a5443e4e38579b5f94c103cf5cd710d43f1a1571"
+        }
+      ],
+      "tracker_observed_at": "2026-11-26T15:27:34.233550+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions a5443e4e3857: concentrate/gpt-6-luna-decisions\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/a5443e4e38579b5f94c103cf5cd710d43f1a1571"
+    },
+    {
       "id": "intel-8f2ea7980b6b544e8157",
       "scanner": "models-dev-api",
       "intelligence": true,
@@ -31323,11 +31670,11 @@
         }
       ],
       "detected_at": "2026-11-26T15:21:02.922998+00:00",
-      "first_seen": "2026-11-26T15:21:02.589874+00:00",
-      "observed_at": "2026-11-26T15:21:02.922998+00:00",
+      "first_seen": "2026-11-26T15:27:14.738355+00:00",
+      "observed_at": "2026-11-26T15:27:15.170287+00:00",
       "backfill": false,
       "build_label": "models.dev full catalog",
-      "build_transition": "e21db9324962fa013942b546a20a98c6cd4c06c5f30fed26b17670b10e9d55d9 -> ff8d10aa254110a304e5c9c0e8eef038986f954f2adc3de1c219db1ad8678851",
+      "build_transition": "ba4ded4cbe19cf0e09cdd4433244dbefb50413197d3eb7fec156aaa2f389549c -> ff8d10aa254110a304e5c9c0e8eef038986f954f2adc3de1c219db1ad8678851",
       "build": "ff8d10aa254110a304e5c9c0e8eef038986f954f2adc3de1c219db1ad8678851",
       "source_text": "https://models.dev/api.json?type=all",
       "artifact_sha256": "ff8d10aa254110a304e5c9c0e8eef038986f954f2adc3de1c219db1ad8678851",
@@ -31348,7 +31695,7 @@
           "method": "structured catalog definition",
           "build": "ff8d10aa254110a304e5c9c0e8eef038986f954f2adc3de1c219db1ad8678851",
           "source_url": "https://models.dev/api.json?type=all",
-          "first_seen": "2026-11-26T15:21:02.589874+00:00"
+          "first_seen": "2026-11-26T15:27:14.738355+00:00"
         }
       ],
       "sightings": [],
@@ -105595,25 +105942,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T15:21:02.328128+00:00",
+      "last_attempt": "2026-11-26T15:27:14.403510+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T15:21:05.115737+00:00",
+      "last_success": "2026-11-26T15:27:18.077881+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.788,
+      "duration_seconds": 3.675,
       "latest_build": "ff8d10aa254110a304e5c9c0e8eef038986f954f2adc3de1c219db1ad8678851",
-      "builds_retained": 211,
+      "builds_retained": 207,
       "identifiers": 10401
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T15:21:05.228348+00:00",
+      "last_attempt": "2026-11-26T15:27:18.257068+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T15:21:05.712659+00:00",
+      "last_success": "2026-11-26T15:27:18.679577+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.485,
+      "duration_seconds": 0.423,
       "latest_build": "82af66e3403be291b71b8a58fa790f1754443992",
       "builds_retained": 101,
       "identifiers": 7096
@@ -105621,34 +105968,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T15:16:15.461176+00:00",
+      "last_attempt": "2026-11-26T15:27:18.870476+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T15:16:26.971180+00:00",
+      "last_success": "2026-11-26T15:27:34.233550+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 11.511,
-      "latest_build": "389290851b1573971f7141945d50ebdfb3d01caf",
+      "duration_seconds": 15.364,
+      "latest_build": "717250079f97da093437db28a3f324ce6836ca13",
       "builds_retained": 208,
-      "identifiers": 11671
+      "identifiers": 11674
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T15:21:05.831949+00:00",
+      "last_attempt": "2026-11-26T15:27:34.416486+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4669,
-      "duration_seconds": 11.591
+      "consecutive_failures": 4645,
+      "duration_seconds": 19.761
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-26T15:09:42.641782+00:00",
+      "last_attempt": "2026-11-26T15:27:54.185697+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T15:09:42.900108+00:00",
+      "last_success": "2026-11-26T15:27:54.525668+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.258,
+      "duration_seconds": 0.34,
       "latest_build": "3.15.14",
       "builds_retained": 5,
       "identifiers": 3340
@@ -105658,61 +106005,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T15:20:21.423216+00:00",
+      "last_attempt": "2026-11-26T15:26:11.882251+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T15:20:23.759761+00:00",
+      "last_success": "2026-11-26T15:26:14.382886+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.337
+      "duration_seconds": 2.501
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T15:20:23.759822+00:00",
+      "last_attempt": "2026-11-26T15:26:14.382953+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T15:20:24.111599+00:00",
+      "last_success": "2026-11-26T15:26:14.507178+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.352
+      "duration_seconds": 0.124
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T15:20:24.111641+00:00",
+      "last_attempt": "2026-11-26T15:26:14.507218+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T15:20:32.090502+00:00",
+      "last_success": "2026-11-26T15:26:23.039989+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.979
+      "duration_seconds": 8.533
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T15:20:32.090577+00:00",
+      "last_attempt": "2026-11-26T15:26:23.040066+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T15:21:02.328057+00:00",
+      "last_success": "2026-11-26T15:27:14.403451+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 30.238,
+      "duration_seconds": 51.363,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-26T15:20:32.325529+00:00",
+          "checked_at": "2026-11-26T15:26:23.282918+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-26T15:20:40.931201+00:00",
+          "checked_at": "2026-11-26T15:26:34.116806+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-26T15:20:41.117992+00:00",
+          "checked_at": "2026-11-26T15:26:34.276069+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-26T15:20:41.118010+00:00",
+          "checked_at": "2026-11-26T15:26:34.276088+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -105720,25 +106067,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T15:21:02.328128+00:00",
+      "last_attempt": "2026-11-26T15:27:14.403510+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T15:21:05.115737+00:00",
+      "last_success": "2026-11-26T15:27:18.077881+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.788,
+      "duration_seconds": 3.675,
       "latest_build": "ff8d10aa254110a304e5c9c0e8eef038986f954f2adc3de1c219db1ad8678851",
-      "builds_retained": 211,
+      "builds_retained": 207,
       "identifiers": 10401
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T15:21:05.228348+00:00",
+      "last_attempt": "2026-11-26T15:27:18.257068+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T15:21:05.712659+00:00",
+      "last_success": "2026-11-26T15:27:18.679577+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.485,
+      "duration_seconds": 0.423,
       "latest_build": "82af66e3403be291b71b8a58fa790f1754443992",
       "builds_retained": 101,
       "identifiers": 7096
@@ -105746,34 +106093,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T15:16:15.461176+00:00",
+      "last_attempt": "2026-11-26T15:27:18.870476+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T15:16:26.971180+00:00",
+      "last_success": "2026-11-26T15:27:34.233550+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 11.511,
-      "latest_build": "389290851b1573971f7141945d50ebdfb3d01caf",
+      "duration_seconds": 15.364,
+      "latest_build": "717250079f97da093437db28a3f324ce6836ca13",
       "builds_retained": 208,
-      "identifiers": 11671
+      "identifiers": 11674
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T15:21:05.831949+00:00",
+      "last_attempt": "2026-11-26T15:27:34.416486+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4669,
-      "duration_seconds": 11.591
+      "consecutive_failures": 4645,
+      "duration_seconds": 19.761
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-26T15:09:42.641782+00:00",
+      "last_attempt": "2026-11-26T15:27:54.185697+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T15:09:42.900108+00:00",
+      "last_success": "2026-11-26T15:27:54.525668+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.258,
+      "duration_seconds": 0.34,
       "latest_build": "3.15.14",
       "builds_retained": 5,
       "identifiers": 3340
@@ -105781,64 +106128,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T15:21:17.431074+00:00",
+      "last_attempt": "2026-11-26T15:27:54.904391+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T15:21:22.707943+00:00",
+      "last_success": "2026-11-26T15:28:04.349114+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.277
+      "duration_seconds": 9.445
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T15:21:22.708013+00:00",
+      "last_attempt": "2026-11-26T15:28:04.349162+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T15:21:29.659704+00:00",
+      "last_success": "2026-11-26T15:28:06.846207+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.952
+      "duration_seconds": 2.497
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T15:16:45.055917+00:00",
+      "last_attempt": "2026-11-26T15:28:06.846263+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T15:16:54.344779+00:00",
+      "last_success": "2026-11-26T15:28:31.215561+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.289
+      "duration_seconds": 24.369
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T15:21:29.659774+00:00",
+      "last_attempt": "2026-11-26T15:28:31.215618+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T15:21:30.807469+00:00",
+      "last_success": "2026-11-26T15:28:31.763642+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.148
+      "duration_seconds": 0.548
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T15:21:30.807561+00:00",
+      "last_attempt": "2026-11-26T15:28:31.763686+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T15:21:30.857791+00:00",
+      "last_success": "2026-11-26T15:28:31.877537+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.05
+      "duration_seconds": 0.114
     }
   },
   "identities": {
-    "identifiers": 32508,
-    "declared_aliases": 19501,
+    "identifiers": 32511,
+    "declared_aliases": 19504,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 516,
-      "seconds_mean": 4654.882930036822,
+      "samples": 519,
+      "seconds_mean": 4631.550696907514,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -105852,9 +106199,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 674,
-      "events": 676,
-      "rate": 0.9970414201183432
+      "complete": 677,
+      "events": 679,
+      "rate": 0.9970544918998527
     },
     "source_health": {
       "sources": 14,
