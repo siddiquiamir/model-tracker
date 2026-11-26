@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-26T06:38:56.645207+00:00",
-  "scan_completed_at": "2026-11-26T06:39:58.372954+00:00",
+  "generated_at": "2026-11-26T06:41:20.873165+00:00",
+  "scan_completed_at": "2026-11-26T06:42:45.782379+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 361,
     "leaks": 34,
     "releases": 95,
-    "stories_24h": 51,
-    "sources_ok": 13,
-    "total_cards": 917,
+    "stories_24h": 50,
+    "sources_ok": 15,
+    "total_cards": 918,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -206,7 +206,7 @@
       "provider_name": "vercel",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-26T04:05:41.891342+00:00",
-      "updated_at": "2026-11-26T06:39:29.533348+00:00",
+      "updated_at": "2026-11-26T06:42:09.466567+00:00",
       "first_source": "Vercel AI Gateway Catalog",
       "lead": "",
       "released_on": "2026-11-25",
@@ -246,7 +246,8 @@
       "header": "NEW MODEL · VERCEL",
       "card_ids": [
         "vercel-gateway-diff-06257fc6",
-        "intel-ef1b0e67ade6c80394f6"
+        "intel-ef1b0e67ade6c80394f6",
+        "intel-56b7d47d3557f8a3f661"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -265,6 +266,21 @@
           "build": "2ba5293a5883d28abf81ca86cdec5a435d123bef1776499deba670fa0c0a28e6",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-26T06:39:29.172135+00:00"
+        },
+        {
+          "id": "vercel/nace-ai/drex-max-v1.2",
+          "family": "drex-max-v1.2",
+          "file_path": "providers/vercel/models/nace-ai/drex-max-v1.2.toml",
+          "file_sha256": "78d92e8ed62fa866fcee6bac3a90216fe15d51b953354be612c0cc64204f7ba5",
+          "excerpt": "{\"vercel/nace-ai/drex-max-v1.2\": {\"schema\": 2, \"type\": \"decision\", \"name\": \"Drex Max v1.2\", \"description\": \"Drex Max v1.2 is Nace AI's multimodal evaluation model for boolean, choice, and score questions over text and images. It returns structured answers and probability distributions. Its 262,144-token limit applies to the whole packed request, including shared state, images, all questions, formatting, and decision markers.\", \"family\": \"drex\", \"open_weights\": false, \"release_date\": \"2026-11-25\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}}, \"limit\": {\"context\": 262144, \"output\": 0}, \"api\": {\"decisions\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/decisions\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.03}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5267124fbd7665693c3375422215717210078d34/providers/vercel/models/nace-ai/drex-max-v1.2.toml",
+          "build": "5267124fbd7665693c3375422215717210078d34",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5267124fbd7665693c3375422215717210078d34",
+          "first_seen": "2026-11-26T06:37:18+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-26T06:39:58.370052+00:00",
@@ -30769,6 +30785,93 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-56b7d47d3557f8a3f661",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "drex-max-v1.2",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "drex-max-v1.2",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "vercel/nace-ai/drex-max-v1.2",
+          "name": "vercel/nace-ai/drex-max-v1.2",
+          "registry_update": true,
+          "released_on": "2026-11-25"
+        }
+      ],
+      "detected_at": "2026-11-26T06:42:09.466567+00:00",
+      "first_seen": "2026-11-26T06:37:18+00:00",
+      "observed_at": "2026-11-26T06:42:09.466567+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "cb7828f321de276aa5a7afb7fcb03ee64129e837 -> 5267124fbd7665693c3375422215717210078d34",
+      "build": "5267124fbd7665693c3375422215717210078d34",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/5267124fbd7665693c3375422215717210078d34",
+      "artifact_sha256": "462888207b7986b12a0b52b82788feb173c329ae8a7751117ba073d6acec790a",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/462888207b7986b12a0b52b82788feb173c329ae8a7751117ba073d6acec790a.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/462888207b7986b12a0b52b82788feb173c329ae8a7751117ba073d6acec790a.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "vercel/nace-ai/drex-max-v1.2",
+          "family": "drex-max-v1.2",
+          "file_path": "providers/vercel/models/nace-ai/drex-max-v1.2.toml",
+          "file_sha256": "78d92e8ed62fa866fcee6bac3a90216fe15d51b953354be612c0cc64204f7ba5",
+          "excerpt": "{\"vercel/nace-ai/drex-max-v1.2\": {\"schema\": 2, \"type\": \"decision\", \"name\": \"Drex Max v1.2\", \"description\": \"Drex Max v1.2 is Nace AI's multimodal evaluation model for boolean, choice, and score questions over text and images. It returns structured answers and probability distributions. Its 262,144-token limit applies to the whole packed request, including shared state, images, all questions, formatting, and decision markers.\", \"family\": \"drex\", \"open_weights\": false, \"release_date\": \"2026-11-25\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}}, \"limit\": {\"context\": 262144, \"output\": 0}, \"api\": {\"decisions\": {\"base_url\": \"https://ai-gateway.vercel.sh/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai\", \"opencodeai\": \"@opencode/ai/providers/vercel-ai-gateway/decisions\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.03}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5267124fbd7665693c3375422215717210078d34/providers/vercel/models/nace-ai/drex-max-v1.2.toml",
+          "build": "5267124fbd7665693c3375422215717210078d34",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5267124fbd7665693c3375422215717210078d34",
+          "first_seen": "2026-11-26T06:37:18+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/5267124fbd7665693c3375422215717210078d34"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/5267124fbd7665693c3375422215717210078d34"
+        }
+      ],
+      "tracker_observed_at": "2026-11-26T06:42:12.632576+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 5267124fbd76: vercel/nace-ai/drex-max-v1.2\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/5267124fbd7665693c3375422215717210078d34"
+    },
     {
       "id": "intel-ef1b0e67ade6c80394f6",
       "scanner": "models-dev-api",
@@ -104182,12 +104285,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T06:39:28.972889+00:00",
+      "last_attempt": "2026-11-26T06:41:58.443290+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T06:39:32.058757+00:00",
+      "last_success": "2026-11-26T06:41:58.670000+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.086,
+      "duration_seconds": 0.227,
       "latest_build": "2ba5293a5883d28abf81ca86cdec5a435d123bef1776499deba670fa0c0a28e6",
       "builds_retained": 204,
       "identifiers": 10392
@@ -104195,12 +104298,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T06:37:11.358726+00:00",
+      "last_attempt": "2026-11-26T06:41:58.812545+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T06:37:11.719341+00:00",
+      "last_success": "2026-11-26T06:41:59.171362+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.361,
+      "duration_seconds": 0.359,
       "latest_build": "3c18ad5c0f5c607359737390d6aded832969b288",
       "builds_retained": 98,
       "identifiers": 7085
@@ -104208,24 +104311,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T06:30:06.185948+00:00",
+      "last_attempt": "2026-11-26T06:41:59.320478+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T06:30:06.651791+00:00",
+      "last_success": "2026-11-26T06:42:12.632576+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.467,
-      "latest_build": "8c80aa8b53fc9006be9ab5e6bac3f637bba94e36",
-      "builds_retained": 202,
-      "identifiers": 11663
+      "duration_seconds": 13.313,
+      "latest_build": "5267124fbd7665693c3375422215717210078d34",
+      "builds_retained": 204,
+      "identifiers": 11664
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T06:39:32.203834+00:00",
+      "last_attempt": "2026-11-26T06:42:12.775586+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4448,
-      "duration_seconds": 15.404
+      "consecutive_failures": 4449,
+      "duration_seconds": 15.239
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -104245,61 +104348,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T06:38:56.645276+00:00",
+      "last_attempt": "2026-11-26T06:41:20.873232+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T06:38:58.473389+00:00",
+      "last_success": "2026-11-26T06:41:22.375433+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.828
+      "duration_seconds": 1.502
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T06:38:58.473444+00:00",
+      "last_attempt": "2026-11-26T06:41:22.375498+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T06:38:58.567975+00:00",
+      "last_success": "2026-11-26T06:41:22.457478+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.095
+      "duration_seconds": 0.082
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T06:38:58.568009+00:00",
+      "last_attempt": "2026-11-26T06:41:22.457516+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T06:39:04.366567+00:00",
+      "last_success": "2026-11-26T06:41:31.089409+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 5.799
+      "duration_seconds": 8.632
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T06:39:04.366647+00:00",
+      "last_attempt": "2026-11-26T06:41:31.089484+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T06:39:28.972840+00:00",
+      "last_success": "2026-11-26T06:41:58.443239+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 24.606,
+      "duration_seconds": 27.354,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-26T06:39:04.544236+00:00",
+          "checked_at": "2026-11-26T06:41:31.248267+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-26T06:39:13.299973+00:00",
+          "checked_at": "2026-11-26T06:41:40.333368+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-26T06:39:13.452658+00:00",
+          "checked_at": "2026-11-26T06:41:40.477262+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-26T06:39:13.452676+00:00",
+          "checked_at": "2026-11-26T06:41:40.477279+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -104307,12 +104410,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T06:39:28.972889+00:00",
+      "last_attempt": "2026-11-26T06:41:58.443290+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T06:39:32.058757+00:00",
+      "last_success": "2026-11-26T06:41:58.670000+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.086,
+      "duration_seconds": 0.227,
       "latest_build": "2ba5293a5883d28abf81ca86cdec5a435d123bef1776499deba670fa0c0a28e6",
       "builds_retained": 204,
       "identifiers": 10392
@@ -104320,12 +104423,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T06:37:11.358726+00:00",
+      "last_attempt": "2026-11-26T06:41:58.812545+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T06:37:11.719341+00:00",
+      "last_success": "2026-11-26T06:41:59.171362+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.361,
+      "duration_seconds": 0.359,
       "latest_build": "3c18ad5c0f5c607359737390d6aded832969b288",
       "builds_retained": 98,
       "identifiers": 7085
@@ -104333,24 +104436,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T06:30:06.185948+00:00",
+      "last_attempt": "2026-11-26T06:41:59.320478+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T06:30:06.651791+00:00",
+      "last_success": "2026-11-26T06:42:12.632576+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.467,
-      "latest_build": "8c80aa8b53fc9006be9ab5e6bac3f637bba94e36",
-      "builds_retained": 202,
-      "identifiers": 11663
+      "duration_seconds": 13.313,
+      "latest_build": "5267124fbd7665693c3375422215717210078d34",
+      "builds_retained": 204,
+      "identifiers": 11664
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T06:39:32.203834+00:00",
+      "last_attempt": "2026-11-26T06:42:12.775586+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4448,
-      "duration_seconds": 15.404
+      "consecutive_failures": 4449,
+      "duration_seconds": 15.239
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -104368,64 +104471,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T06:39:48.082309+00:00",
+      "last_attempt": "2026-11-26T06:42:28.021437+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T06:39:55.240039+00:00",
+      "last_success": "2026-11-26T06:42:35.192309+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.158
+      "duration_seconds": 7.171
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T06:39:55.240119+00:00",
+      "last_attempt": "2026-11-26T06:42:35.192377+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T06:39:57.178109+00:00",
+      "last_success": "2026-11-26T06:42:36.645868+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.938
+      "duration_seconds": 1.454
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T06:30:35.112598+00:00",
+      "last_attempt": "2026-11-26T06:42:36.645915+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T06:30:42.498849+00:00",
+      "last_success": "2026-11-26T06:42:44.818122+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.386
+      "duration_seconds": 8.172
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T06:39:57.178165+00:00",
+      "last_attempt": "2026-11-26T06:42:44.818174+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T06:39:57.574387+00:00",
+      "last_success": "2026-11-26T06:42:45.257927+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.396
+      "duration_seconds": 0.44
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T06:39:57.574436+00:00",
+      "last_attempt": "2026-11-26T06:42:45.257973+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T06:39:57.589029+00:00",
+      "last_success": "2026-11-26T06:42:45.279804+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.015
+      "duration_seconds": 0.022
     }
   },
   "identities": {
-    "identifiers": 32480,
+    "identifiers": 32481,
     "declared_aliases": 19483,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 507,
-      "seconds_mean": 4736.076935364891,
+      "samples": 508,
+      "seconds_mean": 4727.327702356299,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -104439,9 +104542,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 664,
-      "events": 666,
-      "rate": 0.996996996996997
+      "complete": 665,
+      "events": 667,
+      "rate": 0.9970014992503748
     },
     "source_health": {
       "sources": 14,
