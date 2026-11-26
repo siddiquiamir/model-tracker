@@ -144,6 +144,62 @@ def group_models_by_family(model_ids: Set[str]) -> Dict[str, List[str]]:
     return groups
 
 
+_AG_GCA_RPC_RE = re.compile(
+    rb"/(google\.(?:gca\.aicode|internal\.cloud\.code)\.[a-z0-9_]+\.(?:PredictionService|JetskiRemoteAgentProxyService|JetskiService))/([A-Z][a-z0-9]+(?:[A-Z][a-z0-9]+)*)"
+)
+_AG_STANDALONE_CAMEL_RE = re.compile(rb"(?<![A-Z])([A-Z][a-z0-9]+(?:[A-Z][a-z0-9]+){1,7})(?![a-z])")
+_AG_FEATURE_RPC_KEYWORDS = re.compile(
+    r"(?:Quota|Banked|Credit|BattleMode|VoiceChat|VoiceMode|Billing|Pricing|DeepThink|Genie|WorldModel|TierUpgrade|FlexQuota)",
+    re.I,
+)
+
+
+def _trim_go_rodata_method(raw_method: str, all_raw: List[str], rodata: bytes) -> str:
+    """Strip Go .rodata glued lowercase suffixes (e.g. ClaimBankedQuotaResetcloud -> ClaimBankedQuotaReset)."""
+    # 1. If another service route shares a long prefix (>= 10 chars) ending before differing lowercase tails,
+    #    their longest common prefix is the exact method name.
+    for other in all_raw:
+        if other == raw_method:
+            continue
+        i = 0
+        lim = min(len(raw_method), len(other))
+        while i < lim and raw_method[i] == other[i]:
+            i += 1
+        if i >= 10:
+            lcp = raw_method[:i]
+            tail_a = raw_method[i:]
+            tail_b = other[i:]
+            if tail_a and tail_a.islower() and (not tail_b or tail_b.islower()):
+                return lcp
+    # 2. Check if a shorter prefix (trimming trailing lowercase word) appears right before an uppercase symbol in .rodata
+    #    (e.g. ClaimBankedQuotaResetStreamGenerateContent).
+    last_upper = max((idx for idx, ch in enumerate(raw_method) if ch.isupper()), default=-1)
+    if last_upper > 0 and len(raw_method) - last_upper >= 7:
+        for cut in range(len(raw_method) - 2, last_upper + 2, -1):
+            cand = raw_method[:cut]
+            if re.search(re.escape(cand).encode("ascii") + rb"[A-Z\x00]", rodata):
+                return cand
+    return raw_method
+
+
+def extract_antigravity_feature_rpcs(rodata: bytes) -> Dict[str, List[str]]:
+    """Extract clean, high-signal Google Antigravity gRPC feature routes from ELF .rodata bytes."""
+    if not rodata:
+        return {}
+    raw_pairs: List[Tuple[str, str]] = [
+        (m.group(1).decode("ascii", "ignore"), m.group(2).decode("ascii", "ignore"))
+        for m in _AG_GCA_RPC_RE.finditer(rodata)
+    ]
+    all_raw = [rm for _, rm in raw_pairs]
+    by_method: Dict[str, Set[str]] = {}
+    for svc, raw_method in raw_pairs:
+        clean_method = _trim_go_rodata_method(raw_method, all_raw, rodata)
+        if not _AG_FEATURE_RPC_KEYWORDS.search(clean_method):
+            continue
+        by_method.setdefault(clean_method, set()).add(f"/{svc}/{clean_method}")
+    return {k: sorted(v) for k, v in by_method.items()}
+
+
 class AntigravityDesktopScanner:
     """
     Scans official Google Antigravity Stable & Insiders Linux x64 builds via ELF64 .rodata
@@ -223,14 +279,19 @@ class AntigravityDesktopScanner:
             pass
         return datetime.now(timezone.utc).isoformat()
 
-    def get_models_for_build(self, build: Dict[str, str]) -> Set[str]:
+    def get_rodata_for_build(self, build: Dict[str, str]) -> bytes:
         ver_slug = re.sub(r"[^0-9A-Za-z._-]", "_", build["version"])
-        rodata = fetch_elf_rodata_slice(
+        return fetch_elf_rodata_slice(
             build["binary_url"],
             cache_key=f"ag_{ver_slug}",
-            max_bytes=2_500_000,
+            max_bytes=3_500_000,
         )
-        return extract_models_from_bytes(rodata)
+
+    def get_models_for_build(self, build: Dict[str, str]) -> Set[str]:
+        return extract_models_from_bytes(self.get_rodata_for_build(build))
+
+    def get_feature_rpcs_for_build(self, build: Dict[str, str]) -> Dict[str, List[str]]:
+        return extract_antigravity_feature_rpcs(self.get_rodata_for_build(build))
 
     def get_build_models_map(self, max_stable: int = 8) -> Dict[str, List[str]]:
         """Return a map of {build_version: [sorted_model_ids]} for client-side build comparison."""
@@ -243,63 +304,97 @@ class AntigravityDesktopScanner:
                 pass
         return out
 
-    def diff_two_builds(self, old_build: Dict[str, str], new_build: Dict[str, str]) -> List[Dict[str, Any]]:
+    def diff_two_builds(self, old_build: Dict[str, str], new_build: Dict[str, str], include_feature_rpcs: bool = False) -> List[Dict[str, Any]]:
         old_models = self.get_models_for_build(old_build)
         new_models = self.get_models_for_build(new_build)
         added = new_models - old_models
-        if not added:
-            return []
-
         cards: List[Dict[str, Any]] = []
-        family_groups = group_models_by_family(added)
-
-        priority_order = sorted(
-            family_groups.keys(),
-            key=lambda k: (
-                0 if ("argon" in k or "carbon" in k or "hydrogen" in k or "helix" in k) else 1 if "5-5" in k else 2 if "omni" in k else 3,
-                k,
-            ),
-        )
-
         pub_iso = self.get_build_timestamp(new_build)
         transition = f"{old_build['version']} -> {new_build['version']}"
 
-        for fam_key in priority_order:
-            mids = sorted(family_groups[fam_key])
-            provider = infer_provider(mids[0])
-            title = infer_family_title(mids)
-            card_id = f"ag-{old_build['version']}-{new_build['version']}-{fam_key}"
-            card_id = re.sub(r"[^a-zA-Z0-9._-]", "_", card_id)
+        if added:
+            family_groups = group_models_by_family(added)
 
-            cards.append(
-                {
-                    "id": card_id,
-                    "category": "desktop-diff",
-                    "scanner": "antigravity",
-                    "header": f"ANTIGRAVITY DESKTOP DIFF · {provider['name']}",
-                    "title": title,
-                    "subtitle": "Verified desktop build comparison",
-                    "build_label": "Build",
-                    "build_transition": transition,
-                    "old_version": old_build["version"],
-                    "new_version": new_build["version"],
-                    "models": [
-                        {"id": mid, "name": humanize_model_id(mid)} for mid in mids
-                    ],
-                    "evidence": "resources/bin/language_server",
-                    "source_text": "official public Linux x64 release archives.",
-                    "disclaimer_1": "Verified differences between existing builds; this is not a newly published release announcement.",
-                    "disclaimer_2": "Compiled-in names and identifiers. This does not confirm model rollout or account access.",
-                    "provider_name": provider["name"],
-                    "provider_slug": provider["slug"],
-                    "accent_color": provider["color"],
-                    "links": [
-                        {"label": "Public release feed", "url": new_build["feed_url"]},
-                        {"label": "Official build", "url": new_build["binary_url"]},
-                    ],
-                    "detected_at": pub_iso,
-                }
+            priority_order = sorted(
+                family_groups.keys(),
+                key=lambda k: (
+                    0 if ("argon" in k or "carbon" in k or "hydrogen" in k or "helix" in k) else 1 if "5-5" in k else 2 if "omni" in k else 3,
+                    k,
+                ),
             )
+
+            for fam_key in priority_order:
+                mids = sorted(family_groups[fam_key])
+                provider = infer_provider(mids[0])
+                title = infer_family_title(mids)
+                card_id = f"ag-{old_build['version']}-{new_build['version']}-{fam_key}"
+                card_id = re.sub(r"[^a-zA-Z0-9._-]", "_", card_id)
+
+                cards.append(
+                    {
+                        "id": card_id,
+                        "category": "desktop-diff",
+                        "scanner": "antigravity",
+                        "header": f"ANTIGRAVITY DESKTOP DIFF · {provider['name']}",
+                        "title": title,
+                        "subtitle": "Verified desktop build comparison",
+                        "build_label": "Build",
+                        "build_transition": transition,
+                        "old_version": old_build["version"],
+                        "new_version": new_build["version"],
+                        "models": [
+                            {"id": mid, "name": humanize_model_id(mid)} for mid in mids
+                        ],
+                        "evidence": "resources/bin/language_server",
+                        "source_text": "official public Linux x64 release archives.",
+                        "disclaimer_1": "Verified differences between existing builds; this is not a newly published release announcement.",
+                        "disclaimer_2": "Compiled-in names and identifiers. This does not confirm model rollout or account access.",
+                        "provider_name": provider["name"],
+                        "provider_slug": provider["slug"],
+                        "accent_color": provider["color"],
+                        "links": [
+                            {"label": "Public release feed", "url": new_build["feed_url"]},
+                            {"label": "Official build", "url": new_build["binary_url"]},
+                        ],
+                        "detected_at": pub_iso,
+                    }
+                )
+
+        if include_feature_rpcs:
+            old_rpcs = self.get_feature_rpcs_for_build(old_build)
+            new_rpcs = self.get_feature_rpcs_for_build(new_build)
+            added_methods = sorted(set(new_rpcs.keys()) - set(old_rpcs.keys()))
+            for method in added_methods:
+                routes = new_rpcs[method]
+                readable = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", " ", method)
+                card_id = re.sub(r"[^a-zA-Z0-9._-]", "_", f"ag-rpc-{old_build['version']}-{new_build['version']}-{method.lower()}")
+                cards.append(
+                    {
+                        "id": card_id,
+                        "category": "feature-rpc-diff",
+                        "scanner": "antigravity",
+                        "header": "ANTIGRAVITY FEATURE RPC · Google",
+                        "title": f"Antigravity {readable}",
+                        "subtitle": "New gRPC feature route in Antigravity language_server",
+                        "build_label": "Build",
+                        "build_transition": transition,
+                        "old_version": old_build["version"],
+                        "new_version": new_build["version"],
+                        "models": [{"id": method, "name": readable}] + [{"id": r, "name": r} for r in routes],
+                        "evidence": "resources/bin/language_server",
+                        "source_text": "official public Linux x64 release archives.",
+                        "disclaimer_1": "Verified gRPC route difference between official Antigravity builds.",
+                        "disclaimer_2": "Compiled-in RPC endpoint; does not confirm public rollout.",
+                        "provider_name": "Google",
+                        "provider_slug": "google",
+                        "accent_color": "#4285F4",
+                        "links": [
+                            {"label": "Public release feed", "url": new_build["feed_url"]},
+                            {"label": "Official build", "url": new_build["binary_url"]},
+                        ],
+                        "detected_at": pub_iso,
+                    }
+                )
         return cards
 
     def scan(self, max_stable: int = 8) -> List[Dict[str, Any]]:
@@ -322,7 +417,7 @@ class AntigravityDesktopScanner:
 
         if insiders_builds and stable_builds:
             try:
-                all_cards.extend(self.diff_two_builds(stable_builds[0], insiders_builds[0]))
+                all_cards.extend(self.diff_two_builds(stable_builds[0], insiders_builds[0], include_feature_rpcs=True))
             except Exception as exc:
                 print(f"[AntigravityScanner] Insiders diff error: {exc}")
 
@@ -330,7 +425,7 @@ class AntigravityDesktopScanner:
             newer = stable_builds[i]
             older = stable_builds[i + 1]
             try:
-                all_cards.extend(self.diff_two_builds(older, newer))
+                all_cards.extend(self.diff_two_builds(older, newer, include_feature_rpcs=(i == 0)))
             except Exception as exc:
                 print(f"[AntigravityScanner] Stable diff error ({older['version']} -> {newer['version']}): {exc}")
 
