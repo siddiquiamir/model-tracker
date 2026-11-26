@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-26T02:07:24.211860+00:00",
-  "scan_completed_at": "2026-11-26T02:08:58.792825+00:00",
+  "generated_at": "2026-11-26T02:40:27.823896+00:00",
+  "scan_completed_at": "2026-11-26T02:41:53.746222+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 358,
     "leaks": 34,
     "releases": 94,
     "stories_24h": 46,
-    "sources_ok": 14,
-    "total_cards": 912,
+    "sources_ok": 13,
+    "total_cards": 911,
     "new_in_this_scan": 0
   },
   "stories": [
@@ -16157,6 +16157,96 @@
       "x_post_text": "🟢 NEW MODEL: C RADIOv4 H AV by NVIDIA\n\nFirst detected 19 Nov 14:58 UTC in Hugging Face\n\nvia @StatsWire"
     },
     {
+      "id": "story-gemini-decision-1",
+      "group": "gemini-decision-1",
+      "kind": "release",
+      "open_weights": false,
+      "title": "Gemini Decision 1",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "accent_color": "#38bdf8",
+      "detected_at": "2026-11-19T10:39:36.783712+00:00",
+      "updated_at": "2026-11-23T17:30:56.547719+00:00",
+      "first_source": "Opencode Zen Stealth & Model Gateway",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "gemini-decision-1",
+          "name": "opencode-go/gemini-decision-1"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Opencode Zen Stealth & Model Gateway",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-11-19T10:39:36.783712+00:00",
+          "title": "New Model on OpenCode Zen: gemini-decision-1",
+          "url": "https://opencode.ai/zen/v1/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-23T00:33:06.923115+00:00",
+          "title": "gemini-decision-1",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/c20ef95c70a6ff85ae44d63b054dbb1b36f12b16",
+          "backfill": false,
+          "build": "c20ef95c70a6ff85ae44d63b054dbb1b36f12b16",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/6bdbece94889c37f9d1c8c9d4044862e657855cbe4cbd8ad50c286f0f530b0cd.json.gz"
+        }
+      ],
+      "source_count": 2,
+      "backfill": false,
+      "header": "NEW MODEL · GOOGLE",
+      "card_ids": [
+        "opencode-zen-diff-af2962e2",
+        "intel-c02a9ce9fb4e927b3065",
+        "intel-d104a61ca4a47afb8775"
+      ],
+      "event_label": "Released",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "concentrate/gemini-decision-1",
+          "family": "gemini-decision-1",
+          "file_path": "providers/concentrate/models/gemini-decision-1.toml",
+          "file_sha256": "57683b00f8ff90a44fbb54653266fd6717f430554f170f8f7081a8259b1e9832",
+          "excerpt": "{\"concentrate/gemini-decision-1\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"google/gemini-decision-1\", \"modalities\": {\"input\": [\"text\", \"image/png\", \"image/jpeg\", \"image/webp\"], \"output\": [\"decision\"]}, \"capabilities\": {\"structured_output\": true}, \"api\": {\"systemone\": {\"sdk\": {\"aisdk\": \"@ai-sdk/typesafe-ai\", \"opencodeai\": \"@opencode/ai/providers/typesafe-ai/decisions\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.1}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "google/gemini-decision-1",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/c20ef95c70a6ff85ae44d63b054dbb1b36f12b16/providers/concentrate/models/gemini-decision-1.toml",
+          "build": "c20ef95c70a6ff85ae44d63b054dbb1b36f12b16",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/c20ef95c70a6ff85ae44d63b054dbb1b36f12b16",
+          "first_seen": "2026-11-23T00:25:50+00:00"
+        },
+        {
+          "id": "opencode-go/gemini-decision-1",
+          "family": "gemini-decision-1",
+          "file_path": "providers/opencode-go/models/gemini-decision-1.toml",
+          "file_sha256": "7b53bd8161892eb3dc6f080435b977134fc5f051460e652debac31e391e79c52",
+          "excerpt": "{\"opencode-go/gemini-decision-1\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"google/gemini-decision-1\", \"capabilities\": {\"cache\": false}, \"api\": {\"systemone\": {\"base_url\": \"https://opencode.ai/inference/go/systemone/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/typesafe-ai\", \"opencodeai\": \"@opencode/ai/providers/opencode/decisions\"}, \"compatibility\": {\"media_input\": \"state\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.1}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "google/gemini-decision-1",
+          "provider": "google",
+          "provider_evidence": "Explicit canonical catalog mapping",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/dd18c49bceeb79aff6cd84c983e35d2d86a57a50/providers/opencode-go/models/gemini-decision-1.toml",
+          "build": "dd18c49bceeb79aff6cd84c983e35d2d86a57a50",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/dd18c49bceeb79aff6cd84c983e35d2d86a57a50",
+          "first_seen": "2026-11-23T17:25:06+00:00"
+        }
+      ],
+      "discord_alerted_at": "2026-11-19T10:40:23.086093+00:00",
+      "x_post_text": "🟢 NEW MODEL: Gemini Decision 1 by Google\n\nFirst detected 19 Nov 10:39 UTC in Opencode Zen Stealth & Model Gateway\nConfirmed by Registry Update\n\nvia @StatsWire"
+    },
+    {
       "id": "story-gpt-6-luna-decision",
       "group": "gpt-6-luna-decision",
       "kind": "release",
@@ -30362,107 +30452,6 @@
       "candidate_only": false,
       "registry_evidence": [],
       "x_post_text": "🟢 NEW MODEL: Claude Fable 5.2 by Anthropic\n\nFirst detected 12 Nov 04:02 UTC in LMArena\n📅 First released: 2026-11-09\nConfirmed by Devin CLI Official Binary\nCodename: unbudgeted\nIDs: claude-opus-5-5mid, claude-fable-5-2-low, claude-fable-5-2-max +10\n\nvia @StatsWire"
-    },
-    {
-      "id": "story-gemini-decision-1",
-      "group": "gemini-decision-1",
-      "kind": "release",
-      "open_weights": false,
-      "title": "Gemini Decision 1",
-      "provider_slug": "google",
-      "provider_name": "Google",
-      "accent_color": "#38bdf8",
-      "detected_at": "2026-11-12T02:15:48.842510+00:00",
-      "updated_at": "2026-11-23T17:30:56.547719+00:00",
-      "first_source": "LiteLLM registry",
-      "lead": "7 days before it went live on Opencode Zen Stealth & Model Gateway",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "gemini-decision-1",
-          "name": "opencode-go/gemini-decision-1"
-        }
-      ],
-      "sources": [
-        {
-          "label": "LiteLLM registry",
-          "scanner": "litellm",
-          "detected_at": "2026-11-12T02:15:48.842510+00:00",
-          "title": "1 New Model(s) Added to LiteLLM",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "Opencode Zen Stealth & Model Gateway",
-          "scanner": "gateway-radar",
-          "detected_at": "2026-11-19T10:39:36.783712+00:00",
-          "title": "New Model on OpenCode Zen: gemini-decision-1",
-          "url": "https://opencode.ai/zen/v1/models",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        },
-        {
-          "label": "Registry Update",
-          "scanner": "models-dev-git",
-          "detected_at": "2026-11-23T00:33:06.923115+00:00",
-          "title": "gemini-decision-1",
-          "url": "https://codeload.github.com/anomalyco/models.dev/zip/c20ef95c70a6ff85ae44d63b054dbb1b36f12b16",
-          "backfill": false,
-          "build": "c20ef95c70a6ff85ae44d63b054dbb1b36f12b16",
-          "evidence_path": "data/intelligence/evidence/models-dev-git/6bdbece94889c37f9d1c8c9d4044862e657855cbe4cbd8ad50c286f0f530b0cd.json.gz"
-        }
-      ],
-      "source_count": 3,
-      "backfill": false,
-      "header": "NEW MODEL · GOOGLE",
-      "card_ids": [
-        "litellm-diff-12222df2",
-        "opencode-zen-diff-af2962e2",
-        "intel-c02a9ce9fb4e927b3065",
-        "intel-d104a61ca4a47afb8775"
-      ],
-      "event_label": "Released",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [
-        {
-          "id": "concentrate/gemini-decision-1",
-          "family": "gemini-decision-1",
-          "file_path": "providers/concentrate/models/gemini-decision-1.toml",
-          "file_sha256": "57683b00f8ff90a44fbb54653266fd6717f430554f170f8f7081a8259b1e9832",
-          "excerpt": "{\"concentrate/gemini-decision-1\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"google/gemini-decision-1\", \"modalities\": {\"input\": [\"text\", \"image/png\", \"image/jpeg\", \"image/webp\"], \"output\": [\"decision\"]}, \"capabilities\": {\"structured_output\": true}, \"api\": {\"systemone\": {\"sdk\": {\"aisdk\": \"@ai-sdk/typesafe-ai\", \"opencodeai\": \"@opencode/ai/providers/typesafe-ai/decisions\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.1}, \"output\": {\"price\": 0}}}}}",
-          "canonical_id": "google/gemini-decision-1",
-          "provider": "google",
-          "provider_evidence": "Explicit canonical catalog mapping",
-          "method": "structured catalog definition",
-          "definition_url": "https://github.com/anomalyco/models.dev/blob/c20ef95c70a6ff85ae44d63b054dbb1b36f12b16/providers/concentrate/models/gemini-decision-1.toml",
-          "build": "c20ef95c70a6ff85ae44d63b054dbb1b36f12b16",
-          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/c20ef95c70a6ff85ae44d63b054dbb1b36f12b16",
-          "first_seen": "2026-11-23T00:25:50+00:00"
-        },
-        {
-          "id": "opencode-go/gemini-decision-1",
-          "family": "gemini-decision-1",
-          "file_path": "providers/opencode-go/models/gemini-decision-1.toml",
-          "file_sha256": "7b53bd8161892eb3dc6f080435b977134fc5f051460e652debac31e391e79c52",
-          "excerpt": "{\"opencode-go/gemini-decision-1\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"google/gemini-decision-1\", \"capabilities\": {\"cache\": false}, \"api\": {\"systemone\": {\"base_url\": \"https://opencode.ai/inference/go/systemone/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/typesafe-ai\", \"opencodeai\": \"@opencode/ai/providers/opencode/decisions\"}, \"compatibility\": {\"media_input\": \"state\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.1}, \"output\": {\"price\": 0}}}}}",
-          "canonical_id": "google/gemini-decision-1",
-          "provider": "google",
-          "provider_evidence": "Explicit canonical catalog mapping",
-          "method": "structured catalog definition",
-          "definition_url": "https://github.com/anomalyco/models.dev/blob/dd18c49bceeb79aff6cd84c983e35d2d86a57a50/providers/opencode-go/models/gemini-decision-1.toml",
-          "build": "dd18c49bceeb79aff6cd84c983e35d2d86a57a50",
-          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/dd18c49bceeb79aff6cd84c983e35d2d86a57a50",
-          "first_seen": "2026-11-23T17:25:06+00:00"
-        }
-      ],
-      "discord_alerted_at": "2026-11-19T10:40:23.086093+00:00",
-      "x_post_text": "🟢 NEW MODEL: Gemini Decision 1 by Google\n\nFirst detected 12 Nov 02:15 UTC in LiteLLM registry\n⏱ 7 days before it went live on Opencode Zen Stealth & Model Gateway\nConfirmed by Opencode Zen Stealth & Model Gateway, Registry Update\n\nvia @StatsWire"
     },
     {
       "id": "story-gemini-4-carbon",
@@ -103166,42 +103155,6 @@
       "x_post_text": "🚨 ARENA.AI NEW MODEL DIFF · LMARENA\nNew Model(s) Added to Arena (Claude Fable 5.2 (Max)) spotted in Arena Diff +1 new Arena models!\n\n• Claude Fable 5.2 (Max) (Agent Arena) (Claude Fable 5.2 (Max))\n\nEvidence: huggingface.co/datasets/lmarena-ai/leaderboard-dataset\nSource: official LMArena (arena.ai) Hugging Face dataset.\n\nTracked by @StatsWire"
     },
     {
-      "id": "litellm-diff-12222df2",
-      "category": "cli-sdk-diff",
-      "scanner": "litellm",
-      "header": "LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER",
-      "title": "1 New Model(s) Added to LiteLLM",
-      "subtitle": "Verified model_prices_and_context_window.json diff",
-      "build_label": "Registry Diff",
-      "build_transition": "+1 model keys",
-      "models": [
-        {
-          "id": "gemini/gemini-decision-1",
-          "name": "gemini/gemini-decision-1"
-        }
-      ],
-      "evidence": "BerriAI/litellm/model_prices_and_context_window.json",
-      "source_text": "official LiteLLM master pricing & context window registry.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "LITELLM",
-      "provider_slug": "modelsdev",
-      "accent_color": "#10b981",
-      "links": [
-        {
-          "label": "LiteLLM JSON Registry",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
-        },
-        {
-          "label": "LiteLLM Commits",
-          "url": "https://github.com/BerriAI/litellm/commits/main"
-        }
-      ],
-      "detected_at": "2026-11-12T02:15:48.842510+00:00",
-      "pricing": null,
-      "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 model keys!\n\n• gemini/gemini-decision-1 (gemini/gemini-decision-1)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
-    },
-    {
       "id": "ag-acp-1.4.5-1.5.0-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
@@ -103404,12 +103357,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T02:08:12.014783+00:00",
+      "last_attempt": "2026-11-26T02:41:16.617183+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T02:08:12.427982+00:00",
+      "last_success": "2026-11-26T02:41:17.004080+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.413,
+      "duration_seconds": 0.387,
       "latest_build": "5bef7bed873e1dc14499146567ecb753f8a2958fb39510a5c1ff8180624f3e8c",
       "builds_retained": 199,
       "identifiers": 10386
@@ -103417,12 +103370,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T02:05:14.576744+00:00",
+      "last_attempt": "2026-11-26T02:41:17.202583+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T02:05:15.129566+00:00",
+      "last_success": "2026-11-26T02:41:17.703607+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.553,
+      "duration_seconds": 0.502,
       "latest_build": "5f3dd7516d1496e61401a436dc06018a665074d9",
       "builds_retained": 96,
       "identifiers": 7084
@@ -103430,12 +103383,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T02:08:12.628601+00:00",
+      "last_attempt": "2026-11-26T02:32:17.966528+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T02:08:13.247723+00:00",
+      "last_success": "2026-11-26T02:32:18.640890+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.62,
+      "duration_seconds": 0.675,
       "latest_build": "584097a39ed06b6dcb134538daf7eeb64eb37594",
       "builds_retained": 200,
       "identifiers": 11636
@@ -103443,21 +103396,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T02:08:13.449920+00:00",
+      "last_attempt": "2026-11-26T02:41:17.912695+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4339,
-      "duration_seconds": 21.549
+      "consecutive_failures": 4350,
+      "duration_seconds": 21.004
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-26T01:56:42.557364+00:00",
+      "last_attempt": "2026-11-26T02:32:40.344071+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T01:56:42.872190+00:00",
+      "last_success": "2026-11-26T02:32:40.728145+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.315,
+      "duration_seconds": 0.384,
       "latest_build": "3.15.14",
       "builds_retained": 5,
       "identifiers": 3340
@@ -103467,61 +103420,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T02:07:24.211941+00:00",
+      "last_attempt": "2026-11-26T02:40:27.823971+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T02:07:27.339507+00:00",
+      "last_success": "2026-11-26T02:40:30.879238+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.128
+      "duration_seconds": 3.055
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T02:07:27.339565+00:00",
+      "last_attempt": "2026-11-26T02:40:30.879301+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T02:07:27.626660+00:00",
+      "last_success": "2026-11-26T02:40:31.125606+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.287
+      "duration_seconds": 0.246
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T02:07:27.626704+00:00",
+      "last_attempt": "2026-11-26T02:40:31.125650+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T02:07:36.035293+00:00",
+      "last_success": "2026-11-26T02:40:41.338041+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.409
+      "duration_seconds": 10.212
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T02:07:36.035367+00:00",
+      "last_attempt": "2026-11-26T02:40:41.338117+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T02:08:12.014718+00:00",
+      "last_success": "2026-11-26T02:41:16.617122+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 35.979,
+      "duration_seconds": 35.279,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-26T02:07:36.375129+00:00",
+          "checked_at": "2026-11-26T02:40:41.868125+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-26T02:07:48.094031+00:00",
+          "checked_at": "2026-11-26T02:40:53.706432+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-26T02:07:48.326243+00:00",
+          "checked_at": "2026-11-26T02:40:53.889701+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-26T02:07:48.326261+00:00",
+          "checked_at": "2026-11-26T02:40:53.889719+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -103529,12 +103482,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T02:08:12.014783+00:00",
+      "last_attempt": "2026-11-26T02:41:16.617183+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T02:08:12.427982+00:00",
+      "last_success": "2026-11-26T02:41:17.004080+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.413,
+      "duration_seconds": 0.387,
       "latest_build": "5bef7bed873e1dc14499146567ecb753f8a2958fb39510a5c1ff8180624f3e8c",
       "builds_retained": 199,
       "identifiers": 10386
@@ -103542,12 +103495,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T02:05:14.576744+00:00",
+      "last_attempt": "2026-11-26T02:41:17.202583+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T02:05:15.129566+00:00",
+      "last_success": "2026-11-26T02:41:17.703607+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.553,
+      "duration_seconds": 0.502,
       "latest_build": "5f3dd7516d1496e61401a436dc06018a665074d9",
       "builds_retained": 96,
       "identifiers": 7084
@@ -103555,12 +103508,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T02:08:12.628601+00:00",
+      "last_attempt": "2026-11-26T02:32:17.966528+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T02:08:13.247723+00:00",
+      "last_success": "2026-11-26T02:32:18.640890+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.62,
+      "duration_seconds": 0.675,
       "latest_build": "584097a39ed06b6dcb134538daf7eeb64eb37594",
       "builds_retained": 200,
       "identifiers": 11636
@@ -103568,21 +103521,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T02:08:13.449920+00:00",
+      "last_attempt": "2026-11-26T02:41:17.912695+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4339,
-      "duration_seconds": 21.549
+      "consecutive_failures": 4350,
+      "duration_seconds": 21.004
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-26T01:56:42.557364+00:00",
+      "last_attempt": "2026-11-26T02:32:40.344071+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T01:56:42.872190+00:00",
+      "last_success": "2026-11-26T02:32:40.728145+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.315,
+      "duration_seconds": 0.384,
       "latest_build": "3.15.14",
       "builds_retained": 5,
       "identifiers": 3340
@@ -103590,52 +103543,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T02:08:35.006764+00:00",
+      "last_attempt": "2026-11-26T02:41:38.924020+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T02:08:43.819862+00:00",
+      "last_success": "2026-11-26T02:41:47.762228+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.813
+      "duration_seconds": 8.838
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T02:08:43.819929+00:00",
+      "last_attempt": "2026-11-26T02:41:47.762297+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T02:08:46.605622+00:00",
+      "last_success": "2026-11-26T02:41:49.825567+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.786
+      "duration_seconds": 2.063
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T02:08:46.605676+00:00",
+      "last_attempt": "2026-11-26T02:32:51.984212+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T02:08:56.702018+00:00",
+      "last_success": "2026-11-26T02:33:02.111298+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 10.096
+      "duration_seconds": 10.127
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T02:08:56.702073+00:00",
+      "last_attempt": "2026-11-26T02:41:49.825637+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T02:08:58.142374+00:00",
+      "last_success": "2026-11-26T02:41:51.297821+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.44
+      "duration_seconds": 1.472
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T02:08:58.142418+00:00",
+      "last_attempt": "2026-11-26T02:41:51.297874+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T02:08:58.206147+00:00",
+      "last_success": "2026-11-26T02:41:51.423359+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.064
+      "duration_seconds": 0.126
     }
   },
   "identities": {
