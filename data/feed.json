@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-26T05:57:06.712373+00:00",
-  "scan_completed_at": "2026-11-26T05:58:03.042533+00:00",
+  "generated_at": "2026-11-26T06:27:11.705404+00:00",
+  "scan_completed_at": "2026-11-26T06:28:12.962930+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 361,
     "leaks": 34,
     "releases": 94,
     "stories_24h": 51,
-    "sources_ok": 12,
-    "total_cards": 917,
+    "sources_ok": 13,
+    "total_cards": 916,
     "new_in_this_scan": 0
   },
   "stories": [
@@ -30682,7 +30682,7 @@
       "provider_name": "Google",
       "accent_color": "#38bdf8",
       "detected_at": "2026-10-23T19:51:16+00:00",
-      "updated_at": "2026-11-12T05:59:55.615618+00:00",
+      "updated_at": "2026-11-11T17:49:08+00:00",
       "first_source": "Antigravity ACP config",
       "lead": "18 days before public release",
       "released_on": "2026-11-10",
@@ -30699,12 +30699,6 @@
         {
           "id": "carbon-g-medium-tf",
           "name": "Carbon G Medium TF"
-        },
-        {
-          "id": "gemini-4-carbon-high",
-          "name": "gemini-4-carbon-high",
-          "released_on": "2026-11-10",
-          "org": "google"
         },
         {
           "id": "gemini-4-carbon-medium",
@@ -30731,31 +30725,20 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
-        },
-        {
-          "label": "LMArena",
-          "scanner": "lmarena",
-          "detected_at": "2026-11-12T05:59:55.615618+00:00",
-          "title": "New Model Found on Arena: gemini-4-carbon-high",
-          "url": "https://arena.ai/code?mode=direct&model=gemini-4-carbon-high",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
         }
       ],
-      "source_count": 2,
+      "source_count": 1,
       "backfill": false,
       "header": "NEW MODEL · GOOGLE",
       "card_ids": [
         "ag-acp-1.4.3-revision-diff",
-        "ag-acp-1.4.5-1.5.0-diff",
-        "arena-scout-diff-0a3f9f11"
+        "ag-acp-1.4.5-1.5.0-diff"
       ],
       "event_label": "",
       "intelligence_only": false,
       "candidate_only": false,
       "registry_evidence": [],
-      "x_post_text": "🟢 NEW MODEL: Gemini 4 Carbon by Google\n\nFirst detected 23 Oct 19:51 UTC in Antigravity ACP config\n📅 First released: 2026-11-10\n⏱ 18 days before public release\nConfirmed by LMArena\nCodename: carbon\nIDs: gemini-4-carbon, carbon-g-medium-tf, gemini-4-carbon-high +3\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: Gemini 4 Carbon by Google\n\nFirst detected 23 Oct 19:51 UTC in Antigravity ACP config\n📅 First released: 2026-11-10\n⏱ 18 days before public release\nCodename: carbon\nIDs: gemini-4-carbon, carbon-g-medium-tf, gemini-4-carbon-medium +2\n\nvia @StatsWire"
     }
   ],
   "cards": [
@@ -103884,40 +103867,6 @@
       "x_post_text": "🚨 LITELLM MASTER REGISTRY DIFF · MULTI-PROVIDER\n1 New Model(s) Added to LiteLLM spotted in Registry Diff +1 model keys!\n\n• gemini/nano-banana-latest (gemini/nano-banana-latest)\n\nEvidence: BerriAI/litellm/model_prices_and_context_window.json\nSource: official LiteLLM master pricing & context window registry.\n\nTracked by @StatsWire"
     },
     {
-      "id": "arena-scout-diff-0a3f9f11",
-      "category": "cli-sdk-diff",
-      "scanner": "lmarena",
-      "header": "ARENA.AI LIVE MODEL SCOUT · GOOGLE",
-      "title": "New Model Found on Arena: gemini-4-carbon-high",
-      "subtitle": "Detected in Arena Code (/code) initialModels RSC stream (in:text, in:image, in:file, out:text, out:web)",
-      "build_label": "Arena Metadata",
-      "build_transition": "Org: google · Provider: googleVertexGlobalWithThoughtSignatures · ID: 01a1ce53-7c0e-7d15-82d6-466ad5c79f31 · DB minted 2026-11-12 05:55:40 UTC",
-      "models": [
-        {
-          "id": "org:google · googleVertexGlobalWithThoughtSignatures",
-          "name": "gemini-4-carbon-high",
-          "org": "google",
-          "released_on": "2026-11-10"
-        }
-      ],
-      "evidence": "arena.ai/code -> self.__next_f.push (initialModels)",
-      "source_text": "live Arena (arena.ai) Next.js RSC model config.",
-      "disclaimer_1": "",
-      "disclaimer_2": "",
-      "provider_name": "GOOGLE",
-      "provider_slug": "google",
-      "accent_color": "#38bdf8",
-      "links": [
-        {
-          "label": "Open on Arena.ai",
-          "url": "https://arena.ai/code?mode=direct&model=gemini-4-carbon-high"
-        }
-      ],
-      "detected_at": "2026-11-12T05:59:55.615618+00:00",
-      "pricing": null,
-      "x_post_text": "🚨 ARENA.AI LIVE MODEL SCOUT · GOOGLE\nNew Model Found on Arena: gemini-4-carbon-high spotted in Arena Metadata Org: google · Provider: googleVertexGlobalWithThoughtSignatures · ID: 01a1ce53-7c0e-7d15-82d6-466ad5c79f31 · DB minted 2026-11-12 05:55:40 UTC!\n\n• gemini-4-carbon-high (org:google · googleVertexGlobalWithThoughtSignatures)\n\nEvidence: arena.ai/code -> self.__next_f.push (initialModels)\nSource: live Arena (arena.ai) Next.js RSC model config.\n\nTracked by @StatsWire"
-    },
-    {
       "id": "ag-acp-1.4.5-1.5.0-diff",
       "category": "desktop-diff",
       "scanner": "antigravity-acp",
@@ -104120,12 +104069,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T05:57:37.578735+00:00",
+      "last_attempt": "2026-11-26T06:27:46.364302+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T05:57:37.792821+00:00",
+      "last_success": "2026-11-26T06:27:46.642256+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.214,
+      "duration_seconds": 0.278,
       "latest_build": "37b74f1def53a23d8aebdd40d0d3c87c9a1ef54530469c928d64a78a3c9369c0",
       "builds_retained": 203,
       "identifiers": 10391
@@ -104133,12 +104082,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T05:55:12.370940+00:00",
+      "last_attempt": "2026-11-26T06:27:46.781723+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T05:55:12.861772+00:00",
+      "last_success": "2026-11-26T06:27:47.161978+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.491,
+      "duration_seconds": 0.381,
       "latest_build": "3c18ad5c0f5c607359737390d6aded832969b288",
       "builds_retained": 98,
       "identifiers": 7085
@@ -104146,12 +104095,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T05:55:13.008405+00:00",
+      "last_attempt": "2026-11-26T06:18:30.845023+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T05:55:13.430412+00:00",
+      "last_success": "2026-11-26T06:18:31.330116+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.423,
+      "duration_seconds": 0.486,
       "latest_build": "8c80aa8b53fc9006be9ab5e6bac3f637bba94e36",
       "builds_retained": 202,
       "identifiers": 11663
@@ -104159,21 +104108,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T05:57:37.934175+00:00",
+      "last_attempt": "2026-11-26T06:27:47.310057+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4430,
-      "duration_seconds": 15.447
+      "consecutive_failures": 4443,
+      "duration_seconds": 15.235
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-26T05:50:38.559487+00:00",
+      "last_attempt": "2026-11-26T06:23:28.849744+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T05:50:38.669351+00:00",
+      "last_success": "2026-11-26T06:23:29.101770+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.11,
+      "duration_seconds": 0.252,
       "latest_build": "3.15.14",
       "builds_retained": 5,
       "identifiers": 3340
@@ -104183,61 +104132,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T05:57:06.712439+00:00",
+      "last_attempt": "2026-11-26T06:27:11.705471+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T05:57:08.379010+00:00",
+      "last_success": "2026-11-26T06:27:13.358543+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.667
+      "duration_seconds": 1.653
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T05:57:08.379064+00:00",
+      "last_attempt": "2026-11-26T06:27:13.358599+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T05:57:08.467218+00:00",
+      "last_success": "2026-11-26T06:27:13.453974+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.088
+      "duration_seconds": 0.095
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T05:57:08.467253+00:00",
+      "last_attempt": "2026-11-26T06:27:13.454009+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T05:57:13.140518+00:00",
+      "last_success": "2026-11-26T06:27:19.731676+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 4.673
+      "duration_seconds": 6.278
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T05:57:13.140583+00:00",
+      "last_attempt": "2026-11-26T06:27:19.731735+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T05:57:37.578685+00:00",
+      "last_success": "2026-11-26T06:27:46.364252+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 24.438,
+      "duration_seconds": 26.633,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-26T05:57:13.325928+00:00",
+          "checked_at": "2026-11-26T06:27:19.891445+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-26T05:57:21.278714+00:00",
+          "checked_at": "2026-11-26T06:27:29.870468+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-26T05:57:21.424304+00:00",
+          "checked_at": "2026-11-26T06:27:30.040562+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-26T05:57:21.424321+00:00",
+          "checked_at": "2026-11-26T06:27:30.040579+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -104245,12 +104194,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T05:57:37.578735+00:00",
+      "last_attempt": "2026-11-26T06:27:46.364302+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T05:57:37.792821+00:00",
+      "last_success": "2026-11-26T06:27:46.642256+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.214,
+      "duration_seconds": 0.278,
       "latest_build": "37b74f1def53a23d8aebdd40d0d3c87c9a1ef54530469c928d64a78a3c9369c0",
       "builds_retained": 203,
       "identifiers": 10391
@@ -104258,12 +104207,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T05:55:12.370940+00:00",
+      "last_attempt": "2026-11-26T06:27:46.781723+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T05:55:12.861772+00:00",
+      "last_success": "2026-11-26T06:27:47.161978+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.491,
+      "duration_seconds": 0.381,
       "latest_build": "3c18ad5c0f5c607359737390d6aded832969b288",
       "builds_retained": 98,
       "identifiers": 7085
@@ -104271,12 +104220,12 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T05:55:13.008405+00:00",
+      "last_attempt": "2026-11-26T06:18:30.845023+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T05:55:13.430412+00:00",
+      "last_success": "2026-11-26T06:18:31.330116+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.423,
+      "duration_seconds": 0.486,
       "latest_build": "8c80aa8b53fc9006be9ab5e6bac3f637bba94e36",
       "builds_retained": 202,
       "identifiers": 11663
@@ -104284,21 +104233,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T05:57:37.934175+00:00",
+      "last_attempt": "2026-11-26T06:27:47.310057+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4430,
-      "duration_seconds": 15.447
+      "consecutive_failures": 4443,
+      "duration_seconds": 15.235
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-26T05:50:38.559487+00:00",
+      "last_attempt": "2026-11-26T06:23:28.849744+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T05:50:38.669351+00:00",
+      "last_success": "2026-11-26T06:23:29.101770+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.11,
+      "duration_seconds": 0.252,
       "latest_build": "3.15.14",
       "builds_retained": 5,
       "identifiers": 3340
@@ -104306,52 +104255,52 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T05:57:53.387256+00:00",
+      "last_attempt": "2026-11-26T06:28:02.550791+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T05:58:00.565364+00:00",
+      "last_success": "2026-11-26T06:28:09.742401+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.178
+      "duration_seconds": 7.192
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T05:58:00.565430+00:00",
+      "last_attempt": "2026-11-26T06:28:09.742467+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T05:58:02.213676+00:00",
+      "last_success": "2026-11-26T06:28:12.051684+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.648
+      "duration_seconds": 2.309
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T05:55:37.346044+00:00",
+      "last_attempt": "2026-11-26T06:18:55.429935+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T05:55:48.056189+00:00",
+      "last_success": "2026-11-26T06:19:03.564833+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 10.71
+      "duration_seconds": 8.135
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T05:58:02.213727+00:00",
+      "last_attempt": "2026-11-26T06:28:12.051733+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T05:58:02.642244+00:00",
+      "last_success": "2026-11-26T06:28:12.469614+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.429
+      "duration_seconds": 0.418
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T05:58:02.642280+00:00",
+      "last_attempt": "2026-11-26T06:28:12.469659+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T05:58:02.656763+00:00",
+      "last_success": "2026-11-26T06:28:12.482604+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.014
+      "duration_seconds": 0.013
     }
   },
   "identities": {
