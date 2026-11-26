@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-26T17:21:50.054130+00:00",
-  "scan_completed_at": "2026-11-26T17:23:25.315887+00:00",
+  "generated_at": "2026-11-26T17:31:29.806696+00:00",
+  "scan_completed_at": "2026-11-26T17:33:30.232873+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 368,
     "leaks": 34,
     "releases": 97,
-    "stories_24h": 53,
-    "sources_ok": 14,
-    "total_cards": 932,
+    "stories_24h": 47,
+    "sources_ok": 15,
+    "total_cards": 933,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -7932,20 +7932,21 @@
       "kind": "release",
       "open_weights": true,
       "title": "LingSante 3.1 air VL",
-      "provider_slug": "opensource",
+      "provider_slug": "unknown",
       "provider_name": "Ant Group",
-      "accent_color": "#1677ff",
+      "accent_color": "#0891b2",
       "detected_at": "2026-11-22T17:16:35.585666+00:00",
-      "updated_at": "2026-11-26T15:31:40.502820+00:00",
+      "updated_at": "2026-11-26T17:32:37.095357+00:00",
       "first_source": "Hugging Face",
       "lead": "",
-      "released_on": "",
+      "released_on": "2026-11-19",
       "pricing": "",
       "codenames": [],
       "models": [
         {
           "id": "lingsante-3.1-air-vl",
-          "name": "LingSante 3.1 Air VL"
+          "name": "inclusionai/lingsante-3.1-air-vl",
+          "released_on": "2026-11-19"
         },
         {
           "id": "LingSante-3.1-air-VL-MXFP4",
@@ -7972,22 +7973,49 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-26T17:32:37.095357+00:00",
+          "title": "lingsante-3.1-air-vl",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/6b86d731071c06c432892c9f24059b278b8ecbe6",
+          "backfill": false,
+          "build": "6b86d731071c06c432892c9f24059b278b8ecbe6",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/2a325357599f01fd0e1bd624661562e7d18d4482bf340fc77fdb3d9451bfcc46.json.gz"
         }
       ],
-      "source_count": 2,
+      "source_count": 3,
       "backfill": false,
       "header": "OPEN WEIGHTS · ANT GROUP",
       "card_ids": [
         "hf-inclusionAI_LingSante-3.1-air-VL",
         "hf-inclusionAI_LingSante-3.1-air-VL-MXFP4",
-        "openrouter-model-inclusionai_lingsante-3.1-air-vl"
+        "openrouter-model-inclusionai_lingsante-3.1-air-vl",
+        "intel-eda8762529fc2e1d22f9"
       ],
-      "event_label": "",
+      "event_label": "Released",
       "intelligence_only": false,
       "candidate_only": false,
-      "registry_evidence": [],
+      "registry_evidence": [
+        {
+          "id": "inclusionai/lingsante-3.1-air-vl",
+          "family": "lingsante-3.1-air-vl",
+          "file_path": "models/inclusionai/lingsante-3.1-air-vl.toml",
+          "file_sha256": "e3067805b2c61cf3b29dfc37987efb087e3f4b75e5c684783765bad6b569bcb7",
+          "excerpt": "{\"inclusionai/lingsante-3.1-air-vl\": {\"schema\": 2, \"name\": \"LingSante 3.1 Air VL\", \"description\": \"Open multimodal MoE model for medical imaging reports, health assessment, evidence search, and GUI agents\", \"family\": \"lingsante\", \"open_weights\": true, \"release_date\": \"2026-11-19\", \"license\": \"MIT\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true}, \"temperature\": true, \"top_p\": true, \"top_k\": true}, \"limit\": {\"context\": 262144, \"output\": 32768}, \"weights\": [{\"label\": \"Hugging Face\", \"url\": \"https://huggingface.co/inclusionAI/LingSante-3.1-air-VL\"}]}}",
+          "canonical_id": "inclusionai/lingsante-3.1-air-vl",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6b86d731071c06c432892c9f24059b278b8ecbe6/models/inclusionai/lingsante-3.1-air-vl.toml",
+          "build": "6b86d731071c06c432892c9f24059b278b8ecbe6",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6b86d731071c06c432892c9f24059b278b8ecbe6",
+          "first_seen": "2026-11-26T17:27:13+00:00"
+        }
+      ],
       "discord_alerted_at": "2026-11-26T15:31:49.389154+00:00",
-      "x_post_text": "🟢 NEW MODEL: LingSante 3.1 air VL by Ant Group\n\nFirst detected 22 Nov 17:16 UTC in Hugging Face\nConfirmed by OpenRouter\nIDs: lingsante-3.1-air-vl, LingSante-3.1-air-VL-MXFP4\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: LingSante 3.1 air VL by Ant Group\n\nFirst detected 22 Nov 17:16 UTC in Hugging Face\n📅 First released: 2026-11-19\nConfirmed by OpenRouter, Registry Update\nIDs: lingsante-3.1-air-vl, LingSante-3.1-air-VL-MXFP4\n\nvia @StatsWire"
     },
     {
       "id": "story-lingsante-3-1-flash",
@@ -31324,6 +31352,93 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-eda8762529fc2e1d22f9",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "lingsante-3.1-air-vl",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "lingsante-3.1-air-vl",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "inclusionai/lingsante-3.1-air-vl",
+          "name": "inclusionai/lingsante-3.1-air-vl",
+          "registry_update": true,
+          "released_on": "2026-11-19"
+        }
+      ],
+      "detected_at": "2026-11-26T17:32:37.095357+00:00",
+      "first_seen": "2026-11-26T17:27:13+00:00",
+      "observed_at": "2026-11-26T17:32:37.095357+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "cd46e6748db0c6ffcd30c491090f81ad818c78f8 -> 6b86d731071c06c432892c9f24059b278b8ecbe6",
+      "build": "6b86d731071c06c432892c9f24059b278b8ecbe6",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/6b86d731071c06c432892c9f24059b278b8ecbe6",
+      "artifact_sha256": "2a325357599f01fd0e1bd624661562e7d18d4482bf340fc77fdb3d9451bfcc46",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/2a325357599f01fd0e1bd624661562e7d18d4482bf340fc77fdb3d9451bfcc46.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/2a325357599f01fd0e1bd624661562e7d18d4482bf340fc77fdb3d9451bfcc46.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "inclusionai/lingsante-3.1-air-vl",
+          "family": "lingsante-3.1-air-vl",
+          "file_path": "models/inclusionai/lingsante-3.1-air-vl.toml",
+          "file_sha256": "e3067805b2c61cf3b29dfc37987efb087e3f4b75e5c684783765bad6b569bcb7",
+          "excerpt": "{\"inclusionai/lingsante-3.1-air-vl\": {\"schema\": 2, \"name\": \"LingSante 3.1 Air VL\", \"description\": \"Open multimodal MoE model for medical imaging reports, health assessment, evidence search, and GUI agents\", \"family\": \"lingsante\", \"open_weights\": true, \"release_date\": \"2026-11-19\", \"license\": \"MIT\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true}, \"temperature\": true, \"top_p\": true, \"top_k\": true}, \"limit\": {\"context\": 262144, \"output\": 32768}, \"weights\": [{\"label\": \"Hugging Face\", \"url\": \"https://huggingface.co/inclusionAI/LingSante-3.1-air-VL\"}]}}",
+          "canonical_id": "inclusionai/lingsante-3.1-air-vl",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6b86d731071c06c432892c9f24059b278b8ecbe6/models/inclusionai/lingsante-3.1-air-vl.toml",
+          "build": "6b86d731071c06c432892c9f24059b278b8ecbe6",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6b86d731071c06c432892c9f24059b278b8ecbe6",
+          "first_seen": "2026-11-26T17:27:13+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/6b86d731071c06c432892c9f24059b278b8ecbe6"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/6b86d731071c06c432892c9f24059b278b8ecbe6"
+        }
+      ],
+      "tracker_observed_at": "2026-11-26T17:32:47.840126+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 6b86d731071c: inclusionai/lingsante-3.1-air-vl\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/6b86d731071c06c432892c9f24059b278b8ecbe6"
+    },
     {
       "id": "vercel-gateway-diff-ee1ce180",
       "category": "cli-sdk-diff",
@@ -105948,25 +106063,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:22:48.643891+00:00",
+      "last_attempt": "2026-11-26T17:32:28.295763+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:22:52.103091+00:00",
+      "last_success": "2026-11-26T17:32:31.723644+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.46,
-      "latest_build": "cdcf399678200f68d729141a381869ca2cd5cf10673bea70507210d22f152c1f",
-      "builds_retained": 211,
-      "identifiers": 10403
+      "duration_seconds": 3.428,
+      "latest_build": "27a3dc2cf9d275509452dcd9aeb18313febad04ab6e35053c7d8b82cd7e54881",
+      "builds_retained": 214,
+      "identifiers": 10406
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T17:22:52.283096+00:00",
+      "last_attempt": "2026-11-26T17:32:31.903643+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:22:52.744903+00:00",
+      "last_success": "2026-11-26T17:32:32.295845+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.463,
+      "duration_seconds": 0.393,
       "latest_build": "306b73d11341eb6e5b90b5e4d2fd03d0e8bf5775",
       "builds_retained": 102,
       "identifiers": 7096
@@ -105974,24 +106089,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T17:19:20.824480+00:00",
+      "last_attempt": "2026-11-26T17:32:32.488788+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:19:28.694422+00:00",
+      "last_success": "2026-11-26T17:32:47.840126+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.871,
-      "latest_build": "cd46e6748db0c6ffcd30c491090f81ad818c78f8",
-      "builds_retained": 211,
-      "identifiers": 11676
+      "duration_seconds": 15.352,
+      "latest_build": "e8f740797df3bc33de6d88dc0f39264ce2cad6ba",
+      "builds_retained": 213,
+      "identifiers": 11683
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T17:22:52.937530+00:00",
+      "last_attempt": "2026-11-26T17:32:48.022881+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4680,
-      "duration_seconds": 19.281
+      "consecutive_failures": 4683,
+      "duration_seconds": 19.39
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -106011,61 +106126,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:21:50.054221+00:00",
+      "last_attempt": "2026-11-26T17:31:29.806771+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:21:52.171778+00:00",
+      "last_success": "2026-11-26T17:31:31.704790+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.118
+      "duration_seconds": 1.898
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:21:52.171861+00:00",
+      "last_attempt": "2026-11-26T17:31:31.704857+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:21:52.303528+00:00",
+      "last_success": "2026-11-26T17:31:31.822353+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.132
+      "duration_seconds": 0.118
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:21:52.303574+00:00",
+      "last_attempt": "2026-11-26T17:31:31.822395+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:22:01.415326+00:00",
+      "last_success": "2026-11-26T17:31:38.950374+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.112
+      "duration_seconds": 7.128
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:22:01.415413+00:00",
+      "last_attempt": "2026-11-26T17:31:38.950481+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:22:48.643823+00:00",
+      "last_success": "2026-11-26T17:32:28.295699+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 47.228,
+      "duration_seconds": 49.345,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-26T17:22:01.643020+00:00",
+          "checked_at": "2026-11-26T17:31:39.194864+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-26T17:22:12.025457+00:00",
+          "checked_at": "2026-11-26T17:31:49.480513+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-26T17:22:12.232923+00:00",
+          "checked_at": "2026-11-26T17:31:49.643695+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-26T17:22:12.232941+00:00",
+          "checked_at": "2026-11-26T17:31:49.643713+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -106073,25 +106188,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:22:48.643891+00:00",
+      "last_attempt": "2026-11-26T17:32:28.295763+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:22:52.103091+00:00",
+      "last_success": "2026-11-26T17:32:31.723644+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.46,
-      "latest_build": "cdcf399678200f68d729141a381869ca2cd5cf10673bea70507210d22f152c1f",
-      "builds_retained": 211,
-      "identifiers": 10403
+      "duration_seconds": 3.428,
+      "latest_build": "27a3dc2cf9d275509452dcd9aeb18313febad04ab6e35053c7d8b82cd7e54881",
+      "builds_retained": 214,
+      "identifiers": 10406
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T17:22:52.283096+00:00",
+      "last_attempt": "2026-11-26T17:32:31.903643+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:22:52.744903+00:00",
+      "last_success": "2026-11-26T17:32:32.295845+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.463,
+      "duration_seconds": 0.393,
       "latest_build": "306b73d11341eb6e5b90b5e4d2fd03d0e8bf5775",
       "builds_retained": 102,
       "identifiers": 7096
@@ -106099,24 +106214,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T17:19:20.824480+00:00",
+      "last_attempt": "2026-11-26T17:32:32.488788+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:19:28.694422+00:00",
+      "last_success": "2026-11-26T17:32:47.840126+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.871,
-      "latest_build": "cd46e6748db0c6ffcd30c491090f81ad818c78f8",
-      "builds_retained": 211,
-      "identifiers": 11676
+      "duration_seconds": 15.352,
+      "latest_build": "e8f740797df3bc33de6d88dc0f39264ce2cad6ba",
+      "builds_retained": 213,
+      "identifiers": 11683
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T17:22:52.937530+00:00",
+      "last_attempt": "2026-11-26T17:32:48.022881+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4680,
-      "duration_seconds": 19.281
+      "consecutive_failures": 4683,
+      "duration_seconds": 19.39
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -106134,64 +106249,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:23:12.851807+00:00",
+      "last_attempt": "2026-11-26T17:33:07.421717+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:23:22.106694+00:00",
+      "last_success": "2026-11-26T17:33:16.698167+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.255
+      "duration_seconds": 9.276
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:23:22.106759+00:00",
+      "last_attempt": "2026-11-26T17:33:16.698231+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:23:23.499035+00:00",
+      "last_success": "2026-11-26T17:33:18.684285+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.392
+      "duration_seconds": 1.986
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T17:19:58.874668+00:00",
+      "last_attempt": "2026-11-26T17:33:18.684342+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:20:07.683888+00:00",
+      "last_success": "2026-11-26T17:33:27.845063+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.809
+      "duration_seconds": 9.161
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:23:23.499100+00:00",
+      "last_attempt": "2026-11-26T17:33:27.845121+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:23:24.079563+00:00",
+      "last_success": "2026-11-26T17:33:28.393197+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.58
+      "duration_seconds": 0.548
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T17:23:24.079613+00:00",
+      "last_attempt": "2026-11-26T17:33:28.393246+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T17:23:24.138405+00:00",
+      "last_success": "2026-11-26T17:33:28.486360+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.059
+      "duration_seconds": 0.093
     }
   },
   "identities": {
-    "identifiers": 32515,
-    "declared_aliases": 19508,
+    "identifiers": 32525,
+    "declared_aliases": 19522,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 519,
-      "seconds_mean": 4631.550696907514,
+      "samples": 520,
+      "seconds_mean": 4623.267128946154,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -106205,9 +106320,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 677,
-      "events": 679,
-      "rate": 0.9970544918998527
+      "complete": 678,
+      "events": 680,
+      "rate": 0.9970588235294118
     },
     "source_health": {
       "sources": 14,
