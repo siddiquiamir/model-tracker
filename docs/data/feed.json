@@ -1,17 +1,64 @@
 {
-  "generated_at": "2026-11-26T19:37:32.298757+00:00",
-  "scan_completed_at": "2026-11-26T19:39:16.311663+00:00",
+  "generated_at": "2026-11-26T19:47:13.964299+00:00",
+  "scan_completed_at": "2026-11-26T19:48:40.337412+00:00",
   "github_user": "siddiquiamir",
   "stats": {
-    "stories": 368,
-    "leaks": 34,
+    "stories": 369,
+    "leaks": 35,
     "releases": 97,
-    "stories_24h": 39,
-    "sources_ok": 15,
-    "total_cards": 917,
-    "new_in_this_scan": 0
+    "stories_24h": 40,
+    "sources_ok": 14,
+    "total_cards": 918,
+    "new_in_this_scan": 1
   },
   "stories": [
+    {
+      "id": "story-gemma-4visionpatchembedder",
+      "group": "gemma-4visionpatchembedder",
+      "kind": "leak",
+      "open_weights": true,
+      "title": "Gemma4VisionPatchEmbedder",
+      "provider_slug": "google",
+      "provider_name": "Google",
+      "accent_color": "#38bdf8",
+      "detected_at": "2026-11-26T19:46:36Z",
+      "updated_at": "2026-11-26T19:46:36Z",
+      "first_source": "SGLang pull request",
+      "lead": "",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "Gemma4VisionPatchEmbedder",
+          "name": "Gemma4VisionPatchEmbedder"
+        }
+      ],
+      "sources": [
+        {
+          "label": "SGLang pull request",
+          "scanner": "engine-pr-leak",
+          "detected_at": "2026-11-26T19:46:36Z",
+          "title": "Gemma4VisionPatchEmbedder (SGLang PR #53436)",
+          "url": "https://github.com/sgl-project/sglang/pull/53436",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 1,
+      "backfill": false,
+      "header": "LEAK · GOOGLE",
+      "card_ids": [
+        "engine-pr-sgl-project_sglang-53436"
+      ],
+      "event_label": "",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [],
+      "x_post_text": "🟠 LEAK: Gemma4VisionPatchEmbedder by Google\n\nFirst detected 26 Nov 19:46 UTC in SGLang pull request\n\nvia @StatsWire",
+      "discord_alerted_at": "2026-11-26T19:48:40.333955+00:00"
+    },
     {
       "id": "story-cogact-2-robodojo",
       "group": "cogact-2-robodojo",
@@ -31137,6 +31184,39 @@
     }
   ],
   "cards": [
+    {
+      "id": "engine-pr-sgl-project_sglang-53436",
+      "category": "open-source",
+      "scanner": "engine-pr-leak",
+      "header": "SGLANG PR DAY-0 MODEL ONBOARDING (OPEN)",
+      "title": "Gemma4VisionPatchEmbedder (SGLang PR #53436)",
+      "subtitle": "[Perf] gemma4: Replace dense one_hot with F.embedding in Gemma4VisionPatchEmbedder",
+      "build_label": "SGLang PR",
+      "build_transition": "PR #53436 (open)",
+      "models": [
+        {
+          "id": "Gemma4VisionPatchEmbedder",
+          "name": "Gemma4VisionPatchEmbedder"
+        }
+      ],
+      "evidence": "sgl-project/sglang/pull/53436",
+      "source_text": "public GitHub pull request #53436 on sgl-project/sglang.",
+      "disclaimer_1": "",
+      "disclaimer_2": "",
+      "provider_name": "GOOGLE",
+      "provider_slug": "google",
+      "accent_color": "#38bdf8",
+      "links": [
+        {
+          "label": "sgl-project/sglang PR #53436",
+          "url": "https://github.com/sgl-project/sglang/pull/53436"
+        }
+      ],
+      "detected_at": "2026-11-26T19:46:36Z",
+      "tracker_observed_at": "2026-11-26T19:48:05.651821+00:00",
+      "pricing": null,
+      "x_post_text": "🚨 SGLANG PR DAY-0 MODEL ONBOARDING (OPEN)\nGemma4VisionPatchEmbedder (SGLang PR #53436) spotted in SGLang PR PR #53436 (open)!\n\n• Gemma4VisionPatchEmbedder (Gemma4VisionPatchEmbedder)\n\nEvidence: sgl-project/sglang/pull/53436\nSource: public GitHub pull request #53436 on sgl-project/sglang.\n\nTracked by @StatsWire"
+    },
     {
       "id": "hf-microsoft_CogACT2-RoboDojo",
       "category": "open-source",
@@ -104977,12 +105057,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T19:38:31.326034+00:00",
+      "last_attempt": "2026-11-26T19:48:05.651883+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T19:38:31.633668+00:00",
+      "last_success": "2026-11-26T19:48:05.950770+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.308,
+      "duration_seconds": 0.299,
       "latest_build": "c6054c1494f7a0b9c8d07c0fa35f410cfec840ebeb49f9540a6b3c98140a5a0c",
       "builds_retained": 216,
       "identifiers": 10414
@@ -104990,12 +105070,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T19:38:31.815084+00:00",
+      "last_attempt": "2026-11-26T19:48:06.132778+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T19:38:32.209622+00:00",
+      "last_success": "2026-11-26T19:48:06.497678+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.395,
+      "duration_seconds": 0.366,
       "latest_build": "306b73d11341eb6e5b90b5e4d2fd03d0e8bf5775",
       "builds_retained": 102,
       "identifiers": 7096
@@ -105016,21 +105096,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T19:38:33.157294+00:00",
+      "last_attempt": "2026-11-26T19:48:06.689972+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4721,
-      "duration_seconds": 19.84
+      "consecutive_failures": 4724,
+      "duration_seconds": 19.864
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-26T19:32:30.714169+00:00",
+      "last_attempt": "2026-11-26T19:48:26.562162+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T19:32:31.044579+00:00",
+      "last_success": "2026-11-26T19:48:26.728321+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.33,
+      "duration_seconds": 0.166,
       "latest_build": "3.15.14",
       "builds_retained": 5,
       "identifiers": 3340
@@ -105040,61 +105120,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T19:37:32.298843+00:00",
+      "last_attempt": "2026-11-26T19:47:13.964379+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T19:37:34.214357+00:00",
+      "last_success": "2026-11-26T19:47:16.195973+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.916
+      "duration_seconds": 2.232
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T19:37:34.214421+00:00",
+      "last_attempt": "2026-11-26T19:47:16.196038+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T19:37:34.341085+00:00",
+      "last_success": "2026-11-26T19:47:16.343992+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.127
+      "duration_seconds": 0.148
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T19:37:34.341126+00:00",
+      "last_attempt": "2026-11-26T19:47:16.344036+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T19:37:41.859636+00:00",
+      "last_success": "2026-11-26T19:47:21.734609+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 7.519
+      "duration_seconds": 5.391
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T19:37:41.859703+00:00",
+      "last_attempt": "2026-11-26T19:47:21.734691+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T19:38:31.325970+00:00",
+      "last_success": "2026-11-26T19:48:05.651821+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 49.466,
+      "duration_seconds": 43.917,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-26T19:37:42.087087+00:00",
+          "checked_at": "2026-11-26T19:47:21.949638+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-26T19:37:52.046648+00:00",
+          "checked_at": "2026-11-26T19:47:31.967330+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-26T19:37:52.362667+00:00",
+          "checked_at": "2026-11-26T19:47:32.116349+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-26T19:37:52.362686+00:00",
+          "checked_at": "2026-11-26T19:47:32.116367+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -105102,12 +105182,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T19:38:31.326034+00:00",
+      "last_attempt": "2026-11-26T19:48:05.651883+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T19:38:31.633668+00:00",
+      "last_success": "2026-11-26T19:48:05.950770+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.308,
+      "duration_seconds": 0.299,
       "latest_build": "c6054c1494f7a0b9c8d07c0fa35f410cfec840ebeb49f9540a6b3c98140a5a0c",
       "builds_retained": 216,
       "identifiers": 10414
@@ -105115,12 +105195,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T19:38:31.815084+00:00",
+      "last_attempt": "2026-11-26T19:48:06.132778+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T19:38:32.209622+00:00",
+      "last_success": "2026-11-26T19:48:06.497678+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.395,
+      "duration_seconds": 0.366,
       "latest_build": "306b73d11341eb6e5b90b5e4d2fd03d0e8bf5775",
       "builds_retained": 102,
       "identifiers": 7096
@@ -105141,21 +105221,21 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T19:38:33.157294+00:00",
+      "last_attempt": "2026-11-26T19:48:06.689972+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4721,
-      "duration_seconds": 19.84
+      "consecutive_failures": 4724,
+      "duration_seconds": 19.864
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-26T19:32:30.714169+00:00",
+      "last_attempt": "2026-11-26T19:48:26.562162+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T19:32:31.044579+00:00",
+      "last_success": "2026-11-26T19:48:26.728321+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.33,
+      "duration_seconds": 0.166,
       "latest_build": "3.15.14",
       "builds_retained": 5,
       "identifiers": 3340
@@ -105163,22 +105243,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T19:38:53.005343+00:00",
+      "last_attempt": "2026-11-26T19:48:27.107438+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T19:39:02.281371+00:00",
+      "last_success": "2026-11-26T19:48:36.429740+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 9.276
+      "duration_seconds": 9.322
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T19:39:02.281453+00:00",
+      "last_attempt": "2026-11-26T19:48:36.429801+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T19:39:03.888142+00:00",
+      "last_success": "2026-11-26T19:48:38.040308+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.607
+      "duration_seconds": 1.611
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -105193,22 +105273,22 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T19:39:13.899202+00:00",
+      "last_attempt": "2026-11-26T19:48:38.040365+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T19:39:14.429522+00:00",
+      "last_success": "2026-11-26T19:48:38.607734+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.53
+      "duration_seconds": 0.567
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T19:39:14.429576+00:00",
+      "last_attempt": "2026-11-26T19:48:38.607779+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T19:39:14.457970+00:00",
+      "last_success": "2026-11-26T19:48:38.634401+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.028
+      "duration_seconds": 0.027
     }
   },
   "identities": {
