@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-26T01:25:24.933302+00:00",
-  "scan_completed_at": "2026-11-26T01:26:47.398639+00:00",
+  "generated_at": "2026-11-26T01:31:23.899483+00:00",
+  "scan_completed_at": "2026-11-26T01:33:06.969035+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 358,
     "leaks": 34,
     "releases": 93,
     "stories_24h": 46,
-    "sources_ok": 12,
-    "total_cards": 910,
+    "sources_ok": 15,
+    "total_cards": 911,
     "new_in_this_scan": 1
   },
   "stories": [
@@ -22,7 +22,7 @@
       "provider_name": "Unattributed",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-26T01:26:10.358239+00:00",
-      "updated_at": "2026-11-26T01:26:10.358239+00:00",
+      "updated_at": "2026-11-26T01:32:16.164529+00:00",
       "first_source": "Registry Update",
       "lead": "",
       "released_on": "2026-11-26",
@@ -51,7 +51,8 @@
       "backfill": false,
       "header": "REGISTRY UPDATE · UNATTRIBUTED",
       "card_ids": [
-        "intel-188fe32b60bd11ca265a"
+        "intel-188fe32b60bd11ca265a",
+        "intel-1abf98469d684ab60232"
       ],
       "event_label": "Registry update",
       "intelligence_only": true,
@@ -70,6 +71,21 @@
           "build": "5bef7bed873e1dc14499146567ecb753f8a2958fb39510a5c1ff8180624f3e8c",
           "source_url": "https://models.dev/api.json?type=all",
           "first_seen": "2026-11-26T01:26:09.915004+00:00"
+        },
+        {
+          "id": "opencode/seaglass-alpha-free",
+          "family": "seaglass-alpha-free",
+          "file_path": "providers/opencode/models/seaglass-alpha-free.toml",
+          "file_sha256": "d5236b0f42f92ce6ed7f2193817ebdfc0a1eb4431468919c9713858ed9bd32a4",
+          "excerpt": "{\"opencode/seaglass-alpha-free\": {\"schema\": 2, \"name\": \"Seaglass Alpha Free\", \"description\": \"Stealth reasoning model, free for a limited time\", \"open_weights\": false, \"release_date\": \"2026-11-26\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"temperature\": true}, \"limit\": {\"context\": 1048576, \"output\": 131072}, \"api\": {\"chat-completions\": {\"base_url\": \"https://opencode.ai/inference/openai/v1\", \"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0, \"cache\": {\"read\": 0}}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/584097a39ed06b6dcb134538daf7eeb64eb37594/providers/opencode/models/seaglass-alpha-free.toml",
+          "build": "584097a39ed06b6dcb134538daf7eeb64eb37594",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/584097a39ed06b6dcb134538daf7eeb64eb37594",
+          "first_seen": "2026-11-26T01:23:00+00:00"
         }
       ],
       "x_post_text": "Registry Update 5bef7bed873e: seaglass-alpha-free\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
@@ -30523,6 +30539,93 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-1abf98469d684ab60232",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "seaglass-alpha-free",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "seaglass-alpha-free",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "opencode/seaglass-alpha-free",
+          "name": "opencode/seaglass-alpha-free",
+          "registry_update": true,
+          "released_on": "2026-11-26"
+        }
+      ],
+      "detected_at": "2026-11-26T01:32:16.164529+00:00",
+      "first_seen": "2026-11-26T01:23:00+00:00",
+      "observed_at": "2026-11-26T01:32:16.164529+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "caf577e4acc1bc1e968b486514d183bb982280c5 -> 584097a39ed06b6dcb134538daf7eeb64eb37594",
+      "build": "584097a39ed06b6dcb134538daf7eeb64eb37594",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/584097a39ed06b6dcb134538daf7eeb64eb37594",
+      "artifact_sha256": "f407add62654337e271f2031d3584b183e3e63fb2815ff88370c45910c2d218c",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/f407add62654337e271f2031d3584b183e3e63fb2815ff88370c45910c2d218c.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/f407add62654337e271f2031d3584b183e3e63fb2815ff88370c45910c2d218c.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "opencode/seaglass-alpha-free",
+          "family": "seaglass-alpha-free",
+          "file_path": "providers/opencode/models/seaglass-alpha-free.toml",
+          "file_sha256": "d5236b0f42f92ce6ed7f2193817ebdfc0a1eb4431468919c9713858ed9bd32a4",
+          "excerpt": "{\"opencode/seaglass-alpha-free\": {\"schema\": 2, \"name\": \"Seaglass Alpha Free\", \"description\": \"Stealth reasoning model, free for a limited time\", \"open_weights\": false, \"release_date\": \"2026-11-26\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": true}, \"reasoning\": {\"supported\": true, \"effort\": [\"minimal\", \"low\", \"medium\", \"high\", \"xhigh\", \"max\"]}, \"temperature\": true}, \"limit\": {\"context\": 1048576, \"output\": 131072}, \"api\": {\"chat-completions\": {\"base_url\": \"https://opencode.ai/inference/openai/v1\", \"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0, \"cache\": {\"read\": 0}}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/584097a39ed06b6dcb134538daf7eeb64eb37594/providers/opencode/models/seaglass-alpha-free.toml",
+          "build": "584097a39ed06b6dcb134538daf7eeb64eb37594",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/584097a39ed06b6dcb134538daf7eeb64eb37594",
+          "first_seen": "2026-11-26T01:23:00+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/584097a39ed06b6dcb134538daf7eeb64eb37594"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/584097a39ed06b6dcb134538daf7eeb64eb37594"
+        }
+      ],
+      "tracker_observed_at": "2026-11-26T01:32:19.634916+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 584097a39ed0: opencode/seaglass-alpha-free\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/584097a39ed06b6dcb134538daf7eeb64eb37594"
+    },
     {
       "id": "intel-188fe32b60bd11ca265a",
       "scanner": "models-dev-api",
@@ -103256,12 +103359,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T01:26:09.469804+00:00",
+      "last_attempt": "2026-11-26T01:32:09.633532+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T01:26:13.142177+00:00",
+      "last_success": "2026-11-26T01:32:10.031059+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.673,
+      "duration_seconds": 0.398,
       "latest_build": "5bef7bed873e1dc14499146567ecb753f8a2958fb39510a5c1ff8180624f3e8c",
       "builds_retained": 199,
       "identifiers": 10386
@@ -103269,12 +103372,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T01:23:17.015206+00:00",
+      "last_attempt": "2026-11-26T01:32:10.228286+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T01:23:17.500187+00:00",
+      "last_success": "2026-11-26T01:32:10.693186+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.486,
+      "duration_seconds": 0.466,
       "latest_build": "ee6575d34839351820c3f334af2c9de01b5e6479",
       "builds_retained": 95,
       "identifiers": 7084
@@ -103282,24 +103385,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T01:20:12.115439+00:00",
+      "last_attempt": "2026-11-26T01:32:10.897895+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T01:20:12.750654+00:00",
+      "last_success": "2026-11-26T01:32:19.634916+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.636,
-      "latest_build": "caf577e4acc1bc1e968b486514d183bb982280c5",
-      "builds_retained": 199,
-      "identifiers": 11635
+      "duration_seconds": 8.738,
+      "latest_build": "584097a39ed06b6dcb134538daf7eeb64eb37594",
+      "builds_retained": 200,
+      "identifiers": 11636
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T01:26:13.337157+00:00",
+      "last_attempt": "2026-11-26T01:32:19.839513+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4325,
-      "duration_seconds": 21.442
+      "consecutive_failures": 4327,
+      "duration_seconds": 21.092
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -103319,61 +103422,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T01:25:24.933378+00:00",
+      "last_attempt": "2026-11-26T01:31:23.899565+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T01:25:27.872893+00:00",
+      "last_success": "2026-11-26T01:31:26.926499+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.94
+      "duration_seconds": 3.027
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T01:25:27.872956+00:00",
+      "last_attempt": "2026-11-26T01:31:26.926575+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T01:25:28.119887+00:00",
+      "last_success": "2026-11-26T01:31:27.197630+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.247
+      "duration_seconds": 0.271
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T01:25:28.119929+00:00",
+      "last_attempt": "2026-11-26T01:31:27.197672+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T01:25:36.229246+00:00",
+      "last_success": "2026-11-26T01:31:34.975042+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.109
+      "duration_seconds": 7.777
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T01:25:36.229325+00:00",
+      "last_attempt": "2026-11-26T01:31:34.975115+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T01:26:09.469739+00:00",
+      "last_success": "2026-11-26T01:32:09.633468+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 33.24,
+      "duration_seconds": 34.658,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-26T01:25:36.751678+00:00",
+          "checked_at": "2026-11-26T01:31:35.569102+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-26T01:25:46.359911+00:00",
+          "checked_at": "2026-11-26T01:31:45.876242+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-26T01:25:46.549225+00:00",
+          "checked_at": "2026-11-26T01:31:46.091355+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-26T01:25:46.549241+00:00",
+          "checked_at": "2026-11-26T01:31:46.091373+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -103381,12 +103484,12 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T01:26:09.469804+00:00",
+      "last_attempt": "2026-11-26T01:32:09.633532+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T01:26:13.142177+00:00",
+      "last_success": "2026-11-26T01:32:10.031059+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.673,
+      "duration_seconds": 0.398,
       "latest_build": "5bef7bed873e1dc14499146567ecb753f8a2958fb39510a5c1ff8180624f3e8c",
       "builds_retained": 199,
       "identifiers": 10386
@@ -103394,12 +103497,12 @@
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-26T01:23:17.015206+00:00",
+      "last_attempt": "2026-11-26T01:32:10.228286+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T01:23:17.500187+00:00",
+      "last_success": "2026-11-26T01:32:10.693186+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.486,
+      "duration_seconds": 0.466,
       "latest_build": "ee6575d34839351820c3f334af2c9de01b5e6479",
       "builds_retained": 95,
       "identifiers": 7084
@@ -103407,24 +103510,24 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T01:20:12.115439+00:00",
+      "last_attempt": "2026-11-26T01:32:10.897895+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T01:20:12.750654+00:00",
+      "last_success": "2026-11-26T01:32:19.634916+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.636,
-      "latest_build": "caf577e4acc1bc1e968b486514d183bb982280c5",
-      "builds_retained": 199,
-      "identifiers": 11635
+      "duration_seconds": 8.738,
+      "latest_build": "584097a39ed06b6dcb134538daf7eeb64eb37594",
+      "builds_retained": 200,
+      "identifiers": 11636
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-26T01:26:13.337157+00:00",
+      "last_attempt": "2026-11-26T01:32:19.839513+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 4325,
-      "duration_seconds": 21.442
+      "consecutive_failures": 4327,
+      "duration_seconds": 21.092
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -103442,64 +103545,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T01:26:34.786477+00:00",
+      "last_attempt": "2026-11-26T01:32:40.939483+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T01:26:43.616322+00:00",
+      "last_success": "2026-11-26T01:32:49.757675+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.83
+      "duration_seconds": 8.818
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T01:26:43.616389+00:00",
+      "last_attempt": "2026-11-26T01:32:49.757739+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T01:26:45.326472+00:00",
+      "last_success": "2026-11-26T01:32:51.370515+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.71
+      "duration_seconds": 1.613
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-26T01:20:45.121698+00:00",
+      "last_attempt": "2026-11-26T01:32:51.370562+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T01:20:55.643604+00:00",
+      "last_success": "2026-11-26T01:33:04.718671+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 10.522
+      "duration_seconds": 13.348
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T01:26:45.326526+00:00",
+      "last_attempt": "2026-11-26T01:33:04.718727+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T01:26:46.791139+00:00",
+      "last_success": "2026-11-26T01:33:06.170315+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.465
+      "duration_seconds": 1.452
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-26T01:26:46.791185+00:00",
+      "last_attempt": "2026-11-26T01:33:06.170367+00:00",
       "status": "ok",
-      "last_success": "2026-11-26T01:26:46.854774+00:00",
+      "last_success": "2026-11-26T01:33:06.249257+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.064
+      "duration_seconds": 0.079
     }
   },
   "identities": {
-    "identifiers": 32445,
+    "identifiers": 32446,
     "declared_aliases": 19451,
     "pending_candidates": 4
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 500,
-      "seconds_mean": 4797.69367534,
+      "samples": 501,
+      "seconds_mean": 4789.2275492994,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -103513,9 +103616,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 656,
-      "events": 658,
-      "rate": 0.9969604863221885
+      "complete": 657,
+      "events": 659,
+      "rate": 0.9969650986342944
     },
     "source_health": {
       "sources": 14,
