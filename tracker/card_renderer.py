@@ -65,6 +65,8 @@ PROVIDER_PALETTE: Dict[str, Tuple[Tuple[int, int, int], str]] = {
     "cohere": ((74, 222, 128), "CO"),
     "perplexity": ((56, 189, 248), "PX"),
     "cursor": ((148, 163, 184), "CR"),
+    "opencode": ((192, 132, 252), "OC"),
+    "mcp": ((45, 212, 191), "MCP"),
     "opensource": ((74, 222, 128), "OS"),
     "multi": ((129, 140, 248), "AI"),
 }
@@ -495,3 +497,193 @@ def card_filename(item: Dict[str, Any]) -> str:
     raw = str(item.get("group") or item.get("title") or item.get("family") or item.get("id") or "model-card")
     slug = re.sub(r"[^a-z0-9-]+", "-", raw.lower()).strip("-")[:48] or "model"
     return f"statswire-{slug}.png"
+
+
+def render_release_card_png(
+    *,
+    display_name: str,
+    version: str,
+    provider_slug: str,
+    org_label: str,
+    badge_text: str,
+    item_count: int,
+    subtitle: str,
+    highlights: List[str],
+    gem_chips: Optional[List[str]] = None,
+    timestamp_iso: str = "",
+) -> Optional[bytes]:
+    """Render a 16:9 dark @StatsWire Release Card PNG (1200x675).
+
+    Returns PNG bytes, or ``None`` if Pillow is unavailable.
+    """
+    if Image is None or ImageDraw is None or ImageFont is None:
+        return None
+
+    W, H = 1200, 675
+    lx, rx = 56, W - 56
+    content_w = rx - lx
+
+    slug = (provider_slug or "google").lower()
+    accent_rgb = PROVIDER_PALETTE.get(slug, ((138, 180, 248), "AI"))[0]
+    ts_str = _fmt_utc_compact(timestamp_iso)
+
+    is_alpha = "ALPHA" in (badge_text or "").upper()
+    is_spec = "SPEC" in (badge_text or "").upper()
+    if is_alpha:
+        st_fg, st_bg, st_bd = (245, 200, 96), (34, 27, 13), (112, 88, 36)
+    elif is_spec:
+        st_fg, st_bg, st_bd = (45, 212, 191), (12, 32, 32), (38, 104, 100)
+    else:
+        st_fg, st_bg, st_bd = (74, 222, 128), (13, 34, 22), (40, 108, 66)
+
+    f_eyebrow = _load_font(_SANS_BOLD_FONTS, 22)
+    f_badge = _load_font(_SANS_BOLD_FONTS, 18)
+    f_sub = _load_font(_SANS_REG_FONTS, 24)
+    f_bullet = _load_font(_SANS_REG_FONTS, 23)
+    f_chip = _load_font(_MONO_BOLD_FONTS, 17)
+    f_foot_b = _load_font(_SANS_BOLD_FONTS, 23)
+    f_date = _load_font(_SANS_REG_FONTS, 20)
+    f_wm = _load_font(_SANS_BOLD_FONTS, 24)
+
+    base = Image.new("RGB", (W, H), (0, 0, 0))
+    draw = ImageDraw.Draw(base)
+
+    cx0, cy0, cx1, cy1 = 8, 8, W - 9, H - 9
+    draw.rounded_rectangle([cx0, cy0, cx1, cy1], radius=32, fill=(7, 9, 14), outline=(44, 50, 62), width=2)
+
+    card_mask = Image.new("L", (W, H), 0)
+    ImageDraw.Draw(card_mask).rounded_rectangle([cx0 + 1, cy0 + 1, cx1 - 1, cy1 - 1], radius=31, fill=255)
+    top_bar = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    ImageDraw.Draw(top_bar).rectangle([cx0, cy0, cx1, cy0 + 5], fill=(*accent_rgb, 220))
+    top_bar.putalpha(Image.composite(top_bar.split()[3], Image.new("L", (W, H), 0), card_mask))
+    base = Image.alpha_composite(base.convert("RGBA"), top_bar).convert("RGB")
+    draw = ImageDraw.Draw(base)
+
+    # Top-right provider badge
+    badge = _make_provider_badge(slug, accent_rgb, size=128)
+    base.paste(badge, (rx - 128, 46), badge)
+    max_left_w = content_w - 156
+
+    # Eyebrow row
+    y = 48
+    ex = lx
+    if slug == "google":
+        spark = _make_gemini_spark(34, badge_bg=True)
+        base.paste(spark, (lx, y), spark)
+        ex = lx + 46
+    else:
+        draw.ellipse([lx, y + 9, lx + 16, y + 25], fill=accent_rgb)
+        ex = lx + 28
+
+    ex += _draw_vcenter_text(draw, ex, y + 17, _truncate(org_label.upper(), f_eyebrow, 260, draw), f_eyebrow, accent_rgb) + 14
+    w_b, _ = _draw_pill(draw, ex, y + 1, badge_text.upper(), f_badge, text_fill=st_fg, bg_fill=st_bg, border_fill=st_bd, pad_x=14, radius=10, fixed_h=32)
+    ex += w_b + 10
+    if item_count > 0:
+        count_label = f"{item_count} {'ITEM' if item_count == 1 else 'ITEMS'}"
+        _draw_pill(
+            draw,
+            ex,
+            y + 1,
+            count_label,
+            f_badge,
+            text_fill=(210, 220, 236),
+            bg_fill=(18, 22, 32),
+            border_fill=(56, 66, 84),
+            pad_x=14,
+            radius=10,
+            fixed_h=32,
+        )
+
+    # Title (auto-scaled)
+    y += 52
+    full_title = f"{display_name} {version}".strip()
+    f_title = _load_font(_SANS_BOLD_FONTS, 50)
+    for sz in (50, 44, 38, 34):
+        cand = _load_font(_SANS_BOLD_FONTS, sz)
+        if draw.textlength(full_title, font=cand) <= max_left_w:
+            f_title = cand
+            break
+    else:
+        f_title = _load_font(_SANS_BOLD_FONTS, 34)
+        full_title = _truncate(full_title, f_title, max_left_w, draw)
+    draw.text((lx, y), full_title, font=f_title, fill=(255, 255, 255))
+
+    # Subtitle
+    y += 66
+    draw.text((lx, y), _truncate(subtitle, f_sub, max_left_w, draw), font=f_sub, fill=(178, 188, 204))
+
+    # Divider
+    y = 224
+    draw.line([(lx, y), (rx, y)], fill=(32, 37, 46), width=2)
+
+    # Highlights list (up to 4 clean rows)
+    y += 24
+    shown_highlights = [h.strip() for h in highlights if h and h.strip()][:4]
+    row_h = 56
+    for idx, line_txt in enumerate(shown_highlights):
+        cy_row = y + 18
+        dot_col = accent_rgb if idx == 0 else (142, 152, 168)
+        draw.ellipse([lx, cy_row - 5, lx + 10, cy_row + 5], fill=dot_col)
+        clean_line = _truncate(line_txt, f_bullet, content_w - 28, draw)
+        _draw_vcenter_text(
+            draw,
+            lx + 24,
+            cy_row,
+            clean_line,
+            f_bullet,
+            (244, 247, 252) if idx == 0 else (212, 220, 232),
+        )
+        y += row_h
+
+    # Buried gem / signal chips row (above footer)
+    chips = [c.strip() for c in (gem_chips or []) if c and c.strip()][:5]
+    if chips:
+        chip_y = H - 156
+        cx = lx
+        for chip in chips:
+            max_rem = rx - cx
+            if max_rem < 110:
+                break
+            w_c, _ = _draw_pill(
+                draw,
+                cx,
+                chip_y,
+                chip,
+                f_chip,
+                text_fill=(186, 214, 255),
+                bg_fill=(14, 22, 36),
+                border_fill=(44, 62, 92),
+                pad_x=13,
+                radius=9,
+                fixed_h=34,
+                max_w=min(290, max_rem),
+            )
+            cx += w_c + 10
+
+    # Clean footer
+    draw.line([(lx, H - 102), (rx, H - 102)], fill=(32, 37, 46), width=2)
+    fy = H - 78
+    sw = _make_sw_square(42)
+    base.paste(sw, (lx, fy), sw)
+    fx = lx + 56
+    fx += _draw_vcenter_text(draw, fx, fy + 21, "Developed by ", f_foot_b, (255, 255, 255))
+    fx += _draw_vcenter_text(draw, fx, fy + 21, "@StatsWire", f_foot_b, (138, 180, 248))
+    _draw_vcenter_text(draw, fx, fy + 21, " · Full .md attached", f_foot_b, (172, 182, 198))
+
+    dw = int(draw.textlength(ts_str, font=f_date))
+    _draw_vcenter_text(draw, rx - dw, fy + 21, ts_str, f_date, (140, 150, 166))
+
+    # Subtle diagonal watermark
+    wm_layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    for wy in range(-20, H + 80, 220):
+        for wx in range(-40, W + 120, 360):
+            stamp = Image.new("RGBA", (240, 80), (0, 0, 0, 0))
+            ImageDraw.Draw(stamp).text((14, 20), "@StatsWire", font=f_wm, fill=(255, 255, 255, 9))
+            rot = stamp.rotate(20, resample=Image.Resampling.BICUBIC, expand=True)
+            wm_layer.alpha_composite(rot, (wx, wy))
+    wm_layer.putalpha(Image.composite(wm_layer.split()[3], Image.new("L", (W, H), 0), card_mask))
+
+    final = Image.alpha_composite(base.convert("RGBA"), wm_layer).convert("RGB")
+    buf = io.BytesIO()
+    final.save(buf, format="PNG", optimize=True)
+    return buf.getvalue()

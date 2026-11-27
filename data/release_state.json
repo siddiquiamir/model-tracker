@@ -83,6 +83,102 @@
       "seen_versions": [
         "v2.1.332"
       ]
+    },
+    "codex:alpha-radar": {
+      "display_name": "OpenAI Codex Alpha Radar",
+      "product_family": "codex-alpha",
+      "latest_version": "rust-v0.174.0-alpha.9",
+      "published_at": "2026-11-27T16:56:00Z",
+      "url": "https://github.com/openai/codex/compare/rust-v0.172.0...rust-v0.174.0-alpha.9",
+      "bullet_count": 248,
+      "archive_relpath": "codex-alpha-radar/rust-v0.174.0-alpha.9.md",
+      "convergence_tags": [
+        "skills",
+        "mcp",
+        "voice",
+        "auto-mode",
+        "hooks",
+        "code-mode",
+        "swarms",
+        "remote",
+        "worktrees",
+        "compaction",
+        "ide"
+      ],
+      "updated_at": "2026-11-27T19:30:22Z",
+      "seen_versions": [
+        "rust-v0.174.0-alpha.9"
+      ]
+    },
+    "gemini-cli:cli": {
+      "display_name": "Google Gemini CLI",
+      "product_family": "gemini-cli",
+      "latest_version": "v0.71.1",
+      "published_at": "2026-11-24T03:50:24Z",
+      "url": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.71.1",
+      "bullet_count": 1,
+      "archive_relpath": "gemini-cli/v0.71.1.md",
+      "convergence_tags": [],
+      "updated_at": "2026-11-27T19:30:22Z",
+      "seen_versions": [
+        "v0.71.1"
+      ]
+    },
+    "opencode:cli": {
+      "display_name": "OpenCode",
+      "product_family": "opencode",
+      "latest_version": "v2.4.2",
+      "published_at": "2026-11-26T00:59:05Z",
+      "url": "https://github.com/anomalyco/opencode/releases/tag/v2.4.2",
+      "bullet_count": 47,
+      "archive_relpath": "opencode/v2.4.2.md",
+      "convergence_tags": [
+        "skills",
+        "mcp",
+        "hooks",
+        "code-mode",
+        "swarms",
+        "compaction",
+        "ide",
+        "models"
+      ],
+      "updated_at": "2026-11-27T19:30:22Z",
+      "seen_versions": [
+        "v2.4.2"
+      ]
+    },
+    "cursor:changelog": {
+      "display_name": "Cursor",
+      "product_family": "cursor",
+      "latest_version": "voice-chat",
+      "published_at": "2026-11-06",
+      "url": "https://cursor.com/changelog/voice-chat",
+      "bullet_count": 0,
+      "archive_relpath": "cursor/voice-chat.md",
+      "convergence_tags": [
+        "voice",
+        "ide"
+      ],
+      "updated_at": "2026-11-27T19:30:22Z",
+      "seen_versions": [
+        "voice-chat"
+      ]
+    },
+    "mcp:spec": {
+      "display_name": "MCP Specification",
+      "product_family": "mcp-spec",
+      "latest_version": "2026-07-28",
+      "published_at": "2026-07-28T16:47:49Z",
+      "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/releases/tag/2026-07-28",
+      "bullet_count": 0,
+      "archive_relpath": "mcp-spec/2026-07-28.md",
+      "convergence_tags": [
+        "mcp"
+      ],
+      "updated_at": "2026-11-27T19:30:22Z",
+      "seen_versions": [
+        "2026-07-28"
+      ]
     }
   },
   "history": [
@@ -96,7 +192,27 @@
       "archive_relpath": "antigravity-app/v2.36.0.md",
       "url": "https://antigravity.google/releases?tab=hub&version=2.36.0",
       "tweet": "Google Antigravity App v2.36.0 is out (39 changes) 🚀\n\nHighlights:\n• A floating composer pill at the bottom of maximized…\n• Discovery for custom skills stored in…\n• A dashed circle icon alongside strikethrough text for…\n• Expanded Auto mode to automatically approve safe file…",
-      "notified": false
+      "notified": false,
+      "product_family": "antigravity",
+      "buried_gems": {
+        "cli_flags": [],
+        "slash_commands": [],
+        "env_vars": [],
+        "hooks_and_keys": [],
+        "model_and_breaking": [
+          "Fixed an issue where selecting the same model for both Orchestrator planner and executor fell back to a different default model instead of running as a single…"
+        ]
+      },
+      "convergence_tags": [
+        "skills",
+        "mcp",
+        "voice",
+        "auto-mode",
+        "hooks",
+        "swarms",
+        "remote",
+        "ide"
+      ]
     },
     {
       "track_key": "antigravity:cli",
@@ -108,7 +224,36 @@
       "archive_relpath": "antigravity-cli/v1.5.16.md",
       "url": "https://antigravity.google/releases?tab=cli&version=1.5.16",
       "tweet": "Google Antigravity CLI v1.5.16 is out (17 changes) 🚀\n\nHighlights:\n• -r and --resume command-line flag aliases for…\n• A live step checklist under the status line above the…\n• Discovery of user-global skills in ~/.agents/skills…\n• Elapsed timers while the agent is working: the…",
-      "notified": false
+      "notified": false,
+      "product_family": "antigravity",
+      "buried_gems": {
+        "cli_flags": [
+          "--resume",
+          "--conversation"
+        ],
+        "slash_commands": [
+          "/skills",
+          "/usage",
+          "/quota",
+          "/thinking",
+          "/swarm"
+        ],
+        "env_vars": [],
+        "hooks_and_keys": [
+          "hooks.json",
+          "pluginControls.pluginsDisabled"
+        ],
+        "model_and_breaking": []
+      },
+      "convergence_tags": [
+        "skills",
+        "voice",
+        "auto-mode",
+        "hooks",
+        "swarms",
+        "remote",
+        "worktrees"
+      ]
     },
     {
       "track_key": "antigravity:ide-extensions",
@@ -120,7 +265,23 @@
       "archive_relpath": "antigravity-ide-extensions/v1.13.0.md",
       "url": "https://antigravity.google/docs/ide/extensions/vscode",
       "tweet": "Google Antigravity IDE Extensions v1.13.0 is out (25 changes) 🚀\n\nHighlights:\n• Keybinding Scheme Selector: Added a Shortcuts settings…\n• Standardized Commands & Shortcuts: Added keyboard…\n• Voice Dictation Support: Added microphone capture…\n• Context Menu Attachment: Added…",
-      "notified": false
+      "notified": false,
+      "product_family": "antigravity",
+      "buried_gems": {
+        "cli_flags": [],
+        "slash_commands": [],
+        "env_vars": [],
+        "hooks_and_keys": [],
+        "model_and_breaking": []
+      },
+      "convergence_tags": [
+        "skills",
+        "mcp",
+        "voice",
+        "auto-mode",
+        "hooks",
+        "ide"
+      ]
     },
     {
       "track_key": "antigravity:sdk",
@@ -132,7 +293,31 @@
       "archive_relpath": "antigravity-sdk/v0.1.24.md",
       "url": "https://antigravity.google/download#antigravity-sdk",
       "tweet": "Google Antigravity SDK v0.1.24 is out 🚀\n\nHighlights:\n• Default Model (gemini-4-hydrogen) &…\n• On-Device Vision Support (LiteRTAgentConfig): Added…\n• LiteRT Multi-Turn Prefix Caching: Reuses the active…\n• LocalOpenAIConnection Usage, Latency, and Retry…",
-      "notified": false
+      "notified": false,
+      "product_family": "antigravity",
+      "buried_gems": {
+        "cli_flags": [],
+        "slash_commands": [],
+        "env_vars": [
+          "EXTRA_HIGH",
+          "DEFAULT_MODEL"
+        ],
+        "hooks_and_keys": [
+          "litert_lm.ModelInfo",
+          "functools.partial",
+          "asyncio.CancelledError",
+          "types.AntigravityCancelledError"
+        ],
+        "model_and_breaking": [
+          "Default Model (gemini-4-hydrogen) & ThinkingLevel.EXTRA_HIGH Mapping: Updated the SDK default model (DEFAULT_MODEL) from \"gemini-3.8-flash\" to…"
+        ]
+      },
+      "convergence_tags": [
+        "hooks",
+        "swarms",
+        "compaction",
+        "models"
+      ]
     },
     {
       "track_key": "antigravity:ide",
@@ -144,7 +329,18 @@
       "archive_relpath": "antigravity-ide/v2.8.0.md",
       "url": "https://antigravity.google/releases?tab=ide&version=2.8.0",
       "tweet": "Google Antigravity IDE v2.8.0 is out 🚀\n\nHighlights:\n• Automatic port forwarding and authorization code…\n• Recurring background release checks and a notification…\n• Keyboard shortcuts to search within conversations when…\n• Visually hidden semantic headings to conversation…",
-      "notified": false
+      "notified": false,
+      "product_family": "antigravity",
+      "buried_gems": {
+        "cli_flags": [],
+        "slash_commands": [],
+        "env_vars": [],
+        "hooks_and_keys": [],
+        "model_and_breaking": []
+      },
+      "convergence_tags": [
+        "ide"
+      ]
     },
     {
       "track_key": "codex:cli",
@@ -156,7 +352,34 @@
       "archive_relpath": "codex-cli/rust-v0.172.0.md",
       "url": "https://github.com/openai/codex/releases/tag/rust-v0.172.0",
       "tweet": "OpenAI Codex CLI rust-v0.172.0 is out (100 changes) 🚀\n\nHighlights:\n• Follow thread links from search results and…\n• Press Tab to complete arguments for supported slash…\n• Jump between task groups in the agent command center…\n• Optional stdio MCP servers with cached tool lists…",
-      "notified": false
+      "notified": false,
+      "product_family": "codex",
+      "buried_gems": {
+        "cli_flags": [],
+        "slash_commands": [
+          "/mcp",
+          "/status",
+          "/experimental"
+        ],
+        "env_vars": [],
+        "hooks_and_keys": [
+          "config.toml"
+        ],
+        "model_and_breaking": [
+          "Code Mode now uses gRPC for all host connections. The code_mode_host_grpc setting is deprecated. (#62476)"
+        ]
+      },
+      "convergence_tags": [
+        "skills",
+        "mcp",
+        "voice",
+        "auto-mode",
+        "hooks",
+        "code-mode",
+        "swarms",
+        "worktrees",
+        "models"
+      ]
     },
     {
       "track_key": "claude-code:cli",
@@ -168,8 +391,218 @@
       "archive_relpath": "claude-code/v2.1.332.md",
       "url": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md#21332",
       "tweet": "Anthropic Claude Code v2.1.332 is out (150 changes) 🚀\n\nHighlights:\n• Skills from MCP servers (beta). They show as…\n• A PreSkillShellCommand hook event that can refuse a…\n• \"Always deliver\" to the prompt for held messages from…\n• A footer line that stays while a flagged message…",
+      "notified": false,
+      "product_family": "claude-code",
+      "buried_gems": {
+        "cli_flags": [
+          "--fallback-model",
+          "--effort",
+          "--environment",
+          "--configure-git",
+          "--version",
+          "--model"
+        ],
+        "slash_commands": [
+          "/model",
+          "/compact",
+          "/stats",
+          "/install-github-app",
+          "/plugin",
+          "/reload-plugins",
+          "/mcp",
+          "/context",
+          "/usage",
+          "/permissions",
+          "/autocompact",
+          "/clear"
+        ],
+        "env_vars": [
+          "CLAUDE_CODE_EFFORT_LEVEL",
+          "ANTHROPIC_DEFAULT_SONNET_MODEL",
+          "VERTEX_REGION_CLAUDE_5_5_SONNET",
+          "CLOUD_ML_REGION",
+          "OTEL_SERVICE_NAME",
+          "OTEL_LOG_ASSISTANT_RESPONSES",
+          "CLAUDE_CODE_OAUTH_TOKEN",
+          "CLAUDE_CODE_AUTO_COMPACT_WINDOW"
+        ],
+        "hooks_and_keys": [
+          "PreSkillShellCommand",
+          "keybindings.json",
+          "turn.step",
+          "service.name",
+          "PromptHint"
+        ],
+        "model_and_breaking": [
+          "Fixed a session failing when the cloud refused its default model and an availableModels list that isn't enforced named neither it nor an older model of that…",
+          "Fixed an enforced list of older models failing on Google Cloud's Agent Platform and Foundry when the first is refused: it now steps down to the next in that…",
+          "Fixed opus failing on Bedrock, Google Cloud's Agent Platform and Foundry behind a gateway that refuses a model in its own words: it now steps down to an older…",
+          "Changed the sonnet model alias on Google Cloud's Agent Platform and Microsoft Foundry to Sonnet 5.5, and Foundry's opus alias to Opus 5.5; sonnet on Amazon…",
+          "Changed the default model on Microsoft Foundry to Sonnet 5.5: deploy claude-sonnet-5-5, or set ANTHROPIC_DEFAULT_SONNET_MODEL to a model you have deployed",
+          "Changed Microsoft Foundry: Claude Sonnet 4, Opus 4 and Opus 4.1 now count as retired, so step-downs stop above them and a pin to one warns that it was retired"
+        ]
+      },
+      "convergence_tags": [
+        "skills",
+        "mcp",
+        "voice",
+        "auto-mode",
+        "hooks",
+        "code-mode",
+        "swarms",
+        "remote",
+        "worktrees",
+        "compaction",
+        "ide",
+        "models"
+      ]
+    },
+    {
+      "track_key": "codex:alpha-radar",
+      "product_family": "codex-alpha",
+      "display_name": "OpenAI Codex Alpha Radar",
+      "version": "rust-v0.174.0-alpha.9",
+      "title": "437 upcoming commits ahead of rust-v0.172.0",
+      "published_at": "2026-11-27T16:56:00Z",
+      "captured_at": "2026-11-27T19:30:22Z",
+      "bullet_count": 248,
+      "archive_relpath": "codex-alpha-radar/rust-v0.174.0-alpha.9.md",
+      "url": "https://github.com/openai/codex/compare/rust-v0.172.0...rust-v0.174.0-alpha.9",
+      "tweet": "OpenAI Codex Alpha Radar rust-v0.174.0-alpha.9 is out (248 changes) 🚀\n\n437 upcoming commits ahead of rust-v0.172.0\n• Gate hosted Guardian test helpers to non-Windows builds…\n• Persist command completions when approval is declined or fails…\n• Compute the Responses WebSocket…",
+      "buried_gems": {
+        "cli_flags": [
+          "--approve-for-me"
+        ],
+        "slash_commands": [
+          "/diff",
+          "/status",
+          "/mcp",
+          "/compact"
+        ],
+        "env_vars": [],
+        "hooks_and_keys": [],
+        "model_and_breaking": []
+      },
+      "convergence_tags": [
+        "skills",
+        "mcp",
+        "voice",
+        "auto-mode",
+        "hooks",
+        "code-mode",
+        "swarms",
+        "remote",
+        "worktrees",
+        "compaction",
+        "ide"
+      ],
+      "notified": false
+    },
+    {
+      "track_key": "gemini-cli:cli",
+      "product_family": "gemini-cli",
+      "display_name": "Google Gemini CLI",
+      "version": "v0.71.1",
+      "title": "Release v0.71.1",
+      "published_at": "2026-11-24T03:50:24Z",
+      "captured_at": "2026-11-27T19:30:22Z",
+      "bullet_count": 1,
+      "archive_relpath": "gemini-cli/v0.71.1.md",
+      "url": "https://github.com/google-gemini/gemini-cli/releases/tag/v0.71.1",
+      "tweet": "Google Gemini CLI v0.71.1 is out 🚀\n\nRelease v0.71.1\n• fix(patch): cherry-pick aafdfdf to release/v0.71.0-pr-30420 to…",
+      "buried_gems": {
+        "cli_flags": [],
+        "slash_commands": [],
+        "env_vars": [],
+        "hooks_and_keys": [],
+        "model_and_breaking": []
+      },
+      "convergence_tags": [],
+      "notified": false
+    },
+    {
+      "track_key": "opencode:cli",
+      "product_family": "opencode",
+      "display_name": "OpenCode",
+      "version": "v2.4.2",
+      "title": "OpenCode v2.4.2",
+      "published_at": "2026-11-26T00:59:05Z",
+      "captured_at": "2026-11-27T19:30:22Z",
+      "bullet_count": 47,
+      "archive_relpath": "opencode/v2.4.2.md",
+      "url": "https://github.com/anomalyco/opencode/releases/tag/v2.4.2",
+      "tweet": "OpenCode v2.4.2 is out (47 changes) 🚀\n\nHighlights:\n• Added a system prompt for GPT-6.2. (#66297)\n• GPT-6.2 System Prompt: GPT-6.2 Sol and Astra, and the…\n• OpenCode Go Onboarding Fix: After you connect OpenCode, the…\n• Esc Takes Back Your Last Message: If the composer is empty…",
+      "buried_gems": {
+        "cli_flags": [],
+        "slash_commands": [
+          "/models",
+          "/rename"
+        ],
+        "env_vars": [],
+        "hooks_and_keys": [],
+        "model_and_breaking": []
+      },
+      "convergence_tags": [
+        "skills",
+        "mcp",
+        "hooks",
+        "code-mode",
+        "swarms",
+        "compaction",
+        "ide",
+        "models"
+      ],
+      "notified": false
+    },
+    {
+      "track_key": "cursor:changelog",
+      "product_family": "cursor",
+      "display_name": "Cursor",
+      "version": "voice-chat",
+      "title": "Voice Chat with Agents",
+      "published_at": "2026-11-06",
+      "captured_at": "2026-11-27T19:30:22Z",
+      "bullet_count": 0,
+      "archive_relpath": "cursor/voice-chat.md",
+      "url": "https://cursor.com/changelog/voice-chat",
+      "tweet": "Cursor voice-chat is out 🚀\n\nVoice Chat with Agents\n• You can now talk with your agents in a realtime voice call.…\n• Voice chat works in the Agents Window, the IDE, on web, and in…\n• When the agent is idle and the chat input is empty, click the…",
+      "buried_gems": {
+        "cli_flags": [],
+        "slash_commands": [],
+        "env_vars": [],
+        "hooks_and_keys": [],
+        "model_and_breaking": []
+      },
+      "convergence_tags": [
+        "voice",
+        "ide"
+      ],
+      "notified": false
+    },
+    {
+      "track_key": "mcp:spec",
+      "product_family": "mcp-spec",
+      "display_name": "MCP Specification",
+      "version": "2026-07-28",
+      "title": "MCP Specification 2026-07-28",
+      "published_at": "2026-07-28T16:47:49Z",
+      "captured_at": "2026-11-27T19:30:22Z",
+      "bullet_count": 0,
+      "archive_relpath": "mcp-spec/2026-07-28.md",
+      "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/releases/tag/2026-07-28",
+      "tweet": "MCP Specification 2026-07-28 is out 🚀\n\nHighlights:\n• This release marks the stable release of the 2026-07-28…\n• The specification is available on the official Model Context…\n• For a detailed overview of changes, see 2026-07-28 changelog.",
+      "buried_gems": {
+        "cli_flags": [],
+        "slash_commands": [],
+        "env_vars": [],
+        "hooks_and_keys": [],
+        "model_and_breaking": []
+      },
+      "convergence_tags": [
+        "mcp"
+      ],
       "notified": false
     }
   ],
-  "last_checked_at": "2026-11-27T19:18:03Z"
+  "last_checked_at": "2026-11-27T19:30:22Z"
 }

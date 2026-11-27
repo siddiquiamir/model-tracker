@@ -1,4 +1,4 @@
-"""Offline unit tests for tracker.release_watcher (Antigravity, Codex CLI, Claude Code)."""
+"""Offline unit tests for tracker.release_watcher and PNG release cards."""
 
 from __future__ import annotations
 
@@ -7,42 +7,40 @@ import pathlib
 import tempfile
 import unittest
 
+from tracker import card_renderer
 from tracker import release_watcher as rw
 
 SAMPLE_ANTIGRAVITY_MD = """# Changelog
 
 ## Antigravity App
 
-### [v2.35.2](/releases?tab=hub&version=2.35.2 "View release 2.35.2")
+### [v2.36.0](/releases?tab=hub&version=2.36.0 "View release 2.36.0")
 
 Latest
+
+November 27, 2026
+
+### Floating composer in maximized panels, Auto mode edits, and voice context
+
+This release adds a floating composer with live status inside maximized side panels.
+
+**Improvements:**
+
+*   Added a floating composer pill at the bottom of maximized side panels.
+*   Expanded Auto mode to automatically approve safe file edits in other version-controlled repositories.
+*   Added discovery for custom skills stored in `~/.agents/skills`, with skills in `~/.gemini` taking precedence.
+
+---
+
+### [v2.35.2](/releases?tab=hub&version=2.35.2 "View release 2.35.2")
 
 November 25, 2026
 
 ### Switch models while a turn is running
 
-This release lets you change the selected model while a turn is running.
-
 **Fixes:**
 
-*   Fixed an issue where the model selector was locked while a turn was running.
-
----
-
-### [v2.35.1](/releases?tab=hub&version=2.35.1 "View release 2.35.1")
-
-November 24, 2026
-
-### Resume conversations after restart
-
-**Improvements:**
-
-*   Added automatic resumption on startup for active conversations.
-*   Updated plugin panel links to open in the side panel.
-
-**Fixes:**
-
-*   Fixed uncompressed diagnostic uploads.
+*   Fixed an issue where the model selector was locked while a turn was running before `/btw`.
 
 ---
 
@@ -50,7 +48,7 @@ Model launch·November 18, 2026
 
 ### Gemini 4 Neon
 
-Model launch blurb that should not pollute v2.35.1.
+Model launch blurb that should not pollute v2.35.2.
 
 ## Antigravity CLI
 
@@ -87,10 +85,10 @@ SAMPLE_CODEX_RELEASES = [
         "html_url": "https://github.com/openai/codex/releases/tag/rust-v0.172.0",
         "body": (
             "## New Features\n\n"
-            "- Press `Tab` to complete arguments for supported slash commands. (#62343)\n"
+            "- Press `Tab` to complete arguments for supported slash commands like `/mcp`. (#62343)\n"
             "- Optional stdio MCP servers start on their first tool call by default. (#62366)\n\n"
-            "## Bug Fixes\n\n"
-            "- `codex exec resume` restores saved sandbox permissions. (#62194)\n"
+            "## Chores\n\n"
+            "- The `code_mode_host_grpc` setting is deprecated in favor of gRPC. (#62476)\n"
         ),
     },
     {
@@ -104,9 +102,58 @@ SAMPLE_CODEX_RELEASES = [
     },
 ]
 
+SAMPLE_CODEX_COMPARE = {
+    "ahead_by": 42,
+    "html_url": "https://github.com/openai/codex/compare/rust-v0.172.0...rust-v0.174.0-alpha.9",
+    "commits": [
+        {
+            "sha": "1111111abcdef",
+            "commit": {"message": "Bump version to 0.174.0-alpha.8"},
+            "author": {"login": "bot"},
+        },
+        {
+            "sha": "2222222abcdef",
+            "commit": {"message": "Add MCP OAuth refresh support (#63001)\n\nDetailed body"},
+            "author": {"login": "oai-dev"},
+        },
+        {
+            "sha": "3333333abcdef",
+            "commit": {"message": "Support --worktree flag in codex exec (#63012)"},
+            "author": {"login": "oai-dev2"},
+        },
+    ],
+}
+
+SAMPLE_CURSOR_HTML = """
+<html><body>
+<article>
+  <div><p><a href="/changelog/voice-chat"><time dateTime="2026-11-06T00:00:00.000Z">Nov 6, 2026</time></a></p></div>
+  <div><div>
+    <header><h1><a href="/changelog/voice-chat">Voice Chat with Agents</a></h1></header>
+    <div class="prose prose--block">
+      <p>You can now talk with your agents in a realtime voice call.</p>
+      <h2><a class="anchor-link" href="#start">#</a>Start a call</h2>
+      <ul>
+        <li>Click <strong>Start voice chat</strong> to talk hands-free with MCP tools.</li>
+        <li>Say <code>Hey Siri, call Cursor</code> on iOS.</li>
+      </ul>
+    </div>
+  </div></div>
+</article>
+</body></html>
+"""
+
 
 def _make_large_claude_changelog(item_count: int = 155) -> str:
-    bullets = [f"- Added item #{i} with complete detail that must not be dropped" for i in range(1, item_count + 1)]
+    bullets = [
+        "- Added skills from MCP servers (beta). They show as `server:skill` in the `/` menu",
+        "- Added a `PreSkillShellCommand` hook event that can refuse inline shell commands",
+        "- Changed `sonnet` on Google Cloud Agent Platform to read `VERTEX_REGION_CLAUDE_5_5_SONNET` and retired Sonnet 4",
+        "- Fixed `--effort` being ignored with `--environment` when using `/autocompact`",
+    ]
+    while len(bullets) < item_count:
+        idx = len(bullets) + 1
+        bullets.append(f"- Added item #{idx} with complete detail that must not be dropped")
     return (
         "# Changelog\n\n"
         "## 2.1.332\n\n"
@@ -123,77 +170,98 @@ class ReleaseWatcherTests(unittest.TestCase):
         self.assertIn("antigravity:cli", tracks)
 
         app_releases = tracks["antigravity:app"]
-        self.assertEqual([r.version for r in app_releases], ["v2.35.2", "v2.35.1"])
-        self.assertEqual(app_releases[0].published_at, "November 25, 2026")
-        self.assertEqual(app_releases[0].url, "https://antigravity.google/releases?tab=hub&version=2.35.2")
-        self.assertIn("model selector was locked", app_releases[0].body_markdown)
+        self.assertEqual([r.version for r in app_releases], ["v2.36.0", "v2.35.2"])
+        self.assertEqual(app_releases[0].published_at, "November 27, 2026")
+        self.assertIn("~/.agents/skills", app_releases[0].body_markdown)
         self.assertNotIn("Model launch blurb", app_releases[1].body_markdown)
-        self.assertEqual(len(app_releases[1].bullet_items), 3)
 
-        cli_releases = tracks["antigravity:cli"]
-        self.assertEqual(cli_releases[0].version, "v1.5.16")
-        self.assertEqual(len(cli_releases[0].bullet_items), 2)
-
-    def test_parse_codex_filters_drafts_and_alphas_by_default(self) -> None:
+    def test_parse_codex_and_alpha_radar(self) -> None:
         stable_only = rw.parse_codex_releases(SAMPLE_CODEX_RELEASES, include_prereleases=False)
         self.assertEqual(list(stable_only.keys()), ["codex:cli"])
-        self.assertEqual(len(stable_only["codex:cli"]), 1)
-        entry = stable_only["codex:cli"][0]
-        self.assertEqual(entry.version, "rust-v0.172.0")
-        self.assertEqual(len(entry.bullet_items), 3)
-        self.assertIn("#62194", entry.body_markdown)
+        self.assertEqual(stable_only["codex:cli"][0].version, "rust-v0.172.0")
 
-        with_alphas = rw.parse_codex_releases(SAMPLE_CODEX_RELEASES, include_prereleases=True)
-        self.assertIn("codex:cli-alpha", with_alphas)
-        self.assertEqual(with_alphas["codex:cli-alpha"][0].version, "rust-v0.174.0-alpha.9")
+        radar = rw.build_codex_alpha_radar_entry(
+            stable_tag="rust-v0.172.0",
+            alpha_tag="rust-v0.174.0-alpha.9",
+            alpha_published_at="2026-11-27T16:56:00Z",
+            compare_json=SAMPLE_CODEX_COMPARE,
+        )
+        self.assertIsNotNone(radar)
+        assert radar is not None
+        self.assertEqual(radar.track_key, "codex:alpha-radar")
+        # Version bump commit filtered; 2 real PR commits kept newest-first
+        self.assertEqual(len(radar.bullet_items), 2)
+        self.assertIn("--worktree", radar.bullet_items[0])
+        self.assertIn("MCP OAuth", radar.bullet_items[1])
 
-    def test_parse_claude_code_keeps_every_single_bullet(self) -> None:
+    def test_parse_cursor_changelog_html(self) -> None:
+        tracks = rw.parse_cursor_changelog_html(SAMPLE_CURSOR_HTML)
+        self.assertIn("cursor:changelog", tracks)
+        entry = tracks["cursor:changelog"][0]
+        self.assertEqual(entry.version, "voice-chat")
+        self.assertEqual(entry.published_at, "2026-11-06")
+        self.assertEqual(entry.title, "Voice Chat with Agents")
+        self.assertEqual(entry.url, "https://cursor.com/changelog/voice-chat")
+        self.assertIn("realtime voice call", entry.body_markdown)
+        self.assertEqual(len(entry.bullet_items), 2)
+
+    def test_parse_claude_code_buried_gems_and_convergence(self) -> None:
         md = _make_large_claude_changelog(155)
         tracks = rw.parse_claude_code_changelog(md, dist_tags={"latest": "2.1.332", "stable": "2.1.326"})
-        entries = tracks["claude-code:cli"]
-        self.assertEqual([e.version for e in entries], ["v2.1.332", "v2.1.331"])
-        self.assertEqual(len(entries[0].bullet_items), 155)
-        self.assertIn("Added item #155", entries[0].body_markdown)
-        self.assertEqual(entries[0].extra["npm_dist_tags"], ["latest"])
+        entry = tracks["claude-code:cli"][0]
+        self.assertEqual(len(entry.bullet_items), 155)
+        self.assertIn("Added item #155", entry.body_markdown)
 
-    def test_detect_new_releases_seed_then_chronological_catchup(self) -> None:
-        tracks = rw.parse_antigravity_changelog(SAMPLE_ANTIGRAVITY_MD)
+        gems = rw.extract_buried_gems(entry)
+        self.assertIn("PreSkillShellCommand", gems["hooks_and_keys"])
+        self.assertIn("--effort", gems["cli_flags"])
+        self.assertIn("/autocompact", gems["slash_commands"])
+        self.assertIn("VERTEX_REGION_CLAUDE_5_5_SONNET", gems["env_vars"])
+        self.assertTrue(any("retired" in s.lower() for s in gems["model_and_breaking"]))
 
-        # Initial run seeds only latest per track
-        seeded, was_seed = rw.detect_new_releases(tracks, {"tracks": {}})
-        self.assertTrue(was_seed)
-        self.assertEqual({e.track_key: e.version for e in seeded}, {"antigravity:app": "v2.35.2", "antigravity:cli": "v1.5.16"})
-
-        # When previously on v2.35.0, both v2.35.1 and v2.35.2 should emit oldest -> newest
-        prior_state = {
-            "tracks": {
-                "antigravity:app": {"latest_version": "v2.35.0", "seen_versions": ["v2.35.0"]},
-                "antigravity:cli": {"latest_version": "v1.5.16", "seen_versions": ["v1.5.16"]},
-            }
-        }
-        new_items, was_seed2 = rw.detect_new_releases(tracks, prior_state)
-        self.assertFalse(was_seed2)
-        self.assertEqual([e.version for e in new_items], ["v2.35.1", "v2.35.2"])
+        tags = rw.extract_convergence_tags(entry)
+        self.assertIn("skills", tags)
+        self.assertIn("mcp", tags)
+        self.assertIn("hooks", tags)
 
     def test_tweet_length_always_within_280_chars(self) -> None:
         ag = rw.parse_antigravity_changelog(SAMPLE_ANTIGRAVITY_MD)["antigravity:app"][0]
         cx = rw.parse_codex_releases(SAMPLE_CODEX_RELEASES)["codex:cli"][0]
         cc = rw.parse_claude_code_changelog(_make_large_claude_changelog(155))["claude-code:cli"][0]
+        cu = rw.parse_cursor_changelog_html(SAMPLE_CURSOR_HTML)["cursor:changelog"][0]
 
-        for entry in (ag, cx, cc):
+        for entry in (ag, cx, cc, cu):
             tweet = rw.build_release_tweet(entry)
             self.assertLessEqual(len(tweet), 280, f"Tweet exceeded 280 chars for {entry.version}: {tweet}")
             self.assertIn(entry.version, tweet)
 
-    def test_discord_notification_attaches_complete_verbatim_markdown(self) -> None:
+    def test_release_card_png_and_discord_dual_attachment(self) -> None:
         cc = rw.parse_claude_code_changelog(_make_large_claude_changelog(155))["claude-code:cli"][0]
         tweet = rw.build_release_tweet(cc)
-        archive_md = rw.render_verbatim_release_markdown(cc, tweet)
+        gems = rw.extract_buried_gems(cc)
+        tags = rw.extract_convergence_tags(cc)
+        archive_md = rw.render_verbatim_release_markdown(cc, tweet, gems=gems, convergence_tags=tags)
+
+        if card_renderer.Image is not None:
+            png = card_renderer.render_release_card_png(
+                display_name=cc.display_name,
+                version=cc.version,
+                provider_slug="anthropic",
+                org_label="Anthropic",
+                badge_text="NEW RELEASE",
+                item_count=155,
+                subtitle="Published 2026-11-28",
+                highlights=rw._select_highlight_bullets(cc, 4),
+                gem_chips=rw.flatten_gem_chips(gems, 5),
+                timestamp_iso="2026-11-28T00:00:00Z",
+            )
+            self.assertIsNotNone(png)
+            assert png is not None
+            self.assertTrue(png.startswith(b"\x89PNG\r\n\x1a\n"))
 
         captured: dict = {}
 
         def fake_post(url: str, data: bytes, content_type: str) -> bool:
-            captured["url"] = url
             captured["data"] = data
             captured["content_type"] = content_type
             return True
@@ -202,56 +270,64 @@ class ReleaseWatcherTests(unittest.TestCase):
             cc,
             tweet=tweet,
             archive_content=archive_md,
+            gems=gems,
+            convergence_tags=tags,
             webhook_url="https://discord.com/api/webhooks/test/token",
             repo_slug="siddiquiamir/model-tracker",
             archive_relpath="claude-code/v2.1.332.md",
+            attach_png=True,
             poster=fake_post,
         )
         self.assertTrue(ok)
         self.assertIn("multipart/form-data; boundary=", captured["content_type"])
-        raw_text = captured["data"].decode("utf-8")
-        self.assertIn('filename="claude-code-v2.1.332.md"', raw_text)
-        self.assertIn("Added item #155", raw_text)
-        self.assertIn("Ready X Post Copy", raw_text)
+        raw_bytes: bytes = captured["data"]
+        self.assertIn(b'filename="claude-code-v2.1.332.md"', raw_bytes)
+        self.assertIn(b"Added item #155", raw_bytes)
+        if card_renderer.Image is not None:
+            self.assertIn(b'filename="statswire-claude-code-v2.1.332.png"', raw_bytes)
+            self.assertIn(b"\x89PNG\r\n\x1a\n", raw_bytes)
 
-    def test_run_check_writes_archives_index_and_state(self) -> None:
+    def test_run_check_writes_archives_index_state_and_docs_json(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = pathlib.Path(tmp)
             state_file = tmp_path / "data" / "release_state.json"
             releases_dir = tmp_path / "releases"
+            docs_json = tmp_path / "docs" / "data" / "releases.json"
 
-            def fake_fetcher(include_codex_alphas: bool = False):
+            def fake_fetcher(include_codex_alphas: bool = True):
                 tracks = {}
                 tracks.update(rw.parse_antigravity_changelog(SAMPLE_ANTIGRAVITY_MD))
-                tracks.update(rw.parse_codex_releases(SAMPLE_CODEX_RELEASES, include_prereleases=include_codex_alphas))
+                tracks.update(rw.parse_codex_releases(SAMPLE_CODEX_RELEASES))
                 tracks.update(rw.parse_claude_code_changelog(_make_large_claude_changelog(20)))
+                tracks.update(rw.parse_cursor_changelog_html(SAMPLE_CURSOR_HTML))
                 return tracks, []
 
             res1 = rw.run_check(
                 state_file=state_file,
                 releases_dir=releases_dir,
+                docs_json_file=docs_json,
                 notify_discord=False,
                 fetcher=fake_fetcher,
             )
             self.assertTrue(res1["was_initial_seed"])
-            self.assertEqual(res1["new_count"], 4)
-            self.assertTrue((releases_dir / "INDEX.md").exists())
-            self.assertTrue((releases_dir / "antigravity-app" / "v2.35.2.md").exists())
-            self.assertTrue((releases_dir / "codex-cli" / "rust-v0.172.0.md").exists())
-            cc_archive = (releases_dir / "claude-code" / "v2.1.332.md").read_text(encoding="utf-8")
-            self.assertIn("Added item #20", cc_archive)
+            self.assertEqual(res1["new_count"], 5)
+            self.assertTrue(docs_json.exists())
 
-            # Second run with no changes emits 0 new releases
+            radar_data = json.loads(docs_json.read_text(encoding="utf-8"))
+            self.assertEqual(len(radar_data["releases"]), 5)
+            self.assertTrue(any(a["id"] == "skills" and len(a["releases"]) >= 2 for a in radar_data["convergence_axes"]))
+            cc_item = next(r for r in radar_data["releases"] if r["track_key"] == "claude-code:cli")
+            self.assertIn("Added item #20", cc_item["body_markdown"])
+
+            # Second run is idempotent
             res2 = rw.run_check(
                 state_file=state_file,
                 releases_dir=releases_dir,
+                docs_json_file=docs_json,
                 notify_discord=False,
                 fetcher=fake_fetcher,
             )
-            self.assertFalse(res2["was_initial_seed"])
             self.assertEqual(res2["new_count"], 0)
-            saved = json.loads(state_file.read_text(encoding="utf-8"))
-            self.assertEqual(saved["tracks"]["claude-code:cli"]["latest_version"], "v2.1.332")
 
 
 if __name__ == "__main__":

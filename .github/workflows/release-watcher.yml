@@ -1,12 +1,16 @@
 name: ReleasePulse 24/7 Release Notes Watcher
 
-# Watches official changelogs & releases for:
+# Watches official changelogs, releases & alpha PR diffs for:
 #   - Google Antigravity (App, CLI, IDE, SDK, IDE Extensions)
-#   - OpenAI Codex CLI (openai/codex)
-#   - Anthropic Claude Code (anthropics/claude-code)
-# Archives 100% verbatim release notes to releases/<tool>/<version>.md,
-# generates a <=280-char X/Twitter draft, and posts a Discord embed with
-# the complete .md file attached so nothing is ever truncated.
+#   - OpenAI Codex CLI (Stable + Alpha PR Radar compare)
+#   - Anthropic Claude Code (CHANGELOG.md + npm dist-tags)
+#   - Google Gemini CLI (google-gemini/gemini-cli)
+#   - OpenCode (anomalyco/opencode)
+#   - Cursor (cursor.com/changelog)
+#   - MCP Specification (modelcontextprotocol/modelcontextprotocol)
+# Archives 100% verbatim release notes, updates the live GitHub Pages Release Radar
+# (docs/data/releases.json), renders a 16:9 @StatsWire PNG card, and posts to Discord
+# with BOTH the PNG card inline AND the complete verbatim .md file attached.
 on:
   schedule:
     - cron: "*/15 * * * *"
@@ -17,9 +21,9 @@ on:
         type: boolean
         default: false
       include_codex_alphas:
-        description: "Also track OpenAI Codex CLI alpha prereleases"
+        description: "Include OpenAI Codex Alpha PR Radar compare track"
         type: boolean
-        default: false
+        default: true
 
 concurrency:
   group: release-watcher
@@ -41,10 +45,13 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install Pillow for @StatsWire PNG release cards
+        run: pip install -q Pillow
+
       - name: Run release watcher unit tests
         run: python -m unittest tests/test_release_watcher.py -v
 
-      - name: Check Antigravity, Codex CLI, and Claude Code releases
+      - name: Check all coding agent & protocol releases
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
@@ -57,17 +64,17 @@ jobs:
           if [ "$FORCE_NOTIFY_LATEST" = "true" ]; then
             ARGS="$ARGS --force-notify-latest"
           fi
-          if [ "$TRACK_CODEX_ALPHAS" = "true" ]; then
-            ARGS="$ARGS --include-codex-alphas"
+          if [ "$TRACK_CODEX_ALPHAS" = "false" ]; then
+            ARGS="$ARGS --no-codex-alphas"
           fi
           python -m tracker.release_watcher $ARGS
 
-      - name: Commit and push new verbatim release archives
+      - name: Commit and push new verbatim release archives & Release Radar JSON
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add data/release_state.json releases/
+          git add data/release_state.json docs/data/releases.json releases/
           if git diff --cached --quiet; then
             echo "No new releases detected."
             exit 0
@@ -81,10 +88,10 @@ jobs:
             exit 0
           fi
 
-          git commit -q -m "chore(releases): archive new Antigravity/Codex/Claude Code releases"
+          git commit -q -m "chore(releases): archive new agent & MCP releases"
           for attempt in 1 2 3; do
             if git pull -q --rebase -X theirs origin main && git push -q origin HEAD:main; then
-              echo "Pushed updated release archives."
+              echo "Pushed updated release archives & Release Radar feed."
               exit 0
             fi
             git rebase --abort 2>/dev/null || true

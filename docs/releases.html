@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Release Radar · ModelPulse · Coding Agent Changelogs & Convergence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0e1014;
+      --card: #181b20;
+      --card-2: #242830;
+      --line: #343a44;
+      --line-2: #4b5260;
+      --text: #ffffff;
+      --text-2: #e6ebf2;
+      --muted: #9aa4b2;
+      --blue: #93c5fd;
+      --green: #4ade80;
+      --amber: #f5c860;
+      --teal: #2dd4bf;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      min-height: 100vh;
+      padding-bottom: 64px;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 40;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='125'><text x='14' y='72' transform='rotate(-22 110 62)' font-family='Inter,Segoe UI,Arial,sans-serif' font-size='15' font-weight='700' fill='%23ffffff' fill-opacity='0.025'>@StatsWire</text></svg>");
+      background-repeat: repeat;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .mono { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+    .navbar {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(11, 13, 17, 0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line); padding: 12px 24px;
+    }
+    .nav-inner, .container { max-width: 1220px; margin: 0 auto; }
+    .nav-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .brand { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .brand-title { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em; color: #fff; }
+    .brand-tag { font-size: 0.85rem; color: var(--muted); }
+    .status {
+      display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--text-2);
+      border: 1px solid var(--line-2); border-radius: 999px; padding: 4px 11px;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); }
+    .nav-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 600;
+      padding: 7px 13px; border-radius: 8px; border: 1px solid var(--line-2);
+      background: var(--card); color: var(--text); cursor: pointer; text-decoration: none;
+    }
+    .btn:hover { background: var(--card-2); text-decoration: none; }
+    .btn-sm { font-size: 0.76rem; padding: 5px 10px; border-radius: 6px; }
+
+    .container { margin-top: 22px; padding: 0 24px; }
+    .hero { margin-bottom: 20px; }
+    .hero h1 { font-size: 1.65rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px; }
+    .hero p { color: var(--muted); font-size: 0.92rem; max-width: 820px; }
+
+    /* Convergence Matrix */
+    .matrix-box {
+      background: #080a0f;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-bottom: 20px;
+    }
+    .matrix-head {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 12px;
+    }
+    .matrix-head h2 { font-size: 0.92rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-2); }
+    .matrix-sub { font-size: 0.8rem; color: var(--muted); }
+    .matrix-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .conv-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 0.8rem; font-weight: 600;
+      padding: 6px 12px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--card); color: var(--text-2);
+      cursor: pointer; transition: all 0.14s ease;
+    }
+    .conv-pill:hover { border-color: var(--blue); color: #fff; }
+    .conv-pill.active { background: #1e3a5f; border-color: var(--blue); color: #fff; }
+    .conv-count {
+      font-size: 0.72rem; font-weight: 700; padding: 1px 7px; border-radius: 999px;
+      background: #0e1420; color: var(--blue); border: 1px solid #2b3f5e;
+    }
+
+    /* Toolbar */
+    .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tab {
+      font-size: 0.82rem; font-weight: 600; padding: 6px 12px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--card); color: var(--text-2); cursor: pointer;
+    }
+    .tab:hover { color: #fff; border-color: var(--line-2); }
+    .tab.active { background: #fff; color: #0b0d11; border-color: #fff; }
+    .search-wrap { display: flex; gap: 8px; align-items: center; flex: 1; max-width: 440px; min-width: 240px; }
+    input[type="search"] {
+      width: 100%; background: #080a0f; color: var(--text); border: 1px solid var(--line-2);
+      border-radius: 8px; padding: 8px 12px; font-size: 0.86rem; outline: none;
+    }
+    input[type="search"]:focus { border-color: var(--blue); }
+
+    .feed { display: grid; grid-template-columns: repeat(auto-fill, minmax(540px, 1fr)); gap: 18px; align-items: start; }
+    @media (max-width: 640px) { .feed { grid-template-columns: 1fr; } }
+
+    .card {
+      position: relative;
+      background: #000000;
+      border: 1px solid #282c34;
+      border-top: 4px solid var(--accent, #4285F4);
+      border-radius: 14px;
+      padding: 18px 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.65);
+    }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent, #93c5fd); }
+    .badge {
+      font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+      border: 1px solid #2b4a36; background: #0d2216; color: var(--green);
+    }
+    .badge.alpha { border-color: #6b5220; background: #221b0d; color: var(--amber); }
+    .badge.spec { border-color: #256460; background: #0c2020; color: var(--teal); }
+    .count-badge {
+      font-size: 0.72rem; font-weight: 600; padding: 2px 8px; border-radius: 999px;
+      border: 1px solid var(--line); background: #12161f; color: var(--text-2);
+    }
+    .card-title { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.015em; line-height: 1.25; }
+    .card-sub { color: var(--muted); font-size: 0.86rem; }
+
+    .gems-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .gem-chip {
+      font-size: 0.74rem; padding: 2px 8px; border-radius: 6px;
+      background: #0e1624; border: 1px solid #2a3d5c; color: #bae6fd;
+    }
+    .tag-chip {
+      font-size: 0.72rem; padding: 2px 8px; border-radius: 999px;
+      background: #141820; border: 1px solid #303642; color: #cbd5e1;
+      cursor: pointer;
+    }
+    .tag-chip:hover { border-color: var(--blue); color: #fff; }
+
+    .matches-box {
+      background: #0c1322; border: 1px solid #243b61; border-radius: 10px; padding: 10px 12px;
+      font-size: 0.82rem; color: var(--text-2);
+    }
+    .matches-box ul { list-style: none; display: flex; flex-direction: column; gap: 5px; margin-top: 6px; }
+    .matches-box mark { background: #f5c860; color: #0b0d11; padding: 0 3px; border-radius: 3px; font-weight: 600; }
+
+    .tweet-box {
+      background: #0b0e14; border: 1px solid #282f3c; border-radius: 10px;
+      padding: 10px 12px; font-size: 0.8rem; color: #dce4f0; white-space: pre-wrap; word-break: break-word;
+    }
+    details.verbatim { border: 1px solid #262c36; border-radius: 10px; background: #090b10; padding: 9px 12px; }
+    details.verbatim summary { cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--blue); }
+    .verbatim-body {
+      margin-top: 10px; max-height: 440px; overflow-y: auto;
+      font-size: 0.78rem; line-height: 1.55; color: #d4dce8;
+      white-space: pre-wrap; word-break: break-word;
+      border-top: 1px solid #222732; padding-top: 10px;
+    }
+
+    .card-foot {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+      padding-top: 8px; border-top: 1px solid #1e232c; font-size: 0.78rem; color: var(--muted);
+    }
+    .foot-links { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .empty { grid-column: 1 / -1; text-align: center; padding: 48px 16px; color: var(--muted); }
+    .site-foot { max-width: 1220px; margin: 36px auto 0; padding: 18px 24px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 0.84rem; color: var(--muted); }
+    .toast {
+      position: fixed; bottom: 24px; right: 24px; background: #22c55e; color: #052e16; font-weight: 700;
+      padding: 10px 16px; border-radius: 8px; display: none; z-index: 100;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="brand">
+        <a class="brand-title" href="index.html">ModelPulse</a>
+        <span class="brand-tag">⚡ Agent Release Radar (100% Verbatim Changelogs)</span>
+        <span class="status"><span class="dot"></span><span id="status-text">Loading…</span></span>
+      </div>
+      <div class="nav-actions">
+        <a class="btn" href="index.html">← Model Leaks &amp; Launches</a>
+        <button class="btn" onclick="loadData(true)">↻ Refresh</button>
+        <a class="btn" href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire on X</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Coding Agent Release Radar</h1>
+      <p>
+        Every release from <b>Google Antigravity</b>, <b>OpenAI Codex CLI (+ Alpha Radar)</b>, <b>Anthropic Claude Code</b>,
+        <b>Gemini CLI</b>, <b>OpenCode</b>, <b>Cursor</b>, and <b>MCP Spec</b> — archived 100% verbatim with extracted
+        buried gems (CLI flags, slash commands, env vars, hooks) and cross-agent feature convergence.
+      </p>
+    </section>
+
+    <section class="matrix-box">
+      <div class="matrix-head">
+        <h2>Cross-Agent Feature Convergence</h2>
+        <span class="matrix-sub" id="matrix-sub">Click any capability to filter agents shipping in that area</span>
+      </div>
+      <div class="matrix-grid" id="matrix-grid"></div>
+    </section>
+
+    <section class="toolbar">
+      <div class="tabs" id="product-tabs">
+        <button class="tab active" data-family="all">All</button>
+        <button class="tab" data-family="antigravity">Antigravity</button>
+        <button class="tab" data-family="codex">Codex CLI</button>
+        <button class="tab" data-family="codex-alpha">Codex Alpha Radar</button>
+        <button class="tab" data-family="claude-code">Claude Code</button>
+        <button class="tab" data-family="gemini-cli">Gemini CLI</button>
+        <button class="tab" data-family="opencode">OpenCode</button>
+        <button class="tab" data-family="cursor">Cursor</button>
+        <button class="tab" data-family="mcp-spec">MCP Spec</button>
+      </div>
+      <div class="search-wrap">
+        <input type="search" id="search" placeholder="Search all verbatim notes (e.g. MCP, ~/.agents/skills, voice, hook)…" />
+      </div>
+    </section>
+
+    <section class="feed" id="feed"></section>
+  </main>
+
+  <footer class="site-foot">
+    <span>Developed by <a href="https://x.com/StatsWire" target="_blank" rel="noopener">@StatsWire</a> on X</span>
+    <span>Archive powered by <a href="https://github.com/siddiquiamir/model-tracker/blob/main/releases/INDEX.md" target="_blank" rel="noopener">releases/INDEX.md</a></span>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const ACCENT = {
+      "antigravity": "#4285F4",
+      "codex": "#10A37F",
+      "codex-alpha": "#F59E0B",
+      "claude-code": "#D97757",
+      "gemini-cli": "#60A5FA",
+      "opencode": "#A855F7",
+      "cursor": "#94A3B8",
+      "mcp-spec": "#14B8A6",
+    };
+
+    let DATA = { releases: [], convergence_axes: [], tracks: {}, generated_at: "" };
+    let ACTIVE_FAMILY = "all";
+    let ACTIVE_TAG = "";
+    let QUERY = "";
+
+    function esc(s) {
+      return String(s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[c]));
+    }
+    function toast(msg) {
+      const el = document.getElementById("toast");
+      el.textContent = msg;
+      el.style.display = "block";
+      clearTimeout(toast._t);
+      toast._t = setTimeout(() => { el.style.display = "none"; }, 2200);
+    }
+    function copyText(text, label) {
+      navigator.clipboard.writeText(text).then(() => toast(label || "Copied!"));
+    }
+
+    function renderMatrix() {
+      const grid = document.getElementById("matrix-grid");
+      const axes = (DATA.convergence_axes || []).filter(a => (a.releases || []).length > 0);
+      if (!axes.length) {
+        grid.innerHTML = '<span class="matrix-sub">No convergence tags yet.</span>';
+        return;
+      }
+      grid.innerHTML = axes.map(a => {
+        const distinctProducts = new Set((a.releases || []).map(r => r.product_family));
+        const active = ACTIVE_TAG === a.id ? "active" : "";
+        return `<button class="conv-pill ${active}" onclick="toggleTag('${esc(a.id)}')">
+          <span>${esc(a.label)}</span>
+          <span class="conv-count" title="${distinctProducts.size} product(s)">${distinctProducts.size}</span>
+        </button>`;
+      }).join("");
+    }
+
+    function toggleTag(tagId) {
+      ACTIVE_TAG = ACTIVE_TAG === tagId ? "" : tagId;
+      renderMatrix();
+      renderFeed();
+    }
+
+    function matchingLines(body, q) {
+      if (!q) return [];
+      const needle = q.toLowerCase();
+      const lines = String(body || "").split(/\r?\n/);
+      const hits = [];
+      for (const line of lines) {
+        const clean = line.trim();
+        if (!clean || clean.startsWith("#")) continue;
+        if (clean.toLowerCase().includes(needle)) {
+          hits.push(clean.replace(/^[-*]\s+/, ""));
+          if (hits.length >= 6) break;
+        }
+      }
+      return hits;
+    }
+
+    function highlightHit(line, q) {
+      const safe = esc(line);
+      if (!q) return safe;
+      const escapedQ = q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      return safe.replace(new RegExp(`(${escapedQ})`, "gi"), "<mark>$1</mark>");
+    }
+
+    function flattenGems(gems) {
+      if (!gems) return [];
+      const out = [];
+      for (const k of ["hooks_and_keys", "slash_commands", "cli_flags", "env_vars"]) {
+        for (const v of (gems[k] || [])) {
+          if (!out.includes(v)) out.push(v);
+          if (out.length >= 10) return out;
+        }
+      }
+      return out;
+    }
+
+    function renderFeed() {
+      const feed = document.getElementById("feed");
+      const q = QUERY.trim().toLowerCase();
+
+      const filtered = (DATA.releases || []).filter(r => {
+        if (ACTIVE_FAMILY !== "all" && r.product_family !== ACTIVE_FAMILY) return false;
+        if (ACTIVE_TAG && !(r.convergence_tags || []).includes(ACTIVE_TAG)) return false;
+        if (q) {
+          const hay = [
+            r.display_name, r.version, r.title, r.body_markdown,
+            ...(r.convergence_tags || []),
+            ...flattenGems(r.buried_gems),
+          ].join("\n").toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+
+      if (!filtered.length) {
+        feed.innerHTML = '<div class="empty">No matching releases found. Try clearing a filter or search term.</div>';
+        return;
+      }
+
+      feed.innerHTML = filtered.map((r, idx) => {
+        const accent = ACCENT[r.product_family] || "#4285F4";
+        const isAlpha = r.product_family === "codex-alpha";
+        const isSpec = r.product_family === "mcp-spec";
+        const badgeCls = isAlpha ? "badge alpha" : (isSpec ? "badge spec" : "badge");
+        const badgeTxt = isAlpha ? "ALPHA RADAR" : (isSpec ? "SPEC UPDATE" : "RELEASE");
+        const gems = flattenGems(r.buried_gems);
+        const hits = matchingLines(r.body_markdown, QUERY.trim());
+        const ghArchive = r.archive_relpath
+          ? `https://github.com/siddiquiamir/model-tracker/blob/main/releases/${r.archive_relpath}`
+          : "";
+
+        return `<article class="card" style="--accent:${accent}">
+          <div class="card-top">
+            <span class="eyebrow">${esc(r.display_name)}</span>
+            <div style="display:flex;gap:6px;align-items:center;">
+              <span class="${badgeCls}">${badgeTxt}</span>
+              <span class="count-badge mono">${r.bullet_count || 0} items</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="card-title mono">${esc(r.version)}</div>
+            <div class="card-sub">
+              ${r.title && r.title !== (r.display_name + " " + r.version) ? esc(r.title) + " · " : ""}
+              Published ${esc(r.published_at || "recent")}
+            </div>
+          </div>
+
+          ${gems.length ? `<div class="gems-row" title="Extracted Buried Gems: hooks, slash commands, CLI flags, env vars">
+            ${gems.map(g => `<span class="gem-chip mono">${esc(g)}</span>`).join("")}
+          </div>` : ""}
+
+          ${(r.convergence_tags || []).length ? `<div class="gems-row">
+            ${(r.convergence_tags || []).map(t => `<span class="tag-chip" onclick="toggleTag('${esc(t)}')">#${esc(t)}</span>`).join("")}
+          </div>` : ""}
+
+          ${hits.length ? `<div class="matches-box">
+            <strong>Matching verbatim lines for "${esc(QUERY.trim())}":</strong>
+            <ul>${hits.map(h => `<li>• ${highlightHit(h, QUERY.trim())}</li>`).join("")}</ul>
+          </div>` : ""}
+
+          ${r.tweet ? `<div class="tweet-box mono">${esc(r.tweet)}</div>` : ""}
+
+          <details class="verbatim">
+            <summary>Show complete verbatim release notes (${r.bullet_count || 0} items — nothing omitted)</summary>
+            <div class="verbatim-body mono">${esc(r.body_markdown || "No body recorded.")}</div>
+          </details>
+
+          <div class="card-foot">
+            <div class="foot-links">
+              ${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">Official source ↗</a>` : ""}
+              ${ghArchive ? `<a href="${esc(ghArchive)}" target="_blank" rel="noopener">Full .md on GitHub ↗</a>` : ""}
+            </div>
+            <button class="btn btn-sm" onclick="copyTweet(${idx})">📋 Copy X Post</button>
+          </div>
+        </article>`;
+      }).join("");
+
+      window._CURRENT_FILTERED = filtered;
+    }
+
+    function copyTweet(idx) {
+      const r = (window._CURRENT_FILTERED || [])[idx];
+      if (r && r.tweet) copyText(r.tweet, `Copied ${r.display_name} ${r.version} tweet!`);
+    }
+
+    async function loadData(showToast) {
+      try {
+        const resp = await fetch("data/releases.json?t=" + Date.now(), { cache: "no-store" });
+        if (!resp.ok) throw new Error("HTTP " + resp.status);
+        DATA = await resp.json();
+        const trackCount = Object.keys(DATA.tracks || {}).length;
+        const ts = (DATA.generated_at || "").replace("T", " ").replace("Z", " UTC");
+        document.getElementById("status-text").textContent = `${trackCount} tracks · synced ${ts}`;
+        renderMatrix();
+        renderFeed();
+        if (showToast) toast("Release Radar refreshed");
+      } catch (err) {
+        document.getElementById("status-text").textContent = "Failed to load releases.json";
+        document.getElementById("feed").innerHTML = `<div class="empty">Could not load <code>data/releases.json</code> (${esc(err.message)}).</div>`;
+      }
+    }
+
+    document.getElementById("product-tabs").addEventListener("click", e => {
+      const btn = e.target.closest(".tab");
+      if (!btn) return;
+      document.querySelectorAll("#product-tabs .tab").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      ACTIVE_FAMILY = btn.dataset.family;
+      renderFeed();
+    });
+
+    document.getElementById("search").addEventListener("input", e => {
+      QUERY = e.target.value || "";
+      renderFeed();
+    });
+
+    loadData(false);
+  </script>
+</body>
+</html>
