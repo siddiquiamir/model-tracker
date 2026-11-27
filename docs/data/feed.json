@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-27T12:31:15.595446+00:00",
-  "scan_completed_at": "2026-11-27T12:33:26.759291+00:00",
+  "generated_at": "2026-11-27T12:35:00.267619+00:00",
+  "scan_completed_at": "2026-11-27T12:36:48.627563+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 369,
     "leaks": 42,
     "releases": 87,
     "stories_24h": 23,
-    "sources_ok": 15,
-    "total_cards": 917,
-    "new_in_this_scan": 0
+    "sources_ok": 13,
+    "total_cards": 918,
+    "new_in_this_scan": 1
   },
   "stories": [
     {
@@ -9730,10 +9730,10 @@
       "open_weights": false,
       "title": "deepinfra/thinkingmachines/Inkling-2-Mini",
       "provider_slug": "unknown",
-      "provider_name": "fireworks-ai",
+      "provider_name": "huggingface",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-21T03:05:45.893089+00:00",
-      "updated_at": "2026-11-26T15:27:30.882366+00:00",
+      "updated_at": "2026-11-27T12:36:08.882007+00:00",
       "first_source": "OpenRouter",
       "lead": "",
       "released_on": "2026-11-20",
@@ -9741,8 +9741,8 @@
       "codenames": [],
       "models": [
         {
-          "id": "inkling-2-mini",
-          "name": "fireworks-ai/accounts/fireworks/models/inkling-2-mini",
+          "id": "Inkling-2-Mini",
+          "name": "huggingface/thinkingmachines/Inkling-2-Mini",
           "released_on": "2026-11-20"
         }
       ],
@@ -9780,7 +9780,7 @@
       ],
       "source_count": 3,
       "backfill": false,
-      "header": "NEW MODEL · FIREWORKS-AI",
+      "header": "NEW MODEL · HUGGINGFACE",
       "card_ids": [
         "openrouter-model-thinkingmachines_inkling-2-mini",
         "intel-f9fd718251adf9703144",
@@ -9812,7 +9812,8 @@
         "intel-b4149a7c2caf7af9da38",
         "intel-6acc8c43f00cbd28f994",
         "intel-8f2ea7980b6b544e8157",
-        "intel-7adb5e8c93d33294a6a1"
+        "intel-7adb5e8c93d33294a6a1",
+        "intel-e46b1d9070d7c3e6c59f"
       ],
       "event_label": "Released",
       "intelligence_only": false,
@@ -10311,10 +10312,38 @@
           "build": "717250079f97da093437db28a3f324ce6836ca13",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/717250079f97da093437db28a3f324ce6836ca13",
           "first_seen": "2026-11-26T15:17:12+00:00"
+        },
+        {
+          "id": "huggingface/thinkingmachines/Inkling-2-Mini",
+          "family": "inkling-2-mini",
+          "file_path": "api.json?type=all",
+          "file_sha256": "0975477af1072dc8b1595cb9abc860ecc10b6023b75053c8941bf7d5eb15f6bf",
+          "excerpt": "{\"huggingface/thinkingmachines/Inkling-2-Mini\": {\"id\": \"thinkingmachines/Inkling-2-Mini\", \"name\": \"Inkling 2 Mini\", \"description\": \"Looped MoE reasoning model (26.4B total, 3.4B active) for agentic coding, vision, and knowledge work\", \"family\": \"inkling-mini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-20\", \"last_updated\": \"2026-11-20\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 0.06, \"output\": 0.24}, \"canonical_model_id\": \"thinkingmachines/inkling-2-mini\"}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "0975477af1072dc8b1595cb9abc860ecc10b6023b75053c8941bf7d5eb15f6bf",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-27T12:36:08.490514+00:00"
+        },
+        {
+          "id": "openrouter/thinkingmachines/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "api.json?type=all",
+          "file_sha256": "0975477af1072dc8b1595cb9abc860ecc10b6023b75053c8941bf7d5eb15f6bf",
+          "excerpt": "{\"openrouter/thinkingmachines/inkling-2-mini\": {\"id\": \"thinkingmachines/inkling-2-mini\", \"name\": \"Inkling 2 Mini\", \"description\": \"Multimodal reasoning model for visual analysis, planning, and tool use\", \"family\": \"inkling-mini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-20\", \"last_updated\": \"2026-11-20\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 0.06, \"output\": 0.24, \"cache_read\": 0.012}, \"canonical_model_id\": \"thinkingmachines/inkling-2-mini\"}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "0975477af1072dc8b1595cb9abc860ecc10b6023b75053c8941bf7d5eb15f6bf",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-27T12:36:08.490514+00:00"
         }
       ],
       "discord_alerted_at": "2026-11-23T04:22:07.426340+00:00",
-      "x_post_text": "🟢 NEW MODEL: deepinfra/thinkingmachines/Inkling-2-Mini by fireworks-ai\n\nFirst detected 21 Nov 03:05 UTC in OpenRouter\n📅 First released: 2026-11-20\nConfirmed by Registry Update, LMArena\n\nvia @StatsWire"
+      "x_post_text": "🟢 NEW MODEL: deepinfra/thinkingmachines/Inkling-2-Mini by huggingface\n\nFirst detected 21 Nov 03:05 UTC in OpenRouter\n📅 First released: 2026-11-20\nConfirmed by Registry Update, LMArena\n\nvia @StatsWire"
     },
     {
       "id": "story-sonar",
@@ -31240,6 +31269,112 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-e46b1d9070d7c3e6c59f",
+      "scanner": "models-dev-api",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "inkling-2-mini",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "2 identifier(s) observed in models.dev full catalog; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Tracker observation; catalog publication time unavailable",
+      "family": "inkling-2-mini",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "huggingface/thinkingmachines/Inkling-2-Mini",
+          "name": "huggingface/thinkingmachines/Inkling-2-Mini",
+          "registry_update": true,
+          "released_on": "2026-11-20"
+        },
+        {
+          "id": "openrouter/thinkingmachines/inkling-2-mini",
+          "name": "openrouter/thinkingmachines/inkling-2-mini",
+          "registry_update": true,
+          "released_on": "2026-11-20"
+        }
+      ],
+      "detected_at": "2026-11-27T12:36:08.882007+00:00",
+      "first_seen": "2026-11-27T12:36:08.490514+00:00",
+      "observed_at": "2026-11-27T12:36:08.882007+00:00",
+      "backfill": false,
+      "build_label": "models.dev full catalog",
+      "build_transition": "2a8965599f0a5447fdeacd48bed1bff014fd0216744c95e4c86891229b449b33 -> 0975477af1072dc8b1595cb9abc860ecc10b6023b75053c8941bf7d5eb15f6bf",
+      "build": "0975477af1072dc8b1595cb9abc860ecc10b6023b75053c8941bf7d5eb15f6bf",
+      "source_text": "https://models.dev/api.json?type=all",
+      "artifact_sha256": "0975477af1072dc8b1595cb9abc860ecc10b6023b75053c8941bf7d5eb15f6bf",
+      "verification": "Published full catalog; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-api/0975477af1072dc8b1595cb9abc860ecc10b6023b75053c8941bf7d5eb15f6bf.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-api/0975477af1072dc8b1595cb9abc860ecc10b6023b75053c8941bf7d5eb15f6bf.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "huggingface/thinkingmachines/Inkling-2-Mini",
+          "family": "inkling-2-mini",
+          "file_path": "api.json?type=all",
+          "file_sha256": "0975477af1072dc8b1595cb9abc860ecc10b6023b75053c8941bf7d5eb15f6bf",
+          "excerpt": "{\"huggingface/thinkingmachines/Inkling-2-Mini\": {\"id\": \"thinkingmachines/Inkling-2-Mini\", \"name\": \"Inkling 2 Mini\", \"description\": \"Looped MoE reasoning model (26.4B total, 3.4B active) for agentic coding, vision, and knowledge work\", \"family\": \"inkling-mini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-20\", \"last_updated\": \"2026-11-20\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 0.06, \"output\": 0.24}, \"canonical_model_id\": \"thinkingmachines/inkling-2-mini\"}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "0975477af1072dc8b1595cb9abc860ecc10b6023b75053c8941bf7d5eb15f6bf",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-27T12:36:08.490514+00:00"
+        },
+        {
+          "id": "openrouter/thinkingmachines/inkling-2-mini",
+          "family": "inkling-2-mini",
+          "file_path": "api.json?type=all",
+          "file_sha256": "0975477af1072dc8b1595cb9abc860ecc10b6023b75053c8941bf7d5eb15f6bf",
+          "excerpt": "{\"openrouter/thinkingmachines/inkling-2-mini\": {\"id\": \"thinkingmachines/inkling-2-mini\", \"name\": \"Inkling 2 Mini\", \"description\": \"Multimodal reasoning model for visual analysis, planning, and tool use\", \"family\": \"inkling-mini\", \"attachment\": true, \"reasoning\": true, \"reasoning_options\": [{\"type\": \"effort\", \"values\": [\"none\", \"minimal\", \"low\", \"medium\", \"high\", \"max\"]}], \"tool_call\": true, \"interleaved\": {\"field\": \"reasoning_content\"}, \"structured_output\": true, \"temperature\": true, \"release_date\": \"2026-11-20\", \"last_updated\": \"2026-11-20\", \"modalities\": {\"input\": [\"text\", \"image\"], \"output\": [\"text\"]}, \"open_weights\": true, \"limit\": {\"context\": 1048576, \"output\": 65536}, \"cost\": {\"input\": 0.06, \"output\": 0.24, \"cache_read\": 0.012}, \"canonical_model_id\": \"thinkingmachines/inkling-2-mini\"}}",
+          "canonical_id": "thinkingmachines/inkling-2-mini",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "build": "0975477af1072dc8b1595cb9abc860ecc10b6023b75053c8941bf7d5eb15f6bf",
+          "source_url": "https://models.dev/api.json?type=all",
+          "first_seen": "2026-11-27T12:36:08.490514+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev full catalog",
+          "url": "https://models.dev/api.json?type=all"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://models.dev/api.json?type=all"
+        }
+      ],
+      "tracker_observed_at": "2026-11-27T12:36:11.627240+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev full catalog 0975477af107: huggingface/thinkingmachines/Inkling-2-Mini, openrouter/thinkingmachines/inkling-2-mini\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
+    },
     {
       "id": "hf-tencent_Hy-Embodied-Apexio-1.0",
       "category": "open-source",
@@ -105317,25 +105452,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T12:32:16.500527+00:00",
+      "last_attempt": "2026-11-27T12:36:08.095791+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T12:32:19.968325+00:00",
+      "last_success": "2026-11-27T12:36:11.627240+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.468,
-      "latest_build": "2a8965599f0a5447fdeacd48bed1bff014fd0216744c95e4c86891229b449b33",
-      "builds_retained": 227,
-      "identifiers": 10422
+      "duration_seconds": 3.532,
+      "latest_build": "0975477af1072dc8b1595cb9abc860ecc10b6023b75053c8941bf7d5eb15f6bf",
+      "builds_retained": 228,
+      "identifiers": 10425
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-27T12:32:20.158299+00:00",
+      "last_attempt": "2026-11-27T12:36:11.817956+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T12:32:20.643371+00:00",
+      "last_success": "2026-11-27T12:36:12.483298+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.486,
+      "duration_seconds": 0.666,
       "latest_build": "306b73d11341eb6e5b90b5e4d2fd03d0e8bf5775",
       "builds_retained": 102,
       "identifiers": 7096
@@ -105356,11 +105491,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-27T12:32:37.113439+00:00",
+      "last_attempt": "2026-11-27T12:36:12.684975+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 5076,
-      "duration_seconds": 20.968
+      "consecutive_failures": 5077,
+      "duration_seconds": 21.145
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -105380,61 +105515,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T12:31:15.595520+00:00",
+      "last_attempt": "2026-11-27T12:35:00.267693+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T12:31:18.626793+00:00",
+      "last_success": "2026-11-27T12:35:03.567823+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.031
+      "duration_seconds": 3.3
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T12:31:18.626847+00:00",
+      "last_attempt": "2026-11-27T12:35:03.567879+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T12:31:18.872665+00:00",
+      "last_success": "2026-11-27T12:35:03.893957+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.246
+      "duration_seconds": 0.326
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T12:31:18.872703+00:00",
+      "last_attempt": "2026-11-27T12:35:03.893996+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T12:31:26.921888+00:00",
+      "last_success": "2026-11-27T12:35:13.442854+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.049
+      "duration_seconds": 9.549
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T12:31:26.921957+00:00",
+      "last_attempt": "2026-11-27T12:35:13.442919+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T12:32:16.500478+00:00",
+      "last_success": "2026-11-27T12:36:08.095739+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 49.579,
+      "duration_seconds": 54.653,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-27T12:31:27.486434+00:00",
+          "checked_at": "2026-11-27T12:35:13.773282+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-27T12:31:38.302585+00:00",
+          "checked_at": "2026-11-27T12:35:25.991382+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-27T12:31:38.479379+00:00",
+          "checked_at": "2026-11-27T12:35:26.177209+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-27T12:31:38.479390+00:00",
+          "checked_at": "2026-11-27T12:35:26.177227+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -105442,25 +105577,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T12:32:16.500527+00:00",
+      "last_attempt": "2026-11-27T12:36:08.095791+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T12:32:19.968325+00:00",
+      "last_success": "2026-11-27T12:36:11.627240+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.468,
-      "latest_build": "2a8965599f0a5447fdeacd48bed1bff014fd0216744c95e4c86891229b449b33",
-      "builds_retained": 227,
-      "identifiers": 10422
+      "duration_seconds": 3.532,
+      "latest_build": "0975477af1072dc8b1595cb9abc860ecc10b6023b75053c8941bf7d5eb15f6bf",
+      "builds_retained": 228,
+      "identifiers": 10425
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-27T12:32:20.158299+00:00",
+      "last_attempt": "2026-11-27T12:36:11.817956+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T12:32:20.643371+00:00",
+      "last_success": "2026-11-27T12:36:12.483298+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.486,
+      "duration_seconds": 0.666,
       "latest_build": "306b73d11341eb6e5b90b5e4d2fd03d0e8bf5775",
       "builds_retained": 102,
       "identifiers": 7096
@@ -105481,11 +105616,11 @@
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-27T12:32:37.113439+00:00",
+      "last_attempt": "2026-11-27T12:36:12.684975+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 5076,
-      "duration_seconds": 20.968
+      "consecutive_failures": 5077,
+      "duration_seconds": 21.145
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
@@ -105503,22 +105638,22 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T12:32:58.088882+00:00",
+      "last_attempt": "2026-11-27T12:36:33.838037+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T12:33:08.544503+00:00",
+      "last_success": "2026-11-27T12:36:44.257741+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 10.456
+      "duration_seconds": 10.42
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T12:33:08.544580+00:00",
+      "last_attempt": "2026-11-27T12:36:44.257808+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T12:33:11.745426+00:00",
+      "last_success": "2026-11-27T12:36:46.399731+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 3.201
+      "duration_seconds": 2.142
     },
     "arena": {
       "poll_interval_seconds": 600,
@@ -105533,27 +105668,27 @@
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T12:33:22.798469+00:00",
+      "last_attempt": "2026-11-27T12:36:46.399780+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T12:33:24.268292+00:00",
+      "last_success": "2026-11-27T12:36:47.845833+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.47
+      "duration_seconds": 1.446
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T12:33:24.268335+00:00",
+      "last_attempt": "2026-11-27T12:36:47.845869+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T12:33:24.328959+00:00",
+      "last_success": "2026-11-27T12:36:47.980251+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.061
+      "duration_seconds": 0.134
     }
   },
   "identities": {
-    "identifiers": 32561,
-    "declared_aliases": 19567,
+    "identifiers": 32564,
+    "declared_aliases": 19570,
     "pending_candidates": 5
   },
   "intelligence_metrics": {
@@ -105574,9 +105709,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 676,
-      "events": 678,
-      "rate": 0.9970501474926253
+      "complete": 677,
+      "events": 679,
+      "rate": 0.9970544918998527
     },
     "source_health": {
       "sources": 14,
