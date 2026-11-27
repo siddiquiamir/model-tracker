@@ -52,8 +52,22 @@ GEMINI_CLI_RELEASES_API_URL = "https://api.github.com/repos/google-gemini/gemini
 OPENCODE_RELEASES_API_URL = "https://api.github.com/repos/anomalyco/opencode/releases?per_page=15"
 CURSOR_CHANGELOG_URL = "https://cursor.com/changelog"
 MCP_SPEC_RELEASES_API_URL = "https://api.github.com/repos/modelcontextprotocol/modelcontextprotocol/releases?per_page=10"
+GROK_BUILD_CHANGELOG_URL = "https://x.ai/changelog/build"
+GROK_BOT_CHANGELOG_URL = "https://x.ai/changelog/bot"
+XAI_API_RELEASE_NOTES_URL = "https://docs.x.ai/developers/release-notes.md"
+DEEPSEEK_HF_MODELS_API_URL = "https://huggingface.co/api/models?author=deepseek-ai&sort=createdAt&direction=-1&limit=10"
+DEEPSEEK_INFRA_REPOS: Tuple[str, ...] = (
+    "DeepGEMM",
+    "FlashMLA",
+    "DeepEP",
+    "DeepEP-Ascend",
+    "TileKernels",
+    "DeepSelect",
+    "DeepJIT",
+    "3FS",
+)
 
-DEFAULT_USER_AGENT = "ModelPulse-ReleaseWatcher/2.0"
+DEFAULT_USER_AGENT = "ModelPulse-ReleaseWatcher/2.1"
 
 PRODUCT_META: Dict[str, Dict[str, Any]] = {
     "antigravity": {
@@ -103,6 +117,30 @@ PRODUCT_META: Dict[str, Dict[str, Any]] = {
         "color": 0x14B8A6,
         "org": "MCP",
         "badge": "SPEC UPDATE",
+    },
+    "grok-build": {
+        "provider_slug": "xai",
+        "color": 0xE2E8F0,
+        "org": "xAI",
+        "badge": "NEW RELEASE",
+    },
+    "grok-bot": {
+        "provider_slug": "xai",
+        "color": 0xCBD5E1,
+        "org": "xAI",
+        "badge": "NEW RELEASE",
+    },
+    "xai-api": {
+        "provider_slug": "xai",
+        "color": 0x94A3B8,
+        "org": "xAI",
+        "badge": "API UPDATE",
+    },
+    "deepseek": {
+        "provider_slug": "deepseek",
+        "color": 0x22D3EE,
+        "org": "DeepSeek",
+        "badge": "INFRA DROP",
     },
 }
 
@@ -694,6 +732,217 @@ def parse_cursor_changelog_html(html: str) -> Dict[str, List[ReleaseEntry]]:
         )
 
     return {"cursor:changelog": entries} if entries else {}
+
+
+def parse_xai_changelog_html(
+    html: str,
+    *,
+    track_key: str,
+    product_family: str,
+    display_name: str,
+    folder_slug: str,
+    base_url: str,
+    max_entries: int = 12,
+) -> Dict[str, List[ReleaseEntry]]:
+    """Parse ``https://x.ai/changelog/build`` or ``https://x.ai/changelog/bot`` HTML."""
+    # Remove React SSR comment markers (`<!-- -->`) so version strings like `v<!-- -->1.0.92` join cleanly
+    cleaned_html = re.sub(r"<!--.*?-->", "", html, flags=re.S)
+    articles = re.findall(r"<article\b[^>]*>(.*?)</article>", cleaned_html, flags=re.S | re.I)
+    entries: List[ReleaseEntry] = []
+
+    for art in articles[:max_entries]:
+        time_m = re.search(r'<time[^>]*dateTime="([^"]+)"', art, flags=re.I)
+        published_at = (time_m.group(1) if time_m else "").strip()
+        if published_at and "T" in published_at:
+            published_at = published_at.split("T", 1)[0]
+
+        h2_m = re.search(r'<h2\b[^>]*?(?:id="([^"]+)")?[^>]*>(.*?)</h2>', art, flags=re.S | re.I)
+        anchor_id = (h2_m.group(1) or "").strip() if h2_m else ""
+        title = re.sub(r"<[^>]+>", "", h2_m.group(2)).strip() if h2_m else ""
+        title = re.sub(r"\s+", " ", title)
+
+        ver_m = re.search(r"\b(v\d+\.\d+\.\d+(?:-[A-Za-z0-9.]+)?)\b", art[:1200])
+        if ver_m:
+            ver = ver_m.group(1)
+        elif anchor_id:
+            ver = anchor_id
+        elif published_at:
+            ver = published_at
+        else:
+            continue
+
+        # Convert everything after </h2> to clean verbatim Markdown
+        body_html = art[h2_m.end() :] if h2_m else art
+        conv = _ProseHTMLToMarkdown()
+        conv.feed(body_html)
+        body_md = conv.get_markdown()
+        if not body_md:
+            continue
+
+        url = f"{base_url}#{anchor_id}" if anchor_id else base_url
+        entries.append(
+            ReleaseEntry(
+                track_key=track_key,
+                product_family=product_family,
+                display_name=display_name,
+                folder_slug=folder_slug,
+                version=ver,
+                published_at=published_at,
+                url=url,
+                title=title or f"{display_name} {ver}",
+                body_markdown=body_md,
+                extra={"anchor": anchor_id},
+            )
+        )
+
+    return {track_key: entries} if entries else {}
+
+
+def parse_xai_api_release_notes(markdown: str, max_entries: int = 12) -> Dict[str, List[ReleaseEntry]]:
+    """Parse ``https://docs.x.ai/developers/release-notes.md`` (``## Month`` / ``### Item``)."""
+    lines = markdown.replace("\r\n", "\n").splitlines()
+    current_month = ""
+    items: List[Tuple[str, str, int]] = []  # (month, heading, line_idx)
+    for idx, line in enumerate(lines):
+        m_mo = re.match(r"^##\s+(.+?)\s*$", line)
+        if m_mo:
+            current_month = m_mo.group(1).strip()
+            continue
+        m_h3 = re.match(r"^###\s+(.+?)\s*$", line)
+        if m_h3:
+            items.append((current_month, m_h3.group(1).strip(), idx))
+
+    entries: List[ReleaseEntry] = []
+    for pos, (month, heading, start_idx) in enumerate(items[:max_entries]):
+        end_idx = items[pos + 1][2] if pos + 1 < len(items) else len(lines)
+        chunk = lines[start_idx + 1 : end_idx]
+        # Stop before next `## ` month heading
+        trimmed: List[str] = []
+        for cl in chunk:
+            if re.match(r"^##\s+", cl):
+                break
+            trimmed.append(cl)
+        body_md = "\n".join(trimmed).strip()
+        if not body_md:
+            continue
+        ver_slug = slugify(f"{month}-{heading}")[:64] if month else slugify(heading)[:64]
+        entries.append(
+            ReleaseEntry(
+                track_key="grok:api",
+                product_family="xai-api",
+                display_name="xAI Grok API",
+                folder_slug="xai-api",
+                version=ver_slug,
+                published_at=month,
+                url=f"https://docs.x.ai/developers/release-notes#{slugify(heading)}",
+                title=heading,
+                body_markdown=body_md,
+                extra={"month": month},
+            )
+        )
+    return {"grok:api": entries} if entries else {}
+
+
+def build_deepseek_repo_entry(
+    repo_name: str,
+    commit_json: Dict[str, Any],
+    pr_json: Optional[Dict[str, Any]] = None,
+    pr_files: Optional[Sequence[Dict[str, Any]]] = None,
+) -> Optional[ReleaseEntry]:
+    """Build a verbatim ReleaseEntry for a DeepSeek GitHub systems/kernel repo update."""
+    sha = str(commit_json.get("sha") or "")[:7]
+    commit_info = commit_json.get("commit") or {}
+    full_msg = str(commit_info.get("message") or "").replace("\r\n", "\n").strip()
+    if not sha or not full_msg:
+        return None
+    headline = full_msg.splitlines()[0].strip()
+    committed_at = str(((commit_info.get("author") or {}).get("date")) or "")
+
+    pr_num = pr_json.get("number") if pr_json else None
+    pr_title = str(pr_json.get("title") or "").strip() if pr_json else ""
+    pr_body = str(pr_json.get("body") or "").replace("\r\n", "\n").strip() if pr_json else ""
+
+    # Derive a clean version tag (e.g. v2.2.0 / V2.6 / pr-525 / sha)
+    ver_match = re.search(r"\b(v\d+\.\d+(?:\.\d+)?)\b", pr_title or headline, re.I)
+    if ver_match:
+        version = f"{ver_match.group(1)}-{sha}"
+    elif pr_num:
+        version = f"pr-{pr_num}-{sha}"
+    else:
+        version = sha
+
+    url = (
+        str(pr_json.get("html_url"))
+        if pr_json and pr_json.get("html_url")
+        else f"https://github.com/deepseek-ai/{repo_name}/commit/{commit_json.get('sha')}"
+    )
+
+    body_parts: List[str] = [f"**Commit:** `{sha}` · **Headline:** {pr_title or headline}"]
+    if pr_json:
+        body_parts.append(
+            f"**Diff stats:** `+{pr_json.get('additions', 0)} / -{pr_json.get('deletions', 0)}` "
+            f"across `{pr_json.get('changed_files', 0)}` files (PR #{pr_num})"
+        )
+    if pr_body:
+        body_parts.extend(["", "### PR Description", "", pr_body])
+    elif "\n" in full_msg:
+        body_parts.extend(["", "### Commit Message", "", full_msg])
+
+    if pr_files:
+        body_parts.extend(["", f"### Changed Files ({len(pr_files)} listed)", ""])
+        for f in pr_files:
+            body_parts.append(
+                f"- `{f.get('status', 'modified')}` (`+{f.get('additions', 0)}/-{f.get('deletions', 0)}`) `{f.get('filename', '')}`"
+            )
+
+    repo_slug = slugify(repo_name)
+    return ReleaseEntry(
+        track_key=f"deepseek:{repo_slug}",
+        product_family="deepseek",
+        display_name=f"DeepSeek {repo_name}",
+        folder_slug=f"deepseek-{repo_slug}",
+        version=version,
+        published_at=committed_at,
+        url=url,
+        title=pr_title or headline,
+        body_markdown="\n".join(body_parts).strip(),
+        extra={"repo": f"deepseek-ai/{repo_name}", "sha": sha, "pr_number": pr_num},
+    )
+
+
+def parse_deepseek_hf_models(models_json: Sequence[Dict[str, Any]]) -> Dict[str, List[ReleaseEntry]]:
+    """Parse ``https://huggingface.co/api/models?author=deepseek-ai...`` for new HF checkpoints."""
+    entries: List[ReleaseEntry] = []
+    for m in models_json[:10]:
+        model_id = str(m.get("id") or "").strip()
+        if not model_id:
+            continue
+        short_name = model_id.split("/", 1)[-1]
+        created = str(m.get("createdAt") or m.get("lastModified") or "").strip()
+        last_mod = str(m.get("lastModified") or "").strip()
+        tags = list(m.get("tags") or [])
+        body_lines = [
+            f"- **Model ID:** `{model_id}`",
+            f"- **Created:** `{created}`",
+            f"- **Last Modified:** `{last_mod}`",
+            f"- **Pipeline Tag:** `{m.get('pipeline_tag') or 'n/a'}`",
+            f"- **Tags:** {', '.join(f'`{t}`' for t in tags[:20]) if tags else 'none'}",
+        ]
+        entries.append(
+            ReleaseEntry(
+                track_key="deepseek:hf-models",
+                product_family="deepseek",
+                display_name="DeepSeek Hugging Face",
+                folder_slug="deepseek-hf",
+                version=short_name,
+                published_at=created[:10] if created else "",
+                url=f"https://huggingface.co/{model_id}",
+                title=f"New Hugging Face model: {short_name}",
+                body_markdown="\n".join(body_lines),
+                extra={"model_id": model_id, "tags": tags},
+            )
+        )
+    return {"deepseek:hf-models": entries} if entries else {}
 
 
 # ---------------------------------------------------------------------------
@@ -1294,6 +1543,86 @@ def fetch_all_tracks(
     except Exception as exc:
         errors.append(f"mcp-spec: {exc}")
 
+    # 8. xAI Grok Build (CLI & Terminal Agent)
+    try:
+        gb_html = _http_get_text(GROK_BUILD_CHANGELOG_URL)
+        tracks.update(
+            parse_xai_changelog_html(
+                gb_html,
+                track_key="grok:build",
+                product_family="grok-build",
+                display_name="xAI Grok Build",
+                folder_slug="grok-build",
+                base_url=GROK_BUILD_CHANGELOG_URL,
+            )
+        )
+    except Exception as exc:
+        errors.append(f"grok-build: {exc}")
+
+    # 9. xAI Grok Bot
+    try:
+        bot_html = _http_get_text(GROK_BOT_CHANGELOG_URL)
+        tracks.update(
+            parse_xai_changelog_html(
+                bot_html,
+                track_key="grok:bot",
+                product_family="grok-bot",
+                display_name="xAI Grok Bot",
+                folder_slug="grok-bot",
+                base_url=GROK_BOT_CHANGELOG_URL,
+            )
+        )
+    except Exception as exc:
+        errors.append(f"grok-bot: {exc}")
+
+    # 10. xAI Grok API Release Notes
+    try:
+        xai_md = _http_get_text(XAI_API_RELEASE_NOTES_URL)
+        tracks.update(parse_xai_api_release_notes(xai_md))
+    except Exception as exc:
+        errors.append(f"xai-api: {exc}")
+
+    # 11. DeepSeek GitHub Infra Stack (DeepGEMM, FlashMLA, DeepEP, DeepEP-Ascend, TileKernels, DeepSelect, DeepJIT, 3FS)
+    for repo_name in DEEPSEEK_INFRA_REPOS:
+        try:
+            commits = _http_get_json(
+                f"https://api.github.com/repos/deepseek-ai/{repo_name}/commits?per_page=1",
+                headers=gh_headers,
+            )
+            if not commits:
+                continue
+            head_commit = commits[0]
+            first_line = str(((head_commit.get("commit") or {}).get("message")) or "").splitlines()[0]
+            pr_m = re.search(r"#(\d+)", first_line)
+            pr_json: Optional[Dict[str, Any]] = None
+            pr_files: Optional[List[Dict[str, Any]]] = None
+            if pr_m:
+                pr_num = pr_m.group(1)
+                try:
+                    pr_json = _http_get_json(
+                        f"https://api.github.com/repos/deepseek-ai/{repo_name}/pulls/{pr_num}",
+                        headers=gh_headers,
+                    )
+                    pr_files = _http_get_json(
+                        f"https://api.github.com/repos/deepseek-ai/{repo_name}/pulls/{pr_num}/files?per_page=100",
+                        headers=gh_headers,
+                    )
+                except Exception:
+                    pr_json = None
+                    pr_files = None
+            entry = build_deepseek_repo_entry(repo_name, head_commit, pr_json=pr_json, pr_files=pr_files)
+            if entry:
+                tracks[entry.track_key] = [entry]
+        except Exception as exc:
+            errors.append(f"deepseek/{repo_name}: {exc}")
+
+    # 12. DeepSeek Hugging Face Models
+    try:
+        ds_hf = _http_get_json(DEEPSEEK_HF_MODELS_API_URL)
+        tracks.update(parse_deepseek_hf_models(ds_hf))
+    except Exception as exc:
+        errors.append(f"deepseek-hf: {exc}")
+
     return tracks, errors
 
 
@@ -1337,6 +1666,14 @@ def _backfill_existing_history_metadata(
                 rec["product_family"] = "cursor"
             elif tk.startswith("mcp:"):
                 rec["product_family"] = "mcp-spec"
+            elif tk == "grok:build":
+                rec["product_family"] = "grok-build"
+            elif tk == "grok:bot":
+                rec["product_family"] = "grok-bot"
+            elif tk == "grok:api":
+                rec["product_family"] = "xai-api"
+            elif tk.startswith("deepseek:"):
+                rec["product_family"] = "deepseek"
             else:
                 rec["product_family"] = "antigravity"
         rel_path = str(rec.get("archive_relpath") or "")

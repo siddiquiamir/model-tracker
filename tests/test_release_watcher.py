@@ -329,6 +329,83 @@ class ReleaseWatcherTests(unittest.TestCase):
             )
             self.assertEqual(res2["new_count"], 0)
 
+    def test_parse_xai_grok_build_bot_and_api(self) -> None:
+        gb_html = """
+        <article>
+          <div><time dateTime="2026-11-19">Nov 19, 2026</time><span>v<!-- -->1.0.92</span></div>
+          <div>
+            <h2 id="v1.0.92-2026-11-19">Grok Build <!-- -->1.0.92</h2>
+            <ul>
+              <li><span>MCP tool results that contain images now include those images in headless JSON output</span></li>
+              <li><span><code>grok inspect</code> now shows loaded hooks with folder trust notes</span></li>
+            </ul>
+          </div>
+        </article>
+        """
+        gb = rw.parse_xai_changelog_html(
+            gb_html,
+            track_key="grok:build",
+            product_family="grok-build",
+            display_name="xAI Grok Build",
+            folder_slug="grok-build",
+            base_url="https://x.ai/changelog/build",
+        )
+        self.assertIn("grok:build", gb)
+        self.assertEqual(gb["grok:build"][0].version, "v1.0.92")
+        self.assertEqual(len(gb["grok:build"][0].bullet_items), 2)
+
+        bot_html = """
+        <article>
+          <div><time dateTime="2026-11-24">Nov 24, 2026</time><a href="#v1.3.0">v<!-- -->1.3.0</a></div>
+          <div>
+            <h2 id="v1.3.0">Smarter Slack Bots, restock alerts, org controls</h2>
+            <section><h3>New</h3><ul><li><span>Bot handoffs return answers in Slack DMs</span></li></ul></section>
+          </div>
+        </article>
+        """
+        bot = rw.parse_xai_changelog_html(
+            bot_html,
+            track_key="grok:bot",
+            product_family="grok-bot",
+            display_name="xAI Grok Bot",
+            folder_slug="grok-bot",
+            base_url="https://x.ai/changelog/bot",
+        )
+        self.assertEqual(bot["grok:bot"][0].version, "v1.3.0")
+        self.assertEqual(bot["grok:bot"][0].title, "Smarter Slack Bots, restock alerts, org controls")
+
+        api_md = "## November\n\n### grok-build-0.1 end of life\n\n`grok-build-0.1` reached end of life on November 19, 2026.\n"
+        api = rw.parse_xai_api_release_notes(api_md)
+        self.assertIn("grok:api", api)
+        self.assertEqual(api["grok:api"][0].title, "grok-build-0.1 end of life")
+
+    def test_parse_deepseek_repo_and_hf_models(self) -> None:
+        commit = {
+            "sha": "abc1234deadbeef",
+            "commit": {"message": "Public release 26/11/26 (#525)", "author": {"date": "2026-11-26T09:25:25Z"}},
+        }
+        pr = {
+            "number": 525,
+            "title": "Public release 26/11/26",
+            "html_url": "https://github.com/deepseek-ai/DeepGEMM/pull/525",
+            "additions": 10505,
+            "deletions": 2788,
+            "changed_files": 93,
+            "body": "- Added `batched_bf16_newton_schulz` and `FP8StochasticRounding`",
+        }
+        files = [{"status": "added", "additions": 400, "deletions": 0, "filename": "csrc/newton_schulz.cuh"}]
+        entry = rw.build_deepseek_repo_entry("DeepGEMM", commit, pr_json=pr, pr_files=files)
+        self.assertIsNotNone(entry)
+        assert entry is not None
+        self.assertEqual(entry.track_key, "deepseek:deepgemm")
+        self.assertIn("batched_bf16_newton_schulz", entry.body_markdown)
+        self.assertIn("csrc/newton_schulz.cuh", entry.body_markdown)
+
+        hf = rw.parse_deepseek_hf_models(
+            [{"id": "deepseek-ai/DeepSeek-V4.1-Flash-1017", "createdAt": "2026-10-17T02:40:38.000Z", "tags": ["fp8"]}]
+        )
+        self.assertEqual(hf["deepseek:hf-models"][0].version, "DeepSeek-V4.1-Flash-1017")
+
 
 if __name__ == "__main__":
     unittest.main()
