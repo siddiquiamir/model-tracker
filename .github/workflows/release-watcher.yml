@@ -1,0 +1,94 @@
+name: ReleasePulse 24/7 Release Notes Watcher
+
+# Watches official changelogs & releases for:
+#   - Google Antigravity (App, CLI, IDE, SDK, IDE Extensions)
+#   - OpenAI Codex CLI (openai/codex)
+#   - Anthropic Claude Code (anthropics/claude-code)
+# Archives 100% verbatim release notes to releases/<tool>/<version>.md,
+# generates a <=280-char X/Twitter draft, and posts a Discord embed with
+# the complete .md file attached so nothing is ever truncated.
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+    inputs:
+      force_notify_latest:
+        description: "Re-send Discord alerts for the latest release of every tracked tool"
+        type: boolean
+        default: false
+      include_codex_alphas:
+        description: "Also track OpenAI Codex CLI alpha prereleases"
+        type: boolean
+        default: false
+
+concurrency:
+  group: release-watcher
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  watch-releases:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run release watcher unit tests
+        run: python -m unittest tests/test_release_watcher.py -v
+
+      - name: Check Antigravity, Codex CLI, and Claude Code releases
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          RELEASE_DISCORD_WEBHOOK_URL: ${{ secrets.RELEASE_DISCORD_WEBHOOK_URL }}
+          FORCE_NOTIFY_LATEST: ${{ inputs.force_notify_latest }}
+          TRACK_CODEX_ALPHAS: ${{ inputs.include_codex_alphas }}
+        run: |
+          ARGS=""
+          if [ "$FORCE_NOTIFY_LATEST" = "true" ]; then
+            ARGS="$ARGS --force-notify-latest"
+          fi
+          if [ "$TRACK_CODEX_ALPHAS" = "true" ]; then
+            ARGS="$ARGS --include-codex-alphas"
+          fi
+          python -m tracker.release_watcher $ARGS
+
+      - name: Commit and push new verbatim release archives
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data/release_state.json releases/
+          if git diff --cached --quiet; then
+            echo "No new releases detected."
+            exit 0
+          fi
+
+          # Avoid committing if only last_checked_at timestamp changed with zero new release files
+          NEW_FILES=$(git diff --cached --name-only -- releases/ | wc -l)
+          if [ "$NEW_FILES" -eq 0 ]; then
+            echo "No new release files; skipping timestamp-only commit."
+            git reset -q
+            exit 0
+          fi
+
+          git commit -q -m "chore(releases): archive new Antigravity/Codex/Claude Code releases"
+          for attempt in 1 2 3; do
+            if git pull -q --rebase -X theirs origin main && git push -q origin HEAD:main; then
+              echo "Pushed updated release archives."
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep 5
+          done
+          echo "::warning::Failed to push release archives after 3 attempts."
+          exit 1
