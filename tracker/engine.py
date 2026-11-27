@@ -128,7 +128,11 @@ STORY_ALERT_VERSION = "alerts:evidence:v1"
 def _story_alert_marks(story: Dict[str, Any]) -> Set[str]:
     story_id = story["id"]
     marks = {story_id}
-    marks.update(f"{story_id}#evidence:{card_id}" for card_id in story.get("card_ids", []))
+    marks.update(
+        f"{story_id}#evidence:{card_id}"
+        for card_id in story.get("card_ids", [])
+        if not str(card_id).startswith("ag-rpc-")
+    )
     marks.update(f"{story_id}#model:{model['id']}" for model in story.get("models", []) if model.get("id"))
     if story.get("kind") == "release":
         marks.add(story_id + "#release")

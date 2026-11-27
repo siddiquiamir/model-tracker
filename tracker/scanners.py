@@ -149,9 +149,15 @@ _AG_GCA_RPC_RE = re.compile(
 )
 _AG_STANDALONE_CAMEL_RE = re.compile(rb"(?<![A-Z])([A-Z][a-z0-9]+(?:[A-Z][a-z0-9]+){1,7})(?![a-z])")
 _AG_FEATURE_RPC_KEYWORDS = re.compile(
-    r"(?:Quota|Banked|Credit|BattleMode|VoiceChat|VoiceMode|Billing|Pricing|DeepThink|Genie|WorldModel|TierUpgrade|FlexQuota)",
+    r"(?:Banked|Credit|BattleMode|VoiceChat|VoiceMode|Billing|Pricing|DeepThink|Genie|WorldModel|TierUpgrade|FlexQuota)",
     re.I,
 )
+_AG_ROUTINE_RPC_IGNORE = {
+    "FetchQuotaStatus",
+    "GetUserQuotaSummary",
+    "RetrieveUserQuota",
+    "RetrieveUserQuotaSummary",
+}
 
 
 def _trim_go_rodata_method(raw_method: str, all_raw: List[str], rodata: bytes) -> str:
@@ -194,7 +200,7 @@ def extract_antigravity_feature_rpcs(rodata: bytes) -> Dict[str, List[str]]:
     by_method: Dict[str, Set[str]] = {}
     for svc, raw_method in raw_pairs:
         clean_method = _trim_go_rodata_method(raw_method, all_raw, rodata)
-        if not _AG_FEATURE_RPC_KEYWORDS.search(clean_method):
+        if clean_method in _AG_ROUTINE_RPC_IGNORE or not _AG_FEATURE_RPC_KEYWORDS.search(clean_method):
             continue
         by_method.setdefault(clean_method, set()).add(f"/{svc}/{clean_method}")
     return {k: sorted(v) for k, v in by_method.items()}
@@ -367,7 +373,8 @@ class AntigravityDesktopScanner:
             for method in added_methods:
                 routes = new_rpcs[method]
                 readable = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", " ", method)
-                card_id = re.sub(r"[^a-zA-Z0-9._-]", "_", f"ag-rpc-{old_build['version']}-{new_build['version']}-{method.lower()}")
+                # Keep card_id stable per RPC method so daily Insiders build bumps never re-alert the same RPC
+                card_id = re.sub(r"[^a-zA-Z0-9._-]", "_", f"ag-rpc-{method.lower()}")
                 cards.append(
                     {
                         "id": card_id,
