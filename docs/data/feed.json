@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-27T16:59:49.603183+00:00",
-  "scan_completed_at": "2026-11-27T17:01:03.717952+00:00",
+  "generated_at": "2026-11-27T17:25:58.740993+00:00",
+  "scan_completed_at": "2026-11-27T17:27:37.666893+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 364,
     "leaks": 37,
     "releases": 87,
-    "stories_24h": 18,
-    "sources_ok": 12,
-    "total_cards": 914,
-    "new_in_this_scan": 0
+    "stories_24h": 20,
+    "sources_ok": 15,
+    "total_cards": 917,
+    "new_in_this_scan": 3
   },
   "stories": [
     {
@@ -7822,7 +7822,7 @@
       "provider_name": "Unattributed",
       "accent_color": "#0891b2",
       "detected_at": "2026-11-23T04:53:18.430240+00:00",
-      "updated_at": "2026-11-25T18:26:15.403335+00:00",
+      "updated_at": "2026-11-27T17:27:03.207325+00:00",
       "first_source": "Registry Update",
       "lead": "",
       "released_on": "2026-11-23",
@@ -7831,7 +7831,7 @@
       "models": [
         {
           "id": "glm-5.4",
-          "name": "volcengine-coding-plan/glm-5.4",
+          "name": "tencent-token-plan-intl/glm-5.4",
           "released_on": "2026-11-23"
         }
       ],
@@ -7856,7 +7856,8 @@
         "intel-fc317de726189e9a9f46",
         "intel-9ccf34ae79ecb25b4877",
         "intel-42be0477c5d2d122c728",
-        "intel-3c9df37b9c013f116f85"
+        "intel-3c9df37b9c013f116f85",
+        "intel-4c5b451694cac66c49a3"
       ],
       "event_label": "Registry update",
       "intelligence_only": true,
@@ -7992,6 +7993,21 @@
           "build": "74ecb6acb2ed7633def30973184f4e3cb6034522",
           "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/74ecb6acb2ed7633def30973184f4e3cb6034522",
           "first_seen": "2026-11-25T18:22:52+00:00"
+        },
+        {
+          "id": "tencent-token-plan-intl/glm-5.4",
+          "family": "glm-5.4",
+          "file_path": "providers/tencent-token-plan-intl/models/glm-5.4.toml",
+          "file_sha256": "ffd507a44c599406ab6b24a917e0a5d58e7a1cab39205a4509ae300482ca5b26",
+          "excerpt": "{\"tencent-token-plan-intl/glm-5.4\": {\"schema\": 2, \"base_model\": \"zhipuai/glm-5.4\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"high\", \"max\"]}, \"structured_output\": true, \"top_k\": false, \"cache\": {\"implicit\": true}}, \"api\": {\"chat-completions\": {\"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}}}}",
+          "canonical_id": "zhipuai/glm-5.4",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/2d774dc93417816bdac3808d56c7286b94a4e0f8/providers/tencent-token-plan-intl/models/glm-5.4.toml",
+          "build": "2d774dc93417816bdac3808d56c7286b94a4e0f8",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/2d774dc93417816bdac3808d56c7286b94a4e0f8",
+          "first_seen": "2026-11-27T17:26:34+00:00"
         }
       ],
       "x_post_text": "Registry Update 12787245219a: glm-5.4\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
@@ -16242,6 +16258,170 @@
       "x_post_text": "🟢 NEW MODEL: GPT Live 1.1 by OpenAI\n\nFirst detected 19 Nov 19:56 UTC in OpenAI Docs Route\nConfirmed by Official pricing page, Vercel AI Gateway Catalog, OpenAI API spec +4\n\nvia @StatsWire"
     },
     {
+      "id": "story-cohere-embed-5",
+      "group": "cohere-embed-5",
+      "kind": "release",
+      "open_weights": false,
+      "title": "Cohere Embed V5 Pro",
+      "provider_slug": "azure",
+      "provider_name": "Azure",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-19T19:20:59.145273+00:00",
+      "updated_at": "2026-11-27T17:26:58.191057+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "14 h before it went live on Opencode Zen Stealth & Model Gateway",
+      "released_on": "",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "cohere-embed-v5-pro",
+          "name": "azure/cohere-embed-v5-pro"
+        },
+        {
+          "id": "cohere-embed-v5-fast",
+          "name": "azure/cohere-embed-v5-fast"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-19T19:20:59.145273+00:00",
+          "title": "cohere-embed-v5",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/245c31763c0fa763e2b930f5aa704892539080e3/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "245c31763c0fa763e2b930f5aa704892539080e3",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/307642e156a19a23d264583e6101651d373f281dc3c059409e9059827ffb853c.json.gz"
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-20T09:34:51.829499+00:00",
+          "title": "cohere-embed-v5",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c",
+          "backfill": false,
+          "build": "6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/bc6374e3c3e7df419d19588b37e2c7fbe705b7a5f42e1b2fa211b8015fcf656b.json.gz"
+        },
+        {
+          "label": "Opencode Zen Stealth & Model Gateway",
+          "scanner": "gateway-radar",
+          "detected_at": "2026-11-20T09:40:27.666197+00:00",
+          "title": "New Model on OpenCode Zen: cohere-embed-v5-fast",
+          "url": "https://opencode.ai/zen/v1/models",
+          "backfill": false,
+          "build": "",
+          "evidence_path": ""
+        }
+      ],
+      "source_count": 3,
+      "backfill": false,
+      "header": "NEW MODEL · AZURE",
+      "card_ids": [
+        "intel-efb1718535faf9770f33",
+        "intel-35efb976b3c81809bb79",
+        "intel-fc6bc1e8729cd6b06c21",
+        "intel-03c8227ec16daf46e5d5",
+        "opencode-zen-diff-5ccc00f9",
+        "intel-488076bae1f363b2718c",
+        "intel-61bcfad034342d5112c8"
+      ],
+      "event_label": "Released",
+      "intelligence_only": false,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "azure_ai/Cohere-Embed-V5-Fast",
+          "family": "cohere-embed-v5",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure_ai/Cohere-Embed-V5-Fast\": {\"successor_model\": \"azure_ai/embed-v-4-0\", \"deprecation_date\": \"2027-01-23\", \"input_cost_per_image_token\": 4e-07, \"input_cost_per_token\": 8e-08, \"litellm_provider\": \"azure_ai\", \"max_input_tokens\": 128000, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"output_vector_size\": 2048.0, \"source\": \"https://prices.azure.com/api/retail/prices?$filter=productName%20eq%20'Cohere%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'\", \"supported_endpoints\": [\"/v1/embeddings\"], \"supported_modalities\": [\"text\", \"image\"], \"supports_embedding_image_input\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "307642e156a19a23d264583e6101651d373f281dc3c059409e9059827ffb853c",
+          "method": "structured registry",
+          "build": "245c31763c0fa763e2b930f5aa704892539080e3",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/245c31763c0fa763e2b930f5aa704892539080e3/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T19:19:20+00:00"
+        },
+        {
+          "id": "azure_ai/Cohere-Embed-V5-Pro",
+          "family": "cohere-embed-v5-pro",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"azure_ai/Cohere-Embed-V5-Pro\": {\"successor_model\": \"azure_ai/embed-v-4-0\", \"deprecation_date\": \"2027-01-23\", \"input_cost_per_image_token\": 4e-07, \"input_cost_per_token\": 1.2e-07, \"litellm_provider\": \"azure_ai\", \"max_input_tokens\": 128000, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"output_vector_size\": 2048.0, \"source\": \"https://prices.azure.com/api/retail/prices?$filter=productName%20eq%20'Cohere%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'\", \"supported_endpoints\": [\"/v1/embeddings\"], \"supported_modalities\": [\"text\", \"image\"], \"supports_embedding_image_input\": true}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "307642e156a19a23d264583e6101651d373f281dc3c059409e9059827ffb853c",
+          "method": "structured registry",
+          "build": "245c31763c0fa763e2b930f5aa704892539080e3",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/245c31763c0fa763e2b930f5aa704892539080e3/model_prices_and_context_window.json",
+          "first_seen": "2026-11-19T19:19:20+00:00"
+        },
+        {
+          "id": "opencode/cohere-embed-v5-fast",
+          "family": "cohere-embed-v5",
+          "file_path": "providers/opencode/models/cohere-embed-v5-fast.toml",
+          "file_sha256": "3deec82fea845214077497bd0f1608cdc5b58c0cc3fd0ea281f1f1d0a8099565",
+          "excerpt": "{\"opencode/cohere-embed-v5-fast\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"cohere/embed-v5.0-fast\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"embedding\"]}, \"api\": {\"embeddings\": {\"base_url\": \"https://opencode.ai/inference/openai/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai-compatible\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/embeddings\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.08}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "cohere/embed-v5.0-fast",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c/providers/opencode/models/cohere-embed-v5-fast.toml",
+          "build": "6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c",
+          "first_seen": "2026-11-20T09:25:53+00:00"
+        },
+        {
+          "id": "opencode/cohere-embed-v5-pro",
+          "family": "cohere-embed-v5-pro",
+          "file_path": "providers/opencode/models/cohere-embed-v5-pro.toml",
+          "file_sha256": "b7bf81c727639b870bf952e04c7254b5954b30bcd8c16faefd7ff6d1953c0948",
+          "excerpt": "{\"opencode/cohere-embed-v5-pro\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"cohere/embed-v5.0-pro\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"embedding\"]}, \"api\": {\"embeddings\": {\"base_url\": \"https://opencode.ai/inference/openai/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai-compatible\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/embeddings\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.12}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "cohere/embed-v5.0-pro",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c/providers/opencode/models/cohere-embed-v5-pro.toml",
+          "build": "6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c",
+          "first_seen": "2026-11-20T09:25:53+00:00"
+        },
+        {
+          "id": "azure/cohere-embed-v5-fast",
+          "family": "cohere-embed-v5",
+          "file_path": "providers/azure/models/cohere-embed-v5-fast.toml",
+          "file_sha256": "b0b81faa61ef271e797f009e5952e56fda87778a41e6c0f05adf8430ae5adca5",
+          "excerpt": "{\"azure/cohere-embed-v5-fast\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"cohere/embed-v5.0-fast\", \"status\": \"beta\", \"api\": {\"embeddings\": {\"base_url\": \"https://${AZURE_RESOURCE_NAME}.services.ai.azure.com/models\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai-compatible\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/embeddings\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.08}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "cohere/embed-v5.0-fast",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1/providers/azure/models/cohere-embed-v5-fast.toml",
+          "build": "5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1",
+          "first_seen": "2026-11-27T17:25:16+00:00"
+        },
+        {
+          "id": "azure/cohere-embed-v5-pro",
+          "family": "cohere-embed-v5-pro",
+          "file_path": "providers/azure/models/cohere-embed-v5-pro.toml",
+          "file_sha256": "3d93979c5ca20a815a9d6e33a5a2891cc0b1df42632526c541417b7d0cf40722",
+          "excerpt": "{\"azure/cohere-embed-v5-pro\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"cohere/embed-v5.0-pro\", \"status\": \"beta\", \"api\": {\"embeddings\": {\"base_url\": \"https://${AZURE_RESOURCE_NAME}.services.ai.azure.com/models\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai-compatible\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/embeddings\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.12}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "cohere/embed-v5.0-pro",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1/providers/azure/models/cohere-embed-v5-pro.toml",
+          "build": "5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1",
+          "first_seen": "2026-11-27T17:25:16+00:00"
+        }
+      ],
+      "discord_alerted_at": "2026-11-20T09:41:07.655181+00:00",
+      "x_post_text": "🟢 NEW MODEL: Cohere Embed V5 Pro by Azure\n\nFirst detected 19 Nov 19:20 UTC in LiteLLM commit-pinned registry\n⏱ 14 h before it went live on Opencode Zen Stealth & Model Gateway\nConfirmed by Registry Update, Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire"
+    },
+    {
       "id": "story-chat",
       "group": "chat",
       "kind": "registry",
@@ -16392,138 +16572,6 @@
         }
       ],
       "x_post_text": "registry evidence, not a launch: MAI-Image-2.5\nhttps://raw.githubusercontent.com/BerriAI/litellm/245c31763c0fa763e2b930f5aa704892539080e3/model_prices_and_context_window.json"
-    },
-    {
-      "id": "story-cohere-embed-5",
-      "group": "cohere-embed-5",
-      "kind": "release",
-      "open_weights": false,
-      "title": "Cohere Embed V5 Pro",
-      "provider_slug": "unknown",
-      "provider_name": "opencode",
-      "accent_color": "#0891b2",
-      "detected_at": "2026-11-19T19:20:59.145273+00:00",
-      "updated_at": "2026-11-20T09:40:27.666197+00:00",
-      "first_source": "LiteLLM commit-pinned registry",
-      "lead": "14 h before it went live on Opencode Zen Stealth & Model Gateway",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "cohere-embed-v5-pro",
-          "name": "Cohere Embed V5 Pro"
-        },
-        {
-          "id": "cohere-embed-v5-fast",
-          "name": "Cohere Embed V5 Fast"
-        }
-      ],
-      "sources": [
-        {
-          "label": "LiteLLM commit-pinned registry",
-          "scanner": "litellm-intelligence",
-          "detected_at": "2026-11-19T19:20:59.145273+00:00",
-          "title": "cohere-embed-v5",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/245c31763c0fa763e2b930f5aa704892539080e3/model_prices_and_context_window.json",
-          "backfill": false,
-          "build": "245c31763c0fa763e2b930f5aa704892539080e3",
-          "evidence_path": "data/intelligence/evidence/litellm-intelligence/307642e156a19a23d264583e6101651d373f281dc3c059409e9059827ffb853c.json.gz"
-        },
-        {
-          "label": "Registry Update",
-          "scanner": "models-dev-git",
-          "detected_at": "2026-11-20T09:34:51.829499+00:00",
-          "title": "cohere-embed-v5",
-          "url": "https://codeload.github.com/anomalyco/models.dev/zip/6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c",
-          "backfill": false,
-          "build": "6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c",
-          "evidence_path": "data/intelligence/evidence/models-dev-git/bc6374e3c3e7df419d19588b37e2c7fbe705b7a5f42e1b2fa211b8015fcf656b.json.gz"
-        },
-        {
-          "label": "Opencode Zen Stealth & Model Gateway",
-          "scanner": "gateway-radar",
-          "detected_at": "2026-11-20T09:40:27.666197+00:00",
-          "title": "New Model on OpenCode Zen: cohere-embed-v5-fast",
-          "url": "https://opencode.ai/zen/v1/models",
-          "backfill": false,
-          "build": "",
-          "evidence_path": ""
-        }
-      ],
-      "source_count": 3,
-      "backfill": false,
-      "header": "NEW MODEL · OPENCODE",
-      "card_ids": [
-        "intel-efb1718535faf9770f33",
-        "intel-35efb976b3c81809bb79",
-        "intel-fc6bc1e8729cd6b06c21",
-        "intel-03c8227ec16daf46e5d5",
-        "opencode-zen-diff-5ccc00f9"
-      ],
-      "event_label": "Released",
-      "intelligence_only": false,
-      "candidate_only": false,
-      "registry_evidence": [
-        {
-          "id": "azure_ai/Cohere-Embed-V5-Fast",
-          "family": "cohere-embed-v5",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"azure_ai/Cohere-Embed-V5-Fast\": {\"successor_model\": \"azure_ai/embed-v-4-0\", \"deprecation_date\": \"2027-01-23\", \"input_cost_per_image_token\": 4e-07, \"input_cost_per_token\": 8e-08, \"litellm_provider\": \"azure_ai\", \"max_input_tokens\": 128000, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"output_vector_size\": 2048.0, \"source\": \"https://prices.azure.com/api/retail/prices?$filter=productName%20eq%20'Cohere%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'\", \"supported_endpoints\": [\"/v1/embeddings\"], \"supported_modalities\": [\"text\", \"image\"], \"supports_embedding_image_input\": true}}",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "307642e156a19a23d264583e6101651d373f281dc3c059409e9059827ffb853c",
-          "method": "structured registry",
-          "build": "245c31763c0fa763e2b930f5aa704892539080e3",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/245c31763c0fa763e2b930f5aa704892539080e3/model_prices_and_context_window.json",
-          "first_seen": "2026-11-19T19:19:20+00:00"
-        },
-        {
-          "id": "azure_ai/Cohere-Embed-V5-Pro",
-          "family": "cohere-embed-v5-pro",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"azure_ai/Cohere-Embed-V5-Pro\": {\"successor_model\": \"azure_ai/embed-v-4-0\", \"deprecation_date\": \"2027-01-23\", \"input_cost_per_image_token\": 4e-07, \"input_cost_per_token\": 1.2e-07, \"litellm_provider\": \"azure_ai\", \"max_input_tokens\": 128000, \"mode\": \"embedding\", \"output_cost_per_token\": 0.0, \"output_vector_size\": 2048.0, \"source\": \"https://prices.azure.com/api/retail/prices?$filter=productName%20eq%20'Cohere%20Models'%20and%20armRegionName%20eq%20'eastus'%20and%20priceType%20eq%20'Consumption'\", \"supported_endpoints\": [\"/v1/embeddings\"], \"supported_modalities\": [\"text\", \"image\"], \"supports_embedding_image_input\": true}}",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "307642e156a19a23d264583e6101651d373f281dc3c059409e9059827ffb853c",
-          "method": "structured registry",
-          "build": "245c31763c0fa763e2b930f5aa704892539080e3",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/245c31763c0fa763e2b930f5aa704892539080e3/model_prices_and_context_window.json",
-          "first_seen": "2026-11-19T19:19:20+00:00"
-        },
-        {
-          "id": "opencode/cohere-embed-v5-fast",
-          "family": "cohere-embed-v5",
-          "file_path": "providers/opencode/models/cohere-embed-v5-fast.toml",
-          "file_sha256": "3deec82fea845214077497bd0f1608cdc5b58c0cc3fd0ea281f1f1d0a8099565",
-          "excerpt": "{\"opencode/cohere-embed-v5-fast\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"cohere/embed-v5.0-fast\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"embedding\"]}, \"api\": {\"embeddings\": {\"base_url\": \"https://opencode.ai/inference/openai/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai-compatible\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/embeddings\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.08}, \"output\": {\"price\": 0}}}}}",
-          "canonical_id": "cohere/embed-v5.0-fast",
-          "provider": "unknown",
-          "provider_evidence": "Hosting route does not establish creator",
-          "method": "structured catalog definition",
-          "definition_url": "https://github.com/anomalyco/models.dev/blob/6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c/providers/opencode/models/cohere-embed-v5-fast.toml",
-          "build": "6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c",
-          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c",
-          "first_seen": "2026-11-20T09:25:53+00:00"
-        },
-        {
-          "id": "opencode/cohere-embed-v5-pro",
-          "family": "cohere-embed-v5-pro",
-          "file_path": "providers/opencode/models/cohere-embed-v5-pro.toml",
-          "file_sha256": "b7bf81c727639b870bf952e04c7254b5954b30bcd8c16faefd7ff6d1953c0948",
-          "excerpt": "{\"opencode/cohere-embed-v5-pro\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"cohere/embed-v5.0-pro\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"embedding\"]}, \"api\": {\"embeddings\": {\"base_url\": \"https://opencode.ai/inference/openai/v1\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai-compatible\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/embeddings\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.12}, \"output\": {\"price\": 0}}}}}",
-          "canonical_id": "cohere/embed-v5.0-pro",
-          "provider": "unknown",
-          "provider_evidence": "Hosting route does not establish creator",
-          "method": "structured catalog definition",
-          "definition_url": "https://github.com/anomalyco/models.dev/blob/6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c/providers/opencode/models/cohere-embed-v5-pro.toml",
-          "build": "6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c",
-          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/6c4a0f7ac5dd31ee05a4792fe960975a9f679c8c",
-          "first_seen": "2026-11-20T09:25:53+00:00"
-        }
-      ],
-      "discord_alerted_at": "2026-11-20T09:41:07.655181+00:00",
-      "x_post_text": "🟢 NEW MODEL: Cohere Embed V5 Pro by opencode\n\nFirst detected 19 Nov 19:20 UTC in LiteLLM commit-pinned registry\n⏱ 14 h before it went live on Opencode Zen Stealth & Model Gateway\nConfirmed by Registry Update, Opencode Zen Stealth & Model Gateway\n\nvia @StatsWire"
     },
     {
       "id": "story-ai-21-jamba-1-5-mini-1",
@@ -31028,6 +31076,265 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-4c5b451694cac66c49a3",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "glm-5.4",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "glm-5.4",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "tencent-token-plan-intl/glm-5.4",
+          "name": "tencent-token-plan-intl/glm-5.4",
+          "registry_update": true,
+          "released_on": "2026-11-23"
+        }
+      ],
+      "detected_at": "2026-11-27T17:27:03.207325+00:00",
+      "first_seen": "2026-11-27T17:26:34+00:00",
+      "observed_at": "2026-11-27T17:27:03.207325+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1 -> 2d774dc93417816bdac3808d56c7286b94a4e0f8",
+      "build": "2d774dc93417816bdac3808d56c7286b94a4e0f8",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/2d774dc93417816bdac3808d56c7286b94a4e0f8",
+      "artifact_sha256": "c2891b2453fb307dd8be27c6330dac9493ec0a864cdc3d9d845b619345d404e1",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/c2891b2453fb307dd8be27c6330dac9493ec0a864cdc3d9d845b619345d404e1.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/c2891b2453fb307dd8be27c6330dac9493ec0a864cdc3d9d845b619345d404e1.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "tencent-token-plan-intl/glm-5.4",
+          "family": "glm-5.4",
+          "file_path": "providers/tencent-token-plan-intl/models/glm-5.4.toml",
+          "file_sha256": "ffd507a44c599406ab6b24a917e0a5d58e7a1cab39205a4509ae300482ca5b26",
+          "excerpt": "{\"tencent-token-plan-intl/glm-5.4\": {\"schema\": 2, \"base_model\": \"zhipuai/glm-5.4\", \"modalities\": {\"input\": [\"text\"], \"output\": [\"text\"]}, \"capabilities\": {\"reasoning\": {\"supported\": true, \"effort\": [\"low\", \"high\", \"max\"]}, \"structured_output\": true, \"top_k\": false, \"cache\": {\"implicit\": true}}, \"api\": {\"chat-completions\": {\"compatibility\": {\"reasoning_field\": \"reasoning_content\"}}}}}",
+          "canonical_id": "zhipuai/glm-5.4",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/2d774dc93417816bdac3808d56c7286b94a4e0f8/providers/tencent-token-plan-intl/models/glm-5.4.toml",
+          "build": "2d774dc93417816bdac3808d56c7286b94a4e0f8",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/2d774dc93417816bdac3808d56c7286b94a4e0f8",
+          "first_seen": "2026-11-27T17:26:34+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/2d774dc93417816bdac3808d56c7286b94a4e0f8"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/2d774dc93417816bdac3808d56c7286b94a4e0f8"
+        }
+      ],
+      "tracker_observed_at": "2026-11-27T17:27:05.380874+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 2d774dc93417: tencent-token-plan-intl/glm-5.4\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/2d774dc93417816bdac3808d56c7286b94a4e0f8"
+    },
+    {
+      "id": "intel-488076bae1f363b2718c",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "cohere-embed-v5",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "cohere-embed-v5",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "azure/cohere-embed-v5-fast",
+          "name": "azure/cohere-embed-v5-fast",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-27T17:26:58.191057+00:00",
+      "first_seen": "2026-11-27T17:25:16+00:00",
+      "observed_at": "2026-11-27T17:26:58.191057+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "1d451ccc62d94439efb59214c576db0b7481d427 -> 5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1",
+      "build": "5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1",
+      "artifact_sha256": "4a6da398133b94b1d116db0b51a10e966f4f0975a972496ee5eedd2f56c5f247",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/4a6da398133b94b1d116db0b51a10e966f4f0975a972496ee5eedd2f56c5f247.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/4a6da398133b94b1d116db0b51a10e966f4f0975a972496ee5eedd2f56c5f247.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "azure/cohere-embed-v5-fast",
+          "family": "cohere-embed-v5",
+          "file_path": "providers/azure/models/cohere-embed-v5-fast.toml",
+          "file_sha256": "b0b81faa61ef271e797f009e5952e56fda87778a41e6c0f05adf8430ae5adca5",
+          "excerpt": "{\"azure/cohere-embed-v5-fast\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"cohere/embed-v5.0-fast\", \"status\": \"beta\", \"api\": {\"embeddings\": {\"base_url\": \"https://${AZURE_RESOURCE_NAME}.services.ai.azure.com/models\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai-compatible\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/embeddings\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.08}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "cohere/embed-v5.0-fast",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1/providers/azure/models/cohere-embed-v5-fast.toml",
+          "build": "5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1",
+          "first_seen": "2026-11-27T17:25:16+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1"
+        }
+      ],
+      "tracker_observed_at": "2026-11-27T17:27:05.380874+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 5bd993f65afd: azure/cohere-embed-v5-fast\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1"
+    },
+    {
+      "id": "intel-61bcfad034342d5112c8",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "cohere-embed-v5-pro",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "cohere-embed-v5-pro",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "azure/cohere-embed-v5-pro",
+          "name": "azure/cohere-embed-v5-pro",
+          "registry_update": true
+        }
+      ],
+      "detected_at": "2026-11-27T17:26:58.191057+00:00",
+      "first_seen": "2026-11-27T17:25:16+00:00",
+      "observed_at": "2026-11-27T17:26:58.191057+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "1d451ccc62d94439efb59214c576db0b7481d427 -> 5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1",
+      "build": "5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1",
+      "artifact_sha256": "4a6da398133b94b1d116db0b51a10e966f4f0975a972496ee5eedd2f56c5f247",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/4a6da398133b94b1d116db0b51a10e966f4f0975a972496ee5eedd2f56c5f247.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/4a6da398133b94b1d116db0b51a10e966f4f0975a972496ee5eedd2f56c5f247.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "azure/cohere-embed-v5-pro",
+          "family": "cohere-embed-v5-pro",
+          "file_path": "providers/azure/models/cohere-embed-v5-pro.toml",
+          "file_sha256": "3d93979c5ca20a815a9d6e33a5a2891cc0b1df42632526c541417b7d0cf40722",
+          "excerpt": "{\"azure/cohere-embed-v5-pro\": {\"schema\": 2, \"v2_only\": true, \"base_model\": \"cohere/embed-v5.0-pro\", \"status\": \"beta\", \"api\": {\"embeddings\": {\"base_url\": \"https://${AZURE_RESOURCE_NAME}.services.ai.azure.com/models\", \"sdk\": {\"aisdk\": \"@ai-sdk/openai-compatible\", \"opencodeai\": \"@opencode/ai/providers/openai-compatible/embeddings\"}}}, \"cost\": {\"text\": {\"input\": {\"price\": 0.12}, \"output\": {\"price\": 0}}}}}",
+          "canonical_id": "cohere/embed-v5.0-pro",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1/providers/azure/models/cohere-embed-v5-pro.toml",
+          "build": "5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1",
+          "first_seen": "2026-11-27T17:25:16+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1"
+        }
+      ],
+      "tracker_observed_at": "2026-11-27T17:27:05.380874+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 5bd993f65afd: azure/cohere-embed-v5-pro\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/5bd993f65afd0181bf6c96b64a2e9f1c0ae559e1"
+    },
     {
       "id": "ag-rpc-battlemodeautotrigger",
       "category": "feature-rpc-diff",
@@ -105084,25 +105391,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T17:00:39.449516+00:00",
+      "last_attempt": "2026-11-27T17:26:51.300082+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T17:00:39.725934+00:00",
+      "last_success": "2026-11-27T17:26:54.334523+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.277,
-      "latest_build": "070e7d1b20f77694c2cac40a56409d79a7b18db6ec3257c42ef1e01ab0d49e9a",
-      "builds_retained": 228,
-      "identifiers": 10425
+      "duration_seconds": 3.035,
+      "latest_build": "83e47b07e0509e5a1c2e8a91e03ad1e4a8a4e5b8c3babbe3fc88e65f8111e7a2",
+      "builds_retained": 232,
+      "identifiers": 10429
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-27T16:58:19.981333+00:00",
+      "last_attempt": "2026-11-27T17:26:54.433457+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T16:58:20.327665+00:00",
+      "last_success": "2026-11-27T17:26:54.813082+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.347,
+      "duration_seconds": 0.38,
       "latest_build": "306b73d11341eb6e5b90b5e4d2fd03d0e8bf5775",
       "builds_retained": 102,
       "identifiers": 7096
@@ -105110,34 +105417,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-27T16:51:13.982046+00:00",
+      "last_attempt": "2026-11-27T17:26:54.917195+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T16:51:14.411188+00:00",
+      "last_success": "2026-11-27T17:27:05.380874+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.43,
-      "latest_build": "1d451ccc62d94439efb59214c576db0b7481d427",
-      "builds_retained": 230,
-      "identifiers": 11703
+      "duration_seconds": 10.465,
+      "latest_build": "2d774dc93417816bdac3808d56c7286b94a4e0f8",
+      "builds_retained": 232,
+      "identifiers": 11721
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-27T17:00:39.840267+00:00",
+      "last_attempt": "2026-11-27T17:27:05.482834+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 5092,
-      "duration_seconds": 11.527
+      "consecutive_failures": 5103,
+      "duration_seconds": 10.413
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-27T16:56:06.672151+00:00",
+      "last_attempt": "2026-11-27T17:12:57.323582+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T16:56:06.830112+00:00",
+      "last_success": "2026-11-27T17:12:57.559275+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.158,
+      "duration_seconds": 0.236,
       "latest_build": "3.15.14",
       "builds_retained": 5,
       "identifiers": 3340
@@ -105147,61 +105454,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T16:59:49.603255+00:00",
+      "last_attempt": "2026-11-27T17:25:58.741057+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T16:59:51.434108+00:00",
+      "last_success": "2026-11-27T17:26:00.842399+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.831
+      "duration_seconds": 2.101
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T16:59:51.434163+00:00",
+      "last_attempt": "2026-11-27T17:26:00.842455+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T16:59:51.554908+00:00",
+      "last_success": "2026-11-27T17:26:00.955729+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.121
+      "duration_seconds": 0.113
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T16:59:51.554940+00:00",
+      "last_attempt": "2026-11-27T17:26:00.955759+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T16:59:57.904588+00:00",
+      "last_success": "2026-11-27T17:26:11.596999+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 6.35
+      "duration_seconds": 10.641
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T16:59:57.904647+00:00",
+      "last_attempt": "2026-11-27T17:26:11.597063+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T17:00:39.449460+00:00",
+      "last_success": "2026-11-27T17:26:51.300032+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 41.545,
+      "duration_seconds": 39.703,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-27T16:59:58.126697+00:00",
+          "checked_at": "2026-11-27T17:26:11.783157+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-27T17:00:08.966039+00:00",
+          "checked_at": "2026-11-27T17:26:22.964791+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-27T17:00:09.147015+00:00",
+          "checked_at": "2026-11-27T17:26:23.108272+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-27T17:00:09.147034+00:00",
+          "checked_at": "2026-11-27T17:26:23.108279+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -105209,25 +105516,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T17:00:39.449516+00:00",
+      "last_attempt": "2026-11-27T17:26:51.300082+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T17:00:39.725934+00:00",
+      "last_success": "2026-11-27T17:26:54.334523+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.277,
-      "latest_build": "070e7d1b20f77694c2cac40a56409d79a7b18db6ec3257c42ef1e01ab0d49e9a",
-      "builds_retained": 228,
-      "identifiers": 10425
+      "duration_seconds": 3.035,
+      "latest_build": "83e47b07e0509e5a1c2e8a91e03ad1e4a8a4e5b8c3babbe3fc88e65f8111e7a2",
+      "builds_retained": 232,
+      "identifiers": 10429
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-27T16:58:19.981333+00:00",
+      "last_attempt": "2026-11-27T17:26:54.433457+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T16:58:20.327665+00:00",
+      "last_success": "2026-11-27T17:26:54.813082+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.347,
+      "duration_seconds": 0.38,
       "latest_build": "306b73d11341eb6e5b90b5e4d2fd03d0e8bf5775",
       "builds_retained": 102,
       "identifiers": 7096
@@ -105235,34 +105542,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-27T16:51:13.982046+00:00",
+      "last_attempt": "2026-11-27T17:26:54.917195+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T16:51:14.411188+00:00",
+      "last_success": "2026-11-27T17:27:05.380874+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.43,
-      "latest_build": "1d451ccc62d94439efb59214c576db0b7481d427",
-      "builds_retained": 230,
-      "identifiers": 11703
+      "duration_seconds": 10.465,
+      "latest_build": "2d774dc93417816bdac3808d56c7286b94a4e0f8",
+      "builds_retained": 232,
+      "identifiers": 11721
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-27T17:00:39.840267+00:00",
+      "last_attempt": "2026-11-27T17:27:05.482834+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 5092,
-      "duration_seconds": 11.527
+      "consecutive_failures": 5103,
+      "duration_seconds": 10.413
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-27T16:56:06.672151+00:00",
+      "last_attempt": "2026-11-27T17:12:57.323582+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T16:56:06.830112+00:00",
+      "last_success": "2026-11-27T17:12:57.559275+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.158,
+      "duration_seconds": 0.236,
       "latest_build": "3.15.14",
       "builds_retained": 5,
       "identifiers": 3340
@@ -105270,64 +105577,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T17:00:51.374450+00:00",
+      "last_attempt": "2026-11-27T17:27:15.902620+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T17:01:00.250903+00:00",
+      "last_success": "2026-11-27T17:27:24.090613+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.876
+      "duration_seconds": 8.188
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T17:01:00.250971+00:00",
+      "last_attempt": "2026-11-27T17:27:24.090681+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T17:01:02.704345+00:00",
+      "last_success": "2026-11-27T17:27:26.612911+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.453
+      "duration_seconds": 2.522
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-27T16:51:32.443763+00:00",
+      "last_attempt": "2026-11-27T17:27:26.612957+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T16:51:41.175791+00:00",
+      "last_success": "2026-11-27T17:27:35.693698+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.732
+      "duration_seconds": 9.081
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T17:01:02.704408+00:00",
+      "last_attempt": "2026-11-27T17:27:35.693749+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T17:01:03.332020+00:00",
+      "last_success": "2026-11-27T17:27:36.270603+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.628
+      "duration_seconds": 0.577
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-27T17:01:03.332077+00:00",
+      "last_attempt": "2026-11-27T17:27:36.270646+00:00",
       "status": "ok",
-      "last_success": "2026-11-27T17:01:03.406602+00:00",
+      "last_success": "2026-11-27T17:27:36.298008+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.075
+      "duration_seconds": 0.027
     }
   },
   "identities": {
-    "identifiers": 32564,
-    "declared_aliases": 19570,
+    "identifiers": 32586,
+    "declared_aliases": 19592,
     "pending_candidates": 5
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 520,
-      "seconds_mean": 4628.673999211539,
+      "samples": 523,
+      "seconds_mean": 4602.5699216615685,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -105341,9 +105648,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 678,
-      "events": 680,
-      "rate": 0.9970588235294118
+      "complete": 681,
+      "events": 683,
+      "rate": 0.9970717423133236
     },
     "source_health": {
       "sources": 14,
