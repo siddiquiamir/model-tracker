@@ -1,37 +1,38 @@
 {
-  "generated_at": "2026-11-28T00:26:23.583616+00:00",
-  "scan_completed_at": "2026-11-28T00:28:10.998997+00:00",
+  "generated_at": "2026-11-28T00:46:45.351710+00:00",
+  "scan_completed_at": "2026-11-28T00:48:43.195020+00:00",
   "github_user": "siddiquiamir",
   "stats": {
     "stories": 365,
     "leaks": 37,
-    "releases": 87,
-    "stories_24h": 15,
+    "releases": 88,
+    "stories_24h": 16,
     "sources_ok": 14,
-    "total_cards": 919,
-    "new_in_this_scan": 0
+    "total_cards": 921,
+    "new_in_this_scan": 2
   },
   "stories": [
     {
       "id": "story-stt-3-7",
       "group": "stt-3-7",
-      "kind": "unverified",
+      "kind": "release",
       "open_weights": false,
       "title": "STT-3.7",
-      "provider_slug": "openrouter",
-      "provider_name": "assemblyai",
-      "accent_color": "#10b981",
+      "provider_slug": "unknown",
+      "provider_name": "vercel",
+      "accent_color": "#0891b2",
       "detected_at": "2026-11-27T19:21:44.680212+00:00",
-      "updated_at": "2026-11-27T19:21:44.680212+00:00",
+      "updated_at": "2026-11-28T00:48:08.860995+00:00",
       "first_source": "Vercel AI Gateway Catalog",
       "lead": "",
-      "released_on": "",
+      "released_on": "2026-11-27",
       "pricing": "",
       "codenames": [],
       "models": [
         {
           "id": "stt-3.7",
-          "name": "STT-3.7"
+          "name": "vercel/assemblyai/stt-3.7",
+          "released_on": "2026-11-27"
         }
       ],
       "sources": [
@@ -44,20 +45,47 @@
           "backfill": false,
           "build": "",
           "evidence_path": ""
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-28T00:48:08.860995+00:00",
+          "title": "stt-3.7",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/71c4140878146c13076b71fa95767d8ce0e50e5b",
+          "backfill": false,
+          "build": "71c4140878146c13076b71fa95767d8ce0e50e5b",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/e3f8b60f275fb29e37fcecc59b1e5a8ebfdc28c1961d3022361db5125a71bd70.json.gz"
         }
       ],
-      "source_count": 1,
+      "source_count": 2,
       "backfill": false,
-      "header": "UNVERIFIED · ASSEMBLYAI",
+      "header": "NEW MODEL · VERCEL",
       "card_ids": [
-        "vercel-gateway-diff-fca23bd8"
+        "vercel-gateway-diff-fca23bd8",
+        "intel-47a0453cf156dc84c1c8"
       ],
-      "event_label": "",
+      "event_label": "Released",
       "intelligence_only": false,
       "candidate_only": false,
-      "registry_evidence": [],
-      "discord_alerted_at": "2026-11-27T19:22:52.395815+00:00",
-      "x_post_text": "⚪ UNVERIFIED: STT-3.7 by assemblyai\n\nFirst detected 27 Nov 19:21 UTC in Vercel AI Gateway Catalog\n\nvia @StatsWire"
+      "registry_evidence": [
+        {
+          "id": "vercel/assemblyai/stt-3.7",
+          "family": "stt-3.7",
+          "file_path": "providers/vercel/models/assemblyai/stt-3.7.toml",
+          "file_sha256": "bf29bf4f95507f45b942ddff94148634fe54d0f0cd9131a8008500ce940e849f",
+          "excerpt": "{\"vercel/assemblyai/stt-3.7\": {\"schema\": 2, \"v2_only\": true, \"type\": \"transcription\", \"name\": \"STT-3.7\", \"description\": \"Speech transcription model for accurate audio-to-text and captioning workflows\", \"open_weights\": false, \"release_date\": \"2026-11-27\", \"modalities\": {\"input\": [\"audio\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}, \"temperature\": false, \"top_p\": false, \"top_k\": false}, \"limit\": {\"context\": 0, \"output\": 0}, \"api\": {\"transcriptions\": {\"base_url\": \"https://ai-gateway.vercel.sh/v4/ai\", \"sdk\": {\"opencodeai\": \"none\"}}}, \"cost\": {\"audio\": {\"input\": {\"unit\": \"second\", \"price\": 5.834e-05}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/71c4140878146c13076b71fa95767d8ce0e50e5b/providers/vercel/models/assemblyai/stt-3.7.toml",
+          "build": "71c4140878146c13076b71fa95767d8ce0e50e5b",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/71c4140878146c13076b71fa95767d8ce0e50e5b",
+          "first_seen": "2026-11-28T00:45:36+00:00"
+        }
+      ],
+      "discord_alerted_at": "2026-11-28T00:48:43.192462+00:00",
+      "x_post_text": "🟢 NEW MODEL: STT-3.7 by vercel\n\nFirst detected 27 Nov 19:21 UTC in Vercel AI Gateway Catalog\n📅 First released: 2026-11-27\nConfirmed by Registry Update\n\nvia @StatsWire"
     },
     {
       "id": "story-battlemodeautotrigger",
@@ -12831,6 +12859,93 @@
       "x_post_text": "Registry Update 38136fb003e1: heygen-decision-1-turbo\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://models.dev/api.json?type=all"
     },
     {
+      "id": "story-universal-2",
+      "group": "universal-2",
+      "kind": "registry",
+      "open_weights": false,
+      "title": "Universal 2",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "accent_color": "#0891b2",
+      "detected_at": "2026-11-20T16:29:37.105095+00:00",
+      "updated_at": "2026-11-28T00:48:08.860995+00:00",
+      "first_source": "LiteLLM commit-pinned registry",
+      "lead": "",
+      "released_on": "2026-11-27",
+      "pricing": "",
+      "codenames": [],
+      "models": [
+        {
+          "id": "universal-2",
+          "name": "vercel/assemblyai/universal-2",
+          "released_on": "2026-11-27"
+        }
+      ],
+      "sources": [
+        {
+          "label": "LiteLLM commit-pinned registry",
+          "scanner": "litellm-intelligence",
+          "detected_at": "2026-11-20T16:29:37.105095+00:00",
+          "title": "universal-2",
+          "url": "https://raw.githubusercontent.com/BerriAI/litellm/7c0f91d63ac32a8ee1abd96d7708f69e19aa2742/model_prices_and_context_window.json",
+          "backfill": false,
+          "build": "7c0f91d63ac32a8ee1abd96d7708f69e19aa2742",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/1de263d8752d726ef04768b18fec39c8bebe6eab589f8df4150ed4d5f5bcefdb.json.gz"
+        },
+        {
+          "label": "Registry Update",
+          "scanner": "models-dev-git",
+          "detected_at": "2026-11-28T00:48:08.860995+00:00",
+          "title": "universal-2",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/71c4140878146c13076b71fa95767d8ce0e50e5b",
+          "backfill": false,
+          "build": "71c4140878146c13076b71fa95767d8ce0e50e5b",
+          "evidence_path": "data/intelligence/evidence/models-dev-git/e3f8b60f275fb29e37fcecc59b1e5a8ebfdc28c1961d3022361db5125a71bd70.json.gz"
+        }
+      ],
+      "source_count": 2,
+      "backfill": false,
+      "header": "REGISTRY UPDATE · UNATTRIBUTED",
+      "card_ids": [
+        "intel-b71cef402b14a773eb41",
+        "intel-7c033647559adc6378d0"
+      ],
+      "event_label": "Registry update",
+      "intelligence_only": true,
+      "candidate_only": false,
+      "registry_evidence": [
+        {
+          "id": "assemblyai/universal-2",
+          "family": "universal-2",
+          "file_path": "model_prices_and_context_window.json",
+          "excerpt": "{\"assemblyai/universal-2\": {\"input_cost_per_second\": 4.167e-05, \"litellm_provider\": \"assemblyai\", \"mode\": \"audio_transcription\", \"output_cost_per_second\": 0.0, \"source\": \"https://www.assemblyai.com/pricing\"}}",
+          "provider": "unknown",
+          "provider_evidence": "Integration route is not lab ownership",
+          "file_sha256": "1de263d8752d726ef04768b18fec39c8bebe6eab589f8df4150ed4d5f5bcefdb",
+          "method": "structured registry",
+          "build": "7c0f91d63ac32a8ee1abd96d7708f69e19aa2742",
+          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/7c0f91d63ac32a8ee1abd96d7708f69e19aa2742/model_prices_and_context_window.json",
+          "first_seen": "2026-11-20T16:26:18+00:00"
+        },
+        {
+          "id": "vercel/assemblyai/universal-2",
+          "family": "universal-2",
+          "file_path": "providers/vercel/models/assemblyai/universal-2.toml",
+          "file_sha256": "138677f53edffd9fa3a14e58b87a82e8df5561e1b6ddeec66ea0bb2a97a8b31f",
+          "excerpt": "{\"vercel/assemblyai/universal-2\": {\"schema\": 2, \"v2_only\": true, \"type\": \"transcription\", \"name\": \"Universal-2\", \"description\": \"Speech transcription model for accurate audio-to-text and captioning workflows\", \"open_weights\": false, \"release_date\": \"2026-11-27\", \"modalities\": {\"input\": [\"audio\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}, \"temperature\": false, \"top_p\": false, \"top_k\": false}, \"limit\": {\"context\": 0, \"output\": 0}, \"api\": {\"transcriptions\": {\"base_url\": \"https://ai-gateway.vercel.sh/v4/ai\", \"sdk\": {\"opencodeai\": \"none\"}}}, \"cost\": {\"audio\": {\"input\": {\"unit\": \"second\", \"price\": 4.167e-05}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/71c4140878146c13076b71fa95767d8ce0e50e5b/providers/vercel/models/assemblyai/universal-2.toml",
+          "build": "71c4140878146c13076b71fa95767d8ce0e50e5b",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/71c4140878146c13076b71fa95767d8ce0e50e5b",
+          "first_seen": "2026-11-28T00:45:36+00:00"
+        }
+      ],
+      "x_post_text": "LiteLLM commit-pinned registry 7c0f91d63ac3: universal-2\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/7c0f91d63ac32a8ee1abd96d7708f69e19aa2742/model_prices_and_context_window.json"
+    },
+    {
       "id": "story-pplx-embed-2-context-0",
       "group": "pplx-embed-2-context-0",
       "kind": "registry",
@@ -13269,66 +13384,6 @@
         }
       ],
       "x_post_text": "registry evidence, not a launch: assemblyai-stt-3-7-realtime-agent\nhttps://raw.githubusercontent.com/BerriAI/litellm/7c0f91d63ac32a8ee1abd96d7708f69e19aa2742/model_prices_and_context_window.json"
-    },
-    {
-      "id": "story-universal-2",
-      "group": "universal-2",
-      "kind": "registry",
-      "open_weights": false,
-      "title": "Universal 2",
-      "provider_slug": "unknown",
-      "provider_name": "Unattributed",
-      "accent_color": "#0891b2",
-      "detected_at": "2026-11-20T16:29:37.105095+00:00",
-      "updated_at": "2026-11-20T16:29:37.105095+00:00",
-      "first_source": "LiteLLM commit-pinned registry",
-      "lead": "",
-      "released_on": "",
-      "pricing": "",
-      "codenames": [],
-      "models": [
-        {
-          "id": "universal-2",
-          "name": "assemblyai/universal-2"
-        }
-      ],
-      "sources": [
-        {
-          "label": "LiteLLM commit-pinned registry",
-          "scanner": "litellm-intelligence",
-          "detected_at": "2026-11-20T16:29:37.105095+00:00",
-          "title": "universal-2",
-          "url": "https://raw.githubusercontent.com/BerriAI/litellm/7c0f91d63ac32a8ee1abd96d7708f69e19aa2742/model_prices_and_context_window.json",
-          "backfill": false,
-          "build": "7c0f91d63ac32a8ee1abd96d7708f69e19aa2742",
-          "evidence_path": "data/intelligence/evidence/litellm-intelligence/1de263d8752d726ef04768b18fec39c8bebe6eab589f8df4150ed4d5f5bcefdb.json.gz"
-        }
-      ],
-      "source_count": 1,
-      "backfill": false,
-      "header": "REGISTRY UPDATE · UNATTRIBUTED",
-      "card_ids": [
-        "intel-b71cef402b14a773eb41"
-      ],
-      "event_label": "Registry update",
-      "intelligence_only": true,
-      "candidate_only": false,
-      "registry_evidence": [
-        {
-          "id": "assemblyai/universal-2",
-          "family": "universal-2",
-          "file_path": "model_prices_and_context_window.json",
-          "excerpt": "{\"assemblyai/universal-2\": {\"input_cost_per_second\": 4.167e-05, \"litellm_provider\": \"assemblyai\", \"mode\": \"audio_transcription\", \"output_cost_per_second\": 0.0, \"source\": \"https://www.assemblyai.com/pricing\"}}",
-          "provider": "unknown",
-          "provider_evidence": "Integration route is not lab ownership",
-          "file_sha256": "1de263d8752d726ef04768b18fec39c8bebe6eab589f8df4150ed4d5f5bcefdb",
-          "method": "structured registry",
-          "build": "7c0f91d63ac32a8ee1abd96d7708f69e19aa2742",
-          "source_url": "https://raw.githubusercontent.com/BerriAI/litellm/7c0f91d63ac32a8ee1abd96d7708f69e19aa2742/model_prices_and_context_window.json",
-          "first_seen": "2026-11-20T16:26:18+00:00"
-        }
-      ],
-      "x_post_text": "LiteLLM commit-pinned registry 7c0f91d63ac3: universal-2\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://raw.githubusercontent.com/BerriAI/litellm/7c0f91d63ac32a8ee1abd96d7708f69e19aa2742/model_prices_and_context_window.json"
     },
     {
       "id": "story-universal-3-5",
@@ -31138,6 +31193,187 @@
     }
   ],
   "cards": [
+    {
+      "id": "intel-47a0453cf156dc84c1c8",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "stt-3.7",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "stt-3.7",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "vercel/assemblyai/stt-3.7",
+          "name": "vercel/assemblyai/stt-3.7",
+          "registry_update": true,
+          "released_on": "2026-11-27"
+        }
+      ],
+      "detected_at": "2026-11-28T00:48:08.860995+00:00",
+      "first_seen": "2026-11-28T00:45:36+00:00",
+      "observed_at": "2026-11-28T00:48:08.860995+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "a02ac0dc13809dfafd0eb1e183040acf7aab596c -> 71c4140878146c13076b71fa95767d8ce0e50e5b",
+      "build": "71c4140878146c13076b71fa95767d8ce0e50e5b",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/71c4140878146c13076b71fa95767d8ce0e50e5b",
+      "artifact_sha256": "e3f8b60f275fb29e37fcecc59b1e5a8ebfdc28c1961d3022361db5125a71bd70",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/e3f8b60f275fb29e37fcecc59b1e5a8ebfdc28c1961d3022361db5125a71bd70.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/e3f8b60f275fb29e37fcecc59b1e5a8ebfdc28c1961d3022361db5125a71bd70.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "vercel/assemblyai/stt-3.7",
+          "family": "stt-3.7",
+          "file_path": "providers/vercel/models/assemblyai/stt-3.7.toml",
+          "file_sha256": "bf29bf4f95507f45b942ddff94148634fe54d0f0cd9131a8008500ce940e849f",
+          "excerpt": "{\"vercel/assemblyai/stt-3.7\": {\"schema\": 2, \"v2_only\": true, \"type\": \"transcription\", \"name\": \"STT-3.7\", \"description\": \"Speech transcription model for accurate audio-to-text and captioning workflows\", \"open_weights\": false, \"release_date\": \"2026-11-27\", \"modalities\": {\"input\": [\"audio\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}, \"temperature\": false, \"top_p\": false, \"top_k\": false}, \"limit\": {\"context\": 0, \"output\": 0}, \"api\": {\"transcriptions\": {\"base_url\": \"https://ai-gateway.vercel.sh/v4/ai\", \"sdk\": {\"opencodeai\": \"none\"}}}, \"cost\": {\"audio\": {\"input\": {\"unit\": \"second\", \"price\": 5.834e-05}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/71c4140878146c13076b71fa95767d8ce0e50e5b/providers/vercel/models/assemblyai/stt-3.7.toml",
+          "build": "71c4140878146c13076b71fa95767d8ce0e50e5b",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/71c4140878146c13076b71fa95767d8ce0e50e5b",
+          "first_seen": "2026-11-28T00:45:36+00:00"
+        }
+      ],
+      "sightings": [],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/71c4140878146c13076b71fa95767d8ce0e50e5b"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/71c4140878146c13076b71fa95767d8ce0e50e5b"
+        }
+      ],
+      "tracker_observed_at": "2026-11-28T00:48:11.026037+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 71c414087814: vercel/assemblyai/stt-3.7\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/71c4140878146c13076b71fa95767d8ce0e50e5b"
+    },
+    {
+      "id": "intel-7c033647559adc6378d0",
+      "scanner": "models-dev-git",
+      "intelligence": true,
+      "header": "REGISTRY UPDATE · MULTI-PROVIDER",
+      "title": "universal-2",
+      "event_label": "Registry update",
+      "registry_update": true,
+      "subtitle": "1 identifier(s) observed in models.dev source definitions; not a model release claim.",
+      "confidence": {
+        "existence": {
+          "level": "high",
+          "basis": "Identifier present in retained static evidence; not proof of a serving model"
+        },
+        "attribution": {
+          "level": "unknown",
+          "basis": "Explicit source metadata only; not independently verified lab ownership"
+        },
+        "availability": {
+          "level": "unknown",
+          "basis": "No authenticated inference or official launch verification performed"
+        },
+        "novelty": {
+          "level": "registry update",
+          "basis": "Never-forget source baseline; registry changes are not launches"
+        }
+      },
+      "candidate_only": false,
+      "timestamp_source": "Upstream release/commit timestamp; first inspected presence is an upper bound",
+      "family": "universal-2",
+      "provider_slug": "unknown",
+      "provider_name": "Unattributed",
+      "provider_evidence": "No lab attribution established",
+      "models": [
+        {
+          "id": "vercel/assemblyai/universal-2",
+          "name": "vercel/assemblyai/universal-2",
+          "registry_update": true,
+          "released_on": "2026-11-27"
+        }
+      ],
+      "detected_at": "2026-11-28T00:48:08.860995+00:00",
+      "first_seen": "2026-11-28T00:45:36+00:00",
+      "observed_at": "2026-11-28T00:48:08.860995+00:00",
+      "backfill": false,
+      "build_label": "models.dev source definitions",
+      "build_transition": "a02ac0dc13809dfafd0eb1e183040acf7aab596c -> 71c4140878146c13076b71fa95767d8ce0e50e5b",
+      "build": "71c4140878146c13076b71fa95767d8ce0e50e5b",
+      "source_text": "https://codeload.github.com/anomalyco/models.dev/zip/71c4140878146c13076b71fa95767d8ce0e50e5b",
+      "artifact_sha256": "e3f8b60f275fb29e37fcecc59b1e5a8ebfdc28c1961d3022361db5125a71bd70",
+      "verification": "Commit-pinned source definitions; local SHA-256 retained",
+      "evidence": "data/intelligence/evidence/models-dev-git/e3f8b60f275fb29e37fcecc59b1e5a8ebfdc28c1961d3022361db5125a71bd70.json.gz",
+      "evidence_path": "data/intelligence/evidence/models-dev-git/e3f8b60f275fb29e37fcecc59b1e5a8ebfdc28c1961d3022361db5125a71bd70.json.gz",
+      "evidence_retained": true,
+      "registry_evidence": [
+        {
+          "id": "vercel/assemblyai/universal-2",
+          "family": "universal-2",
+          "file_path": "providers/vercel/models/assemblyai/universal-2.toml",
+          "file_sha256": "138677f53edffd9fa3a14e58b87a82e8df5561e1b6ddeec66ea0bb2a97a8b31f",
+          "excerpt": "{\"vercel/assemblyai/universal-2\": {\"schema\": 2, \"v2_only\": true, \"type\": \"transcription\", \"name\": \"Universal-2\", \"description\": \"Speech transcription model for accurate audio-to-text and captioning workflows\", \"open_weights\": false, \"release_date\": \"2026-11-27\", \"modalities\": {\"input\": [\"audio\"], \"output\": [\"text\"]}, \"capabilities\": {\"tools\": {\"supported\": false}, \"reasoning\": {\"supported\": false}, \"temperature\": false, \"top_p\": false, \"top_k\": false}, \"limit\": {\"context\": 0, \"output\": 0}, \"api\": {\"transcriptions\": {\"base_url\": \"https://ai-gateway.vercel.sh/v4/ai\", \"sdk\": {\"opencodeai\": \"none\"}}}, \"cost\": {\"audio\": {\"input\": {\"unit\": \"second\", \"price\": 4.167e-05}}}}}",
+          "canonical_id": "",
+          "provider": "unknown",
+          "provider_evidence": "Hosting route does not establish creator",
+          "method": "structured catalog definition",
+          "definition_url": "https://github.com/anomalyco/models.dev/blob/71c4140878146c13076b71fa95767d8ce0e50e5b/providers/vercel/models/assemblyai/universal-2.toml",
+          "build": "71c4140878146c13076b71fa95767d8ce0e50e5b",
+          "source_url": "https://codeload.github.com/anomalyco/models.dev/zip/71c4140878146c13076b71fa95767d8ce0e50e5b",
+          "first_seen": "2026-11-28T00:45:36+00:00"
+        }
+      ],
+      "sightings": [
+        {
+          "source": "litellm-intelligence",
+          "identifier": "assemblyai/universal-2",
+          "first_seen": "2026-11-20T16:26:18+00:00",
+          "evidence_path": "data/intelligence/evidence/litellm-intelligence/8b852e8d994805ff75295444ed6eacae1684b4c3f4adfc21c89f265b78bf4e8a.json.gz"
+        }
+      ],
+      "accent_color": "#0891b2",
+      "links": [
+        {
+          "label": "models.dev source definitions",
+          "url": "https://codeload.github.com/anomalyco/models.dev/zip/71c4140878146c13076b71fa95767d8ce0e50e5b"
+        },
+        {
+          "label": "Release metadata",
+          "url": "https://github.com/anomalyco/models.dev/commit/71c4140878146c13076b71fa95767d8ce0e50e5b"
+        }
+      ],
+      "tracker_observed_at": "2026-11-28T00:48:11.026037+00:00",
+      "pricing": null,
+      "x_post_text": "models.dev source definitions 71c414087814: vercel/assemblyai/universal-2\n\nregistry evidence, not a model launch. availability and lab ownership still need verification.\nhttps://codeload.github.com/anomalyco/models.dev/zip/71c4140878146c13076b71fa95767d8ce0e50e5b"
+    },
     {
       "id": "vercel-gateway-diff-fca23bd8",
       "category": "cli-sdk-diff",
@@ -105572,25 +105808,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-28T00:27:46.305399+00:00",
+      "last_attempt": "2026-11-28T00:47:57.550329+00:00",
       "status": "ok",
-      "last_success": "2026-11-28T00:27:46.566948+00:00",
+      "last_success": "2026-11-28T00:48:00.036860+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.262,
-      "latest_build": "71aa6907ec51177f0db1a97364fb753f347eac7e1d679f5c4685e52a582a56c0",
-      "builds_retained": 239,
-      "identifiers": 10449
+      "duration_seconds": 2.487,
+      "latest_build": "54de261ce3ffe717c22570cf357341a0882bed3c809db4672a942952a38e43ba",
+      "builds_retained": 240,
+      "identifiers": 10453
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-28T00:27:46.673900+00:00",
+      "last_attempt": "2026-11-28T00:45:05.483798+00:00",
       "status": "ok",
-      "last_success": "2026-11-28T00:27:47.147765+00:00",
+      "last_success": "2026-11-28T00:45:06.113717+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.475,
+      "duration_seconds": 0.631,
       "latest_build": "36d3fa37f74b9b96f05487a82eee7a94143e4e05",
       "builds_retained": 103,
       "identifiers": 7098
@@ -105598,34 +105834,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-28T00:24:36.302713+00:00",
+      "last_attempt": "2026-11-28T00:48:00.140104+00:00",
       "status": "ok",
-      "last_success": "2026-11-28T00:24:36.939987+00:00",
+      "last_success": "2026-11-28T00:48:11.026037+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.638,
-      "latest_build": "c9297e5aa80ab2608ffc9c60e46806b2d55cd59a",
-      "builds_retained": 238,
-      "identifiers": 11728
+      "duration_seconds": 10.887,
+      "latest_build": "71c4140878146c13076b71fa95767d8ce0e50e5b",
+      "builds_retained": 240,
+      "identifiers": 11735
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-28T00:27:47.259622+00:00",
+      "last_attempt": "2026-11-28T00:48:11.134974+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 5242,
-      "duration_seconds": 11.034
+      "consecutive_failures": 5249,
+      "duration_seconds": 10.705
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-28T00:27:58.300544+00:00",
+      "last_attempt": "2026-11-28T00:45:17.921863+00:00",
       "status": "ok",
-      "last_success": "2026-11-28T00:27:58.562928+00:00",
+      "last_success": "2026-11-28T00:45:18.142272+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.262,
+      "duration_seconds": 0.22,
       "latest_build": "3.15.14",
       "builds_retained": 5,
       "identifiers": 3340
@@ -105635,61 +105871,61 @@
     "npm": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-28T00:26:23.583708+00:00",
+      "last_attempt": "2026-11-28T00:46:45.351779+00:00",
       "status": "ok",
-      "last_success": "2026-11-28T00:26:25.831510+00:00",
+      "last_success": "2026-11-28T00:46:47.153740+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 2.248
+      "duration_seconds": 1.802
     },
     "antigravity-acp": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-28T00:26:25.831577+00:00",
+      "last_attempt": "2026-11-28T00:46:47.153801+00:00",
       "status": "ok",
-      "last_success": "2026-11-28T00:26:25.986212+00:00",
+      "last_success": "2026-11-28T00:46:47.441456+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.155
+      "duration_seconds": 0.288
     },
     "docs-registries": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-28T00:26:25.986252+00:00",
+      "last_attempt": "2026-11-28T00:46:47.441499+00:00",
       "status": "ok",
-      "last_success": "2026-11-28T00:26:42.102660+00:00",
+      "last_success": "2026-11-28T00:46:58.187803+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 16.116
+      "duration_seconds": 10.746
     },
     "high-alpha": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-28T00:26:42.102738+00:00",
+      "last_attempt": "2026-11-28T00:46:58.187886+00:00",
       "status": "ok",
-      "last_success": "2026-11-28T00:27:46.305341+00:00",
+      "last_success": "2026-11-28T00:47:57.550272+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 64.203,
+      "duration_seconds": 59.362,
       "subsources": {
         "cloud-billing": {
           "status": "failed",
-          "checked_at": "2026-11-28T00:26:42.349308+00:00",
+          "checked_at": "2026-11-28T00:46:58.583809+00:00",
           "reason": "HTTPError"
         },
         "cloud-billing-public": {
           "status": "ok",
-          "checked_at": "2026-11-28T00:26:58.923803+00:00",
+          "checked_at": "2026-11-28T00:47:11.395152+00:00",
           "reason": ""
         },
         "gemini-v1alpha": {
           "status": "disabled",
-          "checked_at": "2026-11-28T00:26:59.077383+00:00",
+          "checked_at": "2026-11-28T00:47:11.716194+00:00",
           "reason": "missing_credentials"
         },
         "gemini-v1beta": {
           "status": "disabled",
-          "checked_at": "2026-11-28T00:26:59.077403+00:00",
+          "checked_at": "2026-11-28T00:47:11.716214+00:00",
           "reason": "missing_credentials"
         }
       }
@@ -105697,25 +105933,25 @@
     "models-dev-api": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-28T00:27:46.305399+00:00",
+      "last_attempt": "2026-11-28T00:47:57.550329+00:00",
       "status": "ok",
-      "last_success": "2026-11-28T00:27:46.566948+00:00",
+      "last_success": "2026-11-28T00:48:00.036860+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.262,
-      "latest_build": "71aa6907ec51177f0db1a97364fb753f347eac7e1d679f5c4685e52a582a56c0",
-      "builds_retained": 239,
-      "identifiers": 10449
+      "duration_seconds": 2.487,
+      "latest_build": "54de261ce3ffe717c22570cf357341a0882bed3c809db4672a942952a38e43ba",
+      "builds_retained": 240,
+      "identifiers": 10453
     },
     "litellm-intelligence": {
       "poll_interval_seconds": 180,
       "stale": false,
-      "last_attempt": "2026-11-28T00:27:46.673900+00:00",
+      "last_attempt": "2026-11-28T00:45:05.483798+00:00",
       "status": "ok",
-      "last_success": "2026-11-28T00:27:47.147765+00:00",
+      "last_success": "2026-11-28T00:45:06.113717+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.475,
+      "duration_seconds": 0.631,
       "latest_build": "36d3fa37f74b9b96f05487a82eee7a94143e4e05",
       "builds_retained": 103,
       "identifiers": 7098
@@ -105723,34 +105959,34 @@
     "models-dev-git": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-28T00:24:36.302713+00:00",
+      "last_attempt": "2026-11-28T00:48:00.140104+00:00",
       "status": "ok",
-      "last_success": "2026-11-28T00:24:36.939987+00:00",
+      "last_success": "2026-11-28T00:48:11.026037+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.638,
-      "latest_build": "c9297e5aa80ab2608ffc9c60e46806b2d55cd59a",
-      "builds_retained": 238,
-      "identifiers": 11728
+      "duration_seconds": 10.887,
+      "latest_build": "71c4140878146c13076b71fa95767d8ce0e50e5b",
+      "builds_retained": 240,
+      "identifiers": 11735
     },
     "devin-cli": {
       "poll_interval_seconds": 300,
       "stale": true,
-      "last_attempt": "2026-11-28T00:27:47.259622+00:00",
+      "last_attempt": "2026-11-28T00:48:11.134974+00:00",
       "status": "failed",
       "error_type": "ValueError",
-      "consecutive_failures": 5242,
-      "duration_seconds": 11.034
+      "consecutive_failures": 5249,
+      "duration_seconds": 10.705
     },
     "devin-desktop": {
       "poll_interval_seconds": 900,
       "stale": false,
-      "last_attempt": "2026-11-28T00:27:58.300544+00:00",
+      "last_attempt": "2026-11-28T00:45:17.921863+00:00",
       "status": "ok",
-      "last_success": "2026-11-28T00:27:58.562928+00:00",
+      "last_success": "2026-11-28T00:45:18.142272+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.262,
+      "duration_seconds": 0.22,
       "latest_build": "3.15.14",
       "builds_retained": 5,
       "identifiers": 3340
@@ -105758,64 +105994,64 @@
     "antigravity": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-28T00:27:58.796688+00:00",
+      "last_attempt": "2026-11-28T00:48:21.847603+00:00",
       "status": "ok",
-      "last_success": "2026-11-28T00:28:07.403550+00:00",
+      "last_success": "2026-11-28T00:48:30.275776+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.607
+      "duration_seconds": 8.428
     },
     "kimi-vllm-openrouter": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-28T00:28:07.403619+00:00",
+      "last_attempt": "2026-11-28T00:48:30.275844+00:00",
       "status": "ok",
-      "last_success": "2026-11-28T00:28:09.313675+00:00",
+      "last_success": "2026-11-28T00:48:31.954303+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.91
+      "duration_seconds": 1.678
     },
     "arena": {
       "poll_interval_seconds": 600,
       "stale": false,
-      "last_attempt": "2026-11-28T00:24:58.430168+00:00",
+      "last_attempt": "2026-11-28T00:48:31.954362+00:00",
       "status": "ok",
-      "last_success": "2026-11-28T00:25:06.614647+00:00",
+      "last_success": "2026-11-28T00:48:39.730351+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 8.185
+      "duration_seconds": 7.776
     },
     "huggingface": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-28T00:28:09.313730+00:00",
+      "last_attempt": "2026-11-28T00:48:39.730405+00:00",
       "status": "ok",
-      "last_success": "2026-11-28T00:28:10.461698+00:00",
+      "last_success": "2026-11-28T00:48:40.872186+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 1.148
+      "duration_seconds": 1.142
     },
     "openai-spec": {
       "poll_interval_seconds": 120,
       "stale": false,
-      "last_attempt": "2026-11-28T00:28:10.461737+00:00",
+      "last_attempt": "2026-11-28T00:48:40.872231+00:00",
       "status": "ok",
-      "last_success": "2026-11-28T00:28:10.759265+00:00",
+      "last_success": "2026-11-28T00:48:40.991213+00:00",
       "error_type": null,
       "consecutive_failures": 0,
-      "duration_seconds": 0.298
+      "duration_seconds": 0.119
     }
   },
   "identities": {
-    "identifiers": 32615,
-    "declared_aliases": 19619,
+    "identifiers": 32626,
+    "declared_aliases": 19627,
     "pending_candidates": 5
   },
   "intelligence_metrics": {
     "window": "Retained non-backfill cards; not an all-time performance claim",
     "detection_lag": {
-      "samples": 523,
-      "seconds_mean": 4602.5699216615685,
+      "samples": 525,
+      "seconds_mean": 4585.61864956,
       "basis": "Observation minus first inspected build timestamp; upper-bound publication lag, not exact introduction time"
     },
     "missed_discoveries": {
@@ -105829,9 +106065,9 @@
       "rate": null
     },
     "evidence_completeness": {
-      "complete": 682,
-      "events": 684,
-      "rate": 0.9970760233918129
+      "complete": 684,
+      "events": 686,
+      "rate": 0.9970845481049563
     },
     "source_health": {
       "sources": 14,
