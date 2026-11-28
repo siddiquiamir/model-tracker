@@ -248,17 +248,16 @@
     "deepseek:flashmla": {
       "display_name": "DeepSeek FlashMLA",
       "product_family": "deepseek",
-      "latest_version": "pr-255-fd9badd",
-      "published_at": "2026-11-26T09:46:33Z",
-      "url": "https://github.com/deepseek-ai/FlashMLA/pull/255",
-      "bullet_count": 65,
-      "archive_relpath": "deepseek-flashmla/pr-255-fd9badd.md",
-      "convergence_tags": [
-        "hooks"
-      ],
-      "updated_at": "2026-11-27T19:44:40Z",
+      "latest_version": "e5f35c4",
+      "published_at": "2026-11-28T09:39:58Z",
+      "url": "https://github.com/deepseek-ai/FlashMLA/commit/e5f35c4fbdb4ce93cb6a1fa04e64efd1f31a7d26",
+      "bullet_count": 0,
+      "archive_relpath": "deepseek-flashmla/e5f35c4.md",
+      "convergence_tags": [],
+      "updated_at": "2026-11-28T10:24:25Z",
       "seen_versions": [
-        "pr-255-fd9badd"
+        "pr-255-fd9badd",
+        "e5f35c4"
       ]
     },
     "deepseek:deepep": {
@@ -342,15 +341,18 @@
     "deepseek:3fs": {
       "display_name": "DeepSeek 3FS",
       "product_family": "deepseek",
-      "latest_version": "pr-467-0e876af",
-      "published_at": "2026-11-27T04:44:22Z",
-      "url": "https://github.com/deepseek-ai/3FS/pull/467",
-      "bullet_count": 4,
-      "archive_relpath": "deepseek-3fs/pr-467-0e876af.md",
-      "convergence_tags": [],
-      "updated_at": "2026-11-27T19:44:40Z",
+      "latest_version": "pr-468-e23f2af",
+      "published_at": "2026-11-28T08:23:35Z",
+      "url": "https://github.com/deepseek-ai/3FS/pull/468",
+      "bullet_count": 14,
+      "archive_relpath": "deepseek-3fs/pr-468-e23f2af.md",
+      "convergence_tags": [
+        "hooks"
+      ],
+      "updated_at": "2026-11-28T10:24:25Z",
       "seen_versions": [
-        "pr-467-0e876af"
+        "pr-467-0e876af",
+        "pr-468-e23f2af"
       ]
     },
     "deepseek:hf-models": {
@@ -1091,7 +1093,61 @@
       },
       "convergence_tags": [],
       "notified": false
+    },
+    {
+      "track_key": "deepseek:flashmla",
+      "product_family": "deepseek",
+      "display_name": "DeepSeek FlashMLA",
+      "version": "e5f35c4",
+      "title": "Use a simplier method & UB layout for softmax_vf",
+      "published_at": "2026-11-28T09:39:58Z",
+      "captured_at": "2026-11-28T10:24:25Z",
+      "bullet_count": 0,
+      "archive_relpath": "deepseek-flashmla/e5f35c4.md",
+      "url": "https://github.com/deepseek-ai/FlashMLA/commit/e5f35c4fbdb4ce93cb6a1fa04e64efd1f31a7d26",
+      "tweet": "DeepSeek FlashMLA e5f35c4 is out 🚀\n\nUse a simplier method & UB layout for softmax_vf\n• Commit: e5f35c4 · Headline: Use a simplier method & UB layout…\n• Use a simplier method & UB layout for softmax_vf\n• Co-authored-by: Yi Zheng <positive1@deepseek.com>",
+      "buried_gems": {
+        "cli_flags": [],
+        "slash_commands": [],
+        "env_vars": [],
+        "hooks_and_keys": [],
+        "model_and_breaking": []
+      },
+      "convergence_tags": [],
+      "notified": true
+    },
+    {
+      "track_key": "deepseek:3fs",
+      "product_family": "deepseek",
+      "display_name": "DeepSeek 3FS",
+      "version": "pr-468-e23f2af",
+      "title": "fix(chunk_engine): size syncing overwrites by payload length and zero-pad aligned tails",
+      "published_at": "2026-11-28T08:23:35Z",
+      "captured_at": "2026-11-28T10:24:25Z",
+      "bullet_count": 14,
+      "archive_relpath": "deepseek-3fs/pr-468-e23f2af.md",
+      "url": "https://github.com/deepseek-ai/3FS/pull/468",
+      "tweet": "DeepSeek 3FS pr-468-e23f2af is out 🚀\n\nfix(chunk_engine): size syncing overwrites by payload length and zero-pad aligned tails\n• The replacement slot is allocated from the old oversized size…\n• For a zero-length syncing overwrite (data.is_empty()), new_len…\n• If truncate…",
+      "buried_gems": {
+        "cli_flags": [
+          "--lib"
+        ],
+        "slash_commands": [],
+        "env_vars": [
+          "ALIGN_SIZE",
+          "RUST_TEST_THREADS"
+        ],
+        "hooks_and_keys": [
+          "new_chunk.pwrite",
+          "self.pwrite"
+        ],
+        "model_and_breaking": []
+      },
+      "convergence_tags": [
+        "hooks"
+      ],
+      "notified": true
     }
   ],
-  "last_checked_at": "2026-11-27T19:44:40Z"
+  "last_checked_at": "2026-11-28T10:24:25Z"
 }

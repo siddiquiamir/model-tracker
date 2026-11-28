@@ -4,6 +4,8 @@ Automated 24/7 archive of 100% verbatim release notes for **Google Antigravity**
 
 | Captured (UTC) | Product | Version | Items | Signals | Full Notes | Upstream |
 | :--- | :--- | :--- | ---: | :--- | :--- | :--- |
+| 2026-11-28 10:24 | DeepSeek 3FS | `pr-468-e23f2af` | 14 | `hooks` | [Full notes](deepseek-3fs/pr-468-e23f2af.md) | [Source](https://github.com/deepseek-ai/3FS/pull/468) |
+| 2026-11-28 10:24 | DeepSeek FlashMLA | `e5f35c4` | 0 | — | [Full notes](deepseek-flashmla/e5f35c4.md) | [Source](https://github.com/deepseek-ai/FlashMLA/commit/e5f35c4fbdb4ce93cb6a1fa04e64efd1f31a7d26) |
 | 2026-11-27 19:44 | DeepSeek Hugging Face | `DeepSeek-V4.1-Flash-1017` | 5 | — | [Full notes](deepseek-hf/DeepSeek-V4.1-Flash-1017.md) | [Source](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017) |
 | 2026-11-27 19:44 | DeepSeek 3FS | `pr-467-0e876af` | 4 | — | [Full notes](deepseek-3fs/pr-467-0e876af.md) | [Source](https://github.com/deepseek-ai/3FS/pull/467) |
 | 2026-11-27 19:44 | DeepSeek DeepJIT | `pr-53-c1d103f` | 7 | `hooks` | [Full notes](deepseek-deepjit/pr-53-c1d103f.md) | [Source](https://github.com/deepseek-ai/DeepJIT/pull/53) |
